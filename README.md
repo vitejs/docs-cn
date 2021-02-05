@@ -32,6 +32,8 @@ Vite （法语意为 “迅速”, 发音 /vit/）是一种全新的前端构建
 
 **工作流介绍：** 英文文档的所在 [请点击此链接](https://github.com/vitejs/vite/tree/main/docs)，我们会定期同步英文版文档内容的更新。（ 基于 docs 文件夹的 [History](https://github.com/vitejs/vite/commits/main/docs)，将改动内容映射到中文文档内 ）
 
+贡献指南敬请查看本仓库的 [Wiki](https://github.com/vitejs/docs-cn/wiki) 区。
+
 **注意：**
 
 - 原则上这里只进行英文版对应的翻译工作，如果觉得原文有改进之处，或任何不仅针对中文版，而受益所有语言版本的想法，建议直接在英文版仓库讨论。
