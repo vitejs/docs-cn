@@ -15,9 +15,6 @@ module.exports = {
     ]
   ],
   themeConfig: {
-    repo: 'vitejs/vite',
-    docsDir: 'docs',
-    docsBranch: 'main',
     editLinks: true,
     editLinkText: '为此页提供修改建议',
     nav: [
