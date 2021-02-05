@@ -34,17 +34,17 @@ Vite 插件扩展了设计出色的 Rollup 接口，带有一些 vite 独有的�
 
 ```js
 export default function myPlugin() {
-  const vitualFileId = '@my-virtual-file'
+  const virtualFileId = '@my-virtual-file'
 
   return {
     name: 'my-plugin', // 必须的，将会显示在 warning 和 error 中
     resolveId(id) {
-      if (id === vitualFileId) {
-        return vitualFileId
+      if (id === virtualFileId) {
+        return virtualFileId
       }
     },
     load(id) {
-      if ((id = vitualFileId)) {
+      if ((id = virtualFileId)) {
         return `export const msg = "from virtual file"`
       }
     }
