@@ -9,7 +9,8 @@
   "devDependencies": {
     "chalk": "^4.1.0",
     "lint-staged": "^10.5.3",
-    "vitepress": "^0.11.5"
+    "vitepress": "^0.11.5",
+    "yorkie": "^2.0.0"
   },
   "scripts": {
     "docs:dev": "vitepress dev .",
@@ -17,7 +18,6 @@
     "docs:serve": "vitepress serve ."
   },
   "gitHooks": {
-    "pre-commit": "lint-staged",
     "commit-msg": "node scripts/verifyCommit.js"
   }
 }

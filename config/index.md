@@ -507,7 +507,11 @@ export default ({ command, mode }) => {
 
 ## SSR 选项
 
-- **相关：** [SSR 启发式外部化](/guide/ssr#启发式外部化)
+:::warning 实验性
+SSR 选项可能会在未来版本中进行调整。
+:::
+
+- **相关：** [SSR 外部化](/guide/ssr#SSR-外部化)
 
 ### ssr.external
 

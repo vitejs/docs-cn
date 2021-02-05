@@ -4,7 +4,7 @@
  * @type {import('vitepress').UserConfig}
  */
 module.exports = {
-  title: 'Vite⚡',
+  title: 'Vite',
   lang: "zh-CN",
   description: '下一代前端开发与构建工具',
   head: [
