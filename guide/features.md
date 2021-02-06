@@ -163,6 +163,28 @@ import imgUrl from "./img.png";
 document.getElementById("hero-img").src = imgUrl;
 ```
 
+一切特殊的 query 可以更改资源被引入的方式：
+
+```js
+// 显式加载资源为一个 URL
+import assetAsURL from "./asset.js?url";
+```
+
+```js
+// 以字符串形式加载资源
+import assetAsString from "./shader.glsl?raw";
+```
+
+```js
+// 加载为 Web Worker
+import Worker from "./worker.js?worker";
+```
+
+```js
+// 在构建时Web Worker 内联为 base64 字符串
+import InlineWorker from "./worker.js?worker&inline";
+```
+
 更多细节请见 [静态资源处理](./assets)。
 
 ## JSON

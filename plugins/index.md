@@ -1,5 +1,9 @@
 # 插件
 
+:::tip 注意
+Vite 旨在为常见的 web 开发工作提供开箱即用的支持。在搜索一个 Vite 或 Rollup 兼容插件之前，请先查看 [功能指引](../guide/features.md)。很多在 Rollup 项目中需要插件的情况在 Vite 中已经内建支持了。
+:::
+
 ## 官方插件
 
 ### [@vitejs/plugin-vue](https://github.com/vitejs/vite/tree/main/packages/plugin-vue)
