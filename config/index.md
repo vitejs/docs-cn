@@ -181,7 +181,7 @@ export default ({ command, mode }) => {
 - **类型：** `boolean`
 - **默认：** `true`
 
-  是否支持从 `.json` 文件中进行动态导入。
+  是否支持从 `.json` 文件中进行按名导入。
 
 ### json.stringify
 
@@ -190,7 +190,7 @@ export default ({ command, mode }) => {
 
   若设置为 `true`，导入的 JSON 会被转换为 `export default JSON.parse("...")` 会比转译成对象字面量性能更好，尤其是当 JSON 文件较大的时候。
 
-  开启此项，则会禁用动态导入。
+  开启此项，则会禁用按名导入。
 
 ### esbuild
 
