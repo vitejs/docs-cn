@@ -110,6 +110,16 @@ import classes from "./example.module.css";
 document.getElementById("foo").className = classes.red;
 ```
 
+CSS modules 行为可以通过 [`css.modules` 选项](/config/#css-modules) 进行配置。
+
+如果 `css.modules.localsConvention` 设置开启了 camelCase 格式变量名转换（例如 `localsConvention: 'camelCaseOnly'`）， 你还可以使用按名导入。
+
+```js
+// .apply-color -> applyColor
+import { applyColor } from "./example.module.css";
+document.getElementById("foo").className = applyColor;
+```
+
 请注意 CSS modules `localsConvention` 默认是 `cameCaseOnly` - 例如一个名为 `.foo-bar` 的类会被暴露为 `classes.fooBar`。CSS modules 行为可以通过 [`css.modules` option](/config/#css-modules) 选项配置。
 
 ### CSS 预处理器
