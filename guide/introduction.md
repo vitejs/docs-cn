@@ -63,3 +63,9 @@ Vite 同时利用 HTTP 头来加速整个页面的加载（再次让浏览器为
 ## Vite 与 X 的区别是？
 
 你可以查看 [比较](./comparisons) 章节获取更多细节，了解 Vite 与同类工具的异同。
+
+<small class="cn-footnote">
+<br/>
+<strong class="title">译者注</strong>
+<a id="footnote-1"></a>[1] 暂以意译方式呈现。
+</small>

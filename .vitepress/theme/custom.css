@@ -24,3 +24,12 @@
 .DocSearch {
   --docsearch-primary-color: var(--c-brand) !important;
 }
+
+/* docs-cn specific */
+.cn-footnote {
+  margin-top: 20px;
+}
+.cn-footnote .title {
+  display: block;
+  margin-bottom: 10px;
+}
