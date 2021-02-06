@@ -51,5 +51,5 @@ $ npm install
 $ yarn install
 
 # 启动开发服务器
-$ docs:dev
+$ yarn dev
 ```
