@@ -7,14 +7,7 @@ module.exports = {
   title: 'Vite',
   lang: "zh-CN",
   description: '下一代前端开发与构建工具',
-  head: [
-    ['link', { rel: 'icon', type: 'image/svg+xml', href: '/logo.svg' }],
-    [
-      'style',
-      {},
-      '.content img { border-radius: 10px }' + 'h1.title { margin-left: 0.5em }'
-    ]
-  ],
+  head: [['link', { rel: 'icon', type: 'image/svg+xml', href: '/logo.svg' }]],
   themeConfig: {
     editLinks: true,
     editLinkText: '为此页提供修改建议',
