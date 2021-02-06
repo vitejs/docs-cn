@@ -24,7 +24,7 @@ Pre-bundling them to speed up dev server page load...（将预构建它们以提
 
 2. **性能：** Vite 将有许多内部模块的 ESM 依赖关系转换为单个模块，以提高后续页面加载性能。
 
-   一些包将它们的 ES 模块构建作为许多单独的文件相互导入。例如，[`lodash-es` 有超过 600 个内置模块](https://unpkg.com/browse/lodash-es/)！当我们执行 `import { debounce } from 'lodash-es` 时，浏览器同时发出 600 多个 HTTP 请求！尽管服务器在处理这些请求时没有问题，但大量的请求会在浏览器端造成网络拥塞，导致页面的加载速度相当慢。
+   一些包将它们的 ES 模块构建作为许多单独的文件相互导入。例如，[`lodash-es` 有超过 600 个内置模块](https://unpkg.com/browse/lodash-es/)！当我们执行 `import { debounce } from 'lodash-es'` 时，浏览器同时发出 600 多个 HTTP 请求！尽管服务器在处理这些请求时没有问题，但大量的请求会在浏览器端造成网络拥塞，导致页面的加载速度相当慢。
 
    通过预构建 `lodash-es` 成为一个模块，我们就只需要一个 HTTP 请求了！
 
@@ -41,7 +41,7 @@ Pre-bundling them to speed up dev server page load...（将预构建它们以提
 
 ## 自定义行为
 
-默认的依赖项发现为启发式可能并不总是可取的。在您想要显式地从列表中包含/排除依赖项的情况下, 使用 [`optimizeDeps` 配置项](/config/#依赖优化选项)。
+默认的依赖项发现为启发式可能并不总是可取的。在您想要显式地从列表中包含/排除依赖项的情况下, 请使用 [`optimizeDeps` 配置项](/config/#依赖优化选项)。
 
 一个典型的用例对 `optimizeDeps.include` 或 `optimizeDeps.exclude` 是当您有一个不能直接在源代码中发现的导入时。例如，导入可能是插件转换的结果。这意味着 Vite 无法在初始扫描时发现导入 —— 它只能在浏览器请求文件并进行转换后发现它。这将导致服务器在启动后立即重新打包。
 

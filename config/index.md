@@ -36,7 +36,7 @@ export default {
 };
 ```
 
-Vite 同样支持 TS 配置文件。你可以直接使用 `vite.config.ts`：
+Vite 同样支持 TS 配置文件。你可以转而使用 `vite.config.ts` ：
 
 ```ts
 import { defineConfig } from "vite";

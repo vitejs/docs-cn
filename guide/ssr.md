@@ -112,7 +112,7 @@ app.use("*", async (req, res) => {
 
     // 4. 渲染应用的 HTML。这架设 entry-server.js 的导出 `render`
     //    函数调用了相应 framework 的 SSR API。
-    //    例如 ReacDOMServer.renderToString()
+    //    例如 ReactDOMServer.renderToString()
     const appHtml = await render(url);
 
     // 5. 注入应用渲染的 HTML 到模板中。

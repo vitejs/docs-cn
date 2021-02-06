@@ -2,13 +2,18 @@
 
 如果你想使用传统的后端（如 Rails, Laravel）来服务 HTML，但使用 Vite 来服务资源，以下是你可以做的:
 
-1. 在你的 Vite 配置中启用 `cors` 和 `emitManifest`:
+1. 在你的 Vite 配置中配置入口文件和启用创建 `manifest`:
 
    ```js
    // vite.config.js
    export default {
      build: {
-       manifest: true
+       // 在 outDir 中生成 manifest.json
+       manifest: true,
+       rollupOptions: {
+         // 覆盖默认的 .html 入口
+         input: '/path/to/main.js'
+       }
      }
    }
    ```
