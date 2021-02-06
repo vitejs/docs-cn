@@ -46,7 +46,7 @@ VITE_SOME_KEY=123
 
 :::warning 安全警告
 
-- `.env.*.local` 文件应是本地的，可以包含敏感变量。你应该加上 `.local` 到你的 `.git` 避免他们被检出到 git。
+- `.env.*.local` 文件应是本地的，可以包含敏感变量。你应该加上 `.local` 到你的 `.gitignore` 以避免他们被检出到 git。
 
 - 由于暴露在 Vite 源代码中的任何变量都将最终出现在客户端包中，`VITE_*` 变量应该不包含任何敏感信息。
 
@@ -56,7 +56,7 @@ VITE_SOME_KEY=123
 
 默认情况下，开发服务器 (`serve` 命令) 运行在 `development` （开发）模式，而 `build` 命令运行在 `production` （生产）模式。
 
-这意味着当启动 `vite build`，它会自动加载 `.env.production` 中可能存在的环境变量：
+这意味着当执行 `vite build` 时，它会自动加载 `.env.production` 中可能存在的环境变量：
 
 ```
 # .env.production

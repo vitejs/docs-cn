@@ -62,11 +62,13 @@ console.log(msg)
 ### 转换自定义文件类型
 
 ```js
+const fileRegex = /\.(my-file-ext)$/
+
 export default function myPlugin() {
   return {
     name: 'transform-file',
     transform(src, id) {
-      if (!/\.(my-file-ext)$/.test(id)) {
+      if (fileRegex.test(id)) {
         return {
           code: compileFileToJS(src),
           map: null // provide source map if available

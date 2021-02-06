@@ -48,7 +48,7 @@ Vite 默认的类型定义是写给它的 Node.js API 的。要将其补充到�
 }
 ```
 
-这将会提供一下类型定义补充：
+这将会提供以下类型定义补充：
 
 - 资源导入 (例如：导入一个 `.svg` 文件)
 - `import.meta.env` 上 Vite 注入的在 的环境变量的类型定义
@@ -59,12 +59,12 @@ Vite 默认的类型定义是写给它的 Node.js API 的。要将其补充到�
 Vite 为 Vue 提供第一优先级支持：
 
 - Vue 3 单文件组件支持：[@vitejs/plugin-vue](https://github.com/vitejs/vite/tree/main/packages/plugin-vue)
-- Vue 3 JSX 支持：[@vitejs/plugin-vue-jsx](https://github.com/vitejs/vite/tree/main/packages/plugin-vue)
+- Vue 3 JSX 支持：[@vitejs/plugin-vue-jsx](https://github.com/vitejs/vite/tree/main/packages/plugin-vue-jsx)
 - Vue 2 支持：[underfin/vite-plugin-vue2](https://github.com/underfin/vite-plugin-vue2)
 
 ## JSX
 
-`.jsx` 和 `.tsx` 文件同样开箱即用。JSX 的翻译同样是通过 `esbuild`，默认为 React 16 形式，React 17 形式的 JSX 在 esbuild 中的支持请看 [这里](https://github.com/evanw/esbuild/issues/334).
+`.jsx` 和 `.tsx` 文件同样开箱即用。JSX 的翻译同样是通过 [ESBuild](https://esbuild.github.io)，默认为 React 16 形式，React 17 形式的 JSX 在 esbuild 中的支持请看 [这里](https://github.com/evanw/esbuild/issues/334).
 
 如果不是在 React 中使用 JSX，自定义的 `jsxFactory` 和 `jsxFragment` 可以使用 [`esbuild` 选项](/config/#esbuild) 进行配置。例如对 Preact：
 
@@ -78,7 +78,7 @@ export default {
 };
 ```
 
-更多细节详见 [esbuild 文档](https://esbuild.github.io/content-types/#jsx).
+更多细节详见 [ESBuild 文档](https://esbuild.github.io/content-types/#jsx).
 
 自定义插件还可以自动将 `import React from 'react'` 这类代码注入到每个文件中，以避免手工导入它们。请参阅 [插件 API](./api-plugin) 了解如何编写这样的插件。
 
@@ -203,7 +203,7 @@ import { field } from "./example.json";
 Vite 支持使用特殊的 `import.meta.glob` 函数从文件系统导入多个模块：
 
 ```js
-const modules = import.meta.globEager("./dir/*.js");
+const modules = import.meta.glob("./dir/*.js");
 ```
 
 以上将会被转译为下面的样子：
@@ -213,7 +213,7 @@ const modules = import.meta.globEager("./dir/*.js");
 const modules = {
   './dir/foo.js': () => import('./dir/foo.js'),
   './dir/bar.js': () => import('./dir/bar.js')
-} }
+}
 ```
 
 你可以遍历 `modules` 对象的 key 值来访问相应的模块：
@@ -229,17 +229,19 @@ for (const path in modules) {
 匹配到的文件将通过动态导入默认懒加载，并会在构建时分离为独立的 chunk。如果你倾向于直接引入所有的模块（例如依赖于这些模块中的副作用首先被应用），你可以使用 `import.meta.globEager` 代替：
 
 ```js
-const modules = import.meta.glob("./dir/*.js");
+const modules = import.meta.globEager('./dir/*.js');
 ```
 
 以上会被转译为下面的样子：
 
 ```js
 // vite 生成的代码
+import * as __glob__0_0 from './dir/foo.js'
+import * as __glob__0_1 from './dir/bar.js'
 const modules = {
-  "./dir/foo.js": () => import("./dir/foo.js"),
-  "./dir/bar.js": () => import("./dir/bar.js"),
-};
+  './dir/foo.js': __glob__0_0,
+  './dir/bar.js': __glob__0_1
+}
 ```
 
 请注意：
@@ -278,7 +280,7 @@ init({
 
 ## Web Worker
 
-一个 web worker 脚本可以直接通过添加一个 `?worker` query 来导入。默认导出蒋氏一个自定义的 worker 构造器：
+一个 web worker 脚本可以直接通过添加一个 `?worker` 查询参数来导入。默认导出将是一个自定义的 worker 构造器：
 
 ```js
 import MyWorker from "./worker?worker";
@@ -286,9 +288,9 @@ import MyWorker from "./worker?worker";
 const worker = new MyWorker();
 ```
 
-worker 脚本也可以使用 `import` 语句来替代 `importScripts()` - 注意，在开发过程中，这依赖于浏览器原生支持，目前只在 Chrome 中工作，但在生产版本中，它已经被编译掉了。
+worker 脚本也可以使用 `import` 语句来替代 `importScripts()` - 注意，在开发过程中，这依赖于浏览器原生支持，目前只在 Chrome 中适用，而在生产版本中，它已经被编译掉了。
 
-默认情况下，worker 脚本将在生产构建中作为单独的块发出。如果你想将 worker 内联为 base64 字符串，添加 `inline` query：
+默认情况下，worker 脚本将在生产构建中作为单独的块发出。如果你想将 worker 内联为 base64 字符串，请添加 `inline` 查询参数：
 
 ```js
 import MyWorker from "./worker?worker&inline";
@@ -308,11 +310,11 @@ Vite 使用 ES 动态导入作为代码分割的断点。生成的代码也会�
 
 Vite 会自动地将一个异步 chunk 模块中使用到的 CSS 代码抽取出来并为其生成一个单独的文件。这个 CSS 文件将在该异步 chunk 加载完成时自动通过一个 `<link>` 标签载入，该异步 chunk 会保证只在 CSS 加载完毕后再执行，避免发生 [FOUC](https://en.wikipedia.org/wiki/Flash_of_unstyled_content#:~:text=A%20flash%20of%20unstyled%20content,before%20all%20information%20is%20retrieved.) 。
 
+如果你更倾向于将所有的 CSS 抽取到一个文件中，你可以通过设置 [`build.cssCodeSplit`](/config/#build-csscodesplit) 为 `false` 来禁用 CSS 代码分割。
+
 ### 预加载指令生成
 
 Vite 会为入口 chunk 和它们在打包出的 HTML 中的直接引入自动生成 `<link rel="modulepreload">` 指令。
-
-如果你更倾向于将所有的 CSS 抽取到一个文件中，你可以通过设置 [`build.cssCodeSplit`](/config/#build-csscodesplit) 为 `false` 来禁用 CSS 代码分割。
 
 ### 异步 Chunk 加载优化
 

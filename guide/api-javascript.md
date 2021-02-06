@@ -14,7 +14,8 @@ async function createServer(inlineConfig?: InlineConfig): Promise<ViteDevServer>
 
 ```js
 const { createServer } = require('vite')
-;async () => {
+
+;(async () => {
   const server = await createServer({
     // 任何合法的用户配置选项，加上 `mode` 和 `configFile`
     configFile: false,
@@ -24,7 +25,7 @@ const { createServer } = require('vite')
     }
   })
   await server.listen()
-}
+})()
 ```
 
 ## `InlineConfig`
@@ -108,8 +109,9 @@ async function build(
 
 ```js
 const path = require('path')
-import { build } from 'vite' const { build } = require('vite')
-;async () => {
+const { build } = require('vite')
+
+;(async () => {
   await build({
     root: path.resolve(__dirname, './project'),
     build: {
@@ -119,7 +121,7 @@ import { build } from 'vite' const { build } = require('vite')
       }
     }
   })
-}
+})()
 ```
 
 ## `resolveConfig`

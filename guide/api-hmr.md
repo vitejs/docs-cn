@@ -6,7 +6,7 @@
 手动 HMR API 主要用于框架和工具作者。作为最终用户，HMR 可能已经在特定于框架的启动器模板中为您处理过了。
 :::
 
-Vite 通过特殊的 `import.meta` 对象暴露手动 HMR API。
+Vite 通过特殊的 `import.meta.hot` 对象暴露手动 HMR API。
 
 ```ts
 interface ImportMeta {
