@@ -59,3 +59,7 @@ Vite 同时利用 HTTP 头来加速整个页面的加载（再次让浏览器为
 - Vite 需要在支持 [原生 ES 模块动态导入](https://caniuse.com/es6-module-dynamic-import) 的浏览器中使用。
 
 - 生产版本通过 [脚本标签来对原生 ES 模块](https://caniuse.com/es6-module) 提供基本支持。Vite 默认情况下 **不** 执行任何兼容性转换。可以通过官方插件支持传统浏览器。有关更多细节，详见 [构建生产版本](./build)。
+
+## Vite 与 X 的区别是？
+
+你可以查看 [比较](./comparisons) 章节获取更多细节，了解 Vite 与同类工具的异同。
