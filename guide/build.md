@@ -39,9 +39,9 @@ module.exports = {
   build: {
     rollupOptions: {
       // https://rollupjs.org/guide/en/#big-list-of-options
-    },
-  },
-};
+    }
+  }
+}
 ```
 
 例如，您可以使用仅在构建期间应用的插件来指定多个 Rollup 输出。
@@ -66,18 +66,18 @@ module.exports = {
 
 ```js
 // vite.config.js
-const { resolve } = require("path");
+const { resolve } = require('path')
 
 module.exports = {
   build: {
     rollupOptions: {
       input: {
-        main: resolve(__dirname, "index.html"),
-        nested: resolve(__dirname, "nested/index.html"),
-      },
-    },
-  },
-};
+        main: resolve(__dirname, 'index.html'),
+        nested: resolve(__dirname, 'nested/index.html')
+      }
+    }
+  }
+}
 ```
 
 ## 库模式
@@ -88,26 +88,26 @@ module.exports = {
 
 ```js
 // vite.config.js
-const path = require("path");
+const path = require('path')
 
 module.exports = {
   build: {
     lib: {
-      entry: path.resolve(__dirname, "lib/main.js"),
-      name: "MyLib",
+      entry: path.resolve(__dirname, 'lib/main.js'),
+      name: 'MyLib'
     },
     rollupOptions: {
       // 请确保外部化那些你的库中不需要的依赖
-      external: ["vue"],
+      external: ['vue'],
       output: {
         // 在 UMD 构建模式下为这些外部化的依赖提供一个全局变量
         globals: {
-          vue: "Vue",
-        },
-      },
-    },
-  },
-};
+          vue: 'Vue'
+        }
+      }
+    }
+  }
+}
 ```
 
 运行 `vite build` 配合如上配置将会使用一套 Rollup 预设，为发行该库提供两种构建格式：`es` 和 `umd`（在 `build.lib` 中配置的）：

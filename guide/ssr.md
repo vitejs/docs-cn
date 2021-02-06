@@ -90,44 +90,44 @@ createServer()
 下一步是实现 `*` 处理程序供给服务端渲染的 HTML：
 
 ```js
-app.use("*", async (req, res) => {
-  const url = req.originalUrl;
+app.use('*', async (req, res) => {
+  const url = req.originalUrl
 
   try {
     // 1. 读取 index.html
     let template = fs.readFileSync(
-      path.resolve(__dirname, "index.html"),
-      "utf-8"
-    );
+      path.resolve(__dirname, 'index.html'),
+      'utf-8'
+    )
 
     // 2. 应用 vite HTML 转换。这将会注入 vite HMR 客户端，and
     //    同时也会从 Vite 插件应用 HTML 转换。
     //    例如：@vitejs/plugin-react-refresh 中的 global preambles
-    template = await vite.transformIndexHtml(url, template);
+    template = await vite.transformIndexHtml(url, template)
 
     // 3. 加载服务器入口。vite.ssrLoadModule 将自动转换
     //    你的 ESM 源代码将在 Node.js 也可用了！无需打包
     //    并提供类似 HMR 的根据情况随时失效。
-    const { render } = await vite.ssrLoadModule("/src/entry-server.js");
+    const { render } = await vite.ssrLoadModule('/src/entry-server.js')
 
     // 4. 渲染应用的 HTML。这架设 entry-server.js 的导出 `render`
     //    函数调用了相应 framework 的 SSR API。
     //    例如 ReactDOMServer.renderToString()
-    const appHtml = await render(url);
+    const appHtml = await render(url)
 
     // 5. 注入应用渲染的 HTML 到模板中。
-    const html = template.replace(`<!--ssr-outlet-->`, appHtml);
+    const html = template.replace(`<!--ssr-outlet-->`, appHtml)
 
     // 6. 将渲染完成的 HTML 返回
-    res.status(200).set({ "Content-Type": "text/html" }).end(html);
+    res.status(200).set({ 'Content-Type': 'text/html' }).end(html)
   } catch (e) {
     // 如果捕获到了一个错误，让 vite 来修复该堆栈，这样它就可以映射回
     // 你的实际源代码中。
-    vite.ssrFixStacktrace(e);
-    console.error(e);
-    res.status(500).end(e.message);
+    vite.ssrFixStacktrace(e)
+    console.error(e)
+    res.status(500).end(e.message)
   }
-});
+})
 ```
 
 `package.json` 中的 `dev` 脚本也应该相应地改变，使用服务器脚本：
@@ -187,8 +187,8 @@ app.use("*", async (req, res) => {
 
 ```js
 // src/entry-server.js
-const ctx = {};
-const html = await vueServerRenderer.renderToString(app, ctx);
+const ctx = {}
+const html = await vueServerRenderer.renderToString(app, ctx)
 // ctx.modules 现在是一个渲染期间使用的模块 ID 的 Set
 ```
 
@@ -229,12 +229,12 @@ Vite 基于以下启发式执行自动化的 SSR 外部化:
 ```js
 export function mySSRPlugin() {
   return {
-    name: "my-ssr",
+    name: 'my-ssr',
     transform(code, id, ssr) {
       if (ssr) {
         // 执行 ssr 专有转换...
       }
-    },
-  };
+    }
+  }
 }
 ```

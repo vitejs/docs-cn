@@ -1,0 +1,6 @@
+{
+  // avoid example code format auto lint
+  "prettier.singleQuote": true,
+  "prettier.semi": false,
+  "prettier.trailingComma": "none"
+}

@@ -52,11 +52,11 @@
 Vite 2.0 核心已经是框架无关的了。对 Vue 的支持目前详见 [`@vitejs/plugin-vue`](https://github.com/vitejs/vite/tree/main/packages/plugin-vue)。安装它并添加到 Vite 配置十分简单:
 
 ```js
-import vue from "@vitejs/plugin-vue";
+import vue from '@vitejs/plugin-vue'
 
 export default {
-  plugins: [vue()],
-};
+  plugins: [vue()]
+}
 ```
 
 ### 自定义块转换
@@ -65,26 +65,26 @@ export default {
 
 ```ts
 // vite.config.js
-import vue from "@vitejs/plugin-vue";
+import vue from '@vitejs/plugin-vue'
 
 const vueI18nPlugin = {
-  name: "vue-i18n",
+  name: 'vue-i18n',
   transform(code, id) {
     if (!/vue&type=i18n/.test(id)) {
-      return;
+      return
     }
     if (/\.ya?ml$/.test(id)) {
-      code = JSON.stringify(require("js-yaml").safeLoad(code.trim()));
+      code = JSON.stringify(require('js-yaml').safeLoad(code.trim()))
     }
     return `export default Comp => {
       Comp.i18n = ${code}
-    }`;
-  },
-};
+    }`
+  }
+}
 
 export default {
-  plugins: [vue(), vueI18nPlugin],
-};
+  plugins: [vue(), vueI18nPlugin]
+}
 ```
 
 ## React 支持

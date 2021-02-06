@@ -8,8 +8,8 @@
 服务时引入一个静态资源会返回解析后的公共路径：
 
 ```js
-import imgUrl from "./img.png";
-document.getElementById("hero-img").src = imgUrl;
+import imgUrl from './img.png'
+document.getElementById('hero-img').src = imgUrl
 ```
 
 例如，`imgUrl` 在开发时会是 `/img.png`，在生产构建后会是 `/assets/img.2d8efhg.png`。
@@ -31,8 +31,8 @@ document.getElementById("hero-img").src = imgUrl;
 未被包含在内部列表中的、或者在 `assetsInclude` 中的资源，可以使用 `?url` 后缀显式导入为一个 URL。这十分有用，例如，要导入 [Houdini Paint Worklets](https://houdini.how/usage) 时：
 
 ```js
-import workletURL from "extra-scalloped-border/worklet.js?url";
-CSS.paintWorklet.addModule(workletURL);
+import workletURL from 'extra-scalloped-border/worklet.js?url'
+CSS.paintWorklet.addModule(workletURL)
 ```
 
 ### Importing Asset as String
@@ -40,7 +40,7 @@ CSS.paintWorklet.addModule(workletURL);
 Assets can be imported as strings using the `?raw` suffix.
 
 ```js
-import shaderString from "./shader.glsl?raw";
+import shaderString from './shader.glsl?raw'
 ```
 
 ### 导入脚本作为 Worker
@@ -49,13 +49,13 @@ import shaderString from "./shader.glsl?raw";
 
 ```js
 // 在生产构建中将会分离出 chunk
-import Worker from "./shader.js?worker";
-const worker = new Worker();
+import Worker from './shader.js?worker'
+const worker = new Worker()
 ```
 
 ```js
 // 内联为 base64 字符串
-import InlineWorker from "./shader.js?worker&inline";
+import InlineWorker from './shader.js?worker&inline'
 ```
 
 查看 [Web Worker 小节](./features.md#web-workers) 获取更多细节。

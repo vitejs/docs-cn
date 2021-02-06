@@ -19,7 +19,7 @@ Pre-bundling them to speed up dev server page load...（将预构建它们以提
 
    ```js
    // 符合预期
-   import React, { useState } from "react";
+   import React, { useState } from 'react'
    ```
 
 2. **性能：** Vite 将有许多内部模块的 ESM 依赖关系转换为单个模块，以提高后续页面加载性能。

@@ -12,7 +12,7 @@
 // vite.config.js
 export default {
   // 配置选项
-};
+}
 ```
 
 注意，即使项目没有在 `package.json` 中开启 `type: "module"` ，Vite 也支持在配置文件中使用 ESM 语法。在这种情况下，配置文件是在加载之前自动预处理的。
@@ -33,17 +33,17 @@ vite --config my-config.js
  */
 export default {
   // ...
-};
+}
 ```
 
 Vite 同样支持 TS 配置文件。你可以转而使用 `vite.config.ts`：
 
 ```ts
-import { defineConfig } from "vite";
+import { defineConfig } from 'vite'
 
 export default defineConfig({
   // ...
-});
+})
 ```
 
 ### 场景配置
@@ -52,16 +52,16 @@ export default defineConfig({
 
 ```js
 export default ({ command, mode }) => {
-  if (command === "serve") {
+  if (command === 'serve') {
     return {
       // serve 独有配置
-    };
+    }
   } else {
     return {
       // build 独有配置
-    };
+    }
   }
-};
+}
 ```
 
 ## 共享配置
@@ -135,16 +135,16 @@ export default ({ command, mode }) => {
 
   ```ts
   interface CSSModulesOptions {
-    scopeBehaviour?: "global" | "local";
-    globalModulePaths?: string[];
+    scopeBehaviour?: 'global' | 'local'
+    globalModulePaths?: string[]
     generateScopedName?:
       | string
-      | ((name: string, filename: string, css: string) => string);
-    hashPrefix?: string;
+      | ((name: string, filename: string, css: string) => string)
+    hashPrefix?: string
     /**
      * 默认：'camelCaseOnly'
      */
-    localsConvention?: "camelCase" | "camelCaseOnly" | "dashes" | "dashesOnly";
+    localsConvention?: 'camelCase' | 'camelCaseOnly' | 'dashes' | 'dashesOnly'
   }
   ```
 
@@ -169,11 +169,11 @@ export default ({ command, mode }) => {
     css: {
       preprocessorOptions: {
         scss: {
-          additionalData: `$injectedColor: orange;`,
-        },
-      },
-    },
-  };
+          additionalData: `$injectedColor: orange;`
+        }
+      }
+    }
+  }
   ```
 
 ### json.namedExports
@@ -201,10 +201,10 @@ export default ({ command, mode }) => {
   ```js
   export default {
     esbuild: {
-      jsxFactory: "h",
-      jsxFragment: "Fragment",
-    },
-  };
+      jsxFactory: 'h',
+      jsxFragment: 'Fragment'
+    }
+  }
   ```
 
   默认情况下，ESbuild 应用在 `ts`、`jsx`、`tsx` 文件。你可以通过 `esbuild.include` 和 `esbuild.exclude` 对其进行配置，它们两个配置的类型是`string | RegExp | (string | RegExp)[]`。
@@ -216,9 +216,9 @@ export default ({ command, mode }) => {
   ```js
   export default {
     esbuild: {
-      jsxInject: `import React from 'react'`,
-    },
-  };
+      jsxInject: `import React from 'react'`
+    }
+  }
   ```
 
 ### assetsInclude
@@ -236,7 +236,7 @@ export default ({ command, mode }) => {
 
   ```js
   // dynamicPath 是一个非 JS 文件类型，例如 "./foo.gql"
-  import(dynamicPath).then(/* ... */);
+  import(dynamicPath).then(/* ... */)
   ```
 
   Vite 无法知道文件需要被转换为 JavaScript（还是直接被视为静态文件提供服务）。`transfromInclude` 配置项允许你显式地声明文件类型，让它始终被转换或者当成 JavaScript 进行服务。
@@ -299,9 +299,9 @@ export default ({ command, mode }) => {
   ```js
   export default {
     server: {
-      open: "/docs/index.html",
-    },
-  };
+      open: '/docs/index.html'
+    }
+  }
   ```
 
 ### server.proxy
@@ -319,22 +319,22 @@ export default ({ command, mode }) => {
     server: {
       proxy: {
         // 字符串简写写法
-        "/foo": "http://localhost:4567/foo",
+        '/foo': 'http://localhost:4567/foo',
         // 选项写法
-        "/api": {
-          target: "http://jsonplaceholder.typicode.com",
+        '/api': {
+          target: 'http://jsonplaceholder.typicode.com',
           changeOrigin: true,
-          rewrite: (path) => path.replace(/^\/api/, ""),
+          rewrite: (path) => path.replace(/^\/api/, '')
         },
         // 正则表达式写法
-        "^/fallback/.*": {
-          target: "http://jsonplaceholder.typicode.com",
+        '^/fallback/.*': {
+          target: 'http://jsonplaceholder.typicode.com',
           changeOrigin: true,
-          rewrite: (path) => path.replace(/^\/fallback/, ""),
-        },
-      },
-    },
-  };
+          rewrite: (path) => path.replace(/^\/fallback/, '')
+        }
+      }
+    }
+  }
   ```
 
 ### server.cors

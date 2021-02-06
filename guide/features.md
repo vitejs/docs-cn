@@ -7,7 +7,7 @@
 原生 ES 引入不支持下面这样的裸模块导入：
 
 ```js
-import { someMethod } from "my-dep";
+import { someMethod } from 'my-dep'
 ```
 
 上面的操作将在浏览器中抛出一个错误。Vite 将在服务的所有源文件中检测此类裸模块导入，并执行以下操作:
@@ -72,10 +72,10 @@ Vite 为 Vue 提供第一优先级支持：
 // vite.config.js
 export default {
   esbuild: {
-    jsxFactory: "h",
-    jsxFragment: "Fragment",
-  },
-};
+    jsxFactory: 'h',
+    jsxFragment: 'Fragment'
+  }
+}
 ```
 
 更多细节详见 [ESBuild 文档](https://esbuild.github.io/content-types/#jsx).
@@ -106,8 +106,8 @@ Vite 通过 `postcss-import` 预配置支持了 CSS `@import` 内联，Vite 的�
 ```
 
 ```js
-import classes from "./example.module.css";
-document.getElementById("foo").className = classes.red;
+import classes from './example.module.css'
+document.getElementById('foo').className = classes.red
 ```
 
 CSS modules 行为可以通过 [`css.modules` 选项](/config/#css-modules) 进行配置。
@@ -116,8 +116,8 @@ CSS modules 行为可以通过 [`css.modules` 选项](/config/#css-modules) 进�
 
 ```js
 // .apply-color -> applyColor
-import { applyColor } from "./example.module.css";
-document.getElementById("foo").className = applyColor;
+import { applyColor } from './example.module.css'
+document.getElementById('foo').className = applyColor
 ```
 
 请注意 CSS modules `localsConvention` 默认是 `cameCaseOnly` - 例如一个名为 `.foo-bar` 的类会被暴露为 `classes.fooBar`。CSS modules 行为可以通过 [`css.modules` option](/config/#css-modules) 选项配置。
@@ -159,30 +159,30 @@ Vite 为 Sass 和 Less 改进了 `@import` 解析，因而 Vite 别名也同样�
 导入一个静态资源会返回解析后的 URL：
 
 ```js
-import imgUrl from "./img.png";
-document.getElementById("hero-img").src = imgUrl;
+import imgUrl from './img.png'
+document.getElementById('hero-img').src = imgUrl
 ```
 
 一切特殊的 query 可以更改资源被引入的方式：
 
 ```js
 // 显式加载资源为一个 URL
-import assetAsURL from "./asset.js?url";
+import assetAsURL from './asset.js?url'
 ```
 
 ```js
 // 以字符串形式加载资源
-import assetAsString from "./shader.glsl?raw";
+import assetAsString from './shader.glsl?raw'
 ```
 
 ```js
 // 加载为 Web Worker
-import Worker from "./worker.js?worker";
+import Worker from './worker.js?worker'
 ```
 
 ```js
 // 在构建时Web Worker 内联为 base64 字符串
-import InlineWorker from "./worker.js?worker&inline";
+import InlineWorker from './worker.js?worker&inline'
 ```
 
 更多细节请见 [静态资源处理](./assets)。
@@ -193,9 +193,9 @@ JSON 可以被直接导入 - 同样支持具名导入：
 
 ```js
 // 导入整个对象
-import json from "./example.json";
+import json from './example.json'
 // 对一个根字段使用具名导入 - 有效运用 tree-shaking！
-import { field } from "./example.json";
+import { field } from './example.json'
 ```
 
 ## Glob 导入
@@ -203,7 +203,7 @@ import { field } from "./example.json";
 Vite 支持使用特殊的 `import.meta.glob` 函数从文件系统导入多个模块：
 
 ```js
-const modules = import.meta.glob("./dir/*.js");
+const modules = import.meta.glob('./dir/*.js')
 ```
 
 以上将会被转译为下面的样子：
@@ -221,15 +221,15 @@ const modules = {
 ```js
 for (const path in modules) {
   modules[path]().then((mod) => {
-    console.log(path, mod);
-  });
+    console.log(path, mod)
+  })
 }
 ```
 
 匹配到的文件将通过动态导入默认懒加载，并会在构建时分离为独立的 chunk。如果你倾向于直接引入所有的模块（例如依赖于这些模块中的副作用首先被应用），你可以使用 `import.meta.globEager` 代替：
 
 ```js
-const modules = import.meta.globEager('./dir/*.js');
+const modules = import.meta.globEager('./dir/*.js')
 ```
 
 以上会被转译为下面的样子：
@@ -255,11 +255,11 @@ const modules = {
 预编译的 `.wasm` 文件可以直接被导入 —— 默认导出将会是一个函数，返回值为所导出 wasm 实例对象的 Promise：
 
 ```js
-import init from "./example.wasm";
+import init from './example.wasm'
 
 init().then((exports) => {
-  exports.test();
-});
+  exports.test()
+})
 ```
 
 这个 `init` 函数也可以使用将传递给 `WebAssembly.instantiate` ，作为其第二个参数的 `imports` 对象：
@@ -269,11 +269,11 @@ init({
   imports: {
     someFunc: () => {
       /* ... */
-    },
-  },
+    }
+  }
 }).then(() => {
   /* ... */
-});
+})
 ```
 
 在生产构建当中，体积小于 `assetInlineLimit` 的 `.wasm` 文件将会被内联为 base64 字符串。否则，它们将作为资源复制到 `dist` 目录中，并按需获取。
@@ -283,9 +283,9 @@ init({
 一个 web worker 脚本可以直接通过添加一个 `?worker` 查询参数来导入。默认导出将是一个自定义的 worker 构造器：
 
 ```js
-import MyWorker from "./worker?worker";
+import MyWorker from './worker?worker'
 
-const worker = new MyWorker();
+const worker = new MyWorker()
 ```
 
 worker 脚本也可以使用 `import` 语句来替代 `importScripts()` - 注意，在开发过程中，这依赖于浏览器原生支持，目前只在 Chrome 中适用，而在生产版本中，它已经被编译掉了。
@@ -293,7 +293,7 @@ worker 脚本也可以使用 `import` 语句来替代 `importScripts()` - 注意
 默认情况下，worker 脚本将在生产构建中作为单独的块发出。如果你想将 worker 内联为 base64 字符串，请添加 `inline` 查询参数：
 
 ```js
-import MyWorker from "./worker?worker&inline";
+import MyWorker from './worker?worker&inline'
 ```
 
 ## 构建优化
