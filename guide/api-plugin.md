@@ -2,11 +2,11 @@
 
 Vite 插件扩展了设计出色的 Rollup 接口，带有一些 vite 独有的配置项。因此，你只需要编写一个 Vite 插件，就可以同时为开发环境和生产环境工作。
 
-**推荐在阅读下面的章节之前，首先阅读下 [Rollup's 插件文档](https://rollupjs.org/guide/en/#plugin-development)**
+**推荐在阅读下面的章节之前，首先阅读下 [Rollup 插件文档](https://rollupjs.org/guide/en/#plugin-development)**
 
 ## 约定
 
-如果插件不使用 Vite 特定的钩子，可以实现为[兼容的 Rollup 插件](#Rollup-插件兼容性)，推荐使用 [Rollup 插件名称约定](https://rollupjs.org/guide/en/#conventions)。
+如果插件不使用 Vite 特定的钩子，可以实现为 [兼容的 Rollup 插件](#Rollup-插件兼容性)，推荐使用 [Rollup 插件名称约定](https://rollupjs.org/guide/en/#conventions)。
 
 - Rollup 插件应该有一个带 `rollup-plugin-` 前缀、语义清晰的名称。
 - 在 package.json 中包含 `rollup-plugin` 和 `vite-plugin` 关键字。
