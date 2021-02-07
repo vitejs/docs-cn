@@ -22,7 +22,7 @@ Vite 通过 HTTP 头来缓存请求得到的依赖，所以如果你想要 编�
 
 ## 模块热重载
 
-Vite 提供了一套原生 ESM 的 [HMR API](./api-hmr)。 具有 HMR 功能的框架可以利用该 API 提供即时、准确的更新，而无需重新加载页面或删除应用程序状态。Vite 提供了第一优先级的 HMR 集成给 [Vue 单文件组件（SFC）](https://github.com/vitejs/vite/tree/main/packages/plugin-vue) 和 [React Fast Refresh](https://github.com/vitejs/vite/tree/main/packages/plugin-react-refresh)。也有对 Preact 的集成 [@prefresh/vite](https://github.com/JoviDeCroock/prefresh/tree/main/packages/vite).
+Vite 提供了一套原生 ESM 的 [HMR API](./api-hmr)。 具有 HMR 功能的框架可以利用该 API 提供即时、准确的更新，而无需重新加载页面或删除应用程序状态。Vite 提供了第一优先级的 HMR 集成给 [Vue 单文件组件（SFC）](https://github.com/vitejs/vite/tree/main/packages/plugin-vue) 和 [React Fast Refresh](https://github.com/vitejs/vite/tree/main/packages/plugin-react-refresh)。也有对 Preact 的集成 [@prefresh/vite](https://github.com/JoviDeCroock/prefresh/tree/main/packages/vite)。
 
 注意，你不需要手动设置这些 —— 当你 [create an app via `@vitejs/create-app`](./) 创建应用程序时，所选模板已经为你预先配置了这些。
 
@@ -30,7 +30,7 @@ Vite 提供了一套原生 ESM 的 [HMR API](./api-hmr)。 具有 HMR 功能的�
 
 Vite 支持开箱即用地引入 `.ts` 文件。
 
-Vite 仅执行 `.ts` 文件的翻译工作，并**不**执行任何类型检查。并假设类型检查已经被你的 IDE 或构建过程接管了。（你可以在构建脚本中运行 `tsc --noEmit`）。
+Vite 仅执行 `.ts` 文件的翻译工作，并 **不** 执行任何类型检查。并假设类型检查已经被你的 IDE 或构建过程接管了。（你可以在构建脚本中运行 `tsc --noEmit`）。
 
 Vite 使用 [esbuild](https://github.com/evanw/esbuild) 将 TypeScript 翻译到 JavaScript，约是 `tsc` 速度的 20~30 倍，同时 HMR 更新反映到浏览器的时间小于 50ms。
 
