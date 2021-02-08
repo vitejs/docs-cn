@@ -18,7 +18,7 @@ import { someMethod } from 'my-dep'
 
 **依赖是强缓存的**
 
-Vite 通过 HTTP 头来缓存请求得到的依赖，所以如果你想要 编辑/调试 一个依赖，晴跟随 [这里](./dep-pre-bundling#浏览器缓存) 的步骤。
+Vite 通过 HTTP 头来缓存请求得到的依赖，所以如果你想要 编辑/调试 一个依赖，请跟随 [这里](./dep-pre-bundling#浏览器缓存) 的步骤。
 
 ## 模块热重载
 
