@@ -8,7 +8,6 @@
   "private": true,
   "devDependencies": {
     "chalk": "^4.1.0",
-    "lint-staged": "^10.5.3",
     "vitepress": "^0.11.5",
     "yorkie": "^2.0.0"
   },

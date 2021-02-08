@@ -76,15 +76,6 @@ interface ViteDevServer {
    */
   transformRequest(url: string): Promise<TransformResult | null>
   /**
-   * 使用 esbuild 转换文件的工具函数。对于某些插件是有用的。
-   */
-  transformWithEsbuild(
-    code: string,
-    filename: string,
-    options?: EsbuildTransformOptions,
-    inMap?: object
-  ): Promise<EsbuildTransformResult>
-  /**
    * 启动服务器
    */
   listen(port?: number): Promise<ViteDevServer>
