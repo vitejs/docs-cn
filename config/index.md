@@ -29,7 +29,7 @@ vite --config my-config.js
 
 ```js
 /**
- * type {import('vite').UserConfig}
+ * @type {import('vite').UserConfig}
  */
 export default {
   // ...
