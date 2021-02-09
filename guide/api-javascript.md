@@ -32,7 +32,6 @@ const { createServer } = require('vite')
 
 `InlineConfig` 接口扩展了 `UserConfig` 并添加了以下属性：
 
-- `mode`：覆盖默认的模式 (开发服务器使用 `'development'`)
 - `configFile`：指明要使用的配置文件。如果没有设置，Vite 将尝试从项目根目录自动解析。设置为 `false` 可以禁用自动解析功能。
 
 ## `ViteDevServer`
@@ -44,15 +43,18 @@ interface ViteDevServer {
    */
   config: ResolvedConfig
   /**
-   * 链接应用实例
-   * 这也可以用作自定义 http 服务器的处理函数
+   * 一个 connect 应用实例
+   * - 可以用于将自定义中间件附加到开发服务器。
+   * - 还可以用作自定义http服务器的处理函数
+      或作为中间件用于任何 connect 风格的 Node.js 框架
+   *
    * https://github.com/senchalabs/connect#use-middleware
    */
-  app: Connect.Server
+  middlewares: Connect.Server
   /**
    * 本机 node http 服务器实例
    */
-  httpServer: http.Server
+  httpServer: http.Server | null
   /**
    * chokidar 监听器实例
    * https://github.com/paulmillr/chokidar#api
@@ -74,11 +76,14 @@ interface ViteDevServer {
    * 以代码方式解析、加载和转换 url 并获取结果
    * 而不需要通过 http 请求管道。
    */
-  transformRequest(url: string): Promise<TransformResult | null>
+  transformRequest(
+    url: string,
+    options?: TransformOptions
+  ): Promise<TransformResult | null>
   /**
    * 启动服务器
    */
-  listen(port?: number): Promise<ViteDevServer>
+  listen(port?: number, isRestart?: boolean): Promise<ViteDevServer>
   /**
    * 停止服务器
    */
@@ -122,6 +127,7 @@ const { build } = require('vite')
 ```ts
 async function resolveConfig(
   inlineConfig: InlineConfig,
-  command: 'build' | 'serve'
+  command: 'build' | 'serve',
+  defaultMode?: string
 ): Promise<ResolvedConfig>
 ```
