@@ -66,23 +66,6 @@ export default ({ command, mode }) => {
 
 ## 共享配置
 
-### alias
-
-- **类型：**
-  `Record<string, string> | Array<{ find: string | RegExp, replacement: string }>`
-
-  将会被传递到 `@rollup/plugin-alias` 作为它的 [entries](https://github.com/rollup/plugins/tree/master/packages/alias#entries)。也可以是一个对象，或一个 `{ find, replacement }` 的数组.
-
-  当使用文件系统路径的别名时，请始终使用绝对路径。相对路径作别名值将按原样使用导致不会解析到文件系统路径中。
-
-  更高级的自定义解析方法可以通过 [插件](/guide/api-plugin) 实现。
-
-### define
-
-- **类型：** `Record<string, string>`
-
-  定义全局变量替换。在开发期间，entries 将被定义为全局变量，在构建期间被静态替换。
-
 ### root
 
 - **类型：** `string`
@@ -91,13 +74,6 @@ export default ({ command, mode }) => {
   项目根目录（`index.html` 文件所在的位置）。可以是一个绝对路径，或者一个相对于该配置文件本身的路径。
 
   更多细节请见 [项目根目录](/guide/#项目根目录)。
-
-  ### publicDir
-
-- **类型：** `string`
-- **默认：** `"public"`
-
-  作为静态资源服务的文件夹。这个目录中的文件会再开发中被服务于 `/`，在构建时，会被拷贝到 `outDir` 根目录，并没有转换，永远只是复制到这里。该值可以是文件系统的绝对路径，也可以是相对于项目根的路径。
 
 ### base
 
@@ -115,19 +91,85 @@ export default ({ command, mode }) => {
 ### mode
 
 - **类型：** `string`
-- **默认：** `'development'` for serve, `'production'` for build
+- **默认：** serve 时默认 `'development'`，build 时默认 `'production'`
 
-  在配置中特别指定将会替换掉 serve 和 build 时的默认模式。还可以通过命令行选项 `--mode` 覆写该值。
+  在配置中指明将会把 **serve 和 build** 时的模式 **都** 覆盖掉。也可以通过命令行 `--mode` 选项来重写。
 
-  更多细节请见 [环境变量与模式](/guide/env-and-mode)。
+  查看 [环境变量与模式](/guide/env-and-mode) 章节获取更多细节。
+
+### define
+
+- **类型：** `Record<string, string>`
+
+  定义全局变量替换方式。每项在开发时会被定义为全局变量，而在构建时则是静态替换。替换只会在匹配到周围是单词边界（`\b`）时执行。
 
 ### plugins
 
-- **类型：** `(Plugin | Plugin[])[]`
+- **类型：** ` (Plugin | Plugin[])[]`
 
-  要使用的插件数组。
+  将要用到的插件数组。查看 [插件 API](/guide/api-plugin) 获取 Vite 插件的更多细节。
 
-  获取关于 Vite 插件的更多细节请见 [插件 API](/guide/api-plugin) 。
+### publicDir
+
+- **类型：** `string`
+- **默认：** `"public"`
+
+  作为静态资源服务的文件夹。这个目录中的文件会再开发中被服务于 `/`，在构建时，会被拷贝到 `outDir` 根目录，并没有转换，永远只是复制到这里。该值可以是文件系统的绝对路径，也可以是相对于项目根的路径。
+
+### resolve.alias
+
+- **类型：**
+
+  `Record<string, string> | Array<{ find: string | RegExp, replacement: string }>`
+
+  将会被传递到 `@rollup/plugin-alias` 作为它的 [entries](https://github.com/rollup/plugins/tree/master/packages/alias#entries)。也可以是一个对象，或一个 `{ find, replacement }` 的数组.
+
+  当使用文件系统路径的别名时，请始终使用绝对路径。相对路径作别名值将按原样使用导致不会解析到文件系统路径中。
+
+  更高级的自定义解析方法可以通过 [插件](/guide/api-plugin) 实现。
+
+### resolve.dedupe
+
+- **类型：** `string[]`
+
+  如果你在你的应用程序中有相同依赖的副本（比如 monorepos），使用这个选项来强制 Vite 总是将列出的依赖关系解析到相同的副本（从项目根目录)。
+
+### resolve.conditions
+
+- **类型：** `string[]`
+
+  在解析包的 [情景导出](https://nodejs.org/api/packages.html#packages_conditional_exports) 时允许的附加条件。
+
+  一个带有情景导出的包可能在它的 `package.json` 中有以下 `exports` 字段：
+
+  ```json
+  {
+    "exports": {
+      ".": {
+        "import": "./index.esm.js",
+        "require": "./index.cjs.js"
+      }
+    }
+  }
+  ```
+
+  在这里，`import` 和 `require` 被称为“情景”。情景可以嵌套，并且应该从最特定的到最不特定的指定。
+
+  Vite 有一个“允许的情景”列表和并且会匹配列表中第一个情景。默认允许的情景是：`import`，`module`，`browser`，`default`，和基于当前情景为 `production/development`。`resolve.conditions` 配置项使得可以指定其他允许的情景。
+
+### resolve.mainFields
+
+- **类型：** `string[]`
+- **默认：**: `['module', 'jsnext:main', 'jsnext']`
+
+  `package.json` 中，在解析包的入口点时尝试的字段列表。注意，这比从 `exports` 字段解析的情景导出优先级低：如果一个入口点从 `exports` 成功解析，主字段将被忽略。
+
+### resolve.extensions
+
+- **类型：** `string[]`
+- **默认：**: `['.mjs', '.js', '.ts', '.jsx', '.tsx', '.json']`
+
+  导入时想要省略的扩展名列表。注意，**不** 建议忽略自定义导入类型的扩展名（例如：`.vue`），因为它会干扰 IDE 和类型支持。
 
 ### css.modules
 
@@ -227,25 +269,6 @@ export default ({ command, mode }) => {
 - **相关内容：** [静态资源处理](/guide/asset)
 
   指定其他文件类型作为静态资源处理（这样导入它们就会返回解析后的 URL）
-
-### transformInclude
-
-- **类型：** `string | RegExp | (string | RegExp)[]`
-
-  默认情况下，代码中所有静态可分析的 `import` 请求都会被静态地视为转换管道的一部分。当然，如果你使用动态导入来导入非 js 类型的文件，例如:
-
-  ```js
-  // dynamicPath 是一个非 JS 文件类型，例如 "./foo.gql"
-  import(dynamicPath).then(/* ... */)
-  ```
-
-  Vite 无法知道文件需要被转换为 JavaScript（还是直接被视为静态文件提供服务）。`transfromInclude` 配置项允许你显式地声明文件类型，让它始终被转换或者当成 JavaScript 进行服务。
-
-### dedupe
-
-- **类型：** `string[]`
-
-  如果你在你的应用程序中有相同依赖的副本（比如 monorepos），使用这个选项来强制 Vite 总是将列出的依赖关系解析到相同的副本（从项目根目录)。
 
 ### logLevel
 
