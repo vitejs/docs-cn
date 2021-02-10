@@ -30,7 +30,7 @@ Vite 通过在一开始将应用中的模块区分为两类：**依赖** 和 **�
 
   Vite 将会使用 [esbuild](https://esbuild.github.io/) [预构建依赖](./dep-pre-bundling)。Esbuild 使用 Go 编写，并且比以 JavaScript 编写的打包器预构建依赖快 10-100 倍。
 
-- **源代码** 通常包含一些并非直接是 JavaScript 的文件，需要转换（例如 JSX，CSS 或者 Vue/Svelete 组件），时常会被编辑。同时，并不是所有的源代码都需要同时被加载。（例如基于路由拆分的代码模块）。
+- **源代码** 通常包含一些并非直接是 JavaScript 的文件，需要转换（例如 JSX，CSS 或者 Vue/Svelte 组件），时常会被编辑。同时，并不是所有的源代码都需要同时被加载。（例如基于路由拆分的代码模块）。
 
   Vite 以 [原生 ESM](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules) 方式服务源代码。这实际上是让浏览器接管了打包程序的部分工作：Vite 只需要在浏览器请求源代码时进行转换并按需提供源代码。根据情景动态导入的代码，即只在当前屏幕上实际使用时才会被处理。
 
