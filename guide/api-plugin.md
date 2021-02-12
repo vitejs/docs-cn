@@ -109,10 +109,10 @@ Vite 插件也可以提供钩子来服务于特定的 Vite 目标。这些钩子
 
 ### `config`
 
-- **类型：** `(config: UserConfig) => UserConfig | null | void`
+- **类型：** `(config: UserConfig, env: { mode: string, command: string }) => UserConfig | null | void`
 - **种类：** `sync`, `sequential`
 
-  在被解析之前修改 Vite 配置。钩子接收原始用户配置（命令行选项会与配置文件合并）。它可以返回一个将被深度合并到现有配置中的部分配置对象，或者直接改变配置（如果默认的合并不能达到预期的结果）。
+  在被解析之前修改 Vite 配置。钩子接收原始用户配置（命令行选项指定的会与配置文件合并）和一个描述配置环境的变量，包含正在使用的 `mode` 和 `command`。它可以返回一个将被深度合并到现有配置中的部分配置对象，或者直接改变配置（如果默认的合并不能达到预期的结果）。
 
   **示例**
 
@@ -130,8 +130,10 @@ Vite 插件也可以提供钩子来服务于特定的 Vite 目标。这些钩子
   // 直接改变配置（应仅在合并不起作用时使用）
   const mutateConfigPlugin = () => ({
     name: 'mutate-config',
-    config(config) {
-      config.root = __dirname
+    config(config, { command }) {
+      if (command === 'build') {
+        config.root = __dirname
+      }
     }
   })
   ```
