@@ -28,6 +28,17 @@
 
    还要确保服务器配置为提供 Vite 工作目录中的静态资源，否则图片等资源将无法正确加载。
 
+   如果你正使用 `@vitejs/plugin-react-refresh` 配合 React，你还需要在上述脚本前添加下面这个，因为插件不能修改你正在服务的 HTML：
+
+   ```html
+   <script type="module">
+     import RefreshRuntime from "/@react-refresh"
+     RefreshRuntime.injectIntoGlobalHook(window) window.RefreshReg = () => {}
+     window.RefreshSig = () => (type) => type
+     window.__vite_plugin_react_preamble_installed__ = true
+   </script>
+   ```
+
 3. 在生产环境中：在运行 `vite build` 之后，一个 `manifest.json` 文件将与静态资源文件一同生成。一个示例清单文件会像下面这样：
 
    ```json

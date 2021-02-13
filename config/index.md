@@ -31,14 +31,16 @@ vite --config my-config.js
 /**
  * @type {import('vite').UserConfig}
  */
-export default {
+const config = {
   // ...
 }
+
+export default config
 ```
 
-Vite 同样支持 TS 配置文件。你可以转而使用 `vite.config.ts`：
+另外你可以使用 `defineConfig` 帮手函数，这样不用 jsdoc 注解也可以获取类型提示：
 
-```ts
+```js
 import { defineConfig } from 'vite'
 
 export default defineConfig({
@@ -46,7 +48,9 @@ export default defineConfig({
 })
 ```
 
-### 场景配置
+Vite 也直接支持 TS 配置文件。你可以在 `vite.config.ts` 中使用 `defineConfig` 帮手函数。
+
+### 情景配置
 
 如果配置文件需要基于命令（`serve` 或 `build`）或者不同场景与 [模式](/guide/env-and-mode) 来决定选项，可以选择导出这样一个函数：
 
