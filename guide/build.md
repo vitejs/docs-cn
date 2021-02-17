@@ -51,13 +51,13 @@ module.exports = {
 假设你有下面这样的项目文件结构
 
 ```
-|-package.json
-|-vite.config.js
-|-index.html
-|-main.js
-|-nested/
-|---index.html
-|---nested.js
+├── package.json
+├── vite.config.js
+├── index.html
+├── main.js
+└── nested
+    ├── index.html
+    └── nested.js
 ```
 
 在开发中，简单地导航或链接到 `/nested/` - 将会按预期工作，就如同一个正常的静态文件服务器。
