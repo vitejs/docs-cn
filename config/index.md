@@ -399,7 +399,11 @@ export default ({ command, mode }) => {
 - **默认：** `es2020`
 - **相关内容：:** [浏览器兼容性](/guide/build#浏览器兼容性)
 
-  设置构建后浏览器兼容的 ES 版本。转换过程将会由 esbuild 执行，最低目标支持 `es2015`。目标也可以是带有浏览器的版本，例如 `chrome58` 或 `safari11`，或由多个目标组成的一个数组。
+  设置最终构建的浏览器兼容目标。默认值是一个 Vite 特有的值，`'modules'`，这是指 [支持原生 ES 模块的浏览器](https://caniuse.com/es6-module)。
+
+  另一个特殊值是 “esnext” —— 即指执行 minify 转换（作最小化压缩）并假设有原生动态导入支持。
+
+  转换过程将会由 esbuild 执行，并且此值应该是一个合法的 [esbuild 目标选项](https://esbuild.github.io/api/#target)。自定义目标也可以是一个 ES 版本（例如：`es2015`）、一个浏览器版本（例如：`chrome58`）或是多个目标组成的一个数组。
 
   注意，如果代码包含不能被 `esbuild` 安全地编译的特性，那么构建将会失败。查看 [esbuild 文档](https://esbuild.github.io/api/#target) 获取更多细节。
 
