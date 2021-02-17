@@ -5,7 +5,7 @@ actionText: 开始
 actionLink: /guide/
 
 altActionText: 了解更多
-altActionLink: /guide/introduction
+altActionLink: /guide/why
 
 features:
   - title: 💡 极速的服务启动

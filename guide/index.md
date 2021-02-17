@@ -1,6 +1,20 @@
 # 开始
 
-如果你有兴趣在尝试之前了解更多关于 Vite 的信息，请移步 [介绍](./introduction) 章节。
+## 总览
+
+Vite (法语意为 "快速的"，发音 `/vit/`) 是一种新型前端构建工具，能够显著提升前端开发体验，它主要由两部分组成：
+
+- 一个针对 [原生 ES Modules](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules) 有许多增强功能的开发服务器，并附带 [丰富的内建功能](./features) 和速度快到惊人的 [模块热重载（HMR）](./features#hot-module-replacement)。
+
+- 一套 [构建指令](./build) 使用 [Rollup](https://rollupjs.org) 打包你的代码，预配置输出高度优化的静态资源用于生产。
+
+此外，Vite 通过它的 [插件 API](./api-plugin) 和 [JavaScript API](./api-javascript) 具有高度的可扩展性，并支持全类型。
+
+## 浏览器支持
+
+- 开发环境中：Vite 需要在支持 [原生 ES 模块动态导入](https://caniuse.com/es6-module-dynamic-import) 的浏览器中使用。
+
+- 生产环境中：默认的构建目标浏览器支持 [通过脚本标签来引入原生 ES 模块](https://caniuse.com/es6-module) 。可以通过官方插件 [@vitejs/plugin-legacy](https://github.com/vitejs/vite/tree/main/packages/plugin-legacy) 支持传统浏览器。有关更多细节详见 [构建生产版本](./build)。
 
 ## 第一个 Vite 项目
 

@@ -56,8 +56,8 @@ module.exports = {
           text: '指引',
           children: [
             {
-              text: '介绍',
-              link: '/guide/introduction'
+              text: '为什么选 Vite',
+              link: '/guide/why'
             },
             {
               text: '开始',
