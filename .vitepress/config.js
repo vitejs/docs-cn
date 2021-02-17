@@ -16,8 +16,30 @@ module.exports = {
       { text: '配置', link: '/config/' },
       { text: '插件', link: '/plugins/' },
       {
-        text: '更新日志',
-        link: 'https://github.com/vitejs/vite/blob/main/packages/vite/CHANGELOG.md'
+        text: '相关链接',
+        items: [
+          {
+            text: 'Twitter',
+            link: 'https://twitter.com/vite_js'
+          },
+          {
+            text: 'Discord Chat',
+            link: 'https://chat.vitejs.dev'
+          },
+          {
+            text: 'Awesome Vite',
+            link: 'https://github.com/vitejs/awesome-vite'
+          },
+          {
+            text: 'Rollup 插件兼容',
+            link: 'https://vite-rollup-plugins.patak.dev/'
+          },
+          {
+            text: '更新日志',
+            link:
+              'https://github.com/vitejs/vite/blob/main/packages/vite/CHANGELOG.md'
+          }
+        ]
       }
     ],
 
