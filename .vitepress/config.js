@@ -14,6 +14,12 @@ module.exports = {
     docsBranch: 'main',
     editLinks: true,
     editLinkText: '为此页提供修改建议',
+
+    carbonAds: {
+      carbon: 'CEBIEK3N',
+      placement: 'vitejsdev'
+    },
+
     nav: [
       { text: '指引', link: '/guide/' },
       { text: '配置', link: '/config/' },
@@ -34,12 +40,12 @@ module.exports = {
             link: 'https://github.com/vitejs/awesome-vite'
           },
           {
-            text: 'Rollup 插件兼容',
-            link: 'https://vite-rollup-plugins.patak.dev/'
-          },
-          {
             text: 'Dev.to 社区',
             link: 'https://dev.to/t/vite'
+          },
+          {
+            text: 'Rollup 插件兼容',
+            link: 'https://vite-rollup-plugins.patak.dev/'
           },
           {
             text: '更新日志',
@@ -50,13 +56,9 @@ module.exports = {
       }
     ],
 
-    carbonAds: {
-      carbon: 'CEBIEK3N',
-      placement: 'vitejsdev'
-    },
-
     sidebar: {
       '/config/': 'auto',
+      '/plugins': 'auto',
       // catch-all fallback
       '/': [
         {
@@ -112,10 +114,6 @@ module.exports = {
           text: 'API',
           children: [
             {
-              text: '配置参考',
-              link: '/config/'
-            },
-            {
               text: '插件 API',
               link: '/guide/api-plugin'
             },
@@ -126,6 +124,10 @@ module.exports = {
             {
               text: 'JavaScript API',
               link: '/guide/api-javascript'
+            },
+            {
+              text: '配置参考',
+              link: '/config/'
             }
           ]
         }
