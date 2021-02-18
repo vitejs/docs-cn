@@ -37,7 +37,7 @@ CSS.paintWorklet.addModule(workletURL)
 
 ### 将资源引入为字符串
 
-资源可以使用 `?raw` 后缀来作为字符串引入。
+资源可以使用 `?raw` 后缀声明作为字符串引入。
 
 ```js
 import shaderString from './shader.glsl?raw'
