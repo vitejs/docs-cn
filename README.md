@@ -19,18 +19,18 @@
 
 > Vite：下一代前端开发与构建工具
 
-- 💡 极速的开发服务器启动
-- ⚡️ 轻量快速的热模块重载（HMR）
-- 🛠️ 丰富的功能
-- 📦 自带优化的构建
-- 🔩 通用的插件接口
-- 🔑 完全类型化的 API
+-   💡 极速的开发服务器启动
+-   ⚡️ 轻量快速的热模块重载（HMR）
+-   🛠️ 丰富的功能
+-   📦 自带优化的构建
+-   🔩 通用的插件接口
+-   🔑 完全类型化的 API
 
 Vite （法语意为 “迅速”, 发音 /vit/）是一种全新的前端构建工具，它极大地改善了前端开发体验。
 
-## 如何参与贡献
+## 📝 如何参与贡献
 
-目前 Vite 中文文档处于活跃开发状态。
+目前 Vite 中文文档处于活跃开发状态。欢迎各位的 star, [issues](https://github.com/vitejs/docs-cn/issues) 以及 [pr](https://github.com/vitejs/docs-cn/pulls)。
 
 **工作流介绍：** 英文文档的所在 [请点击此链接](https://github.com/vitejs/vite/tree/main/docs)，我们会定期同步英文版文档内容的更新。（ 基于 docs 文件夹的 [History](https://github.com/vitejs/vite/commits/main/docs)，将改动内容映射到中文文档内 ）
 
@@ -38,10 +38,10 @@ Vite （法语意为 “迅速”, 发音 /vit/）是一种全新的前端构建
 
 **注意：**
 
-- 原则上这里只进行英文版对应的翻译工作，如果觉得原文有改进之处，或任何不仅针对中文版，而受益所有语言版本的想法，建议直接在英文版仓库讨论。
-- 原则上这里不适合讨论 Vite 的使用问题，建议相关问题在 Vite 的 [issues 区](https://github.com/vitejs/vite/issues)、[Vite 官方讨论区](https://chat.vitejs.dev/) 或各大主流技术社区讨论，以便得到更多人的帮助和更充分的讨论。
+-   原则上这里只进行英文版对应的翻译工作，如果觉得原文有改进之处，或任何不仅针对中文版，而受益所有语言版本的想法，建议直接在英文版仓库讨论。
+-   原则上这里不适合讨论 Vite 的使用问题，建议相关问题在 Vite 的 [issues 区](https://github.com/vitejs/vite/issues)、[Vite 官方讨论区](https://chat.vitejs.dev/) 或各大主流技术社区讨论，以便得到更多人的帮助和更充分的讨论。
 
-## 如何本地开发
+## 📥 如何本地开发
 
 ```bash
 # 克隆本仓库

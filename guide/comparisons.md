@@ -12,12 +12,12 @@ Snowpack 的默认构建输出是未打包的：它将每个文件转换为单�
 
 Vite 支持广泛的功能，构建过程也集成度更高，以下功能目前在 Snowpack 构建优化器中不可用：
 
-- [多页面应用支持](./build#多页面应用模式)
-- [库模式](./build#库模式)
-- [自动分割 CSS 代码](./features#CSS-代码分割)
-- [预优化的异步 chunk 加载](./features#异步-Chunk-加载优化)
-- [自动对动态导入 polyfill](./features#动态导入-Polyfill)
-- 官方 [兼容模式插件](https://github.com/vitejs/vite/tree/main/packages/plugin-legacy) 打包为现代/传统两种产物，并根据浏览器支持自动交付正确的版本。
+-   [多页面应用支持](./build#多页面应用模式)
+-   [库模式](./build#库模式)
+-   [自动分割 CSS 代码](./features#CSS-代码分割)
+-   [预优化的异步 chunk 加载](./features#异步-Chunk-加载优化)
+-   [自动对动态导入 polyfill](./features#动态导入-Polyfill)
+-   官方 [兼容模式插件](https://github.com/vitejs/vite/tree/main/packages/plugin-legacy) 打包为现代/传统两种产物，并根据浏览器支持自动交付正确的版本。
 
 **更快的依赖预构建**
 
@@ -47,4 +47,4 @@ WMR 主要是为了 [Preact](https://preactjs.com/) 项目而设计，并为其�
 
 `@web/dev-server` 适用范围不是很广。它并未提供官方的框架集成，并且需要为生产构建手动设置 Rollup 配置。然而，它的父项目确实提供了一组优秀的 Rollup 插件。
 
-总的来说，与 `@web/dev-server` 相比，Vite 是一个更注重自身/更高层面的工具，旨在提供开箱即用的工作流。话虽如此，但 `@web/dev-server` 这个项目群包含了许多其他的优秀工具，它们也可以使 Vite 用户受益。
+总的来说，与 `@web/dev-server` 相比，Vite 是一个更注重自身/更高层面的工具，旨在提供开箱即用的工作流。话虽如此，但 `@web/dev-server` 这个项目群包含了许多其他的优秀工具，也可以使 Vite 用户受益。
