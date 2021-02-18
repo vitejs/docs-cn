@@ -274,7 +274,7 @@ export default ({ command, mode }) => {
 ### assetsInclude
 
 - **类型：** `string | RegExp | (string | RegExp)[]`
-- **相关内容：** [静态资源处理](/guide/asset)
+- **相关内容：** [静态资源处理](/guide/assets)
 
   指定其他文件类型作为静态资源处理（这样导入它们就会返回解析后的 URL）
 
