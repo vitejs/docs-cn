@@ -34,6 +34,10 @@ module.exports = {
             text: 'Rollup 插件兼容',
             link: 'https://vite-rollup-plugins.patak.dev/'
           },
+           {
+            text: 'Dev.to 社区',
+            link: 'https://dev.to/t/vite'
+          },
           {
             text: '更新日志',
             link:
