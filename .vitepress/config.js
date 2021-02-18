@@ -5,10 +5,13 @@
  */
 module.exports = {
   title: 'Vite',
-  lang: "zh-CN",
+  lang: 'zh-CN',
   description: '下一代前端开发与构建工具',
   head: [['link', { rel: 'icon', type: 'image/svg+xml', href: '/logo.svg' }]],
   themeConfig: {
+    repo: 'vitejs/docs-cn',
+    logo: '/logo.svg',
+    docsBranch: 'main',
     editLinks: true,
     editLinkText: '为此页提供修改建议',
     nav: [
@@ -34,7 +37,7 @@ module.exports = {
             text: 'Rollup 插件兼容',
             link: 'https://vite-rollup-plugins.patak.dev/'
           },
-           {
+          {
             text: 'Dev.to 社区',
             link: 'https://dev.to/t/vite'
           },
@@ -128,5 +131,5 @@ module.exports = {
         }
       ]
     }
-  },
-};
+  }
+}
