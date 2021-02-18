@@ -16,8 +16,8 @@ SSR 特别指支持在 Node.js 中运行相同应用程序的前端框架（例�
 
 Vite 为服务端渲染（SSR）提供了内建支持。这里的 Vite 范例包含了 Vue 3 和 React 的 SSR 设置示例，可以作为本指南的参考：
 
-- [Vue 3](https://github.com/vitejs/vite/tree/main/packages/playground/ssr-vue)
-- [React](https://github.com/vitejs/vite/tree/main/packages/playground/ssr-react)
+-   [Vue 3](https://github.com/vitejs/vite/tree/main/packages/playground/ssr-vue)
+-   [React](https://github.com/vitejs/vite/tree/main/packages/playground/ssr-react)
 
 ## 源代码结构
 
@@ -46,7 +46,7 @@ Vite 为服务端渲染（SSR）提供了内建支持。这里的 Vite 范例包
 
 ```js
 if (import.meta.env.SSR) {
-  // ... 仅在服务端的逻辑
+	// ... 仅在服务端的逻辑
 }
 ```
 
@@ -91,42 +91,42 @@ createServer()
 
 ```js
 app.use('*', async (req, res) => {
-  const url = req.originalUrl
+	const url = req.originalUrl
 
-  try {
-    // 1. 读取 index.html
-    let template = fs.readFileSync(
-      path.resolve(__dirname, 'index.html'),
-      'utf-8'
-    )
+	try {
+		// 1. 读取 index.html
+		let template = fs.readFileSync(
+			path.resolve(__dirname, 'index.html'),
+			'utf-8'
+		)
 
-    // 2. 应用 vite HTML 转换。这将会注入 vite HMR 客户端，and
-    //    同时也会从 Vite 插件应用 HTML 转换。
-    //    例如：@vitejs/plugin-react-refresh 中的 global preambles
-    template = await vite.transformIndexHtml(url, template)
+		// 2. 应用 vite HTML 转换。这将会注入 vite HMR 客户端，and
+		//    同时也会从 Vite 插件应用 HTML 转换。
+		//    例如：@vitejs/plugin-react-refresh 中的 global preambles
+		template = await vite.transformIndexHtml(url, template)
 
-    // 3. 加载服务器入口。vite.ssrLoadModule 将自动转换
-    //    你的 ESM 源代码将在 Node.js 也可用了！无需打包
-    //    并提供类似 HMR 的根据情况随时失效。
-    const { render } = await vite.ssrLoadModule('/src/entry-server.js')
+		// 3. 加载服务器入口。vite.ssrLoadModule 将自动转换
+		//    你的 ESM 源代码将在 Node.js 也可用了！无需打包
+		//    并提供类似 HMR 的根据情况随时失效。
+		const { render } = await vite.ssrLoadModule('/src/entry-server.js')
 
-    // 4. 渲染应用的 HTML。这架设 entry-server.js 的导出 `render`
-    //    函数调用了相应 framework 的 SSR API。
-    //    例如 ReactDOMServer.renderToString()
-    const appHtml = await render(url)
+		// 4. 渲染应用的 HTML。这架设 entry-server.js 的导出 `render`
+		//    函数调用了相应 framework 的 SSR API。
+		//    例如 ReactDOMServer.renderToString()
+		const appHtml = await render(url)
 
-    // 5. 注入应用渲染的 HTML 到模板中。
-    const html = template.replace(`<!--ssr-outlet-->`, appHtml)
+		// 5. 注入应用渲染的 HTML 到模板中。
+		const html = template.replace(`<!--ssr-outlet-->`, appHtml)
 
-    // 6. 将渲染完成的 HTML 返回
-    res.status(200).set({ 'Content-Type': 'text/html' }).end(html)
-  } catch (e) {
-    // 如果捕获到了一个错误，让 vite 来修复该堆栈，这样它就可以映射回
-    // 你的实际源代码中。
-    vite.ssrFixStacktrace(e)
-    console.error(e)
-    res.status(500).end(e.message)
-  }
+		// 6. 将渲染完成的 HTML 返回
+		res.status(200).set({ 'Content-Type': 'text/html' }).end(html)
+	} catch (e) {
+		// 如果捕获到了一个错误，让 vite 来修复该堆栈，这样它就可以映射回
+		// 你的实际源代码中。
+		vite.ssrFixStacktrace(e)
+		console.error(e)
+		res.status(500).end(e.message)
+	}
 })
 ```
 
@@ -144,17 +144,17 @@ app.use('*', async (req, res) => {
 为了将 SSR 项目交付生产，我们需要：
 
 1. 正常生成一个客户端构建；
-2. 再生成一个 SSR 构建，可以通过 `require()` 直接加载因此我们无需再经过 Vite 的 `ssrLoadModule`;
+2. 再生成一个 SSR 构建，可以通过 `require()` 直接加载因此我们无需再经过 Vite 的 `ssrLoadModule`；
 
 `package.json` 中的脚本应该看起来像这样：
 
 ```json
 {
-  "scripts": {
-    "dev": "node server",
-    "build:client": "vite build --outDir dist/client",
-    "build:server": "vite build --outDir dist/server --ssr src/entry-server.js "
-  }
+	"scripts": {
+		"dev": "node server",
+		"build:client": "vite build --outDir dist/client",
+		"build:server": "vite build --outDir dist/server --ssr src/entry-server.js "
+	}
 }
 ```
 
@@ -162,11 +162,11 @@ app.use('*', async (req, res) => {
 
 接着，在 `server.js` 中，通过检出 `process.env.NODE_ENV` 我们需要添加一些生产环境特定的逻辑：
 
-- 使用 `dist/client/index.html` 作为模板，而不是读取根目录的 `index.html`，因为它包含了到客户端构建的正确资源链接。
+-   使用 `dist/client/index.html` 作为模板，而不是读取根目录的 `index.html`，因为它包含了到客户端构建的正确资源链接。
 
-- 使用 `require('./dist/server/entry-server.js')` ，而不是 `await vite.ssrLoadModule('/src/entry-server.js')`（该文件是 SSR 构建的最终结果）。
+-   使用 `require('./dist/server/entry-server.js')` ，而不是 `await vite.ssrLoadModule('/src/entry-server.js')`（该文件是 SSR 构建的最终结果）。
 
-- 将 `vite` 开发服务器的创建和所有使用都移到 dev-only 条件分支后面，然后添加静态文件服务中间件来服务 `dist/client` 中的文件。
+-   将 `vite` 开发服务器的创建和所有使用都移到 dev-only 条件分支后面，然后添加静态文件服务中间件来服务 `dist/client` 中的文件。
 
 可以在此参考 [Vue](https://github.com/vitejs/vite/tree/main/packages/playground/ssr-vue) 和 [React](https://github.com/vitejs/vite/tree/main/packages/playground/ssr-react) 的启动范例。
 
@@ -204,9 +204,9 @@ const html = await vueServerRenderer.renderToString(app, ctx)
 
 Vite 基于以下启发式执行自动化的 SSR 外部化:
 
-- 如果一个依赖的解析 ESM 入口点和它的默认 Node 入口点不同，它的默认 Node 入口可能是一个可以外部化的 CommonJS 构建。例如，`vue` 将被自动外部化，因为它同时提供 ESM 和 CommonJS 构建。
+-   如果一个依赖的解析 ESM 入口点和它的默认 Node 入口点不同，它的默认 Node 入口可能是一个可以外部化的 CommonJS 构建。例如，`vue` 将被自动外部化，因为它同时提供 ESM 和 CommonJS 构建。
 
-- 否则，Vite 将检查包的入口点是否包含有效的 ESM 语法 - 如果不包含，这个包可能是 CommonJS，将被外部化。例如，`react-dom` 将被自动外部化，因为它只指定了唯一的一个 CommonJS 格式的入口。
+-   否则，Vite 将检查包的入口点是否包含有效的 ESM 语法 - 如果不包含，这个包可能是 CommonJS，将被外部化。例如，`react-dom` 将被自动外部化，因为它只指定了唯一的一个 CommonJS 格式的入口。
 
 如果这个启发式导致了错误，你可以通过 `ssr.external` 和 `ssr.noExternal` 配置项手动调整。
 
@@ -220,21 +220,21 @@ Vite 基于以下启发式执行自动化的 SSR 外部化:
 
 一些框架，如 Vue 或 Svelte，会根据客户端渲染和服务端渲染的区别，将组件编译成不同的格式。可以向以下的插件钩子中，给 Vite 传递额外的 `ssr` 参数来支持根据情景转换：
 
-- `resolveId`
-- `load`
-- `transform`
+-   `resolveId`
+-   `load`
+-   `transform`
 
 **示例：**
 
 ```js
 export function mySSRPlugin() {
-  return {
-    name: 'my-ssr',
-    transform(code, id, ssr) {
-      if (ssr) {
-        // 执行 ssr 专有转换...
-      }
-    }
-  }
+	return {
+		name: 'my-ssr',
+		transform(code, id, ssr) {
+			if (ssr) {
+				// 执行 ssr 专有转换...
+			}
+		}
+	}
 }
 ```

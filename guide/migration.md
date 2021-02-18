@@ -2,39 +2,39 @@
 
 ## 配置项变化
 
-- 以下选项已被删除，应通过 [插件](./api-plugin) 实现：
+-   以下选项已被删除，应通过 [插件](./api-plugin) 实现：
 
-  - `resolvers`
-  - `transforms`
-  - `indexHtmlTransforms`
+    -   `resolvers`
+    -   `transforms`
+    -   `indexHtmlTransforms`
 
-- `jsx` 和 `enableEsbuild` 都已被删除，请使用新的 [`esbuild`](/config/#esbuild) 选项。
+-   `jsx` 和 `enableEsbuild` 都已被删除，请使用新的 [`esbuild`](/config/#esbuild) 选项。
 
-- [CSS 相关选项](/config/#css-modules) 都被包含在 `css` 字段下。
+-   [CSS 相关选项](/config/#css-modules) 都被包含在 `css` 字段下。
 
-- 所有 [用于构建的选项](/config/#build-options) 现在都在 `build` 字段下。
+-   所有 [用于构建的选项](/config/#build-options) 现在都在 `build` 字段下。
 
-  - `rollupInputOptions` 和 `rollupOutputOptions` 已经被 [`build.rollupOptions`](/config/#build-rollupoptions) 替代。
-  - `esbuildTarget` 现在是 [`build.target`](/config/#build-target)
-  - `emitManifest` 现在是 [`build.manifest`](/config/#build-manifest)
-  - 以下构建选项已经被移除，因为它们可以通过插件钩子或其他选项实现：
-    - `entry`
-    - `rollupDedupe`
-    - `emitAssets`
-    - `emitIndex`
-    - `shouldPreload`
-    - `configureBuild`
+    -   `rollupInputOptions` 和 `rollupOutputOptions` 已经被 [`build.rollupOptions`](/config/#build-rollupoptions) 替代。
+    -   `esbuildTarget` 现在是 [`build.target`](/config/#build-target)
+    -   `emitManifest` 现在是 [`build.manifest`](/config/#build-manifest)
+    -   以下构建选项已经被移除，因为它们可以通过插件钩子或其他选项实现：
+        -   `entry`
+        -   `rollupDedupe`
+        -   `emitAssets`
+        -   `emitIndex`
+        -   `shouldPreload`
+        -   `configureBuild`
 
-- 所有的 [server-specific options](/config/#server-options) 现在都在
-  `server` 字段下。
+-   所有的 [server-specific options](/config/#server-options) 现在都在
+    `server` 字段下。
 
-  - `hostname` 现在是 [`server.host`](/config/#server-host)
-  - `httpsOptions` 已被删除，[`server.https`](/config/#server-https) 可以直接接收选项对象。
-  - `chokidarWatchOptions` 现在是 [`server.watch`](/config/#server-watch)
+    -   `hostname` 现在是 [`server.host`](/config/#server-host)
+    -   `httpsOptions` 已被删除，[`server.https`](/config/#server-https) 可以直接接收选项对象。
+    -   `chokidarWatchOptions` 现在是 [`server.watch`](/config/#server-watch)
 
-- [`assetsInclude`](/config/#assetsInclude) 现在接收 `string | RegExp | (string | RegExp)[]` 而不是一个函数。
+-   [`assetsInclude`](/config/#assetsInclude) 现在接收 `string | RegExp | (string | RegExp)[]` 而不是一个函数。
 
-- 所有 Vue 特定选项都已删除; 应将选项传递给 Vue 插件。
+-   所有 Vue 特定选项都已删除； 应将选项传递给 Vue 插件。
 
 ## 别名用法变化
 
@@ -55,7 +55,7 @@ Vite 2.0 核心已经是框架无关的了。对 Vue 的支持目前详见 [`@vi
 import vue from '@vitejs/plugin-vue'
 
 export default {
-  plugins: [vue()]
+	plugins: [vue()]
 }
 ```
 
@@ -68,22 +68,22 @@ export default {
 import vue from '@vitejs/plugin-vue'
 
 const vueI18nPlugin = {
-  name: 'vue-i18n',
-  transform(code, id) {
-    if (!/vue&type=i18n/.test(id)) {
-      return
-    }
-    if (/\.ya?ml$/.test(id)) {
-      code = JSON.stringify(require('js-yaml').safeLoad(code.trim()))
-    }
-    return `export default Comp => {
+	name: 'vue-i18n',
+	transform(code, id) {
+		if (!/vue&type=i18n/.test(id)) {
+			return
+		}
+		if (/\.ya?ml$/.test(id)) {
+			code = JSON.stringify(require('js-yaml').safeLoad(code.trim()))
+		}
+		return `export default Comp => {
       Comp.i18n = ${code}
     }`
-  }
+	}
 }
 
 export default {
-  plugins: [vue(), vueI18nPlugin]
+	plugins: [vue(), vueI18nPlugin]
 }
 ```
 
@@ -122,10 +122,10 @@ Vite 2 使用了一套完全重定义的，扩展了 Rollup 插件的接口。�
 
 一些将 v1 插件迁移到 v2 的提示:
 
-- `resolvers` -> 使用 [`resolveId`](https://rollupjs.org/guide/en/#resolveid) 钩子
-- `transforms` -> 使用 [`transform`](https://rollupjs.org/guide/en/#transform) 钩子
-- `indexHtmlTransforms` -> 使用 [`transformIndexHtml`](./api-plugin#transformindexhtml) 钩子
-- 虚拟文件支持 -> 使用 [`resolveId`](https://rollupjs.org/guide/en/#resolveid) + [`load`](https://rollupjs.org/guide/en/#load) 钩子
-- 添加 `alias`，`define` 或其他配置项 -> 使用 [`config`](./api-plugin#config) 钩子
+-   `resolvers` -> 使用 [`resolveId`](https://rollupjs.org/guide/en/#resolveid) 钩子
+-   `transforms` -> 使用 [`transform`](https://rollupjs.org/guide/en/#transform) 钩子
+-   `indexHtmlTransforms` -> 使用 [`transformIndexHtml`](./api-plugin#transformindexhtml) 钩子
+-   虚拟文件支持 -> 使用 [`resolveId`](https://rollupjs.org/guide/en/#resolveid) + [`load`](https://rollupjs.org/guide/en/#load) 钩子
+-   添加 `alias`，`define` 或其他配置项 -> 使用 [`config`](./api-plugin#config) 钩子
 
 由于大多数逻辑应该通过插件钩子而不是中间件来完成，因此对中间件的需求大大减少。内部服务器应用现在是一个很好的旧版的 [connect](https://github.com/senchalabs/connect) 实例，而不是 Koa。
