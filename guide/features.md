@@ -163,7 +163,7 @@ import imgUrl from './img.png'
 document.getElementById('hero-img').src = imgUrl
 ```
 
-一切特殊的 query 可以更改资源被引入的方式：
+多种特殊的 query 可以更改资源被引入的方式：
 
 ```js
 // 显式加载资源为一个 URL

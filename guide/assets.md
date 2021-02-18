@@ -35,9 +35,9 @@ import workletURL from 'extra-scalloped-border/worklet.js?url'
 CSS.paintWorklet.addModule(workletURL)
 ```
 
-### Importing Asset as String
+### 将资源引入为字符串
 
-Assets can be imported as strings using the `?raw` suffix.
+资源可以使用 `?raw` 后缀声明作为字符串引入。
 
 ```js
 import shaderString from './shader.glsl?raw'
