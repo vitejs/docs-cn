@@ -144,7 +144,7 @@ app.use('*', async (req, res) => {
 为了将 SSR 项目交付生产，我们需要：
 
 1. 正常生成一个客户端构建；
-2. 再生成一个 SSR 构建，可以通过 `require()` 直接加载因此我们无需再经过 Vite 的 `ssrLoadModule`;
+2. 再生成一个 SSR 构建，可以通过 `require()` 直接加载因此我们无需再经过 Vite 的 `ssrLoadModule`；
 
 `package.json` 中的脚本应该看起来像这样：
 

@@ -34,7 +34,7 @@
 
 - [`assetsInclude`](/config/#assetsInclude) 现在接收 `string | RegExp | (string | RegExp)[]` 而不是一个函数。
 
-- 所有 Vue 特定选项都已删除; 应将选项传递给 Vue 插件。
+- 所有 Vue 特定选项都已删除；应将选项传递给 Vue 插件。
 
 ## 别名用法变化
 
