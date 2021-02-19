@@ -11,7 +11,7 @@ Pre-bundling them to speed up dev server page load...（将预构建它们以提
 
 ## 原因
 
-这就是 Vite 执行的所谓的“依赖预绑定”。这个过程有两个目的:
+这就是 Vite 执行的所谓的“依赖预构建”。这个过程有两个目的:
 
 1. **CommonJS 和 UMD 兼容性:** 开发阶段中，Vite 的开发服务器将所有代码视为原生 ES 模块。因此，Vite 必须先将作为 CommonJS 或 UMD 发布的依赖项转换为 ESM。
 

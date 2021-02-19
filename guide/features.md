@@ -120,15 +120,13 @@ import { applyColor } from './example.module.css'
 document.getElementById('foo').className = applyColor
 ```
 
-请注意 CSS modules `localsConvention` 默认是 `cameCaseOnly` - 例如一个名为 `.foo-bar` 的类会被暴露为 `classes.fooBar`。CSS modules 行为可以通过 [`css.modules` option](/config/#css-modules) 选项配置。
+请注意 CSS modules `localsConvention` 默认是 `camelCaseOnly` - 例如一个名为 `.foo-bar` 的类会被暴露为 `classes.fooBar`。CSS modules 行为可以通过 [`css.modules` option](/config/#css-modules) 选项配置。
 
 ### CSS 预处理器
 
 因为 Vite 只针对现代浏览器，所以建议使用原生 CSS 变量和实现 CSSWG 草案的 PostCSS 插件（例如 [postcss-nesting](https://github.com/jonathantneal/postcss-nesting)），并编写简单的、未来标准兼容的 CSS。
 
 话虽如此，但 Vite 也同时提供了对 `.scss`, `.sass`, `.less`, `.styl` 和 `.stylus` 文件的内置支持。没有必要为他们安装特定的 vite 插件，但相应的预处理器依赖本身必须安装：
-
-也就是说，Vite 的确为 `.scss`, `.sass`，`.less`，`.styl` 和 `.stylus` 文件提供了内建支持。不需要为他们安装特定的插件，但相应的预处理器本身必须安装：
 
 ```bash
 # .scss and .sass
@@ -163,7 +161,7 @@ import imgUrl from './img.png'
 document.getElementById('hero-img').src = imgUrl
 ```
 
-一切特殊的 query 可以更改资源被引入的方式：
+添加一些特殊的查询参数可以更改资源被引入的方式：
 
 ```js
 // 显式加载资源为一个 URL
