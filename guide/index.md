@@ -8,7 +8,7 @@ Vite (法语意为 "快速的"，发音 `/vit/`) 是一种新型前端构建工�
 
 - 一套构建指令，它使用 [Rollup](https://rollupjs.org) 打包你的代码，预配置输出高度优化的静态资源用于生产。
 
-Vite 是“有主见的”，提供了开箱即用的合理默认配置，但 Vite 通过它的 [插件 API](./api-plugin) 和 [JavaScript API](./api-javascript) 具有了高度的可扩展性，并支持全类型。
+Vite 意在提供更开箱即用的配置，同时它的 [插件 API](./api-plugin) 和 [JavaScript API](./api-javascript) 带来了高度的可扩展性，并完全支持类型化。
 
 你可以在 [为什么选 Vite](./why) 中了解更多关于项目的设计初衷。
 
