@@ -187,8 +187,8 @@ Vite 插件也可以提供钩子来服务于特定的 Vite 目标。这些钩子
   const myPlugin = () => ({
     name: 'configure-server',
     configureServer(server) {
-      server.app.use((req, res, next) => {
-        // custom handle request...
+      server.middlewares.use((req, res, next) => {
+        // 自定义请求处理...
       })
     }
   })
@@ -204,7 +204,7 @@ Vite 插件也可以提供钩子来服务于特定的 Vite 目标。这些钩子
     configureServer(server) {
       // 返回一个在内部中间件安装后被调用的后置钩子
       return () => {
-        server.app.use((req, res, next) => {
+        server.middlewares.use((req, res, next) => {
           // 自定义请求处理...
         })
       }
@@ -226,7 +226,7 @@ Vite 插件也可以提供钩子来服务于特定的 Vite 目标。这些钩子
       },
       transform(code, id) {
         if (server) {
-          // use server...
+          // 使用 server...
         }
       }
     }
