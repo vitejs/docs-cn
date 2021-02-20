@@ -44,7 +44,7 @@ export default function myPlugin() {
       }
     },
     load(id) {
-      if ((id = virtualFileId)) {
+      if (id === virtualFileId) {
         return `export const msg = "from virtual file"`
       }
     }
