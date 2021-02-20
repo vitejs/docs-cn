@@ -33,7 +33,7 @@ Vite 使用 [dotenv](https://github.com/motdotla/dotenv) 在你的项目根目�
 .env.[mode].local   # 只在指定模式下加载，但会被 git 忽略
 ```
 
-加载的环境变量也会通过 `import.meta.env` 暴露给客户端源代码。
+加载的环境变量也会通过 `import.meta.env` 暴露给客户端源码。
 
 为了防止意外地将一些环境变量泄漏到客户端，只有以 `VITE_` 为前缀的变量才会暴露给经过 vite 处理的代码。例如下面这个文件中：
 
@@ -42,13 +42,13 @@ DB_PASSWORD=foobar
 VITE_SOME_KEY=123
 ```
 
-只有 `VITE_SOME_KEY` 会被暴露为 `import.meta.env.VITE_SOME_KEY` 提供给客户端源代码，而 `DB_PASSWORD` 则不会。
+只有 `VITE_SOME_KEY` 会被暴露为 `import.meta.env.VITE_SOME_KEY` 提供给客户端源码，而 `DB_PASSWORD` 则不会。
 
 :::warning 安全警告
 
 - `.env.*.local` 文件应是本地的，可以包含敏感变量。你应该加上 `.local` 到你的 `.gitignore` 以避免他们被检出到 git。
 
-- 由于暴露在 Vite 源代码中的任何变量都将最终出现在客户端包中，`VITE_*` 变量应该不包含任何敏感信息。
+- 由于暴露在 Vite 源码中的任何变量都将最终出现在客户端包中，`VITE_*` 变量应该不包含任何敏感信息。
 
 :::
 
@@ -65,9 +65,9 @@ VITE_APP_TITLE=My App
 
 在你的应用中，你可以使用 `import.meta.env.VITE_APP_TITLE` 作为渲染标题。
 
-然而重要的是，要理解**模式**是一个更广泛的概念，而不仅仅是开发和生产。一个典型的例子是，您可能希望有一个 “staging” 模式，它应该具有类似于生产的行为，但环境变量与生产环境略有不同。
+然而重要的是，要理解**模式**是一个更广泛的概念，而不仅仅是开发和生产。一个典型的例子是，你可能希望有一个 “staging” 模式，它应该具有类似于生产的行为，但环境变量与生产环境略有不同。
 
-您可以通过传递 `--mode` 选项标志来覆盖命令使用的默认模式。例如，如果你想为我们假设的 staging 模式构建应用:
+你可以通过传递 `--mode` 选项标志来覆盖命令使用的默认模式。例如，如果你想为我们假设的 staging 模式构建应用:
 
 ```bash
 vite build --mode staging

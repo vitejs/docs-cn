@@ -20,7 +20,7 @@ document.getElementById('hero-img').src = imgUrl
 
 - 如果 Vite 使用了 Vue 插件，Vue SFC 模板中的资源引用都将自动转换为导入。
 
-- 常见的图像、媒体和字体文件类型被自动检测为资源。您可以使用 [`assetsInclude` 选项](/config/#assetsinclude) 扩展内部列表。
+- 常见的图像、媒体和字体文件类型被自动检测为资源。你可以使用 [`assetsInclude` 选项](/config/#assetsinclude) 扩展内部列表。
 
 - 引用的资源作为构建资源图的一部分包括在内，将生成散列文件名，并可以由插件进行处理以进行优化。
 
@@ -64,9 +64,9 @@ import InlineWorker from './shader.js?worker&inline'
 
 如果你有下列这些资源：
 
-- 不会被源代码引用（例如 `robots.txt`）
+- 不会被源码引用（例如 `robots.txt`）
 - 必须保持原有文件名（没有经过 hash）
-- ...或者您只是不想为了获取 URL 而首先导入该资源
+- ...或者你只是不想为了获取 URL 而首先导入该资源
 
 那么你可以将该资源放在一个特别的 `public` 目录中，它应位于你的项目根目录。该目录中的资源应该在开发时能直接通过 `/` 根路径访问到，并且打包时会被完整复制到目标目录的根目录下。
 
@@ -74,5 +74,5 @@ import InlineWorker from './shader.js?worker&inline'
 
 请注意：
 
-- 引入 `public` 中的资源永远应该使用根绝对路径 - 举个例子，`public/icon.png` 应该在源代码中被引用为 `/icon.png`。
+- 引入 `public` 中的资源永远应该使用根绝对路径 - 举个例子，`public/icon.png` 应该在源码中被引用为 `/icon.png`。
 - `public` 中的资源不应该被 JavaScript 文件引用。

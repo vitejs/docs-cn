@@ -36,7 +36,7 @@ yarn create @vitejs/app
 
 然后按照提示操作即可！
 
-您还可以通过附加的命令行选项直接指定项目名称和您想要使用的模板。例如，要构建一个 Vite + Vue 项目，运行:
+你还可以通过附加的命令行选项直接指定项目名称和你想要使用的模板。例如，要构建一个 Vite + Vue 项目，运行:
 
 ```bash
 # npm 6.x
@@ -67,9 +67,9 @@ yarn create @vitejs/app my-vue-app --template vue
 
 你可能已经注意到，在一个 Vite 项目中，`index.html` 在项目最外层而不是在 `public` 文件夹里。这是有意而为之的：在开发期间 Vite 是一个服务器，而 `index.html` 是该 Vite 项目的入口点。
 
-Vite 将 `index.html` 视为源代码和模块图的一部分。它将解析对引用你 JavaScript 源代码的 `<script type="module" src="...">`。甚至是内联书写的 `<script type="module">` 和通过 `<link href>` 引用的 CSS 也可以利用到 Vite 独有的功能。另外，`index.html` 中的 URL 将被自动变基，所以无需那个特殊的 `%PUBLIC_URL%` 占位符了。
+Vite 将 `index.html` 视为源码和模块图的一部分。它会解析引用了你 JavaScript 源码的 `<script type="module" src="...">`。而通过 Vite 独有的功能，内联书写的 `<script type="module">` 和通过 `<link href>` 引用的 CSS 也可以被解析。另外，`index.html` 中的 URL 将被自动变换，所以再也不用那个特殊的 `%PUBLIC_URL%` 占位符了。
 
-与静态 HTTP 服务器类似，Vite 也有提供文件的 “根目录” 的概念。你会看到它在文档其余部分中称为 `<root>`。源代码中的绝对 URL 路径将以项目的 “根” 作为基础来解析，因此您可以像使用普通的静态文件服务器一样编写代码（除了 Vite 的功能更强大！）。Vite 还能够处理、解析在根目录外文件位置的依赖，使得它即便在基于 monorepo 的设置中也十分有用。
+与静态 HTTP 服务器类似，Vite 也有 “根目录” 的概念，这个根目录是指你的文件运行的位置。你会看到它在文档其余部分中称为 `<root>`。源码中的绝对 URL 路径将以项目的 “根” 作为基础来解析，因此你可以像使用普通的静态文件服务器一样编写代码（并且功能更强大！）。Vite 还能够处理依赖关系，解析处于根目录外的文件位置，这使得它即使在基于 monorepo 的方案中也十分有用。
 
 Vite 也支持多个 `.html` 作入口点的 [多页面应用模式](./build#多页面应用模式)。
 

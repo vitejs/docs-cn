@@ -145,7 +145,7 @@ Vite 为 Sass 和 Less 改进了 `@import` 解析，因而 Vite 别名也同样�
 
 由于与其 API 冲突，`@import` 别名和 URL 变基不支持 Stylus。
 
-您还可以通过在文件扩展名前加上 `.module` 来结合使用 CSS modules 和预处理器，例如 `style.module.scss`。
+你还可以通过在文件扩展名前加上 `.module` 来结合使用 CSS modules 和预处理器，例如 `style.module.scss`。
 
 ## 静态资源处理
 

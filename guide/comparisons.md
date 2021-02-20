@@ -39,7 +39,7 @@ Vite 最初是作为 [Vue.js](https://vuejs.org/) 开发工具的未来基础而
 
 Preact 团队的 [WMR](https://github.com/preactjs/wmr) 提供了类似的特性集，而 Vite 2.0 对 Rollup 插件接口的支持正是受到了它的启发。
 
-WMR 主要是为了 [Preact](https://preactjs.com/) 项目而设计，并为其提供了集成度更高的功能，比如预渲染。就使用范围而言，它更加贴合于 Preact 框架，与 Preact 本身一样强调紧凑的大小。如果您正在使用 Preact，那么 WMR 可能会提供更好的体验。然而，WMR 不太可能优先支持其他框架。
+WMR 主要是为了 [Preact](https://preactjs.com/) 项目而设计，并为其提供了集成度更高的功能，比如预渲染。就使用范围而言，它更加贴合于 Preact 框架，与 Preact 本身一样强调紧凑的大小。如果你正在使用 Preact，那么 WMR 可能会提供更好的体验。然而，WMR 不太可能优先支持其他框架。
 
 ## @web/dev-server
 

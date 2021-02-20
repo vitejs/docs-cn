@@ -67,9 +67,9 @@ Vite 默认只支持原生支持 ESM 的现代浏览器，但可以通过官方�
 npm init @vitejs/app
 ```
 
-接下来您可以：
+接下来你可以：
 
 - 阅读 [指引文档](https://vitejs.dev/guide/) 了解 Vite 提供了哪些开箱即用的功能
-- 在 [GitHub](https://github.com/vitejs/vite) 上访问源代码
+- 在 [GitHub](https://github.com/vitejs/vite) 上访问源码
 - 在 [Twitter](https://twitter.com/vite_js) 上关注最新进展
 - 或与其他 Vite 用户在 [Discord](http://chat.vitejs.dev/) 上一起讨论

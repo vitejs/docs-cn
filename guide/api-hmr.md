@@ -3,7 +3,7 @@
 :::tip 注意
 这里是客户端 HMR API。若要在插件中处理 HMR 更新，详见 [handleHotUpdate](./api-plugin#handlehotupdate).
 
-手动 HMR API 主要用于框架和工具作者。作为最终用户，HMR 可能已经在特定于框架的启动器模板中为您处理过了。
+手动 HMR API 主要用于框架和工具作者。作为最终用户，HMR 可能已经在特定于框架的启动器模板中为你处理过了。
 :::
 
 Vite 通过特殊的 `import.meta.hot` 对象暴露手动 HMR API。
