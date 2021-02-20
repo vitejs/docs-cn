@@ -110,7 +110,7 @@ app.use('*', async (req, res) => {
     //    并提供类似 HMR 的根据情况随时失效。
     const { render } = await vite.ssrLoadModule('/src/entry-server.js')
 
-    // 4. 渲染应用的 HTML。这架设 entry-server.js 的导出 `render`
+    // 4. 渲染应用的 HTML。这假设 entry-server.js 的导出 `render`
     //    函数调用了相应 framework 的 SSR API。
     //    例如 ReactDOMServer.renderToString()
     const appHtml = await render(url)
