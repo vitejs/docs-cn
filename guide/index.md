@@ -4,19 +4,21 @@
 
 Vite (法语意为 "快速的"，发音 `/vit/`) 是一种新型前端构建工具，能够显著提升前端开发体验，它主要由两部分组成：
 
-- 一个针对 [原生 ES Modules](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules) 有许多增强功能的开发服务器，并附带 [丰富的内建功能](./features) 和速度快到惊人的 [模块热重载（HMR）](./features#hot-module-replacement)。
+- 一个开发服务器，它利用 [原生 ES 模块](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules) 提供了 [丰富的内建功能](./features)，如速度快到惊人的 [模块热更新（HMR）](./features#hot-module-replacement)。
 
-- 一套 [构建指令](./build) 使用 [Rollup](https://rollupjs.org) 打包你的代码，预配置输出高度优化的静态资源用于生产。
+- 一套构建指令，它使用 [Rollup](https://rollupjs.org) 打包你的代码，预配置输出高度优化的静态资源用于生产。
 
-此外，Vite 通过它的 [插件 API](./api-plugin) 和 [JavaScript API](./api-javascript) 具有高度的可扩展性，并支持全类型。
+Vite 意在提供更开箱即用的配置，同时它的 [插件 API](./api-plugin) 和 [JavaScript API](./api-javascript) 带来了高度的可扩展性，并完全支持类型化。
+
+你可以在 [为什么选 Vite](./why) 中了解更多关于项目的设计初衷。
 
 ## 浏览器支持
 
 - 开发环境中：Vite 需要在支持 [原生 ES 模块动态导入](https://caniuse.com/es6-module-dynamic-import) 的浏览器中使用。
 
-- 生产环境中：默认的构建目标浏览器支持 [通过脚本标签来引入原生 ES 模块](https://caniuse.com/es6-module) 。可以通过官方插件 [@vitejs/plugin-legacy](https://github.com/vitejs/vite/tree/main/packages/plugin-legacy) 支持传统浏览器。有关更多细节详见 [构建生产版本](./build)。
+- 生产环境中：默认支持的浏览器需要支持 [通过脚本标签来引入原生 ES 模块](https://caniuse.com/es6-module) 。可以通过官方插件 [@vitejs/plugin-legacy](https://github.com/vitejs/vite/tree/main/packages/plugin-legacy) 支持旧浏览器。有关更多细节详见 [构建生产版本](./build)。
 
-## 第一个 Vite 项目
+## 搭建第一个 Vite 项目
 
 ::: tip 兼容性注意
 Vite 需要 [Node.js](https://nodejs.org/en/) 版本 >= 12.0.0。
@@ -36,13 +38,13 @@ yarn create @vitejs/app
 
 然后按照提示操作即可！
 
-您还可以通过附加的命令行选项直接指定项目名称和您想要使用的模板。例如，要构建一个 Vite + Vue 项目，运行:
+你还可以通过附加的命令行选项直接指定项目名称和想要使用的模板。例如，要搭建一个 Vite + Vue 项目，运行:
 
 ```bash
 # npm 6.x
 npm init @vitejs/app my-vue-app --template vue
 
-# npm 7+, 需要额外的双横线:
+# npm 7+, 需要额外的双横线：
 npm init @vitejs/app my-vue-app -- --template vue
 
 # yarn
@@ -93,9 +95,9 @@ Vite 也支持多个 `.html` 作入口点的 [多页面应用模式](./build#多
 
 可以指定额外的命令行选项，如 `--port` 或 `--https`。运行 `npx vite --help` 获得完整的命令行选项列表。
 
-## 使用未发布的特性
+## 使用未发布的功能
 
-如果等不及一个新版本来测试最新的特性，可以自行克隆 [vite 仓库](https://github.com/vitejs/vite) 到本地机器上然后将其自行链接（将需要 [Yarn 1.x](https://classic.yarnpkg.com/lang/en/)）：
+如果等不及一个新版本来测试最新的功能，可以自行克隆 [vite 仓库](https://github.com/vitejs/vite) 到本地机器上然后自行将其链接（将需要 [Yarn 1.x](https://classic.yarnpkg.com/lang/en/)）：
 
 ```bash
 git clone https://github.com/vitejs/vite.git
