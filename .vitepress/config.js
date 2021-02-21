@@ -4,6 +4,7 @@
  * @type {import('vitepress').UserConfig}
  */
 module.exports = {
+  hmr: { overlay: false },
   title: 'Vite',
   lang: 'zh-CN',
   description: '下一代前端开发与构建工具',
