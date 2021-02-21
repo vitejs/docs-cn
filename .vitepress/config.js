@@ -15,6 +15,11 @@ module.exports = {
     editLinks: true,
     editLinkText: '为此页提供修改建议',
 
+    /* algolia: {
+      apiKey: '<API_KEY>',
+      indexName: '<INDEX_NAME>'
+    }, */
+
     carbonAds: {
       carbon: 'CEBIEK3N',
       placement: 'vitejsdev'

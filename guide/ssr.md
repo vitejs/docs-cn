@@ -1,7 +1,7 @@
 # 服务端渲染
 
 :::warning 实验性
-SSR 支持还处于试验阶段，您可能会遇到 bug 和不受支持的用例。请考虑您可能承担的风险。
+SSR 支持还处于试验阶段，你可能会遇到 bug 和不受支持的用例。请考虑你可能承担的风险。
 :::
 
 Vite 为服务端渲染（SSR）提供了内建支持。
@@ -9,7 +9,7 @@ Vite 为服务端渲染（SSR）提供了内建支持。
 :::tip 注意
 SSR 特别指支持在 Node.js 中运行相同应用程序的前端框架（例如 React、Preact、Vue 和 Svelte），将其预渲染成 HTML，最后在客户端进行脱水化处理。如果你正在寻找与传统服务器端框架的集成，请查看 [后端集成指南](./backend-integration)。
 
-下面的指南还假定您在选择的框架中有使用 SSR 的经验，并且只关注特定于 vite 的集成细节。
+下面的指南还假定你在选择的框架中有使用 SSR 的经验，并且只关注特定于 vite 的集成细节。
 :::
 
 ## 示例项目
@@ -19,7 +19,7 @@ Vite 为服务端渲染（SSR）提供了内建支持。这里的 Vite 范例包
 - [Vue 3](https://github.com/vitejs/vite/tree/main/packages/playground/ssr-vue)
 - [React](https://github.com/vitejs/vite/tree/main/packages/playground/ssr-react)
 
-## 源代码结构
+## 源码结构
 
 一个典型的 SSR 应用应该有如下的源文件结构：
 
@@ -54,7 +54,7 @@ if (import.meta.env.SSR) {
 
 ## 设置开发服务器
 
-在构建 SSR 应用程序时，您可能希望完全控制主服务器，并将 Vite 与生产环境解耦。因此，建议以中间件模式使用 Vite。下面是一个关于 [express](https://expressjs.com/) 的例子：
+在构建 SSR 应用程序时，你可能希望完全控制主服务器，并将 Vite 与生产环境解耦。因此，建议以中间件模式使用 Vite。下面是一个关于 [express](https://expressjs.com/) 的例子：
 
 **server.js**
 
@@ -106,7 +106,7 @@ app.use('*', async (req, res) => {
     template = await vite.transformIndexHtml(url, template)
 
     // 3. 加载服务器入口。vite.ssrLoadModule 将自动转换
-    //    你的 ESM 源代码将在 Node.js 也可用了！无需打包
+    //    你的 ESM 源码将在 Node.js 也可用了！无需打包
     //    并提供类似 HMR 的根据情况随时失效。
     const { render } = await vite.ssrLoadModule('/src/entry-server.js')
 
@@ -122,7 +122,7 @@ app.use('*', async (req, res) => {
     res.status(200).set({ 'Content-Type': 'text/html' }).end(html)
   } catch (e) {
     // 如果捕获到了一个错误，让 vite 来修复该堆栈，这样它就可以映射回
-    // 你的实际源代码中。
+    // 你的实际源码中。
     vite.ssrFixStacktrace(e)
     console.error(e)
     res.status(500).end(e.message)
