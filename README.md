@@ -1,5 +1,3 @@
-> 🏮 **Vite 中文文档祝全体读者 2021 春节快乐！** 🎉
-
 <p align="center">
   <a href="https://vitejs.dev" target="_blank" rel="noopener noreferrer">
     <img width="180" src="https://vitejs.dev/logo.svg" alt="Vite logo">
