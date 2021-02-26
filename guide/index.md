@@ -65,6 +65,24 @@ yarn create @vitejs/app my-vue-app --template vue
 
 查看 [@vitejs/create-app](https://github.com/vitejs/vite/tree/main/packages/create-app) 获取每个模板的更多细节。
 
+## Community Templates
+
+@vitejs/create-app is a tool to quickly start a project from a basic template for popular frameworks. Check out Awesome Vite for [community maintained templates](https://github.com/vitejs/awesome-vite#templates) that include other tools or target different frameworks. You can use a tool like [degit](https://github.com/Rich-Harris/degit) to scaffold your project with one of the templates.
+
+```bash
+npx degit user/project my-project
+cd my-project
+
+npm install
+npm run dev
+```
+
+If the project uses `main` as the default branch, suffix the project repo with `#main`
+
+```bash
+npx degit user/project#main my-project
+```
+
 ## `index.html` 与项目根目录
 
 你可能已经注意到，在一个 Vite 项目中，`index.html` 在项目最外层而不是在 `public` 文件夹里。这是有意而为之的：在开发期间 Vite 是一个服务器，而 `index.html` 是该 Vite 项目的入口点。
