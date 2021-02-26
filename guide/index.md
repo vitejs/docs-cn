@@ -65,9 +65,9 @@ yarn create @vitejs/app my-vue-app --template vue
 
 查看 [@vitejs/create-app](https://github.com/vitejs/vite/tree/main/packages/create-app) 获取每个模板的更多细节。
 
-## Community Templates
+## 社区模板
 
-@vitejs/create-app is a tool to quickly start a project from a basic template for popular frameworks. Check out Awesome Vite for [community maintained templates](https://github.com/vitejs/awesome-vite#templates) that include other tools or target different frameworks. You can use a tool like [degit](https://github.com/Rich-Harris/degit) to scaffold your project with one of the templates.
+@vitejs/create-app 是一个快速生成主流框架基础模板的工具。查看 Awesome Vite 仓库的 [社区维护模板]((https://github.com/vitejs/awesome-vite#templates)，里面包含不同框架的模板。你可以用如 [degit](https://github.com/Rich-Harris/degit) 之类的工具，使用社区模版来搭建项目。
 
 ```bash
 npx degit user/project my-project
@@ -77,7 +77,7 @@ npm install
 npm run dev
 ```
 
-If the project uses `main` as the default branch, suffix the project repo with `#main`
+如果该项目使用 `main` 作为默认分支, 需要在项目名后添加 `#main`。
 
 ```bash
 npx degit user/project#main my-project
