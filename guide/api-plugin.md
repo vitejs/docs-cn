@@ -17,6 +17,7 @@ Vite 插件扩展了设计出色的 Rollup 接口，带有一些 vite 独有的�
 
 - Vite 插件应该有一个带 `vite-plugin-` 前缀、语义清晰的名称。
 - 在 package.json 中包含 `vite-plugin` 关键字。
+- Include a section in the plugin docs detailing why it is a Vite only plugin (for example, it uses Vite specific plugin hooks).
 
 如果你的插件只适用于特定的框架，它的名字应该遵循以下前缀格式：
 
