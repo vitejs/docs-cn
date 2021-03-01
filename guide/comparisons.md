@@ -6,7 +6,7 @@
 
 **生产构建**
 
-Snowpack 的默认构建输出是未打包的：它将每个文件转换为单独的构建模块，然后将这些模块提供给执行实际绑定的不同“优化器”。这么做的好处是，你可以选择不同终端打包器，以适应不同需求（例如 webpack, Rollup，甚至是 ESbuild），缺点是体验有些支离破碎 —— 例如,`esbuild` 优化器仍然是不稳定的，Rollup 优化器也不是官方维护，而不同的优化器又有不同的输出和配置。
+Snowpack 的默认构建输出是未打包的：它将每个文件转换为单独的构建模块，然后将这些模块提供给执行实际绑定的不同“优化器”。这么做的好处是，你可以选择不同终端打包器，以适应不同需求（例如 webpack, Rollup，甚至是 ESbuild），缺点是体验有些支离破碎 —— 例如，`esbuild` 优化器仍然是不稳定的，Rollup 优化器也不是官方维护，而不同的优化器又有不同的输出和配置。
 
 为了提供更流畅的体验，Vite 选择了与单个打包器（Rollup）进行更深入的集成。Vite 还支持一套 [通用插件 API](./api-plugin) 扩展了 Rollup 的插件接口，开发和构建两种模式都适用。
 
@@ -16,7 +16,7 @@ Vite 支持广泛的功能，构建过程也集成度更高，以下功能目前
 - [库模式](./build#库模式)
 - [自动分割 CSS 代码](./features#CSS-代码分割)
 - [预优化的异步 chunk 加载](./features#异步-Chunk-加载优化)
-- [自动对动态导入 polyfill](./features#动态导入-Polyfill)
+- [自动动态导入 polyfill](./features#动态导入-Polyfill)
 - 官方 [兼容模式插件](https://github.com/vitejs/vite/tree/main/packages/plugin-legacy) 打包为现代/传统两种产物，并根据浏览器支持自动交付正确的版本。
 
 **更快的依赖预构建**
@@ -29,7 +29,7 @@ Vite 能够支持 monorepo，我们已经有用户成功地将 Vite 基于 monor
 
 **CSS 预处理器支持**
 
-Vite 为 Sass and Less 提供了更精细化的支持，包括改进 `@import` 解析（可使用别名与 npm 依赖）和 [提供 `url()` 内联引入与变基](./features#import-inlining-and-rebasing).
+Vite 为 Sass and Less 提供了更精细化的支持，包括改进 `@import` 解析（可使用别名与 npm 依赖）和 [提供 `url()` 内联引入与变基](./features#import-inlining-and-rebasing)。
 
 **Vue 第一优先级支持**
 
