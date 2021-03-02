@@ -87,9 +87,9 @@ npx degit user/project#main my-project
 
 你可能已经注意到，在一个 Vite 项目中，`index.html` 在项目最外层而不是在 `public` 文件夹内。这是有意而为之的：在开发期间 Vite 是一个服务器，而 `index.html` 是该 Vite 项目的入口文件。
 
-Vite 将 `index.html` 视为源码和模块图的一部分。你的 JavaScript 代码将会通过 `<script type="module" src="...">` 来引用。甚至内联引入 JavaScript 的 `<script type="module" src="...">` 和引用 CSS 的 `<link href>` 也能享受 Vite 相关的特性。另外，`index.html` 中的 URL 将被自动转换，因此不再需要 `%PUBLIC_URL%` 占位符了。
+Vite 将 `index.html` 视为源码和模块图的一部分。Vite 解析 `<script type="module" src="...">` ，这个标签指向你的 JavaScript 源码。甚至内联引入 JavaScript 的 `<script type="module" src="...">` 和引用 CSS 的 `<link href>` 也能利用 Vite 特有的功能被解析。另外，`index.html` 中的 URL 将被自动转换，因此不再需要 `%PUBLIC_URL%` 占位符了。
 
-与静态 HTTP 服务器类似，Vite 也有 “根目录” 的概念。你会看到它在整个文档中用 `<root>` 表示。源码中的绝对 URL 路径将以项目的 “根” 作为基础来解析，因此你可以像在普通的静态文件服务器上一样编写代码（并且功能更强大！）。Vite 还能够处理依赖关系，解析处于根目录外的文件位置，这使得它即使在基于 monorepo 的方案中也十分有用。
+与静态 HTTP 服务器类似，Vite 也有 “根目录” 的概念，即文件被提供的位置。你会看到它在整个文档中用 `<root>` 表示。源码中的绝对 URL 路径将以项目的 “根” 作为基础来解析，因此你可以像在普通的静态文件服务器上一样编写代码（并且功能更强大！）。Vite 还能够处理依赖关系，解析处于根目录外的文件位置，这使得它即使在基于 monorepo 的方案中也十分有用。
 
 Vite 也支持多个 `.html` 作入口点的 [多页面应用模式](./build#多页面应用模式)。
 
@@ -97,7 +97,7 @@ Vite 也支持多个 `.html` 作入口点的 [多页面应用模式](./build#多
 
 `vite` 以当前工作目录作为根目录启动开发服务器。你也可以通过 `vite serve some/sub/dir` 来指定一个替代的根目录。
 
-## 命令行
+## 命令行界面
 
 在安装了 Vite 的项目中，可以在 npm scripts 中使用 `vite` 可执行文件，或者直接使用 `npx vite` 运行它。下面是通过脚手架创建的 Vite 项目中默认的 npm scripts：
 
@@ -115,7 +115,7 @@ Vite 也支持多个 `.html` 作入口点的 [多页面应用模式](./build#多
 
 ## 使用未发布的功能
 
-如果你迫不及待想要体验最新的特性，可以自行克隆 [vite 仓库](https://github.com/vitejs/vite) 到本地机器上然后自行将其链接（将需要 [Yarn 1.x](https://classic.yarnpkg.com/lang/en/)）：
+如果你迫不及待想要体验最新的功能，可以自行克隆 [vite 仓库](https://github.com/vitejs/vite) 到本地机器上然后自行将其链接（将需要 [Yarn 1.x](https://classic.yarnpkg.com/lang/en/)）：
 
 ```bash
 git clone https://github.com/vitejs/vite.git
@@ -126,4 +126,4 @@ yarn build
 yarn link
 ```
 
-然后，回到你的 vite 项目并运行 `yarn link vite`。重新启动开发服务器（`yarn dev`）来体验新特性吧！
+然后，回到你的 vite 项目并运行 `yarn link vite`。重新启动开发服务器（`yarn dev`）来体验新功能吧！
