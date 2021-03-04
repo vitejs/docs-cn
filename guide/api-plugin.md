@@ -6,7 +6,7 @@ Vite 插件扩展了设计出色的 Rollup 接口，带有一些 vite 独有的�
 
 ## 约定
 
-如果插件不使用 Vite 特定的钩子，可以实现为 [兼容的 Rollup 插件](#Rollup-插件兼容性)，推荐使用 [Rollup 插件名称约定](https://rollupjs.org/guide/en/#conventions)。
+如果插件不使用 Vite 特有的钩子，可以实现为 [兼容的 Rollup 插件](#Rollup-插件兼容性)，推荐使用 [Rollup 插件名称约定](https://rollupjs.org/guide/en/#conventions)。
 
 - Rollup 插件应该有一个带 `rollup-plugin-` 前缀、语义清晰的名称。
 - 在 package.json 中包含 `rollup-plugin` 和 `vite-plugin` 关键字。
@@ -17,6 +17,7 @@ Vite 插件扩展了设计出色的 Rollup 接口，带有一些 vite 独有的�
 
 - Vite 插件应该有一个带 `vite-plugin-` 前缀、语义清晰的名称。
 - 在 package.json 中包含 `vite-plugin` 关键字。
+- 在插件文档增加一部分关于为什么本插件是一个 Vite 专属插件的详细说明（如，本插件使用了 Vite 特有的插件钩子）。
 
 如果你的插件只适用于特定的框架，它的名字应该遵循以下前缀格式：
 
