@@ -4,12 +4,14 @@
 SSR 支持还处于试验阶段，你可能会遇到 bug 和不受支持的用例。请考虑你可能承担的风险。
 :::
 
-Vite 为服务端渲染（SSR）提供了内建支持。
-
 :::tip 注意
 SSR 特别指支持在 Node.js 中运行相同应用程序的前端框架（例如 React、Preact、Vue 和 Svelte），将其预渲染成 HTML，最后在客户端进行脱水化处理。如果你正在寻找与传统服务器端框架的集成，请查看 [后端集成指南](./backend-integration)。
 
 下面的指南还假定你在选择的框架中有使用 SSR 的经验，并且只关注特定于 vite 的集成细节。
+:::
+
+:::tip Help
+If you have questions, the community is usually helpful at [Vite Discord's #ssr channel](https://discord.gg/PkbxgzPhJv).
 :::
 
 ## 示例项目
