@@ -10,8 +10,8 @@ SSR 特别指支持在 Node.js 中运行相同应用程序的前端框架（例�
 下面的指南还假定你在选择的框架中有使用 SSR 的经验，并且只关注特定于 vite 的集成细节。
 :::
 
-:::tip Help
-If you have questions, the community is usually helpful at [Vite Discord's #ssr channel](https://discord.gg/PkbxgzPhJv).
+:::tip 帮助
+如果你有疑问，可以到社区 [Discord 的 Vite #ssr 频道](https://discord.gg/PkbxgzPhJv)，这里会帮到你。
 :::
 
 ## 示例项目

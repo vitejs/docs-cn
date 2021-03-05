@@ -128,6 +128,6 @@ yarn link
 
 然后，回到你的 vite 项目并运行 `yarn link vite`。重新启动开发服务器（`yarn dev`）来体验新功能吧！
 
-## Community
+## 社区
 
-If you have questions or need help, reach out to the community at [Discord](https://discord.gg/4cmKdMfpU5) and [GitHub Discussions](https://github.com/vitejs/vite/discussions).
+如果你有疑问或者需要帮助，可以到 [Discord](https://discord.gg/4cmKdMfpU5) 和 [GitHub Discussions](https://github.com/vitejs/vite/discussions) 社区来寻求帮助。
