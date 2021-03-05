@@ -126,7 +126,7 @@ export default ({ command, mode }) => {
 
 ### resolve.alias
 
-- **类型：**  `Record<string, string> | Array<{ find: string | RegExp, replacement: string }>`
+- **类型：** `Record<string, string> | Array<{ find: string | RegExp, replacement: string }>`
 
   将会被传递到 `@rollup/plugin-alias` 作为 [entries](https://github.com/rollup/plugins/tree/master/packages/alias#entries)的选项。也可以是一个对象，或一个 `{ find, replacement }` 的数组.
 
