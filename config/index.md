@@ -443,7 +443,7 @@ export default ({ command, mode }) => {
 
 ### build.sourcemap
 
-- **类型：** `boolean`
+- **类型：** `boolean | 'inline'`
 - **默认：** `false`
 
   构建后是否生成 source map 文件。
