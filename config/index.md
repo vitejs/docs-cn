@@ -168,14 +168,14 @@ export default ({ command, mode }) => {
 ### resolve.mainFields
 
 - **类型：** `string[]`
-- **默认：**: `['module', 'jsnext:main', 'jsnext']`
+- **默认：** `['module', 'jsnext:main', 'jsnext']`
 
   `package.json` 中，在解析包的入口点时尝试的字段列表。注意，这比从 `exports` 字段解析的情景导出优先级低：如果一个入口点从 `exports` 成功解析，主字段将被忽略。
 
 ### resolve.extensions
 
 - **类型：** `string[]`
-- **默认：**: `['.mjs', '.js', '.ts', '.jsx', '.tsx', '.json']`
+- **默认：** `['.mjs', '.js', '.ts', '.jsx', '.tsx', '.json']`
 
   导入时想要省略的扩展名列表。注意，**不** 建议忽略自定义导入类型的扩展名（例如：`.vue`），因为它会干扰 IDE 和类型支持。
 
