@@ -30,7 +30,7 @@ Vite 提供了一套原生 ESM 的 [HMR API](./api-hmr)。 具有 HMR 功能的�
 
 Vite 支持开箱即用地引入 `.ts` 文件。
 
-Vite 仅执行 `.ts` 文件的翻译工作，并 **不** 执行任何类型检查。并假设类型检查已经被你的 IDE 或构建过程接管了。（你可以在构建脚本中运行 `tsc --noEmit`）。
+Vite 仅执行 `.ts` 文件的翻译工作，并 **不** 执行任何类型检查。并假设类型检查已经被你的 IDE 或构建过程接管了。（你可以在构建脚本中运行 `tsc --noEmit` 或者安装 `vue-tsc` 然后运行 `vue-tsc --noEmit` 来对你的 `*.vue` 文件做类型检查）。
 
 Vite 使用 [esbuild](https://github.com/evanw/esbuild) 将 TypeScript 翻译到 JavaScript，约是 `tsc` 速度的 20~30 倍，同时 HMR 更新反映到浏览器的时间小于 50ms。
 

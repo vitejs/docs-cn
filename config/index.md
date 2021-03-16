@@ -77,7 +77,7 @@ export default ({ command, mode }) => {
 
   项目根目录（`index.html` 文件所在的位置）。可以是一个绝对路径，或者一个相对于该配置文件本身的路径。
 
-  更多细节请见 [项目根目录](/guide/#项目根目录)。
+  更多细节请见 [项目根目录](/guide/#index-html-与项目根目录)。
 
 ### base
 
@@ -416,7 +416,7 @@ export default ({ command, mode }) => {
 - **类型：** `string`
 - **默认：** `dist`
 
-  指定输出路径（相对于 [项目根目录](/guide/#项目根目录)).
+  指定输出路径（相对于 [项目根目录](/guide/#index-html-与项目根目录)).
 
 ### build.assetsDir
 
