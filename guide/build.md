@@ -1,6 +1,6 @@
 # 构建生产版本
 
-当需要将应用程序部署到生产环境时，只需运行 `vite build` 命令。默认情况下，它使用 `<root>/index.html` 作为构建入口点，并生成一个适合通过静态部署的应用程序包。
+当需要将应用程序部署到生产环境时，只需运行 `vite build` 命令。默认情况下，它使用 `<root>/index.html` 作为构建入口点，并生成一个适合通过静态部署的应用程序包。Check out the [Deploying a Static Site](./static-deploy) for guides about popular services.
 
 ## 浏览器兼容性
 

@@ -94,6 +94,10 @@ module.exports = {
               link: '/guide/build'
             },
             {
+              text: 'Deploying a Static Site',
+              link: '/guide/static-deploy'
+            },
+            {
               text: '环境变量与模式',
               link: '/guide/env-and-mode'
             },
