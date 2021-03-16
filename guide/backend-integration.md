@@ -1,6 +1,6 @@
 # 后端集成
 
-如果你想使用传统的后端（如 Rails, Laravel）来服务 HTML，但使用 Vite 来服务资源，可以查看在 [Awesome Vite](https://github.com/vitejs/awesome-vite#integrations-with-backends) 上的已有的后端集成列表。
+如果你想使用传统的后端（如 Rails, Laravel）来服务 HTML，但使用 Vite 来服务其他资源，可以查看在 [Awesome Vite](https://github.com/vitejs/awesome-vite#integrations-with-backends) 上的已有的后端集成列表。
 
 或者你可以按照如下步骤手动配置：
 
@@ -85,4 +85,3 @@
    <link rel="stylesheet" href="/assets/{{ manifest['style.css'].file }}" />
    <script type="module" src="/assets/{{ manifest['index.js].file }}"></script>
    ```
-
