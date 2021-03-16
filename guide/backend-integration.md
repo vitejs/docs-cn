@@ -23,7 +23,7 @@
    别忘记在你的入口添加 [dynamic import polyfill](/config/#build-polyfilldynamicimport)，因为它不会自动注入了：
 
    ```js
-   // add the beginning of your app entry
+   // 添加到你应用入口文件的开头
    import 'vite/dynamic-import-polyfill'
    ```   
 
