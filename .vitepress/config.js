@@ -94,7 +94,7 @@ module.exports = {
               link: '/guide/build'
             },
             {
-              text: 'Deploying a Static Site',
+              text: '部署静态站点',
               link: '/guide/static-deploy'
             },
             {
