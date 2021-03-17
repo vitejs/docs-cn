@@ -240,7 +240,7 @@ $ git init
 $ git add .
 $ git commit -m "My site ready for deployment."
 
-# 创建一个具有指定名称的新应用程序
+# 创建一个具有指定名称的新应用
 $ heroku apps:create example
 
 # 为静态站点设置 buildpack 
