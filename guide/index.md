@@ -62,6 +62,8 @@ yarn create @vitejs/app my-vue-app --template vue
 - `preact-ts`
 - `lit-element`
 - `lit-element-ts`
+- `svelte`
+- `svelte-ts`
 
 查看 [@vitejs/create-app](https://github.com/vitejs/vite/tree/main/packages/create-app) 获取每个模板的更多细节。
 
