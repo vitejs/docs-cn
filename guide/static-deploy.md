@@ -123,7 +123,7 @@ deploy:
   provider: pages
   skip_cleanup: true
   local_dir: dist
-  # 在 GitHub 上生成的令牌，允许 Travis 推送代码到你的存储库。
+  # 在 GitHub 上生成的令牌，允许 Travis 推送代码到你的仓库。
   # 在仓库对应的 Travis 设置页面中配置，用于安全控制。
   github_token: $GITHUB_TOKEN
   keep_history: true
