@@ -137,7 +137,7 @@ deploy:
 
    如果你要部署在 `https://<USERNAME or GROUP>.gitlab.io/`，你可以省略 `base` 因为其默认为 `'/'`。
 
-   如果你要部署在 `https://<USERNAME or GROUP>.gitlab.io/<REPO>/`，例如你的仓库地址为 `https://github.com/<USERNAME>/<REPO>`，那么请设置 `base` 为 `'/<REPO>/'`。
+   如果你要部署在 `https://<USERNAME or GROUP>.gitlab.io/<REPO>/`，例如你的仓库地址为 `https://gitlab.com/<USERNAME>/<REPO>`，那么请设置 `base` 为 `'/<REPO>/'`。
 
 2. 在 `vite.config.js` 中设置 `build.outDir` 为 `public`。
 
