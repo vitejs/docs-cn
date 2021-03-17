@@ -41,7 +41,7 @@ $ npm run build
 $ npm run preview
 ```
 
-`preview` 命令会启动一个本地静态 Web 服务器，将 `dist` 文件夹服务于 http://localhost:5000 。这样在本地查看该产物是否正常可用就十分容易了。
+`preview` 命令会启动一个本地静态 Web 服务器，将 `dist` 文件夹运行在 http://localhost:5000 上 。这样在本地查看该产物是否正常可用就十分容易了。
 
 你可以使用 `--port` 标志传入一个参数来配置服务器的运行端口。
 
