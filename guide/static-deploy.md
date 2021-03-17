@@ -24,7 +24,7 @@
 
 ## 构建应用
 
-你可能会运行 `npm run build` 命令来执行应用的构建。
+你可以运行 `npm run build` 命令来执行应用的构建。
 
 ```bash
 $ npm run build
