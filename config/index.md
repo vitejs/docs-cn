@@ -52,7 +52,7 @@ Vite 也直接支持 TS 配置文件。你可以在 `vite.config.ts` 中使用 `
 
 ### 情景配置
 
-如果配置文件需要基于命令（`serve` 或 `build`）或者不同场景与 [模式](/guide/env-and-mode) 来决定选项，可以选择导出这样一个函数：
+如果配置文件需要基于（`serve` 或 `build`）命令或者不同的 [模式](/guide/env-and-mode) 来决定选项，则可以选择导出这样一个函数：
 
 ```js
 export default ({ command, mode }) => {
@@ -95,7 +95,7 @@ export default ({ command, mode }) => {
 ### mode
 
 - **类型：** `string`
-- **默认：** serve 时默认 `'development'`，build 时默认 `'production'`
+- **默认：** `'development'` (开发模式)，`'production'` (生产模式)
 
   在配置中指明将会把 **serve 和 build** 时的模式 **都** 覆盖掉。也可以通过命令行 `--mode` 选项来重写。
 
@@ -122,17 +122,15 @@ export default ({ command, mode }) => {
 - **类型：** `string`
 - **默认：** `"public"`
 
-  作为静态资源服务的文件夹。这个目录中的文件会再开发中被服务于 `/`，在构建时，会被拷贝到 `outDir` 根目录，并没有转换，永远只是复制到这里。该值可以是文件系统的绝对路径，也可以是相对于项目根的路径。
+  作为静态资源服务的文件夹。这个目录中的文件会在开发中被服务于 `/`，在开发模式时，会被拷贝到 `outDir` 的根目录，并没有转换，永远只是复制到这里。该值可以是文件系统的绝对路径，也可以是相对于项目的根目录路径。
 
 ### resolve.alias
 
-- **类型：**
+- **类型：** `Record<string, string> | Array<{ find: string | RegExp, replacement: string }>`
 
-  `Record<string, string> | Array<{ find: string | RegExp, replacement: string }>`
+  将会被传递到 `@rollup/plugin-alias` 作为 [entries](https://github.com/rollup/plugins/tree/master/packages/alias#entries) 的选项。也可以是一个对象，或一个 `{ find, replacement }` 的数组.
 
-  将会被传递到 `@rollup/plugin-alias` 作为它的 [entries](https://github.com/rollup/plugins/tree/master/packages/alias#entries)。也可以是一个对象，或一个 `{ find, replacement }` 的数组.
-
-  当使用文件系统路径的别名时，请始终使用绝对路径。相对路径作别名值将按原样使用导致不会解析到文件系统路径中。
+  当使用文件系统路径的别名时，请始终使用绝对路径。相对路径的别名值会被原封不动地使用，因此无法被正常解析。
 
   更高级的自定义解析方法可以通过 [插件](/guide/api-plugin) 实现。
 
