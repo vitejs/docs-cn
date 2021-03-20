@@ -130,7 +130,7 @@ export default ({ command, mode }) => {
 
   将会被传递到 `@rollup/plugin-alias` 作为 [entries](https://github.com/rollup/plugins/tree/master/packages/alias#entries) 的选项。也可以是一个对象，或一个 `{ find, replacement }` 的数组.
 
-  当使用文件系统路径的别名时，请始终使用绝对路径。相对路径的别名值将按原样使用导致不会被解析到文件系统路径中。
+  当使用文件系统路径的别名时，请始终使用绝对路径。相对路径的别名值会被原封不动地使用，因此无法被正常解析。
 
   更高级的自定义解析方法可以通过 [插件](/guide/api-plugin) 实现。
 
