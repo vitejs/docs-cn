@@ -9,16 +9,19 @@ module.exports = {
   description: '下一代前端开发与构建工具',
   head: [['link', { rel: 'icon', type: 'image/svg+xml', href: '/logo.svg' }]],
   themeConfig: {
-    repo: 'vitejs/docs-cn',
+    repo: 'vitejs/vite',
     logo: '/logo.svg',
     docsBranch: 'main',
     editLinks: true,
     editLinkText: '为此页提供修改建议',
 
-    /* algolia: {
-      apiKey: '<API_KEY>',
-      indexName: '<INDEX_NAME>'
-    }, */
+    algolia: {
+      apiKey: 'b573aa848fd57fb47d693b531297403c',
+      indexName: 'vitejs',
+      algoliaOptions: {
+        'facetFilters': ["tags:cn"]
+      },
+    },
 
     carbonAds: {
       carbon: 'CEBIEK3N',
