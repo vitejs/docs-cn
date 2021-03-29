@@ -6,7 +6,7 @@
 
 生产版本假设浏览器对 [原生 ES 模块动态导入](https://caniuse.com/es6-module-dynamic-import) 有基本支持。默认情况下，所有代码构建都会以 [支持原生 ESM script 标签的浏览器](https://caniuse.com/es6-module) 为目标。
 
-一个轻量级的 [动态导入 polyfill](https://github.com/GoogleChromeLabs/dynamic-import-polyfill) 也会同时自动注入。
+一个轻量级的 [对动态导入的 polyfill](https://github.com/GoogleChromeLabs/dynamic-import-polyfill) 也会同时自动注入。
 
 你也可以通过 [`build.target` 配置项](/config/#build-target) 指定构建目标，最低支持 `es2015`。
 

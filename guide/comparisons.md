@@ -16,7 +16,7 @@ Vite 支持广泛的功能，构建过程也集成度更高，以下功能目前
 - [库模式](./build#库模式)
 - [自动分割 CSS 代码](./features#CSS-代码分割)
 - [预优化的异步 chunk 加载](./features#异步-Chunk-加载优化)
-- [自动动态导入 polyfill](./features#动态导入-Polyfill)
+- [对动态导入自动 polyfill](./features#对动态导入的-Polyfill)
 - 官方 [兼容模式插件](https://github.com/vitejs/vite/tree/main/packages/plugin-legacy) 打包为现代/传统两种产物，并根据浏览器支持自动交付正确的版本。
 
 **更快的依赖预构建**
