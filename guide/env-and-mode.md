@@ -52,6 +52,19 @@ VITE_SOME_KEY=123
 
 :::
 
+### 智能提示
+
+Vite 会默认为 `import.meta.env` 提供类型定义。随着在 `.env[mode]` 文件中定义了越来越多自定义环境变量，你可能想要在代码中获取这些以 `VITE_` 为前缀的用户自定义环境变量的 TypeScript 智能提示。
+
+要想做到这一点，你可以在 `src` 目录下创建一个 `env.d.ts`，接着按下面这样定义 `ImportMetaEnv`：
+
+```typescript
+interface ImportMetaEnv {
+  VITE_APP_TITLE: string
+  // 更多环境变量...
+}
+```
+
 ## 模式
 
 默认情况下，开发服务器 (`serve` 命令) 运行在 `development` （开发）模式，而 `build` 命令运行在 `production` （生产）模式。
