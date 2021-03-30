@@ -553,6 +553,14 @@ export default ({ command, mode }) => {
 
   默认情况下，不在 `node_modules` 中的，链接的包不会被预构建。使用此选项可强制预构建链接的包。
 
+### optimizeDeps.keepNames
+
+- **类型：** `boolean`
+- **默认：** `false`
+
+  打包器有时需要重命名符号以避免冲突。设置此项为 `true` 可以在函数和类上保留 `name` 属性。
+
+  若想获取更多详情，请参阅 [`keepNames`](https://esbuild.github.io/api/#keep-names)
 
 ## SSR 选项
 
