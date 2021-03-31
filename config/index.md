@@ -409,6 +409,21 @@ export default ({ command, mode }) => {
 
   注意，如果代码包含不能被 `esbuild` 安全地编译的特性，那么构建将会失败。查看 [esbuild 文档](https://esbuild.github.io/api/#target) 获取更多细节。
 
+### build.polyfillDynamicImport
+
+- **类型：** `boolean`
+- **默认：** `true` unless `build.target` is `'esnext'`
+
+  决定是否自动注入 [对动态导入的 polyfill](https://github.com/GoogleChromeLabs/dynamic-import-polyfill)。
+
+  该 polyfill 将被自动注入进每个 `index.html` 入口的代理模块中。如果某此构建通过 `build.rollupOptions.input` 选项，配置成了使用非 HTML 的自定义入口，则有必要在你的自定义入口中手动引入此 polyfill：
+
+  ```js
+  import 'vite/dynamic-import-polyfill'
+  ```
+
+  注意：该 polyfill **不会** 应用于 [库模式](/guide/build#库模式)。如果你需要支持不含原生动态导入功能的浏览器，可能要避免在你的库中使用它。
+
 ### build.outDir
 
 - **类型：** `string`
@@ -537,6 +552,15 @@ export default ({ command, mode }) => {
 - **类型：** `string[]`
 
   默认情况下，不在 `node_modules` 中的，链接的包不会被预构建。使用此选项可强制预构建链接的包。
+
+### optimizeDeps.keepNames
+
+- **类型：** `boolean`
+- **默认：** `false`
+
+  打包器有时需要重命名符号以避免冲突。设置此项为 `true` 可以在函数和类上保留 `name` 属性。
+
+  若想获取更多详情，请参阅 [`keepNames`](https://esbuild.github.io/api/#keep-names)
 
 ## SSR 选项
 
