@@ -124,7 +124,7 @@ document.getElementById('foo').className = applyColor
 
 ### CSS 预处理器
 
-因为 Vite 只针对现代浏览器，所以建议使用原生 CSS 变量和实现 CSSWG 草案的 PostCSS 插件（例如 [postcss-nesting](https://github.com/jonathantneal/postcss-nesting)），并编写简单的、未来标准兼容的 CSS。
+因为 Vite 只针对现代浏览器，所以建议使用原生 CSS 变量和实现 CSSWG 草案的 PostCSS 插件（例如 [postcss-nesting](https://github.com/jonathantneal/postcss-nesting)）来编写简单的、符合未来标准的 CSS。
 
 话虽如此，但 Vite 也同时提供了对 `.scss`, `.sass`, `.less`, `.styl` 和 `.stylus` 文件的内置支持。没有必要为他们安装特定的 vite 插件，但相应的预处理器依赖本身必须安装：
 
