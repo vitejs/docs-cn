@@ -115,7 +115,7 @@ export default ({ command, mode }) => {
 
 - **类型：** ` (Plugin | Plugin[])[]`
 
-  将要用到的插件数组。Falsy<sup>[[1]](#footnote-1)</sup> 虚值的插件将被忽略，插件数组将被打平（flatten）。查看 [插件 API](/guide/api-plugin) 获取 Vite 插件的更多细节。
+  将要用到的插件数组。Falsy<sup>[[1]](#footnote-1)</sup> 虚值的插件将被忽略，插件数组将被扁平化（flatten）。查看 [插件 API](/guide/api-plugin) 获取 Vite 插件的更多细节。
 
 ### publicDir
 

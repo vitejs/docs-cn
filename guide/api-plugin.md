@@ -33,19 +33,21 @@ Vite 插件扩展了设计出色的 Rollup 接口，带有一些 Vite 独有的�
 // vite.config.js
 import vitePlugin from 'vite-plugin-feature'
 import rollupPlugin from 'rollup-plugin-feature'
+
 export default {
   plugins: [vitePlugin(), rollupPlugin()]
 }
 ```
 
-Falsy<sup>[[1]](#footnote-1)</sup> 虚值的插件将被忽略，可以用来轻松地激活或停用插件。
+Falsy<sup>[[1]](#footnote-1)</sup> 虚值的插件将被忽略，可以用来轻松地启用或停用插件。
 
-`plugins` 也可以接受将多个插件作为单个元素的预设。这对于使用多个插件实现的复杂特性（如框架集成）很有用。该数组将在内部被打平（flatten）。
+`plugins` 也可以接受将多个插件作为单个元素的预设。这对于使用多个插件实现的复杂特性（如框架集成）很有用。该数组将在内部被扁平化（flatten）。
 
 ```js
 // 框架插件
 import frameworkRefresh from 'vite-plugin-framework-refresh'
 import frameworkDevtools from 'vite-plugin-framework-devtools'
+
 export default function framework(config) {
   return [frameworkRefresh(config), frameworkDevTools(config)]
 }
@@ -54,6 +56,7 @@ export default function framework(config) {
 ```js
 // vite.config.js
 import framework from 'vite-plugin-framework'
+
 export default {
   plugins: [framework()]
 }
