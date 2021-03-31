@@ -85,6 +85,10 @@ module.exports = {
               link: '/guide/features'
             },
             {
+              text: '使用插件',
+              link: '/guide/using-plugins'
+            },
+            {
               text: '依赖预构建',
               link: '/guide/dep-pre-bundling'
             },

@@ -115,7 +115,7 @@ export default ({ command, mode }) => {
 
 - **类型：** ` (Plugin | Plugin[])[]`
 
-  将要用到的插件数组。查看 [插件 API](/guide/api-plugin) 获取 Vite 插件的更多细节。
+  将要用到的插件数组。Falsy<sup>[[1]](#footnote-1)</sup> 虚值的插件将被忽略，插件数组将被打平（flatten）。查看 [插件 API](/guide/api-plugin) 获取 Vite 插件的更多细节。
 
 ### publicDir
 
@@ -557,3 +557,9 @@ SSR 选项可能会在未来版本中进行调整。
 - **类型：** `string[]`
 
   列出的是防止被 SSR 外部化依赖项。
+
+<small>
+译者注：
+<br>
+<a id="footnote-1" href="https://developer.mozilla.org/zh-CN/docs/Glossary/Falsy">[1] Falsy 虚值 MDN 文档</a>
+</small>

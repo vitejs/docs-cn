@@ -1,6 +1,6 @@
 # Plugin API
 
-Vite 插件扩展了设计出色的 Rollup 接口，带有一些 vite 独有的配置项。因此，你只需要编写一个 Vite 插件，就可以同时为开发环境和生产环境工作。
+Vite 插件扩展了设计出色的 Rollup 接口，带有一些 Vite 独有的配置项。因此，你只需要编写一个 Vite 插件，就可以同时为开发环境和生产环境工作。
 
 **推荐在阅读下面的章节之前，首先阅读下 [Rollup 插件文档](https://rollupjs.org/guide/en/#plugin-development)**
 
@@ -24,6 +24,40 @@ Vite 插件扩展了设计出色的 Rollup 接口，带有一些 vite 独有的�
 - `vite-plugin-vue-` 前缀作为 Vue 插件
 - `vite-plugin-react-` 前缀作为 React 插件
 - `vite-plugin-svelte-` 前缀作为 Svelte 插件
+
+## 插件配置
+
+用户会将插件添加到项目的 `devDependencies` 中并使用数组形式的 `plugins` 选项配置它们。
+
+```js
+// vite.config.js
+import vitePlugin from 'vite-plugin-feature'
+import rollupPlugin from 'rollup-plugin-feature'
+export default {
+  plugins: [vitePlugin(), rollupPlugin()]
+}
+```
+
+Falsy<sup>[[1]](#footnote-1)</sup> 虚值的插件将被忽略，可以用来轻松地激活或停用插件。
+
+`plugins` 也可以接受将多个插件作为单个元素的预设。这对于使用多个插件实现的复杂特性（如框架集成）很有用。该数组将在内部被打平（flatten）。
+
+```js
+// 框架插件
+import frameworkRefresh from 'vite-plugin-framework-refresh'
+import frameworkDevtools from 'vite-plugin-framework-devtools'
+export default function framework(config) {
+  return [frameworkRefresh(config), frameworkDevTools(config)]
+}
+```
+
+```js
+// vite.config.js
+import framework from 'vite-plugin-framework'
+export default {
+  plugins: [framework()]
+}
+```
 
 ## 简单示例
 
@@ -359,6 +393,19 @@ Vite 插件也可以提供钩子来服务于特定的 Vite 目标。这些钩子
 - Vite 构建用的插件
 - 带有 `enforce: 'post'` 的用户插件
 
+## 情景应用
+
+默认情况下插件在部署（serve）和构建（build）模式中都会调用。如果插件只需要在服务或构建期间有条件地应用，请使用 `apply` 属性指明它们仅在 `'build'` 或 `'serve'` 模式时调用：
+
+```js
+function myPlugin() {
+  return {
+    name: 'build-only',
+    apply: 'build' // 或 'serve'
+  }
+}
+```
+
 ## Rollup 插件兼容性
 
 相当数量的 Rollup 插件将直接作为 Vite 插件工作（例如：`@rollup/plugin-alias` 或 `@rollup/plugin-json`），但并不是所有的，因为有些插件钩子在非构建式的开发服务器上下文中没有意义。
@@ -380,13 +427,13 @@ export default {
     {
       ...example(),
       enforce: 'post',
-      apply: 'build'
+      apply: 'build' // 或者 'serve'
     }
   ]
 }
 ```
 
-查看 [Vite Rollup 插件](https://vite-rollup-plugins.patak.dev) 获取兼容的官方 rollup 插件列表及其使用指南。
+查看 [Vite Rollup 插件](https://vite-rollup-plugins.patak.dev) 获取兼容的官方 Rollup 插件列表及其使用指南。
 
 ## 路径规范化
 
@@ -399,3 +446,9 @@ import { normalizePath } from 'vite'
 normalizePath('foo\\bar') // 'foo/bar'
 normalizePath('foo/bar') // 'foo/bar'
 ```
+
+<small>
+译者注：
+<br>
+<a id="footnote-1" href="https://developer.mozilla.org/zh-CN/docs/Glossary/Falsy">[1] Falsy 虚值 MDN 文档</a>
+</small>
