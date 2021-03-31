@@ -35,7 +35,10 @@ import vitePlugin from 'vite-plugin-feature'
 import rollupPlugin from 'rollup-plugin-feature'
 
 export default {
-  plugins: [vitePlugin(), rollupPlugin()]
+  plugins: [
+    vitePlugin(),
+    rollupPlugin()
+  ]
 }
 ```
 
@@ -49,7 +52,10 @@ import frameworkRefresh from 'vite-plugin-framework-refresh'
 import frameworkDevtools from 'vite-plugin-framework-devtools'
 
 export default function framework(config) {
-  return [frameworkRefresh(config), frameworkDevTools(config)]
+  return [
+    frameworkRefresh(config),
+    frameworkDevTools(config)
+  ]
 }
 ```
 
@@ -58,7 +64,9 @@ export default function framework(config) {
 import framework from 'vite-plugin-framework'
 
 export default {
-  plugins: [framework()]
+  plugins: [
+    framework()
+  ]
 }
 ```
 
