@@ -63,7 +63,12 @@ module.exports = {
         ]
       },
       {
-        text: '多语言', items: [
+        text: '多语言',
+        items: [
+          {
+            text: '简体中文',
+            link: 'https://cn.vitejs.dev'
+          },
           {
             text: 'English',
             link: 'https://vitejs.dev'
