@@ -1,8 +1,8 @@
-# Configuring Vite
+# Configuring Vite {#configuring-vite}
 
-## Config File
+## Config File {#config-file}
 
-### Config File Resolving
+### Config File Resolving {#config-file-resolving}
 
 When running `vite` from the command line, Vite will automatically try to resolve a config file named `vite.config.js` inside [project root](/guide/#index-html-and-project-root).
 
@@ -23,7 +23,7 @@ You can also explicitly specify a config file to use with the `--config` CLI opt
 vite --config my-config.js
 ```
 
-### Config Intellisense
+### Config Intellisense {#config-intellisense}
 
 Since Vite ships with TypeScript typings, you can leverage your IDE's intellisense with jsdoc type hints:
 
@@ -50,7 +50,7 @@ export default defineConfig({
 
 Vite also directly supports TS config files. You can use `vite.config.ts` with the `defineConfig` helper as well.
 
-### Conditional Config
+### Conditional Config {#conditional-config}
 
 If the config needs to conditional determine options based on the command (`serve` or `build`) or the [mode](/guide/env-and-mode) being used, it can export a function instead:
 
@@ -68,7 +68,7 @@ export default ({ command, mode }) => {
 }
 ```
 
-### Async Config
+### Async Config {#async-config}
 
 If the config needs to call async function, it can export a async function instead:
 
@@ -81,9 +81,9 @@ export default async ({ command, mode }) => {
 }
 ```
 
-## Shared Options
+## Shared Options {#shared-options}
 
-### root
+### root {#root}
 
 - **Type:** `string`
 - **Default:** `process.cwd()`
@@ -92,7 +92,7 @@ export default async ({ command, mode }) => {
 
   See [Project Root](/guide/#index-html-and-project-root) for more details.
 
-### base
+### base {#base}
 
 - **Type:** `string`
 - **Default:** `/`
@@ -105,7 +105,7 @@ export default async ({ command, mode }) => {
 
   See [Public Base Path](/guide/build#public-base-path) for more details.
 
-### mode
+### mode {#mode}
 
 - **Type:** `string`
 - **Default:** `'development'` for serve, `'production'` for build
@@ -114,7 +114,7 @@ export default async ({ command, mode }) => {
 
   See [Env Variables and Modes](/guide/env-and-mode) for more details.
 
-### define
+### define {#define}
 
 - **Type:** `Record<string, string>`
 
@@ -124,13 +124,13 @@ export default async ({ command, mode }) => {
 
   - Replacements are performed only when the match is surrounded by word boundaries (`\b`).
 
-### plugins
+### plugins {#plugins}
 
 - **Type:** ` (Plugin | Plugin[])[]`
 
   Array of plugins to use. Falsy plugins are ignored and arrays of plugins are flattened. See [Plugin API](/guide/api-plugin) for more details on Vite plugins.
 
-### publicDir
+### publicDir {#publicdir}
 
 - **Type:** `string`
 - **Default:** `"public"`
@@ -139,7 +139,7 @@ export default async ({ command, mode }) => {
 
   See [The `public` Directory](/guide/assets#the-public-directory) for more details.
 
-### resolve.alias
+### resolve.alias {#resolvealias}
 
 - **Type:**
   `Record<string, string> | Array<{ find: string | RegExp, replacement: string }>`
@@ -150,14 +150,14 @@ export default async ({ command, mode }) => {
 
   More advanced custom resolution can be achieved through [plugins](/guide/api-plugin).
 
-### resolve.dedupe
+### resolve.dedupe {#resolvededupe}
 
 - **Type:** `string[]`
 
   If you have duplicated copies of the same dependency in your app (likely due to hoisting or linked packages in monorepos), use this option to force Vite to always resolve listed dependencies to the same copy (from
   project root).
 
-### resolve.conditions
+### resolve.conditions {#resolveconditions}
 
 - **Type:** `string[]`
 
@@ -180,21 +180,21 @@ export default async ({ command, mode }) => {
 
   Vite has a list of "allowed conditions" and will match the first condition that is in the allowed list. The default allowed conditions are: `import`, `module`, `browser`, `default`, and `production/development` based on current mode. The `resolve.conditions` config option allows specifying additional allowed conditions.
 
-### resolve.mainFields
+### resolve.mainFields {#resolvemainfields}
 
 - **Type:** `string[]`
 - **Default:** `['module', 'jsnext:main', 'jsnext']`
 
   List of fields in `package.json` to try when resolving a package's entry point. Note this takes lower precedence than conditional exports resolved from the `exports` field: if an entry point is successfully resolved from `exports`, the main field will be ignored.
 
-### resolve.extensions
+### resolve.extensions {#resolveextensions}
 
 - **Type:** `string[]`
 - **Default:** `['.mjs', '.js', '.ts', '.jsx', '.tsx', '.json']`
 
   List of file extensions to try for imports that omit extensions. Note it is **NOT** recommended to omit extensions for custom import types (e.g. `.vue`) since it can interfere with IDE and type support.
 
-### css.modules
+### css.modules {#cssmodules}
 
 - **Type:**
 
@@ -215,7 +215,7 @@ export default async ({ command, mode }) => {
 
   Configure CSS modules behavior. The options are passed on to [postcss-modules](https://github.com/css-modules/postcss-modules).
 
-### css.postcss
+### css.postcss {#csspostcss}
 
 - **Type:** `string | (postcss.ProcessOptions & { plugins?: postcss.Plugin[] })`
 
@@ -223,7 +223,7 @@ export default async ({ command, mode }) => {
 
   Note if an inline config is provided, Vite will not search for other PostCSS config sources.
 
-### css.preprocessorOptions
+### css.preprocessorOptions {#csspreprocessoroptions}
 
 - **Type:** `Record<string, object>`
 
@@ -241,14 +241,14 @@ export default async ({ command, mode }) => {
   }
   ```
 
-### json.namedExports
+### json.namedExports {#jsonnamedexports}
 
 - **Type:** `boolean`
 - **Default:** `true`
 
   Whether to support named imports from `.json` files.
 
-### json.stringify
+### json.stringify {#jsonstringify}
 
 - **Type:** `boolean`
 - **Default:** `false`
@@ -257,7 +257,7 @@ export default async ({ command, mode }) => {
 
   Enabling this disables named imports.
 
-### esbuild
+### esbuild {#esbuild}
 
 - **Type:** `ESBuildOptions | false`
 
@@ -286,7 +286,7 @@ export default async ({ command, mode }) => {
 
   Set to `false` to disable ESbuild transforms.
 
-### assetsInclude
+### assetsInclude {#assetsinclude}
 
 - **Type:** `string | RegExp | (string | RegExp)[]`
 - **Related:** [Static Asset Handling](/guide/assets)
@@ -299,40 +299,40 @@ export default async ({ command, mode }) => {
 
   The built-in asset type list can be found [here](https://github.com/vitejs/vite/blob/main/packages/vite/src/node/constants.ts).
 
-### logLevel
+### logLevel {#loglevel}
 
 - **Type:** `'info' | 'warn' | 'error' | 'silent'`
 
   Adjust console output verbosity. Default is `'info'`.
 
-### clearScreen
+### clearScreen {#clearscreen}
 
 - **Type:** `boolean`
 - **Default:** `true`
 
   Set to `false` to prevent Vite from clearing the terminal screen when logging certain messages. Via command line, use `--clearScreen false`.
 
-## Server Options
+## Server Options {#server-options}
 
-### server.host
+### server.host {#serverhost}
 
 - **Type:** `string`
 
   Specify server hostname.
 
-### server.port
+### server.port {#serverport}
 
 - **Type:** `number`
 
   Specify server port. Note if the port is already being used, Vite will automatically try the next available port so this may not be the actual port the server ends up listening on.
 
-### server.strictPort
+### server.strictPort {#serverstrictport}
 
 - **Type:** `boolean`
 
   Set to `true` to exit if port is already in use, instead of automatically try the next available port.
 
-### server.https
+### server.https {#serverhttps}
 
 - **Type:** `boolean | https.ServerOptions`
 
@@ -340,7 +340,7 @@ export default async ({ command, mode }) => {
 
   The value can also be an [options object](https://nodejs.org/api/https.html#https_https_createserver_options_requestlistener) passed to `https.createServer()`.
 
-### server.open
+### server.open {#serveropen}
 
 - **Type:** `boolean | string`
 
@@ -356,7 +356,7 @@ export default async ({ command, mode }) => {
   }
   ```
 
-### server.proxy
+### server.proxy {#serverproxy}
 
 - **Type:** `Record<string, string | ProxyOptions>`
 
@@ -389,20 +389,20 @@ export default async ({ command, mode }) => {
   }
   ```
 
-### server.cors
+### server.cors {#servercors}
 
 - **Type:** `boolean | CorsOptions`
 
   Configure CORS for the dev server. This is enabled by default and allows any origin. Pass an [options object](https://github.com/expressjs/cors) to fine tune the behavior or `false` to disable.
 
-### server.force
+### server.force {#serverforce}
 
 - **Type:** `boolean`
 - **Related:** [Dependency Pre-Bundling](/guide/dep-pre-bundling)
 
   Set to `true` to force dependency pre-bundling.
 
-### server.hmr
+### server.hmr {#serverhmr}
 
 - **Type:** `boolean | { protocol?: string, host?: string, port?: number, path?: string, timeout?: number, overlay?: boolean }`
 
@@ -410,15 +410,15 @@ export default async ({ command, mode }) => {
 
   Set `server.hmr.overlay` to `false` to disable the server error overlay.
 
-### server.watch
+### server.watch {#serverwatch}
 
 - **Type:** `object`
 
   File system watcher options to pass on to [chokidar](https://github.com/paulmillr/chokidar#api).
 
-## Build Options
+## Build Options {#build-options}
 
-### build.target
+### build.target {#buildtarget}
 
 - **Type:** `string`
 - **Default:** `'modules'`
@@ -432,7 +432,7 @@ export default async ({ command, mode }) => {
 
   Note the build will fail if the code contains features that cannot be safely transpiled by esbuild. See [esbuild docs](https://esbuild.github.io/content-types/#javascript) for more details.
 
-### build.polyfillDynamicImport
+### build.polyfillDynamicImport {#buildpolyfilldynamicimport}
 
 - **Type:** `boolean`
 - **Default:** `true` unless `build.target` is `'esnext'`
@@ -447,28 +447,28 @@ export default async ({ command, mode }) => {
 
   Note: the polyfill does **not** apply to [Library Mode](/guide/build#library-mode). If you need to support browsers without native dynamic import, you should probably avoid using it in your library.
 
-### build.outDir
+### build.outDir {#buildoutdir}
 
 - **Type:** `string`
 - **Default:** `dist`
 
   Specify the output directory (relative to [project root](/guide/#index-html-and-project-root)).
 
-### build.assetsDir
+### build.assetsDir {#buildassetsdir}
 
 - **Type:** `string`
 - **Default:** `assets`
 
   Specify the directory to nest generated assets under (relative to `build.outDir`).
 
-### build.assetsInlineLimit
+### build.assetsInlineLimit {#buildassetsinlinelimit}
 
 - **Type:** `number`
 - **Default:** `4096` (4kb)
 
   Imported or referenced assets that are smaller than this threshold will be inlined as base64 URLs to avoid extra http requests. Set to `0` to disable inlining altogether.
 
-### build.cssCodeSplit
+### build.cssCodeSplit {#buildcsscodesplit}
 
 - **Type:** `boolean`
 - **Default:** `true`
@@ -477,33 +477,33 @@ export default async ({ command, mode }) => {
 
   If disabled, all CSS in the entire project will be extracted into a single CSS file.
 
-### build.sourcemap
+### build.sourcemap {#buildsourcemap}
 
 - **Type:** `boolean | 'inline'`
 - **Default:** `false`
 
   Generate production source maps.
 
-### build.rollupOptions
+### build.rollupOptions {#buildrollupoptions}
 
 - **Type:** [`RollupOptions`](https://rollupjs.org/guide/en/#big-list-of-options)
 
   Directly customize the underlying Rollup bundle. This is the same as options that can be exported from a Rollup config file and will be merged with Vite's internal Rollup options. See [Rollup options docs](https://rollupjs.org/guide/en/#big-list-of-options) for more details.
 
-### build.commonjsOptions
+### build.commonjsOptions {#buildcommonjsoptions}
 
 - **Type:** [`RollupCommonJSOptions`](https://github.com/rollup/plugins/tree/master/packages/commonjs#options)
 
   Options to pass on to [@rollup/plugin-commonjs](https://github.com/rollup/plugins/tree/master/packages/commonjs).
 
-### build.lib
+### build.lib {#buildlib}
 
 - **Type:** `{ entry: string, name?: string, formats?: ('es' | 'cjs' | 'umd' | 'iife')[] }`
 - **Related:** [Library Mode](/guide/build#library-mode)
 
   Build as a library. `entry` is required since the library cannot use HTML as entry. `name` is the exposed global variable and is required when `formats` includes `'umd'` or `'iife'`. Default `formats` are `['es', 'umd']`.
 
-### build.manifest
+### build.manifest {#buildmanifest}
 
 - **Type:** `boolean`
 - **Default:** `false`
@@ -511,58 +511,58 @@ export default async ({ command, mode }) => {
 
   When set to `true`, the build will also generate a `manifest.json` file that contains mapping of non-hashed asset filenames to their hashed versions, which can then be used by a server framework to render the correct asset links.
 
-### build.minify
+### build.minify {#buildminify}
 
 - **Type:** `boolean | 'terser' | 'esbuild'`
 - **Default:** `'terser'`
 
   Set to `false` to disable minification, or specify the minifier to use. The default is [Terser](https://github.com/terser/terser) which is slower but produces smaller bundles in most cases. Esbuild minification is significantly faster, but will result in slightly larger bundles.
 
-### build.terserOptions
+### build.terserOptions {#buildterseroptions}
 
 - **Type:** `TerserOptions`
 
   Additional [minify options](https://terser.org/docs/api-reference#minify-options) to pass on to Terser.
 
-### build.cleanCssOptions
+### build.cleanCssOptions {#buildcleancssoptions}
 
 - **Type:** `CleanCSS.Options`
 
   Constructor options to pass on to [clean-css](https://github.com/jakubpawlowicz/clean-css#constructor-options).
 
-### build.write
+### build.write {#buildwrite}
 
 - **Type:** `boolean`
 - **Default:** `true`
 
   Set to `false` to disable writing the bundle to disk. This is mostly used in [programmatic `build()` calls](/guide/api-javascript#build) where further post processing of the bundle is needed before writing to disk.
 
-### build.emptyOutDir
+### build.emptyOutDir {#buildemptyoutdir}
 
 - **Type:** `boolean`
 - **Default:** `true` if `outDir` is inside `root`
 
   By default, Vite will empty the `outDir` on build if it is inside project root. It will emit a warning if `outDir` is outside of root to avoid accidentially removing important files. You can explicitly set this option to suppress the warning. This is also available via command line as `--emptyOutDir`.
 
-### build.brotliSize
+### build.brotliSize {#buildbrotlisize}
 
 - **Type:** `boolean`
 - **Default:** `true`
 
   Enable/disable brotli-compressed size reporting. Compressing large output files can be slow, so disabling this may increase build performance for large projects.
 
-### build.chunkSizeWarningLimit
+### build.chunkSizeWarningLimit {#buildchunksizewarninglimit}
 
 - **Type:** `number`
 - **Default:** `500`
 
   Limit for chunk size warnings (in kbs).
 
-## Dep Optimization Options
+## Dep Optimization Options {#dep-optimization-options}
 
 - **Related:** [Dependency Pre-Bundling](/guide/dep-pre-bundling)
 
-### optimizeDeps.entries
+### optimizeDeps.entries {#optimizedepsentries}
 
 - **Type:** `string | string[]`
 
@@ -570,19 +570,19 @@ export default async ({ command, mode }) => {
 
   If neither of these fit your needs, you can specify custom entries using this option - the value should be a [fast-glob pattern](https://github.com/mrmlnc/fast-glob#basic-syntax) or array of patterns that are relative from vite project root. This will overwrite default entries inference.
 
-### optimizeDeps.exclude
+### optimizeDeps.exclude {#optimizedepsexclude}
 
 - **Type:** `string[]`
 
   Dependencies to exclude from pre-bundling.
 
-### optimizeDeps.include
+### optimizeDeps.include {#optimizedepsinclude}
 
 - **Type:** `string[]`
 
   By default, linked packages not inside `node_modules` are not pre-bundled. Use this option to force a linked package to be pre-bundled.
 
-### optimizeDeps.keepNames
+### optimizeDeps.keepNames {#optimizedepskeepnames}
 
 - **Type:** `boolean`
 - **Default:** `false`
@@ -591,7 +591,7 @@ export default async ({ command, mode }) => {
   Set this to `true` to keep the `name` property on functions and classes.
   See [`keepNames`](https://esbuild.github.io/api/#keep-names).
 
-## SSR Options
+## SSR Options {#ssr-options}
 
 :::warning Experimental
 SSR options may be adjusted in minor releases.
@@ -599,13 +599,13 @@ SSR options may be adjusted in minor releases.
 
 - **Related:** [SSR Externals](/guide/ssr#ssr-externals)
 
-### ssr.external
+### ssr.external {#ssrexternal}
 
 - **Type:** `string[]`
 
   Force externalize dependencies for SSR.
 
-### ssr.noExternal
+### ssr.noExternal {#ssrnoexternal}
 
 - **Type:** `string[]`
 

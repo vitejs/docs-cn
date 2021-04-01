@@ -1,8 +1,8 @@
-# JavaScript API
+# JavaScript API {#javascript-api}
 
 Vite's JavaScript APIs are fully typed, and it's recommended to use TypeScript or enable JS type checking in VSCode to leverage the intellisense and validation.
 
-## `createServer`
+## `createServer` {#createserver}
 
 **Type Signature**
 
@@ -28,13 +28,13 @@ const { createServer } = require('vite')
 })()
 ```
 
-## `InlineConfig`
+## `InlineConfig` {#inlineconfig}
 
 The `InlineConfig` interface extends `UserConfig` with additional properties:
 
 - `configFile`: specify config file to use. If not set, Vite will try to automatically resolve one from project root. Set to `false` to disable auto resolving.
 
-## `ViteDevServer`
+## `ViteDevServer` {#vitedevserver}
 
 ```ts
 interface ViteDevServer {
@@ -118,7 +118,7 @@ interface ViteDevServer {
 }
 ```
 
-## `build`
+## `build` {#build}
 
 **Type Signature**
 
@@ -147,7 +147,7 @@ const { build } = require('vite')
 })()
 ```
 
-## `resolveConfig`
+## `resolveConfig` {#resolveconfig}
 
 **Type Signature**
 

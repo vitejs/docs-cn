@@ -1,4 +1,4 @@
-# Server-Side Rendering
+# Server-Side Rendering {#server-side-rendering}
 
 :::warning Experimental
 SSR support is still experimental and you may encounter bugs and unsupported use cases. Proceed at your own risk.
@@ -14,14 +14,14 @@ The following guide also assumes prior experience working with SSR in your frame
 If you have questions, the community is usually helpful at [Vite Discord's #ssr channel](https://discord.gg/PkbxgzPhJv).
 :::
 
-## Example Projects
+## Example Projects {#example-projects}
 
 Vite provides built-in support for server-side rendering (SSR). The Vite playground contains example SSR setups for Vue 3 and React, which can be used as references for this guide:
 
 - [Vue 3](https://github.com/vitejs/vite/tree/main/packages/playground/ssr-vue)
 - [React](https://github.com/vitejs/vite/tree/main/packages/playground/ssr-react)
 
-## Source Structure
+## Source Structure {#source-structure}
 
 A typical SSR application will have the following source file structure:
 
@@ -42,7 +42,7 @@ The `index.html` will need to reference `entry-client.js` and include a placehol
 
 You can use any placeholder you prefer instead of `<!--ssr-outlet-->`, as long as it can be precisely replaced.
 
-## Conditional Logic
+## Conditional Logic {#conditional-logic}
 
 If you need to perform conditional logic based on SSR vs. client, you can use
 
@@ -54,7 +54,7 @@ if (import.meta.env.SSR) {
 
 This is statically replaced during build so it will allow tree-shaking of unused branches.
 
-## Setting Up the Dev Server
+## Setting Up the Dev Server {#setting-up-the-dev-server}
 
 When building an SSR app, you likely want to have full control over your main server and decouple Vite from the production environment. It is therefore recommended to use Vite in middleware mode. Here is an example with [express](https://expressjs.com/):
 
@@ -141,7 +141,7 @@ The `dev` script in `package.json` should also be changed to use the server scri
   }
 ```
 
-## Building for Production
+## Building for Production {#building-for-production}
 
 To ship an SSR project for production, we need to:
 
@@ -172,7 +172,7 @@ Then, in `server.js` we need to add some production specific logic by checking `
 
 Refer to the [Vue](https://github.com/vitejs/vite/tree/main/packages/playground/ssr-vue) and [React](https://github.com/vitejs/vite/tree/main/packages/playground/ssr-react) demos for working setup.
 
-## Generating Preload Directives
+## Generating Preload Directives {#generating-preload-directives}
 
 `vite build` supports the `--ssrManifest` flag which will generate `ssr-manifest.json` in build output directory:
 
@@ -196,11 +196,11 @@ const html = await vueServerRenderer.renderToString(app, ctx)
 
 In the production branch of `server.js` we need to read and pass the manifest to the `render` function exported by `src/entry-server.js`. This would provide us with enough information to render preload directives for files used by async routes! See [demo source](https://github.com/vitejs/vite/blob/main/packages/playground/ssr-vue/src/entry-server.js) for full example.
 
-## Pre-Rendering / SSG
+## Pre-Rendering / SSG {#pre-rendering--ssg}
 
 If the routes and the data needed for certain routes are known ahead of time, we can pre-render these routes into static HTML using the same logic as production SSR. This can also be considered a form of Static-Site Generation (SSG). See [demo pre-render script](https://github.com/vitejs/vite/blob/main/packages/playground/ssr-vue/prerender.js) for working example.
 
-## SSR Externals
+## SSR Externals {#ssr-externals}
 
 Many dependencies ship both ESM and CommonJS files. When running SSR, a dependency that provides CommonJS builds can be "externalized" from Vite's SSR transform / module system to speed up both dev and build. For example, instead of pulling in the pre-bundled ESM version of React and then transforming it back to be Node.js-compatible, it is more efficient to simply `require('react')` instead. It also greatly improves the speed of the SSR bundle build.
 
@@ -218,7 +218,7 @@ In the future, this heuristics will likely improve to detect if the project has 
 If you have configured aliases that redirects one package to another, you may want to alias the actual `node_modules` packages instead to make it work for SSR externalized dependencies. Both [Yarn](https://classic.yarnpkg.com/en/docs/cli/add/#toc-yarn-add-alias) and [pnpm](https://pnpm.js.org/en/aliases) support aliasing via the `npm:` prefix.
 :::
 
-## SSR-specific Plugin Logic
+## SSR-specific Plugin Logic {#ssr-specific-plugin-logic}
 
 Some frameworks such as Vue or Svelte compiles components into different formats based on client vs. SSR. To support conditional transforms, Vite passes an additional `ssr` argument to the following plugin hooks:
 

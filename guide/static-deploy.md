@@ -1,4 +1,4 @@
-# Deploying a Static Site
+# Deploying a Static Site {#deploying-a-static-site}
 
 The following guides are based on some shared assumptions:
 
@@ -21,7 +21,7 @@ It is important to note that `vite preview` is intended for previewing the build
 These guides provide instructions for performing a static deployment of your Vite site. Vite also has experimental support for Server Side Rendering. SSR refers to front-end frameworks that support running the same application in Node.js, pre-rendering it to HTML, and finally hydrating it on the client. Check out the [SSR Guide](./ssr) to learn about this feature. On the other hand, if you are looking for integration with traditional server-side frameworks, check out the [Backend Integration guide](./backend-integration) instead.
 :::
 
-## Building The App
+## Building The App {#building-the-app}
 
 You may run `npm run build` command to build the app.
 
@@ -31,7 +31,7 @@ $ npm run build
 
 By default, the build output will be placed at `dist`. You may deploy this `dist` folder to any of your preferred platforms.
 
-### Testing The App Locally
+### Testing The App Locally {#testing-the-app-locally}
 
 Once you've built the app, you may test it locally by running `npm run preview` command.
 
@@ -54,7 +54,7 @@ You may configure the port of the server py passing `--port` flag as an argument
 
 Now the `preview` method will launch the server at http://localhost:8080.
 
-## GitHub Pages
+## GitHub Pages {#github-pages}
 
 1. Set the correct `base` in `vite.config.js`.
 
@@ -96,7 +96,7 @@ Now the `preview` method will launch the server at http://localhost:8080.
 You can also run the above script in your CI setup to enable automatic deployment on each push.
 :::
 
-### GitHub Pages and Travis CI
+### GitHub Pages and Travis CI {#github-pages-and-travis-ci}
 
 1. Set the correct `base` in `vite.config.js`.
 
@@ -130,7 +130,7 @@ You can also run the above script in your CI setup to enable automatic deploymen
        branch: master
    ```
 
-## GitLab Pages and GitLab CI
+## GitLab Pages and GitLab CI {#gitlab-pages-and-gitlab-ci}
 
 1. Set the correct `base` in `vite.config.js`.
 
@@ -158,7 +158,7 @@ You can also run the above script in your CI setup to enable automatic deploymen
        - master
    ```
 
-## Netlify
+## Netlify {#netlify}
 
 1. On [Netlify](https://netlify.com), setup up a new project from GitHub with the following settings:
 
@@ -167,7 +167,7 @@ You can also run the above script in your CI setup to enable automatic deploymen
 
 2. Hit the deploy button.
 
-## Google Firebase
+## Google Firebase {#google-firebase}
 
 1. Make sure you have [firebase-tools](https://www.npmjs.com/package/firebase-tools) installed.
 
@@ -196,7 +196,7 @@ You can also run the above script in your CI setup to enable automatic deploymen
 
 3. After running `npm run build`, deploy using the command `firebase deploy`.
 
-## Surge
+## Surge {#surge}
 
 1. First install [surge](https://www.npmjs.com/package/surge), if you haven’t already.
 
@@ -206,7 +206,7 @@ You can also run the above script in your CI setup to enable automatic deploymen
 
 You can also deploy to a [custom domain](http://surge.sh/help/adding-a-custom-domain) by adding `surge dist yourdomain.com`.
 
-## Heroku
+## Heroku {#heroku}
 
 1. Install [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli).
 
@@ -255,7 +255,7 @@ You can also deploy to a [custom domain](http://surge.sh/help/adding-a-custom-do
    $ heroku open
    ```
 
-## Vercel
+## Vercel {#vercel}
 
 To deploy your Vite app with a [Vercel for Git](https://vercel.com/docs/git), make sure it has been pushed to a Git repository.
 

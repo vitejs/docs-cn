@@ -1,9 +1,9 @@
-# Static Asset Handling
+# Static Asset Handling {#static-asset-handling}
 
 - Related: [Public Base Path](./build#public-base-path)
 - Related: [`assetsInclude` config option](/config/#assetsinclude)
 
-## Importing Asset as URL
+## Importing Asset as URL {#importing-asset-as-url}
 
 Importing a static asset will return the resolved public URL when it is served:
 
@@ -26,7 +26,7 @@ The behavior is similar to webpack's `file-loader`. The difference is that the i
 
 - Assets smaller in bytes than the [`assetsInlineLimit` option](/config/#assetsinlinelimit) will be inlined as base64 data URLs.
 
-### Explicit URL Imports
+### Explicit URL Imports {#explicit-url-imports}
 
 Assets that are not included in the internal list or in `assetsInclude`, can be explicitly imported as an URL using the `?url` suffix. This is useful, for example, to import [Houdini Paint Worklets](https://houdini.how/usage).
 
@@ -35,7 +35,7 @@ import workletURL from 'extra-scalloped-border/worklet.js?url'
 CSS.paintWorklet.addModule(workletURL)
 ```
 
-### Importing Asset as String
+### Importing Asset as String {#importing-asset-as-string}
 
 Assets can be imported as strings using the `?raw` suffix.
 
@@ -43,7 +43,7 @@ Assets can be imported as strings using the `?raw` suffix.
 import shaderString from './shader.glsl?raw'
 ```
 
-### Importing Script as a Worker
+### Importing Script as a Worker {#importing-script-as-a-worker}
 
 Scripts can be imported as web workers with the `?worker` suffix.
 
@@ -60,7 +60,7 @@ import InlineWorker from './shader.js?worker&inline'
 
 Check out the [Web Worker section](./features.md#web-workers) for more details.
 
-## The `public` Directory
+## The `public` Directory {#the-public-directory}
 
 If you have assets that are:
 

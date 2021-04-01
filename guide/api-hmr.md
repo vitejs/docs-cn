@@ -1,4 +1,4 @@
-# HMR API
+# HMR API {#hmr-api}
 
 :::tip Note
 This is the client HMR API. For handling HMR update in plugins, see [handleHotUpdate](./api-plugin#handlehotupdate).
@@ -27,7 +27,7 @@ interface ImportMeta {
 }
 ```
 
-## Required Conditional Guard
+## Required Conditional Guard {#required-conditional-guard}
 
 First of all, make sure to guard all HMR API usage with a conditional block so that the code can be tree-shaken in production:
 
@@ -37,7 +37,7 @@ if (import.meta.hot) {
 }
 ```
 
-## `hot.accept(cb)`
+## `hot.accept(cb)` {#hotacceptcb}
 
 For a module to self-accept, use `import.meta.hot.accept` with a callback which receives the updated module:
 
@@ -57,7 +57,7 @@ Note that Vite's HMR does not actually swap the originally imported module: if a
 
 This simplified HMR implementation is sufficient for most dev use cases, while allowing us to skip the expensive work of generating proxy modules.
 
-## `hot.accept(deps, cb)`
+## `hot.accept(deps, cb)` {#hotacceptdeps-cb}
 
 A module can also accept updates from direct dependencies without reloading itself:
 
@@ -82,7 +82,7 @@ if (import.meta.hot) {
 }
 ```
 
-## `hot.dispose(cb)`
+## `hot.dispose(cb)` {#hotdisposecb}
 
 A self-accepting module or a module that expects to be accepted by others can use `hot.dispose` to clean-up any persistent side effects created by its updated copy:
 
@@ -98,18 +98,18 @@ if (import.meta.hot) {
 }
 ```
 
-## `hot.data`
+## `hot.data` {#hotdata}
 
 The `import.meta.hot.data` object is persisted across different instances of the same updated module. It can be used to pass on information from a previous version of the module to the next one.
 
-## `hot.decline()`
+## `hot.decline()` {#hotdecline}
 
 Calling `import.meta.hot.decline()` indicates this module is not hot-updatable, and the browser should perform a full reload if this module is encountered while propagating HMR updates.
 
-## `hot.invalidate()`
+## `hot.invalidate()` {#hotinvalidate}
 
 For now, calling `import.meta.hot.invalidate()` simply reloads the page.
 
-## `hot.on(event, cb)`
+## `hot.on(event, cb)` {#hotonevent-cb}
 
 Listen to a custom HMR event. Custom HMR events can be sent from plugins. See [handleHotUpdate](./api-plugin#handlehotupdate) for more details.

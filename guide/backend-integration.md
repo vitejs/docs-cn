@@ -1,4 +1,4 @@
-# Backend Integration
+# Backend Integration {#backend-integration}
 
 If you want to serve the HTML using a traditional backend (e.g. Rails, Laravel) but use Vite for serving assets, check for existing integrations listed in [Awesome Vite](https://github.com/vitejs/awesome-vite#integrations-with-backends).
 
