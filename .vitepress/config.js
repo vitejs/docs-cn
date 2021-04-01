@@ -61,6 +61,19 @@ module.exports = {
               'https://github.com/vitejs/vite/blob/main/packages/vite/CHANGELOG.md'
           }
         ]
+      },
+      {
+        text: '多语言',
+        items: [
+          {
+            text: '简体中文',
+            link: 'https://cn.vitejs.dev'
+          },
+          {
+            text: 'English',
+            link: 'https://vitejs.dev'
+          },
+        ]
       }
     ],
 
