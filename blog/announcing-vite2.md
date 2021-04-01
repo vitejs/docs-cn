@@ -2,64 +2,74 @@
 sidebar: false
 ---
 
-# Announcing Vite 2.0
+# Vite 2.0 发布了
 
 <p style="text-align:center">
   <img src="/logo.svg" style="height:200px">
 </p>
 
-Today we are excited to announce the official release of Vite 2.0!
+Vite 2.0 正式发布了！
 
-Vite (French word for "fast", pronounced `/vit/`) is a new kind of build tool for frontend web development. Think a pre-configured dev server + bundler combo, but leaner and faster. It leverages browser's [native ES modules](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules) support and tools written in compile-to-native languages like [esbuild](https://esbuild.github.io/) to deliver a snappy and modern development experience.
+Vite（法语意思是 “快”，发音为 `/vit/`，类似 veet）是一种全新的前端构建工具。你可以把它理解为一个开箱即用的开发服务器 + 打包工具的组合，但是更轻更快。Vite 利用浏览器 [原生的 ES 模块支持](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules) 和用编译到原生的语言开发的工具（如 [esbuild](https://esbuild.github.io/)）来提供一个快速且现代的开发体验。
 
-To get a sense of how fast Vite is, check out [this video comparison](https://twitter.com/amasad/status/1355379680275128321) of booting up a React application on Repl.it using Vite vs. `create-react-app` (CRA).
+Vite 有多快？在 Repl.it 上从零启动 [一个基于 Vite 的 React 应用](https://twitter.com/amasad/status/1355379680275128321)，浏览器页面加载完毕的时候，CRA（`create-react-app`）甚至还没有装完依赖。
 
-If you've never heard of Vite before and would love to learn more about it, check out [the rationale behind the project](https://vitejs.dev/guide/why.html). If you are interested in how Vite differs from other similar tools, check out the [comparisons](https://vitejs.dev/guide/comparisons.html).
+如果你还没听说过 Vite 到底是什么，可以到 [这里](https://cn.vitejs.dev/guide/why.html) 了解一下项目的设计初衷。如果你想要了解 Vite 跟其它一些类似的工具有什么区别，可以参考这里的 [对比](https://cn.vitejs.dev/guide/comparisons.html)。
 
-## What's New in 2.0
+## 2.0 带来了什么
 
-Since we decided to completely refactor the internals before 1.0 got out of RC, this is in fact the first stable release of Vite. That said, Vite 2.0 brings about many big improvements over its previous incarnation:
+Vite 1.0 虽然之前进入了 RC 阶段，但在发布之前我们决定进行一次彻底的重构来解决一些设计缺陷。所以 Vite 2.0 其实是 Vite 的第一个稳定版本。2.0 带来了大量的改进：
 
-### Framework Agnostic Core
+### 多框架支持
 
-The original idea of Vite started as a [hacky prototype that serves Vue single-file components over native ESM](https://github.com/vuejs/vue-dev-server). Vite 1 was a continuation of that idea with HMR implemented on top.
+设计 Vite 的初衷只是一个 [探索性的原型项目来更好的支持 Vue 单文件组件](https://github.com/vuejs/vue-dev-server)。Vite 1 在此基础上继续增加了 HMR 支持。
 
-Vite 2.0 takes what we learned along the way and is redesigned from scratch with a more robust internal architecture. It is now completely framework agnostic, and all framework-specific support is delegated to plugins. There are now [official templates for Vue, React, Preact, Lit Element](https://github.com/vitejs/vite/tree/main/packages/create-app), and ongoing community efforts for Svelte integration.
+但 2.0 基于之前的经验提供了一个更稳定灵活的内部架构，从而可以完全通过插件机制来支持任意框架。现在 Vite 提供 [官方的 Vue, React, Preact, Lit Element 项目模版](https://github.com/vitejs/vite/tree/main/packages/create-app)，而 Svelte 社区也在开发 Vite 整合方案。
 
-### New Plugin Format and API
+### 全新插件机制和 API
 
-Inspired by [WMR](https://github.com/preactjs/wmr), the new plugin system extends Rollup's plugin interface and is [compatible with many Rollup plugins](https://vite-rollup-plugins.patak.dev/) out of the box. Plugins can use Rollup-compatible hooks, with additional Vite-specific hooks and properties to adjust Vite-only behavior (e.g. differentiating dev vs. build or custom handling of HMR).
+Vite 2.0 受 [WMR](https://github.com/preactjs/wmr) 的启发采用了基于 Rollup 插件 API 的设计。[很多 Rollup 插件可以跟 Vite 直接兼容](https://vite-rollup-plugins.patak.dev/)。插件可以在使用 Rollup 插件钩子之外使用一些额外的 Vite 特有的 API 来处理一些打包中不存在的需求，比如区分开发 vs 打包，或是自定义的热更新处理。
 
-The [programmatic API](https://vitejs.dev/guide/api-javascript.html) has also been greatly improved to facilitate higher level tools / frameworks built on top of Vite.
+Vite 的 [JS API](https://vitejs.dev/guide/api-javascript.html) 也得到了大幅改进 - 已经有不少用户在开发基于 Vite 的上层框架，Nuxt 团队也已经在 Nuxt 3 中验证了初步整合的可行性。
 
-### esbuild Powered Dep Pre-Bundling
+### 基于 esbuild 的依赖预打包
 
-Since Vite is a native ESM dev server, it pre-bundles dependencies to reduce the number browser requests and handle CommonJS to ESM conversion. Previously Vite did this using Rollup, and in 2.0 it now uses `esbuild` which results in 10-100x faster dependency pre-bundling. As a reference, cold-booting a test app with heavy dependencies like React Meterial UI previously took 28 seconds on an M1-powered Macbook Pro and now takes ~1.5 seconds. Expect similar improvements if you are switching from a traditional bundler based setup.
+由于 Vite 是一个基于原生 ESM 的开发服务器，在启动时我们需要通过依赖预打包来达成两个目的：
 
-### First-class CSS Support
+1. 减少模块/请求数量；
+2. 支持 CommonJS 依赖。预打包只有在依赖变动时才需要执行，但在有大量依赖的项目中，每次执行还是可能会需要很长时间。Vite 之前是使用 Rollup 来执行这个过程，在 2.0 中我们切换到了 esbuild，使这个过程加快了几十倍。冷启动一个之前需要将近 30 秒预打包的项目现在只需要不到两秒！从 webpack 或其它打包工具迁移到 Vite 应该也会有类似的速度改善。
 
-Vite treats CSS as a first-class citizen of the module graph and supports the following out of the box:
+### 更好的 CSS 支持
 
-- **Resolver enhancement**: `@import` and `url()` paths in CSS are enhanced with Vite's resolver to respect aliases and npm dependencies.
-- **URL rebasing**: `url()` paths are automatically rebased regardless of where the file is imported from.
-- **CSS code splitting**: a code-split JS chunk also emits a corresponding CSS file, which is automatically loaded in parallel with the JS chunk when requested.
+Vite 将 CSS 看作模块系统中的一等公民，并且内置了一下支持：
 
-### Server-Side Rendering (SSR) Support
+- **强化路径解析**：CSS 中的 @import 和 url() 路径都通过 Vite 的路径解析器来解析，从而支持 alias 和 npm 依赖。
 
-Vite 2.0 ships with [experimental SSR support](https://vitejs.dev/guide/ssr.html). Vite provides APIs to to efficiently load and update ESM-based source code in Node.js during development (almost like server-side HMR), and automatically externalizes CommonJS-compatible dependencies to improve development and SSR build speed. The production server can be completely decoupled from Vite, and the same setup can be easily adapted to perform pre-rendering / SSG.
+- **自动 URL 改写**：所有 url() 路径都会被自动改写从而确保在开发和构建中都指向正确的文件路径。
 
-Vite SSR is provided as a low-level feature and we are expecting to see higher level frameworks leveraging it under the hood.
+- **CSS 代码分割**：构建时每一个被分割的 JS 文件都会自动生成一个对应的 CSS 文件，并且两个文件会被自动并行按需加载。
 
-### Opt-in Legacy Browser Support
+### 服务端渲染（SSR）支持
 
-Vite targets modern browsers with native ESM support by default, but you can also opt-in to support legacy browers via the official [@vitejs/plugin-legacy](https://github.com/vitejs/vite/tree/main/packages/plugin-legacy). The plugin automatically generates dual modern/legacy bundles, and delivers the right bundle based on browser feature detection, ensuring more efficient code in modern browsers that support them.
+Vite 2.0 提供 [实验性的 SSR 支持](https://vitejs.dev/guide/ssr.html)。Vite 提供一个灵活的 API 来在 Node.js 中高效率地直接加载 ESM 源码（并且同样有精准的更新而不需要打包）。提供 CommonJS 版本的依赖会在 SSR 时自动被跳过转换直接加载。生产环境下，服务器可以和 Vite 完全解耦。基于 Vite SSR 的架构也可以很方便的做静态预渲染（SSG)。
 
-## Give it a Try!
+Vite SSR 会作为一个底层功能，而我们期待看到更高层级的框架在此基础上的应用。
 
-That was a lot of features, but getting started with Vite is simple! You can spin up a Vite-powered app literally in a minute, starting with the following command (make sure you have Node.js >=12):
+### 旧浏览器支持
+
+Vite 默认只支持原生支持 ESM 的现代浏览器，但可以通过官方的 [@vitejs/plugin-legacy](https://github.com/vitejs/vite/tree/main/packages/plugin-legacy) 来支持旧浏览器。legacy 插件会自动额外生成一个针对旧浏览器的包，并且在 html 中插入根据浏览器 ESM 支持来选择性加载对应包的代码（类似 vue-cli 的 modern mode）。
+
+## 尝试一下！
+
+功能很多，但是试一下其实很简单。只需要一分钟，用以下命令就可以迅速搭起一个基于 vite 的项目（确保你的 Node.js 版本 >=12）：
 
 ```bash
 npm init @vitejs/app
 ```
 
-Then, check out [the guide](https://vitejs.dev/guide/) to see what Vite provides out of the box. You can also check out the source code on [GitHub](https://github.com/vitejs/vite), follow updates on [Twitter](https://twitter.com/vite_js), or join discussions with other Vite users on our [Discord chat server](http://chat.vitejs.dev/).
+接下来你可以：
+
+- 阅读 [指引文档](https://vitejs.dev/guide/) 了解 Vite 提供了哪些开箱即用的功能
+- 在 [GitHub](https://github.com/vitejs/vite) 上访问源码
+- 在 [Twitter](https://twitter.com/vite_js) 上关注最新进展
+- 或与其他 Vite 用户在 [Discord](http://chat.vitejs.dev/) 上一起讨论

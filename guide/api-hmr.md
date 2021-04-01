@@ -1,12 +1,12 @@
 # HMR API
 
-:::tip Note
-This is the client HMR API. For handling HMR update in plugins, see [handleHotUpdate](./api-plugin#handlehotupdate).
+:::tip 注意
+这里是客户端 HMR API。若要在插件中处理 HMR 更新，详见 [handleHotUpdate](./api-plugin#handlehotupdate).
 
-The manual HMR API is primarily intended for framework and tooling authors. As an end user, HMR is likely already handled for you in the framework specific starter templates.
+手动 HMR API 主要用于框架和工具作者。作为最终用户，HMR 可能已经在特定于框架的启动器模板中为你处理过了。
 :::
 
-Vite exposes its manual HMR API via the special `import.meta.hot` object:
+Vite 通过特殊的 `import.meta.hot` 对象暴露手动 HMR API。
 
 ```ts
 interface ImportMeta {
@@ -27,19 +27,19 @@ interface ImportMeta {
 }
 ```
 
-## Required Conditional Guard
+## 必需的条件守卫
 
-First of all, make sure to guard all HMR API usage with a conditional block so that the code can be tree-shaken in production:
+首先，请确保用一个条件语句守护所有 HMR API 的使用，这样代码就可以在生产环境中被 tree-shaking 优化:
 
 ```js
 if (import.meta.hot) {
-  // HMR code
+  // HMR 代码
 }
 ```
 
 ## `hot.accept(cb)`
 
-For a module to self-accept, use `import.meta.hot.accept` with a callback which receives the updated module:
+要接收模块自身，应使用 `import.meta.hot.accept`，参数为接收已更新模块的回调函数：
 
 ```js
 export const count = 1
@@ -51,15 +51,15 @@ if (import.meta.hot) {
 }
 ```
 
-A module that "accepts" hot updates is considered an **HMR boundary**.
+“接受” 热更新的模块被认为是 **HMR 边界**。
 
-Note that Vite's HMR does not actually swap the originally imported module: if an HMR boundary module re-exports imports from a dep, then it is responsible for updating those re-exports (and these exports must be using `let`). In addition, importers up the chain from the boundary module will not be notified of the change.
+请注意，Vite 的 HMR 实际上并不替换最初导入的模块：如果 HMR 边界模块从某个依赖重新导出其导入，则它负责更新这些重新导出的模块（这些导出必须使用 `let`）。此外，边界模块链上的导入者将不会收到更新。
 
-This simplified HMR implementation is sufficient for most dev use cases, while allowing us to skip the expensive work of generating proxy modules.
+这种简化的 HMR 实现对于大多数开发用例来说已经足够了，同时允许我们跳过生成代理模块的昂贵工作。
 
 ## `hot.accept(deps, cb)`
 
-A module can also accept updates from direct dependencies without reloading itself:
+模块也可以接受直接依赖项的更新，而无需重新加载自身：
 
 ```js
 import { foo } from './foo.js'
@@ -68,15 +68,15 @@ foo()
 
 if (import.meta.hot) {
   import.meta.hot.accept('./foo.js', (newFoo) => {
-    // the callback receives the updated './foo.js' module
+    // 回调函数接收到更新后的'./foo.js' 模块
     newFoo.foo()
   })
 
-  // Can also accept an array of dep modules:
+  // 也可以接受一个依赖模块的数组：
   import.meta.hot.accept(
     ['./foo.js', './bar.js'],
     ([newFooModule, newBarModule]) => {
-      // the callback receives the updated modules in an Array
+      // 回调函数接收一个更新后模块的数组
     }
   )
 }
@@ -84,7 +84,7 @@ if (import.meta.hot) {
 
 ## `hot.dispose(cb)`
 
-A self-accepting module or a module that expects to be accepted by others can use `hot.dispose` to clean-up any persistent side effects created by its updated copy:
+一个接收自身的模块或一个期望被其他模块接收的模块可以使用 `hot.dispose` 来清除任何由其更新副本产生的持久副作用：
 
 ```js
 function setupSideEffect() {}
@@ -93,23 +93,23 @@ setupSideEffect()
 
 if (import.meta.hot) {
   import.meta.hot.dispose((data) => {
-    // cleanup side effect
+    // 清理副作用
   })
 }
 ```
 
 ## `hot.data`
 
-The `import.meta.hot.data` object is persisted across different instances of the same updated module. It can be used to pass on information from a previous version of the module to the next one.
+`import.meta.hot.data` 对象在同一个更新模块的不同实例之间持久化。它可以用于将信息从模块的前一个版本传递到下一个版本。
 
 ## `hot.decline()`
 
-Calling `import.meta.hot.decline()` indicates this module is not hot-updatable, and the browser should perform a full reload if this module is encountered while propagating HMR updates.
+调用 `import.meta.hot.decline()` 表示此模块不可热更新，如果在传播 HMR 更新时遇到此模块，浏览器应该执行完全重新加载。
 
 ## `hot.invalidate()`
 
-For now, calling `import.meta.hot.invalidate()` simply reloads the page.
+现在调用 `import.meta.hot.invalidate()` 只是重新加载页面。
 
 ## `hot.on(event, cb)`
 
-Listen to a custom HMR event. Custom HMR events can be sent from plugins. See [handleHotUpdate](./api-plugin#handlehotupdate) for more details.
+监听自定义 HMR 事件。自定义 HMR 事件可以由插件发送。更多细节详见 [handleHotUpdate](./api-plugin#handleHotUpdate)。

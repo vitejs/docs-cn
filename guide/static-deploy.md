@@ -1,10 +1,10 @@
-# Deploying a Static Site
+# 部署静态站点
 
-The following guides are based on some shared assumptions:
+下面的指引都基于以下几个假设：
 
-- You are using the default build output location (`dist`). This location [can be changed using `build.outDir`](https://vitejs.dev/config/#build-outdir), and you can extrapolate instructions from these guides in that case.
-- Vite is installed as a local dev dependency in your project, and you have setup the following npm scripts:
-- You are using npm. You can use equivalent commands to run the scripts if you are using Yarn or other package managers.
+- 你正在使用的是默认的构建输出路径（`dist`）。这个路径 [可以使用 `build.outDir` 更改](https://cn.vitejs.dev/config/#build-outdir)，在这种情况下，你可以从这篇指南中推断出所需的指令。
+- Vite 已经被安装为了一个你项目的本地开发依赖（dev dependency），并且你已经配置好了如下的 npm script：
+- 你正在使用 npm，或者使用了 Yarn 或其他的包管理工具，可以运行下面的脚本指令：
 
 ```json
 {
@@ -15,34 +15,35 @@ The following guides are based on some shared assumptions:
 }
 ```
 
-It is important to note that `vite preview` is intended for previewing the build locally and not meant as a production server.
+值得注意的是 `vite preview` 旨在提供一个生产版本的本地预览，但不应直接作为一个生产服务器。
 
-::: tip NOTE
-These guides provide instructions for performing a static deployment of your Vite site. Vite also has experimental support for Server Side Rendering. SSR refers to front-end frameworks that support running the same application in Node.js, pre-rendering it to HTML, and finally hydrating it on the client. Check out the [SSR Guide](./ssr) to learn about this feature. On the other hand, if you are looking for integration with traditional server-side frameworks, check out the [Backend Integration guide](./backend-integration) instead.
+::: tip 注意
+本篇指引提供的指令旨在
+本篇指南提供了如何执行 Vite 站点的静态部署的说明。Vite 也对服务端渲染（SSR）有了实验性的支持。SSR 是指支持在 Node 中运行相应应用的前端框架，预渲染成 HTML，最后在客户端激活（hydrate）。查看 [SSR 指南](./ssr) 可以了解更多细节。另一方面，如果你正在寻找与传统服务端框架集成的方式，那么请查看 [后端集成](./backend-integration) 章节。
 :::
 
-## Building The App
+## 构建应用
 
-You may run `npm run build` command to build the app.
+你可以运行 `npm run build` 命令来执行应用的构建。
 
 ```bash
 $ npm run build
 ```
 
-By default, the build output will be placed at `dist`. You may deploy this `dist` folder to any of your preferred platforms.
+默认情况下，构建会输出到 `dist` 文件夹中。你可以部署这个 `dist` 文件夹到任何你喜欢的平台。
 
-### Testing The App Locally
+### 本地测试应用
 
-Once you've built the app, you may test it locally by running `npm run preview` command.
+当你构建完成应用后，你可以通过运行 `npm run preview` 命令，在本地测试该应用。
 
 ```bash
 $ npm run build
 $ npm run preview
 ```
 
-The `preview` command will boot up local static web server that serves the files from `dist` at http://localhost:5000. It's an easy way to check if the production build looks OK in your local environment.
+`preview` 命令会启动一个本地静态 Web 服务器，将 `dist` 文件夹运行在 http://localhost:5000 上 。这样在本地查看该产物是否正常可用就十分容易了。
 
-You may configure the port of the server py passing `--port` flag as an argument.
+你可以使用 `--port` 标志传入一个参数来配置服务器的运行端口。
 
 ```json
 {
@@ -52,217 +53,218 @@ You may configure the port of the server py passing `--port` flag as an argument
 }
 ```
 
-Now the `preview` method will launch the server at http://localhost:8080.
+这样 `preview` 命令会改将服务器运行在 http://localhost:8080 上。
 
 ## GitHub Pages
 
-1. Set the correct `base` in `vite.config.js`.
+1. 在 `vite.config.js` 中设置正确的 `base`。
 
-   If you are deploying to `https://<USERNAME>.github.io/`, you can omit `base` as it defaults to `'/'`.
+   如果你要部署在 `https://<USERNAME>.github.io/`，你可以省略 `base` 因为其默认为 `'/'`。
 
-   If you are deploying to `https://<USERNAME>.github.io/<REPO>/`, for example your repository is at `https://github.com/<USERNAME>/<REPO>`, then set `base` to `'/<REPO>/'`.
+   如果你要部署在 `https://<USERNAME>.github.io/<REPO>/`，例如你的仓库地址为 `https://github.com/<USERNAME>/<REPO>`，那么请设置 `base` 为 `'/<REPO>/'`。
 
-2. Inside your project, create `deploy.sh` with the following content (with highlighted lines uncommented appropriately), and run it to deploy:
+2. 在你的项目中，创建一个 `deploy.sh` 脚本，包含以下内容（注意高亮的未注释的行)，运行它来部署站点：
 
-   ```bash{13,20,23}
-   #!/usr/bin/env sh
+```bash{13,20,23}
+#!/usr/bin/env sh
 
-   # abort on errors
-   set -e
+# 发生任何错误时终止
+set -e
 
-   # build
-   npm run build
+# 构建
+npm run build
 
-   # navigate into the build output directory
-   cd dist
+# 进入输出产物文件夹
+cd dist
 
-   # if you are deploying to a custom domain
-   # echo 'www.example.com' > CNAME
+# 如果你要部署到自定义域名
+# echo 'www.example.com' > CNAME
 
-   git init
-   git add -A
-   git commit -m 'deploy'
+git init
+git add -A
+git commit -m 'deploy'
 
-   # if you are deploying to https://<USERNAME>.github.io
-   # git push -f git@github.com:<USERNAME>/<USERNAME>.github.io.git master
+# 如果你要部署在 https://<USERNAME>.github.io
+# git push -f git@github.com:<USERNAME>/<USERNAME>.github.io.git master
 
-   # if you are deploying to https://<USERNAME>.github.io/<REPO>
-   # git push -f git@github.com:<USERNAME>/<REPO>.git master:gh-pages
+# 如果你要部署在 https://<USERNAME>.github.io/<REPO>
+# git push -f git@github.com:<USERNAME>/<REPO>.git master:gh-pages
 
-   cd -
-   ```
+cd -
+```
 
 ::: tip
-You can also run the above script in your CI setup to enable automatic deployment on each push.
+你也可以在你的 CI 启动时运行该脚本，使得在每次推送代码时自动部署。
 :::
 
-### GitHub Pages and Travis CI
+### GitHub Pages 配合 Travis CI
 
-1. Set the correct `base` in `vite.config.js`.
+1. 在 `vite.config.js` 中设置正确的 `base`。
 
-   If you are deploying to `https://<USERNAME or GROUP>.github.io/`, you can omit `base` as it defaults to `'/'`.
+   如果你要部署在 `https://<USERNAME or GROUP>.github.io/`，你可以省略 `base` 因为其默认为 `'/'`。
 
-   If you are deploying to `https://<USERNAME or GROUP>.github.io/<REPO>/`, for example your repository is at `https://github.com/<USERNAME>/<REPO>`, then set `base` to `'/<REPO>/'`.
+   如果你要部署在 `https://<USERNAME or GROUP>.github.io/<REPO>/`，例如你的仓库地址为 `https://github.com/<USERNAME>/<REPO>`，那么请设置 `base` 为 `'/<REPO>/'`。
 
-2. Create a file named `.travis.yml` in the root of your project.
+2. 在项目根目录创建一个 `.travis.yml` 文件
 
-3. Run `npm install` locally and commit the generated lockfile (`package-lock.json`).
+3. 在本地运行 `npm install` 确认正常生成一个 lockfile (`package-lock.json`)。
 
-4. Use the GitHub Pages deploy provider template, and follow the [Travis CI documentation](https://docs.travis-ci.com/user/deployment/pages/).
+4. 使用 GitHub Pages 提供的部署模板，并跟随 [Travis CI 文档](https://docs.travis-ci.com/user/deployment/pages/) 进行配置：
 
-   ```yaml
-   language: node_js
-   node_js:
-     - lts/*
-   install:
-     - npm ci
-   script:
-     - npm run build
-   deploy:
-     provider: pages
-     skip_cleanup: true
-     local_dir: dist
-     # A token generated on GitHub allowing Travis to push code on you repository.
-     # Set in the Travis settings page of your repository, as a secure variable.
-     github_token: $GITHUB_TOKEN
-     keep_history: true
-     on:
-       branch: master
-   ```
+```yaml
+language: node_js
+node_js:
+  - lts/*
+install:
+  - npm ci
+script:
+  - npm run build
+deploy:
+  provider: pages
+  skip_cleanup: true
+  local_dir: dist
+  # 在 GitHub 上生成的令牌，允许 Travis 推送代码到你的仓库。
+  # 在仓库对应的 Travis 设置页面中配置，用于安全控制。
+  github_token: $GITHUB_TOKEN
+  keep_history: true
+  on:
+    branch: master
+```
 
-## GitLab Pages and GitLab CI
+## GitLab Pages 配合 GitLab CI
 
-1. Set the correct `base` in `vite.config.js`.
+1. 在 `vite.config.js` 中设置正确的 `base`。
 
-   If you are deploying to `https://<USERNAME or GROUP>.gitlab.io/`, you can omit `base` as it defaults to `'/'`.
+   如果你要部署在 `https://<USERNAME or GROUP>.gitlab.io/`，你可以省略 `base` 因为其默认为 `'/'`。
 
-   If you are deploying to `https://<USERNAME or GROUP>.gitlab.io/<REPO>/`, for example your repository is at `https://gitlab.com/<USERNAME>/<REPO>`, then set `base` to `'/<REPO>/'`.
+   如果你要部署在 `https://<USERNAME or GROUP>.gitlab.io/<REPO>/`，例如你的仓库地址为 `https://gitlab.com/<USERNAME>/<REPO>`，那么请设置 `base` 为 `'/<REPO>/'`。
 
-2. Set `build.outDir` in `vite.config.js` to `public`.
+2. 在 `vite.config.js` 中设置 `build.outDir` 为 `public`。
 
-3. Create a file called `.gitlab-ci.yml` in the root of your project with the content below. This will build and deploy your site whenever you make changes to your content:
+3. 在项目根目录创建一个 `.gitlab-ci.yml` 文件，包含以下内容。它将使得每次你更改内容时都重新构建与部署站点：
 
-   ```yaml
-   image: node:10.22.0
-   pages:
-     cache:
-       paths:
-         - node_modules/
-     script:
-       - npm install
-       - npm run build
-     artifacts:
-       paths:
-         - public
-     only:
-       - master
-   ```
+```yaml
+image: node:10.22.0
+pages:
+  cache:
+    paths:
+      - node_modules/
+  script:
+    - npm install
+    - npm run build
+  artifacts:
+    paths:
+      - public
+  only:
+    - master
+```
 
 ## Netlify
 
-1. On [Netlify](https://netlify.com), setup up a new project from GitHub with the following settings:
+1. 在 [Netlify](https://netlify.com) 上，按下列设置配合 Github 设置好一个一个新的项目：
 
-   - **Build Command:** `vite build` or `npm run build`
-   - **Publish directory:** `dist`
+- **构建命令：** `vite build` 或者 `npm run build`
+- **发布目录：** `dist`
 
-2. Hit the deploy button.
+2. 点击部署按钮。
 
 ## Google Firebase
 
-1. Make sure you have [firebase-tools](https://www.npmjs.com/package/firebase-tools) installed.
+1. 确保已经安装 [firebase-tools](https://www.npmjs.com/package/firebase-tools)。
 
-2. Create `firebase.json` and `.firebaserc` at the root of your project with the following content:
+2. 在项目根目录创建 `firebase.json` 和 `.firebaserc` 两个文件，应包含以下内容：
 
-   `firebase.json`:
+ `firebase.json`:
 
-   ```json
-   {
-     "hosting": {
-       "public": "dist",
-       "ignore": []
-     }
-   }
-   ```
-
-   `.firebaserc`:
-
-   ```js
-   {
-    "projects": {
-      "default": "<YOUR_FIREBASE_ID>"
+  ```json
+  {
+    "hosting": {
+      "public": "dist",
+      "ignore": []
     }
-   }
-   ```
+  }
+  ```
 
-3. After running `npm run build`, deploy using the command `firebase deploy`.
+  `.firebaserc`:
+
+  ```js
+  {
+   "projects": {
+     "default": "<YOUR_FIREBASE_ID>"
+   }
+  }
+  ```
+
+3. 运行 `npm run build` 后，通过 `firebase deploy` 命令部署。
 
 ## Surge
 
-1. First install [surge](https://www.npmjs.com/package/surge), if you haven’t already.
+1. 请确保您已经安装了 [surge](https://www.npmjs.com/package/surge)。
 
-2. Run `npm run build`.
+2. 运行 `npm run build`。
 
-3. Deploy to surge by typing `surge dist`.
+3. 通过运行 `surge dist` 命令部署到 surge。
 
-You can also deploy to a [custom domain](http://surge.sh/help/adding-a-custom-domain) by adding `surge dist yourdomain.com`.
+
+你也可以通过添加 `surge dist yourdomain.com` 部署到一个 [自定义域名](http://surge.sh/help/adding-a-custom-domain)。
 
 ## Heroku
 
-1. Install [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli).
+1. 安装 [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli)。
 
-2. Create a Heroku account by [signing up](https://signup.heroku.com).
+2. [注册一个 Heroku 账号](https://signup.heroku.com)。
 
-3. Run `heroku login` and fill in your Heroku credentials:
+3. 运行 `heroku login` 并填入你的你的 Heroku 凭证：
 
-   ```bash
-   $ heroku login
-   ```
+```bash
+$ heroku login
+```
 
-4. Create a file called `static.json` in the root of your project with the below content:
+4. 在项目根目录创建一个 `static.json` ，应含以下内容：
 
-   `static.json`:
+`static.json`:
 
-   ```json
-   {
-     "root": "./dist"
-   }
-   ```
+```json
+{
+  "root": "./dist"
+}
+```
 
-   This is the configuration of your site; read more at [heroku-buildpack-static](https://github.com/heroku/heroku-buildpack-static).
+这是你站点的配置信息，阅读 [heroku-buildpack-static](https://github.com/heroku/heroku-buildpack-static) 文档了解更多。
 
-5. Set up your Heroku git remote:
+5. 配置好你的 Heroku git 远程地址：
 
-   ```bash
-   # version change
-   $ git init
-   $ git add .
-   $ git commit -m "My site ready for deployment."
+```bash
+# 更新版本
+$ git init
+$ git add .
+$ git commit -m "My site ready for deployment."
 
-   # creates a new app with a specified name
-   $ heroku apps:create example
+# 创建一个具有指定名称的新应用
+$ heroku apps:create example
 
-   # set buildpack for static sites
-   $ heroku buildpacks:set https://github.com/heroku/heroku-buildpack-static.git
-   ```
+# 为静态站点设置 buildpack 
+$ heroku buildpacks:set https://github.com/heroku/heroku-buildpack-static.git
+```
 
-6. Deploy your site:
+6. 部署站点：
 
-   ```bash
-   # publish site
-   $ git push heroku master
+```bash
+# 发布站点
+$ git push heroku master
 
-   # opens a browser to view the Dashboard version of Heroku CI
-   $ heroku open
-   ```
+# 在浏览器中打开 Heroku CI 的仪表板
+$ heroku open
+```
 
 ## Vercel
 
-To deploy your Vite app with a [Vercel for Git](https://vercel.com/docs/git), make sure it has been pushed to a Git repository.
+要通过 [Vercel for Git](https://vercel.com/docs/git) 部署你的 Vite 应用，请确保它已经被推送为了一个 Git 仓库。
 
-Go to https://vercel.com/import/git and import the project into Vercel using your Git of choice (GitHub, GitLab or BitBucket). Follow the wizard to select the project root with the project's `package.json` and override the build step using `npm run build` and the output dir to be `./dist`
+去往 https://vercel.com/import/git 并导入该项目到 Vercel，使用你相应地 Git 服务（GitHub，GitLab 或者 BitBucket）。根据指引，选择带有 `package.json` 的项目根目录。并使用 `npm run build` 来覆盖构建步骤，并将输出目录设置为 `./dist`。
 
-![Override Vercel Configuration](../images/vercel-configuration.png)
+![覆盖 Vercel 配置](../images/vercel-configuration.png)
 
-After your project has been imported, all subsequent pushes to branches will generate Preview Deployments, and all changes made to the Production Branch (commonly "main") will result in a Production Deployment.
+在项目被导入之后，所有后续的推送将生成预览部署，但只有对生产分支（通常是“main”）所做的所有更改才将触发生产部署。
 
-Once deployed, you will get a URL to see your app live, such as the following: https://vite.vercel.app
+一旦部署，你会得到一个 URL 来查看应用的实时预览，如 https://vite.vercel.app 。

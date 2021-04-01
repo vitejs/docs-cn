@@ -1,47 +1,47 @@
-# Backend Integration
+# 后端集成
 
-If you want to serve the HTML using a traditional backend (e.g. Rails, Laravel) but use Vite for serving assets, check for existing integrations listed in [Awesome Vite](https://github.com/vitejs/awesome-vite#integrations-with-backends).
+如果你想使用传统的后端（如 Rails, Laravel）来服务 HTML，但使用 Vite 来服务其他资源，可以查看在 [Awesome Vite](https://github.com/vitejs/awesome-vite#integrations-with-backends) 上的已有的后端集成列表。
 
-Or you can follow these steps to configure it manually:
+或者你可以按照如下步骤手动配置：
 
-1. In your Vite config, configure the entry and enable build manifest:
+1. 在你的 Vite 配置中配置入口文件和启用创建 `manifest`：
 
    ```js
    // vite.config.js
    export default {
      build: {
-       // generate manifest.json in outDir
+       // 在 outDir 中生成 manifest.json
        manifest: true,
        rollupOptions: {
-         // overwrite default .html entry
+         // 覆盖默认的 .html 入口
          input: '/path/to/main.js'
        }
      }
    }
    ```
 
-   Also remember to add the [dynamic import polyfill](/config/#build-polyfilldynamicimport) to your entry, since it will no longer be auto-injected:
+   别忘记在你的入口添加 [dynamic import polyfill](/config/#build-polyfilldynamicimport)，因为它不会自动注入了：
 
    ```js
-   // add the beginning of your app entry
+   // 添加到你应用入口文件的开头
    import 'vite/dynamic-import-polyfill'
-   ```
+   ```   
 
-2. For development, inject the following in your server's HTML template (substitute `http://localhost:3000` with the local URL Vite is running at):
+2. 在开发环境中，在服务器的 HTML 模板中注入以下内容（用正在运行的本地 URL 替换 `http://localhost:3000`）：
 
    ```html
-   <!-- if development -->
+   <!-- 如果是在开发环境中 -->
    <script type="module" src="http://localhost:3000/@vite/client"></script>
    <script type="module" src="http://localhost:3000/main.js"></script>
    ```
 
-   Also make sure the server is configured to serve static assets in the Vite working directory, otherwise assets such as images won't be loaded properly.
+   还要确保服务器配置为提供 Vite 工作目录中的静态资源，否则图片等资源将无法正确加载。
 
-   Note if you are using React with `@vitejs/plugin-react-refresh`, you'll also need to add this before the above scripts, since the plugin is not able to modify the HTML you are serving:
+   如果你正使用 `@vitejs/plugin-react-refresh` 配合 React，你还需要在上述脚本前添加下面这个，因为插件不能修改你正在服务的 HTML：
 
    ```html
    <script type="module">
-     import RefreshRuntime from 'http://localhost:3000/@react-refresh'
+     import RefreshRuntime from "http://localhost:3000/@react-refresh"
      RefreshRuntime.injectIntoGlobalHook(window)
      window.$RefreshReg$ = () => {}
      window.$RefreshSig$ = () => (type) => type
@@ -49,7 +49,7 @@ Or you can follow these steps to configure it manually:
    </script>
    ```
 
-3. For production: after running `vite build`, a `manifest.json` file will be generated alongside other asset files. An example manifest file looks like this:
+3. 在生产环境中：在运行 `vite build` 之后，一个 `manifest.json` 文件将与静态资源文件一同生成。一个示例清单文件会像下面这样：
 
    ```json
    {
@@ -73,15 +73,15 @@ Or you can follow these steps to configure it manually:
    }
    ```
 
-   - The manifest has a `Record<name, chunk>` structure
-   - For entry or dynamic entry chunks, the key is the relative src path from project root.
-   - For non entry chunks, the key is the base name of the generated file prefixed with `_`.
-   - Chunks will contain information on its static and dynamic imports (both are keys that maps to the corresponding chunk in the manifest), and also its corresponding CSS and asset files (if any).
+   - 清单是一个 `Record<name, chunk>` 结构的对象。
+   - 对于 入口 或动态入口 chunk，键是相对于项目根目录的资源路径。
+   - 对于非入口 chunk，键是生成文件的名称并加上前缀 `_`。
+   - Chunk 将信息包含在其静态和动态导入上（两者都是映射到清单中相应 chunk 的键)，以及任何与之相关的 CSS 和资源文件。
 
-   You can use this file to render links or preload directives with hashed filenames (note: the syntax here is for explanation only, substitute with your server templating language):
+   你可以使用这个文件来渲染链接或者用散列文件名预加载指令（注意：这里的语法只是为了解释，实际使用时请你的服务器模板语言代替）：
 
    ```html
-   <!-- if production -->
-   <link rel="stylesheet" href="/assets/{{ manifest['main.js'].css }}" />
-   <script type="module" src="/assets/{{ manifest['main.js'].file }}"></script>
+   <!-- 如果是在生产环境中 -->
+   <link rel="stylesheet" href="/assets/{{ manifest['style.css'].file }}" />
+   <script type="module" src="/assets/{{ manifest['index.js].file }}"></script>
    ```
