@@ -68,6 +68,19 @@ export default ({ command, mode }) => {
 }
 ```
 
+### 异步配置
+
+如果配置需要调用一个异步函数，也可以转而导出一个异步函数：
+
+```js
+export default async ({ command, mode }) => {
+  const data = await asyncFunction()
+  return {
+    // 构建模式所需的特有配置
+  }
+}
+```
+
 ## 共享配置
 
 ### root
