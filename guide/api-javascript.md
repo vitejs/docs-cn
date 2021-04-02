@@ -81,6 +81,31 @@ interface ViteDevServer {
     options?: TransformOptions
   ): Promise<TransformResult | null>
   /**
+   * 应用 vite 内建 HTML 转换和任意插件 HTML 转换
+   */
+  transformIndexHtml(url: string, html: string): Promise<string>
+  /**
+   * 使用 esbuild 转换一个文件的工具函数
+   * 对某些特定插件十分有用
+   */
+  transformWithEsbuild(
+    code: string,
+    filename: string,
+    options?: EsbuildTransformOptions,
+    inMap?: object
+  ): Promise<ESBuildTransformResult>
+  /**
+   * 加载一个给定的 URL 作为 SSR 的实例化模块
+   */
+  ssrLoadModule(
+    url: string,
+    options?: { isolated?: boolean }
+  ): Promise<Record<string, any>>
+  /**
+   * 解决 ssr 错误堆栈信息
+   */
+  ssrFixStacktrace(e: Error): void
+  /**
    * 启动服务器
    */
   listen(port?: number, isRestart?: boolean): Promise<ViteDevServer>
