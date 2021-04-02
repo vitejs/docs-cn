@@ -2,7 +2,7 @@
 sidebar: false
 ---
 
-# Vite 2.0 发布了 {#announcing-vite-20}
+# Vite 2.0 发布了 {#announcing-vite-2-0}
 
 <p style="text-align:center">
   <img src="/logo.svg" style="height:200px">
@@ -16,7 +16,7 @@ Vite 有多快？在 Repl.it 上从零启动 [一个基于 Vite 的 React 应用
 
 如果你还没听说过 Vite 到底是什么，可以到 [这里](/guide/why) 了解一下项目的设计初衷。如果你想要了解 Vite 跟其它一些类似的工具有什么区别，可以参考这里的 [对比](/guide/comparisons)。
 
-## 2.0 带来了什么 {#whats-new-in-20}
+## 2.0 带来了什么 {#whats-new-in-2-0}
 
 Vite 1.0 虽然之前进入了 RC 阶段，但在发布之前我们决定进行一次彻底的重构来解决一些设计缺陷。所以 Vite 2.0 其实是 Vite 的第一个稳定版本。2.0 带来了大量的改进：
 

@@ -137,7 +137,7 @@ export default async ({ command, mode }) => {
 
   作为静态资源服务的文件夹。这个目录中的文件会在开发中被服务于 `/`，在开发模式时，会被拷贝到 `outDir` 的根目录，并没有转换，永远只是复制到这里。该值可以是文件系统的绝对路径，也可以是相对于项目的根目录路径。
 
-### resolve.alias {#resolvealias}
+### resolve.alias {#resolve-alias}
 
 - **类型：** `Record<string, string> | Array<{ find: string | RegExp, replacement: string }>`
 
@@ -147,13 +147,13 @@ export default async ({ command, mode }) => {
 
   更高级的自定义解析方法可以通过 [插件](/guide/api-plugin) 实现。
 
-### resolve.dedupe {#resolvededupe}
+### resolve.dedupe {#resolve-dedupe}
 
 - **类型：** `string[]`
 
   如果你在你的应用程序中有相同依赖的副本（比如 monorepos），使用这个选项来强制 Vite 总是将列出的依赖关系解析到相同的副本（从项目根目录)。
 
-### resolve.conditions {#resolveconditions}
+### resolve.conditions {#resolve-conditions}
 
 - **类型：** `string[]`
 
@@ -176,21 +176,21 @@ export default async ({ command, mode }) => {
 
   Vite 有一个“允许的情景”列表和并且会匹配列表中第一个情景。默认允许的情景是：`import`，`module`，`browser`，`default`，和基于当前情景为 `production/development`。`resolve.conditions` 配置项使得可以指定其他允许的情景。
 
-### resolve.mainFields {#resolvemainfields}
+### resolve.mainFields {#resolve-mainfields}
 
 - **类型：** `string[]`
 - **默认：** `['module', 'jsnext:main', 'jsnext']`
 
   `package.json` 中，在解析包的入口点时尝试的字段列表。注意，这比从 `exports` 字段解析的情景导出优先级低：如果一个入口点从 `exports` 成功解析，主字段将被忽略。
 
-### resolve.extensions {#resolveextensions}
+### resolve.extensions {#resolve-extensions}
 
 - **类型：** `string[]`
 - **默认：** `['.mjs', '.js', '.ts', '.jsx', '.tsx', '.json']`
 
   导入时想要省略的扩展名列表。注意，**不** 建议忽略自定义导入类型的扩展名（例如：`.vue`），因为它会干扰 IDE 和类型支持。
 
-### css.modules {#cssmodules}
+### css.modules {#css-modules}
 
 - **类型：**
 
@@ -211,7 +211,7 @@ export default async ({ command, mode }) => {
 
   配置 CSS modules 的行为。选项将被传递给 [postcss-modules](https://github.com/css-modules/postcss-modules)。
 
-### css.postcss {#csspostcss}
+### css.postcss {#css-postcss}
 
 - **类型：** `string | (postcss.ProcessOptions & { plugins?: postcss.Plugin[] })`
 
@@ -219,7 +219,7 @@ export default async ({ command, mode }) => {
 
   注意，如果提供了该内联配置，Vite 将不会搜索其他 PostCSS 配置源。
 
-### css.preprocessorOptions {#csspreprocessoroptions}
+### css.preprocessorOptions {#css-preprocessoroptions}
 
 - **类型：** `Record<string, object>`
 
@@ -237,14 +237,14 @@ export default async ({ command, mode }) => {
   }
   ```
 
-### json.namedExports {#jsonnamedexports}
+### json.namedExports {#json-namedexports}
 
 - **类型：** `boolean`
 - **默认：** `true`
 
   是否支持从 `.json` 文件中进行按名导入。
 
-### json.stringify {#jsonstringify}
+### json.stringify {#json-stringify}
 
 - **类型：** `boolean`
 - **默认：** `false`
@@ -312,25 +312,25 @@ export default async ({ command, mode }) => {
 
 ## Server Options {#server-options}
 
-### server.host {#serverhost}
+### server.host {#server-host}
 
 - **类型：** `string`
 
   指定服务器主机名。
 
-### server.port {#serverport}
+### server.port {#server-port}
 
 - **类型：** `number`
 
   指定服务器端口。注意：如果端口已经被使用，Vite 会自动尝试下一个可用的端口，所以这可能不是服务器最终监听的实际端口。
 
-### server.strictPort {#serverstrictport}
+### server.strictPort {#server-strictport}
 
 - **类型：** `boolean`
 
   设为 `true` 时若端口已被占用则会直接退出，而不是尝试下一个可用端口。
 
-### server.https {#serverhttps}
+### server.https {#server-https}
 
 - **类型：** `boolean | https.ServerOptions`
 
@@ -338,7 +338,7 @@ export default async ({ command, mode }) => {
 
   这个值也可以是一个传递给 `https.createServer()` 的 [选项对象](https://nodejs.org/api/https.html#https_https_createserver_options_requestlistener)。
 
-### server.open {#serveropen}
+### server.open {#server-open}
 
 - **类型：** `boolean | string`
 
@@ -354,7 +354,7 @@ export default async ({ command, mode }) => {
   }
   ```
 
-### server.proxy {#serverproxy}
+### server.proxy {#server-proxy}
 
 - **类型：** `Record<string, string | ProxyOptions>`
 
@@ -387,20 +387,20 @@ export default async ({ command, mode }) => {
   }
   ```
 
-### server.cors {#servercors}
+### server.cors {#server-cors}
 
 - **类型：** `boolean | CorsOptions`
 
   为开发服务器配置 CORS。默认启用并允许任何源，传递一个 [选项对象](https://github.com/expressjs/cors) 来调整行为或设为 `false` 表示禁用。
 
-### server.force {#serverforce}
+### server.force {#server-force}
 
 - **类型：** `boolean`
 - **相关内容：** [Dependency Pre-Bundling](/guide/dep-pre-bundling)
 
   设置为 `true` 强制使依赖预构建。
 
-### server.hmr {#serverhmr}
+### server.hmr {#server-hmr}
 
 - **类型：** `boolean | { protocol?: string, host?: string, port?: number, path?: string, timeout?: number, overlay?: boolean }`
 
@@ -408,7 +408,7 @@ export default async ({ command, mode }) => {
 
   设置 `server.hmr.overlay` 为 `false` 可以禁用服务器错误遮罩层。
 
-### server.watch {#serverwatch}
+### server.watch {#server-watch}
 
 - **类型：** `object`
 
@@ -416,7 +416,7 @@ export default async ({ command, mode }) => {
 
 ## Build Options {#build-options}
 
-### build.target {#buildtarget}
+### build.target {#build-target}
 
 - **类型：** `string`
 - **默认：** `modules`
@@ -430,7 +430,7 @@ export default async ({ command, mode }) => {
 
   注意，如果代码包含不能被 `esbuild` 安全地编译的特性，那么构建将会失败。查看 [esbuild 文档](https://esbuild.github.io/api/#target) 获取更多细节。
 
-### build.polyfillDynamicImport {#buildpolyfilldynamicimport}
+### build.polyfillDynamicImport {#build-polyfilldynamicimport}
 
 - **类型：** `boolean`
 - **默认：** `true` unless `build.target` is `'esnext'`
@@ -445,28 +445,28 @@ export default async ({ command, mode }) => {
 
   注意：该 polyfill **不会** 应用于 [库模式](/guide/build#library-mode)。如果你需要支持不含原生动态导入功能的浏览器，可能要避免在你的库中使用它。
 
-### build.outDir {#buildoutdir}
+### build.outDir {#build-outdir}
 
 - **类型：** `string`
 - **默认：** `dist`
 
   指定输出路径（相对于 [项目根目录](/guide/#indexhtml-and-project-root)).
 
-### build.assetsDir {#buildassetsdir}
+### build.assetsDir {#build-assetsdir}
 
 - **类型：** `string`
 - **默认：** `assets`
 
   指定生成静态资源的存放路径（相对于 `build.outDir`）。
 
-### build.assetsInlineLimit {#buildassetsinlinelimit}
+### build.assetsInlineLimit {#build-assetsinlinelimit}
 
 - **类型：** `number`
 - **默认：** `4096` (4kb)
 
   小于此阈值的导入或引用资源将内联为 base64 编码，以避免额外的 http 请求。设置为 `0` 可以完全禁用此项。
 
-### build.cssCodeSplit {#buildcsscodesplit}
+### build.cssCodeSplit {#build-csscodesplit}
 
 - **类型：** `boolean`
 - **默认：** `true`
@@ -475,33 +475,33 @@ export default async ({ command, mode }) => {
 
   如果禁用，整个项目中的所有 CSS 将被提取到一个 CSS 文件中。
 
-### build.sourcemap {#buildsourcemap}
+### build.sourcemap {#build-sourcemap}
 
 - **类型：** `boolean | 'inline'`
 - **默认：** `false`
 
   构建后是否生成 source map 文件。
 
-### build.rollupOptions {#buildrollupoptions}
+### build.rollupOptions {#build-rollupoptions}
 
 - **类型：** [`RollupOptions`](https://rollupjs.org/guide/en/#big-list-of-options)
 
   自定义底层的 Rollup 打包配置。这与从 Rollup 配置文件导出的选项相同，并将与 Vite 的内部 Rollup 选项合并。查看 [Rollup 选项文档](https://rollupjs.org/guide/en/#big-list-of-options) 获取更多细节。
 
-### build.commonjsOptions {#buildcommonjsoptions}
+### build.commonjsOptions {#build-commonjsoptions}
 
 - **类型：** [`RollupCommonJSOptions`](https://github.com/rollup/plugins/tree/master/packages/commonjs#options)
 
   传递给 [@rollup/plugin-commonjs](https://github.com/rollup/plugins/tree/master/packages/commonjs) 插件的选项。
 
-### build.lib {#buildlib}
+### build.lib {#build-lib}
 
 - **类型：** `{ entry: string, name?: string, formats?: ('es' | 'cjs' | 'umd' | 'iife')[] }`
 - **相关内容：** [Library Mode](/guide/build#library-mode)
 
   构建为库。`entry` 是必须的因为库不可以使用 HTML 作为入口。`name` 则是暴露的全局变量，并且在 `formats` 包含 `'umd'` 或 `'iife'` 时是必须的。默认 `formats` 是 `['es', 'umd']`。
 
-### build.manifest {#buildmanifest}
+### build.manifest {#build-manifest}
 
 - **类型：** `boolean`
 - **默认：** `false`
@@ -509,47 +509,47 @@ export default async ({ command, mode }) => {
 
   当设置为 `true`，构建后将会生成 `manifest.json` 文件，映射没有被 hash 的资源文件名和它们的 hash 版本。可以为一些服务器框架渲染时提供正确的资源引入链接。
 
-### build.minify {#buildminify}
+### build.minify {#build-minify}
 
 - **类型：** `boolean | 'terser' | 'esbuild'`
 - **默认：** `'terser'`
 
   设置为 `false` 可以禁用最小化混淆，或是用来指定使用哪种混淆器。默认为 [Terser](https://github.com/terser/terser)，虽然 Terser 相对较慢，但大多数情况下构建后的文件体积更小。ESbuild 最小化混淆更快但构建后的文件相对更大。
 
-### build.terserOptions {#buildterseroptions}
+### build.terserOptions {#build-terseroptions}
 
 - **类型：** `TerserOptions`
 
   传递给 Terser 的更多 [minify 选项](https://terser.org/docs/api-reference#minify-options)。
 
-### build.cleanCssOptions {#buildcleancssoptions}
+### build.cleanCssOptions {#build-cleancssoptions}
 
 - **类型：** `CleanCSS.Options`
 
   传递给 [clean-css](https://github.com/jakubpawlowicz/clean-css#constructor-options) 的构造器选项。
 
-### build.write {#buildwrite}
+### build.write {#build-write}
 
 - **类型：** `boolean`
 - **默认：** `true`
 
   设置为 `false` 来禁用将构建后的文件写入磁盘。这常用于 [编程式地调用 `build()`](/guide/api-javascript#build) 在写入磁盘之前，需要对构建后的文件进行进一步处理。
 
-### build.emptyOutDir {#buildemptyoutdir}
+### build.emptyOutDir {#build-emptyoutdir}
 
 - **类型：** `boolean`
 - **默认：** 若 `outDir` 在 `root` 目录下，则为 `true`
 
   默认情况下，若 `outDir` 在 `root` 目录下，则 Vite 会在构建时清空该目录。若 `outDir` 在根目录之外则会抛出一个警告避免意外删除掉重要的文件。可以设置该选项来关闭这个警告。该功能也可以通过命令行参数 `--emptyOutDir` 来使用。
 
-### build.brotliSize {#buildbrotlisize}
+### build.brotliSize {#build-brotlisize}
 
 - **类型：** `boolean`
 - **默认：** `true`
 
   启用/禁用 brotli 压缩大小报告。压缩大型输出文件可能会很慢，因此禁用该功能可能会提高大型项目的构建性能。
 
-### build.chunkSizeWarningLimit {#buildchunksizewarninglimit}
+### build.chunkSizeWarningLimit {#build-chunksizewarninglimit}
 
 - **类型：** `number`
 - **默认：** `500`
@@ -560,7 +560,7 @@ export default async ({ command, mode }) => {
 
 - **相关内容：** [依赖预构建](/guide/dep-pre-bundling)
 
-### optimizeDeps.entries {#optimizedepsentries}
+### optimizeDeps.entries {#optimizeDeps-entries}
 
 - **类型：** `string | string[]`
 
@@ -568,19 +568,19 @@ export default async ({ command, mode }) => {
 
   如果这两者都不适合你的需要，则可以使用此选项指定自定义条目 - 该值需要遵循 [fast-glob 模式](https://github.com/mrmlnc/fast-glob#basic-syntax) ，或者是相对于 vite 项目根的模式数组。这将覆盖掉默认条目推断。
 
-### optimizeDeps.exclude {#optimizedepsexclude}
+### optimizeDeps.exclude {#optimizeDeps-exclude}
 
 - **类型：** `string[]`
 
   在预构建中强制排除的依赖项。
 
-### optimizeDeps.include {#optimizedepsinclude}
+### optimizeDeps.include {#optimizeDeps-include}
 
 - **类型：** `string[]`
 
   默认情况下，不在 `node_modules` 中的，链接的包不会被预构建。使用此选项可强制预构建链接的包。
 
-### optimizeDeps.keepNames {#optimizedepskeepnames}
+### optimizeDeps.keepNames {#optimizeDeps-keepnames}
 
 - **类型：** `boolean`
 - **默认：** `false`
@@ -597,13 +597,13 @@ SSR 选项可能会在未来版本中进行调整。
 
 - **相关：** [SSR 外部化](/guide/ssr#ssr-externals)
 
-### ssr.external {#ssrexternal}
+### ssr.external {#ssr-external}
 
 - **类型：** `string[]`
 
   列出的是要为 SSR 强制外部化的依赖。
 
-### ssr.noExternal {#ssrnoexternal}
+### ssr.noExternal {#ssr-noexternal}
 
 - **类型：** `string[]`
 
