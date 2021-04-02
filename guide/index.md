@@ -1,6 +1,6 @@
-# Getting Started
+# Getting Started {#getting-started}
 
-## Overview
+## Overview {#overview}
 
 Vite (French word for "fast", pronounced `/vit/`) is a build tool that aims to provide a faster and leaner development experience for modern web projects. It consists of two major parts:
 
@@ -12,13 +12,13 @@ Vite is opinionated and comes with sensible defaults out of the box, but is also
 
 You can learn more about the rationale behind the project in the [Why Vite](./why) section.
 
-## Browser Support
+## Browser Support {#browser-support}
 
 - For development: [native ESM dynamic import support](https://caniuse.com/es6-module-dynamic-import) is required.
 
 - For production: the default build targets browsers that support [native ESM via script tags](https://caniuse.com/es6-module). Legacy browsers can be supported via the official [@vitejs/plugin-legacy](https://github.com/vitejs/vite/tree/main/packages/plugin-legacy) - see the [Building for Production](./build) section for more details.
 
-## Scaffolding Your First Vite Project
+## Scaffolding Your First Vite Project {#scaffolding-your-first-vite-project}
 
 ::: tip Compatibility Note
 Vite requires [Node.js](https://nodejs.org/en/) version >=12.0.0.
@@ -67,7 +67,7 @@ Supported template presets include:
 
 See [@vitejs/create-app](https://github.com/vitejs/vite/tree/main/packages/create-app) for more details on each template.
 
-## Community Templates
+## Community Templates {#community-templates}
 
 @vitejs/create-app is a tool to quickly start a project from a basic template for popular frameworks. Check out Awesome Vite for [community maintained templates](https://github.com/vitejs/awesome-vite#templates) that include other tools or target different frameworks. You can use a tool like [degit](https://github.com/Rich-Harris/degit) to scaffold your project with one of the templates.
 
@@ -85,7 +85,7 @@ If the project uses `main` as the default branch, suffix the project repo with `
 npx degit user/project#main my-project
 ```
 
-## `index.html` and Project Root
+## `index.html` and Project Root {#indexhtml-and-project-root}
 
 One thing you may have noticed is that in a Vite project, `index.html` is front-and-central instead of being tucked away inside `public`. This is intentional: during development Vite is a server, and `index.html` is the entry point to your application.
 
@@ -95,11 +95,11 @@ Similar to static http servers, Vite has the concept of a "root directory" which
 
 Vite also supports [multi-page apps](./build#multi-page-app) with multiple `.html` entry points.
 
-#### Specifying Alternative Root
+#### Specifying Alternative Root {#specifying-alternative-root}
 
 Running `vite` starts the dev server using the current working directory as root. You can specify an alternative root with `vite serve some/sub/dir`.
 
-## Command Line Interface
+## Command Line Interface {#command-line-interface}
 
 In a project where Vite is installed, you can use the `vite` binary in your npm scripts, or run it directly with `npx vite`. Here is the default npm scripts in a scaffolded Vite project:
 
@@ -115,7 +115,7 @@ In a project where Vite is installed, you can use the `vite` binary in your npm 
 
 You can specify additional CLI options like `--port` or `--https`. For a full list of CLI options, run `npx vite --help` in your project.
 
-## Using Unreleased Commits
+## Using Unreleased Commits {#using-unreleased-commits}
 
 If you can't wait for a new release to test the latest features, you will need to clone the [vite repo](https://github.com/vitejs/vite) to your local machine and then build and link it yourself ([Yarn 1.x](https://classic.yarnpkg.com/lang/en/) is required):
 
@@ -130,6 +130,6 @@ yarn link
 
 Then go to your vite based project and run `yarn link vite`. Now restart the development server (`yarn dev`) to ride on the bleeding edge!
 
-## Community
+## Community {#community}
 
 If you have questions or need help, reach out to the community at [Discord](https://discord.gg/4cmKdMfpU5) and [GitHub Discussions](https://github.com/vitejs/vite/discussions).

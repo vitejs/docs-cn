@@ -1,6 +1,6 @@
-# Why Vite
+# Why Vite {#why-vite}
 
-## The Problems
+## The Problems {#the-problems}
 
 Before ES modules were available in browsers, developers had no native mechanism for authoring JavaScript in a modularized fashion. This is why we are all familiar with the concept of "bundling": using tools that crawl, process and concatenate our source modules into files that can run in the browser.
 
@@ -10,7 +10,7 @@ However, as we start to build more and more ambitious applications, the amount o
 
 Vite aims to address these issues by leveraging new advancements in the ecosystem: the availability of native ES modules in the browser, and the rise of JavaScript tools written in compile-to-native languages.
 
-### Slow Server Start
+### Slow Server Start {#slow-server-start}
 
 When cold-starting the dev server, a bundler-based build setup has to eagerly crawl and build your entire application before it can be served.
 
@@ -28,7 +28,7 @@ Vite improves the dev server start time by first dividing the modules in an appl
 
   ![esm based dev server](/images/esm.png)
 
-### Slow Updates
+### Slow Updates {#slow-updates}
 
 When a file is edited in a bundler-based build setup, it is inefficient to rebuild the whole bundle for obvious reasons: the update speed will degrade linearly with the size of the app.
 
@@ -40,16 +40,16 @@ Vite also leverages HTTP headers to speed up full page reloads (again, let the b
 
 Once you experience how fast Vite is, we highly doubt you'd be willing to put up with bundled development again.
 
-## Why Bundle for Production
+## Why Bundle for Production {#why-bundle-for-production}
 
 Even though native ESM is now widely supported, shipping unbundled ESM in production is still inefficient (even with HTTP/2) due to the additional network round trips caused by nested imports. To get the optimal loading performance in production, it is still better to bundle your code with tree-shaking, lazy-loading and common chunk splitting (for better caching).
 
 Ensuring optimal output and behavioral consistency between the dev server and the production build isn't easy. This is why Vite ships with a pre-configured [build command](./build) that bakes in many [performance optimizations](./features#build-optimizations) out of the box.
 
-## Why Not Bundle with esbuild?
+## Why Not Bundle with esbuild? {#why-not-bundle-with-esbuild}
 
 While `esbuild` is blazing fast and is already a very capable bundler for libraries, some of the important features needed for bundling _applications_ are still work in progress - in particular code-splitting and CSS handling. For the time being, Rollup is more mature and flexible in these regards. That said, we won't rule out the possibility of using `esbuild` for production build when it stabilizes these features in the future.
 
-## How is Vite Different from X?
+## How is Vite Different from X? {#how-is-vite-different-from-x}
 
 You can check out the [Comparisons](./comparisons) section for more details on how Vite differs from other similar tools.

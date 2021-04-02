@@ -1,6 +1,6 @@
-# Migration from v1
+# Migration from v1 {#migration-from-v1}
 
-## Config Options Change
+## Config Options Change {#config-options-change}
 
 - The following options have been removed and should be implemented via [plugins](./api-plugin):
 
@@ -36,7 +36,7 @@
 
 - All Vue specific options are removed; Pass options to the Vue plugin instead.
 
-## Alias Behavior Change
+## Alias Behavior Change {#alias-behavior-change}
 
 [`alias`](/config/#alias) is now being passed to `@rollup/plugin-alias` and no longer require start/ending slashes. The behavior is now a direct replacement, so 1.0-style directory alias key should remove the ending slash:
 
@@ -47,7 +47,7 @@
 
 Alternatively, you can use the `[{ find: RegExp, replacement: string }]` option format for more precise control.
 
-## Vue Support
+## Vue Support {#vue-support}
 
 Vite 2.0 core is now framework agnostic. Vue support is now provided via [`@vitejs/plugin-vue`](https://github.com/vitejs/vite/tree/main/packages/plugin-vue). Simply install it and add it in the Vite config:
 
@@ -59,7 +59,7 @@ export default {
 }
 ```
 
-### Custom Blocks Transforms
+### Custom Blocks Transforms {#custom-blocks-transforms}
 
 A custom plugin can be used to transform Vue custom blocks like the one below:
 
@@ -87,15 +87,15 @@ export default {
 }
 ```
 
-## React Support
+## React Support {#react-support}
 
 React Fast Refresh support is now provided via [`@vitejs/plugin-react-refresh`](https://github.com/vitejs/vite/tree/main/packages/plugin-react-refresh).
 
-## HMR API Change
+## HMR API Change {#hmr-api-change}
 
 `import.meta.hot.acceptDeps()` have been deprecated. [`import.meta.hot.accept()`](./api-hmr#hot-accept-deps-cb) can now accept single or multiple deps.
 
-## Manifest Format Change
+## Manifest Format Change {#manifest-format-change}
 
 The build manifest now uses the following format:
 
@@ -116,7 +116,7 @@ The build manifest now uses the following format:
 
 For entry JS chunks, it also lists its imported chunks which can be used to render preload directives.
 
-## For Plugin Authors
+## For Plugin Authors {#for-plugin-authors}
 
 Vite 2 uses a completely redesigned plugin interface which extends Rollup plugins. Please read the new [Plugin Development Guide](./api-plugin).
 

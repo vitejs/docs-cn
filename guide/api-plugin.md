@@ -1,10 +1,10 @@
-# Plugin API
+# Plugin API {#plugin-api}
 
 Vite plugins extends Rollup's well-designed plugin interface with a few extra Vite-specific options. As a result, you can write a Vite plugin once and have it work for both dev and build.
 
 **It is recommended to go through [Rollup's plugin documentation](https://rollupjs.org/guide/en/#plugin-development) first before reading the sections below.**
 
-## Conventions
+## Conventions {#conventions}
 
 If the plugin doesn't use Vite specific hooks and can be implemented as a [Compatible Rollup Plugin](#rollup-plugin-compatibility), then it is recommended to use the [Rollup Plugin naming conventions](https://rollupjs.org/guide/en/#conventions)
 
@@ -25,7 +25,7 @@ If your plugin is only going to work for a particular framework, its name should
 - `vite-plugin-react-` prefix for React Plugins
 - `vite-plugin-svelte-` prefix for Svelte Plugins
 
-## Plugins config
+## Plugins config {#plugins-config}
 
 Users will add plugins to the project `devDependencies` and configure them using the `plugins` array option.
 
@@ -67,13 +67,13 @@ export default {
 }
 ```
 
-## Simple Examples
+## Simple Examples {#simple-examples}
 
 :::tip
 It is common convention to author a Vite/Rollup plugin as a factory function that returns the actual plugin object. The function can accept options which allows users to customize the behavior of the plugin.
 :::
 
-### Importing a Virtual File
+### Importing a Virtual File {#importing-a-virtual-file}
 
 ```js
 export default function myPlugin() {
@@ -103,7 +103,7 @@ import { msg } from '@my-virtual-file'
 console.log(msg)
 ```
 
-### Transforming Custom File Types
+### Transforming Custom File Types {#transforming-custom-file-types}
 
 ```js
 const fileRegex = /\.(my-file-ext)$/
@@ -124,7 +124,7 @@ export default function myPlugin() {
 }
 ```
 
-## Universal Hooks
+## Universal Hooks {#universal-hooks}
 
 During dev, the Vite dev server creates a plugin container that invokes [Rollup Build Hooks](https://rollupjs.org/guide/en/#build-hooks) the same way Rollup does it.
 
@@ -148,11 +148,11 @@ Note that the [`moduleParsed`](https://rollupjs.org/guide/en/#moduleparsed) hook
 
 [Output Generation Hooks](https://rollupjs.org/guide/en/#output-generation-hooks) (except `closeBundle`) are **not** called during dev. You can think of Vite's dev server as only calling `rollup.rollup()` without calling `bundle.generate()`.
 
-## Vite Specific Hooks
+## Vite Specific Hooks {#vite-specific-hooks}
 
 Vite plugins can also provide hooks that serve Vite-specific purposes. These hooks are ignored by Rollup.
 
-### `config`
+### `config` {#config}
 
 - **Type:** `(config: UserConfig, env: { mode: string, command: string }) => UserConfig | null | void`
 - **Kind:** `sync`, `sequential`
@@ -187,7 +187,7 @@ Vite plugins can also provide hooks that serve Vite-specific purposes. These hoo
   User plugins are resolved before running this hook so injecting other plugins inside the `config` hook will have no effect.
   :::
 
-### `configResolved`
+### `configResolved` {#configresolved}
 
 - **Type:** `(config: ResolvedConfig) => void`
 - **Kind:** `sync`, `sequential`
@@ -220,7 +220,7 @@ Vite plugins can also provide hooks that serve Vite-specific purposes. These hoo
   }
   ```
 
-### `configureServer`
+### `configureServer` {#configureserver}
 
 - **Type:** `(server: ViteDevServer) => (() => void) | void | Promise<(() => void) | void>`
 - **Kind:** `async`, `sequential`
@@ -281,7 +281,7 @@ Vite plugins can also provide hooks that serve Vite-specific purposes. These hoo
 
   Note `configureServer` is not called when running the production build so your other hooks need to guard against its absence.
 
-### `transformIndexHtml`
+### `transformIndexHtml` {#transformindexhtml}
 
 - **Type:** `IndexHtmlTransformHook | { enforce?: 'pre' | 'post' transform: IndexHtmlTransformHook }`
 - **Kind:** `async`, `sequential`
@@ -346,7 +346,7 @@ Vite plugins can also provide hooks that serve Vite-specific purposes. These hoo
   }
   ```
 
-### `handleHotUpdate`
+### `handleHotUpdate` {#handlehotupdate}
 
 - **Type:** `(ctx: HmrContext) => Array<ModuleNode> | void | Promise<Array<ModuleNode> | void>`
 
@@ -393,7 +393,7 @@ Vite plugins can also provide hooks that serve Vite-specific purposes. These hoo
     }
     ```
 
-## Plugin Ordering
+## Plugin Ordering {#plugin-ordering}
 
 A Vite plugin can additionally specify an `enforce` property (similar to webpack loaders) to adjust its application order. The value of `enforce` can be either `"pre"` or `"post"`. The resolved plugins will be in the following order:
 
@@ -405,7 +405,7 @@ A Vite plugin can additionally specify an `enforce` property (similar to webpack
 - User plugins with `enforce: 'post'`
 - Vite post build plugins (minify, manifest, reporting)
 
-## Conditional Application
+## Conditional Application {#conditional-application}
 
 By default plugins are invoked for both serve and build. In cases where a plugin needs to be conditionally applied only during serve or build, use the `apply` property to only invoke them during `'build'` or `'serve'`:
 
@@ -418,7 +418,7 @@ function myPlugin() {
 }
 ```
 
-## Rollup Plugin Compatibility
+## Rollup Plugin Compatibility {#rollup-plugin-compatibility}
 
 A fair number of Rollup plugins will work directly as a Vite plugin (e.g. `@rollup/plugin-alias` or `@rollup/plugin-json`), but not all of them, since some plugin hooks do not make sense in an unbundled dev server context.
 
@@ -448,7 +448,7 @@ export default {
 
 Check out [Vite Rollup Plugins](https://vite-rollup-plugins.patak.dev) for a list of compatible official Rollup plugins with usage instructions.
 
-## Path normalization
+## Path normalization {#path-normalization}
 
 Vite normalizes paths while resolving ids to use POSIX separators ( / ) while preserving the volume in Windows. On the other hand, Rollup keeps resolved paths untouched by default, so resolved ids have win32 separators ( \\ ) in Windows. However, Rollup plugins use a [`normalizePath` utility function](https://github.com/rollup/plugins/tree/master/packages/pluginutils#normalizepath) from `@rollup/pluginutils` internally, which converts separators to POSIX before performing comparisons. This means that when these plugins are used in Vite, the `include` and `exclude` config pattern and other similar paths against resolved ids comparisons work correctly.
 

@@ -1,8 +1,8 @@
-# Features
+# Features {#features}
 
 At the very basic level, developing using Vite is not that much different from using a static file server. However, Vite provides many enhancements over native ESM imports to support various features that are typically seen in bundler-based setups.
 
-## NPM Dependency Resolving and Pre-Bundling
+## NPM Dependency Resolving and Pre-Bundling {#npm-dependency-resolving-and-pre-bundling}
 
 Native ES imports do not support bare module imports like the following:
 
@@ -20,13 +20,13 @@ The above will throw an error in the browser. Vite will detect such bare module 
 
 Vite caches dependency requests via HTTP headers, so if you wish to locally edit/debug a dependency, follow the steps [here](./dep-pre-bundling#browser-cache).
 
-## Hot Module Replacement
+## Hot Module Replacement {#hot-module-replacement}
 
 Vite provides an [HMR API](./api-hmr) over native ESM. Frameworks with HMR capabilities can leverage the API to provide instant, precise updates without reloading the page or blowing away application state. Vite provides first-party HMR integrations for [Vue Single File Components](https://github.com/vitejs/vite/tree/main/packages/plugin-vue) and [React Fast Refresh](https://github.com/vitejs/vite/tree/main/packages/plugin-react-refresh). There are also official integrations for Preact via [@prefresh/vite](https://github.com/JoviDeCroock/prefresh/tree/main/packages/vite).
 
 Note you don't need to manually set these up - when you [create an app via `@vitejs/create-app`](./), the selected templates would have these pre-configured for you already.
 
-## TypeScript
+## TypeScript {#typescript}
 
 Vite supports importing `.ts` files out of the box.
 
@@ -36,7 +36,7 @@ Vite uses [esbuild](https://github.com/evanw/esbuild) to transpile TypeScript in
 
 Note that because `esbuild` only performs transpilation without type information, it doesn't support certain features like const enum and implicit type-only imports. You must set `"isolatedModules": true` in your `tsconfig.json` under `compilerOptions` so that TS will warn you against the features that do not work with isolated transpilation.
 
-### Client Types
+### Client Types {#client-types}
 
 Vite's default types are for its Node.js API. To shim the environment of client side code in a Vite application, add `vite/client` to `compilerOptions.types` of your `tsconfig`:
 
@@ -54,7 +54,7 @@ This will provide the following type shims:
 - Types for the Vite-injected [env variables](./env-and-mode#env-variables) on `import.meta.env`
 - Types for the [HMR API](./api-hmr) on `import.meta.hot`
 
-## Vue
+## Vue {#vue}
 
 Vite provides first-class Vue support:
 
@@ -62,7 +62,7 @@ Vite provides first-class Vue support:
 - Vue 3 JSX support via [@vitejs/plugin-vue-jsx](https://github.com/vitejs/vite/tree/main/packages/plugin-vue-jsx)
 - Vue 2 support via [underfin/vite-plugin-vue2](https://github.com/underfin/vite-plugin-vue2)
 
-## JSX
+## JSX {#jsx}
 
 `.jsx` and `.tsx` files are also supported out of the box. JSX transpilation is also handled via [ESBuild](https://esbuild.github.io), and defaults to the React 16 flavor. React 17 style JSX support in ESBuild is tracked [here](https://github.com/evanw/esbuild/issues/334).
 
@@ -93,21 +93,21 @@ export default {
 }
 ```
 
-## CSS
+## CSS {#css}
 
 Importing `.css` files will inject its content to the page via a `<style>` tag with HMR support. You can also retrieve the processed CSS as a string as the module's default export.
 
-### `@import` Inlining and Rebasing
+### `@import` Inlining and Rebasing {#import-inlining-and-rebasing}
 
 Vite is pre-configured to support CSS `@import` inlining via `postcss-import`. Vite aliases are also respected for CSS `@import`. In addition, all CSS `url()` references, even if the imported files are in different directories, are always automatically rebased to ensure correctness.
 
 `@import` aliases and URL rebasing are also supported for Sass and Less files (see [CSS Pre-processors](#css-pre-processors)).
 
-### PostCSS
+### PostCSS {#postcss}
 
 If the project contains valid PostCSS config (any format supported by [postcss-load-config](https://github.com/postcss/postcss-load-config), e.g. `postcss.config.js`), it will be automatically applied to all imported CSS.
 
-### CSS Modules
+### CSS Modules {#css-modules}
 
 Any CSS file ending with `.module.css` is considered a [CSS modules file](https://github.com/css-modules/css-modules). Importing such a file will return the corresponding module object:
 
@@ -133,7 +133,7 @@ import { applyColor } from './example.module.css'
 document.getElementById('foo').className = applyColor
 ```
 
-### CSS Pre-processors
+### CSS Pre-processors {#css-pre-processors}
 
 Because Vite targets modern browsers only, it is recommended to use native CSS variables with PostCSS plugins that implement CSSWG drafts (e.g. [postcss-nesting](https://github.com/jonathantneal/postcss-nesting)) and author plain, future-standards-compliant CSS.
 
@@ -158,7 +158,7 @@ Vite improves `@import` resolving for Sass and Less so that Vite aliases are als
 
 You can also use CSS modules combined with pre-processors by prepending `.module` to the file extension, for example `style.module.scss`.
 
-## Static Assets
+## Static Assets {#static-assets}
 
 Importing a static asset will return the resolved public URL when it is served:
 
@@ -191,7 +191,7 @@ import InlineWorker from './worker.js?worker&inline'
 
 More details in [Static Asset Handling](./assets).
 
-## JSON
+## JSON {#json}
 
 JSON files can be directly imported - named imports are also supported:
 
@@ -202,7 +202,7 @@ import json from './example.json'
 import { field } from './example.json'
 ```
 
-## Glob Import
+## Glob Import {#glob-import}
 
 Vite supports importing multiple modules from the file system via the special `import.meta.glob` function:
 
@@ -254,7 +254,7 @@ Note that:
 - The glob patterns are treated like import specifiers: they must be either relative (start with `./`) or absolute (start with `/`, resolved relative to project root). Globbing from dependencies is not supported.
 - The glob matching is done via `fast-glob` - check out its documentation for [supported glob patterns](https://github.com/mrmlnc/fast-glob#pattern-syntax).
 
-## Web Assembly
+## Web Assembly {#web-assembly}
 
 Pre-compiled `.wasm` files can be directly imported - the default export will be an initialization function that returns a Promise of the exports object of the wasm instance:
 
@@ -282,7 +282,7 @@ init({
 
 In the production build, `.wasm` files smaller than `assetInlineLimit` will be inlined as base64 strings. Otherwise, they will be copied to the dist directory as an asset and fetched on-demand.
 
-## Web Workers
+## Web Workers {#web-workers}
 
 A web worker script can be directly imported by appending `?worker` to the import request. The default export will be a custom worker constructor:
 
@@ -300,27 +300,27 @@ By default, the worker script will be emitted as a separate chunk in the product
 import MyWorker from './worker?worker&inline'
 ```
 
-## Build Optimizations
+## Build Optimizations {#build-optimizations}
 
 > Features listed below are automatically applied as part of the build process and there is no need for explicit configuration unless you want to disable them.
 
-### Dynamic Import Polyfill
+### Dynamic Import Polyfill {#dynamic-import-polyfill}
 
 Vite uses ES dynamic import as code-splitting points. The generated code will also use dynamic imports to load the async chunks. However, native ESM dynamic imports support landed later than ESM via script tags and there is a browser support discrepancy between the two features. Vite automatically injects a light-weight [dynamic import polyfill](https://github.com/GoogleChromeLabs/dynamic-import-polyfill) to ease out that difference.
 
 If you know you are only targeting browsers with native dynamic import support, you can explicitly disable this feature via [`build.polyfillDynamicImport`](/config/#build-polyfilldynamicimport).
 
-### CSS Code Splitting
+### CSS Code Splitting {#css-code-splitting}
 
 Vite automatically extracts the CSS used by modules in an async chunk and generate a separate file for it. The CSS file is automatically loaded via a `<link>` tag when the associated async chunk is loaded, and the async chunk is guaranteed to only be evaluated after the CSS is loaded to avoid [FOUC](https://en.wikipedia.org/wiki/Flash_of_unstyled_content#:~:text=A%20flash%20of%20unstyled%20content,before%20all%20information%20is%20retrieved.).
 
 If you'd rather have all the CSS extracted into a single file, you can disable CSS code splitting by setting [`build.cssCodeSplit`](/config/#build-csscodesplit) to `false`.
 
-### Preload Directives Generation
+### Preload Directives Generation {#preload-directives-generation}
 
 Vite automatically generates `<link rel="modulepreload">` directives for entry chunks and their direct imports in the built HTML.
 
-### Async Chunk Loading Optimization
+### Async Chunk Loading Optimization {#async-chunk-loading-optimization}
 
 In real world applications, Rollup often generates "common" chunks - code that is shared between two or more other chunks. Combined with dynamic imports, it is quite common to have the following scenario:
 

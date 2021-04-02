@@ -1,8 +1,8 @@
-# Building for Production
+# Building for Production {#building-for-production}
 
 When it is time to deploy your app for production, simply run the `vite build` command. By default, it uses `<root>/index.html` as the build entry point, and produces an application bundle that is suitable to be served over a static hosting service. Check out the [Deploying a Static Site](./static-deploy) for guides about popular services.
 
-## Browser Compatibility
+## Browser Compatibility {#browser-compatibility}
 
 The production bundle assumes a baseline support for modern JavaScript. By default, all code is transpiled targeting [browsers with native ESM script tag support](https://caniuse.com/es6-module):
 
@@ -19,7 +19,7 @@ Note that by default, Vite only handles syntax transforms and **does not cover p
 
 Legacy browsers can be supported via [@vitejs/plugin-legacy](https://github.com/vitejs/vite/tree/main/packages/plugin-legacy), which will automatically generate legacy chunks and corresponding ES language feature polyfills. The legacy chunks are conditionally loaded only in browsers that do not have native ESM support.
 
-## Public Base Path
+## Public Base Path {#public-base-path}
 
 - Related: [Asset Handling](./assets)
 
@@ -29,7 +29,7 @@ JS-imported asset URLs, CSS `url()` references, and asset references in your `.h
 
 The exception is when you need to dynamically concatenate URLs on the fly. In this case, you can use the globally injected `import.meta.env.BASE_URL` variable which will be the public base path. Note this variable is statically replaced during build so it must appear exactly as-is (i.e. `import.meta.env['BASE_URL']` won't work).
 
-## Customizing the Build
+## Customizing the Build {#customizing-the-build}
 
 The build can be customized via various [build config options](/config/#build-options). Specifically, you can directly adjust the underlying [Rollup options](https://rollupjs.org/guide/en/#big-list-of-options) via `build.rollupOptions`:
 
@@ -46,7 +46,7 @@ module.exports = {
 
 For example, you can specify multiple Rollup outputs with plugins that are only applied during build.
 
-## Multi-Page App
+## Multi-Page App {#multi-page-app}
 
 Suppose you have the following source code structure:
 
@@ -80,7 +80,7 @@ module.exports = {
 }
 ```
 
-## Library Mode
+## Library Mode {#library-mode}
 
 When you are developing a browser-oriented library, you are likely spending most of the time on a test/demo page that imports your actual library. With Vite, you can use your `index.html` for that purpose to get the smooth development experience.
 
