@@ -162,5 +162,14 @@ module.exports = {
         }
       ]
     }
+  },
+
+  markdown: {
+    anchor: {
+      renderPermalink: require('./render-perma-link')
+    },
+    config: (md) => {
+      md.use(require('./markdown-it-custom-anchor'))
+    }
   }
 }
