@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-# 部署静态站点
-=======
-# Deploying a Static Site {#deploying-a-static-site}
->>>>>>> dev
+# 部署静态站点 {#deploying-a-static-site}
 
 下面的指引都基于以下几个假设：
 
@@ -22,15 +18,10 @@
 值得注意的是 `vite preview` 旨在提供一个生产版本的本地预览，但不应直接作为一个生产服务器。
 
 ::: tip 注意
-本篇指引提供的指令旨在
 本篇指南提供了如何执行 Vite 站点的静态部署的说明。Vite 也对服务端渲染（SSR）有了实验性的支持。SSR 是指支持在 Node 中运行相应应用的前端框架，预渲染成 HTML，最后在客户端激活（hydrate）。查看 [SSR 指南](./ssr) 可以了解更多细节。另一方面，如果你正在寻找与传统服务端框架集成的方式，那么请查看 [后端集成](./backend-integration) 章节。
 :::
 
-<<<<<<< HEAD
-## 构建应用
-=======
-## Building The App {#building-the-app}
->>>>>>> dev
+## 构建应用 {#building-the-app}
 
 你可以运行 `npm run build` 命令来执行应用的构建。
 
@@ -40,11 +31,7 @@ $ npm run build
 
 默认情况下，构建会输出到 `dist` 文件夹中。你可以部署这个 `dist` 文件夹到任何你喜欢的平台。
 
-<<<<<<< HEAD
-### 本地测试应用
-=======
-### Testing The App Locally {#testing-the-app-locally}
->>>>>>> dev
+### 本地测试应用 {#testing-the-app-locally}
 
 当你构建完成应用后，你可以通过运行 `npm run preview` 命令，在本地测试该应用。
 
@@ -109,11 +96,7 @@ cd -
 你也可以在你的 CI 启动时运行该脚本，使得在每次推送代码时自动部署。
 :::
 
-<<<<<<< HEAD
-### GitHub Pages 配合 Travis CI
-=======
-### GitHub Pages and Travis CI {#github-pages-and-travis-ci}
->>>>>>> dev
+### GitHub Pages 配合 Travis CI {#github-pages-and-travis-ci}
 
 1. 在 `vite.config.js` 中设置正确的 `base`。
 
@@ -147,11 +130,7 @@ deploy:
     branch: master
 ```
 
-<<<<<<< HEAD
-## GitLab Pages 配合 GitLab CI
-=======
-## GitLab Pages and GitLab CI {#gitlab-pages-and-gitlab-ci}
->>>>>>> dev
+## GitLab Pages 配合 GitLab CI {#gitlab-pages-and-gitlab-ci}
 
 1. 在 `vite.config.js` 中设置正确的 `base`。
 
@@ -181,7 +160,7 @@ pages:
 
 ## Netlify {#netlify}
 
-1. 在 [Netlify](https://netlify.com) 上，按下列设置配合 Github 设置好一个一个新的项目：
+1. 在 [Netlify](https://netlify.com) 上，按下列设置配合 Github 设置好一个新的项目：
 
 - **构建命令：** `vite build` 或者 `npm run build`
 - **发布目录：** `dist`
