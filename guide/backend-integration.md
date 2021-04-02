@@ -41,7 +41,7 @@
 
    ```html
    <script type="module">
-     import RefreshRuntime from "http://localhost:3000/@react-refresh"
+     import RefreshRuntime from 'http://localhost:3000/@react-refresh'
      RefreshRuntime.injectIntoGlobalHook(window)
      window.$RefreshReg$ = () => {}
      window.$RefreshSig$ = () => (type) => type

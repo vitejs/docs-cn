@@ -1,18 +1,10 @@
-<<<<<<< HEAD
-# 配置 Vite
+# 配置 Vite {#configuring-vite}
 
-## 配置文件
+## 配置文件 {#config-file}
 
-### 配置文件解析
-=======
-# Configuring Vite {#configuring-vite}
+### 配置文件解析 {#config-file-resolving}
 
-## Config File {#config-file}
-
-### Config File Resolving {#config-file-resolving}
->>>>>>> dev
-
-当以命令行方式运行 `vite` 时，Vite 会自动解析 [项目根目录](/guide/#index-html-与项目根目录) 下名为 `vite.config.js` 的文件。
+当以命令行方式运行 `vite` 时，Vite 会自动解析 [项目根目录](/guide/#index-html-and-project-root) 下名为 `vite.config.js` 的文件。
 
 最基础的配置文件是这样的：
 
@@ -31,11 +23,7 @@ export default {
 vite --config my-config.js
 ```
 
-<<<<<<< HEAD
-### 配置智能提示
-=======
-### Config Intellisense {#config-intellisense}
->>>>>>> dev
+### 配置智能提示 {#config-intellisense}
 
 因为 Vite 本身附带 Typescript 类型，所以你可以通过 IDE 和 jsdoc 的配合来进行智能提示：
 
@@ -62,11 +50,7 @@ export default defineConfig({
 
 Vite 也直接支持 TS 配置文件。你可以在 `vite.config.ts` 中使用 `defineConfig` 帮手函数。
 
-<<<<<<< HEAD
-### 情景配置
-=======
-### Conditional Config {#conditional-config}
->>>>>>> dev
+### 情景配置 {#conditional-config}
 
 如果配置文件需要基于（`serve` 或 `build`）命令或者不同的 [模式](/guide/env-and-mode) 来决定选项，则可以选择导出这样一个函数：
 
@@ -84,11 +68,7 @@ export default ({ command, mode }) => {
 }
 ```
 
-<<<<<<< HEAD
-### 异步配置
-=======
-### Async Config {#async-config}
->>>>>>> dev
+### 异步配置 {#async-config}
 
 如果配置需要调用一个异步函数，也可以转而导出一个异步函数：
 
@@ -101,11 +81,7 @@ export default async ({ command, mode }) => {
 }
 ```
 
-<<<<<<< HEAD
-## 共享配置
-=======
-## Shared Options {#shared-options}
->>>>>>> dev
+## 共享配置 {#shared-options}
 
 ### root {#root}
 
@@ -114,20 +90,20 @@ export default async ({ command, mode }) => {
 
   项目根目录（`index.html` 文件所在的位置）。可以是一个绝对路径，或者一个相对于该配置文件本身的路径。
 
-  更多细节请见 [项目根目录](/guide/#index-html-与项目根目录)。
+  更多细节请见 [项目根目录](/guide/#index-html-and-project-root)。
 
 ### base {#base}
 
 - **类型：** `string`
 - **默认：** `/`
 
-  开发或生产环境服务的 公共基础路径。合法的值包括以下几种：
+  开发或生产环境服务的公共基础路径。合法的值包括以下几种：
 
   - 绝对 URL 路径名，例如 `/foo/`
   - 完整的 URL，例如 `https://foo.com/`
   - 空字符串或 `./`（用于开发环境）
 
-  更多信息详见 [公共基础路径](/guide/build#公共基础路径)。
+  更多信息详见 [公共基础路径](/guide/build#public-base-path)。
 
 ### mode {#mode}
 
@@ -165,7 +141,7 @@ export default async ({ command, mode }) => {
 
 - **类型：** `Record<string, string> | Array<{ find: string | RegExp, replacement: string }>`
 
-  将会被传递到 `@rollup/plugin-alias` 作为 [entries](https://github.com/rollup/plugins/tree/master/packages/alias#entries) 的选项。也可以是一个对象，或一个 `{ find, replacement }` 的数组.
+  将会被传递到 `@rollup/plugin-alias` 作为 [entries 的选项](https://github.com/rollup/plugins/tree/master/packages/alias#entries)。也可以是一个对象，或一个 `{ find, replacement }` 的数组.
 
   当使用文件系统路径的别名时，请始终使用绝对路径。相对路径的别名值会被原封不动地使用，因此无法被正常解析。
 
@@ -306,18 +282,20 @@ export default async ({ command, mode }) => {
   }
   ```
 
-<<<<<<< HEAD
-### assetsInclude
-=======
-  Set to `false` to disable ESbuild transforms.
+  设置为 `false` 来禁用 ESbuild 转换。
 
 ### assetsInclude {#assetsinclude}
->>>>>>> dev
 
 - **类型：** `string | RegExp | (string | RegExp)[]`
 - **相关内容：** [静态资源处理](/guide/assets)
 
-  指定其他文件类型作为静态资源处理（这样导入它们就会返回解析后的 URL）
+  指定其他文件类型作为静态资源处理，因此：
+
+  - 当从 HTML 引用它们或直接通过 `fetch` 或 XHR 请求它们时，它们将被插件转换管道排除在外。
+
+  - 从 JavaScript 导入它们将返回解析后的 URL 字符串（如果你有一个 `enforce: 'pre'` 插件来处理不同的资产类型，这可能会被覆盖）。
+
+  内建支持的资源类型列表可以在 [这里](https://github.com/vitejs/vite/blob/main/packages/vite/src/node/constants.ts) 找到。
 
 ### logLevel {#loglevel}
 
@@ -338,7 +316,7 @@ export default async ({ command, mode }) => {
 
 - **类型：** `string`
 
-  指定服务器主机名
+  指定服务器主机名。
 
 ### server.port {#serverport}
 
@@ -442,7 +420,7 @@ export default async ({ command, mode }) => {
 
 - **类型：** `string`
 - **默认：** `modules`
-- **相关内容：:** [浏览器兼容性](/guide/build#浏览器兼容性)
+- **相关内容：:** [浏览器兼容性](/guide/build#browser-compatibility)
 
   设置最终构建的浏览器兼容目标。默认值是一个 Vite 特有的值，`'modules'`，这是指 [支持原生 ES 模块的浏览器](https://caniuse.com/es6-module)。
 
@@ -465,14 +443,14 @@ export default async ({ command, mode }) => {
   import 'vite/dynamic-import-polyfill'
   ```
 
-  注意：该 polyfill **不会** 应用于 [库模式](/guide/build#库模式)。如果你需要支持不含原生动态导入功能的浏览器，可能要避免在你的库中使用它。
+  注意：该 polyfill **不会** 应用于 [库模式](/guide/build#library-mode)。如果你需要支持不含原生动态导入功能的浏览器，可能要避免在你的库中使用它。
 
 ### build.outDir {#buildoutdir}
 
 - **类型：** `string`
 - **默认：** `dist`
 
-  指定输出路径（相对于 [项目根目录](/guide/#index-html-与项目根目录)).
+  指定输出路径（相对于 [项目根目录](/guide/#indexhtml-and-project-root)).
 
 ### build.assetsDir {#buildassetsdir}
 
@@ -519,7 +497,7 @@ export default async ({ command, mode }) => {
 ### build.lib {#buildlib}
 
 - **类型：** `{ entry: string, name?: string, formats?: ('es' | 'cjs' | 'umd' | 'iife')[] }`
-- **相关内容：** [Library Mode](/guide/build#库模式)
+- **相关内容：** [Library Mode](/guide/build#library-mode)
 
   构建为库。`entry` 是必须的因为库不可以使用 HTML 作为入口。`name` 则是暴露的全局变量，并且在 `formats` 包含 `'umd'` 或 `'iife'` 时是必须的。默认 `formats` 是 `['es', 'umd']`。
 
@@ -542,15 +520,13 @@ export default async ({ command, mode }) => {
 
 - **类型：** `TerserOptions`
 
-<<<<<<< HEAD
   传递给 Terser 的更多 [minify 选项](https://terser.org/docs/api-reference#minify-options)。
-=======
+
 ### build.cleanCssOptions {#buildcleancssoptions}
 
-- **Type:** `CleanCSS.Options`
+- **类型：** `CleanCSS.Options`
 
-  Constructor options to pass on to [clean-css](https://github.com/jakubpawlowicz/clean-css#constructor-options).
->>>>>>> dev
+  传递给 [clean-css](https://github.com/jakubpawlowicz/clean-css#constructor-options) 的构造器选项。
 
 ### build.write {#buildwrite}
 
@@ -580,11 +556,7 @@ export default async ({ command, mode }) => {
 
   chunk 大小警告的限制（以 kbs 为单位）。
 
-<<<<<<< HEAD
-## 依赖优化选项
-=======
-## Dep Optimization Options {#dep-optimization-options}
->>>>>>> dev
+## 依赖优化选项 {#dep-optimization-options}
 
 - **相关内容：** [依赖预构建](/guide/dep-pre-bundling)
 
@@ -617,17 +589,13 @@ export default async ({ command, mode }) => {
 
   若想获取更多详情，请参阅 [`keepNames`](https://esbuild.github.io/api/#keep-names)
 
-<<<<<<< HEAD
-## SSR 选项
-=======
-## SSR Options {#ssr-options}
->>>>>>> dev
+## SSR 选项 {#ssr-options}
 
 :::warning 实验性
 SSR 选项可能会在未来版本中进行调整。
 :::
 
-- **相关：** [SSR 外部化](/guide/ssr#SSR-外部化)
+- **相关：** [SSR 外部化](/guide/ssr#ssr-externals)
 
 ### ssr.external {#ssrexternal}
 
