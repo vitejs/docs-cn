@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 # 部署静态站点
+=======
+# Deploying a Static Site {#deploying-a-static-site}
+>>>>>>> dev
 
 下面的指引都基于以下几个假设：
 
@@ -22,7 +26,11 @@
 本篇指南提供了如何执行 Vite 站点的静态部署的说明。Vite 也对服务端渲染（SSR）有了实验性的支持。SSR 是指支持在 Node 中运行相应应用的前端框架，预渲染成 HTML，最后在客户端激活（hydrate）。查看 [SSR 指南](./ssr) 可以了解更多细节。另一方面，如果你正在寻找与传统服务端框架集成的方式，那么请查看 [后端集成](./backend-integration) 章节。
 :::
 
+<<<<<<< HEAD
 ## 构建应用
+=======
+## Building The App {#building-the-app}
+>>>>>>> dev
 
 你可以运行 `npm run build` 命令来执行应用的构建。
 
@@ -32,7 +40,11 @@ $ npm run build
 
 默认情况下，构建会输出到 `dist` 文件夹中。你可以部署这个 `dist` 文件夹到任何你喜欢的平台。
 
+<<<<<<< HEAD
 ### 本地测试应用
+=======
+### Testing The App Locally {#testing-the-app-locally}
+>>>>>>> dev
 
 当你构建完成应用后，你可以通过运行 `npm run preview` 命令，在本地测试该应用。
 
@@ -55,7 +67,7 @@ $ npm run preview
 
 这样 `preview` 命令会改将服务器运行在 http://localhost:8080 上。
 
-## GitHub Pages
+## GitHub Pages {#github-pages}
 
 1. 在 `vite.config.js` 中设置正确的 `base`。
 
@@ -97,7 +109,11 @@ cd -
 你也可以在你的 CI 启动时运行该脚本，使得在每次推送代码时自动部署。
 :::
 
+<<<<<<< HEAD
 ### GitHub Pages 配合 Travis CI
+=======
+### GitHub Pages and Travis CI {#github-pages-and-travis-ci}
+>>>>>>> dev
 
 1. 在 `vite.config.js` 中设置正确的 `base`。
 
@@ -131,7 +147,11 @@ deploy:
     branch: master
 ```
 
+<<<<<<< HEAD
 ## GitLab Pages 配合 GitLab CI
+=======
+## GitLab Pages and GitLab CI {#gitlab-pages-and-gitlab-ci}
+>>>>>>> dev
 
 1. 在 `vite.config.js` 中设置正确的 `base`。
 
@@ -159,7 +179,7 @@ pages:
     - master
 ```
 
-## Netlify
+## Netlify {#netlify}
 
 1. 在 [Netlify](https://netlify.com) 上，按下列设置配合 Github 设置好一个一个新的项目：
 
@@ -168,7 +188,7 @@ pages:
 
 2. 点击部署按钮。
 
-## Google Firebase
+## Google Firebase {#google-firebase}
 
 1. 确保已经安装 [firebase-tools](https://www.npmjs.com/package/firebase-tools)。
 
@@ -197,7 +217,7 @@ pages:
 
 3. 运行 `npm run build` 后，通过 `firebase deploy` 命令部署。
 
-## Surge
+## Surge {#surge}
 
 1. 请确保您已经安装了 [surge](https://www.npmjs.com/package/surge)。
 
@@ -208,7 +228,7 @@ pages:
 
 你也可以通过添加 `surge dist yourdomain.com` 部署到一个 [自定义域名](http://surge.sh/help/adding-a-custom-domain)。
 
-## Heroku
+## Heroku {#heroku}
 
 1. 安装 [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli)。
 
@@ -257,7 +277,7 @@ $ git push heroku master
 $ heroku open
 ```
 
-## Vercel
+## Vercel {#vercel}
 
 要通过 [Vercel for Git](https://vercel.com/docs/git) 部署你的 Vite 应用，请确保它已经被推送为了一个 Git 仓库。
 

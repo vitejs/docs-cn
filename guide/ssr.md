@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 # 服务端渲染
+=======
+# Server-Side Rendering {#server-side-rendering}
+>>>>>>> dev
 
 :::warning 实验性
 SSR 支持还处于试验阶段，你可能会遇到 bug 和不受支持的用例。请考虑你可能承担的风险。
@@ -14,14 +18,22 @@ SSR 特别指支持在 Node.js 中运行相同应用程序的前端框架（例�
 如果你有疑问，可以到社区 [Discord 的 Vite #ssr 频道](https://discord.gg/PkbxgzPhJv)，这里会帮到你。
 :::
 
+<<<<<<< HEAD
 ## 示例项目
+=======
+## Example Projects {#example-projects}
+>>>>>>> dev
 
 Vite 为服务端渲染（SSR）提供了内建支持。这里的 Vite 范例包含了 Vue 3 和 React 的 SSR 设置示例，可以作为本指南的参考：
 
 - [Vue 3](https://github.com/vitejs/vite/tree/main/packages/playground/ssr-vue)
 - [React](https://github.com/vitejs/vite/tree/main/packages/playground/ssr-react)
 
+<<<<<<< HEAD
 ## 源码结构
+=======
+## Source Structure {#source-structure}
+>>>>>>> dev
 
 一个典型的 SSR 应用应该有如下的源文件结构：
 
@@ -42,7 +54,11 @@ Vite 为服务端渲染（SSR）提供了内建支持。这里的 Vite 范例包
 
 你可以使用任何你喜欢的占位标记来替代 `<!--ssr-outlet-->`，只要它能够被正确替换。
 
+<<<<<<< HEAD
 ## 情景逻辑
+=======
+## Conditional Logic {#conditional-logic}
+>>>>>>> dev
 
 如果需要基于 SSR 和 client 执行情景逻辑，可以使用：
 
@@ -54,7 +70,11 @@ if (import.meta.env.SSR) {
 
 这是在构建过程中被静态替换的，因此它将允许对未使用的条件分支进行摇树优化。
 
+<<<<<<< HEAD
 ## 设置开发服务器
+=======
+## Setting Up the Dev Server {#setting-up-the-dev-server}
+>>>>>>> dev
 
 在构建 SSR 应用程序时，你可能希望完全控制主服务器，并将 Vite 与生产环境解耦。因此，建议以中间件模式使用 Vite。下面是一个关于 [express](https://expressjs.com/) 的例子：
 
@@ -141,7 +161,11 @@ app.use('*', async (req, res) => {
   }
 ```
 
+<<<<<<< HEAD
 ## 生产环境构建
+=======
+## Building for Production {#building-for-production}
+>>>>>>> dev
 
 为了将 SSR 项目交付生产，我们需要：
 
@@ -172,7 +196,11 @@ app.use('*', async (req, res) => {
 
 可以在此参考 [Vue](https://github.com/vitejs/vite/tree/main/packages/playground/ssr-vue) 和 [React](https://github.com/vitejs/vite/tree/main/packages/playground/ssr-react) 的启动范例。
 
+<<<<<<< HEAD
 ## 生成预加载指令
+=======
+## Generating Preload Directives {#generating-preload-directives}
+>>>>>>> dev
 
 `vite build` 支持使用 `--ssrManifest` 标志，这将会在构建输出目录中生成一份 `ssr-manifest.json`：
 
@@ -196,11 +224,19 @@ const html = await vueServerRenderer.renderToString(app, ctx)
 
 我们现在需要在 `server.js` 的生产情景分支下读取该清单，并将其传递到 `src/entry-server.js` 导出的 `render` 函数中，这将为我们提供足够的信息，来为异步路由相应的文件渲染预加载指令！查看 [示例代码](https://github.com/vitejs/vite/blob/main/packages/playground/ssr-vue/src/entry-server.js) 获取完整示例。
 
+<<<<<<< HEAD
 ## 预渲染 / SSG
+=======
+## Pre-Rendering / SSG {#pre-rendering--ssg}
+>>>>>>> dev
 
 如果预先知道某些路由所需的路由和数据，我们可以使用与生产环境 SSR 相同的逻辑将这些路由预先渲染到静态 HTML 中。这也被视为一种静态站点生成（SSG）的形式。查看 [示例渲染代码](https://github.com/vitejs/vite/blob/main/packages/playground/ssr-vue/prerender.js) 获取有效示例。
 
+<<<<<<< HEAD
 ## SSR 外部化
+=======
+## SSR Externals {#ssr-externals}
+>>>>>>> dev
 
 许多依赖都附带 ESM 和 CommonJS 文件。当运行 SSR 时，提供 CommonJS 构建的依赖关系可以从 Vite 的 SSR 转换/模块系统进行 “外部化”，从而加速开发和构建。例如，并非去拉取 React 的预构建的 ESM 版本然后将其转换回 Node.js 兼容版本，用 `require('react')` 代替会更有效。它还大大提高了 SSR 包构建的速度。
 
@@ -218,7 +254,11 @@ Vite 基于以下启发式执行自动化的 SSR 外部化:
 如果你为某个包配置了一个别名，为了能使 SSR 外部化依赖功能正常工作，你可能想要使用的别名应该指的是实际的 `node_modules` 中的包。[Yarn](https://classic.yarnpkg.com/en/docs/cli/add/#toc-yarn-add-alias) 和 [pnpm](https://pnpm.js.org/en/aliases) 都支持通过 `npm:` 前缀来设置别名。
 :::
 
+<<<<<<< HEAD
 ## SSR 专有插件逻辑
+=======
+## SSR-specific Plugin Logic {#ssr-specific-plugin-logic}
+>>>>>>> dev
 
 一些框架，如 Vue 或 Svelte，会根据客户端渲染和服务端渲染的区别，将组件编译成不同的格式。可以向以下的插件钩子中，给 Vite 传递额外的 `ssr` 参数来支持根据情景转换：
 

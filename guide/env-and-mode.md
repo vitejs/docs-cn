@@ -1,6 +1,12 @@
+<<<<<<< HEAD
 # 环境变量与模式
 
 ## 环境变量
+=======
+# Env Variables and Modes {#env-variables-and-modes}
+
+## Env Variables {#env-variables}
+>>>>>>> dev
 
 Vite 在一个特殊的 **`import.meta.env`** 对象上暴露环境变量。这里有一些普遍适用的内建变量：
 
@@ -12,7 +18,11 @@ Vite 在一个特殊的 **`import.meta.env`** 对象上暴露环境变量。这�
 
 - **`import.meta.env.DEV`**: `boolean` 应用是否运行在开发环境 (永远与 `import.meta.env.PROD` 相反)
 
+<<<<<<< HEAD
 ### 生产环境替换
+=======
+### Production Replacement {#production-replacement}
+>>>>>>> dev
 
 在生产环境中，这些环境变量会在构建时被静态替换，因此请在引用它们时使用完全静态的字符串。动态的 key 将无法生效。例如，动态 key 取值 `import.meta.env[key]` 是无效的。
 
@@ -22,7 +32,11 @@ Vite 在一个特殊的 **`import.meta.env`** 对象上暴露环境变量。这�
 
 - 对于 Vue 模板或其他编译到 JavaScript 字符串的 HTML，你可以使用 [`<wbr>` 标签](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/wbr)，例如：`import.meta.<wbr>env.MODE`。
 
+<<<<<<< HEAD
 ## `.env` 文件
+=======
+## `.env` Files {#env-files}
+>>>>>>> dev
 
 Vite 使用 [dotenv](https://github.com/motdotla/dotenv) 在你的项目根目录下从以下文件加载额外的环境变量:
 
@@ -50,7 +64,11 @@ VITE_SOME_KEY=123
 
 - 由于暴露在 Vite 源码中的任何变量都将最终出现在客户端包中，`VITE_*` 变量应该不包含任何敏感信息。
 
+<<<<<<< HEAD
 :::
+=======
+### IntelliSense {#intellisense}
+>>>>>>> dev
 
 ### 智能提示
 
@@ -65,7 +83,11 @@ interface ImportMetaEnv {
 }
 ```
 
+<<<<<<< HEAD
 ## 模式
+=======
+## Modes {#modes}
+>>>>>>> dev
 
 默认情况下，开发服务器 (`serve` 命令) 运行在 `development` （开发）模式，而 `build` 命令运行在 `production` （生产）模式。
 

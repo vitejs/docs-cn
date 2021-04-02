@@ -1,4 +1,4 @@
-# HMR API
+# HMR API {#hmr-api}
 
 :::tip 注意
 这里是客户端 HMR API。若要在插件中处理 HMR 更新，详见 [handleHotUpdate](./api-plugin#handlehotupdate).
@@ -27,7 +27,11 @@ interface ImportMeta {
 }
 ```
 
+<<<<<<< HEAD
 ## 必需的条件守卫
+=======
+## Required Conditional Guard {#required-conditional-guard}
+>>>>>>> dev
 
 首先，请确保用一个条件语句守护所有 HMR API 的使用，这样代码就可以在生产环境中被 tree-shaking 优化:
 
@@ -37,7 +41,7 @@ if (import.meta.hot) {
 }
 ```
 
-## `hot.accept(cb)`
+## `hot.accept(cb)` {#hotacceptcb}
 
 要接收模块自身，应使用 `import.meta.hot.accept`，参数为接收已更新模块的回调函数：
 
@@ -57,7 +61,7 @@ if (import.meta.hot) {
 
 这种简化的 HMR 实现对于大多数开发用例来说已经足够了，同时允许我们跳过生成代理模块的昂贵工作。
 
-## `hot.accept(deps, cb)`
+## `hot.accept(deps, cb)` {#hotacceptdeps-cb}
 
 模块也可以接受直接依赖项的更新，而无需重新加载自身：
 
@@ -82,7 +86,7 @@ if (import.meta.hot) {
 }
 ```
 
-## `hot.dispose(cb)`
+## `hot.dispose(cb)` {#hotdisposecb}
 
 一个接收自身的模块或一个期望被其他模块接收的模块可以使用 `hot.dispose` 来清除任何由其更新副本产生的持久副作用：
 
@@ -98,18 +102,18 @@ if (import.meta.hot) {
 }
 ```
 
-## `hot.data`
+## `hot.data` {#hotdata}
 
 `import.meta.hot.data` 对象在同一个更新模块的不同实例之间持久化。它可以用于将信息从模块的前一个版本传递到下一个版本。
 
-## `hot.decline()`
+## `hot.decline()` {#hotdecline}
 
 调用 `import.meta.hot.decline()` 表示此模块不可热更新，如果在传播 HMR 更新时遇到此模块，浏览器应该执行完全重新加载。
 
-## `hot.invalidate()`
+## `hot.invalidate()` {#hotinvalidate}
 
 现在调用 `import.meta.hot.invalidate()` 只是重新加载页面。
 
-## `hot.on(event, cb)`
+## `hot.on(event, cb)` {#hotonevent-cb}
 
 监听自定义 HMR 事件。自定义 HMR 事件可以由插件发送。更多细节详见 [handleHotUpdate](./api-plugin#handleHotUpdate)。
