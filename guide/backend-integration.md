@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-# 后端集成
-=======
-# Backend Integration {#backend-integration}
->>>>>>> dev
+# 后端集成 {#backend-integration}
 
 如果你想使用传统的后端（如 Rails, Laravel）来服务 HTML，但使用 Vite 来服务其他资源，可以查看在 [Awesome Vite](https://github.com/vitejs/awesome-vite#integrations-with-backends) 上的已有的后端集成列表。
 
@@ -29,7 +25,7 @@
    ```js
    // 添加到你应用入口文件的开头
    import 'vite/dynamic-import-polyfill'
-   ```   
+   ```
 
 2. 在开发环境中，在服务器的 HTML 模板中注入以下内容（用正在运行的本地 URL 替换 `http://localhost:3000`）：
 
@@ -86,6 +82,6 @@
 
    ```html
    <!-- 如果是在生产环境中 -->
-   <link rel="stylesheet" href="/assets/{{ manifest['style.css'].file }}" />
-   <script type="module" src="/assets/{{ manifest['index.js].file }}"></script>
+   <link rel="stylesheet" href="/assets/{{ manifest['main.js'].css }}" />
+   <script type="module" src="/assets/{{ manifest['main.js'].file }}"></script>
    ```
