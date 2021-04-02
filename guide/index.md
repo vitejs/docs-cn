@@ -103,11 +103,7 @@ npm run dev
 npx degit user/project#main my-project
 ```
 
-<<<<<<< HEAD
-## `index.html` 与项目根目录
-=======
-## `index.html` and Project Root {#indexhtml-and-project-root}
->>>>>>> dev
+## `index.html` 与项目根目录 {#index-html-and-project-root}
 
 你可能已经注意到，在一个 Vite 项目中，`index.html` 在项目最外层而不是在 `public` 文件夹内。这是有意而为之的：在开发期间 Vite 是一个服务器，而 `index.html` 是该 Vite 项目的入口文件。
 
