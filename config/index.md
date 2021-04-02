@@ -1,16 +1,8 @@
-<<<<<<< HEAD
-# 配置 Vite
+# 配置 Vite {#configuring-vite}
 
-## 配置文件
+## 配置文件 {#config-file}
 
-### 配置文件解析
-=======
-# Configuring Vite {#configuring-vite}
-
-## Config File {#config-file}
-
-### Config File Resolving {#config-file-resolving}
->>>>>>> dev
+### 配置文件解析 {#config-file-resolving}
 
 当以命令行方式运行 `vite` 时，Vite 会自动解析 [项目根目录](/guide/#index-html-与项目根目录) 下名为 `vite.config.js` 的文件。
 
@@ -31,11 +23,7 @@ export default {
 vite --config my-config.js
 ```
 
-<<<<<<< HEAD
-### 配置智能提示
-=======
-### Config Intellisense {#config-intellisense}
->>>>>>> dev
+### 配置智能提示 {#config-intellisense}
 
 因为 Vite 本身附带 Typescript 类型，所以你可以通过 IDE 和 jsdoc 的配合来进行智能提示：
 
@@ -62,11 +50,7 @@ export default defineConfig({
 
 Vite 也直接支持 TS 配置文件。你可以在 `vite.config.ts` 中使用 `defineConfig` 帮手函数。
 
-<<<<<<< HEAD
-### 情景配置
-=======
-### Conditional Config {#conditional-config}
->>>>>>> dev
+### 情景配置 {#conditional-config}
 
 如果配置文件需要基于（`serve` 或 `build`）命令或者不同的 [模式](/guide/env-and-mode) 来决定选项，则可以选择导出这样一个函数：
 
@@ -84,11 +68,7 @@ export default ({ command, mode }) => {
 }
 ```
 
-<<<<<<< HEAD
-### 异步配置
-=======
-### Async Config {#async-config}
->>>>>>> dev
+### 异步配置 {#async-config}
 
 如果配置需要调用一个异步函数，也可以转而导出一个异步函数：
 
@@ -101,11 +81,7 @@ export default async ({ command, mode }) => {
 }
 ```
 
-<<<<<<< HEAD
-## 共享配置
-=======
-## Shared Options {#shared-options}
->>>>>>> dev
+## 共享配置 {#shared-options}
 
 ### root {#root}
 
@@ -306,13 +282,9 @@ export default async ({ command, mode }) => {
   }
   ```
 
-<<<<<<< HEAD
-### assetsInclude
-=======
   Set to `false` to disable ESbuild transforms.
 
 ### assetsInclude {#assetsinclude}
->>>>>>> dev
 
 - **类型：** `string | RegExp | (string | RegExp)[]`
 - **相关内容：** [静态资源处理](/guide/assets)
@@ -542,15 +514,13 @@ export default async ({ command, mode }) => {
 
 - **类型：** `TerserOptions`
 
-<<<<<<< HEAD
   传递给 Terser 的更多 [minify 选项](https://terser.org/docs/api-reference#minify-options)。
-=======
+
 ### build.cleanCssOptions {#buildcleancssoptions}
 
-- **Type:** `CleanCSS.Options`
+- **类型：** `CleanCSS.Options`
 
-  Constructor options to pass on to [clean-css](https://github.com/jakubpawlowicz/clean-css#constructor-options).
->>>>>>> dev
+  传递给 [clean-css](https://github.com/jakubpawlowicz/clean-css#constructor-options) 的构造器选项。
 
 ### build.write {#buildwrite}
 
@@ -580,11 +550,7 @@ export default async ({ command, mode }) => {
 
   chunk 大小警告的限制（以 kbs 为单位）。
 
-<<<<<<< HEAD
-## 依赖优化选项
-=======
-## Dep Optimization Options {#dep-optimization-options}
->>>>>>> dev
+## 依赖优化选项 {#dep-optimization-options}
 
 - **相关内容：** [依赖预构建](/guide/dep-pre-bundling)
 
@@ -617,11 +583,7 @@ export default async ({ command, mode }) => {
 
   若想获取更多详情，请参阅 [`keepNames`](https://esbuild.github.io/api/#keep-names)
 
-<<<<<<< HEAD
-## SSR 选项
-=======
-## SSR Options {#ssr-options}
->>>>>>> dev
+## SSR 选项 {#ssr-options}
 
 :::warning 实验性
 SSR 选项可能会在未来版本中进行调整。
