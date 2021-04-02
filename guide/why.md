@@ -1,12 +1,6 @@
-<<<<<<< HEAD
-# 为什么选 Vite
+# 为什么选 Vite {#why-vite}
 
-## 现实问题
-=======
-# Why Vite {#why-vite}
-
-## The Problems {#the-problems}
->>>>>>> dev
+## 现实问题 {#the-problems}
 
 在浏览器支持 ES 模块之前，开发者没有以模块化的方式开发 JavaScript 的原生机制。这也是 “打包” 这个概念出现的原因：使用工具抓取、处理和链接我们的源码模块到文件中，使其可以运行在浏览器中。
 
@@ -16,13 +10,9 @@
 
 Vite 旨在利用生态系统中的新进展解决上述问题：浏览器开始原生支持 ES 模块，越来越多 JavaScript 工具使用编译型语言编写。
 
-<<<<<<< HEAD
-### 缓慢的服务器启动
-=======
-### Slow Server Start {#slow-server-start}
->>>>>>> dev
+### 缓慢的服务器启动 {#slow-server-start}
 
-当冷启动开发服务器时，基于打包器的方式是在提供服务前去急切地抓取和构建你的整个应用。
+当冷启动开发服务器时，基于打包器的方式启动必须先去急切地抓取和构建你的整个应用，然后再提供服务。
 
 Vite 通过在一开始将应用中的模块区分为 **依赖** 和 **源码** 两类，改进了开发服务器启动时间。
 
@@ -38,11 +28,7 @@ Vite 通过在一开始将应用中的模块区分为 **依赖** 和 **源码** 
 
   ![基于 ESM 的开发服务器](/images/esm.png)
 
-<<<<<<< HEAD
-### 缓慢的更新
-=======
-### Slow Updates {#slow-updates}
->>>>>>> dev
+### 缓慢的更新 {#slow-updates}
 
 当基于打包器启动时，编辑文件后将重新构建文件本身。显然我们不应该重新构建整个包，因为这样更新速度会随着应用体积增长而直线下降。
 
@@ -54,29 +40,17 @@ Vite 同时利用 HTTP 头来加速整个页面的重新加载（再次让浏览
 
 一旦你体验到 Vite 有多快，我们十分怀疑你是否愿意再忍受像曾经那样使用打包器开发。
 
-<<<<<<< HEAD
-## 为什么生产环境仍需打包
-=======
-## Why Bundle for Production {#why-bundle-for-production}
->>>>>>> dev
+## 为什么生产环境仍需打包 {#why-bundle-for-production}
 
 尽管原生 ESM 现在得到了广泛支持，但由于嵌套导入会导致额外的网络往返，在生产环境中发布未打包的 ESM 仍然效率低下（即使使用 HTTP/2）。为了在生产环境中获得最佳的加载性能，最好还是将代码进行 tree-shaking、懒加载和 chunk 分割（以获得更好的缓存）。
 
 要确保开发服务器和产品构建之间的最佳输出和行为一致并不容易。所以 Vite 附带了一套 [预配置、预优化](./features#build-optimizations) 的 [构建命令](./build)，开箱即用。
 
-<<<<<<< HEAD
-### 为何不用 ESBuild 打包？
-=======
-## Why Not Bundle with esbuild? {#why-not-bundle-with-esbuild}
->>>>>>> dev
+### 为何不用 ESBuild 打包？ {#why-not-bundle-with-esbuild}
 
 虽然 `esbuild` 快得惊人，并且已经是一个在构建库方面比较出色的工具，但一些针对构建 _应用_ 的重要功能仍然还在持续开发中 —— 特别是代码分割和 CSS 处理方面。就目前来说，Rollup 在应用打包方面更加成熟和灵活。尽管如此，当未来这些功能稳定后，我们也不排除使用 `esbuild` 作为生产构建器的可能。
 
-<<<<<<< HEAD
-## Vite 与 X 的区别是？
-=======
-## How is Vite Different from X? {#how-is-vite-different-from-x}
->>>>>>> dev
+## Vite 与 X 的区别是？ {#how-is-vite-different-from-x}
 
 你可以查看 [比较](./comparisons) 章节获取更多细节，了解 Vite 与同类工具的异同。
 
