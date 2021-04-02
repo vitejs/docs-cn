@@ -1,8 +1,16 @@
+<<<<<<< HEAD
 # 构建生产版本
+=======
+# Building for Production {#building-for-production}
+>>>>>>> fix-anchor
 
 当需要将应用部署到生产环境时，只需运行 `vite build` 命令。默认情况下，它使用 `<root>/index.html` 作为构建入口点，并生成一个适合通过静态部署的应用包。查看 [部署静态站点](./static-deploy) 获取常见服务的部署指引。
 
+<<<<<<< HEAD
 ## 浏览器兼容性
+=======
+## Browser Compatibility {#browser-compatibility}
+>>>>>>> fix-anchor
 
 生产版本假设浏览器对 [原生 ES 模块动态导入](https://caniuse.com/es6-module-dynamic-import) 有基本支持。默认情况下，所有代码构建都会以 [支持原生 ESM script 标签的浏览器](https://caniuse.com/es6-module) 为目标。
 
@@ -19,7 +27,11 @@
 
 传统浏览器可以通过插件 [@vitejs/plugin-legacy](https://github.com/vitejs/vite/tree/main/packages/plugin-legacy) 来支持，它将自动生成传统版本的 chunk 和其相应 ES 语言特性方面的 polyfill。兼容版的 chunk 只会在不支持原生 ESM 的浏览器中有按需加载。
 
+<<<<<<< HEAD
 ## 公共基础路径
+=======
+## Public Base Path {#public-base-path}
+>>>>>>> fix-anchor
 
 - 相关内容：[静态资源处理](./assets)
 
@@ -29,7 +41,11 @@
 
 例外情况是需要动态连接 url。在这种情况下，你可以使用全局注入的 `import.meta.env.BASE_URL` 变量，它将是 公共基础路径。注意这个变量在构建中是被静态替换的所以它必须是原本的样子（例如 `import.meta.env['BASE_URL']` 是无效的）
 
+<<<<<<< HEAD
 ## 自定义构建
+=======
+## Customizing the Build {#customizing-the-build}
+>>>>>>> fix-anchor
 
 构建过程可以通过多种 [构建配置选项](/config/#build-options) 来自定义。特别地，你可以通过 `build.rollupOptions` 直接调整底层的 [Rollup 选项](https://rollupjs.org/guide/en/#big-list-of-options)：
 
@@ -46,7 +62,11 @@ module.exports = {
 
 例如，你可以使用仅在构建期间应用的插件来指定多个 Rollup 输出。
 
+<<<<<<< HEAD
 ## 多页面应用模式
+=======
+## Multi-Page App {#multi-page-app}
+>>>>>>> fix-anchor
 
 假设你有下面这样的项目文件结构
 
@@ -80,7 +100,11 @@ module.exports = {
 }
 ```
 
+<<<<<<< HEAD
 ## 库模式
+=======
+## Library Mode {#library-mode}
+>>>>>>> fix-anchor
 
 当你开发面向浏览器的库时，你可能会将大部分时间花在该库的测试/演示页面上。使用 Vite，你可以使用 `index.html` 来获得如丝般顺滑的开发体验。
 

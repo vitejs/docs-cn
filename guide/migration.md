@@ -1,6 +1,12 @@
+<<<<<<< HEAD
 # 从 v1 迁移
 
 ## 配置项变化
+=======
+# Migration from v1 {#migration-from-v1}
+
+## Config Options Change {#config-options-change}
+>>>>>>> fix-anchor
 
 - 以下选项已被删除，应通过 [插件](./api-plugin) 实现：
 
@@ -36,7 +42,11 @@
 
 - 所有 Vue 特定选项都已删除；应将选项传递给 Vue 插件。
 
+<<<<<<< HEAD
 ## 别名用法变化
+=======
+## Alias Behavior Change {#alias-behavior-change}
+>>>>>>> fix-anchor
 
 [`alias`](/config/#alias) 现在会被传递给 `@rollup/plugin-alias` 并不再需要开始/结尾处的斜线了。此行为目前是一个直接替换，所以 1.0 风格的目录别名需要删除其结尾处的斜线：
 
@@ -47,7 +57,7 @@
 
 另外，你可以对该选项使用 `[{ find: RegExp, replacement: string }]` 格式以求更精确的控制。
 
-## Vue Support
+## Vue Support {#vue-support}
 
 Vite 2.0 核心已经是框架无关的了。对 Vue 的支持目前详见 [`@vitejs/plugin-vue`](https://github.com/vitejs/vite/tree/main/packages/plugin-vue)。安装它并添加到 Vite 配置十分简单:
 
@@ -59,7 +69,11 @@ export default {
 }
 ```
 
+<<<<<<< HEAD
 ### 自定义块转换
+=======
+### Custom Blocks Transforms {#custom-blocks-transforms}
+>>>>>>> fix-anchor
 
 一个自定义插件可以用来转换 Vue 自定义块，如下所示:
 
@@ -87,15 +101,27 @@ export default {
 }
 ```
 
+<<<<<<< HEAD
 ## React 支持
+=======
+## React Support {#react-support}
+>>>>>>> fix-anchor
 
 React Fast Refresh 现已支持，详见 [`@vitejs/plugin-react-refresh`](https://github.com/vitejs/vite/tree/main/packages/plugin-react-refresh)。
 
+<<<<<<< HEAD
 ## HMR API 变化
+=======
+## HMR API Change {#hmr-api-change}
+>>>>>>> fix-anchor
 
 `import.meta.hot.acceptDeps()` 已经弃用。[`import.meta.hot.accept()`](./api-hmr#hot-accept-deps-cb) 现在可以接收一个或多个依赖。
 
+<<<<<<< HEAD
 ## Manifest 格式变化
+=======
+## Manifest Format Change {#manifest-format-change}
+>>>>>>> fix-anchor
 
 构建清单现在使用以下格式:
 
@@ -116,7 +142,11 @@ React Fast Refresh 现已支持，详见 [`@vitejs/plugin-react-refresh`](https:
 
 对于入口 JS chunk，它还列出了它导入的 chunk，这些 chunk 可以用来渲染预加载指令。
 
+<<<<<<< HEAD
 ## 写给插件作者
+=======
+## For Plugin Authors {#for-plugin-authors}
+>>>>>>> fix-anchor
 
 Vite 2 使用了一套完全重定义的，扩展了 Rollup 插件的接口。请阅读新的 [插件开发指南](./api-plugin).
 

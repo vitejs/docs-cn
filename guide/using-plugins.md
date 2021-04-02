@@ -1,8 +1,16 @@
+<<<<<<< HEAD
 # 使用插件
+=======
+# Using Plugins {#using-plugins}
+>>>>>>> fix-anchor
 
 Vite 可以使用插件进行扩展，这得益于 Rollup 优秀的插件接口设计和一部分 Vite 独有的额外选项。这意味着 Vite 用户可以利用 Rollup 插件的强大生态系统，同时根据需要也能够扩展开发服务器和 SSR 功能。
 
+<<<<<<< HEAD
 ## 添加一个插件
+=======
+## Adding a Plugin {#adding-a-plugin}
+>>>>>>> fix-anchor
 
 若要使用一个插件，需要将它添加到项目的 `devDependencies` 并在 `vite.config.js` 配置文件中的 `plugins` 数组中引入它。例如，要想为传统浏览器提供支持，可以按下面这样使用官方插件 [@vitejs/plugin-legacy](https://github.com/vitejs/vite/tree/main/packages/plugin-legacy)：
 
@@ -27,7 +35,11 @@ export default {
 
 Falsy 虚值的插件将被忽略，可以用来轻松地启用或停用插件。
 
+<<<<<<< HEAD
 ## 查找插件
+=======
+## Finding Plugins {#finding-plugins}
+>>>>>>> fix-anchor
 
 :::tip 注意
 Vite 旨在为常见的 Web 开发范式提供开箱即用的支持。在寻找一个 Vite 或兼容的 Rollup 插件之前，请先查看 [功能指引](../guide/features.md)。大量在 Rollup 项目中需要使用插件的用例在 Vite 中已经覆盖到了。
@@ -37,7 +49,11 @@ Vite 旨在为常见的 Web 开发范式提供开箱即用的支持。在寻找�
 
 你也可以使用此 [npm Vite 插件搜索链接](https://www.npmjs.com/search?q=vite-plugin&ranking=popularity) 来找到一些遵循了 [推荐约定](./api-plugin.md#conventions) 的 Vite 插件，或者此 [npm Rollup 插件搜索链接](https://www.npmjs.com/search?q=rollup-plugin&ranking=popularity) 获取 Rollup 插件。
 
+<<<<<<< HEAD
 ## 强制插件排序
+=======
+## Enforcing Plugin Ordering {#enforcing-plugin-ordering}
+>>>>>>> fix-anchor
 
 为了与某些 Rollup 插件兼容，可能需要强制执行插件的顺序，或者只在构建时使用。这应该是 Vite 插件的实现细节。可以使用 `enforce` 修饰符来强制插件的位置:
 
@@ -61,7 +77,11 @@ export default {
 
 查看 [Plugins API Guide](./api-plugin.md#plugin-ordering) 获取细节信息，并在 [Vite Rollup 插件](https://vite-rollup-plugins.patak.dev) 兼容性列表中注意 `enforce` 标签和流行插件的使用说明。
 
+<<<<<<< HEAD
 ## 情景应用
+=======
+## Conditional Application {#conditional-application}
+>>>>>>> fix-anchor
 
 默认情况下插件在部署（serve）和构建（build）模式中都会调用。如果插件只需要在服务或构建期间有条件地应用，请使用 `apply` 属性指明它们仅在 `'build'` 或 `'serve'` 模式时调用：
 
@@ -79,6 +99,10 @@ export default {
 }
 ```
 
+<<<<<<< HEAD
 ## 构建插件
+=======
+## Building Plugins {#building-plugins}
+>>>>>>> fix-anchor
 
 阅读 [插件 API 指引](./api-plugin.md) 文档了解如何创建插件。

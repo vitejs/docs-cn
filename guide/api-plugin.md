@@ -1,10 +1,14 @@
-# Plugin API
+# Plugin API {#plugin-api}
 
 Vite 插件扩展了设计出色的 Rollup 接口，带有一些 Vite 独有的配置项。因此，你只需要编写一个 Vite 插件，就可以同时为开发环境和生产环境工作。
 
 **推荐在阅读下面的章节之前，首先阅读下 [Rollup 插件文档](https://rollupjs.org/guide/en/#plugin-development)**
 
+<<<<<<< HEAD
 ## 约定
+=======
+## Conventions {#conventions}
+>>>>>>> fix-anchor
 
 如果插件不使用 Vite 特有的钩子，可以实现为 [兼容的 Rollup 插件](#Rollup-插件兼容性)，推荐使用 [Rollup 插件名称约定](https://rollupjs.org/guide/en/#conventions)。
 
@@ -25,7 +29,11 @@ Vite 插件扩展了设计出色的 Rollup 接口，带有一些 Vite 独有的�
 - `vite-plugin-react-` 前缀作为 React 插件
 - `vite-plugin-svelte-` 前缀作为 Svelte 插件
 
+<<<<<<< HEAD
 ## 插件配置
+=======
+## Plugins config {#plugins-config}
+>>>>>>> fix-anchor
 
 用户会将插件添加到项目的 `devDependencies` 中并使用数组形式的 `plugins` 选项配置它们。
 
@@ -70,13 +78,21 @@ export default {
 }
 ```
 
+<<<<<<< HEAD
 ## 简单示例
+=======
+## Simple Examples {#simple-examples}
+>>>>>>> fix-anchor
 
 :::tip
 通常的惯例是创建一个 Vite/Rollup 插件作为一个返回实际插件对象的工厂函数。该函数可以接受允许用户自定义插件行为的选项。
 :::
 
+<<<<<<< HEAD
 ### 引入一个虚拟文件
+=======
+### Importing a Virtual File {#importing-a-virtual-file}
+>>>>>>> fix-anchor
 
 ```js
 export default function myPlugin() {
@@ -105,7 +121,11 @@ import { msg } from '@my-virtual-file'
 console.log(msg)
 ```
 
+<<<<<<< HEAD
 ### 转换自定义文件类型
+=======
+### Transforming Custom File Types {#transforming-custom-file-types}
+>>>>>>> fix-anchor
 
 ```js
 const fileRegex = /\.(my-file-ext)$/
@@ -125,7 +145,11 @@ export default function myPlugin() {
 }
 ```
 
+<<<<<<< HEAD
 ## 通用钩子
+=======
+## Universal Hooks {#universal-hooks}
+>>>>>>> fix-anchor
 
 在开发中，Vite 开发服务器会创建一个插件容器来调用 [Rollup 构建钩子](https://rollupjs.org/guide/en/#build-hooks)，与 Rollup 如出一辙。
 
@@ -149,11 +173,15 @@ export default function myPlugin() {
 
 [Output Generation Hooks](https://rollupjs.org/guide/en/#output-generation-hooks)（除了 `closeBundle`) **不是** 在开发中被调用的。你可以认为 Vite 的开发服务器只调用了 `rollup.rollup()` 而没有调用 `bundle.generate()`.
 
+<<<<<<< HEAD
 ## Vite 独有钩子
+=======
+## Vite Specific Hooks {#vite-specific-hooks}
+>>>>>>> fix-anchor
 
 Vite 插件也可以提供钩子来服务于特定的 Vite 目标。这些钩子会被 Rollup 忽略。
 
-### `config`
+### `config` {#config}
 
 - **类型：** `(config: UserConfig, env: { mode: string, command: string }) => UserConfig | null | void`
 - **种类：** `sync`, `sequential`
@@ -188,7 +216,7 @@ Vite 插件也可以提供钩子来服务于特定的 Vite 目标。这些钩子
   用户插件在运行这个钩子之前会被解析，因此在 `config` 钩子中注入其他插件不会有任何效果。
   :::
 
-### `configResolved`
+### `configResolved` {#configresolved}
 
 - **类型：** `(config: ResolvedConfig) => void`
 - **种类：** `sync`, `sequential`
@@ -221,7 +249,7 @@ Vite 插件也可以提供钩子来服务于特定的 Vite 目标。这些钩子
   }
   ```
 
-### `configureServer`
+### `configureServer` {#configureserver}
 
 - **类型：** `(server: ViteDevServer) => (() => void) | void | Promise<(() => void) | void>`
 - **种类：** `async`, `sequential`
@@ -281,7 +309,7 @@ Vite 插件也可以提供钩子来服务于特定的 Vite 目标。这些钩子
 
   注意 `configureServer` 在运行生产版本时不会被调用，所以其他钩子需要注意防止它的缺失。
 
-### `transformIndexHtml`
+### `transformIndexHtml` {#transformindexhtml}
 
 - **类型：** `IndexHtmlTransformHook | { enforce?: 'pre' | 'post' transform: IndexHtmlTransformHook }`
 - **种类：** `async`, `sequential`
@@ -346,7 +374,7 @@ Vite 插件也可以提供钩子来服务于特定的 Vite 目标。这些钩子
   }
   ```
 
-### `handleHotUpdate`
+### `handleHotUpdate` {#handlehotupdate}
 
 - **类型：** `(ctx: HmrContext) => Array<ModuleNode> | void | Promise<Array<ModuleNode> | void>`
 
@@ -393,7 +421,11 @@ Vite 插件也可以提供钩子来服务于特定的 Vite 目标。这些钩子
     }
     ```
 
+<<<<<<< HEAD
 ## 插件顺序
+=======
+## Plugin Ordering {#plugin-ordering}
+>>>>>>> fix-anchor
 
 一个 Vite 插件可以额外指定一个 `enforce` 属性（类似于 webpack 加载器）来调整它的应用顺序。`enforce` 的值可以是`pre` 或 `post`。解析后的插件将按照以下顺序排列:
 
@@ -404,7 +436,11 @@ Vite 插件也可以提供钩子来服务于特定的 Vite 目标。这些钩子
 - Vite 构建用的插件
 - 带有 `enforce: 'post'` 的用户插件
 
+<<<<<<< HEAD
 ## 情景应用
+=======
+## Conditional Application {#conditional-application}
+>>>>>>> fix-anchor
 
 默认情况下插件在部署（serve）和构建（build）模式中都会调用。如果插件只需要在服务或构建期间有条件地应用，请使用 `apply` 属性指明它们仅在 `'build'` 或 `'serve'` 模式时调用：
 
@@ -417,7 +453,11 @@ function myPlugin() {
 }
 ```
 
+<<<<<<< HEAD
 ## Rollup 插件兼容性
+=======
+## Rollup Plugin Compatibility {#rollup-plugin-compatibility}
+>>>>>>> fix-anchor
 
 相当数量的 Rollup 插件将直接作为 Vite 插件工作（例如：`@rollup/plugin-alias` 或 `@rollup/plugin-json`），但并不是所有的，因为有些插件钩子在非构建式的开发服务器上下文中没有意义。
 
@@ -446,7 +486,11 @@ export default {
 
 查看 [Vite Rollup 插件](https://vite-rollup-plugins.patak.dev) 获取兼容的官方 Rollup 插件列表及其使用指南。
 
+<<<<<<< HEAD
 ## 路径规范化
+=======
+## Path normalization {#path-normalization}
+>>>>>>> fix-anchor
 
 Vite 会在解析路径时使用 POSIX 分隔符（ / ）标准化路径，同时也适用于 Windows 的分卷。而另一方面，Rollup 在默认情况下保持解析的路径不变，因此解析的路径在 Windows 中会使用 win32 分隔符（ \\ ）。然而，Rollup 插件会从 `@rollup/pluginutils` 中使用一个 [`normalizePath` 工具函数](https://github.com/rollup/plugins/tree/master/packages/pluginutils#normalizepath)，它在执行比较之前将分隔符转换为 POSIX。所以意味着当这些插件在 Vite 中使用时，`include` 和 `exclude` 两个配置模式，以及与已解析路径比较相似的路径会正常工作。
 

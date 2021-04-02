@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 # 依赖预构建
+=======
+# Dependency Pre-Bundling {#dependency-pre-bundling}
+>>>>>>> fix-anchor
 
 当你首次启动 `vite` 时，你可能会注意到打印出了以下信息：
 
@@ -9,7 +13,11 @@ Pre-bundling them to speed up dev server page load...（将预构建它们以提
 (this will be run only when your dependencies have changed)（这将只会在你的依赖发生变化时执行）
 ```
 
+<<<<<<< HEAD
 ## 原因
+=======
+## The Why {#the-why}
+>>>>>>> fix-anchor
 
 这就是 Vite 执行的所谓的“依赖预构建”。这个过程有两个目的:
 
@@ -28,18 +36,30 @@ Pre-bundling them to speed up dev server page load...（将预构建它们以提
 
    通过预构建 `lodash-es` 成为一个模块，我们就只需要一个 HTTP 请求了！
 
+<<<<<<< HEAD
 ## 自动依赖搜寻
+=======
+## Automatic Dependency Discovery {#automatic-dependency-discovery}
+>>>>>>> fix-anchor
 
 如果没有找到存在的缓存，Vite 将抓取你的源码，并自动发现依赖项导入（即
 "裸引入"，期望从 `node_modules` 解析），并使用这些发现的导入作为预构建包的入口点。预绑定是用 `esbuild` 执行的，所以它通常非常快。
 
 在服务器已经启动之后，如果在缓存中没有遇到新的依赖项导入，Vite 将重新运行依赖构建进程并重新加载页面。
 
+<<<<<<< HEAD
 ## Monorepo 和链接依赖
+=======
+## Monorepos and Linked Dependencies {#monorepos-and-linked-dependencies}
+>>>>>>> fix-anchor
 
 在一个 monorepo 启动中，该仓库中的某个依赖可能会成为另一个包的依赖。Vite 会自动侦测没有从 `node_modules` 解析的依赖项，并将链接的依赖视为源码。它不会尝试打包被链接的依赖，而是会分析被链接依赖的依赖列表。
 
+<<<<<<< HEAD
 ## 自定义行为
+=======
+## Customizing the Behavior {#customizing-the-behavior}
+>>>>>>> fix-anchor
 
 默认的依赖项发现为启发式可能并不总是可取的。在你想要显式地从列表中包含/排除依赖项的情况下, 请使用 [`optimizeDeps` 配置项](/config/#依赖优化选项)。
 
@@ -47,9 +67,15 @@ Pre-bundling them to speed up dev server page load...（将预构建它们以提
 
 `include` 和 `exclude` 都可以用来处理这个问题。如果依赖项很大（包含很多内部模块）或者是 CommonJS，那么你应该包含它；如果依赖项很小，并且已经是有效的 ESM，则可以排除它，让浏览器直接加载它。
 
+<<<<<<< HEAD
 ## 缓存
 
 ### 文件系统缓存
+=======
+## Caching {#caching}
+
+### File System Cache {#file-system-cache}
+>>>>>>> fix-anchor
 
 Vite 会将预构建的依赖缓存到 `node_modules/.vite`。它根据几个源来决定是否需要重新运行预构建步骤:
 
@@ -61,7 +87,11 @@ Vite 会将预构建的依赖缓存到 `node_modules/.vite`。它根据几个源
 
 如果出于某些原因，你想要强制 Vite 重新绑定依赖，你可以用 `--force` 命令行选项启动开发服务器，或者手动删除 `node_modules/.vite` 目录。
 
+<<<<<<< HEAD
 ### 浏览器缓存
+=======
+### Browser Cache {#browser-cache}
+>>>>>>> fix-anchor
 
 解析后的依赖请求会以 HTTP 头 `max-age=31536000,immutable` 强缓存，以提高在开发时的页面重载性能。一旦被缓存，这些请求将永远不会再到达开发服务器。如果安装了不同的版本（这反映在包管理器的 lockfile 中），则附加的版本 query 会自动使它们失效。如果你想通过本地编辑来调试依赖项，你可以:
 

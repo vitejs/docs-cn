@@ -1,6 +1,10 @@
+<<<<<<< HEAD
 # 比较
+=======
+# Comparisons with Other No-Bundler Solutions {#comparisons-with-other-no-bundler-solutions}
+>>>>>>> fix-anchor
 
-## Snowpack
+## Snowpack {#snowpack}
 
 [Snowpack](https://www.snowpack.dev/) 也是一个与 Vite 十分类似的非构建式原生 ESM 开发服务器。除了不同的实现细节外，这两个项目在技术上比传统工具有很多共同优势。Vite 的依赖预绑定也受到了 Snowpack v1（现在是 [`esinstall`](https://github.com/snowpackjs/snowpack/tree/main/esinstall)）的启发。这两个项目之间的一些主要区别是：
 
@@ -35,13 +39,13 @@ Vite 为 Sass and Less 提供了更精细化的支持，包括改进 `@import` �
 
 Vite 最初是作为 [Vue.js](https://vuejs.org/) 开发工具的未来基础而创建的。尽管 Vite 2.0 版本完全不依赖于任何框架，但官方 Vue 插件仍然对 Vue 的单文件组件格式提供了一流的支持，涵盖了所有高级特性，如模板资源引用解析、`<script setup>`，`<style module>`，自定义块等等。除此之外，Vite 还对 Vue 单文件组件提供了细粒度的 HMR。举个例子，更新一个单文件组件的 `<template>` 或 `<style>` 会执行不重置其状态的热更新。
 
-## WMR
+## WMR {#wmr}
 
 Preact 团队的 [WMR](https://github.com/preactjs/wmr) 提供了类似的特性集，而 Vite 2.0 对 Rollup 插件接口的支持正是受到了它的启发。
 
 WMR 主要是为了 [Preact](https://preactjs.com/) 项目而设计，并为其提供了集成度更高的功能，比如预渲染。就使用范围而言，它更加贴合于 Preact 框架，与 Preact 本身一样强调紧凑的大小。如果你正在使用 Preact，那么 WMR 可能会提供更好的体验。
 
-## @web/dev-server
+## @web/dev-server {#webdev-server}
 
 [@web/dev-server](https://modern-web.dev/docs/dev-server/overview/)（曾经是 `es-dev-server`）是一个伟大的项目，基于 koa 的 Vite 1.0 开发服务器就是受到了它的启发。
 

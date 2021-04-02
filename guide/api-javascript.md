@@ -1,8 +1,8 @@
-# JavaScript API
+# JavaScript API {#javascript-api}
 
 Vite 的 JavaScript API 是完全类型化的，我们推荐使用 TypeScript 或者在 VSCode 中启用 JS 类型检查来利用智能提示和类型校验。
 
-## `createServer`
+## `createServer` {#createserver}
 
 **类型签名**
 
@@ -28,13 +28,13 @@ const { createServer } = require('vite')
 })()
 ```
 
-## `InlineConfig`
+## `InlineConfig` {#inlineconfig}
 
 `InlineConfig` 接口扩展了 `UserConfig` 并添加了以下属性：
 
 - `configFile`：指明要使用的配置文件。如果没有设置，Vite 将尝试从项目根目录自动解析。设置为 `false` 可以禁用自动解析功能。
 
-## `ViteDevServer`
+## `ViteDevServer` {#vitedevserver}
 
 ```ts
 interface ViteDevServer {
@@ -91,7 +91,7 @@ interface ViteDevServer {
 }
 ```
 
-## `build`
+## `build` {#build}
 
 **类型校验**
 
@@ -120,7 +120,7 @@ const { build } = require('vite')
 })()
 ```
 
-## `resolveConfig`
+## `resolveConfig` {#resolveconfig}
 
 **类型校验**
 
