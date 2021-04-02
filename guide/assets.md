@@ -1,17 +1,9 @@
-<<<<<<< HEAD
-# 静态资源处理
-=======
-# Static Asset Handling {#static-asset-handling}
->>>>>>> dev
+# 静态资源处理 {#static-asset-handling}
 
-- 相关: [公共基础路径](./build#公共基础路径)
+- 相关: [公共基础路径](./build#public-base-path)
 - 相关: [`assetsInclude` 配置项](/config/#assetsinclude)
 
-<<<<<<< HEAD
-## 将资源引入为 URL
-=======
-## Importing Asset as URL {#importing-asset-as-url}
->>>>>>> dev
+## 将资源引入为 URL {#importing-asset-as-url}
 
 服务时引入一个静态资源会返回解析后的公共路径：
 
@@ -34,11 +26,7 @@ document.getElementById('hero-img').src = imgUrl
 
 - 较小的资源体积小于 [`assetsInlineLimit` 选项值](/config/#assetsinlinelimit) 则会被内联为 base64 data URL。
 
-<<<<<<< HEAD
-### 显式 URL 引入
-=======
-### Explicit URL Imports {#explicit-url-imports}
->>>>>>> dev
+### 显式 URL 引入 {#explicit-url-imports}
 
 未被包含在内部列表中的、或者在 `assetsInclude` 中的资源，可以使用 `?url` 后缀显式导入为一个 URL。这十分有用，例如，要导入 [Houdini Paint Worklets](https://houdini.how/usage) 时：
 
@@ -47,11 +35,7 @@ import workletURL from 'extra-scalloped-border/worklet.js?url'
 CSS.paintWorklet.addModule(workletURL)
 ```
 
-<<<<<<< HEAD
-### 将资源引入为字符串
-=======
-### Importing Asset as String {#importing-asset-as-string}
->>>>>>> dev
+### 将资源引入为字符串 {#importing-asset-as-string}
 
 资源可以使用 `?raw` 后缀声明作为字符串引入。
 
@@ -59,11 +43,7 @@ CSS.paintWorklet.addModule(workletURL)
 import shaderString from './shader.glsl?raw'
 ```
 
-<<<<<<< HEAD
-### 导入脚本作为 Worker
-=======
-### Importing Script as a Worker {#importing-script-as-a-worker}
->>>>>>> dev
+### 导入脚本作为 Worker {#importing-script-as-a-worker}
 
 脚本可以通过 `?worker` 后缀导入为 web worker。
 
@@ -80,11 +60,7 @@ import InlineWorker from './shader.js?worker&inline'
 
 查看 [Web Worker 小节](./features.md#web-workers) 获取更多细节。
 
-<<<<<<< HEAD
-### `public` 目录
-=======
-## The `public` Directory {#the-public-directory}
->>>>>>> dev
+### `public` 目录 {#the-public-directory}
 
 如果你有下列这些资源：
 
