@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-# 比较
-=======
-# Comparisons with Other No-Bundler Solutions {#comparisons-with-other-no-bundler-solutions}
->>>>>>> dev
+# 比较 {#comparisons-with-other-no-bundler-solutions}
 
 ## Snowpack {#snowpack}
 
