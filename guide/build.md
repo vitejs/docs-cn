@@ -46,7 +46,26 @@ module.exports = {
 
 例如，你可以使用仅在构建期间应用的插件来指定多个 Rollup 输出。
 
+<<<<<<< HEAD
 ## 多页面应用模式 {#multi-page-app}
+=======
+## Rebuild on files changes
+
+You can enable rollup watcher with `vite build --watch`. Or, you can directly adjust the underlying [`WatcherOptions`](https://rollupjs.org/guide/en/#watch-options) via `build.watch`:
+
+```js
+// vite.config.js
+module.exports = {
+  build: {
+    watch: {
+      // https://rollupjs.org/guide/en/#watch-options
+    }
+  }
+}
+```
+
+## Multi-Page App
+>>>>>>> dfaf70af8022cce00938b4d560c3ea41c912dca8
 
 假设你有下面这样的项目文件结构
 

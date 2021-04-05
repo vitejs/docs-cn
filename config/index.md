@@ -560,7 +560,18 @@ export default async ({ command, mode }) => {
 
   chunk 大小警告的限制（以 kbs 为单位）。
 
+<<<<<<< HEAD
 ## 依赖优化选项 {#dep-optimization-options}
+=======
+  Limit for chunk size warnings (in kbs).
+  
+### build.watch
+
+- **Type:** [`WatcherOptions`](https://rollupjs.org/guide/en/#watch-options)`| null`
+- **Default:** `null`
+
+  Set to `{}` to enable rollup watcher. This is mostly used in cases that involve build-only plugins or integrations processes.
+>>>>>>> dfaf70af8022cce00938b4d560c3ea41c912dca8
 
 - **相关内容：** [依赖预构建](/guide/dep-pre-bundling)
 
