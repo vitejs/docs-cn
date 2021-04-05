@@ -118,15 +118,15 @@ export default async ({ command, mode }) => {
 
 - **类型：** `Record<string, string>`
 
-  定义全局常量替换方式。每项在开发时会被定义为全局变量，而在构建时则是静态替换。
+  定义全局常量替换方式。其中每项在开发环境下会被定义在全局，而在构建时被静态替换。
 
   - 从 `2.0.0-beta.70` 版本开始，字符串值将作为一个直接的表达式，所以如果定义为了一个字符串常量，它需要被显式地引用（例如：通过 `JSON.stringify`）。
 
   - 替换只会在匹配到周围是单词边界（`\b`）时执行。
 
-  Because it's implemented as straightforward text replacements without any syntax analyzation, we recommend using `define` for CONSTANTS only.
+  由于它是通过直接替换文本实现的，因此无需任何语法分析。我们建议只对 CONSTANTS 使用 `define`。
 
-  For example, `process.env.FOO` and `__APP_VERSION__` are good fits. But `process` or `global` should not be put into this option. Variables can be shimmed or polyfilled instead.
+  例如，`process.env.FOO` 和 `__APP_VERSION__` 就非常适合。但 `process` 或 `global` 不应使用此选项。变量相关应使用 shimmed 或 polyfilled 代替。
 
 ### plugins {#plugins}
 
