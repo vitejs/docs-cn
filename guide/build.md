@@ -1,37 +1,37 @@
-# Building for Production {#building-for-production}
+# 构建生产版本 {#building-for-production}
 
-When it is time to deploy your app for production, simply run the `vite build` command. By default, it uses `<root>/index.html` as the build entry point, and produces an application bundle that is suitable to be served over a static hosting service. Check out the [Deploying a Static Site](./static-deploy) for guides about popular services.
+当需要将应用部署到生产环境时，只需运行 `vite build` 命令。默认情况下，它使用 `<root>/index.html` 作为构建入口点，并生成一个适合通过静态部署的应用包。查看 [部署静态站点](./static-deploy) 获取常见服务的部署指引。
 
-## Browser Compatibility {#browser-compatibility}
+## 浏览器兼容性 {#browser-compatibility}
 
-The production bundle assumes a baseline support for modern JavaScript. By default, all code is transpiled targeting [browsers with native ESM script tag support](https://caniuse.com/es6-module):
+生产版本假设已实现现代 JavaScript 语法。默认情况下，所有代码构建都会以 [支持原生 ESM script 标签的浏览器](https://caniuse.com/es6-module) 为目标。
 
 - Chrome >=61
 - Firefox >=60
 - Safari >=11
 - Edge >=16
 
-A lightweight [dynamic import polyfill](https://github.com/GoogleChromeLabs/dynamic-import-polyfill) is also automatically injected.
+一个轻量级的 [对动态导入的 polyfill](https://github.com/GoogleChromeLabs/dynamic-import-polyfill) 也会同时自动注入。
 
-You can specify custom targets via the [`build.target` config option](/config/#build-target), where the lowest target is `es2015`.
+你也可以通过 [`build.target` 配置项](/config/#build-target) 指定构建目标，最低支持 `es2015`。
 
-Note that by default, Vite only handles syntax transforms and **does not cover polyfills by default**. You can check out [Polyfill.io](https://polyfill.io/v3/) which is a service that automatically generates polyfill bundles based on the user's browser UserAgent string.
+请注意，默认情况下 Vite 只处理语法转译，并 **不默认包含任何 polyfill**。你可以前往 [Polyfill.io](https://polyfill.io/v3/) 查看，这是一个基于用户浏览器 User-Agent 字符串自动生成 polyfill 包的服务。
 
-Legacy browsers can be supported via [@vitejs/plugin-legacy](https://github.com/vitejs/vite/tree/main/packages/plugin-legacy), which will automatically generate legacy chunks and corresponding ES language feature polyfills. The legacy chunks are conditionally loaded only in browsers that do not have native ESM support.
+传统浏览器可以通过插件 [@vitejs/plugin-legacy](https://github.com/vitejs/vite/tree/main/packages/plugin-legacy) 来支持，它将自动生成传统版本的 chunk 和其相应 ES 语言特性方面的 polyfill。兼容版的 chunk 只会在不支持原生 ESM 的浏览器中有按需加载。
 
-## Public Base Path {#public-base-path}
+## 公共基础路径 {#public-base-path}
 
-- Related: [Asset Handling](./assets)
+- 相关内容：[静态资源处理](./assets)
 
-If you are deploying your project under a nested public path, simply specify the [`base` config option](/config/#base) and all asset paths will be rewritten accordingly. This option can also be specified as a command line flag, e.g. `vite build --base=/my/public/path/`.
+如果你正在嵌套的公共路径下部署项目，可以简单指定一个 [`build.base` 配置项](/config/#base) 然后所有资源的路径都将据此重写。这个选项也可以通过命令行参数指定，例如 `vite build --base=/my/public/path/`。
 
-JS-imported asset URLs, CSS `url()` references, and asset references in your `.html` files are all automatically adjusted to respect this option during build.
+由 JS 导入的资源路径，CSS 中的 `url()` 引用，和 `.html` 文件中的资源引用在构建过程中都会自动调整以适配此选项。
 
-The exception is when you need to dynamically concatenate URLs on the fly. In this case, you can use the globally injected `import.meta.env.BASE_URL` variable which will be the public base path. Note this variable is statically replaced during build so it must appear exactly as-is (i.e. `import.meta.env['BASE_URL']` won't work).
+例外情况是需要动态连接 url。在这种情况下，你可以使用全局注入的 `import.meta.env.BASE_URL` 变量，它将是 公共基础路径。注意这个变量在构建中是被静态替换的所以它必须是原本的样子（例如 `import.meta.env['BASE_URL']` 是无效的）
 
-## Customizing the Build {#customizing-the-build}
+## 自定义构建 {#customizing-the-build}
 
-The build can be customized via various [build config options](/config/#build-options). Specifically, you can directly adjust the underlying [Rollup options](https://rollupjs.org/guide/en/#big-list-of-options) via `build.rollupOptions`:
+构建过程可以通过多种 [构建配置选项](/config/#build-options) 来自定义。特别地，你可以通过 `build.rollupOptions` 直接调整底层的 [Rollup 选项](https://rollupjs.org/guide/en/#big-list-of-options)：
 
 ```js
 // vite.config.js
@@ -44,11 +44,11 @@ module.exports = {
 }
 ```
 
-For example, you can specify multiple Rollup outputs with plugins that are only applied during build.
+例如，你可以使用仅在构建期间应用的插件来指定多个 Rollup 输出。
 
-## Multi-Page App {#multi-page-app}
+## 多页面应用模式 {#multi-page-app}
 
-Suppose you have the following source code structure:
+假设你有下面这样的项目文件结构
 
 ```
 ├── package.json
@@ -60,9 +60,9 @@ Suppose you have the following source code structure:
     └── nested.js
 ```
 
-During dev, simply navigate or link to `/nested/` - it works as expected, just like for a normal static file server.
+在开发中，简单地导航或链接到 `/nested/` - 将会按预期工作，就如同一个正常的静态文件服务器。
 
-During build, all you need to do is to specify multiple `.html` files as entry points:
+在构建中，你要做的只有指定多个 `.html` 文件作为入口点：
 
 ```js
 // vite.config.js
@@ -80,11 +80,11 @@ module.exports = {
 }
 ```
 
-## Library Mode {#library-mode}
+## 库模式 {#library-mode}
 
-When you are developing a browser-oriented library, you are likely spending most of the time on a test/demo page that imports your actual library. With Vite, you can use your `index.html` for that purpose to get the smooth development experience.
+当你开发面向浏览器的库时，你可能会将大部分时间花在该库的测试/演示页面上。使用 Vite，你可以使用 `index.html` 来获得如丝般顺滑的开发体验。
 
-When it is time to bundle your library for distribution, use the [`build.lib` config option](/config/#build-lib). Make sure to also externalize any dependencies that you do not want to bundle into your library, e.g. `vue` or `react`:
+当需要构建你的库用于发布时，请使用 [`build.lib` 配置项](/config/#build-lib)，请确保将你不想打包进你库中的依赖进行外部化，例如 `vue` 或 `react`：
 
 ```js
 // vite.config.js
@@ -97,12 +97,10 @@ module.exports = {
       name: 'MyLib'
     },
     rollupOptions: {
-      // make sure to externalize deps that shouldn't be bundled
-      // into your library
+      // 请确保外部化那些你的库中不需要的依赖
       external: ['vue'],
       output: {
-        // Provide global variables to use in the UMD build
-        // for externalized deps
+        // 在 UMD 构建模式下为这些外部化的依赖提供一个全局变量
         globals: {
           vue: 'Vue'
         }
@@ -112,7 +110,7 @@ module.exports = {
 }
 ```
 
-Running `vite build` with this config uses a Rollup preset that is oriented towards shipping libraries and produces two bundle formats: `es` and `umd` (configurable via `build.lib`):
+运行 `vite build` 配合如上配置将会使用一套 Rollup 预设，为发行该库提供两种构建格式：`es` 和 `umd`（在 `build.lib` 中配置的）：
 
 ```
 $ vite build
@@ -121,7 +119,7 @@ building for production...
 [write] my-lib.umd.js 0.30kb, brotli: 0.16kb
 ```
 
-Recommended `package.json` for your lib:
+推荐你的库中 `package.json` 的采用如下格式:
 
 ```json
 {

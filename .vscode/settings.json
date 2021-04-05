@@ -1,0 +1,7 @@
+{
+  // avoid example code format auto lint
+  "editor.tabSize": 2,
+  "prettier.singleQuote": true,
+  "prettier.semi": false,
+  "prettier.trailingComma": "none"
+}

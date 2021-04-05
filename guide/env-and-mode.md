@@ -1,91 +1,91 @@
-# Env Variables and Modes {#env-variables-and-modes}
+# 环境变量与模式 {#env-variables-and-modes}
 
-## Env Variables {#env-variables}
+## 环境变量 {#env-variables}
 
-Vite exposes env variables on the special **`import.meta.env`** object. Some built-in variables are available in all cases:
+Vite 在一个特殊的 **`import.meta.env`** 对象上暴露环境变量。这里有一些普遍适用的内建变量：
 
-- **`import.meta.env.MODE`**: {string} the [mode](#modes) the app is running in.
+- **`import.meta.env.MODE`**: {string} 应用运行基于的 [模式](#modes)。
 
-- **`import.meta.env.BASE_URL`**: {string} the base url the app is being served from. This is determined by the [`base` config option](/config/#base).
+- **`import.meta.env.BASE_URL`**: {string} 应用正被部署在的 base URL。它由 [`base` 配置项](/config/#base) 决定。
 
-- **`import.meta.env.PROD`**: {boolean} whether the app is running in production.
+- **`import.meta.env.PROD`**: {boolean} 应用是否运行在生产环境
 
-- **`import.meta.env.DEV`**: {boolean} whether the app is running in development (always the opposite of `import.meta.env.PROD`)
+- **`import.meta.env.DEV`**: {boolean} 应用是否运行在开发环境 (永远与 `import.meta.env.PROD` 相反)
 
-### Production Replacement {#production-replacement}
+### 生产环境替换 {#production-replacement}
 
-During production, these env variables are **statically replaced**. It is therefore necessary to always reference them using the full static string. For example, dynamic key access like `import.meta.env[key]` will not work.
+在生产环境中，这些环境变量会在构建时被静态替换，因此请在引用它们时使用完全静态的字符串。动态的 key 将无法生效。例如，动态 key 取值 `import.meta.env[key]` 是无效的。
 
-It will also replace these strings appearing in JavaScript strings and Vue templates. This should be a rare case, but it can be unintended. There are ways to work around this behavior:
+它还将替换出现在 JavaScript 和 Vue 模板中的字符串。这应该是比较罕见的情况，但它可能是不小心为之。有一些方法可以避免这个问题:
 
-- For JavaScript strings, you can break the string up with a unicode zero-width space, e.g. `'import.meta\u200b.env.MODE'`.
+- 对于 JavaScript 字符串，你可以在相应位置上使用一个 unicode 序列值，例如： `'import.meta\u200b.env.MODE'`。
 
-- For Vue templates or other HTML that gets compiled into JavaScript strings, you can use the [`<wbr>` tag](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/wbr), e.g. `import.meta.<wbr>env.MODE`.
+- 对于 Vue 模板或其他编译到 JavaScript 字符串的 HTML，你可以使用 [`<wbr>` 标签](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/wbr)，例如：`import.meta.<wbr>env.MODE`。
 
-## `.env` Files {#env-files}
+## `.env` 文件 {#env-files}
 
-Vite uses [dotenv](https://github.com/motdotla/dotenv) to load additional environment variables from the following files in your project root:
+Vite 使用 [dotenv](https://github.com/motdotla/dotenv) 在你的项目根目录下从以下文件加载额外的环境变量:
 
 ```
-.env                # loaded in all cases
-.env.local          # loaded in all cases, ignored by git
-.env.[mode]         # only loaded in specified mode
-.env.[mode].local   # only loaded in specified mode, ignored by git
+.env                # 所有情况下都会加载
+.env.local          # 所有情况下都会加载，但会被 git 忽略
+.env.[mode]         # 只在指定模式下加载
+.env.[mode].local   # 只在指定模式下加载，但会被 git 忽略
 ```
 
-Loaded env variables are also exposed to your client source code via `import.meta.env`.
+加载的环境变量也会通过 `import.meta.env` 暴露给客户端源码。
 
-To prevent accidentally leaking env variables to the client, only variables prefixed with `VITE_` are exposed to your Vite-processed code. e.g. the following file:
+为了防止意外地将一些环境变量泄漏到客户端，只有以 `VITE_` 为前缀的变量才会暴露给经过 vite 处理的代码。例如下面这个文件中：
 
 ```
 DB_PASSWORD=foobar
 VITE_SOME_KEY=123
 ```
 
-Only `VITE_SOME_KEY` will be exposed as `import.meta.env.VITE_SOME_KEY` to your client source code, but `DB_PASSWORD` will not.
+只有 `VITE_SOME_KEY` 会被暴露为 `import.meta.env.VITE_SOME_KEY` 提供给客户端源码，而 `DB_PASSWORD` 则不会。
 
-:::warning SECURITY NOTES
+:::warning 安全警告
 
-- `.env.*.local` files are local-only and can contain sensitive variables. You should add `.local` to your `.gitignore` to avoid them being checked into git.
+- `.env.*.local` 文件应是本地的，可以包含敏感变量。你应该加上 `.local` 到你的 `.gitignore` 以避免他们被检出到 git。
 
-- Since any variables exposed to your Vite source code will end up in your client bundle, `VITE_*` variables should _not_ contain any sensitive information.
+- 由于暴露在 Vite 源码中的任何变量都将最终出现在客户端包中，`VITE_*` 变量应该不包含任何敏感信息。
   :::
 
-### IntelliSense {#intellisense}
+### 智能提示 {#intellisense}
 
-By default, Vite provides type definition for `import.meta.env`. While you can define more custom env variables in `.env.[mode]` files, you may want to get TypeScript IntelliSense for user-defined env variables which prefixed with `VITE_`.
+Vite 会默认为 `import.meta.env` 提供类型定义。随着在 `.env[mode]` 文件中定义了越来越多自定义环境变量，你可能想要在代码中获取这些以 `VITE_` 为前缀的用户自定义环境变量的 TypeScript 智能提示。
 
-To achieve, you can create an `env.d.ts` in `src` directory, then augment `ImportMetaEnv` like this:
+要想做到这一点，你可以在 `src` 目录下创建一个 `env.d.ts`，接着按下面这样定义 `ImportMetaEnv`：
 
 ```typescript
 interface ImportMetaEnv {
   VITE_APP_TITLE: string
-  // more env variables...
+  // 更多环境变量...
 }
 ```
 
-## Modes {#modes}
+## 模式 {#modes}
 
-By default, the dev server (`serve` command) runs in `development` mode, and the `build` command runs in `production` mode.
+默认情况下，开发服务器 (`serve` 命令) 运行在 `development` （开发）模式，而 `build` 命令运行在 `production` （生产）模式。
 
-This means when running `vite build`, it will load the env variables from `.env.production` if there is one:
+这意味着当执行 `vite build` 时，它会自动加载 `.env.production` 中可能存在的环境变量：
 
 ```
 # .env.production
 VITE_APP_TITLE=My App
 ```
 
-In your app, you can render the title using `import.meta.env.VITE_APP_TITLE`.
+在你的应用中，你可以使用 `import.meta.env.VITE_APP_TITLE` 作为渲染标题。
 
-However, it is important to understand that **mode** is a wider concept than just development vs. production. A typical example is you may want to have a "staging" mode where it should have production-like behavior, but with slightly different env variables from production.
+然而重要的是，要理解**模式**是一个更广泛的概念，而不仅仅是开发和生产。一个典型的例子是，你可能希望有一个 “staging” 模式，它应该具有类似于生产的行为，但环境变量与生产环境略有不同。
 
-You can overwrite the default mode used for a command by passing the `--mode` option flag. For example, if you want to build your app for our hypothetical staging mode:
+你可以通过传递 `--mode` 选项标志来覆盖命令使用的默认模式。例如，如果你想为我们假设的 staging 模式构建应用:
 
 ```bash
 vite build --mode staging
 ```
 
-And to get the behavior we want, we need a `.env.staging` file:
+为了使应用实现预期行为，我们还需要一个 `.env.staging` 文件：
 
 ```
 # .env.staging
@@ -93,4 +93,4 @@ NODE_ENV=production
 VITE_APP_TITLE=My App (staging)
 ```
 
-Now your staging app should have production-like behavior, but displaying a different title from production.
+现在，staging 应用应该具有类似于生产的行为，但显示的标题与生产环境不同。
