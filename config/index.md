@@ -126,7 +126,7 @@ export default async ({ command, mode }) => {
 
   由于它是通过直接替换文本实现的，因此无需任何语法分析。我们建议只对 CONSTANTS 使用 `define`。
 
-  例如，`process.env.FOO` 和 `__APP_VERSION__` 就非常适合。但 `process` 或 `global` 不应使用此选项。变量相关应使用 shimmed 或 polyfilled 代替。
+  例如，`process.env.FOO` 和 `__APP_VERSION__` 就非常适合。但 `process` 或 `global` 不应使用此选项。变量相关应使用 shim 或 polyfill 代替。
 
 ### plugins {#plugins}
 
