@@ -161,7 +161,7 @@ pages:
 
 ## Netlify
 
-1. 在 [Netlify](https://netlify.com) 上，按下列设置配合 Github 设置好一个一个新的项目：
+1. 在 [Netlify](https://netlify.com) 上，按下列设置配合 Github 设置好一个新的项目：
 
 - **构建命令：** `vite build` 或者 `npm run build`
 - **发布目录：** `dist`
@@ -174,26 +174,26 @@ pages:
 
 2. 在项目根目录创建 `firebase.json` 和 `.firebaserc` 两个文件，应包含以下内容：
 
- `firebase.json`:
+`firebase.json`:
 
-  ```json
-  {
-    "hosting": {
-      "public": "dist",
-      "ignore": []
-    }
+```json
+{
+  "hosting": {
+    "public": "dist",
+    "ignore": []
   }
-  ```
+}
+```
 
-  `.firebaserc`:
+`.firebaserc`:
 
-  ```js
-  {
-   "projects": {
-     "default": "<YOUR_FIREBASE_ID>"
-   }
-  }
-  ```
+```js
+{
+ "projects": {
+   "default": "<YOUR_FIREBASE_ID>"
+ }
+}
+```
 
 3. 运行 `npm run build` 后，通过 `firebase deploy` 命令部署。
 
@@ -204,7 +204,6 @@ pages:
 2. 运行 `npm run build`。
 
 3. 通过运行 `surge dist` 命令部署到 surge。
-
 
 你也可以通过添加 `surge dist yourdomain.com` 部署到一个 [自定义域名](http://surge.sh/help/adding-a-custom-domain)。
 
@@ -243,7 +242,7 @@ $ git commit -m "My site ready for deployment."
 # 创建一个具有指定名称的新应用
 $ heroku apps:create example
 
-# 为静态站点设置 buildpack 
+# 为静态站点设置 buildpack
 $ heroku buildpacks:set https://github.com/heroku/heroku-buildpack-static.git
 ```
 
