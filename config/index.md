@@ -124,15 +124,11 @@ export default async ({ command, mode }) => {
 
   - Replacements are performed only when the match is surrounded by word boundaries (`\b`).
 
-<<<<<<< HEAD
-### plugins {#plugins}
-=======
   Because it's implemented as straightforward text replacements without any syntax analyzation, we recommend using `define` for CONSTANTS only.
 
   For example, `process.env.FOO` and `__APP_VERSION__` are good fits. But `process` or `global` should not be put into this option. Variables can be shimmed or polyfilled instead.
 
-### plugins
->>>>>>> bcedfb5ba4f2b574f54d0ab928650099b2c3a5df
+### plugins {#plugins}
 
 - **Type:** ` (Plugin | Plugin[])[]`
 
