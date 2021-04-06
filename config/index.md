@@ -569,7 +569,7 @@ export default async ({ command, mode }) => {
 
 - **相关内容：** [依赖预构建](/guide/dep-pre-bundling)
 
-### optimizeDeps.entries {#optimizeDeps-entries}
+### optimizeDeps.entries {#optimizedeps-entries}
 
 - **类型：** `string | string[]`
 
@@ -577,19 +577,19 @@ export default async ({ command, mode }) => {
 
   如果这两者都不适合你的需要，则可以使用此选项指定自定义条目 - 该值需要遵循 [fast-glob 模式](https://github.com/mrmlnc/fast-glob#basic-syntax) ，或者是相对于 vite 项目根的模式数组。这将覆盖掉默认条目推断。
 
-### optimizeDeps.exclude {#optimizeDeps-exclude}
+### optimizeDeps.exclude {#optimizedeps-exclude}
 
 - **类型：** `string[]`
 
   在预构建中强制排除的依赖项。
 
-### optimizeDeps.include {#optimizeDeps-include}
+### optimizeDeps.include {#optimizedeps-include}
 
 - **类型：** `string[]`
 
   默认情况下，不在 `node_modules` 中的，链接的包不会被预构建。使用此选项可强制预构建链接的包。
 
-### optimizeDeps.keepNames {#optimizeDeps-keepnames}
+### optimizeDeps.keepNames {#optimizedeps-keepnames}
 
 - **类型：** `boolean`
 - **默认：** `false`
