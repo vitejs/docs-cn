@@ -274,8 +274,6 @@ export default async ({ command, mode }) => {
 
   默认情况下，ESbuild 应用在 `ts`、`jsx`、`tsx` 文件。你可以通过 `esbuild.include` 和 `esbuild.exclude` 对其进行配置，它们两个配置的类型是`string | RegExp | (string | RegExp)[]`。
 
-  设置成 `false` 可以禁用 ESbuild 转换（默认应用于 `.ts`. `.tsx` 和 `.jsx` 文件）。
-
   此外，你还可以通过`esbuild.jsxInject`来自动为每一个被 ESbuild 转换的文件注入 JSX helper。
 
   ```js
@@ -560,18 +558,14 @@ export default async ({ command, mode }) => {
 
   chunk 大小警告的限制（以 kbs 为单位）。
 
-<<<<<<< HEAD
+### build.watch {#build-watch}
+
+- **类型：** [`WatcherOptions`](https://rollupjs.org/guide/en/#watch-options)`| null`
+- **默认：** `null`
+
+  设置为 `{}` 则会启用 rollup 的监听器。主要用于仅构建插件时或集成过程中。
+
 ## 依赖优化选项 {#dep-optimization-options}
-=======
-  Limit for chunk size warnings (in kbs).
-  
-### build.watch
-
-- **Type:** [`WatcherOptions`](https://rollupjs.org/guide/en/#watch-options)`| null`
-- **Default:** `null`
-
-  Set to `{}` to enable rollup watcher. This is mostly used in cases that involve build-only plugins or integrations processes.
->>>>>>> dfaf70af8022cce00938b4d560c3ea41c912dca8
 
 - **相关内容：** [依赖预构建](/guide/dep-pre-bundling)
 
@@ -600,8 +594,8 @@ export default async ({ command, mode }) => {
 - **类型：** `boolean`
 - **默认：** `false`
 
-  打包器有时需要重命名符号以避免冲突。设置此项为 `true` 可以在函数和类上保留 `name` 属性。
-
+  打包器有时需要重命名符号以避免冲突。
+  设置此项为 `true` 可以在函数和类上保留 `name` 属性。
   若想获取更多详情，请参阅 [`keepNames`](https://esbuild.github.io/api/#keep-names)
 
 ## SSR 选项 {#ssr-options}
