@@ -563,7 +563,7 @@ export default async ({ command, mode }) => {
 - **类型：** [`WatcherOptions`](https://rollupjs.org/guide/en/#watch-options)`| null`
 - **默认：** `null`
 
-  设置为 `{}` 则会启用 rollup 的监听器。主要用于仅构建插件时或集成过程中。
+  设置为 `{}` 则会启用 rollup 的监听器。主要用于仅构建插件时或集成开发流程中。
 
 ## 依赖优化选项 {#dep-optimization-options}
 
