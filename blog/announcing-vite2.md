@@ -1,4 +1,5 @@
 ---
+title: Vite 2.0 发布了
 sidebar: false
 ---
 
