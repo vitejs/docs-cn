@@ -1,3 +1,7 @@
+---
+title: 部署静态站点
+---
+
 # 部署静态站点 {#deploying-a-static-site}
 
 下面的指引都基于以下几个假设：

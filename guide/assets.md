@@ -1,3 +1,7 @@
+---
+title: 静态资源处理
+---
+
 # 静态资源处理 {#static-asset-handling}
 
 - 相关: [公共基础路径](./build#public-base-path)
