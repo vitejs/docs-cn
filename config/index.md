@@ -502,19 +502,11 @@ export default async ({ command, mode }) => {
 
 ### build.lib {#build-lib}
 
-- **类型：** `{ entry: string, name?: string, formats?: ('es' | 'cjs' | 'umd' | 'iife')[] }`
+- **类型：** `{ entry: string, name?: string, formats?: ('es' | 'cjs' | 'umd' | 'iife')[], fileName?: string }`
 - **相关内容：** [Library Mode](/guide/build#library-mode)
 
-<<<<<<< HEAD
-  构建为库。`entry` 是必须的因为库不可以使用 HTML 作为入口。`name` 则是暴露的全局变量，并且在 `formats` 包含 `'umd'` 或 `'iife'` 时是必须的。默认 `formats` 是 `['es', 'umd']`。
-
+  构建为库。entry 是必须的因为库不可以使用 HTML 作为入口。name 则是暴露的全局变量，并且在 formats 包含 'umd' 或 'iife' 时是必须的。默认 formats 是 ['es', 'umd']。`fileName` 是输出的包文件名，默认 `fileName` 是 package.json 的 name 选项。
 ### build.manifest {#build-manifest}
-=======
-- **Type:** `{ entry: string, name?: string, formats?: ('es' | 'cjs' | 'umd' | 'iife')[], fileName?: string }`
-- **Related:** [Library Mode](/guide/build#library-mode)
-
-  Build as a library. `entry` is required since the library cannot use HTML as entry. `name` is the exposed global variable and is required when `formats` includes `'umd'` or `'iife'`. Default `formats` are `['es', 'umd']`. `fileName` is the name of the package file output, default `fileName` is the name option of package.json
->>>>>>> 8917dcbc28ec46ecef58bd99e3a1eb779e8e62ae
 
 - **类型：** `boolean`
 - **默认：** `false`
