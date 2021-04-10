@@ -145,6 +145,8 @@ export default async ({ command, mode }) => {
 
   作为静态资源服务的文件夹。这个目录中的文件会在开发中被服务于 `/`，在开发模式时，会被拷贝到 `outDir` 的根目录，并没有转换，永远只是复制到这里。该值可以是文件系统的绝对路径，也可以是相对于项目的根目录路径。
 
+  欲了解更多，请参阅 [`public` 目录](/guide/assets#the-public-directory)。
+
 ### resolve.alias {#resolve-alias}
 
 - **类型：** `Record<string, string> | Array<{ find: string | RegExp, replacement: string }>`
@@ -456,7 +458,7 @@ export default async ({ command, mode }) => {
 - **类型：** `string`
 - **默认：** `dist`
 
-  指定输出路径（相对于 [项目根目录](/guide/#indexhtml-and-project-root)).
+  指定输出路径（相对于 [项目根目录](/guide/#index-html-and-project-root)).
 
 ### build.assetsDir {#build-assetsdir}
 
@@ -502,11 +504,10 @@ export default async ({ command, mode }) => {
 
 ### build.lib {#build-lib}
 
-- **类型：** `{ entry: string, name?: string, formats?: ('es' | 'cjs' | 'umd' | 'iife')[] }`
+- **类型：** `{ entry: string, name?: string, formats?: ('es' | 'cjs' | 'umd' | 'iife')[], fileName?: string }`
 - **相关内容：** [Library Mode](/guide/build#library-mode)
 
-  构建为库。`entry` 是必须的因为库不可以使用 HTML 作为入口。`name` 则是暴露的全局变量，并且在 `formats` 包含 `'umd'` 或 `'iife'` 时是必须的。默认 `formats` 是 `['es', 'umd']`。
-
+  构建为库。entry 是必须的因为库不可以使用 HTML 作为入口。name 则是暴露的全局变量，并且在 formats 包含 'umd' 或 'iife' 时是必须的。默认 formats 是 ['es', 'umd']。`fileName` 是输出的包文件名，默认 `fileName` 是 package.json 的 name 选项。
 ### build.manifest {#build-manifest}
 
 - **类型：** `boolean`
