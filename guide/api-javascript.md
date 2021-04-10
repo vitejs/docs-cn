@@ -43,61 +43,33 @@ const { createServer } = require('vite')
 ```ts
 interface ViteDevServer {
   /**
-<<<<<<< HEAD
    * 被解析的 vite 配置对象
    */
   config: ResolvedConfig
   /**
    * 一个 connect 应用实例
    * - 可以用于将自定义中间件附加到开发服务器。
-   * - 还可以用作自定义http服务器的处理函数
-      或作为中间件用于任何 connect 风格的 Node.js 框架
-=======
-   * The resolved vite config object.
-   */
-  config: ResolvedConfig
-  /**
-   * A connect app instance
-   * - Can be used to attach custom middlewares to the dev server.
-   * - Can also be used as the handler function of a custom http server
-   *   or as a middleware in any connect-style Node.js frameworks.
->>>>>>> 8917dcbc28ec46ecef58bd99e3a1eb779e8e62ae
+   * - 还可以用作自定义http服务器的处理函数。
+      或作为中间件用于任何 connect 风格的 Node.js 框架。
    *
    * https://github.com/senchalabs/connect#use-middleware
    */
   middlewares: Connect.Server
   /**
-<<<<<<< HEAD
    * 本机 node http 服务器实例
    */
   httpServer: http.Server | null
   /**
    * chokidar 监听器实例
-=======
-   * Native Node http server instance.
-   * Will be null in middleware mode.
-   */
-  httpServer: http.Server | null
-  /**
-   * Chokidar watcher instance.
->>>>>>> 8917dcbc28ec46ecef58bd99e3a1eb779e8e62ae
    * https://github.com/paulmillr/chokidar#api
    */
   watcher: FSWatcher
   /**
-<<<<<<< HEAD
-   * web socket 服务器，带有 `send(payload)` 方法
+   * web socket 服务器，带有 `send(payload)` 方法。
    */
   ws: WebSocketServer
   /**
-   * Rollup 插件容器，可以针对给定文件运行插件钩子
-=======
-   * Web socket server with `send(payload)` method.
-   */
-  ws: WebSocketServer
-  /**
-   * Rollup plugin container that can run plugin hooks on a given file.
->>>>>>> 8917dcbc28ec46ecef58bd99e3a1eb779e8e62ae
+   * Rollup 插件容器，可以针对给定文件运行插件钩子。
    */
   pluginContainer: PluginContainer
   /**
@@ -134,11 +106,7 @@ interface ViteDevServer {
     options?: { isolated?: boolean }
   ): Promise<Record<string, any>>
   /**
-<<<<<<< HEAD
    * 解决 ssr 错误堆栈信息
-=======
-   * Fix ssr error stacktrace.
->>>>>>> 8917dcbc28ec46ecef58bd99e3a1eb779e8e62ae
    */
   ssrFixStacktrace(e: Error): void
   /**
