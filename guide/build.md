@@ -99,7 +99,13 @@ module.exports = {
 }
 ```
 
+<<<<<<< HEAD
 ## 库模式 {#library-mode}
+=======
+If you specify a different root, remember that `__dirname` will still be the folder of your vite.config.js file when resolving the input paths. Therfore, you will need to add your `root` entry to the arguments for `resolve`. 
+
+## Library Mode
+>>>>>>> fc2b8e6b421849f99442e03b1c0736ee45584778
 
 当你开发面向浏览器的库时，你可能会将大部分时间花在该库的测试/演示页面上。使用 Vite，你可以使用 `index.html` 来获得如丝般顺滑的开发体验。
 
