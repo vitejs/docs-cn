@@ -1,5 +1,7 @@
 // @ts-check
 
+const pkg = require('../package.json')
+
 /**
  * @type {import('vitepress').UserConfig}
  */
@@ -9,7 +11,7 @@ module.exports = {
   description: '下一代前端开发与构建工具',
   head: [['link', { rel: 'icon', type: 'image/svg+xml', href: '/logo.svg' }]],
   themeConfig: {
-    repo: 'vitejs/vite',
+    repo: pkg.repository,
     logo: '/logo.svg',
     docsBranch: 'main',
     editLinks: true,
