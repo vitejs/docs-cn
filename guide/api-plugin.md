@@ -194,8 +194,8 @@ Vite 插件也可以提供钩子来服务于特定的 Vite 目标。这些钩子
 
 ### `configResolved` {#configresolved}
 
-- **类型：** `(config: ResolvedConfig) => void`
-- **种类：** `sync`, `sequential`
+- **类型：** `(config: ResolvedConfig) => void | Promise<void>`
+- **种类：** `async`, `parallel`
 
   在解析 Vite 配置后调用。使用这个钩子读取和存储最终解析的配置。当插件需要根据运行的命令做一些不同的事情时，它也很有用。
 
