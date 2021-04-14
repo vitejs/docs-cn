@@ -36,7 +36,12 @@ const { createServer } = require('vite')
 
 `InlineConfig` 接口扩展了 `UserConfig` 并添加了以下属性：
 
+<<<<<<< HEAD
 - `configFile`：指明要使用的配置文件。如果没有设置，Vite 将尝试从项目根目录自动解析。设置为 `false` 可以禁用自动解析功能。
+=======
+- `configFile`: specify config file to use. If not set, Vite will try to automatically resolve one from project root. Set to `false` to disable auto resolving.
+- `envFile`: Set to `false` to disable `.env` files.
+>>>>>>> 4f27866e3ec314ffc31f97a2f2297e2974b68030
 
 ## `ViteDevServer` {#vitedevserver}
 
