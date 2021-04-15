@@ -15,7 +15,7 @@ export default {
 }
 ```
 
-注意：即使项目没有在 `package.json` 中开启 `type: "module"` ，Vite 也支持在配置文件中使用 ESM 语法。这种情况下，配置文件会在被加载前自动进行预处理。
+注意：即使项目没有在 `package.json` 中开启 `type: "module"`，Vite 也支持在配置文件中使用 ESM 语法。这种情况下，配置文件会在被加载前自动进行预处理。
 
 你可以显式地通过 `--config` 命令行选项指定一个配置文件（相对于 `cwd` 路径进行解析）
 
@@ -108,7 +108,7 @@ export default async ({ command, mode }) => {
 ### mode {#mode}
 
 - **类型：** `string`
-- **默认：** `'development'` (开发模式)，`'production'` (生产模式)
+- **默认：** `'development'`（开发模式），`'production'`（生产模式）
 
   在配置中指明将会把 **serve 和 build** 时的模式 **都** 覆盖掉。也可以通过命令行 `--mode` 选项来重写。
 
@@ -255,7 +255,7 @@ export default async ({ command, mode }) => {
 - **类型：** `boolean`
 - **默认：** `false`
 
-  若设置为 `true`，导入的 JSON 会被转换为 `export default JSON.parse("...")` ，这样会比转译成对象字面量性能更好，尤其是当 JSON 文件较大的时候。
+  若设置为 `true`，导入的 JSON 会被转换为 `export default JSON.parse("...")`，这样会比转译成对象字面量性能更好，尤其是当 JSON 文件较大的时候。
 
   开启此项，则会禁用按名导入。
 
@@ -423,7 +423,7 @@ export default async ({ command, mode }) => {
 ### build.target {#build-target}
 
 - **类型：** `string`
-- **默认：** `modules`
+- **默认：** `'modules'`
 - **相关内容：:** [浏览器兼容性](/guide/build#browser-compatibility)
 
   设置最终构建的浏览器兼容目标。默认值是一个 Vite 特有的值——`'modules'`，这是指 [支持原生 ES 模块的浏览器](https://caniuse.com/es6-module)。
@@ -432,7 +432,7 @@ export default async ({ command, mode }) => {
 
   转换过程将会由 esbuild 执行，并且此值应该是一个合法的 [esbuild 目标选项](https://esbuild.github.io/api/#target)。自定义目标也可以是一个 ES 版本（例如：`es2015`）、一个浏览器版本（例如：`chrome58`）或是多个目标组成的一个数组。
 
-  注意：如果代码包含不能被 `esbuild` 安全地编译的特性，那么构建将会失败。查看 [esbuild 文档](https://esbuild.github.io/api/#target) 获取更多细节。
+  注意：如果代码包含不能被 `esbuild` 安全地编译的特性，那么构建将会失败。查看 [esbuild 文档](https://esbuild.github.io/content-types/#javascript) 获取更多细节。
 
 ### build.polyfillDynamicImport {#build-polyfilldynamicimport}
 
