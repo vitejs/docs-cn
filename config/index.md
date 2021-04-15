@@ -12,7 +12,7 @@
 // vite.config.js
 export default {
   // 配置选项
-};
+}
 ```
 
 注意：即使项目没有在 `package.json` 中开启 `type: "module"` ，Vite 也支持在配置文件中使用 ESM 语法。这种情况下，配置文件会在被加载前自动进行预处理。
@@ -33,19 +33,19 @@ vite --config my-config.js
  */
 const config = {
   // ...
-};
+}
 
-export default config;
+export default config
 ```
 
 另外你可以使用 `defineConfig` 工具函数，这样不用 jsdoc 注解也可以获取类型提示：
 
 ```js
-import { defineConfig } from 'vite';
+import { defineConfig } from 'vite'
 
 export default defineConfig({
   // ...
-});
+})
 ```
 
 Vite 也直接支持 TS 配置文件。你可以在 `vite.config.ts` 中使用 `defineConfig` 工具函数。
@@ -59,13 +59,13 @@ export default ({ command, mode }) => {
   if (command === 'serve') {
     return {
       // serve 独有配置
-    };
+    }
   } else {
     return {
       // build 独有配置
-    };
+    }
   }
-};
+}
 ```
 
 ### 异步配置 {#async-config}
@@ -74,11 +74,11 @@ export default ({ command, mode }) => {
 
 ```js
 export default async ({ command, mode }) => {
-  const data = await asyncFunction();
+  const data = await asyncFunction()
   return {
     // 构建模式所需的特有配置
-  };
-};
+  }
+}
 ```
 
 ## 共享配置 {#shared-options}
@@ -202,16 +202,16 @@ export default async ({ command, mode }) => {
 
   ```ts
   interface CSSModulesOptions {
-    scopeBehaviour?: 'global' | 'local';
-    globalModulePaths?: string[];
+    scopeBehaviour?: 'global' | 'local'
+    globalModulePaths?: string[]
     generateScopedName?:
       | string
-      | ((name: string, filename: string, css: string) => string);
-    hashPrefix?: string;
+      | ((name: string, filename: string, css: string) => string)
+    hashPrefix?: string
     /**
      * 默认：'camelCaseOnly'
      */
-    localsConvention?: 'camelCase' | 'camelCaseOnly' | 'dashes' | 'dashesOnly';
+    localsConvention?: 'camelCase' | 'camelCaseOnly' | 'dashes' | 'dashesOnly'
   }
   ```
 
@@ -236,11 +236,11 @@ export default async ({ command, mode }) => {
     css: {
       preprocessorOptions: {
         scss: {
-          additionalData: `$injectedColor: orange;`,
-        },
-      },
-    },
-  };
+          additionalData: `$injectedColor: orange;`
+        }
+      }
+    }
+  }
   ```
 
 ### json.namedExports {#json-namedexports}
@@ -269,9 +269,9 @@ export default async ({ command, mode }) => {
   export default {
     esbuild: {
       jsxFactory: 'h',
-      jsxFragment: 'Fragment',
-    },
-  };
+      jsxFragment: 'Fragment'
+    }
+  }
   ```
 
   默认情况下，ESbuild 会被应用在 `ts`、`jsx`、`tsx` 文件。你可以通过 `esbuild.include` 和 `esbuild.exclude` 对其进行配置，它们两个配置的类型是`string | RegExp | (string | RegExp)[]`。
@@ -281,9 +281,9 @@ export default async ({ command, mode }) => {
   ```js
   export default {
     esbuild: {
-      jsxInject: `import React from 'react'`,
-    },
-  };
+      jsxInject: `import React from 'react'`
+    }
+  }
   ```
 
   设置为 `false` 来禁用 ESbuild 转换。
@@ -353,9 +353,9 @@ export default async ({ command, mode }) => {
   ```js
   export default {
     server: {
-      open: '/docs/index.html',
-    },
-  };
+      open: '/docs/index.html'
+    }
+  }
   ```
 
 ### server.proxy {#server-proxy}
@@ -378,17 +378,17 @@ export default async ({ command, mode }) => {
         '/api': {
           target: 'http://jsonplaceholder.typicode.com',
           changeOrigin: true,
-          rewrite: (path) => path.replace(/^\/api/, ''),
+          rewrite: (path) => path.replace(/^\/api/, '')
         },
         // 正则表达式写法
         '^/fallback/.*': {
           target: 'http://jsonplaceholder.typicode.com',
           changeOrigin: true,
-          rewrite: (path) => path.replace(/^\/fallback/, ''),
-        },
-      },
-    },
-  };
+          rewrite: (path) => path.replace(/^\/fallback/, '')
+        }
+      }
+    }
+  }
   ```
 
 ### server.cors {#server-cors}
@@ -444,7 +444,7 @@ export default async ({ command, mode }) => {
   该 polyfill 将被自动注入进每个 `index.html` 入口的代理模块中。如果某次构建通过 `build.rollupOptions.input` 选项配置成了使用非 HTML 的自定义入口，则有必要在你的自定义入口中手动引入此 polyfill：
 
   ```js
-  import 'vite/dynamic-import-polyfill';
+  import 'vite/dynamic-import-polyfill'
   ```
 
   注意：该 polyfill **不会** 应用于 [库模式](/guide/build#library-mode)。如果你需要支持不含原生动态导入功能的浏览器，可能要避免在你的库中使用它。
