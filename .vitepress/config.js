@@ -20,9 +20,15 @@ module.exports = {
     algolia: {
       apiKey: 'b573aa848fd57fb47d693b531297403c',
       indexName: 'vitejs',
+<<<<<<< HEAD
       algoliaOptions: {
         'facetFilters': ["tags:cn"]
       },
+=======
+      searchParameters: {
+        facetFilters: ['tags:en']
+      }
+>>>>>>> 3aec1aa2681a17e57aaae9346650deda2eaff121
     },
 
     carbonAds: {
