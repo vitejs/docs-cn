@@ -4,7 +4,7 @@
 
 在浏览器支持 ES 模块之前，没有 JavaScript 的原生机制可以让开发者以模块化的方式开发。这也正是 “打包” 这个概念出现的原因：使用工具抓取、处理和链接我们的源码模块到可以在浏览器运行的文件中。
 
-时过境迁，我们见证了诸如 [webpack](https://webpack.js.org/)、[Rollup](https://rollupjs.org) 和 [Parcel](https://parceljs.org/) 等极大地改善了前端开发者开发体验的工具的诞生。
+时过境迁，我们见证了诸如 [webpack](https://webpack.js.org/)、[Rollup](https://rollupjs.org) 和 [Parcel](https://parceljs.org/) 等工具的变迁，它们极大地改善了前端开发者的开发体验。
 
 然而，当我们开始构建越来越大型的应用时，需要处理的 JavaScript 代码量也呈指数级增长。大型项目包含数千个模块的情况并不少见。我们开始遇到性能瓶颈 —— 使用 JavaScript 开发的工具通常需要很长时间（甚至是几分钟！）才能启动开发服务器，即使使用 HMR，文件修改后的效果也需要几秒钟才能在浏览器中反映出来。如此循环往复，迟钝的反馈会极大地影响开发者的开发效率和幸福感。
 
