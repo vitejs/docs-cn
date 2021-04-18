@@ -147,6 +147,13 @@ export default async ({ command, mode }) => {
 
   欲了解更多，请参阅 [`public` 目录](/guide/assets#the-public-directory)。
 
+### cacheDir {#cachedir}
+
+- **类型：** `string`
+- **默认值：** `"node_modules/.vite"`
+
+  存储缓存文件的目录。此目录下会存储预打包的依赖项或 vite 生成的某些缓存文件，使用缓存可以提高性能。如需重新生成缓存文件，你可以使用 `--force` 命令行选项或手动删除目录。此选项的值可以是文件的绝对路径，也可以是以项目根目录为基准的相对路径。
+
 ### resolve.alias {#resolve-alias}
 
 - **类型：** `Record<string, string> | Array<{ find: string | RegExp, replacement: string }>`
