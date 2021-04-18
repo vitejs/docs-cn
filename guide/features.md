@@ -4,21 +4,21 @@
 
 ## NPM 依赖解析和预构建 {#npm-dependency-resolving-and-pre-bundling}
 
-原生 ES 引入不支持下面这样的裸模块导入：
+原生 ES 导入不支持下面这样的裸模块导入：
 
 ```js
 import { someMethod } from 'my-dep'
 ```
 
-上面的操作将在浏览器中抛出一个错误。Vite 将在服务的所有源文件中检测此类裸模块导入，并执行以下操作:
+上面的代码会在浏览器中抛出一个错误。Vite 将在服务的所有源文件中检测此类裸模块导入，并执行以下操作:
 
-1. [预构建](./dep-pre-bundling) 他们以提升页面重载速度，并将 CommonJS / UMD 转换为 ESM 格式。预构建这一步由 [esbuild](http://esbuild.github.io/) 执行，这使得 Vite 的冷启动时间比任何基于 javascript 的打包程序都要快得多。
+1. [预构建](./dep-pre-bundling) 他们以提升页面重载速度，并将 CommonJS / UMD 转换为 ESM 格式。预构建这一步由 [esbuild](http://esbuild.github.io/) 执行，这使得 Vite 的冷启动时间比任何基于 JavaScript 的打包器都要快得多。
 
 2. 重写导入为合法的 URL，例如 `/node_modules/.vite/my-dep.js?v=f3sf2ebd` 以便浏览器能够正确导入它们。
 
 **依赖是强缓存的**
 
-Vite 通过 HTTP 头来缓存请求得到的依赖，所以如果你想要 编辑/调试 一个依赖，请跟随 [这里](./dep-pre-bundling#浏览器缓存) 的步骤。
+Vite 通过 HTTP 头来缓存请求得到的依赖，所以如果你想要编辑或调试一个依赖，请跟随 [这里](./dep-pre-bundling#浏览器缓存) 的步骤。
 
 ## 模块热重载 {#hot-module-replacement}
 
@@ -28,15 +28,15 @@ Vite 提供了一套原生 ESM 的 [HMR API](./api-hmr)。 具有 HMR 功能的�
 
 ## TypeScript {#typescript}
 
-Vite 支持开箱即用地引入 `.ts` 文件。
+Vite 天然支持引入 `.ts` 文件。
 
-Vite 仅执行 `.ts` 文件的翻译工作，并 **不** 执行任何类型检查。并假设类型检查已经被你的 IDE 或构建过程接管了。（你可以在构建脚本中运行 `tsc --noEmit` 或者安装 `vue-tsc` 然后运行 `vue-tsc --noEmit` 来对你的 `*.vue` 文件做类型检查）。
+Vite 仅执行 `.ts` 文件的转译工作，并 **不** 执行任何类型检查。并假设类型检查已经被你的 IDE 或构建过程接管了。（你可以在构建脚本中运行 `tsc --noEmit` 或者安装 `vue-tsc` 然后运行 `vue-tsc --noEmit` 来对你的 `*.vue` 文件做类型检查）。
 
-Vite 使用 [esbuild](https://github.com/evanw/esbuild) 将 TypeScript 翻译到 JavaScript，约是 `tsc` 速度的 20~30 倍，同时 HMR 更新反映到浏览器的时间小于 50ms。
+Vite 使用 [esbuild](https://github.com/evanw/esbuild) 将 TypeScript 转译到 JavaScript，约是 `tsc` 速度的 20~30 倍，同时 HMR 更新反映到浏览器的时间小于 50ms。
 
 注意因为 `esbuild` 只执行转译工作而不含类型信息，所以它无需支持 TypeScript 的特定功能例如常量枚举和隐式 “type-only” 导入。你必须在你的 `tsconfig.json` 中的 `compilerOptions` 里设置 `"isolatedModules": true`，这样 TS 才会警告你哪些功能无法与独立编译模式一同工作。
 
-### Client Types {#client-types}
+### 客户端类型 {#client-types}
 
 Vite 默认的类型定义是写给它的 Node.js API 的。要将其补充到一个 Vite 应用的客户端代码环境中，请将 `vite/client` 添加到 `tsconfig` 中的 `compilerOptions.types` 下：
 
@@ -64,7 +64,7 @@ Vite 为 Vue 提供第一优先级支持：
 
 ## JSX {#jsx}
 
-`.jsx` 和 `.tsx` 文件同样开箱即用。JSX 的翻译同样是通过 [ESBuild](https://esbuild.github.io)，默认为 React 16 形式，React 17 形式的 JSX 在 esbuild 中的支持请看 [这里](https://github.com/evanw/esbuild/issues/334).
+`.jsx` 和 `.tsx` 文件同样开箱即用。JSX 的转译同样是通过 [ESBuild](https://esbuild.github.io)，默认为 React 16 形式，React 17 形式的 JSX 在 esbuild 中的支持请看 [这里](https://github.com/evanw/esbuild/issues/334).
 
 Vue 用户应使用官方提供的 [@vitejs/plugin-vue-jsx](https://github.com/vitejs/vite/tree/main/packages/plugin-vue-jsx) 插件，它提供了 Vue 3 特性的支持，包括 HMR，全局组件解析， 指令和插槽。
 
@@ -82,7 +82,7 @@ export default {
 
 更多细节详见 [ESBuild 文档](https://esbuild.github.io/content-types/#jsx).
 
-你可以使用 `jsInject`（这是一个 Vite-only 的选项）为 JSX 注入 helper，以避免手动引入：
+你可以使用 `jsInject`（这是一个仅在 Vite 中使用的选项）为 JSX 注入 helper，以避免手动引入：
 
 ```js
 // vite.config.js
@@ -135,9 +135,9 @@ document.getElementById('foo').className = applyColor
 
 ### CSS 预处理器 {#css-pre-processors}
 
-因为 Vite 只针对现代浏览器，所以建议使用原生 CSS 变量和实现 CSSWG 草案的 PostCSS 插件（例如 [postcss-nesting](https://github.com/jonathantneal/postcss-nesting)）来编写简单的、符合未来标准的 CSS。
+由于 Vite 的目标仅为现代浏览器，因此建议使用原生 CSS 变量和实现 CSSWG 草案的 PostCSS 插件（例如 [postcss-nesting](https://github.com/jonathantneal/postcss-nesting)）来编写简单的、符合未来标准的 CSS。
 
-话虽如此，但 Vite 也同时提供了对 `.scss`, `.sass`, `.less`, `.styl` 和 `.stylus` 文件的内置支持。没有必要为他们安装特定的 vite 插件，但相应的预处理器依赖本身必须安装：
+话虽如此，但 Vite 也同时提供了对 `.scss`, `.sass`, `.less`, `.styl` 和 `.stylus` 文件的内置支持。没有必要为它们安装特定的 Vite 插件，但必须安装相应的预处理器依赖：
 
 ```bash
 # .scss and .sass
@@ -152,9 +152,9 @@ npm install -D stylus
 
 如果是用的是单文件组件，可以通过 `<style lang="sass">`（或其他与处理器）自动开启。
 
-Vite 为 Sass 和 Less 改进了 `@import` 解析，因而 Vite 别名也同样受用，另外，`url()` 中的相对路径引用的，与根文件不同目录中的 Sass/Less 文件会自动变基以保证正确性。
+Vite 为 Sass 和 Less 改进了 `@import` 解析，以保证 Vite 别名也能被使用。另外，`url()` 中的相对路径引用的，与根文件不同目录中的 Sass/Less 文件会自动变基以保证正确性。
 
-由于与其 API 冲突，`@import` 别名和 URL 变基不支持 Stylus。
+由于与 Stylus API 冲突，`@import` 别名和 URL 变基不支持 Stylus。
 
 你还可以通过在文件扩展名前加上 `.module` 来结合使用 CSS modules 和预处理器，例如 `style.module.scss`。
 
@@ -185,7 +185,7 @@ import Worker from './worker.js?worker'
 ```
 
 ```js
-// 在构建时Web Worker 内联为 base64 字符串
+// 在构建时 Web Worker 内联为 base64 字符串
 import InlineWorker from './worker.js?worker&inline'
 ```
 
@@ -193,12 +193,12 @@ import InlineWorker from './worker.js?worker&inline'
 
 ## JSON {#json}
 
-JSON 可以被直接导入 - 同样支持具名导入：
+JSON 可以被直接导入 —— 同样支持具名导入：
 
 ```js
 // 导入整个对象
 import json from './example.json'
-// 对一个根字段使用具名导入 - 有效运用 tree-shaking！
+// 对一个根字段使用具名导入 —— 有效帮助 treeshaking！
 import { field } from './example.json'
 ```
 
@@ -230,7 +230,7 @@ for (const path in modules) {
 }
 ```
 
-匹配到的文件将通过动态导入默认懒加载，并会在构建时分离为独立的 chunk。如果你倾向于直接引入所有的模块（例如依赖于这些模块中的副作用首先被应用），你可以使用 `import.meta.globEager` 代替：
+匹配到的文件默认是懒加载的，通过动态导入实现，并会在构建时分离为独立的 chunk。如果你倾向于直接引入所有的模块（例如依赖于这些模块中的副作用首先被应用），你可以使用 `import.meta.globEager` 代替：
 
 ```js
 const modules = import.meta.globEager('./dir/*.js')
@@ -251,12 +251,12 @@ const modules = {
 请注意：
 
 - 这只是一个 Vite 独有的功能而不是一个 Web 或 ES 标准
-- 该 Glob 模式会被当成导入标识符：必须要么是相对路径（以 `./` 开头）或绝对路径（以 `/` 开头，相对于项目根目录解析）。
+- 该 Glob 模式会被当成导入标识符：必须是相对路径（以 `./` 开头）或绝对路径（以 `/` 开头，相对于项目根目录解析）。
 - Glob 匹配是使用 `fast-glob` 来实现的 —— 阅读它的文档来查阅 [支持的 Glob 模式](https://github.com/mrmlnc/fast-glob#pattern-syntax)。
 
 ## Web Assembly {#web-assembly}
 
-预编译的 `.wasm` 文件可以直接被导入 —— 默认导出将会是一个函数，返回值为所导出 wasm 实例对象的 Promise：
+预编译的 `.wasm` 文件可以直接被导入 —— 默认导出一个函数，返回值为所导出 wasm 实例对象的 Promise：
 
 ```js
 import init from './example.wasm'
@@ -284,7 +284,7 @@ init({
 
 ## Web Worker {#web-workers}
 
-一个 web worker 脚本可以直接通过添加一个 `?worker` 查询参数来导入。默认导出将是一个自定义的 worker 构造器：
+一个 web worker 脚本可以直接通过添加一个 `?worker` 查询参数来导入。默认导出一个自定义的 worker 构造器：
 
 ```js
 import MyWorker from './worker?worker'
@@ -292,7 +292,7 @@ import MyWorker from './worker?worker'
 const worker = new MyWorker()
 ```
 
-worker 脚本也可以使用 `import` 语句来替代 `importScripts()` - 注意，在开发过程中，这依赖于浏览器原生支持，目前只在 Chrome 中适用，而在生产版本中，它已经被编译掉了。
+Worker 脚本也可以使用 `import` 语句来替代 `importScripts()` —— 注意，在开发过程中，这依赖于浏览器原生支持，目前只在 Chrome 中适用，而在生产版本中，它已经被编译掉了。
 
 默认情况下，worker 脚本将在生产构建中作为单独的块发出。如果你想将 worker 内联为 base64 字符串，请添加 `inline` 查询参数：
 
@@ -304,9 +304,9 @@ import MyWorker from './worker?worker&inline'
 
 > 下面所罗列的功能会自动应用为构建过程的一部分，没有必要在配置中显式地声明，除非你想禁用它们。
 
-### 对动态导入的 Polyfill {#dynamic-import-polyfill}
+### 动态导入的 Polyfill {#dynamic-import-polyfill}
 
-Vite 使用 ES 动态导入作为代码分割的断点。生成的代码也会使用动态导入来加载异步 chunk。然而浏览器对原生 ESM 动态导入的功能落地比对 `type="module"` script 块支持要晚，它们两个功能之间存在着浏览器兼容性差异。Vite 自动会生成一个轻量级的 [对动态导入的 polyfill](https://github.com/GoogleChromeLabs/dynamic-import-polyfill) 来抹平二者差异。
+Vite 使用 ES 动态导入作为代码分割的断点。生成的代码也会使用动态导入来加载异步 chunk。然而浏览器对原生 ESM 动态导入的功能落地比对 `type="module"` script 块支持要晚，它们两个功能之间存在着浏览器兼容性差异。Vite 自动会生成一个轻量级的 [动态导入的 polyfill](https://github.com/GoogleChromeLabs/dynamic-import-polyfill) 来抹平二者差异。
 
 如果你确定你的构建目标只有支持原生动态导入的浏览器，你可以通过 [`build.polyfillDynamicImport`](/config/#build-polyfilldynamicimport) 显式地禁用这个功能。
 
@@ -338,4 +338,4 @@ Vite 将使用一个预加载步骤自动重写代码，来分割动态导入调
 Entry ---> (A + C)
 ```
 
-`C` 也可能有更深的导入，在未优化的场景中，这甚至会导致额外网络往返。Vite 的优化将跟踪所有的直接导入，无论导入深度如何，都完全消除不必要的往返。
+`C` 也可能有更深的导入，在未优化的场景中，这甚至会导致额外网络往返。Vite 的优化会跟踪所有的直接导入，无论导入的深度如何，都能够完全消除不必要的往返。
