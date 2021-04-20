@@ -2,7 +2,7 @@
 sidebar: false
 ---
 
-# Vite 2.0 发布了
+# Vite 2.0 发布了 {#Announcing Vite 2.0}
 
 <p style="text-align:center">
   <img src="/public/logo.svg" style="height:200px">
