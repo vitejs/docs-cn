@@ -6,7 +6,7 @@ const pkg = require('../package.json')
  * @type {import('vitepress').UserConfig}
  */
 module.exports = {
-  title: 'Vite 官方中文文档',
+  title: 'Vite',
   lang: 'zh-CN',
   description: '下一代前端开发与构建工具',
   head: [['link', { rel: 'icon', type: 'image/svg+xml', href: '/logo.svg' }]],
