@@ -452,7 +452,7 @@ export default async ({ command, mode }) => {
 
   决定是否自动注入 [对动态导入的 polyfill](https://github.com/GoogleChromeLabs/dynamic-import-polyfill)。
 
-  该 polyfill 将被自动注入进每个 `index.html` 入口的代理模块中。如果某此构建通过 `build.rollupOptions.input` 选项，配置成了使用非 HTML 的自定义入口，则有必要在你的自定义入口中手动引入此 polyfill：
+  该 polyfill 将被自动注入进每个 `index.html` 入口的代理模块中。如果某次构建通过 `build.rollupOptions.input` 选项，配置成了使用非 HTML 的自定义入口，则有必要在你的自定义入口中手动引入此 polyfill：
 
   ```js
   import 'vite/dynamic-import-polyfill'
@@ -515,6 +515,7 @@ export default async ({ command, mode }) => {
 - **相关内容：** [Library Mode](/guide/build#library-mode)
 
   构建为库。entry 是必须的因为库不可以使用 HTML 作为入口。name 则是暴露的全局变量，并且在 formats 包含 'umd' 或 'iife' 时是必须的。默认 formats 是 ['es', 'umd']。`fileName` 是输出的包文件名，默认 `fileName` 是 package.json 的 name 选项。
+
 ### build.manifest {#build-manifest}
 
 - **类型：** `boolean`
