@@ -452,7 +452,7 @@ export default async ({ command, mode }) => {
 
   决定是否自动注入 [对动态导入的 polyfill](https://github.com/GoogleChromeLabs/dynamic-import-polyfill)。
 
-  该 polyfill 将被自动注入进每个 `index.html` 入口的代理模块中。如果某次构建通过 `build.rollupOptions.input` 选项，配置成了使用非 HTML 的自定义入口，则有必要在你的自定义入口中手动引入此 polyfill：
+  该 polyfill 将被自动注入进每个 `index.html` 入口的代理模块中。如果某次构建通过 `build.rollupOptions.input` 选项配置成了使用非 HTML 的自定义入口，则有必要在你的自定义入口中手动引入此 polyfill：
 
   ```js
   import 'vite/dynamic-import-polyfill'
