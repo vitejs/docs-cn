@@ -1,5 +1,4 @@
 ---
-title: Vite 2.0 发布了
 sidebar: false
 ---
 
@@ -9,7 +8,7 @@ sidebar: false
   <img src="/logo.svg" style="height:200px">
 </p>
 
-Vite 2.0 正式发布了！
+今天我们很高兴的宣布，Vite 2.0 正式发布了！
 
 Vite（法语意思是 “快”，发音为 `/vit/`，类似 veet）是一种全新的前端构建工具。你可以把它理解为一个开箱即用的开发服务器 + 打包工具的组合，但是更轻更快。Vite 利用浏览器 [原生的 ES 模块支持](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules) 和用来编译到原生语言的开发工具（如 [esbuild](https://esbuild.github.io/)）来提供一个快速且现代的开发体验。
 
@@ -42,9 +41,7 @@ Vite 的 [JS API](/guide/api-javascript) 也得到了大幅改进 - 已经有不
 Vite 将 CSS 看作模块系统中的一等公民，并且内置了以下支持：
 
 - **强化路径解析**：CSS 中的 @import 和 url() 路径都通过 Vite 的路径解析器来解析，从而支持 alias 和 npm 依赖。
-
 - **自动 URL 改写**：所有 url() 路径都会被自动改写从而确保在开发和构建中都指向正确的文件路径。
-
 - **CSS 代码分割**：构建时每一个被分割的 JS 文件都会自动生成一个对应的 CSS 文件，并且两个文件会被自动并行按需加载。
 
 ### 服务端渲染（SSR）支持 {#server-side-rendering-ssr-support}
@@ -65,9 +62,4 @@ Vite 默认只支持原生支持 ESM 的现代浏览器，但可以通过官方�
 npm init @vitejs/app
 ```
 
-接下来你可以：
-
-- 阅读 [指引文档](/guide/) 了解 Vite 提供了哪些开箱即用的功能
-- 在 [GitHub](https://github.com/vitejs/vite) 上访问源码
-- 在 [Twitter](https://twitter.com/vite_js) 上关注最新进展
-- 或与其他 Vite 用户在 [Discord](http://chat.vitejs.dev/) 上一起讨论
+然后，你可以阅读 [指引文档](/guide/) 了解 Vite 提供了哪些开箱即用的功能，也可以在 [GitHub](https://github.com/vitejs/vite) 上查看源码，关注我们的 [Twitter](https://twitter.com/vite_js) 以了解最新的进展，或与其他 Vite 用户在 [Discord](http://chat.vitejs.dev/) 上一起讨论。
