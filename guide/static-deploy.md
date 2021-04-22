@@ -73,7 +73,7 @@ $ npm run preview
    # 构建
    npm run build
 
-   # 进入构建产物文件夹
+   # 进入构建文件夹
    cd dist
 
    # 如果你要部署到自定义域名
