@@ -36,7 +36,7 @@ Pre-bundling them to speed up dev server page load...（将预构建它们以提
 
 如果没有找到相应的缓存，Vite 将抓取你的源码，并自动寻找引入的依赖项（即 "bare import"，表示期望从 `node_modules` 解析），并将这些依赖项作为预构建包的入口点。预构建通过 `esbuild` 执行，所以它通常非常快。
 
-在服务器已经启动之后，如果在缓存中没有遇到新的依赖项导入，Vite 将重新运行依赖构建进程并重新加载页面。
+在服务器已经启动之后，如果遇到新的（没有在缓存中的）依赖项导入，Vite 将重新运行依赖构建进程并重新加载页面。
 
 ## Monorepo 和链接依赖 {#monorepos-and-linked-dependencies}
 
