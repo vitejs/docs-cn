@@ -12,7 +12,7 @@ sidebar: false
 
 Vite（法语意思是 “快”，发音为 `/vit/`，类似 veet）是一种全新的前端构建工具。你可以把它理解为一个开箱即用的开发服务器 + 打包工具的组合，但是更轻更快。Vite 利用浏览器 [原生的 ES 模块支持](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules) 和用来编译到原生语言的开发工具（如 [esbuild](https://esbuild.github.io/)）来提供一个快速且现代的开发体验。
 
-Vite 有多快？在 Repl.it 上从零启动 [一个基于 Vite 的 React 应用](https://twitter.com/amasad/status/1355379680275128321)，浏览器页面加载完毕的时候，基于 CRA（`create-react-app`）的应用甚至还没有装完依赖。
+想知道 Vite 有多快？看看这个[视频比较](https://twitter.com/amasad/status/1355379680275128321)， 在 Repl.it 上从零启动一个基于 Vite 的 React 应用，浏览器页面加载完毕的时候，基于 CRA（`create-react-app`）的应用甚至还没有安装完依赖。
 
 如果你还没听说过 Vite 到底是什么，可以到 [这里](/guide/why) 了解一下项目的设计初衷。如果你想要了解 Vite 跟其它一些类似的工具有什么区别，可以参考这里的 [对比](/guide/comparisons)。
 
