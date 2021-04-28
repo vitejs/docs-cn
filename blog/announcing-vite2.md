@@ -30,7 +30,7 @@ Vite 1.0 虽然之前进入了 RC 阶段，但在发布之前我们决定进行�
 
 Vite 2.0 受 [WMR](https://github.com/preactjs/wmr) 的启发采用了基于 Rollup 插件 API 的设计。[很多 Rollup 插件可以跟 Vite 直接兼容](https://vite-rollup-plugins.patak.dev/)。插件可以在使用 Rollup 插件钩子之外使用一些额外的 Vite 特有的 API 来处理一些打包中不存在的需求，比如区分开发与生产环境 ，或是自定义热更新处理。
 
-Vite 的 [JS API](/guide/api-javascript) 也得到了大幅改进 - 已经有不少用户在开发基于 Vite 的上层框架，Nuxt 团队也已经在 Nuxt 3 中验证了初步整合的可行性。
+Vite 的 [程序化 API](/guide/api-javascript) 也得到了大幅改进 - 已经有不少用户在开发基于 Vite 的上层框架，Nuxt 团队也已经在 Nuxt 3 中验证了初步整合的可行性。
 
 ### 基于 esbuild 的依赖预打包 {#esbuild-powered-dep-pre-bundling}
 
