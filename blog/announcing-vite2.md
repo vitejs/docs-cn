@@ -8,7 +8,7 @@ sidebar: false
   <img src="/logo.svg" style="height:200px">
 </p>
 
-今天我们很高兴的宣布，Vite 2.0 正式发布了！
+今天我们很高兴地宣布，Vite 2.0 正式发布了！
 
 Vite（法语意思是 “快”，发音为 `/vit/`，类似 veet）是一种全新的前端构建工具。你可以把它理解为一个开箱即用的开发服务器 + 打包工具的组合，但是更轻更快。Vite 利用浏览器 [原生的 ES 模块支持](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules) 和用来编译到原生语言的开发工具（如 [esbuild](https://esbuild.github.io/)）来提供一个快速且现代的开发体验。
 
