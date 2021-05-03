@@ -1,26 +1,26 @@
-# Env Variables and Modes
+# 环境变量和模式
 
-## Env Variables
+## 环境变量
 
-Vite exposes env variables on the special **`import.meta.env`** object. Some built-in variables are available in all cases:
+Vite 在一个特殊的 **`import.meta.env`** 对象上暴露环境变量。这里有一些在所有情况下都可以使用的内建变量：
 
-- **`import.meta.env.MODE`**: {string} the [mode](#modes) the app is running in.
+- **`import.meta.env.MODE`**: {string} 应用运行的[模式](#模式)。
 
-- **`import.meta.env.BASE_URL`**: {string} the base url the app is being served from. This is determined by the [`base` config option](/config/#base).
+- **`import.meta.env.BASE_URL`**: {string} 部署应用时的基本URL. 他由[`base` 配置项](/config/#base)决定。
 
-- **`import.meta.env.PROD`**: {boolean} whether the app is running in production.
+- **`import.meta.env.PROD`**: {boolean} 应用是否运行在生产环境。
 
-- **`import.meta.env.DEV`**: {boolean} whether the app is running in development (always the opposite of `import.meta.env.PROD`)
+- **`import.meta.env.DEV`**: {boolean} 应用是否运行在开发环境 (永远与 `import.meta.env.PROD`相反)。
 
-### Production Replacement
+### 生产环境替换
 
-During production, these env variables are **statically replaced**. It is therefore necessary to always reference them using the full static string. For example, dynamic key access like `import.meta.env[key]` will not work.
+在生产环境中，这些环境变量会在构建时被**静态替换**，因此，在引用它们时请使用完全静态的字符串。动态的 key 将无法生效。例如，动态 key 取值 `import.meta.env[key]` 是无效的。
 
-It will also replace these strings appearing in JavaScript strings and Vue templates. This should be a rare case, but it can be unintended. There are ways to work around this behavior:
+它还将替换出现在 JavaScript 和 Vue 模板中的字符串。这应该是一种罕见的情况，但可能是不小心为之的。有一些方法可以避免这个问题：
 
-- For JavaScript strings, you can break the string up with a unicode zero-width space, e.g. `'import.meta\u200b.env.MODE'`.
+- 对于 JavaScript 字符串，你可以使用一个看不见的分隔符（`\u200b`）来分割这个字符串，例如： `'import.meta\u200b.env.MODE'`。
 
-- For Vue templates or other HTML that gets compiled into JavaScript strings, you can use the [`<wbr>` tag](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/wbr), e.g. `import.meta.<wbr>env.MODE`.
+- 对于 Vue 模板或其他编译到 JavaScript 字符串的 HTML，你可以使用 [`<wbr>` 标签](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/wbr)，例如：`import.meta.<wbr>env.MODE`。
 
 ## `.env` Files
 
