@@ -18,7 +18,7 @@ Vite 在一个特殊的 **`import.meta.env`** 对象上暴露环境变量。这�
 
 它还将替换出现在 JavaScript 和 Vue 模板中的字符串。这应该是一种罕见的情况，但可能是不小心为之的。有一些方法可以避免这个问题：
 
-- 对于 JavaScript 字符串，你可以使用 unicode 零宽度空格 **`\u200b`**（一个看不见的分隔符）来分割这个字符串，例如： `'import.meta\u200b.env.MODE'`。
+- 对于 JavaScript 字符串，你可以使用 unicode 零宽度空格 **`\u200b`** (一个看不见的分隔符)来分割这个字符串，例如： `'import.meta\u200b.env.MODE'`。
 
 - 对于 Vue 模板或其他编译到 JavaScript 字符串的 HTML，你可以使用 [`<wbr>` 标签](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/wbr)，例如：`import.meta.<wbr>env.MODE`。
 
@@ -66,7 +66,7 @@ interface ImportMetaEnv {
 
 ## 模式
 
-默认情况下，开发服务器 (`serve` 命令) 运行在 `development` （开发）模式，而 `build` 命令运行在 `production` （生产）模式。
+默认情况下，开发服务器 (`serve` 命令) 运行在 `development` (开发) 模式，而 `build` 命令运行在 `production` (生产) 模式。
 
 这意味着当执行 `vite build` 时，它会自动加载 `.env.production` 中可能存在的环境变量：
 
@@ -77,7 +77,7 @@ VITE_APP_TITLE=My App
 
 在你的应用中，你可以使用 `import.meta.env.VITE_APP_TITLE` 渲染标题。
 
-然而，重要的是要理解 **模式** 是一个更广泛的概念，而不仅仅是开发和生产。一个典型的例子是，你可能希望有一个 “staging”（预发布|预上线） 模式，它应该具有类似于生产的行为，但环境变量与生产环境略有不同。
+然而，重要的是要理解 **模式** 是一个更广泛的概念，而不仅仅是开发和生产。一个典型的例子是，你可能希望有一个 “staging” (预发布|预上线) 模式，它应该具有类似于生产的行为，但环境变量与生产环境略有不同。
 
 你可以通过传递 `--mode` 选项标志来覆盖命令使用的默认模式。例如，如果你想为我们假设的 staging 模式构建应用：
 
