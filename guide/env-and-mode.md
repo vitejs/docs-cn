@@ -6,7 +6,7 @@ Vite 在一个特殊的 **`import.meta.env`** 对象上暴露环境变量。这�
 
 - **`import.meta.env.MODE`**: {string} 应用运行的[模式](#模式)。
 
-- **`import.meta.env.BASE_URL`**: {string} 部署应用时的基本URL. 他由[`base` 配置项](/config/#base)决定。
+- **`import.meta.env.BASE_URL`**: {string} 部署应用时的基本URL。 他由[`base` 配置项](/config/#base)决定。
 
 - **`import.meta.env.PROD`**: {boolean} 应用是否运行在生产环境。
 
@@ -46,16 +46,16 @@ VITE_SOME_KEY=123
 
 :::warning 安全注意事项
 
-- `.env.*.local` 文件应是本地的，可以包含敏感变量。你应该将`.local`添加到你的`.gitignore`中，以避免它们被git检入。
+- `.env.*.local` 文件应是本地的，可以包含敏感变量。你应该将 `.local` 添加到你的 `.gitignore` 中，以避免它们被git检入。
 
 - 由于任何暴露给 Vite 源码的变量最终都将出现在客户端包中，`VITE_*` 变量应该不包含任何敏感信息。
   :::
 
 ### 智能提示
 
-默认情况下，Vite为`import.meta.env`提供了类型定义。随着在 `.env[mode]` 文件中自定义了越来越多的环境变量，你可能想要在代码中获取这些以 `VITE_` 为前缀的用户自定义环境变量的 TypeScript 智能提示。
+默认情况下，Vite为 `import.meta.env` 提供了类型定义。随着在 `.env[mode]` 文件中自定义了越来越多的环境变量，你可能想要在代码中获取这些以 `VITE_` 为前缀的用户自定义环境变量的 TypeScript 智能提示。
 
-要想做到这一点，你可以在 `src` 目录下创建一个 `env.d.ts`文件，接着按下面这样增加 `ImportMetaEnv` 的定义：
+要想做到这一点，你可以在 `src` 目录下创建一个 `env.d.ts` 文件，接着按下面这样增加 `ImportMetaEnv` 的定义：
 
 ```typescript
 interface ImportMetaEnv {
@@ -77,7 +77,7 @@ VITE_APP_TITLE=My App
 
 在你的应用中，你可以使用 `import.meta.env.VITE_APP_TITLE` 渲染标题。
 
-然而，重要的是要理解**模式**是一个更广泛的概念，而不仅仅是开发和生产。一个典型的例子是，你可能希望有一个 “staging”（预发布|预上线） 模式，它应该具有类似于生产的行为，但环境变量与生产环境略有不同。
+然而，重要的是要理解 **模式** 是一个更广泛的概念，而不仅仅是开发和生产。一个典型的例子是，你可能希望有一个 “staging”（预发布|预上线） 模式，它应该具有类似于生产的行为，但环境变量与生产环境略有不同。
 
 你可以通过传递 `--mode` 选项标志来覆盖命令使用的默认模式。例如，如果你想为我们假设的 staging 模式构建应用：
 
@@ -93,4 +93,4 @@ NODE_ENV=production
 VITE_APP_TITLE=My App (staging)
 ```
 
-现在，你的staging 应用应该具有类似于生产的行为，但显示的标题与生产环境不同。
+现在，你的 staging 应用应该具有类似于生产的行为，但显示的标题与生产环境不同。
