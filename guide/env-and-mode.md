@@ -6,7 +6,7 @@ Vite 在一个特殊的 **`import.meta.env`** 对象上暴露环境变量。这�
 
 - **`import.meta.env.MODE`**: {string} 应用运行的[模式](#模式)。
 
-- **`import.meta.env.BASE_URL`**: {string} 部署应用时的基本URL。 他由[`base` 配置项](/config/#base)决定。
+- **`import.meta.env.BASE_URL`**: {string} 部署应用时的基本URL。他由[`base` 配置项](/config/#base)决定。
 
 - **`import.meta.env.PROD`**: {boolean} 应用是否运行在生产环境。
 
