@@ -1,6 +1,6 @@
-# 环境变量和模式
+# 环境变量和模式 {#env-variables-and-modes}
 
-## 环境变量
+## 环境变量 {#env-variables}
 
 Vite 在一个特殊的 **`import.meta.env`** 对象上暴露环境变量。这里有一些在所有情况下都可以使用的内建变量：
 
@@ -12,7 +12,7 @@ Vite 在一个特殊的 **`import.meta.env`** 对象上暴露环境变量。这�
 
 - **`import.meta.env.DEV`**: {boolean} 应用是否运行在开发环境 (永远与 `import.meta.env.PROD`相反)。
 
-### 生产环境替换
+### 生产环境替换 {#production-replacement}
 
 在生产环境中，这些环境变量会在构建时被**静态替换**，因此，在引用它们时请使用完全静态的字符串。动态的 key 将无法生效。例如，动态 key 取值 `import.meta.env[key]` 是无效的。
 
@@ -22,7 +22,7 @@ Vite 在一个特殊的 **`import.meta.env`** 对象上暴露环境变量。这�
 
 - 对于 Vue 模板或其他编译到 JavaScript 字符串的 HTML，你可以使用 [`<wbr>` 标签](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/wbr)，例如：`import.meta.<wbr>env.MODE`。
 
-## `.env` 文件
+## `.env` 文件 {#env-files}
 
 Vite 使用 [dotenv](https://github.com/motdotla/dotenv) 在你的项目根目录下从以下文件加载额外的环境变量：
 
@@ -51,7 +51,7 @@ VITE_SOME_KEY=123
 - 由于任何暴露给 Vite 源码的变量最终都将出现在客户端包中，`VITE_*` 变量应该不包含任何敏感信息。
   :::
 
-### 智能提示
+### 智能提示 {#intellisense}
 
 默认情况下，Vite为 `import.meta.env` 提供了类型定义。随着在 `.env[mode]` 文件中自定义了越来越多的环境变量，你可能想要在代码中获取这些以 `VITE_` 为前缀的用户自定义环境变量的 TypeScript 智能提示。
 
@@ -64,7 +64,7 @@ interface ImportMetaEnv {
 }
 ```
 
-## 模式
+## 模式 {#modes}
 
 默认情况下，开发服务器 (`serve` 命令) 运行在 `development` (开发) 模式，而 `build` 命令运行在 `production` (生产) 模式。
 
