@@ -304,6 +304,7 @@ import MyWorker from './worker?worker&inline'
 
 > 下面所罗列的功能会自动应用为构建过程的一部分，没有必要在配置中显式地声明，除非你想禁用它们。
 
+<<<<<<< HEAD
 ### 动态导入的 Polyfill {#dynamic-import-polyfill}
 
 Vite 使用 ES 动态导入作为代码分割的断点。生成的代码也会使用动态导入来加载异步 chunk。然而浏览器对原生 ESM 动态导入的功能落地比对 `type="module"` script 块支持要晚，它们两个功能之间存在着浏览器兼容性差异。Vite 自动会生成一个轻量级的 [动态导入的 polyfill](https://github.com/GoogleChromeLabs/dynamic-import-polyfill) 来抹平二者差异。
@@ -311,6 +312,9 @@ Vite 使用 ES 动态导入作为代码分割的断点。生成的代码也会�
 如果你确定你的构建目标只有支持原生动态导入的浏览器，你可以通过 [`build.polyfillDynamicImport`](/config/#build-polyfilldynamicimport) 显式地禁用这个功能。
 
 ### CSS 代码分割 {#css-code-splitting}
+=======
+### CSS Code Splitting
+>>>>>>> c04902df1b47c1942e8098b9a01d64f272395290
 
 Vite 会自动地将一个异步 chunk 模块中使用到的 CSS 代码抽取出来并为其生成一个单独的文件。这个 CSS 文件将在该异步 chunk 加载完成时自动通过一个 `<link>` 标签载入，该异步 chunk 会保证只在 CSS 加载完毕后再执行，避免发生 [FOUC](https://en.wikipedia.org/wiki/Flash_of_unstyled_content#:~:text=A%20flash%20of%20unstyled%20content,before%20all%20information%20is%20retrieved.) 。
 
