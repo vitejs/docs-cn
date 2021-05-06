@@ -4,22 +4,11 @@
 
 ## 浏览器兼容性 {#browser-compatibility}
 
-<<<<<<< HEAD
-生产版本假设已实现现代 JavaScript 语法。默认情况下，所有代码构建都会以 [支持原生 ESM script 标签的浏览器](https://caniuse.com/es6-module) 为 target。
-
-- Chrome >=61
-- Firefox >=60
-- Safari >=11
-- Edge >=16
-
-一个轻量级的 [对动态导入的 polyfill](https://github.com/GoogleChromeLabs/dynamic-import-polyfill) 也会同时自动注入。
-=======
-The production bundle assumes support for modern JavaScript. By default, vite targets browsers which support the [native ESM script tag](https://caniuse.com/es6-module) and [native ESM dynamic import](https://caniuse.com/es6-module-dynamic-import). As a reference, vite uses this [browserslist](https://github.com/browserslist/browserslist) query:
+生产版本会假设你已实现现代 JavaScript 语法的支持。默认情况下，vite 是为 [支持原生 ESM script 标签](https://caniuse.com/es6-module) 和 [支持原生 ESM 动态导入](https://caniuse.com/es6-module-dynamic-import) 的浏览器服务的。作为参考，vite 使用这个 [browserslist](https://github.com/browserslist/browserslist) 作为查询标准：
 
 ```
 defaults and supports es6-module and supports es6-module-dynamic-import, not opera > 0, not samsung > 0, not and_qq > 0
 ```
->>>>>>> c04902df1b47c1942e8098b9a01d64f272395290
 
 你也可以通过 [`build.target` 配置项](/config/#build-target) 指定构建目标，最低支持 `es2015`。
 
