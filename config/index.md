@@ -330,10 +330,10 @@ export default async ({ command, mode }) => {
 - **类型：** `string`
 - **默认：** `'127.0.0.1'`
 
-  Specify which IP addresses the server should listen on.
-  Set this to `0.0.0.0` to listen on all addresses, including LAN and public addresses.
+  指定服务器应该监听哪个 IP 地址。
+  如果将此设置为 `0.0.0.0` 将监听所有地址，包括局域网和公网地址。
   
-  This can be set via the CLI using `--host 0.0.0.0` or `--host`.
+  也可以通过 CLI 使用 `--host 0.0.0.0` 或 `--host` 来设置。
 
 ### server.port {#server-port}
 
