@@ -165,8 +165,12 @@ export default async ({ command, mode }) => {
 
 - **类型：** `string[]`
 
+<<<<<<< HEAD
   如果你在你的应用程序中有相同依赖的副本（比如 monorepos），请使用此选项强制 Vite 始终将列出的依赖项解析为同一副本
   （从项目根目录）。
+=======
+  If you have duplicated copies of the same dependency in your app (likely due to hoisting or linked packages in monorepos), use this option to force Vite to always resolve listed dependencies to the same copy (from project root).
+>>>>>>> 3fcf36415e3782e1ed3f712301fee2c008c1914b
 
 ### resolve.conditions {#resolve-conditions}
 
