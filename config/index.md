@@ -328,8 +328,12 @@ export default async ({ command, mode }) => {
 ### server.host {#server-host}
 
 - **类型：** `string`
+- **默认：** `'127.0.0.1'`
 
-  指定开发服务器主机名。
+  指定服务器应该监听哪个 IP 地址。
+  如果将此设置为 `0.0.0.0` 将监听所有地址，包括局域网和公网地址。
+  
+  也可以通过 CLI 使用 `--host 0.0.0.0` 或 `--host` 来设置。
 
 ### server.port {#server-port}
 
@@ -442,21 +446,6 @@ export default async ({ command, mode }) => {
   转换过程将会由 esbuild 执行，并且此值应该是一个合法的 [esbuild 目标选项](https://esbuild.github.io/api/#target)。自定义目标也可以是一个 ES 版本（例如：`es2015`）、一个浏览器版本（例如：`chrome58`）或是多个目标组成的一个数组。
 
   注意：如果代码包含不能被 `esbuild` 安全地编译的特性，那么构建将会失败。查看 [esbuild 文档](https://esbuild.github.io/content-types/#javascript) 获取更多细节。
-
-### build.polyfillDynamicImport {#build-polyfilldynamicimport}
-
-- **类型：** `boolean`
-- **默认：** `true` unless `build.target` is `'esnext'`
-
-  决定是否自动注入 [对动态导入的 polyfill](https://github.com/GoogleChromeLabs/dynamic-import-polyfill)。
-
-  该 polyfill 将被自动注入进每个 `index.html` 入口的代理模块中。如果某次构建通过 `build.rollupOptions.input` 选项配置成了使用非 HTML 的自定义入口，则有必要在你的自定义入口中手动引入此 polyfill：
-
-  ```js
-  import 'vite/dynamic-import-polyfill'
-  ```
-
-  注意：该 polyfill **不会** 应用于 [库模式](/guide/build#library-mode)。如果你需要支持不含原生动态导入功能的浏览器，可能要避免在你的库中使用它。
 
 ### build.outDir {#build-outdir}
 
