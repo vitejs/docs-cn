@@ -430,7 +430,22 @@ export default async ({ command, mode }) => {
 
   传递给 [chokidar](https://github.com/paulmillr/chokidar#api) 的文件系统监听器选项。
 
+<<<<<<< HEAD
 ## 构建选项 {#build-options}
+=======
+### server.fsServe.root
+
+- **Type:** `string`
+
+  Restrict files that could be served via `/@fs/`. Accessing files outside this directory will result in a 403.
+  
+  Vite will search for the root of the potential workspace and use it as default. A valid workspace met the following conditions, otherwise will fallback to the [project root](/guide/#index-html-and-project-root).
+  - contains `workspaces` field in `package.json`
+  - contains one of the following file
+    - `pnpm-workspace.yaml`
+
+## Build Options
+>>>>>>> 7d15c678f736f69a9f15182e085f351692cf9d5d
 
 ### build.target {#build-target}
 
@@ -615,4 +630,15 @@ SSR 选项可能会在未来版本中进行调整。
 
 - **类型：** `string[]`
 
+<<<<<<< HEAD
   列出的是防止被 SSR 外部化依赖项。
+=======
+  Prevent listed dependencies from being externalized for SSR.
+
+### ssr.target
+
+- **Type:** `'node' | 'webworker'`
+- **Default:** `node`
+
+  Build target for the SSR server.
+>>>>>>> 7d15c678f736f69a9f15182e085f351692cf9d5d
