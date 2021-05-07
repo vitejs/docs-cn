@@ -165,8 +165,7 @@ export default async ({ command, mode }) => {
 
 - **类型：** `string[]`
 
-  如果你在你的应用程序中有相同依赖的副本（比如 monorepos），请使用此选项强制 Vite 始终将列出的依赖项解析为同一副本
-  （从项目根目录）。
+  如果你在你的应用程序中有相同依赖的副本（比如 monorepos），请使用此选项强制 Vite 始终将列出的依赖项解析为同一副本（从项目根目录）。
 
 ### resolve.conditions {#resolve-conditions}
 
