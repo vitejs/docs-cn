@@ -331,7 +331,7 @@ export default async ({ command, mode }) => {
 
   指定服务器应该监听哪个 IP 地址。
   如果将此设置为 `0.0.0.0` 将监听所有地址，包括局域网和公网地址。
-  
+
   也可以通过 CLI 使用 `--host 0.0.0.0` 或 `--host` 来设置。
 
 ### server.port {#server-port}
@@ -429,6 +429,18 @@ export default async ({ command, mode }) => {
 - **类型：** `object`
 
   传递给 [chokidar](https://github.com/paulmillr/chokidar#api) 的文件系统监听器选项。
+
+### server.fsServe.root
+
+- **类型：** `string`
+
+  限制哪些文件可以通过 `/@fs/` 路径提供服务。访问这个目录外的文件将会返回 403 结果。
+
+  Vite 将会搜索此根目录下潜在工作空间并作默认使用。一个有效的工作空间应符合以下几个条件，否则会默认以 [项目根目录](/guide/#index-html-and-project-root) 作后备。
+
+  - 在 `package.json` 中包含 `workspaces` 字段
+  - 包含以下几种文件之一
+    - `pnpm-workspace.yaml`
 
 ## 构建选项 {#build-options}
 
@@ -616,3 +628,10 @@ SSR 选项可能会在未来版本中进行调整。
 - **类型：** `string[]`
 
   列出的是防止被 SSR 外部化依赖项。
+
+### ssr.target
+
+- **类型：** `'node' | 'webworker'`
+- **默认：** `node`
+
+  SSR 服务器的构建目标。
