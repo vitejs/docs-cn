@@ -479,7 +479,15 @@ export default async ({ command, mode }) => {
 
   小于此阈值的导入或引用资源将内联为 base64 编码，以避免额外的 http 请求。设置为 `0` 可以完全禁用此项。
 
+<<<<<<< HEAD
 ### build.cssCodeSplit {#build-csscodesplit}
+=======
+  Imported or referenced assets that are smaller than this threshold will be inlined as base64 URLs to avoid extra http requests. Set to `0` to disable inlining altogether.
+  
+  :::tip Note
+Assets will **always** be inlined, regardless of file size, and `build.assetsInlineLimit` will be ignored if you specify `build.lib`
+:::
+>>>>>>> 323f83ac7702440b6064aab78bf0032502394cd0
 
 - **类型：** `boolean`
 - **默认：** `true`
