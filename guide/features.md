@@ -64,11 +64,7 @@ Vite 为 Vue 提供第一优先级支持：
 
 ## JSX {#jsx}
 
-<<<<<<< HEAD
-`.jsx` 和 `.tsx` 文件同样开箱即用。JSX 的转译同样是通过 [ESBuild](https://esbuild.github.io)，默认为 React 16 形式，React 17 形式的 JSX 在 esbuild 中的支持请看 [这里](https://github.com/evanw/esbuild/issues/334).
-=======
-`.jsx` and `.tsx` files are also supported out of the box. JSX transpilation is also handled via [esbuild](https://esbuild.github.io), and defaults to the React 16 flavor. React 17 style JSX support in esbuild is tracked [here](https://github.com/evanw/esbuild/issues/334).
->>>>>>> 323f83ac7702440b6064aab78bf0032502394cd0
+`.jsx` 和 `.tsx` 文件同样开箱即用。JSX 的转译同样是通过 [esbuild](https://esbuild.github.io)，默认为 React 16 形式，React 17 形式的 JSX 在 esbuild 中的支持请看 [这里](https://github.com/evanw/esbuild/issues/334).
 
 Vue 用户应使用官方提供的 [@vitejs/plugin-vue-jsx](https://github.com/vitejs/vite/tree/main/packages/plugin-vue-jsx) 插件，它提供了 Vue 3 特性的支持，包括 HMR，全局组件解析， 指令和插槽。
 
@@ -84,11 +80,7 @@ export default {
 }
 ```
 
-<<<<<<< HEAD
-更多细节详见 [ESBuild 文档](https://esbuild.github.io/content-types/#jsx).
-=======
-More details in [esbuild docs](https://esbuild.github.io/content-types/#jsx).
->>>>>>> 323f83ac7702440b6064aab78bf0032502394cd0
+更多细节详见 [esbuild 文档](https://esbuild.github.io/content-types/#jsx).
 
 你可以使用 `jsInject`（这是一个仅在 Vite 中使用的选项）为 JSX 注入 helper，以避免手动引入：
 
