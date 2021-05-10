@@ -478,6 +478,10 @@ export default async ({ command, mode }) => {
 - **默认：** `4096` (4kb)
 
   小于此阈值的导入或引用资源将内联为 base64 编码，以避免额外的 http 请求。设置为 `0` 可以完全禁用此项。
+  
+  :::tip Note
+无论文件大小，资源都会被内联，如果你指定了 `build.assetsInlineLimit`，那么 `build.lib` 将被忽略。
+:::
 
 ### build.cssCodeSplit {#build-csscodesplit}
 
