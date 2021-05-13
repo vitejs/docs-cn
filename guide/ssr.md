@@ -243,4 +243,4 @@ export function mySSRPlugin() {
 
 ## SSR Target
 
-The default target for the SSR build is a node environment, but you can also run the server in a Web Worker. Packages entry resolution is different for each platform. You can configure the target to be Web Worker using the `ssr.target` set to `'webworker'`.
+SSR 构建的默认目标是一个节点环境，但你也可以在一个 Web Worker 中运行服务器。每个平台的打包条目解析是不同的。你可以将`ssr.target` 设置为 `webworker`，以将目标配置为 Web Worker。
