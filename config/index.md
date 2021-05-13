@@ -430,17 +430,39 @@ export default async ({ command, mode }) => {
 
   传递给 [chokidar](https://github.com/paulmillr/chokidar#api) 的文件系统监听器选项。
 
-### server.fsServe.root
+### server.fsServe.strict {#server-fsserve-strict}
 
+- **实验性**
+- **类型：** `boolean`
+- **默认：** `false` (将在后续版本中改为 `true`)
+
+  限制为工作区 root 路径以外的文件的访问。
+
+### server.fsServe.root {#server-fsserve-root}
+
+- **实验性**
 - **类型：** `string`
 
-  限制哪些文件可以通过 `/@fs/` 路径提供服务。访问这个目录外的文件将会返回 403 结果。
+  限制哪些文件可以通过 `/@fs/` 路径提供服务。当 `server.fsServe.strict` 设置为 true 时，访问这个目录外的文件将会返回 403 结果。
 
-  Vite 将会搜索此根目录下潜在工作空间并作默认使用。一个有效的工作空间应符合以下几个条件，否则会默认以 [项目根目录](/guide/#index-html-and-project-root) 作后备。
+  Vite 将会搜索此根目录下潜在工作空间并作默认使用。一个有效的工作空间应符合以下几个条件，否则会默认以 [项目 root 目录](/guide/#index-html-and-project-root) 作备选方案。
 
   - 在 `package.json` 中包含 `workspaces` 字段
   - 包含以下几种文件之一
     - `pnpm-workspace.yaml`
+
+  接受一个路径作为自定义工作区的 root 目录。可以是绝对路径或是相对于 [项目 root 目录](/guide/#index-html-and-project-root) 的相对路径。示例如下：
+
+  ```js
+  export default {
+    server: {
+      fsServe: {
+        // 可以为项目根目录的上一级提供服务
+        root: '..'
+      }
+    }
+  }
+  ```
 
 ## 构建选项 {#build-options}
 
@@ -478,8 +500,8 @@ export default async ({ command, mode }) => {
 - **默认：** `4096` (4kb)
 
   小于此阈值的导入或引用资源将内联为 base64 编码，以避免额外的 http 请求。设置为 `0` 可以完全禁用此项。
-  
-  ::: tip 注意
+
+  :::tip 注意
   无论文件大小，资源都会被内联，如果你指定了 `build.assetsInlineLimit`，那么 `build.lib` 将被忽略。
   :::
 
