@@ -39,7 +39,7 @@ export default {
 }
 ```
 
-Falsy plugins will be ignored, which can be used to easily activate or deactivate plugins.
+假值插件将被忽略，以轻松激活或停用插件。
 
 `plugins` also accept presets including several plugins as a single element. This is useful for complex features (like framework integration) that are implemented using several plugins. The array will be flattened internally.
 
