@@ -58,14 +58,8 @@ module.exports = {
             link: 'https://vite-rollup-plugins.patak.dev/'
           },
           {
-<<<<<<< HEAD
             text: '更新日志',
-            link:
-              'https://github.com/vitejs/vite/blob/main/packages/vite/CHANGELOG.md'
-=======
-            text: 'Changelog',
             link: 'https://github.com/vitejs/vite/blob/main/packages/vite/CHANGELOG.md'
->>>>>>> f8eb24186274c473167fc08494ae8b086d333f1d
           }
         ]
       },

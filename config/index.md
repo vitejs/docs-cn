@@ -76,11 +76,7 @@ export default ({ command, mode }) => {
 export default async ({ command, mode }) => {
   const data = await asyncFunction()
   return {
-<<<<<<< HEAD
     // 构建模式所需的特有配置
-=======
-    // build specific config
->>>>>>> f8eb24186274c473167fc08494ae8b086d333f1d
   }
 }
 ```
@@ -333,15 +329,8 @@ export default async ({ command, mode }) => {
 - **类型：** `string`
 - **默认：** `'127.0.0.1'`
 
-<<<<<<< HEAD
   指定服务器应该监听哪个 IP 地址。
   如果将此设置为 `0.0.0.0` 将监听所有地址，包括局域网和公网地址。
-=======
-  Specify which IP addresses the server should listen on.
-  Set this to `0.0.0.0` to listen on all addresses, including LAN and public addresses.
-
-  This can be set via the CLI using `--host 0.0.0.0` or `--host`.
->>>>>>> f8eb24186274c473167fc08494ae8b086d333f1d
 
   也可以通过 CLI 使用 `--host 0.0.0.0` 或 `--host` 来设置。
 
@@ -441,55 +430,41 @@ export default async ({ command, mode }) => {
 
   传递给 [chokidar](https://github.com/paulmillr/chokidar#api) 的文件系统监听器选项。
 
-### server.fsServe.strict
+### server.fsServe.strict {#server-fsserve-strict}
 
-- **Experimental**
-- **Type:** `boolean`
-- **Default:** `false` (will change to `true` in future versions)
+- **实验性**
+- **类型：** `boolean`
+- **默认：** `false` (将在后续版本中改为 `true`)
 
-  Restrict serving files outside of workspace root.
+  限制为工作区 root 路径以外的文件的访问。
 
-### server.fsServe.root
+### server.fsServe.root {#server-fsserve-root}
 
-<<<<<<< HEAD
+- **实验性**
 - **类型：** `string`
 
-  限制哪些文件可以通过 `/@fs/` 路径提供服务。访问这个目录外的文件将会返回 403 结果。
+  限制哪些文件可以通过 `/@fs/` 路径提供服务。当 `server.fsServe.strict` 设置为 true 时，访问这个目录外的文件将会返回 403 结果。
 
-  Vite 将会搜索此根目录下潜在工作空间并作默认使用。一个有效的工作空间应符合以下几个条件，否则会默认以 [项目根目录](/guide/#index-html-and-project-root) 作后备。
+  Vite 将会搜索此根目录下潜在工作空间并作默认使用。一个有效的工作空间应符合以下几个条件，否则会默认以 [项目 root 目录](/guide/#index-html-and-project-root) 作备选方案。
 
   - 在 `package.json` 中包含 `workspaces` 字段
   - 包含以下几种文件之一
     - `pnpm-workspace.yaml`
 
-## 构建选项 {#build-options}
-=======
-- **Experimental**
-- **Type:** `string`
-
-  Restrict files that could be served via `/@fs/`. When `server.fsServe.strict` is set to `true`, accessing files outside this directory will result in a 403.
-
-  Vite will search for the root of the potential workspace and use it as default. A valid workspace met the following conditions, otherwise will fallback to the [project root](/guide/#index-html-and-project-root).
-
-  - contains `workspaces` field in `package.json`
-  - contains one of the following file
-    - `pnpm-workspace.yaml`
-
-  Accepts a path to specify the custom workspace root. Could be a absolute path or a path relative to [project root](/guide/#index-html-and-project-root). For example
+  接受一个路径作为自定义工作区的 root 目录。可以是绝对路径或是相对于 [项目 root 目录](/guide/#index-html-and-project-root) 的相对路径。示例如下：
 
   ```js
   export default {
     server: {
       fsServe: {
-        // Allow serving files from one level up to the project root
+        // 可以为项目根目录的上一级提供服务
         root: '..'
       }
     }
   }
   ```
 
-## Build Options
->>>>>>> f8eb24186274c473167fc08494ae8b086d333f1d
+## 构建选项 {#build-options}
 
 ### build.target {#build-target}
 
@@ -524,19 +499,11 @@ export default async ({ command, mode }) => {
 - **类型：** `number`
 - **默认：** `4096` (4kb)
 
-<<<<<<< HEAD
   小于此阈值的导入或引用资源将内联为 base64 编码，以避免额外的 http 请求。设置为 `0` 可以完全禁用此项。
-  
-  :::tip Note
-无论文件大小，资源都会被内联，如果你指定了 `build.assetsInlineLimit`，那么 `build.lib` 将被忽略。
-:::
-=======
-  Imported or referenced assets that are smaller than this threshold will be inlined as base64 URLs to avoid extra http requests. Set to `0` to disable inlining altogether.
 
-  ::: tip Note
-  Assets will **always** be inlined, regardless of file size, and `build.assetsInlineLimit` will be ignored if you specify `build.lib`
+  :::tip 注意
+  无论文件大小，资源都会被内联，如果你指定了 `build.assetsInlineLimit`，那么 `build.lib` 将被忽略。
   :::
->>>>>>> f8eb24186274c473167fc08494ae8b086d333f1d
 
 ### build.cssCodeSplit {#build-csscodesplit}
 
@@ -626,15 +593,9 @@ export default async ({ command, mode }) => {
 - **类型：** `number`
 - **默认：** `500`
 
-<<<<<<< HEAD
   chunk 大小警告的限制（以 kbs 为单位）。
 
 ### build.watch {#build-watch}
-=======
-  Limit for chunk size warnings (in kbs).
-
-### build.watch
->>>>>>> f8eb24186274c473167fc08494ae8b086d333f1d
 
 - **类型：** [`WatcherOptions`](https://rollupjs.org/guide/en/#watch-options)`| null`
 - **默认：** `null`

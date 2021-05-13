@@ -92,11 +92,7 @@ module.exports = {
 }
 ```
 
-<<<<<<< HEAD
 如果你指定了另一个根目录，请记住，在解析输入路径时，`__dirname` 的值将仍然是 vite.config.js 文件所在的目录。因此，你需要把 `root` 的路径添加到 `resolve` 的参数中。
-=======
-If you specify a different root, remember that `__dirname` will still be the folder of your vite.config.js file when resolving the input paths. Therfore, you will need to add your `root` entry to the arguments for `resolve`.
->>>>>>> f8eb24186274c473167fc08494ae8b086d333f1d
 
 ## 库模式 {#library-mode}
 
