@@ -1,78 +1,78 @@
-# Static Asset Handling
+# 静态资源处理 {#static-asset-handling}
 
-- Related: [Public Base Path](./build#public-base-path)
-- Related: [`assetsInclude` config option](/config/#assetsinclude)
+- 相关: [公共基础路径](./build#public-base-path)
+- 相关: [`assetsInclude` 配置项](/config/#assetsinclude)
 
-## Importing Asset as URL
+## 将资源引入为 URL {#importing-asset-as-url}
 
-Importing a static asset will return the resolved public URL when it is served:
+服务时引入一个静态资源会返回解析后的公共路径：
 
 ```js
 import imgUrl from './img.png'
 document.getElementById('hero-img').src = imgUrl
 ```
 
-For example, `imgUrl` will be `/img.png` during development, and become `/assets/img.2d8efhg.png` in the production build.
+例如，`imgUrl` 在开发时会是 `/img.png`，在生产构建后会是 `/assets/img.2d8efhg.png`。
 
-The behavior is similar to webpack's `file-loader`. The difference is that the import can be either using absolute public paths (based on project root during dev) or relative paths.
+行为类似于 Webpack 的 `file-loader`。区别在于导入既可以使用绝对公共路径（基于开发期间的项目根路径），也可以使用相对路径。
 
-- `url()` references in CSS are handled the same way.
+- `url()` 在 CSS 中的引用也以同样的方式处理。
 
-- If using the Vue plugin, asset references in Vue SFC templates are automatically converted into imports.
+- 如果 Vite 使用了 Vue 插件，Vue SFC 模板中的资源引用都将自动转换为导入。
 
-- Common image, media, and font filetypes are detected as assets automatically. You can extend the internal list using the [`assetsInclude` option](/config/#assetsinclude).
+- 常见的图像、媒体和字体文件类型被自动检测为资源。你可以使用 [`assetsInclude` 选项](/config/#assetsinclude) 扩展内部列表。
 
-- Referenced assets are included as part of the build assets graph, will get hashed file names, and can be processed by plugins for optimization.
+- 引用的资源作为构建资源图的一部分包括在内，将生成散列文件名，并可以由插件进行处理以进行优化。
 
-- Assets smaller in bytes than the [`assetsInlineLimit` option](/config/#build-assetsinlinelimit) will be inlined as base64 data URLs.
+- 较小的资源体积小于 [`assetsInlineLimit` 选项值](/config/#assetsinlinelimit) 则会被内联为 base64 data URL。
 
-### Explicit URL Imports
+### 显式 URL 引入 {#explicit-url-imports}
 
-Assets that are not included in the internal list or in `assetsInclude`, can be explicitly imported as an URL using the `?url` suffix. This is useful, for example, to import [Houdini Paint Worklets](https://houdini.how/usage).
+未被包含在内部列表中的、或者在 `assetsInclude` 中的资源，可以使用 `?url` 后缀显式导入为一个 URL。这十分有用，例如，要导入 [Houdini Paint Worklets](https://houdini.how/usage) 时：
 
 ```js
 import workletURL from 'extra-scalloped-border/worklet.js?url'
 CSS.paintWorklet.addModule(workletURL)
 ```
 
-### Importing Asset as String
+### 将资源引入为字符串 {#importing-asset-as-string}
 
-Assets can be imported as strings using the `?raw` suffix.
+资源可以使用 `?raw` 后缀声明作为字符串引入。
 
 ```js
 import shaderString from './shader.glsl?raw'
 ```
 
-### Importing Script as a Worker
+### 导入脚本作为 Worker {#importing-script-as-a-worker}
 
-Scripts can be imported as web workers with the `?worker` suffix.
+脚本可以通过 `?worker` 后缀导入为 web worker。
 
 ```js
-// Separate chunk in the production build
+// 在生产构建中将会分离出 chunk
 import Worker from './shader.js?worker'
 const worker = new Worker()
 ```
 
 ```js
-// Inlined as base64 strings
+// 内联为 base64 字符串
 import InlineWorker from './shader.js?worker&inline'
 ```
 
-Check out the [Web Worker section](./features.md#web-workers) for more details.
+查看 [Web Worker 小节](./features.md#web-workers) 获取更多细节。
 
-## The `public` Directory
+### `public` 目录 {#the-public-directory}
 
-If you have assets that are:
+如果你有下列这些资源：
 
-- Never referenced in source code (e.g. `robots.txt`)
-- Must retain the exact same file name (without hashing)
-- ...or you simply don't want to have to import an asset first just to get its URL
+- 不会被源码引用（例如 `robots.txt`）
+- 必须保持原有文件名（没有经过 hash）
+- ...或者你只是不想为了获取 URL 而首先导入该资源
 
-Then you can place the asset in a special `public` directory under your project root. Assets in this directory will be served at root path `/` during dev, and copied to the root of the dist directory as-is.
+那么你可以将该资源放在一个特别的 `public` 目录中，它应位于你的项目根目录。该目录中的资源应该在开发时能直接通过 `/` 根路径访问到，并且打包时会被完整复制到目标目录的根目录下。
 
-The directory defaults to `<root>/public`, but can be configured via the [`publicDir` option](/config/#publicdir).
+目录默认是 `<root>/public`，但可以通过 [`publicDir` 选项](/config/#publicdir) 来配置。
 
-Note that:
+请注意：
 
-- You should always reference `public` assets using root absolute path - for example, `public/icon.png` should be referenced in source code as `/icon.png`.
-- Assets in `public` cannot be imported from JavaScript.
+- 引入 `public` 中的资源永远应该使用根绝对路径 - 举个例子，`public/icon.png` 应该在源码中被引用为 `/icon.png`。
+- `public` 中的资源不应该被 JavaScript 文件引用。
