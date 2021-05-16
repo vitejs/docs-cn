@@ -24,13 +24,6 @@ title: 后端集成
    }
    ```
 
-   别忘记在你的入口添加 [dynamic import polyfill](/config/#build-polyfilldynamicimport)，因为它不会自动注入了：
-
-   ```js
-   // 添加到你应用入口文件的开头
-   import 'vite/dynamic-import-polyfill'
-   ```
-
 2. 在开发环境中，在服务器的 HTML 模板中注入以下内容（用正在运行的本地 URL 替换 `http://localhost:3000`）：
 
    ```html
