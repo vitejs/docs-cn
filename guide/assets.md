@@ -74,5 +74,5 @@ import InlineWorker from './shader.js?worker&inline'
 
 请注意：
 
-- 引入 `public` 中的资源永远应该使用根绝对路径 - 举个例子，`public/icon.png` 应该在源码中被引用为 `/icon.png`。
+- 引入 `public` 中的资源永远应该使用根绝对路径 —— 举个例子，`public/icon.png` 应该在源码中被引用为 `/icon.png`。
 - `public` 中的资源不应该被 JavaScript 文件引用。
