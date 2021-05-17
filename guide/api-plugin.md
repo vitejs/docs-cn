@@ -4,7 +4,7 @@ Vite 插件扩展了设计出色的 Rollup 接口，带有一些 Vite 独有的�
 
 **推荐在阅读下面的章节之前，首先阅读下 [Rollup 插件文档](https://rollupjs.org/guide/en/#plugin-development)**
 
-## Conventions
+## 约定 {#conventions}
 
 如果插件不使用 Vite 特有的钩子，可以实现为 [兼容的 Rollup 插件](#Rollup-插件兼容性)，推荐使用 [Rollup 插件名称约定](https://rollupjs.org/guide/en/#conventions)。
 
