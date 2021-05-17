@@ -20,7 +20,18 @@
    }
    ```
 
+<<<<<<< HEAD
 2. 在开发环境中，在服务器的 HTML 模板中注入以下内容（用正在运行的本地 URL 替换 `http://localhost:3000`）：
+=======
+   If you use [`@vitejs/plugin-legacy`](https://github.com/vitejs/vite/tree/main/packages/plugin-legacy) or manually enable the [`build.dynamicImportPolyfill` option](/config/#build-polyfilldynamicimport), remember to add the [dynamic import polyfill](/config/#build-polyfilldynamicimport) to your entry, since it will no longer be auto-injected:
+
+   ```js
+   // add the beginning of your app entry
+   import 'vite/dynamic-import-polyfill'
+   ```
+
+2. For development, inject the following in your server's HTML template (substitute `http://localhost:3000` with the local URL Vite is running at):
+>>>>>>> 5dbbec30af8d77b6eb4bba6e8f9b0d268b4daa86
 
    ```html
    <!-- 如果是在开发环境中 -->
