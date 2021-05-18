@@ -61,9 +61,9 @@ export default {
 
 查看 [Plugins API Guide](./api-plugin.md#plugin-ordering) 获取细节信息，并在 [Vite Rollup 插件](https://vite-rollup-plugins.patak.dev) 兼容性列表中注意 `enforce` 标签和流行插件的使用说明。
 
-## 有条件的应用 {#conditional-application}
+## 按需应用 {#conditional-application}
 
-默认情况下插件在部署 (serve) 和构建 (build) 模式中都会调用。如果插件只需要在服务或构建期间有条件地应用，请使用 `apply` 属性指明它们仅在 `'build'` 或 `'serve'` 模式时调用：
+默认情况下插件在部署 (serve) 和构建 (build) 模式中都会调用。如果插件在服务或构建期间按需使用，请使用 `apply` 属性指明它们仅在 `'build'` 或 `'serve'` 模式时调用：
 
 ```js
 // vite.config.js
