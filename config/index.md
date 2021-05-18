@@ -480,9 +480,6 @@ export default async ({ command, mode }) => {
 
   注意：如果代码包含不能被 `esbuild` 安全地编译的特性，那么构建将会失败。查看 [esbuild 文档](https://esbuild.github.io/content-types/#javascript) 获取更多细节。
 
-<<<<<<< HEAD
-### build.outDir {#build-outdir}
-=======
 ### build.polyfillDynamicImport
 
 - **Type:** `boolean`
@@ -501,7 +498,6 @@ export default async ({ command, mode }) => {
   Note: the polyfill does **not** apply to [Library Mode](/guide/build#library-mode). If you need to support browsers without native dynamic import, you should probably avoid using it in your library.
 
 ### build.outDir
->>>>>>> 5dbbec30af8d77b6eb4bba6e8f9b0d268b4daa86
 
 - **类型：** `string`
 - **默认：** `dist`
