@@ -28,9 +28,9 @@
 - 所有的 [server-specific options](/config/#server-options) 现在都在
   `server` 字段下。
 
-  - `hostname` 现在是 [`server.host`](/config/#server-host)
+  - `hostname` 变更为 [`server.host`](/config/#server-host)。
   - `httpsOptions` 已被删除，[`server.https`](/config/#server-https) 可以直接接收选项对象。
-  - `chokidarWatchOptions` 现在是 [`server.watch`](/config/#server-watch)
+  - `chokidarWatchOptions` 变更为 [`server.watch`](/config/#server-watch)。
 
 - [`assetsInclude`](/config/#assetsInclude) 现在接收 `string | RegExp | (string | RegExp)[]` 而不是一个函数。
 
@@ -89,7 +89,7 @@ export default {
 
 ## React 支持 {#react-support}
 
-React Fast Refresh 现已支持，详见 [`@vitejs/plugin-react-refresh`](https://github.com/vitejs/vite/tree/main/packages/plugin-react-refresh)。
+现已支持 React Fast Refresh，详见 [`@vitejs/plugin-react-refresh`](https://github.com/vitejs/vite/tree/main/packages/plugin-react-refresh)。
 
 ## HMR API 变化 {#hmr-api-change}
 
@@ -128,4 +128,4 @@ Vite 2 使用了一套完全重定义的，扩展了 Rollup 插件的接口。�
 - 虚拟文件支持 -> 使用 [`resolveId`](https://rollupjs.org/guide/en/#resolveid) + [`load`](https://rollupjs.org/guide/en/#load) 钩子
 - 添加 `alias`，`define` 或其他配置项 -> 使用 [`config`](./api-plugin#config) 钩子
 
-由于大多数逻辑应该通过插件钩子而不是中间件来完成，因此对中间件的需求大大减少。内部服务器应用现在是一个很好的旧版的 [connect](https://github.com/senchalabs/connect) 实例，而不是 Koa。
+由于大多数逻辑应通过插件钩子实现，而无需使用中间件，因此对中间件的需求大大减少。内部服务器应用现在看起来像旧版的 [connect](https://github.com/senchalabs/connect) 实例，而不是 Koa。
