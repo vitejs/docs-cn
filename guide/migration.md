@@ -1,23 +1,23 @@
-# Migration from v1
+# 从 v1 迁移 {#migration-from-v1}
 
-## Config Options Change
+## 配置项变化 {#config-options-change}
 
-- The following options have been removed and should be implemented via [plugins](./api-plugin):
+- 以下选项已被删除，应通过 [插件](./api-plugin) 实现：
 
   - `resolvers`
   - `transforms`
   - `indexHtmlTransforms`
 
-- `jsx` and `enableEsbuild` have been removed; Use the new [`esbuild`](/config/#esbuild) option instead.
+- `jsx` 和 `enableEsbuild` 都已被删除，请使用新的 [`esbuild`](/config/#esbuild) 选项。
 
-- [CSS related options](/config/#css-modules) are now nested under `css`.
+- [CSS 相关选项](/config/#css-modules) 都被包含在 `css` 字段下。
 
-- All [build-specific options](/config/#build-options) are now nested under `build`.
+- 所有 [用于构建的选项](/config/#build-options) 现在都在 `build` 字段下。
 
-  - `rollupInputOptions` and `rollupOutputOptions` are replaced by [`build.rollupOptions`](/config/#build-rollupoptions).
-  - `esbuildTarget` is now [`build.target`](/config/#build-target).
-  - `emitManifest` is now [`build.manifest`](/config/#build-manifest).
-  - The following build options have been removed since they can be achieved via plugin hooks or other options:
+  - `rollupInputOptions` 和 `rollupOutputOptions` 已经被 [`build.rollupOptions`](/config/#build-rollupoptions) 替代。
+  - `esbuildTarget` 现在是 [`build.target`](/config/#build-target)
+  - `emitManifest` 现在是 [`build.manifest`](/config/#build-manifest)
+  - 以下构建选项已经被移除，因为它们可以通过插件钩子或其他选项实现：
     - `entry`
     - `rollupDedupe`
     - `emitAssets`
@@ -25,31 +25,31 @@
     - `shouldPreload`
     - `configureBuild`
 
-- All [server-specific options](/config/#server-options) are now nested under
-  `server`.
+- 所有的 [server-specific options](/config/#server-options) 现在都在
+  `server` 字段下。
 
-  - `hostname` is now [`server.host`](/config/#server-host).
-  - `httpsOptions` has been removed. [`server.https`](/config/#server-https) can directly accept the options object.
-  - `chokidarWatchOptions` is now [`server.watch`](/config/#server-watch).
+  - `hostname` 现在是 [`server.host`](/config/#server-host)
+  - `httpsOptions` 已被删除，[`server.https`](/config/#server-https) 可以直接接收选项对象。
+  - `chokidarWatchOptions` 现在是 [`server.watch`](/config/#server-watch)
 
-- [`assetsInclude`](/config/#assetsInclude) now expects `string | RegExp | (string | RegExp)[]` instead of a function.
+- [`assetsInclude`](/config/#assetsInclude) 现在接收 `string | RegExp | (string | RegExp)[]` 而不是一个函数。
 
-- All Vue specific options are removed; Pass options to the Vue plugin instead.
+- 所有 Vue 特定选项都已删除；应将选项传递给 Vue 插件。
 
-## Alias Behavior Change
+## 别名用法变化 {#alias-behavior-change}
 
-[`alias`](/config/#alias) is now being passed to `@rollup/plugin-alias` and no longer require start/ending slashes. The behavior is now a direct replacement, so 1.0-style directory alias key should remove the ending slash:
+[`alias`](/config/#alias) 现在会被传递给 `@rollup/plugin-alias` 并不再需要开始/结尾处的斜线了。此行为目前是一个直接替换，所以 1.0 风格的目录别名需要删除其结尾处的斜线：
 
 ```diff
 - alias: { '/@foo/': path.resolve(__dirname, 'some-special-dir') }
 + alias: { '/@foo': path.resolve(__dirname, 'some-special-dir') }
 ```
 
-Alternatively, you can use the `[{ find: RegExp, replacement: string }]` option format for more precise control.
+另外，你可以对该选项使用 `[{ find: RegExp, replacement: string }]` 格式以求更精确的控制。
 
-## Vue Support
+## Vue Support {#vue-support}
 
-Vite 2.0 core is now framework agnostic. Vue support is now provided via [`@vitejs/plugin-vue`](https://github.com/vitejs/vite/tree/main/packages/plugin-vue). Simply install it and add it in the Vite config:
+Vite 2.0 核心已经是框架无关的了。对 Vue 的支持目前详见 [`@vitejs/plugin-vue`](https://github.com/vitejs/vite/tree/main/packages/plugin-vue)。安装它并添加到 Vite 配置十分简单:
 
 ```js
 import vue from '@vitejs/plugin-vue'
@@ -59,9 +59,9 @@ export default {
 }
 ```
 
-### Custom Blocks Transforms
+### 自定义块转换 {#custom-blocks-transforms}
 
-A custom plugin can be used to transform Vue custom blocks like the one below:
+一个自定义插件可以用来转换 Vue 自定义块，如下所示:
 
 ```ts
 // vite.config.js
@@ -87,17 +87,17 @@ export default {
 }
 ```
 
-## React Support
+## React 支持 {#react-support}
 
-React Fast Refresh support is now provided via [`@vitejs/plugin-react-refresh`](https://github.com/vitejs/vite/tree/main/packages/plugin-react-refresh).
+React Fast Refresh 现已支持，详见 [`@vitejs/plugin-react-refresh`](https://github.com/vitejs/vite/tree/main/packages/plugin-react-refresh)。
 
-## HMR API Change
+## HMR API 变化 {#hmr-api-change}
 
-`import.meta.hot.acceptDeps()` have been deprecated. [`import.meta.hot.accept()`](./api-hmr#hot-accept-deps-cb) can now accept single or multiple deps.
+`import.meta.hot.acceptDeps()` 已经弃用。[`import.meta.hot.accept()`](./api-hmr#hot-accept-deps-cb) 现在可以接收一个或多个依赖。
 
-## Manifest Format Change
+## Manifest 格式变化 {#manifest-format-change}
 
-The build manifest now uses the following format:
+构建清单现在使用以下格式:
 
 ```json
 {
@@ -114,18 +114,18 @@ The build manifest now uses the following format:
 }
 ```
 
-For entry JS chunks, it also lists its imported chunks which can be used to render preload directives.
+对于入口 JS chunk，它还列出了它导入的 chunk，这些 chunk 可以用来渲染预加载指令。
 
-## For Plugin Authors
+## 致插件作者 {#for-plugin-authors}
 
-Vite 2 uses a completely redesigned plugin interface which extends Rollup plugins. Please read the new [Plugin Development Guide](./api-plugin).
+Vite 2 使用了一套完全重定义的，扩展了 Rollup 插件的接口。请阅读新的 [插件开发指南](./api-plugin).
 
-Some general pointers on migrating a v1 plugin to v2:
+一些将 v1 插件迁移到 v2 的提示:
 
-- `resolvers` -> use the [`resolveId`](https://rollupjs.org/guide/en/#resolveid) hook
-- `transforms` -> use the [`transform`](https://rollupjs.org/guide/en/#transform) hook
-- `indexHtmlTransforms` -> use the [`transformIndexHtml`](./api-plugin#transformindexhtml) hook
-- Serving virtual files -> use [`resolveId`](https://rollupjs.org/guide/en/#resolveid) + [`load`](https://rollupjs.org/guide/en/#load) hooks
-- Adding `alias`, `define` or other config options -> use the [`config`](./api-plugin#config) hook
+- `resolvers` -> 使用 [`resolveId`](https://rollupjs.org/guide/en/#resolveid) 钩子
+- `transforms` -> 使用 [`transform`](https://rollupjs.org/guide/en/#transform) 钩子
+- `indexHtmlTransforms` -> 使用 [`transformIndexHtml`](./api-plugin#transformindexhtml) 钩子
+- 虚拟文件支持 -> 使用 [`resolveId`](https://rollupjs.org/guide/en/#resolveid) + [`load`](https://rollupjs.org/guide/en/#load) 钩子
+- 添加 `alias`，`define` 或其他配置项 -> 使用 [`config`](./api-plugin#config) 钩子
 
-Since most of the logic should be done via plugin hooks instead of middlewares, the need for middlewares is greatly reduced. The internal server app is now a good old [connect](https://github.com/senchalabs/connect) instance instead of Koa.
+由于大多数逻辑应该通过插件钩子而不是中间件来完成，因此对中间件的需求大大减少。内部服务器应用现在是一个很好的旧版的 [connect](https://github.com/senchalabs/connect) 实例，而不是 Koa。
