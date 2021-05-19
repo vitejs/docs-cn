@@ -480,24 +480,24 @@ export default async ({ command, mode }) => {
 
   注意：如果代码包含不能被 `esbuild` 安全地编译的特性，那么构建将会失败。查看 [esbuild 文档](https://esbuild.github.io/content-types/#javascript) 获取更多细节。
 
-### build.polyfillDynamicImport
+### build.polyfillDynamicImport {#build-polyfilldynamicimport}
 
 - **Type:** `boolean`
 - **Default:** `false`
 
-  Whether to automatically inject [dynamic import polyfill](https://github.com/GoogleChromeLabs/dynamic-import-polyfill).
+  设置是否自动注入 [动态导入 polyfill](https://github.com/GoogleChromeLabs/dynamic-import-polyfill)。
 
-  If set to true, the polyfill is auto injected into the proxy module of each `index.html` entry. If the build is configured to use a non-html custom entry via `build.rollupOptions.input`, then it is necessary to manually import the polyfill in your custom entry:
+  如果设置为 `true`，该 polyfill 会被自动注入到每一个 `index.html` 入口的代理模块中。若将本次构建使用 `build.rollupOptions.input` 配置为使用非 html 的自定义入口，则需要在你的自定义的入口手动导入该 polyfill：
 
   ```js
   import 'vite/dynamic-import-polyfill'
   ```
 
-  When using [`@vitejs/plugin-legacy`](https://github.com/vitejs/vite/tree/main/packages/plugin-legacy), the plugin sets this option to `true` automatically.
+  当使用 [`@vitejs/plugin-legacy`](https://github.com/vitejs/vite/tree/main/packages/plugin-legacy) 时，该插件会将本选项自动配置为 `true`。
 
-  Note: the polyfill does **not** apply to [Library Mode](/guide/build#library-mode). If you need to support browsers without native dynamic import, you should probably avoid using it in your library.
+  注意：本 polyfill **无法**应用到 [库模式](/guide/build#library-mode) 中。如果你需要支持没有原生动态导入功能的浏览器，你可能需要避免在你的库中使用本功能。
 
-### build.outDir
+### build.outDir {#build-outdir}
 
 - **类型：** `string`
 - **默认：** `dist`
@@ -553,7 +553,7 @@ export default async ({ command, mode }) => {
 ### build.lib {#build-lib}
 
 - **类型：** `{ entry: string, name?: string, formats?: ('es' | 'cjs' | 'umd' | 'iife')[], fileName?: string }`
-- **相关内容：** [Library Mode](/guide/build#library-mode)
+- **相关内容：** [库模式](/guide/build#library-mode)
 
   构建为库。`entry` 是必须的因为库不能使用 HTML 作为入口。`name` 则是暴露的全局变量，在 `formats` 包含 `'umd'` 或 `'iife'` 时是必须的。默认 `formats` 是 `['es', 'umd']` 。`fileName` 是输出的包文件名，默认 `fileName` 是 `package.json` 的 `name` 选项。
 
