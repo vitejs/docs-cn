@@ -25,13 +25,13 @@ Vite 需要 [Node.js](https://nodejs.org/en/) 版本 >= 12.0.0。
 使用 NPM:
 
 ```bash
-npm init @vitejs/app
+$ npm init @vitejs/app
 ```
 
 使用 Yarn:
 
 ```bash
-yarn create @vitejs/app
+$ yarn create @vitejs/app
 ```
 
 然后按照提示操作即可！
