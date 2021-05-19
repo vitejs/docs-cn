@@ -36,19 +36,6 @@ yarn create @vitejs/app
 
 然后按照提示操作即可！
 
-You can also directly specify the project name and the template you want to use via additional command line options. For example, to scaffold a Vite + Vue project, run:
-
-```bash
-# npm 6.x
-npm init @vitejs/app my-vue-app --template vue
-
-# npm 7+, extra double-dash is needed:
-npm init @vitejs/app my-vue-app -- --template vue
-
-# yarn
-yarn create @vitejs/app my-vue-app --template vue
-```
-
 你还可以通过附加的命令行选项直接指定项目名称和你想要使用的模板。例如，要构建一个 Vite + Vue 项目，运行:
 
 ```bash
