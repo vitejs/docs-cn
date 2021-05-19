@@ -20,7 +20,7 @@
    }
    ```
 
-   如果你使用 [`@vitejs/plugin-legacy`](https://github.com/vitejs/vite/tree/main/packages/plugin-legacy) 或者手动开启 [`build.dynamicImportPolyfill` 选项](/config/#build-polyfilldynamicimport)，记住将 [dynamic import polyfill](/config/#build-polyfilldynamicimport) 添加到入口，因为它不会被自动注入：
+   如果你使用了 [`@vitejs/plugin-legacy`](https://github.com/vitejs/vite/tree/main/packages/plugin-legacy) 插件或者手动开启 [`build.dynamicImportPolyfill` 选项](/config/#build-polyfilldynamicimport)，请记得将 [dynamic import polyfill](/config/#build-polyfilldynamicimport) 添加到入口处，因为它并不会被自动注入：
 
    ```js
    // 添加到你应用入口文件的开头
