@@ -10,6 +10,10 @@ SSR 特别指支持在 Node.js 中运行相同应用程序的前端框架（例�
 下面的指南还假定你在选择的框架中有使用 SSR 的经验，并且只关注特定于 Vite 的集成细节。
 :::
 
+:::warning Low-level API
+This is a low-level API meant for library and framework authors. If your goal is to create an application, make sure to check out the higher-level SSR plugins and tools at [Awesome Vite SSR section](https://github.com/vitejs/awesome-vite#ssr) first. That said, many applications are successfully built directly on top of Vite's native low-level API.
+:::
+
 :::tip 帮助
 如果你有疑问，可以到社区 [Discord 的 Vite #ssr 频道](https://discord.gg/PkbxgzPhJv)，这里会帮到你。
 :::
