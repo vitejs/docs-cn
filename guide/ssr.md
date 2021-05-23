@@ -73,10 +73,18 @@ const { createServer: createViteServer } = require('vite')
 async function createServer() {
   const app = express()
 
+<<<<<<< HEAD
   // 以中间件模式创建 vite 应用，这将禁用 Vite 自身的 HTML 服务逻辑
   // 并让上级服务器接管控制
+=======
+  // Create vite server in middleware mode. This disables Vite's own HTML
+  // serving logic and let the parent server take control.
+  //
+  // If you want to use Vite's own HTML serving logic (using Vite as
+  // a development middleware), using 'html' instead.
+>>>>>>> 2420f34528c3aa73401fa6e2c39931c3022c4240
   const vite = await createViteServer({
-    server: { middlewareMode: true }
+    server: { middlewareMode: 'ssr' }
   })
   // 使用 vite 的 Connect 实例作为中间件
   app.use(vite.middlewares)
