@@ -38,17 +38,13 @@ Vite 使用 [esbuild](https://github.com/evanw/esbuild) 将 TypeScript 转译到
 
 ### 客户端类型 {#client-types}
 
-<<<<<<< HEAD
-Vite 默认的类型定义是写给它的 Node.js API 的。要将其补充到一个 Vite 应用的客户端代码环境中，请将 `vite/client` 添加到 `tsconfig` 中的 `compilerOptions.types` 下：
-=======
-Vite's default types are for its Node.js API. To shim the environment of client side code in a Vite application, add a `d.ts` declaration file:
+Vite 默认的类型定义是写给它的 Node.js API 的。要将其补充到一个 Vite 应用的客户端代码环境中，请添加一个 `d.ts` 声明文件：
 
 ```typescript
 /// <reference types="vite/client" />
 ```
 
-Also, you can add `vite/client` to `compilerOptions.types` of your `tsconfig`:
->>>>>>> e2f26811641a10944e8f2f90f3b33a1b45aeb222
+同时，你也可以将 `vite/client` 添加到 `tsconfig` 中的 `compilerOptions.types` 下：
 
 ```json
 {
