@@ -432,7 +432,7 @@ export default async ({ command, mode }) => {
 
 ### server.middlewareMode {#server-middlewaremode}
 
-- **Type:** `'ssr' | 'html'`
+- **类型：** `'ssr' | 'html'`
 
   以中间件模式创建 Vite 服务器。（不含 HTTP 服务器）
 
