@@ -430,6 +430,43 @@ export default async ({ command, mode }) => {
 
   传递给 [chokidar](https://github.com/paulmillr/chokidar#api) 的文件系统监听器选项。
 
+### server.middlewareMode {#server-middlewaremode}
+
+- **Type:** `'ssr' | 'html'`
+
+  以中间件模式创建 Vite 服务器。（不含 HTTP 服务器）
+
+  - `'ssr'` 将禁用 Vite 自身的 HTML 服务逻辑，因此你应该手动为 `index.html` 提供服务。
+  - `'html'` 将启用 Vite 自身的 HTML 服务逻辑。
+
+- **相关：** [SSR - 设置开发服务器](/guide/ssr#setting-up-the-dev-server)
+
+- **示例：**
+
+```js
+const express = require('express')
+const { createServer: createViteServer } = require('vite')
+
+async function createServer() {
+  const app = express()
+
+  // 以中间件模式创建 vite 服务器
+  const vite = await createViteServer({
+    server: { middlewareMode: 'ssr' }
+  })
+  // 将 vite 的 connect 实例作中间件使用
+  app.use(vite.middlewares)
+
+  app.use('*', async (req, res) => {
+    // 如果 `middlewareMode` 是 `'ssr'`，应在此为 `index.html` 提供服务.
+    // 如果 `middlewareMode` 是 `'html'`，则此处无需手动服务 `index.html`
+    // 因为 Vite 自会接管
+  })
+}
+
+createServer()
+```
+
 ### server.fsServe.strict {#server-fsserve-strict}
 
 - **实验性**
