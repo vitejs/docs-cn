@@ -430,21 +430,19 @@ export default async ({ command, mode }) => {
 
   传递给 [chokidar](https://github.com/paulmillr/chokidar#api) 的文件系统监听器选项。
 
-<<<<<<< HEAD
-### server.fsServe.strict {#server-fsserve-strict}
-=======
-### server.middlewareMode
+### server.middlewareMode {#server-middlewaremode}
 
 - **Type:** `'ssr' | 'html'`
 
-  Create Vite server in middleware mode. (without a HTTP server)
+  以中间件模式创建 Vite 服务器。（不含 HTTP 服务器）
 
-  - `'ssr'` will disable Vite's own HTML serving logic so that you should serve `index.html` manually.
-  - `'html'` will enable Vite's own HTML serving logic.
+  - `'ssr'` 将禁用 Vite 自身的 HTML 服务逻辑，因此你应该手动为 `index.html` 提供服务。
+  - `'html'` 将启用 Vite 自身的 HTML 服务逻辑。
 
-- **Related:** [SSR - Setting Up the Dev Server](/guide/ssr#setting-up-the-dev-server)
+- **相关：** [SSR - 设置开发服务器](/guide/ssr#setting-up-the-dev-server)
 
-- **Example:**
+- **示例：**
+
 ```js
 const express = require('express')
 const { createServer: createViteServer } = require('vite')
@@ -452,25 +450,24 @@ const { createServer: createViteServer } = require('vite')
 async function createServer() {
   const app = express()
 
-  // Create vite server in middleware mode.
+  // 以中间件模式创建 vite 服务器
   const vite = await createViteServer({
     server: { middlewareMode: 'ssr' }
   })
-  // Use vite's connect instance as middleware
+  // 将 vite 的 connect 实例作中间件使用
   app.use(vite.middlewares)
 
   app.use('*', async (req, res) => {
-    // If `middlewareMode` is `'ssr'`, should serve `index.html` here.
-    // If `middlewareMode` is `'html'`, there is no need to serve `index.html`
-    // because Vite will do that.
+    // 如果 `middlewareMode` 是 `'ssr'`，应在此为 `index.html` 提供服务.
+    // 如果 `middlewareMode` 是 `'html'`，则此处无需手动服务 `index.html`
+    // 因为 Vite 自会接管
   })
 }
 
 createServer()
 ```
 
-### server.fsServe.strict
->>>>>>> 2420f34528c3aa73401fa6e2c39931c3022c4240
+### server.fsServe.strict {#server-fsserve-strict}
 
 - **实验性**
 - **类型：** `boolean`
