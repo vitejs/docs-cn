@@ -25,8 +25,8 @@ footer: MIT Licensed | Copyright © 2019-present Evan You & Vite Contributors
 
 <div class="frontpage sponsors">
   <h2>赞助</h2>
-  <a v-for="{ href, src, name } of sponsors" :href="href" target="_blank" rel="noopener" aria-label="sponsor-img">
-    <img :src="src" :alt="name">
+  <a v-for="{ href, src, name, id } of sponsors" :href="href" target="_blank" rel="noopener" aria-label="sponsor-img">
+    <img :src="src" :alt="name" :id="`sponsor-${id}`">
   </a>
   <br>
   <a href="https://github.com/sponsors/yyx990803" target="_blank" rel="noopener">在 GitHub 上赞助我们</a>
