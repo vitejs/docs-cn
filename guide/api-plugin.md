@@ -378,7 +378,7 @@ Vite 插件也可以提供钩子来服务于特定的 Vite 目标。这些钩子
     }
     ```
 
-    客户端代码应该使用 [HMR API](./api-hmr) 注册相应的处理器（这应该被被相同插件的 `transform` 钩子注入）：
+    客户端代码应该使用 [HMR API](./api-hmr) 注册相应的处理器（这应该被相同插件的 `transform` 钩子注入）：
 
     ```js
     if (import.meta.hot) {
