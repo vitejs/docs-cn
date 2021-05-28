@@ -322,7 +322,20 @@ export default async ({ command, mode }) => {
 
   设为 `false` 可以避免 Vite 清屏而错过在终端中打印某些关键信息。命令行模式下可以通过 `--clearScreen false` 设置。
 
+<<<<<<< HEAD
 ## 开发服务器选项 {#server-options}
+=======
+### envDir
+
+- **Type:** `string`
+- **Default:** `root`
+
+  The directory from which `.env` files are loaded. Can be an absolute path, or a path relative to the project root.
+
+  See [here](/guide/env-and-mode#env-files) for more about environment files.
+
+## Server Options
+>>>>>>> 182683d3714d5963e7be0ae8e7719afba74fb94b
 
 ### server.host {#server-host}
 
