@@ -322,7 +322,20 @@ export default async ({ command, mode }) => {
 
   设为 `false` 可以避免 Vite 清屏而错过在终端中打印某些关键信息。命令行模式下可以通过 `--clearScreen false` 设置。
 
+<<<<<<< HEAD
 ## 开发服务器选项 {#server-options}
+=======
+### envDir
+
+- **Type:** `string`
+- **Default:** `root`
+
+  The directory from which `.env` files are loaded. Can be an absolute path, or a path relative to the project root.
+
+  See [here](/guide/env-and-mode#env-files) for more about environment files.
+
+## Server Options
+>>>>>>> f6d3be25849e3d793bcfafea771a35196a890acf
 
 ### server.host {#server-host}
 
@@ -418,13 +431,23 @@ export default async ({ command, mode }) => {
 
 ### server.hmr {#server-hmr}
 
+<<<<<<< HEAD
 - **类型：** `boolean | { protocol?: string, host?: string, port?: number, path?: string, timeout?: number, overlay?: boolean }`
+=======
+- **Type:** `boolean | { protocol?: string, host?: string, port?: number, path?: string, timeout?: number, overlay?: boolean, clientPort?: number }`
+>>>>>>> f6d3be25849e3d793bcfafea771a35196a890acf
 
   禁用或配置 HMR 连接（用于 HMR websocket 必须使用不同的 http 服务器地址的情况）。
 
   设置 `server.hmr.overlay` 为 `false` 可以禁用开发服务器错误的屏蔽。
 
+<<<<<<< HEAD
 ### server.watch {#server-watch}
+=======
+  `clientPort` is an advanced option that overrides the port only on the client side, allowing you to serve the websocket on a different port than the client code looks for it on. Useful if you're using an SSL proxy in front of your dev server.
+
+### server.watch
+>>>>>>> f6d3be25849e3d793bcfafea771a35196a890acf
 
 - **类型：** `object`
 

@@ -290,7 +290,11 @@ init({
 
 ## Web Worker {#web-workers}
 
+<<<<<<< HEAD
 一个 web worker 脚本可以直接通过添加一个 `?worker` 查询参数来导入。默认导出一个自定义的 worker 构造器：
+=======
+A web worker script can be directly imported by appending `?worker` or `?sharedworker` to the import request. The default export will be a custom worker constructor:
+>>>>>>> f6d3be25849e3d793bcfafea771a35196a890acf
 
 ```js
 import MyWorker from './worker?worker'

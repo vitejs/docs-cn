@@ -45,7 +45,11 @@ import shaderString from './shader.glsl?raw'
 
 ### 导入脚本作为 Worker {#importing-script-as-a-worker}
 
+<<<<<<< HEAD
 脚本可以通过 `?worker` 后缀导入为 web worker。
+=======
+Scripts can be imported as web workers with the `?worker` or `?sharedworker` suffix.
+>>>>>>> f6d3be25849e3d793bcfafea771a35196a890acf
 
 ```js
 // 在生产构建中将会分离出 chunk
