@@ -427,13 +427,26 @@ export default async ({ command, mode }) => {
 
 ### server.hmr {#server-hmr}
 
+<<<<<<< HEAD
 - **类型：** `boolean | { protocol?: string, host?: string, port?: number, path?: string, timeout?: number, overlay?: boolean }`
+=======
+- **Type:** `boolean | { protocol?: string, host?: string, port?: number, path?: string, timeout?: number, overlay?: boolean, clientPort?: number, server?: Server }`
+>>>>>>> 4dff989988c3cf722d24aa7d74dccdae49d821bc
 
   禁用或配置 HMR 连接（用于 HMR websocket 必须使用不同的 http 服务器地址的情况）。
 
   设置 `server.hmr.overlay` 为 `false` 可以禁用开发服务器错误的屏蔽。
 
+<<<<<<< HEAD
 ### server.watch {#server-watch}
+=======
+  `clientPort` is an advanced option that overrides the port only on the client side, allowing you to serve the websocket on a different port than the client code looks for it on. Useful if you're using an SSL proxy in front of your dev server.
+
+  When using `server.middlewareMode` and `server.https`, setting `server.hmr.server` to your HTTPS server will process HMR secure connection requests through your server. This can be helpful when using self-signed certificates.
+
+
+### server.watch
+>>>>>>> 4dff989988c3cf722d24aa7d74dccdae49d821bc
 
 - **类型：** `object`
 
