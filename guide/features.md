@@ -290,7 +290,7 @@ init({
 
 ## Web Worker {#web-workers}
 
-一个 web worker 脚本可以直接通过添加一个 `?worker` 查询参数来导入。默认导出一个自定义的 worker 构造器：
+一个 web worker 脚本可以直接通过添加一个 `?worker` 或 `?sharedworker` 查询参数来导入。默认导出一个自定义的 worker 构造器：
 
 ```js
 import MyWorker from './worker?worker'
