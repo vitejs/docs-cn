@@ -54,7 +54,17 @@ const worker = new Worker()
 ```
 
 ```js
+<<<<<<< HEAD
 // 内联为 base64 字符串
+=======
+// sharedworker
+import SharedWorker from './shader.js?sharedworker'
+const sharedWorker = new SharedWorker()
+```
+
+```js
+// Inlined as base64 strings
+>>>>>>> 540fde078f5d9d4eaf25ddf17e7eeda958734835
 import InlineWorker from './shader.js?worker&inline'
 ```
 
