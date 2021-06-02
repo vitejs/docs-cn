@@ -265,4 +265,18 @@ $ npm run preview
 
 在项目被导入之后，所有后续的推送都将生成预览部署，但只有对生产分支（通常是 “main”）所做的更改才会触发生产部署。
 
-一旦部署，你会得到一个实时查看应用的 URL，如 https://vite.vercel.app 。
+一旦部署，你会得到一个实时查看应用的 URL，如 https://vite.vercel.app。
+
+## Azure 的静态网站应用 {#azure-static-web-apps}
+
+你可以通过微软 Azure 的 [静态网站应用](https://aka.ms/staticwebapps) 服务来快速部署你的 Vite 应用。你只需：
+
+- 注册 Azure 账号并获取一个订阅（subscription）的 key。可以在 [此处快速完成注册](https://azure.microsoft.com/free)。
+- 将你的应用代码托管到 [GitHub](https://github.com)。
+- 在 [VSCode](https://code.visualstudio.com) 中安装 [SWA 扩展](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurestaticwebapps)。
+
+安装完此扩展后，进入你应用的根目录。打开 SWA 的扩展程序，登录 Azure，并点击 '+'，来创建一个全新的 SWA。系统会提示你指定所需的订阅 key。
+
+按照扩展程序的启动向导，给你的应用程序起个名字，选择框架预设，并指定应用程序的根目录（通常为 `/`）以及构建文件的路径 `/dist`。此向导完成后，会在你的 repo 中的 `.github` 文件夹中创建一个 Github Action。
+
+这个 action 致力于部署你的应用程序（可以在仓库的 Actions 标签中，查看相关进度），成功完成后，你可以点击 Github 中出现的 “浏览站点” 的按钮，查看你的应用程序。

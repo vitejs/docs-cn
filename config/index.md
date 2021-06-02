@@ -322,6 +322,15 @@ export default async ({ command, mode }) => {
 
   设为 `false` 可以避免 Vite 清屏而错过在终端中打印某些关键信息。命令行模式下可以通过 `--clearScreen false` 设置。
 
+### envDir
+
+- **类型：** `string`
+- **默认：** `root`
+
+  用于加载 `.env` 文件的目录。可以是一个绝对路径，也可以是相对于项目根的路径。
+
+  关于环境文件的更多信息，请参见 [这里](/guide/env-and-mode#env-files)。
+
 ## 开发服务器选项 {#server-options}
 
 ### server.host {#server-host}
@@ -418,11 +427,16 @@ export default async ({ command, mode }) => {
 
 ### server.hmr {#server-hmr}
 
-- **类型：** `boolean | { protocol?: string, host?: string, port?: number, path?: string, timeout?: number, overlay?: boolean }`
+- **类型：** `boolean | { protocol?: string, host?: string, port?: number, path?: string, timeout?: number, overlay?: boolean, clientPort?: number, server?: Server }`
 
   禁用或配置 HMR 连接（用于 HMR websocket 必须使用不同的 http 服务器地址的情况）。
 
   设置 `server.hmr.overlay` 为 `false` 可以禁用开发服务器错误的屏蔽。
+
+  `clientPort` 是一个高级选项，只在客户端的情况下覆盖端口，这允许你为 websocket 提供不同的端口，而并非在客户端代码中查找。如果需要在 dev-server 情况下使用 SSL 代理，这非常有用。
+
+  当使用 `server.middlewareMode` 和 `server.https` 时，你需将 `server.hmr.server` 设置为你 HTTPS 的服务器，这将通过你的服务器来处理 HMR 的安全连接请求。这在使用自签证书的情况下，非常有用。
+
 
 ### server.watch {#server-watch}
 
