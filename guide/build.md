@@ -20,7 +20,7 @@ defaults and supports es6-module and supports es6-module-dynamic-import, not ope
 
 - 相关内容：[静态资源处理](./assets)
 
-如果你需要在嵌套的公共路径下部署项目，只需指定 [`build.base` 配置项](/config/#base)，然后所有资源的路径都将据此配置重写。这个选项也可以通过命令行参数指定，例如 `vite build --base=/my/public/path/`。
+如果你需要在嵌套的公共路径下部署项目，只需指定 [`base` 配置项](/config/#base)，然后所有资源的路径都将据此配置重写。这个选项也可以通过命令行参数指定，例如 `vite build --base=/my/public/path/`。
 
 由 JS 引入的资源 URL，CSS 中的 `url()` 引用以及 `.html` 文件中引用的资源在构建过程中都会自动调整，以适配此选项。
 
