@@ -569,8 +569,13 @@ createServer()
 
   小于此阈值的导入或引用资源将内联为 base64 编码，以避免额外的 http 请求。设置为 `0` 可以完全禁用此项。
 
+<<<<<<< HEAD
   :::tip 注意
   如果你指定了 `build.lib`，那么 `build.assetsInlineLimit` 将被忽略，无论文件大小，资源都会被内联。
+=======
+  ::: tip Note
+  If you specify `build.lib`, `build.assetsInlineLimit` will be ignored and assets will always be inlined, regardless of file size.
+>>>>>>> 84326ab6aae27ea4aba31a3637eb72fe41b725bd
   :::
 
 ### build.cssCodeSplit {#build-csscodesplit}
