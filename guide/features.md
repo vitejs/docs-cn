@@ -156,7 +156,7 @@ npm install -D less
 npm install -D stylus
 ```
 
-如果是用的是单文件组件，可以通过 `<style lang="sass">`（或其他与处理器）自动开启。
+如果是用的是单文件组件，可以通过 `<style lang="sass">`（或其他预处理器）自动开启。
 
 Vite 为 Sass 和 Less 改进了 `@import` 解析，以保证 Vite 别名也能被使用。另外，`url()` 中的相对路径引用的，与根文件不同目录中的 Sass/Less 文件会自动变基以保证正确性。
 
