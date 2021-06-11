@@ -584,8 +584,13 @@ createServer()
 
 ### build.sourcemap {#build-sourcemap}
 
+<<<<<<< HEAD
 - **类型：** `boolean | 'inline'`
 - **默认：** `false`
+=======
+- **Type:** `boolean | 'inline' | 'hidden'`
+- **Default:** `false`
+>>>>>>> ca604b0e61765ec57f8f4d4fcf3469f064eb33df
 
   构建后是否生成 source map 文件。
 
