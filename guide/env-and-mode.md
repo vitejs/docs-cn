@@ -89,8 +89,12 @@ vite build --mode staging
 
 ```
 # .env.staging
-NODE_ENV=production
 VITE_APP_TITLE=My App (staging)
 ```
 
 现在，你的 staging 应用应该具有类似于生产的行为，但显示的标题与生产环境不同。
+此外，如果你希望在开发模式也使用  `.env.staging` 文件中设置的变量，你可以以  `serve` 命令启动
+
+```bash
+vite serve --mode staging
+```
