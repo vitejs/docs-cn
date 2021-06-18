@@ -28,7 +28,7 @@ document.getElementById('hero-img').src = imgUrl
 
 ### 显式 URL 引入 {#explicit-url-imports}
 
-未被包含在内部列表中的、或者在 `assetsInclude` 中的资源，可以使用 `?url` 后缀显式导入为一个 URL。这十分有用，例如，要导入 [Houdini Paint Worklets](https://houdini.how/usage) 时：
+未被包含在内部列表或 `assetsInclude` 中的资源，可以使用 `?url` 后缀显式导入为一个 URL。这十分有用，例如，要导入 [Houdini Paint Worklets](https://houdini.how/usage) 时：
 
 ```js
 import workletURL from 'extra-scalloped-border/worklet.js?url'
@@ -72,9 +72,9 @@ import InlineWorker from './shader.js?worker&inline'
 
 - 不会被源码引用（例如 `robots.txt`）
 - 必须保持原有文件名（没有经过 hash）
-- ...或者你只是不想为了获取 URL 而首先导入该资源
+- ...或者你不想仅仅为了得到一个资源的URL而必须导入它
 
-那么你可以将该资源放在一个特别的 `public` 目录中，它应位于你的项目根目录。该目录中的资源应该在开发时能直接通过 `/` 根路径访问到，并且打包时会被完整复制到目标目录的根目录下。
+那么你可以将该资源放在指定的 `public` 目录中，它应位于你的项目根目录。该目录中的资源在开发时能直接通过 `/` 根路径访问到，并且打包时会被完整复制到目标目录的根目录下。
 
 目录默认是 `<root>/public`，但可以通过 [`publicDir` 选项](/config/#publicdir) 来配置。
 
