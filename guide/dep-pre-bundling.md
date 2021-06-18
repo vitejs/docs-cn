@@ -56,14 +56,14 @@ Vite 会将预构建的依赖缓存到 `node_modules/.vite`。它根据几个源
 - 包管理器的 lockfile，例如 `package-lock.json`, `yarn.lock`，或者 `pnpm-lock.yaml`
 - 可能在 `vite.config.js` 相关字段中配置过的
 
-只有当上面的一个步骤发生变化时，才需要重新运行预构建步骤。
+只有在上述其中一项发生更改时，才需要重新运行预构建步骤
 
-如果出于某些原因，你想要强制 Vite 重新绑定依赖，你可以用 `--force` 命令行选项启动开发服务器，或者手动删除 `node_modules/.vite` 目录。
+如果出于某些原因，你想要强制 Vite 重新构建依赖，你可以用 `--force` 命令行选项启动开发服务器，或者手动删除 `node_modules/.vite` 目录。
 
 ### 浏览器缓存 {#browser-cache}
 
 解析后的依赖请求会以 HTTP 头 `max-age=31536000,immutable` 强缓存，以提高在开发时的页面重载性能。一旦被缓存，这些请求将永远不会再到达开发服务器。如果安装了不同的版本（这反映在包管理器的 lockfile 中），则附加的版本 query 会自动使它们失效。如果你想通过本地编辑来调试依赖项，你可以:
 
-1. 通过浏览器 devtools 的 Network 选项卡暂时禁用缓存；
-2. 重启 Vite dev server，使用 `--force` 标志重新打包依赖；
+1. 通过浏览器调试工具的 Network 选项卡暂时禁用缓存；
+2. 重启 Vite dev server，并添加 `--force` 命令以重新构建依赖；
 3. 重新载入页面。
