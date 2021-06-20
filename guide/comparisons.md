@@ -1,8 +1,8 @@
-# 比较 {#comparisons-with-other-no-bundler-solutions}
+# 与其它 `No-Bundler` 解决方案比较 {#comparisons-with-other-no-bundler-solutions}
 
 ## Snowpack {#snowpack}
 
-[Snowpack](https://www.snowpack.dev/) 也是一个与 Vite 十分类似的非构建式原生 ESM 开发服务器。除了不同的实现细节外，这两个项目在技术上比传统工具有很多共同优势。Vite 的依赖预绑定也受到了 Snowpack v1（现在是 [`esinstall`](https://github.com/snowpackjs/snowpack/tree/main/esinstall)）的启发。这两个项目之间的一些主要区别是：
+[Snowpack](https://www.snowpack.dev/) 也是一个与 Vite 十分类似的非构建式原生 ESM 开发服务器。除了不同的实现细节外，这两个项目在技术上比传统工具有很多共同优势。Vite 的依赖预构建也受到了 Snowpack v1（现在是 [`esinstall`](https://github.com/snowpackjs/snowpack/tree/main/esinstall)）的启发。这两个项目之间的一些主要区别是：
 
 **生产构建**
 
@@ -10,7 +10,7 @@ Snowpack 的默认构建输出是未打包的：它将每个文件转换为单�
 
 为了提供更流畅的体验，Vite 选择了与单个打包器（Rollup）进行更深入的集成。Vite 还支持一套 [通用插件 API](./api-plugin) 扩展了 Rollup 的插件接口，开发和构建两种模式都适用。
 
-Vite 支持广泛的功能，构建过程也集成度更高，以下功能目前在 Snowpack 构建优化器中不可用：
+由于构建过程的集成度更高，Vite 支持目前在 Snowpack 构建优化器中不可用的多种功能：
 
 - [多页面应用支持](./build#multi-page-app)
 - [库模式](./build#library-mode)
@@ -25,7 +25,7 @@ Vite 使用 [esbuild](https://esbuild.github.io/) 而不是 Rollup 来进行依�
 
 **Monorepo 支持**
 
-Vite 能够支持 monorepo，我们已经有用户成功地将 Vite 基于 monorepo 模式，与 Yarn, Yarn 2 和 PNPM 使用。
+Vite 能够支持 monorepo，我们已经有用户成功地将 Vite 与基于 Yarn, Yarn 2 和 PNPM 的 monorepo 一起使用。
 
 **CSS 预处理器支持**
 
@@ -33,7 +33,7 @@ Vite 为 Sass and Less 提供了更精细化的支持，包括改进 `@import` �
 
 **Vue 第一优先级支持**
 
-Vite 最初是作为 [Vue.js](https://vuejs.org/) 开发工具的未来基础而创建的。尽管 Vite 2.0 版本完全不依赖于任何框架，但官方 Vue 插件仍然对 Vue 的单文件组件格式提供了一流的支持，涵盖了所有高级特性，如模板资源引用解析、`<script setup>`，`<style module>`，自定义块等等。除此之外，Vite 还对 Vue 单文件组件提供了细粒度的 HMR。举个例子，更新一个单文件组件的 `<template>` 或 `<style>` 会执行不重置其状态的热更新。
+Vite 最初是作为 [Vue.js](https://vuejs.org/) 开发工具的未来基础而创建的。尽管 Vite 2.0 版本完全不依赖于任何框架，但官方 Vue 插件仍然对 Vue 的单文件组件格式提供了第一优先级的支持，涵盖了所有高级特性，如模板资源引用解析、`<script setup>`，`<style module>`，自定义块等等。除此之外，Vite 还对 Vue 单文件组件提供了细粒度的 HMR。举个例子，更新一个单文件组件的 `<template>` 或 `<style>` 会执行不重置其状态的热更新。
 
 ## WMR {#wmr}
 
@@ -45,6 +45,6 @@ WMR 主要是为了 [Preact](https://preactjs.com/) 项目而设计，并为其�
 
 [@web/dev-server](https://modern-web.dev/docs/dev-server/overview/)（曾经是 `es-dev-server`）是一个伟大的项目，基于 koa 的 Vite 1.0 开发服务器就是受到了它的启发。
 
-`@web/dev-server` 适用范围不是很广。它并未提供官方的框架集成，并且需要为生产构建手动设置 Rollup 配置。然而，它的父项目确实提供了一组优秀的 Rollup 插件。
+`@web/dev-server` 适用范围不是很广。它并未提供官方的框架集成，并且需要为生产构建手动设置 Rollup 配置。
 
-总的来说，与 `@web/dev-server` 相比，Vite 是一个更注重自身/更高层面的工具，旨在提供开箱即用的工作流。话虽如此，但 `@web/dev-server` 这个项目群包含了许多其他的优秀工具，也可以使 Vite 用户受益。
+总的来说，与 `@web/dev-server` 相比，Vite 是一个更注重自身/更高层面的工具，旨在提供开箱即用的工作流。话虽如此，但 `@web` 这个项目群包含了许多其他的优秀工具，也可以使 Vite 用户受益。
