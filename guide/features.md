@@ -10,7 +10,7 @@
 import { someMethod } from 'my-dep'
 ```
 
-上面的代码会在浏览器中抛出一个错误。Vite 将在的所有被加载的源文件中检测此类裸模块导入，并执行以下操作:
+上面的代码会在浏览器中抛出一个错误。Vite 将会检测到所有被加载的源文件中的此类裸模块导入，并执行以下操作:
 
 1. [预构建](./dep-pre-bundling) 它们以加快页面加载速度，并将 CommonJS / UMD 转换为 ESM 格式。预构建这一步由 [esbuild](http://esbuild.github.io/) 执行，这使得 Vite 的冷启动时间比任何基于 JavaScript 的打包器都要快得多。
 
@@ -70,7 +70,7 @@ Vite 为 Vue 提供第一优先级支持：
 
 ## JSX {#jsx}
 
-`.jsx` 和 `.tsx` 文件同样开箱即用。JSX 的转译同样是通过 [esbuild](https://esbuild.github.io)，默认为 React 16 风格。期望在 esbuild 中支持React 17 风格的 JSX 请看 [这里](https://github.com/evanw/esbuild/issues/334)。
+`.jsx` 和 `.tsx` 文件同样开箱即用。JSX 的转译同样是通过 [esbuild](https://esbuild.github.io)，默认为 React 16 风格。期望在 esbuild 中支持 React 17 风格的 JSX 请看 [这里](https://github.com/evanw/esbuild/issues/334)。
 
 Vue 用户应使用官方提供的 [@vitejs/plugin-vue-jsx](https://github.com/vitejs/vite/tree/main/packages/plugin-vue-jsx) 插件，它提供了 Vue 3 特性的支持，包括 HMR，全局组件解析，指令和插槽。
 
@@ -272,7 +272,7 @@ init().then((exports) => {
 })
 ```
 
-`init` 函数还可以将传递给 `WebAssembly.instantiate`  的导入对象作为其第二个参数：
+`init` 函数还可以将传递给 `WebAssembly.instantiate` 的导入对象作为其第二个参数：
 
 ```js
 init({
@@ -308,7 +308,7 @@ import MyWorker from './worker?worker&inline'
 
 ## 构建优化 {#build-optimizations}
 
-> 下面所罗列的功能会自动应用为构建过程的一部分，除非你想禁用它们，否则没有必要显示配置。
+> 下面所罗列的功能会自动应用为构建过程的一部分，除非你想禁用它们，否则没有必要显式配置。
 
 ### CSS 代码分割 {#css-code-splitting}
 
@@ -318,7 +318,7 @@ Vite 会自动地将一个异步 chunk 模块中使用到的 CSS 代码抽取出
 
 ### 预加载指令生成 {#preload-directives-generation}
 
-Vite 会为入口 chunk 和它们在打包出的 HTML 中直接引入自动生成的 `<link rel="modulepreload">` 指令。
+Vite 会为入口 chunk 和它们在打包出的 HTML 中的直接引入自动生成 `<link rel="modulepreload">` 指令。
 
 ### 异步 Chunk 加载优化 {#async-chunk-loading-optimization}
 
@@ -326,7 +326,7 @@ Vite 会为入口 chunk 和它们在打包出的 HTML 中直接引入自动生�
 
 ![graph](/images/graph.png)
 
-在无优化的情境下，当异步 chunk `A` 被导入时，浏览器将必须请求和解析 `A`，然后它才能弄清楚它也需要那个共用 chunk `C`。这会导致额外的网络往返：
+在无优化的情境下，当异步 chunk `A` 被导入时，浏览器将必须请求和解析 `A`，然后它才能弄清楚它也需要共用 chunk `C`。这会导致额外的网络往返：
 
 ```
 Entry ---> A ---> C
