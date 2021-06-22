@@ -56,7 +56,7 @@ Vite 会将预构建的依赖缓存到 `node_modules/.vite`。它根据几个源
 - 包管理器的 lockfile，例如 `package-lock.json`, `yarn.lock`，或者 `pnpm-lock.yaml`
 - 可能在 `vite.config.js` 相关字段中配置过的
 
-只有在上述其中一项发生更改时，才需要重新运行预构建步骤
+只有在上述其中一项发生更改时，才需要重新运行预构建。
 
 如果出于某些原因，你想要强制 Vite 重新构建依赖，你可以用 `--force` 命令行选项启动开发服务器，或者手动删除 `node_modules/.vite` 目录。
 
