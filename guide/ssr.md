@@ -127,7 +127,7 @@ app.use('*', async (req, res) => {
     // 5. 注入渲染后的应用程序 HTML 到模板中。
     const html = template.replace(`<!--ssr-outlet-->`, appHtml)
 
-    // 6. 返回渲染后的HTML。
+    // 6. 返回渲染后的 HTML。
     res.status(200).set({ 'Content-Type': 'text/html' }).end(html)
   } catch (e) {
     // 如果捕获到了一个错误，让 vite 来修复该堆栈，这样它就可以映射回
