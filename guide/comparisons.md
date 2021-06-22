@@ -1,4 +1,4 @@
-# 与其它 `No-Bundler` 解决方案比较 {#comparisons-with-other-no-bundler-solutions}
+# 与其它非打包解决方案比较 {#comparisons-with-other-no-bundler-solutions}
 
 ## Snowpack {#snowpack}
 
