@@ -4,7 +4,7 @@
 
 ## 浏览器兼容性 {#browser-compatibility}
 
-生产版本会假设你已实现现代 JavaScript 语法的支持。默认情况下，vite 是为 [支持原生 ESM script 标签](https://caniuse.com/es6-module) 和 [支持原生 ESM 动态导入](https://caniuse.com/es6-module-dynamic-import) 的浏览器服务的。作为参考，vite 使用这个 [browserslist](https://github.com/browserslist/browserslist) 作为查询标准：
+用于生产环境的构建包会假设目标浏览器支持现代 JavaScript 语法。默认情况下，vite 的目标浏览器是指能够 [支持原生 ESM script 标签](https://caniuse.com/es6-module) 和 [支持原生 ESM 动态导入](https://caniuse.com/es6-module-dynamic-import) 的。作为参考，vite 使用这个 [browserslist](https://github.com/browserslist/browserslist) 作为查询标准：
 
 ```
 defaults and supports es6-module and supports es6-module-dynamic-import, not opera > 0, not samsung > 0, not and_qq > 0
@@ -43,7 +43,7 @@ module.exports = {
 
 例如，你可以使用仅在构建期间应用的插件来指定多个 Rollup 输出。
 
-## 文件变化时重新编译 {#rebuild-on-files-changs}
+## 文件变化时重新构建 {#rebuild-on-files-changs}
 
 你可以使用 `vite build --watch` 来启用 rollup 的监听器。或者，你可以直接通过 `build.watch` 调整底层的 [`WatcherOptions`](https://rollupjs.org/guide/en/#watch-options) 选项：
 
@@ -92,13 +92,13 @@ module.exports = {
 }
 ```
 
-如果你指定了另一个根目录，请记住，在解析输入路径时，`__dirname` 的值将仍然是 vite.config.js 文件所在的目录。因此，你需要把 `root` 的路径添加到 `resolve` 的参数中。
+如果你指定了另一个根目录，请记住，在解析输入路径时，`__dirname` 的值将仍然是 vite.config.js 文件所在的目录。因此，你需要把对应入口文件的 `root` 的路径添加到 `resolve` 的参数中。
 
 ## 库模式 {#library-mode}
 
-当你开发面向浏览器的库时，你可能会将大部分时间花在该库的测试/演示页面上。使用 Vite 可以使得你的 `index.html` 获得如丝般顺滑的开发体验。
+当你开发面向浏览器的库时，你可能会将大部分时间花在该库的测试/演示页面上。在 Vite 中你可以使用 `index.html` 获得如丝般顺滑的开发体验。
 
-当需要构建你的库用于发布时，请使用 [`build.lib` 配置项](/config/#build-lib)，请确保将你不想打包进你库中的依赖进行外部化处理，例如 `vue` 或 `react`：
+当你以发布为目的构建库时，请使用 [`build.lib` 配置项](/config/#build-lib)，以确保将那些你不想打包进库的依赖进行外部化处理，例如 `vue` 或 `react`：
 
 ```js
 // vite.config.js
@@ -111,7 +111,7 @@ module.exports = {
       name: 'MyLib'
     },
     rollupOptions: {
-      // 请确保外部化那些你的库中不需要的依赖
+      // 确保外部化处理那些你不想打包进库的依赖
       external: ['vue'],
       output: {
         // 在 UMD 构建模式下为这些外部化的依赖提供一个全局变量
