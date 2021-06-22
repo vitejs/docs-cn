@@ -98,7 +98,7 @@ module.exports = {
 
 当你开发面向浏览器的库时，你可能会将大部分时间花在该库的测试/演示页面上。在 Vite 中你可以使用 `index.html` 获得如丝般顺滑的开发体验。
 
-当在构建你的库且用于发布时，请使用 [`build.lib` 配置项](/config/#build-lib)，以确保将那些你不想打包进你的库的依赖进行外部化处理，例如 `vue` 或 `react`：
+当你以发布为目的构建库时，请使用 [`build.lib` 配置项](/config/#build-lib)，以确保将那些你不想打包进库的依赖进行外部化处理，例如 `vue` 或 `react`：
 
 ```js
 // vite.config.js
