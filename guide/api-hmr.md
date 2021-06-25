@@ -112,4 +112,17 @@ if (import.meta.hot) {
 
 ## `hot.on(event, cb)` {#hot-onevent-cb}
 
+<<<<<<< HEAD
 监听自定义 HMR 事件。自定义 HMR 事件可以由插件发送。更多细节详见 [handleHotUpdate](./api-plugin#handleHotUpdate)。
+=======
+Listen to an HMR event.
+
+The following HMR events are dispatched by Vite automatically:
+- `'vite:beforeUpdate'` when an update is about to be applied (e.g. a module will be replaced)
+- `'vite:beforeFullReload'` when a full reload is about to occur
+- `'vite:beforePrune'` when modules that are no longer needed are about to be pruned
+- `'vite:error'` when an error occurs (e.g. syntax error)
+
+Custom HMR events can also be sent from plugins. See [handleHotUpdate](./api-plugin#handlehotupdate) for more details.
+
+>>>>>>> 6eac7c78525a2a70bbf9aff52e30ceee01bd331b
