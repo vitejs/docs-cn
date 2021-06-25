@@ -383,7 +383,7 @@ export default async ({ command, mode }) => {
 
 - **类型：** `Record<string, string | ProxyOptions>`
 
-  为开发服务器配置自定义代理规则。期望接收一个 `{ key: options }` 对象。如果 key 值以 `^` 开头，将会被解释为 `RegExp`。
+  为开发服务器配置自定义代理规则。期望接收一个 `{ key: options }` 对象。如果 key 值以 `^` 开头，将会被解释为 `RegExp`。`configure` 可用于访问 proxy 实例。
 
   使用 [`http-proxy`](https://github.com/http-party/node-http-proxy)。完整选项详见 [此处](https://github.com/http-party/node-http-proxy#options).
 
@@ -406,6 +406,14 @@ export default async ({ command, mode }) => {
           target: 'http://jsonplaceholder.typicode.com',
           changeOrigin: true,
           rewrite: (path) => path.replace(/^\/fallback/, '')
+        },
+        // 使用 proxy 实例
+        '/api': {
+          target: 'http://jsonplaceholder.typicode.com',
+          changeOrigin: true,
+          configure: (proxy, options) => {
+            // proxy 是 'http-proxy' 的实例
+          }),
         }
       }
     }
