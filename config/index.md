@@ -383,11 +383,7 @@ export default async ({ command, mode }) => {
 
 - **类型：** `Record<string, string | ProxyOptions>`
 
-<<<<<<< HEAD
-  为开发服务器配置自定义代理规则。期望接收一个 `{ key: options }` 对象。如果 key 值以 `^` 开头，将会被解释为 `RegExp`。
-=======
-  Configure custom proxy rules for the dev server. Expects an object of `{ key: options }` pairs. If the key starts with `^`, it will be interpreted as a `RegExp`. The `configure` option can be used to access the proxy instance.
->>>>>>> bb3c2e0f7c40a6fe9cf6ed5f1a7cfc89bf51862d
+  为开发服务器配置自定义代理规则。期望接收一个 `{ key: options }` 对象。如果 key 值以 `^` 开头，将会被解释为 `RegExp`。`configure` 可用于访问 proxy 实例。
 
   使用 [`http-proxy`](https://github.com/http-party/node-http-proxy)。完整选项详见 [此处](https://github.com/http-party/node-http-proxy#options).
 
@@ -411,12 +407,12 @@ export default async ({ command, mode }) => {
           changeOrigin: true,
           rewrite: (path) => path.replace(/^\/fallback/, '')
         },
-        // Using the proxy instance
+        // 使用 proxy 实例
         '/api': {
           target: 'http://jsonplaceholder.typicode.com',
           changeOrigin: true,
           configure: (proxy, options) => {
-            // proxy will be an instance of 'http-proxy'
+            // proxy 是 'http-proxy' 的实例
           }),
         }
       }
