@@ -33,7 +33,11 @@ Falsy 虚值的插件将被忽略，可以用来轻松地启用或停用插件�
 Vite 旨在为常见的 Web 开发范式提供开箱即用的支持。在寻找一个 Vite 或兼容的 Rollup 插件之前，请先查看 [功能指引](../guide/features.md)。大量在 Rollup 项目中需要使用插件的用例在 Vite 中已经覆盖到了。
 :::
 
+<<<<<<< HEAD
 查看 [Plugins 章节](../plugins) 获取官方插件信息。社区插件列表请参见 [awesome-vite](https://github.com/vitejs/awesome-vite#plugins)。而对于兼容的 Rollup 插件，请查看 [Vite Rollup 插件](https://vite-rollup-plugins.patak.dev) 获取一个带使用说明的兼容 Rollup 官方插件列表，若列表中没有找到，则请参阅 [Rollup 插件兼容性章节](../guide/api-plugin#rollup-plugin-compatibility)。
+=======
+Check out the [Plugins section](../plugins/) for information about official plugins. Community plugins are listed in [awesome-vite](https://github.com/vitejs/awesome-vite#plugins). For compatible Rollup plugins, check out [Vite Rollup Plugins](https://vite-rollup-plugins.patak.dev) for a list of compatible official Rollup plugins with usage instructions or the [Rollup Plugin Compatibility section](../guide/api-plugin#rollup-plugin-compatibility) in case it is not listed there.
+>>>>>>> 0dad9513d6f6a218ca5436c7aeaefc3fa669a62f
 
 你也可以使用此 [npm Vite 插件搜索链接](https://www.npmjs.com/search?q=vite-plugin&ranking=popularity) 来找到一些遵循了 [推荐约定](./api-plugin.md#conventions) 的 Vite 插件，或者此 [npm Rollup 插件搜索链接](https://www.npmjs.com/search?q=rollup-plugin&ranking=popularity) 获取 Rollup 插件。
 
