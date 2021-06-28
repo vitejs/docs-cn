@@ -109,7 +109,7 @@ app.use('*', async (req, res) => {
       'utf-8'
     )
 
-    // 2. 应用 vite HTML 转换。这将会注入 vite HMR 客户端，and
+    // 2. 应用 vite HTML 转换。这将会注入 vite HMR 客户端，
     //    同时也会从 Vite 插件应用 HTML 转换。
     //    例如：@vitejs/plugin-react-refresh 中的 global preambles
     template = await vite.transformIndexHtml(url, template)
