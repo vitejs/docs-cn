@@ -75,7 +75,7 @@ export default function myPlugin() {
   const virtualFileId = '@my-virtual-file'
 
   return {
-    name: 'my-plugin', // 必须的，将会显示在 warning 和 error 中
+    name: 'my-plugin', // 必须的，将会在 warning 和 error 中显示
     resolveId(id) {
       if (id === virtualFileId) {
         return virtualFileId
@@ -139,9 +139,9 @@ export default function myPlugin() {
 - [`buildEnd`](https://rollupjs.org/guide/en/#buildend)
 - [`closeBundle`](https://rollupjs.org/guide/en/#closebundle)
 
-请注意 [`moduleParsed`](https://rollupjs.org/guide/en/#moduleparsed) 钩子 **不是** 在开发中被调用的，因为 Vite 为了性能会避免完整的 AST 解析。
+请注意 [`moduleParsed`](https://rollupjs.org/guide/en/#moduleparsed) 钩子在开发中是 **不会** 被调用的，因为 Vite 为了性能会避免完整的 AST 解析。
 
-[Output Generation Hooks](https://rollupjs.org/guide/en/#output-generation-hooks)（除了 `closeBundle`) **不是** 在开发中被调用的。你可以认为 Vite 的开发服务器只调用了 `rollup.rollup()` 而没有调用 `bundle.generate()`。
+[Output Generation Hooks](https://rollupjs.org/guide/en/#output-generation-hooks)（除了 `closeBundle`) 在开发中是 **不会** 被调用的。你可以认为 Vite 的开发服务器只调用了 `rollup.rollup()` 而没有调用 `bundle.generate()`。
 
 ## Vite 独有钩子 {#vite-specific-hooks}
 
@@ -203,12 +203,12 @@ Vite 插件也可以提供钩子来服务于特定的 Vite 目标。这些钩子
         config = resolvedConfig
       },
 
-      // 使用其他钩子存储的配置
+      // 在其他钩子中使用存储的配置
       transform(code, id) {
         if (config.command === 'serve') {
-          // serve: 用于启动开发服务器的插件
+          // serve: 由开发服务器调用的插件
         } else {
-          // build: 调用 Rollup 的插件
+          // build: 由 Rollup 调用的插件
         }
       }
     }
@@ -274,7 +274,7 @@ Vite 插件也可以提供钩子来服务于特定的 Vite 目标。这些钩子
   }
   ```
 
-  注意 `configureServer` 在运行生产版本时不会被调用，所以其他钩子需要注意防止它的缺失。
+  注意 `configureServer` 在运行生产版本时不会被调用，所以其他钩子需要防范它缺失。
 
 ### `transformIndexHtml` {#transformindexhtml}
 
@@ -402,7 +402,7 @@ Vite 插件也可以提供钩子来服务于特定的 Vite 目标。这些钩子
 
 ## 情景应用 {#conditional-application}
 
-默认情况下插件在预览（serve）和构建（build）模式中都会调用。如果插件只需要在预览或构建期间有条件地应用，请使用 `apply` 属性指明它们仅在 `'build'` 或 `'serve'` 模式时调用：
+默认情况下插件在开发（serve）和构建（build）模式中都会调用。如果插件只需要在预览或构建期间有条件地应用，请使用 `apply` 属性指明它们仅在 `'build'` 或 `'serve'` 模式时调用：
 
 ```js
 function myPlugin() {
@@ -417,7 +417,7 @@ function myPlugin() {
 
 相当数量的 Rollup 插件将直接作为 Vite 插件工作（例如：`@rollup/plugin-alias` 或 `@rollup/plugin-json`），但并不是所有的，因为有些插件钩子在非构建式的开发服务器上下文中没有意义。
 
-一般来说，只要一个 Rollup 插件符合以下标准，那么它应该只是作为一个 Vite 插件:
+一般来说，只要 Rollup 插件符合以下标准，它就应该像 Vite 插件一样工作：
 
 - 没有使用 [`moduleParsed`](https://rollupjs.org/guide/en/#moduleparsed) 钩子。
 - 它在打包钩子和输出钩子之间没有很强的耦合。
@@ -445,7 +445,7 @@ export default {
 
 ## 路径规范化 {#path-normalization}
 
-Vite 对路径进行了规范化处理，在解析路径时使用 POSIX 分隔符（ / ），同时保留了 Windows中 的卷名。而另一方面，Rollup 在默认情况下保持解析的路径不变，因此解析的路径在 Windows 中会使用 win32 分隔符（ \\ ）。然而，Rollup 插件会从 `@rollup/pluginutils` 中使用一个 [`normalizePath` 工具函数](https://github.com/rollup/plugins/tree/master/packages/pluginutils#normalizepath)，它在执行比较之前将分隔符转换为 POSIX。所以意味着当这些插件在 Vite 中使用时，`include` 和 `exclude` 两个配置模式，以及与已解析路径比较相似的路径会正常工作。
+Vite 对路径进行了规范化处理，在解析路径时使用 POSIX 分隔符（ / ），同时保留了 Windows 中的卷名。而另一方面，Rollup 在默认情况下保持解析的路径不变，因此解析的路径在 Windows 中会使用 win32 分隔符（ \\ ）。然而，Rollup 插件会使用 `@rollup/pluginutils` 内部的 [`normalizePath` 工具函数](https://github.com/rollup/plugins/tree/master/packages/pluginutils#normalizepath)，它在执行比较之前将分隔符转换为 POSIX。所以意味着当这些插件在 Vite 中使用时，`include` 和 `exclude` 两个配置模式，以及与已解析路径比较相似的路径会正常工作。
 
 所以对于 Vite 插件来说，在将路径与已解析的路径进行比较时，首先规范化路径以使用 POSIX 分隔符是很重要的。从 `vite` 模块中也导出了一个等效的 `normalizePath` 工具函数。
 
