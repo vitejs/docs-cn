@@ -488,7 +488,7 @@ async function createServer() {
 createServer()
 ```
 
-### server.fsServe.strict {#server-fsserve-strict}
+### server.fs.strict {#server-fs-strict}
 
 - **实验性**
 - **类型：** `boolean`
@@ -501,7 +501,7 @@ createServer()
 - **实验性**
 - **类型：** `string`
 
-  限制哪些文件可以通过 `/@fs/` 路径提供服务。当 `server.fsServe.strict` 设置为 true 时，访问这个目录外的文件将会返回 403 结果。
+  限制哪些文件可以通过 `/@fs/` 路径提供服务。当 `server.fsServe.strict` 设置为 true 时，访问这个目录列表外的文件将会返回 403 结果。
 
   Vite 将会搜索此根目录下潜在工作空间并作默认使用。一个有效的工作空间应符合以下几个条件，否则会默认以 [项目 root 目录](/guide/#index-html-and-project-root) 作备选方案。
 
@@ -514,9 +514,11 @@ createServer()
   ```js
   export default {
     server: {
-      fsServe: {
+      fs: {
         // 可以为项目根目录的上一级提供服务
-        root: '..'
+        allow: [
+          '..'
+        ]
       }
     }
   }
@@ -698,6 +700,10 @@ createServer()
 
   在预构建中强制排除的依赖项。
 
+  :::warning CommonJS
+  CommonJS 的依赖不应该排除在优化外。如果一个 ESM 依赖拥有一个嵌套的 CommonJS 依赖，它也不应被排除。
+  :::
+
 ### optimizeDeps.include {#optimizedeps-include}
 
 - **类型：** `string[]`
@@ -729,7 +735,7 @@ SSR 选项可能会在未来版本中进行调整。
 
 ### ssr.noExternal {#ssr-noexternal}
 
-- **类型：** `string[]`
+- **类型：** `string | RegExp | (string | RegExp)[]`
 
   列出的是防止被 SSR 外部化依赖项。
 
