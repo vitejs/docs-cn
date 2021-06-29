@@ -24,7 +24,11 @@ Vite 在一个特殊的 **`import.meta.env`** 对象上暴露环境变量。这�
 
 ## `.env` 文件 {#env-files}
 
+<<<<<<< HEAD
 Vite 使用 [dotenv](https://github.com/motdotla/dotenv) 从你的 [环境目录](/config/#envDir) 中的下列文件加载额外的环境变量：
+=======
+Vite uses [dotenv](https://github.com/motdotla/dotenv) to load additional environment variables from the following files in your [environment directory](/config/#envdir):
+>>>>>>> 366b04d83f84601eac5039d1d7c5c4483a4a9a87
 
 ```
 .env                # 所有情况下都会加载

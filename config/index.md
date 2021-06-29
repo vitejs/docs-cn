@@ -367,7 +367,11 @@ export default async ({ command, mode }) => {
 
 - **类型：** `boolean | string`
 
+<<<<<<< HEAD
   在开发服务器启动时自动在浏览器中打开应用程序。当此值为字符串时，会被用作 URL 的路径名。
+=======
+  Automatically open the app in the browser on server start. When the value is a string, it will be used as the URL's pathname. If you want to open the server in a specific browser you like, you can set the env `process.env.BROWSER` (e.g. `firefox`). See [the `open` package](https://github.com/sindresorhus/open#app) for more details.
+>>>>>>> 366b04d83f84601eac5039d1d7c5c4483a4a9a87
 
   **示例：**
 
@@ -613,7 +617,17 @@ createServer()
 
   传递给 [@rollup/plugin-commonjs](https://github.com/rollup/plugins/tree/master/packages/commonjs) 插件的选项。
 
+<<<<<<< HEAD
 ### build.lib {#build-lib}
+=======
+### build.dynamicImportVarsOptions
+
+- **Type:** [`RollupDynamicImportVarsOptions`](https://github.com/rollup/plugins/tree/master/packages/dynamic-import-vars#options)
+
+  Options to pass on to [@rollup/plugin-dynamic-import-vars](https://github.com/rollup/plugins/tree/master/packages/dynamic-import-vars).
+
+### build.lib
+>>>>>>> 366b04d83f84601eac5039d1d7c5c4483a4a9a87
 
 - **类型：** `{ entry: string, name?: string, formats?: ('es' | 'cjs' | 'umd' | 'iife')[], fileName?: string }`
 - **相关内容：** [库模式](/guide/build#library-mode)
