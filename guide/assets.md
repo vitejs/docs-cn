@@ -24,7 +24,7 @@ document.getElementById('hero-img').src = imgUrl
 
 - 引用的资源作为构建资源图的一部分包括在内，将生成散列文件名，并可以由插件进行处理以进行优化。
 
-- 较小的资源体积小于 [`assetsInlineLimit` 选项值](/config/#assetsinlinelimit) 则会被内联为 base64 data URL。
+- 较小的资源体积小于 [`assetsInlineLimit` 选项值](/config/#build-assetsinlinelimit) 则会被内联为 base64 data URL。
 
 ### 显式 URL 引入 {#explicit-url-imports}
 
