@@ -367,7 +367,7 @@ export default async ({ command, mode }) => {
 
 - **类型：** `boolean | string`
 
-  在开发服务器启动时自动在浏览器中打开应用程序。当此值为字符串时，会被用作 URL 的路径名。
+  在开发服务器启动时自动在浏览器中打开应用程序。当此值为字符串时，会被用作 URL 的路径名。若你想指定喜欢的浏览器打开服务器，你可以设置环境变量 `process.env.BROWSER`（例如：`firefox`）。查看 [这个 `open` 包](https://github.com/sindresorhus/open#app) 获取更多细节。
 
   **示例：**
 
@@ -516,9 +516,7 @@ createServer()
     server: {
       fs: {
         // 可以为项目根目录的上一级提供服务
-        allow: [
-          '..'
-        ]
+        allow: ['..']
       }
     }
   }
@@ -612,6 +610,12 @@ createServer()
 - **类型：** [`RollupCommonJSOptions`](https://github.com/rollup/plugins/tree/master/packages/commonjs#options)
 
   传递给 [@rollup/plugin-commonjs](https://github.com/rollup/plugins/tree/master/packages/commonjs) 插件的选项。
+
+### build.dynamicImportVarsOptions {#build-dynamicimportvarsoptions}
+
+- **类型：** [`RollupDynamicImportVarsOptions`](https://github.com/rollup/plugins/tree/master/packages/dynamic-import-vars#options)
+
+  传递给 [@rollup/plugin-dynamic-import-vars](https://github.com/rollup/plugins/tree/master/packages/dynamic-import-vars) 的选项。
 
 ### build.lib {#build-lib}
 

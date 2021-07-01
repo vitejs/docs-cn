@@ -6,7 +6,7 @@ Vite 在一个特殊的 **`import.meta.env`** 对象上暴露环境变量。这�
 
 - **`import.meta.env.MODE`**: {string} 应用运行的[模式](#模式)。
 
-- **`import.meta.env.BASE_URL`**: {string} 部署应用时的基本URL。他由[`base` 配置项](/config/#base)决定。
+- **`import.meta.env.BASE_URL`**: {string} 部署应用时的基本 URL。他由[`base` 配置项](/config/#base)决定。
 
 - **`import.meta.env.PROD`**: {boolean} 应用是否运行在生产环境。
 
@@ -24,7 +24,7 @@ Vite 在一个特殊的 **`import.meta.env`** 对象上暴露环境变量。这�
 
 ## `.env` 文件 {#env-files}
 
-Vite 使用 [dotenv](https://github.com/motdotla/dotenv) 从你的 [环境目录](/config/#envDir) 中的下列文件加载额外的环境变量：
+Vite 使用 [dotenv](https://github.com/motdotla/dotenv) 从你的 [环境目录](/config/#envdir) 中的下列文件加载额外的环境变量：
 
 ```
 .env                # 所有情况下都会加载
@@ -46,14 +46,14 @@ VITE_SOME_KEY=123
 
 :::warning 安全注意事项
 
-- `.env.*.local` 文件应是本地的，可以包含敏感变量。你应该将 `.local` 添加到你的 `.gitignore` 中，以避免它们被git检入。
+- `.env.*.local` 文件应是本地的，可以包含敏感变量。你应该将 `.local` 添加到你的 `.gitignore` 中，以避免它们被 git 检入。
 
 - 由于任何暴露给 Vite 源码的变量最终都将出现在客户端包中，`VITE_*` 变量应该不包含任何敏感信息。
   :::
 
 ### 智能提示 {#intellisense}
 
-默认情况下，Vite为 `import.meta.env` 提供了类型定义。随着在 `.env[mode]` 文件中自定义了越来越多的环境变量，你可能想要在代码中获取这些以 `VITE_` 为前缀的用户自定义环境变量的 TypeScript 智能提示。
+默认情况下，Vite 为 `import.meta.env` 提供了类型定义。随着在 `.env[mode]` 文件中自定义了越来越多的环境变量，你可能想要在代码中获取这些以 `VITE_` 为前缀的用户自定义环境变量的 TypeScript 智能提示。
 
 要想做到这一点，你可以在 `src` 目录下创建一个 `env.d.ts` 文件，接着按下面这样增加 `ImportMetaEnv` 的定义：
 
