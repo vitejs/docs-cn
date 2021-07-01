@@ -1,3 +1,8 @@
+> ### 敬请所有读者注意
+>
+> - 原则上这里只进行英文版对应的翻译工作，如果觉得原文有改进之处，或任何不仅针对中文版，而受益所有语言版本的想法，建议直接在英文版仓库讨论。
+> - **原则上这里不适合讨论 Vite 的使用问题**，建议相关问题在 Vite 的 [issues 区](https://github.com/vitejs/vite/issues)、[Vite 官方讨论区](https://chat.vitejs.dev/) 或各大主流技术社区讨论，以便得到更多帮助和更充分的讨论。
+
 <p align="center">
   <a href="https://vitejs.dev" target="_blank" rel="noopener noreferrer">
     <img width="180" src="https://vitejs.dev/logo.svg" alt="Vite logo">
@@ -34,12 +39,7 @@ Vite （法语意为 “迅速”，发音 /vit/）是一种全新的前端构�
 
 贡献指南敬请查看本仓库的 [Wiki](https://github.com/vitejs/docs-cn/wiki) 区。
 
-**注意：**
-
-- 原则上这里只进行英文版对应的翻译工作，如果觉得原文有改进之处，或任何不仅针对中文版，而受益所有语言版本的想法，建议直接在英文版仓库讨论。
-- 原则上这里不适合讨论 Vite 的使用问题，建议相关问题在 Vite 的 [issues 区](https://github.com/vitejs/vite/issues)、[Vite 官方讨论区](https://chat.vitejs.dev/) 或各大主流技术社区讨论，以便得到更多人的帮助和更充分的讨论。
-
-## 📥 如何本地开发
+## 📥 如何开始编辑
 
 ```bash
 # 克隆本仓库

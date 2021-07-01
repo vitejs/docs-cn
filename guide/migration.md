@@ -10,13 +10,13 @@
 
 - `jsx` 和 `enableEsbuild` 都已被删除，请使用新的 [`esbuild`](/config/#esbuild) 选项。
 
-- [CSS 相关选项](/config/#css-modules) 都被包含在 `css` 字段下。
+- [CSS 相关选项](/config/#css-modules) 都包含在 `css` 字段下。
 
-- 所有 [用于构建的选项](/config/#build-options) 现在都在 `build` 字段下。
+- 所有 [用于构建的选项](/config/#build-options) 都包含在 `build` 字段下。
 
   - `rollupInputOptions` 和 `rollupOutputOptions` 已经被 [`build.rollupOptions`](/config/#build-rollupoptions) 替代。
-  - `esbuildTarget` 现在是 [`build.target`](/config/#build-target)
-  - `emitManifest` 现在是 [`build.manifest`](/config/#build-manifest)
+  - `esbuildTarget` 变更为 [`build.target`](/config/#build-target)
+  - `emitManifest` 变更为 [`build.manifest`](/config/#build-manifest)
   - 以下构建选项已经被移除，因为它们可以通过插件钩子或其他选项实现：
     - `entry`
     - `rollupDedupe`
@@ -25,8 +25,7 @@
     - `shouldPreload`
     - `configureBuild`
 
-- 所有的 [server-specific options](/config/#server-options) 现在都在
-  `server` 字段下。
+- 所有的 [server-specific options](/config/#server-options) 都包含在 `server` 字段下。
 
   - `hostname` 变更为 [`server.host`](/config/#server-host)。
   - `httpsOptions` 已被删除，[`server.https`](/config/#server-https) 可以直接接收选项对象。
@@ -34,7 +33,7 @@
 
 - [`assetsInclude`](/config/#assetsInclude) 现在接收 `string | RegExp | (string | RegExp)[]` 而不是一个函数。
 
-- 所有 Vue 特定选项都已删除；应将选项传递给 Vue 插件。
+- 所有 Vue 特定选项都已移除；应将选项传递给 Vue 插件。
 
 ## 别名用法变化 {#alias-behavior-change}
 
@@ -106,10 +105,10 @@ export default {
     "imports": [...]
   },
   "index.css": {
-    "file": "assets/index.7b7dbd85.css"
-  }
+    "file": "assets/index.7b7dbd85.css",
+  },
   "asset.png": {
-    "file": "assets/asset.0ab0f9cd.png"
+    "file": "assets/asset.0ab0f9cd.png",
   }
 }
 ```

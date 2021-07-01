@@ -63,7 +63,7 @@ export default {
 
 ## 按需应用 {#conditional-application}
 
-默认情况下插件在部署 (serve) 和构建 (build) 模式中都会调用。如果插件在服务或构建期间按需使用，请使用 `apply` 属性指明它们仅在 `'build'` 或 `'serve'` 模式时调用：
+默认情况下插件在开发 (serve) 和生产 (build) 模式中都会调用。如果插件在服务或构建期间按需使用，请使用 `apply` 属性指明它们仅在 `'build'` 或 `'serve'` 模式时调用：
 
 ```js
 // vite.config.js
