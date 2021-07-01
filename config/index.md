@@ -367,7 +367,7 @@ export default async ({ command, mode }) => {
 
 - **类型：** `boolean | string`
 
-  在开发服务器启动时自动在浏览器中打开应用程序。当此值为字符串时，会被用作 URL 的路径名。
+  在开发服务器启动时自动在浏览器中打开应用程序。当此值为字符串时，会被用作 URL 的路径名。若你想指定喜欢的浏览器打开服务器，你可以设置环境变量 `process.env.BROWSER`（例如：`firefox`）。查看 [这个 `open` 包](https://github.com/sindresorhus/open#app) 获取更多细节。
 
   **示例：**
 
@@ -383,7 +383,7 @@ export default async ({ command, mode }) => {
 
 - **类型：** `Record<string, string | ProxyOptions>`
 
-  为开发服务器配置自定义代理规则。期望接收一个 `{ key: options }` 对象。如果 key 值以 `^` 开头，将会被解释为 `RegExp`。
+  为开发服务器配置自定义代理规则。期望接收一个 `{ key: options }` 对象。如果 key 值以 `^` 开头，将会被解释为 `RegExp`。`configure` 可用于访问 proxy 实例。
 
   使用 [`http-proxy`](https://github.com/http-party/node-http-proxy)。完整选项详见 [此处](https://github.com/http-party/node-http-proxy#options).
 
@@ -406,6 +406,14 @@ export default async ({ command, mode }) => {
           target: 'http://jsonplaceholder.typicode.com',
           changeOrigin: true,
           rewrite: (path) => path.replace(/^\/fallback/, '')
+        },
+        // 使用 proxy 实例
+        '/api': {
+          target: 'http://jsonplaceholder.typicode.com',
+          changeOrigin: true,
+          configure: (proxy, options) => {
+            // proxy 是 'http-proxy' 的实例
+          }),
         }
       }
     }
@@ -436,7 +444,6 @@ export default async ({ command, mode }) => {
   `clientPort` 是一个高级选项，只在客户端的情况下覆盖端口，这允许你为 websocket 提供不同的端口，而并非在客户端代码中查找。如果需要在 dev-server 情况下使用 SSL 代理，这非常有用。
 
   当使用 `server.middlewareMode` 和 `server.https` 时，你需将 `server.hmr.server` 设置为你 HTTPS 的服务器，这将通过你的服务器来处理 HMR 的安全连接请求。这在使用自签证书的情况下，非常有用。
-
 
 ### server.watch {#server-watch}
 
@@ -481,7 +488,7 @@ async function createServer() {
 createServer()
 ```
 
-### server.fsServe.strict {#server-fsserve-strict}
+### server.fs.strict {#server-fs-strict}
 
 - **实验性**
 - **类型：** `boolean`
@@ -494,7 +501,7 @@ createServer()
 - **实验性**
 - **类型：** `string`
 
-  限制哪些文件可以通过 `/@fs/` 路径提供服务。当 `server.fsServe.strict` 设置为 true 时，访问这个目录外的文件将会返回 403 结果。
+  限制哪些文件可以通过 `/@fs/` 路径提供服务。当 `server.fsServe.strict` 设置为 true 时，访问这个目录列表外的文件将会返回 403 结果。
 
   Vite 将会搜索此根目录下潜在工作空间并作默认使用。一个有效的工作空间应符合以下几个条件，否则会默认以 [项目 root 目录](/guide/#index-html-and-project-root) 作备选方案。
 
@@ -507,9 +514,9 @@ createServer()
   ```js
   export default {
     server: {
-      fsServe: {
+      fs: {
         // 可以为项目根目录的上一级提供服务
-        root: '..'
+        allow: ['..']
       }
     }
   }
@@ -525,7 +532,10 @@ createServer()
 
   设置最终构建的浏览器兼容目标。默认值是一个 Vite 特有的值——`'modules'`，这是指 [支持原生 ES 模块的浏览器](https://caniuse.com/es6-module)。
 
-  另一个特殊值是 “esnext” —— 即指执行 minify 转换（作最小化压缩）并假设有原生动态导入支持。
+  另一个特殊值是 “esnext” —— 即假设有原生动态导入支持，并且将会转译得尽可能小：
+
+  - 如果 [`build.minify`](#build-minify) 选项为 `'terser'`（默认值）， `'esnext'` 将会强制降级为 `'es2019'`。
+  - 其他情况下将完全不会执行转译。
 
   转换过程将会由 esbuild 执行，并且此值应该是一个合法的 [esbuild 目标选项](https://esbuild.github.io/api/#target)。自定义目标也可以是一个 ES 版本（例如：`es2015`）、一个浏览器版本（例如：`chrome58`）或是多个目标组成的一个数组。
 
@@ -584,7 +594,7 @@ createServer()
 
 ### build.sourcemap {#build-sourcemap}
 
-- **类型：** `boolean | 'inline'`
+- **类型：** `boolean | 'inline'` | 'hidden'`
 - **默认：** `false`
 
   构建后是否生成 source map 文件。
@@ -600,6 +610,12 @@ createServer()
 - **类型：** [`RollupCommonJSOptions`](https://github.com/rollup/plugins/tree/master/packages/commonjs#options)
 
   传递给 [@rollup/plugin-commonjs](https://github.com/rollup/plugins/tree/master/packages/commonjs) 插件的选项。
+
+### build.dynamicImportVarsOptions {#build-dynamicimportvarsoptions}
+
+- **类型：** [`RollupDynamicImportVarsOptions`](https://github.com/rollup/plugins/tree/master/packages/dynamic-import-vars#options)
+
+  传递给 [@rollup/plugin-dynamic-import-vars](https://github.com/rollup/plugins/tree/master/packages/dynamic-import-vars) 的选项。
 
 ### build.lib {#build-lib}
 
@@ -688,6 +704,10 @@ createServer()
 
   在预构建中强制排除的依赖项。
 
+  :::warning CommonJS
+  CommonJS 的依赖不应该排除在优化外。如果一个 ESM 依赖拥有一个嵌套的 CommonJS 依赖，它也不应被排除。
+  :::
+
 ### optimizeDeps.include {#optimizedeps-include}
 
 - **类型：** `string[]`
@@ -719,7 +739,7 @@ SSR 选项可能会在未来版本中进行调整。
 
 ### ssr.noExternal {#ssr-noexternal}
 
-- **类型：** `string[]`
+- **类型：** `string | RegExp | (string | RegExp)[]`
 
   列出的是防止被 SSR 外部化依赖项。
 

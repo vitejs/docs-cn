@@ -34,4 +34,7 @@ footer: MIT Licensed | Copyright © 2019-present Evan You & Vite Contributors
 
 <script setup>
 import sponsors from './.vitepress/theme/sponsors.json'
+import fetchReleaseTag from './.vitepress/theme/fetchReleaseTag.js'
+
+fetchReleaseTag()
 </script>

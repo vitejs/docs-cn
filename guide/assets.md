@@ -82,3 +82,29 @@ import InlineWorker from './shader.js?worker&inline'
 
 - 引入 `public` 中的资源永远应该使用根绝对路径 —— 举个例子，`public/icon.png` 应该在源码中被引用为 `/icon.png`。
 - `public` 中的资源不应该被 JavaScript 文件引用。
+
+## new URL(url, import.meta.url)
+
+[import.meta.url](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import.meta) 是一个 ESM 的原生功能。，会暴露当前模块的 URL。将它与原生的 [URL 构造器](https://developer.mozilla.org/en-US/docs/Web/API/URL) 结合，传入静态资源与本模块相对的地址，即可得到被完整解析的 URL：
+
+```js
+const imgUrl = new URL('./img.png', import.meta.url)
+
+document.getElementById('hero-img').src = imgUrl
+```
+
+这在现代浏览器中能够原生使用 - 实际上，Vite 并不需要在开发阶段处理这些代码！
+
+这个模式同样还可以通过字符串模板支持动态 URL：
+
+```js
+function getImageUrl(name) {
+  return new URL(`./dir/${name}.png`, import.meta.url).href
+}
+```
+
+在生产构建时，Vite 才会进行必要的转换保证 URL 在打包和资源哈希后仍指向正确的地址。
+
+::: 警告 注意：无法在 SSR 中使用
+如果你正在以服务端渲染模式使用 Vite 则此模式不支持，因为 `import.meta.url` 在浏览器和 Node.js 中有不同的语义。服务端的产物也无法预先确定客户端主机 URL。
+:::

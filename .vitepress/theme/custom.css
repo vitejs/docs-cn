@@ -16,7 +16,6 @@
   display: none;
 }
 
-
 :root {
   --c-brand: #646cff;
   --c-brand-light: #747bff;
@@ -37,4 +36,18 @@
 .cn-footnote .title {
   display: block;
   margin-bottom: 10px;
+}
+
+.release-tag {
+  font-size: 20px;
+  font-weight: bold;
+  display: inline-block;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 6px;
+  margin-left: 6px;
+  background: var(--c-brand);
+  color: white;
+  border-radius: 10px;
 }
