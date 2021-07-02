@@ -149,8 +149,13 @@ Vite 插件也可以提供钩子来服务于特定的 Vite 目标。这些钩子
 
 ### `config` {#config}
 
+<<<<<<< HEAD
 - **类型：** `(config: UserConfig, env: { mode: string, command: string }) => UserConfig | null | void`
 - **种类：** `sync`, `sequential`
+=======
+- **Type:** `(config: UserConfig, env: { mode: string, command: string }) => UserConfig | null | void`
+- **Kind:** `async`, `sequential`
+>>>>>>> 23642b159a904bcd094cf1b82e3c0b9e5906cf97
 
   在解析 Vite 配置前调用。钩子接收原始用户配置（命令行选项指定的会与配置文件合并）和一个描述配置环境的变量，包含正在使用的 `mode` 和 `command`。它可以返回一个将被深度合并到现有配置中的部分配置对象，或者直接改变配置（如果默认的合并不能达到预期的结果）。
 
