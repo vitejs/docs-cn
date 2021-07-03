@@ -4,7 +4,7 @@
 
 Vite 在一个特殊的 **`import.meta.env`** 对象上暴露环境变量。这里有一些在所有情况下都可以使用的内建变量：
 
-- **`import.meta.env.MODE`**: {string} 应用运行的[模式](#模式)。
+- **`import.meta.env.MODE`**: {string} 应用运行的[模式](#modes)。
 
 - **`import.meta.env.BASE_URL`**: {string} 部署应用时的基本 URL。他由[`base` 配置项](/config/#base)决定。
 
