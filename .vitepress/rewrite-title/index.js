@@ -1,5 +1,5 @@
 const path = require('path')
-const fs = require('fs')
+const fsp = require('fs').promises
 const matterService = require('../utils/frontmatter-service')
 const workspacePath = path.resolve(__dirname, '..', '..')
 
@@ -17,33 +17,28 @@ const rewriteMarkdownTitle = (filePath) => {
   matter.set('title', title).save()
 }
 
-const ergodicDirectory = (dirPath) => {
-  fs.readdir(dirPath, (err, files) => {
-    if (err) {
-      console.warn('Directory reading failed !')
-      return
+const ergodicDirectory = async (dirPath) => {
+  try {
+    const files = await fsp.readdir(dirPath)
+    for (let i = 0; i < files.length; i++) {
+      const file = files[i],
+        filePath = path.join(dirPath, file)
+      const stats = await fsp.stat(filePath)
+      if (stats.isFile()) {
+        if (filePath.split('.').pop().toLowerCase() === 'md') {
+          rewriteMarkdownTitle(filePath)
+        }
+      } else if (stats.isDirectory()) {
+        if (articleDirs.includes(filePath.split('/').pop())) {
+          ergodicDirectory(filePath)
+        }
+      }
     }
-
-    files.forEach((file) => {
-      const filePath = path.join(dirPath, file)
-      fs.stat(filePath, (err, stats) => {
-        if (err) {
-          console.warn('File status reading failed !')
-          return
-        }
-
-        if (stats.isFile()) {
-          if (filePath.split('.').pop().toLowerCase() === 'md') {
-            rewriteMarkdownTitle(filePath)
-          }
-        } else if (stats.isDirectory()) {
-          if (articleDirs.includes(filePath.split('/').pop())) {
-            ergodicDirectory(filePath)
-          }
-        }
-      })
-    })
-  })
+  } catch (err) {
+    console.warn(
+      `vite-docs-cn: failed to rewrite frontmatter for titles.\n ${err}!`
+    )
+  }
 }
 
-ergodicDirectory(workspacePath)
+module.exports = () => ergodicDirectory(workspacePath)

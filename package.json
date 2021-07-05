@@ -13,7 +13,7 @@
 	},
 	"scripts": {
 		"dev": "vitepress dev .",
-		"build": "node ./.vitepress/rewrite-title/ && vitepress build .",
+		"build": "node ./scripts/build.js",
 		"serve": "vitepress serve ."
 	},
 	"gitHooks": {
