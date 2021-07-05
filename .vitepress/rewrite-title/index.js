@@ -30,7 +30,7 @@ const ergodicDirectory = async (dirPath) => {
         }
       } else if (stats.isDirectory()) {
         if (articleDirs.includes(filePath.split('/').pop())) {
-          ergodicDirectory(filePath)
+          await ergodicDirectory(filePath)
         }
       }
     }
