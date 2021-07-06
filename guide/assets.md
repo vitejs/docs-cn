@@ -105,6 +105,6 @@ function getImageUrl(name) {
 
 在生产构建时，Vite 才会进行必要的转换保证 URL 在打包和资源哈希后仍指向正确的地址。
 
-::: 警告 注意：无法在 SSR 中使用
+::: warning 注意：无法在 SSR 中使用
 如果你正在以服务端渲染模式使用 Vite 则此模式不支持，因为 `import.meta.url` 在浏览器和 Node.js 中有不同的语义。服务端的产物也无法预先确定客户端主机 URL。
 :::
