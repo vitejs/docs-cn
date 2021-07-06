@@ -114,6 +114,7 @@ if (import.meta.hot) {
 
 监听自定义 HMR 事件。
 
+<<<<<<< HEAD
 以下 HMR 事件由 Vite 自动触发：
 - `'vite:beforeUpdate'` 当更新即将被应用时（例如，一个模块将被替换）
 - `'vite:beforeFullReload'` 当完整的重载即将发生时
@@ -121,3 +122,13 @@ if (import.meta.hot) {
 - `'vite:error'` 当发生错误时（例如，语法错误）
 
 自定义 HMR 事件可以由插件发送。更多细节详见 [handleHotUpdate](./api-plugin#handleHotUpdate)。
+=======
+The following HMR events are dispatched by Vite automatically:
+
+- `'vite:beforeUpdate'` when an update is about to be applied (e.g. a module will be replaced)
+- `'vite:beforeFullReload'` when a full reload is about to occur
+- `'vite:beforePrune'` when modules that are no longer needed are about to be pruned
+- `'vite:error'` when an error occurs (e.g. syntax error)
+
+Custom HMR events can also be sent from plugins. See [handleHotUpdate](./api-plugin#handlehotupdate) for more details.
+>>>>>>> e12f2778348d3a2cb59a4a8850cab0a4e103007c
