@@ -136,11 +136,13 @@ export default async ({ command, mode }) => {
 
 ### publicDir {#publicdir}
 
-- **类型：** `string`
+- **类型：** `string | false`
 - **默认：** `"public"`
 
   作为静态资源服务的文件夹。该目录中的文件在开发期间在 `/` 处提供，并在构建期间复制到 `outDir` 的根目录，并且始终按原样提供或复制而无需进行转换。该值可以是文件系统的绝对路径，也可以是相对于项目的根目录的相对路径。
 
+  将 `publicDir` 设定为 `false` 可以关闭此项功能。
+  
   欲了解更多，请参阅 [`public` 目录](/guide/assets#the-public-directory)。
 
 ### cacheDir {#cachedir}
@@ -282,7 +284,7 @@ export default async ({ command, mode }) => {
   }
   ```
 
-  默认情况下，ESbuild 会被应用在 `ts`、`jsx`、`tsx` 文件。你可以通过 `esbuild.include` 和 `esbuild.exclude` 对其进行配置，它们两个配置的类型是`string | RegExp | (string | RegExp)[]`。
+  默认情况下，ESbuild 会被应用在 `ts`、`jsx`、`tsx` 文件。你可以通过 `esbuild.include` 和 `esbuild.exclude` 对要处理的文件类型进行配置，这两个配置的类型应为 `string | RegExp | (string | RegExp)[]`。
 
   此外，你还可以通过 `esbuild.jsxInject` 来自动为每一个被 ESbuild 转换的文件注入 JSX helper。
 
@@ -413,7 +415,7 @@ export default async ({ command, mode }) => {
           changeOrigin: true,
           configure: (proxy, options) => {
             // proxy 是 'http-proxy' 的实例
-          }),
+          },
         }
       }
     }
@@ -630,7 +632,7 @@ createServer()
 - **默认：** `false`
 - **相关内容：** [后端集成](/guide/backend-integration)
 
-  当设置为 `true`，构建后将会生成 `manifest.json` 文件，映射没有被 hash 的资源文件名和它们的 hash 版本。可以为一些服务器框架渲染时提供正确的资源引入链接。
+  当设置为 `true`，构建后将会生成 `manifest.json` 文件，包含了没有被 hash 的资源文件名和 hash 后版本的映射。可以为一些服务器框架渲染时提供正确的资源引入链接。
 
 ### build.minify {#build-minify}
 

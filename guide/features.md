@@ -260,7 +260,7 @@ const modules = {
 - 该 Glob 模式会被当成导入标识符：必须是相对路径（以 `./` 开头）或绝对路径（以 `/` 开头，相对于项目根目录解析）。
 - Glob 匹配是使用 `fast-glob` 来实现的 —— 阅读它的文档来查阅 [支持的 Glob 模式](https://github.com/mrmlnc/fast-glob#pattern-syntax)。
 
-## Web Assembly {#web-assembly}
+## WebAssembly {#webassembly}
 
 预编译的 `.wasm` 文件可以直接被导入 —— 默认导出一个函数，返回值为所导出 wasm 实例对象的 Promise：
 
