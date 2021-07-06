@@ -415,7 +415,7 @@ export default async ({ command, mode }) => {
           changeOrigin: true,
           configure: (proxy, options) => {
             // proxy 是 'http-proxy' 的实例
-          }),
+          },
         }
       }
     }
