@@ -517,11 +517,7 @@ createServer()
   export default {
     server: {
       fs: {
-<<<<<<< HEAD
         // 可以为项目根目录的上一级提供服务
-=======
-        // Allow serving files from one level up to the project root
->>>>>>> e12f2778348d3a2cb59a4a8850cab0a4e103007c
         allow: ['..']
       }
     }
