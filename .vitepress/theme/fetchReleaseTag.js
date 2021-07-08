@@ -13,8 +13,9 @@ export default function fetchReleaseTag() {
         const releaseTagName = json.tag_name
         docsReleaseTag.innerText = releaseTagName
 
-
-        mainTitle.appendChild(docsReleaseTag)
+        if (releaseTagName !== undefined) {
+          mainTitle.appendChild(docsReleaseTag)
+        }
       })
   })
 }
