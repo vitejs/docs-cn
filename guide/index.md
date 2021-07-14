@@ -25,13 +25,19 @@ Vite 需要 [Node.js](https://nodejs.org/en/) 版本 >= 12.0.0。
 使用 NPM:
 
 ```bash
-$ npm init @vitejs/app
+$ npm init vite@latest
 ```
 
 使用 Yarn:
 
 ```bash
-$ yarn create @vitejs/app
+$ yarn create vite
+```
+
+With PNPM:
+
+```bash
+$ pnpx create-vite
 ```
 
 然后按照提示操作即可！
@@ -40,13 +46,13 @@ $ yarn create @vitejs/app
 
 ```bash
 # npm 6.x
-npm init @vitejs/app my-vue-app --template vue
+npm init vite@latest my-vue-app --template vue
 
 # npm 7+, 需要额外的双横线：
-npm init @vitejs/app my-vue-app -- --template vue
+npm init vite@latest my-vue-app -- --template vue
 
 # yarn
-yarn create @vitejs/app my-vue-app --template vue
+yarn create vite my-vue-app --template vue
 ```
 
 支持的模板预设包括：
@@ -64,11 +70,11 @@ yarn create @vitejs/app my-vue-app --template vue
 - `svelte`
 - `svelte-ts`
 
-查看 [@vitejs/create-app](https://github.com/vitejs/vite/tree/main/packages/create-app) 获取每个模板的更多细节。
+查看 [create-vite](https://github.com/vitejs/vite/tree/main/packages/create-vite) 以获取每个模板的更多细节。
 
 ## 社区模板 {#community-templates}
 
-@vitejs/create-app 是一个快速生成主流框架基础模板的工具。查看 Awesome Vite 仓库的 [社区维护模板](https://github.com/vitejs/awesome-vite#templates)，里面包含各种工具和不同框架的模板。你可以用如 [degit](https://github.com/Rich-Harris/degit) 之类的工具，使用社区模版来搭建项目。
+create-vite 是一个快速生成主流框架基础模板的工具。查看 Awesome Vite 仓库的 [社区维护模板](https://github.com/vitejs/awesome-vite#templates)，里面包含各种工具和不同框架的模板。你可以用如 [degit](https://github.com/Rich-Harris/degit) 之类的工具，使用社区模版来搭建项目。
 
 ```bash
 npx degit user/project my-project
