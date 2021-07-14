@@ -34,7 +34,7 @@ $ npm init vite@latest
 $ yarn create vite
 ```
 
-With PNPM:
+使用 PNPM:
 
 ```bash
 $ pnpx create-vite
