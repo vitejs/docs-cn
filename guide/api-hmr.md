@@ -115,6 +115,7 @@ if (import.meta.hot) {
 监听自定义 HMR 事件。
 
 以下 HMR 事件由 Vite 自动触发：
+
 - `'vite:beforeUpdate'` 当更新即将被应用时（例如，一个模块将被替换）
 - `'vite:beforeFullReload'` 当完整的重载即将发生时
 - `'vite:beforePrune'` 当不再需要的模块即将被剔除时
