@@ -24,11 +24,7 @@ Vite 1.0 虽然之前进入了 RC 阶段，但在发布之前我们决定进行�
 
 设计 Vite 的初衷是为了 [探索黑客原型项目以更好的支持 Vue 单文件组件](https://github.com/vuejs/vue-dev-server)。Vite 1 则是这个想法的延续，并在此基础上增加了对 HMR 支持。
 
-<<<<<<< HEAD
-但 2.0 基于之前的经验提供了一个更稳定灵活的内部架构，从而可以完全通过插件机制来支持任意框架。现在 Vite 提供 [官方的 Vue, React, Preact, Lit Element 项目模版](https://github.com/vitejs/vite/tree/main/packages/create-app)，而 Svelte 社区也在开发 Vite 整合方案。
-=======
-Vite 2.0 takes what we learned along the way and is redesigned from scratch with a more robust internal architecture. It is now completely framework agnostic, and all framework-specific support is delegated to plugins. There are now [official templates for Vue, React, Preact, Lit Element](https://github.com/vitejs/vite/tree/main/packages/create-vite), and ongoing community efforts for Svelte integration.
->>>>>>> 842e1ad2444a8a3e16e70c760da33830dfbe1fe7
+但 2.0 基于之前的经验提供了一个更稳定灵活的内部架构，从而可以完全通过插件机制来支持任意框架。现在 Vite 提供 [官方的 Vue, React, Preact, Lit Element 项目模版](https://github.com/vitejs/vite/tree/main/packages/create-vite)，而 Svelte 社区也在开发 Vite 整合方案。
 
 ### 全新插件机制和 API {#new-plugin-format-and-api}
 
