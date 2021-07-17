@@ -88,7 +88,7 @@ export default {
 
 更多细节详见 [esbuild 文档](https://esbuild.github.io/content-types/#jsx).
 
-你可以使用 `jsInject`（这是一个仅在 Vite 中使用的选项）为 JSX 注入 helper，以避免手动导入：
+你可以使用 `jsxInject`（这是一个仅在 Vite 中使用的选项）为 JSX 注入 helper，以避免手动导入：
 
 ```js
 // vite.config.js
