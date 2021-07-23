@@ -599,7 +599,11 @@ createServer()
 - **类型：** `boolean | 'inline'` | 'hidden'`
 - **默认：** `false`
 
+<<<<<<< HEAD
   构建后是否生成 source map 文件。
+=======
+  Generate production source maps. If `true`, a separate sourcemap file will be created. If `'inline'`, the sourcemap will be appended to the resulting output file as a data URI. `'hidden'` works like `true` except that the corresponding sourcemap comments in the bundled files are suppressed.
+>>>>>>> 8b351d7d7af755f4d195777277ef61ab527ea0f4
 
 ### build.rollupOptions {#build-rollupoptions}
 
