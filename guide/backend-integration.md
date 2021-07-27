@@ -8,7 +8,7 @@
 
    ```js
    // vite.config.js
-   export default {
+   export default defineConfig({
      build: {
        // 在 outDir 中生成 manifest.json
        manifest: true,
@@ -17,6 +17,7 @@
          input: '/path/to/main.js'
        }
      }
+<<<<<<< HEAD
    }
    ```
 
@@ -25,6 +26,9 @@
    ```js
    // 添加到你应用入口文件的开头
    import 'vite/dynamic-import-polyfill'
+=======
+   })
+>>>>>>> efa21b47487a2d5ee920132877d7107967211ecc
    ```
 
 2. 在开发环境中，在服务器的 HTML 模板中注入以下内容（用正在运行的本地 URL 替换 `http://localhost:3000`）：

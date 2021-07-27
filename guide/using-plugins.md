@@ -13,14 +13,15 @@ $ npm i -D @vitejs/plugin-legacy
 ```js
 // vite.config.js
 import legacy from '@vitejs/plugin-legacy'
+import { defineConfig } from 'vite'
 
-export default {
+export default defineConfig({
   plugins: [
     legacy({
       targets: ['defaults', 'not IE 11']
     })
   ]
-}
+})
 ```
 
 `plugins` 也可以接受包含多个插件作为单个元素的预设。这对于使用多个插件实现的复杂特性（如框架集成）很有用。该数组将在内部被扁平化。
@@ -48,15 +49,16 @@ Vite 旨在为常见的 Web 开发范式提供开箱即用的支持。在寻找�
 ```js
 // vite.config.js
 import image from '@rollup/plugin-image'
+import { defineConfig } from 'vite'
 
-export default {
+export default defineConfig({
   plugins: [
     {
       ...image(),
       enforce: 'pre'
     }
   ]
-}
+})
 ```
 
 查看 [Plugins API Guide](./api-plugin.md#plugin-ordering) 获取细节信息，并在 [Vite Rollup 插件](https://vite-rollup-plugins.patak.dev) 兼容性列表中注意 `enforce` 标签和流行插件的使用说明。
@@ -68,15 +70,16 @@ export default {
 ```js
 // vite.config.js
 import typescript2 from 'rollup-plugin-typescript2'
+import { defineConfig } from 'vite'
 
-export default {
+export default defineConfig({
   plugins: [
     {
       ...typescript2(),
       apply: 'build'
     }
   ]
-}
+})
 ```
 
 ## 创建插件 {#building-plugins}

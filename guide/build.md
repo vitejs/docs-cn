@@ -32,13 +32,13 @@ defaults and supports es6-module and supports es6-module-dynamic-import, not ope
 
 ```js
 // vite.config.js
-module.exports = {
+module.exports = defineConfig({
   build: {
     rollupOptions: {
       // https://rollupjs.org/guide/en/#big-list-of-options
     }
   }
-}
+})
 ```
 
 例如，你可以使用仅在构建期间应用的插件来指定多个 Rollup 输出。
@@ -49,13 +49,13 @@ module.exports = {
 
 ```js
 // vite.config.js
-module.exports = {
+module.exports = defineConfig({
   build: {
     watch: {
       // https://rollupjs.org/guide/en/#watch-options
     }
   }
-}
+})
 ```
 
 ## 多页面应用模式 {#multi-page-app}
@@ -79,8 +79,9 @@ module.exports = {
 ```js
 // vite.config.js
 const { resolve } = require('path')
+const { defineConfig } = require('vite')
 
-module.exports = {
+module.exports = defineConfig({
   build: {
     rollupOptions: {
       input: {
@@ -89,7 +90,7 @@ module.exports = {
       }
     }
   }
-}
+})
 ```
 
 如果你指定了另一个根目录，请记住，在解析输入路径时，`__dirname` 的值将仍然是 vite.config.js 文件所在的目录。因此，你需要把对应入口文件的 `root` 的路径添加到 `resolve` 的参数中。
@@ -103,13 +104,14 @@ module.exports = {
 ```js
 // vite.config.js
 const path = require('path')
+const { defineConfig } = require('vite')
 
-module.exports = {
+module.exports = defineConfig({
   build: {
     lib: {
       entry: path.resolve(__dirname, 'lib/main.js'),
       name: 'MyLib',
-      fileName: format => `my-lib.${format}.js`  
+      fileName: (format) => `my-lib.${format}.js`
     },
     rollupOptions: {
       // 确保外部化处理那些你不想打包进库的依赖
@@ -122,7 +124,7 @@ module.exports = {
       }
     }
   }
-}
+})
 ```
 
 使用如上配置运行 `vite build` 时，将会使用一套面向库的 Rollup 预设，并且将为该库提供两种构建格式：`es` 和 `umd` (可在 `build.lib` 中配置)：

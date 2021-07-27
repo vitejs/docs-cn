@@ -55,7 +55,7 @@ Vite 也直接支持 TS 配置文件。你可以在 `vite.config.ts` 中使用 `
 如果配置文件需要基于（`serve` 或 `build`）命令或者不同的 [模式](/guide/env-and-mode) 来决定选项，则可以选择导出这样一个函数：
 
 ```js
-export default ({ command, mode }) => {
+export default defineConfig(({ command, mode }) => {
   if (command === 'serve') {
     return {
       // serve 独有配置
@@ -65,7 +65,7 @@ export default ({ command, mode }) => {
       // build 独有配置
     }
   }
-}
+})
 ```
 
 ### 异步配置 {#async-config}
@@ -73,7 +73,7 @@ export default ({ command, mode }) => {
 如果配置需要调用一个异步函数，也可以转而导出一个异步函数：
 
 ```js
-export default async ({ command, mode }) => {
+export default defineConfig(async ({ command, mode }) => {
   const data = await asyncFunction()
   return {
     // 构建模式所需的特有配置
@@ -242,7 +242,7 @@ export default async ({ command, mode }) => {
   指定传递给 CSS 预处理器的选项。例如:
 
   ```js
-  export default {
+  export default defineConfig({
     css: {
       preprocessorOptions: {
         scss: {
@@ -250,7 +250,7 @@ export default async ({ command, mode }) => {
         }
       }
     }
-  }
+  })
   ```
 
 ### json.namedExports {#json-namedexports}
@@ -276,12 +276,12 @@ export default async ({ command, mode }) => {
   `ESBuildOptions` 继承自 [ESbuild 转换选项](https://esbuild.github.io/api/#transform-api)。最常见的用例是自定义 JSX：
 
   ```js
-  export default {
+  export default defineConfig({
     esbuild: {
       jsxFactory: 'h',
       jsxFragment: 'Fragment'
     }
-  }
+  })
   ```
 
   默认情况下，ESbuild 会被应用在 `ts`、`jsx`、`tsx` 文件。你可以通过 `esbuild.include` 和 `esbuild.exclude` 对要处理的文件类型进行配置，这两个配置的类型应为 `string | RegExp | (string | RegExp)[]`。
@@ -289,11 +289,11 @@ export default async ({ command, mode }) => {
   此外，你还可以通过 `esbuild.jsxInject` 来自动为每一个被 ESbuild 转换的文件注入 JSX helper。
 
   ```js
-  export default {
+  export default defineConfig({
     esbuild: {
       jsxInject: `import React from 'react'`
     }
-  }
+  })
   ```
 
   设置为 `false` 来禁用 ESbuild 转换。
@@ -374,11 +374,11 @@ export default async ({ command, mode }) => {
   **示例：**
 
   ```js
-  export default {
+  export default defineConfig({
     server: {
       open: '/docs/index.html'
     }
-  }
+  })
   ```
 
 ### server.proxy {#server-proxy}
@@ -392,7 +392,7 @@ export default async ({ command, mode }) => {
   **示例：**
 
   ```js
-  export default {
+  export default defineConfig({
     server: {
       proxy: {
         // 字符串简写写法
@@ -419,7 +419,7 @@ export default async ({ command, mode }) => {
         }
       }
     }
-  }
+  })
   ```
 
 ### server.cors {#server-cors}
@@ -514,14 +514,14 @@ createServer()
   接受一个路径作为自定义工作区的 root 目录。可以是绝对路径或是相对于 [项目 root 目录](/guide/#index-html-and-project-root) 的相对路径。示例如下：
 
   ```js
-  export default {
+  export default defineConfig({
     server: {
       fs: {
         // 可以为项目根目录的上一级提供服务
         allow: ['..']
       }
     }
-  }
+  })
   ```
 
 ## 构建选项 {#build-options}
@@ -543,6 +543,7 @@ createServer()
 
   注意：如果代码包含不能被 `esbuild` 安全地编译的特性，那么构建将会失败。查看 [esbuild 文档](https://esbuild.github.io/content-types/#javascript) 获取更多细节。
 
+<<<<<<< HEAD
 ### build.polyfillDynamicImport {#build-polyfilldynamicimport}
 
 - **Type:** `boolean`
@@ -561,6 +562,9 @@ createServer()
   注意：本 polyfill **无法**应用到 [库模式](/guide/build#library-mode) 中。如果你需要支持没有原生动态导入功能的浏览器，你可能需要避免在你的库中使用本功能。
 
 ### build.outDir {#build-outdir}
+=======
+### build.outDir
+>>>>>>> efa21b47487a2d5ee920132877d7107967211ecc
 
 - **类型：** `string`
 - **默认：** `dist`
