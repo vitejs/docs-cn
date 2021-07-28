@@ -55,7 +55,7 @@ Vite 也直接支持 TS 配置文件。你可以在 `vite.config.ts` 中使用 `
 如果配置文件需要基于（`serve` 或 `build`）命令或者不同的 [模式](/guide/env-and-mode) 来决定选项，则可以选择导出这样一个函数：
 
 ```js
-export default ({ command, mode }) => {
+export default defineConfig(({ command, mode }) => {
   if (command === 'serve') {
     return {
       // serve 独有配置
@@ -65,7 +65,7 @@ export default ({ command, mode }) => {
       // build 独有配置
     }
   }
-}
+})
 ```
 
 ### 异步配置 {#async-config}
@@ -73,7 +73,7 @@ export default ({ command, mode }) => {
 如果配置需要调用一个异步函数，也可以转而导出一个异步函数：
 
 ```js
-export default async ({ command, mode }) => {
+export default defineConfig(async ({ command, mode }) => {
   const data = await asyncFunction()
   return {
     // 构建模式所需的特有配置
@@ -242,7 +242,7 @@ export default async ({ command, mode }) => {
   指定传递给 CSS 预处理器的选项。例如:
 
   ```js
-  export default {
+  export default defineConfig({
     css: {
       preprocessorOptions: {
         scss: {
@@ -250,7 +250,7 @@ export default async ({ command, mode }) => {
         }
       }
     }
-  }
+  })
   ```
 
 ### json.namedExports {#json-namedexports}
@@ -276,12 +276,12 @@ export default async ({ command, mode }) => {
   `ESBuildOptions` 继承自 [ESbuild 转换选项](https://esbuild.github.io/api/#transform-api)。最常见的用例是自定义 JSX：
 
   ```js
-  export default {
+  export default defineConfig({
     esbuild: {
       jsxFactory: 'h',
       jsxFragment: 'Fragment'
     }
-  }
+  })
   ```
 
   默认情况下，ESbuild 会被应用在 `ts`、`jsx`、`tsx` 文件。你可以通过 `esbuild.include` 和 `esbuild.exclude` 对要处理的文件类型进行配置，这两个配置的类型应为 `string | RegExp | (string | RegExp)[]`。
@@ -289,11 +289,11 @@ export default async ({ command, mode }) => {
   此外，你还可以通过 `esbuild.jsxInject` 来自动为每一个被 ESbuild 转换的文件注入 JSX helper。
 
   ```js
-  export default {
+  export default defineConfig({
     esbuild: {
       jsxInject: `import React from 'react'`
     }
-  }
+  })
   ```
 
   设置为 `false` 来禁用 ESbuild 转换。
@@ -374,11 +374,11 @@ export default async ({ command, mode }) => {
   **示例：**
 
   ```js
-  export default {
+  export default defineConfig({
     server: {
       open: '/docs/index.html'
     }
-  }
+  })
   ```
 
 ### server.proxy {#server-proxy}
@@ -392,7 +392,7 @@ export default async ({ command, mode }) => {
   **示例：**
 
   ```js
-  export default {
+  export default defineConfig({
     server: {
       proxy: {
         // 字符串简写写法
@@ -419,7 +419,7 @@ export default async ({ command, mode }) => {
         }
       }
     }
-  }
+  })
   ```
 
 ### server.cors {#server-cors}
@@ -514,14 +514,14 @@ createServer()
   接受一个路径作为自定义工作区的 root 目录。可以是绝对路径或是相对于 [项目 root 目录](/guide/#index-html-and-project-root) 的相对路径。示例如下：
 
   ```js
-  export default {
+  export default defineConfig({
     server: {
       fs: {
         // 可以为项目根目录的上一级提供服务
         allow: ['..']
       }
     }
-  }
+  })
   ```
 
 ## 构建选项 {#build-options}
@@ -542,23 +542,6 @@ createServer()
   转换过程将会由 esbuild 执行，并且此值应该是一个合法的 [esbuild 目标选项](https://esbuild.github.io/api/#target)。自定义目标也可以是一个 ES 版本（例如：`es2015`）、一个浏览器版本（例如：`chrome58`）或是多个目标组成的一个数组。
 
   注意：如果代码包含不能被 `esbuild` 安全地编译的特性，那么构建将会失败。查看 [esbuild 文档](https://esbuild.github.io/content-types/#javascript) 获取更多细节。
-
-### build.polyfillDynamicImport {#build-polyfilldynamicimport}
-
-- **Type:** `boolean`
-- **Default:** `false`
-
-  设置是否自动注入 [动态导入 polyfill](https://github.com/GoogleChromeLabs/dynamic-import-polyfill)。
-
-  如果设置为 `true`，该 polyfill 会被自动注入到每一个 `index.html` 入口的代理模块中。若将本次构建使用 `build.rollupOptions.input` 配置为使用非 html 的自定义入口，则需要在你的自定义的入口手动导入该 polyfill：
-
-  ```js
-  import 'vite/dynamic-import-polyfill'
-  ```
-
-  当使用 [`@vitejs/plugin-legacy`](https://github.com/vitejs/vite/tree/main/packages/plugin-legacy) 时，该插件会将本选项自动配置为 `true`。
-
-  注意：本 polyfill **无法**应用到 [库模式](/guide/build#library-mode) 中。如果你需要支持没有原生动态导入功能的浏览器，你可能需要避免在你的库中使用本功能。
 
 ### build.outDir {#build-outdir}
 
@@ -599,7 +582,7 @@ createServer()
 - **类型：** `boolean | 'inline'` | 'hidden'`
 - **默认：** `false`
 
-  构建后是否生成 source map 文件。
+  构建后是否生成 source map 文件。如果为 `true`，将会创建一个独立的 source map 文件。如果为 `'inline'`，source map 将作为一个 data URI 附加在输出文件中。`'hidden'` 的工作原理与 `'true'` 相似，只是 bundle 文件中相应的注释将不被保留。
 
 ### build.rollupOptions {#build-rollupoptions}
 
@@ -621,10 +604,10 @@ createServer()
 
 ### build.lib {#build-lib}
 
-- **类型：** `{ entry: string, name?: string, formats?: ('es' | 'cjs' | 'umd' | 'iife')[], fileName?: string }`
+- **类型：** `{ entry: string, name?: string, formats?: ('es' | 'cjs' | 'umd' | 'iife')[], fileName?: string | ((format: ModuleFormat) => string) }`
 - **相关内容：** [库模式](/guide/build#library-mode)
 
-  构建为库。`entry` 是必须的因为库不能使用 HTML 作为入口。`name` 则是暴露的全局变量，在 `formats` 包含 `'umd'` 或 `'iife'` 时是必须的。默认 `formats` 是 `['es', 'umd']` 。`fileName` 是输出的包文件名，默认 `fileName` 是 `package.json` 的 `name` 选项。
+  构建为库。`entry` 是必须的因为库不能使用 HTML 作为入口。`name` 则是暴露的全局变量，在 `formats` 包含 `'umd'` 或 `'iife'` 时是必须的。默认 `formats` 是 `['es', 'umd']` 。`fileName` 是输出的包文件名，默认 `fileName` 是 `package.json` 的 `name` 选项，同时，它还可以被定义为参数为 `format` 的函数。
 
 ### build.manifest {#build-manifest}
 

@@ -34,9 +34,9 @@ Vite 插件扩展了设计出色的 Rollup 接口，带有一些 Vite 独有的�
 import vitePlugin from 'vite-plugin-feature'
 import rollupPlugin from 'rollup-plugin-feature'
 
-export default {
+export default defineConfig({
   plugins: [vitePlugin(), rollupPlugin()]
-}
+})
 ```
 
 假值的插件将被忽略，可以用来轻松地启用或停用插件。
@@ -55,11 +55,12 @@ export default function framework(config) {
 
 ```js
 // vite.config.js
+import { defineConfig } from 'vite'
 import framework from 'vite-plugin-framework'
 
-export default {
+export default defineConfig({
   plugins: [framework()]
-}
+})
 ```
 
 ## 简单示例 {#simple-examples}
@@ -429,8 +430,9 @@ function myPlugin() {
 ```js
 // vite.config.js
 import example from 'rollup-plugin-example'
+import { defineConfig } from 'vite'
 
-export default {
+export default defineConfig({
   plugins: [
     {
       ...example(),
@@ -438,7 +440,7 @@ export default {
       apply: 'build'
     }
   ]
-}
+})
 ```
 
 查看 [Vite Rollup 插件](https://vite-rollup-plugins.patak.dev) 获取兼容的官方 Rollup 插件列表及其使用指南。

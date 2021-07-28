@@ -74,6 +74,10 @@ module.exports = {
             text: 'English',
             link: 'https://vitejs.dev'
           },
+          {
+            text: '日本語',
+            link: 'https://ja.vitejs.dev'
+          }
         ]
       }
     ],

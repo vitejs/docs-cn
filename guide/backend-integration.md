@@ -8,7 +8,7 @@
 
    ```js
    // vite.config.js
-   export default {
+   export default defineConfig({
      build: {
        // 在 outDir 中生成 manifest.json
        manifest: true,
@@ -17,14 +17,7 @@
          input: '/path/to/main.js'
        }
      }
-   }
-   ```
-
-   如果你使用了 [`@vitejs/plugin-legacy`](https://github.com/vitejs/vite/tree/main/packages/plugin-legacy) 插件或者手动开启 [`build.dynamicImportPolyfill` 选项](/config/#build-polyfilldynamicimport)，请记得将 [dynamic import polyfill](/config/#build-polyfilldynamicimport) 添加到入口处，因为它并不会被自动注入：
-
-   ```js
-   // 添加到你应用入口文件的开头
-   import 'vite/dynamic-import-polyfill'
+   })
    ```
 
 2. 在开发环境中，在服务器的 HTML 模板中注入以下内容（用正在运行的本地 URL 替换 `http://localhost:3000`）：

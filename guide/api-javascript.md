@@ -4,13 +4,13 @@ Vite 的 JavaScript API 是完全类型化的，我们推荐使用 TypeScript �
 
 ## `createServer` {#createserver}
 
-**类型签名**
+**类型签名：**
 
 ```ts
 async function createServer(inlineConfig?: InlineConfig): Promise<ViteDevServer>
 ```
 
-**使用示例**
+**使用示例：**
 
 ```js
 const { createServer } = require('vite')
@@ -119,7 +119,7 @@ interface ViteDevServer {
 
 ## `build`
 
-**类型校验**
+**类型校验：**
 
 ```ts
 async function build(
@@ -127,7 +127,7 @@ async function build(
 ): Promise<RollupOutput | RollupOutput[]>
 ```
 
-**使用示例**
+**使用示例：**
 
 ```js
 const path = require('path')
@@ -148,7 +148,7 @@ const { build } = require('vite')
 
 ## `resolveConfig` {#resolveconfig}
 
-**类型校验**
+**类型校验：**
 
 ```ts
 async function resolveConfig(
