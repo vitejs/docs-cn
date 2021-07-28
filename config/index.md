@@ -543,28 +543,7 @@ createServer()
 
   注意：如果代码包含不能被 `esbuild` 安全地编译的特性，那么构建将会失败。查看 [esbuild 文档](https://esbuild.github.io/content-types/#javascript) 获取更多细节。
 
-<<<<<<< HEAD
-### build.polyfillDynamicImport {#build-polyfilldynamicimport}
-
-- **Type:** `boolean`
-- **Default:** `false`
-
-  设置是否自动注入 [动态导入 polyfill](https://github.com/GoogleChromeLabs/dynamic-import-polyfill)。
-
-  如果设置为 `true`，该 polyfill 会被自动注入到每一个 `index.html` 入口的代理模块中。若将本次构建使用 `build.rollupOptions.input` 配置为使用非 html 的自定义入口，则需要在你的自定义的入口手动导入该 polyfill：
-
-  ```js
-  import 'vite/dynamic-import-polyfill'
-  ```
-
-  当使用 [`@vitejs/plugin-legacy`](https://github.com/vitejs/vite/tree/main/packages/plugin-legacy) 时，该插件会将本选项自动配置为 `true`。
-
-  注意：本 polyfill **无法**应用到 [库模式](/guide/build#library-mode) 中。如果你需要支持没有原生动态导入功能的浏览器，你可能需要避免在你的库中使用本功能。
-
 ### build.outDir {#build-outdir}
-=======
-### build.outDir
->>>>>>> efa21b47487a2d5ee920132877d7107967211ecc
 
 - **类型：** `string`
 - **默认：** `dist`
