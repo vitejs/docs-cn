@@ -543,7 +543,26 @@ createServer()
 
   注意：如果代码包含不能被 `esbuild` 安全地编译的特性，那么构建将会失败。查看 [esbuild 文档](https://esbuild.github.io/content-types/#javascript) 获取更多细节。
 
+<<<<<<< HEAD
 ### build.outDir {#build-outdir}
+=======
+### build.polyfillModulePreload
+
+- **Type:** `boolean`
+- **Default:** `true`
+
+  Whether to automatically inject [module preload polyfill](https://guybedford.com/es-module-preloading-integrity#modulepreload-polyfill).
+
+  If set to `true`, the polyfill is auto injected into the proxy module of each `index.html` entry. If the build is configured to use a non-html custom entry via `build.rollupOptions.input`, then it is necessary to manually import the polyfill in your custom entry:
+
+  ```js
+  import 'vite/modulepreload-polyfill'
+  ```
+
+  Note: the polyfill does **not** apply to [Library Mode](/guide/build#library-mode). If you need to support browsers without native dynamic import, you should probably avoid using it in your library.
+
+### build.outDir
+>>>>>>> e3c7681a06ee2e74c8c68bc5f0d8cf233aacd132
 
 - **类型：** `string`
 - **默认：** `dist`
