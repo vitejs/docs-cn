@@ -78,7 +78,7 @@ export default defineConfig(async ({ command, mode }) => {
   return {
     // 构建模式所需的特有配置
   }
-}
+})
 ```
 
 ## 共享配置 {#shared-options}
