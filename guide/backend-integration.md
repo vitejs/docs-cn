@@ -20,6 +20,13 @@
    })
    ```
 
+   如果你没有禁用 [module preload 的 polyfill](/config/#polyfillmodulepreload)，你还需在你的入口处添加此 polyfill：
+
+   ```js
+   // 在你应用的入口起始处添加此 polyfill
+   import 'vite/modulepreload-polyfill'
+   ```
+
 2. 在开发环境中，在服务器的 HTML 模板中注入以下内容（用正在运行的本地 URL 替换 `http://localhost:3000`）：
 
    ```html
