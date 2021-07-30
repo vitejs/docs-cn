@@ -20,18 +20,14 @@
    })
    ```
 
-<<<<<<< HEAD
-2. 在开发环境中，在服务器的 HTML 模板中注入以下内容（用正在运行的本地 URL 替换 `http://localhost:3000`）：
-=======
-   If you haven't disabled the [module preload polyfill](/config/#polyfillmodulepreload), you also need to import the polyfill in your entry
+   如果你没有禁用 [module preload 的 polyfill](/config/#polyfillmodulepreload)，你还需在你的入口处添加此 polyfill：
 
    ```js
-   // add the beginning of your app entry
+   // 在你应用的入口起始处添加此 polyfill
    import 'vite/modulepreload-polyfill'
    ```
 
-2. For development, inject the following in your server's HTML template (substitute `http://localhost:3000` with the local URL Vite is running at):
->>>>>>> e3c7681a06ee2e74c8c68bc5f0d8cf233aacd132
+2. 在开发环境中，在服务器的 HTML 模板中注入以下内容（用正在运行的本地 URL 替换 `http://localhost:3000`）：
 
    ```html
    <!-- 如果是在开发环境中 -->
