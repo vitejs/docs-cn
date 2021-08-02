@@ -46,7 +46,11 @@ Vite 将 CSS 看作模块系统中的一等公民，并且内置了以下支持�
 
 ### 服务端渲染（SSR）支持 {#server-side-rendering-ssr-support}
 
+<<<<<<< HEAD
 Vite 2.0 提供 [实验性的 SSR 支持](/guide/ssr)。Vite 提供一个灵活的 API 来在 Node.js 中高效率地直接加载 ESM 源码（并且同样有精准的更新而不需要打包）。提供 CommonJS 版本的依赖会在 SSR 时自动被跳过转换直接加载。生产环境下，服务器可以和 Vite 完全解耦。基于 Vite SSR 的架构也可以很方便的做静态预渲染（SSG)。
+=======
+Vite 2.0 ships with [experimental SSR support](https://vitejs.dev/guide/ssr.html). Vite provides APIs to efficiently load and update ESM-based source code in Node.js during development (almost like server-side HMR), and automatically externalizes CommonJS-compatible dependencies to improve development and SSR build speed. The production server can be completely decoupled from Vite, and the same setup can be easily adapted to perform pre-rendering / SSG.
+>>>>>>> ec2ede7888c1d6b453325d49ad59bbae38edb80e
 
 Vite SSR 会作为一个底层功能，而我们期待看到更高层级的框架在此基础上的应用。
 
