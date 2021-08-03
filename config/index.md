@@ -395,9 +395,15 @@ export default defineConfig(async ({ command, mode }) => {
   export default defineConfig({
     server: {
       proxy: {
+<<<<<<< HEAD
         // 字符串简写写法
         '/foo': 'http://localhost:4567/foo',
         // 选项写法
+=======
+        // string shorthand
+        '/foo': 'http://localhost:4567',
+        // with options
+>>>>>>> 0735cb40cfcf52dc26bc9b955bab7f7633bbf8e1
         '/api': {
           target: 'http://jsonplaceholder.typicode.com',
           changeOrigin: true,
