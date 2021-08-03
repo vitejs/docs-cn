@@ -453,13 +453,9 @@ export default defineConfig(async ({ command, mode }) => {
 
   传递给 [chokidar](https://github.com/paulmillr/chokidar#api) 的文件系统监听器选项。
 
-<<<<<<< HEAD
-### server.middlewareMode {#server-middlewaremode}
-=======
-  When running Vite on Windows Subsystem for Linux (WSL) 2, if the project folder resides in a Windows filesystem, you'll need to set this option to `{ usePolling: true }`. This is due to [a WSL2 limitation](https://github.com/microsoft/WSL/issues/4739) with the Windows filesystem.
+  当需要再 Windows Subsystem for Linux (WSL) 2 上运行 Vite 时，如果项目文件夹位于 Windows 文件系统中，你需要将此选项设置为 `{ usePolling: true }`。这是由于 Windows 文件系统的 [WSL2 限制](https://github.com/microsoft/WSL/issues/4739) 造成的。
 
-### server.middlewareMode
->>>>>>> ec2ede7888c1d6b453325d49ad59bbae38edb80e
+### server.middlewareMode {#server-middlewaremode}
 
 - **类型：** `'ssr' | 'html'`
 
