@@ -1,8 +1,16 @@
 # 后端集成 {#backend-integration}
 
+<<<<<<< HEAD
 如果你想使用传统的后端（如 Rails, Laravel）来服务 HTML，但使用 Vite 来服务其他资源，可以查看在 [Awesome Vite](https://github.com/vitejs/awesome-vite#integrations-with-backends) 上的已有的后端集成列表。
 
 或者你可以按照如下步骤手动配置：
+=======
+:::tip Note
+If you want to serve the HTML using a traditional backend (e.g. Rails, Laravel) but use Vite for serving assets, check for existing integrations listed in [Awesome Vite](https://github.com/vitejs/awesome-vite#integrations-with-backends).
+
+If you need a custom integration, you can follow the steps in this guide to configure it manually
+:::
+>>>>>>> e750dbb5a6d340221c8c0e238b72e8636436317f
 
 1. 在你的 Vite 配置中配置入口文件和启用创建 `manifest`：
 
