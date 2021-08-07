@@ -188,9 +188,9 @@ $ npm run preview
 
    ```js
    {
-    "projects": {
-      "default": "<YOUR_FIREBASE_ID>"
-    }
+     "projects": {
+       "default": "<YOUR_FIREBASE_ID>"
+     }
    }
    ```
 
