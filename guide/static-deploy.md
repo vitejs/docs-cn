@@ -285,7 +285,7 @@ $ npm run preview
 
 [腾讯云 Webify](https://webify.cloudbase.net/) 支持从 Git 仓库直接部署您的 Vite 应用。
 
-进入 [Webify 新建应用页面](https://console.cloud.tencent.com/webify/new)，根据选择您代码仓库所在的 Git 平台（Github、Gitlab 或者 Gitee 码云），完成授权流程后，便可导入仓库。
+进入 [Webify 新建应用页面](https://console.cloud.tencent.com/webify/new)，根据选择您代码仓库所在的 Git 平台（GitHub、GitLab 或者 Gitee 码云），完成授权流程后，便可导入仓库。
 
 应用配置如下：
 
