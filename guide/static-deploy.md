@@ -138,13 +138,7 @@ $ npm run preview
 
    如果你要部署在 `https://<USERNAME or GROUP>.gitlab.io/<REPO>/` 上，例如你的仓库地址为 `https://gitlab.com/<USERNAME>/<REPO>`，那么请设置 `base` 为 `'/<REPO>/'`。
 
-<<<<<<< HEAD
-2. 在 `vite.config.js` 中设置 `build.outDir` 为 `public`。
-
-3. 在项目根目录创建一个 `.gitlab-ci.yml` 文件，并包含以下内容。它将使得每次你更改内容时都重新构建与部署站点：
-=======
-2. Create a file called `.gitlab-ci.yml` in the root of your project with the content below. This will build and deploy your site whenever you make changes to your content:
->>>>>>> 58bf7412d6187c6d411d93787d8d80ef74dc75e6
+2. 在项目根目录创建一个 `.gitlab-ci.yml` 文件，并包含以下内容。它将使得每次你更改内容时都重新构建与部署站点：
 
    ```yaml
    image: node:16.5.0
