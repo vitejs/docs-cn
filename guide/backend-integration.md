@@ -22,7 +22,11 @@
    })
    ```
 
+<<<<<<< HEAD
    如果你没有禁用 [module preload 的 polyfill](/config/#polyfillmodulepreload)，你还需在你的入口处添加此 polyfill：
+=======
+   If you haven't disabled the [module preload polyfill](/config/#build-polyfillmodulepreload), you also need to import the polyfill in your entry
+>>>>>>> 34086fffda5c67fcebfc0d23f23ffafa9faf3e54
 
    ```js
    // 在你应用的入口起始处添加此 polyfill

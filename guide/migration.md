@@ -31,13 +31,21 @@
   - `httpsOptions` 已被删除，[`server.https`](/config/#server-https) 可以直接接收选项对象。
   - `chokidarWatchOptions` 变更为 [`server.watch`](/config/#server-watch)。
 
+<<<<<<< HEAD
 - [`assetsInclude`](/config/#assetsInclude) 现在接收 `string | RegExp | (string | RegExp)[]` 而不是一个函数。
+=======
+- [`assetsInclude`](/config/#assetsinclude) now expects `string | RegExp | (string | RegExp)[]` instead of a function.
+>>>>>>> 34086fffda5c67fcebfc0d23f23ffafa9faf3e54
 
 - 所有 Vue 特定选项都已移除；应将选项传递给 Vue 插件。
 
 ## 别名用法变化 {#alias-behavior-change}
 
+<<<<<<< HEAD
 [`alias`](/config/#alias) 现在会被传递给 `@rollup/plugin-alias` 并不再需要开始/结尾处的斜线了。此行为目前是一个直接替换，所以 1.0 风格的目录别名需要删除其结尾处的斜线：
+=======
+[`alias`](/config/#resolve-alias) is now being passed to `@rollup/plugin-alias` and no longer require start/ending slashes. The behavior is now a direct replacement, so 1.0-style directory alias key should remove the ending slash:
+>>>>>>> 34086fffda5c67fcebfc0d23f23ffafa9faf3e54
 
 ```diff
 - alias: { '/@foo/': path.resolve(__dirname, 'some-special-dir') }
