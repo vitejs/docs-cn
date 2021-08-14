@@ -22,7 +22,7 @@
    })
    ```
 
-   如果你没有禁用 [module preload 的 polyfill](/config/#polyfillmodulepreload)，你还需在你的入口处添加此 polyfill：
+   如果你没有禁用 [module preload 的 polyfill](/config/#build-polyfillmodulepreload)，你还需在你的入口处添加此 polyfill：
 
    ```js
    // 在你应用的入口起始处添加此 polyfill
