@@ -414,7 +414,11 @@ export default defineConfig(async ({ command, mode }) => {
           target: 'http://jsonplaceholder.typicode.com',
           changeOrigin: true,
           configure: (proxy, options) => {
+<<<<<<< HEAD
             // proxy 是 'http-proxy' 的实例
+=======
+            // proxy will be an instance of 'http-proxy'
+>>>>>>> 807e1f8f59dfc77875687ff3bef78233257fb72d
           },
         }
       }
