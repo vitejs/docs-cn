@@ -414,8 +414,13 @@ export default defineConfig(async ({ command, mode }) => {
           target: 'http://jsonplaceholder.typicode.com',
           changeOrigin: true,
           configure: (proxy, options) => {
+<<<<<<< HEAD
             // proxy 是 'http-proxy' 的实例
           },
+=======
+            // proxy will be an instance of 'http-proxy'
+          }
+>>>>>>> a5696022671fed68091531d6b6b0bbe4d7565209
         }
       }
     }
@@ -741,9 +746,15 @@ SSR 选项可能会在未来版本中进行调整。
 
 ### ssr.noExternal {#ssr-noexternal}
 
+<<<<<<< HEAD
 - **类型：** `string | RegExp | (string | RegExp)[]`
 
   列出的是防止被 SSR 外部化依赖项。
+=======
+- **Type:** `string | RegExp | (string | RegExp)[] | true`
+
+  Prevent listed dependencies from being externalized for SSR. If `true`, no dependencies are externalized.
+>>>>>>> a5696022671fed68091531d6b6b0bbe4d7565209
 
 ### ssr.target
 
