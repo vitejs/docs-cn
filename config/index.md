@@ -78,7 +78,7 @@ export default defineConfig(async ({ command, mode }) => {
   return {
     // 构建模式所需的特有配置
   }
-}
+})
 ```
 
 ## 共享配置 {#shared-options}
@@ -213,7 +213,7 @@ export default defineConfig(async ({ command, mode }) => {
   ```ts
   interface CSSModulesOptions {
     scopeBehaviour?: 'global' | 'local'
-    globalModulePaths?: string[]
+    globalModulePaths?: RegExp[]
     generateScopedName?:
       | string
       | ((name: string, filename: string, css: string) => string)
@@ -396,7 +396,7 @@ export default defineConfig(async ({ command, mode }) => {
     server: {
       proxy: {
         // 字符串简写写法
-        '/foo': 'http://localhost:4567/foo',
+        '/foo': 'http://localhost:4567',
         // 选项写法
         '/api': {
           target: 'http://jsonplaceholder.typicode.com',
@@ -452,6 +452,8 @@ export default defineConfig(async ({ command, mode }) => {
 - **类型：** `object`
 
   传递给 [chokidar](https://github.com/paulmillr/chokidar#api) 的文件系统监听器选项。
+
+  当需要再 Windows Subsystem for Linux (WSL) 2 上运行 Vite 时，如果项目文件夹位于 Windows 文件系统中，你需要将此选项设置为 `{ usePolling: true }`。这是由于 Windows 文件系统的 [WSL2 限制](https://github.com/microsoft/WSL/issues/4739) 造成的。
 
 ### server.middlewareMode {#server-middlewaremode}
 
@@ -542,6 +544,21 @@ createServer()
   转换过程将会由 esbuild 执行，并且此值应该是一个合法的 [esbuild 目标选项](https://esbuild.github.io/api/#target)。自定义目标也可以是一个 ES 版本（例如：`es2015`）、一个浏览器版本（例如：`chrome58`）或是多个目标组成的一个数组。
 
   注意：如果代码包含不能被 `esbuild` 安全地编译的特性，那么构建将会失败。查看 [esbuild 文档](https://esbuild.github.io/content-types/#javascript) 获取更多细节。
+
+### build.polyfillModulePreload {#build-polyfillmodulepreload}
+
+- **类型：** `boolean`
+- **默认值：** `true`
+
+  用于决定是否自动注入 [module preload 的 polyfill](https://guybedford.com/es-module-preloading-integrity#modulepreload-polyfill).
+
+  如果设置为 `true`，此 polyfill 会被自动注入到每个 `index.html` 入口的 proxy 模块中。如果是通过 `build.rollupOptions.input` 将构建配置为使用非 html 的自定义入口，那么则需要在你自定义入口中手动引入 polyfill：
+
+  ```js
+  import 'vite/modulepreload-polyfill'
+  ```
+
+  注意：此 polyfill **不适用于** [Library 模式](/guide/build#library-mode)。如果你需要支持不支持动态引入的浏览器，你应该避免在你的库中使用此选项。
 
 ### build.outDir {#build-outdir}
 

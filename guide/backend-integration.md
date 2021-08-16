@@ -1,8 +1,10 @@
 # 后端集成 {#backend-integration}
 
+:::tip Note
 如果你想使用传统的后端（如 Rails, Laravel）来服务 HTML，但使用 Vite 来服务其他资源，可以查看在 [Awesome Vite](https://github.com/vitejs/awesome-vite#integrations-with-backends) 上的已有的后端集成列表。
 
-或者你可以按照如下步骤手动配置：
+如果你需要自定义集成，你可以按照本指南的步骤配置它：
+:::
 
 1. 在你的 Vite 配置中配置入口文件和启用创建 `manifest`：
 
@@ -18,6 +20,13 @@
        }
      }
    })
+   ```
+
+   如果你没有禁用 [module preload 的 polyfill](/config/#build-polyfillmodulepreload)，你还需在你的入口处添加此 polyfill：
+
+   ```js
+   // 在你应用的入口起始处添加此 polyfill
+   import 'vite/modulepreload-polyfill'
    ```
 
 2. 在开发环境中，在服务器的 HTML 模板中注入以下内容（用正在运行的本地 URL 替换 `http://localhost:3000`）：

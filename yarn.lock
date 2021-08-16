@@ -1057,6 +1057,11 @@ p-finally@^1.0.0:
   resolved "https://registry.npmjs.org/p-finally/-/p-finally-1.0.0.tgz#3fbcfb15b899a44123b34b6dcc18b724336a2cae"
   integrity sha1-P7z7FbiZpEEjs0ttzBi3JDNqLK4=
 
+patch-vue-directive-ssr@^0.0.1:
+  version "0.0.1"
+  resolved "https://registry.npmjs.org/patch-vue-directive-ssr/-/patch-vue-directive-ssr-0.0.1.tgz#2eac731f59cdb766d4d613bc24e522ded6ff1bb8"
+  integrity sha512-n84llktHah+EXUGo+RvmTJcAQJQVW0kHHHiJ34ZSLijzhHi32zCMjCc5VAFv4jmdC91bpaYGPk0cDW1D8hQ3GQ==
+
 path-key@^2.0.0:
   version "2.0.1"
   resolved "https://registry.npmjs.org/path-key/-/path-key-2.0.1.tgz#411cadb574c5a140d3a4b1910d40d80cc9f40b40"
