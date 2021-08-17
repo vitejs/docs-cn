@@ -248,17 +248,13 @@ export function mySSRPlugin() {
 }
 ```
 
-## SSR Target
+## SSR Target {#ssr-target}
 
-<<<<<<< HEAD
 SSR 构建的默认目标为 node 环境，但你也可以让服务运行在 Web Worker 上。每个平台的打包条目解析是不同的。你可以将`ssr.target` 设置为 `webworker`，以将目标配置为 Web Worker。
-=======
-The default target for the SSR build is a node environment, but you can also run the server in a Web Worker. Packages entry resolution is different for each platform. You can configure the target to be Web Worker using the `ssr.target` set to `'webworker'`.
 
-## SSR Bundle
+## SSR Bundle {#ssr-bundle}
 
-In some cases like `webworker` runtimes, you might want to bundle your SSR build into a single JavaScript file. You can enable this behavior by setting `ssr.noExternal` to `true`. This will do two things:
+在某些如 `webworker` 运行时等特殊情况中，你可能想要将你的 SSR 打包成单个 JavaScript 文件。你可以通过设置 `ssr.noExternal` 为 `true` 来启用这个行为。这将会做两件事：
 
-- Treat all dependencies as `noExternal`
-- Throw an error if any Node.js built-ins are imported
->>>>>>> a5696022671fed68091531d6b6b0bbe4d7565209
+- 将所有依赖视为 `noExternal`（非外部化）
+- 若任何 Node.js 内置内容被引入，将抛出一个错误

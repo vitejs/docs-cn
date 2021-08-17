@@ -33,22 +33,14 @@ $ npm run build
 
 ### 本地测试应用 {#testing-the-app-locally}
 
-<<<<<<< HEAD
-当你构建完成应用后，你可以通过运行 `npm run preview` 命令，在本地测试该应用。
-=======
-Once you've built the app, you may test it locally by running `npm run serve` command.
->>>>>>> a5696022671fed68091531d6b6b0bbe4d7565209
+当你构建完成应用后，你可以通过运行 `npm run serve` 命令，在本地测试该应用。
 
 ```bash
 $ npm run build
 $ npm run serve
 ```
 
-<<<<<<< HEAD
-`preview` 命令会在本地启动一个静态 Web 服务器，将 `dist` 文件夹运行在 http://localhost:5000。这样在本地环境下查看该构建产物是否正常可用就方便了。
-=======
-The `vite preview` command will boot up local static web server that serves the files from `dist` at http://localhost:5000. It's an easy way to check if the production build looks OK in your local environment.
->>>>>>> a5696022671fed68091531d6b6b0bbe4d7565209
+`vite preview` 命令会在本地启动一个静态 Web 服务器，将 `dist` 文件夹运行在 http://localhost:5000。这样在本地环境下查看该构建产物是否正常可用就方便了。
 
 你可以通过 `--port` 参数来配置服务的运行端口。
 
@@ -62,15 +54,11 @@ The `vite preview` command will boot up local static web server that serves the 
 
 现在 `preview` 命令会将服务器运行在 http://localhost:8080。
 
-<<<<<<< HEAD
 ## GitHub Pages {#github-pages}
-=======
-::: tip NOTE
-If you change the script name from `serve` to `preview`, you may run into issues with some package managers due to the way they handle [Pre & Post scripts](https://docs.npmjs.com/cli/v7/using-npm/scripts#pre--post-scripts).
-:::
 
-## GitHub Pages
->>>>>>> a5696022671fed68091531d6b6b0bbe4d7565209
+::: tip 注意
+如果你将 script 的名字 `serve` 改为了 `preview`，你可能会遇到某些包管理工具在处理 [前置 & 后置 scripts](https://docs.npmjs.com/cli/v7/using-npm/scripts#pre--post-scripts) 方面的问题。
+:::
 
 1. 在 `vite.config.js` 中设置正确的 `base`。
 
