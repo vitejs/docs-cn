@@ -530,9 +530,15 @@ createServer()
 
 ### build.target {#build-target}
 
+<<<<<<< HEAD
 - **类型：** `string`
 - **默认：** `'modules'`
 - **相关内容：:** [浏览器兼容性](/guide/build#browser-compatibility)
+=======
+- **Type:** `string | string[]`
+- **Default:** `'modules'`
+- **Related:** [Browser Compatibility](/guide/build#browser-compatibility)
+>>>>>>> e36cbbd78eff35f2817dd44d30cf661846baf6ca
 
   设置最终构建的浏览器兼容目标。默认值是一个 Vite 特有的值——`'modules'`，这是指 [支持原生 ES 模块的浏览器](https://caniuse.com/es6-module)。
 
@@ -647,6 +653,7 @@ createServer()
 
   传递给 Terser 的更多 [minify 选项](https://terser.org/docs/api-reference#minify-options)。
 
+<<<<<<< HEAD
 ### build.cleanCssOptions {#build-cleancssoptions}
 
 - **类型：** `CleanCSS.Options`
@@ -654,6 +661,9 @@ createServer()
   传递给 [clean-css](https://github.com/jakubpawlowicz/clean-css#constructor-options) 的构造器选项。
 
 ### build.write {#build-write}
+=======
+### build.write
+>>>>>>> e36cbbd78eff35f2817dd44d30cf661846baf6ca
 
 - **类型：** `boolean`
 - **默认：** `true`

@@ -38,7 +38,16 @@ Pre-bundling them to speed up dev server page load...（将预构建它们以提
 
 在一个 monorepo 启动中，该仓库中的某个依赖可能会成为另一个包的依赖。Vite 会自动侦测没有从 `node_modules` 解析的依赖项，并将链接的依赖视为源码。它不会尝试打包被链接的依赖，而是会分析被链接依赖的依赖列表。
 
+<<<<<<< HEAD
 ## 自定义行为 {#customizing-the-behavior}
+=======
+::: warning Note
+Linked dependencies might not work properly in the final build due to differences in dependency resolution.
+Use `npm package` instead for all local dependencies to avoid issues in the final bundle.
+:::
+
+## Customizing the Behavior
+>>>>>>> e36cbbd78eff35f2817dd44d30cf661846baf6ca
 
 默认的依赖项发现为启发式可能并不总是可取的。在你想要显式地从列表中包含/排除依赖项的情况下, 请使用 [`optimizeDeps` 配置项](/config/#dep-optimization-options)。
 
