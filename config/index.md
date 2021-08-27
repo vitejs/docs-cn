@@ -530,7 +530,7 @@ createServer()
 
 ### build.target {#build-target}
 
-- **类型：** `string`
+- **类型：** `string | string[]`
 - **默认：** `'modules'`
 - **相关内容：:** [浏览器兼容性](/guide/build#browser-compatibility)
 
@@ -646,12 +646,6 @@ createServer()
 - **类型：** `TerserOptions`
 
   传递给 Terser 的更多 [minify 选项](https://terser.org/docs/api-reference#minify-options)。
-
-### build.cleanCssOptions {#build-cleancssoptions}
-
-- **类型：** `CleanCSS.Options`
-
-  传递给 [clean-css](https://github.com/jakubpawlowicz/clean-css#constructor-options) 的构造器选项。
 
 ### build.write {#build-write}
 
