@@ -415,7 +415,7 @@ export default defineConfig(async ({ command, mode }) => {
           changeOrigin: true,
           configure: (proxy, options) => {
             // proxy 是 'http-proxy' 的实例
-          },
+          }
         }
       }
     }
@@ -530,7 +530,7 @@ createServer()
 
 ### build.target {#build-target}
 
-- **类型：** `string`
+- **类型：** `string | string[]`
 - **默认：** `'modules'`
 - **相关内容：:** [浏览器兼容性](/guide/build#browser-compatibility)
 
@@ -647,12 +647,6 @@ createServer()
 
   传递给 Terser 的更多 [minify 选项](https://terser.org/docs/api-reference#minify-options)。
 
-### build.cleanCssOptions {#build-cleancssoptions}
-
-- **类型：** `CleanCSS.Options`
-
-  传递给 [clean-css](https://github.com/jakubpawlowicz/clean-css#constructor-options) 的构造器选项。
-
 ### build.write {#build-write}
 
 - **类型：** `boolean`
@@ -741,9 +735,9 @@ SSR 选项可能会在未来版本中进行调整。
 
 ### ssr.noExternal {#ssr-noexternal}
 
-- **类型：** `string | RegExp | (string | RegExp)[]`
+- **类型：** `string | RegExp | (string | RegExp)[] | true`
 
-  列出的是防止被 SSR 外部化依赖项。
+  列出的是防止被 SSR 外部化依赖项。如果设为 `true`，将没有依赖被外部化。
 
 ### ssr.target
 
