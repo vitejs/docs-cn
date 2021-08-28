@@ -44,13 +44,9 @@ VITE_SOME_KEY=123
 
 只有 `VITE_SOME_KEY` 会被暴露为 `import.meta.env.VITE_SOME_KEY` 提供给客户端源码，而 `DB_PASSWORD` 则不会。
 
-<<<<<<< HEAD
-:::warning 安全注意事项
-=======
-If you want to customize env variables prefix, see [envPrefix](/config/index#envPrefix) option.
+如果你想自定义 env 变量的前缀，请参阅 [envPrefix](/config/index#envPrefix)。
 
-:::warning SECURITY NOTES
->>>>>>> 2dba869504d0bb2f7116554d84a80fec61e76d54
+:::warning 安全注意事项
 
 - `.env.*.local` 文件应是本地的，可以包含敏感变量。你应该将 `.local` 添加到你的 `.gitignore` 中，以避免它们被 git 检入。
 
