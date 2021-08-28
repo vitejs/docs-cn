@@ -333,6 +333,18 @@ export default defineConfig(async ({ command, mode }) => {
 
   关于环境文件的更多信息，请参见 [这里](/guide/env-and-mode#env-files)。
 
+### envPrefix
+
+- **类型：** `string | string[]`
+- **默认：** `VITE_`
+
+  以 `envPrefix` 开头的环境变量会通过 import.meta.env 暴露在你的客户端源码中。
+
+:::warning 安全注意事项
+
+- `envPrefix` 不应该被设置为 `''`，因为这将暴露你所有的环境变量，导致敏感信息的意外泄露。Vite 在检测到 `''` 时将会抛出错误。
+  :::
+  
 ## 开发服务器选项 {#server-options}
 
 ### server.host {#server-host}
