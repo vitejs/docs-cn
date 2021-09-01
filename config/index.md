@@ -713,7 +713,16 @@ createServer()
   在预构建中强制排除的依赖项。
 
   :::warning CommonJS
-  CommonJS 的依赖不应该排除在优化外。如果一个 ESM 依赖拥有一个嵌套的 CommonJS 依赖，它也不应被排除。
+  CommonJS 的依赖不应该排除在优化外。如果一个 ESM 依赖被排除在优化外，但是却有一个嵌套的 CommonJS 依赖，则应该为该 CommonJS 依赖添加 `optimizeDeps.include`。例如：
+
+  ```js
+  export default defineConfig({
+    optimizeDeps: {
+      include: ['esm-dep > cjs-dep']
+    }
+  })
+  ```
+
   :::
 
 ### optimizeDeps.include {#optimizedeps-include}
