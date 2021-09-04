@@ -16,7 +16,11 @@ Vite 在一个特殊的 **`import.meta.env`** 对象上暴露环境变量。这�
 
 在生产环境中，这些环境变量会在构建时被**静态替换**，因此，在引用它们时请使用完全静态的字符串。动态的 key 将无法生效。例如，动态 key 取值 `import.meta.env[key]` 是无效的。
 
+<<<<<<< HEAD
 它还将替换出现在 JavaScript 和 Vue 模板中的字符串。这应该是一种罕见的情况，但可能是不小心为之的。有一些方法可以避免这个问题：
+=======
+It will also replace these strings appearing in JavaScript strings and Vue templates. This should be a rare case, but it can be unintended. You may see errors like `Missing Semicolon` or `Unexpected token` in this case, for example when `"process.env.NODE_ENV: "` is transformed to `""development": "`. There are ways to work around this behavior:
+>>>>>>> 814f8c97985db1379a9115c55ca6716bbe9991dc
 
 - 对于 JavaScript 字符串，你可以使用 unicode 零宽度空格 **`\u200b`** (一个看不见的分隔符)来分割这个字符串，例如： `'import.meta\u200b.env.MODE'`。
 
