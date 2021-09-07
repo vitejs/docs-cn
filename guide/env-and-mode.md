@@ -44,11 +44,7 @@ VITE_SOME_KEY=123
 
 只有 `VITE_SOME_KEY` 会被暴露为 `import.meta.env.VITE_SOME_KEY` 提供给客户端源码，而 `DB_PASSWORD` 则不会。
 
-<<<<<<< HEAD
-如果你想自定义 env 变量的前缀，请参阅 [envPrefix](/config/index#envPrefix)。
-=======
-If you want to customize env variables prefix, see [envPrefix](/config/index#envprefix) option.
->>>>>>> 741b90689a475059347e75ed560a3398a8948d5e
+如果你想自定义 env 变量的前缀，请参阅 [envPrefix](/config/index#envprefix)。
 
 :::warning 安全注意事项
 
