@@ -40,7 +40,11 @@ const { createServer } = require('vite')
 ```ts
 interface ViteDevServer {
   /**
+<<<<<<< HEAD
    * 被解析的 vite 配置对象
+=======
+   * The resolved Vite config object.
+>>>>>>> 3b16a683a061a0d6c84ac44f68ca1d64b40999d0
    */
   config: ResolvedConfig
   /**
@@ -82,7 +86,11 @@ interface ViteDevServer {
     options?: TransformOptions
   ): Promise<TransformResult | null>
   /**
+<<<<<<< HEAD
    * 应用 vite 内建 HTML 转换和任意插件 HTML 转换
+=======
+   * Apply Vite built-in HTML transforms and any plugin HTML transforms.
+>>>>>>> 3b16a683a061a0d6c84ac44f68ca1d64b40999d0
    */
   transformIndexHtml(url: string, html: string): Promise<string>
   /**
