@@ -35,7 +35,7 @@ Vite 使用 [dotenv](https://github.com/motdotla/dotenv) 从你的 [环境目录
 
 加载的环境变量也会通过 `import.meta.env` 暴露给客户端源码。
 
-为了防止意外地将一些环境变量泄漏到客户端，只有以 `VITE_` 为前缀的变量才会暴露给经过 vite 处理的代码。例如下面这个文件中：
+为了防止意外地将一些环境变量泄漏到客户端，只有以 `VITE_` 为前缀的变量才会暴露给经过 Vite 处理的代码。例如下面这个文件中：
 
 ```
 DB_PASSWORD=foobar
