@@ -73,7 +73,7 @@ const { createServer: createViteServer } = require('vite')
 async function createServer() {
   const app = express()
 
-  // 以中间件模式创建 vite 应用，这将禁用 Vite 自身的 HTML 服务逻辑
+  // 以中间件模式创建 Vite 应用，这将禁用 Vite 自身的 HTML 服务逻辑
   // 并让上级服务器接管控制
   //
   // 如果你想使用 Vite 自己的 HTML 服务逻辑（将 Vite 作为
@@ -109,7 +109,7 @@ app.use('*', async (req, res) => {
       'utf-8'
     )
 
-    // 2. 应用 vite HTML 转换。这将会注入 vite HMR 客户端，
+    // 2. 应用 Vite HTML 转换。这将会注入 Vite HMR 客户端，
     //    同时也会从 Vite 插件应用 HTML 转换。
     //    例如：@vitejs/plugin-react-refresh 中的 global preambles
     template = await vite.transformIndexHtml(url, template)
@@ -130,7 +130,7 @@ app.use('*', async (req, res) => {
     // 6. 返回渲染后的 HTML。
     res.status(200).set({ 'Content-Type': 'text/html' }).end(html)
   } catch (e) {
-    // 如果捕获到了一个错误，让 vite 来修复该堆栈，这样它就可以映射回
+    // 如果捕获到了一个错误，让 Vite 来修复该堆栈，这样它就可以映射回
     // 你的实际源码中。
     vite.ssrFixStacktrace(e)
     console.error(e)

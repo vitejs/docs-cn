@@ -40,7 +40,7 @@ const { createServer } = require('vite')
 ```ts
 interface ViteDevServer {
   /**
-   * 被解析的 vite 配置对象
+   * 被解析的 Vite 配置对象
    */
   config: ResolvedConfig
   /**
@@ -82,7 +82,7 @@ interface ViteDevServer {
     options?: TransformOptions
   ): Promise<TransformResult | null>
   /**
-   * 应用 vite 内建 HTML 转换和任意插件 HTML 转换
+   * 应用 Vite 内建 HTML 转换和任意插件 HTML 转换
    */
   transformIndexHtml(url: string, html: string): Promise<string>
   /**

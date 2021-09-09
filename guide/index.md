@@ -133,7 +133,7 @@ yarn build
 yarn link
 ```
 
-然后，回到你的 vite 项目并运行 `yarn link vite`。重新启动开发服务器（`yarn dev`）来体验新功能吧！
+然后，回到你的 Vite 项目并运行 `yarn link vite`。重新启动开发服务器（`yarn dev`）来体验新功能吧！
 
 ## 社区 {#community}
 

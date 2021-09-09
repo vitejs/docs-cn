@@ -487,7 +487,7 @@ const { createServer: createViteServer } = require('vite')
 async function createServer() {
   const app = express()
 
-  // 以中间件模式创建 vite 服务器
+  // 以中间件模式创建 Vite 服务器
   const vite = await createViteServer({
     server: { middlewareMode: 'ssr' }
   })
@@ -704,7 +704,7 @@ createServer()
 
   默认情况下，Vite 会抓取你的 index.html 来检测需要预构建的依赖项。如果指定了 `build.rollupOptions.input`，Vite 将转而去抓取这些入口点。
 
-  如果这两者都不合你意，则可以使用此选项指定自定义条目——该值需要遵循 [fast-glob 模式](https://github.com/mrmlnc/fast-glob#basic-syntax) ，或者是相对于 vite 项目根的模式数组。这将覆盖掉默认条目推断。
+  如果这两者都不合你意，则可以使用此选项指定自定义条目——该值需要遵循 [fast-glob 模式](https://github.com/mrmlnc/fast-glob#basic-syntax) ，或者是相对于 Vite 项目根的模式数组。这将覆盖掉默认条目推断。
 
 ### optimizeDeps.exclude {#optimizedeps-exclude}
 
