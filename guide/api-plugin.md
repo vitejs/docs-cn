@@ -414,20 +414,16 @@ function myPlugin() {
 }
 ```
 
-<<<<<<< HEAD
-## Rollup 插件兼容性 {#rollup-plugin-compatibility}
-=======
-A function can also be used for more precise control:
+同时，还可以使用函数来进行更精准的控制：
 
 ```js
 apply(config, { command }) {
-  // apply only on build but not for SSR
+  // 非 SSR 情况下的 build
   return command === 'build' && !config.build.ssr
 }
 ```
 
-## Rollup Plugin Compatibility
->>>>>>> 56f3d9f914dcf16403ba1883a7f1e77ff4eb876c
+## Rollup 插件兼容性 {#rollup-plugin-compatibility}
 
 相当数量的 Rollup 插件将直接作为 Vite 插件工作（例如：`@rollup/plugin-alias` 或 `@rollup/plugin-json`），但并不是所有的，因为有些插件钩子在非构建式的开发服务器上下文中没有意义。
 
