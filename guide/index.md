@@ -37,7 +37,7 @@ $ yarn create vite
 使用 PNPM:
 
 ```bash
-$ pnpx create-vite
+$ pnpm dlx create-vite
 ```
 
 然后按照提示操作即可！
