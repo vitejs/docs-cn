@@ -206,7 +206,21 @@ export default defineConfig(async ({ command, mode }) => {
 
   导入时想要省略的扩展名列表。注意，**不** 建议忽略自定义导入类型的扩展名（例如：`.vue`），因为它会影响 IDE 和类型支持。
 
+<<<<<<< HEAD
 ### css.modules {#css-modules}
+=======
+### resolve.preserveSymlinks
+
+- **Type:** `boolean`
+- **Default:** `false`
+
+  Enabling this setting causes vite to determine file identity by the original file path (i.e. the path without following symlinks) instead of the real file path (i.e. the path after following symlinks).
+
+- **Related:** [esbuild#preserve-symlinks](https://esbuild.github.io/api/#preserve-symlinks), [webpack#resolve.symlinks
+  ](https://webpack.js.org/configuration/resolve/#resolvesymlinks)
+
+### css.modules
+>>>>>>> 5e2dee8ba7a75b0cbdcffb1988f013c4261abc1a
 
 - **类型：**
 
