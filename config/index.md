@@ -206,6 +206,14 @@ export default defineConfig(async ({ command, mode }) => {
 
   导入时想要省略的扩展名列表。注意，**不** 建议忽略自定义导入类型的扩展名（例如：`.vue`），因为它会影响 IDE 和类型支持。
 
+### resolve.preserveSymlinks {#resolve-preservesymlinks}
+
+- **类型：** `boolean`
+- **默认：** `false`
+
+  启用此选项会使 Vite 通过原始文件路径（即不跟随符号链接的路径）而不是真正的文件路径（即跟随符号链接后的路径）确定文件身份。
+
+- **相关：** [esbuild#preserve-symlinks](https://esbuild.github.io/api/#preserve-symlinks)，[webpack#resolve.symlinks](https://webpack.js.org/configuration/resolve/#resolvesymlinks)
 ### css.modules {#css-modules}
 
 - **类型：**
@@ -333,6 +341,18 @@ export default defineConfig(async ({ command, mode }) => {
 
   关于环境文件的更多信息，请参见 [这里](/guide/env-and-mode#env-files)。
 
+### envPrefix
+
+- **类型：** `string | string[]`
+- **默认：** `VITE_`
+
+  以 `envPrefix` 开头的环境变量会通过 import.meta.env 暴露在你的客户端源码中。
+
+:::warning 安全注意事项
+
+- `envPrefix` 不应该被设置为 `''`，因为这将暴露你所有的环境变量，导致敏感信息的意外泄露。Vite 在检测到 `''` 时将会抛出错误。
+  :::
+  
 ## 开发服务器选项 {#server-options}
 
 ### server.host {#server-host}
@@ -475,7 +495,7 @@ const { createServer: createViteServer } = require('vite')
 async function createServer() {
   const app = express()
 
-  // 以中间件模式创建 vite 服务器
+  // 以中间件模式创建 Vite 服务器
   const vite = await createViteServer({
     server: { middlewareMode: 'ssr' }
   })
@@ -692,7 +712,7 @@ createServer()
 
   默认情况下，Vite 会抓取你的 index.html 来检测需要预构建的依赖项。如果指定了 `build.rollupOptions.input`，Vite 将转而去抓取这些入口点。
 
-  如果这两者都不合你意，则可以使用此选项指定自定义条目——该值需要遵循 [fast-glob 模式](https://github.com/mrmlnc/fast-glob#basic-syntax) ，或者是相对于 vite 项目根的模式数组。这将覆盖掉默认条目推断。
+  如果这两者都不合你意，则可以使用此选项指定自定义条目——该值需要遵循 [fast-glob 模式](https://github.com/mrmlnc/fast-glob#basic-syntax) ，或者是相对于 Vite 项目根的模式数组。这将覆盖掉默认条目推断。
 
 ### optimizeDeps.exclude {#optimizedeps-exclude}
 
@@ -701,7 +721,16 @@ createServer()
   在预构建中强制排除的依赖项。
 
   :::warning CommonJS
-  CommonJS 的依赖不应该排除在优化外。如果一个 ESM 依赖拥有一个嵌套的 CommonJS 依赖，它也不应被排除。
+  CommonJS 的依赖不应该排除在优化外。如果一个 ESM 依赖被排除在优化外，但是却有一个嵌套的 CommonJS 依赖，则应该为该 CommonJS 依赖添加 `optimizeDeps.include`。例如：
+
+  ```js
+  export default defineConfig({
+    optimizeDeps: {
+      include: ['esm-dep > cjs-dep']
+    }
+  })
+  ```
+
   :::
 
 ### optimizeDeps.include {#optimizedeps-include}

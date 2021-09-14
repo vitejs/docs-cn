@@ -4,7 +4,7 @@
 
 ## 浏览器兼容性 {#browser-compatibility}
 
-用于生产环境的构建包会假设目标浏览器支持现代 JavaScript 语法。默认情况下，vite 的目标浏览器是指能够 [支持原生 ESM script 标签](https://caniuse.com/es6-module) 和 [支持原生 ESM 动态导入](https://caniuse.com/es6-module-dynamic-import) 的。作为参考，vite 使用这个 [browserslist](https://github.com/browserslist/browserslist) 作为查询标准：
+用于生产环境的构建包会假设目标浏览器支持现代 JavaScript 语法。默认情况下，Vite 的目标浏览器是指能够 [支持原生 ESM script 标签](https://caniuse.com/es6-module) 和 [支持原生 ESM 动态导入](https://caniuse.com/es6-module-dynamic-import) 的。作为参考，Vite 使用这个 [browserslist](https://github.com/browserslist/browserslist) 作为查询标准：
 
 ```
 defaults and supports es6-module and supports es6-module-dynamic-import, not opera > 0, not samsung > 0, not and_qq > 0

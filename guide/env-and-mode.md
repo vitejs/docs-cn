@@ -16,7 +16,7 @@ Vite 在一个特殊的 **`import.meta.env`** 对象上暴露环境变量。这�
 
 在生产环境中，这些环境变量会在构建时被**静态替换**，因此，在引用它们时请使用完全静态的字符串。动态的 key 将无法生效。例如，动态 key 取值 `import.meta.env[key]` 是无效的。
 
-它还将替换出现在 JavaScript 和 Vue 模板中的字符串。这应该是一种罕见的情况，但可能是不小心为之的。有一些方法可以避免这个问题：
+它还将替换出现在 JavaScript 和 Vue 模板中的字符串。这本应是非常少见的，但也可能是不小心为之的。在这种情况下你可能会看到类似 `Missing Semicolon` 或 `Unexpected token` 等错误，例如当 `"process.env.NODE_ENV"` 被替换为 `""development": "`。有一些方法可以避免这个问题：
 
 - 对于 JavaScript 字符串，你可以使用 unicode 零宽度空格 **`\u200b`** (一个看不见的分隔符)来分割这个字符串，例如： `'import.meta\u200b.env.MODE'`。
 
@@ -43,6 +43,8 @@ VITE_SOME_KEY=123
 ```
 
 只有 `VITE_SOME_KEY` 会被暴露为 `import.meta.env.VITE_SOME_KEY` 提供给客户端源码，而 `DB_PASSWORD` 则不会。
+
+如果你想自定义 env 变量的前缀，请参阅 [envPrefix](/config/index#envprefix)。
 
 :::warning 安全注意事项
 
