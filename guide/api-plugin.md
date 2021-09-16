@@ -4,22 +4,18 @@ Vite 插件扩展了设计出色的 Rollup 接口，带有一些 Vite 独有的�
 
 **推荐在阅读下面的章节之前，首先阅读下 [Rollup 插件文档](https://rollupjs.org/guide/en/#plugin-development)**
 
-<<<<<<< HEAD
-## 约定 {#conventions}
-=======
-## Authoring a Plugin
+## 致插件创作者 {#authoring-a-plugin}
 
-Vite strives to offer established patterns out of the box, so before creating a new plugin make sure that you check the [Features guide](https://vitejs.dev/guide/features) to see if your need is covered. Also review available community plugins, both in the form of a [compatible Rollup plugin](https://github.com/rollup/awesome) and [Vite Specific plugins](https://github.com/vitejs/awesome-vite#plugins)
+Vite 努力秉承开箱即用的原则，因此在创作一款新插件前，请确保已经阅读过 [Vite 的功能指南](/guide/features)，避免重复劳作。同时还应查看社区是否存在可用插件，包括 [兼容 Rollup 的插件](https://github.com/rollup/awesome) 以及 [Vite 的专属插件](https://github.com/vitejs/awesome-vite#plugins)。
 
-When creating a plugin, you can inline it in your `vite.config.js`. There is no need to create a new package for it. Once you see that a plugin was useful in your projects, consider sharing it to help others [in the ecosystem](https://chat.vitejs.dev).
+当创作插件时，你可以在 `vite.config.js` 中直接使用它。没必要直接为它创建一个新的 package。当你发现某个插件在你项目中很有用时，可以考虑，可以考虑 [在社区中](https://chat.vitejs.dev) 将其与他人分享。
 
 ::: tip
-When learning, debugging, or authoring plugins we suggest including [vite-plugin-inspect](https://github.com/antfu/vite-plugin-inspect) in your project. It allows you to inspect the intermediate state of Vite plugins. After installing, you can visit `localhost:3000/__inspect/` to inspect the modules and transformation stack of your project. Check out install instructions in the [vite-plugin-inspect docs](https://github.com/antfu/vite-plugin-inspect).
+在学习、调试或创作插件时，我们建议在你的项目中引入 [vite-plugin-inspect](https://github.com/antfu/vite-plugin-inspect)。 它可以帮助你检查 Vite 插件的中间状态。安装后，你可以访问 `localhost:3000/__inspect/` 来检查你项目的模块和栈信息。请查阅 [vite-plugin-inspect 文档](https://github.com/antfu/vite-plugin-inspect) 中的安装说明。
 ![vite-plugin-inspect](/images/vite-plugin-inspect.png)
 :::
 
-## Conventions
->>>>>>> 9636bf812d84ee243485b3dfc24c2ca018e5ce3a
+## 约定 {#conventions}
 
 如果插件不使用 Vite 特有的钩子，可以实现为 [兼容的 Rollup 插件](#rollup-plugin-compatibility)，推荐使用 [Rollup 插件名称约定](https://rollupjs.org/guide/en/#conventions)。
 
