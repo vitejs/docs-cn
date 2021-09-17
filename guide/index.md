@@ -1,18 +1,12 @@
 # 开始 {#getting-started}
 
-<<<<<<< HEAD
-## 总览 {#overview}
-
-Vite (法语意为 "快速的"，发音 `/vit/`) 是一种新型前端构建工具，能够显著提升前端开发体验。它主要由两部分组成：
-=======
 <audio id="vite-audio">
   <source src="/vite.mp3" type="audio/mpeg">
 </audio>
 
-## Overview
+## 总览 {#overview}
 
-Vite (French word for "fast", pronounced `/vit/`<button id="play-vite-audio" onclick="document.getElementById('vite-audio').play();"><img src="/voice.svg" height="15"></button>) is a build tool that aims to provide a faster and leaner development experience for modern web projects. It consists of two major parts:
->>>>>>> d96eedda424e990e80175317b34621b3599fd20e
+Vite (法语意为 "快速的"，发音 `/vit/`<button id="play-vite-audio" onclick="document.getElementById('vite-audio').play();"><img src="/voice.svg" height="15"></button>) 是一种新型前端构建工具，能够显著提升前端开发体验。它主要由两部分组成：
 
 - 一个开发服务器，它基于 [原生 ES 模块](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules) 提供了 [丰富的内建功能](./features)，如速度快到惊人的 [模块热更新（HMR）](./features#hot-module-replacement)。
 

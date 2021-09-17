@@ -29,11 +29,21 @@
   --docsearch-primary-color: var(--c-brand) !important;
 }
 
-<<<<<<< HEAD
+#play-vite-audio {
+  padding: 0;
+  margin-left: 5px;
+  display: inline-flex;
+}
+
+#play-vite-audio img {
+  opacity: 0.8;
+}
+
 /* docs-cn specific */
 .cn-footnote {
   margin-top: 20px;
 }
+
 .cn-footnote .title {
   display: block;
   margin-bottom: 10px;
@@ -51,14 +61,4 @@
   background: var(--c-brand);
   color: white;
   border-radius: 10px;
-=======
-#play-vite-audio {
-  padding: 0;
-  margin-left: 5px;
-  display: inline-flex;
-}
-
-#play-vite-audio img {
-  opacity: 0.8;
->>>>>>> d96eedda424e990e80175317b34621b3599fd20e
 }
