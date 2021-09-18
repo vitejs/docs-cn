@@ -662,7 +662,19 @@ createServer()
 
   当设置为 `true`，构建后将会生成 `manifest.json` 文件，包含了没有被 hash 的资源文件名和 hash 后版本的映射。可以为一些服务器框架渲染时提供正确的资源引入链接。
 
+<<<<<<< HEAD
 ### build.minify {#build-minify}
+=======
+### build.ssrManifest
+
+- **Type:** `boolean`
+- **Default:** `false`
+- **Related:** [Server-Side Rendering](/guide/ssr)
+
+  When set to `true`, the build will also generate a SSR manifest for determining style links and asset preload directives in production.
+
+### build.minify
+>>>>>>> f6ebf96ba193f7f4406aae404e46d96a4430a10c
 
 - **类型：** `boolean | 'terser' | 'esbuild'`
 - **默认：** `'terser'`
