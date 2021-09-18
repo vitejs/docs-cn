@@ -311,11 +311,7 @@ export default defineConfig(async ({ command, mode }) => {
 - **类型：** `string | RegExp | (string | RegExp)[]`
 - **相关内容：** [静态资源处理](/guide/assets)
 
-<<<<<<< HEAD
-  指定其他文件类型作为静态资源处理，因此：
-=======
-  Specify additional [picomatch patterns](https://github.com/micromatch/picomatch) to be treated as static assets so that:
->>>>>>> a00ae88079d56399153ecf5b91b07378f8cd9f37
+  指定额外的 [picomatch 模式](https://github.com/micromatch/picomatch) 作为静态资源处理，因此：
 
   - 当从 HTML 引用它们或直接通过 `fetch` 或 XHR 请求它们时，它们将被插件转换管道排除在外。
 
@@ -323,10 +319,7 @@ export default defineConfig(async ({ command, mode }) => {
 
   内建支持的资源类型列表可以在 [这里](https://github.com/vitejs/vite/blob/main/packages/vite/src/node/constants.ts) 找到。
 
-<<<<<<< HEAD
-### logLevel {#loglevel}
-=======
-  **Example:**
+  **示例：**
 
   ```js
   export default defineConfig({
@@ -334,8 +327,7 @@ export default defineConfig(async ({ command, mode }) => {
   })
   ```
 
-### logLevel
->>>>>>> a00ae88079d56399153ecf5b91b07378f8cd9f37
+### logLevel {#loglevel}
 
 - **类型：** `'info' | 'warn' | 'error' | 'silent'`
 
