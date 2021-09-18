@@ -311,13 +311,21 @@ export default defineConfig(async ({ command, mode }) => {
 - **类型：** `string | RegExp | (string | RegExp)[]`
 - **相关内容：** [静态资源处理](/guide/assets)
 
-  指定其他文件类型作为静态资源处理，因此：
+  指定额外的 [picomatch 模式](https://github.com/micromatch/picomatch) 作为静态资源处理，因此：
 
   - 当从 HTML 引用它们或直接通过 `fetch` 或 XHR 请求它们时，它们将被插件转换管道排除在外。
 
   - 从 JavaScript 导入它们将返回解析后的 URL 字符串（如果你设置了 `enforce: 'pre'` 插件来处理不同的资产类型，这可能会被覆盖）。
 
   内建支持的资源类型列表可以在 [这里](https://github.com/vitejs/vite/blob/main/packages/vite/src/node/constants.ts) 找到。
+
+  **示例：**
+
+  ```js
+  export default defineConfig({
+    assetsInclude: ['**/*.gltf']
+  })
+  ```
 
 ### logLevel {#loglevel}
 
