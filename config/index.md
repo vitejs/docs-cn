@@ -664,9 +664,9 @@ createServer()
 
 ### build.ssrManifest {#build-ssrmanifest}
 
-- **Type:** `boolean`
-- **Default:** `false`
-- **Related:** [Server-Side Rendering](/guide/ssr)
+- **类型：** `boolean`
+- **默认值：** `false`
+- **相关链接：** [Server-Side Rendering](/guide/ssr)
 
   当设置为 `true` 时，构建也将生成 SSR 的 manifest 文件，以确定生产中的样式链接与资产预加载指令。
 
