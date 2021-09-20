@@ -86,21 +86,7 @@ interface ViteDevServer {
    */
   transformIndexHtml(url: string, html: string): Promise<string>
   /**
-<<<<<<< HEAD
-   * 使用 esbuild 转换一个文件的工具函数
-   * 对某些特定插件十分有用
-   */
-  transformWithEsbuild(
-    code: string,
-    filename: string,
-    options?: EsbuildTransformOptions,
-    inMap?: object
-  ): Promise<ESBuildTransformResult>
-  /**
    * 加载一个给定的 URL 作为 SSR 的实例化模块
-=======
-   * Load a given URL as an instantiated module for SSR.
->>>>>>> f6ebf96ba193f7f4406aae404e46d96a4430a10c
    */
   ssrLoadModule(
     url: string,
@@ -164,7 +150,7 @@ async function resolveConfig(
 
 ## `transformWithEsbuild`
 
-**Type Signature:**
+**类型签名：**
 
 ```ts
 async function transformWithEsbuild(
