@@ -126,18 +126,26 @@ Vite 也支持多个 `.html` 作入口点的 [多页面应用模式](./build#mul
 
 ## 使用未发布的功能 {#using-unreleased-commits}
 
+<<<<<<< HEAD
 如果你迫不及待想要体验最新的功能，可以自行克隆 [vite 仓库](https://github.com/vitejs/vite) 到本地机器上然后自行将其链接（将需要 [Yarn 1.x](https://classic.yarnpkg.com/lang/en/)）：
+=======
+If you can't wait for a new release to test the latest features, you will need to clone the [vite repo](https://github.com/vitejs/vite) to your local machine and then build and link it yourself ([pnpm](https://pnpm.io/) is required):
+>>>>>>> 6eed7b25864cadd9e4f30cb8cb115a353fcc157f
 
 ```bash
 git clone https://github.com/vitejs/vite.git
 cd vite
-yarn
+pnpm install
 cd packages/vite
-yarn build
-yarn link
+pnpm run build
+pnpm link # you can use your preferred package manager for this step
 ```
 
+<<<<<<< HEAD
 然后，回到你的 Vite 项目并运行 `yarn link vite`。重新启动开发服务器（`yarn dev`）来体验新功能吧！
+=======
+Then go to your Vite based project and run `pnpm link vite` (or the package manager that you used to link `vite` globally). Now restart the development server to ride on the bleeding edge!
+>>>>>>> 6eed7b25864cadd9e4f30cb8cb115a353fcc157f
 
 ## 社区 {#community}
 
