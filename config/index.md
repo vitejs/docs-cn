@@ -541,11 +541,7 @@ createServer()
   - 包含以下几种文件之一
     - `pnpm-workspace.yaml`
 
-<<<<<<< HEAD
   接受一个路径作为自定义工作区的 root 目录。可以是绝对路径或是相对于 [项目 root 目录](/guide/#index-html-and-project-root) 的相对路径。示例如下：
-=======
-  Accepts a path to specify the custom workspace root. Could be a absolute path or a path relative to [project root](/guide/#index-html-and-project-root). For example:
->>>>>>> 6eed7b25864cadd9e4f30cb8cb115a353fcc157f
 
   ```js
   export default defineConfig({
@@ -558,10 +554,7 @@ createServer()
   })
   ```
 
-<<<<<<< HEAD
-## 构建选项 {#build-options}
-=======
-  When `server.fs.allow` is specified, the auto workspace root detection will be disabled. To extend the original behavior, a utility `searchForWorkspaceRoot` is exposed:
+  当 `server.fs.allow` 被设置时，自动识别工作区根目录将被禁用。为了能够扩展原来的行为，你可以使用暴露出来的工具函数 `searchForWorkspaceRoot`：
 
   ```js
   import { defineConfig, searchForWorkspaceRoot } from 'vite'
@@ -570,9 +563,9 @@ createServer()
     server: {
       fs: {
         allow: [
-          // search up for workspace root
+          // 搜索工作区的根路径
           searchForWorkspaceRoot(process.cwd()),
-          // your custom rules
+          // 自定义规则
           '/path/to/custom/allow'
         ]
       }
@@ -580,8 +573,7 @@ createServer()
   })
   ```
 
-## Build Options
->>>>>>> 6eed7b25864cadd9e4f30cb8cb115a353fcc157f
+## 构建选项 {#build-options}
 
 ### build.target {#build-target}
 

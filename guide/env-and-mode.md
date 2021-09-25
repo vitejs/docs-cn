@@ -72,11 +72,7 @@ interface ImportMeta {
 
 ## 模式 {#modes}
 
-<<<<<<< HEAD
-默认情况下，开发服务器 (`serve` 命令) 运行在 `development` (开发) 模式，而 `build` 命令运行在 `production` (生产) 模式。
-=======
-By default, the dev server (`dev` command) runs in `development` mode and the `build` and `serve` commands run in `production` mode.
->>>>>>> 6eed7b25864cadd9e4f30cb8cb115a353fcc157f
+默认情况下，开发服务器 (`dev` 命令) 运行在 `development` (开发) 模式，而 `build` 以及 `serve` 命令则运行在 `production` (生产) 模式。
 
 这意味着当执行 `vite build` 时，它会自动加载 `.env.production` 中可能存在的环境变量：
 
