@@ -554,6 +554,25 @@ createServer()
   })
   ```
 
+  当 `server.fs.allow` 被设置时，工作区根目录的自动检索将被禁用。当需要扩展默认的行为时，你可以使用暴露出来的工具函数 `searchForWorkspaceRoot`：
+
+  ```js
+  import { defineConfig, searchForWorkspaceRoot } from 'vite'
+
+  export default defineConfig({
+    server: {
+      fs: {
+        allow: [
+          // 搜索工作区的根目录
+          searchForWorkspaceRoot(process.cwd()),
+          // 自定义规则
+          '/path/to/custom/allow'
+        ]
+      }
+    }
+  })
+  ```
+
 ## 构建选项 {#build-options}
 
 ### build.target {#build-target}
