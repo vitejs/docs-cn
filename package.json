@@ -8,8 +8,9 @@
 	"private": true,
 	"devDependencies": {
 		"chalk": "^4.1.0",
-		"patch-vue-directive-ssr": "^0.0.1",
-		"vitepress": "^0.12.2",
+		"gray-matter": "^4.0.3",
+		"lodash": "^4.17.21",
+		"vitepress": "^0.19.1",
 		"yorkie": "^2.0.0"
 	},
 	"scripts": {
