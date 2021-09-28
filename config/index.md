@@ -573,6 +573,20 @@ createServer()
   })
   ```
 
+### server.origin {#server-origin}
+
+- **类型：** `string`
+
+用于定义开发调试阶段生成资产的 origin。
+
+```js
+export default defineConfig({
+  server: {
+    origin: 'http://127.0.0.1:8080/'
+  }
+})
+```
+
 ## 构建选项 {#build-options}
 
 ### build.target {#build-target}
