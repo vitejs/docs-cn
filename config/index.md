@@ -573,14 +573,11 @@ createServer()
   })
   ```
 
-<<<<<<< HEAD
-## 构建选项 {#build-options}
-=======
-### server.origin
+### server.origin {#server-origin}
 
-- **Type:** `string`
+- **类型：** `string`
 
-Defines the origin of the generated asset URLs during development.
+用于定义开发调试阶段生成资产的 origin。
 
 ```js
 export default defineConfig({
@@ -588,9 +585,9 @@ export default defineConfig({
     origin: 'http://127.0.0.1:8080/'
   }
 })
+```
 
-## Build Options
->>>>>>> b5c42432325e14a74e6945759259cca5217f14db
+## 构建选项 {#build-options}
 
 ### build.target {#build-target}
 
