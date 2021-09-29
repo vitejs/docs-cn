@@ -599,7 +599,7 @@ export default defineConfig({
 
   另一个特殊值是 “esnext” —— 即假设有原生动态导入支持，并且将会转译得尽可能小：
 
-  - 如果 [`build.minify`](#build-minify) 选项为 `'terser'`（默认值）， `'esnext'` 将会强制降级为 `'es2019'`。
+  - 如果 [`build.minify`](#build-minify) 选项为 `'terser'`， `'esnext'` 将会强制降级为 `'es2019'`。
   - 其他情况下将完全不会执行转译。
 
   转换过程将会由 esbuild 执行，并且此值应该是一个合法的 [esbuild 目标选项](https://esbuild.github.io/api/#target)。自定义目标也可以是一个 ES 版本（例如：`es2015`）、一个浏览器版本（例如：`chrome58`）或是多个目标组成的一个数组。
@@ -706,9 +706,9 @@ export default defineConfig({
 ### build.minify {#build-minify}
 
 - **类型：** `boolean | 'terser' | 'esbuild'`
-- **默认：** `'terser'`
+- **默认：** `'esbuild'`
 
-  设置为 `false` 可以禁用最小化混淆，或是用来指定使用哪种混淆器。默认为 [Terser](https://github.com/terser/terser)，虽然 Terser 相对较慢，但大多数情况下构建后的文件体积更小。ESbuild 最小化混淆更快但构建后的文件相对更大。
+  设置为 `false` 可以禁用最小化混淆，或是用来指定使用哪种混淆器。默认为 [Esbuild](https://github.com/evanw/esbuild)，它比 terser 快 20-40 倍，压缩率只差 1%-2%。[Benchmarks](https://github.com/privatenumber/minification-benchmarks)
 
 ### build.terserOptions {#build-terseroptions}
 
