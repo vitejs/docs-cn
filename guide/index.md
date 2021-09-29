@@ -6,7 +6,7 @@
 
 ## 总览 {#overview}
 
-Vite (法语意为 "快速的"，发音 `/vit/`<button id="play-vite-audio" onclick="document.getElementById('vite-audio').play();"><img src="/voice.svg" height="15"></button>) 是一种新型前端构建工具，能够显著提升前端开发体验。它主要由两部分组成：
+Vite（法语意为 "快速的"，发音 `/vit/`<button id="play-vite-audio" onclick="document.getElementById('vite-audio').play();"><img src="/voice.svg" height="15"></button>，发音同 "veet"）是一种新型前端构建工具，能够显著提升前端开发体验。它主要由两部分组成：
 
 - 一个开发服务器，它基于 [原生 ES 模块](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules) 提供了 [丰富的内建功能](./features)，如速度快到惊人的 [模块热更新（HMR）](./features#hot-module-replacement)。
 
@@ -69,8 +69,8 @@ yarn create vite my-vue-app --template vue
 - `react-ts`
 - `preact`
 - `preact-ts`
-- `lit-element`
-- `lit-element-ts`
+- `lit`
+- `lit-ts`
 - `svelte`
 - `svelte-ts`
 
@@ -126,18 +126,18 @@ Vite 也支持多个 `.html` 作入口点的 [多页面应用模式](./build#mul
 
 ## 使用未发布的功能 {#using-unreleased-commits}
 
-如果你迫不及待想要体验最新的功能，可以自行克隆 [vite 仓库](https://github.com/vitejs/vite) 到本地机器上然后自行将其链接（将需要 [Yarn 1.x](https://classic.yarnpkg.com/lang/en/)）：
+如果你迫不及待想要体验最新的功能，可以自行克隆 [vite 仓库](https://github.com/vitejs/vite) 到本地机器上然后自行将其链接（将需要 [pnpm](https://pnpm.io/)）：
 
 ```bash
 git clone https://github.com/vitejs/vite.git
 cd vite
-yarn
+pnpm install
 cd packages/vite
-yarn build
-yarn link
+pnpm run build
+pnpm link # you can use your preferred package manager for this step
 ```
 
-然后，回到你的 Vite 项目并运行 `yarn link vite`。重新启动开发服务器（`yarn dev`）来体验新功能吧！
+然后，回到你的 Vite 项目并运行 `pnpm link vite`（或者使用全局的软链来链接 `vite`）。重新启动开发服务器来体验新功能吧！
 
 ## 社区 {#community}
 

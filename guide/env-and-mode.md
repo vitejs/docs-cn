@@ -60,15 +60,19 @@ VITE_SOME_KEY=123
 要想做到这一点，你可以在 `src` 目录下创建一个 `env.d.ts` 文件，接着按下面这样增加 `ImportMetaEnv` 的定义：
 
 ```typescript
-interface ImportMetaEnv {
-  VITE_APP_TITLE: string
+interface ImportMetaEnv extends Readonly<Record<string, string>> {
+  readonly VITE_APP_TITLE: string
   // 更多环境变量...
+}
+
+interface ImportMeta {
+  readonly env: ImportMetaEnv
 }
 ```
 
 ## 模式 {#modes}
 
-默认情况下，开发服务器 (`serve` 命令) 运行在 `development` (开发) 模式，而 `build` 命令运行在 `production` (生产) 模式。
+默认情况下，开发服务器 (`dev` 命令) 运行在 `development` (开发) 模式，而 `build` 以及 `serve` 命令则运行在 `production` (生产) 模式。
 
 这意味着当执行 `vite build` 时，它会自动加载 `.env.production` 中可能存在的环境变量：
 
