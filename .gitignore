@@ -6,3 +6,4 @@ node_modules/
 .deploy*/
 package-lock.json
 .vitepress/dist
+*.local
