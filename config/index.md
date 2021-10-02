@@ -473,7 +473,7 @@ export default defineConfig(async ({ command, mode }) => {
 
   `clientPort` 是一个高级选项，只在客户端的情况下覆盖端口，这允许你为 websocket 提供不同的端口，而并非在客户端代码中查找。如果需要在 dev-server 情况下使用 SSL 代理，这非常有用。
 
-  当使用 `server.middlewareMode` 和 `server.https` 时，你需将 `server.hmr.server` 设置为你 HTTPS 的服务器，这将通过你的服务器来处理 HMR 的安全连接请求。这在使用自签证书的情况下，非常有用。
+  当使用 `server.middlewareMode` 或 `server.https` 时，你需将 `server.hmr.server` 指定为你 HTTP(S) 的服务器，这将通过你的服务器来处理 HMR 的安全连接请求。这在使用自签证书或想通过网络在某端口暴露 Vite 的情况下，非常有用。
 
 ### server.watch {#server-watch}
 
