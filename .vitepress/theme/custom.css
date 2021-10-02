@@ -62,3 +62,10 @@
   color: white;
   border-radius: 10px;
 }
+
+#wwads-container {
+  position: fixed;
+  z-index: 19;
+  bottom: 10px;
+  right: 10px;
+}

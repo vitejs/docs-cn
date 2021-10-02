@@ -31,6 +31,16 @@ export default {
               [h('img', { src, alt: name, id: `sponsor-${id}` })]
             )
           )
+        ]),
+      'page-top-ads': () =>
+        h('div', { id: 'wwads-container' }, [
+          h('div', {
+            class: 'wwads-cn wwads-vertical',
+            'data-id': 111,
+            style: {
+              maxWidth: '200px'
+            }
+          })
         ])
     })
   }
