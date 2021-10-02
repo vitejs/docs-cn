@@ -38,7 +38,7 @@ export default {
             class: 'wwads-cn wwads-vertical',
             'data-id': 111,
             style: {
-              maxWidth: '200px'
+              maxWidth: '150px'
             }
           })
         ])

@@ -64,8 +64,17 @@
 }
 
 #wwads-container {
-  position: fixed;
-  z-index: 19;
-  bottom: 10px;
-  right: 10px;
+  position: relative;
+  float: right;
+  margin: 0 0 16px;
+}
+
+@media (min-width: 1368px) {
+  #wwads-container {
+    position: fixed;
+    z-index: 19;
+    bottom: 10px;
+    right: 10px;
+    margin: 0;
+  }
 }
