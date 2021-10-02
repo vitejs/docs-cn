@@ -66,12 +66,16 @@
 #wwads-container {
   position: relative;
   float: right;
-  z-index: 19;
+  z-index: 9;
   margin: 0 0 16px 16px;
 }
 
 #wwads-container .wwads-text {
   font-size: 12px;
+}
+
+.page .container .content {
+  clear: none !important;
 }
 
 @media (min-width: 1368px) {
