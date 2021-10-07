@@ -66,7 +66,7 @@ import InlineWorker from './shader.js?worker&inline'
 
 查看 [Web Worker 小节](./features.md#web-workers) 获取更多细节。
 
-### `public` 目录 {#the-public-directory}
+## `public` 目录 {#the-public-directory}
 
 如果你有下列这些资源：
 
