@@ -483,7 +483,28 @@ export default defineConfig(async ({ command, mode }) => {
 
   当需要再 Windows Subsystem for Linux (WSL) 2 上运行 Vite 时，如果项目文件夹位于 Windows 文件系统中，你需要将此选项设置为 `{ usePolling: true }`。这是由于 Windows 文件系统的 [WSL2 限制](https://github.com/microsoft/WSL/issues/4739) 造成的。
 
+<<<<<<< HEAD
 ### server.middlewareMode {#server-middlewaremode}
+=======
+  The Vite server watcher skips `.git/` and `node_modules/` directories by default. If you want to watch a package inside `node_moduels/`, you can pass a negated glob pattern to `server.watch.ignored`. That is:
+
+  ```js
+  export default defineConfig({
+    server: {
+      watch: {
+        ignored: ['!**/node_modules/your-package-name/**']
+      }
+    },
+    // The watched package must be excluded from optimization,
+    // so that it can appear in the dependency graph and trigger hot reload.
+    optimizeDeps: {
+      exclude: ['your-package-name']
+    }
+  })
+  ```
+
+### server.middlewareMode
+>>>>>>> 433a205fbe0a03ea7c7cd27b3602da002bd1e13e
 
 - **类型：** `'ssr' | 'html'`
 
@@ -655,7 +676,22 @@ export default defineConfig({
 
   如果禁用，整个项目中的所有 CSS 将被提取到一个 CSS 文件中。
 
+<<<<<<< HEAD
 ### build.sourcemap {#build-sourcemap}
+=======
+### build.cssTarget
+
+- **Type:** `string | string[]`
+- **Default:** the same as [`build.target`](/config/#build-target)
+
+  This options allows users to set a different browser target for CSS minification from the one used for JavaScript transpilation.
+
+  It should only be used when you are targeting a non-mainstream browser.
+  One example is Android WeChat WebView, which supports most modern JavaScript features but not the [`#RGBA` hexadecimal color notation in CSS](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#rgb_colors).
+  In this case, you need to set `build.cssTarget` to `chrome61` to prevent vite from transform `rgba()` colors into `#RGBA` hexadecimal notations.
+
+### build.sourcemap
+>>>>>>> 433a205fbe0a03ea7c7cd27b3602da002bd1e13e
 
 - **类型：** `boolean | 'inline'` | 'hidden'`
 - **默认：** `false`
