@@ -483,10 +483,7 @@ export default defineConfig(async ({ command, mode }) => {
 
   当需要再 Windows Subsystem for Linux (WSL) 2 上运行 Vite 时，如果项目文件夹位于 Windows 文件系统中，你需要将此选项设置为 `{ usePolling: true }`。这是由于 Windows 文件系统的 [WSL2 限制](https://github.com/microsoft/WSL/issues/4739) 造成的。
 
-<<<<<<< HEAD
-### server.middlewareMode {#server-middlewaremode}
-=======
-  The Vite server watcher skips `.git/` and `node_modules/` directories by default. If you want to watch a package inside `node_moduels/`, you can pass a negated glob pattern to `server.watch.ignored`. That is:
+  Vite 服务器默认会忽略对 `.git/` 和 `node_modules/` 目录的监听。如果你需要对 `node_moduels/` 内的包进行监听，你可以为 `server.watch.ignored` 赋值一个取反的 glob 模式，例如：
 
   ```js
   export default defineConfig({
@@ -495,16 +492,15 @@ export default defineConfig(async ({ command, mode }) => {
         ignored: ['!**/node_modules/your-package-name/**']
       }
     },
-    // The watched package must be excluded from optimization,
-    // so that it can appear in the dependency graph and trigger hot reload.
+    // 被监听的包必须被排除在优化之外，
+    // 以便它能出现在依赖关系图中并触发热更新。
     optimizeDeps: {
       exclude: ['your-package-name']
     }
   })
   ```
 
-### server.middlewareMode
->>>>>>> 433a205fbe0a03ea7c7cd27b3602da002bd1e13e
+### server.middlewareMode {#server-middlewaremode}
 
 - **类型：** `'ssr' | 'html'`
 
@@ -676,22 +672,18 @@ export default defineConfig({
 
   如果禁用，整个项目中的所有 CSS 将被提取到一个 CSS 文件中。
 
-<<<<<<< HEAD
+### build.cssTarget {#build-csstarget}
+
+- **类型：** `string | string[]`
+- **默认值：** 与 [`build.target`](/config/#build-target) 一致
+
+  此选项允许用户为 CSS 的压缩设置一个不同的浏览器 target，此处的 target 并非是用于 JavaScript 转写目标。
+
+  应只在针对非主流浏览器时使用。
+  最直观的示例是当你要兼容的场景是安卓微信中的 webview 时，它支持大多数现代的 JavaScript 功能，但并不支持 [CSS 中的 `#RGBA` 十六进制颜色符号](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#rgb_colors)。
+  这种情况下，你需要将 `build.cssTarget` 设置为 `chrome61`，以防止 vite 将 `rgba()` 颜色转化为 `#RGBA` 十六进制符号的形式。
+
 ### build.sourcemap {#build-sourcemap}
-=======
-### build.cssTarget
-
-- **Type:** `string | string[]`
-- **Default:** the same as [`build.target`](/config/#build-target)
-
-  This options allows users to set a different browser target for CSS minification from the one used for JavaScript transpilation.
-
-  It should only be used when you are targeting a non-mainstream browser.
-  One example is Android WeChat WebView, which supports most modern JavaScript features but not the [`#RGBA` hexadecimal color notation in CSS](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#rgb_colors).
-  In this case, you need to set `build.cssTarget` to `chrome61` to prevent vite from transform `rgba()` colors into `#RGBA` hexadecimal notations.
-
-### build.sourcemap
->>>>>>> 433a205fbe0a03ea7c7cd27b3602da002bd1e13e
 
 - **类型：** `boolean | 'inline'` | 'hidden'`
 - **默认：** `false`
