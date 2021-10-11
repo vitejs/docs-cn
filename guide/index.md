@@ -20,7 +20,26 @@ Vite 意在提供开箱即用的配置，同时它的 [插件 API](./api-plugin)
 
 - 默认的构建目标浏览器是能 [在 script 标签上支持原生 ESM](https://caniuse.com/es6-module) 和 [原生 ESM 动态导入](https://caniuse.com/es6-module-dynamic-import)。传统浏览器可以通过官方插件 [@vitejs/plugin-legacy](https://github.com/vitejs/vite/tree/main/packages/plugin-legacy) 支持 —— 查看 [构建生产版本](./build) 章节获取更多细节。
 
+<<<<<<< HEAD
 ## 搭建第一个 Vite 项目 {#scaffolding-your-first-vite-project}
+=======
+## Trying Vite Online
+
+You can try Vite online on [StackBlitz](https://vite.new/). It runs the Vite-based build setup directly in the browser, so it is almost identical to the local setup but doesn't require installing anything on your machine. You can navigate to `vite.new/{template}` to select which framework to use.
+
+The supported template presets are:
+
+| JavaScript | TypeScript |
+| :---: | :---: |
+| [vanilla](https://vite.new/vanilla) | [vanilla-ts](https://vite.new/vanilla-ts) |
+| [vue](https://vite.new/vue) | [vue-ts](https://vite.new/vue-ts) |
+| [react](https://vite.new/react) | [react-ts](https://vite.new/react-ts) |
+| [preact](https://vite.new/preact) | [preact-ts](https://vite.new/preact-ts) |
+| [lit](https://vite.new/lit) | [lit-ts](https://vite.new/lit-ts) |
+| [svelte](https://vite.new/svelte) | [svelte-ts](https://vite.new/svelte-ts) |
+
+## Scaffolding Your First Vite Project
+>>>>>>> b646dd0c1629dc13ce9feb4fdc1742ef99828f96
 
 ::: tip 兼容性注意
 Vite 需要 [Node.js](https://nodejs.org/en/) 版本 >= 12.0.0。
@@ -59,6 +78,7 @@ npm init vite@latest my-vue-app -- --template vue
 yarn create vite my-vue-app --template vue
 ```
 
+<<<<<<< HEAD
 支持的模板预设包括：
 
 - `vanilla`
@@ -75,6 +95,9 @@ yarn create vite my-vue-app --template vue
 - `svelte-ts`
 
 查看 [create-vite](https://github.com/vitejs/vite/tree/main/packages/create-vite) 以获取每个模板的更多细节。
+=======
+See [create-vite](https://github.com/vitejs/vite/tree/main/packages/create-vite) for more details on each supported template: `vanilla`, `vanilla-ts`, `vue`, `vue-ts`, `react`, `react-ts`, `preact`, `preact-ts`, `lit`, `lit-ts`, `svelte`, `svelte-ts`.
+>>>>>>> b646dd0c1629dc13ce9feb4fdc1742ef99828f96
 
 ## 社区模板 {#community-templates}
 
