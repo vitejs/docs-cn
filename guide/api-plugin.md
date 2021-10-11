@@ -290,7 +290,7 @@ Vite 插件也可以提供钩子来服务于特定的 Vite 目标。这些钩子
 
 ### `transformIndexHtml` {#transformindexhtml}
 
-- **类型：** `IndexHtmlTransformHook | { enforce?: 'pre' | 'post' transform: IndexHtmlTransformHook }`
+- **类型：** `IndexHtmlTransformHook | { enforce?: 'pre' | 'post', transform: IndexHtmlTransformHook }`
 - **种类：** `async`, `sequential`
 
   转换 `index.html` 的专用钩子。钩子接收当前的 HTML 字符串和转换上下文。上下文在开发期间暴露[`ViteDevServer`](./api-javascript#vitedevserver)实例，在构建期间暴露 Rollup 输出的包。
