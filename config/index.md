@@ -483,7 +483,7 @@ export default defineConfig(async ({ command, mode }) => {
 
   当需要再 Windows Subsystem for Linux (WSL) 2 上运行 Vite 时，如果项目文件夹位于 Windows 文件系统中，你需要将此选项设置为 `{ usePolling: true }`。这是由于 Windows 文件系统的 [WSL2 限制](https://github.com/microsoft/WSL/issues/4739) 造成的。
 
-  Vite 服务器默认会忽略对 `.git/` 和 `node_modules/` 目录的监听。如果你需要对 `node_moduels/` 内的包进行监听，你可以为 `server.watch.ignored` 赋值一个取反的 glob 模式，例如：
+  Vite 服务器默认会忽略对 `.git/` 和 `node_modules/` 目录的监听。如果你需要对 `node_modules/` 内的包进行监听，你可以为 `server.watch.ignored` 赋值一个取反的 glob 模式，例如：
 
   ```js
   export default defineConfig({
