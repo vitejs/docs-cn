@@ -108,6 +108,8 @@ Vue 用户应使用官方提供的 [@vitejs/plugin-vue-jsx](https://github.com/v
 
 ```js
 // vite.config.js
+import { defineConfig } from 'vite'
+
 export default defineConfig({
   esbuild: {
     jsxFactory: 'h',
@@ -122,6 +124,8 @@ export default defineConfig({
 
 ```js
 // vite.config.js
+import { defineConfig } from 'vite'
+
 export default defineConfig({
   esbuild: {
     jsxInject: `import React from 'react'`

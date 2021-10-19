@@ -20,6 +20,21 @@ Vite 意在提供开箱即用的配置，同时它的 [插件 API](./api-plugin)
 
 - 默认的构建目标浏览器是能 [在 script 标签上支持原生 ESM](https://caniuse.com/es6-module) 和 [原生 ESM 动态导入](https://caniuse.com/es6-module-dynamic-import)。传统浏览器可以通过官方插件 [@vitejs/plugin-legacy](https://github.com/vitejs/vite/tree/main/packages/plugin-legacy) 支持 —— 查看 [构建生产版本](./build) 章节获取更多细节。
 
+## 在线试用 Vite {#trying-vite-online}
+
+你可以通过 [StackBlitz](https://vite.new/) 在线试用 vite。它直接在浏览器中运行基于  Vite 的构建，因此它与本地开发几乎无差别，同时无需在你的机器上安装任何东西。你可以浏览 `vite.new/{template}` 来选择你要使用的框架。
+
+目前支持的模板预设如下：
+
+| JavaScript | TypeScript |
+| :---: | :---: |
+| [vanilla](https://vite.new/vanilla) | [vanilla-ts](https://vite.new/vanilla-ts) |
+| [vue](https://vite.new/vue) | [vue-ts](https://vite.new/vue-ts) |
+| [react](https://vite.new/react) | [react-ts](https://vite.new/react-ts) |
+| [preact](https://vite.new/preact) | [preact-ts](https://vite.new/preact-ts) |
+| [lit](https://vite.new/lit) | [lit-ts](https://vite.new/lit-ts) |
+| [svelte](https://vite.new/svelte) | [svelte-ts](https://vite.new/svelte-ts) |
+
 ## 搭建第一个 Vite 项目 {#scaffolding-your-first-vite-project}
 
 ::: tip 兼容性注意
@@ -41,7 +56,7 @@ $ yarn create vite
 使用 PNPM:
 
 ```bash
-$ pnpm dlx create-vite
+$ pnpm create vite
 ```
 
 然后按照提示操作即可！
@@ -57,24 +72,12 @@ npm init vite@latest my-vue-app -- --template vue
 
 # yarn
 yarn create vite my-vue-app --template vue
+
+# pnpm
+pnpm create vite my-vue-app -- --template vue
 ```
 
-支持的模板预设包括：
-
-- `vanilla`
-- `vanilla-ts`
-- `vue`
-- `vue-ts`
-- `react`
-- `react-ts`
-- `preact`
-- `preact-ts`
-- `lit`
-- `lit-ts`
-- `svelte`
-- `svelte-ts`
-
-查看 [create-vite](https://github.com/vitejs/vite/tree/main/packages/create-vite) 以获取每个模板的更多细节。
+查看 [create-vite](https://github.com/vitejs/vite/tree/main/packages/create-vite) 以获取每个模板的更多细节：`vanilla`，`vanilla-ts`，`vue`，`vue-ts`，`react`，`react-ts`，`preact`，`preact-ts`，`lit`，`lit-ts`，`svelte`，`svelte-ts`。
 
 ## 社区模板 {#community-templates}
 
