@@ -118,15 +118,9 @@ Vite 也支持多个 `.html` 作入口点的 [多页面应用模式](./build#mul
 ```json
 {
   "scripts": {
-<<<<<<< HEAD
     "dev": "vite", // 启动开发服务器
     "build": "vite build", // 为生产环境构建产物
-    "serve": "vite preview" // 本地预览生产构建产物
-=======
-    "dev": "vite", // start dev server
-    "build": "vite build", // build for production
-    "preview": "vite preview" // locally preview production build
->>>>>>> 4d1436ef595feab34f95fa772b9873d77176ce3f
+    "preview": "vite preview" // 本地预览生产构建产物
   }
 }
 ```
