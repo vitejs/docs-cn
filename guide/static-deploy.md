@@ -10,7 +10,7 @@
 {
   "scripts": {
     "build": "vite build",
-    "serve": "vite preview"
+    "preview": "vite preview"
   }
 }
 ```

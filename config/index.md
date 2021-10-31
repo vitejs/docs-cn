@@ -365,11 +365,19 @@ export default defineConfig(async ({ command, mode }) => {
 
 ### server.host {#server-host}
 
+<<<<<<< HEAD
 - **类型：** `string`
 - **默认：** `'127.0.0.1'`
 
   指定服务器应该监听哪个 IP 地址。
   如果将此设置为 `0.0.0.0` 将监听所有地址，包括局域网和公网地址。
+=======
+- **Type:** `string | boolean`
+- **Default:** `'127.0.0.1'`
+
+  Specify which IP addresses the server should listen on.
+  Set this to `0.0.0.0` or `true` to listen on all addresses, including LAN and public addresses.
+>>>>>>> 4d1436ef595feab34f95fa772b9873d77176ce3f
 
   也可以通过 CLI 使用 `--host 0.0.0.0` 或 `--host` 来设置。
 
@@ -540,18 +548,29 @@ createServer()
 
 ### server.fs.strict {#server-fs-strict}
 
+<<<<<<< HEAD
 - **实验性**
 - **类型：** `boolean`
 - **默认：** `false` (将在后续版本中改为 `true`)
+=======
+- **Type:** `boolean`
+- **Default:** `true` (enabled by default since Vite 2.7)
+>>>>>>> 4d1436ef595feab34f95fa772b9873d77176ce3f
 
   限制为工作区 root 路径以外的文件的访问。
 
 ### server.fsServe.root {#server-fsserve-root}
 
+<<<<<<< HEAD
 - **实验性**
 - **类型：** `string`
 
   限制哪些文件可以通过 `/@fs/` 路径提供服务。当 `server.fsServe.strict` 设置为 true 时，访问这个目录列表外的文件将会返回 403 结果。
+=======
+- **Type:** `string[]`
+
+  Restrict files that could be served via `/@fs/`. When `server.fs.strict` is set to `true`, accessing files outside this directory list that aren't imported from an allowed file will result in a 403.
+>>>>>>> 4d1436ef595feab34f95fa772b9873d77176ce3f
 
   Vite 将会搜索此根目录下潜在工作空间并作默认使用。一个有效的工作空间应符合以下几个条件，否则会默认以 [项目 root 目录](/guide/#index-html-and-project-root) 作备选方案。
 
@@ -591,7 +610,20 @@ createServer()
   })
   ```
 
+<<<<<<< HEAD
 ### server.origin {#server-origin}
+=======
+### server.fs.deny
+
+- **Experimental**
+- **Type:** `string[]`
+
+  Blocklist for sensitive files being restricted to be served by Vite dev server.
+
+  Default to `['.env', '.env.*', '*.{pem,crt}']`.
+
+### server.origin
+>>>>>>> 4d1436ef595feab34f95fa772b9873d77176ce3f
 
 - **类型：** `string`
 

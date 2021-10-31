@@ -26,14 +26,14 @@ Vite 意在提供开箱即用的配置，同时它的 [插件 API](./api-plugin)
 
 目前支持的模板预设如下：
 
-| JavaScript | TypeScript |
-| :---: | :---: |
+|             JavaScript              |                TypeScript                 |
+| :---------------------------------: | :---------------------------------------: |
 | [vanilla](https://vite.new/vanilla) | [vanilla-ts](https://vite.new/vanilla-ts) |
-| [vue](https://vite.new/vue) | [vue-ts](https://vite.new/vue-ts) |
-| [react](https://vite.new/react) | [react-ts](https://vite.new/react-ts) |
-| [preact](https://vite.new/preact) | [preact-ts](https://vite.new/preact-ts) |
-| [lit](https://vite.new/lit) | [lit-ts](https://vite.new/lit-ts) |
-| [svelte](https://vite.new/svelte) | [svelte-ts](https://vite.new/svelte-ts) |
+|     [vue](https://vite.new/vue)     |     [vue-ts](https://vite.new/vue-ts)     |
+|   [react](https://vite.new/react)   |   [react-ts](https://vite.new/react-ts)   |
+|  [preact](https://vite.new/preact)  |  [preact-ts](https://vite.new/preact-ts)  |
+|     [lit](https://vite.new/lit)     |     [lit-ts](https://vite.new/lit-ts)     |
+|  [svelte](https://vite.new/svelte)  |  [svelte-ts](https://vite.new/svelte-ts)  |
 
 ## 搭建第一个 Vite 项目 {#scaffolding-your-first-vite-project}
 
@@ -118,9 +118,15 @@ Vite 也支持多个 `.html` 作入口点的 [多页面应用模式](./build#mul
 ```json
 {
   "scripts": {
+<<<<<<< HEAD
     "dev": "vite", // 启动开发服务器
     "build": "vite build", // 为生产环境构建产物
     "serve": "vite preview" // 本地预览生产构建产物
+=======
+    "dev": "vite", // start dev server
+    "build": "vite build", // build for production
+    "preview": "vite preview" // locally preview production build
+>>>>>>> 4d1436ef595feab34f95fa772b9873d77176ce3f
   }
 }
 ```

@@ -126,8 +126,8 @@ const { build } = require('vite')
 ;(async () => {
   await build({
     root: path.resolve(__dirname, './project'),
+    base: '/foo/',
     build: {
-      base: '/foo/',
       rollupOptions: {
         // ...
       }

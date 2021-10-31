@@ -227,7 +227,11 @@ Vite 基于以下策略执行自动化的 SSR 外部化:
 
 ## SSR 专有插件逻辑 {#ssr-specific-plugin-logic}
 
+<<<<<<< HEAD
 一些框架，如 Vue 或 Svelte，会根据客户端渲染和服务端渲染的区别，将组件编译成不同的格式。可以向以下的插件钩子中，给 Vite 传递额外的 `ssr` 参数来支持根据情景转换：
+=======
+Some frameworks such as Vue or Svelte compiles components into different formats based on client vs. SSR. To support conditional transforms, Vite passes an additional `ssr` property in the `options` object of the following plugin hooks:
+>>>>>>> 4d1436ef595feab34f95fa772b9873d77176ce3f
 
 - `resolveId`
 - `load`
@@ -239,16 +243,32 @@ Vite 基于以下策略执行自动化的 SSR 外部化:
 export function mySSRPlugin() {
   return {
     name: 'my-ssr',
+<<<<<<< HEAD
     transform(code, id, ssr) {
       if (ssr) {
         // 执行 ssr 专有转换...
+=======
+    transform(code, id, options) {
+      if (options?.ssr) {
+        // perform ssr-specific transform...
+>>>>>>> 4d1436ef595feab34f95fa772b9873d77176ce3f
       }
     }
   }
 }
 ```
 
+<<<<<<< HEAD
 ## SSR Target {#ssr-target}
+=======
+The options object in `load` and `transform` is optional, rollup is not currently using this object but may extend these hooks with additional metadata in the future.
+
+::: note
+Before Vite 2.7, this was informed to plugin hooks with a positional `ssr` param instead of using the `options` object. All major frameworks and plugins are updated but you may find outdated posts using the previous API.
+:::
+
+## SSR Target
+>>>>>>> 4d1436ef595feab34f95fa772b9873d77176ce3f
 
 SSR 构建的默认目标为 node 环境，但你也可以让服务运行在 Web Worker 上。每个平台的打包条目解析是不同的。你可以将`ssr.target` 设置为 `webworker`，以将目标配置为 Web Worker。
 
