@@ -227,7 +227,7 @@ Vite 基于以下策略执行自动化的 SSR 外部化:
 
 ## SSR 专有插件逻辑 {#ssr-specific-plugin-logic}
 
-一些框架，如 Vue 或 Svelte，会根据客户端渲染和服务端渲染的区别，将组件编译成不同的格式。可以向以下的插件钩子中，给 Vite 传递额外的 `ssr` 参数来支持根据情景转换：
+一些框架，如 Vue 或 Svelte，会根据客户端渲染和服务端渲染的区别，将组件编译成不同的格式。可以向以下的插件钩子中，给 Vite 传递额外的 `options` 对象，对象中包含 `ssr` 属性来支持根据情景转换：
 
 - `resolveId`
 - `load`
@@ -239,14 +239,20 @@ Vite 基于以下策略执行自动化的 SSR 外部化:
 export function mySSRPlugin() {
   return {
     name: 'my-ssr',
-    transform(code, id, ssr) {
-      if (ssr) {
+    transform(code, id, options) {
+      if (options?.ssr) {
         // 执行 ssr 专有转换...
       }
     }
   }
 }
 ```
+
+`options` 中的 `load` 和 `transform` 为可选项，rollup 目前并未使用该对象，但将来可能会用额外的元数据来扩展这些钩子函数。
+
+::: 注意
+Vite 2.7 之前的版本，会提示你 `ssr` 参数的位置不应该是 `options` 对象。目前所有主框架和插件都已对应更新，但你可能还会发现使用过时 API 的旧文章。
+:::
 
 ## SSR Target {#ssr-target}
 
