@@ -187,7 +187,13 @@ $ npm run serve
    {
      "hosting": {
        "public": "dist",
-       "ignore": []
+       "ignore": [],
+       "rewrites": [
+         {
+           "source": "**",
+           "destination": "/index.html"
+         }
+       ]
      }
    }
    ```
