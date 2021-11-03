@@ -17,7 +17,7 @@ Vite 努力秉承开箱即用的原则，因此在创作一款新插件前，请
 
 ## 约定 {#conventions}
 
-如果插件不使用 Vite 特有的钩子，可以实现为 [兼容的 Rollup 插件](#rollup-plugin-compatibility)，推荐使用 [Rollup 插件名称约定](https://rollupjs.org/guide/en/#conventions)。
+如果插件不使用 Vite 特有的钩子，可以作为 [兼容 Rollup 的插件](#rollup-plugin-compatibility) 来实现，推荐使用 [Rollup 插件名称约定](https://rollupjs.org/guide/en/#conventions)（但不包括虚拟模块的命名，参见下方说明）。
 
 - Rollup 插件应该有一个带 `rollup-plugin-` 前缀、语义清晰的名称。
 - 在 package.json 中包含 `rollup-plugin` 和 `vite-plugin` 关键字。
@@ -35,6 +35,10 @@ Vite 努力秉承开箱即用的原则，因此在创作一款新插件前，请
 - `vite-plugin-vue-` 前缀作为 Vue 插件
 - `vite-plugin-react-` 前缀作为 React 插件
 - `vite-plugin-svelte-` 前缀作为 Svelte 插件
+
+Rollup 推荐在 ”虚拟模块“（例如 helper 函数） 的模块 ID 前加上 `\0`。这可以防止其他插件对它进行处理。但这种方式对浏览器并不友好。
+
+Vite 虚拟模块的规范是在路径前加上 `virtual:`。如果可能的话，插件名应该作为命名空间使用，以避免与生态系统中的其他插件发生冲突。例如，`vite-plugin-posts` 可以让用户引入 `virtual:posts` 或 `virtual:posts/helpers` 虚拟模块，以获得构建时信息。
 
 ## 插件配置 {#plugins-config}
 
