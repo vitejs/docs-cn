@@ -68,7 +68,7 @@ $ pnpm create vite
 npm init vite@latest my-vue-app --template vue
 
 # npm 7+, 需要额外的双横线：
-npm init vite@latest my-vue-app -- --template vue
+npm init vite@latest my-vue-app --template vue
 
 # yarn
 yarn create vite my-vue-app --template vue
