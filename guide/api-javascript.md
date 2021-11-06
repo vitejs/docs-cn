@@ -25,6 +25,8 @@ const { createServer } = require('vite')
     }
   })
   await server.listen()
+
+  server.printUrls()
 })()
 ```
 
@@ -136,7 +138,39 @@ const { build } = require('vite')
 })()
 ```
 
+<<<<<<< HEAD
 ## `resolveConfig` {#resolveconfig}
+=======
+## `preview`
+
+**Experimental**
+
+**Type Signature:**
+
+```ts
+async function preview(inlineConfig?: InlineConfig): Promise<PreviewServer>
+```
+
+**Example Usage:**
+
+```js
+const { preview } = require('vite')
+
+;(async () => {
+  const previewServer = await preview({
+    // any valid user config options, plus `mode` and `configFile`
+    preview: {
+      port: 8080,
+      open: true
+    }
+  })
+
+  previewServer.printUrls()
+})()
+```
+
+## `resolveConfig`
+>>>>>>> 4376b633e5a00603536bbc3e1aaeca79e49d4dd1
 
 **类型校验：**
 
