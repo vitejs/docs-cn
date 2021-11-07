@@ -62,7 +62,7 @@ VITE_SOME_KEY=123
 ```typescript
 /// <reference types="vite/client" />
 
-interface ImportMetaEnv extends Readonly<Record<string, string>> {
+interface ImportMetaEnv {
   readonly VITE_APP_TITLE: string
   // 更多环境变量...
 }
