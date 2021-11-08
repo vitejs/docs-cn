@@ -33,11 +33,15 @@ $ npm run build
 
 ### 本地测试应用 {#testing-the-app-locally}
 
+<<<<<<< HEAD
 当你构建完成应用后，你可以通过运行 `npm run serve` 命令，在本地测试该应用。
+=======
+Once you've built the app, you may test it locally by running `npm run preview` command.
+>>>>>>> 62db3925283dc23737e62440d510a0031aa8ca03
 
 ```bash
 $ npm run build
-$ npm run serve
+$ npm run preview
 ```
 
 `vite preview` 命令会在本地启动一个静态 Web 服务器，将 `dist` 文件夹运行在 http://localhost:5000。这样在本地环境下查看该构建产物是否正常可用就方便了。
@@ -47,18 +51,22 @@ $ npm run serve
 ```json
 {
   "scripts": {
-    "serve": "vite preview --port 8080"
+    "preview": "vite preview --port 8080"
   }
 }
 ```
 
 现在 `preview` 命令会将服务器运行在 http://localhost:8080。
 
+<<<<<<< HEAD
 ## GitHub Pages {#github-pages}
 
 ::: tip 注意
 如果你将 script 的名字 `serve` 改为了 `preview`，你可能会遇到某些包管理工具在处理 [前置 & 后置 scripts](https://docs.npmjs.com/cli/v7/using-npm/scripts#pre--post-scripts) 方面的问题。
 :::
+=======
+## GitHub Pages
+>>>>>>> 62db3925283dc23737e62440d510a0031aa8ca03
 
 1. 在 `vite.config.js` 中设置正确的 `base`。
 

@@ -222,7 +222,11 @@ Vite 插件也可以提供钩子来服务于特定的 Vite 目标。这些钩子
       // 在其他钩子中使用存储的配置
       transform(code, id) {
         if (config.command === 'serve') {
+<<<<<<< HEAD
           // serve: 由开发服务器调用的插件
+=======
+          // dev: plugin invoked by dev server
+>>>>>>> 62db3925283dc23737e62440d510a0031aa8ca03
         } else {
           // build: 由 Rollup 调用的插件
         }
@@ -231,7 +235,13 @@ Vite 插件也可以提供钩子来服务于特定的 Vite 目标。这些钩子
   }
   ```
 
+<<<<<<< HEAD
 ### `configureServer` {#configureserver}
+=======
+  Note that the `command` value is `serve` in dev (in the cli `vite`, `vite dev`, and `vite serve` are aliases).
+
+### `configureServer`
+>>>>>>> 62db3925283dc23737e62440d510a0031aa8ca03
 
 - **类型：** `(server: ViteDevServer) => (() => void) | void | Promise<(() => void) | void>`
 - **种类：** `async`, `sequential`
