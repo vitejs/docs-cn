@@ -787,29 +787,26 @@ export default defineConfig({
 
   设置为 `{}` 则会启用 rollup 的监听器。在涉及只用在构建时的插件时和集成开发流程中很常用。
 
-<<<<<<< HEAD
-## 依赖优化选项 {#dep-optimization-options}
-=======
-## Preview Options
+## 预览选项 {#preview-options}
 
-### preview.host
+### preview.host {#preview-host}
 
-- **Type:** `string | boolean`
-- **Default:** [`server.host`](#server_host)
+- **类型：** `string | boolean`
+- **默认：** [`server.host`](#server_host)
 
-  Specify which IP addresses the server should listen on.
-  Set this to `0.0.0.0` or `true` to listen on all addresses, including LAN and public addresses.
+  为开发服务器指定 ip 地址。
+  设置为 `0.0.0.0` 或 `true` 会监听所有地址，包括局域网和公共地址。
 
-  This can be set via the CLI using `--host 0.0.0.0` or `--host`.
+  还可以通过 CLI 进行设置，使用 `--host 0.0.0.0` 或 `--host`。
 
-### preview.port
+### preview.port {#preview-port}
 
-- **Type:** `number`
-- **Default:** `5000`
+- **类型：** `number`
+- **默认：** `5000`
 
-  Specify server port. Note if the port is already being used, Vite will automatically try the next available port so this may not be the actual port the server ends up listening on.
+  指定开发服务器端口。注意，如果设置的端口已被使用，Vite 将自动尝试下一个可用端口，所以这可能不是最终监听的服务器端口。
 
-**Example:**
+**示例：**
 
 ```js
 export default defineConfig({
@@ -822,47 +819,46 @@ export default defineConfig({
 })
 ```
 
-### preview.strictPort
+### preview.strictPort {#preview-strictport}
 
-- **Type:** `boolean`
-- **Default:** [`server.strictPort`](#server_strictport)
+- **类型：** `boolean`
+- **默认：** [`server.strictPort`](#server_strictport)
 
-  Set to `true` to exit if port is already in use, instead of automatically try the next available port.
+  设置为 `true` 时，如果端口已被使用，则直接退出，而不会再进行后续端口的尝试。
 
-### preview.https
+### preview.https {#preview-https}
 
-- **Type:** `boolean | https.ServerOptions`
-- **Default:** [`server.https`](#server_https)
+- **类型：** `boolean | https.ServerOptions`
+- **默认：** [`server.https`](#server_https)
 
-  Enable TLS + HTTP/2. Note this downgrades to TLS only when the [`server.proxy` option](#server-proxy) is also used.
+  启用 TLS + HTTP/2。注意，只有在与 [`server.proxy` 选项](#server-proxy) 同时使用时，才会降级为 TLS。
 
-  The value can also be an [options object](https://nodejs.org/api/https.html#https_https_createserver_options_requestlistener) passed to `https.createServer()`.
+  该值也可以传递给 `https.createServer()` 的 [options 对象](https://nodejs.org/api/https.html#https_https_createserver_options_requestlistener)。
 
-### preview.open
+### preview.open {#preview-open}
 
-- **Type:** `boolean | string`
-- **Default:** [`server.open`](#server_open)
+- **类型：** `boolean | string`
+- **默认：** [`server.open`](#server_open)
 
-  Automatically open the app in the browser on server start. When the value is a string, it will be used as the URL's pathname. If you want to open the server in a specific browser you like, you can set the env `process.env.BROWSER` (e.g. `firefox`). See [the `open` package](https://github.com/sindresorhus/open#app) for more details.
+  开发服务器启动时，自动在浏览器中打开应用程序。当该值为字符串时，它将被用作 URL 的路径名。如果你想在你喜欢的某个浏览器打开该开发服务器，你可以设置环境变量 `process.env.BROWSER` （例如 `firefox`）。欲了解更多细节，请参阅 [`open` 包的源码](https://github.com/sindresorhus/open#app)。
 
-### preview.proxy
+### preview.proxy {#preview-proxy}
 
-- **Type:** `Record<string, string | ProxyOptions>`
-- **Default:** [`server.proxy`](#server_proxy)
+- **类型：** `Record<string, string | ProxyOptions>`
+- **默认：** [`server.proxy`](#server_proxy)
 
-  Configure custom proxy rules for the dev server. Expects an object of `{ key: options }` pairs. If the key starts with `^`, it will be interpreted as a `RegExp`. The `configure` option can be used to access the proxy instance.
+  为开发服务器配置自定义代理规则。其值的结构为 `{ key: options }` 的对象。如果 key 以 `^` 开头，它将被识别为 `RegExp`，其中 `configure` 选项可用于访问代理实例。
 
-  Uses [`http-proxy`](https://github.com/http-party/node-http-proxy). Full options [here](https://github.com/http-party/node-http-proxy#options).
+  基于 [`http-proxy`](https://github.com/http-party/node-http-proxy) 实现，完整的参数列表参见 [此链接](https://github.com/http-party/node-http-proxy#options)。
 
-### preview.cors
+### preview.cors {#preview-cors}
 
-- **Type:** `boolean | CorsOptions`
-- **Default:** [`server.cors`](#server_proxy)
+- **类型：** `boolean | CorsOptions`
+- **默认：** [`server.cors`](#server_proxy)
 
-  Configure CORS for the dev server. This is enabled by default and allows any origin. Pass an [options object](https://github.com/expressjs/cors) to fine tune the behavior or `false` to disable.
+  为开发服务器配置 CORS。此功能默认启用，支持任何来源。可传递一个 [options 对象](https://github.com/expressjs/cors) 来进行配置，或者传递 `false` 来禁用此行为。
 
-## Dep Optimization Options
->>>>>>> 3f21c98daab3434d574a7044cf8927e086484019
+## 依赖优化选项 {#dep-optimization-options}
 
 - **相关内容：** [依赖预构建](/guide/dep-pre-bundling)
 
