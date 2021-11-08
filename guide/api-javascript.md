@@ -25,6 +25,8 @@ const { createServer } = require('vite')
     }
   })
   await server.listen()
+
+  server.printUrls()
 })()
 ```
 
@@ -35,7 +37,7 @@ const { createServer } = require('vite')
 - `configFile`：指明要使用的配置文件。如果没有设置，Vite 将尝试从项目根目录自动解析。设置为 `false` 可以禁用自动解析功能。
 - `envFile`：设置为 `false` 时，则禁用 `.env` 文件。
 
-## `ViteDevServer`
+## `ViteDevServer` {#vitedevserver}
 
 ```ts
 interface ViteDevServer {
@@ -107,7 +109,7 @@ interface ViteDevServer {
 }
 ```
 
-## `build`
+## `build` {#build}
 
 **类型校验：**
 
@@ -133,6 +135,34 @@ const { build } = require('vite')
       }
     }
   })
+})()
+```
+
+## `preview` {#preview}
+
+**实验阶段**
+
+**类型签名：**
+
+```ts
+async function preview(inlineConfig?: InlineConfig): Promise<PreviewServer>
+```
+
+**示例用法：**
+
+```js
+const { preview } = require('vite')
+
+;(async () => {
+  const previewServer = await preview({
+    // 任何有效的用户配置项，将加上 `mode` 和 `configFile`
+    preview: {
+      port: 8080,
+      open: true
+    }
+  })
+
+  previewServer.printUrls()
 })()
 ```
 
