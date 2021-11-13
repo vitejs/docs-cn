@@ -83,8 +83,13 @@ $ npm run preview
    git add -A
    git commit -m 'deploy'
 
+<<<<<<< HEAD
    # 如果你要部署在 https://<USERNAME>.github.io
    # git push -f git@github.com:<USERNAME>/<USERNAME>.github.io.git master
+=======
+   # if you are deploying to https://<USERNAME>.github.io
+   # git push -f git@github.com:<USERNAME>/<USERNAME>.github.io.git main
+>>>>>>> f9a82fda3f5202320c3b3bf9d41d744a9ebedb5c
 
    # 如果你要部署在 https://<USERNAME>.github.io/<REPO>
    # git push -f git@github.com:<USERNAME>/<REPO>.git master:gh-pages
