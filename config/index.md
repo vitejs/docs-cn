@@ -742,6 +742,14 @@ export default defineConfig({
 
   当设置为 `true` 时，构建也将生成 SSR 的 manifest 文件，以确定生产中的样式链接与资产预加载指令。
 
+### build.ssr {#build-ssr}
+
+- **类型：** `boolean | string`
+- **默认值：** `undefined`
+- **相关链接：** [Server-Side Rendering](/guide/ssr)
+
+  生成面向 SSR 的构建。此选项的值可以是字符串，用于直接定义 SSR 的入口，也可以为 `true`，但这需要通过设置 `rollupOptions.input` 来指定 SSR 的入口。
+
 ### build.minify {#build-minify}
 
 - **类型：** `boolean | 'terser' | 'esbuild'`
