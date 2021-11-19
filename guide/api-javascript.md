@@ -109,7 +109,7 @@ interface ViteDevServer {
 
 ## `build`
 
-**类型校验：**
+**类型签名：**
 
 ```ts
 async function build(
@@ -138,7 +138,7 @@ const { build } = require('vite')
 
 ## `resolveConfig` {#resolveconfig}
 
-**类型校验：**
+**类型签名：**
 
 ```ts
 async function resolveConfig(
