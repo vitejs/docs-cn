@@ -240,7 +240,11 @@ JSON 可以被直接导入 —— 同样支持具名导入：
 ```js
 // 导入整个对象
 import json from './example.json'
+<<<<<<< HEAD
 // 对一个根字段使用具名导入 —— 有效帮助 treeshaking！
+=======
+// import a root field as named exports - helps with tree-shaking!
+>>>>>>> f5fe3f6505a75c61d9bf94e681256c74d89bc4ff
 import { field } from './example.json'
 ```
 

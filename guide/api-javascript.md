@@ -103,7 +103,17 @@ interface ViteDevServer {
    */
   listen(port?: number, isRestart?: boolean): Promise<ViteDevServer>
   /**
+<<<<<<< HEAD
    * 停止服务器
+=======
+   * Restart the server.
+   *
+   * @param forceOptimize - force the optimizer to re-bundle, same as --force cli flag
+   */
+  restart(forceOptimize?: boolean): Promise<void>
+  /**
+   * Stop the server.
+>>>>>>> f5fe3f6505a75c61d9bf94e681256c74d89bc4ff
    */
   close(): Promise<void>
 }

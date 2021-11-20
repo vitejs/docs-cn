@@ -172,7 +172,15 @@ export default defineConfig(async ({ command, mode }) => {
 
   如果你在你的应用程序中有相同依赖的副本（比如 monorepos），请使用此选项强制 Vite 始终将列出的依赖项解析为同一副本（从项目根目录）。
 
+<<<<<<< HEAD
 ### resolve.conditions {#resolve-conditions}
+=======
+  :::warning SSR + ESM
+  For SSR builds, deduplication does not work for ESM build outputs configured from `build.rollupOptions.output`. A workaround is to use CJS build outputs until ESM has better plugin support for module loading.
+  :::
+
+### resolve.conditions
+>>>>>>> f5fe3f6505a75c61d9bf94e681256c74d89bc4ff
 
 - **类型：** `string[]`
 
@@ -359,9 +367,14 @@ export default defineConfig(async ({ command, mode }) => {
 
   以 `envPrefix` 开头的环境变量会通过 import.meta.env 暴露在你的客户端源码中。
 
+<<<<<<< HEAD
 :::warning 安全注意事项
 
 - `envPrefix` 不应该被设置为 `''`，因为这将暴露你所有的环境变量，导致敏感信息的意外泄露。Vite 在检测到 `''` 时将会抛出错误。
+=======
+  :::warning SECURITY NOTES
+  `envPrefix` should not be set as `''`, which will expose all your env variables and cause unexpected leaking of of sensitive information. Vite will throw error when detecting `''`.
+>>>>>>> f5fe3f6505a75c61d9bf94e681256c74d89bc4ff
   :::
   
 ## 开发服务器选项 {#server-options}
@@ -683,7 +696,15 @@ export default defineConfig({
 
   如果禁用，整个项目中的所有 CSS 将被提取到一个 CSS 文件中。
 
+<<<<<<< HEAD
 ### build.cssTarget {#build-csstarget}
+=======
+  ::: tip Note
+  If you specify `build.lib`, `build.cssCodeSplit` will be `false` as default.
+  :::
+
+### build.cssTarget
+>>>>>>> f5fe3f6505a75c61d9bf94e681256c74d89bc4ff
 
 - **类型：** `string | string[]`
 - **默认值：** 与 [`build.target`](/config/#build-target) 一致
