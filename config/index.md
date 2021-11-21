@@ -172,15 +172,11 @@ export default defineConfig(async ({ command, mode }) => {
 
   如果你在你的应用程序中有相同依赖的副本（比如 monorepos），请使用此选项强制 Vite 始终将列出的依赖项解析为同一副本（从项目根目录）。
 
-<<<<<<< HEAD
-### resolve.conditions {#resolve-conditions}
-=======
   :::warning SSR + ESM
-  For SSR builds, deduplication does not work for ESM build outputs configured from `build.rollupOptions.output`. A workaround is to use CJS build outputs until ESM has better plugin support for module loading.
+  对于服务端渲染构建，配置项 `build.rollupOptions.output` 为 ESM 构建输出时去重过程将不工作。一个替代方案是先使用 CJS 构建输出，直到 ESM 在插件中有了更好的模块加载支持。
   :::
 
 ### resolve.conditions
->>>>>>> 3dbf7d0e920e0e49b40590aaba172f1d20eb746a
 
 - **类型：** `string[]`
 
@@ -367,14 +363,8 @@ export default defineConfig(async ({ command, mode }) => {
 
   以 `envPrefix` 开头的环境变量会通过 import.meta.env 暴露在你的客户端源码中。
 
-<<<<<<< HEAD
-:::warning 安全注意事项
-
-- `envPrefix` 不应该被设置为 `''`，因为这将暴露你所有的环境变量，导致敏感信息的意外泄露。Vite 在检测到 `''` 时将会抛出错误。
-=======
   :::warning SECURITY NOTES
-  `envPrefix` should not be set as `''`, which will expose all your env variables and cause unexpected leaking of of sensitive information. Vite will throw error when detecting `''`.
->>>>>>> 3dbf7d0e920e0e49b40590aaba172f1d20eb746a
+  `envPrefix` 不应被设置为空字符串 `''`，这将暴露你所有的环境变量，导致敏感信息的意外泄漏。 检测到配置为 `''` 时 Vite 将会抛出错误.
   :::
   
 ## 开发服务器选项 {#server-options}
