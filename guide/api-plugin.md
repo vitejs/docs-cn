@@ -17,11 +17,7 @@ Vite 努力秉承开箱即用的原则，因此在创作一款新插件前，请
 
 ## 约定 {#conventions}
 
-<<<<<<< HEAD
-如果插件不使用 Vite 特有的钩子，可以作为 [兼容 Rollup 的插件](#rollup-plugin-compatibility) 来实现，推荐使用 [Rollup 插件名称约定](https://rollupjs.org/guide/en/#conventions)（但不包括虚拟模块的命名，参见下方说明）。
-=======
-If the plugin doesn't use Vite specific hooks and can be implemented as a [Compatible Rollup Plugin](#rollup-plugin-compatibility), then it is recommended to use the [Rollup Plugin naming conventions](https://rollupjs.org/guide/en/#conventions).
->>>>>>> f5fe3f6505a75c61d9bf94e681256c74d89bc4ff
+如果插件不使用 Vite 特有的钩子，可以作为 [兼容 Rollup 的插件](#rollup-plugin-compatibility) 来实现，推荐使用 [Rollup 插件名称约定](https://rollupjs.org/guide/en/#conventions)。
 
 - Rollup 插件应该有一个带 `rollup-plugin-` 前缀、语义清晰的名称。
 - 在 package.json 中包含 `rollup-plugin` 和 `vite-plugin` 关键字。
@@ -40,16 +36,10 @@ If the plugin doesn't use Vite specific hooks and can be implemented as a [Compa
 - `vite-plugin-react-` 前缀作为 React 插件
 - `vite-plugin-svelte-` 前缀作为 Svelte 插件
 
-<<<<<<< HEAD
-Rollup 推荐在 ”虚拟模块“（例如 helper 函数） 的模块 ID 前加上 `\0`。这可以防止其他插件对它进行处理。但这种方式对浏览器并不友好。
 
-Vite 虚拟模块的规范是在路径前加上 `virtual:`。如果可能的话，插件名应该作为命名空间使用，以避免与生态系统中的其他插件发生冲突。例如，`vite-plugin-posts` 可以让用户引入 `virtual:posts` 或 `virtual:posts/helpers` 虚拟模块，以获得构建时信息。
-=======
-Vite convention for virtual modules is to prefix the user-facing path with `virtual:`. If possible the plugin name should be used as a namespace to avoid collisions with other plugins in the ecosystem. For example, a `vite-plugin-posts` could ask users to import a `virtual:posts` or `virtual:posts/helpers` virtual modules to get build time information. Internally, plugins that use virtual modules should prefix the module ID with `\0` while resolving the id, a convention from the rollup ecosystem. This prevents other plugins from trying to process the id (like node resolution), and core features like sourcemaps can use this info to differentiate between virtual modules and regular files. `\0` is not a permitted char in import URLs so we have to replace them during import analysis. A `\0{id}` virtual id ends up encoded as `/@id/__x00__{id}` during dev in the browser. The id will be decoded back before entering the plugins pipeline, so this is not seen by plugins hooks code.
+Vite 对虚拟模块的规范是在路径前加上 `virtual:`。如果可能的话，插件名应该作为命名空间使用，以避免与生态系统中的其他插件发生冲突。例如，`vite-plugin-posts` 可以让用户引入 `virtual:posts` 或 `virtual:posts/helpers` 虚拟模块，以获得构建时信息。在内部，使用虚拟模块的插件在解析模块 ID 时应以 `\0` 为前缀，这是一个来自 Rollup 生态系统的惯例。这可以防止其他插件试图处理这个 ID（如节点解析），而像 sourcemap 这样的核心功能可以使用这些信息来区分虚拟模块和普通文件。`\0` 在导入的 URL 中不是一个允许的字符，所以我们必须在导入分析中替换它们。在浏览器中，一个 `0{id}` 的虚拟 ID 最终被编码为 `/@id/__x00__{id}`。在进入插件处理管道之前，这个 ID 会被解码回来。所以这个过程在插件钩子代码中将是不可见的。
 
-Note that modules directly derived from a real file, as in the case of a script module in a Single File Component (like a .vue or .svelte SFC) don't need to follow this convention. SFCs generally generate a set of submodules when processed but the code in these can be mapped back to the filesystem. Using `\0` for these submodules would prevent sourcemaps from working correctly.
-
->>>>>>> f5fe3f6505a75c61d9bf94e681256c74d89bc4ff
+请注意，模块都直接来源于真实的文件，而单文件组件（比如 .vue 或 .svelte 文件）中的 script 模块将不需要这样的转换。单文件组件被处理时一般会生成一系列子模块但其代码都可以被映射回文件系统。对这些子模块使用 `\0` 会使得 sourcemap 工作异常。
 
 ## 插件配置 {#plugins-config}
 
@@ -118,11 +108,7 @@ export default function myPlugin() {
 }
 ```
 
-<<<<<<< HEAD
-这使得可以在 JavaScript 中引入这些文件：
-=======
-Which allows importing the module in JavaScript:
->>>>>>> f5fe3f6505a75c61d9bf94e681256c74d89bc4ff
+这使得可以在 JavaScript 中引入这些模块：
 
 ```js
 import { msg } from '@my-virtual-module'
