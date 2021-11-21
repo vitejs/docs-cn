@@ -140,11 +140,7 @@ pnpm run build
 pnpm link --global # you can use your preferred package manager for this step
 ```
 
-<<<<<<< HEAD
-然后，回到你的 Vite 项目并运行 `pnpm link vite`（或者使用全局的软链来链接 `vite`）。重新启动开发服务器来体验新功能吧！
-=======
-Then go to your Vite based project and run `pnpm link --global vite` (or the package manager that you used to link `vite` globally). Now restart the development server to ride on the bleeding edge!
->>>>>>> f5fe3f6505a75c61d9bf94e681256c74d89bc4ff
+然后，回到你的 Vite 项目并运行 `pnpm link --global vite`（或者使用你的其他包管理工具来全局链接 `vite`）。重新启动开发服务器来体验新功能吧！
 
 ## 社区 {#community}
 
