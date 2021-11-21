@@ -12,13 +12,13 @@ import { someMethod } from 'my-dep'
 
 上面的代码会在浏览器中抛出一个错误。Vite 将会检测到所有被加载的源文件中的此类裸模块导入，并执行以下操作:
 
-1. [预构建](./dep-pre-bundling) 它们以加快页面加载速度，并将 CommonJS / UMD 转换为 ESM 格式。预构建这一步由 [esbuild](http://esbuild.github.io/) 执行，这使得 Vite 的冷启动时间比任何基于 JavaScript 的打包器都要快得多。
+1. [预构建](./dep-pre-bundling) 它们可以提高页面加载速度，并将 CommonJS / UMD 转换为 ESM 格式。预构建这一步由 [esbuild](http://esbuild.github.io/) 执行，这使得 Vite 的冷启动时间比任何基于 JavaScript 的打包器都要快得多。
 
 2. 重写导入为合法的 URL，例如 `/node_modules/.vite/my-dep.js?v=f3sf2ebd` 以便浏览器能够正确导入它们。
 
 **依赖是强缓存的**
 
-Vite 通过 HTTP 头来缓存请求得到的依赖，所以如果你想要编辑或调试一个依赖，请跟随 [这里](./dep-pre-bundling#浏览器缓存) 的步骤。
+Vite 通过 HTTP 头来缓存请求得到的依赖，所以如果你想要编辑或调试一个依赖，请按照 [这里](./dep-pre-bundling#浏览器缓存) 的步骤操作。
 
 ## 模块热重载 {#hot-module-replacement}
 
@@ -122,7 +122,7 @@ export default defineConfig({
 
 更多细节详见 [esbuild 文档](https://esbuild.github.io/content-types/#jsx).
 
-你可以使用 `jsInject`（这是一个仅在 Vite 中使用的选项）为 JSX 注入 helper，以避免手动导入：
+你可以使用 `jsxInject`（这是一个仅在 Vite 中使用的选项）为 JSX 注入 helper，以避免手动导入：
 
 ```js
 // vite.config.js

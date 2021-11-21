@@ -9,7 +9,10 @@ module.exports = {
   title: 'Vite 官方中文文档',
   lang: 'zh-CN',
   description: '下一代前端开发与构建工具',
-  head: [['link', { rel: 'icon', type: 'image/svg+xml', href: '/logo.svg' }]],
+  head: [
+    ['link', { rel: 'icon', type: 'image/svg+xml', href: '/logo.svg' }],
+    ['script', { src: 'https://cdn.wwads.cn/js/makemoney.js', async: '' }]
+  ],
   themeConfig: {
     repo: pkg.repository,
     logo: '/logo.svg',
@@ -23,11 +26,6 @@ module.exports = {
       searchParameters: {
         facetFilters: ['tags:cn']
       }
-    },
-
-    carbonAds: {
-      carbon: 'CEBIEK3N',
-      placement: 'vitejsdev'
     },
 
     nav: [

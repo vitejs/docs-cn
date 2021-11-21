@@ -14,7 +14,7 @@ Vite 旨在为常见的 web 开发工作提供开箱即用的支持。在搜索�
 
 - 提供 Vue 3 JSX 支持（通过 [专用的 Babel 转换插件](https://github.com/vuejs/jsx-next)）。
 
-### [@vitejs/plugin-react](https://github.com/vitejs/vite/tree/main/packages/plugin-react-refresh) {#vitejsplugin-react}
+### [@vitejs/plugin-react](https://github.com/vitejs/vite/tree/main/packages/plugin-react) {#vitejsplugin-react}
 
 - 提供完整的 React 支持
 

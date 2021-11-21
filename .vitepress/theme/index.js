@@ -31,16 +31,17 @@ export default {
               [h('img', { src, alt: name, id: `sponsor-${id}` })]
             )
           )
+        ]),
+      'page-top-ads': () =>
+        h('div', { id: 'wwads-container' }, [
+          h('div', {
+            class: 'wwads-cn wwads-vertical',
+            'data-id': 111,
+            style: {
+              maxWidth: '150px'
+            }
+          })
         ])
-    })
-  },
-  enhanceApp({ app, router, siteData }) {
-    // app is the Vue 3 app instance from `createApp()`. router is VitePress'
-    // custom router. `siteData`` is a `ref`` of current site-level metadata.
-    app.directive('href', {
-      mounted(el, binding) {
-        el.href = binding.value;
-      }
     })
   }
 }

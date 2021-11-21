@@ -552,11 +552,11 @@ createServer()
 
   限制为工作区 root 路径以外的文件的访问。
 
-### server.fsServe.root {#server-fsserve-root}
+### server.fs.allow {#server-fs-allow}
 
 - **类型：** `string[]`
 
-  限制哪些文件可以通过 `/@fs/` 路径提供服务。当 `server.fsServe.strict` 设置为 true 时，访问这个目录列表外的文件，或者在不允许访问的文件导入都将会返回 403。
+  限制哪些文件可以通过 `/@fs/` 路径提供服务。当 `server.fs.strict` 设置为 true 时，访问这个目录列表外的文件将会返回 403 结果。
 
   Vite 将会搜索此根目录下潜在工作空间并作默认使用。一个有效的工作空间应符合以下几个条件，否则会默认以 [项目 root 目录](/guide/#index-html-and-project-root) 作备选方案。
 
@@ -704,7 +704,7 @@ export default defineConfig({
 
 ### build.sourcemap {#build-sourcemap}
 
-- **类型：** `boolean | 'inline'` | 'hidden'`
+- **类型：** `boolean | 'inline' | 'hidden'`
 - **默认：** `false`
 
   构建后是否生成 source map 文件。如果为 `true`，将会创建一个独立的 source map 文件。如果为 `'inline'`，source map 将作为一个 data URI 附加在输出文件中。`'hidden'` 的工作原理与 `'true'` 相似，只是 bundle 文件中相应的注释将不被保留。
