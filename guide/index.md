@@ -26,14 +26,14 @@ Vite 意在提供开箱即用的配置，同时它的 [插件 API](./api-plugin)
 
 目前支持的模板预设如下：
 
-| JavaScript | TypeScript |
-| :---: | :---: |
+|             JavaScript              |                TypeScript                 |
+| :---------------------------------: | :---------------------------------------: |
 | [vanilla](https://vite.new/vanilla) | [vanilla-ts](https://vite.new/vanilla-ts) |
-| [vue](https://vite.new/vue) | [vue-ts](https://vite.new/vue-ts) |
-| [react](https://vite.new/react) | [react-ts](https://vite.new/react-ts) |
-| [preact](https://vite.new/preact) | [preact-ts](https://vite.new/preact-ts) |
-| [lit](https://vite.new/lit) | [lit-ts](https://vite.new/lit-ts) |
-| [svelte](https://vite.new/svelte) | [svelte-ts](https://vite.new/svelte-ts) |
+|     [vue](https://vite.new/vue)     |     [vue-ts](https://vite.new/vue-ts)     |
+|   [react](https://vite.new/react)   |   [react-ts](https://vite.new/react-ts)   |
+|  [preact](https://vite.new/preact)  |  [preact-ts](https://vite.new/preact-ts)  |
+|     [lit](https://vite.new/lit)     |     [lit-ts](https://vite.new/lit-ts)     |
+|  [svelte](https://vite.new/svelte)  |  [svelte-ts](https://vite.new/svelte-ts)  |
 
 ## 搭建第一个 Vite 项目 {#scaffolding-your-first-vite-project}
 
@@ -115,12 +115,12 @@ Vite 也支持多个 `.html` 作入口点的 [多页面应用模式](./build#mul
 
 在安装了 Vite 的项目中，可以在 npm scripts 中使用 `vite` 可执行文件，或者直接使用 `npx vite` 运行它。下面是通过脚手架创建的 Vite 项目中默认的 npm scripts：
 
-```json
+```jsonc
 {
   "scripts": {
-    "dev": "vite", // 启动开发服务器
+    "dev": "vite", // 启动开发服务器，别名：`vite dev`，`vite serve`
     "build": "vite build", // 为生产环境构建产物
-    "serve": "vite preview" // 本地预览生产构建产物
+    "preview": "vite preview" // 本地预览生产构建产物
   }
 }
 ```
@@ -137,10 +137,10 @@ cd vite
 pnpm install
 cd packages/vite
 pnpm run build
-pnpm link # you can use your preferred package manager for this step
+pnpm link --global # you can use your preferred package manager for this step
 ```
 
-然后，回到你的 Vite 项目并运行 `pnpm link vite`（或者使用全局的软链来链接 `vite`）。重新启动开发服务器来体验新功能吧！
+然后，回到你的 Vite 项目并运行 `pnpm link --global vite`（或者使用你的其他包管理工具来全局链接 `vite`）。重新启动开发服务器来体验新功能吧！
 
 ## 社区 {#community}
 

@@ -66,6 +66,8 @@ Vite 使用 [esbuild](https://github.com/evanw/esbuild) 将 TypeScript 转译到
 - [`jsxFactory`](https://www.typescriptlang.org/tsconfig#jsxFactory)
 - [`jsxFragmentFactory`](https://www.typescriptlang.org/tsconfig#jsxFragmentFactory)
 
+如果你的代码库很难迁移到 `"isolatedModules": true`，或许你可以尝试通过第三方插件来解决，比如 [rollup-plugin-friendly-type-imports](https://www.npmjs.com/package/rollup-plugin-friendly-type-imports)。但是，这种方式不被 Vite 官方支持。
+
 ### 客户端类型 {#client-types}
 
 Vite 默认的类型定义是写给它的 Node.js API 的。要将其补充到一个 Vite 应用的客户端代码环境中，请添加一个 `d.ts` 声明文件：
@@ -293,6 +295,7 @@ const modules = {
 - 这只是一个 Vite 独有的功能而不是一个 Web 或 ES 标准
 - 该 Glob 模式会被当成导入标识符：必须是相对路径（以 `./` 开头）或绝对路径（以 `/` 开头，相对于项目根目录解析）。
 - Glob 匹配是使用 `fast-glob` 来实现的 —— 阅读它的文档来查阅 [支持的 Glob 模式](https://github.com/mrmlnc/fast-glob#pattern-syntax)。
+- 你还需注意，glob 的导入不接受变量，你应直接传递字符串模式。
 
 ## WebAssembly {#webassembly}
 

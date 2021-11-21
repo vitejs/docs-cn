@@ -52,21 +52,24 @@ Vite 也直接支持 TS 配置文件。你可以在 `vite.config.ts` 中使用 `
 
 ### 情景配置 {#conditional-config}
 
-如果配置文件需要基于（`serve` 或 `build`）命令或者不同的 [模式](/guide/env-and-mode) 来决定选项，则可以选择导出这样一个函数：
+如果配置文件需要基于（`dev`/`serve` 或 `build`）命令或者不同的 [模式](/guide/env-and-mode) 来决定选项，则可以选择导出这样一个函数：
 
 ```js
 export default defineConfig(({ command, mode }) => {
   if (command === 'serve') {
     return {
-      // serve 独有配置
+      // dev 独有配置
     }
   } else {
+    // command === 'build'
     return {
       // build 独有配置
     }
   }
 })
 ```
+
+需要注意的是，在 Vite 的 API 中，在开发环境下 `command` 的值为 `serve`（在 CLI 中， `vite dev` 和 `vite serve` 是 `vite` 的别名），而在生产环境下为 `build`（`vite build`）。
 
 ### 异步配置 {#async-config}
 
@@ -169,7 +172,12 @@ export default defineConfig(async ({ command, mode }) => {
 
   如果你在你的应用程序中有相同依赖的副本（比如 monorepos），请使用此选项强制 Vite 始终将列出的依赖项解析为同一副本（从项目根目录）。
 
-### resolve.conditions {#resolve-conditions}
+  :::warning SSR + ESM
+  对于服务端渲染构建，配置项 `build.rollupOptions.output` 为 ESM 构建输出时去重过程将不工作。一个替代方案是先使用 CJS 构建输出，直到 ESM 在插件中有了更好的模块加载支持。
+  :::
+
+### resolve.conditions
+
 
 - **类型：** `string[]`
 
@@ -356,20 +364,19 @@ export default defineConfig(async ({ command, mode }) => {
 
   以 `envPrefix` 开头的环境变量会通过 import.meta.env 暴露在你的客户端源码中。
 
-:::warning 安全注意事项
-
-- `envPrefix` 不应该被设置为 `''`，因为这将暴露你所有的环境变量，导致敏感信息的意外泄露。Vite 在检测到 `''` 时将会抛出错误。
+  :::warning 安全注意事项
+  `envPrefix` 不应被设置为空字符串 `''`，这将暴露你所有的环境变量，导致敏感信息的意外泄漏。 检测到配置为 `''` 时 Vite 将会抛出错误.
   :::
   
 ## 开发服务器选项 {#server-options}
 
 ### server.host {#server-host}
 
-- **类型：** `string`
+- **类型：** `string | boolean`
 - **默认：** `'127.0.0.1'`
 
   指定服务器应该监听哪个 IP 地址。
-  如果将此设置为 `0.0.0.0` 将监听所有地址，包括局域网和公网地址。
+  如果将此设置为 `0.0.0.0` 或者 `true` 将监听所有地址，包括局域网和公网地址。
 
   也可以通过 CLI 使用 `--host 0.0.0.0` 或 `--host` 来设置。
 
@@ -540,15 +547,13 @@ createServer()
 
 ### server.fs.strict {#server-fs-strict}
 
-- **实验性**
 - **类型：** `boolean`
-- **默认：** `false` (将在后续版本中改为 `true`)
+- **默认：** `true` (自 Vite 2.7 起默认启用)
 
   限制为工作区 root 路径以外的文件的访问。
 
 ### server.fs.allow {#server-fs-allow}
 
-- **实验性**
 - **类型：** `string[]`
 
   限制哪些文件可以通过 `/@fs/` 路径提供服务。当 `server.fs.strict` 设置为 true 时，访问这个目录列表外的文件将会返回 403 结果。
@@ -590,6 +595,15 @@ createServer()
     }
   })
   ```
+
+### server.fs.deny {#server-fs-deny}
+
+- **实验性**
+- **类型：** `string[]`
+
+  用于限制 Vite 开发服务器提供敏感文件的黑名单。
+
+  默认为 `['.env', '.env.*', '*.{pem,crt}']`。
 
 ### server.origin {#server-origin}
 
@@ -673,7 +687,11 @@ export default defineConfig({
 
   如果禁用，整个项目中的所有 CSS 将被提取到一个 CSS 文件中。
 
-### build.cssTarget {#build-csstarget}
+  ::: tip 注意
+  如果指定了 `build.lib`，`build.cssCodeSplit` 会默认为 `false`。
+  :::
+
+### build.cssTarget
 
 - **类型：** `string | string[]`
 - **默认值：** 与 [`build.target`](/config/#build-target) 一致
@@ -732,6 +750,14 @@ export default defineConfig({
 
   当设置为 `true` 时，构建也将生成 SSR 的 manifest 文件，以确定生产中的样式链接与资产预加载指令。
 
+### build.ssr {#build-ssr}
+
+- **类型：** `boolean | string`
+- **默认值：** `undefined`
+- **相关链接：** [Server-Side Rendering](/guide/ssr)
+
+  生成面向 SSR 的构建。此选项的值可以是字符串，用于直接定义 SSR 的入口，也可以为 `true`，但这需要通过设置 `rollupOptions.input` 来指定 SSR 的入口。
+
 ### build.minify {#build-minify}
 
 - **类型：** `boolean | 'terser' | 'esbuild'`
@@ -779,6 +805,77 @@ export default defineConfig({
 - **默认：** `null`
 
   设置为 `{}` 则会启用 rollup 的监听器。在涉及只用在构建时的插件时和集成开发流程中很常用。
+
+## 预览选项 {#preview-options}
+
+### preview.host {#preview-host}
+
+- **类型：** `string | boolean`
+- **默认：** [`server.host`](#server_host)
+
+  为开发服务器指定 ip 地址。
+  设置为 `0.0.0.0` 或 `true` 会监听所有地址，包括局域网和公共地址。
+
+  还可以通过 CLI 进行设置，使用 `--host 0.0.0.0` 或 `--host`。
+
+### preview.port {#preview-port}
+
+- **类型：** `number`
+- **默认：** `5000`
+
+  指定开发服务器端口。注意，如果设置的端口已被使用，Vite 将自动尝试下一个可用端口，所以这可能不是最终监听的服务器端口。
+
+**示例：**
+
+```js
+export default defineConfig({
+  server: {
+    port: 3030
+  },
+  preview: {
+    port: 8080
+  }
+})
+```
+
+### preview.strictPort {#preview-strictport}
+
+- **类型：** `boolean`
+- **默认：** [`server.strictPort`](#server_strictport)
+
+  设置为 `true` 时，如果端口已被使用，则直接退出，而不会再进行后续端口的尝试。
+
+### preview.https {#preview-https}
+
+- **类型：** `boolean | https.ServerOptions`
+- **默认：** [`server.https`](#server_https)
+
+  启用 TLS + HTTP/2。注意，只有在与 [`server.proxy` 选项](#server-proxy) 同时使用时，才会降级为 TLS。
+
+  该值也可以传递给 `https.createServer()` 的 [options 对象](https://nodejs.org/api/https.html#https_https_createserver_options_requestlistener)。
+
+### preview.open {#preview-open}
+
+- **类型：** `boolean | string`
+- **默认：** [`server.open`](#server_open)
+
+  开发服务器启动时，自动在浏览器中打开应用程序。当该值为字符串时，它将被用作 URL 的路径名。如果你想在你喜欢的某个浏览器打开该开发服务器，你可以设置环境变量 `process.env.BROWSER` （例如 `firefox`）。欲了解更多细节，请参阅 [`open` 包的源码](https://github.com/sindresorhus/open#app)。
+
+### preview.proxy {#preview-proxy}
+
+- **类型：** `Record<string, string | ProxyOptions>`
+- **默认：** [`server.proxy`](#server_proxy)
+
+  为开发服务器配置自定义代理规则。其值的结构为 `{ key: options }` 的对象。如果 key 以 `^` 开头，它将被识别为 `RegExp`，其中 `configure` 选项可用于访问代理实例。
+
+  基于 [`http-proxy`](https://github.com/http-party/node-http-proxy) 实现，完整的参数列表参见 [此链接](https://github.com/http-party/node-http-proxy#options)。
+
+### preview.cors {#preview-cors}
+
+- **类型：** `boolean | CorsOptions`
+- **默认：** [`server.cors`](#server_proxy)
+
+  为开发服务器配置 CORS。此功能默认启用，支持任何来源。可传递一个 [options 对象](https://github.com/expressjs/cors) 来进行配置，或者传递 `false` 来禁用此行为。
 
 ## 依赖优化选项 {#dep-optimization-options}
 

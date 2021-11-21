@@ -17,7 +17,7 @@ Vite 努力秉承开箱即用的原则，因此在创作一款新插件前，请
 
 ## 约定 {#conventions}
 
-如果插件不使用 Vite 特有的钩子，可以实现为 [兼容的 Rollup 插件](#rollup-plugin-compatibility)，推荐使用 [Rollup 插件名称约定](https://rollupjs.org/guide/en/#conventions)。
+如果插件不使用 Vite 特有的钩子，可以作为 [兼容 Rollup 的插件](#rollup-plugin-compatibility) 来实现，推荐使用 [Rollup 插件名称约定](https://rollupjs.org/guide/en/#conventions)。
 
 - Rollup 插件应该有一个带 `rollup-plugin-` 前缀、语义清晰的名称。
 - 在 package.json 中包含 `rollup-plugin` 和 `vite-plugin` 关键字。
@@ -35,6 +35,11 @@ Vite 努力秉承开箱即用的原则，因此在创作一款新插件前，请
 - `vite-plugin-vue-` 前缀作为 Vue 插件
 - `vite-plugin-react-` 前缀作为 React 插件
 - `vite-plugin-svelte-` 前缀作为 Svelte 插件
+
+
+Vite 对虚拟模块的规范是在路径前加上 `virtual:`。如果可能的话，插件名应该作为命名空间使用，以避免与生态系统中的其他插件发生冲突。例如，`vite-plugin-posts` 可以让用户引入 `virtual:posts` 或 `virtual:posts/helpers` 虚拟模块，以获得构建时信息。在内部，使用虚拟模块的插件在解析模块 ID 时应以 `\0` 为前缀，这是一个来自 Rollup 生态系统的惯例。这可以防止其他插件试图处理这个 ID（如节点解析），而像 sourcemap 这样的核心功能可以使用这些信息来区分虚拟模块和普通文件。`\0` 在导入的 URL 中不是一个允许的字符，所以我们必须在导入分析中替换它们。在浏览器中，一个 `0{id}` 的虚拟 ID 最终被编码为 `/@id/__x00__{id}`。在进入插件处理管道之前，这个 ID 会被解码回来。所以这个过程在插件钩子代码中将是不可见的。
+
+请注意，模块都直接来源于真实的文件，而单文件组件（比如 .vue 或 .svelte 文件）中的 script 模块将不需要这样的转换。单文件组件被处理时一般会生成一系列子模块但其代码都可以被映射回文件系统。对这些子模块使用 `\0` 会使得 sourcemap 工作异常。
 
 ## 插件配置 {#plugins-config}
 
@@ -84,28 +89,29 @@ export default defineConfig({
 
 ```js
 export default function myPlugin() {
-  const virtualFileId = '@my-virtual-file'
+  const virtualModuleId = '@my-virtual-module'
+  const resolvedVirtualModuleId = '\0' + virtualModuleId
 
   return {
     name: 'my-plugin', // 必须的，将会在 warning 和 error 中显示
     resolveId(id) {
-      if (id === virtualFileId) {
-        return virtualFileId
+      if (id === virtualModuleId) {
+        return resolvedVirtualModuleId
       }
     },
     load(id) {
-      if (id === virtualFileId) {
-        return `export const msg = "from virtual file"`
+      if (id === resolvedVirtualModuleId) {
+        return `export const msg = "from virtual module"`
       }
     }
   }
 }
 ```
 
-这使得可以在 JavaScript 中引入这些文件：
+这使得可以在 JavaScript 中引入这些模块：
 
 ```js
-import { msg } from '@my-virtual-file'
+import { msg } from '@my-virtual-module'
 
 console.log(msg)
 ```
@@ -218,7 +224,7 @@ Vite 插件也可以提供钩子来服务于特定的 Vite 目标。这些钩子
       // 在其他钩子中使用存储的配置
       transform(code, id) {
         if (config.command === 'serve') {
-          // serve: 由开发服务器调用的插件
+          // dev: 由开发服务器调用的插件
         } else {
           // build: 由 Rollup 调用的插件
         }
@@ -226,6 +232,8 @@ Vite 插件也可以提供钩子来服务于特定的 Vite 目标。这些钩子
     }
   }
   ```
+
+  注意，在开发环境下，`command` 的值为 `serve`（在 CLI 中，`vite` 和 `vite dev` 是 `vite serve` 的别名）。
 
 ### `configureServer` {#configureserver}
 
