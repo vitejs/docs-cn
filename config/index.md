@@ -178,6 +178,7 @@ export default defineConfig(async ({ command, mode }) => {
 
 ### resolve.conditions
 
+
 - **类型：** `string[]`
 
   解决程序包中 [情景导出](https://nodejs.org/api/packages.html#packages_conditional_exports) 时的其他允许条件。
@@ -363,7 +364,7 @@ export default defineConfig(async ({ command, mode }) => {
 
   以 `envPrefix` 开头的环境变量会通过 import.meta.env 暴露在你的客户端源码中。
 
-  :::warning SECURITY NOTES
+  :::warning 安全注意事项
   `envPrefix` 不应被设置为空字符串 `''`，这将暴露你所有的环境变量，导致敏感信息的意外泄漏。 检测到配置为 `''` 时 Vite 将会抛出错误.
   :::
   
@@ -686,7 +687,11 @@ export default defineConfig({
 
   如果禁用，整个项目中的所有 CSS 将被提取到一个 CSS 文件中。
 
-### build.cssTarget {#build-csstarget}
+  ::: tip 注意
+  如果指定了 `build.lib`，`build.cssCodeSplit` 会默认为 `false`。
+  :::
+
+### build.cssTarget
 
 - **类型：** `string | string[]`
 - **默认值：** 与 [`build.target`](/config/#build-target) 一致
