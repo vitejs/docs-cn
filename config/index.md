@@ -235,9 +235,13 @@ export default defineConfig(async ({ command, mode }) => {
       | ((name: string, filename: string, css: string) => string)
     hashPrefix?: string
     /**
+<<<<<<< HEAD
      * 默认：'camelCaseOnly'
+=======
+     * default: null
+>>>>>>> bf7af788b44f894f5783312001da2e069ce68814
      */
-    localsConvention?: 'camelCase' | 'camelCaseOnly' | 'dashes' | 'dashesOnly'
+    localsConvention?: 'camelCase' | 'camelCaseOnly' | 'dashes' | 'dashesOnly' | null
   }
   ```
 
@@ -785,12 +789,20 @@ export default defineConfig({
 
   默认情况下，若 `outDir` 在 `root` 目录下，则 Vite 会在构建时清空该目录。若 `outDir` 在根目录之外则会抛出一个警告避免意外删除掉重要的文件。可以设置该选项来关闭这个警告。该功能也可以通过命令行参数 `--emptyOutDir` 来使用。
 
+<<<<<<< HEAD
 ### build.brotliSize {#build-brotlisize}
+=======
+### build.reportCompressedSize
+>>>>>>> bf7af788b44f894f5783312001da2e069ce68814
 
 - **类型：** `boolean`
 - **默认：** `true`
 
+<<<<<<< HEAD
   启用/禁用 brotli 压缩大小报告。压缩大型输出文件可能会很慢，因此禁用该功能可能会提高大型项目的构建性能。
+=======
+  Enable/disable gzip-compressed size reporting. Compressing large output files can be slow, so disabling this may increase build performance for large projects.
+>>>>>>> bf7af788b44f894f5783312001da2e069ce68814
 
 ### build.chunkSizeWarningLimit {#build-chunksizewarninglimit}
 
