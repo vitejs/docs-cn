@@ -111,7 +111,7 @@ app.use('*', async (req, res) => {
 
     // 2. 应用 Vite HTML 转换。这将会注入 Vite HMR 客户端，
     //    同时也会从 Vite 插件应用 HTML 转换。
-    //    例如：@vitejs/plugin-react-refresh 中的 global preambles
+    //    例如：@vitejs/plugin-react 中的 global preambles
     template = await vite.transformIndexHtml(url, template)
 
     // 3. 加载服务器入口。vite.ssrLoadModule 将自动转换

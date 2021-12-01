@@ -919,14 +919,17 @@ export default defineConfig({
 
   默认情况下，不在 `node_modules` 中的，链接的包不会被预构建。使用此选项可强制预构建链接的包。
 
-### optimizeDeps.keepNames {#optimizedeps-keepnames}
+### optimizeDeps.esbuildOptions {#optimizedeps-esbuildoptions}
 
-- **类型：** `boolean`
-- **默认：** `false`
+- **类型：** [`EsbuildBuildOptions`](https://esbuild.github.io/api/#simple-options)
 
-  打包器有时需要重命名符号以避免冲突。
-  设置此项为 `true` 可以在函数和类上保留 `name` 属性。
-  若想获取更多详情，请参阅 [`keepNames`](https://esbuild.github.io/api/#keep-names)
+  在部署扫描和优化过程中传递给 esbuild 的选项。
+
+  某些选项进行了省略，因为修改它们与 Vite 的优化方案并兼容。
+
+  - 忽略了 `external` 选项，请使用 Vite 的 `optimizeDeps.exclude` 选项
+  - `plugins` 与 Vite 的 dep 插件合并
+  - `keepNames` 优级高于被废弃的 `optimizeDeps.keepNames`
 
 ## SSR 选项 {#ssr-options}
 

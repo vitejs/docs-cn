@@ -39,7 +39,7 @@
 
    还要确保服务器配置为提供 Vite 工作目录中的静态资源，否则图片等资源将无法正确加载。
 
-   如果你正使用 `@vitejs/plugin-react-refresh` 配合 React，你还需要在上述脚本前添加下面这个，因为插件不能修改你正在服务的 HTML：
+   如果你正使用 `@vitejs/plugin-react` 配合 React，你还需要在上述脚本前添加下面这个，因为插件不能修改你正在服务的 HTML：
 
    ```html
    <script type="module">
