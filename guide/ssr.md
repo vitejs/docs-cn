@@ -250,8 +250,13 @@ export function mySSRPlugin() {
 
 `options` 中的 `load` 和 `transform` 为可选项，rollup 目前并未使用该对象，但将来可能会用额外的元数据来扩展这些钩子函数。
 
+<<<<<<< HEAD
 ::: 注意
 Vite 2.7 之前的版本，会提示你 `ssr` 参数的位置不应该是 `options` 对象。目前所有主框架和插件都已对应更新，但你可能还会发现使用过时 API 的旧文章。
+=======
+:::note
+Before Vite 2.7, this was informed to plugin hooks with a positional `ssr` param instead of using the `options` object. All major frameworks and plugins are updated but you may find outdated posts using the previous API.
+>>>>>>> 1b05a7d46cc48ec76b2b13fa764d769404e79ac1
 :::
 
 ## SSR Target {#ssr-target}
