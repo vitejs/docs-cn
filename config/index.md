@@ -919,29 +919,17 @@ export default defineConfig({
 
   默认情况下，不在 `node_modules` 中的，链接的包不会被预构建。使用此选项可强制预构建链接的包。
 
-<<<<<<< HEAD
-### optimizeDeps.keepNames {#optimizedeps-keepnames}
+### optimizeDeps.esbuildOptions {#optimizedeps-esbuildoptions}
 
-- **类型：** `boolean`
-- **默认：** `false`
+- **类型：** [`EsbuildBuildOptions`](https://esbuild.github.io/api/#simple-options)
 
-  打包器有时需要重命名符号以避免冲突。
-  设置此项为 `true` 可以在函数和类上保留 `name` 属性。
-  若想获取更多详情，请参阅 [`keepNames`](https://esbuild.github.io/api/#keep-names)
-=======
-### optimizeDeps.esbuildOptions
+  在部署扫描和优化过程中传递给 esbuild 的选项。
 
-- **Type:** [`EsbuildBuildOptions`](https://esbuild.github.io/api/#simple-options)
+  某些选项进行了省略，因为修改它们与 Vite 的优化方案并兼容。
 
-  Options to pass to esbuild during the dep scanning and optimization.
-
-  Certain options are omitted since changing them would not be compatible
-  with Vite's dep optimization.
-
-  - `external` is also omitted, use Vite's `optimizeDeps.exclude` option
-  - `plugins` are merged with Vite's dep plugin
-  - `keepNames` takes precedence over the deprecated `optimizeDeps.keepNames`
->>>>>>> 65516c16b983d8f5f02adc45c530a73050399e7a
+  - 忽略了 `external` 选项，请使用 Vite 的 `optimizeDeps.exclude` 选项
+  - `plugins` 与 Vite 的 dep 插件合并
+  - `keepNames` 优级高于被废弃的 `optimizeDeps.keepNames`
 
 ## SSR 选项 {#ssr-options}
 

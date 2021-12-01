@@ -90,11 +90,7 @@ export default defineConfig({
 
 ## React 支持 {#react-support}
 
-<<<<<<< HEAD
-现已支持 React Fast Refresh，详见 [`@vitejs/plugin-react-refresh`](https://github.com/vitejs/vite/tree/main/packages/plugin-react-refresh)。
-=======
-React Fast Refresh support is now provided via [`@vitejs/plugin-react`](https://github.com/vitejs/vite/tree/main/packages/plugin-react).
->>>>>>> 65516c16b983d8f5f02adc45c530a73050399e7a
+现已支持 React Fast Refresh，详见 [`@vitejs/plugin-react`](https://github.com/vitejs/vite/tree/main/packages/plugin-react)。
 
 ## HMR API 变化 {#hmr-api-change}
 
