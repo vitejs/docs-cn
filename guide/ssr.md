@@ -31,6 +31,7 @@ Vite 为服务端渲染（SSR）提供了内建支持。这里的 Vite 范例包
 
 ```
 - index.html
+- server.js # main application server
 - src/
   - main.js          # 导出环境无关的（通用的）应用代码
   - entry-client.js  # 将应用挂载到一个 DOM 元素上
@@ -250,8 +251,13 @@ export function mySSRPlugin() {
 
 `options` 中的 `load` 和 `transform` 为可选项，rollup 目前并未使用该对象，但将来可能会用额外的元数据来扩展这些钩子函数。
 
+<<<<<<< HEAD
 :::note
 Vite 2.7 之前的版本，会提示你 `ssr` 参数的位置不应该是 `options` 对象。目前所有主框架和插件都已对应更新，但你可能还会发现使用过时 API 的旧文章。
+=======
+::: tip Note
+Before Vite 2.7, this was informed to plugin hooks with a positional `ssr` param instead of using the `options` object. All major frameworks and plugins are updated but you may find outdated posts using the previous API.
+>>>>>>> 881401e8d48e3605ca54e1eaf596c180667c8a52
 :::
 
 ## SSR Target {#ssr-target}
