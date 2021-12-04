@@ -925,7 +925,11 @@ export default defineConfig({
 
   在部署扫描和优化过程中传递给 esbuild 的选项。
 
+<<<<<<< HEAD
   某些选项进行了省略，因为修改它们与 Vite 的优化方案并兼容。
+=======
+  Certain options are omitted since changing them would not be compatible with Vite's dep optimization.
+>>>>>>> 7ee013df1d23732b3f0f880c414c161ad21657f5
 
   - 忽略了 `external` 选项，请使用 Vite 的 `optimizeDeps.exclude` 选项
   - `plugins` 与 Vite 的 dep 插件合并
