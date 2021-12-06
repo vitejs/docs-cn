@@ -87,7 +87,7 @@ $ npm run preview
    # git push -f git@github.com:<USERNAME>/<USERNAME>.github.io.git main
 
    # 如果你要部署在 https://<USERNAME>.github.io/<REPO>
-   # git push -f git@github.com:<USERNAME>/<REPO>.git master:gh-pages
+   # git push -f git@github.com:<USERNAME>/<REPO>.git main:gh-pages
 
    cd -
    ```
@@ -127,7 +127,7 @@ $ npm run preview
      github_token: $GITHUB_TOKEN
      keep_history: true
      on:
-       branch: master
+       branch: main
    ```
 
 ## GitLab Pages 配合 GitLab CI {#gitlab-pages-and-gitlab-ci}
@@ -259,7 +259,7 @@ $ npm run preview
 
    ```bash
    # 发布站点
-   $ git push heroku master
+   $ git push heroku main
 
    # 在浏览器中打开 Heroku 的面板
    $ heroku open
