@@ -86,13 +86,8 @@ $ npm run preview
    # 如果你要部署在 https://<USERNAME>.github.io
    # git push -f git@github.com:<USERNAME>/<USERNAME>.github.io.git main
 
-<<<<<<< HEAD
    # 如果你要部署在 https://<USERNAME>.github.io/<REPO>
-   # git push -f git@github.com:<USERNAME>/<REPO>.git master:gh-pages
-=======
-   # if you are deploying to https://<USERNAME>.github.io/<REPO>
    # git push -f git@github.com:<USERNAME>/<REPO>.git main:gh-pages
->>>>>>> 7ee013df1d23732b3f0f880c414c161ad21657f5
 
    cd -
    ```
@@ -263,13 +258,8 @@ $ npm run preview
 6. 部署站点：
 
    ```bash
-<<<<<<< HEAD
    # 发布站点
-   $ git push heroku master
-=======
-   # publish site
    $ git push heroku main
->>>>>>> 7ee013df1d23732b3f0f880c414c161ad21657f5
 
    # 在浏览器中打开 Heroku 的面板
    $ heroku open
