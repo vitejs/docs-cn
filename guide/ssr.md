@@ -31,6 +31,7 @@ Vite 为服务端渲染（SSR）提供了内建支持。这里的 Vite 范例包
 
 ```
 - index.html
+- server.js # main application server
 - src/
   - main.js          # 导出环境无关的（通用的）应用代码
   - entry-client.js  # 将应用挂载到一个 DOM 元素上
@@ -76,8 +77,13 @@ async function createServer() {
   // 以中间件模式创建 Vite 应用，这将禁用 Vite 自身的 HTML 服务逻辑
   // 并让上级服务器接管控制
   //
+<<<<<<< HEAD
   // 如果你想使用 Vite 自己的 HTML 服务逻辑（将 Vite 作为
   // 一个开发中间件来使用），那么这里请用 'html'
+=======
+  // In middleware mode, if you want to use Vite's own HTML serving logic
+  // use `'html'` as the `middlewareMode` (ref https://vitejs.dev/config/#server-middlewaremode)
+>>>>>>> 7ee013df1d23732b3f0f880c414c161ad21657f5
   const vite = await createViteServer({
     server: { middlewareMode: 'ssr' }
   })
@@ -111,7 +117,7 @@ app.use('*', async (req, res) => {
 
     // 2. 应用 Vite HTML 转换。这将会注入 Vite HMR 客户端，
     //    同时也会从 Vite 插件应用 HTML 转换。
-    //    例如：@vitejs/plugin-react-refresh 中的 global preambles
+    //    例如：@vitejs/plugin-react 中的 global preambles
     template = await vite.transformIndexHtml(url, template)
 
     // 3. 加载服务器入口。vite.ssrLoadModule 将自动转换
@@ -250,8 +256,8 @@ export function mySSRPlugin() {
 
 `options` 中的 `load` 和 `transform` 为可选项，rollup 目前并未使用该对象，但将来可能会用额外的元数据来扩展这些钩子函数。
 
-::: 注意
-Vite 2.7 之前的版本，会提示你 `ssr` 参数的位置不应该是 `options` 对象。目前所有主框架和插件都已对应更新，但你可能还会发现使用过时 API 的旧文章。
+:::tip Note
+Vite 2.7 之前的版本，会提示你 `ssr` 参数的位置不应该是 `options` 对象。目前所有主要框架和插件都已对应更新，但你可能还是会发现使用过时 API 的旧文章。
 :::
 
 ## SSR Target {#ssr-target}
