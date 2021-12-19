@@ -77,13 +77,8 @@ async function createServer() {
   // 以中间件模式创建 Vite 应用，这将禁用 Vite 自身的 HTML 服务逻辑
   // 并让上级服务器接管控制
   //
-<<<<<<< HEAD
-  // 如果你想使用 Vite 自己的 HTML 服务逻辑（将 Vite 作为
-  // 一个开发中间件来使用），那么这里请用 'html'
-=======
-  // In middleware mode, if you want to use Vite's own HTML serving logic
-  // use `'html'` as the `middlewareMode` (ref https://vitejs.dev/config/#server-middlewaremode)
->>>>>>> 7ee013df1d23732b3f0f880c414c161ad21657f5
+  // 在中间件模式下，如果你想使用 Vite 自带的 HTML 服务
+  // 请将 `middlewareMode` 设置为 `'html'` (具体请参考 https://cn.vitejs.dev/config/#server-middlewaremode)
   const vite = await createViteServer({
     server: { middlewareMode: 'ssr' }
   })
