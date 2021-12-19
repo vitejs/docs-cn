@@ -37,8 +37,13 @@ Vite 意在提供开箱即用的配置，同时它的 [插件 API](./api-plugin)
 
 ## 搭建第一个 Vite 项目 {#scaffolding-your-first-vite-project}
 
+<<<<<<< HEAD
 ::: tip 兼容性注意
 Vite 需要 [Node.js](https://nodejs.org/en/) 版本 >= 12.0.0。
+=======
+::: tip Compatibility Note
+Vite requires [Node.js](https://nodejs.org/en/) version >=12.2.0. However, some templates require a higher Node.js version to work, please upgrade if your package manager warns about it.
+>>>>>>> a346a3e2ddf4100a8e3ce904770ea24666aac6d0
 :::
 
 使用 NPM:
