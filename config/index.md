@@ -111,7 +111,7 @@ export default defineConfig(async ({ command, mode }) => {
 ### mode {#mode}
 
 - **类型：** `string`
-- **默认：** `'development'`（开发模式），`'production'`（生产模式）
+- **默认：** `'development'`（serve），`'production'`（build）
 
   在配置中指明将会把 **serve 和 build** 时的模式 **都** 覆盖掉。也可以通过命令行 `--mode` 选项来重写。
 
