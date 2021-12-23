@@ -131,9 +131,21 @@ export default defineConfig(async ({ command, mode }) => {
 
   例如，`process.env.FOO` 和 `__APP_VERSION__` 就非常适合。但 `process` 或 `global` 不应使用此选项。变量相关应使用 shim 或 polyfill 代替。
 
+  ::: tip NOTE
+  对于使用 TypeScript 的开发者来说，请确保在 `env.d.ts` 或 `vite-env.d.ts` 文件中添加类型声明，以获得类型检查以及代码提示。
+
+  Example:
+
+  ```ts
+  // vite-env.d.ts
+  declare const __APP_VERSION__: string
+  ```
+
+  :::
+
 ### plugins {#plugins}
 
-- **类型：** ` (Plugin | Plugin[])[]`
+- **类型：** `(Plugin | Plugin[])[]`
 
   需要用到的插件数组。Falsy 虚值的插件将被忽略，插件数组将被扁平化（flatten）。查看 [插件 API](/guide/api-plugin) 获取 Vite 插件的更多细节。
 
