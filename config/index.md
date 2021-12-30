@@ -1,4 +1,12 @@
+<<<<<<< HEAD
 # 配置 Vite {#configuring-vite}
+=======
+---
+title: Configuring Vite
+---
+
+# Configuring Vite
+>>>>>>> d3aeefddfea228b2a83967c7a6acbb0660357202
 
 ## 配置文件 {#config-file}
 
@@ -782,7 +790,13 @@ export default defineConfig({
 
   设置为 `false` 可以禁用最小化混淆，或是用来指定使用哪种混淆器。默认为 [Esbuild](https://github.com/evanw/esbuild)，它比 terser 快 20-40 倍，压缩率只差 1%-2%。[Benchmarks](https://github.com/privatenumber/minification-benchmarks)
 
+<<<<<<< HEAD
 ### build.terserOptions {#build-terseroptions}
+=======
+  Note the `build.minify` option is not available when using the `'es'` format in lib mode.
+
+### build.terserOptions
+>>>>>>> d3aeefddfea228b2a83967c7a6acbb0660357202
 
 - **类型：** `TerserOptions`
 
