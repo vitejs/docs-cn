@@ -974,4 +974,29 @@ SSR 选项可能会在未来版本中进行调整。
 - **类型：** `'node' | 'webworker'`
 - **默认：** `node`
 
+<<<<<<< HEAD
   SSR 服务器的构建目标。
+=======
+  Build target for the SSR server.
+
+## Worker Options
+
+### worker.format
+
+- **Type:** `'es' | 'iife'`
+- **Default:** `iife`
+
+  Output format for worker bundle.
+
+### worker.plugins
+
+- **Type:** [`(Plugin | Plugin[])[]`](#plugins)
+
+  Vite plugins that apply to worker bundle
+
+### worker.rollupOptions
+
+- **Type:** [`RollupOptions`](https://rollupjs.org/guide/en/#big-list-of-options)
+
+  Rollup options to build worker bundle.
+>>>>>>> 55ae0951a260dec282b446c5c45e518ebcb91891
