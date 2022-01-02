@@ -34,6 +34,13 @@ Vite 仅执行 `.ts` 文件的转译工作，并 **不** 执行任何类型检�
 
 Vite 使用 [esbuild](https://github.com/evanw/esbuild) 将 TypeScript 转译到 JavaScript，约是 `tsc` 速度的 20~30 倍，同时 HMR 更新反映到浏览器的时间小于 50ms。
 
+使用 [仅含类型的导入和导出](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-3-8.html#type-only-imports-and-export) 形式的语法可以避免潜在的 “仅含类型的导入被不正确打包” 的问题，写法示例如下：
+
+```ts
+import type { T } from 'only/types'
+export type { T }
+```
+
 ### TypeScript 编译器选项 {#typescript-compiler-options}
 
 `tsconfig.json` 中 `compilerOptions` 下的一些配置项需要特别注意。
@@ -63,6 +70,7 @@ Vite 使用 [esbuild](https://github.com/evanw/esbuild) 将 TypeScript 转译到
 
 - [`extends`](https://www.typescriptlang.org/tsconfig#extends)
 - [`importsNotUsedAsValues`](https://www.typescriptlang.org/tsconfig#importsNotUsedAsValues)
+- [`preserveValueImports`](https://www.typescriptlang.org/tsconfig#preserveValueImports)
 - [`jsxFactory`](https://www.typescriptlang.org/tsconfig#jsxFactory)
 - [`jsxFragmentFactory`](https://www.typescriptlang.org/tsconfig#jsxFragmentFactory)
 
