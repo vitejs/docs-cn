@@ -1,12 +1,4 @@
-<<<<<<< HEAD
 # 配置 Vite {#configuring-vite}
-=======
----
-title: Configuring Vite
----
-
-# Configuring Vite
->>>>>>> 0ffb78e4881cc92f30ae902a80b579252a7f1a45
 
 ## 配置文件 {#config-file}
 

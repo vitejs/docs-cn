@@ -33,20 +33,16 @@ Vite 使用 [dotenv](https://github.com/motdotla/dotenv) 从你的 [环境目录
 .env.[mode].local   # 只在指定模式下加载，但会被 git 忽略
 ```
 
-<<<<<<< HEAD
-加载的环境变量也会通过 `import.meta.env` 暴露给客户端源码。
-=======
-:::tip Env Loading Priorities
+:::tip 环境加载优先级
 
-An env file for a specific mode (e.g. `.env.production`) will take higher priority than a generic one (e.g. `.env`).
+一份用于指定模式的文件（例如 `.env.production`）会比通用形式的优先级更高（例如 `.env`）。
 
-In addition, environment variables that already exist when Vite is executed have the highest priority and will not be overwritten by `.env` files.
+另外，Vite 执行时已经存在的环境变量有最高的优先级，不会被 `.env` 类文件覆盖。
 
-`.env` files are loaded at the start of Vite. Restart the server after making changes.
+`.env` 类文件会在 Vite 启动一开始时被加载，而改动会在重启服务器后生效。
 :::
 
-Loaded env variables are also exposed to your client source code via `import.meta.env`.
->>>>>>> 0ffb78e4881cc92f30ae902a80b579252a7f1a45
+加载的环境变量也会通过 `import.meta.env` 暴露给客户端源码。
 
 为了防止意外地将一些环境变量泄漏到客户端，只有以 `VITE_` 为前缀的变量才会暴露给经过 vite 处理的代码。例如下面这个文件中：
 
