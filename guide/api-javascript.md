@@ -105,7 +105,7 @@ interface ViteDevServer {
   /**
    * 重启服务器
    *
-   * @param forceOptimize - 强制优化器重新大伯啊，和命令行内使用 --force 一致
+   * @param forceOptimize - 强制优化器打包，和命令行内使用 --force 一致
    */
   restart(forceOptimize?: boolean): Promise<void>
   /**
