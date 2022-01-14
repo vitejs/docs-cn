@@ -169,10 +169,19 @@ export default defineConfig(async ({ command, mode }) => {
 
 ### resolve.alias {#resolve-alias}
 
+<<<<<<< HEAD
 - **类型：**
   `Record<string, string> | Array<{ find: string | RegExp, replacement: string }>`
 
   将会被传递到 `@rollup/plugin-alias` 作为 [entries 的选项](https://github.com/rollup/plugins/tree/master/packages/alias#entries)。也可以是一个对象，或一个 `{ find, replacement }` 的数组。
+=======
+### resolve.alias
+
+- **Type:**
+  `Record<string, string> | Array<{ find: string | RegExp, replacement: string, customResolver?: ResolverFunction | ResolverObject }>`
+
+  Will be passed to `@rollup/plugin-alias` as its [entries option](https://github.com/rollup/plugins/tree/master/packages/alias#entries). Can either be an object, or an array of `{ find, replacement, customResolver }` pairs.
+>>>>>>> d2aaea41c73550bfc0cba36daf7543f2c77cc948
 
   当使用文件系统路径的别名时，请始终使用绝对路径。相对路径的别名值会原封不动地被使用，因此无法被正常解析。
 
@@ -974,4 +983,29 @@ SSR 选项可能会在未来版本中进行调整。
 - **类型：** `'node' | 'webworker'`
 - **默认：** `node`
 
+<<<<<<< HEAD
   SSR 服务器的构建目标。
+=======
+  Build target for the SSR server.
+
+## Worker Options
+
+### worker.format
+
+- **Type:** `'es' | 'iife'`
+- **Default:** `iife`
+
+  Output format for worker bundle.
+
+### worker.plugins
+
+- **Type:** [`(Plugin | Plugin[])[]`](#plugins)
+
+  Vite plugins that apply to worker bundle
+
+### worker.rollupOptions
+
+- **Type:** [`RollupOptions`](https://rollupjs.org/guide/en/#big-list-of-options)
+
+  Rollup options to build worker bundle.
+>>>>>>> d2aaea41c73550bfc0cba36daf7543f2c77cc948
