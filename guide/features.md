@@ -191,13 +191,13 @@ document.getElementById('foo').className = applyColor
 
 ```bash
 # .scss and .sass
-npm install -D sass
+npm add -D sass
 
 # .less
-npm install -D less
+npm add -D less
 
 # .styl and .stylus
-npm install -D stylus
+npm add -D stylus
 ```
 
 如果是用的是单文件组件，可以通过 `<style lang="sass">`（或其他预处理器）自动开启。
