@@ -445,11 +445,7 @@ apply(config, { command }) {
 
 相当数量的 Rollup 插件将直接作为 Vite 插件工作（例如：`@rollup/plugin-alias` 或 `@rollup/plugin-json`），但并不是所有的，因为有些插件钩子在非构建式的开发服务器上下文中没有意义。
 
-<<<<<<< HEAD
 一般来说，只要 Rollup 插件符合以下标准，它就应该像 Vite 插件一样工作：
-=======
-In general, as long as a Rollup plugin fits the following criteria then it should just work as a Vite plugin:
->>>>>>> 49751c64a4902d16e26dcbfe931318742e39e4b3
 
 - 没有使用 [`moduleParsed`](https://rollupjs.org/guide/en/#moduleparsed) 钩子。
 - 它在打包钩子和输出钩子之间没有很强的耦合。
