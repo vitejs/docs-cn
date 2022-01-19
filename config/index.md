@@ -23,6 +23,14 @@ export default {
 vite --config my-config.js
 ```
 
+注意，Vite 会替换 `__filename`，`__dirname` 以及 `import.meta.url`。如果使用这些名称作为变量名可能会导致代码报错：
+
+```js
+const __filename = "value"
+// will be transformed to
+const "path/vite.config.js" = "value"
+```
+
 ### 配置智能提示 {#config-intellisense}
 
 因为 Vite 本身附带 Typescript 类型，所以你可以通过 IDE 和 jsdoc 的配合来实现智能提示：
@@ -131,9 +139,21 @@ export default defineConfig(async ({ command, mode }) => {
 
   例如，`process.env.FOO` 和 `__APP_VERSION__` 就非常适合。但 `process` 或 `global` 不应使用此选项。变量相关应使用 shim 或 polyfill 代替。
 
+  ::: tip NOTE
+  对于使用 TypeScript 的开发者来说，请确保在 `env.d.ts` 或 `vite-env.d.ts` 文件中添加类型声明，以获得类型检查以及代码提示。
+
+  Example:
+
+  ```ts
+  // vite-env.d.ts
+  declare const __APP_VERSION__: string
+  ```
+
+  :::
+
 ### plugins {#plugins}
 
-- **类型：** ` (Plugin | Plugin[])[]`
+- **类型：** `(Plugin | Plugin[])[]`
 
   需要用到的插件数组。Falsy 虚值的插件将被忽略，插件数组将被扁平化（flatten）。查看 [插件 API](/guide/api-plugin) 获取 Vite 插件的更多细节。
 
@@ -153,14 +173,14 @@ export default defineConfig(async ({ command, mode }) => {
 - **类型：** `string`
 - **默认：** `"node_modules/.vite"`
 
-  存储缓存文件的目录。此目录下会存储预打包的依赖项或 vite 生成的某些缓存文件，使用缓存可以提高性能。如需重新生成缓存文件，你可以使用 `--force` 命令行选项或手动删除目录。此选项的值可以是文件的绝对路径，也可以是以项目根目录为基准的相对路径。
+  存储缓存文件的目录。此目录下会存储预打包的依赖项或 vite 生成的某些缓存文件，使用缓存可以提高性能。如需重新生成缓存文件，你可以使用 `--force` 命令行选项或手动删除目录。此选项的值可以是文件的绝对路径，也可以是以项目根目录为基准的相对路径。当没有检测到 package.json 时，则默认为 `.vite`。
 
 ### resolve.alias {#resolve-alias}
 
 - **类型：**
-  `Record<string, string> | Array<{ find: string | RegExp, replacement: string }>`
+  `Record<string, string> | Array<{ find: string | RegExp, replacement: string, customResolver?: ResolverFunction | ResolverObject }>`
 
-  将会被传递到 `@rollup/plugin-alias` 作为 [entries 的选项](https://github.com/rollup/plugins/tree/master/packages/alias#entries)。也可以是一个对象，或一个 `{ find, replacement }` 的数组。
+  将会被传递到 `@rollup/plugin-alias` 作为 [entries 的选项](https://github.com/rollup/plugins/tree/master/packages/alias#entries)。也可以是一个对象，或一个 `{ find, replacement, customResolver }` 的数组。
 
   当使用文件系统路径的别名时，请始终使用绝对路径。相对路径的别名值会原封不动地被使用，因此无法被正常解析。
 
@@ -770,6 +790,8 @@ export default defineConfig({
 
   设置为 `false` 可以禁用最小化混淆，或是用来指定使用哪种混淆器。默认为 [Esbuild](https://github.com/evanw/esbuild)，它比 terser 快 20-40 倍，压缩率只差 1%-2%。[Benchmarks](https://github.com/privatenumber/minification-benchmarks)
 
+  注意，在 lib 模式下使用 `'es'` 时，`build.minify` 选项将失效。
+
 ### build.terserOptions {#build-terseroptions}
 
 - **类型：** `TerserOptions`
@@ -826,7 +848,7 @@ export default defineConfig({
 ### preview.port {#preview-port}
 
 - **类型：** `number`
-- **默认：** `5000`
+- **默认：** `4173`
 
   指定开发服务器端口。注意，如果设置的端口已被使用，Vite 将自动尝试下一个可用端口，所以这可能不是最终监听的服务器端口。
 
@@ -957,3 +979,24 @@ SSR 选项可能会在未来版本中进行调整。
 - **默认：** `node`
 
   SSR 服务器的构建目标。
+
+## Worker 选项 {#worker-options}
+
+### worker.format
+
+- **类型：** `'es' | 'iife'`
+- **默认：** `iife`
+
+  worker bundle 的输出类型。
+
+### worker.plugins
+
+- **类型：** [`(Plugin | Plugin[])[]`](#plugins)
+
+  适用于 worker bundle 的 Vite 插件。
+
+### worker.rollupOptions
+
+- **类型：** [`RollupOptions`](https://rollupjs.org/guide/en/#big-list-of-options)
+
+  用于构建 worker bundle 的 Rollup 配置项。

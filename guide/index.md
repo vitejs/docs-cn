@@ -38,13 +38,13 @@ Vite 意在提供开箱即用的配置，同时它的 [插件 API](./api-plugin)
 ## 搭建第一个 Vite 项目 {#scaffolding-your-first-vite-project}
 
 ::: tip 兼容性注意
-Vite 需要 [Node.js](https://nodejs.org/en/) 版本 >= 12.0.0。
+Vite 需要 [Node.js](https://nodejs.org/en/) 版本 >= 12.0.0。然而，有些模板需要依赖更高的 Node 版本才能正常运行，当你的包管理器发出警告时，请注意升级你的 Node 版本。
 :::
 
 使用 NPM:
 
 ```bash
-$ npm init vite@latest
+$ npm create vite@latest
 ```
 
 使用 Yarn:
@@ -65,10 +65,10 @@ $ pnpm create vite
 
 ```bash
 # npm 6.x
-npm init vite@latest my-vue-app --template vue
+npm create vite@latest my-vue-app --template vue
 
-# npm 7+, 需要额外的双横线：
-npm init vite@latest my-vue-app -- --template vue
+# npm 7+, extra double-dash is needed:
+npm create vite@latest my-vue-app -- --template vue
 
 # yarn
 yarn create vite my-vue-app --template vue
