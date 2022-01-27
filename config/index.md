@@ -477,6 +477,11 @@ export default defineConfig(async ({ command, mode }) => {
           configure: (proxy, options) => {
             // proxy 是 'http-proxy' 的实例
           }
+        },
+        // Proxying websockets or socket.io
+        '/socket.io': {
+          target: 'ws://localhost:3000',
+          ws: true
         }
       }
     }
@@ -585,8 +590,14 @@ createServer()
 
   Vite 将会搜索此根目录下潜在工作空间并作默认使用。一个有效的工作空间应符合以下几个条件，否则会默认以 [项目 root 目录](/guide/#index-html-and-project-root) 作备选方案。
 
+<<<<<<< HEAD
   - 在 `package.json` 中包含 `workspaces` 字段
   - 包含以下几种文件之一
+=======
+  - contains `workspaces` field in `package.json`
+  - contains one of the following file
+    - `lerna.json`
+>>>>>>> de9a9f97710014fd2533bad0a62787c7b3c0aa96
     - `pnpm-workspace.yaml`
 
   接受一个路径作为自定义工作区的 root 目录。可以是绝对路径或是相对于 [项目 root 目录](/guide/#index-html-and-project-root) 的相对路径。示例如下：
