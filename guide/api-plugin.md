@@ -36,9 +36,13 @@ Vite 努力秉承开箱即用的原则，因此在创作一款新插件前，请
 - `vite-plugin-react-` 前缀作为 React 插件
 - `vite-plugin-svelte-` 前缀作为 Svelte 插件
 
+<<<<<<< HEAD
 Vite 对虚拟模块的规范是在路径前加上 `virtual:`。如果可能的话，插件名应该作为命名空间使用，以避免与生态系统中的其他插件发生冲突。例如，`vite-plugin-posts` 可以让用户引入 `virtual:posts` 或 `virtual:posts/helpers` 虚拟模块，以获得构建时信息。在内部，使用虚拟模块的插件在解析模块 ID 时应以 `\0` 为前缀，这是一个来自 Rollup 生态系统的惯例。这可以防止其他插件试图处理这个 ID（如节点解析），而像 sourcemap 这样的核心功能可以使用这些信息来区分虚拟模块和普通文件。`\0` 在导入的 URL 中不是一个允许的字符，所以我们必须在导入分析中替换它们。在浏览器中，一个 `0{id}` 的虚拟 ID 最终被编码为 `/@id/__x00__{id}`。在进入插件处理管道之前，这个 ID 会被解码回来。所以这个过程在插件钩子代码中将是不可见的。
 
 请注意，模块都直接来源于真实的文件，而单文件组件（比如 .vue 或 .svelte 文件）中的 script 模块将不需要这样的转换。单文件组件被处理时一般会生成一系列子模块但其代码都可以被映射回文件系统。对这些子模块使用 `\0` 会使得 sourcemap 工作异常。
+=======
+See also [Virtual Modules Convention](#virtual-modules-convention).
+>>>>>>> f67ed654469b1812414ab2ee6e8f8d02d9422b39
 
 ## 插件配置 {#plugins-config}
 
@@ -84,7 +88,38 @@ export default defineConfig({
 通常的惯例是创建一个 Vite/Rollup 插件作为一个返回实际插件对象的工厂函数。该函数可以接受允许用户自定义插件行为的选项。
 :::
 
+<<<<<<< HEAD
 ### 引入一个虚拟文件 {#importing-a-virtual-file}
+=======
+### Transforming Custom File Types
+
+```js
+const fileRegex = /\.(my-file-ext)$/
+
+export default function myPlugin() {
+  return {
+    name: 'transform-file',
+
+    transform(src, id) {
+      if (fileRegex.test(id)) {
+        return {
+          code: compileFileToJS(src),
+          map: null // provide source map if available
+        }
+      }
+    }
+  }
+}
+```
+
+### Importing a Virtual File
+>>>>>>> f67ed654469b1812414ab2ee6e8f8d02d9422b39
+
+See the example in the [next section](#virtual-modules-convention).
+
+## Virtual Modules Convention
+
+Virtual modules are a useful scheme that allows you to pass build time information to the source files using normal ESM import syntax.
 
 ```js
 export default function myPlugin() {
@@ -115,6 +150,7 @@ import { msg } from '@my-virtual-module'
 console.log(msg)
 ```
 
+<<<<<<< HEAD
 ### 转换自定义文件类型 {#transforming-custom-file-types}
 
 ```js
@@ -135,6 +171,11 @@ export default function myPlugin() {
   }
 }
 ```
+=======
+Virtual modules in Vite (and Rollup) are prefixed with `virtual:` for the user-facing path by convention. If possible the plugin name should be used as a namespace to avoid collisions with other plugins in the ecosystem. For example, a `vite-plugin-posts` could ask users to import a `virtual:posts` or `virtual:posts/helpers` virtual modules to get build time information. Internally, plugins that use virtual modules should prefix the module ID with `\0` while resolving the id, a convention from the rollup ecosystem. This prevents other plugins from trying to process the id (like node resolution), and core features like sourcemaps can use this info to differentiate between virtual modules and regular files. `\0` is not a permitted char in import URLs so we have to replace them during import analysis. A `\0{id}` virtual id ends up encoded as `/@id/__x00__{id}` during dev in the browser. The id will be decoded back before entering the plugins pipeline, so this is not seen by plugins hooks code.
+
+Note that modules directly derived from a real file, as in the case of a script module in a Single File Component (like a .vue or .svelte SFC) don't need to follow this convention. SFCs generally generate a set of submodules when processed but the code in these can be mapped back to the filesystem. Using `\0` for these submodules would prevent sourcemaps from working correctly.
+>>>>>>> f67ed654469b1812414ab2ee6e8f8d02d9422b39
 
 ## 通用钩子 {#universal-hooks}
 
