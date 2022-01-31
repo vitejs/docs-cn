@@ -267,6 +267,7 @@ $ npm run preview
 
 ## Vercel {#vercel}
 
+<<<<<<< HEAD
 要通过 [Vercel for Git](https://vercel.com/docs/git) 部署你的 Vite 应用，请确保它已被推送至一个 Git 仓库。
 
 进入 https://vercel.com/import/git 并根据你的 Git 托管服务（GitHub, GitLab 或 BitBucket）将项目导入 Vercel。根据指引，选择带有 `package.json` 的项目根目录。并使用 `npm run build` 来覆写构建步骤，并将输出目录设置为 `./dist`。
@@ -276,6 +277,32 @@ $ npm run preview
 在项目被导入之后，所有后续的推送都将生成预览部署，但只有对生产分支（通常是 “main”）所做的更改才会触发生产部署。
 
 一旦部署，你会得到一个实时查看应用的 URL，如 https://vite.vercel.app。
+=======
+### Vercel CLI
+
+1. Install the [Vercel CLI](https://vercel.com/cli) and run `vercel` to deploy.
+2. Vercel will detect that you are using Vite and will enable the correct settings for your deployment.
+3. Your application is deployed! (e.g. [vite-vue-template.vercel.app](https://vite-vue-template.vercel.app/))
+
+```bash
+$ npm i -g vercel
+$ vercel init vite
+Vercel CLI
+> Success! Initialized "vite" example in ~/your-folder.
+- To deploy, `cd vite` and run `vercel`.
+```
+
+### Vercel for Git
+
+1. Push your code to your git repository (GitHub, GitLab, BitBucket).
+2. [Import your Vite project](https://vercel.com/new) into Vercel.
+3. Vercel will detect that you are using Vite and will enable the correct settings for your deployment.
+4. Your application is deployed! (e.g. [vite-vue-template.vercel.app](https://vite-vue-template.vercel.app/))
+
+After your project has been imported and deployed, all subsequent pushes to branches will generate [Preview Deployments](https://vercel.com/docs/concepts/deployments/environments#preview), and all changes made to the Production Branch (commonly “main”) will result in a [Production Deployment](https://vercel.com/docs/concepts/deployments/environments#production).
+
+Learn more about Vercel’s [Git Integration](https://vercel.com/docs/concepts/git).
+>>>>>>> 09a6ca11da8d774d9a6a40131c5c030f26876891
 
 ## Azure 的静态网站应用 {#azure-static-web-apps}
 
