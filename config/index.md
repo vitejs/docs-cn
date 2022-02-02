@@ -590,14 +590,9 @@ createServer()
 
   Vite 将会搜索此根目录下潜在工作空间并作默认使用。一个有效的工作空间应符合以下几个条件，否则会默认以 [项目 root 目录](/guide/#index-html-and-project-root) 作备选方案。
 
-<<<<<<< HEAD
   - 在 `package.json` 中包含 `workspaces` 字段
   - 包含以下几种文件之一
-=======
-  - contains `workspaces` field in `package.json`
-  - contains one of the following file
     - `lerna.json`
->>>>>>> 09a6ca11da8d774d9a6a40131c5c030f26876891
     - `pnpm-workspace.yaml`
 
   接受一个路径作为自定义工作区的 root 目录。可以是绝对路径或是相对于 [项目 root 目录](/guide/#index-html-and-project-root) 的相对路径。示例如下：

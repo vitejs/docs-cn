@@ -267,22 +267,11 @@ $ npm run preview
 
 ## Vercel {#vercel}
 
-<<<<<<< HEAD
-要通过 [Vercel for Git](https://vercel.com/docs/git) 部署你的 Vite 应用，请确保它已被推送至一个 Git 仓库。
+### Vercel CLI {#vercel-cli}
 
-进入 https://vercel.com/import/git 并根据你的 Git 托管服务（GitHub, GitLab 或 BitBucket）将项目导入 Vercel。根据指引，选择带有 `package.json` 的项目根目录。并使用 `npm run build` 来覆写构建步骤，并将输出目录设置为 `./dist`。
-
-![覆写 Vercel 配置](../images/vercel-configuration.png)
-
-在项目被导入之后，所有后续的推送都将生成预览部署，但只有对生产分支（通常是 “main”）所做的更改才会触发生产部署。
-
-一旦部署，你会得到一个实时查看应用的 URL，如 https://vite.vercel.app。
-=======
-### Vercel CLI
-
-1. Install the [Vercel CLI](https://vercel.com/cli) and run `vercel` to deploy.
-2. Vercel will detect that you are using Vite and will enable the correct settings for your deployment.
-3. Your application is deployed! (e.g. [vite-vue-template.vercel.app](https://vite-vue-template.vercel.app/))
+1. 安装 [Vercel CLI](https://vercel.com/cli) 并运行 `vercel` 来进行部署。
+2. Vercel 会检测到你正在使用 Vite，并会为你的开发开启相应的正确设置。
+3. 然后你的应用就被正常部署了！（示例 [vite-vue-template.vercel.app](https://vite-vue-template.vercel.app/)）
 
 ```bash
 $ npm i -g vercel
@@ -292,17 +281,16 @@ Vercel CLI
 - To deploy, `cd vite` and run `vercel`.
 ```
 
-### Vercel for Git
+### Vercel for Git {#vercel-for-git}
 
-1. Push your code to your git repository (GitHub, GitLab, BitBucket).
-2. [Import your Vite project](https://vercel.com/new) into Vercel.
-3. Vercel will detect that you are using Vite and will enable the correct settings for your deployment.
-4. Your application is deployed! (e.g. [vite-vue-template.vercel.app](https://vite-vue-template.vercel.app/))
+1. 将你代码推送到你的 git 仓库（GitHub、GitLab 或 BitBucket 等等）
+2. [导入你的 Vite 项目](https://vercel.com/new) 到 Vercel。
+3. Vercel 会检测到你正在使用 Vite，并会为你的开发开启相应的正确设置。
+4. 然后你的应用就被正常部署了！（示例 [vite-vue-template.vercel.app](https://vite-vue-template.vercel.app/)）
 
-After your project has been imported and deployed, all subsequent pushes to branches will generate [Preview Deployments](https://vercel.com/docs/concepts/deployments/environments#preview), and all changes made to the Production Branch (commonly “main”) will result in a [Production Deployment](https://vercel.com/docs/concepts/deployments/environments#production).
+在你的项目被成功导入与部署后，所有对分支的后续推送都将生成 [预览发布](https://vercel.com/docs/concepts/deployments/environments#preview)，所有对生产分支（通常是 "main"）都会最后形成一个 [生产发布](https://vercel.com/docs/concepts/deployments/environments#production)。
 
-Learn more about Vercel’s [Git Integration](https://vercel.com/docs/concepts/git).
->>>>>>> 09a6ca11da8d774d9a6a40131c5c030f26876891
+访问 Vercel 的 [Git 集成指引](https://vercel.com/docs/concepts/git) 了解更多详情。
 
 ## Azure 的静态网站应用 {#azure-static-web-apps}
 
