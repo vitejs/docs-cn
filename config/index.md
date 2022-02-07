@@ -477,6 +477,11 @@ export default defineConfig(async ({ command, mode }) => {
           configure: (proxy, options) => {
             // proxy 是 'http-proxy' 的实例
           }
+        },
+        // Proxying websockets or socket.io
+        '/socket.io': {
+          target: 'ws://localhost:3000',
+          ws: true
         }
       }
     }
@@ -587,6 +592,7 @@ createServer()
 
   - 在 `package.json` 中包含 `workspaces` 字段
   - 包含以下几种文件之一
+    - `lerna.json`
     - `pnpm-workspace.yaml`
 
   接受一个路径作为自定义工作区的 root 目录。可以是绝对路径或是相对于 [项目 root 目录](/guide/#index-html-and-project-root) 的相对路径。示例如下：

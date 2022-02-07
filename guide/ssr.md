@@ -100,7 +100,7 @@ createServer()
 下一步是实现 `*` 处理程序供给服务端渲染的 HTML：
 
 ```js
-app.use('*', async (req, res) => {
+app.use('*', async (req, res, next) => {
   const url = req.originalUrl
 
   try {
@@ -134,8 +134,7 @@ app.use('*', async (req, res) => {
     // 如果捕获到了一个错误，让 Vite 来修复该堆栈，这样它就可以映射回
     // 你的实际源码中。
     vite.ssrFixStacktrace(e)
-    console.error(e)
-    res.status(500).end(e.message)
+    next(e)
   }
 })
 ```
