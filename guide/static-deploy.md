@@ -40,7 +40,11 @@ $ npm run build
 $ npm run preview
 ```
 
+<<<<<<< HEAD
 `vite preview` 命令会在本地启动一个静态 Web 服务器，将 `dist` 文件夹运行在 http://localhost:5000。这样在本地环境下查看该构建产物是否正常可用就方便了。
+=======
+The `vite preview` command will boot up local static web server that serves the files from `dist` at `http://localhost:4173`. It's an easy way to check if the production build looks OK in your local environment.
+>>>>>>> b419bac8e169d8d0fe217e421c69aac799e2d552
 
 你可以通过 `--port` 参数来配置服务的运行端口。
 
@@ -52,7 +56,11 @@ $ npm run preview
 }
 ```
 
+<<<<<<< HEAD
 现在 `preview` 命令会将服务器运行在 http://localhost:8080。
+=======
+Now the `preview` method will launch the server at `http://localhost:8080`.
+>>>>>>> b419bac8e169d8d0fe217e421c69aac799e2d552
 
 ## GitHub Pages {#github-pages}
 
