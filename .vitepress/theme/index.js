@@ -1,7 +1,6 @@
 import Theme from 'vitepress/theme'
 import { h } from 'vue'
-import sponsors from './sponsors.json'
-import './sponsors.css'
+import SponsorsSidebar from './SponsorsSidebar.vue'
 import './custom.css'
 
 export default {
@@ -9,6 +8,7 @@ export default {
   Layout() {
     return h(Theme.Layout, null, {
       'sidebar-bottom': () =>
+<<<<<<< HEAD
         h('div', { class: 'sponsors sidebar' }, [
           h(
             'a',
@@ -42,6 +42,9 @@ export default {
             }
           })
         ])
+=======
+        h('div', { class: 'sponsors sidebar' }, [h(SponsorsSidebar)])
+>>>>>>> 3ce3830653dcbdedcc1bdbd6d35f34bc908ce9fc
     })
   }
 }

@@ -110,4 +110,8 @@ NODE_ENV=production
 VITE_APP_TITLE=My App (staging)
 ```
 
+<<<<<<< HEAD
 现在，你的 staging 应用应该具有类似于生产的行为，但显示的标题与生产环境不同。
+=======
+Now your staging app should have production-like behavior, but display a different title from production.
+>>>>>>> 3ce3830653dcbdedcc1bdbd6d35f34bc908ce9fc
