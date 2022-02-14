@@ -23,6 +23,7 @@ features:
 footer: MIT Licensed | Copyright © 2019-present Evan You & Vite Contributors
 ---
 
+<<<<<<< HEAD
 <div class="frontpage sponsors">
   <h2>赞助</h2>
   <div class="platinum-sponsors">
@@ -43,4 +44,18 @@ import sponsors from './.vitepress/theme/sponsors.json'
 import fetchReleaseTag from './.vitepress/theme/fetchReleaseTag.js'
 
 fetchReleaseTag()
+=======
+<script setup>
+import SponsorsGroup from './.vitepress/theme/SponsorsGroup.vue'
+>>>>>>> d96df4c2ea369cddfcfffbbec157db8c2580e0bb
 </script>
+
+<h3 style="text-align:center;color:#999">Sponsors</h3>
+
+<SponsorsGroup tier="platinum" placement="landing" />
+
+<SponsorsGroup tier="gold" placement="landing" />
+
+<p style="text-align:center;margin-bottom:3em">
+  <a style="color: #999;font-size:.9em;" href="https://github.com/sponsors/yyx990803" target="_blank" rel="noopener">Become a sponsor on GitHub</a>
+</p>

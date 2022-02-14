@@ -767,19 +767,35 @@ export default defineConfig({
 
 ### build.manifest {#build-manifest}
 
+<<<<<<< HEAD
 - **类型：** `boolean`
 - **默认：** `false`
 - **相关内容：** [后端集成](/guide/backend-integration)
 
   当设置为 `true`，构建后将会生成 `manifest.json` 文件，包含了没有被 hash 的资源文件名和 hash 后版本的映射。可以为一些服务器框架渲染时提供正确的资源引入链接。
+=======
+- **Type:** `boolean | string`
+- **Default:** `false`
+- **Related:** [Backend Integration](/guide/backend-integration)
+
+  When set to `true`, the build will also generate a `manifest.json` file that contains a mapping of non-hashed asset filenames to their hashed versions, which can then be used by a server framework to render the correct asset links. When the value is a string, it will be used as the manifest file name.
+>>>>>>> d96df4c2ea369cddfcfffbbec157db8c2580e0bb
 
 ### build.ssrManifest {#build-ssrmanifest}
 
+<<<<<<< HEAD
 - **类型：** `boolean`
 - **默认值：** `false`
 - **相关链接：** [Server-Side Rendering](/guide/ssr)
 
   当设置为 `true` 时，构建也将生成 SSR 的 manifest 文件，以确定生产中的样式链接与资产预加载指令。
+=======
+- **Type:** `boolean | string`
+- **Default:** `false`
+- **Related:** [Server-Side Rendering](/guide/ssr)
+
+  When set to `true`, the build will also generate a SSR manifest for determining style links and asset preload directives in production. When the value is a string, it will be used as the manifest file name.
+>>>>>>> d96df4c2ea369cddfcfffbbec157db8c2580e0bb
 
 ### build.ssr {#build-ssr}
 
