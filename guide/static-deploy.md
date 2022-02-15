@@ -40,7 +40,7 @@ $ npm run build
 $ npm run preview
 ```
 
-`vite preview` 命令会在本地启动一个静态 Web 服务器，将 `dist` 文件夹运行在 http://localhost:5000。这样在本地环境下查看该构建产物是否正常可用就方便了。
+`vite preview` 命令会在本地启动一个静态 Web 服务器，将 `dist` 文件夹运行在 `http://localhost:4173`。这样在本地环境下查看该构建产物是否正常可用就方便多了。
 
 你可以通过 `--port` 参数来配置服务的运行端口。
 
@@ -52,7 +52,7 @@ $ npm run preview
 }
 ```
 
-现在 `preview` 命令会将服务器运行在 http://localhost:8080。
+现在 `preview` 命令会将服务器运行在 `http://localhost:8080`。
 
 ## GitHub Pages {#github-pages}
 
@@ -80,6 +80,7 @@ $ npm run preview
    # echo 'www.example.com' > CNAME
 
    git init
+   git checkout -b main
    git add -A
    git commit -m 'deploy'
 
@@ -164,12 +165,27 @@ $ npm run preview
 
 ## Netlify {#netlify}
 
-1. 在 [Netlify](https://netlify.com) 上，使用以下设置，配置一个来自 GitHub 的项目：
+1. 安装 [Netlify CLI](https://cli.netlify.com/)。
+2. 使用 `ntl init` 创建一个新站点。
+3. 使用 `ntl deploy` 来部署。
 
-   - **构建命令：** `vite build` 或 `npm run build`
-   - **发布目录：** `dist`
+```bash
+# 安装 Netlify CLI
+$ npm install -g netlify-cli
 
-2. 点击部署按钮。
+# 在 Netlify 中创建一个新站点
+$ ntl init
+
+# 部署一个独一无二的预览 URL
+$ ntl deploy
+```
+
+Netlify CLI 会给你分享一个预览的 URL 来检查部署结果。当你准备好了发布生产版本时，请使用 `prod` 标志：
+
+```bash
+# 部署站点到生产环境
+$ ntl deploy --prod
+```
 
 ## Google Firebase {#google-firebase}
 

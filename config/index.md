@@ -767,19 +767,19 @@ export default defineConfig({
 
 ### build.manifest {#build-manifest}
 
-- **类型：** `boolean`
+- **类型：** `boolean | string`
 - **默认：** `false`
 - **相关内容：** [后端集成](/guide/backend-integration)
 
-  当设置为 `true`，构建后将会生成 `manifest.json` 文件，包含了没有被 hash 的资源文件名和 hash 后版本的映射。可以为一些服务器框架渲染时提供正确的资源引入链接。
+  当设置为 `true`，构建后将会生成 `manifest.json` 文件，包含了没有被 hash 过的资源文件名和 hash 后版本的映射。可以为一些服务器框架渲染时提供正确的资源引入链接。当该值为一个字符串时，它将作为 manifest 文件的名字。
 
 ### build.ssrManifest {#build-ssrmanifest}
 
-- **类型：** `boolean`
+- **类型：** `boolean | string`
 - **默认值：** `false`
-- **相关链接：** [Server-Side Rendering](/guide/ssr)
+- **相关链接：** [服务端渲染](/guide/ssr)
 
-  当设置为 `true` 时，构建也将生成 SSR 的 manifest 文件，以确定生产中的样式链接与资产预加载指令。
+  当设置为 `true` 时，构建也将生成 SSR 的 manifest 文件，以确定生产中的样式链接与资产预加载指令。当该值为一个字符串时，它将作为 manifest 文件的名字。
 
 ### build.ssr {#build-ssr}
 
