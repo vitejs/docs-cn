@@ -8,7 +8,7 @@ Vite 插件扩展了设计出色的 Rollup 接口，带有一些 Vite 独有的�
 
 Vite 努力秉承开箱即用的原则，因此在创作一款新插件前，请确保已经阅读过 [Vite 的功能指南](/guide/features)，避免重复劳作。同时还应查看社区是否存在可用插件，包括 [兼容 Rollup 的插件](https://github.com/rollup/awesome) 以及 [Vite 的专属插件](https://github.com/vitejs/awesome-vite#plugins)。
 
-当创作插件时，你可以在 `vite.config.js` 中直接使用它。没必要直接为它创建一个新的 package。当你发现某个插件在你项目中很有用时，可以考虑，可以考虑 [在社区中](https://chat.vitejs.dev) 将其与他人分享。
+当创作插件时，你可以在 `vite.config.js` 中直接使用它。没必要直接为它创建一个新的 package。当你发现某个插件在你项目中很有用时，可以考虑 [在社区中](https://chat.vitejs.dev) 将其与他人分享。
 
 ::: tip
 在学习、调试或创作插件时，我们建议在你的项目中引入 [vite-plugin-inspect](https://github.com/antfu/vite-plugin-inspect)。 它可以帮助你检查 Vite 插件的中间状态。安装后，你可以访问 `localhost:3000/__inspect/` 来检查你项目的模块和栈信息。请查阅 [vite-plugin-inspect 文档](https://github.com/antfu/vite-plugin-inspect) 中的安装说明。
