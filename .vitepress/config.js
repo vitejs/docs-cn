@@ -13,6 +13,9 @@ module.exports = {
     ['link', { rel: 'icon', type: 'image/svg+xml', href: '/logo.svg' }],
     ['script', { src: 'https://cdn.wwads.cn/js/makemoney.js', async: '' }]
   ],
+  vue: {
+    reactivityTransform: true
+  },
   themeConfig: {
     repo: pkg.repository,
     logo: '/logo.svg',
