@@ -6,7 +6,6 @@ const pkg = require('../package.json')
  * @type {import('vitepress').UserConfig}
  */
 module.exports = {
-<<<<<<< HEAD
   title: 'Vite 官方中文文档',
   lang: 'zh-CN',
   description: '下一代前端开发与构建工具',
@@ -14,14 +13,9 @@ module.exports = {
     ['link', { rel: 'icon', type: 'image/svg+xml', href: '/logo.svg' }],
     ['script', { src: 'https://cdn.wwads.cn/js/makemoney.js', async: '' }]
   ],
-=======
-  title: 'Vite',
-  description: 'Next Generation Frontend Tooling',
-  head: [['link', { rel: 'icon', type: 'image/svg+xml', href: '/logo.svg' }]],
   vue: {
     reactivityTransform: true
   },
->>>>>>> d96df4c2ea369cddfcfffbbec157db8c2580e0bb
   themeConfig: {
     repo: pkg.repository,
     logo: '/logo.svg',

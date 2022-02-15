@@ -40,11 +40,7 @@ $ npm run build
 $ npm run preview
 ```
 
-<<<<<<< HEAD
-`vite preview` 命令会在本地启动一个静态 Web 服务器，将 `dist` 文件夹运行在 http://localhost:5000。这样在本地环境下查看该构建产物是否正常可用就方便了。
-=======
-The `vite preview` command will boot up local static web server that serves the files from `dist` at `http://localhost:4173`. It's an easy way to check if the production build looks OK in your local environment.
->>>>>>> d96df4c2ea369cddfcfffbbec157db8c2580e0bb
+`vite preview` 命令会在本地启动一个静态 Web 服务器，将 `dist` 文件夹运行在 `http://localhost:4173`。这样在本地环境下查看该构建产物是否正常可用就方便多了。
 
 你可以通过 `--port` 参数来配置服务的运行端口。
 
@@ -56,11 +52,7 @@ The `vite preview` command will boot up local static web server that serves the 
 }
 ```
 
-<<<<<<< HEAD
-现在 `preview` 命令会将服务器运行在 http://localhost:8080。
-=======
-Now the `preview` method will launch the server at `http://localhost:8080`.
->>>>>>> d96df4c2ea369cddfcfffbbec157db8c2580e0bb
+现在 `preview` 命令会将服务器运行在 `http://localhost:8080`。
 
 ## GitHub Pages {#github-pages}
 
@@ -173,36 +165,27 @@ Now the `preview` method will launch the server at `http://localhost:8080`.
 
 ## Netlify {#netlify}
 
-<<<<<<< HEAD
-1. 在 [Netlify](https://netlify.com) 上，使用以下设置，配置一个来自 GitHub 的项目：
-
-   - **构建命令：** `vite build` 或 `npm run build`
-   - **发布目录：** `dist`
-
-2. 点击部署按钮。
-=======
-1. Install the [Netlify CLI](https://cli.netlify.com/).
-2. Create a new site using `ntl init`.
-3. Deploy using `ntl deploy`.
+1. 安装 [Netlify CLI](https://cli.netlify.com/)。
+2. 使用 `ntl init` 创建一个新站点。
+3. 使用 `ntl deploy` 来部署。
 
 ```bash
-# Install the Netlify CLI
+# 安装 Netlify CLI
 $ npm install -g netlify-cli
 
-# Create a new site in Netlify
+# 在 Netlify 中创建一个新站点
 $ ntl init
 
-# Deploy to a unique preview URL
+# 部署一个独一无二的预览 URL
 $ ntl deploy
 ```
 
-The Netlify CLI will share with you a preview URL to inspect. When you are ready to go into production, use the `prod` flag:
+Netlify CLI 会给你分享一个预览的 URL 来检查部署结果。当你准备好了发布生产版本时，请使用 `prod` 标志：
 
 ```bash
-# Deploy the site into production
+# 部署站点到生产环境
 $ ntl deploy --prod
 ```
->>>>>>> d96df4c2ea369cddfcfffbbec157db8c2580e0bb
 
 ## Google Firebase {#google-firebase}
 

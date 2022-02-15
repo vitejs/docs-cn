@@ -8,43 +8,7 @@ export default {
   Layout() {
     return h(Theme.Layout, null, {
       'sidebar-bottom': () =>
-<<<<<<< HEAD
-        h('div', { class: 'sponsors sidebar' }, [
-          h(
-            'a',
-            {
-              href: 'https://github.com/sponsors/yyx990803',
-              target: '_blank',
-              rel: 'noopener'
-            },
-            [h('span', 'Sponsors')]
-          ),
-          ...sponsors.map(({ href, src, name, id }) =>
-            h(
-              'a',
-              {
-                href,
-                target: '_blank',
-                rel: 'noopener',
-                'aria-label': 'sponsor-img'
-              },
-              [h('img', { src, alt: name, id: `sponsor-${id}` })]
-            )
-          )
-        ]),
-      'page-top-ads': () =>
-        h('div', { id: 'wwads-container' }, [
-          h('div', {
-            class: 'wwads-cn wwads-vertical',
-            'data-id': 111,
-            style: {
-              maxWidth: '150px'
-            }
-          })
-        ])
-=======
         h('div', { class: 'sponsors sidebar' }, [h(SponsorsSidebar)])
->>>>>>> d96df4c2ea369cddfcfffbbec157db8c2580e0bb
     })
   }
 }
