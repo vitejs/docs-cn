@@ -298,6 +298,22 @@ const modules = {
 }
 ```
 
+`import.meta.glob` 和 `import.meta.globEager` 都支持以字符串形式导入文件，类似于 [已字符串形式导入资源](https://vitejs.dev/guide/assets.html#importing-asset-as-string)。在这里，我们使用了 [Import Assertions](https://github.com/tc39/proposal-import-assertions#synopsis) 语法对导入进行断言。
+
+```js
+const modules = import.meta.glob('./dir/*.js', { assert: { type: 'raw' } })
+```
+
+上面的代码会被转换为下面这样：
+
+```js
+// code produced by vite（代码由 vite 输出）
+const modules = {
+  './dir/foo.js': '{\n  "msg": "foo"\n}\n',
+  './dir/bar.js': '{\n  "msg": "bar"\n}\n'
+}
+```
+
 请注意：
 
 - 这只是一个 Vite 独有的功能而不是一个 Web 或 ES 标准
