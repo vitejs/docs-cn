@@ -298,27 +298,23 @@ const modules = {
 }
 ```
 
-<<<<<<< HEAD
-请注意：
-=======
-`import.meta.glob` and `import.meta.globEager` also support importing files as strings, similar to [Importing Asset as String](https://vitejs.dev/guide/assets.html#importing-asset-as-string). Here, we use the [Import Assertions](https://github.com/tc39/proposal-import-assertions#synopsis) syntax to import.
+`import.meta.glob` 和 `import.meta.globEager` 都支持以字符串形式导入文件，类似于 [已字符串形式导入资源](https://vitejs.dev/guide/assets.html#importing-asset-as-string)。在这里，我们使用了 [Import Assertions](https://github.com/tc39/proposal-import-assertions#synopsis) 语法对导入进行断言。
 
 ```js
 const modules = import.meta.glob('./dir/*.js', { assert: { type: 'raw' } })
 ```
 
-The above will be transformed into the following:
+上面的代码会被转换为下面这样：
 
 ```js
-// code produced by vite
+// code produced by vite（代码由 vite 输出）
 const modules = {
   './dir/foo.js': '{\n  "msg": "foo"\n}\n',
   './dir/bar.js': '{\n  "msg": "bar"\n}\n'
 }
 ```
 
-Note that:
->>>>>>> 3f2955df34571cc4582158fde4d64d9181238777
+请注意：
 
 - 这只是一个 Vite 独有的功能而不是一个 Web 或 ES 标准
 - 该 Glob 模式会被当成导入标识符：必须是相对路径（以 `./` 开头）或绝对路径（以 `/` 开头，相对于项目根目录解析）。
