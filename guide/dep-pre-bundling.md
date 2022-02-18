@@ -39,8 +39,13 @@ Pre-bundling them to speed up dev server page load...（将预构建它们以提
 在一个 monorepo 启动中，该仓库中的某个依赖可能会成为另一个包的依赖。Vite 会自动侦测没有从 `node_modules` 解析的依赖项，并将链接的依赖视为源码。它不会尝试打包被链接的依赖，而是会分析被链接依赖的依赖列表。
 
 ::: warning Note
+<<<<<<< HEAD
 由于依赖关系的处理方式不同，链接的依赖关系在最终构建时可能无法正常工作。
 使用 `npm package` 代替所有本地依赖，以避免最终的 bundle 问题。
+=======
+Linked dependencies might not work properly in the final build due to differences in dependency resolution.
+Use `npm pack` instead for all local dependencies to avoid issues in the final bundle. (The `npm pack` is only ever needed when the linked source code or package only exports CJS code. If it exports ESM code, then it is not needed.)
+>>>>>>> 2ccc9d4916cba3700fe28859383573ea97aa5763
 :::
 
 ## 自定义行为 {#customizing-the-behavior}
