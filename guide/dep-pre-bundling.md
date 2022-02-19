@@ -40,7 +40,7 @@ Pre-bundling them to speed up dev server page load...（将预构建它们以提
 
 ::: warning Note
 由于依赖关系的处理方式不同，链接的依赖关系在最终构建时可能无法正常工作。
-使用 `npm package` 代替所有本地依赖，以避免最终的 bundle 问题。
+使用 `npm pack` 代替所有本地依赖，以避免最终打包时出现问题。（`npm pack` 只有在链接的源代码或包只导出 CJS 代码时才需要。如果它导出 ESM 代码，则不需要使用它。
 :::
 
 ## 自定义行为 {#customizing-the-behavior}
