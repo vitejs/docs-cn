@@ -3,10 +3,17 @@
 当你首次启动 `vite` 时，你可能会注意到打印出了以下信息：
 
 ```
+<<<<<<< HEAD
 Optimizable dependencies detected: （侦测到可优化的依赖：）
 react, react-dom
 Pre-bundling them to speed up dev server page load...（将预构建它们以提升开发服务器页面加载速度）
 (this will be run only when your dependencies have changed)（这将只会在你的依赖发生变化时执行）
+=======
+Pre-bundling dependencies:
+  react
+  react-dom
+(this will be run only when your dependencies or config have changed)
+>>>>>>> 638b2518b7f414c23ef231de3449c9aacfe2dc3e
 ```
 
 ## 原因 {#the-why}
@@ -28,7 +35,13 @@ Pre-bundling them to speed up dev server page load...（将预构建它们以提
 
    通过预构建 `lodash-es` 成为一个模块，我们就只需要一个 HTTP 请求了！
 
+<<<<<<< HEAD
 ## 自动依赖搜寻 {#automatic-dependency-discovery}
+=======
+Note that this only applies in development mode.
+
+## Automatic Dependency Discovery
+>>>>>>> 638b2518b7f414c23ef231de3449c9aacfe2dc3e
 
 如果没有找到相应的缓存，Vite 将抓取你的源码，并自动寻找引入的依赖项（即 "bare import"，表示期望从 `node_modules` 解析），并将这些依赖项作为预构建包的入口点。预构建通过 `esbuild` 执行，所以它通常非常快。
 
@@ -36,11 +49,35 @@ Pre-bundling them to speed up dev server page load...（将预构建它们以提
 
 ## Monorepo 和链接依赖 {#monorepos-and-linked-dependencies}
 
+<<<<<<< HEAD
 在一个 monorepo 启动中，该仓库中的某个依赖可能会成为另一个包的依赖。Vite 会自动侦测没有从 `node_modules` 解析的依赖项，并将链接的依赖视为源码。它不会尝试打包被链接的依赖，而是会分析被链接依赖的依赖列表。
 
 ::: warning Note
 由于依赖关系的处理方式不同，链接的依赖关系在最终构建时可能无法正常工作。
 使用 `npm pack` 代替所有本地依赖，以避免最终打包时出现问题。（`npm pack` 只有在链接的源代码或包只导出 CJS 代码时才需要。如果它导出 ESM 代码，则不需要使用它。
+=======
+In a monorepo setup, a dependency may be a linked package from the same repo. Vite automatically detects dependencies that are not resolved from `node_modules` and treats the linked dep as source code. It will not attempt to bundle the linked dep, and will analyze the linked dep's dependency list instead.
+
+However, this requires the linked dep to be exported as ESM. If not, you can add the dependency to [`optimizeDeps.include`](/config/#optimizedeps-include) and [`build.commonjsOptions.include`](/config/#build-commonjsoptions) in your config.
+
+```js
+export default defineConfig({
+  optimizeDeps: {
+    include: ['linked-dep']
+  },
+  build: {
+    commonjsOptions: {
+      include: [/linked-dep/, /node_modules/]
+    }
+  }
+})
+```
+
+When making changes to the linked dep, restart the dev server with the `--force` command line option for the changes to take effect.
+
+::: warning Deduping
+Due to differences in linked dependency resolution, transitive dependencies can deduplicated incorrectly, causing issues when used in runtime. If you stumble on this issue, use `npm pack` on the linked dependency to fix it.
+>>>>>>> 638b2518b7f414c23ef231de3449c9aacfe2dc3e
 :::
 
 ## 自定义行为 {#customizing-the-behavior}
@@ -57,9 +94,15 @@ Pre-bundling them to speed up dev server page load...（将预构建它们以提
 
 Vite 会将预构建的依赖缓存到 `node_modules/.vite`。它根据几个源来决定是否需要重新运行预构建步骤:
 
+<<<<<<< HEAD
 - `package.json` 中的 `dependencies` 列表
 - 包管理器的 lockfile，例如 `package-lock.json`, `yarn.lock`，或者 `pnpm-lock.yaml`
 - 可能在 `vite.config.js` 相关字段中配置过的
+=======
+- The `dependencies` list in your `package.json`.
+- Package manager lockfiles, e.g. `package-lock.json`, `yarn.lock`, or `pnpm-lock.yaml`.
+- Relevant fields in your `vite.config.js`, if present.
+>>>>>>> 638b2518b7f414c23ef231de3449c9aacfe2dc3e
 
 只有在上述其中一项发生更改时，才需要重新运行预构建。
 
