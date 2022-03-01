@@ -25,6 +25,9 @@ footer: MIT Licensed | Copyright © 2019-present Evan You & Vite Contributors
 
 <script setup>
 import SponsorsGroup from './.vitepress/theme/SponsorsGroup.vue'
+import fetchReleaseTag from './.vitepress/theme/fetchReleaseTag.js'
+
+fetchReleaseTag();
 </script>
 
 <h3 style="text-align:center;color:#999">Sponsors</h3>
