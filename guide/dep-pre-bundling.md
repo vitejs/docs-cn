@@ -3,10 +3,10 @@
 当你首次启动 `vite` 时，你可能会注意到打印出了以下信息：
 
 ```
-Optimizable dependencies detected: （侦测到可优化的依赖：）
-react, react-dom
-Pre-bundling them to speed up dev server page load...（将预构建它们以提升开发服务器页面加载速度）
-(this will be run only when your dependencies have changed)（这将只会在你的依赖发生变化时执行）
+Pre-bundling dependencies: （正在预构建依赖：）
+  react, 
+  react-dom
+(this will be run only when your dependencies or config have changed)（这将只会在你的依赖或配置发生变化时执行）
 ```
 
 ## 原因 {#the-why}
@@ -28,6 +28,8 @@ Pre-bundling them to speed up dev server page load...（将预构建它们以提
 
    通过预构建 `lodash-es` 成为一个模块，我们就只需要一个 HTTP 请求了！
 
+请注意，这只会应用在开发模式下。
+
 ## 自动依赖搜寻 {#automatic-dependency-discovery}
 
 如果没有找到相应的缓存，Vite 将抓取你的源码，并自动寻找引入的依赖项（即 "bare import"，表示期望从 `node_modules` 解析），并将这些依赖项作为预构建包的入口点。预构建通过 `esbuild` 执行，所以它通常非常快。
@@ -38,9 +40,25 @@ Pre-bundling them to speed up dev server page load...（将预构建它们以提
 
 在一个 monorepo 启动中，该仓库中的某个依赖可能会成为另一个包的依赖。Vite 会自动侦测没有从 `node_modules` 解析的依赖项，并将链接的依赖视为源码。它不会尝试打包被链接的依赖，而是会分析被链接依赖的依赖列表。
 
-::: warning Note
-由于依赖关系的处理方式不同，链接的依赖关系在最终构建时可能无法正常工作。
-使用 `npm package` 代替所有本地依赖，以避免最终的 bundle 问题。
+然而，这需要被链接的依赖被导出为 ESM 格式。如果不是，那么你可以在配置里将此依赖添加到 [`optimizeDeps.include`](/config/#optimizedeps-include) 和 [`build.commonjsOptions.include`](/config/#build-commonjsoptions) 这两项中。
+
+```js
+export default defineConfig({
+  optimizeDeps: {
+    include: ['linked-dep']
+  },
+  build: {
+    commonjsOptions: {
+      include: [/linked-dep/, /node_modules/]
+    }
+  }
+})
+```
+
+当这个被链接的依赖发生变更后，在重启开发服务器时在命令中带上 `--force` 选项让所有更改生效。
+
+::: warning 重复删除
+由于对链接依赖的解析方式不同，传递性的依赖项可能会不正确地进行重复数据删除，而造成运行时的问题。如果你偶然发现了这个问题，请使用 `npm pack` 来修复它。
 :::
 
 ## 自定义行为 {#customizing-the-behavior}

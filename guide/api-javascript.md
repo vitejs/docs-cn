@@ -92,7 +92,7 @@ interface ViteDevServer {
    */
   ssrLoadModule(
     url: string,
-    options?: { isolated?: boolean }
+    options?: { fixStacktrace?: boolean }
   ): Promise<Record<string, any>>
   /**
    * 解决 ssr 错误堆栈信息
