@@ -43,7 +43,25 @@ module.exports = defineConfig({
 
 例如，你可以使用仅在构建期间应用的插件来指定多个 Rollup 输出。
 
+<<<<<<< HEAD
 ## 文件变化时重新构建 {#rebuild-on-files-changs}
+=======
+## Chunking Strategy
+
+You can configure how chunks are split using `build.rollupOptions.manualChunks` (see [Rollup docs](https://rollupjs.org/guide/en/#outputmanualchunks)). Until Vite 2.7, the default chunking strategy divided the chunks into `index` and `vendor`. It is a good strategy for some SPAs, but it is hard to provide a general solution for every Vite target use case. From Vite 2.8, `manualChunks` is no longer modified by default. You can continue to use the Split Vendor Chunk strategy by adding the `splitVendorChunkPlugin` in your config file:
+
+```js
+// vite.config.js
+import { splitVendorChunkPlugin } from 'vite'
+module.exports = defineConfig({
+  plugins: [splitVendorChunkPlugin()]
+})
+```
+
+This strategy is also provided as a `splitVendorChunk({ cache: SplitVendorChunkCache })` factory, in case composition with custom logic is needed. `cache.reset()` needs to be called at `buildStart` for build watch mode to work correctly in this case.
+
+## Rebuild on files changes
+>>>>>>> 965ba67dfeafbf918a3e5e1433fcec61ea661e58
 
 你可以使用 `vite build --watch` 来启用 rollup 的监听器。或者，你可以直接通过 `build.watch` 调整底层的 [`WatcherOptions`](https://rollupjs.org/guide/en/#watch-options) 选项：
 
@@ -58,7 +76,13 @@ module.exports = defineConfig({
 })
 ```
 
+<<<<<<< HEAD
 ## 多页面应用模式 {#multi-page-app}
+=======
+With the `--watch` flag enabled, changes to the `vite.config.js`, as well as any files to be bundled, will trigger a rebuild.
+
+## Multi-Page App
+>>>>>>> 965ba67dfeafbf918a3e5e1433fcec61ea661e58
 
 假设你有下面这样的项目文件结构
 
