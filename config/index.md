@@ -92,6 +92,23 @@ export default defineConfig(async ({ command, mode }) => {
 })
 ```
 
+### Environment Variables {#environment-variables}
+
+Vite 默认是不加载 `.env` 文件的，因为这些文件需要在执行完 Vite 配置后才能确定加载哪一个，举个例子，`root` 和 `envDir` 选项会影响加载行为。不过当你的确需要时，你可以使用 Vite 导出的 `loadEnv` 函数来加载指定的 `.env` 文件
+
+```js
+import { defineConfig, loadEnv } from 'vite'
+
+export default defineConfig(({ command, mode }) => {
+  // 根据当前工作目录中的 `mode` 加载 .env 文件
+  const env = loadEnv(mode, process.cwd())
+  return {
+    // 构建特定配置
+  }
+})
+```
+
+
 ## 共享配置 {#shared-options}
 
 ### root {#root}
@@ -135,9 +152,11 @@ export default defineConfig(async ({ command, mode }) => {
 
   - 替换只会在匹配到周围是单词边界（`\b`）时执行。
 
+  ::: warning
   因为它是不经过任何语法分析，直接替换文本实现的，所以我们建议只对 CONSTANTS 使用 `define`。
 
   例如，`process.env.FOO` 和 `__APP_VERSION__` 就非常适合。但 `process` 或 `global` 不应使用此选项。变量相关应使用 shim 或 polyfill 代替。
+  :::
 
   ::: tip NOTE
   对于使用 TypeScript 的开发者来说，请确保在 `env.d.ts` 或 `vite-env.d.ts` 文件中添加类型声明，以获得类型检查以及代码提示。
@@ -503,11 +522,13 @@ export default defineConfig(async ({ command, mode }) => {
 
 ### server.hmr {#server-hmr}
 
-- **类型：** `boolean | { protocol?: string, host?: string, port?: number, path?: string, timeout?: number, overlay?: boolean, clientPort?: number, server?: Server }`
+- **类型：** `boolean | { protocol?: string, host?: string, port?: number | false, path?: string, timeout?: number, overlay?: boolean, clientPort?: number, server?: Server }`
 
   禁用或配置 HMR 连接（用于 HMR websocket 必须使用不同的 http 服务器地址的情况）。
 
   设置 `server.hmr.overlay` 为 `false` 可以禁用开发服务器错误的屏蔽。
+
+  当连接到某个域名而不需要端口时，可以设置 `server.hmr.port` 为 `false`。
 
   `clientPort` 是一个高级选项，只在客户端的情况下覆盖端口，这允许你为 websocket 提供不同的端口，而并非在客户端代码中查找。如果需要在 dev-server 情况下使用 SSL 代理，这非常有用。
 
