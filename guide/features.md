@@ -298,10 +298,14 @@ const modules = {
 }
 ```
 
+<<<<<<< HEAD
 `import.meta.glob` 和 `import.meta.globEager` 都支持以字符串形式导入文件，类似于 [已字符串形式导入资源](https://vitejs.dev/guide/assets.html#importing-asset-as-string)。在这里，我们使用了 [Import Assertions](https://github.com/tc39/proposal-import-assertions#synopsis) 语法对导入进行断言。
+=======
+`import.meta.glob` and `import.meta.globEager` also support importing files as strings (similar to [Importing Asset as String](https://vitejs.dev/guide/assets.html#importing-asset-as-string)) with the [Import Reflection](https://github.com/tc39/proposal-import-reflection) syntax:
+>>>>>>> ddfcda0b54af0413473a722788f7f746abe6446a
 
 ```js
-const modules = import.meta.glob('./dir/*.js', { assert: { type: 'raw' } })
+const modules = import.meta.glob('./dir/*.js', { as: 'raw' })
 ```
 
 上面的代码会被转换为下面这样：
@@ -316,11 +320,19 @@ const modules = {
 
 请注意：
 
+<<<<<<< HEAD
 - 这只是一个 Vite 独有的功能而不是一个 Web 或 ES 标准
 - 该 Glob 模式会被当成导入标识符：必须是相对路径（以 `./` 开头）或绝对路径（以 `/` 开头，相对于项目根目录解析）。
 - Glob 匹配是使用 `fast-glob` 来实现的 —— 阅读它的文档来查阅 [支持的 Glob 模式](https://github.com/mrmlnc/fast-glob#pattern-syntax)。
 - 你还需注意，glob 的导入不接受变量，你应直接传递字符串模式。
 - glob 模式不能包含与包裹引号相同的引号字符串（其中包括 `'`，`"`，`` ` ``），例如，如果你想实现 `'/Tom\'s files/**'` 的效果，请使用 `"/Tom's files/**"` 代替。
+=======
+- This is a Vite-only feature and is not a web or ES standard.
+- The glob patterns are treated like import specifiers: they must be either relative (start with `./`) or absolute (start with `/`, resolved relative to project root) or an alias path (see [`resolve.alias` option](/config/#resolve-alias)).
+- The glob matching is done via `fast-glob` - check out its documentation for [supported glob patterns](https://github.com/mrmlnc/fast-glob#pattern-syntax).
+- You should also be aware that glob imports do not accept variables, you need to directly pass the string pattern.
+- The glob patterns cannot contain the same quote string (i.e. `'`, `"`, `` ` ``) as outer quotes, e.g. `'/Tom\'s files/**'`, use `"/Tom's files/**"` instead.
+>>>>>>> ddfcda0b54af0413473a722788f7f746abe6446a
 
 ## WebAssembly {#webassembly}
 
