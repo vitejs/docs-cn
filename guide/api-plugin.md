@@ -458,7 +458,7 @@ apply(config, { command }) {
 - 没有使用 [`moduleParsed`](https://rollupjs.org/guide/en/#moduleparsed) 钩子。
 - 它在打包钩子和输出钩子之间没有很强的耦合。
 
-如果一个 Rollup 插件只在构建阶段有意义，则在 `build.rollupOptions.plugins` 下指定即可。
+如果一个 Rollup 插件只在构建阶段有意义，则在 `build.rollupOptions.plugins` 下指定即可。它的工作原理与Vite插件的 `enforce: 'post'` 和 `apply: 'build'` 相同。
 
 你也可以用 Vite 独有的属性来扩展现有的 Rollup 插件:
 
