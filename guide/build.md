@@ -143,6 +143,15 @@ module.exports = defineConfig({
 })
 ```
 
+入口文件将包含可以由你的包的用户导入的导出：
+
+```js
+// lib/main.js
+import Foo from './Foo.vue'
+import Bar from './Bar.vue'
+export { Foo, Bar }
+```
+
 使用如上配置运行 `vite build` 时，将会使用一套面向库的 Rollup 预设，并且将为该库提供两种构建格式：`es` 和 `umd` (可在 `build.lib` 中配置)：
 
 ```
