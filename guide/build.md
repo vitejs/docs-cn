@@ -143,10 +143,7 @@ module.exports = defineConfig({
 })
 ```
 
-<<<<<<< HEAD
-使用如上配置运行 `vite build` 时，将会使用一套面向库的 Rollup 预设，并且将为该库提供两种构建格式：`es` 和 `umd` (可在 `build.lib` 中配置)：
-=======
-The entry file would contain exports that can be imported by users of your package:
+入口文件将包含可以由你的包的用户导入的导出：
 
 ```js
 // lib/main.js
@@ -155,7 +152,7 @@ import Bar from './Bar.vue'
 export { Foo, Bar }
 ```
 
-Running `vite build` with this config uses a Rollup preset that is oriented towards shipping libraries and produces two bundle formats: `es` and `umd` (configurable via `build.lib`):
+使用如上配置运行 `vite build` 时，将会使用一套面向库的 Rollup 预设，并且将为该库提供两种构建格式：`es` 和 `umd` (可在 `build.lib` 中配置)：
 >>>>>>> efa1237235023f361ecba91549913785f7872c36
 
 ```
