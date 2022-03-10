@@ -153,7 +153,6 @@ export { Foo, Bar }
 ```
 
 使用如上配置运行 `vite build` 时，将会使用一套面向库的 Rollup 预设，并且将为该库提供两种构建格式：`es` 和 `umd` (可在 `build.lib` 中配置)：
->>>>>>> efa1237235023f361ecba91549913785f7872c36
 
 ```
 $ vite build
