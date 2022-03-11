@@ -291,7 +291,11 @@ export default defineConfig(({ command, mode }) => {
 
 - **类型：** `string | (postcss.ProcessOptions & { plugins?: postcss.Plugin[] })`
 
+<<<<<<< HEAD
   内联的 PostCSS 配置（格式同 `postcss.config.js`），或者一个（默认基于项目根目录的）自定义的 PostCSS 配置路径。其路径搜索是通过 [postcss-load-config](https://github.com/postcss/postcss-load-config) 实现的。
+=======
+  Inline PostCSS config (expects the same format as `postcss.config.js`), or a custom directory to search PostCSS config from (default is project root). The search is done using [postcss-load-config](https://github.com/postcss/postcss-load-config) and only the supported config file names are loaded.
+>>>>>>> a5a91d524f1307881c55568b5b9be7f77349c228
 
   注意：如果提供了该内联配置，Vite 将不会搜索其他 PostCSS 配置源。
 
@@ -299,7 +303,11 @@ export default defineConfig(({ command, mode }) => {
 
 - **类型：** `Record<string, object>`
 
+<<<<<<< HEAD
   指定传递给 CSS 预处理器的选项。例如:
+=======
+  Specify options to pass to CSS pre-processors. The file extensions are used as keys for the options. Example:
+>>>>>>> a5a91d524f1307881c55568b5b9be7f77349c228
 
   ```js
   export default defineConfig({
@@ -307,6 +315,9 @@ export default defineConfig(({ command, mode }) => {
       preprocessorOptions: {
         scss: {
           additionalData: `$injectedColor: orange;`
+        },
+        styl: {
+          additionalData: `$injectedColor ?= orange`
         }
       }
     }
