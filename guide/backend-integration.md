@@ -32,8 +32,12 @@
 2. 在开发环境中，在服务器的 HTML 模板中注入以下内容（用正在运行的本地 URL 替换 `http://localhost:3000`）：
 
    ```html
+<<<<<<< HEAD
    <!-- 如果是在开发环境中 -->
    <script type="module" src="http://localhost:3000/@vite/client"></script>
+=======
+   <!-- if development -->
+>>>>>>> dcef5046da6e03f1a29b35b49cc7e0f60314ad1b
    <script type="module" src="http://localhost:3000/main.js"></script>
    ```
 
