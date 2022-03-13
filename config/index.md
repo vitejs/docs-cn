@@ -239,7 +239,15 @@ export default defineConfig(({ command, mode }) => {
 
   Vite 有一个“允许的情景”列表，并且会匹配列表中第一个情景。默认允许的情景是：`import`，`module`，`browser`，`default` 和基于当前情景为 `production/development`。`resolve.conditions` 配置项使得我们可以指定其他允许的情景。
 
+<<<<<<< HEAD
 ### resolve.mainFields {#resolve-mainfields}
+=======
+  :::warning Resolving subpath exports
+  Export keys ending with "/" is deprecated by Node and may not work well. Please contact the package author to use [`*` subpath patterns](https://nodejs.org/api/packages.html#package-entry-points) instead.
+  :::
+
+### resolve.mainFields
+>>>>>>> 8cba445bb7aed4acaac539dff5a08da58ac03b0f
 
 - **类型：** `string[]`
 - **默认：** `['module', 'jsnext:main', 'jsnext']`
@@ -291,7 +299,11 @@ export default defineConfig(({ command, mode }) => {
 
 - **类型：** `string | (postcss.ProcessOptions & { plugins?: postcss.Plugin[] })`
 
+<<<<<<< HEAD
   内联的 PostCSS 配置（格式同 `postcss.config.js`），或者一个（默认基于项目根目录的）自定义的 PostCSS 配置路径。其路径搜索是通过 [postcss-load-config](https://github.com/postcss/postcss-load-config) 实现的。
+=======
+  Inline PostCSS config (expects the same format as `postcss.config.js`), or a custom directory to search PostCSS config from (default is project root). The search is done using [postcss-load-config](https://github.com/postcss/postcss-load-config) and only the supported config file names are loaded.
+>>>>>>> 8cba445bb7aed4acaac539dff5a08da58ac03b0f
 
   注意：如果提供了该内联配置，Vite 将不会搜索其他 PostCSS 配置源。
 
@@ -299,7 +311,11 @@ export default defineConfig(({ command, mode }) => {
 
 - **类型：** `Record<string, object>`
 
+<<<<<<< HEAD
   指定传递给 CSS 预处理器的选项。例如:
+=======
+  Specify options to pass to CSS pre-processors. The file extensions are used as keys for the options. Example:
+>>>>>>> 8cba445bb7aed4acaac539dff5a08da58ac03b0f
 
   ```js
   export default defineConfig({
@@ -307,6 +323,9 @@ export default defineConfig(({ command, mode }) => {
       preprocessorOptions: {
         scss: {
           additionalData: `$injectedColor: orange;`
+        },
+        styl: {
+          additionalData: `$injectedColor ?= orange`
         }
       }
     }
@@ -513,7 +532,17 @@ export default defineConfig(({ command, mode }) => {
 
   为开发服务器配置 CORS。默认启用并允许任何源，传递一个 [选项对象](https://github.com/expressjs/cors) 来调整行为或设为 `false` 表示禁用。
 
+<<<<<<< HEAD
 ### server.force {#server-force}
+=======
+### server.headers
+
+- **Type:** `OutgoingHttpHeaders`
+
+  Specify server response headers.
+
+### server.force
+>>>>>>> 8cba445bb7aed4acaac539dff5a08da58ac03b0f
 
 - **类型：** `boolean`
 - **相关内容：** [依赖预构建](/guide/dep-pre-bundling)
@@ -596,7 +625,17 @@ async function createServer() {
 createServer()
 ```
 
+<<<<<<< HEAD
 ### server.fs.strict {#server-fs-strict}
+=======
+### server.base
+
+- **Type:** `string | undefined`
+
+  Prepend this folder to http requests, for use when proxying vite as a subfolder. Should start and end with the `/` character.
+
+### server.fs.strict
+>>>>>>> 8cba445bb7aed4acaac539dff5a08da58ac03b0f
 
 - **类型：** `boolean`
 - **默认：** `true` (自 Vite 2.7 起默认启用)
