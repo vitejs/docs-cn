@@ -32,13 +32,8 @@
 2. 在开发环境中，在服务器的 HTML 模板中注入以下内容（用正在运行的本地 URL 替换 `http://localhost:3000`）：
 
    ```html
-<<<<<<< HEAD
    <!-- 如果是在开发环境中 -->
    <script type="module" src="http://localhost:3000/@vite/client"></script>
-=======
-   <!-- if development -->
->>>>>>> 8cba445bb7aed4acaac539dff5a08da58ac03b0f
-   <script type="module" src="http://localhost:3000/main.js"></script>
    ```
 
    还要确保服务器配置为提供 Vite 工作目录中的静态资源，否则图片等资源将无法正确加载。
