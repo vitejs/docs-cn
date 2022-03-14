@@ -239,6 +239,10 @@ export default defineConfig(({ command, mode }) => {
 
   Vite 有一个“允许的情景”列表，并且会匹配列表中第一个情景。默认允许的情景是：`import`，`module`，`browser`，`default` 和基于当前情景为 `production/development`。`resolve.conditions` 配置项使得我们可以指定其他允许的情景。
 
+  :::warning 解决子路径导出问题
+  导出以“/”结尾的 key 已被 Node 弃用，可能无法正常工作。请联系包的作者改为使用 [`*` 子路径模式](https://nodejs.org/api/packages.html#package-entry-points)。
+  :::
+
 ### resolve.mainFields {#resolve-mainfields}
 
 - **类型：** `string[]`
@@ -291,7 +295,7 @@ export default defineConfig(({ command, mode }) => {
 
 - **类型：** `string | (postcss.ProcessOptions & { plugins?: postcss.Plugin[] })`
 
-  内联的 PostCSS 配置（格式同 `postcss.config.js`），或者一个（默认基于项目根目录的）自定义的 PostCSS 配置路径。其路径搜索是通过 [postcss-load-config](https://github.com/postcss/postcss-load-config) 实现的。
+  内联的 PostCSS 配置（格式同 `postcss.config.js`），或者一个（默认基于项目根目录的）自定义的 PostCSS 配置路径。其路径搜索是通过 [postcss-load-config](https://github.com/postcss/postcss-load-config) 实现的，并且只加载支持的配置文件名称。
 
   注意：如果提供了该内联配置，Vite 将不会搜索其他 PostCSS 配置源。
 
@@ -299,7 +303,7 @@ export default defineConfig(({ command, mode }) => {
 
 - **类型：** `Record<string, object>`
 
-  指定传递给 CSS 预处理器的选项。例如:
+  指定传递给 CSS 预处理器的选项。文件扩展名用作选项的键，例如：
 
   ```js
   export default defineConfig({
@@ -307,6 +311,9 @@ export default defineConfig(({ command, mode }) => {
       preprocessorOptions: {
         scss: {
           additionalData: `$injectedColor: orange;`
+        },
+        styl: {
+          additionalData: `$injectedColor ?= orange`
         }
       }
     }
@@ -513,7 +520,13 @@ export default defineConfig(({ command, mode }) => {
 
   为开发服务器配置 CORS。默认启用并允许任何源，传递一个 [选项对象](https://github.com/expressjs/cors) 来调整行为或设为 `false` 表示禁用。
 
-### server.force {#server-force}
+### server.headers ${server-hmr}
+
+- **类型：** `OutgoingHttpHeaders`
+
+  指定服务器响应的 header。
+
+### server.force
 
 - **类型：** `boolean`
 - **相关内容：** [依赖预构建](/guide/dep-pre-bundling)
@@ -595,6 +608,12 @@ async function createServer() {
 
 createServer()
 ```
+
+### server.base {#server-base}
+
+- **类型：** `string | undefined`
+
+  在 HTTP 请求中预留此文件夹，用于代理 Vite 作为子文件夹时使用。应该以 `/` 字符开始和结束。
 
 ### server.fs.strict {#server-fs-strict}
 
