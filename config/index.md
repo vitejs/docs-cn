@@ -351,7 +351,11 @@ export default defineConfig(({ command, mode }) => {
   })
   ```
 
+<<<<<<< HEAD
   默认情况下，ESbuild 会被应用在 `ts`、`jsx`、`tsx` 文件。你可以通过 `esbuild.include` 和 `esbuild.exclude` 对要处理的文件类型进行配置，这两个配置的类型应为 `string | RegExp | (string | RegExp)[]`。
+=======
+  By default, ESBuild is applied to `ts`, `jsx` and `tsx` files. You can customize this with `esbuild.include` and `esbuild.exclude`, which can be a regex, a [picomatch](https://github.com/micromatch/picomatch#globbing-features) pattern, or an array of either.
+>>>>>>> ac6778df83b718868aa93f75eb13941a58e21155
 
   此外，你还可以通过 `esbuild.jsxInject` 来自动为每一个被 ESbuild 转换的文件注入 JSX helper。
 
@@ -370,7 +374,11 @@ export default defineConfig(({ command, mode }) => {
 - **类型：** `string | RegExp | (string | RegExp)[]`
 - **相关内容：** [静态资源处理](/guide/assets)
 
+<<<<<<< HEAD
   指定额外的 [picomatch 模式](https://github.com/micromatch/picomatch) 作为静态资源处理，因此：
+=======
+  Specify additional [picomatch patterns](https://github.com/micromatch/picomatch#globbing-features) to be treated as static assets so that:
+>>>>>>> ac6778df83b718868aa93f75eb13941a58e21155
 
   - 当从 HTML 引用它们或直接通过 `fetch` 或 XHR 请求它们时，它们将被插件转换管道排除在外。
 
@@ -545,7 +553,11 @@ export default defineConfig(({ command, mode }) => {
 
   `clientPort` 是一个高级选项，只在客户端的情况下覆盖端口，这允许你为 websocket 提供不同的端口，而并非在客户端代码中查找。如果需要在 dev-server 情况下使用 SSL 代理，这非常有用。
 
+<<<<<<< HEAD
   当使用 `server.middlewareMode` 或 `server.https` 时，你需将 `server.hmr.server` 指定为你 HTTP(S) 的服务器，这将通过你的服务器来处理 HMR 的安全连接请求。这在使用自签证书或想通过网络在某端口暴露 Vite 的情况下，非常有用。
+=======
+  If specifying `server.hmr.server`, Vite will process HMR connection requests through the provided server. If not in middleware mode, Vite will attempt to process HMR connection requests through the existing server. This can be helpful when using self-signed certificates or when you want to expose Vite over a network on a single port.
+>>>>>>> ac6778df83b718868aa93f75eb13941a58e21155
 
 ### server.watch {#server-watch}
 
