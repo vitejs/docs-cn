@@ -298,7 +298,7 @@ const modules = {
 }
 ```
 
-`import.meta.glob` 和 `import.meta.globEager` 都支持以字符串形式导入文件，类似于 [已字符串形式导入资源](https://vitejs.dev/guide/assets.html#importing-asset-as-string)。在这里，我们使用了 [Import Assertions](https://github.com/tc39/proposal-import-assertions#synopsis) 语法对导入进行断言。
+`import.meta.glob` 和 `import.meta.globEager` 都支持以字符串形式导入文件，类似于 [以字符串形式导入资源](https://vitejs.dev/guide/assets.html#importing-asset-as-string)。在这里，我们使用了 [Import Assertions](https://github.com/tc39/proposal-import-assertions#synopsis) 语法对导入进行断言。
 
 ```js
 const modules = import.meta.glob('./dir/*.js', { assert: { type: 'raw' } })
