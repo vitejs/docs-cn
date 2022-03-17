@@ -351,7 +351,7 @@ export default defineConfig(({ command, mode }) => {
   })
   ```
 
-  默认情况下，ESbuild 会被应用在 `ts`、`jsx`、`tsx` 文件。你可以通过 `esbuild.include` 和 `esbuild.exclude` 对要处理的文件类型进行配置，这两个配置的类型应为 `string | RegExp | (string | RegExp)[]`。
+  默认情况下，ESbuild 会被应用在 `ts`、`jsx`、`tsx` 文件。你可以通过 `esbuild.include` 和 `esbuild.exclude` 对要处理的文件类型进行配置，这两个配置的值可以是一个正则表达式、一个 [picomatch](https://github.com/micromatch/picomatch#globbing-features) 模式，或是一个值为这两种类型的数组。
 
   此外，你还可以通过 `esbuild.jsxInject` 来自动为每一个被 ESbuild 转换的文件注入 JSX helper。
 
@@ -370,7 +370,7 @@ export default defineConfig(({ command, mode }) => {
 - **类型：** `string | RegExp | (string | RegExp)[]`
 - **相关内容：** [静态资源处理](/guide/assets)
 
-  指定额外的 [picomatch 模式](https://github.com/micromatch/picomatch) 作为静态资源处理，因此：
+  指定额外的 [picomatch 模式](https://github.com/micromatch/picomatch#globbing-features) 作为静态资源处理，因此：
 
   - 当从 HTML 引用它们或直接通过 `fetch` 或 XHR 请求它们时，它们将被插件转换管道排除在外。
 
