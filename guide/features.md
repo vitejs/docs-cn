@@ -352,18 +352,15 @@ init({
 
 ## Web Worker {#web-workers}
 
-<<<<<<< HEAD
-一个 web worker 脚本可以直接通过添加一个 `?worker` 或 `?sharedworker` 查询参数来导入。默认导出一个自定义的 worker 构造器：
-=======
-### Import with Constructors
+### 通过构造器导入 {#import-with-constructors}
 
-A web worker script can be imported using [`new Worker()`](https://developer.mozilla.org/en-US/docs/Web/API/Worker/Worker) and [`new SharedWorker()`](https://developer.mozilla.org/en-US/docs/Web/API/SharedWorker/SharedWorker). Compared to the worker suffixes, this syntax leans closer to the standards and is the **recommended** way to create workers.
+一个 Web Worker 可以使用  [`new Worker()`](https://developer.mozilla.org/en-US/docs/Web/API/Worker/Worker) 和 [`new SharedWorker()`](https://developer.mozilla.org/en-US/docs/Web/API/SharedWorker/SharedWorker) 导入。与 worker 后缀相比，这种语法更接近于标准，是创建 worker 的 **推荐** 方式。
 
 ```ts
 const worker = new Worker(new URL('./worker.js', import.meta.url))
 ```
 
-The worker constructor also accepts options, which can be used to create "module" workers:
+worker 构造函数会接受可以用来创建 “模块” worker 的选项：
 
 ```ts
 const worker = new Worker(new URL('./worker.js', import.meta.url), {
@@ -371,10 +368,9 @@ const worker = new Worker(new URL('./worker.js', import.meta.url), {
 })
 ```
 
-### Import with Query Suffixes
+### 带有查询后缀的导入 {#import-with-query-suffixes}
 
-A web worker script can be directly imported by appending `?worker` or `?sharedworker` to the import request. The default export will be a custom worker constructor:
->>>>>>> 6b06d03e15eb053c88fc505b291dd7a5b3d6798d
+你可以在导入请求上添加 `?worker` 或 `?sharedworker` 查询参数来直接导入一个 web worker 脚本。默认导出会是一个自定义 worker 的构造函数：
 
 ```js
 import MyWorker from './worker?worker'
@@ -390,13 +386,9 @@ Worker 脚本也可以使用 `import` 语句来替代 `importScripts()` —— �
 import MyWorker from './worker?worker&inline'
 ```
 
-<<<<<<< HEAD
-## 构建优化 {#build-optimizations}
-=======
-See [Worker Options](/config/#worker-options) for details on configuring the bundling of all workers.
+查看 [Worker 选项](/config/#worker-options) 了解更多关于如何配置打包全部 worker 的相关细节。workers.
 
-## Build Optimizations
->>>>>>> 6b06d03e15eb053c88fc505b291dd7a5b3d6798d
+## 构建优化 {#build-optimizations}
 
 > 下面所罗列的功能会自动应用为构建过程的一部分，除非你想禁用它们，否则没有必要显式配置。
 
