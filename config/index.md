@@ -23,13 +23,16 @@ export default {
 vite --config my-config.js
 ```
 
-注意，Vite 会替换 `__filename`，`__dirname` 以及 `import.meta.url`。如果使用这些名称作为变量名可能会导致代码报错：
+::: tip 注意
+注意，Vite 会在 **CommonJS** 和 **TypeScript** 配置文件中替换 `__filename`，`__dirname` 以及 `import.meta.url`。如果使用这些名称作为变量名可能会导致代码报错：
 
 ```js
 const __filename = "value"
 // will be transformed to
 const "path/vite.config.js" = "value"
 ```
+
+:::
 
 ### 配置智能提示 {#config-intellisense}
 
