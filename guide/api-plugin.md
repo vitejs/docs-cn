@@ -480,7 +480,11 @@ export default defineConfig({
 
 查看 [Vite Rollup 插件](https://vite-rollup-plugins.patak.dev) 获取兼容的官方 Rollup 插件列表及其使用指南。
 
+<<<<<<< HEAD
 ## 路径规范化 {#path-normalization}
+=======
+## Path Normalization
+>>>>>>> e0159e1fbc2dad08bfd9a9fd9ea3052d1cab0dfc
 
 Vite 对路径进行了规范化处理，在解析路径时使用 POSIX 分隔符（ / ），同时保留了 Windows 中的卷名。而另一方面，Rollup 在默认情况下保持解析的路径不变，因此解析的路径在 Windows 中会使用 win32 分隔符（ \\ ）。然而，Rollup 插件会使用 `@rollup/pluginutils` 内部的 [`normalizePath` 工具函数](https://github.com/rollup/plugins/tree/master/packages/pluginutils#normalizepath)，它在执行比较之前将分隔符转换为 POSIX。所以意味着当这些插件在 Vite 中使用时，`include` 和 `exclude` 两个配置模式，以及与已解析路径比较相似的路径会正常工作。
 
@@ -491,4 +495,88 @@ import { normalizePath } from 'vite'
 
 normalizePath('foo\\bar') // 'foo/bar'
 normalizePath('foo/bar') // 'foo/bar'
+```
+
+## Client-server Communication
+
+Since Vite 2.9, we provide some utilities for plugins to help handle the communication with clients.
+
+### Server to Client
+
+On the plugin side, we could use `server.ws.send` to boardcast events to all the clients:
+
+```js
+// vite.config.js
+export default defineConfig({
+  plugins: [
+    {
+      // ...
+      configureServer(server) {
+        server.ws.send('my:greetings', { msg: 'hello' })
+      }
+    }
+  ]
+})
+```
+
+::: tip NOTE
+We recommend **alway prefixing** your event names to avoid collisions with other plugins.
+:::
+
+On the client side, use [`hot.on`](/guide/api-hmr.html#hot-on-event-cb) to listen to the events:
+
+```ts
+// client side
+if (import.meta.hot) {
+  import.meta.hot.on('my:greetings', (data) => {
+    console.log(data.msg) // hello
+  })
+}
+```
+
+### Client to Server
+
+To send events from the client to the server, we can use [`hot.send`](/guide/api-hmr.html#hot-send-event-payload):
+
+```ts
+// client side
+if (import.meta.hot) {
+  import.meta.hot.send('my:from-client', { msg: 'Hey!' })
+}
+```
+
+Then use `server.ws.on` and listen to the events on the server side:
+
+```js
+// vite.config.js
+export default defineConfig({
+  plugins: [
+    {
+      // ...
+      configureServer(server) {
+        server.ws.on('my:from-client', (data, client) => {
+          console.log('Message from client:', data.msg) // Hey!
+          // reply only to the client (if needed)
+          client.send('my:ack', { msg: 'Hi! I got your message!' })
+        })
+      }
+    }
+  ]
+})
+```
+
+### TypeScript for Custom Events
+
+It is possible to type custom events by extending the `CustomEventMap` interface:
+
+```ts
+// events.d.ts
+import 'vite/types/customEvent'
+
+declare module 'vite/types/customEvent' {
+  interface CustomEventMap {
+    'custom:foo': { msg: string }
+    // 'event-key': payload
+  }
+}
 ```

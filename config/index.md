@@ -323,7 +323,19 @@ export default defineConfig(({ command, mode }) => {
   })
   ```
 
+<<<<<<< HEAD
 ### json.namedExports {#json-namedexports}
+=======
+### css.devSourcemap
+
+- **Experimental**
+- **Type:** `boolean`
+- **Default:** `false`
+
+  Whether to enable sourcemaps during dev.
+
+### json.namedExports
+>>>>>>> e0159e1fbc2dad08bfd9a9fd9ea3052d1cab0dfc
 
 - **类型：** `boolean`
 - **默认：** `true`
