@@ -323,7 +323,19 @@ export default defineConfig(({ command, mode }) => {
   })
   ```
 
+<<<<<<< HEAD
 ### json.namedExports {#json-namedexports}
+=======
+### css.devSourcemap
+
+- **Experimental**
+- **Type:** `boolean`
+- **Default:** `false`
+
+  Whether to enable sourcemaps during dev.
+
+### json.namedExports
+>>>>>>> 72bb5b3df1323871d6ef4f128551906d18098398
 
 - **类型：** `boolean`
 - **默认：** `true`
@@ -961,9 +973,15 @@ export default defineConfig({
 
 - **类型：** `string | string[]`
 
+<<<<<<< HEAD
   默认情况下，Vite 会抓取你的 `index.html` 来检测需要预构建的依赖项。如果指定了 `build.rollupOptions.input`，Vite 将转而去抓取这些入口点。
 
   如果这两者都不合你意，则可以使用此选项指定自定义条目——该值需要遵循 [fast-glob 模式](https://github.com/mrmlnc/fast-glob#basic-syntax) ，或者是相对于 Vite 项目根的模式数组。这将覆盖掉默认条目推断。
+=======
+  By default, Vite will crawl all your `.html` files to detect dependencies that need to be pre-bundled (ignoring `node_modules`, `build.outDir`, `__tests__` and `coverage`). If `build.rollupOptions.input` is specified, Vite will crawl those entry points instead.
+
+  If neither of these fit your needs, you can specify custom entries using this option - the value should be a [fast-glob pattern](https://github.com/mrmlnc/fast-glob#basic-syntax) or array of patterns that are relative from Vite project root. This will overwrite default entries inference. Only `node_modules` and `build.outDir` folders will be ignored by default when `optimizeDeps.entries` is explicitily defined. If other folders needs to be ignored, you can use an ignore pattern as part of the entries list, marked with an initial `!`.
+>>>>>>> 72bb5b3df1323871d6ef4f128551906d18098398
 
 ### optimizeDeps.exclude {#optimizedeps-exclude}
 

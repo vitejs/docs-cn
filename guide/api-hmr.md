@@ -122,4 +122,16 @@ if (import.meta.hot) {
 - `'vite:beforePrune'` 当不再需要的模块即将被剔除时
 - `'vite:error'` 当发生错误时（例如，语法错误）
 
+<<<<<<< HEAD
 自定义 HMR 事件可以由插件发送。更多细节详见 [handleHotUpdate](./api-plugin#handleHotUpdate)。
+=======
+Custom HMR events can also be sent from plugins. See [handleHotUpdate](./api-plugin#handlehotupdate) for more details.
+
+## `hot.send(event, data)`
+
+Send custom events back to Vite's dev server.
+
+If called before connected, the data will be buffered and sent once the connection is established.
+
+See [Client-server Communication](/guide/api-plugin.html#client-server-communication) for more details.
+>>>>>>> 72bb5b3df1323871d6ef4f128551906d18098398
