@@ -37,11 +37,7 @@ Vite 使用 [dotenv](https://github.com/motdotla/dotenv) 从你的 [环境目录
 
 一份用于指定模式的文件（例如 `.env.production`）会比通用形式的优先级更高（例如 `.env`）。
 
-<<<<<<< HEAD
-另外，Vite 执行时已经存在的环境变量有最高的优先级，不会被 `.env` 类文件覆盖。
-=======
-In addition, environment variables that already exist when Vite is executed have the highest priority and will not be overwritten by `.env` files. For example, when running `VITE_SOME_KEY=123 vite build`.
->>>>>>> 3d72c633a357b17303fb42159ba36a7d778dccbf
+另外，Vite 执行时已经存在的环境变量有最高的优先级，不会被 `.env` 类文件覆盖。例如当运行 `VITE_SOME_KEY=123 vite build` 的时候。
 
 `.env` 类文件会在 Vite 启动一开始时被加载，而改动会在重启服务器后生效。
 :::
@@ -61,11 +57,7 @@ VITE_SOME_KEY=123
 
 :::warning 安全注意事项
 
-<<<<<<< HEAD
 - `.env.*.local` 文件应是本地的，可以包含敏感变量。你应该将 `.local` 添加到你的 `.gitignore` 中，以避免它们被 git 检入。
-=======
-- `.env.*.local` files are local-only and can contain sensitive variables. You should add `*.local` to your `.gitignore` to avoid them being checked into git.
->>>>>>> 3d72c633a357b17303fb42159ba36a7d778dccbf
 
 - 由于任何暴露给 Vite 源码的变量最终都将出现在客户端包中，`VITE_*` 变量应该不包含任何敏感信息。
   :::

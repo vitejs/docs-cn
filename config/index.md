@@ -151,15 +151,9 @@ export default defineConfig(({ command, mode }) => {
 
   定义全局常量替换方式。其中每项在开发环境下会被定义在全局，而在构建时被静态替换。
 
-<<<<<<< HEAD
-  - 从 `2.0.0-beta.70` 版本开始，字符串值将直接作为一个表达式，所以如果定义为了一个字符串常量，它需要被显式地引用（例如：通过 `JSON.stringify`）。
+  - 为了与 [esbuild 的行为](https://esbuild.github.io/api/#define)保持一致，表达式必须为一个 JSON 对象（null、boolean、number、string、数组或对象），亦或是一个单独的标识符。
 
   - 替换只会在匹配到周围是单词边界（`\b`）时执行。
-=======
-  - To be consistent with [esbuild behavior](https://esbuild.github.io/api/#define), expressions must either be a JSON object (null, boolean, number, string, array, or object) or a single identifier.
-
-  - Replacements are performed only when the match is surrounded by word boundaries (`\b`).
->>>>>>> 3d72c633a357b17303fb42159ba36a7d778dccbf
 
   ::: warning
   因为它是不经过任何语法分析，直接替换文本实现的，所以我们建议只对 CONSTANTS 使用 `define`。
@@ -329,19 +323,15 @@ export default defineConfig(({ command, mode }) => {
   })
   ```
 
-<<<<<<< HEAD
-### json.namedExports {#json-namedexports}
-=======
 ### css.devSourcemap
 
-- **Experimental**
-- **Type:** `boolean`
-- **Default:** `false`
+- **实验性**
+- **类型：** `boolean`
+- **默认：** `false`
 
-  Whether to enable sourcemaps during dev.
+  在开发过程中是否启用 sourcemap。
 
-### json.namedExports
->>>>>>> 3d72c633a357b17303fb42159ba36a7d778dccbf
+### json.namedExports {#json-namedexports}
 
 - **类型：** `boolean`
 - **默认：** `true`
@@ -556,23 +546,13 @@ export default defineConfig(({ command, mode }) => {
 
 ### server.hmr {#server-hmr}
 
-<<<<<<< HEAD
-- **类型：** `boolean | { protocol?: string, host?: string, port?: number | false, path?: string, timeout?: number, overlay?: boolean, clientPort?: number, server?: Server }`
-=======
-- **Type:** `boolean | { protocol?: string, host?: string, port?: number, path?: string, timeout?: number, overlay?: boolean, clientPort?: number, server?: Server }`
->>>>>>> 3d72c633a357b17303fb42159ba36a7d778dccbf
+- **类型：** `boolean | { protocol?: string, host?: string, port?: number, path?: string, timeout?: number, overlay?: boolean, clientPort?: number, server?: Server }`
 
   禁用或配置 HMR 连接（用于 HMR websocket 必须使用不同的 http 服务器地址的情况）。
 
   设置 `server.hmr.overlay` 为 `false` 可以禁用开发服务器错误的屏蔽。
 
-<<<<<<< HEAD
-  当连接到某个域名而不需要端口时，可以设置 `server.hmr.port` 为 `false`。
-
   `clientPort` 是一个高级选项，只在客户端的情况下覆盖端口，这允许你为 websocket 提供不同的端口，而并非在客户端代码中查找。如果需要在 dev-server 情况下使用 SSL 代理，这非常有用。
-=======
-  `clientPort` is an advanced option that overrides the port only on the client side, allowing you to serve the websocket on a different port than the client code looks for it on. Useful if you're using an SSL proxy in front of your dev server.
->>>>>>> 3d72c633a357b17303fb42159ba36a7d778dccbf
 
   当使用 `server.middlewareMode` 或 `server.https` 时，你需将 `server.hmr.server` 指定为你 HTTP(S) 的服务器，这将通过你的服务器来处理 HMR 的安全连接请求。这在使用自签证书或想通过网络在某端口暴露 Vite 的情况下，非常有用。
 
@@ -987,15 +967,9 @@ export default defineConfig({
 
 - **类型：** `string | string[]`
 
-<<<<<<< HEAD
-  默认情况下，Vite 会抓取你的 `index.html` 来检测需要预构建的依赖项。如果指定了 `build.rollupOptions.input`，Vite 将转而去抓取这些入口点。
+  默认情况下，Vite 会抓取你的 `index.html` 来检测需要预构建的依赖项（忽略了`node_modules`、`build.outDir`、`__tests__` 和 `coverage`）。如果指定了 `build.rollupOptions.input`，Vite 将转而去抓取这些入口点。
 
-  如果这两者都不合你意，则可以使用此选项指定自定义条目——该值需要遵循 [fast-glob 模式](https://github.com/mrmlnc/fast-glob#basic-syntax) ，或者是相对于 Vite 项目根的模式数组。这将覆盖掉默认条目推断。
-=======
-  By default, Vite will crawl all your `.html` files to detect dependencies that need to be pre-bundled (ignoring `node_modules`, `build.outDir`, `__tests__` and `coverage`). If `build.rollupOptions.input` is specified, Vite will crawl those entry points instead.
-
-  If neither of these fit your needs, you can specify custom entries using this option - the value should be a [fast-glob pattern](https://github.com/mrmlnc/fast-glob#basic-syntax) or array of patterns that are relative from Vite project root. This will overwrite default entries inference. Only `node_modules` and `build.outDir` folders will be ignored by default when `optimizeDeps.entries` is explicitily defined. If other folders needs to be ignored, you can use an ignore pattern as part of the entries list, marked with an initial `!`.
->>>>>>> 3d72c633a357b17303fb42159ba36a7d778dccbf
+  如果这两者都不合你意，则可以使用此选项指定自定义条目——该值需要遵循 [fast-glob 模式](https://github.com/mrmlnc/fast-glob#basic-syntax) ，或者是相对于 Vite 项目根目录的匹配模式数组。当显式声明了 `optimizeDeps.entries` 时默认只有 `node_modules` 和 `build.outDir` 文件夹会被忽略。如果还需忽略其他文件夹，你可以在模式列表中使用以 `!` 为前缀的、用来匹配忽略项的模式。
 
 ### optimizeDeps.exclude {#optimizedeps-exclude}
 
