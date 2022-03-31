@@ -151,7 +151,7 @@ export default defineConfig(({ command, mode }) => {
 
   定义全局常量替换方式。其中每项在开发环境下会被定义在全局，而在构建时被静态替换。
 
-  - 从 `2.0.0-beta.70` 版本开始，字符串值将直接作为一个表达式，所以如果定义为了一个字符串常量，它需要被显式地引用（例如：通过 `JSON.stringify`）。
+  - 为了与 [esbuild 的行为](https://esbuild.github.io/api/#define)保持一致，表达式必须为一个 JSON 对象（null、boolean、number、string、数组或对象），亦或是一个单独的标识符。
 
   - 替换只会在匹配到周围是单词边界（`\b`）时执行。
 
@@ -322,6 +322,14 @@ export default defineConfig(({ command, mode }) => {
     }
   })
   ```
+
+### css.devSourcemap
+
+- **实验性**
+- **类型：** `boolean`
+- **默认：** `false`
+
+  在开发过程中是否启用 sourcemap。
 
 ### json.namedExports {#json-namedexports}
 
@@ -538,13 +546,11 @@ export default defineConfig(({ command, mode }) => {
 
 ### server.hmr {#server-hmr}
 
-- **类型：** `boolean | { protocol?: string, host?: string, port?: number | false, path?: string, timeout?: number, overlay?: boolean, clientPort?: number, server?: Server }`
+- **类型：** `boolean | { protocol?: string, host?: string, port?: number, path?: string, timeout?: number, overlay?: boolean, clientPort?: number, server?: Server }`
 
   禁用或配置 HMR 连接（用于 HMR websocket 必须使用不同的 http 服务器地址的情况）。
 
   设置 `server.hmr.overlay` 为 `false` 可以禁用开发服务器错误的屏蔽。
-
-  当连接到某个域名而不需要端口时，可以设置 `server.hmr.port` 为 `false`。
 
   `clientPort` 是一个高级选项，只在客户端的情况下覆盖端口，这允许你为 websocket 提供不同的端口，而并非在客户端代码中查找。如果需要在 dev-server 情况下使用 SSL 代理，这非常有用。
 
@@ -961,9 +967,9 @@ export default defineConfig({
 
 - **类型：** `string | string[]`
 
-  默认情况下，Vite 会抓取你的 `index.html` 来检测需要预构建的依赖项。如果指定了 `build.rollupOptions.input`，Vite 将转而去抓取这些入口点。
+  默认情况下，Vite 会抓取你的 `index.html` 来检测需要预构建的依赖项（忽略了`node_modules`、`build.outDir`、`__tests__` 和 `coverage`）。如果指定了 `build.rollupOptions.input`，Vite 将转而去抓取这些入口点。
 
-  如果这两者都不合你意，则可以使用此选项指定自定义条目——该值需要遵循 [fast-glob 模式](https://github.com/mrmlnc/fast-glob#basic-syntax) ，或者是相对于 Vite 项目根的模式数组。这将覆盖掉默认条目推断。
+  如果这两者都不合你意，则可以使用此选项指定自定义条目——该值需要遵循 [fast-glob 模式](https://github.com/mrmlnc/fast-glob#basic-syntax) ，或者是相对于 Vite 项目根目录的匹配模式数组。当显式声明了 `optimizeDeps.entries` 时默认只有 `node_modules` 和 `build.outDir` 文件夹会被忽略。如果还需忽略其他文件夹，你可以在模式列表中使用以 `!` 为前缀的、用来匹配忽略项的模式。
 
 ### optimizeDeps.exclude {#optimizedeps-exclude}
 
