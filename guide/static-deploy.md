@@ -299,10 +299,17 @@ Vercel CLI
 
 ### Vercel for Git {#vercel-for-git}
 
+<<<<<<< HEAD
 1. 将你代码推送到你的 git 仓库（GitHub、GitLab 或 BitBucket 等等）
 2. [导入你的 Vite 项目](https://vercel.com/new) 到 Vercel。
 3. Vercel 会检测到你正在使用 Vite，并会为你的开发开启相应的正确设置。
 4. 然后你的应用就被正常部署了！（示例 [vite-vue-template.vercel.app](https://vite-vue-template.vercel.app/)）
+=======
+1. Push your code to your git repository (GitHub, GitLab, Bitbucket).
+2. [Import your Vite project](https://vercel.com/new) into Vercel.
+3. Vercel will detect that you are using Vite and will enable the correct settings for your deployment.
+4. Your application is deployed! (e.g. [vite-vue-template.vercel.app](https://vite-vue-template.vercel.app/))
+>>>>>>> 3a4979bbcad032e4fd1c50918461a9119d983800
 
 在你的项目被成功导入与部署后，所有对分支的后续推送都将生成 [预览发布](https://vercel.com/docs/concepts/deployments/environments#preview)，所有对生产分支（通常是 "main"）都会最后形成一个 [生产发布](https://vercel.com/docs/concepts/deployments/environments#production)。
 
