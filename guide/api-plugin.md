@@ -217,7 +217,7 @@ Vite 插件也可以提供钩子来服务于特定的 Vite 目标。这些钩子
   **示例：**
 
   ```js
-  const exmaplePlugin = () => {
+  const examplePlugin = () => {
     let config
 
     return {
