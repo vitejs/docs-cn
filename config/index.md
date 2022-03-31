@@ -23,13 +23,16 @@ export default {
 vite --config my-config.js
 ```
 
-注意，Vite 会替换 `__filename`，`__dirname` 以及 `import.meta.url`。如果使用这些名称作为变量名可能会导致代码报错：
+::: tip 注意
+注意，Vite 会在 **CommonJS** 和 **TypeScript** 配置文件中替换 `__filename`，`__dirname` 以及 `import.meta.url`。如果使用这些名称作为变量名可能会导致代码报错：
 
 ```js
 const __filename = "value"
 // will be transformed to
 const "path/vite.config.js" = "value"
 ```
+
+:::
 
 ### 配置智能提示 {#config-intellisense}
 
@@ -92,6 +95,23 @@ export default defineConfig(async ({ command, mode }) => {
 })
 ```
 
+### Environment Variables {#environment-variables}
+
+Vite 默认是不加载 `.env` 文件的，因为这些文件需要在执行完 Vite 配置后才能确定加载哪一个，举个例子，`root` 和 `envDir` 选项会影响加载行为。不过当你的确需要时，你可以使用 Vite 导出的 `loadEnv` 函数来加载指定的 `.env` 文件
+
+```js
+import { defineConfig, loadEnv } from 'vite'
+
+export default defineConfig(({ command, mode }) => {
+  // 根据当前工作目录中的 `mode` 加载 .env 文件
+  const env = loadEnv(mode, process.cwd())
+  return {
+    // 构建特定配置
+  }
+})
+```
+
+
 ## 共享配置 {#shared-options}
 
 ### root {#root}
@@ -131,13 +151,15 @@ export default defineConfig(async ({ command, mode }) => {
 
   定义全局常量替换方式。其中每项在开发环境下会被定义在全局，而在构建时被静态替换。
 
-  - 从 `2.0.0-beta.70` 版本开始，字符串值将直接作为一个表达式，所以如果定义为了一个字符串常量，它需要被显式地引用（例如：通过 `JSON.stringify`）。
+  - 为了与 [esbuild 的行为](https://esbuild.github.io/api/#define)保持一致，表达式必须为一个 JSON 对象（null、boolean、number、string、数组或对象），亦或是一个单独的标识符。
 
   - 替换只会在匹配到周围是单词边界（`\b`）时执行。
 
+  ::: warning
   因为它是不经过任何语法分析，直接替换文本实现的，所以我们建议只对 CONSTANTS 使用 `define`。
 
   例如，`process.env.FOO` 和 `__APP_VERSION__` 就非常适合。但 `process` 或 `global` 不应使用此选项。变量相关应使用 shim 或 polyfill 代替。
+  :::
 
   ::: tip NOTE
   对于使用 TypeScript 的开发者来说，请确保在 `env.d.ts` 或 `vite-env.d.ts` 文件中添加类型声明，以获得类型检查以及代码提示。
@@ -220,6 +242,10 @@ export default defineConfig(async ({ command, mode }) => {
 
   Vite 有一个“允许的情景”列表，并且会匹配列表中第一个情景。默认允许的情景是：`import`，`module`，`browser`，`default` 和基于当前情景为 `production/development`。`resolve.conditions` 配置项使得我们可以指定其他允许的情景。
 
+  :::warning 解决子路径导出问题
+  导出以“/”结尾的 key 已被 Node 弃用，可能无法正常工作。请联系包的作者改为使用 [`*` 子路径模式](https://nodejs.org/api/packages.html#package-entry-points)。
+  :::
+
 ### resolve.mainFields {#resolve-mainfields}
 
 - **类型：** `string[]`
@@ -272,7 +298,7 @@ export default defineConfig(async ({ command, mode }) => {
 
 - **类型：** `string | (postcss.ProcessOptions & { plugins?: postcss.Plugin[] })`
 
-  内联的 PostCSS 配置（格式同 `postcss.config.js`），或者一个（默认基于项目根目录的）自定义的 PostCSS 配置路径。其路径搜索是通过 [postcss-load-config](https://github.com/postcss/postcss-load-config) 实现的。
+  内联的 PostCSS 配置（格式同 `postcss.config.js`），或者一个（默认基于项目根目录的）自定义的 PostCSS 配置路径。其路径搜索是通过 [postcss-load-config](https://github.com/postcss/postcss-load-config) 实现的，并且只加载支持的配置文件名称。
 
   注意：如果提供了该内联配置，Vite 将不会搜索其他 PostCSS 配置源。
 
@@ -280,7 +306,7 @@ export default defineConfig(async ({ command, mode }) => {
 
 - **类型：** `Record<string, object>`
 
-  指定传递给 CSS 预处理器的选项。例如:
+  指定传递给 CSS 预处理器的选项。文件扩展名用作选项的键，例如：
 
   ```js
   export default defineConfig({
@@ -288,11 +314,22 @@ export default defineConfig(async ({ command, mode }) => {
       preprocessorOptions: {
         scss: {
           additionalData: `$injectedColor: orange;`
+        },
+        styl: {
+          additionalData: `$injectedColor ?= orange`
         }
       }
     }
   })
   ```
+
+### css.devSourcemap
+
+- **实验性**
+- **类型：** `boolean`
+- **默认：** `false`
+
+  在开发过程中是否启用 sourcemap。
 
 ### json.namedExports {#json-namedexports}
 
@@ -325,7 +362,7 @@ export default defineConfig(async ({ command, mode }) => {
   })
   ```
 
-  默认情况下，ESbuild 会被应用在 `ts`、`jsx`、`tsx` 文件。你可以通过 `esbuild.include` 和 `esbuild.exclude` 对要处理的文件类型进行配置，这两个配置的类型应为 `string | RegExp | (string | RegExp)[]`。
+  默认情况下，ESbuild 会被应用在 `ts`、`jsx`、`tsx` 文件。你可以通过 `esbuild.include` 和 `esbuild.exclude` 对要处理的文件类型进行配置，这两个配置的值可以是一个正则表达式、一个 [picomatch](https://github.com/micromatch/picomatch#globbing-features) 模式，或是一个值为这两种类型的数组。
 
   此外，你还可以通过 `esbuild.jsxInject` 来自动为每一个被 ESbuild 转换的文件注入 JSX helper。
 
@@ -344,7 +381,7 @@ export default defineConfig(async ({ command, mode }) => {
 - **类型：** `string | RegExp | (string | RegExp)[]`
 - **相关内容：** [静态资源处理](/guide/assets)
 
-  指定额外的 [picomatch 模式](https://github.com/micromatch/picomatch) 作为静态资源处理，因此：
+  指定额外的 [picomatch 模式](https://github.com/micromatch/picomatch#globbing-features) 作为静态资源处理，因此：
 
   - 当从 HTML 引用它们或直接通过 `fetch` 或 XHR 请求它们时，它们将被插件转换管道排除在外。
 
@@ -494,7 +531,13 @@ export default defineConfig(async ({ command, mode }) => {
 
   为开发服务器配置 CORS。默认启用并允许任何源，传递一个 [选项对象](https://github.com/expressjs/cors) 来调整行为或设为 `false` 表示禁用。
 
-### server.force {#server-force}
+### server.headers ${server-hmr}
+
+- **类型：** `OutgoingHttpHeaders`
+
+  指定服务器响应的 header。
+
+### server.force
 
 - **类型：** `boolean`
 - **相关内容：** [依赖预构建](/guide/dep-pre-bundling)
@@ -574,6 +617,12 @@ async function createServer() {
 
 createServer()
 ```
+
+### server.base {#server-base}
+
+- **类型：** `string | undefined`
+
+  在 HTTP 请求中预留此文件夹，用于代理 Vite 作为子文件夹时使用。应该以 `/` 字符开始和结束。
 
 ### server.fs.strict {#server-fs-strict}
 
@@ -918,9 +967,9 @@ export default defineConfig({
 
 - **类型：** `string | string[]`
 
-  默认情况下，Vite 会抓取你的 `index.html` 来检测需要预构建的依赖项。如果指定了 `build.rollupOptions.input`，Vite 将转而去抓取这些入口点。
+  默认情况下，Vite 会抓取你的 `index.html` 来检测需要预构建的依赖项（忽略了`node_modules`、`build.outDir`、`__tests__` 和 `coverage`）。如果指定了 `build.rollupOptions.input`，Vite 将转而去抓取这些入口点。
 
-  如果这两者都不合你意，则可以使用此选项指定自定义条目——该值需要遵循 [fast-glob 模式](https://github.com/mrmlnc/fast-glob#basic-syntax) ，或者是相对于 Vite 项目根的模式数组。这将覆盖掉默认条目推断。
+  如果这两者都不合你意，则可以使用此选项指定自定义条目——该值需要遵循 [fast-glob 模式](https://github.com/mrmlnc/fast-glob#basic-syntax) ，或者是相对于 Vite 项目根目录的匹配模式数组。当显式声明了 `optimizeDeps.entries` 时默认只有 `node_modules` 和 `build.outDir` 文件夹会被忽略。如果还需忽略其他文件夹，你可以在模式列表中使用以 `!` 为前缀的、用来匹配忽略项的模式。
 
 ### optimizeDeps.exclude {#optimizedeps-exclude}
 

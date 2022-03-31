@@ -458,7 +458,7 @@ apply(config, { command }) {
 - 没有使用 [`moduleParsed`](https://rollupjs.org/guide/en/#moduleparsed) 钩子。
 - 它在打包钩子和输出钩子之间没有很强的耦合。
 
-如果一个 Rollup 插件只在构建阶段有意义，则在 `build.rollupOptions.plugins` 下指定即可。
+如果一个 Rollup 插件只在构建阶段有意义，则在 `build.rollupOptions.plugins` 下指定即可。它的工作原理与Vite插件的 `enforce: 'post'` 和 `apply: 'build'` 相同。
 
 你也可以用 Vite 独有的属性来扩展现有的 Rollup 插件:
 
@@ -491,4 +491,88 @@ import { normalizePath } from 'vite'
 
 normalizePath('foo\\bar') // 'foo/bar'
 normalizePath('foo/bar') // 'foo/bar'
+```
+
+## Client-server Communication
+
+Since Vite 2.9, we provide some utilities for plugins to help handle the communication with clients.
+
+### Server to Client
+
+On the plugin side, we could use `server.ws.send` to boardcast events to all the clients:
+
+```js
+// vite.config.js
+export default defineConfig({
+  plugins: [
+    {
+      // ...
+      configureServer(server) {
+        server.ws.send('my:greetings', { msg: 'hello' })
+      }
+    }
+  ]
+})
+```
+
+::: tip NOTE
+We recommend **alway prefixing** your event names to avoid collisions with other plugins.
+:::
+
+On the client side, use [`hot.on`](/guide/api-hmr.html#hot-on-event-cb) to listen to the events:
+
+```ts
+// client side
+if (import.meta.hot) {
+  import.meta.hot.on('my:greetings', (data) => {
+    console.log(data.msg) // hello
+  })
+}
+```
+
+### Client to Server
+
+To send events from the client to the server, we can use [`hot.send`](/guide/api-hmr.html#hot-send-event-payload):
+
+```ts
+// client side
+if (import.meta.hot) {
+  import.meta.hot.send('my:from-client', { msg: 'Hey!' })
+}
+```
+
+Then use `server.ws.on` and listen to the events on the server side:
+
+```js
+// vite.config.js
+export default defineConfig({
+  plugins: [
+    {
+      // ...
+      configureServer(server) {
+        server.ws.on('my:from-client', (data, client) => {
+          console.log('Message from client:', data.msg) // Hey!
+          // reply only to the client (if needed)
+          client.send('my:ack', { msg: 'Hi! I got your message!' })
+        })
+      }
+    }
+  ]
+})
+```
+
+### TypeScript for Custom Events
+
+It is possible to type custom events by extending the `CustomEventMap` interface:
+
+```ts
+// events.d.ts
+import 'vite/types/customEvent'
+
+declare module 'vite/types/customEvent' {
+  interface CustomEventMap {
+    'custom:foo': { msg: string }
+    // 'event-key': payload
+  }
+}
 ```

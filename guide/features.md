@@ -298,10 +298,10 @@ const modules = {
 }
 ```
 
-`import.meta.glob` 和 `import.meta.globEager` 都支持以字符串形式导入文件，类似于 [以字符串形式导入资源](https://vitejs.dev/guide/assets.html#importing-asset-as-string)。在这里，我们使用了 [Import Assertions](https://github.com/tc39/proposal-import-assertions#synopsis) 语法对导入进行断言。
+`import.meta.glob` 和 `import.meta.globEager` 都支持以字符串形式导入文件，类似于 [以字符串形式导入资源](https://vitejs.dev/guide/assets.html#importing-asset-as-string)。在这里，我们使用了 [Import Reflection](https://github.com/tc39/proposal-import-reflection) 语法对导入进行断言：
 
 ```js
-const modules = import.meta.glob('./dir/*.js', { assert: { type: 'raw' } })
+const modules = import.meta.glob('./dir/*.js', { as: 'raw' })
 ```
 
 上面的代码会被转换为下面这样：
@@ -317,7 +317,7 @@ const modules = {
 请注意：
 
 - 这只是一个 Vite 独有的功能而不是一个 Web 或 ES 标准
-- 该 Glob 模式会被当成导入标识符：必须是相对路径（以 `./` 开头）或绝对路径（以 `/` 开头，相对于项目根目录解析）。
+- 该 Glob 模式会被当成导入标识符：必须是相对路径（以 `./` 开头）或绝对路径（以 `/` 开头，相对于项目根目录解析）或一个别名路径（请看 [`resolve.alias` 选项](/config/#resolve-alias))。
 - Glob 匹配是使用 `fast-glob` 来实现的 —— 阅读它的文档来查阅 [支持的 Glob 模式](https://github.com/mrmlnc/fast-glob#pattern-syntax)。
 - 你还需注意，glob 的导入不接受变量，你应直接传递字符串模式。
 - glob 模式不能包含与包裹引号相同的引号字符串（其中包括 `'`，`"`，`` ` ``），例如，如果你想实现 `'/Tom\'s files/**'` 的效果，请使用 `"/Tom's files/**"` 代替。
@@ -352,7 +352,25 @@ init({
 
 ## Web Worker {#web-workers}
 
-一个 web worker 脚本可以直接通过添加一个 `?worker` 或 `?sharedworker` 查询参数来导入。默认导出一个自定义的 worker 构造器：
+### 通过构造器导入 {#import-with-constructors}
+
+一个 Web Worker 可以使用  [`new Worker()`](https://developer.mozilla.org/en-US/docs/Web/API/Worker/Worker) 和 [`new SharedWorker()`](https://developer.mozilla.org/en-US/docs/Web/API/SharedWorker/SharedWorker) 导入。与 worker 后缀相比，这种语法更接近于标准，是创建 worker 的 **推荐** 方式。
+
+```ts
+const worker = new Worker(new URL('./worker.js', import.meta.url))
+```
+
+worker 构造函数会接受可以用来创建 “模块” worker 的选项：
+
+```ts
+const worker = new Worker(new URL('./worker.js', import.meta.url), {
+  type: 'module'
+})
+```
+
+### 带有查询后缀的导入 {#import-with-query-suffixes}
+
+你可以在导入请求上添加 `?worker` 或 `?sharedworker` 查询参数来直接导入一个 web worker 脚本。默认导出会是一个自定义 worker 的构造函数：
 
 ```js
 import MyWorker from './worker?worker'
@@ -367,6 +385,8 @@ Worker 脚本也可以使用 `import` 语句来替代 `importScripts()` —— �
 ```js
 import MyWorker from './worker?worker&inline'
 ```
+
+查看 [Worker 选项](/config/#worker-options) 了解更多关于如何配置打包全部 worker 的相关细节。workers.
 
 ## 构建优化 {#build-optimizations}
 

@@ -34,7 +34,6 @@
    ```html
    <!-- 如果是在开发环境中 -->
    <script type="module" src="http://localhost:3000/@vite/client"></script>
-   <script type="module" src="http://localhost:3000/main.js"></script>
    ```
 
    还要确保服务器配置为提供 Vite 工作目录中的静态资源，否则图片等资源将无法正确加载。

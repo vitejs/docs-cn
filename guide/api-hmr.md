@@ -123,3 +123,11 @@ if (import.meta.hot) {
 - `'vite:error'` 当发生错误时（例如，语法错误）
 
 自定义 HMR 事件可以由插件发送。更多细节详见 [handleHotUpdate](./api-plugin#handleHotUpdate)。
+
+## `hot.send(event, data)`
+
+发送自定义事件到 Vite 开发服务器。
+
+如果在连接前调用，数据会先被缓存、等到连接建立好后再发送。
+
+查看 [客户端与服务器的数据交互](/guide/api-plugin.html#client-server-communication) 一节获取更多细节。
