@@ -1,6 +1,3 @@
----
-title: 开始
----
 # 开始 {#getting-started}
 
 <audio id="vite-audio">

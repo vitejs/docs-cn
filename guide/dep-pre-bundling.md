@@ -1,6 +1,3 @@
----
-title: 依赖预构建
----
 # 依赖预构建 {#dependency-pre-bundling}
 
 当你首次启动 `vite` 时，你可能会注意到打印出了以下信息：

@@ -1,6 +1,3 @@
----
-title: 环境变量和模式
----
 # 环境变量和模式 {#env-variables-and-modes}
 
 ## 环境变量 {#env-variables}

@@ -1,6 +1,3 @@
----
-title: 配置 Vite
----
 # 配置 Vite {#configuring-vite}
 
 ## 配置文件 {#config-file}

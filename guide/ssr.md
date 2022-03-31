@@ -1,6 +1,3 @@
----
-title: 服务端渲染
----
 # 服务端渲染 {#server-side-rendering}
 
 :::warning 实验性
