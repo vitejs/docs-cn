@@ -1,3 +1,6 @@
+---
+title: HMR API
+---
 # HMR API {#hmr-api}
 
 :::tip 注意

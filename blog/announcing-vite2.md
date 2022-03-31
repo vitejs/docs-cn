@@ -1,5 +1,6 @@
 ---
 sidebar: false
+title: Vite 2.0 发布了
 ---
 
 # Vite 2.0 发布了 {#announcing-vite-2-0}

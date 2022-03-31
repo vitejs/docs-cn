@@ -10,7 +10,9 @@
 		"chalk": "^4.1.0",
 		"gray-matter": "^4.0.3",
 		"lodash": "^4.17.21",
-		"vitepress": "^0.21.6",
+		"vitepress": "^0.22.3",
+		"vite": "^2.9.1",
+		"vue": "^3.2.25",
 		"yorkie": "^2.0.0"
 	},
 	"scripts": {
