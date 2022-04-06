@@ -34,7 +34,11 @@ Vite 的 [程序化 API](/guide/api-javascript) 也得到了大幅改进 - 已�
 
 ### 基于 esbuild 的依赖预打包 {#esbuild-powered-dep-pre-bundling}
 
+<<<<<<< HEAD
 由于 Vite 是一个基于 原生 ESM 开发服务器，所以它需要进行依赖预打包以减少浏览器请求的数量，并进行 CommonJS 到 ESM 的转换。在之前版本中 Vite 是用 Rollup 来完成的，而在 2.0 中切换到了 esbuild，这使得依赖预打包的速度快了几十倍。作为参考，在 M1 芯片的 Macbook Pro 上，冷启动一个具有大量依赖项（如 React Meterial UI）的测试应用，之前需要 28 秒，而现在只需要约 1.5 秒。从 webpack 或其它打包工具迁移到 Vite 应该也会有类似的速度改善。
+=======
+Since Vite is a native ESM dev server, it pre-bundles dependencies to reduce the number browser requests and handle CommonJS to ESM conversion. Previously Vite did this using Rollup, and in 2.0 it now uses `esbuild` which results in 10-100x faster dependency pre-bundling. As a reference, cold-booting a test app with heavy dependencies like React Material UI previously took 28 seconds on an M1-powered MacBook Pro and now takes ~1.5 seconds. Expect similar improvements if you are switching from a traditional bundler based setup.
+>>>>>>> 8ad0fcf9d8ac097abf31e34bad5adf6d946996e3
 
 ### 更好的 CSS 支持 {#first-class-css-support}
 

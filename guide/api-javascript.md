@@ -1,6 +1,10 @@
 # JavaScript API {#javascript-api}
 
+<<<<<<< HEAD
 Vite 的 JavaScript API 是完全类型化的，我们推荐使用 TypeScript 或者在 VSCode 中启用 JS 类型检查来利用智能提示和类型校验。
+=======
+Vite's JavaScript APIs are fully typed, and it's recommended to use TypeScript or enable JS type checking in VS Code to leverage the intellisense and validation.
+>>>>>>> 8ad0fcf9d8ac097abf31e34bad5adf6d946996e3
 
 ## `createServer` {#createserver}
 
