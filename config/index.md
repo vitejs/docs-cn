@@ -351,7 +351,7 @@ export default defineConfig(({ command, mode }) => {
 
 - **类型：** `ESBuildOptions | false`
 
-  `ESBuildOptions` 继承自 [ESbuild 转换选项](https://esbuild.github.io/api/#transform-api)。最常见的用例是自定义 JSX：
+  `ESBuildOptions` 继承自 [esbuild 转换选项](https://esbuild.github.io/api/#transform-api)。最常见的用例是自定义 JSX：
 
   ```js
   export default defineConfig({
@@ -362,9 +362,9 @@ export default defineConfig(({ command, mode }) => {
   })
   ```
 
-  默认情况下，ESbuild 会被应用在 `ts`、`jsx`、`tsx` 文件。你可以通过 `esbuild.include` 和 `esbuild.exclude` 对要处理的文件类型进行配置，这两个配置的值可以是一个正则表达式、一个 [picomatch](https://github.com/micromatch/picomatch#globbing-features) 模式，或是一个值为这两种类型的数组。
+  默认情况下，e s build 会被应用在 `ts`、`jsx`、`tsx` 文件。你可以通过 `esbuild.include` 和 `esbuild.exclude` 对要处理的文件类型进行配置，这两个配置的值可以是一个正则表达式、一个 [picomatch](https://github.com/micromatch/picomatch#globbing-features) 模式，或是一个值为这两种类型的数组。
 
-  此外，你还可以通过 `esbuild.jsxInject` 来自动为每一个被 ESbuild 转换的文件注入 JSX helper。
+  此外，你还可以通过 `esbuild.jsxInject` 来自动为每一个被 esbuild 转换的文件注入 JSX helper。
 
   ```js
   export default defineConfig({
@@ -374,7 +374,7 @@ export default defineConfig(({ command, mode }) => {
   })
   ```
 
-  设置为 `false` 来禁用 ESbuild 转换。
+  设置为 `false` 来禁用 esbuild 转换。
 
 ### assetsInclude {#assetsinclude}
 
