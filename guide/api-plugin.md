@@ -113,7 +113,7 @@ export default function myPlugin() {
 
 ```js
 export default function myPlugin() {
-  const virtualModuleId = '@my-virtual-module'
+  const virtualModuleId = 'virtual:my-module'
   const resolvedVirtualModuleId = '\0' + virtualModuleId
 
   return {
@@ -135,7 +135,7 @@ export default function myPlugin() {
 这使得可以在 JavaScript 中引入这些模块：
 
 ```js
-import { msg } from '@my-virtual-module'
+import { msg } from 'virtual:my-module'
 
 console.log(msg)
 ```
