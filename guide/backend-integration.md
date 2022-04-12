@@ -1,14 +1,16 @@
 # 后端集成 {#backend-integration}
 
+:::tip Note
 如果你想使用传统的后端（如 Rails, Laravel）来服务 HTML，但使用 Vite 来服务其他资源，可以查看在 [Awesome Vite](https://github.com/vitejs/awesome-vite#integrations-with-backends) 上的已有的后端集成列表。
 
-或者你可以按照如下步骤手动配置：
+如果你需要自定义集成，你可以按照本指南的步骤配置它：
+:::
 
 1. 在你的 Vite 配置中配置入口文件和启用创建 `manifest`：
 
    ```js
    // vite.config.js
-   export default {
+   export default defineConfig({
      build: {
        // 在 outDir 中生成 manifest.json
        manifest: true,
@@ -17,14 +19,14 @@
          input: '/path/to/main.js'
        }
      }
-   }
+   })
    ```
 
-   如果你使用了 [`@vitejs/plugin-legacy`](https://github.com/vitejs/vite/tree/main/packages/plugin-legacy) 插件或者手动开启 [`build.dynamicImportPolyfill` 选项](/config/#build-polyfilldynamicimport)，请记得将 [dynamic import polyfill](/config/#build-polyfilldynamicimport) 添加到入口处，因为它并不会被自动注入：
+   如果你没有禁用 [module preload 的 polyfill](/config/#build-polyfillmodulepreload)，你还需在你的入口处添加此 polyfill：
 
    ```js
-   // 添加到你应用入口文件的开头
-   import 'vite/dynamic-import-polyfill'
+   // 在你应用的入口起始处添加此 polyfill
+   import 'vite/modulepreload-polyfill'
    ```
 
 2. 在开发环境中，在服务器的 HTML 模板中注入以下内容（用正在运行的本地 URL 替换 `http://localhost:3000`）：
@@ -32,12 +34,11 @@
    ```html
    <!-- 如果是在开发环境中 -->
    <script type="module" src="http://localhost:3000/@vite/client"></script>
-   <script type="module" src="http://localhost:3000/main.js"></script>
    ```
 
    还要确保服务器配置为提供 Vite 工作目录中的静态资源，否则图片等资源将无法正确加载。
 
-   如果你正使用 `@vitejs/plugin-react-refresh` 配合 React，你还需要在上述脚本前添加下面这个，因为插件不能修改你正在服务的 HTML：
+   如果你正使用 `@vitejs/plugin-react` 配合 React，你还需要在上述脚本前添加下面这个，因为插件不能修改你正在服务的 HTML：
 
    ```html
    <script type="module">

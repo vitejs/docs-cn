@@ -24,7 +24,7 @@ Vite 1.0 虽然之前进入了 RC 阶段，但在发布之前我们决定进行�
 
 设计 Vite 的初衷是为了 [探索黑客原型项目以更好的支持 Vue 单文件组件](https://github.com/vuejs/vue-dev-server)。Vite 1 则是这个想法的延续，并在此基础上增加了对 HMR 支持。
 
-但 2.0 基于之前的经验提供了一个更稳定灵活的内部架构，从而可以完全通过插件机制来支持任意框架。现在 Vite 提供 [官方的 Vue, React, Preact, Lit Element 项目模版](https://github.com/vitejs/vite/tree/main/packages/create-app)，而 Svelte 社区也在开发 Vite 整合方案。
+但 2.0 基于之前的经验提供了一个更稳定灵活的内部架构，从而可以完全通过插件机制来支持任意框架。现在 Vite 提供 [官方的 Vue, React, Preact, Lit Element 项目模版](https://github.com/vitejs/vite/tree/main/packages/create-vite)，而 Svelte 社区也在开发 Vite 整合方案。
 
 ### 全新插件机制和 API {#new-plugin-format-and-api}
 
@@ -46,7 +46,7 @@ Vite 将 CSS 看作模块系统中的一等公民，并且内置了以下支持�
 
 ### 服务端渲染（SSR）支持 {#server-side-rendering-ssr-support}
 
-Vite 2.0 提供 [实验性的 SSR 支持](/guide/ssr)。Vite 提供一个灵活的 API 来在 Node.js 中高效率地直接加载 ESM 源码（并且同样有精准的更新而不需要打包）。提供 CommonJS 版本的依赖会在 SSR 时自动被跳过转换直接加载。生产环境下，服务器可以和 Vite 完全解耦。基于 Vite SSR 的架构也可以很方便的做静态预渲染（SSG)。
+Vite 2.0 提供 [实验性的 SSR 支持](/guide/ssr)。Vite 提供了灵活的 API，以便于在开发过程中直接通过 Node.js 高效率地加载和更新 ESM 的源码（几乎与服务端的 HMR 一致），并自动外部化与 CommonJS 兼容的依赖关系，以提高开发和 SSR 的构建速度。生产环境下，服务器可以和 Vite 完全解耦。基于 Vite SSR 的架构也可以很方便的做静态预渲染（SSG)。
 
 Vite SSR 会作为一个底层功能，而我们期待看到更高层级的框架在此基础上的应用。
 

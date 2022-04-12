@@ -3,10 +3,10 @@
 当你首次启动 `vite` 时，你可能会注意到打印出了以下信息：
 
 ```
-Optimizable dependencies detected: （侦测到可优化的依赖：）
-react, react-dom
-Pre-bundling them to speed up dev server page load...（将预构建它们以提升开发服务器页面加载速度）
-(this will be run only when your dependencies have changed)（这将只会在你的依赖发生变化时执行）
+Pre-bundling dependencies: （正在预构建依赖：）
+  react, 
+  react-dom
+(this will be run only when your dependencies or config have changed)（这将只会在你的依赖或配置发生变化时执行）
 ```
 
 ## 原因 {#the-why}
@@ -28,6 +28,10 @@ Pre-bundling them to speed up dev server page load...（将预构建它们以提
 
    通过预构建 `lodash-es` 成为一个模块，我们就只需要一个 HTTP 请求了！
 
+::: tip 注意
+依赖与构建仅会在开发模式下应用，并会使用 `esbuild` 将依赖转为 ESM 模块。在生产构建中则会使用 `@rollup/plugin-commonjs`。
+:::
+
 ## 自动依赖搜寻 {#automatic-dependency-discovery}
 
 如果没有找到相应的缓存，Vite 将抓取你的源码，并自动寻找引入的依赖项（即 "bare import"，表示期望从 `node_modules` 解析），并将这些依赖项作为预构建包的入口点。预构建通过 `esbuild` 执行，所以它通常非常快。
@@ -38,9 +42,30 @@ Pre-bundling them to speed up dev server page load...（将预构建它们以提
 
 在一个 monorepo 启动中，该仓库中的某个依赖可能会成为另一个包的依赖。Vite 会自动侦测没有从 `node_modules` 解析的依赖项，并将链接的依赖视为源码。它不会尝试打包被链接的依赖，而是会分析被链接依赖的依赖列表。
 
+然而，这需要被链接的依赖被导出为 ESM 格式。如果不是，那么你可以在配置里将此依赖添加到 [`optimizeDeps.include`](/config/#optimizedeps-include) 和 [`build.commonjsOptions.include`](/config/#build-commonjsoptions) 这两项中。
+
+```js
+export default defineConfig({
+  optimizeDeps: {
+    include: ['linked-dep']
+  },
+  build: {
+    commonjsOptions: {
+      include: [/linked-dep/, /node_modules/]
+    }
+  }
+})
+```
+
+当这个被链接的依赖发生变更后，在重启开发服务器时在命令中带上 `--force` 选项让所有更改生效。
+
+::: warning 重复删除
+由于对链接依赖的解析方式不同，传递性的依赖项可能会不正确地进行重复数据删除，而造成运行时的问题。如果你偶然发现了这个问题，请使用 `npm pack` 来修复它。
+:::
+
 ## 自定义行为 {#customizing-the-behavior}
 
-默认的依赖项发现为启发式可能并不总是可取的。在你想要显式地从列表中包含/排除依赖项的情况下, 请使用 [`optimizeDeps` 配置项](/config/#dep-optimization-option)。
+默认的依赖项发现为启发式可能并不总是可取的。在你想要显式地从列表中包含/排除依赖项的情况下, 请使用 [`optimizeDeps` 配置项](/config/#dep-optimization-options)。
 
 当你遇到不能直接在源码中发现的 import 时，`optimizeDeps.include` 或 `optimizeDeps.exclude` 就是典型的用例。例如，import 可能是插件转换的结果。这意味着 Vite 无法在初始扫描时发现 import —— 它只能在浏览器请求文件时转换后才能发现。这将导致服务器在启动后立即重新打包。
 
@@ -56,14 +81,14 @@ Vite 会将预构建的依赖缓存到 `node_modules/.vite`。它根据几个源
 - 包管理器的 lockfile，例如 `package-lock.json`, `yarn.lock`，或者 `pnpm-lock.yaml`
 - 可能在 `vite.config.js` 相关字段中配置过的
 
-只有当上面的一个步骤发生变化时，才需要重新运行预构建步骤。
+只有在上述其中一项发生更改时，才需要重新运行预构建。
 
-如果出于某些原因，你想要强制 Vite 重新绑定依赖，你可以用 `--force` 命令行选项启动开发服务器，或者手动删除 `node_modules/.vite` 目录。
+如果出于某些原因，你想要强制 Vite 重新构建依赖，你可以用 `--force` 命令行选项启动开发服务器，或者手动删除 `node_modules/.vite` 目录。
 
 ### 浏览器缓存 {#browser-cache}
 
 解析后的依赖请求会以 HTTP 头 `max-age=31536000,immutable` 强缓存，以提高在开发时的页面重载性能。一旦被缓存，这些请求将永远不会再到达开发服务器。如果安装了不同的版本（这反映在包管理器的 lockfile 中），则附加的版本 query 会自动使它们失效。如果你想通过本地编辑来调试依赖项，你可以:
 
-1. 通过浏览器 devtools 的 Network 选项卡暂时禁用缓存；
-2. 重启 Vite dev server，使用 `--force` 标志重新打包依赖；
+1. 通过浏览器调试工具的 Network 选项卡暂时禁用缓存；
+2. 重启 Vite dev server，并添加 `--force` 命令以重新构建依赖；
 3. 重新载入页面。

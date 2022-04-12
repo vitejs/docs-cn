@@ -3,7 +3,7 @@
 本指南建立在以下几个假设基础之上：
 
 - 你正在使用的是默认的构建输出路径（`dist`）。这个路径 [可以通过 `build.outDir` 更改](/config/#build-outdir)，在这种情况下，你可以从这篇指南中找到出所需的指引。
-- 你正在使用 NPM；或者 Yarn 等其他可以运行下面的脚本指令的包管理工具。
+- 你正在使用 NPM；或者 Yarn PNPM 等其他可以运行下面的脚本指令的包管理工具。
 - Vite 已作为一个本地开发依赖（dev dependency）安装在你的项目中，并且你已经配置好了如下的 npm scripts：
 
 ```json
@@ -40,7 +40,7 @@ $ npm run build
 $ npm run preview
 ```
 
-`preview` 命令会在本地启动一个静态 Web 服务器，将 `dist` 文件夹运行在 http://localhost:5000。这样在本地环境下查看该构建产物是否正常可用就方便了。
+`vite preview` 命令会在本地启动一个静态 Web 服务器，将 `dist` 文件夹运行在 `http://localhost:4173`。这样在本地环境下查看该构建产物是否正常可用就方便多了。
 
 你可以通过 `--port` 参数来配置服务的运行端口。
 
@@ -52,7 +52,7 @@ $ npm run preview
 }
 ```
 
-现在 `preview` 命令会将服务器运行在 http://localhost:8080。
+现在 `preview` 命令会将服务器运行在 `http://localhost:8080`。
 
 ## GitHub Pages {#github-pages}
 
@@ -80,14 +80,15 @@ $ npm run preview
    # echo 'www.example.com' > CNAME
 
    git init
+   git checkout -b main
    git add -A
    git commit -m 'deploy'
 
    # 如果你要部署在 https://<USERNAME>.github.io
-   # git push -f git@github.com:<USERNAME>/<USERNAME>.github.io.git master
+   # git push -f git@github.com:<USERNAME>/<USERNAME>.github.io.git main
 
    # 如果你要部署在 https://<USERNAME>.github.io/<REPO>
-   # git push -f git@github.com:<USERNAME>/<REPO>.git master:gh-pages
+   # git push -f git@github.com:<USERNAME>/<REPO>.git main:gh-pages
 
    cd -
    ```
@@ -127,7 +128,7 @@ $ npm run preview
      github_token: $GITHUB_TOKEN
      keep_history: true
      on:
-       branch: master
+       branch: main
    ```
 
 ## GitLab Pages 配合 GitLab CI {#gitlab-pages-and-gitlab-ci}
@@ -138,34 +139,53 @@ $ npm run preview
 
    如果你要部署在 `https://<USERNAME or GROUP>.gitlab.io/<REPO>/` 上，例如你的仓库地址为 `https://gitlab.com/<USERNAME>/<REPO>`，那么请设置 `base` 为 `'/<REPO>/'`。
 
-2. 在 `vite.config.js` 中设置 `build.outDir` 为 `public`。
-
-3. 在项目根目录创建一个 `.gitlab-ci.yml` 文件，并包含以下内容。它将使得每次你更改内容时都重新构建与部署站点：
+2. 在项目根目录创建一个 `.gitlab-ci.yml` 文件，并包含以下内容。它将使得每次你更改内容时都重新构建与部署站点：
 
    ```yaml
-   image: node:10.22.0
+   image: node:16.5.0
    pages:
+     stage: deploy
      cache:
+       key:
+         files:
+           - package-lock.json
+         prefix: npm
        paths:
          - node_modules/
      script:
        - npm install
        - npm run build
+       - cp -a dist/. public/
      artifacts:
        paths:
          - public
-     only:
-       - master
+     rules:
+       - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
    ```
 
 ## Netlify {#netlify}
 
-1. 在 [Netlify](https://netlify.com) 上，使用以下设置，配置一个来自 GitHub 的项目：
+1. 安装 [Netlify CLI](https://cli.netlify.com/)。
+2. 使用 `ntl init` 创建一个新站点。
+3. 使用 `ntl deploy` 来部署。
 
-   - **构建命令：** `vite build` 或 `npm run build`
-   - **发布目录：** `dist`
+```bash
+# 安装 Netlify CLI
+$ npm install -g netlify-cli
 
-2. 点击部署按钮。
+# 在 Netlify 中创建一个新站点
+$ ntl init
+
+# 部署一个独一无二的预览 URL
+$ ntl deploy
+```
+
+Netlify CLI 会给你分享一个预览的 URL 来检查部署结果。当你准备好了发布生产版本时，请使用 `prod` 标志：
+
+```bash
+# 部署站点到生产环境
+$ ntl deploy --prod
+```
 
 ## Google Firebase {#google-firebase}
 
@@ -179,7 +199,13 @@ $ npm run preview
    {
      "hosting": {
        "public": "dist",
-       "ignore": []
+       "ignore": [],
+       "rewrites": [
+         {
+           "source": "**",
+           "destination": "/index.html"
+         }
+       ]
      }
    }
    ```
@@ -188,9 +214,9 @@ $ npm run preview
 
    ```js
    {
-    "projects": {
-      "default": "<YOUR_FIREBASE_ID>"
-    }
+     "projects": {
+       "default": "<YOUR_FIREBASE_ID>"
+     }
    }
    ```
 
@@ -249,7 +275,7 @@ $ npm run preview
 
    ```bash
    # 发布站点
-   $ git push heroku master
+   $ git push heroku main
 
    # 在浏览器中打开 Heroku 的面板
    $ heroku open
@@ -257,15 +283,30 @@ $ npm run preview
 
 ## Vercel {#vercel}
 
-要通过 [Vercel for Git](https://vercel.com/docs/git) 部署你的 Vite 应用，请确保它已被推送至一个 Git 仓库。
+### Vercel CLI {#vercel-cli}
 
-进入 https://vercel.com/import/git 并根据你的 Git 托管服务（GitHub, GitLab 或 BitBucket）将项目导入 Vercel。根据指引，选择带有 `package.json` 的项目根目录。并使用 `npm run build` 来覆写构建步骤，并将输出目录设置为 `./dist`。
+1. 安装 [Vercel CLI](https://vercel.com/cli) 并运行 `vercel` 来进行部署。
+2. Vercel 会检测到你正在使用 Vite，并会为你的开发开启相应的正确设置。
+3. 然后你的应用就被正常部署了！（示例 [vite-vue-template.vercel.app](https://vite-vue-template.vercel.app/)）
 
-![覆写 Vercel 配置](../images/vercel-configuration.png)
+```bash
+$ npm i -g vercel
+$ vercel init vite
+Vercel CLI
+> Success! Initialized "vite" example in ~/your-folder.
+- To deploy, `cd vite` and run `vercel`.
+```
 
-在项目被导入之后，所有后续的推送都将生成预览部署，但只有对生产分支（通常是 “main”）所做的更改才会触发生产部署。
+### Vercel for Git {#vercel-for-git}
 
-一旦部署，你会得到一个实时查看应用的 URL，如 https://vite.vercel.app。
+1. 将你代码推送到你的 git 仓库（GitHub、GitLab 或 BitBucket 等等）
+2. [导入你的 Vite 项目](https://vercel.com/new) 到 Vercel。
+3. Vercel 会检测到你正在使用 Vite，并会为你的开发开启相应的正确设置。
+4. 然后你的应用就被正常部署了！（示例 [vite-vue-template.vercel.app](https://vite-vue-template.vercel.app/)）
+
+在你的项目被成功导入与部署后，所有对分支的后续推送都将生成 [预览发布](https://vercel.com/docs/concepts/deployments/environments#preview)，所有对生产分支（通常是 "main"）都会最后形成一个 [生产发布](https://vercel.com/docs/concepts/deployments/environments#production)。
+
+访问 Vercel 的 [Git 集成指引](https://vercel.com/docs/concepts/git) 了解更多详情。
 
 ## Azure 的静态网站应用 {#azure-static-web-apps}
 
@@ -280,3 +321,19 @@ $ npm run preview
 按照扩展程序的启动向导，给你的应用程序起个名字，选择框架预设，并指定应用程序的根目录（通常为 `/`）以及构建文件的路径 `/dist`。此向导完成后，会在你的 repo 中的 `.github` 文件夹中创建一个 Github Action。
 
 这个 action 致力于部署你的应用程序（可以在仓库的 Actions 标签中，查看相关进度），成功完成后，你可以点击 Github 中出现的 “浏览站点” 的按钮，查看你的应用程序。
+
+## 腾讯云 Webify
+
+[腾讯云 Webify](https://webify.cloudbase.net/) 支持从 Git 仓库直接部署您的 Vite 应用。
+
+进入 [Webify 新建应用页面](https://console.cloud.tencent.com/webify/new)，根据选择您代码仓库所在的 Git 平台（GitHub、GitLab 或者 Gitee 码云），完成授权流程后，便可导入仓库。
+
+应用配置如下：
+
+- 构建命令填入 `npm run build`
+- 输出目录填入 `dist`，
+- 安装命令填入 `npm install`
+
+![Webify 配置](../images/webify-configuration.png)
+
+应用创建之后，等待构建、部署完毕，便可以通过应用的默认域名（`.app.tcloudbase.com`）来访问应用。如 https://my-vite-vue-app-4gi9tn1478d8ee71-1255679239.ap-shanghai.app.tcloudbase.com/

@@ -4,9 +4,9 @@
 
 Vite 在一个特殊的 **`import.meta.env`** 对象上暴露环境变量。这里有一些在所有情况下都可以使用的内建变量：
 
-- **`import.meta.env.MODE`**: {string} 应用运行的[模式](#模式)。
+- **`import.meta.env.MODE`**: {string} 应用运行的[模式](#modes)。
 
-- **`import.meta.env.BASE_URL`**: {string} 部署应用时的基本URL。他由[`base` 配置项](/config/#base)决定。
+- **`import.meta.env.BASE_URL`**: {string} 部署应用时的基本 URL。他由[`base` 配置项](/config/#base)决定。
 
 - **`import.meta.env.PROD`**: {boolean} 应用是否运行在生产环境。
 
@@ -16,7 +16,7 @@ Vite 在一个特殊的 **`import.meta.env`** 对象上暴露环境变量。这�
 
 在生产环境中，这些环境变量会在构建时被**静态替换**，因此，在引用它们时请使用完全静态的字符串。动态的 key 将无法生效。例如，动态 key 取值 `import.meta.env[key]` 是无效的。
 
-它还将替换出现在 JavaScript 和 Vue 模板中的字符串。这应该是一种罕见的情况，但可能是不小心为之的。有一些方法可以避免这个问题：
+它还将替换出现在 JavaScript 和 Vue 模板中的字符串。这本应是非常少见的，但也可能是不小心为之的。在这种情况下你可能会看到类似 `Missing Semicolon` 或 `Unexpected token` 等错误，例如当 `"process.env.NODE_ENV"` 被替换为 `""development": "`。有一些方法可以避免这个问题：
 
 - 对于 JavaScript 字符串，你可以使用 unicode 零宽度空格 **`\u200b`** (一个看不见的分隔符)来分割这个字符串，例如： `'import.meta\u200b.env.MODE'`。
 
@@ -24,7 +24,7 @@ Vite 在一个特殊的 **`import.meta.env`** 对象上暴露环境变量。这�
 
 ## `.env` 文件 {#env-files}
 
-Vite 使用 [dotenv](https://github.com/motdotla/dotenv) 从你的 [环境目录](/config/#envDir) 中的下列文件加载额外的环境变量：
+Vite 使用 [dotenv](https://github.com/motdotla/dotenv) 从你的 [环境目录](/config/#envdir) 中的下列文件加载额外的环境变量：
 
 ```
 .env                # 所有情况下都会加载
@@ -32,6 +32,15 @@ Vite 使用 [dotenv](https://github.com/motdotla/dotenv) 从你的 [环境目录
 .env.[mode]         # 只在指定模式下加载
 .env.[mode].local   # 只在指定模式下加载，但会被 git 忽略
 ```
+
+:::tip 环境加载优先级
+
+一份用于指定模式的文件（例如 `.env.production`）会比通用形式的优先级更高（例如 `.env`）。
+
+另外，Vite 执行时已经存在的环境变量有最高的优先级，不会被 `.env` 类文件覆盖。例如当运行 `VITE_SOME_KEY=123 vite build` 的时候。
+
+`.env` 类文件会在 Vite 启动一开始时被加载，而改动会在重启服务器后生效。
+:::
 
 加载的环境变量也会通过 `import.meta.env` 暴露给客户端源码。
 
@@ -44,29 +53,37 @@ VITE_SOME_KEY=123
 
 只有 `VITE_SOME_KEY` 会被暴露为 `import.meta.env.VITE_SOME_KEY` 提供给客户端源码，而 `DB_PASSWORD` 则不会。
 
+如果你想自定义 env 变量的前缀，请参阅 [envPrefix](/config/index#envprefix)。
+
 :::warning 安全注意事项
 
-- `.env.*.local` 文件应是本地的，可以包含敏感变量。你应该将 `.local` 添加到你的 `.gitignore` 中，以避免它们被git检入。
+- `.env.*.local` 文件应是本地的，可以包含敏感变量。你应该将 `.local` 添加到你的 `.gitignore` 中，以避免它们被 git 检入。
 
 - 由于任何暴露给 Vite 源码的变量最终都将出现在客户端包中，`VITE_*` 变量应该不包含任何敏感信息。
   :::
 
-### 智能提示 {#intellisense}
+### TypeScript 的智能提示 {#intellisense}
 
-默认情况下，Vite为 `import.meta.env` 提供了类型定义。随着在 `.env[mode]` 文件中自定义了越来越多的环境变量，你可能想要在代码中获取这些以 `VITE_` 为前缀的用户自定义环境变量的 TypeScript 智能提示。
+默认情况下，Vite 在 [`vite/client.d.ts`](https://github.com/vitejs/vite/blob/main/packages/vite/client.d.ts) 中为 `import.meta.env` 提供了类型定义。随着在 `.env[mode]` 文件中自定义了越来越多的环境变量，你可能想要在代码中获取这些以 `VITE_` 为前缀的用户自定义环境变量的 TypeScript 智能提示。
 
 要想做到这一点，你可以在 `src` 目录下创建一个 `env.d.ts` 文件，接着按下面这样增加 `ImportMetaEnv` 的定义：
 
 ```typescript
+/// <reference types="vite/client" />
+
 interface ImportMetaEnv {
-  VITE_APP_TITLE: string
+  readonly VITE_APP_TITLE: string
   // 更多环境变量...
+}
+
+interface ImportMeta {
+  readonly env: ImportMetaEnv
 }
 ```
 
 ## 模式 {#modes}
 
-默认情况下，开发服务器 (`serve` 命令) 运行在 `development` (开发) 模式，而 `build` 命令运行在 `production` (生产) 模式。
+默认情况下，开发服务器 (`dev` 命令) 运行在 `development` (开发) 模式，而 `build` 命令则运行在 `production` (生产) 模式。
 
 这意味着当执行 `vite build` 时，它会自动加载 `.env.production` 中可能存在的环境变量：
 

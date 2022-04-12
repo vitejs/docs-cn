@@ -4,7 +4,7 @@
 
 ## 浏览器兼容性 {#browser-compatibility}
 
-生产版本会假设你已实现现代 JavaScript 语法的支持。默认情况下，vite 是为 [支持原生 ESM script 标签](https://caniuse.com/es6-module) 和 [支持原生 ESM 动态导入](https://caniuse.com/es6-module-dynamic-import) 的浏览器服务的。作为参考，vite 使用这个 [browserslist](https://github.com/browserslist/browserslist) 作为查询标准：
+用于生产环境的构建包会假设目标浏览器支持现代 JavaScript 语法。默认情况下，Vite 的目标浏览器是指能够 [支持原生 ESM script 标签](https://caniuse.com/es6-module) 和 [支持原生 ESM 动态导入](https://caniuse.com/es6-module-dynamic-import) 的。作为参考，Vite 使用这个 [browserslist](https://github.com/browserslist/browserslist) 作为查询标准：
 
 ```
 defaults and supports es6-module and supports es6-module-dynamic-import, not opera > 0, not samsung > 0, not and_qq > 0
@@ -32,31 +32,47 @@ defaults and supports es6-module and supports es6-module-dynamic-import, not ope
 
 ```js
 // vite.config.js
-module.exports = {
+module.exports = defineConfig({
   build: {
     rollupOptions: {
       // https://rollupjs.org/guide/en/#big-list-of-options
     }
   }
-}
+})
 ```
 
 例如，你可以使用仅在构建期间应用的插件来指定多个 Rollup 输出。
 
-## 文件变化时重新编译 {#rebuild-on-files-changs}
+## 产物分块策略 {#chunking-strategy}
+
+你可以配置在使用 `build.rollupOptions.output.manualChunks` 时各个 chunk 是如何分割的（查看 [Rollup 相应文档](https://rollupjs.org/guide/en/#outputmanualchunks)）。到 Vite 2.8 时，默认的策略是将 chunk 分割为 `index` 和 `vendor`。这对一些 SPA 来说是好的策略，但是要对每一种用例目标都提供一种通用解决方案是非常困难的。从 Vite 2.9 起，`manualChunks` 默认情况下不再被更改。你可以通过在配置文件中添加 `splitVendorChunkPlugin` 来继续使用 “分割 Vendor Chunk” 策略：
+
+```js
+// vite.config.js
+import { splitVendorChunkPlugin } from 'vite'
+module.exports = defineConfig({
+  plugins: [splitVendorChunkPlugin()]
+})
+```
+
+This strategy is also provided as a `splitVendorChunk({ cache: SplitVendorChunkCache })` factory, in case composition with custom logic is needed. `cache.reset()` needs to be called at `buildStart` for build watch mode to work correctly in this case.
+
+## 文件变化时重新构建 {#rebuild-on-files-changs}
 
 你可以使用 `vite build --watch` 来启用 rollup 的监听器。或者，你可以直接通过 `build.watch` 调整底层的 [`WatcherOptions`](https://rollupjs.org/guide/en/#watch-options) 选项：
 
 ```js
 // vite.config.js
-module.exports = {
+module.exports = defineConfig({
   build: {
     watch: {
       // https://rollupjs.org/guide/en/#watch-options
     }
   }
-}
+})
 ```
+
+当启用 `--watch` 标志时，对 `vite.config.js` 的改动，以及任何要打包的文件，都将触发重新构建。
 
 ## 多页面应用模式 {#multi-page-app}
 
@@ -79,8 +95,9 @@ module.exports = {
 ```js
 // vite.config.js
 const { resolve } = require('path')
+const { defineConfig } = require('vite')
 
-module.exports = {
+module.exports = defineConfig({
   build: {
     rollupOptions: {
       input: {
@@ -89,29 +106,31 @@ module.exports = {
       }
     }
   }
-}
+})
 ```
 
-如果你指定了另一个根目录，请记住，在解析输入路径时，`__dirname` 的值将仍然是 vite.config.js 文件所在的目录。因此，你需要把 `root` 的路径添加到 `resolve` 的参数中。
+如果你指定了另一个根目录，请记住，在解析输入路径时，`__dirname` 的值将仍然是 vite.config.js 文件所在的目录。因此，你需要把对应入口文件的 `root` 的路径添加到 `resolve` 的参数中。
 
 ## 库模式 {#library-mode}
 
-当你开发面向浏览器的库时，你可能会将大部分时间花在该库的测试/演示页面上。使用 Vite 可以使得你的 `index.html` 获得如丝般顺滑的开发体验。
+当你开发面向浏览器的库时，你可能会将大部分时间花在该库的测试/演示页面上。在 Vite 中你可以使用 `index.html` 获得如丝般顺滑的开发体验。
 
-当需要构建你的库用于发布时，请使用 [`build.lib` 配置项](/config/#build-lib)，请确保将你不想打包进你库中的依赖进行外部化处理，例如 `vue` 或 `react`：
+当这个库要进行发布构建时，请使用 [`build.lib` 配置项](/config/#build-lib)，以确保将那些你不想打包进库的依赖进行外部化处理，例如 `vue` 或 `react`：
 
 ```js
 // vite.config.js
 const path = require('path')
+const { defineConfig } = require('vite')
 
-module.exports = {
+module.exports = defineConfig({
   build: {
     lib: {
       entry: path.resolve(__dirname, 'lib/main.js'),
-      name: 'MyLib'
+      name: 'MyLib',
+      fileName: (format) => `my-lib.${format}.js`
     },
     rollupOptions: {
-      // 请确保外部化那些你的库中不需要的依赖
+      // 确保外部化处理那些你不想打包进库的依赖
       external: ['vue'],
       output: {
         // 在 UMD 构建模式下为这些外部化的依赖提供一个全局变量
@@ -121,7 +140,16 @@ module.exports = {
       }
     }
   }
-}
+})
+```
+
+入口文件将包含可以由你的包的用户导入的导出：
+
+```js
+// lib/main.js
+import Foo from './Foo.vue'
+import Bar from './Bar.vue'
+export { Foo, Bar }
 ```
 
 使用如上配置运行 `vite build` 时，将会使用一套面向库的 Rollup 预设，并且将为该库提供两种构建格式：`es` 和 `umd` (可在 `build.lib` 中配置)：
