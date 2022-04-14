@@ -97,7 +97,13 @@ export default defineConfig(async ({ command, mode }) => {
 
 ### Environment Variables {#environment-variables}
 
+<<<<<<< HEAD
 Vite 默认是不加载 `.env` 文件的，因为这些文件需要在执行完 Vite 配置后才能确定加载哪一个，举个例子，`root` 和 `envDir` 选项会影响加载行为。不过当你的确需要时，你可以使用 Vite 导出的 `loadEnv` 函数来加载指定的 `.env` 文件
+=======
+Environmental Variables can be obtained from `process.env` as usual.
+
+Note that Vite doesn't load `.env` files by default as the files to load can only be determined after evaluating the Vite config, for example, the `root` and `envDir` options affects the loading behaviour. However, you can use the exported `loadEnv` helper to load the specific `.env` file if needed.
+>>>>>>> e708cba963aa0875261d17adb7d27d5201082724
 
 ```js
 import { defineConfig, loadEnv } from 'vite'
