@@ -21,11 +21,6 @@ interface ViteHotContext {
   accept(dep: string, cb: (mod: any) => void): void
   accept(deps: readonly string[], cb: (mods: any[]) => void): void
 
-  /**
-   * 已经弃用
-   */
-  acceptDeps(): never
-
   dispose(cb: (data: any) => void): void
   decline(): void
   invalidate(): void
