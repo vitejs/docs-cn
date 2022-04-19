@@ -23,8 +23,13 @@ export default {
 vite --config my-config.js
 ```
 
+<<<<<<< HEAD
 ::: tip 注意
 注意，Vite 会在 **CommonJS** 和 **TypeScript** 配置文件中替换 `__filename`，`__dirname` 以及 `import.meta.url`。如果使用这些名称作为变量名可能会导致代码报错：
+=======
+::: tip NOTE
+Vite will replace `__filename`, `__dirname`, and `import.meta.url` in config files and its deps. Using these as variable names will result in an error:
+>>>>>>> 9c99602395533f4d0a5ad36116a4679be60db91b
 
 ```js
 const __filename = "value"
@@ -97,7 +102,13 @@ export default defineConfig(async ({ command, mode }) => {
 
 ### Environment Variables {#environment-variables}
 
+<<<<<<< HEAD
 Vite 默认是不加载 `.env` 文件的，因为这些文件需要在执行完 Vite 配置后才能确定加载哪一个，举个例子，`root` 和 `envDir` 选项会影响加载行为。不过当你的确需要时，你可以使用 Vite 导出的 `loadEnv` 函数来加载指定的 `.env` 文件
+=======
+Environmental Variables can be obtained from `process.env` as usual.
+
+Note that Vite doesn't load `.env` files by default as the files to load can only be determined after evaluating the Vite config, for example, the `root` and `envDir` options affects the loading behaviour. However, you can use the exported `loadEnv` helper to load the specific `.env` file if needed.
+>>>>>>> 9c99602395533f4d0a5ad36116a4679be60db91b
 
 ```js
 import { defineConfig, loadEnv } from 'vite'
@@ -298,7 +309,15 @@ export default defineConfig(({ command, mode }) => {
 
 - **类型：** `string | (postcss.ProcessOptions & { plugins?: postcss.Plugin[] })`
 
+<<<<<<< HEAD
   内联的 PostCSS 配置（格式同 `postcss.config.js`），或者一个（默认基于项目根目录的）自定义的 PostCSS 配置路径。其路径搜索是通过 [postcss-load-config](https://github.com/postcss/postcss-load-config) 实现的，并且只加载支持的配置文件名称。
+=======
+  Inline PostCSS config or a custom directory to search PostCSS config from (default is project root).
+
+  For inline PostCSS config, it expects the same format as `postcss.config.js`. But for `plugins` property, only [array format](https://github.com/postcss/postcss-load-config/blob/main/README.md#array) can be used.
+
+  The search is done using [postcss-load-config](https://github.com/postcss/postcss-load-config) and only the supported config file names are loaded.
+>>>>>>> 9c99602395533f4d0a5ad36116a4679be60db91b
 
   注意：如果提供了该内联配置，Vite 将不会搜索其他 PostCSS 配置源。
 
