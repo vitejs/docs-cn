@@ -4,6 +4,8 @@
 Vite 旨在为常见的 web 开发工作提供开箱即用的支持。在搜索一个 Vite 或 Rollup 兼容插件之前，请先查看 [功能指引](../guide/features.md)。很多场景下，在 Rollup 项目中需要添加插件，而在 Vite 中已经内建支持了。
 :::
 
+请查看 [使用插件](../guide/using-plugins) 一章了解更多插件使用方式。
+
 ## 官方插件 {#official-plugins}
 
 ### [@vitejs/plugin-vue](https://github.com/vitejs/vite/tree/main/packages/plugin-vue) {#vitejsplugin-vue}

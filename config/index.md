@@ -24,11 +24,11 @@ vite --config my-config.js
 ```
 
 ::: tip 注意
-注意，Vite 会在 **CommonJS** 和 **TypeScript** 配置文件中替换 `__filename`，`__dirname` 以及 `import.meta.url`。如果使用这些名称作为变量名可能会导致代码报错：
+Vite 会替换配置文件中的 `__filename`、`__dirname` 和 `import.meta.url` 以及其依赖。将这些标识符用作变量名将会导致错误：
 
 ```js
 const __filename = "value"
-// will be transformed to
+// 将被转换为下面这样的错误结果
 const "path/vite.config.js" = "value"
 ```
 
@@ -96,6 +96,8 @@ export default defineConfig(async ({ command, mode }) => {
 ```
 
 ### Environment Variables {#environment-variables}
+
+环境变量可以像往常一样从 `process.env` 上获得。
 
 Vite 默认是不加载 `.env` 文件的，因为这些文件需要在执行完 Vite 配置后才能确定加载哪一个，举个例子，`root` 和 `envDir` 选项会影响加载行为。不过当你的确需要时，你可以使用 Vite 导出的 `loadEnv` 函数来加载指定的 `.env` 文件
 
