@@ -25,6 +25,7 @@ interface ViteHotContext {
   decline(): void
   invalidate(): void
 
+  // `InferCustomEventPayload` 提供 Vite 内置事件类型
   on<T extends string>(
     event: T,
     cb: (payload: InferCustomEventPayload<T>) => void
