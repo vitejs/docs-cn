@@ -15,7 +15,7 @@ async function createServer(inlineConfig?: InlineConfig): Promise<ViteDevServer>
 ```js
 const { createServer } = require('vite')
 
-;(async () => {
+(async () => {
   const server = await createServer({
     // 任何合法的用户配置选项，加上 `mode` 和 `configFile`
     configFile: false,
@@ -131,7 +131,7 @@ async function build(
 const path = require('path')
 const { build } = require('vite')
 
-;(async () => {
+(async () => {
   await build({
     root: path.resolve(__dirname, './project'),
     base: '/foo/',
@@ -159,7 +159,7 @@ async function preview(inlineConfig?: InlineConfig): Promise<PreviewServer>
 ```js
 const { preview } = require('vite')
 
-;(async () => {
+(async () => {
   const previewServer = await preview({
     // 任何有效的用户配置项，将加上 `mode` 和 `configFile`
     preview: {
