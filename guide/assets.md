@@ -114,6 +114,6 @@ const imgUrl = new URL(imagePath, import.meta.url).href
 如果你正在以服务端渲染模式使用 Vite 则此模式不支持，因为 `import.meta.url` 在浏览器和 Node.js 中有不同的语义。服务端的产物也无法预先确定客户端主机 URL。
 :::
 
-::: warning Esbuild target config is necessary
-This pattern needs esbuild target to be set to `es2020` or higher. `vite@2.x` use `es2019` as default target. Set [build-target](https://vitejs.dev/config/#build-target) and [optimizedeps.esbuildoptions.target](https://vitejs.dev/config/#optimizedeps-esbuildoptions) to `es2020` or higher if you intend to use this partten.
+::: warning 注意：esbuild 目标配置是必要的
+这种模式需要把 esbuild 构建目标设置为 `es2020` 或更高版本，`vite@2.x` 默认使用 `es2019` 作为构建目标，如果你打算使用这种模式请设置 [build-target](https://cn.vitejs.dev/config/#build-target) 和 [optimizedeps.esbuildoptions.target](https://cn.vitejs.dev/config/#optimizedeps-esbuildoptions)为 `es2020` 或更高版本
 :::
