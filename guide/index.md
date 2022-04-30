@@ -113,7 +113,11 @@ Vite 也支持多个 `.html` 作入口点的 [多页面应用模式](./build#mul
 
 ## 命令行界面 {#command-line-interface}
 
+<<<<<<< HEAD
 在安装了 Vite 的项目中，可以在 npm scripts 中使用 `vite` 可执行文件，或者直接使用 `npx vite` 运行它。下面是通过脚手架创建的 Vite 项目中默认的 npm scripts：
+=======
+In a project where Vite is installed, you can use the `vite` binary in your npm scripts, or run it directly with `npx vite`. Here are the default npm scripts in a scaffolded Vite project:
+>>>>>>> 08e225156ac4aaf2707306f055681b6796226d2a
 
 <!-- prettier-ignore -->
 ```json5

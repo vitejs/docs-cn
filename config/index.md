@@ -90,7 +90,11 @@ export default defineConfig(({ command, mode }) => {
 export default defineConfig(async ({ command, mode }) => {
   const data = await asyncFunction()
   return {
+<<<<<<< HEAD
     // 构建模式所需的特有配置
+=======
+    // vite config
+>>>>>>> 08e225156ac4aaf2707306f055681b6796226d2a
   }
 })
 ```
@@ -105,10 +109,21 @@ Vite 默认是不加载 `.env` 文件的，因为这些文件需要在执行完 
 import { defineConfig, loadEnv } from 'vite'
 
 export default defineConfig(({ command, mode }) => {
+<<<<<<< HEAD
   // 根据当前工作目录中的 `mode` 加载 .env 文件
   const env = loadEnv(mode, process.cwd())
   return {
     // 构建特定配置
+=======
+  // Load env file based on `mode` in the current working directory.
+  // Set the third parameter to '' to load all env regardless of the `VITE_` prefix.
+  const env = loadEnv(mode, process.cwd(), '')
+  return {
+    // vite config
+    define: {
+      __APP_ENV__: env.APP_ENV
+    }
+>>>>>>> 08e225156ac4aaf2707306f055681b6796226d2a
   }
 })
 ```
@@ -696,7 +711,7 @@ createServer()
 ```js
 export default defineConfig({
   server: {
-    origin: 'http://127.0.0.1:8080/'
+    origin: 'http://127.0.0.1:8080'
   }
 })
 ```
