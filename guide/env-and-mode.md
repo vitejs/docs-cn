@@ -81,7 +81,19 @@ interface ImportMeta {
 }
 ```
 
+<<<<<<< HEAD
 ## 模式 {#modes}
+=======
+If your code relies on types from browser environments such as [DOM](https://github.com/microsoft/TypeScript/blob/main/lib/lib.dom.d.ts) and [WebWorker](https://github.com/microsoft/TypeScript/blob/main/lib/lib.webworker.d.ts), you can update the [lib](https://www.typescriptlang.org/tsconfig#lib) field in `tsconfig.json`.
+
+```json
+{
+  "lib": ["WebWorker"]
+}
+```
+
+## Modes
+>>>>>>> 63ab1fd1b8567833457713bc04f04e32dfc2d536
 
 默认情况下，开发服务器 (`dev` 命令) 运行在 `development` (开发) 模式，而 `build` 命令则运行在 `production` (生产) 模式。
 

@@ -127,7 +127,8 @@ module.exports = defineConfig({
     lib: {
       entry: path.resolve(__dirname, 'lib/main.js'),
       name: 'MyLib',
-      fileName: (format) => `my-lib.${format}.js`
+      // the proper extensions will be added
+      fileName: 'my-lib'
     },
     rollupOptions: {
       // 确保外部化处理那些你不想打包进库的依赖
@@ -157,7 +158,7 @@ export { Foo, Bar }
 ```
 $ vite build
 building for production...
-[write] my-lib.es.js 0.08kb, brotli: 0.07kb
+[write] my-lib.es.mjs 0.08kb, brotli: 0.07kb
 [write] my-lib.umd.js 0.30kb, brotli: 0.16kb
 ```
 
@@ -168,10 +169,10 @@ building for production...
   "name": "my-lib",
   "files": ["dist"],
   "main": "./dist/my-lib.umd.js",
-  "module": "./dist/my-lib.es.js",
+  "module": "./dist/my-lib.es.mjs",
   "exports": {
     ".": {
-      "import": "./dist/my-lib.es.js",
+      "import": "./dist/my-lib.es.mjs",
       "require": "./dist/my-lib.umd.js"
     }
   }
