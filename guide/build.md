@@ -55,7 +55,7 @@ module.exports = defineConfig({
 })
 ```
 
-同时这个策略也被作为`splitVendorChunk({ cache: SplitVendorChunkCache })`工厂，在需要使用自定义逻辑时可以进行组合。在这种情况下确保在`cache.reset()`在`buildStart`（构建）前调用，保证构建时监听模式能够正常工作。
+同时这个策略也被作为 `splitVendorChunk({ cache: SplitVendorChunkCache })` 工厂函数，在需要使用自定义逻辑时可以进行组合。必须确保 `cache.reset()` 在 `buildStart` 阶段调用，以保证构建时监听模式能够正常工作。
 
 ## 文件变化时重新构建 {#rebuild-on-files-changs}
 
