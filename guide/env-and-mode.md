@@ -81,10 +81,7 @@ interface ImportMeta {
 }
 ```
 
-<<<<<<< HEAD
-## 模式 {#modes}
-=======
-If your code relies on types from browser environments such as [DOM](https://github.com/microsoft/TypeScript/blob/main/lib/lib.dom.d.ts) and [WebWorker](https://github.com/microsoft/TypeScript/blob/main/lib/lib.webworker.d.ts), you can update the [lib](https://www.typescriptlang.org/tsconfig#lib) field in `tsconfig.json`.
+如果你的代码依赖于浏览器环境的类型，比如 [DOM](https://github.com/microsoft/TypeScript/blob/main/lib/lib.dom.d.ts) 和 [WebWorker](https://github.com/microsoft/TypeScript/blob/main/lib/lib.webworker.d.ts)，你可以在 `tsconfig.json` 中修改 [lib](https://www.typescriptlang.org/tsconfig#lib) 字段来获取类型支持。
 
 ```json
 {
@@ -92,8 +89,7 @@ If your code relies on types from browser environments such as [DOM](https://git
 }
 ```
 
-## Modes
->>>>>>> 63ab1fd1b8567833457713bc04f04e32dfc2d536
+## 模式 {#modes}
 
 默认情况下，开发服务器 (`dev` 命令) 运行在 `development` (开发) 模式，而 `build` 命令则运行在 `production` (生产) 模式。
 
