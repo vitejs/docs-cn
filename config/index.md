@@ -104,7 +104,7 @@ import { defineConfig, loadEnv } from 'vite'
 
 export default defineConfig(({ command, mode }) => {
   // 根据当前工作目录中的 `mode` 加载 .env 文件
-  const env = loadEnv(mode, process.cwd())
+  const env = loadEnv(mode, process.cwd())  // 如果指定过 envDir,或者envPrefix， 需要在loadEnv处传入，如 loadEnv(mode, envDir, envPrefix)
   return {
     // 构建特定配置
   }
