@@ -90,12 +90,12 @@ export default defineConfig(({ command, mode }) => {
 export default defineConfig(async ({ command, mode }) => {
   const data = await asyncFunction()
   return {
-    // 构建模式所需的特有配置
+    // vite 配置
   }
 })
 ```
 
-### Environment Variables {#environment-variables}
+### 环境变量 {#environment-variables}
 
 环境变量可以像往常一样从 `process.env` 上获得。
 
@@ -106,9 +106,13 @@ import { defineConfig, loadEnv } from 'vite'
 
 export default defineConfig(({ command, mode }) => {
   // 根据当前工作目录中的 `mode` 加载 .env 文件
-  const env = loadEnv(mode, process.cwd())
+  // 设置第三个参数为 '' 可以加载所有环境变量，而不考虑 `VITE_` 前缀
+  const env = loadEnv(mode, process.cwd(), '')
   return {
-    // 构建特定配置
+    // vite 配置
+    define: {
+      __APP_ENV__: env.APP_ENV
+    }
   }
 })
 ```
@@ -155,7 +159,7 @@ export default defineConfig(({ command, mode }) => {
 
   - 为了与 [esbuild 的行为](https://esbuild.github.io/api/#define)保持一致，表达式必须为一个 JSON 对象（null、boolean、number、string、数组或对象），亦或是一个单独的标识符。
 
-  - 替换只会在匹配到周围是单词边界（`\b`）时执行。
+  - 只有当匹配的内容左右两边没有其他字母、数字、`_` 或 `$`，才会进行替换。
 
   ::: warning
   因为它是不经过任何语法分析，直接替换文本实现的，所以我们建议只对 CONSTANTS 使用 `define`。
@@ -233,7 +237,7 @@ export default defineConfig(({ command, mode }) => {
   {
     "exports": {
       ".": {
-        "import": "./index.esm.js",
+        "import": "./index.esm.mjs",
         "require": "./index.cjs.js"
       }
     }
@@ -696,7 +700,7 @@ createServer()
 ```js
 export default defineConfig({
   server: {
-    origin: 'http://127.0.0.1:8080/'
+    origin: 'http://127.0.0.1:8080'
   }
 })
 ```
@@ -1008,7 +1012,6 @@ export default defineConfig({
 
   - 忽略了 `external` 选项，请使用 Vite 的 `optimizeDeps.exclude` 选项
   - `plugins` 与 Vite 的 dep 插件合并
-  - `keepNames` 优级高于被废弃的 `optimizeDeps.keepNames`
 
 ## SSR 选项 {#ssr-options}
 
