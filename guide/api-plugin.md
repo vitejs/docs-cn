@@ -305,7 +305,33 @@ Vite 插件也可以提供钩子来服务于特定的 Vite 目标。这些钩子
 
   注意 `configureServer` 在运行生产版本时不会被调用，所以其他钩子需要防范它缺失。
 
+<<<<<<< HEAD
 ### `transformIndexHtml` {#transformindexhtml}
+=======
+### `configurePreviewServer`
+
+- **Type:** `(server: { middlewares: Connect.Server, httpServer: http.Server }) => (() => void) | void | Promise<(() => void) | void>`
+- **Kind:** `async`, `sequential`
+
+  Same as [`configureServer`](/guide/api-plugin.html#configureserver) but for the preview server. It provides the [connect](https://github.com/senchalabs/connect) server and its underlying [http server](https://nodejs.org/api/http.html). Similarly to `configureServer`, the `configurePreviewServer` hook is called before other middlewares are installed. If you want to inject a middleware **after** other middlewares, you can return a function from `configurePreviewServer`, which will be called after internal middlewares are installed:
+
+  ```js
+  const myPlugin = () => ({
+    name: 'configure-preview-server',
+    configurePreviewServer(server) {
+      // return a post hook that is called after other middlewares are
+      // installed
+      return () => {
+        server.middlewares.use((req, res, next) => {
+          // custom handle request...
+        })
+      }
+    }
+  })
+  ```
+
+### `transformIndexHtml`
+>>>>>>> 8ab716cb0a0d066c8604c649c1983f048b0185ce
 
 - **类型：** `IndexHtmlTransformHook | { enforce?: 'pre' | 'post', transform: IndexHtmlTransformHook }`
 - **种类：** `async`, `sequential`
