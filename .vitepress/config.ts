@@ -1,5 +1,6 @@
-// @ts-check
+import { defineConfig } from 'vitepress'
 
+<<<<<<< HEAD:.vitepress/config.js
 const pkg = require('../package.json')
 
 /**
@@ -13,6 +14,12 @@ module.exports = {
     ['link', { rel: 'icon', type: 'image/svg+xml', href: '/logo.svg' }],
     ['script', { src: 'https://cdn.wwads.cn/js/makemoney.js', async: '' }]
   ],
+=======
+export default defineConfig({
+  title: 'Vite',
+  description: 'Next Generation Frontend Tooling',
+  head: [['link', { rel: 'icon', type: 'image/svg+xml', href: '/logo.svg' }]],
+>>>>>>> fadb862c253db92f03a32dc105968f06769b1043:.vitepress/config.ts
   vue: {
     reactivityTransform: true
   },
@@ -65,7 +72,20 @@ module.exports = {
         ]
       },
       {
+<<<<<<< HEAD:.vitepress/config.js
         text: '多语言',
+=======
+        text: 'v3 (next)',
+        items: [
+          {
+            text: 'v2.x (stable)',
+            link: 'https://v2.vitejs.dev'
+          }
+        ]
+      },
+      {
+        text: 'Languages',
+>>>>>>> fadb862c253db92f03a32dc105968f06769b1043:.vitepress/config.ts
         items: [
           {
             text: 'English',
@@ -178,4 +198,4 @@ module.exports = {
       md.use(require('./markdown-it-custom-anchor'))
     }
   }
-}
+})
