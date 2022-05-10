@@ -90,23 +90,29 @@ export default defineConfig(({ command, mode }) => {
 export default defineConfig(async ({ command, mode }) => {
   const data = await asyncFunction()
   return {
-    // 构建模式所需的特有配置
+    // vite 配置
   }
 })
 ```
 
-### Environment Variables {#environment-variables}
+### 环境变量 {#environment-variables}
 
-Vite 默认是不加载 `.env` 文件的，因为这些文件需要在执行完 Vite 配置后才能确定加载哪一个，举个例子，`root` 和 `envDir` 选项会影响加载行为。不过当你的确需要时，你可以使用 Vite 导出的 `loadEnv` 函数来加载指定的 `.env` 文件
+环境变量通常可以从 `process.env` 获得。
+
+注意 Vite 默认是不加载 `.env` 文件的，因为这些文件需要在执行完 Vite 配置后才能确定加载哪一个，举个例子，`root` 和 `envDir` 选项会影响加载行为。不过当你的确需要时，你可以使用 Vite 导出的 `loadEnv` 函数来加载指定的 `.env` 文件
 
 ```js
 import { defineConfig, loadEnv } from 'vite'
 
 export default defineConfig(({ command, mode }) => {
   // 根据当前工作目录中的 `mode` 加载 .env 文件
-  const env = loadEnv(mode, process.cwd())
+  // 设置第三个参数为 '' 来加载所有环境变量，而不管是否有 `VITE_` 前缀。
+  const env = loadEnv(mode, process.cwd(), '')
   return {
-    // 构建特定配置
+    // vite config
+    define: {
+      __APP_ENV__: env.APP_ENV
+    }
   }
 })
 ```
@@ -298,7 +304,11 @@ export default defineConfig(({ command, mode }) => {
 
 - **类型：** `string | (postcss.ProcessOptions & { plugins?: postcss.Plugin[] })`
 
-  内联的 PostCSS 配置（格式同 `postcss.config.js`），或者一个（默认基于项目根目录的）自定义的 PostCSS 配置路径。其路径搜索是通过 [postcss-load-config](https://github.com/postcss/postcss-load-config) 实现的，并且只加载支持的配置文件名称。
+  内联的 PostCSS 配置（格式同 `postcss.config.js`），或者一个（默认基于项目根目录的）自定义的 PostCSS 配置路径。
+
+  对内联的 POSTCSS 配置，它期望接收与 `postcss.config.js` 一致的格式。但对于 `plugins` 属性有些特别，只接收使用 [数组格式](https://github.com/postcss/postcss-load-config/blob/main/README.md#array)。
+
+  搜索是使用 [postcss-load-config](https://github.com/postcss/postcss-load-config) 完成的，只有被支持的文件名才会被加载。
 
   注意：如果提供了该内联配置，Vite 将不会搜索其他 PostCSS 配置源。
 
@@ -694,7 +704,7 @@ createServer()
 ```js
 export default defineConfig({
   server: {
-    origin: 'http://127.0.0.1:8080/'
+    origin: 'http://127.0.0.1:8080'
   }
 })
 ```
