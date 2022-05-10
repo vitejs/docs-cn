@@ -305,33 +305,28 @@ Vite 插件也可以提供钩子来服务于特定的 Vite 目标。这些钩子
 
   注意 `configureServer` 在运行生产版本时不会被调用，所以其他钩子需要防范它缺失。
 
-<<<<<<< HEAD
-### `transformIndexHtml` {#transformindexhtml}
-=======
 ### `configurePreviewServer`
 
-- **Type:** `(server: { middlewares: Connect.Server, httpServer: http.Server }) => (() => void) | void | Promise<(() => void) | void>`
-- **Kind:** `async`, `sequential`
+- **类型：** `(server: { middlewares: Connect.Server, httpServer: http.Server }) => (() => void) | void | Promise<(() => void) | void>`
+- **种类：** `async`, `sequential`
 
-  Same as [`configureServer`](/guide/api-plugin.html#configureserver) but for the preview server. It provides the [connect](https://github.com/senchalabs/connect) server and its underlying [http server](https://nodejs.org/api/http.html). Similarly to `configureServer`, the `configurePreviewServer` hook is called before other middlewares are installed. If you want to inject a middleware **after** other middlewares, you can return a function from `configurePreviewServer`, which will be called after internal middlewares are installed:
+  与 [`configureServer`](/guide/api-plugin.html#configureserver) 相同但是作为预览服务器。。它提供了一个 [connect](https://github.com/senchalabs/connect) 服务器实例及其底层的 [http server](https://nodejs.org/api/http.html)。与 `configureServer` 类似，`configurePreviewServer` 这个钩子也是在其他中间件安装前被调用的。如果你想要在其他中间件 **之后** 安装一个插件，你可以从 `configurePreviewServer` 返回一个函数，它将会在内部中间件被安装之后再调用：
 
   ```js
   const myPlugin = () => ({
     name: 'configure-preview-server',
     configurePreviewServer(server) {
-      // return a post hook that is called after other middlewares are
-      // installed
+      // 返回一个钩子，会在其他中间件安装完成后调用
       return () => {
         server.middlewares.use((req, res, next) => {
-          // custom handle request...
+          // 自定义处理请求 ...
         })
       }
     }
   })
   ```
 
-### `transformIndexHtml`
->>>>>>> fadb862c253db92f03a32dc105968f06769b1043
+### `transformIndexHtml` {#transformindexhtml}
 
 - **类型：** `IndexHtmlTransformHook | { enforce?: 'pre' | 'post', transform: IndexHtmlTransformHook }`
 - **种类：** `async`, `sequential`

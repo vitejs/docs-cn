@@ -1,12 +1,6 @@
 import { defineConfig } from 'vitepress'
 
-<<<<<<< HEAD:.vitepress/config.js
-const pkg = require('../package.json')
-
-/**
- * @type {import('vitepress').UserConfig}
- */
-module.exports = {
+export default defineConfig({
   title: 'Vite 官方中文文档',
   lang: 'zh-CN',
   description: '下一代前端开发与构建工具',
@@ -14,17 +8,11 @@ module.exports = {
     ['link', { rel: 'icon', type: 'image/svg+xml', href: '/logo.svg' }],
     ['script', { src: 'https://cdn.wwads.cn/js/makemoney.js', async: '' }]
   ],
-=======
-export default defineConfig({
-  title: 'Vite',
-  description: 'Next Generation Frontend Tooling',
-  head: [['link', { rel: 'icon', type: 'image/svg+xml', href: '/logo.svg' }]],
->>>>>>> fadb862c253db92f03a32dc105968f06769b1043:.vitepress/config.ts
   vue: {
     reactivityTransform: true
   },
   themeConfig: {
-    repo: pkg.repository,
+    repo: 'vitejs/vite',
     logo: '/logo.svg',
     docsBranch: 'main',
     editLinks: true,
@@ -72,20 +60,16 @@ export default defineConfig({
         ]
       },
       {
-<<<<<<< HEAD:.vitepress/config.js
-        text: '多语言',
-=======
         text: 'v3 (next)',
         items: [
           {
-            text: 'v2.x (stable)',
+            text: 'v2.x（稳定版）',
             link: 'https://v2.vitejs.dev'
           }
         ]
       },
       {
-        text: 'Languages',
->>>>>>> fadb862c253db92f03a32dc105968f06769b1043:.vitepress/config.ts
+        text: '多语言',
         items: [
           {
             text: 'English',

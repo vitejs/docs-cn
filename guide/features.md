@@ -282,11 +282,7 @@ for (const path in modules) {
 }
 ```
 
-<<<<<<< HEAD
-匹配到的文件默认是懒加载的，通过动态导入实现，并会在构建时分离为独立的 chunk。如果你倾向于直接引入所有的模块（例如依赖于这些模块中的副作用首先被应用），你可以使用 `import.meta.globEager` 代替：
-=======
-Matched files are by default lazy-loaded via dynamic import and will be split into separate chunks during build. If you'd rather import all the modules directly (e.g. relying on side-effects in these modules to be applied first), you can pass `{ eager: true }` as the second argument:
->>>>>>> fadb862c253db92f03a32dc105968f06769b1043
+匹配到的文件默认是懒加载的，通过动态导入实现，并会在构建时分离为独立的 chunk。如果你倾向于直接引入所有的模块（例如依赖于这些模块中的副作用首先被应用），你可以传入 `{ eagar: true }` 作为第二个参数：
 
 ```js
 const modules = import.meta.glob('./dir/*.js', { eager: true })
@@ -304,13 +300,9 @@ const modules = {
 }
 ```
 
-<<<<<<< HEAD
-`import.meta.glob` 和 `import.meta.globEager` 都支持以字符串形式导入文件，类似于 [以字符串形式导入资源](https://vitejs.dev/guide/assets.html#importing-asset-as-string)。在这里，我们使用了 [Import Reflection](https://github.com/tc39/proposal-import-reflection) 语法对导入进行断言：
-=======
-### Glob Import As
+### Glob 导入形式 {#glob-import-as}
 
-`import.meta.glob` also supports importing files as strings (similar to [Importing Asset as String](https://vitejs.dev/guide/assets.html#importing-asset-as-string)) with the [Import Reflection](https://github.com/tc39/proposal-import-reflection) syntax:
->>>>>>> fadb862c253db92f03a32dc105968f06769b1043
+`import.meta.glob` 都支持以字符串形式导入文件，类似于 [以字符串形式导入资源](https://vitejs.dev/guide/assets.html#importing-asset-as-string)。在这里，我们使用了 [Import Reflection](https://github.com/tc39/proposal-import-reflection) 语法对导入进行断言：
 
 ```js
 const modules = import.meta.glob('./dir/*.js', { as: 'raw' })
@@ -326,64 +318,55 @@ const modules = {
 }
 ```
 
-<<<<<<< HEAD
-请注意：
+`{ as: 'url' }` 还支持将资源作为URL加载。
 
-- 这只是一个 Vite 独有的功能而不是一个 Web 或 ES 标准
-- 该 Glob 模式会被当成导入标识符：必须是相对路径（以 `./` 开头）或绝对路径（以 `/` 开头，相对于项目根目录解析）或一个别名路径（请看 [`resolve.alias` 选项](/config/#resolve-alias))。
-- Glob 匹配是使用 `fast-glob` 来实现的 —— 阅读它的文档来查阅 [支持的 Glob 模式](https://github.com/mrmlnc/fast-glob#pattern-syntax)。
-- 你还需注意，glob 的导入不接受变量，你应直接传递字符串模式。
-- glob 模式不能包含与包裹引号相同的引号字符串（其中包括 `'`，`"`，`` ` ``），例如，如果你想实现 `'/Tom\'s files/**'` 的效果，请使用 `"/Tom's files/**"` 代替。
-=======
-`{ as: 'url' }` is also supported for loading assets as URLs.
+### 多个匹配模式 {#multiple-patterns}
 
-### Multiple Patterns
-
-The first argument can be an array of globs, for example
+第一个参数可以是一个 glob 数组，例如：
 
 ```js
 const modules = import.meta.glob(['./dir/*.js', './another/*.js'])
 ```
 
-### Negative Patterns
+### 反面匹配模式 {#negative-patterns}
 
-Negative glob patterns are also supported (prefixed with `!`). To ignore some files from the result, you can add exclude glob patterns to the first argument:
+同样也支持反面 glob 匹配模式（以 `!` 作为前缀）。若要忽略结果中的一些文件，你可以添加“排除匹配模式”作为第一个参数：
 
 ```js
 const modules = import.meta.glob(['./dir/*.js', '!**/bar.js'])
 ```
 
 ```js
-// code produced by vite
+// vite 生成的代码
 const modules = {
   './dir/foo.js': () => import('./dir/foo.js')
 }
 ```
 
-#### Named Imports
+#### 具名导入 {#named-imports}
 
-It's possible to only import parts of the modules with the `import` options.
+也可能你只想要导入模块中的部分内容，那么可以利用 `import` 选项。
 
 ```ts
 const modules = import.meta.glob('./dir/*.js', { import: 'setup' })
 ```
 
 ```ts
-// code produced by vite
+// vite 生成的代码
 const modules = {
   './dir/foo.js': () => import('./dir/foo.js').then((m) => m.setup),
   './dir/bar.js': () => import('./dir/bar.js').then((m) => m.setup)
 }
 ```
 
-When combined with `eager` it's even possible to have tree-shaking enabled for those modules.
+当与 `eager` 一同存在时，甚至可能可以对这些模块进行 tree-shaking。
 
 ```ts
 const modules = import.meta.glob('./dir/*.js', { import: 'setup', eager: true })
 ```
 
 ```ts
-// code produced by vite:
+// vite 生成的代码
 import { setup as __glob__0_0 } from './dir/foo.js'
 import { setup as __glob__0_1 } from './dir/bar.js'
 const modules = {
@@ -392,7 +375,7 @@ const modules = {
 }
 ```
 
-Set `import` to `default` to import the default export.
+设置 `import` 为 `default` 可以加载默认导出。
 
 ```ts
 const modules = import.meta.glob('./dir/*.js', {
@@ -402,7 +385,7 @@ const modules = import.meta.glob('./dir/*.js', {
 ```
 
 ```ts
-// code produced by vite:
+// vite 生成的代码
 import __glob__0_0 from './dir/foo.js'
 import __glob__0_1 from './dir/bar.js'
 const modules = {
@@ -411,9 +394,9 @@ const modules = {
 }
 ```
 
-#### Custom Queries
+#### 自定义查询 {#custom-queries}
 
-You can also use the `query` option to provide custom queries to imports for other plugins to consume.
+你也可以使用 `query` 选项来提供对导入的自定义查询，以供其他插件使用。
 
 ```ts
 const modules = import.meta.glob('./dir/*.js', {
@@ -422,7 +405,7 @@ const modules = import.meta.glob('./dir/*.js', {
 ```
 
 ```ts
-// code produced by vite:
+// vite 生成的代码
 const modules = {
   './dir/foo.js': () =>
     import('./dir/foo.js?foo=bar&bar=true').then((m) => m.setup),
@@ -431,15 +414,14 @@ const modules = {
 }
 ```
 
-### Glob Import Caveats
+### Glob 导入注意事项
 
-Note that:
+请注意：
 
-- This is a Vite-only feature and is not a web or ES standard.
-- The glob patterns are treated like import specifiers: they must be either relative (start with `./`) or absolute (start with `/`, resolved relative to project root) or an alias path (see [`resolve.alias` option](/config/#resolve-alias)).
-- The glob matching is done via [`fast-glob`](https://github.com/mrmlnc/fast-glob) - check out its documentation for [supported glob patterns](https://github.com/mrmlnc/fast-glob#pattern-syntax).
-- You should also be aware that all the arguments in the `import.meta.glob` must be **passed as literals**. You can NOT use variables or expressions in them.
->>>>>>> fadb862c253db92f03a32dc105968f06769b1043
+- 这只是一个 Vite 独有的功能而不是一个 Web 或 ES 标准
+- 该 Glob 模式会被当成导入标识符：必须是相对路径（以 `./` 开头）或绝对路径（以 `/` 开头，相对于项目根目录解析）或一个别名路径（请看 [`resolve.alias` 选项](/config/#resolve-alias))。
+- Glob 匹配是使用 [fast-glob](https://github.com/mrmlnc/fast-glob) 来实现的 —— 阅读它的文档来查阅 [支持的 Glob 模式](https://github.com/mrmlnc/fast-glob#pattern-syntax)。
+- 你还需注意，所有 `import.meta.glob` 的参数都必须以字面量传入。你 **不** 可以在其中使用变量或表达式。
 
 ## WebAssembly {#webassembly}
 

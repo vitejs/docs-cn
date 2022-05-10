@@ -23,13 +23,8 @@ export default {
 vite --config my-config.js
 ```
 
-<<<<<<< HEAD
 ::: tip 注意
-Vite 会替换配置文件中的 `__filename`、`__dirname` 和 `import.meta.url` 以及其依赖。将这些标识符用作变量名将会导致错误：
-=======
-::: tip NOTE
-Vite will replace `__filename`, `__dirname`, and `import.meta.url` in config files and its deps. Using these as variable names or passing as a parameter to a function with string double quote (example `console.log`) will result in an error:
->>>>>>> fadb862c253db92f03a32dc105968f06769b1043
+Vite 会替换配置文件中的 `__filename`、`__dirname` 和 `import.meta.url` 以及其依赖。若将这些标识符用作变量名或者将其用字符串双引号包裹、作为参数传入函数（如 `console.log`）中，会导致错误：
 
 ```js
 const __filename = "value"
