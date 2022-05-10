@@ -181,7 +181,25 @@ export default defineConfig(({ command, mode }) => {
 
   :::
 
+<<<<<<< HEAD
 ### plugins {#plugins}
+=======
+  ::: tip NOTE
+  Since dev and build implement `define` differently, we should avoid some use cases to avoid inconsistency.
+
+  Example:
+
+  ```js
+  const obj = {
+    __NAME__, // Don't define object shorthand property names
+    __KEY__: value // Don't define object key
+  }
+  ```
+
+  :::
+
+### plugins
+>>>>>>> 8a24e11992e7b1f70ea68ba1a017bc864bf98067
 
 - **类型：** `(Plugin | Plugin[])[]`
 
@@ -495,7 +513,13 @@ export default defineConfig(({ command, mode }) => {
 
   使用 [`http-proxy`](https://github.com/http-party/node-http-proxy)。完整选项详见 [此处](https://github.com/http-party/node-http-proxy#options).
 
+<<<<<<< HEAD
   **示例：**
+=======
+  In some cases, you might also want to configure the underlying dev server (e.g. to add custom middlewares to the internal [connect](https://github.com/senchalabs/connect) app). In order to do that, you need to write your own [plugin](/guide/using-plugins.html) and use [configureServer](/guide/api-plugin.html#configureserver) function.
+
+  **Example:**
+>>>>>>> 8a24e11992e7b1f70ea68ba1a017bc864bf98067
 
   ```js
   export default defineConfig({
