@@ -1,11 +1,6 @@
-// @ts-check
+import { defineConfig } from 'vitepress'
 
-const pkg = require('../package.json')
-
-/**
- * @type {import('vitepress').UserConfig}
- */
-module.exports = {
+export default defineConfig({
   title: 'Vite 官方中文文档',
   lang: 'zh-CN',
   description: '下一代前端开发与构建工具',
@@ -17,7 +12,7 @@ module.exports = {
     reactivityTransform: true
   },
   themeConfig: {
-    repo: pkg.repository,
+    repo: 'vitejs/vite',
     logo: '/logo.svg',
     docsBranch: 'main',
     editLinks: true,
@@ -61,6 +56,15 @@ module.exports = {
           {
             text: '更新日志',
             link: 'https://github.com/vitejs/vite/blob/main/packages/vite/CHANGELOG.md'
+          }
+        ]
+      },
+      {
+        text: 'v3 (next)',
+        items: [
+          {
+            text: 'v2.x（稳定版）',
+            link: 'https://v2.vitejs.dev'
           }
         ]
       },
@@ -178,4 +182,4 @@ module.exports = {
       md.use(require('./markdown-it-custom-anchor'))
     }
   }
-}
+})
