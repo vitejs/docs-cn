@@ -1,42 +1,42 @@
 // @ts-check
 
+const pkg = require('../package.json')
+
 /**
  * @type {import('vitepress').UserConfig}
  */
 module.exports = {
-  title: 'Vite',
-  description: 'Next Generation Frontend Tooling',
-  head: [['link', { rel: 'icon', type: 'image/svg+xml', href: '/logo.svg' }]],
+  title: 'Vite 官方中文文档',
+  lang: 'zh-CN',
+  description: '下一代前端开发与构建工具',
+  head: [
+    ['link', { rel: 'icon', type: 'image/svg+xml', href: '/logo.svg' }],
+    ['script', { src: 'https://cdn.wwads.cn/js/makemoney.js', async: '' }]
+  ],
   vue: {
     reactivityTransform: true
   },
   themeConfig: {
-    repo: 'vitejs/vite',
+    repo: pkg.repository,
     logo: '/logo.svg',
-    docsDir: 'docs',
     docsBranch: 'main',
     editLinks: true,
-    editLinkText: 'Suggest changes to this page',
+    editLinkText: '为此页提供修改建议',
 
     algolia: {
       apiKey: 'b573aa848fd57fb47d693b531297403c',
       indexName: 'vitejs',
       searchParameters: {
-        facetFilters: ['tags:en']
+        facetFilters: ['tags:cn']
       }
     },
 
-    carbonAds: {
-      carbon: 'CEBIEK3N',
-      placement: 'vitejsdev'
-    },
-
     nav: [
-      { text: 'Guide', link: '/guide/' },
-      { text: 'Config', link: '/config/' },
-      { text: 'Plugins', link: '/plugins/' },
+      { text: '指引', link: '/guide/' },
+      { text: '配置', link: '/config/' },
+      { text: '插件', link: '/plugins/' },
       {
-        text: 'Links',
+        text: '相关链接',
         items: [
           {
             text: 'Twitter',
@@ -51,21 +51,21 @@ module.exports = {
             link: 'https://github.com/vitejs/awesome-vite'
           },
           {
-            text: 'DEV Community',
+            text: 'Dev.to 社区',
             link: 'https://dev.to/t/vite'
           },
           {
-            text: 'Rollup Plugins Compat',
+            text: 'Rollup 插件兼容',
             link: 'https://vite-rollup-plugins.patak.dev/'
           },
           {
-            text: 'Changelog',
+            text: '更新日志',
             link: 'https://github.com/vitejs/vite/blob/main/packages/vite/CHANGELOG.md'
           }
         ]
       },
       {
-        text: 'Languages',
+        text: '多语言',
         items: [
           {
             text: 'English',
@@ -89,67 +89,67 @@ module.exports = {
       // catch-all fallback
       '/': [
         {
-          text: 'Guide',
+          text: '指引',
           children: [
             {
-              text: 'Why Vite',
+              text: '为什么选 Vite',
               link: '/guide/why'
             },
             {
-              text: 'Getting Started',
+              text: '开始',
               link: '/guide/'
             },
             {
-              text: 'Features',
+              text: '功能',
               link: '/guide/features'
             },
             {
-              text: 'Using Plugins',
+              text: '使用插件',
               link: '/guide/using-plugins'
             },
             {
-              text: 'Dependency Pre-Bundling',
+              text: '依赖预构建',
               link: '/guide/dep-pre-bundling'
             },
             {
-              text: 'Static Asset Handling',
+              text: '静态资源处理',
               link: '/guide/assets'
             },
             {
-              text: 'Building for Production',
+              text: '构建生产版本',
               link: '/guide/build'
             },
             {
-              text: 'Deploying a Static Site',
+              text: '部署静态站点',
               link: '/guide/static-deploy'
             },
             {
-              text: 'Env Variables and Modes',
+              text: '环境变量与模式',
               link: '/guide/env-and-mode'
             },
             {
-              text: 'Server-Side Rendering (SSR)',
+              text: '服务端渲染（SSR）',
               link: '/guide/ssr'
             },
             {
-              text: 'Backend Integration',
+              text: '后端集成',
               link: '/guide/backend-integration'
             },
             {
-              text: 'Comparisons',
+              text: '比较',
               link: '/guide/comparisons'
             },
             {
-              text: 'Migration from v1',
+              text: '从 v1 迁移',
               link: '/guide/migration'
             }
           ]
         },
         {
-          text: 'APIs',
+          text: 'API',
           children: [
             {
-              text: 'Plugin API',
+              text: '插件 API',
               link: '/guide/api-plugin'
             },
             {
@@ -161,12 +161,21 @@ module.exports = {
               link: '/guide/api-javascript'
             },
             {
-              text: 'Config Reference',
+              text: '配置参考',
               link: '/config/'
             }
           ]
         }
       ]
+    }
+  },
+
+  markdown: {
+    anchor: {
+      renderPermalink: require('./render-perma-link')
+    },
+    config: (md) => {
+      md.use(require('./markdown-it-custom-anchor'))
     }
   }
 }

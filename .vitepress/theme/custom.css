@@ -38,3 +38,51 @@
 #play-vite-audio img {
   opacity: 0.8;
 }
+
+/* docs-cn specific */
+.cn-footnote {
+  margin-top: 20px;
+}
+
+.cn-footnote .title {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.release-tag {
+  font-size: 20px;
+  font-weight: bold;
+  display: inline-block;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 6px;
+  margin-left: 6px;
+  background: var(--c-brand);
+  color: white;
+  border-radius: 10px;
+}
+
+#wwads-container {
+  position: relative;
+  float: right;
+  z-index: 9;
+  margin: 0 0 16px 16px;
+}
+
+#wwads-container .wwads-text {
+  font-size: 12px;
+}
+
+.page .container .content {
+  clear: none !important;
+}
+
+@media (min-width: 1368px) {
+  #wwads-container {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    margin: 0;
+  }
+}

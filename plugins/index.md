@@ -1,33 +1,33 @@
-# Plugins
+# 插件 {#plugins}
 
-:::tip NOTE
-Vite aims to provide out-of-the-box support for common web development patterns. Before searching for a Vite or Compatible Rollup plugin, check out the [Features Guide](../guide/features.md). A lot of the cases where a plugin would be needed in a Rollup project are already covered in Vite.
+:::tip 注意
+Vite 旨在为常见的 web 开发工作提供开箱即用的支持。在搜索一个 Vite 或 Rollup 兼容插件之前，请先查看 [功能指引](../guide/features.md)。很多场景下，在 Rollup 项目中需要添加插件，而在 Vite 中已经内建支持了。
 :::
 
-Check out [Using Plugins](../guide/using-plugins) for information on how to use plugins.
+查看 [使用插件](../guide/using-plugins) 一章获取如何插件使用方式的更多信息。
 
-## Official Plugins
+## 官方插件 {#official-plugins}
 
-### [@vitejs/plugin-vue](https://github.com/vitejs/vite/tree/main/packages/plugin-vue)
+### [@vitejs/plugin-vue](https://github.com/vitejs/vite/tree/main/packages/plugin-vue) {#vitejsplugin-vue}
 
-- Provides Vue 3 Single File Components support.
+- 提供 Vue 3 单文件组件支持
 
-### [@vitejs/plugin-vue-jsx](https://github.com/vitejs/vite/tree/main/packages/plugin-vue-jsx)
+### [@vitejs/plugin-vue-jsx](https://github.com/vitejs/vite/tree/main/packages/plugin-vue-jsx) {#vitejsplugin-vue-jsx}
 
-- Provides Vue 3 JSX support (via [dedicated Babel transform](https://github.com/vuejs/jsx-next)).
+- 提供 Vue 3 JSX 支持（通过 [专用的 Babel 转换插件](https://github.com/vuejs/jsx-next)）。
 
-### [@vitejs/plugin-react](https://github.com/vitejs/vite/tree/main/packages/plugin-react)
+### [@vitejs/plugin-react](https://github.com/vitejs/vite/tree/main/packages/plugin-react) {#vitejsplugin-react}
 
-- Provides all-in-one React Support.
+- 提供完整的 React 支持
 
-### [@vitejs/plugin-legacy](https://github.com/vitejs/vite/tree/main/packages/plugin-legacy)
+### [@vitejs/plugin-legacy](https://github.com/vitejs/vite/tree/main/packages/plugin-legacy) {#vitejsplugin-legacy}
 
-- Provides legacy browsers support for the production build.
+- 为打包后的文件提供传统浏览器兼容性支持
 
-## Community Plugins
+## 社区插件 {#community-plugins}
 
-Check out [awesome-vite](https://github.com/vitejs/awesome-vite#plugins) - you can also submit a PR to list your plugins there.
+> 查看 [awesome-vite](https://github.com/vitejs/awesome-vite#plugins) - 你也可以通过 PR 的方式将你的插件添加到此列表中。
 
-## Rollup Plugins
+## Rollup 插件 {#rollup-plugins}
 
-[Vite plugins](../guide/api-plugin) are an extension of Rollup's plugin interface. Check out the [Rollup Plugin Compatibility section](../guide/api-plugin#rollup-plugin-compatibility) for more information.
+[Vite 插件](../guide/api-plugin) 是 Rollup 插件接口的一种扩展。查看 [Rollup 插件兼容性章节](../guide/api-plugin#rollup-plugin-compatibility) 获取更多信息。
