@@ -181,7 +181,25 @@ export default defineConfig(({ command, mode }) => {
 
   :::
 
+<<<<<<< HEAD
 ### plugins {#plugins}
+=======
+  ::: tip NOTE
+  Since dev and build implement `define` differently, we should avoid some use cases to avoid inconsistency.
+
+  Example:
+
+  ```js
+  const obj = {
+    __NAME__, // Don't define object shorthand property names
+    __KEY__: value // Don't define object key
+  }
+  ```
+
+  :::
+
+### plugins
+>>>>>>> c89dc2f415a20b531ef662f44731eeb70ac5934c
 
 - **类型：** `(Plugin | Plugin[])[]`
 
@@ -495,7 +513,13 @@ export default defineConfig(({ command, mode }) => {
 
   使用 [`http-proxy`](https://github.com/http-party/node-http-proxy)。完整选项详见 [此处](https://github.com/http-party/node-http-proxy#options).
 
+<<<<<<< HEAD
   **示例：**
+=======
+  In some cases, you might also want to configure the underlying dev server (e.g. to add custom middlewares to the internal [connect](https://github.com/senchalabs/connect) app). In order to do that, you need to write your own [plugin](/guide/using-plugins.html) and use [configureServer](/guide/api-plugin.html#configureserver) function.
+
+  **Example:**
+>>>>>>> c89dc2f415a20b531ef662f44731eeb70ac5934c
 
   ```js
   export default defineConfig({
@@ -811,7 +835,12 @@ export default defineConfig({
 
 ### build.dynamicImportVarsOptions {#build-dynamicimportvarsoptions}
 
+<<<<<<< HEAD
 - **类型：** [`RollupDynamicImportVarsOptions`](https://github.com/rollup/plugins/tree/master/packages/dynamic-import-vars#options)
+=======
+- **Type:** [`RollupDynamicImportVarsOptions`](https://github.com/rollup/plugins/tree/master/packages/dynamic-import-vars#options)
+- **Related:** [Dynamic Import](/guide/features#dynamic-import)
+>>>>>>> c89dc2f415a20b531ef662f44731eeb70ac5934c
 
   传递给 [@rollup/plugin-dynamic-import-vars](https://github.com/rollup/plugins/tree/master/packages/dynamic-import-vars) 的选项。
 

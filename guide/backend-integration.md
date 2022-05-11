@@ -36,7 +36,16 @@
    <script type="module" src="http://localhost:3000/@vite/client"></script>
    ```
 
+<<<<<<< HEAD
    还要确保服务器配置为提供 Vite 工作目录中的静态资源，否则图片等资源将无法正确加载。
+=======
+   In order to properly serve assets, you have two options:
+
+   - Make sure the server is configured to proxy static assets requests to the Vite server
+   - Set [`server.origin`](https://vitejs.dev/config/#server-origin) so that generated asset URLs will be resolved using the back-end server URL instead of a relative path
+
+   This is needed for assets such as images to load properly.
+>>>>>>> c89dc2f415a20b531ef662f44731eeb70ac5934c
 
    如果你正使用 `@vitejs/plugin-react` 配合 React，你还需要在上述脚本前添加下面这个，因为插件不能修改你正在服务的 HTML：
 

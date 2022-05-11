@@ -423,7 +423,21 @@ const modules = {
 - Glob 匹配是使用 [fast-glob](https://github.com/mrmlnc/fast-glob) 来实现的 —— 阅读它的文档来查阅 [支持的 Glob 模式](https://github.com/mrmlnc/fast-glob#pattern-syntax)。
 - 你还需注意，所有 `import.meta.glob` 的参数都必须以字面量传入。你 **不** 可以在其中使用变量或表达式。
 
+<<<<<<< HEAD
 ## WebAssembly {#webassembly}
+=======
+## Dynamic Import
+
+Similar to [glob import](#glob-import), Vite also supports dynamic import with variables.
+
+```ts
+const module = await import(`./dir/${file}.js`)
+```
+
+Note that variables only represent file names one level deep. If `file` is `'foo/bar'`, the import would fail. For more advanced usage, you can use the [glob import](#glob-import) feature.
+
+## WebAssembly
+>>>>>>> c89dc2f415a20b531ef662f44731eeb70ac5934c
 
 预编译的 `.wasm` 文件可以直接被导入 —— 默认导出一个函数，返回值为所导出 wasm 实例对象的 Promise：
 
