@@ -181,7 +181,25 @@ export default defineConfig(({ command, mode }) => {
 
   :::
 
+<<<<<<< HEAD
 ### plugins {#plugins}
+=======
+  ::: tip NOTE
+  Since dev and build implement `define` differently, we should avoid some use cases to avoid inconsistency.
+
+  Example:
+
+  ```js
+  const obj = {
+    __NAME__, // Don't define object shorthand property names
+    __KEY__: value // Don't define object key
+  }
+  ```
+
+  :::
+
+### plugins
+>>>>>>> e75ae0f30ef98f660aac1c4cafefc1baba84bc47
 
 - **类型：** `(Plugin | Plugin[])[]`
 
@@ -455,7 +473,12 @@ export default defineConfig(({ command, mode }) => {
 - **类型：** `number`
 - **默认值：** `3000`
 
+<<<<<<< HEAD
   指定开发服务器端口。注意：如果端口已经被使用，Vite 会自动尝试下一个可用的端口，所以这可能不是开发服务器最终监听的实际端口。
+=======
+- **Type:** `number`
+- **Default:** `5173`
+>>>>>>> e75ae0f30ef98f660aac1c4cafefc1baba84bc47
 
 ### server.strictPort {#server-strictport}
 
@@ -495,7 +518,13 @@ export default defineConfig(({ command, mode }) => {
 
   使用 [`http-proxy`](https://github.com/http-party/node-http-proxy)。完整选项详见 [此处](https://github.com/http-party/node-http-proxy#options).
 
+<<<<<<< HEAD
   **示例：**
+=======
+  In some cases, you might also want to configure the underlying dev server (e.g. to add custom middlewares to the internal [connect](https://github.com/senchalabs/connect) app). In order to do that, you need to write your own [plugin](/guide/using-plugins.html) and use [configureServer](/guide/api-plugin.html#configureserver) function.
+
+  **Example:**
+>>>>>>> e75ae0f30ef98f660aac1c4cafefc1baba84bc47
 
   ```js
   export default defineConfig({
@@ -525,7 +554,7 @@ export default defineConfig(({ command, mode }) => {
         },
         // Proxying websockets or socket.io
         '/socket.io': {
-          target: 'ws://localhost:3000',
+          target: 'ws://localhost:5173',
           ws: true
         }
       }
@@ -719,8 +748,13 @@ export default defineConfig({
 
   另一个特殊值是 “esnext” —— 即假设有原生动态导入支持，并且将会转译得尽可能小：
 
+<<<<<<< HEAD
   - 如果 [`build.minify`](#build-minify) 选项为 `'terser'`， `'esnext'` 将会强制降级为 `'es2019'`。
   - 其他情况下将完全不会执行转译。
+=======
+  - If the [`build.minify`](#build-minify) option is `'terser'`, `'esnext'` will be forced down to `'es2021'`.
+  - In other cases, it will perform no transpilation at all.
+>>>>>>> e75ae0f30ef98f660aac1c4cafefc1baba84bc47
 
   转换过程将会由 esbuild 执行，并且此值应该是一个合法的 [esbuild 目标选项](https://esbuild.github.io/api/#target)。自定义目标也可以是一个 ES 版本（例如：`es2015`）、一个浏览器版本（例如：`chrome58`）或是多个目标组成的一个数组。
 
@@ -811,7 +845,12 @@ export default defineConfig({
 
 ### build.dynamicImportVarsOptions {#build-dynamicimportvarsoptions}
 
+<<<<<<< HEAD
 - **类型：** [`RollupDynamicImportVarsOptions`](https://github.com/rollup/plugins/tree/master/packages/dynamic-import-vars#options)
+=======
+- **Type:** [`RollupDynamicImportVarsOptions`](https://github.com/rollup/plugins/tree/master/packages/dynamic-import-vars#options)
+- **Related:** [Dynamic Import](/guide/features#dynamic-import)
+>>>>>>> e75ae0f30ef98f660aac1c4cafefc1baba84bc47
 
   传递给 [@rollup/plugin-dynamic-import-vars](https://github.com/rollup/plugins/tree/master/packages/dynamic-import-vars) 的选项。
 

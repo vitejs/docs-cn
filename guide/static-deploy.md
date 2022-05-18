@@ -42,7 +42,11 @@ $ npm run preview
 
 `vite preview` 命令会在本地启动一个静态 Web 服务器，将 `dist` 文件夹运行在 `http://localhost:4173`。这样在本地环境下查看该构建产物是否正常可用就方便多了。
 
+<<<<<<< HEAD
 你可以通过 `--port` 参数来配置服务的运行端口。
+=======
+You may configure the port of the server by passing `--port` flag as an argument.
+>>>>>>> e75ae0f30ef98f660aac1c4cafefc1baba84bc47
 
 ```json
 {

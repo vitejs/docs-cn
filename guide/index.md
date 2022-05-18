@@ -145,4 +145,8 @@ pnpm link --global # you can use your preferred package manager for this step
 
 ## 社区 {#community}
 
+<<<<<<< HEAD
 如果你有疑问或者需要帮助，可以到 [Discord](https://discord.gg/4cmKdMfpU5) 和 [GitHub Discussions](https://github.com/vitejs/vite/discussions) 社区来寻求帮助。
+=======
+If you have questions or need help, reach out to the community at [Discord](https://chat.vitejs.dev) and [GitHub Discussions](https://github.com/vitejs/vite/discussions).
+>>>>>>> e75ae0f30ef98f660aac1c4cafefc1baba84bc47
