@@ -29,7 +29,6 @@
    import 'vite/modulepreload-polyfill'
    ```
 
-<<<<<<< HEAD
 2. 在开发环境中，在服务器的 HTML 模板中注入以下内容（用正在运行的本地 URL 替换 `http://localhost:3000`）：
 
    ```html
@@ -37,22 +36,12 @@
    <script type="module" src="http://localhost:3000/@vite/client"></script>
    ```
 
-   还要确保服务器配置为提供 Vite 工作目录中的静态资源，否则图片等资源将无法正确加载。
-=======
-2. For development, inject the following in your server's HTML template (substitute `http://localhost:5173` with the local URL Vite is running at):
+   为了正确地提供资源，你有两种选项：
 
-   ```html
-   <!-- if development -->
-   <script type="module" src="http://localhost:5173/main.js"></script>
-   ```
+   - 确保服务器被配置过，将会拦截代理资源请求给到 Vite 服务器
+   - 设置 [`server.origin`](https://vitejs.dev/config/#server-origin) 以求生成的资源链接将以服务器 URL 形式被解析而非一个相对路径
 
-   In order to properly serve assets, you have two options:
-
-   - Make sure the server is configured to proxy static assets requests to the Vite server
-   - Set [`server.origin`](https://vitejs.dev/config/#server-origin) so that generated asset URLs will be resolved using the back-end server URL instead of a relative path
-
-   This is needed for assets such as images to load properly.
->>>>>>> e75ae0f30ef98f660aac1c4cafefc1baba84bc47
+   这对于图片等资源的正确加载是必需的。
 
    如果你正使用 `@vitejs/plugin-react` 配合 React，你还需要在上述脚本前添加下面这个，因为插件不能修改你正在服务的 HTML：
 
