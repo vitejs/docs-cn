@@ -30,7 +30,15 @@ const { createServer } = require('vite')
 })()
 ```
 
+<<<<<<< HEAD
 ## `InlineConfig` {#inlineconfig}
+=======
+::: tip NOTE
+When using `createServer` and `build` in the same Node.js process, both functions rely on `process.env.`<wbr>`NODE_ENV` to work properly, which also depends on the `mode` config option. To prevent conflicting behavior, set `process.env.`<wbr>`NODE_ENV` or the `mode` of the two APIs to `development`. Otherwise, you can spawn a child process to run the APIs separately.
+:::
+
+## `InlineConfig`
+>>>>>>> 626d32751a17669045e75ea151379c0ca856c3ae
 
 `InlineConfig` 接口扩展了 `UserConfig` 并添加了以下属性：
 
