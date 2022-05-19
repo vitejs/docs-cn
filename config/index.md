@@ -169,7 +169,7 @@ export default defineConfig(({ command, mode }) => {
   例如，`process.env.FOO` 和 `__APP_VERSION__` 就非常适合。但 `process` 或 `global` 不应使用此选项。变量相关应使用 shim 或 polyfill 代替。
   :::
 
-  ::: tip NOTE
+  ::: tip 注意
   对于使用 TypeScript 的开发者来说，请确保在 `env.d.ts` 或 `vite-env.d.ts` 文件中添加类型声明，以获得类型检查以及代码提示。
 
   Example:
@@ -177,6 +177,20 @@ export default defineConfig(({ command, mode }) => {
   ```ts
   // vite-env.d.ts
   declare const __APP_VERSION__: string
+  ```
+
+  :::
+
+  ::: tip 注意
+  因为 dev 和 build 对 `define` 的实现方式不同，所以在某些用例中我们应避免使用它，防止造成不一致。
+
+  示例：
+
+  ```js
+  const obj = {
+    __NAME__, // 不要使用用名简写形式来定义对象属性
+    __KEY__: value // 不要定义对象的 key
+  }
   ```
 
   :::
@@ -453,7 +467,7 @@ export default defineConfig(({ command, mode }) => {
 ### server.port {#server-port}
 
 - **类型：** `number`
-- **默认值：** `3000`
+- **默认值：** `5173`
 
   指定开发服务器端口。注意：如果端口已经被使用，Vite 会自动尝试下一个可用的端口，所以这可能不是开发服务器最终监听的实际端口。
 
@@ -495,6 +509,8 @@ export default defineConfig(({ command, mode }) => {
 
   使用 [`http-proxy`](https://github.com/http-party/node-http-proxy)。完整选项详见 [此处](https://github.com/http-party/node-http-proxy#options).
 
+  在某些场景中，你可能也想要配置底层的开发服务器（例如，添加中间件到内部的 [connect](https://github.com/senchalabs/connect) 应用上）。若要这样做，你需要编写你自己的 [插件](/guide/using-plugins.html) 并且使用 [configureServer](/guide/api-plugin.html#configureserver) 函数。
+
   **示例：**
 
   ```js
@@ -525,7 +541,7 @@ export default defineConfig(({ command, mode }) => {
         },
         // Proxying websockets or socket.io
         '/socket.io': {
-          target: 'ws://localhost:3000',
+          target: 'ws://localhost:5173',
           ws: true
         }
       }
@@ -719,7 +735,7 @@ export default defineConfig({
 
   另一个特殊值是 “esnext” —— 即假设有原生动态导入支持，并且将会转译得尽可能小：
 
-  - 如果 [`build.minify`](#build-minify) 选项为 `'terser'`， `'esnext'` 将会强制降级为 `'es2019'`。
+  - 如果 [`build.minify`](#build-minify) 选项为 `'terser'`， `'esnext'` 将会强制降级为 `'es2021'`。
   - 其他情况下将完全不会执行转译。
 
   转换过程将会由 esbuild 执行，并且此值应该是一个合法的 [esbuild 目标选项](https://esbuild.github.io/api/#target)。自定义目标也可以是一个 ES 版本（例如：`es2015`）、一个浏览器版本（例如：`chrome58`）或是多个目标组成的一个数组。
@@ -812,6 +828,7 @@ export default defineConfig({
 ### build.dynamicImportVarsOptions {#build-dynamicimportvarsoptions}
 
 - **类型：** [`RollupDynamicImportVarsOptions`](https://github.com/rollup/plugins/tree/master/packages/dynamic-import-vars#options)
+- **相关内容：** [动态导入](/guide/features#dynamic-import)
 
   传递给 [@rollup/plugin-dynamic-import-vars](https://github.com/rollup/plugins/tree/master/packages/dynamic-import-vars) 的选项。
 

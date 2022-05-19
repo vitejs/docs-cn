@@ -36,13 +36,18 @@
    <script type="module" src="http://localhost:3000/@vite/client"></script>
    ```
 
-   还要确保服务器配置为提供 Vite 工作目录中的静态资源，否则图片等资源将无法正确加载。
+   为了正确地提供资源，你有两种选项：
+
+   - 确保服务器被配置过，将会拦截代理资源请求给到 Vite 服务器
+   - 设置 [`server.origin`](https://vitejs.dev/config/#server-origin) 以求生成的资源链接将以服务器 URL 形式被解析而非一个相对路径
+
+   这对于图片等资源的正确加载是必需的。
 
    如果你正使用 `@vitejs/plugin-react` 配合 React，你还需要在上述脚本前添加下面这个，因为插件不能修改你正在服务的 HTML：
 
    ```html
    <script type="module">
-     import RefreshRuntime from 'http://localhost:3000/@react-refresh'
+     import RefreshRuntime from 'http://localhost:5173/@react-refresh'
      RefreshRuntime.injectIntoGlobalHook(window)
      window.$RefreshReg$ = () => {}
      window.$RefreshSig$ = () => (type) => type

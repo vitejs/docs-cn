@@ -89,7 +89,7 @@ async function createServer() {
     // 服务 index.html - 下面我们来处理这个问题
   })
 
-  app.listen(3000)
+  app.listen(5173)
 }
 
 createServer()
