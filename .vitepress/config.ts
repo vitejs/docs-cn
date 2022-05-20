@@ -1,6 +1,7 @@
 import { defineConfig } from 'vitepress'
 
 export default defineConfig({
+<<<<<<< HEAD
   title: 'Vite 官方中文文档',
   lang: 'zh-CN',
   description: '下一代前端开发与构建工具',
@@ -8,15 +9,52 @@ export default defineConfig({
     ['link', { rel: 'icon', type: 'image/svg+xml', href: '/logo.svg' }],
     ['script', { src: 'https://cdn.wwads.cn/js/makemoney.js', async: '' }]
   ],
+=======
+  title: 'Vite',
+  description: 'Next Generation Frontend Tooling',
+
+  head: [
+    ['link', { rel: 'icon', type: 'image/svg+xml', href: '/logo.svg' }],
+
+    // TODO: This is neeeded to get smooth dark mode appearance on initial
+    // load. And this will be gone when VitePress figures out how to handle
+    // this in core.
+    [
+      'script',
+      {},
+      `
+        ;(() => {
+          const saved = localStorage.getItem('vitepress-theme-appearance')
+          const prefereDark = window.matchMedia('(prefers-color-scheme: dark)').matches
+
+          if (!saved || saved === 'auto' ? prefereDark : saved === 'dark') {
+            document.documentElement.classList.add('dark')
+          }
+        })()
+      `
+    ]
+  ],
+
+>>>>>>> 9ff84c92704c8d8511e874e4288d7f68ce18456d
   vue: {
     reactivityTransform: true
   },
+
   themeConfig: {
-    repo: 'vitejs/vite',
     logo: '/logo.svg',
+<<<<<<< HEAD
     docsBranch: 'main',
     editLinks: true,
     editLinkText: '为此页提供修改建议',
+=======
+
+    editLink: {
+      repo: 'vitejs/vite',
+      branch: 'main',
+      dir: 'docs',
+      text: 'Suggest changes to this page'
+    },
+>>>>>>> 9ff84c92704c8d8511e874e4288d7f68ce18456d
 
     algolia: {
       apiKey: 'b573aa848fd57fb47d693b531297403c',
@@ -26,6 +64,22 @@ export default defineConfig({
       }
     },
 
+<<<<<<< HEAD
+=======
+    carbonAds: {
+      carbon: 'CEBIEK3N',
+      placement: 'vitejsdev'
+    },
+
+    localeLinks: {
+      text: 'English',
+      items: [
+        { text: '简体中文', link: 'https://cn.vitejs.dev' },
+        { text: '日本語', link: 'https://ja.vitejs.dev' }
+      ]
+    },
+
+>>>>>>> 9ff84c92704c8d8511e874e4288d7f68ce18456d
     nav: [
       { text: '指引', link: '/guide/' },
       { text: '配置', link: '/config/' },
@@ -67,6 +121,7 @@ export default defineConfig({
             link: 'https://v2.vitejs.dev'
           }
         ]
+<<<<<<< HEAD
       },
       {
         text: '多语言',
@@ -84,17 +139,21 @@ export default defineConfig({
             link: 'https://ja.vitejs.dev'
           }
         ]
+=======
+>>>>>>> 9ff84c92704c8d8511e874e4288d7f68ce18456d
       }
     ],
 
     sidebar: {
-      '/config/': 'auto',
-      '/plugins': 'auto',
-      // catch-all fallback
       '/': [
         {
+<<<<<<< HEAD
           text: '指引',
           children: [
+=======
+          text: 'Guide',
+          items: [
+>>>>>>> 9ff84c92704c8d8511e874e4288d7f68ce18456d
             {
               text: '为什么选 Vite',
               link: '/guide/why'
@@ -150,8 +209,13 @@ export default defineConfig({
           ]
         },
         {
+<<<<<<< HEAD
           text: 'API',
           children: [
+=======
+          text: 'APIs',
+          items: [
+>>>>>>> 9ff84c92704c8d8511e874e4288d7f68ce18456d
             {
               text: '插件 API',
               link: '/guide/api-plugin'
