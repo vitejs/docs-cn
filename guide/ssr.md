@@ -169,7 +169,11 @@ app.use('*', async (req, res, next) => {
 
 注意使用 `--ssr` 标志表明这将会是一个 SSR 构建。同时需要指定 SSR 的入口。
 
+<<<<<<< HEAD
 接着，在 `server.js` 中，通过 `process.env.NODE_ENV` 条件分支，需要添加一些用于生产环境的特定逻辑：
+=======
+Then, in `server.js` we need to add some production specific logic by checking `process.env.`<wbr>`NODE_ENV`:
+>>>>>>> c0caf9ed4640e9085539ac5d9fd418f352ed291c
 
 - 使用 `dist/client/index.html` 作为模板，而不是根目录的 `index.html`，因为前者包含了到客户端构建的正确资源链接。
 

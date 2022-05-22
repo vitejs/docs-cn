@@ -253,8 +253,8 @@ export default defineConfig(({ command, mode }) => {
   {
     "exports": {
       ".": {
-        "import": "./index.esm.mjs",
-        "require": "./index.cjs.js"
+        "import": "./index.mjs",
+        "require": "./index.js"
       }
     }
   }
@@ -702,8 +702,12 @@ createServer()
 
 ### server.fs.deny {#server-fs-deny}
 
+<<<<<<< HEAD
 - **实验性**
 - **类型：** `string[]`
+=======
+- **Type:** `string[]`
+>>>>>>> c0caf9ed4640e9085539ac5d9fd418f352ed291c
 
   用于限制 Vite 开发服务器提供敏感文件的黑名单。
 
@@ -731,7 +735,11 @@ export default defineConfig({
 - **默认：** `'modules'`
 - **相关内容：:** [浏览器兼容性](/guide/build#browser-compatibility)
 
+<<<<<<< HEAD
   设置最终构建的浏览器兼容目标。默认值是一个 Vite 特有的值——`'modules'`，这是指 [支持原生 ES 模块的浏览器](https://caniuse.com/es6-module)。
+=======
+  Browser compatibility target for the final bundle. The default value is a Vite special value, `'modules'`, which targets browsers with [native ES Modules](https://caniuse.com/es6-module) and [native ESM dynamic import](https://caniuse.com/es6-module-dynamic-import) support.
+>>>>>>> c0caf9ed4640e9085539ac5d9fd418f352ed291c
 
   另一个特殊值是 “esnext” —— 即假设有原生动态导入支持，并且将会转译得尽可能小：
 
