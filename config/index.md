@@ -2,11 +2,17 @@
 
 ## 配置文件 {#config-file}
 
+<<<<<<< HEAD
 ### 配置文件解析 {#config-file-resolving}
 
 当以命令行方式运行 `vite` 时，Vite 会自动解析 [项目根目录](/guide/#index-html-and-project-root) 下名为 `vite.config.js` 的文件。
 
 最基础的配置文件是这样的：
+=======
+When running `vite` from the command line, Vite will automatically try to resolve a config file named `vite.config.js` inside [project root](/guide/#index-html-and-project-root).
+
+The most basic config file looks like this:
+>>>>>>> ec9f0c27c58d4f2036aee668036ed764eea4aa3e
 
 ```js
 // vite.config.js
@@ -36,7 +42,11 @@ console.log("import.meta.url") // break error on build
 
 :::
 
+<<<<<<< HEAD
 ### 配置智能提示 {#config-intellisense}
+=======
+## Config Intellisense
+>>>>>>> ec9f0c27c58d4f2036aee668036ed764eea4aa3e
 
 因为 Vite 本身附带 Typescript 类型，所以你可以通过 IDE 和 jsdoc 的配合来实现智能提示：
 
@@ -63,7 +73,11 @@ export default defineConfig({
 
 Vite 也直接支持 TS 配置文件。你可以在 `vite.config.ts` 中使用 `defineConfig` 工具函数。
 
+<<<<<<< HEAD
 ### 情景配置 {#conditional-config}
+=======
+## Conditional Config
+>>>>>>> ec9f0c27c58d4f2036aee668036ed764eea4aa3e
 
 如果配置文件需要基于（`dev`/`serve` 或 `build`）命令或者不同的 [模式](/guide/env-and-mode) 来决定选项，则可以选择导出这样一个函数：
 
@@ -84,7 +98,11 @@ export default defineConfig(({ command, mode }) => {
 
 需要注意的是，在 Vite 的 API 中，在开发环境下 `command` 的值为 `serve`（在 CLI 中， `vite dev` 和 `vite serve` 是 `vite` 的别名），而在生产环境下为 `build`（`vite build`）。
 
+<<<<<<< HEAD
 ### 异步配置 {#async-config}
+=======
+## Async Config
+>>>>>>> ec9f0c27c58d4f2036aee668036ed764eea4aa3e
 
 如果配置需要调用一个异步函数，也可以转而导出一个异步函数：
 
@@ -97,7 +115,11 @@ export default defineConfig(async ({ command, mode }) => {
 })
 ```
 
+<<<<<<< HEAD
 ### 环境变量 {#environment-variables}
+=======
+## Environment Variables
+>>>>>>> ec9f0c27c58d4f2036aee668036ed764eea4aa3e
 
 环境变量可以像往常一样从 `process.env` 上获得。
 
@@ -118,6 +140,7 @@ export default defineConfig(({ command, mode }) => {
   }
 })
 ```
+<<<<<<< HEAD
 
 
 ## 共享配置 {#shared-options}
@@ -1079,3 +1102,5 @@ SSR 选项可能会在未来版本中进行调整。
 - **类型：** [`RollupOptions`](https://rollupjs.org/guide/en/#big-list-of-options)
 
   用于构建 worker bundle 的 Rollup 配置项。
+=======
+>>>>>>> ec9f0c27c58d4f2036aee668036ed764eea4aa3e

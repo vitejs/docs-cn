@@ -1,4 +1,5 @@
 ---
+<<<<<<< HEAD
 home: true
 heroImage: /logo.svg
 actionText: 开始
@@ -39,3 +40,42 @@ fetchReleaseTag();
 <p style="text-align:center;margin-bottom:3em">
   <a style="color: #999;font-size:.9em;" href="https://github.com/sponsors/yyx990803" target="_blank" rel="noopener">Become a sponsor on GitHub</a>
 </p>
+=======
+layout: home
+
+hero:
+  name: Vite
+  text: Next Generation Frontend Tooling
+  tagline: Get ready for a development environment that can finally catch up with you.
+  actions:
+    - theme: brand
+      text: Get Started
+      link: /guide/why
+    - theme: alt
+      text: Why Vite?
+      link: /guide/
+    - theme: alt
+      text: View on GitHub
+      link: https://github.com/vitejs/vite
+
+features:
+  - icon: 💡
+    title: Instant Server Start
+    details: On demand file serving over native ESM, no bundling required!
+  - icon: ⚡️
+    title: Lightning Fast HMR
+    details: Hot Module Replacement (HMR) that stays fast regardless of app size.
+  - icon: 🛠️
+    title: Rich Features
+    details: Out-of-the-box support for TypeScript, JSX, CSS and more.
+  - icon: 📦
+    title: Optimized Build
+    details: Pre-configured Rollup build with multi-page and library mode support.
+  - icon: 🔩
+    title: Universal Plugins
+    details: Rollup-superset plugin interface shared between dev and build.
+  - icon: 🔑
+    title: Fully Typed APIs
+    details: Flexible programmatic APIs with full TypeScript typing.
+---
+>>>>>>> ec9f0c27c58d4f2036aee668036ed764eea4aa3e
