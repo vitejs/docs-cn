@@ -6,9 +6,10 @@
 
 用于生产环境的构建包会假设目标浏览器支持现代 JavaScript 语法。默认情况下，Vite 的目标浏览器是指能够 [支持原生 ESM script 标签](https://caniuse.com/es6-module) 和 [支持原生 ESM 动态导入](https://caniuse.com/es6-module-dynamic-import) 的。作为参考，Vite 使用这个 [browserslist](https://github.com/browserslist/browserslist) 作为查询标准：
 
-```
-defaults and supports es6-module and supports es6-module-dynamic-import, not opera > 0, not samsung > 0, not and_qq > 0
-```
+- Chrome >=87
+- Firefox >=78
+- Safari >=13
+- Edge >=88
 
 你也可以通过 [`build.target` 配置项](/config/#build-target) 指定构建目标，最低支持 `es2015`。
 
@@ -158,7 +159,7 @@ export { Foo, Bar }
 ```
 $ vite build
 building for production...
-[write] my-lib.es.mjs 0.08kb, brotli: 0.07kb
+[write] my-lib.mjs 0.08kb, brotli: 0.07kb
 [write] my-lib.umd.js 0.30kb, brotli: 0.16kb
 ```
 
@@ -169,10 +170,10 @@ building for production...
   "name": "my-lib",
   "files": ["dist"],
   "main": "./dist/my-lib.umd.js",
-  "module": "./dist/my-lib.es.mjs",
+  "module": "./dist/my-lib.mjs",
   "exports": {
     ".": {
-      "import": "./dist/my-lib.es.mjs",
+      "import": "./dist/my-lib.mjs",
       "require": "./dist/my-lib.umd.js"
     }
   }

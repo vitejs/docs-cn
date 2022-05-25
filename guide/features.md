@@ -14,7 +14,7 @@ import { someMethod } from 'my-dep'
 
 1. [预构建](./dep-pre-bundling) 它们可以提高页面加载速度，并将 CommonJS / UMD 转换为 ESM 格式。预构建这一步由 [esbuild](http://esbuild.github.io/) 执行，这使得 Vite 的冷启动时间比任何基于 JavaScript 的打包器都要快得多。
 
-2. 重写导入为合法的 URL，例如 `/node_modules/.vite/my-dep.js?v=f3sf2ebd` 以便浏览器能够正确导入它们。
+2. 重写导入为合法的 URL，例如 `/node_modules/.vite/deps/my-dep.js?v=f3sf2ebd` 以便浏览器能够正确导入它们。
 
 **依赖是强缓存的**
 
@@ -435,13 +435,13 @@ const module = await import(`./dir/${file}.js`)
 
 ## WebAssembly {#webassembly}
 
-预编译的 `.wasm` 文件可以直接被导入 —— 默认导出一个函数，返回值为所导出 wasm 实例对象的 Promise：
+预编译的 `.wasm` 文件可以通过 `?init` 来导入。默认导出一个初始化函数，返回值为所导出 wasm 实例对象的 Promise：
 
 ```js
-import init from './example.wasm'
+import init from './example.wasm?init'
 
-init().then((exports) => {
-  exports.test()
+init().then((instance) => {
+  instance.exports.test()
 })
 ```
 
@@ -460,6 +460,11 @@ init({
 ```
 
 在生产构建当中，体积小于 `assetInlineLimit` 的 `.wasm` 文件将会被内联为 base64 字符串。否则，它们将作为资源复制到 `dist` 目录中，并按需获取。
+
+::: warning
+[对 WebAssembly 的 ES 模块集成提案](https://github.com/WebAssembly/esm-integration) 尚未支持。
+请使用 [`vite-plugin-wasm`](https://github.com/Menci/vite-plugin-wasm) 或其他社区上的插件来处理。
+:::
 
 ## Web Worker {#web-workers}
 

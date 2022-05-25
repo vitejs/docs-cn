@@ -3,7 +3,7 @@ import { defineConfig } from 'vitepress'
 export default defineConfig({
   title: 'Vite 官方中文文档',
   lang: 'zh-CN',
-  description: '下一代前端开发与构建工具',
+  description: '下一代前端工具链',
   head: [
     ['link', { rel: 'icon', type: 'image/svg+xml', href: '/logo.svg' }],
     ['script', { src: 'https://cdn.wwads.cn/js/makemoney.js', async: '' }]
@@ -11,12 +11,21 @@ export default defineConfig({
   vue: {
     reactivityTransform: true
   },
+
   themeConfig: {
-    repo: 'vitejs/vite',
     logo: '/logo.svg',
-    docsBranch: 'main',
-    editLinks: true,
-    editLinkText: '为此页提供修改建议',
+
+    editLink: {
+      repo: 'vitejs/docs-cn',
+      branch: 'main',
+      text: '为此页提供修改建议'
+    },
+
+    socialLinks: [
+      { icon: 'twitter', link: 'https://twitter.com/vite_js' },
+      { icon: 'discord', link: 'https://chat.vitejs.dev' },
+      { icon: 'github', link: 'https://github.com/vitejs/vite' }
+    ],
 
     algolia: {
       apiKey: 'b573aa848fd57fb47d693b531297403c',
@@ -24,6 +33,24 @@ export default defineConfig({
       searchParameters: {
         facetFilters: ['tags:cn']
       }
+    },
+
+    carbonAds: {
+      carbon: 'CEBIEK3N',
+      placement: 'vitejsdev'
+    },
+
+    localeLinks: {
+      text: 'English',
+      items: [
+        { text: '简体中文', link: 'https://cn.vitejs.dev' },
+        { text: '日本語', link: 'https://ja.vitejs.dev' }
+      ]
+    },
+
+    footer: {
+      message: '根据 MIT 许可证发布。',
+      copyright: 'Copyright © 2019-present Evan You & Vite Contributors'
     },
 
     nav: [
@@ -67,31 +94,11 @@ export default defineConfig({
             link: 'https://v2.vitejs.dev'
           }
         ]
-      },
-      {
-        text: '多语言',
-        items: [
-          {
-            text: 'English',
-            link: 'https://vitejs.dev'
-          },
-          {
-            text: '简体中文',
-            link: 'https://cn.vitejs.dev'
-          },
-          {
-            text: '日本語',
-            link: 'https://ja.vitejs.dev'
-          }
-        ]
       }
     ],
 
     sidebar: {
-      '/config/': 'auto',
-      '/plugins': 'auto',
-      // catch-all fallback
-      '/': [
+      '/guide/': [
         {
           text: '指引',
           children: [
@@ -170,13 +177,52 @@ export default defineConfig({
             }
           ]
         }
+      ],
+      '/config/': [
+        {
+          text: 'Config',
+          children: [
+            {
+              text: 'Configuring Vite',
+              link: '/config/'
+            },
+            {
+              text: 'Shared Options',
+              link: '/config/shared-options'
+            },
+            {
+              text: 'Server Options',
+              link: '/config/server-options'
+            },
+            {
+              text: 'Build Options',
+              link: '/config/build-options'
+            },
+            {
+              text: 'Preview Options',
+              link: '/config/preview-options'
+            },
+            {
+              text: 'Dep Optimization Options',
+              link: '/config/dep-optimization-options'
+            },
+            {
+              text: 'SSR Options',
+              link: '/config/ssr-options'
+            },
+            {
+              text: 'Worker Options',
+              link: '/config/worker-options'
+            }
+          ]
+        }
       ]
     }
   },
 
   markdown: {
     anchor: {
-      renderPermalink: require('./render-perma-link')
+      permalink: require('./render-perma-link')
     },
     config: (md) => {
       md.use(require('./markdown-it-custom-anchor'))
