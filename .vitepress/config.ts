@@ -1,38 +1,24 @@
 import { defineConfig } from 'vitepress'
 
 export default defineConfig({
-<<<<<<< HEAD
   title: 'Vite 官方中文文档',
   lang: 'zh-CN',
-  description: '下一代前端开发与构建工具',
+  description: '下一代前端工具链',
   head: [
     ['link', { rel: 'icon', type: 'image/svg+xml', href: '/logo.svg' }],
     ['script', { src: 'https://cdn.wwads.cn/js/makemoney.js', async: '' }]
   ],
-=======
-  title: 'Vite',
-  description: 'Next Generation Frontend Tooling',
-
-  head: [['link', { rel: 'icon', type: 'image/svg+xml', href: '/logo.svg' }]],
-
->>>>>>> ec9f0c27c58d4f2036aee668036ed764eea4aa3e
   vue: {
     reactivityTransform: true
   },
 
   themeConfig: {
     logo: '/logo.svg',
-<<<<<<< HEAD
-    docsBranch: 'main',
-    editLinks: true,
-    editLinkText: '为此页提供修改建议',
-=======
 
     editLink: {
-      repo: 'vitejs/vite',
+      repo: 'vitejs/docs-cn',
       branch: 'main',
-      dir: 'docs',
-      text: 'Suggest changes to this page'
+      text: '为此页提供修改建议'
     },
 
     socialLinks: [
@@ -40,7 +26,6 @@ export default defineConfig({
       { icon: 'discord', link: 'https://chat.vitejs.dev' },
       { icon: 'github', link: 'https://github.com/vitejs/vite' }
     ],
->>>>>>> ec9f0c27c58d4f2036aee668036ed764eea4aa3e
 
     algolia: {
       apiKey: 'b573aa848fd57fb47d693b531297403c',
@@ -50,8 +35,6 @@ export default defineConfig({
       }
     },
 
-<<<<<<< HEAD
-=======
     carbonAds: {
       carbon: 'CEBIEK3N',
       placement: 'vitejsdev'
@@ -66,11 +49,10 @@ export default defineConfig({
     },
 
     footer: {
-      message: 'Released under the MIT License.',
+      message: '根据 MIT 许可证发布。',
       copyright: 'Copyright © 2019-present Evan You & Vite Contributors'
     },
 
->>>>>>> ec9f0c27c58d4f2036aee668036ed764eea4aa3e
     nav: [
       { text: '指引', link: '/guide/' },
       { text: '配置', link: '/config/' },
@@ -112,39 +94,14 @@ export default defineConfig({
             link: 'https://v2.vitejs.dev'
           }
         ]
-<<<<<<< HEAD
-      },
-      {
-        text: '多语言',
-        items: [
-          {
-            text: 'English',
-            link: 'https://vitejs.dev'
-          },
-          {
-            text: '简体中文',
-            link: 'https://cn.vitejs.dev'
-          },
-          {
-            text: '日本語',
-            link: 'https://ja.vitejs.dev'
-          }
-        ]
-=======
->>>>>>> ec9f0c27c58d4f2036aee668036ed764eea4aa3e
       }
     ],
 
     sidebar: {
       '/guide/': [
         {
-<<<<<<< HEAD
           text: '指引',
           children: [
-=======
-          text: 'Guide',
-          items: [
->>>>>>> ec9f0c27c58d4f2036aee668036ed764eea4aa3e
             {
               text: '为什么选 Vite',
               link: '/guide/why'
@@ -200,13 +157,8 @@ export default defineConfig({
           ]
         },
         {
-<<<<<<< HEAD
           text: 'API',
           children: [
-=======
-          text: 'APIs',
-          items: [
->>>>>>> ec9f0c27c58d4f2036aee668036ed764eea4aa3e
             {
               text: '插件 API',
               link: '/guide/api-plugin'
@@ -229,7 +181,7 @@ export default defineConfig({
       '/config/': [
         {
           text: 'Config',
-          items: [
+          children: [
             {
               text: 'Configuring Vite',
               link: '/config/'
@@ -270,7 +222,7 @@ export default defineConfig({
 
   markdown: {
     anchor: {
-      renderPermalink: require('./render-perma-link')
+      permalink: require('./render-perma-link')
     },
     config: (md) => {
       md.use(require('./markdown-it-custom-anchor'))

@@ -169,11 +169,7 @@ app.use('*', async (req, res, next) => {
 
 注意使用 `--ssr` 标志表明这将会是一个 SSR 构建。同时需要指定 SSR 的入口。
 
-<<<<<<< HEAD
-接着，在 `server.js` 中，通过 `process.env.NODE_ENV` 条件分支，需要添加一些用于生产环境的特定逻辑：
-=======
-Then, in `server.js` we need to add some production specific logic by checking `process.env.`<wbr>`NODE_ENV`:
->>>>>>> ec9f0c27c58d4f2036aee668036ed764eea4aa3e
+接着，在 `server.js` 中，通过 `process.env.`<wbr>`NODE_ENV` 条件分支，需要添加一些用于生产环境的特定逻辑：
 
 - 使用 `dist/client/index.html` 作为模板，而不是根目录的 `index.html`，因为前者包含了到客户端构建的正确资源链接。
 
@@ -266,21 +262,16 @@ SSR 构建的默认目标为 node 环境，但你也可以让服务运行在 Web
 
 在某些如 `webworker` 运行时等特殊情况中，你可能想要将你的 SSR 打包成单个 JavaScript 文件。你可以通过设置 `ssr.noExternal` 为 `true` 来启用这个行为。这将会做两件事：
 
-<<<<<<< HEAD
 - 将所有依赖视为 `noExternal`（非外部化）
 - 若任何 Node.js 内置内容被引入，将抛出一个错误
-=======
-- Treat all dependencies as `noExternal`
-- Throw an error if any Node.js built-ins are imported
 
-## Vite CLI
+## Vite CLI {#vite-cli}
 
-The CLI commands `$ vite dev` and `$ vite preview` can also be used for SSR apps:
+CLI 命令 `$ vite dev` 和 `$ vite preview` 也可以用于 SSR 应用：
 
-1. Add your SSR middleware to the development server with [`configureServer`](/guide/api-plugin#configureserver) and to the preview server with [`configurePreviewServer`](/guide/api-plugin#configurepreviewserver).
-   :::tip Note
-   Use a post hook so that your SSR middleware runs _after_ Vite's middlewares.
+1. 将你的 SSR 中间件通过 [`configureServer`](/guide/api-plugin#configureserver) 添加到开发服务器、以及通过 [`configurePreviewServer`](/guide/api-plugin#configurepreviewserver) 添加到预览服务器。
+   :::tip 注意
+   使用一个后置钩子，使得你的 SSR 中间件在 Vite 的中间件 _之后_ 运行。
    :::
 
-2. Set `config.spa` to `false`. This switches the development and preview server from SPA mode to SSR/MPA mode.
->>>>>>> ec9f0c27c58d4f2036aee668036ed764eea4aa3e
+2. 设置 `config.spa` 为 `false`。这会将开发和预览服务器从 SPA 模式切换到 SSR/MPA 模式。
