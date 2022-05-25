@@ -138,7 +138,7 @@ export default defineConfig(({ command, mode }) => {
 
   - 绝对 URL 路径名，例如 `/foo/`
   - 完整的 URL，例如 `https://foo.com/`
-  - 空字符串或 `./`（用于开发环境）
+  - 空字符串或 `./`（用于嵌入形式的开发）
 
   更多信息详见 [公共基础路径](/guide/build#public-base-path)。
 
