@@ -1,10 +1,21 @@
 ---
 layout: home
 
+title: Vite
+titleTemplate: Next Generation Frontend Tooling
+
 hero:
   name: Vite
+<<<<<<< HEAD
   text: 下一代的前端工具链
   tagline: 为开发提供极速响应
+=======
+  text: Next Generation Frontend Tooling
+  tagline: Get ready for a development environment that can finally catch up with you.
+  image:
+    light: /vite-splash-light.jpg
+    dark: /vite-splash-dark.jpg
+>>>>>>> 1a75713986b167ba4505dcc01d6cba56804cef7e
   actions:
     - theme: brand
       text: 开始
