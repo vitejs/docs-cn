@@ -6,16 +6,11 @@ titleTemplate: Next Generation Frontend Tooling
 
 hero:
   name: Vite
-<<<<<<< HEAD
   text: 下一代的前端工具链
   tagline: 为开发提供极速响应
-=======
-  text: Next Generation Frontend Tooling
-  tagline: Get ready for a development environment that can finally catch up with you.
   image:
     src: /logo-with-shadow.png
     alt: Vite
->>>>>>> 337062369426d4ec0ee092aaf5c834da2f9d0827
   actions:
     - theme: brand
       text: 开始

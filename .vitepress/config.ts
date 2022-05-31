@@ -54,15 +54,9 @@ export default defineConfig({
     },
 
     nav: [
-<<<<<<< HEAD
-      { text: '指引', link: '/guide/' },
-      { text: '配置', link: '/config/' },
-      { text: '插件', link: '/plugins/' },
-=======
-      { text: 'Guide', link: '/guide/', activeMatch: '/guide/' },
-      { text: 'Config', link: '/config/', activeMatch: '/config/' },
-      { text: 'Plugins', link: '/plugins/', activeMatch: '/plugins/' },
->>>>>>> 337062369426d4ec0ee092aaf5c834da2f9d0827
+      { text: '指引', link: '/guide/', activeMatch: '/guide/' },
+      { text: '配置', link: '/config/', activeMatch: '/config/' },
+      { text: '插件', link: '/plugins/', activeMatch: '/plugins/' },
       {
         text: '相关链接',
         items: [
