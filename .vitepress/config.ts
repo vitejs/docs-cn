@@ -36,7 +36,7 @@ export default defineConfig({
     },
 
     carbonAds: {
-      carbon: 'CEBIEK3N',
+      code: 'CEBIEK3N',
       placement: 'vitejsdev'
     },
 
@@ -54,9 +54,9 @@ export default defineConfig({
     },
 
     nav: [
-      { text: '指引', link: '/guide/' },
-      { text: '配置', link: '/config/' },
-      { text: '插件', link: '/plugins/' },
+      { text: '指引', link: '/guide/', activeMatch: '/guide/' },
+      { text: '配置', link: '/config/', activeMatch: '/config/' },
+      { text: '插件', link: '/plugins/', activeMatch: '/plugins/' },
       {
         text: '相关链接',
         items: [
