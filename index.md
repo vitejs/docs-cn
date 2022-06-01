@@ -13,11 +13,19 @@ hero:
     alt: Vite
   actions:
     - theme: brand
+<<<<<<< HEAD
       text: 开始
       link: /guide/why
     - theme: alt
       text: 为什么选 Vite？
       link: /guide/
+=======
+      text: Get Started
+      link: /guide/
+    - theme: alt
+      text: Why Vite?
+      link: /guide/why
+>>>>>>> e5307cbaeb89ce6430aac0d48c2cf471f02163c0
     - theme: alt
       text: 在 GitHub 上查看
       link: https://github.com/vitejs/vite

@@ -151,7 +151,11 @@ export default defineConfig({
               link: '/guide/comparisons'
             },
             {
+<<<<<<< HEAD
               text: '从 v1 迁移',
+=======
+              text: 'Migration from v2',
+>>>>>>> e5307cbaeb89ce6430aac0d48c2cf471f02163c0
               link: '/guide/migration'
             }
           ]

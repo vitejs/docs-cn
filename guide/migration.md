@@ -1,13 +1,20 @@
+<<<<<<< HEAD
 # 从 v1 迁移 {#migration-from-v1}
 
 ## 配置项变化 {#config-options-change}
 
 - 以下选项已被删除，应通过 [插件](./api-plugin) 实现：
+=======
+# Migration from v2
 
-  - `resolvers`
-  - `transforms`
-  - `indexHtmlTransforms`
+## Node Support
 
+Vite no longer supports Node v12, which reached its EOL. Node 14.6+ is now required.
+>>>>>>> e5307cbaeb89ce6430aac0d48c2cf471f02163c0
+
+## Modern Browser Baseline change
+
+<<<<<<< HEAD
 - `jsx` 和 `enableEsbuild` 都已被删除，请使用新的 [`esbuild`](/config/#esbuild) 选项。
 
 - [CSS 相关选项](/config/#css-modules) 都包含在 `css` 字段下。
@@ -38,12 +45,82 @@
 ## 别名用法变化 {#alias-behavior-change}
 
 [`alias`](/config/#resolve-alias) 现在会被传递给 `@rollup/plugin-alias` 并不再需要开始/结尾处的斜线了。此行为目前是一个直接替换，所以 1.0 风格的目录别名需要删除其结尾处的斜线：
+=======
+The production bundle assumes support for modern JavaScript. By default, Vite targets browsers which support the [native ES Modules](https://caniuse.com/es6-module) and [native ESM dynamic import](https://caniuse.com/es6-module-dynamic-import) and [`import.meta`](https://caniuse.com/mdn-javascript_statements_import_meta):
+
+- Chrome >=87
+- Firefox >=78
+- Safari >=13
+- Edge >=88
+
+A small fraction of users will now require using [@vitejs/plugin-legacy](https://github.com/vitejs/vite/tree/main/packages/plugin-legacy), which will automatically generate legacy chunks and corresponding ES language feature polyfills.
+
+## Config Options Changes
+
+- The following options that were already deprecated in v2 have been removed:
+
+  - `alias` (switch to [`resolve.alias`](../config/shared-options.md#resolvealias))
+  - `dedupe` (switch to [`resolve.dedupe`](../config/shared-options.md#resolvededupe))
+  - `build.base` (switch to [`base`](../config/shared-options.md#base))
+  - `build.brotliSize` (switch to [`build.reportCompressedSize`](../config/build-options.md#build-reportcompressedsize))
+  - `build.cleanCssOptions` (Vite now uses esbuild for CSS minification)
+  - `build.polyfillDynamicImport` (use [`@vitejs/plugin-legacy`](https://github.com/vitejs/vite/tree/main/packages/plugin-legacy) for browsers without dynamic import support)
+  - `optimizeDeps.keepNames` (switch to [`optimizeDeps.esbuildOptions.keepNames`](../config/dep-optimization-options.md#optimizedepsesbuildoptions))
+
+## Dev Server Changes
+
+Vite's default dev server port is now 5173. You can use [`server.port`](../config/server-options.md#server-port) to set it to 3000.
+
+Vite optimizes dependencies with esbuild to both convert CJS-only deps to ESM and to reduce the number of modules the browser needs to request. In v3, the default strategy to discover and batch dependencies has changed. Vite no longer pre-scans user code with esbuild to get an initial list of dependencies on cold start. Instead, it delays the first dependency optimization run until every imported user module on load is processed.
+
+To get back the v2 strategy, you can use [`optimizeDeps.devScan`](../config/dep-optimization-options.md#optimizedepsdevscan).
+
+## Build Changes
+
+In v3, Vite uses esbuild to optimize dependencies by default. Doing so, it removes one of the most significant differences between dev and prod present in v2. Because esbuild converts CJS-only dependencies to ESM, [`@rollupjs/plugin-commonjs`](https://github.com/rollup/plugins/tree/master/packages/commonjs) is no longer used.
+
+If you need to get back to the v2 strategy, you can use [`optimizeDeps.disabled: 'build'`](../config/dep-optimization-options.md#optimizedepsdisabled).
+
+## SSR Changes
+
+Vite v3 uses ESM for the SSR build by default. When using ESM, the [SSR externalization heuristics](https://vitejs.dev/guide/ssr.html#ssr-externals) are no longer needed. By default, all dependencies are externalized. You can use [`ssr.noExternal`](../config/ssr-options.md#ssrnoexternal) to control what dependencies to include in the SSR bundle.
+
+If using ESM for SSR isn't possible in your project, you can set `ssr.format: 'cjs'` to generate a CJS bundle. In this case, the same externalization strategy of Vite v2 will be used.
+
+## General Changes
+
+- JS file extensions in SSR and lib mode now use a valid extension (`js`, `mjs`, or `cjs`) for output JS entries and chunks based on their format and the package type.
+
+### `import.meta.glob`
+
+- [Raw `import.meta.glob`](features.md#glob-import-as) switched from `{ assert: { type: 'raw' }}` to `{ as: 'raw' }`
+- Keys of `import.meta.glob` are now relative to the current module.
+
+  ```diff
+  // file: /foo/index.js
+  const modules = import.meta.glob('../foo/*.js')
+
+  // transformed:
+  const modules = {
+  -  '../foo/bar.js': () => {}
+  +  './bar.js': () => {}
+  }
+  ```
+
+- When using an alias with `import.meta.glob`, the keys are always absolute.
+- `import.meta.globEager` is now deprecated. Use `import.meta.glob('*', { eager: true })` instead.
+
+### WebAssembly support
+
+`import init from 'example.wasm'` syntax is dropped to prevent future collision with ["ESM integration for Wasm"](https://github.com/WebAssembly/esm-integration).
+You can use `?init` which is similar to the previous behavior.
+>>>>>>> e5307cbaeb89ce6430aac0d48c2cf471f02163c0
 
 ```diff
-- alias: { '/@foo/': path.resolve(__dirname, 'some-special-dir') }
-+ alias: { '/@foo': path.resolve(__dirname, 'some-special-dir') }
-```
+-import init from 'example.wasm'
++import init from 'example.wasm?init'
 
+<<<<<<< HEAD
 另外，你可以对该选项使用 `[{ find: RegExp, replacement: string }]` 格式以求更精确的控制。
 
 ## Vue Support {#vue-support}
@@ -62,32 +139,38 @@ export default defineConfig({
 ### 自定义块转换 {#custom-blocks-transforms}
 
 一个自定义插件可以用来转换 Vue 自定义块，如下所示:
-
-```ts
-// vite.config.js
-import vue from '@vitejs/plugin-vue'
-import { defineConfig } from 'vite'
-
-const vueI18nPlugin = {
-  name: 'vue-i18n',
-  transform(code, id) {
-    if (!/vue&type=i18n/.test(id)) {
-      return
-    }
-    if (/\.ya?ml$/.test(id)) {
-      code = JSON.stringify(require('js-yaml').load(code.trim()))
-    }
-    return `export default Comp => {
-      Comp.i18n = ${code}
-    }`
-  }
-}
-
-export default defineConfig({
-  plugins: [vue(), vueI18nPlugin]
+=======
+-init().then((instance) => {
++init().then(({ exports }) => {
+  exports.test()
 })
 ```
 
+## Advanced
+
+There are some changes which only affects plugin/tool creators.
+>>>>>>> e5307cbaeb89ce6430aac0d48c2cf471f02163c0
+
+- [[#5868] refactor: remove deprecated api for 3.0](https://github.com/vitejs/vite/pull/5868)
+  - `printHttpServerUrls` is removed
+  - `server.app`, `server.transformWithEsbuild` are removed
+  - `import.meta.hot.acceptDeps` is removed
+- [[#7995] chore: do not fixStacktrace](https://github.com/vitejs/vite/pull/7995)
+  - `ssrLoadModule`'s `fixStacktrace` option's default is now `false`
+- [[#8178] feat!: migrate to ESM](https://github.com/vitejs/vite/pull/8178)
+  - `formatPostcssSourceMap` is now async
+  - `resolvePackageEntry`, `resolvePackageData` are no longer available from CJS build (dynamic import is needed to use in CJS)
+
+Also there are other breaking changes which only affect few users.
+
+- [[#5018] feat: enable `generatedCode: 'es2015'` for rollup build](https://github.com/vitejs/vite/pull/5018)
+  - Transpile to ES5 is now necessary even if the user code only includes ES5.
+- [[#7877] fix: vite client types](https://github.com/vitejs/vite/pull/7877)
+  - `/// <reference lib="dom" />` is removed from `vite/client.d.ts`. `{ "lib": ["dom"] }` or `{ "lib": ["webworker"] }` is necessary in `tsconfig.json`.
+- [[#8280] feat: non-blocking esbuild optimization at build time](https://github.com/vitejs/vite/pull/8280)
+  - `server.force` option was removed in favor of `force` option.
+
+<<<<<<< HEAD
 ## React 支持 {#react-support}
 
 现已支持 React Fast Refresh，详见 [`@vitejs/plugin-react`](https://github.com/vitejs/vite/tree/main/packages/plugin-react)。
@@ -130,3 +213,8 @@ Vite 2 使用了一套完全重定义的，扩展了 Rollup 插件的接口。�
 - 添加 `alias`，`define` 或其他配置项 -> 使用 [`config`](./api-plugin#config) 钩子
 
 由于大多数逻辑应通过插件钩子实现，而无需使用中间件，因此对中间件的需求大大减少。内部服务器应用现在看起来像旧版的 [connect](https://github.com/senchalabs/connect) 实例，而不是 Koa。
+=======
+## Migration from v1
+
+Check the [Migration from v1 Guide](https://v2.vitejs.dev/guide/migration.html) in the Vite v2 docs first to see the needed changes to port your app to Vite v2, and then proceed with the changes on this page.
+>>>>>>> e5307cbaeb89ce6430aac0d48c2cf471f02163c0
