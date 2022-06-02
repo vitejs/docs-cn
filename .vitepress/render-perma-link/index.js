@@ -34,4 +34,4 @@ const renderPermalink = (slug, opts, state, permalink) => {
   } catch(e) {}
 }
 
-module.exports = renderPermalink
+export default renderPermalink

@@ -5,7 +5,7 @@ const removeAnchorFromTitle = (oldTitle) => {
   return match ? oldTitle.replace(match[1], '').trim() : oldTitle;
 }
 
-module.exports = function plugin(md) {
+export default function(md) {
   const oldTitle = md.renderer.rules.text;
   md.renderer.rules.text = (tokens, idx, options, env, slf) => {
     const titleAndId = oldTitle(tokens, idx, options, env, slf);
