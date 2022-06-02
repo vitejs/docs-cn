@@ -1,4 +1,6 @@
 import { defineConfig } from 'vitepress'
+import renderPermaLink from './render-perma-link'
+import MarkDownItCustomAnchor from './markdown-it-custom-anchor'
 
 export default defineConfig({
   title: 'Vite 官方中文文档',
@@ -101,7 +103,7 @@ export default defineConfig({
       '/guide/': [
         {
           text: '指引',
-          children: [
+          items: [
             {
               text: '为什么选 Vite',
               link: '/guide/why'
@@ -151,18 +153,14 @@ export default defineConfig({
               link: '/guide/comparisons'
             },
             {
-<<<<<<< HEAD
-              text: '从 v1 迁移',
-=======
-              text: 'Migration from v2',
->>>>>>> e5307cbaeb89ce6430aac0d48c2cf471f02163c0
+              text: '从 v2 迁移',
               link: '/guide/migration'
             }
           ]
         },
         {
           text: 'API',
-          children: [
+          items: [
             {
               text: '插件 API',
               link: '/guide/api-plugin'
@@ -185,7 +183,7 @@ export default defineConfig({
       '/config/': [
         {
           text: 'Config',
-          children: [
+          items: [
             {
               text: 'Configuring Vite',
               link: '/config/'
@@ -226,10 +224,10 @@ export default defineConfig({
 
   markdown: {
     anchor: {
-      permalink: require('./render-perma-link')
+      permalink: renderPermaLink,
     },
     config: (md) => {
-      md.use(require('./markdown-it-custom-anchor'))
+      md.use(MarkDownItCustomAnchor)
     }
   }
 })

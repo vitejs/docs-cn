@@ -210,20 +210,16 @@ Vite 为 Sass 和 Less 改进了 `@import` 解析，以保证 Vite 别名也能�
 
 你还可以通过在文件扩展名前加上 `.module` 来结合使用 CSS modules 和预处理器，例如 `style.module.scss`。
 
-<<<<<<< HEAD
-## 静态资源处理 {#static-assets}
-=======
-### Disabling CSS injection into the page
+### 禁用 CSS 注入页面 {#disabling-css-injection-into-the-page}
 
-The automatic injection of CSS contents can be turned off via the `?inline` query parameter. In this case, the processed CSS string is returned as the module's default export as usual, but the styles aren't injected to the page.
+自动注入 CSS 内容的行为可以通过 `?inline` 参数来关闭。在关闭时，被处理过的 CSS 字符串将会作为该模块的默认导出，但样式并没有被注入到页面中。
 
 ```js
-import styles from './foo.css' // will be injected into the page
-import otherStyles from './bar.css?inline' // will not be injected into the page
+import styles from './foo.css' // 样式将会注入页面
+import otherStyles from './bar.css?inline' // 样式不会注入页面
 ```
 
-## Static Assets
->>>>>>> e5307cbaeb89ce6430aac0d48c2cf471f02163c0
+## 静态资源处理 {#static-assets}
 
 导入一个静态资源会返回解析后的 URL：
 
