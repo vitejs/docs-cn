@@ -21,6 +21,7 @@ export default {
 vite --config my-config.js
 ```
 
+<<<<<<< HEAD
 ::: tip 注意
 Vite 会替换配置文件中的 `__filename`、`__dirname` 和 `import.meta.url` 以及其依赖。若将这些标识符用作变量名或者将其用字符串双引号包裹、作为参数传入函数（如 `console.log`）中，会导致错误：
 
@@ -28,8 +29,17 @@ Vite 会替换配置文件中的 `__filename`、`__dirname` 和 `import.meta.url
 const __filename = "value"
 // 将被转换为下面这样的错误结果
 const "path/vite.config.js" = "value"
+=======
+::: tip NOTE
+Vite will inject `__filename`, `__dirname` in config files and its deps. Declaring these variables at top level will result in an error:
 
-console.log("import.meta.url") // break error on build
+```js
+const __filename = 'value' // SyntaxError: Identifier '__filename' has already been declared
+>>>>>>> 9b189b069ce7477c79dd1b789d5305a9c784343a
+
+const func = () => {
+  const __filename = 'value' // no error
+}
 ```
 
 :::
