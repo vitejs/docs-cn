@@ -22,8 +22,8 @@ SSR 特别指支持在 Node.js 中运行相同应用程序的前端框架（例�
 
 Vite 为服务端渲染（SSR）提供了内建支持。这里的 Vite 范例包含了 Vue 3 和 React 的 SSR 设置示例，可以作为本指南的参考：
 
-- [Vue 3](https://github.com/vitejs/vite/tree/main/packages/playground/ssr-vue)
-- [React](https://github.com/vitejs/vite/tree/main/packages/playground/ssr-react)
+- [Vue 3](https://github.com/vitejs/vite/tree/main/playground/ssr-vue)
+- [React](https://github.com/vitejs/vite/tree/main/playground/ssr-react)
 
 ## 源码结构 {#source-structure}
 
@@ -89,7 +89,7 @@ async function createServer() {
     // 服务 index.html - 下面我们来处理这个问题
   })
 
-  app.listen(3000)
+  app.listen(5173)
 }
 
 createServer()
@@ -169,7 +169,7 @@ app.use('*', async (req, res, next) => {
 
 注意使用 `--ssr` 标志表明这将会是一个 SSR 构建。同时需要指定 SSR 的入口。
 
-接着，在 `server.js` 中，通过 `process.env.NODE_ENV` 条件分支，需要添加一些用于生产环境的特定逻辑：
+接着，在 `server.js` 中，通过 `process.env.`<wbr>`NODE_ENV` 条件分支，需要添加一些用于生产环境的特定逻辑：
 
 - 使用 `dist/client/index.html` 作为模板，而不是根目录的 `index.html`，因为前者包含了到客户端构建的正确资源链接。
 
@@ -177,7 +177,7 @@ app.use('*', async (req, res, next) => {
 
 - 将 `vite` 开发服务器的创建和所有使用都移到 dev-only 条件分支后面，然后添加静态文件服务中间件来服务 `dist/client` 中的文件。
 
-可以在此参考 [Vue](https://github.com/vitejs/vite/tree/main/packages/playground/ssr-vue) 和 [React](https://github.com/vitejs/vite/tree/main/packages/playground/ssr-react) 的设置范例。
+可以在此参考 [Vue](https://github.com/vitejs/vite/tree/main/playground/ssr-vue) 和 [React](https://github.com/vitejs/vite/tree/main/playground/ssr-react) 的设置范例。
 
 ## 生成预加载指令 {#generating-preload-directives}
 
@@ -201,11 +201,11 @@ const html = await vueServerRenderer.renderToString(app, ctx)
 // ctx.modules 现在是一个渲染期间使用的模块 ID 的 Set
 ```
 
-我们现在需要在 `server.js` 的生产环境分支下读取该清单，并将其传递到 `src/entry-server.js` 导出的 `render` 函数中。这将为我们提供足够的信息，来为异步路由相应的文件渲染预加载指令！查看 [示例代码](https://github.com/vitejs/vite/blob/main/packages/playground/ssr-vue/src/entry-server.js) 获取完整示例。
+我们现在需要在 `server.js` 的生产环境分支下读取该清单，并将其传递到 `src/entry-server.js` 导出的 `render` 函数中。这将为我们提供足够的信息，来为异步路由相应的文件渲染预加载指令！查看 [示例代码](https://github.com/vitejs/vite/blob/main/playground/ssr-vue/src/entry-server.js) 获取完整示例。
 
 ## 预渲染 / SSG {#pre-rendering--ssg}
 
-如果预先知道某些路由所需的路由和数据，我们可以使用与生产环境 SSR 相同的逻辑将这些路由预先渲染到静态 HTML 中。这也被视为一种静态站点生成（SSG）的形式。查看 [示例渲染代码](https://github.com/vitejs/vite/blob/main/packages/playground/ssr-vue/prerender.js) 获取有效示例。
+如果预先知道某些路由所需的路由和数据，我们可以使用与生产环境 SSR 相同的逻辑将这些路由预先渲染到静态 HTML 中。这也被视为一种静态站点生成（SSG）的形式。查看 [示例渲染代码](https://github.com/vitejs/vite/blob/main/playground/ssr-vue/prerender.js) 获取有效示例。
 
 ## SSR 外部化 {#ssr-externals}
 
@@ -264,3 +264,14 @@ SSR 构建的默认目标为 node 环境，但你也可以让服务运行在 Web
 
 - 将所有依赖视为 `noExternal`（非外部化）
 - 若任何 Node.js 内置内容被引入，将抛出一个错误
+
+## Vite CLI {#vite-cli}
+
+CLI 命令 `$ vite dev` 和 `$ vite preview` 也可以用于 SSR 应用：
+
+1. 将你的 SSR 中间件通过 [`configureServer`](/guide/api-plugin#configureserver) 添加到开发服务器、以及通过 [`configurePreviewServer`](/guide/api-plugin#configurepreviewserver) 添加到预览服务器。
+   :::tip 注意
+   使用一个后置钩子，使得你的 SSR 中间件在 Vite 的中间件 _之后_ 运行。
+   :::
+
+2. 设置 `config.spa` 为 `false`。这会将开发和预览服务器从 SPA 模式切换到 SSR/MPA 模式。

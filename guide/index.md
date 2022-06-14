@@ -38,7 +38,7 @@ Vite 意在提供开箱即用的配置，同时它的 [插件 API](./api-plugin)
 ## 搭建第一个 Vite 项目 {#scaffolding-your-first-vite-project}
 
 ::: tip 兼容性注意
-Vite 需要 [Node.js](https://nodejs.org/en/) 版本 >= 12.0.0。然而，有些模板需要依赖更高的 Node 版本才能正常运行，当你的包管理器发出警告时，请注意升级你的 Node 版本。
+Vite 需要 [Node.js](https://nodejs.org/en/) 版本 >= 14.6.0。然而，有些模板需要依赖更高的 Node 版本才能正常运行，当你的包管理器发出警告时，请注意升级你的 Node 版本。
 :::
 
 使用 NPM:
@@ -116,7 +116,7 @@ Vite 也支持多个 `.html` 作入口点的 [多页面应用模式](./build#mul
 在安装了 Vite 的项目中，可以在 npm scripts 中使用 `vite` 可执行文件，或者直接使用 `npx vite` 运行它。下面是通过脚手架创建的 Vite 项目中默认的 npm scripts：
 
 <!-- prettier-ignore -->
-```json5
+```json
 {
   "scripts": {
     "dev": "vite", // 启动开发服务器，别名：`vite dev`，`vite serve`
@@ -145,4 +145,4 @@ pnpm link --global # you can use your preferred package manager for this step
 
 ## 社区 {#community}
 
-如果你有疑问或者需要帮助，可以到 [Discord](https://discord.gg/4cmKdMfpU5) 和 [GitHub Discussions](https://github.com/vitejs/vite/discussions) 社区来寻求帮助。
+如果你有疑问或者需要帮助，可以到 [Discord](https://chat.vitejs.dev) 和 [GitHub Discussions](https://github.com/vitejs/vite/discussions) 社区来寻求帮助。

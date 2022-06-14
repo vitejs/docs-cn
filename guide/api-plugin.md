@@ -11,7 +11,7 @@ Vite 努力秉承开箱即用的原则，因此在创作一款新插件前，请
 当创作插件时，你可以在 `vite.config.js` 中直接使用它。没必要直接为它创建一个新的 package。当你发现某个插件在你项目中很有用时，可以考虑 [在社区中](https://chat.vitejs.dev) 将其与他人分享。
 
 ::: tip
-在学习、调试或创作插件时，我们建议在你的项目中引入 [vite-plugin-inspect](https://github.com/antfu/vite-plugin-inspect)。 它可以帮助你检查 Vite 插件的中间状态。安装后，你可以访问 `localhost:3000/__inspect/` 来检查你项目的模块和栈信息。请查阅 [vite-plugin-inspect 文档](https://github.com/antfu/vite-plugin-inspect) 中的安装说明。
+在学习、调试或创作插件时，我们建议在你的项目中引入 [vite-plugin-inspect](https://github.com/antfu/vite-plugin-inspect)。 它可以帮助你检查 Vite 插件的中间状态。安装后，你可以访问 `localhost:5173/__inspect/` 来检查你项目的模块和栈信息。请查阅 [vite-plugin-inspect 文档](https://github.com/antfu/vite-plugin-inspect) 中的安装说明。
 ![vite-plugin-inspect](/images/vite-plugin-inspect.png)
 :::
 
@@ -305,6 +305,27 @@ Vite 插件也可以提供钩子来服务于特定的 Vite 目标。这些钩子
 
   注意 `configureServer` 在运行生产版本时不会被调用，所以其他钩子需要防范它缺失。
 
+### `configurePreviewServer`
+
+- **类型：** `(server: { middlewares: Connect.Server, httpServer: http.Server }) => (() => void) | void | Promise<(() => void) | void>`
+- **种类：** `async`, `sequential`
+
+  与 [`configureServer`](/guide/api-plugin.html#configureserver) 相同但是作为预览服务器。。它提供了一个 [connect](https://github.com/senchalabs/connect) 服务器实例及其底层的 [http server](https://nodejs.org/api/http.html)。与 `configureServer` 类似，`configurePreviewServer` 这个钩子也是在其他中间件安装前被调用的。如果你想要在其他中间件 **之后** 安装一个插件，你可以从 `configurePreviewServer` 返回一个函数，它将会在内部中间件被安装之后再调用：
+
+  ```js
+  const myPlugin = () => ({
+    name: 'configure-preview-server',
+    configurePreviewServer(server) {
+      // 返回一个钩子，会在其他中间件安装完成后调用
+      return () => {
+        server.middlewares.use((req, res, next) => {
+          // 自定义处理请求 ...
+        })
+      }
+    }
+  })
+  ```
+
 ### `transformIndexHtml` {#transformindexhtml}
 
 - **类型：** `IndexHtmlTransformHook | { enforce?: 'pre' | 'post', transform: IndexHtmlTransformHook }`
@@ -494,6 +515,10 @@ import { normalizePath } from 'vite'
 normalizePath('foo\\bar') // 'foo/bar'
 normalizePath('foo/bar') // 'foo/bar'
 ```
+
+## Filtering, include/exclude pattern
+
+Vite exposes [`@rollup/pluginutils`'s `createFilter`](https://github.com/rollup/plugins/tree/master/packages/pluginutils#createfilter) function to encourage Vite specific plugins and integrations to use the standard include/exclude filtering pattern, which is also used in Vite core itself.
 
 ## Client-server Communication
 

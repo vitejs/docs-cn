@@ -1,14 +1,11 @@
-// @ts-check
+import { defineConfig } from 'vitepress'
+import renderPermaLink from './render-perma-link'
+import MarkDownItCustomAnchor from './markdown-it-custom-anchor'
 
-const pkg = require('../package.json')
-
-/**
- * @type {import('vitepress').UserConfig}
- */
-module.exports = {
+export default defineConfig({
   title: 'Vite 官方中文文档',
   lang: 'zh-CN',
-  description: '下一代前端开发与构建工具',
+  description: '下一代前端工具链',
   head: [
     ['link', { rel: 'icon', type: 'image/svg+xml', href: '/logo.svg' }],
     ['script', { src: 'https://cdn.wwads.cn/js/makemoney.js', async: '' }]
@@ -16,12 +13,21 @@ module.exports = {
   vue: {
     reactivityTransform: true
   },
+
   themeConfig: {
-    repo: pkg.repository,
     logo: '/logo.svg',
-    docsBranch: 'main',
-    editLinks: true,
-    editLinkText: '为此页提供修改建议',
+
+    editLink: {
+      repo: 'vitejs/docs-cn',
+      branch: 'main',
+      text: '为此页提供修改建议'
+    },
+
+    socialLinks: [
+      { icon: 'twitter', link: 'https://twitter.com/vite_js' },
+      { icon: 'discord', link: 'https://chat.vitejs.dev' },
+      { icon: 'github', link: 'https://github.com/vitejs/vite' }
+    ],
 
     algolia: {
       apiKey: 'b573aa848fd57fb47d693b531297403c',
@@ -31,10 +37,28 @@ module.exports = {
       }
     },
 
+    carbonAds: {
+      code: 'CEBIEK3N',
+      placement: 'vitejsdev'
+    },
+
+    localeLinks: {
+      text: 'English',
+      items: [
+        { text: '简体中文', link: 'https://cn.vitejs.dev' },
+        { text: '日本語', link: 'https://ja.vitejs.dev' }
+      ]
+    },
+
+    footer: {
+      message: '根据 MIT 许可证发布。',
+      copyright: 'Copyright © 2019-present Evan You & Vite Contributors'
+    },
+
     nav: [
-      { text: '指引', link: '/guide/' },
-      { text: '配置', link: '/config/' },
-      { text: '插件', link: '/plugins/' },
+      { text: '指引', link: '/guide/', activeMatch: '/guide/' },
+      { text: '配置', link: '/config/', activeMatch: '/config/' },
+      { text: '插件', link: '/plugins/', activeMatch: '/plugins/' },
       {
         text: '相关链接',
         items: [
@@ -65,32 +89,21 @@ module.exports = {
         ]
       },
       {
-        text: '多语言',
+        text: 'v3 (next)',
         items: [
           {
-            text: 'English',
-            link: 'https://vitejs.dev'
-          },
-          {
-            text: '简体中文',
-            link: 'https://cn.vitejs.dev'
-          },
-          {
-            text: '日本語',
-            link: 'https://ja.vitejs.dev'
+            text: 'v2.x（稳定版）',
+            link: 'https://v2.vitejs.dev'
           }
         ]
       }
     ],
 
     sidebar: {
-      '/config/': 'auto',
-      '/plugins': 'auto',
-      // catch-all fallback
-      '/': [
+      '/guide/': [
         {
           text: '指引',
-          children: [
+          items: [
             {
               text: '为什么选 Vite',
               link: '/guide/why'
@@ -140,14 +153,14 @@ module.exports = {
               link: '/guide/comparisons'
             },
             {
-              text: '从 v1 迁移',
+              text: '从 v2 迁移',
               link: '/guide/migration'
             }
           ]
         },
         {
           text: 'API',
-          children: [
+          items: [
             {
               text: '插件 API',
               link: '/guide/api-plugin'
@@ -166,16 +179,55 @@ module.exports = {
             }
           ]
         }
+      ],
+      '/config/': [
+        {
+          text: 'Config',
+          items: [
+            {
+              text: 'Configuring Vite',
+              link: '/config/'
+            },
+            {
+              text: 'Shared Options',
+              link: '/config/shared-options'
+            },
+            {
+              text: 'Server Options',
+              link: '/config/server-options'
+            },
+            {
+              text: 'Build Options',
+              link: '/config/build-options'
+            },
+            {
+              text: 'Preview Options',
+              link: '/config/preview-options'
+            },
+            {
+              text: 'Dep Optimization Options',
+              link: '/config/dep-optimization-options'
+            },
+            {
+              text: 'SSR Options',
+              link: '/config/ssr-options'
+            },
+            {
+              text: 'Worker Options',
+              link: '/config/worker-options'
+            }
+          ]
+        }
       ]
     }
   },
 
   markdown: {
     anchor: {
-      renderPermalink: require('./render-perma-link')
+      permalink: renderPermaLink,
     },
     config: (md) => {
-      md.use(require('./markdown-it-custom-anchor'))
+      md.use(MarkDownItCustomAnchor)
     }
   }
-}
+})
