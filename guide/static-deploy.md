@@ -266,17 +266,9 @@ $ ntl deploy --prod
 
    # 创建一个具有指定名称的新应用
    $ heroku apps:create example
-<<<<<<< HEAD
-
-   # 为静态站点设置 buildpack
-   $ heroku buildpacks:set https://github.com/heroku/heroku-buildpack-static.git
    ```
 
-6. 部署站点：
-=======
-   ```
-
-6. Set buildpacks. We use `heroku/nodejs` to build the project and `heroku-buildpack-static` to serve it.
+6. 设置 buildpacks。我们使用 `heroku/nodejs` 来构建项目，`heroku-buildpack-static` 为其启动服务。
 
    ```bash
    # set buildpacks
@@ -284,8 +276,7 @@ $ ntl deploy --prod
    $ heroku buildpacks:add https://github.com/heroku/heroku-buildpack-static.git
    ```
 
-7. Deploy your site:
->>>>>>> 5466a62e91400a6f88a3210bd50a3578b9e9136e
+7. 部署站点：
 
    ```bash
    # 发布站点
