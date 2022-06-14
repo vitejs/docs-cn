@@ -18,9 +18,14 @@ export default defineConfig({
     logo: '/logo.svg',
 
     editLink: {
+<<<<<<< HEAD
       repo: 'vitejs/docs-cn',
       branch: 'main',
       text: '为此页提供修改建议'
+=======
+      pattern: 'https://github.com/vitejs/vite/edit/main/docs/:path',
+      text: 'Suggest changes to this page'
+>>>>>>> a5d13eedafb64c8fcad4cbdeedd4ec9a13d94d5e
     },
 
     socialLinks: [

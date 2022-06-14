@@ -39,14 +39,10 @@ const func = () => {
 因为 Vite 本身附带 Typescript 类型，所以你可以通过 IDE 和 jsdoc 的配合来实现智能提示：
 
 ```js
-/**
- * @type {import('vite').UserConfig}
- */
-const config = {
+/** @type {import('vite').UserConfig} */
+export default {
   // ...
 }
-
-export default config
 ```
 
 另外你可以使用 `defineConfig` 工具函数，这样不用 jsdoc 注解也可以获取类型提示：

@@ -31,7 +31,13 @@ Vite 不再支持 Node v12，因为它已经进入了 EOL 阶段。现在你必�
 
 Vite 的默认开发服务器端口号现在改为了 5173。你可以使用 [`server.port`](../config/server-options.md#server-port) 将其设置为 3000。
 
+<<<<<<< HEAD
 Vite 使用 esbuild 优化了依赖关系，以将仅提供 CJS 格式的依赖转换成 ESM 格式，并减少浏览器需要请求的模块数量。在 v3 中，检索和批处理依赖的默认策略已经改变。Vite 不再使用 esbuild 预扫描用户代码，以获得冷启动时的初始依赖性列表。取而代之的是将第一次运行依赖性优化推迟到加载时每个导入的用户模块都得到处理之后。
+=======
+Vite's default dev server host is now `localhost`. You can use [`server.host`](../config/server-options.md#server-host) to set it to `127.0.0.1`.
+
+Vite optimizes dependencies with esbuild to both convert CJS-only deps to ESM and to reduce the number of modules the browser needs to request. In v3, the default strategy to discover and batch dependencies has changed. Vite no longer pre-scans user code with esbuild to get an initial list of dependencies on cold start. Instead, it delays the first dependency optimization run until every imported user module on load is processed.
+>>>>>>> a5d13eedafb64c8fcad4cbdeedd4ec9a13d94d5e
 
 若想要回到 v2 的策略，你可以使用 [`optimizeDeps.devScan`](../config/dep-optimization-options.md#optimizedepsdevscan)。
 
@@ -49,7 +55,15 @@ Vite v3 默认在 SSR 构建时使用 ESM 格式。当使用 ESM 时，[SSR 外�
 
 ## 其他一般性变化 {#general-changes}
 
+<<<<<<< HEAD
 - SSR 和库模式中将会根据语法格式和包的类型，为输出的 JS 文件提供一个更合理的文件扩展名（`js`、`mjs` 或是 `cjs`）。
+=======
+- JS file extensions in SSR and lib mode now use a valid extension (`js`, `mjs`, or `cjs`) for output JS entries and chunks based on their format and the package type.
+- Terser is now an optional dependency. If you are using `build.minify: 'terser'`, you need to install it.
+  ```shell
+  npm add -D terser
+  ```
+>>>>>>> a5d13eedafb64c8fcad4cbdeedd4ec9a13d94d5e
 
 ### `import.meta.glob` {#importmetaglob}
 
@@ -91,9 +105,17 @@ Vite v3 默认在 SSR 构建时使用 ESM 格式。当使用 ESM 时，[SSR 外�
 下列改动仅会影响到插件/工具的作者：
 
 - [[#5868] refactor: remove deprecated api for 3.0](https://github.com/vitejs/vite/pull/5868)
+<<<<<<< HEAD
   - `printHttpServerUrls` 被移除
   - `server.app`、`server.transformWithEsbuild` 被移除
   - `import.meta.hot.acceptDeps` 被移除
+=======
+  - `printHttpServerUrls` is removed
+  - `server.app`, `server.transformWithEsbuild` are removed
+  - `import.meta.hot.acceptDeps` is removed
+- [[#6901] fix: sequential injection of tags in transformIndexHtml](https://github.com/vitejs/vite/pull/6901)
+  - `transformIndexHtml` now gets the correct content modified by earlier plugins, so the order of the injected tags now works as expected.
+>>>>>>> a5d13eedafb64c8fcad4cbdeedd4ec9a13d94d5e
 - [[#7995] chore: do not fixStacktrace](https://github.com/vitejs/vite/pull/7995)
   - `ssrLoadModule` 的 `fixStacktrace` 选项现在默认为 `false`
 - [[#8178] feat!: migrate to ESM](https://github.com/vitejs/vite/pull/8178)
@@ -105,9 +127,19 @@ Vite v3 默认在 SSR 构建时使用 ESM 格式。当使用 ESM 时，[SSR 外�
 - [[#5018] feat: enable `generatedCode: 'es2015'` for rollup build](https://github.com/vitejs/vite/pull/5018)
   - 转义到 ES5 现在是必要的，即使用户代码仅含 ES5。
 - [[#7877] fix: vite client types](https://github.com/vitejs/vite/pull/7877)
+<<<<<<< HEAD
   - `/// <reference lib="dom" />` 已从 `vite/client.d.ts` 中移除。必须在 `tsconfig.json` 使用 `{ "lib": ["dom"] }` 或 `{ "lib": ["webworker"] }`。
 - [[#8280] feat: non-blocking esbuild optimization at build time](https://github.com/vitejs/vite/pull/8280)
   - 移除 `server.force` 选项，改用 `force` 选项。
+=======
+  - `/// <reference lib="dom" />` is removed from `vite/client.d.ts`. `{ "lib": ["dom"] }` or `{ "lib": ["webworker"] }` is necessary in `tsconfig.json`.
+- [[#8090] feat: preserve process env vars in lib build](https://github.com/vitejs/vite/pull/8090)
+  - `process.env.*` is now preserved in library mode
+- [[#8280] feat: non-blocking esbuild optimization at build time](https://github.com/vitejs/vite/pull/8280)
+  - `server.force` option was removed in favor of `force` option.
+- [[#8550] fix: dont handle sigterm in middleware mode](https://github.com/vitejs/vite/pull/8550)
+  - When running in middleware mode, Vite no longer kills process on `SIGTERM`.
+>>>>>>> a5d13eedafb64c8fcad4cbdeedd4ec9a13d94d5e
 
 ## 从 v1 迁移 {#migration-from-v1}
 
