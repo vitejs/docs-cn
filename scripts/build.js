@@ -11,14 +11,4 @@ const chalk = require('chalk')
 
 const rewriteTitle = require('../.vitepress/rewrite-title')
 
-rewriteTitle().then(() => {
-  vitpress
-    .build(path.resolve(__dirname, '..'))
-    .then(() => {
-      chalk.green('build success!')
-    })
-    .catch((err) => {
-      console.error(chalk.red(`build error:\n`), err)
-      process.exit(1)
-    })
-})
+rewriteTitle().then(() => {})
