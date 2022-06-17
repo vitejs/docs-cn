@@ -18,14 +18,8 @@ export default defineConfig({
     logo: '/logo.svg',
 
     editLink: {
-<<<<<<< HEAD
-      repo: 'vitejs/docs-cn',
-      branch: 'main',
-      text: '为此页提供修改建议'
-=======
-      pattern: 'https://github.com/vitejs/vite/edit/main/docs/:path',
-      text: 'Suggest changes to this page'
->>>>>>> a5d13eedafb64c8fcad4cbdeedd4ec9a13d94d5e
+      text: '为此页提供修改建议',
+      pattern: 'https://github.com/vitejs/docs-cn/edit/main/docs/:path',
     },
 
     socialLinks: [
@@ -48,9 +42,9 @@ export default defineConfig({
     },
 
     localeLinks: {
-      text: 'English',
+      text: '简体中文',
       items: [
-        { text: '简体中文', link: 'https://cn.vitejs.dev' },
+        { text: 'English', link: 'https://vitejs.dev' },
         { text: '日本語', link: 'https://ja.vitejs.dev' }
       ]
     },

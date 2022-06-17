@@ -511,17 +511,13 @@ Worker 脚本也可以使用 `import` 语句来替代 `importScripts()` —— �
 import MyWorker from './worker?worker&inline'
 ```
 
-<<<<<<< HEAD
-查看 [Worker 选项](/config/#worker-options) 了解更多关于如何配置打包全部 worker 的相关细节。workers.
-=======
-If you wish to retrieve the worker as a URL, add the `url` query:
+如果你想要将一个 URL 的形式读取该 worker，请添加 `url` 这个 query：
 
 ```js
 import MyWorker from './worker?worker&url'
 ```
 
-See [Worker Options](/config/#worker-options) for details on configuring the bundling of all workers.
->>>>>>> a5d13eedafb64c8fcad4cbdeedd4ec9a13d94d5e
+查看 [Worker 选项](/config/#worker-options) 了解更多关于如何配置打包全部 worker 的相关细节。workers.
 
 ## 构建优化 {#build-optimizations}
 
