@@ -31,6 +31,8 @@ Vite 不再支持 Node v12，因为它已经进入了 EOL 阶段。现在你必�
 
 Vite 的默认开发服务器端口号现在改为了 5173。你可以使用 [`server.port`](../config/server-options.md#server-port) 将其设置为 3000。
 
+Vite 的默认开发服务器主机地址现在改为了 `localhost`。你可以使用 [`server.host`](../config/server-options.md#server-host) 将其设置为 `127.0.0.1`。
+
 Vite 使用 esbuild 优化了依赖关系，以将仅提供 CJS 格式的依赖转换成 ESM 格式，并减少浏览器需要请求的模块数量。在 v3 中，检索和批处理依赖的默认策略已经改变。Vite 不再使用 esbuild 预扫描用户代码，以获得冷启动时的初始依赖性列表。取而代之的是将第一次运行依赖性优化推迟到加载时每个导入的用户模块都得到处理之后。
 
 若想要回到 v2 的策略，你可以使用 [`optimizeDeps.devScan`](../config/dep-optimization-options.md#optimizedepsdevscan)。
@@ -50,6 +52,10 @@ Vite v3 默认在 SSR 构建时使用 ESM 格式。当使用 ESM 时，[SSR 外�
 ## 其他一般性变化 {#general-changes}
 
 - SSR 和库模式中将会根据语法格式和包的类型，为输出的 JS 文件提供一个更合理的文件扩展名（`js`、`mjs` 或是 `cjs`）。
+- Terser 现在是一个可选依赖。如果你使用的是 `build.minify: 'terser'`，你需要手动安装它：
+  ```
+  npm add -D terser
+  ```
 
 ### `import.meta.glob` {#importmetaglob}
 
@@ -94,6 +100,8 @@ Vite v3 默认在 SSR 构建时使用 ESM 格式。当使用 ESM 时，[SSR 外�
   - `printHttpServerUrls` 被移除
   - `server.app`、`server.transformWithEsbuild` 被移除
   - `import.meta.hot.acceptDeps` 被移除
+- [[#6901] fix: sequential injection of tags in transformIndexHtml](https://github.com/vitejs/vite/pull/6901)
+  - `transformIndexHtml` 现在会从更早的插件处获取到正确的内容，因此，现在注入的标签的顺序与预期的一样。
 - [[#7995] chore: do not fixStacktrace](https://github.com/vitejs/vite/pull/7995)
   - `ssrLoadModule` 的 `fixStacktrace` 选项现在默认为 `false`
 - [[#8178] feat!: migrate to ESM](https://github.com/vitejs/vite/pull/8178)
@@ -106,8 +114,12 @@ Vite v3 默认在 SSR 构建时使用 ESM 格式。当使用 ESM 时，[SSR 外�
   - 转义到 ES5 现在是必要的，即使用户代码仅含 ES5。
 - [[#7877] fix: vite client types](https://github.com/vitejs/vite/pull/7877)
   - `/// <reference lib="dom" />` 已从 `vite/client.d.ts` 中移除。必须在 `tsconfig.json` 使用 `{ "lib": ["dom"] }` 或 `{ "lib": ["webworker"] }`。
+- [[#8090] feat: preserve process env vars in lib build](https://github.com/vitejs/vite/pull/8090)
+  - `process.env.*` 现在在库模式下是被保留的了。
 - [[#8280] feat: non-blocking esbuild optimization at build time](https://github.com/vitejs/vite/pull/8280)
-  - 移除 `server.force` 选项，改用 `force` 选项。
+  - `server.force` 选项现已移除，改为了直接的 `force` 选项。
+- [[#8550] fix: dont handle sigterm in middleware mode](https://github.com/vitejs/vite/pull/8550)
+  - 当以中间件模式运行时，Vite 不再在 `SIGTERM` 强制杀进程。
 
 ## 从 v1 迁移 {#migration-from-v1}
 
