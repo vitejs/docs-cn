@@ -42,7 +42,11 @@ Pre-bundling dependencies: （正在预构建依赖：）
 
 在一个 monorepo 启动中，该仓库中的某个依赖可能会成为另一个包的依赖。Vite 会自动侦测没有从 `node_modules` 解析的依赖项，并将链接的依赖视为源码。它不会尝试打包被链接的依赖，而是会分析被链接依赖的依赖列表。
 
+<<<<<<< HEAD
 然而，这需要被链接的依赖被导出为 ESM 格式。如果不是，那么你可以在配置里将此依赖添加到 [`optimizeDeps.include`](/config/#optimizedeps-include) 和 [`build.commonjsOptions.include`](/config/#build-commonjsoptions) 这两项中。
+=======
+However, this requires the linked dep to be exported as ESM. If not, you can add the dependency to [`optimizeDeps.include`](/config/dep-optimization-options.md#optimizedeps-include) and [`build.commonjsOptions.include`](/config/build-options.md#build-commonjsoptions) in your config.
+>>>>>>> 5cf38dcf77e6a093e6e8e15d63de1e81c9c0ba08
 
 ```js
 export default defineConfig({
@@ -65,7 +69,11 @@ export default defineConfig({
 
 ## 自定义行为 {#customizing-the-behavior}
 
+<<<<<<< HEAD
 默认的依赖项发现为启发式可能并不总是可取的。在你想要显式地从列表中包含/排除依赖项的情况下, 请使用 [`optimizeDeps` 配置项](/config/#dep-optimization-options)。
+=======
+The default dependency discovery heuristics may not always be desirable. In cases where you want to explicitly include/exclude dependencies from the list, use the [`optimizeDeps` config options](/config/dep-optimization-options.md).
+>>>>>>> 5cf38dcf77e6a093e6e8e15d63de1e81c9c0ba08
 
 当你遇到不能直接在源码中发现的 import 时，`optimizeDeps.include` 或 `optimizeDeps.exclude` 就是典型的用例。例如，import 可能是插件转换的结果。这意味着 Vite 无法在初始扫描时发现 import —— 它只能在浏览器请求文件时转换后才能发现。这将导致服务器在启动后立即重新打包。
 
