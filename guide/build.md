@@ -11,7 +11,11 @@
 - Safari >=13
 - Edge >=88
 
+<<<<<<< HEAD
 你也可以通过 [`build.target` 配置项](/config/#build-target) 指定构建目标，最低支持 `es2015`。
+=======
+You can specify custom targets via the [`build.target` config option](/config/build-options.md#build-target), where the lowest target is `es2015`.
+>>>>>>> 47912921e731ce9f2c12b9e76ffc825d88ef78a4
 
 请注意，默认情况下 Vite 只处理语法转译，且 **默认不包含任何 polyfill**。你可以前往 [Polyfill.io](https://polyfill.io/v3/) 查看，这是一个基于用户浏览器 User-Agent 字符串自动生成 polyfill 包的服务。
 
@@ -21,15 +25,27 @@
 
 - 相关内容：[静态资源处理](./assets)
 
+<<<<<<< HEAD
 如果你需要在嵌套的公共路径下部署项目，只需指定 [`base` 配置项](/config/#base)，然后所有资源的路径都将据此配置重写。这个选项也可以通过命令行参数指定，例如 `vite build --base=/my/public/path/`。
+=======
+If you are deploying your project under a nested public path, simply specify the [`base` config option](/config/shared-options.md#base) and all asset paths will be rewritten accordingly. This option can also be specified as a command line flag, e.g. `vite build --base=/my/public/path/`.
+>>>>>>> 47912921e731ce9f2c12b9e76ffc825d88ef78a4
 
 由 JS 引入的资源 URL，CSS 中的 `url()` 引用以及 `.html` 文件中引用的资源在构建过程中都会自动调整，以适配此选项。
 
 当然，情况也有例外，当访问过程中需要使用动态连接的 url 时，可以使用全局注入的 `import.meta.env.BASE_URL` 变量，它的值为公共基础路径。注意，这个变量在构建时会被静态替换，因此，它必须按 `import.meta.env.BASE_URL` 的原样出现（例如 `import.meta.env['BASE_URL']` 是无效的）
 
+<<<<<<< HEAD
 ## 自定义构建 {#customizing-the-build}
 
 构建过程可以通过多种 [构建配置选项](/config/#build-options) 来自定义构建。具体来说，你可以通过 `build.rollupOptions` 直接调整底层的 [Rollup 选项](https://rollupjs.org/guide/en/#big-list-of-options)：
+=======
+For advanced base path control, check out [Advanced Base Options](#advanced-base-options).
+
+## Customizing the Build
+
+The build can be customized via various [build config options](/config/build-options.md). Specifically, you can directly adjust the underlying [Rollup options](https://rollupjs.org/guide/en/#big-list-of-options) via `build.rollupOptions`:
+>>>>>>> 47912921e731ce9f2c12b9e76ffc825d88ef78a4
 
 ```js
 // vite.config.js
@@ -116,7 +132,11 @@ module.exports = defineConfig({
 
 当你开发面向浏览器的库时，你可能会将大部分时间花在该库的测试/演示页面上。在 Vite 中你可以使用 `index.html` 获得如丝般顺滑的开发体验。
 
+<<<<<<< HEAD
 当这个库要进行发布构建时，请使用 [`build.lib` 配置项](/config/#build-lib)，以确保将那些你不想打包进库的依赖进行外部化处理，例如 `vue` 或 `react`：
+=======
+When it is time to bundle your library for distribution, use the [`build.lib` config option](/config/build-options.md#build-lib). Make sure to also externalize any dependencies that you do not want to bundle into your library, e.g. `vue` or `react`:
+>>>>>>> 47912921e731ce9f2c12b9e76ffc825d88ef78a4
 
 ```js
 // vite.config.js
@@ -179,3 +199,59 @@ building for production...
   }
 }
 ```
+
+## Advanced Base Options
+
+::: warning
+This feature is experimental, the API may change in a future minor without following semver. Please fix the minor version of Vite when using it.
+:::
+
+For advanced use cases, the deployed assets and public files may be in different paths, for example to use different cache strategies.
+A user may choose to deploy in three different paths:
+
+- The generated entry HTML files (which may be processed during SSR)
+- The generated hashed assets (JS, CSS, and other file types like images)
+- The copied [public files](assets.md#the-public-directory)
+
+A single static [base](#public-base-path) isn't enough in these scenarios. Vite provides experimental support for advanced base options during build, using `experimental.buildAdvancedBaseOptions`.
+
+```js
+  experimental: {
+    buildAdvancedBaseOptions: {
+      // Same as base: './'
+      // type: boolean, default: false
+      relative: true
+      // Static base
+      // type: string, default: undefined
+      url: 'https:/cdn.domain.com/'
+      // Dynamic base to be used for paths inside JS
+      // type: (url: string) => string, default: undefined
+      runtime: (url: string) => `window.__toCdnUrl(${url})`
+    },
+  }
+```
+
+When `runtime` is defined, it will be used for hashed assets and public files paths inside JS assets. Inside CSS and HTML generated files, paths will use `url` if defined or fallback to `config.base`.
+
+If `relative` is true and `url` is defined, relative paths will be prefered for assets inside the same group (for example a hashed image referenced from a JS file). And `url` will be used for the paths in HTML entries and for paths between different groups (a public file referenced from a CSS file).
+
+If the hashed assets and public files aren't deployed together, options for each group can be defined independently:
+
+```js
+  experimental: {
+    buildAdvancedBaseOptions: {
+      assets: {
+        relative: true
+        url: 'https:/cdn.domain.com/assets',
+        runtime: (url: string) => `window.__assetsPath(${url})`
+      },
+      public: {
+        relative: false
+        url: 'https:/www.domain.com/',
+        runtime: (url: string) => `window.__publicPath + ${url}`
+      }
+    }
+  }
+```
+
+Any option that isn't defined in the `public` or `assets` entry will be inherited from the main `buildAdvancedBaseOptions` config.
