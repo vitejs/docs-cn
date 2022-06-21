@@ -22,7 +22,11 @@
    })
    ```
 
+<<<<<<< HEAD
    如果你没有禁用 [module preload 的 polyfill](/config/#build-polyfillmodulepreload)，你还需在你的入口处添加此 polyfill：
+=======
+   If you haven't disabled the [module preload polyfill](/config/build-options.md#build-polyfillmodulepreload), you also need to import the polyfill in your entry
+>>>>>>> 7512a81129be3c6fbab22251c1d49a29b62450a8
 
    ```js
    // 在你应用的入口起始处添加此 polyfill
@@ -38,8 +42,13 @@
 
    为了正确地提供资源，你有两种选项：
 
+<<<<<<< HEAD
    - 确保服务器被配置过，将会拦截代理资源请求给到 Vite 服务器
    - 设置 [`server.origin`](https://vitejs.dev/config/#server-origin) 以求生成的资源链接将以服务器 URL 形式被解析而非一个相对路径
+=======
+   - Make sure the server is configured to proxy static assets requests to the Vite server
+   - Set [`server.origin`](/config/server-options.md#server-origin) so that generated asset URLs will be resolved using the back-end server URL instead of a relative path
+>>>>>>> 7512a81129be3c6fbab22251c1d49a29b62450a8
 
    这对于图片等资源的正确加载是必需的。
 

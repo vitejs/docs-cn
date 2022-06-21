@@ -6,7 +6,11 @@
 
 ## 总览 {#overview}
 
+<<<<<<< HEAD
 Vite（法语意为 "快速的"，发音 `/vit/`<button id="play-vite-audio" onclick="document.getElementById('vite-audio').play();"><img src="/voice.svg" height="15"></button>，发音同 "veet"）是一种新型前端构建工具，能够显著提升前端开发体验。它主要由两部分组成：
+=======
+Vite (French word for "quick", pronounced `/vit/`<button style="border:none;padding:3px;border-radius:4px;vertical-align:bottom" id="play-vite-audio" onclick="document.getElementById('vite-audio').play();"><svg style="height:2em;width:2em"><use href="/voice.svg#voice" /></svg></button>, like "veet") is a build tool that aims to provide a faster and leaner development experience for modern web projects. It consists of two major parts:
+>>>>>>> 7512a81129be3c6fbab22251c1d49a29b62450a8
 
 - 一个开发服务器，它基于 [原生 ES 模块](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules) 提供了 [丰富的内建功能](./features)，如速度快到惊人的 [模块热更新（HMR）](./features#hot-module-replacement)。
 
@@ -37,8 +41,13 @@ Vite 意在提供开箱即用的配置，同时它的 [插件 API](./api-plugin)
 
 ## 搭建第一个 Vite 项目 {#scaffolding-your-first-vite-project}
 
+<<<<<<< HEAD
 ::: tip 兼容性注意
 Vite 需要 [Node.js](https://nodejs.org/en/) 版本 >= 14.6.0。然而，有些模板需要依赖更高的 Node 版本才能正常运行，当你的包管理器发出警告时，请注意升级你的 Node 版本。
+=======
+::: tip Compatibility Note
+Vite requires [Node.js](https://nodejs.org/en/) version >=14.18.0. However, some templates require a higher Node.js version to work, please upgrade if your package manager warns about it.
+>>>>>>> 7512a81129be3c6fbab22251c1d49a29b62450a8
 :::
 
 使用 NPM:

@@ -13,13 +13,20 @@ interface ImportMeta {
   readonly hot?: ViteHotContext
 }
 
+type ModuleNamespace = Record<string, any> & {
+  [Symbol.toStringTag]: 'Module'
+}
+
 interface ViteHotContext {
   readonly data: any
 
   accept(): void
-  accept(cb: (mod: any) => void): void
-  accept(dep: string, cb: (mod: any) => void): void
-  accept(deps: readonly string[], cb: (mods: any[]) => void): void
+  accept(cb: (mod: ModuleNamespace | undefined) => void): void
+  accept(dep: string, cb: (mod: ModuleNamespace | undefined) => void): void
+  accept(
+    deps: readonly string[],
+    cb: (mods: Array<ModuleNamespace | undefined>) => void
+  ): void
 
   dispose(cb: (data: any) => void): void
   decline(): void
@@ -53,7 +60,10 @@ export const count = 1
 
 if (import.meta.hot) {
   import.meta.hot.accept((newModule) => {
-    console.log('updated: count is now ', newModule.count)
+    if (newModule) {
+      // newModule is undefined when SyntaxError happened
+      console.log('updated: count is now ', newModule.count)
+    }
   })
 }
 ```
@@ -75,8 +85,13 @@ foo()
 
 if (import.meta.hot) {
   import.meta.hot.accept('./foo.js', (newFoo) => {
+<<<<<<< HEAD
     // 回调函数接收到更新后的'./foo.js' 模块
     newFoo.foo()
+=======
+    // the callback receives the updated './foo.js' module
+    newFoo?.foo()
+>>>>>>> 7512a81129be3c6fbab22251c1d49a29b62450a8
   })
 
   // 也可以接受一个依赖模块的数组：
