@@ -181,38 +181,38 @@ export default defineConfig({
       ],
       '/config/': [
         {
-          text: 'Config',
+          text: '配置',
           items: [
             {
-              text: 'Configuring Vite',
+              text: '配置 Vite',
               link: '/config/'
             },
             {
-              text: 'Shared Options',
+              text: '共享选项',
               link: '/config/shared-options'
             },
             {
-              text: 'Server Options',
+              text: '服务器选项',
               link: '/config/server-options'
             },
             {
-              text: 'Build Options',
+              text: '构建选项',
               link: '/config/build-options'
             },
             {
-              text: 'Preview Options',
+              text: '预览选项',
               link: '/config/preview-options'
             },
             {
-              text: 'Dep Optimization Options',
+              text: '依赖优化选项',
               link: '/config/dep-optimization-options'
             },
             {
-              text: 'SSR Options',
+              text: 'SSR 选项',
               link: '/config/ssr-options'
             },
             {
-              text: 'Worker Options',
+              text: 'Worker 选项',
               link: '/config/worker-options'
             }
           ]
