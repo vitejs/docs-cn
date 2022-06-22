@@ -4,7 +4,7 @@ specifiers:
   chalk: ^4.1.0
   gray-matter: ^4.0.3
   lodash: ^4.17.21
-  vite: ^2.9.9
+  vite: ^2.9.12
   vitepress: 1.0.0-alpha.2
   yorkie: ^2.0.0
 
@@ -12,7 +12,7 @@ devDependencies:
   chalk: 4.1.2
   gray-matter: 4.0.3
   lodash: 4.17.21
-  vite: 2.9.9
+  vite: 2.9.12
   vitepress: 1.0.0-alpha.2
   yorkie: 2.0.0
 
@@ -180,14 +180,14 @@ packages:
       - '@algolia/client-search'
     dev: true
 
-  /@vitejs/plugin-vue/2.3.3_vite@2.9.9+vue@3.2.33:
+  /@vitejs/plugin-vue/2.3.3_vite@2.9.12+vue@3.2.33:
     resolution: {integrity: sha512-SmQLDyhz+6lGJhPELsBdzXGc+AcaT8stgkbiTFGpXPe8Tl1tJaBw1A6pxDqDuRsVkD8uscrkx3hA7QDOoKYtyw==}
     engines: {node: '>=12.0.0'}
     peerDependencies:
       vite: ^2.5.10
       vue: ^3.2.25
     dependencies:
-      vite: 2.9.9
+      vite: 2.9.12
       vue: 3.2.33
     dev: true
 
@@ -875,8 +875,8 @@ packages:
     engines: {node: '>=4'}
     dev: true
 
-  /vite/2.9.9:
-    resolution: {integrity: sha512-ffaam+NgHfbEmfw/Vuh6BHKKlI/XIAhxE5QSS7gFLIngxg171mg1P3a4LSRME0z2ZU1ScxoKzphkipcYwSD5Ew==}
+  /vite/2.9.12:
+    resolution: {integrity: sha512-suxC36dQo9Rq1qMB2qiRorNJtJAdxguu5TMvBHOc/F370KvqAe9t48vYp+/TbPKRNrMh/J55tOUmkuIqstZaew==}
     engines: {node: '>=12.2.0'}
     hasBin: true
     peerDependencies:
@@ -906,12 +906,12 @@ packages:
     dependencies:
       '@docsearch/css': 3.0.0
       '@docsearch/js': 3.0.0
-      '@vitejs/plugin-vue': 2.3.3_vite@2.9.9+vue@3.2.33
+      '@vitejs/plugin-vue': 2.3.3_vite@2.9.12+vue@3.2.33
       '@vue/devtools-api': 6.1.4
       '@vueuse/core': 8.6.0_vue@3.2.33
       body-scroll-lock: 4.0.0-beta.0
       shiki: 0.10.1
-      vite: 2.9.9
+      vite: 2.9.12
       vue: 3.2.33
     transitivePeerDependencies:
       - '@algolia/client-search'
