@@ -116,11 +116,7 @@ Vite 为 Vue 提供第一优先级支持：
 
 Vue 用户应使用官方提供的 [@vitejs/plugin-vue-jsx](https://github.com/vitejs/vite/tree/main/packages/plugin-vue-jsx) 插件，它提供了 Vue 3 特性的支持，包括 HMR，全局组件解析，指令和插槽。
 
-<<<<<<< HEAD
-如果不是在 React 或 Vue 中使用 JSX，自定义的 `jsxFactory` 和 `jsxFragment` 可以使用 [`esbuild` 选项](/config/#esbuild) 进行配置。例如对 Preact：
-=======
-If not using JSX with React or Vue, custom `jsxFactory` and `jsxFragment` can be configured using the [`esbuild` option](/config/shared-options.md#esbuild). For example for Preact:
->>>>>>> 7512a81129be3c6fbab22251c1d49a29b62450a8
+如果不是在 React 或 Vue 中使用 JSX，自定义的 `jsxFactory` 和 `jsxFragment` 可以使用 [`esbuild` 选项](/config/shared-options.md#esbuild) 进行配置。例如对 Preact：
 
 ```js
 // vite.config.js
@@ -179,11 +175,7 @@ import classes from './example.module.css'
 document.getElementById('foo').className = classes.red
 ```
 
-<<<<<<< HEAD
-CSS modules 行为可以通过 [`css.modules` 选项](/config/#css-modules) 进行配置。
-=======
-CSS modules behavior can be configured via the [`css.modules` option](/config/shared-options.md#css-modules).
->>>>>>> 7512a81129be3c6fbab22251c1d49a29b62450a8
+CSS modules 行为可以通过 [`css.modules` 选项](/config/shared-options.md#css-modules) 进行配置。
 
 如果 `css.modules.localsConvention` 设置开启了 camelCase 格式变量名转换（例如 `localsConvention: 'camelCaseOnly'`），你还可以使用按名导入。
 
@@ -435,17 +427,10 @@ const modules = {
 
 请注意：
 
-<<<<<<< HEAD
 - 这只是一个 Vite 独有的功能而不是一个 Web 或 ES 标准
-- 该 Glob 模式会被当成导入标识符：必须是相对路径（以 `./` 开头）或绝对路径（以 `/` 开头，相对于项目根目录解析）或一个别名路径（请看 [`resolve.alias` 选项](/config/#resolve-alias))。
+- 该 Glob 模式会被当成导入标识符：必须是相对路径（以 `./` 开头）或绝对路径（以 `/` 开头，相对于项目根目录解析）或一个别名路径（请看 [`resolve.alias` 选项](/config/shared-options.md#resolve-alias))。
 - Glob 匹配是使用 [fast-glob](https://github.com/mrmlnc/fast-glob) 来实现的 —— 阅读它的文档来查阅 [支持的 Glob 模式](https://github.com/mrmlnc/fast-glob#pattern-syntax)。
 - 你还需注意，所有 `import.meta.glob` 的参数都必须以字面量传入。你 **不** 可以在其中使用变量或表达式。
-=======
-- This is a Vite-only feature and is not a web or ES standard.
-- The glob patterns are treated like import specifiers: they must be either relative (start with `./`) or absolute (start with `/`, resolved relative to project root) or an alias path (see [`resolve.alias` option](/config/shared-options.md#resolve-alias)).
-- The glob matching is done via [`fast-glob`](https://github.com/mrmlnc/fast-glob) - check out its documentation for [supported glob patterns](https://github.com/mrmlnc/fast-glob#pattern-syntax).
-- You should also be aware that all the arguments in the `import.meta.glob` must be **passed as literals**. You can NOT use variables or expressions in them.
->>>>>>> 7512a81129be3c6fbab22251c1d49a29b62450a8
 
 ## 动态导入 {#dynamic-import}
 
@@ -532,11 +517,7 @@ import MyWorker from './worker?worker&inline'
 import MyWorker from './worker?worker&url'
 ```
 
-<<<<<<< HEAD
-查看 [Worker 选项](/config/#worker-options) 了解更多关于如何配置打包全部 worker 的相关细节。workers.
-=======
-See [Worker Options](/config/worker-options.md) for details on configuring the bundling of all workers.
->>>>>>> 7512a81129be3c6fbab22251c1d49a29b62450a8
+查看 [Worker 选项](/config/worker-options.md) 了解更多关于如何配置打包全部 worker 的相关细节。workers.
 
 ## 构建优化 {#build-optimizations}
 
@@ -546,11 +527,7 @@ See [Worker Options](/config/worker-options.md) for details on configuring the b
 
 Vite 会自动地将一个异步 chunk 模块中使用到的 CSS 代码抽取出来并为其生成一个单独的文件。这个 CSS 文件将在该异步 chunk 加载完成时自动通过一个 `<link>` 标签载入，该异步 chunk 会保证只在 CSS 加载完毕后再执行，避免发生 [FOUC](https://en.wikipedia.org/wiki/Flash_of_unstyled_content#:~:text=A%20flash%20of%20unstyled%20content,before%20all%20information%20is%20retrieved.) 。
 
-<<<<<<< HEAD
-如果你更倾向于将所有的 CSS 抽取到一个文件中，你可以通过设置 [`build.cssCodeSplit`](/config/#build-csscodesplit) 为 `false` 来禁用 CSS 代码分割。
-=======
-If you'd rather have all the CSS extracted into a single file, you can disable CSS code splitting by setting [`build.cssCodeSplit`](/config/build-options.md#build-csscodesplit) to `false`.
->>>>>>> 7512a81129be3c6fbab22251c1d49a29b62450a8
+如果你更倾向于将所有的 CSS 抽取到一个文件中，你可以通过设置 [`build.cssCodeSplit`](/config/build-options.md#build-csscodesplit) 为 `false` 来禁用 CSS 代码分割。
 
 ### 预加载指令生成 {#preload-directives-generation}
 

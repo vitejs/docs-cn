@@ -2,11 +2,7 @@
 
 ## Node 支持 {#node-support}
 
-<<<<<<< HEAD
-Vite 不再支持 Node v12，因为它已经进入了 EOL 阶段。现在你必须使用 Node 14.6 及以上版本。
-=======
-Vite no longer supports Node v12, which reached its EOL. Node 14.18+ is now required.
->>>>>>> 7512a81129be3c6fbab22251c1d49a29b62450a8
+Vite 不再支持 Node v12，因为它已经进入了 EOL 阶段。现在你必须使用 Node 14.18+ 及以上版本。
 
 ## 现代浏览器基准线变化 {#modern-browser-baseline-change}
 
@@ -23,31 +19,20 @@ Vite no longer supports Node v12, which reached its EOL. Node 14.18+ is now requ
 
 - 下列在 v2 当中我们已经标记为弃用选项，现在已经被移除：
 
-<<<<<<< HEAD
-  - `alias`（改为了 [`resolve.alias`](../config/shared-options.md#resolvealias)）
-  - `dedupe`（改为了 [`resolve.dedupe`](../config/shared-options.md#resolvededupe)）
+  - `alias`（改为了 [`resolve.alias`](../config/shared-options.md#resolve-alias)）
+  - `dedupe`（改为了 [`resolve.dedupe`](../config/shared-options.md#resolve-dedupe)）
   - `build.base`（改为了 [`base`](../config/shared-options.md#base)）
   - `build.brotliSize`（改为了 [`build.reportCompressedSize`](../config/build-options.md#build-reportcompressedsize)）
   - `build.cleanCssOptions`（Vite 现在使用 esbuild 来做 CSS 最小化压缩）
   - `build.polyfillDynamicImport`（在没有支持动态导入的浏览器中，使用 [`@vitejs/plugin-legacy`](https://github.com/vitejs/vite/tree/main/packages/plugin-legacy)）
-  - `optimizeDeps.keepNames`（改为了 [`optimizeDeps.esbuildOptions.keepNames`](../config/dep-optimization-options.md#optimizedepsesbuildoptions)）
+  - `optimizeDeps.keepNames`（改为了 [`optimizeDeps.esbuildOptions.keepNames`](../config/dep-optimization-options.md#optimizedeps-esbuildoptions)）
 
-## 开发服务器变化 {#dev-server-changes}
-=======
-  - `alias` (switch to [`resolve.alias`](../config/shared-options.md#resolve-alias))
-  - `dedupe` (switch to [`resolve.dedupe`](../config/shared-options.md#resolve-dedupe))
-  - `build.base` (switch to [`base`](../config/shared-options.md#base))
-  - `build.brotliSize` (switch to [`build.reportCompressedSize`](../config/build-options.md#build-reportcompressedsize))
-  - `build.cleanCssOptions` (Vite now uses esbuild for CSS minification)
-  - `build.polyfillDynamicImport` (use [`@vitejs/plugin-legacy`](https://github.com/vitejs/vite/tree/main/packages/plugin-legacy) for browsers without dynamic import support)
-  - `optimizeDeps.keepNames` (switch to [`optimizeDeps.esbuildOptions.keepNames`](../config/dep-optimization-options.md#optimizedeps-esbuildoptions))
+## 架构变更和兼容选项 {#achitecture-changes-and-legacy-options}
 
-## Achitecture changes and legacy Options
-
-This section describes the biggest architecture changes in Vite v3. To allow projects to migrate from v2 in case of a compat issue, legacy options have been added to revert to the Vite v2 strategies.
+这一小节描述了 Vite v3 中最大的架构变更。在项目从 v2 迁移、遇到兼容性问题时，可以使用新添加的兼容选项来恢复到 Vite v2 策略。
 
 :::warning
-These options are marked as experimental and deprecated. They may be removed in a future v3 minor without respecting semver. Please pin the Vite version when using them.
+这些选项曾被标记为实验性，如今已经废弃。它们可能将在 v3 后续版本中被移除，因此使用它们时请固定 Vite 版本。
 
 - `legacy.devDepsScanner`
 - `legacy.buildRollupPluginCommonjs`
@@ -55,8 +40,7 @@ These options are marked as experimental and deprecated. They may be removed in 
 
 :::
 
-### Dev Server Changes
->>>>>>> 7512a81129be3c6fbab22251c1d49a29b62450a8
+## 开发服务器变化 {#dev-server-changes}
 
 Vite 的默认开发服务器端口号现在改为了 5173。你可以使用 [`server.port`](../config/server-options.md#server-port) 将其设置为 3000。
 
@@ -64,37 +48,21 @@ Vite 的默认开发服务器主机地址现在改为了 `localhost`。你可以
 
 Vite 使用 esbuild 优化了依赖关系，以将仅提供 CJS 格式的依赖转换成 ESM 格式，并减少浏览器需要请求的模块数量。在 v3 中，检索和批处理依赖的默认策略已经改变。Vite 不再使用 esbuild 预扫描用户代码，以获得冷启动时的初始依赖性列表。取而代之的是将第一次运行依赖性优化推迟到加载时每个导入的用户模块都得到处理之后。
 
-<<<<<<< HEAD
-若想要回到 v2 的策略，你可以使用 [`optimizeDeps.devScan`](../config/dep-optimization-options.md#optimizedepsdevscan)。
+若想要回到 v2 的策略，你可以使用 `legacy.devDepsScanner`。
 
 ## 构建变化 {#build-changes}
-=======
-To get back the v2 strategy, you can use `legacy.devDepsScanner`.
-
-### Build Changes
->>>>>>> 7512a81129be3c6fbab22251c1d49a29b62450a8
 
 在 v3 版本中，Vite 使用 esbuild 来默认优化依赖。这样做的效果是消除了 v2 版中存在的开发和生产环境之间最显著的差异之一。因为 esbuild 将 CJS 格式转换为了 ESM 格式，因此我们不再使用 [`@rollupjs/plugin-commonjs`](https://github.com/rollup/plugins/tree/master/packages/commonjs) 了。
 
-<<<<<<< HEAD
-若想要回到 v2 的策略，你可以使用 [`optimizeDeps.disabled: 'build'`](../config/dep-optimization-options.md#optimizedepsdisabled)。
+若想要回到 v2 的策略，你可以使用 `legacy.buildRollupPluginCommonjs`。
 
 ## SSR Changes {#ssr-changes}
 
 Vite v3 默认在 SSR 构建时使用 ESM 格式。当使用 ESM 时，[SSR 外部化的启发式方法](https://vitejs.dev/guide/ssr.html#ssr-externals) 将不再需要。默认情况下所有的依赖都将被外部化。你可以使用 [`ssr.noExternal`](../config/ssr-options.md#ssrnoexternal) 来控制哪些依赖需要被包含进 SSR 的打包产物中。
 
 如果你无法在你的 SSR 项目中使用 ESM，你可以设置 `ssr.format: 'cjs'` 来生成一个 CJS 格式的产物。在这种情况下，会使用和 Vite v2 相同的外部化策略。
-=======
-If you need to get back to the v2 strategy, you can use `legacy.buildRollupPluginCommonjs`.
 
-### SSR Changes
-
-Vite v3 uses ESM for the SSR build by default. When using ESM, the [SSR externalization heuristics](https://vitejs.dev/guide/ssr.html#ssr-externals) are no longer needed. By default, all dependencies are externalized. You can use [`ssr.noExternal`](../config/ssr-options.md#ssr-noexternal) to control what dependencies to include in the SSR bundle.
-
-If using ESM for SSR isn't possible in your project, you can set `legacy.buildSsrCjsExternalHeuristics` to generate a CJS bundle using the same externalization strategy of Vite v2.
-
-Also [`build.rollupOptions.output.inlineDynamicImports`](https://rollupjs.org/guide/en/#outputinlinedynamicimports) now defaults to `false` when `ssr.target` is `'node'`. `inlineDynamicImports` changes execution order and bundling to a single file is not needed for node builds.
->>>>>>> 7512a81129be3c6fbab22251c1d49a29b62450a8
+同样 [`build.rollupOptions.output.inlineDynamicImports`](https://rollupjs.org/guide/en/#outputinlinedynamicimports) 现在在 `ssr.target` 是 `node` 时，也默认置为了 `false`。`inlineDynamicImports` 它会改变执行顺序，并且 node 构建不需要打包到单个文件。
 
 ## 其他一般性变化 {#general-changes}
 
@@ -152,15 +120,10 @@ Also [`build.rollupOptions.output.inlineDynamicImports`](https://rollupjs.org/gu
 - [[#7995] chore: do not fixStacktrace](https://github.com/vitejs/vite/pull/7995)
   - `ssrLoadModule` 的 `fixStacktrace` 选项现在默认为 `false`
 - [[#8178] feat!: migrate to ESM](https://github.com/vitejs/vite/pull/8178)
-<<<<<<< HEAD
   - `formatPostcssSourceMap` 现在是异步的
   - `resolvePackageEntry`、`resolvePackageData` 在 CJS 构建中将不再可用（需要在 CJS 中使用动态导入）
-=======
-  - `formatPostcssSourceMap` is now async
-  - `resolvePackageEntry`, `resolvePackageData` are no longer available from CJS build (dynamic import is needed to use in CJS)
 - [[#8626] refactor: type client maps](https://github.com/vitejs/vite/pull/8626)
-  - Type of callback of `import.meta.hot.accept` is now stricter. It is now `(mod: (Record<string, any> & { [Symbol.toStringTag]: 'Module' }) | undefined) => void` (was `(mod: any) => void`).
->>>>>>> 7512a81129be3c6fbab22251c1d49a29b62450a8
+  - `import.meta.hot.accept` 的回调函数类型现在更严格了。现在是 `(mod: (Record<string, any> & { [Symbol.toStringTag]: 'Module' }) | undefined) => void`（之前是 `(mod: any) => void`）。
 
 此外，还有其他一些只影响少数用户的破坏性变化。
 
@@ -171,17 +134,11 @@ Also [`build.rollupOptions.output.inlineDynamicImports`](https://rollupjs.org/gu
 - [[#8090] feat: preserve process env vars in lib build](https://github.com/vitejs/vite/pull/8090)
   - `process.env.*` 现在在库模式下是被保留的了。
 - [[#8280] feat: non-blocking esbuild optimization at build time](https://github.com/vitejs/vite/pull/8280)
-<<<<<<< HEAD
   - `server.force` 选项现已移除，改为了直接的 `force` 选项。
 - [[#8550] fix: dont handle sigterm in middleware mode](https://github.com/vitejs/vite/pull/8550)
   - 当以中间件模式运行时，Vite 不再在 `SIGTERM` 强制杀进程。
-=======
-  - `server.force` option was removed in favor of `optimizeDeps.force` option.
-- [[#8550] fix: dont handle sigterm in middleware mode](https://github.com/vitejs/vite/pull/8550)
-  - When running in middleware mode, Vite no longer kills process on `SIGTERM`.
 - [[#8647] feat: print resolved address for localhost](https://github.com/vitejs/vite/pull/8647)
-  - `server.printUrls` and `previewServer.printUrls` are now async
->>>>>>> 7512a81129be3c6fbab22251c1d49a29b62450a8
+  - `server.printUrls` 和 `previewServer.printUrls` 现在是异步的了。
 
 ## 从 v1 迁移 {#migration-from-v1}
 

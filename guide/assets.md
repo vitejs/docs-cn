@@ -1,12 +1,7 @@
 # 静态资源处理 {#static-asset-handling}
 
-<<<<<<< HEAD
 - 相关: [公共基础路径](./build#public-base-path)
-- 相关: [`assetsInclude` 配置项](/config/#assetsinclude)
-=======
-- Related: [Public Base Path](./build#public-base-path)
-- Related: [`assetsInclude` config option](/config/shared-options.md#assetsinclude)
->>>>>>> 7512a81129be3c6fbab22251c1d49a29b62450a8
+- 相关: [`assetsInclude` 配置项](/config/shared-options.md#assetsinclude)
 
 ## 将资源引入为 URL {#importing-asset-as-url}
 
@@ -25,19 +20,11 @@ document.getElementById('hero-img').src = imgUrl
 
 - 如果 Vite 使用了 Vue 插件，Vue SFC 模板中的资源引用都将自动转换为导入。
 
-<<<<<<< HEAD
-- 常见的图像、媒体和字体文件类型被自动检测为资源。你可以使用 [`assetsInclude` 选项](/config/#assetsinclude) 扩展内部列表。
-=======
-- Common image, media, and font filetypes are detected as assets automatically. You can extend the internal list using the [`assetsInclude` option](/config/shared-options.md#assetsinclude).
->>>>>>> 7512a81129be3c6fbab22251c1d49a29b62450a8
+- 常见的图像、媒体和字体文件类型被自动检测为资源。你可以使用 [`assetsInclude` 选项](/config/shared-options.md#assetsinclude) 扩展内部列表。
 
 - 引用的资源作为构建资源图的一部分包括在内，将生成散列文件名，并可以由插件进行处理以进行优化。
 
-<<<<<<< HEAD
-- 较小的资源体积小于 [`assetsInlineLimit` 选项值](/config/#build-assetsinlinelimit) 则会被内联为 base64 data URL。
-=======
-- Assets smaller in bytes than the [`assetsInlineLimit` option](/config/build-options.md#build-assetsinlinelimit) will be inlined as base64 data URLs.
->>>>>>> 7512a81129be3c6fbab22251c1d49a29b62450a8
+- 较小的资源体积小于 [`assetsInlineLimit` 选项值](/config/build-options.md#build-assetsinlinelimit) 则会被内联为 base64 data URL。
 
 ### 显式 URL 引入 {#explicit-url-imports}
 
@@ -89,11 +76,7 @@ import InlineWorker from './shader.js?worker&inline'
 
 那么你可以将该资源放在指定的 `public` 目录中，它应位于你的项目根目录。该目录中的资源在开发时能直接通过 `/` 根路径访问到，并且打包时会被完整复制到目标目录的根目录下。
 
-<<<<<<< HEAD
-目录默认是 `<root>/public`，但可以通过 [`publicDir` 选项](/config/#publicdir) 来配置。
-=======
-The directory defaults to `<root>/public`, but can be configured via the [`publicDir` option](/config/shared-options.md#publicdir).
->>>>>>> 7512a81129be3c6fbab22251c1d49a29b62450a8
+目录默认是 `<root>/public`，但可以通过 [`publicDir` 选项](/config/shared-options.md#publicdir) 来配置。
 
 请注意：
 

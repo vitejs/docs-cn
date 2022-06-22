@@ -74,17 +74,8 @@ const { createServer: createViteServer } = require('vite')
 async function createServer() {
   const app = express()
 
-<<<<<<< HEAD
   // 以中间件模式创建 Vite 应用，这将禁用 Vite 自身的 HTML 服务逻辑
   // 并让上级服务器接管控制
-  //
-  // 在中间件模式下，如果你想使用 Vite 自带的 HTML 服务
-  // 请将 `middlewareMode` 设置为 `'html'` (具体请参考 https://cn.vitejs.dev/config/#server-middlewaremode)
-=======
-  // Create Vite server in middleware mode and configure the app type as
-  // 'custom', disabling Vite's own HTML serving logic so parent server
-  // can take control
->>>>>>> 7512a81129be3c6fbab22251c1d49a29b62450a8
   const vite = await createViteServer({
     server: { middlewareMode: true },
     appType: 'custom'
@@ -274,19 +265,8 @@ SSR 构建的默认目标为 node 环境，但你也可以让服务运行在 Web
 
 ## Vite CLI {#vite-cli}
 
-<<<<<<< HEAD
-CLI 命令 `$ vite dev` 和 `$ vite preview` 也可以用于 SSR 应用：
+CLI 命令 `$ vite dev` 和 `$ vite preview` 也可以用于 SSR 应用：你可以将你的 SSR 中间件通过 [`configureServer`](/guide/api-plugin#configureserver) 添加到开发服务器、以及通过 [`configurePreviewServer`](/guide/api-plugin#configurepreviewserver) 添加到预览服务器。
 
-1. 将你的 SSR 中间件通过 [`configureServer`](/guide/api-plugin#configureserver) 添加到开发服务器、以及通过 [`configurePreviewServer`](/guide/api-plugin#configurepreviewserver) 添加到预览服务器。
-   :::tip 注意
-   使用一个后置钩子，使得你的 SSR 中间件在 Vite 的中间件 _之后_ 运行。
-   :::
-
-2. 设置 `config.spa` 为 `false`。这会将开发和预览服务器从 SPA 模式切换到 SSR/MPA 模式。
-=======
-The CLI commands `$ vite dev` and `$ vite preview` can also be used for SSR apps. You can add your SSR middlewares to the development server with [`configureServer`](/guide/api-plugin#configureserver) and to the preview server with [`configurePreviewServer`](/guide/api-plugin#configurepreviewserver).
-
-:::tip Note
-Use a post hook so that your SSR middleware runs _after_ Vite's middlewares.
+:::tip 注意
+使用一个后置钩子，使得你的 SSR 中间件在 Vite 的中间件 _之后_ 运行。
 :::
->>>>>>> 7512a81129be3c6fbab22251c1d49a29b62450a8
