@@ -2,7 +2,7 @@
 
 本指南建立在以下几个假设基础之上：
 
-- 你正在使用的是默认的构建输出路径（`dist`）。这个路径 [可以通过 `build.outDir` 更改](/config/#build-outdir)，在这种情况下，你可以从这篇指南中找到出所需的指引。
+- 你正在使用的是默认的构建输出路径（`dist`）。这个路径 [可以通过 `build.outDir` 更改](/config/build-options.md#build-outdir)，在这种情况下，你可以从这篇指南中找到出所需的指引。
 - 你正在使用 NPM；或者 Yarn 等其他可以运行下面的脚本指令的包管理工具。
 - Vite 已作为一个本地开发依赖（dev dependency）安装在你的项目中，并且你已经配置好了如下的 npm scripts：
 

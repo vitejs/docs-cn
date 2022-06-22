@@ -2,7 +2,7 @@
 
 ## Node 支持 {#node-support}
 
-Vite 不再支持 Node v12，因为它已经进入了 EOL 阶段。现在你必须使用 Node 14.6 及以上版本。
+Vite 不再支持 Node v12，因为它已经进入了 EOL 阶段。现在你必须使用 Node 14.18+ 及以上版本。
 
 ## 现代浏览器基准线变化 {#modern-browser-baseline-change}
 
@@ -19,13 +19,26 @@ Vite 不再支持 Node v12，因为它已经进入了 EOL 阶段。现在你必�
 
 - 下列在 v2 当中我们已经标记为弃用选项，现在已经被移除：
 
-  - `alias`（改为了 [`resolve.alias`](../config/shared-options.md#resolvealias)）
-  - `dedupe`（改为了 [`resolve.dedupe`](../config/shared-options.md#resolvededupe)）
+  - `alias`（改为了 [`resolve.alias`](../config/shared-options.md#resolve-alias)）
+  - `dedupe`（改为了 [`resolve.dedupe`](../config/shared-options.md#resolve-dedupe)）
   - `build.base`（改为了 [`base`](../config/shared-options.md#base)）
   - `build.brotliSize`（改为了 [`build.reportCompressedSize`](../config/build-options.md#build-reportcompressedsize)）
   - `build.cleanCssOptions`（Vite 现在使用 esbuild 来做 CSS 最小化压缩）
   - `build.polyfillDynamicImport`（在没有支持动态导入的浏览器中，使用 [`@vitejs/plugin-legacy`](https://github.com/vitejs/vite/tree/main/packages/plugin-legacy)）
-  - `optimizeDeps.keepNames`（改为了 [`optimizeDeps.esbuildOptions.keepNames`](../config/dep-optimization-options.md#optimizedepsesbuildoptions)）
+  - `optimizeDeps.keepNames`（改为了 [`optimizeDeps.esbuildOptions.keepNames`](../config/dep-optimization-options.md#optimizedeps-esbuildoptions)）
+
+## 架构变更和兼容选项 {#achitecture-changes-and-legacy-options}
+
+这一小节描述了 Vite v3 中最大的架构变更。在项目从 v2 迁移、遇到兼容性问题时，可以使用新添加的兼容选项来恢复到 Vite v2 策略。
+
+:::warning
+这些选项曾被标记为实验性，如今已经废弃。它们可能将在 v3 后续版本中被移除，因此使用它们时请固定 Vite 版本。
+
+- `legacy.devDepsScanner`
+- `legacy.buildRollupPluginCommonjs`
+- `legacy.buildSsrCjsExternalHeuristics`
+
+:::
 
 ## 开发服务器变化 {#dev-server-changes}
 
@@ -35,19 +48,21 @@ Vite 的默认开发服务器主机地址现在改为了 `localhost`。你可以
 
 Vite 使用 esbuild 优化了依赖关系，以将仅提供 CJS 格式的依赖转换成 ESM 格式，并减少浏览器需要请求的模块数量。在 v3 中，检索和批处理依赖的默认策略已经改变。Vite 不再使用 esbuild 预扫描用户代码，以获得冷启动时的初始依赖性列表。取而代之的是将第一次运行依赖性优化推迟到加载时每个导入的用户模块都得到处理之后。
 
-若想要回到 v2 的策略，你可以使用 [`optimizeDeps.devScan`](../config/dep-optimization-options.md#optimizedepsdevscan)。
+若想要回到 v2 的策略，你可以使用 `legacy.devDepsScanner`。
 
 ## 构建变化 {#build-changes}
 
 在 v3 版本中，Vite 使用 esbuild 来默认优化依赖。这样做的效果是消除了 v2 版中存在的开发和生产环境之间最显著的差异之一。因为 esbuild 将 CJS 格式转换为了 ESM 格式，因此我们不再使用 [`@rollupjs/plugin-commonjs`](https://github.com/rollup/plugins/tree/master/packages/commonjs) 了。
 
-若想要回到 v2 的策略，你可以使用 [`optimizeDeps.disabled: 'build'`](../config/dep-optimization-options.md#optimizedepsdisabled)。
+若想要回到 v2 的策略，你可以使用 `legacy.buildRollupPluginCommonjs`。
 
 ## SSR Changes {#ssr-changes}
 
 Vite v3 默认在 SSR 构建时使用 ESM 格式。当使用 ESM 时，[SSR 外部化的启发式方法](https://vitejs.dev/guide/ssr.html#ssr-externals) 将不再需要。默认情况下所有的依赖都将被外部化。你可以使用 [`ssr.noExternal`](../config/ssr-options.md#ssrnoexternal) 来控制哪些依赖需要被包含进 SSR 的打包产物中。
 
 如果你无法在你的 SSR 项目中使用 ESM，你可以设置 `ssr.format: 'cjs'` 来生成一个 CJS 格式的产物。在这种情况下，会使用和 Vite v2 相同的外部化策略。
+
+同样 [`build.rollupOptions.output.inlineDynamicImports`](https://rollupjs.org/guide/en/#outputinlinedynamicimports) 现在在 `ssr.target` 是 `node` 时，也默认置为了 `false`。`inlineDynamicImports` 它会改变执行顺序，并且 node 构建不需要打包到单个文件。
 
 ## 其他一般性变化 {#general-changes}
 
@@ -107,6 +122,8 @@ Vite v3 默认在 SSR 构建时使用 ESM 格式。当使用 ESM 时，[SSR 外�
 - [[#8178] feat!: migrate to ESM](https://github.com/vitejs/vite/pull/8178)
   - `formatPostcssSourceMap` 现在是异步的
   - `resolvePackageEntry`、`resolvePackageData` 在 CJS 构建中将不再可用（需要在 CJS 中使用动态导入）
+- [[#8626] refactor: type client maps](https://github.com/vitejs/vite/pull/8626)
+  - `import.meta.hot.accept` 的回调函数类型现在更严格了。现在是 `(mod: (Record<string, any> & { [Symbol.toStringTag]: 'Module' }) | undefined) => void`（之前是 `(mod: any) => void`）。
 
 此外，还有其他一些只影响少数用户的破坏性变化。
 
@@ -120,6 +137,8 @@ Vite v3 默认在 SSR 构建时使用 ESM 格式。当使用 ESM 时，[SSR 外�
   - `server.force` 选项现已移除，改为了直接的 `force` 选项。
 - [[#8550] fix: dont handle sigterm in middleware mode](https://github.com/vitejs/vite/pull/8550)
   - 当以中间件模式运行时，Vite 不再在 `SIGTERM` 强制杀进程。
+- [[#8647] feat: print resolved address for localhost](https://github.com/vitejs/vite/pull/8647)
+  - `server.printUrls` 和 `previewServer.printUrls` 现在是异步的了。
 
 ## 从 v1 迁移 {#migration-from-v1}
 

@@ -6,7 +6,7 @@ Vite 在一个特殊的 **`import.meta.env`** 对象上暴露环境变量。这�
 
 - **`import.meta.env.MODE`**: {string} 应用运行的[模式](#modes)。
 
-- **`import.meta.env.BASE_URL`**: {string} 部署应用时的基本 URL。他由[`base` 配置项](/config/#base)决定。
+- **`import.meta.env.BASE_URL`**: {string} 部署应用时的基本 URL。他由[`base` 配置项](/config/shared-options.md#base)决定。
 
 - **`import.meta.env.PROD`**: {boolean} 应用是否运行在生产环境。
 
@@ -24,7 +24,7 @@ Vite 在一个特殊的 **`import.meta.env`** 对象上暴露环境变量。这�
 
 ## `.env` 文件 {#env-files}
 
-Vite 使用 [dotenv](https://github.com/motdotla/dotenv) 从你的 [环境目录](/config/#envdir) 中的下列文件加载额外的环境变量：
+Vite 使用 [dotenv](https://github.com/motdotla/dotenv) 从你的 [环境目录](/config/shared-options.md#envdir) 中的下列文件加载额外的环境变量：
 
 ```
 .env                # 所有情况下都会加载
