@@ -588,9 +588,9 @@ export default defineConfig({
 })
 ```
 
-### TypeScript for Custom Events
+### 自定义事件的 TypeScript 类型定义指南 {#typeScript-for-custom-events}
 
-It is possible to type custom events by extending the `CustomEventMap` interface:
+可以通过扩展 `CustomEventMap` 这个 interface 来为自定义事件标注类型：
 
 ```ts
 // events.d.ts

@@ -47,9 +47,9 @@ $ git clone https://github.com/vitejs/docs-cn.git
 
 # 安装依赖
 $ npm install
-# 或者使用 yarn
-$ yarn install
+# 或者使用 pnpm
+$ pnpm i
 
 # 启动开发服务器
-$ yarn dev
+$ pnpm dev
 ```

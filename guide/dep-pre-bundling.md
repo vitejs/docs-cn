@@ -29,7 +29,7 @@ Pre-bundling dependencies: （正在预构建依赖：）
    通过预构建 `lodash-es` 成为一个模块，我们就只需要一个 HTTP 请求了！
 
 ::: tip 注意
-依赖与构建仅会在开发模式下应用，并会使用 `esbuild` 将依赖转为 ESM 模块。在生产构建中则会使用 `@rollup/plugin-commonjs`。
+依赖预构建仅会在开发模式下应用，并会使用 `esbuild` 将依赖转为 ESM 模块。在生产构建中则会使用 `@rollup/plugin-commonjs`。
 :::
 
 ## 自动依赖搜寻 {#automatic-dependency-discovery}

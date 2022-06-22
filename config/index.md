@@ -21,8 +21,8 @@ export default {
 vite --config my-config.js
 ```
 
-::: tip NOTE
-Vite 会在配置文件及其依赖中注入 `__filename`，`__dirname`。在顶层声明这些变量会报错：
+::: tip 注意
+注意，Vite 会在 **CommonJS** 和 **TypeScript** 配置文件中替换 `__filename`，`__dirname` 以及 `import.meta.url`。如果使用这些名称作为变量名可能会导致代码报错：
 
 ```js
 const __filename = 'value' // SyntaxError: Identifier '__filename' has already been declared
@@ -91,18 +91,18 @@ export default defineConfig(async ({ command, mode }) => {
 })
 ```
 
-## 环境变量 {#environment-variables}
+### 环境变量 {#environment-variables}
 
-环境变量可以像往常一样从 `process.env` 上获得。
+环境变量通常可以从 `process.env` 获得。
 
-Vite 默认是不加载 `.env` 文件的，因为这些文件需要在执行完 Vite 配置后才能确定加载哪一个，举个例子，`root` 和 `envDir` 选项会影响加载行为。不过当你的确需要时，你可以使用 Vite 导出的 `loadEnv` 函数来加载指定的 `.env` 文件
+注意 Vite 默认是不加载 `.env` 文件的，因为这些文件需要在执行完 Vite 配置后才能确定加载哪一个，举个例子，`root` 和 `envDir` 选项会影响加载行为。不过当你的确需要时，你可以使用 Vite 导出的 `loadEnv` 函数来加载指定的 `.env` 文件。
 
 ```js
 import { defineConfig, loadEnv } from 'vite'
 
 export default defineConfig(({ command, mode }) => {
   // 根据当前工作目录中的 `mode` 加载 .env 文件
-  // 设置第三个参数为 '' 可以加载所有环境变量，而不考虑 `VITE_` 前缀
+  // 设置第三个参数为 '' 来加载所有环境变量，而不管是否有 `VITE_` 前缀。
   const env = loadEnv(mode, process.cwd(), '')
   return {
     // vite 配置

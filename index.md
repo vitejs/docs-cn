@@ -2,7 +2,7 @@
 layout: home
 
 title: Vite
-titleTemplate: Next Generation Frontend Tooling
+titleTemplate: 下一代的前端工具链
 
 hero:
   name: Vite
