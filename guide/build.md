@@ -58,7 +58,7 @@ module.exports = defineConfig({
 })
 ```
 
-This strategy is also provided as a `splitVendorChunk({ cache: SplitVendorChunkCache })` factory, in case composition with custom logic is needed. `cache.reset()` needs to be called at `buildStart` for build watch mode to work correctly in this case.
+也可以用一个工厂函数 `splitVendorChunk({ cache: SplitVendorChunkCache })` 来提供该策略，在需要与自定义逻辑组合的情况下，`cache.reset()` 需要在 `buildStart` 阶段被调用，以便构建的 watch 模式在这种情况下正常工作。
 
 ## 文件变化时重新构建 {#rebuild-on-files-changs}
 
@@ -182,42 +182,42 @@ building for production...
 }
 ```
 
-## Advanced Base Options
+## Advanced Base Options {#advanced-base-options}
 
 ::: warning
-This feature is experimental, the API may change in a future minor without following semver. Please fix the minor version of Vite when using it.
+该功能是实验性的，这个 API 可能在未来后续版本中发生变更而不遵循语义化版本号。请在使用它时注意维护 Vite 的版本。
 :::
 
-For advanced use cases, the deployed assets and public files may be in different paths, for example to use different cache strategies.
-A user may choose to deploy in three different paths:
+对更高级的使用场景，被部署的资源和公共文件可能想要分为不同的路径，例如使用不同缓存策略的场景。
+一个用户可能以三种不同的路径部署下列文件：
 
-- The generated entry HTML files (which may be processed during SSR)
-- The generated hashed assets (JS, CSS, and other file types like images)
-- The copied [public files](assets.md#the-public-directory)
+- 生成的入口 HTML 文件（可能会在 SSR 中被处理）
+- 生成的带有 hash 值的文件（JS、CSS 以及其他文件类型，如图片）
+- 拷贝的 [公共文件](assets.md#the-public-directory)
 
-A single static [base](#public-base-path) isn't enough in these scenarios. Vite provides experimental support for advanced base options during build, using `experimental.buildAdvancedBaseOptions`.
+单个静态的 [基础路径](#public-base-path) 在这种场景中就不够用了。Vite 在构建时为更高级的基础路径选项提供了实验性支持，可以使用 `experimental.buildAdvancedBaseOptions`。
 
 ```js
   experimental: {
     buildAdvancedBaseOptions: {
-      // Same as base: './'
-      // type: boolean, default: false
+      // 与将 base 设置为 './' 相同
+      // 类型：boolean，默认：false
       relative: true
-      // Static base
-      // type: string, default: undefined
+      // 静态基础路径
+      // 类型：string，默认：undefined
       url: 'https:/cdn.domain.com/'
-      // Dynamic base to be used for paths inside JS
-      // type: (url: string) => string, default: undefined
+      // 动态基础路径，在 JS 中与 path 相关处使用
+      // 类型：(url: string) => string，默认：undefined
       runtime: (url: string) => `window.__toCdnUrl(${url})`
     },
   }
 ```
 
-When `runtime` is defined, it will be used for hashed assets and public files paths inside JS assets. Inside CSS and HTML generated files, paths will use `url` if defined or fallback to `config.base`.
+当定义了 `runtime` 时，它将用于 hash 后的资源和 JS 资源中的公共文件路径。在生成的 CSS 和 HTML 文件中，如果定义了 `url`，路径将使用它，否则将兜底使用 `config.base`。
 
-If `relative` is true and `url` is defined, relative paths will be prefered for assets inside the same group (for example a hashed image referenced from a JS file). And `url` will be used for the paths in HTML entries and for paths between different groups (a public file referenced from a CSS file).
+如果设置 `relative` 为 `true` 并且定义了 `url`，在同组中对资源将更优先采用相对路径。（举个例子，JS 文件中引用了一个 hash 后的图片）同时在 HTML 入口文件和不同组之间（如一个 CSS 文件引用的一个公共文件）的路径中，将会使用 `url`。
 
-If the hashed assets and public files aren't deployed together, options for each group can be defined independently:
+如果 hash 后的资源和公共文件没有被部署在一起，可以分别定义各个组的选项：
 
 ```js
   experimental: {
@@ -236,4 +236,4 @@ If the hashed assets and public files aren't deployed together, options for each
   }
 ```
 
-Any option that isn't defined in the `public` or `assets` entry will be inherited from the main `buildAdvancedBaseOptions` config.
+任何没有在上面的 `public` 和 `assets` 之下配置的选项将从主配置的 `buildAdvancedBaseOptions` 中继承。
