@@ -18,9 +18,8 @@ export default defineConfig({
     logo: '/logo.svg',
 
     editLink: {
-      repo: 'vitejs/docs-cn',
-      branch: 'main',
-      text: '为此页提供修改建议'
+      text: '为此页提供修改建议',
+      pattern: 'https://github.com/vitejs/docs-cn/edit/main/docs/:path',
     },
 
     socialLinks: [
@@ -43,9 +42,9 @@ export default defineConfig({
     },
 
     localeLinks: {
-      text: 'English',
+      text: '简体中文',
       items: [
-        { text: '简体中文', link: 'https://cn.vitejs.dev' },
+        { text: 'English', link: 'https://vitejs.dev' },
         { text: '日本語', link: 'https://ja.vitejs.dev' }
       ]
     },
@@ -182,38 +181,38 @@ export default defineConfig({
       ],
       '/config/': [
         {
-          text: 'Config',
+          text: '配置',
           items: [
             {
-              text: 'Configuring Vite',
+              text: '配置 Vite',
               link: '/config/'
             },
             {
-              text: 'Shared Options',
+              text: '共享选项',
               link: '/config/shared-options'
             },
             {
-              text: 'Server Options',
+              text: '服务器选项',
               link: '/config/server-options'
             },
             {
-              text: 'Build Options',
+              text: '构建选项',
               link: '/config/build-options'
             },
             {
-              text: 'Preview Options',
+              text: '预览选项',
               link: '/config/preview-options'
             },
             {
-              text: 'Dep Optimization Options',
+              text: '依赖优化选项',
               link: '/config/dep-optimization-options'
             },
             {
-              text: 'SSR Options',
+              text: 'SSR 选项',
               link: '/config/ssr-options'
             },
             {
-              text: 'Worker Options',
+              text: 'Worker 选项',
               link: '/config/worker-options'
             }
           ]

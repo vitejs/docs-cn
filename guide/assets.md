@@ -1,7 +1,7 @@
 # 静态资源处理 {#static-asset-handling}
 
 - 相关: [公共基础路径](./build#public-base-path)
-- 相关: [`assetsInclude` 配置项](/config/#assetsinclude)
+- 相关: [`assetsInclude` 配置项](/config/shared-options.md#assetsinclude)
 
 ## 将资源引入为 URL {#importing-asset-as-url}
 
@@ -20,11 +20,11 @@ document.getElementById('hero-img').src = imgUrl
 
 - 如果 Vite 使用了 Vue 插件，Vue SFC 模板中的资源引用都将自动转换为导入。
 
-- 常见的图像、媒体和字体文件类型被自动检测为资源。你可以使用 [`assetsInclude` 选项](/config/#assetsinclude) 扩展内部列表。
+- 常见的图像、媒体和字体文件类型被自动检测为资源。你可以使用 [`assetsInclude` 选项](/config/shared-options.md#assetsinclude) 扩展内部列表。
 
 - 引用的资源作为构建资源图的一部分包括在内，将生成散列文件名，并可以由插件进行处理以进行优化。
 
-- 较小的资源体积小于 [`assetsInlineLimit` 选项值](/config/#build-assetsinlinelimit) 则会被内联为 base64 data URL。
+- 较小的资源体积小于 [`assetsInlineLimit` 选项值](/config/build-options.md#build-assetsinlinelimit) 则会被内联为 base64 data URL。
 
 ### 显式 URL 引入 {#explicit-url-imports}
 
@@ -76,7 +76,7 @@ import InlineWorker from './shader.js?worker&inline'
 
 那么你可以将该资源放在指定的 `public` 目录中，它应位于你的项目根目录。该目录中的资源在开发时能直接通过 `/` 根路径访问到，并且打包时会被完整复制到目标目录的根目录下。
 
-目录默认是 `<root>/public`，但可以通过 [`publicDir` 选项](/config/#publicdir) 来配置。
+目录默认是 `<root>/public`，但可以通过 [`publicDir` 选项](/config/shared-options.md#publicdir) 来配置。
 
 请注意：
 
@@ -114,6 +114,6 @@ const imgUrl = new URL(imagePath, import.meta.url).href
 如果你正在以服务端渲染模式使用 Vite 则此模式不支持，因为 `import.meta.url` 在浏览器和 Node.js 中有不同的语义。服务端的产物也无法预先确定客户端主机 URL。
 :::
 
-::: warning 注意：`target` 需要设置为 `es2020` 或更高版本
-如果 [build-target](https://vitejs.dev/config/#build-target) 或 [optimizedeps.esbuildoptions.target](https://vitejs.dev/config/#optimizedeps-esbuildoptions) 被设置为低于 `es2020` 时，该模式将失效。
+::: warning `target` 需要为 `es2020` 或更高
+如果 [build-target](/config/build-options.md#build-target) 或 [optimizedeps.esbuildoptions.target](/config/dep-optimization-options.md#optimizedeps-esbuildoptions) 设置的值低于 `es2020` 那么该模式将不会工作。
 :::

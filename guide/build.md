@@ -11,7 +11,7 @@
 - Safari >=13
 - Edge >=88
 
-你也可以通过 [`build.target` 配置项](/config/#build-target) 指定构建目标，最低支持 `es2015`。
+你也可以通过 [`build.target` 配置项](/config/build-options.md#build-target) 指定构建目标，最低支持 `es2015`。
 
 请注意，默认情况下 Vite 只处理语法转译，且 **默认不包含任何 polyfill**。你可以前往 [Polyfill.io](https://polyfill.io/v3/) 查看，这是一个基于用户浏览器 User-Agent 字符串自动生成 polyfill 包的服务。
 
@@ -21,11 +21,13 @@
 
 - 相关内容：[静态资源处理](./assets)
 
-如果你需要在嵌套的公共路径下部署项目，只需指定 [`base` 配置项](/config/#base)，然后所有资源的路径都将据此配置重写。这个选项也可以通过命令行参数指定，例如 `vite build --base=/my/public/path/`。
+如果你需要在嵌套的公共路径下部署项目，只需指定 [`base` 配置项](/config/shared-options.md#base)，然后所有资源的路径都将据此配置重写。这个选项也可以通过命令行参数指定，例如 `vite build --base=/my/public/path/`。
 
 由 JS 引入的资源 URL，CSS 中的 `url()` 引用以及 `.html` 文件中引用的资源在构建过程中都会自动调整，以适配此选项。
 
 当然，情况也有例外，当访问过程中需要使用动态连接的 url 时，可以使用全局注入的 `import.meta.env.BASE_URL` 变量，它的值为公共基础路径。注意，这个变量在构建时会被静态替换，因此，它必须按 `import.meta.env.BASE_URL` 的原样出现（例如 `import.meta.env['BASE_URL']` 是无效的）
+
+若想要进一步控制基础路径，请查看 [高级 base 选项](#advanced-base-options).
 
 ## 自定义构建 {#customizing-the-build}
 
@@ -56,7 +58,7 @@ module.exports = defineConfig({
 })
 ```
 
-同时这个策略也被作为 `splitVendorChunk({ cache: SplitVendorChunkCache })` 工厂函数，在需要使用自定义逻辑时可以进行组合。必须确保 `cache.reset()` 在 `buildStart` 阶段调用，以保证构建时监听模式能够正常工作。
+也可以用一个工厂函数 `splitVendorChunk({ cache: SplitVendorChunkCache })` 来提供该策略，在需要与自定义逻辑组合的情况下，`cache.reset()` 需要在 `buildStart` 阶段被调用，以便构建的 watch 模式在这种情况下正常工作。
 
 ## 文件变化时重新构建 {#rebuild-on-files-changs}
 
@@ -116,7 +118,7 @@ module.exports = defineConfig({
 
 当你开发面向浏览器的库时，你可能会将大部分时间花在该库的测试/演示页面上。在 Vite 中你可以使用 `index.html` 获得如丝般顺滑的开发体验。
 
-当这个库要进行发布构建时，请使用 [`build.lib` 配置项](/config/#build-lib)，以确保将那些你不想打包进库的依赖进行外部化处理，例如 `vue` 或 `react`：
+当这个库要进行发布构建时，请使用 [`build.lib` 配置项](/config/build-options.md#build-lib)，以确保将那些你不想打包进库的依赖进行外部化处理，例如 `vue` 或 `react`：
 
 ```js
 // vite.config.js
@@ -179,3 +181,59 @@ building for production...
   }
 }
 ```
+
+## Advanced Base Options {#advanced-base-options}
+
+::: warning
+该功能是实验性的，这个 API 可能在未来后续版本中发生变更而不遵循语义化版本号。请在使用它时注意维护 Vite 的版本。
+:::
+
+对更高级的使用场景，被部署的资源和公共文件可能想要分为不同的路径，例如使用不同缓存策略的场景。
+一个用户可能以三种不同的路径部署下列文件：
+
+- 生成的入口 HTML 文件（可能会在 SSR 中被处理）
+- 生成的带有 hash 值的文件（JS、CSS 以及其他文件类型，如图片）
+- 拷贝的 [公共文件](assets.md#the-public-directory)
+
+单个静态的 [基础路径](#public-base-path) 在这种场景中就不够用了。Vite 在构建时为更高级的基础路径选项提供了实验性支持，可以使用 `experimental.buildAdvancedBaseOptions`。
+
+```js
+  experimental: {
+    buildAdvancedBaseOptions: {
+      // 与将 base 设置为 './' 相同
+      // 类型：boolean，默认：false
+      relative: true
+      // 静态基础路径
+      // 类型：string，默认：undefined
+      url: 'https:/cdn.domain.com/'
+      // 动态基础路径，在 JS 中与 path 相关处使用
+      // 类型：(url: string) => string，默认：undefined
+      runtime: (url: string) => `window.__toCdnUrl(${url})`
+    },
+  }
+```
+
+当定义了 `runtime` 时，它将用于 hash 后的资源和 JS 资源中的公共文件路径。在生成的 CSS 和 HTML 文件中，如果定义了 `url`，路径将使用它，否则将兜底使用 `config.base`。
+
+如果设置 `relative` 为 `true` 并且定义了 `url`，在同组中对资源将更优先采用相对路径。（举个例子，JS 文件中引用了一个 hash 后的图片）同时在 HTML 入口文件和不同组之间（如一个 CSS 文件引用的一个公共文件）的路径中，将会使用 `url`。
+
+如果 hash 后的资源和公共文件没有被部署在一起，可以分别定义各个组的选项：
+
+```js
+  experimental: {
+    buildAdvancedBaseOptions: {
+      assets: {
+        relative: true
+        url: 'https:/cdn.domain.com/assets',
+        runtime: (url: string) => `window.__assetsPath(${url})`
+      },
+      public: {
+        relative: false
+        url: 'https:/www.domain.com/',
+        runtime: (url: string) => `window.__publicPath + ${url}`
+      }
+    }
+  }
+```
+
+任何没有在上面的 `public` 和 `assets` 之下配置的选项将从主配置的 `buildAdvancedBaseOptions` 中继承。

@@ -1,23 +1,23 @@
-# Dep Optimization Options
+# 依赖优化选项 {#dep-optimization-options}
 
-- **Related:** [Dependency Pre-Bundling](/guide/dep-pre-bundling)
+- **相关内容：** [依赖预构建](/guide/dep-pre-bundling)
 
-## optimizeDeps.entries
+## optimizeDeps.entries {#optimizedeps-entries}
 
-- **Type:** `string | string[]`
+- **类型：** `string | string[]`
 
-By default, Vite will crawl all your `.html` files to detect dependencies that need to be pre-bundled (ignoring `node_modules`, `build.outDir`, `__tests__` and `coverage`). If `build.rollupOptions.input` is specified, Vite will crawl those entry points instead.
+默认情况下，Vite 会抓取你的 `index.html` 来检测需要预构建的依赖项（忽略了`node_modules`、`build.outDir`、`__tests__` 和 `coverage`）。如果指定了 `build.rollupOptions.input`，Vite 将转而去抓取这些入口点。
 
-If neither of these fit your needs, you can specify custom entries using this option - the value should be a [fast-glob pattern](https://github.com/mrmlnc/fast-glob#basic-syntax) or array of patterns that are relative from Vite project root. This will overwrite default entries inference. Only `node_modules` and `build.outDir` folders will be ignored by default when `optimizeDeps.entries` is explicitly defined. If other folders needs to be ignored, you can use an ignore pattern as part of the entries list, marked with an initial `!`.
+如果这两者都不合你意，则可以使用此选项指定自定义条目——该值需要遵循 [fast-glob 模式](https://github.com/mrmlnc/fast-glob#basic-syntax) ，或者是相对于 Vite 项目根目录的匹配模式数组。当显式声明了 `optimizeDeps.entries` 时默认只有 `node_modules` 和 `build.outDir` 文件夹会被忽略。如果还需忽略其他文件夹，你可以在模式列表中使用以 `!` 为前缀的、用来匹配忽略项的模式。
 
-## optimizeDeps.exclude
+## optimizeDeps.exclude {#optimizedeps-exclude}
 
-- **Type:** `string[]`
+- **类型：** `string[]`
 
-Dependencies to exclude from pre-bundling.
+在预构建中强制排除的依赖项。
 
 :::warning CommonJS
-CommonJS dependencies should not be excluded from optimization. If an ESM dependency is excluded from optimization, but has a nested CommonJS dependency, the CommonJS dependency should be added to `optimizeDeps.include`. Example:
+CommonJS 的依赖不应该排除在优化外。如果一个 ESM 依赖被排除在优化外，但是却有一个嵌套的 CommonJS 依赖，则应该为该 CommonJS 依赖添加 `optimizeDeps.include`。例如：
 
 ```js
 export default defineConfig({
@@ -29,19 +29,25 @@ export default defineConfig({
 
 :::
 
-## optimizeDeps.include
+## optimizeDeps.include {#optimizedeps-include}
 
-- **Type:** `string[]`
+- **类型：** `string[]`
 
-By default, linked packages not inside `node_modules` are not pre-bundled. Use this option to force a linked package to be pre-bundled.
+默认情况下，不在 `node_modules` 中的，链接的包不会被预构建。使用此选项可强制预构建链接的包。
 
-## optimizeDeps.esbuildOptions
+## optimizeDeps.esbuildOptions {#optimizedeps-esbuildoptions}
 
-- **Type:** [`EsbuildBuildOptions`](https://esbuild.github.io/api/#simple-options)
+- **类型：** [`EsbuildBuildOptions`](https://esbuild.github.io/api/#simple-options)
 
-Options to pass to esbuild during the dep scanning and optimization.
+在部署扫描和优化过程中传递给 esbuild 的选项。
 
-Certain options are omitted since changing them would not be compatible with Vite's dep optimization.
+某些选项进行了省略，因为修改它们与 Vite 的优化方案并不兼容。
 
-- `external` is also omitted, use Vite's `optimizeDeps.exclude` option
-- `plugins` are merged with Vite's dep plugin
+- 忽略了 `external` 选项，请使用 Vite 的 `optimizeDeps.exclude` 选项
+- `plugins` 与 Vite 的 dep 插件合并
+
+## optimizeDeps.force {#optimizedeps-force}
+
+- **类型：** `boolean`
+
+设置为 `true` 可以强制依赖预构建，而忽略之前已经缓存过的、已经优化过的依赖。
