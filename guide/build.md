@@ -203,19 +203,11 @@ building for production...
       // 与将 base 设置为 './' 相同
       // 类型：boolean，默认：false
       relative: true
-<<<<<<< HEAD
       // 静态基础路径
       // 类型：string，默认：undefined
-      url: 'https:/cdn.domain.com/'
+      url: 'https://cdn.domain.com/'
       // 动态基础路径，在 JS 中与 path 相关处使用
       // 类型：(url: string) => string，默认：undefined
-=======
-      // Static base
-      // type: string, default: undefined
-      url: 'https://cdn.domain.com/'
-      // Dynamic base to be used for paths inside JS
-      // type: (url: string) => string, default: undefined
->>>>>>> 71b6e9baec20ab93ca80fdb7613a25690c8f364e
       runtime: (url: string) => `window.__toCdnUrl(${url})`
     },
   }

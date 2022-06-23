@@ -8,18 +8,10 @@ const ogTitle = 'Vite'
 const ogUrl = 'https://main.vitejs.dev'
 
 export default defineConfig({
-<<<<<<< HEAD
   title: 'Vite 官方中文文档',
-  lang: 'zh-CN',
   description: '下一代前端工具链',
-  head: [
-    ['link', { rel: 'icon', type: 'image/svg+xml', href: '/logo.svg' }],
-    ['script', { src: 'https://cdn.wwads.cn/js/makemoney.js', async: '' }]
-  ],
-=======
-  title: 'Vite',
-  description: 'Next Generation Frontend Tooling',
-
+  lang: 'zh-CN',
+  
   head: [
     ['link', { rel: 'icon', type: 'image/svg+xml', href: '/logo.svg' }],
     ['meta', { property: 'og:type', content: 'website' }],
@@ -33,7 +25,6 @@ export default defineConfig({
     ['meta', { property: 'twitter:url', content: ogUrl }]
   ],
 
->>>>>>> 71b6e9baec20ab93ca80fdb7613a25690c8f364e
   vue: {
     reactivityTransform: true
   },
