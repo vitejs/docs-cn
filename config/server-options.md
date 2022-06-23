@@ -45,7 +45,11 @@ export default defineConfig({
 
 - **类型：** `boolean`
 
+<<<<<<< HEAD
 设为 `true` 时若端口已被占用则会直接退出，而不是尝试下一个可用端口。
+=======
+Set to `true` to exit if port is already in use, instead of automatically trying the next available port.
+>>>>>>> 1c59af9ee80a0f544509fe28c5333bcdc0fbdd80
 
 ## server.https {#server-https}
 
