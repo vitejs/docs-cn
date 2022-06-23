@@ -205,7 +205,7 @@ building for production...
       relative: true
       // 静态基础路径
       // 类型：string，默认：undefined
-      url: 'https:/cdn.domain.com/'
+      url: 'https://cdn.domain.com/'
       // 动态基础路径，在 JS 中与 path 相关处使用
       // 类型：(url: string) => string，默认：undefined
       runtime: (url: string) => `window.__toCdnUrl(${url})`
@@ -224,12 +224,12 @@ building for production...
     buildAdvancedBaseOptions: {
       assets: {
         relative: true
-        url: 'https:/cdn.domain.com/assets',
+        url: 'https://cdn.domain.com/assets',
         runtime: (url: string) => `window.__assetsPath(${url})`
       },
       public: {
         relative: false
-        url: 'https:/www.domain.com/',
+        url: 'https://www.domain.com/',
         runtime: (url: string) => `window.__publicPath + ${url}`
       }
     }
