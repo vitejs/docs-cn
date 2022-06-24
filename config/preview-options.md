@@ -42,7 +42,11 @@ export default defineConfig({
 - **类型：** `boolean`
 - **默认：** [`server.strictPort`](#server_strictport)
 
+<<<<<<< HEAD
 设置为 `true` 时，如果端口已被使用，则直接退出，而不会再进行后续端口的尝试。
+=======
+Set to `true` to exit if port is already in use, instead of automatically trying the next available port.
+>>>>>>> e607731f31fb104a26508c673d7acc3b1c2f970d
 
 ## preview.https {#preview-https}
 
