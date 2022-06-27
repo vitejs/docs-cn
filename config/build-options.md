@@ -145,7 +145,11 @@ import 'vite/modulepreload-polyfill'
 
 设置为 `false` 可以禁用最小化混淆，或是用来指定使用哪种混淆器。默认为 [Esbuild](https://github.com/evanw/esbuild)，它比 terser 快 20-40 倍，压缩率只差 1%-2%。[Benchmarks](https://github.com/privatenumber/minification-benchmarks)
 
+<<<<<<< HEAD
 注意，在 lib 模式下使用 `'es'` 时，`build.minify` 选项将失效。
+=======
+Note the `build.minify` option does not minify whitespaces when using the `'es'` format in lib mode, as it removes pure annotations and break tree-shaking.
+>>>>>>> bc1587dd37e17be28a470c62c0918179425d0d41
 
 当设置为 `'terser'` 时必须先安装 Terser。
 

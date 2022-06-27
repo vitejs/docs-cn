@@ -281,7 +281,13 @@ esbuild: {
 })
 ```
 
+<<<<<<< HEAD
 设置为 `false` 来禁用 esbuild 转换。
+=======
+When [`build.minify`](./build-options.md#build-minify) is `true`, all minify optimizations are applied by default. To disable [certain aspects](https://esbuild.github.io/api/#minify) of it, set any of `esbuild.minifyIdentifiers`, `esbuild.minifySyntax`, or `esbuild.minifyWhitespace` options to `false`. Note the `esbuild.minify` option can't be used to override `build.minify`.
+
+Set to `false` to disable esbuild transforms.
+>>>>>>> bc1587dd37e17be28a470c62c0918179425d0d41
 
 ## assetsInclude {#assetsinclude}
 

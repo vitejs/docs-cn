@@ -195,6 +195,7 @@ building for production...
 - 生成的带有 hash 值的文件（JS、CSS 以及其他文件类型，如图片）
 - 拷贝的 [公共文件](assets.md#the-public-directory)
 
+<<<<<<< HEAD
 单个静态的 [基础路径](#public-base-path) 在这种场景中就不够用了。Vite 在构建时为更高级的基础路径选项提供了实验性支持，可以使用 `experimental.buildAdvancedBaseOptions`。
 
 ```js
@@ -210,30 +211,49 @@ building for production...
       // 类型：(url: string) => string，默认：undefined
       runtime: (url: string) => `window.__toCdnUrl(${url})`
     },
+=======
+A single static [base](#public-base-path) isn't enough in these scenarios. Vite provides experimental support for advanced base options during build, using `experimental.renderBuiltUrl`.
+
+```js
+experimental: {
+  renderBuiltUrl: (filename: string, { hostType: 'js' | 'css' | 'html' }) => {
+    if (hostType === 'js') {
+      return { runtime: `window.__toCdnUrl(${JSON.stringify(filename)})` }
+    } else {
+      return { relative: true }
+    }
+>>>>>>> bc1587dd37e17be28a470c62c0918179425d0d41
   }
+}
 ```
 
+<<<<<<< HEAD
 当定义了 `runtime` 时，它将用于 hash 后的资源和 JS 资源中的公共文件路径。在生成的 CSS 和 HTML 文件中，如果定义了 `url`，路径将使用它，否则将兜底使用 `config.base`。
 
 如果设置 `relative` 为 `true` 并且定义了 `url`，在同组中对资源将更优先采用相对路径。（举个例子，JS 文件中引用了一个 hash 后的图片）同时在 HTML 入口文件和不同组之间（如一个 CSS 文件引用的一个公共文件）的路径中，将会使用 `url`。
 
 如果 hash 后的资源和公共文件没有被部署在一起，可以分别定义各个组的选项：
+=======
+If the hashed assets and public files aren't deployed together, options for each group can be defined independently using asset `type` included in the third `context` param given to the function.
+>>>>>>> bc1587dd37e17be28a470c62c0918179425d0d41
 
 ```js
   experimental: {
-    buildAdvancedBaseOptions: {
-      assets: {
-        relative: true
-        url: 'https://cdn.domain.com/assets',
-        runtime: (url: string) => `window.__assetsPath(${url})`
-      },
-      public: {
-        relative: false
-        url: 'https://www.domain.com/',
-        runtime: (url: string) => `window.__publicPath + ${url}`
+    renderBuiltUrl(filename: string, { hostType: 'js' | 'css' | 'html', type: 'public' | 'asset' }) {
+      if (type === 'public') {
+        return 'https://www.domain.com/' + filename
+      }
+      else if (path.extname(importer) === '.js') {
+        return { runtime: `window.__assetsPath(${JSON.stringify(filename)})` }
+      }
+      else {
+        return 'https://cdn.domain.com/assets/' + filename
       }
     }
   }
 ```
+<<<<<<< HEAD
 
 任何没有在上面的 `public` 和 `assets` 之下配置的选项将从主配置的 `buildAdvancedBaseOptions` 中继承。
+=======
+>>>>>>> bc1587dd37e17be28a470c62c0918179425d0d41
