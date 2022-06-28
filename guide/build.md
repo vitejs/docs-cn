@@ -182,7 +182,7 @@ building for production...
 }
 ```
 
-## Advanced Base Options {#advanced-base-options}
+## 进阶基础路径选项 {#advanced-base-options}
 
 ::: warning
 该功能是实验性的，这个 API 可能在未来后续版本中发生变更而不遵循语义化版本号。请在使用它时注意维护 Vite 的版本。
