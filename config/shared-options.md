@@ -281,6 +281,8 @@ esbuild: {
 })
 ```
 
+当 [`build.minify`](./build-options.md#build-minify) 为 `true` 时，所有最小化的优化过程都会被默认应用，要禁用它的 [某些特定方面](https://esbuild.github.io/api/#minify)，请设置 `esbuild.minifyIdentifiers`、`esbuild.minifySyntax` 或 `esbuild.minifyWhitespace` 三种选项其中任意一种为 `false`。注意 `esbuild.minify` 选项无法用于覆盖 `build.minify`。
+
 设置为 `false` 来禁用 esbuild 转换。
 
 ## assetsInclude {#assetsinclude}

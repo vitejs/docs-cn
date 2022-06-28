@@ -74,7 +74,7 @@ npm create vite@latest my-vue-app -- --template vue
 yarn create vite my-vue-app --template vue
 
 # pnpm
-pnpm create vite my-vue-app -- --template vue
+pnpm create vite my-vue-app --template vue
 ```
 
 查看 [create-vite](https://github.com/vitejs/vite/tree/main/packages/create-vite) 以获取每个模板的更多细节：`vanilla`，`vanilla-ts`，`vue`，`vue-ts`，`react`，`react-ts`，`preact`，`preact-ts`，`lit`，`lit-ts`，`svelte`，`svelte-ts`。
