@@ -60,7 +60,8 @@ export default defineConfig({
       text: '简体中文',
       items: [
         { text: 'English', link: 'https://vitejs.dev' },
-        { text: '日本語', link: 'https://ja.vitejs.dev' }
+        { text: '日本語', link: 'https://ja.vitejs.dev' },
+        { text: 'Español', link: 'https://es.vitejs.dev' }
       ]
     },
 
