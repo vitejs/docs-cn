@@ -331,11 +331,7 @@ Vite 插件也可以提供钩子来服务于特定的 Vite 目标。这些钩子
 - **类型：** `IndexHtmlTransformHook | { enforce?: 'pre' | 'post', transform: IndexHtmlTransformHook }`
 - **种类：** `async`, `sequential`
 
-<<<<<<< HEAD
   转换 `index.html` 的专用钩子。钩子接收当前的 HTML 字符串和转换上下文。上下文在开发期间暴露[`ViteDevServer`](./api-javascript#vitedevserver)实例，在构建期间暴露 Rollup 输出的包。
-=======
-  Dedicated hook for transforming HTML entry point files such as `index.html`. The hook receives the current HTML string and a transform context. The context exposes the [`ViteDevServer`](./api-javascript#vitedevserver) instance during dev, and exposes the Rollup output bundle during build.
->>>>>>> bc1587dd37e17be28a470c62c0918179425d0d41
 
   这个钩子可以是异步的，并且可以返回以下其中之一:
 

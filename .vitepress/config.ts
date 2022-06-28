@@ -59,14 +59,9 @@ export default defineConfig({
     localeLinks: {
       text: '简体中文',
       items: [
-<<<<<<< HEAD
         { text: 'English', link: 'https://vitejs.dev' },
-        { text: '日本語', link: 'https://ja.vitejs.dev' }
-=======
-        { text: '简体中文', link: 'https://cn.vitejs.dev' },
         { text: '日本語', link: 'https://ja.vitejs.dev' },
         { text: 'Español', link: 'https://es.vitejs.dev' }
->>>>>>> bc1587dd37e17be28a470c62c0918179425d0d41
       ]
     },
 
