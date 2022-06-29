@@ -197,7 +197,11 @@ interface CSSModulesOptions {
 
 配置 CSS modules 的行为。选项将被传递给 [postcss-modules](https://github.com/css-modules/postcss-modules)。
 
+<<<<<<< HEAD
 ## css.postcss {#css-postcss}
+=======
+- **Type:** `string | (postcss.ProcessOptions & { plugins?: postcss.AcceptedPlugin[] })`
+>>>>>>> 3b048e4778520f62fbf4552e565c39bbf4bb361b
 
 - **类型：** `string | (postcss.ProcessOptions & { plugins?: postcss.Plugin[] })`
 
