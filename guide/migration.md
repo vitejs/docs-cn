@@ -101,7 +101,7 @@ Vite v3 默认在 SSR 构建时使用 ESM 格式。当使用 ESM 时，[SSR 外�
 -import init from 'example.wasm'
 +import init from 'example.wasm?init'
 
--init().then((instance) => {
+-init().then((exports) => {
 +init().then(({ exports }) => {
   exports.test()
 })

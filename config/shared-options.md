@@ -199,7 +199,7 @@ interface CSSModulesOptions {
 
 ## css.postcss {#css-postcss}
 
-- **类型：** `string | (postcss.ProcessOptions & { plugins?: postcss.Plugin[] })`
+- **类型：** `string | (postcss.ProcessOptions & { plugins?: postcss.AcceptedPlugin[] })`
 
 内联的 PostCSS 配置（格式同 `postcss.config.js`），或者一个（默认基于项目根目录的）自定义的 PostCSS 配置路径。
 
