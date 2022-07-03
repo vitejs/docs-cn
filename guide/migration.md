@@ -27,7 +27,11 @@ Vite 不再支持 Node v12，因为它已经进入了 EOL 阶段。现在你必�
   - `build.polyfillDynamicImport`（在没有支持动态导入的浏览器中，使用 [`@vitejs/plugin-legacy`](https://github.com/vitejs/vite/tree/main/packages/plugin-legacy)）
   - `optimizeDeps.keepNames`（改为了 [`optimizeDeps.esbuildOptions.keepNames`](../config/dep-optimization-options.md#optimizedeps-esbuildoptions)）
 
+<<<<<<< HEAD
 ## 架构变更和兼容选项 {#achitecture-changes-and-legacy-options}
+=======
+## Architecture changes and legacy Options
+>>>>>>> af0d5006ff24ac9af5748527c6689c28e0a4b517
 
 这一小节描述了 Vite v3 中最大的架构变更。在项目从 v2 迁移、遇到兼容性问题时，可以使用新添加的兼容选项来恢复到 Vite v2 策略。
 

@@ -129,8 +129,13 @@ app.use('*', async (req, res, next) => {
     // 6. 返回渲染后的 HTML。
     res.status(200).set({ 'Content-Type': 'text/html' }).end(html)
   } catch (e) {
+<<<<<<< HEAD
     // 如果捕获到了一个错误，让 Vite 来修复该堆栈，这样它就可以映射回
     // 你的实际源码中。
+=======
+    // If an error is caught, let Vite fix the stack trace so it maps back to
+    // your actual source code.
+>>>>>>> af0d5006ff24ac9af5748527c6689c28e0a4b517
     vite.ssrFixStacktrace(e)
     next(e)
   }
