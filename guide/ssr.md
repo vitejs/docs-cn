@@ -80,7 +80,13 @@ async function createServer() {
     server: { middlewareMode: true },
     appType: 'custom'
   })
+<<<<<<< HEAD
   // 使用 vite 的 Connect 实例作为中间件
+=======
+
+  // use vite's connect instance as middleware
+  // if you use your own express router (express.Router()), you should use router.use
+>>>>>>> 408ae1eeb50945d48cf148186635e9b2b940c0e9
   app.use(vite.middlewares)
 
   app.use('*', async (req, res) => {
@@ -129,8 +135,13 @@ app.use('*', async (req, res, next) => {
     // 6. 返回渲染后的 HTML。
     res.status(200).set({ 'Content-Type': 'text/html' }).end(html)
   } catch (e) {
+<<<<<<< HEAD
     // 如果捕获到了一个错误，让 Vite 来修复该堆栈，这样它就可以映射回
     // 你的实际源码中。
+=======
+    // If an error is caught, let Vite fix the stack trace so it maps back to
+    // your actual source code.
+>>>>>>> 408ae1eeb50945d48cf148186635e9b2b940c0e9
     vite.ssrFixStacktrace(e)
     next(e)
   }

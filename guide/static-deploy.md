@@ -187,7 +187,34 @@ Netlify CLI 会给你分享一个预览的 URL 来检查部署结果。当你准
 $ ntl deploy --prod
 ```
 
+<<<<<<< HEAD
 ## Google Firebase {#google-firebase}
+=======
+## Cloudflare Pages
+
+1. Install [Wrangler CLI](https://developers.cloudflare.com/workers/wrangler/get-started/).
+2. Authenticate Wrangler with your Cloudflare account using `wrangler login`.
+3. Run your build command.
+4. Deploy using `npx wrangler pages publish dist`.
+
+```bash
+# Install Wrangler CLI
+$ npm install -g wrangler
+
+# Login to Cloudflare account from CLI
+$ wrangler login
+
+# Run your build command
+$ npm run build
+
+# Create new deployment
+$ npx wrangler pages publish dist
+```
+
+After your assets are uploaded, Wrangler will give you a preview URL to inspect your site. When you log into the Cloudflare Pages dashboard, you will see your new project.
+
+## Google Firebase
+>>>>>>> 408ae1eeb50945d48cf148186635e9b2b940c0e9
 
 1. 确保已经安装 [firebase-tools](https://www.npmjs.com/package/firebase-tools)。
 
