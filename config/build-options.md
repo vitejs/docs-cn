@@ -180,12 +180,20 @@ npm add -D terser
 
 启用/禁用 gzip 压缩大小报告。压缩大型输出文件可能会很慢，因此禁用该功能可能会提高大型项目的构建性能。
 
+<<<<<<< HEAD
 ## build.chunkSizeWarningLimit {#build-chunksizewarninglimit}
+=======
+## build.chunkSizeWarningLimit
+>>>>>>> f9e07bb8ddf2895b7f523a501be37c7429cd2be5
 
 - **类型：** `number`
 - **默认：** `500`
 
+<<<<<<< HEAD
 chunk 大小警告的限制（以 kbs 为单位）。
+=======
+Limit for chunk size warnings (in kbs).
+>>>>>>> f9e07bb8ddf2895b7f523a501be37c7429cd2be5
 
 ## build.watch {#build-watch}
 

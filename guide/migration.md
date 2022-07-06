@@ -27,14 +27,17 @@ Vite 不再支持 Node v12，因为它已经进入了 EOL 阶段。现在你必�
   - `build.polyfillDynamicImport`（在没有支持动态导入的浏览器中，使用 [`@vitejs/plugin-legacy`](https://github.com/vitejs/vite/tree/main/packages/plugin-legacy)）
   - `optimizeDeps.keepNames`（改为了 [`optimizeDeps.esbuildOptions.keepNames`](../config/dep-optimization-options.md#optimizedeps-esbuildoptions)）
 
+<<<<<<< HEAD
 ## 架构变更和兼容选项 {#achitecture-changes-and-legacy-options}
+=======
+## Architecture changes and legacy Options
+>>>>>>> f9e07bb8ddf2895b7f523a501be37c7429cd2be5
 
 这一小节描述了 Vite v3 中最大的架构变更。在项目从 v2 迁移、遇到兼容性问题时，可以使用新添加的兼容选项来恢复到 Vite v2 策略。
 
 :::warning
 这些选项曾被标记为实验性，如今已经废弃。它们可能将在 v3 后续版本中被移除，因此使用它们时请固定 Vite 版本。
 
-- `legacy.devDepsScanner`
 - `legacy.buildRollupPluginCommonjs`
 - `legacy.buildSsrCjsExternalHeuristics`
 
@@ -46,11 +49,15 @@ Vite 的默认开发服务器端口号现在改为了 5173。你可以使用 [`s
 
 Vite 的默认开发服务器主机地址现在改为了 `localhost`。你可以使用 [`server.host`](../config/server-options.md#server-host) 将其设置为 `127.0.0.1`。
 
+<<<<<<< HEAD
 Vite 使用 esbuild 优化了依赖关系，以将仅提供 CJS 格式的依赖转换成 ESM 格式，并减少浏览器需要请求的模块数量。在 v3 中，检索和批处理依赖的默认策略已经改变。Vite 不再使用 esbuild 预扫描用户代码，以获得冷启动时的初始依赖性列表。取而代之的是将第一次运行依赖性优化推迟到加载时每个导入的用户模块都得到处理之后。
 
 若想要回到 v2 的策略，你可以使用 `legacy.devDepsScanner`。
 
 ## 构建变化 {#build-changes}
+=======
+### Build Changes
+>>>>>>> f9e07bb8ddf2895b7f523a501be37c7429cd2be5
 
 在 v3 版本中，Vite 使用 esbuild 来默认优化依赖。这样做的效果是消除了 v2 版中存在的开发和生产环境之间最显著的差异之一。因为 esbuild 将 CJS 格式转换为了 ESM 格式，因此我们不再使用 [`@rollupjs/plugin-commonjs`](https://github.com/rollup/plugins/tree/master/packages/commonjs) 了。
 

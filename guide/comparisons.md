@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # 与其它非打包解决方案比较 {#comparisons-with-other-no-bundler-solutions}
 
 ## Snowpack {#snowpack}
@@ -34,6 +35,9 @@ Vite 为 Sass and Less 提供了更精细化的支持，包括改进 `@import` �
 **Vue 第一优先级支持**
 
 Vite 最初是作为 [Vue.js](https://vuejs.org/) 开发工具的未来基础而创建的。尽管 Vite 2.0 版本完全不依赖于任何框架，但官方 Vue 插件仍然对 Vue 的单文件组件格式提供了第一优先级的支持，涵盖了所有高级特性，如模板资源引用解析、`<script setup>`，`<style module>`，自定义块等等。除此之外，Vite 还对 Vue 单文件组件提供了细粒度的 HMR。举个例子，更新一个单文件组件的 `<template>` 或 `<style>` 会执行不重置其状态的热更新。
+=======
+# Comparisons
+>>>>>>> f9e07bb8ddf2895b7f523a501be37c7429cd2be5
 
 ## WMR {#wmr}
 
@@ -47,4 +51,14 @@ WMR 主要是为了 [Preact](https://preactjs.com/) 项目而设计，并为其�
 
 `@web/dev-server` 适用范围不是很广。它并未提供官方的框架集成，并且需要为生产构建手动设置 Rollup 配置。
 
+<<<<<<< HEAD
 总的来说，与 `@web/dev-server` 相比，Vite 是一个更注重自身/更高层面的工具，旨在提供开箱即用的工作流。话虽如此，但 `@web` 这个项目群包含了许多其他的优秀工具，也可以使 Vite 用户受益。
+=======
+Overall, Vite is a more opinionated / higher-level tool that aims to provide a more out-of-the-box workflow. That said, the `@web` umbrella project contains many other excellent tools that may benefit Vite users as well.
+
+## Snowpack
+
+[Snowpack](https://www.snowpack.dev/) was also a no-bundle native ESM dev server, very similar in scope to Vite. The project is no longer being maintained. The Snowpack team is now working on [Astro](https://astro.build/), a static site builder powered by Vite. The Astro team is now an active player in the ecosystem, and they are helping to improve Vite.
+
+Aside from different implementation details, the two projects shared a lot in terms of technical advantages over traditional tooling. Vite's dependency pre-bundling is also inspired by Snowpack v1 (now [`esinstall`](https://github.com/snowpackjs/snowpack/tree/main/esinstall)). Some of the main differences between the two projects are listed in [the v2 Comparisons Guide](https://v2.vitejs.dev/guide/comparisons).
+>>>>>>> f9e07bb8ddf2895b7f523a501be37c7429cd2be5
