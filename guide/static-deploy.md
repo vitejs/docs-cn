@@ -187,50 +187,46 @@ Netlify CLI 会给你分享一个预览的 URL 来检查部署结果。当你准
 $ ntl deploy --prod
 ```
 
-<<<<<<< HEAD
-## Google Firebase {#google-firebase}
-=======
-## Cloudflare Pages
+## Cloudflare Pages {#cloudflare-pages}
 
-### Cloudflare Pages via Wrangler
+### Cloudflare Pages via Wrangler {#cloudflare-pages-via-wrangler}
 
-1. Install [Wrangler CLI](https://developers.cloudflare.com/workers/wrangler/get-started/).
-2. Authenticate Wrangler with your Cloudflare account using `wrangler login`.
-3. Run your build command.
-4. Deploy using `npx wrangler pages publish dist`.
+1. 安装 [Wrangler CLI](https://developers.cloudflare.com/workers/wrangler/get-started/).
+2. 使用 `wrangler login`、通过你的 Cloudflare 账号完成 Wrangler 身份校验。
+3. 运行你的构建命令
+4. 使用 `npx wrangler pages publish dist` 部署。
 
 ```bash
-# Install Wrangler CLI
+# 安装 Wrangler CLI
 $ npm install -g wrangler
 
-# Login to Cloudflare account from CLI
+# 使用 CLI 工具登录 Cloudflare 账号
 $ wrangler login
 
-# Run your build command
+# 运行构建命令
 $ npm run build
 
-# Create new deployment
+# 创建一个新的部署
 $ npx wrangler pages publish dist
 ```
 
-After your assets are uploaded, Wrangler will give you a preview URL to inspect your site. When you log into the Cloudflare Pages dashboard, you will see your new project.
+在你的资产上传后，Wrangler 会给你一个预览 URL 来检查你的网站。当你登录到 Cloudflare Pages 仪表板时，你会看到你的新项目。
 
-### Cloudflare Pages with Git
+### Cloudflare Pages with Git {#cloudflare-pages-with-git}
 
-1. Push your code to your git repository (GitHub, GitLab).
-2. Log in to the Cloudflare dashboard and select your account in **Account Home** > **Pages**.
-3. Select **Create a new Project** and the **Connect Git** option.
-4. Select the git project you want to deploy and click **Begin setup**
-5. Select the corresponding framework preset in the build setting depending on the Vite framework you have selected.
-6. Then save and deploy!
-7. Your application is deployed! (e.g `https://<PROJECTNAME>.pages.dev/`)
+1. 将你的代码推送到你的 Git 仓库（GitHub, GitLab）
+2. 登录 Cloudflare 控制台，在 **Account Home** > **Pages** 下选择你的账号
+3. 选择 **Create a new Project** 以及 **Connect Git** 选项
+4. 选择你想要部署的 Git 项目，然后点击 **Begin setup**
+5. 根据你所选择的 Vite 框架，在构建设置中选择相应的框架预设
+6. 记得保存！然后部署吧！
+7. 然后你的应用就部署完成了！（例如： `https://<PROJECTNAME>.pages.dev/`）
 
-After your project has been imported and deployed, all subsequent pushes to branches will generate [Preview Deployments](https://developers.cloudflare.com/pages/platform/preview-deployments/) unless specified not to in your [branch build controls](https://developers.cloudflare.com/pages/platform/branch-build-controls/). All changes to the Production Branch (commonly “main”) will result in a Production Deployment.
+在你的项目被导入和部署后，所有对该分支的后续推送都会生成一个 [预览部署](https://developers.cloudflare.com/pages/platform/preview-deployments/)，除非你特意在 [控制分支构建](https://developers.cloudflare.com/pages/platform/branch-build-controls/) 的选项中写明不触发。所有对 **生产分支**（通常是 "main"）的更改都会生成一个 **生产构建**。
 
-You can also add custom domains and handle custom build settings on Pages. Learn more about [Cloudflare Pages Git Integration](https://developers.cloudflare.com/pages/get-started/#manage-your-site).
+你也可以添加自定义域名，并自定义各个页面的构建设置。查看 [Cloudflare 页面与 Git 集成](https://developers.cloudflare.com/pages/get-started/#manage-your-site) 了解更多详情。
 
-## Google Firebase
->>>>>>> f9e07bb8ddf2895b7f523a501be37c7429cd2be5
+## Google Firebase {#google-firebase}
 
 1. 确保已经安装 [firebase-tools](https://www.npmjs.com/package/firebase-tools)。
 

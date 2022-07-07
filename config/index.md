@@ -59,11 +59,7 @@ Vite 也直接支持 TS 配置文件。你可以在 `vite.config.ts` 中使用 `
 
 ## 情景配置 {#conditional-config}
 
-<<<<<<< HEAD
-如果配置文件需要基于（`dev`/`serve` 或 `build`）命令或者不同的 [模式](/guide/env-and-mode) 来决定选项，则可以选择导出这样一个函数：
-=======
-If the config needs to conditionally determine options based on the command (`dev`/`serve` or `build`), the [mode](/guide/env-and-mode) being used, or if it is an SSR build (`ssrBuild`), it can export a function instead:
->>>>>>> f9e07bb8ddf2895b7f523a501be37c7429cd2be5
+如果配置文件需要基于（`dev`/`serve` 或 `build`）命令或者不同的 [模式](/guide/env-and-mode) 来决定选项，亦或者是一个 SSR 构建（`ssrBuild`），则可以选择导出这样一个函数：
 
 ```js
 export default defineConfig(({ command, mode, ssrBuild }) => {
@@ -82,13 +78,9 @@ export default defineConfig(({ command, mode, ssrBuild }) => {
 
 需要注意的是，在 Vite 的 API 中，在开发环境下 `command` 的值为 `serve`（在 CLI 中， `vite dev` 和 `vite serve` 是 `vite` 的别名），而在生产环境下为 `build`（`vite build`）。
 
-<<<<<<< HEAD
-## 异步配置 {#async-config}
-=======
-`ssrBuild` is experimental. It is only available during build instead of a more general `ssr` flag because, during dev, the config is shared by the single server handling SSR and non-SSR requests. The value could be `undefined` for tools that don't have separate commands for the browser and SSR build, so use explicit comparison against `true` and `false`.
+`ssrBuild` 仍是实验性的。它只在构建过程中可用，而不是一个更通用的 `ssr` 标志，因为在开发过程中，我们唯一的服务器会共享处理 SSR 和非 SSR 请求的配置。某些工具可能没有区分浏览器和 SSR 两种构建目标的命令，那么这个值可能是 `undefined`，因此需要采用显式的比较表达式。
 
-## Async Config
->>>>>>> f9e07bb8ddf2895b7f523a501be37c7429cd2be5
+## 异步配置 {#async-config}
 
 如果配置需要调用一个异步函数，也可以转而导出一个异步函数：
 
