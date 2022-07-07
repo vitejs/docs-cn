@@ -185,7 +185,7 @@ npm add -D terser
 - **类型：** `number`
 - **默认：** `500`
 
-chunk 大小警告的限制（以 kbs 为单位）。
+规定触发警告的 chunk 大小。（以 kbs 为单位）
 
 ## build.watch {#build-watch}
 
