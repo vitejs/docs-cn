@@ -80,7 +80,9 @@ async function createServer() {
     server: { middlewareMode: true },
     appType: 'custom'
   })
+
   // 使用 vite 的 Connect 实例作为中间件
+  // 如果你使用了自己的 express 路由（express.Router()），你应该使用 router.use
   app.use(vite.middlewares)
 
   app.use('*', async (req, res) => {
