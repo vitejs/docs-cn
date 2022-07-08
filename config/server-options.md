@@ -55,13 +55,9 @@ export default defineConfig({
 
 这个值也可以是一个传递给 `https.createServer()` 的 [选项对象](https://nodejs.org/api/https.html#https_https_createserver_options_requestlistener)。
 
-<<<<<<< HEAD
-## server.open {#server-open}
-=======
-A valid certificate is needed. For a basic setup, you can add [@vitejs/plugin-basic-ssl](https://github.com/vitejs/vite-plugin-basic-ssl) to the project plugins, which will automatically create and cache a self-signed certificate. But we recommend creating your own certificates.
+需要一个合法可用的证书。对基本使用的配置需求来说，你可以添加 [@vitejs/plugin-basic-ssl](https://github.com/vitejs/vite-plugin-basic-ssl) 到项目插件中，它会自动创建和缓存一个自签名的证书。但我们推荐你创建和使用你自己的证书。
 
-## server.open
->>>>>>> 702edf8282ee31bc390a0ce77c75f77d8cf82404
+## server.open {#server-open}
 
 - **类型：** `boolean | string`
 

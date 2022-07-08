@@ -102,13 +102,10 @@ Vite v3 默认在 SSR 构建时使用 ESM 格式。当使用 ESM 时，[SSR 外�
 })
 ```
 
-<<<<<<< HEAD
-## 进阶 {#advanced}
-=======
-### Automatic https certificate generation
+### 自动生成 https 证书 {#automatic-https-certificate-generation}
 
-A valid certificate is needed when using `https`. In Vite v2, if no certificate was configured, a self-signed certificate was automatically created and cached.
-Since Vite v3, we recommend manually creating your certificates. If you still want to use the automatic generation from v2, this feature can be enabled back by adding [@vitejs/plugin-basic-ssl](https://github.com/vitejs/vite-plugin-basic-ssl) to the project plugins.
+当使用 `https` 时需要一个合法可用的证书。在 Vite v2 中，如果没有配置证书，Vite 会自动生成和缓存一个自签名的证书。
+从 Vite v3 开始，我们推荐手动创建你自己的证书。如果你仍想要使用 v2 中的自动生成，该功能可以通过添加 [@vitejs/plugin-basic-ssl](https://github.com/vitejs/vite-plugin-basic-ssl) 到项目插件中来实现。
 
 ```js
 import basicSsl from '@vitejs/plugin-basic-ssl'
@@ -118,8 +115,7 @@ export default {
 }
 ```
 
-## Advanced
->>>>>>> 702edf8282ee31bc390a0ce77c75f77d8cf82404
+## 进阶 {#advanced}
 
 下列改动仅会影响到插件/工具的作者：
 
