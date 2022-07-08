@@ -200,8 +200,8 @@ export default defineConfig({
 - **示例：**
 
 ```js
-const express = require('express')
-const { createServer: createViteServer } = require('vite')
+import express from 'express'
+import { createServer as createViteServer } from 'vite'
 
 async function createServer() {
   const app = express()

@@ -35,7 +35,7 @@
 
 ```js
 // vite.config.js
-module.exports = defineConfig({
+export default defineConfig({
   build: {
     rollupOptions: {
       // https://rollupjs.org/guide/en/#big-list-of-options
@@ -53,7 +53,7 @@ module.exports = defineConfig({
 ```js
 // vite.config.js
 import { splitVendorChunkPlugin } from 'vite'
-module.exports = defineConfig({
+export default defineConfig({
   plugins: [splitVendorChunkPlugin()]
 })
 ```
@@ -66,7 +66,7 @@ module.exports = defineConfig({
 
 ```js
 // vite.config.js
-module.exports = defineConfig({
+export default defineConfig({
   build: {
     watch: {
       // https://rollupjs.org/guide/en/#watch-options
@@ -97,10 +97,10 @@ module.exports = defineConfig({
 
 ```js
 // vite.config.js
-const { resolve } = require('path')
-const { defineConfig } = require('vite')
+import { resolve } from 'path'
+import { defineConfig } from 'vite'
 
-module.exports = defineConfig({
+export default defineConfig({
   build: {
     rollupOptions: {
       input: {
@@ -122,10 +122,10 @@ module.exports = defineConfig({
 
 ```js
 // vite.config.js
-const path = require('path')
-const { defineConfig } = require('vite')
+import { resolve } from 'path'
+import { defineConfig } from 'vite'
 
-module.exports = defineConfig({
+export default defineConfig({
   build: {
     lib: {
       entry: path.resolve(__dirname, 'lib/main.js'),
@@ -212,17 +212,17 @@ experimental: {
 如果 hash 后的资源和公共文件没有被部署在一起，可以根据该函数的第三个参数 `context` 上的字段 `type` 分别定义各个资源组的选项：
 
 ```js
-  experimental: {
-    renderBuiltUrl(filename: string, { hostType: 'js' | 'css' | 'html', type: 'public' | 'asset' }) {
-      if (type === 'public') {
-        return 'https://www.domain.com/' + filename
-      }
-      else if (path.extname(importer) === '.js') {
-        return { runtime: `window.__assetsPath(${JSON.stringify(filename)})` }
-      }
-      else {
-        return 'https://cdn.domain.com/assets/' + filename
-      }
+experimental: {
+  renderBuiltUrl(filename: string, { hostType: 'js' | 'css' | 'html', type: 'public' | 'asset' }) {
+    if (type === 'public') {
+      return 'https://www.domain.com/' + filename
+    }
+    else if (path.extname(importer) === '.js') {
+      return { runtime: `window.__assetsPath(${JSON.stringify(filename)})` }
+    }
+    else {
+      return 'https://cdn.domain.com/assets/' + filename
     }
   }
+}
 ```
