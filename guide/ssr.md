@@ -66,10 +66,10 @@ if (import.meta.env.SSR) {
 **server.js**
 
 ```js{17-19}
-const fs = require('fs')
-const path = require('path')
-const express = require('express')
-const { createServer: createViteServer } = require('vite')
+import fs from 'fs'
+import path from 'path'
+import express from 'express'
+import {createServer as createViteServer} from 'vite'
 
 async function createServer() {
   const app = express()
@@ -152,8 +152,13 @@ app.use('*', async (req, res, next) => {
 
 为了将 SSR 项目交付生产，我们需要：
 
+<<<<<<< HEAD
 1. 正常生成一个客户端构建；
 2. 再生成一个 SSR 构建，使其通过 `require()` 直接加载，这样便无需再使用 Vite 的 `ssrLoadModule`；
+=======
+1. Produce a client build as normal;
+2. Produce an SSR build, which can be directly loaded via `import()` so that we don't have to go through Vite's `ssrLoadModule`;
+>>>>>>> 8bd13901b90ec76c757f8d5e776f24a009363de9
 
 `package.json` 中的脚本应该看起来像这样：
 
@@ -173,7 +178,11 @@ app.use('*', async (req, res, next) => {
 
 - 使用 `dist/client/index.html` 作为模板，而不是根目录的 `index.html`，因为前者包含了到客户端构建的正确资源链接。
 
+<<<<<<< HEAD
 - 使用 `require('./dist/server/entry-server.js')` ，而不是 `await vite.ssrLoadModule('/src/entry-server.js')`（前者是 SSR 构建后的最终结果）。
+=======
+- Instead of `await vite.ssrLoadModule('/src/entry-server.js')`, use `import('./dist/server/entry-server.js')` instead (this file is the result of the SSR build).
+>>>>>>> 8bd13901b90ec76c757f8d5e776f24a009363de9
 
 - 将 `vite` 开发服务器的创建和所有使用都移到 dev-only 条件分支后面，然后添加静态文件服务中间件来服务 `dist/client` 中的文件。
 
