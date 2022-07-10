@@ -6,7 +6,7 @@ Vite 不再支持 Node v12，因为它已经进入了 EOL 阶段。现在你必�
 
 ## 现代浏览器基准线变化 {#modern-browser-baseline-change}
 
-生产构建打包时加会假定目标支持现代 JavaScript。默认情况下，Vite 的目标是支持 [原生 ES 模块](https://caniuse.com/es6-module)、[原生 ESM 动态导入](https://caniuse.com/es6-module-dynamic-import) 以及 [`import.meta`](https://caniuse.com/mdn-javascript_statements_import_meta) 的浏览器：
+生产构建打包时会假定目标支持现代 JavaScript。默认情况下，Vite 的目标是支持 [原生 ES 模块](https://caniuse.com/es6-module)、[原生 ESM 动态导入](https://caniuse.com/es6-module-dynamic-import) 以及 [`import.meta`](https://caniuse.com/mdn-javascript_statements_import_meta) 的浏览器：
 
 - Chrome >=87
 - Firefox >=78
