@@ -75,9 +75,15 @@ export default defineConfig({
       { text: '配置', link: '/config/', activeMatch: '/config/' },
       { text: '插件', link: '/plugins/', activeMatch: '/plugins/' },
       {
+<<<<<<< HEAD
         text: '相关链接',
+=======
+        text: 'Resources',
+>>>>>>> c45663aa459c9c1b02e86e4f6778ce3cb2e99378
         items: [
+          { text: 'Team', link: '/team' },
           {
+<<<<<<< HEAD
             text: 'Twitter',
             link: 'https://twitter.com/vite_js'
           },
@@ -100,6 +106,34 @@ export default defineConfig({
           {
             text: '更新日志',
             link: 'https://github.com/vitejs/vite/blob/main/packages/vite/CHANGELOG.md'
+=======
+            items: [
+              {
+                text: 'Twitter',
+                link: 'https://twitter.com/vite_js'
+              },
+              {
+                text: 'Discord Chat',
+                link: 'https://chat.vitejs.dev'
+              },
+              {
+                text: 'Awesome Vite',
+                link: 'https://github.com/vitejs/awesome-vite'
+              },
+              {
+                text: 'DEV Community',
+                link: 'https://dev.to/t/vite'
+              },
+              {
+                text: 'Rollup Plugins Compat',
+                link: 'https://vite-rollup-plugins.patak.dev/'
+              },
+              {
+                text: 'Changelog',
+                link: 'https://github.com/vitejs/vite/blob/main/packages/vite/CHANGELOG.md'
+              }
+            ]
+>>>>>>> c45663aa459c9c1b02e86e4f6778ce3cb2e99378
           }
         ]
       },

@@ -12,7 +12,13 @@ Vite 在一个特殊的 **`import.meta.env`** 对象上暴露环境变量。这�
 
 - **`import.meta.env.DEV`**: {boolean} 应用是否运行在开发环境 (永远与 `import.meta.env.PROD`相反)。
 
+<<<<<<< HEAD
 ### 生产环境替换 {#production-replacement}
+=======
+- **`import.meta.env.SSR`**: {boolean} whether the app is running in the [server](./ssr.md#conditional-logic).
+
+### Production Replacement
+>>>>>>> c45663aa459c9c1b02e86e4f6778ce3cb2e99378
 
 在生产环境中，这些环境变量会在构建时被**静态替换**，因此，在引用它们时请使用完全静态的字符串。动态的 key 将无法生效。例如，动态 key 取值 `import.meta.env[key]` 是无效的。
 
@@ -47,13 +53,22 @@ Vite 使用 [dotenv](https://github.com/motdotla/dotenv) 从你的 [环境目录
 为了防止意外地将一些环境变量泄漏到客户端，只有以 `VITE_` 为前缀的变量才会暴露给经过 vite 处理的代码。例如下面这个文件中：
 
 ```
-DB_PASSWORD=foobar
 VITE_SOME_KEY=123
+DB_PASSWORD=foobar
 ```
 
 只有 `VITE_SOME_KEY` 会被暴露为 `import.meta.env.VITE_SOME_KEY` 提供给客户端源码，而 `DB_PASSWORD` 则不会。
 
+<<<<<<< HEAD
 如果你想自定义 env 变量的前缀，请参阅 [envPrefix](/config/index#envprefix)。
+=======
+```js
+console.log(import.meta.env.VITE_SOME_KEY) // 123
+console.log(import.meta.env.DB_PASSWORD) // undefined
+```
+
+If you want to customize env variables prefix, see [envPrefix](/config/index#envprefix) option.
+>>>>>>> c45663aa459c9c1b02e86e4f6778ce3cb2e99378
 
 :::warning 安全注意事项
 
