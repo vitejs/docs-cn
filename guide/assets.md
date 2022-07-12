@@ -113,7 +113,10 @@ const imgUrl = new URL(imagePath, import.meta.url).href
 ::: warning 注意：无法在 SSR 中使用
 如果你正在以服务端渲染模式使用 Vite 则此模式不支持，因为 `import.meta.url` 在浏览器和 Node.js 中有不同的语义。服务端的产物也无法预先确定客户端主机 URL。
 :::
+<<<<<<< HEAD
 
 ::: warning `target` 需要为 `es2020` 或更高
 如果 [build-target](/config/build-options.md#build-target) 或 [optimizedeps.esbuildoptions.target](/config/dep-optimization-options.md#optimizedeps-esbuildoptions) 设置的值低于 `es2020` 那么该模式将不会工作。
 :::
+=======
+>>>>>>> e2388c8c3f45efce451d77920c51812379078203
