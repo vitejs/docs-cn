@@ -3,9 +3,9 @@ import renderPermaLink from './render-perma-link'
 import MarkDownItCustomAnchor from './markdown-it-custom-anchor'
 
 const ogDescription = 'Next Generation Frontend Tooling'
-const ogImage = 'https://main.vitejs.dev/og-image.png'
+const ogImage = 'https://vitejs.dev/og-image.png'
 const ogTitle = 'Vite'
-const ogUrl = 'https://main.vitejs.dev'
+const ogUrl = 'https://vitejs.dev'
 
 export default defineConfig({
   title: 'Vite 官方中文文档',
@@ -18,11 +18,9 @@ export default defineConfig({
     ['meta', { property: 'og:title', content: ogTitle }],
     ['meta', { property: 'og:image', content: ogImage }],
     ['meta', { property: 'og:url', content: ogUrl }],
-    ['meta', { property: 'twitter:description', content: ogDescription }],
-    ['meta', { property: 'twitter:title', content: ogTitle }],
-    ['meta', { property: 'twitter:card', content: 'summary_large_image' }],
-    ['meta', { property: 'twitter:image', content: ogImage }],
-    ['meta', { property: 'twitter:url', content: ogUrl }]
+    ['meta', { property: 'og:description', content: ogDescription }],
+    ['meta', { name: 'twitter:card', content: 'summary_large_image' }],
+    ['meta', { name: 'twitter:site', content: '@vite_js' }]
   ],
 
   vue: {
@@ -44,6 +42,7 @@ export default defineConfig({
     ],
 
     algolia: {
+      appId: 'BH4D9OD16A',
       apiKey: 'b573aa848fd57fb47d693b531297403c',
       indexName: 'vitejs',
       searchParameters: {
@@ -75,9 +74,15 @@ export default defineConfig({
       { text: '配置', link: '/config/', activeMatch: '/config/' },
       { text: '插件', link: '/plugins/', activeMatch: '/plugins/' },
       {
+<<<<<<< HEAD
         text: '相关链接',
+=======
+        text: 'Resources',
+>>>>>>> 41b47a52fbde4aa186f438d21159f153ea8e31f3
         items: [
+          { text: 'Team', link: '/team' },
           {
+<<<<<<< HEAD
             text: 'Twitter',
             link: 'https://twitter.com/vite_js'
           },
@@ -100,14 +105,46 @@ export default defineConfig({
           {
             text: '更新日志',
             link: 'https://github.com/vitejs/vite/blob/main/packages/vite/CHANGELOG.md'
+=======
+            items: [
+              {
+                text: 'Twitter',
+                link: 'https://twitter.com/vite_js'
+              },
+              {
+                text: 'Discord Chat',
+                link: 'https://chat.vitejs.dev'
+              },
+              {
+                text: 'Awesome Vite',
+                link: 'https://github.com/vitejs/awesome-vite'
+              },
+              {
+                text: 'DEV Community',
+                link: 'https://dev.to/t/vite'
+              },
+              {
+                text: 'Rollup Plugins Compat',
+                link: 'https://vite-rollup-plugins.patak.dev/'
+              },
+              {
+                text: 'Changelog',
+                link: 'https://github.com/vitejs/vite/blob/main/packages/vite/CHANGELOG.md'
+              }
+            ]
+>>>>>>> 41b47a52fbde4aa186f438d21159f153ea8e31f3
           }
         ]
       },
       {
-        text: 'v3 (next)',
+        text: 'Version',
         items: [
           {
+<<<<<<< HEAD
             text: 'v2.x（稳定版）',
+=======
+            text: 'Vite 2 Docs',
+>>>>>>> 41b47a52fbde4aa186f438d21159f153ea8e31f3
             link: 'https://v2.vitejs.dev'
           }
         ]
