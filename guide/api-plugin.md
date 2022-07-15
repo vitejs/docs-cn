@@ -199,7 +199,7 @@ Vite 插件也可以提供钩子来服务于特定的 Vite 目标。这些钩子
     name: 'mutate-config',
     config(config, { command }) {
       if (command === 'build') {
-        config.root = __dirname
+        config.root = 'foo'
       }
     }
   })

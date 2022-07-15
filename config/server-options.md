@@ -14,9 +14,9 @@
 
 在某些情况下，可能响应的是其他服务器而不是 Vite。
 
-第一种情况是 `localhost` 被使用了。Node.js 在 v17 以下版本中默认会对 DNS 解析地址的结果进行重新排序。当访问 `localhost` 时，浏览器使用 DNS 来解析地址，这个地址可能与 Vite 正在监听的地址不同。当地址不一致时，Vite会打印出来。
+第一种情况是 `localhost` 被使用了。Node.js 在 v17 以下版本中默认会对 DNS 解析地址的结果进行重新排序。当访问 `localhost` 时，浏览器使用 DNS 来解析地址，这个地址可能与 Vite 正在监听的地址不同。当地址不一致时，Vite 会打印出来。
 
-你可以设置 [`dns.setDefaultResultOrder('verbatim')`](https://nodejs.org/api/dns.html#dns_dns_setdefaultresultorder_order) 来禁用这个重新排序的行为。或者你可以显式设置 `server.host` 为 `127.0.0.1`。
+你可以设置 [`dns.setDefaultResultOrder('verbatim')`](https://nodejs.org/api/dns.html#dns_dns_setdefaultresultorder_order) 来禁用这个重新排序的行为。Vite 将会将改地址打印为 `localhost`。
 
 ```js
 // vite.config.js
@@ -200,8 +200,8 @@ export default defineConfig({
 - **示例：**
 
 ```js
-const express = require('express')
-const { createServer: createViteServer } = require('vite')
+import express from 'express'
+import { createServer as createViteServer } from 'vite'
 
 async function createServer() {
   const app = express()
