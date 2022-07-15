@@ -183,15 +183,11 @@ dist/my-lib.umd.cjs 0.30 KiB / gzip: 0.16 KiB
 }
 ```
 
-<<<<<<< HEAD
-## 进阶基础路径选项 {#advanced-base-options}
-=======
-::: tip Note
-If the `package.json` does not contain `"type": "module"`, Vite will generate different file extensions for Node.js compatibility. `.js` will become `.mjs` and `.cjs` will become `.js`.
+::: tip 注意
+如果 `package.json` 不包含 `"type": "module"`，Vite 会生成不同的文件后缀名以兼容 Node.js。`.js` 会变为 `.mjs` 而 `.cjs` 会变为 `.js`.
 :::
 
-## Advanced Base Options
->>>>>>> 41b47a52fbde4aa186f438d21159f153ea8e31f3
+## 进阶基础路径选项 {#advanced-base-options}
 
 ::: warning
 该功能是实验性的，这个 API 可能在未来后续版本中发生变更而不遵循语义化版本号。请在使用它时注意维护 Vite 的版本。

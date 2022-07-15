@@ -17,19 +17,11 @@
 
 值得注意的是 `vite preview` 用作预览本地构建，而不应直接作为生产服务器。
 
-<<<<<<< HEAD
 ::: tip 注意
 本篇指南提供了部署 Vite 静态站点的说明。Vite 也对服务端渲染（SSR）有了实验性的支持。SSR 是指支持在 Node 中运行相应应用的前端框架，预渲染成 HTML，最后在客户端激活（hydrate）。查看 [SSR 指南](./ssr) 了解更多细节。另一方面，如果你在寻找与传统服务端框架集成的方式，那么请查看 [后端集成](./backend-integration) 章节。
 :::
 
 ## 构建应用 {#building-the-app}
-=======
-::: tip NOTE
-These guides provide instructions for performing a static deployment of your Vite site. Vite also supports Server Side Rendering. SSR refers to front-end frameworks that support running the same application in Node.js, pre-rendering it to HTML, and finally hydrating it on the client. Check out the [SSR Guide](./ssr) to learn about this feature. On the other hand, if you are looking for integration with traditional server-side frameworks, check out the [Backend Integration guide](./backend-integration) instead.
-:::
-
-## Building the App
->>>>>>> 41b47a52fbde4aa186f438d21159f153ea8e31f3
 
 你可以运行 `npm run build` 命令来执行应用的构建。
 
@@ -39,11 +31,7 @@ $ npm run build
 
 默认情况下，构建会输出到 `dist` 文件夹中。你可以部署这个 `dist` 文件夹到任何你喜欢的平台。
 
-<<<<<<< HEAD
 ### 本地测试应用 {#testing-the-app-locally}
-=======
-### Testing the App Locally
->>>>>>> 41b47a52fbde4aa186f438d21159f153ea8e31f3
 
 当你构建完成应用后，你可以通过运行 `npm run preview` 命令，在本地测试该应用。
 
@@ -64,11 +52,7 @@ $ npm run preview
 }
 ```
 
-<<<<<<< HEAD
 现在 `preview` 命令会将服务器运行在 `http://localhost:8080`。
-=======
-Now the `preview` command will launch the server at `http://localhost:8080`.
->>>>>>> 41b47a52fbde4aa186f438d21159f153ea8e31f3
 
 ## GitHub Pages {#github-pages}
 
@@ -113,45 +97,7 @@ Now the `preview` command will launch the server at `http://localhost:8080`.
 你也可以在你的 CI 中配置该脚本，使得在每次推送代码时自动部署。
 :::
 
-<<<<<<< HEAD
-### GitHub Pages 配合 Travis CI {#github-pages-and-travis-ci}
-
-1. 在 `vite.config.js` 中设置正确的 `base`。
-
-   如果你要部署在 `https://<USERNAME or GROUP>.github.io/` 上，你可以省略 `base` 使其默认为 `'/'`。
-
-   如果你要部署在 `https://<USERNAME or GROUP>.github.io/<REPO>/`，例如你的仓库地址为 `https://github.com/<USERNAME>/<REPO>`，那么请设置 `base` 为 `'/<REPO>/'`。
-
-2. 在项目根目录创建一个 `.travis.yml` 文件
-
-3. 在本地运行 `npm install` 并且提交（commit）生成的 lockfile (`package-lock.json`)。
-
-4. 使用 GitHub Pages 部署的配置文件模板，并按照 [Travis CI 文档](https://docs.travis-ci.com/user/deployment/pages/) 进行配置：
-
-   ```yaml
-   language: node_js
-   node_js:
-     - lts/*
-   install:
-     - npm ci
-   script:
-     - npm run build
-   deploy:
-     provider: pages
-     skip_cleanup: true
-     local_dir: dist
-     # 在 GitHub 上生成的 token，允许 Travis 推送代码到你的仓库。
-     # 在仓库的 Travis 设置页面，设为安全的环境变量
-     github_token: $GITHUB_TOKEN
-     keep_history: true
-     on:
-       branch: main
-   ```
-
 ## GitLab Pages 配合 GitLab CI {#gitlab-pages-and-gitlab-ci}
-=======
-## GitLab Pages and GitLab CI
->>>>>>> 41b47a52fbde4aa186f438d21159f153ea8e31f3
 
 1. 在 `vite.config.js` 中设置正确的 `base`。
 
@@ -207,16 +153,13 @@ Netlify CLI 会给你分享一个预览的 URL 来检查部署结果。当你准
 $ ntl deploy --prod
 ```
 
-<<<<<<< HEAD
-## Cloudflare Pages {#cloudflare-pages}
-=======
-## Vercel
+## Vercel {#vercel}
 
-### Vercel CLI
+### Vercel CLI {#vercel-cli}
 
-1. Install the [Vercel CLI](https://vercel.com/cli) and run `vercel` to deploy.
-2. Vercel will detect that you are using Vite and will enable the correct settings for your deployment.
-3. Your application is deployed! (e.g. [vite-vue-template.vercel.app](https://vite-vue-template.vercel.app/))
+1. 安装 [Vercel CLI](https://vercel.com/cli) 并运行 `vercel` 来部署。
+2. Vercel 会检测到你正在使用 Vite，并会为你开启相应的正确配置。
+3. 你的应用被部署好了！（示例：[vite-vue-template.vercel.app](https://vite-vue-template.vercel.app/)）
 
 ```bash
 $ npm i -g vercel
@@ -226,19 +169,18 @@ Vercel CLI
 - To deploy, `cd vite` and run `vercel`.
 ```
 
-### Vercel for Git
+### Vercel for Git {#vercel-for-git}
 
-1. Push your code to your git repository (GitHub, GitLab, Bitbucket).
-2. [Import your Vite project](https://vercel.com/new) into Vercel.
-3. Vercel will detect that you are using Vite and will enable the correct settings for your deployment.
-4. Your application is deployed! (e.g. [vite-vue-template.vercel.app](https://vite-vue-template.vercel.app/))
+1. 将你的代码推送到远程仓库（GitHub, GitLab, Bitbucket）
+2. [导入你的 Vite 仓库](https://vercel.com/new) 到 Vercel
+3. Vercel 会检测到你正在使用 Vite，并会为你的部署开启相应的正确配置。
+4. 你的应用被部署好了！（示例：[vite-vue-template.vercel.app](https://vite-vue-template.vercel.app/)）
 
-After your project has been imported and deployed, all subsequent pushes to branches will generate [Preview Deployments](https://vercel.com/docs/concepts/deployments/environments#preview), and all changes made to the Production Branch (commonly “main”) will result in a [Production Deployment](https://vercel.com/docs/concepts/deployments/environments#production).
+在你的项目被导入和部署后，所有对分支的后续推送都会生成 [预览部署](https://vercel.com/docs/concepts/deployments/environments#preview)，而所有对生产分支（通常是 ”main“）的更改都会生成一个 [生产构建](https://vercel.com/docs/concepts/deployments/environments#production)
 
-Learn more about Vercel’s [Git Integration](https://vercel.com/docs/concepts/git).
+查看 Vercel 的 [Git 集成](https://vercel.com/docs/concepts/git) 了解更多细节。
 
-## Cloudflare Pages
->>>>>>> 41b47a52fbde4aa186f438d21159f153ea8e31f3
+## Cloudflare Pages {#cloudflare-pages}
 
 ### Cloudflare Pages via Wrangler {#cloudflare-pages-via-wrangler}
 
@@ -376,38 +318,7 @@ $ npx wrangler pages publish dist
    $ heroku open
    ```
 
-<<<<<<< HEAD
-## Vercel {#vercel}
-
-### Vercel CLI {#vercel-cli}
-
-1. 安装 [Vercel CLI](https://vercel.com/cli) 并运行 `vercel` 来进行部署。
-2. Vercel 会检测到你正在使用 Vite，并会为你的开发开启相应的正确设置。
-3. 然后你的应用就被正常部署了！（示例 [vite-vue-template.vercel.app](https://vite-vue-template.vercel.app/)）
-
-```bash
-$ npm i -g vercel
-$ vercel init vite
-Vercel CLI
-> Success! Initialized "vite" example in ~/your-folder.
-- To deploy, `cd vite` and run `vercel`.
-```
-
-### Vercel for Git {#vercel-for-git}
-
-1. 将你代码推送到你的 git 仓库（GitHub、GitLab 或 Bitbucket 等等）
-2. [导入你的 Vite 项目](https://vercel.com/new) 到 Vercel。
-3. Vercel 会检测到你正在使用 Vite，并会为你的开发开启相应的正确设置。
-4. 然后你的应用就被正常部署了！（示例 [vite-vue-template.vercel.app](https://vite-vue-template.vercel.app/)）
-
-在你的项目被成功导入与部署后，所有对分支的后续推送都将生成 [预览发布](https://vercel.com/docs/concepts/deployments/environments#preview)，所有对生产分支（通常是 "main"）都会最后形成一个 [生产发布](https://vercel.com/docs/concepts/deployments/environments#production)。
-
-访问 Vercel 的 [Git 集成指引](https://vercel.com/docs/concepts/git) 了解更多详情。
-
 ## Azure 的静态网站应用 {#azure-static-web-apps}
-=======
-## Azure Static Web Apps
->>>>>>> 41b47a52fbde4aa186f438d21159f153ea8e31f3
 
 你可以通过微软 Azure 的 [静态网站应用](https://aka.ms/staticwebapps) 服务来快速部署你的 Vite 应用。你只需：
 

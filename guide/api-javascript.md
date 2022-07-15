@@ -44,18 +44,13 @@ const __dirname = fileURLToPath(new URL('.', import.meta.url))
 - `configFile`：指明要使用的配置文件。如果没有设置，Vite 将尝试从项目根目录自动解析。设置为 `false` 可以禁用自动解析功能。
 - `envFile`：设置为 `false` 时，则禁用 `.env` 文件。
 
-<<<<<<< HEAD
+## `ResolvedConfig` {#resolvedconfig}
+
+`ResolvedConfig` 接口和 `UserConfig` 有完全相同的属性，期望多数属性是已经解析完成且不为 undefined 的。它同样包括下面这样的工具方法：
+- `config.assetsInclude`：一个函数，用来检查一个 `id` 是否被考虑为是一个资源。
+- `config.logger`：Vite 内部的日志对象。
+
 ## `ViteDevServer` {#vitedevserver}
-=======
-## `ResolvedConfig`
-
-The `ResolvedConfig` interface has all the same properties of a `UserConfig`, except most properties are resolved and non-undefined. It also contains utilities like:
-
-- `config.assetsInclude`: A function to check if an `id` is considered an asset.
-- `config.logger`: Vite's internal logger object.
-
-## `ViteDevServer`
->>>>>>> 41b47a52fbde4aa186f438d21159f153ea8e31f3
 
 ```ts
 interface ViteDevServer {

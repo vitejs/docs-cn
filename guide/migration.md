@@ -1,14 +1,8 @@
 # 从 v2 迁移 {#migration-from-v2}
 
-<<<<<<< HEAD
 ## Node 支持 {#node-support}
 
 Vite 不再支持 Node v12，因为它已经进入了 EOL 阶段。现在你必须使用 Node 14.18+ 及以上版本。
-=======
-## Node.js Support
-
-Vite no longer supports Node.js 12, which reached its EOL. Node.js 14.18+ is now required.
->>>>>>> 41b47a52fbde4aa186f438d21159f153ea8e31f3
 
 ## 现代浏览器基准线变化 {#modern-browser-baseline-change}
 
@@ -23,7 +17,6 @@ Vite no longer supports Node.js 12, which reached its EOL. Node.js 14.18+ is now
 
 ## 配置选项变化 {#config-options-changes}
 
-<<<<<<< HEAD
 - 下列在 v2 当中我们已经标记为弃用选项，现在已经被移除：
 
   - `alias`（改为了 [`resolve.alias`](../config/shared-options.md#resolve-alias)）
@@ -35,51 +28,16 @@ Vite no longer supports Node.js 12, which reached its EOL. Node.js 14.18+ is now
   - `optimizeDeps.keepNames`（改为了 [`optimizeDeps.esbuildOptions.keepNames`](../config/dep-optimization-options.md#optimizedeps-esbuildoptions)）
 
 ## 架构变更和兼容选项 {#achitecture-changes-and-legacy-options}
-=======
-The following options that were already deprecated in v2 have been removed:
-
-- `alias` (switch to [`resolve.alias`](../config/shared-options.md#resolve-alias))
-- `dedupe` (switch to [`resolve.dedupe`](../config/shared-options.md#resolve-dedupe))
-- `build.base` (switch to [`base`](../config/shared-options.md#base))
-- `build.brotliSize` (switch to [`build.reportCompressedSize`](../config/build-options.md#build-reportcompressedsize))
-- `build.cleanCssOptions` (Vite now uses esbuild for CSS minification)
-- `build.polyfillDynamicImport` (use [`@vitejs/plugin-legacy`](https://github.com/vitejs/vite/tree/main/packages/plugin-legacy) for browsers without dynamic import support)
-- `optimizeDeps.keepNames` (switch to [`optimizeDeps.esbuildOptions.keepNames`](../config/dep-optimization-options.md#optimizedeps-esbuildoptions))
-
-## Architecture Changes and Legacy Options
->>>>>>> 41b47a52fbde4aa186f438d21159f153ea8e31f3
 
 这一小节描述了 Vite v3 中最大的架构变更。在项目从 v2 迁移、遇到兼容性问题时，可以使用新添加的兼容选项来恢复到 Vite v2 策略。
 
-<<<<<<< HEAD
-:::warning
-这些选项曾被标记为实验性，如今已经废弃。它们可能将在 v3 后续版本中被移除，因此使用它们时请固定 Vite 版本。
-
-- `legacy.buildRollupPluginCommonjs`
-- `legacy.buildSsrCjsExternalHeuristics`
-
-:::
-
 ## 开发服务器变化 {#dev-server-changes}
-=======
-### Dev Server Changes
->>>>>>> 41b47a52fbde4aa186f438d21159f153ea8e31f3
 
 Vite 的默认开发服务器端口号现在改为了 5173。你可以使用 [`server.port`](../config/server-options.md#server-port) 将其设置为 3000。
 
-<<<<<<< HEAD
-Vite 的默认开发服务器主机地址现在改为了 `localhost`。你可以使用 [`server.host`](../config/server-options.md#server-host) 将其设置为 `127.0.0.1`。
+Vite 的默认开发服务器主机地址现在改为了 `localhost`。在 Vite v2，Vite 默认监听的是 `127.0.0.1`。Node.js 在 v17 版本以下通常会解析 `localhost` 到 `127.0.0.1`，因此对这些版本，主机地址并未变更。若明确需要，对于 Node.js v17 版本以上，你可以使用 [`server.host`](../config/server-options.md#server-host)、将其设置为 `127.0.0.1`。
 
-## 构建变化 {#build-changes}
-
-在 v3 版本中，Vite 使用 esbuild 来默认优化依赖。这样做的效果是消除了 v2 版中存在的开发和生产环境之间最显著的差异之一。因为 esbuild 将 CJS 格式转换为了 ESM 格式，因此我们不再使用 [`@rollupjs/plugin-commonjs`](https://github.com/rollup/plugins/tree/master/packages/commonjs) 了。
-
-若想要回到 v2 的策略，你可以使用 `legacy.buildRollupPluginCommonjs`。
-=======
-Vite's default dev server host is now `localhost`. In Vite v2, Vite was listening to `127.0.0.1` by default. Node.js under v17 normally resolves `localhost` to `127.0.0.1`, so for those versions, the host won't change. For Node.js 17+, you can use [`server.host`](../config/server-options.md#server-host) to set it to `127.0.0.1` to keep the same host as Vite v2.
-
-Note that Vite v3 now prints the correct host. This means Vite may print `127.0.0.1` as the listening host when `localhost` is used. You can set [`dns.setDefaultResultOrder('verbatim')`](https://nodejs.org/api/dns.html#dns_dns_setdefaultresultorder_order) to prevent this. See [`server.host`](../config/server-options.md#server-host) for more details.
->>>>>>> 41b47a52fbde4aa186f438d21159f153ea8e31f3
+请注意，现在 Vite v3 会打印出正确的主机地址。这意味着使用 `localhost` 时 Vite 可能会打印 `127.0.0.1` 作为正在监听的地址。你可以设置 [`dns.setDefaultResultOrder('verbatim')`](https://nodejs.org/api/dns.html#dns_dns_setdefaultresultorder_order) 来避免这一表现。查看 [`server.host`](../config/server-options.md#server-host) 了解详情。
 
 ## SSR Changes {#ssr-changes}
 
@@ -116,11 +74,7 @@ Vite v3 默认在 SSR 构建时使用 ESM 格式。当使用 ESM 时，[SSR 外�
 - 当在 `import.meta.glob` 中使用别名（alias）时，键值总是绝对路径。
 - `import.meta.globEager` 已经弃用，请使用 `import.meta.glob('*', { eager: true })` 来代替。
 
-<<<<<<< HEAD
 ### WebAssembly 支持 {#webassembly-support}
-=======
-### WebAssembly Support
->>>>>>> 41b47a52fbde4aa186f438d21159f153ea8e31f3
 
 `import init from 'example.wasm'` 语法被弃用，以防止将来与 ["WASM 的 ESM 集成"](https://github.com/WebAssembly/esm-integration) 冲突。
 
@@ -136,11 +90,7 @@ Vite v3 默认在 SSR 构建时使用 ESM 格式。当使用 ESM 时，[SSR 外�
 })
 ```
 
-<<<<<<< HEAD
 ### 自动生成 https 证书 {#automatic-https-certificate-generation}
-=======
-### Automatic https Certificate Generation
->>>>>>> 41b47a52fbde4aa186f438d21159f153ea8e31f3
 
 当使用 `https` 时需要一个合法可用的证书。在 Vite v2 中，如果没有配置证书，Vite 会自动生成和缓存一个自签名的证书。
 从 Vite v3 开始，我们推荐手动创建你自己的证书。如果你仍想要使用 v2 中的自动生成，该功能可以通过添加 [@vitejs/plugin-basic-ssl](https://github.com/vitejs/vite-plugin-basic-ssl) 到项目插件中来实现。
@@ -153,20 +103,16 @@ export default {
 }
 ```
 
-<<<<<<< HEAD
-## 进阶 {#advanced}
-=======
-## Experimental
+## 实验性 {#experimental}
 
-### Using esbuild deps optimization at build time
+### 在构建阶段使用 esbuild 依赖优化
 
-In v3, Vite allows the use of esbuild to optimize dependencies during build time. If enabled, it removes one of the most significant differences between dev and prod present in v2. [`@rollupjs/plugin-commonjs`](https://github.com/rollup/plugins/tree/master/packages/commonjs) is no longer needed in this case since esbuild converts CJS-only dependencies to ESM.
+在 v3 版本下，Vite 允许在构建阶段使用 esbuild 进行依赖优化。如果开启，it removes one of the most significant differences between dev and prod present in v2. [`@rollupjs/plugin-commonjs`](https://github.com/rollup/plugins/tree/master/packages/commonjs) is no longer needed in this case since esbuild converts CJS-only dependencies to ESM.
 
 If you want to try this build strategy, you can use `optimizeDeps.disabled: false` (the default in v3 is `disabled: 'build'`). `@rollup/plugin-commonjs`
 can be removed by passing `build.commonjsOptions: { include: [] }`
 
-## Advanced
->>>>>>> 41b47a52fbde4aa186f438d21159f153ea8e31f3
+## 进阶 {#advanced}
 
 下列改动仅会影响到插件/工具的作者：
 
@@ -195,13 +141,7 @@ can be removed by passing `build.commonjsOptions: { include: [] }`
 - [[#8280] feat: non-blocking esbuild optimization at build time](https://github.com/vitejs/vite/pull/8280)
   - `server.force` 选项现已移除，改为了直接的 `force` 选项。
 - [[#8550] fix: dont handle sigterm in middleware mode](https://github.com/vitejs/vite/pull/8550)
-<<<<<<< HEAD
   - 当以中间件模式运行时，Vite 不再在 `SIGTERM` 强制杀进程。
-- [[#8647] feat: print resolved address for localhost](https://github.com/vitejs/vite/pull/8647)
-  - `server.printUrls` 和 `previewServer.printUrls` 现在是异步的了。
-=======
-  - When running in middleware mode, Vite no longer kills process on `SIGTERM`.
->>>>>>> 41b47a52fbde4aa186f438d21159f153ea8e31f3
 
 ## 从 v1 迁移 {#migration-from-v1}
 

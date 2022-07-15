@@ -14,15 +14,9 @@
 
 在某些情况下，可能响应的是其他服务器而不是 Vite。
 
-<<<<<<< HEAD
-第一种情况是 `localhost` 被使用了。Node.js 在 v17 以下版本中默认会对 DNS 解析地址的结果进行重新排序。当访问 `localhost` 时，浏览器使用 DNS 来解析地址，这个地址可能与 Vite 正在监听的地址不同。当地址不一致时，Vite会打印出来。
+第一种情况是 `localhost` 被使用了。Node.js 在 v17 以下版本中默认会对 DNS 解析地址的结果进行重新排序。当访问 `localhost` 时，浏览器使用 DNS 来解析地址，这个地址可能与 Vite 正在监听的地址不同。当地址不一致时，Vite 会打印出来。
 
-你可以设置 [`dns.setDefaultResultOrder('verbatim')`](https://nodejs.org/api/dns.html#dns_dns_setdefaultresultorder_order) 来禁用这个重新排序的行为。或者你可以显式设置 `server.host` 为 `127.0.0.1`。
-=======
-The first case is when `localhost` is used. Node.js under v17 reorders the result of DNS-resolved address by default. When accessing `localhost`, browsers use DNS to resolve the address and that address might differ from the address which Vite is listening. Vite prints the resolved address when it differs.
-
-You can set [`dns.setDefaultResultOrder('verbatim')`](https://nodejs.org/api/dns.html#dns_dns_setdefaultresultorder_order) to disable the reordering behavior. Vite will then print the address as `localhost`.
->>>>>>> 41b47a52fbde4aa186f438d21159f153ea8e31f3
+你可以设置 [`dns.setDefaultResultOrder('verbatim')`](https://nodejs.org/api/dns.html#dns_dns_setdefaultresultorder_order) 来禁用这个重新排序的行为。Vite 将会将改地址打印为 `localhost`。
 
 ```js
 // vite.config.js

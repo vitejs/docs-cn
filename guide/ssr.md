@@ -1,16 +1,7 @@
 # 服务端渲染 {#server-side-rendering}
 
-<<<<<<< HEAD
-:::warning 实验性
-SSR 支持还处于试验阶段，你可能会遇到 bug 和不受支持的用例。请考虑你可能承担的风险。
-:::
-
 :::tip 注意
-SSR 特别指支持在 Node.js 中运行相同应用程序的前端框架（例如 React、Preact、Vue 和 Svelte），将其预渲染成 HTML，最后在客户端进行注水化处理。如果你正在寻找与传统服务器端框架的集成，请查看 [后端集成指南](./backend-integration)。
-=======
-:::tip Note
-SSR specifically refers to front-end frameworks (for example React, Preact, Vue, and Svelte) that support running the same application in Node.js, pre-rendering it to HTML, and finally hydrating it on the client. If you are looking for integration with traditional server-side frameworks, check out the [Backend Integration guide](./backend-integration) instead.
->>>>>>> 41b47a52fbde4aa186f438d21159f153ea8e31f3
+SSR 特别指支持在 Node.js 中运行相同应用程序的前端框架（例如 React、Preact、Vue 和 Svelte），将其预渲染成 HTML，最后在客户端进行水合处理。如果你正在寻找与传统服务器端框架的集成，请查看 [后端集成指南](./backend-integration)。
 
 下面的指南还假定你在选择的框架中有使用 SSR 的经验，并且只关注特定于 Vite 的集成细节。
 :::
@@ -157,13 +148,8 @@ app.use('*', async (req, res, next) => {
 
 为了将 SSR 项目交付生产，我们需要：
 
-<<<<<<< HEAD
 1. 正常生成一个客户端构建；
-2. 再生成一个 SSR 构建，使其通过 `require()` 直接加载，这样便无需再使用 Vite 的 `ssrLoadModule`；
-=======
-1. Produce a client build as normal;
-2. Produce an SSR build, which can be directly loaded via `import()` so that we don't have to go through Vite's `ssrLoadModule`;
->>>>>>> 41b47a52fbde4aa186f438d21159f153ea8e31f3
+2. 再生成一个 SSR 构建，使其通过 `import()` 直接加载，这样便无需再使用 Vite 的 `ssrLoadModule`；
 
 `package.json` 中的脚本应该看起来像这样：
 
@@ -183,11 +169,7 @@ app.use('*', async (req, res, next) => {
 
 - 使用 `dist/client/index.html` 作为模板，而不是根目录的 `index.html`，因为前者包含了到客户端构建的正确资源链接。
 
-<<<<<<< HEAD
-- 使用 `require('./dist/server/entry-server.js')` ，而不是 `await vite.ssrLoadModule('/src/entry-server.js')`（前者是 SSR 构建后的最终结果）。
-=======
-- Instead of `await vite.ssrLoadModule('/src/entry-server.js')`, use `import('./dist/server/entry-server.js')` instead (this file is the result of the SSR build).
->>>>>>> 41b47a52fbde4aa186f438d21159f153ea8e31f3
+- 使用 `import('./dist/server/entry-server.js')` ，而不是 `await vite.ssrLoadModule('/src/entry-server.js')`（前者是 SSR 构建后的最终结果）。
 
 - 将 `vite` 开发服务器的创建和所有使用都移到 dev-only 条件分支后面，然后添加静态文件服务中间件来服务 `dist/client` 中的文件。
 
@@ -223,23 +205,9 @@ const html = await vueServerRenderer.renderToString(app, ctx)
 
 ## SSR 外部化 {#ssr-externals}
 
-<<<<<<< HEAD
-许多依赖都同时提供 ESM 和 CommonJS 文件。当运行 SSR 时，提供 CommonJS 构建的依赖关系可以从 Vite 的 SSR 转换/模块系统进行 “外部化”，从而加速开发和构建。例如，并非去拉取 React 的预构建的 ESM 版本然后将其转换回 Node.js 兼容版本，用 `require('react')` 代替会更有效。它还大大提高了 SSR 包构建的速度。
+当运行 SSR 时依赖会从 Vite 的 SSR 转换模块系统中吧被外部化。这会同时提速开发与构建。
 
-Vite 基于以下策略执行自动化的 SSR 外部化:
-
-- 如果一个依赖的解析 ESM 入口点和它的默认 Node 入口点不同，它的默认 Node 入口可能是一个可以外部化的 CommonJS 构建。例如，`vue` 将被自动外部化，因为它同时提供 ESM 和 CommonJS 构建。
-
-- 否则，Vite 将检查包的入口点是否包含有效的 ESM 语法 - 如果不包含，这个包可能是 CommonJS，将被外部化。例如，`react-dom` 将被自动外部化，因为它只指定了唯一的一个 CommonJS 格式的入口。
-
-如果这个策略导致了错误，你可以通过 `ssr.external` 和 `ssr.noExternal` 配置项手动调整。
-
-在未来，这个策略将可能得到改进，将去探测该项目是否有启用 `type: "module"`，这样 Vite 便可以在 SSR 期间通过动态 `import()` 导入兼容 Node 的 ESM 构建依赖来实现外部化依赖项。
-=======
-Dependencies are "externalized" from Vite's SSR transform module system by default when running SSR. This speeds up both dev and build.
-
-If a dependency needs to be transformed by Vite's pipeline, for example, because Vite features are used untranspiled in them, they can be added to [`ssr.noExternal`](../config/ssr-options.md#ssrnoexternal).
->>>>>>> 41b47a52fbde4aa186f438d21159f153ea8e31f3
+例如，如果依赖项需要通过 Vite 的管道进行转换，因为 Vite 特性是在管道中使用的，所以可以将它们添加到 [`ssr.noExternal`](../config/ssr-options.md#ssrnoexternal) 中。
 
 :::warning 使用别名
 如果你为某个包配置了一个别名，为了能使 SSR 外部化依赖功能正常工作，你可能想要使用的别名应该指的是实际的 `node_modules` 中的包。[Yarn](https://classic.yarnpkg.com/en/docs/cli/add/#toc-yarn-add-alias) 和 [pnpm](https://pnpm.js.org/en/aliases) 都支持通过 `npm:` 前缀来设置别名。
