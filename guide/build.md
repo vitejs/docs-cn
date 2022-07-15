@@ -35,7 +35,7 @@
 
 ```js
 // vite.config.js
-module.exports = defineConfig({
+export default defineConfig({
   build: {
     rollupOptions: {
       // https://rollupjs.org/guide/en/#big-list-of-options
@@ -53,7 +53,7 @@ module.exports = defineConfig({
 ```js
 // vite.config.js
 import { splitVendorChunkPlugin } from 'vite'
-module.exports = defineConfig({
+export default defineConfig({
   plugins: [splitVendorChunkPlugin()]
 })
 ```
@@ -66,7 +66,7 @@ module.exports = defineConfig({
 
 ```js
 // vite.config.js
-module.exports = defineConfig({
+export default defineConfig({
   build: {
     watch: {
       // https://rollupjs.org/guide/en/#watch-options
@@ -97,10 +97,10 @@ module.exports = defineConfig({
 
 ```js
 // vite.config.js
-const { resolve } = require('path')
-const { defineConfig } = require('vite')
+import { resolve } from 'path'
+import { defineConfig } from 'vite'
 
-module.exports = defineConfig({
+export default defineConfig({
   build: {
     rollupOptions: {
       input: {
@@ -122,13 +122,13 @@ module.exports = defineConfig({
 
 ```js
 // vite.config.js
-const path = require('path')
-const { defineConfig } = require('vite')
+import { resolve } from 'path'
+import { defineConfig } from 'vite'
 
-module.exports = defineConfig({
+export default defineConfig({
   build: {
     lib: {
-      entry: path.resolve(__dirname, 'lib/main.js'),
+      entry: resolve(__dirname, 'lib/main.js'),
       name: 'MyLib',
       // the proper extensions will be added
       fileName: 'my-lib'
@@ -161,8 +161,8 @@ export { Foo, Bar }
 ```
 $ vite build
 building for production...
-[write] my-lib.mjs 0.08kb, brotli: 0.07kb
-[write] my-lib.umd.js 0.30kb, brotli: 0.16kb
+dist/my-lib.js      0.08 KiB / gzip: 0.07 KiB
+dist/my-lib.umd.cjs 0.30 KiB / gzip: 0.16 KiB
 ```
 
 推荐在你库的 `package.json` 中使用如下格式：
@@ -170,17 +170,22 @@ building for production...
 ```json
 {
   "name": "my-lib",
+  "type": "module",
   "files": ["dist"],
-  "main": "./dist/my-lib.umd.js",
-  "module": "./dist/my-lib.mjs",
+  "main": "./dist/my-lib.umd.cjs",
+  "module": "./dist/my-lib.js",
   "exports": {
     ".": {
-      "import": "./dist/my-lib.mjs",
-      "require": "./dist/my-lib.umd.js"
+      "import": "./dist/my-lib.js",
+      "require": "./dist/my-lib.umd.cjs"
     }
   }
 }
 ```
+
+::: tip 注意
+如果 `package.json` 不包含 `"type": "module"`，Vite 会生成不同的文件后缀名以兼容 Node.js。`.js` 会变为 `.mjs` 而 `.cjs` 会变为 `.js`.
+:::
 
 ## 进阶基础路径选项 {#advanced-base-options}
 
@@ -212,17 +217,17 @@ experimental: {
 如果 hash 后的资源和公共文件没有被部署在一起，可以根据该函数的第三个参数 `context` 上的字段 `type` 分别定义各个资源组的选项：
 
 ```js
-  experimental: {
-    renderBuiltUrl(filename: string, { hostType: 'js' | 'css' | 'html', type: 'public' | 'asset' }) {
-      if (type === 'public') {
-        return 'https://www.domain.com/' + filename
-      }
-      else if (path.extname(importer) === '.js') {
-        return { runtime: `window.__assetsPath(${JSON.stringify(filename)})` }
-      }
-      else {
-        return 'https://cdn.domain.com/assets/' + filename
-      }
+experimental: {
+  renderBuiltUrl(filename: string, { hostType: 'js' | 'css' | 'html', type: 'public' | 'asset' }) {
+    if (type === 'public') {
+      return 'https://www.domain.com/' + filename
+    }
+    else if (path.extname(importer) === '.js') {
+      return { runtime: `window.__assetsPath(${JSON.stringify(filename)})` }
+    }
+    else {
+      return 'https://cdn.domain.com/assets/' + filename
     }
   }
+}
 ```

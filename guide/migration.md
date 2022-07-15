@@ -31,25 +31,13 @@ Vite 不再支持 Node v12，因为它已经进入了 EOL 阶段。现在你必�
 
 这一小节描述了 Vite v3 中最大的架构变更。在项目从 v2 迁移、遇到兼容性问题时，可以使用新添加的兼容选项来恢复到 Vite v2 策略。
 
-:::warning
-这些选项曾被标记为实验性，如今已经废弃。它们可能将在 v3 后续版本中被移除，因此使用它们时请固定 Vite 版本。
-
-- `legacy.buildRollupPluginCommonjs`
-- `legacy.buildSsrCjsExternalHeuristics`
-
-:::
-
 ## 开发服务器变化 {#dev-server-changes}
 
 Vite 的默认开发服务器端口号现在改为了 5173。你可以使用 [`server.port`](../config/server-options.md#server-port) 将其设置为 3000。
 
-Vite 的默认开发服务器主机地址现在改为了 `localhost`。你可以使用 [`server.host`](../config/server-options.md#server-host) 将其设置为 `127.0.0.1`。
+Vite 的默认开发服务器主机地址现在改为了 `localhost`。在 Vite v2，Vite 默认监听的是 `127.0.0.1`。Node.js 在 v17 版本以下通常会解析 `localhost` 到 `127.0.0.1`，因此对这些版本，主机地址并未变更。若明确需要，对于 Node.js v17 版本以上，你可以使用 [`server.host`](../config/server-options.md#server-host)、将其设置为 `127.0.0.1`。
 
-## 构建变化 {#build-changes}
-
-在 v3 版本中，Vite 使用 esbuild 来默认优化依赖。这样做的效果是消除了 v2 版中存在的开发和生产环境之间最显著的差异之一。因为 esbuild 将 CJS 格式转换为了 ESM 格式，因此我们不再使用 [`@rollupjs/plugin-commonjs`](https://github.com/rollup/plugins/tree/master/packages/commonjs) 了。
-
-若想要回到 v2 的策略，你可以使用 `legacy.buildRollupPluginCommonjs`。
+请注意，现在 Vite v3 会打印出正确的主机地址。这意味着使用 `localhost` 时 Vite 可能会打印 `127.0.0.1` 作为正在监听的地址。你可以设置 [`dns.setDefaultResultOrder('verbatim')`](https://nodejs.org/api/dns.html#dns_dns_setdefaultresultorder_order) 来避免这一表现。查看 [`server.host`](../config/server-options.md#server-host) 了解详情。
 
 ## SSR Changes {#ssr-changes}
 
@@ -115,6 +103,15 @@ export default {
 }
 ```
 
+## 实验性 {#experimental}
+
+### 在构建阶段使用 esbuild 依赖优化
+
+在 v3 版本下，Vite 允许在构建阶段使用 esbuild 进行依赖优化。如果开启，it removes one of the most significant differences between dev and prod present in v2. [`@rollupjs/plugin-commonjs`](https://github.com/rollup/plugins/tree/master/packages/commonjs) is no longer needed in this case since esbuild converts CJS-only dependencies to ESM.
+
+If you want to try this build strategy, you can use `optimizeDeps.disabled: false` (the default in v3 is `disabled: 'build'`). `@rollup/plugin-commonjs`
+can be removed by passing `build.commonjsOptions: { include: [] }`
+
 ## 进阶 {#advanced}
 
 下列改动仅会影响到插件/工具的作者：
@@ -145,8 +142,6 @@ export default {
   - `server.force` 选项现已移除，改为了直接的 `force` 选项。
 - [[#8550] fix: dont handle sigterm in middleware mode](https://github.com/vitejs/vite/pull/8550)
   - 当以中间件模式运行时，Vite 不再在 `SIGTERM` 强制杀进程。
-- [[#8647] feat: print resolved address for localhost](https://github.com/vitejs/vite/pull/8647)
-  - `server.printUrls` 和 `previewServer.printUrls` 现在是异步的了。
 
 ## 从 v1 迁移 {#migration-from-v1}
 
