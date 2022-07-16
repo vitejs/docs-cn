@@ -61,7 +61,11 @@ console.log(import.meta.env.DB_PASSWORD) // undefined
 ```
 如果你想自定义 env 变量的前缀，请参阅 [envPrefix](/config/index#envprefix)。
 
+<<<<<<< HEAD
 :::warning 安全注意事项
+=======
+If you want to customize env variables prefix, see [envPrefix](/config/shared-options.html#envprefix) option.
+>>>>>>> 3e686e391f2a638141755e6296378e84f4d1eda3
 
 - `.env.*.local` 文件应是本地的，可以包含敏感变量。你应该将 `.local` 添加到你的 `.gitignore` 中，以避免它们被 git 检入。
 

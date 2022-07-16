@@ -21,6 +21,7 @@ export default {
 vite --config my-config.js
 ```
 
+<<<<<<< HEAD
 ::: tip 注意
 注意，Vite 会在 **CommonJS** 和 **TypeScript** 配置文件中替换 `__filename`，`__dirname` 以及 `import.meta.url`。如果使用这些名称作为变量名可能会导致代码报错：
 
@@ -35,6 +36,9 @@ const func = () => {
 :::
 
 ## 配置智能提示 {#config-intellisense}
+=======
+## Config Intellisense
+>>>>>>> 3e686e391f2a638141755e6296378e84f4d1eda3
 
 因为 Vite 本身附带 Typescript 类型，所以你可以通过 IDE 和 jsdoc 的配合来实现智能提示：
 
