@@ -2,7 +2,11 @@
 
 ## Node 支持 {#node-support}
 
+<<<<<<< HEAD
 Vite 不再支持 Node v12，因为它已经进入了 EOL 阶段。现在你必须使用 Node 14.18+ 及以上版本。
+=======
+Vite no longer supports Node.js 12 / 13 / 15, which reached its EOL. Node.js 14.18+ / 16+ is now required.
+>>>>>>> 39559c7b8fd14ce5ecfcda616bd8786e64309a5c
 
 ## 现代浏览器基准线变化 {#modern-browser-baseline-change}
 
