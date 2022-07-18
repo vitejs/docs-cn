@@ -187,7 +187,7 @@ dist/my-lib.umd.cjs 0.30 KiB / gzip: 0.16 KiB
 如果 `package.json` 不包含 `"type": "module"`，Vite 会生成不同的文件后缀名以兼容 Node.js。`.js` 会变为 `.mjs` 而 `.cjs` 会变为 `.js`.
 :::
 
-::: tip Environment Variables
+::: tip 环境变量
 在库模式下，所有 `import.meta.env.*` 用法在构建生产时都会被静态替换。但是，`process.env.*` 的用法不会被替换，所以你的库的使用者可以动态地更改它。如果不想允许他们这样做，你可以使用 `define: { 'process.env.`<wbr>`NODE_ENV': '"production"' }` 例如静态替换它们。
 :::
 
