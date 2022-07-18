@@ -187,15 +187,11 @@ dist/my-lib.umd.cjs 0.30 KiB / gzip: 0.16 KiB
 如果 `package.json` 不包含 `"type": "module"`，Vite 会生成不同的文件后缀名以兼容 Node.js。`.js` 会变为 `.mjs` 而 `.cjs` 会变为 `.js`.
 :::
 
-<<<<<<< HEAD
-## 进阶基础路径选项 {#advanced-base-options}
-=======
 ::: tip Environment Variables
-In library mode, all `import.meta.env.*` usage are statically replaced when building for production. However, `process.env.*` usage are not, so that consumers of your library can dynamically change it. If this is undesirable, you can use `define: { 'process.env.`<wbr>`NODE_ENV': '"production"' }` for example to statically replace them.
+在库模式下，所有 `import.meta.env.*` 用法在构建生产时都会被静态替换。但是，`process.env.*` 的用法不会被替换，所以你的库的使用者可以动态地更改它。如果不想允许他们这样做，你可以使用 `define: { 'process.env.`<wbr>`NODE_ENV': '"production"' }` 例如静态替换它们。
 :::
 
-## Advanced Base Options
->>>>>>> 39559c7b8fd14ce5ecfcda616bd8786e64309a5c
+## 进阶基础路径选项 {#advanced-base-options}
 
 ::: warning
 该功能是实验性的，这个 API 可能在未来后续版本中发生变更而不遵循语义化版本号。请在使用它时注意维护 Vite 的版本。
