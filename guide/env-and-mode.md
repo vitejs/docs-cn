@@ -59,8 +59,6 @@ DB_PASSWORD=foobar
 console.log(import.meta.env.VITE_SOME_KEY) // 123
 console.log(import.meta.env.DB_PASSWORD) // undefined
 ```
-如果你想自定义 env 变量的前缀，请参阅 [envPrefix](/config/index#envprefix)。
-
 如果你想自定义 env 变量的前缀，请参阅 [envPrefix](/config/shared-options.html#envprefix)。
 
 :::warning 安全注意事项
