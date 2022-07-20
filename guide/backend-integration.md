@@ -32,8 +32,14 @@
 2. 在开发环境中，在服务器的 HTML 模板中注入以下内容（用正在运行的本地 URL 替换 `http://localhost:3000`）：
 
    ```html
+<<<<<<< HEAD
    <!-- 如果是在开发环境中 -->
    <script type="module" src="http://localhost:3000/@vite/client"></script>
+=======
+   <!-- if development -->
+   <script type="module" src="http://localhost:5173/@vite/client"></script>
+   <script type="module" src="http://localhost:5173/main.js"></script>
+>>>>>>> 555630f8a5f0767566d88280621c014db6e6e55c
    ```
 
    为了正确地提供资源，你有两种选项：
