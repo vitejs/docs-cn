@@ -28,7 +28,7 @@ features:
     details: 使用原生 ESM 文件，无需打包!
   - icon: ⚡️
     title: 轻量快速的热重载
-    details: 无论应用程序大小如何，都始终极快的模块热重载（HMR）
+    details: 无论应用程序大小如何，都始终极快的模块热替换（HMR）
   - icon: 🛠️
     title: 丰富的功能
     details: 对 TypeScript、JSX、CSS 等支持开箱即用。
