@@ -33,7 +33,8 @@
 
    ```html
    <!-- 如果是在开发环境中 -->
-   <script type="module" src="http://localhost:3000/@vite/client"></script>
+   <script type="module" src="http://localhost:5173/@vite/client"></script>
+   <script type="module" src="http://localhost:5173/main.js"></script>
    ```
 
    为了正确地提供资源，你有两种选项：
