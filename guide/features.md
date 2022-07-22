@@ -538,7 +538,10 @@ Vite 会为入口 chunk 和它们在打包出的 HTML 中的直接引入自动�
 
 在实际项目中，Rollup 通常会生成 “共用” chunk —— 被两个或以上的其他 chunk 共享的 chunk。与动态导入相结合，会很容易出现下面这种场景：
 
-![graph](/images/graph.png)
+<script setup>
+import graphSvg from '../images/graph.svg?raw'
+</script>
+<svg-image :svg="graphSvg" />
 
 在无优化的情境下，当异步 chunk `A` 被导入时，浏览器将必须请求和解析 `A`，然后它才能弄清楚它也需要共用 chunk `C`。这会导致额外的网络往返：
 

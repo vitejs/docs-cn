@@ -13,7 +13,11 @@ export default {
 }
 ```
 
+<<<<<<< HEAD
 注意：即使项目没有在 `package.json` 中开启 `type: "module"`，Vite 也支持在配置文件中使用 ESM 语法。这种情况下，配置文件会在被加载前自动进行预处理。
+=======
+Note Vite supports using ES modules syntax in the config file even if the project is not using native Node ESM, e.g. `type: "module"` in `package.json`. In this case, the config file is auto pre-processed before load.
+>>>>>>> ac0ae585f0f59b3f585cb174c3817a0a96171e2a
 
 你可以显式地通过 `--config` 命令行选项指定一个配置文件（相对于 `cwd` 路径进行解析）
 
