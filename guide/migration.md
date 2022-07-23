@@ -6,7 +6,11 @@ Vite 不再支持 Node 12 / 13 / 15，因为上述版本已经进入了 EOL 阶�
 
 ## 现代浏览器基准线变化 {#modern-browser-baseline-change}
 
+<<<<<<< HEAD
 生产构建打包时加会假定目标支持现代 JavaScript。默认情况下，Vite 的目标是支持 [原生 ES 模块](https://caniuse.com/es6-module)、[原生 ESM 动态导入](https://caniuse.com/es6-module-dynamic-import) 以及 [`import.meta`](https://caniuse.com/mdn-javascript_statements_import_meta) 的浏览器：
+=======
+The production bundle assumes support for modern JavaScript. By default, Vite targets browsers which support the [native ES Modules](https://caniuse.com/es6-module), [native ESM dynamic import](https://caniuse.com/es6-module-dynamic-import), and [`import.meta`](https://caniuse.com/mdn-javascript_statements_import_meta):
+>>>>>>> e8825b941e30ec712067f223897981e3df6c9f41
 
 - Chrome >=87
 - Firefox >=78
@@ -107,7 +111,11 @@ export default {
 
 ### 在构建阶段使用 esbuild 依赖优化
 
+<<<<<<< HEAD
 在 v3 版本下，Vite 允许在构建阶段使用 esbuild 进行依赖优化。如果开启，it removes one of the most significant differences between dev and prod present in v2. [`@rollupjs/plugin-commonjs`](https://github.com/rollup/plugins/tree/master/packages/commonjs) is no longer needed in this case since esbuild converts CJS-only dependencies to ESM.
+=======
+In v3, Vite allows the use of esbuild to optimize dependencies during build time. If enabled, it removes one of the most significant differences between dev and prod present in v2. [`@rollup/plugin-commonjs`](https://github.com/rollup/plugins/tree/master/packages/commonjs) is no longer needed in this case since esbuild converts CJS-only dependencies to ESM.
+>>>>>>> e8825b941e30ec712067f223897981e3df6c9f41
 
 If you want to try this build strategy, you can use `optimizeDeps.disabled: false` (the default in v3 is `disabled: 'build'`). `@rollup/plugin-commonjs`
 can be removed by passing `build.commonjsOptions: { include: [] }`
