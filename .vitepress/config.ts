@@ -1,17 +1,75 @@
+<<<<<<< HEAD
 import { defineConfig } from 'vitepress'
 import renderPermaLink from './render-perma-link'
 import MarkDownItCustomAnchor from './markdown-it-custom-anchor'
+=======
+import { defineConfig, DefaultTheme } from 'vitepress'
+>>>>>>> 7ae58a0b4a5f324903660f8332097f0cdb498abe
 
 const ogDescription = 'Next Generation Frontend Tooling'
 const ogImage = 'https://vitejs.dev/og-image.png'
 const ogTitle = 'Vite'
 const ogUrl = 'https://vitejs.dev'
 
+// netlify envs
+const deployURL = process.env.DEPLOY_PRIME_URL || ''
+const commitRef = process.env.COMMIT_REF?.slice(0, 8) || 'dev'
+
+const deployType = (() => {
+  switch (deployURL) {
+    case 'https://main--vite-docs-main.netlify.app':
+      return 'main'
+    case '':
+      return 'local'
+    default:
+      return 'release'
+  }
+})()
+const additionalTitle = ((): string => {
+  switch (deployType) {
+    case 'main':
+      return ' (main branch)'
+    case 'local':
+      return ' (local)'
+    case 'release':
+      return ''
+  }
+})()
+const versionLinks = ((): DefaultTheme.NavItemWithLink[] => {
+  switch (deployType) {
+    case 'main':
+    case 'local':
+      return [
+        {
+          text: 'Vite 3 Docs (release)',
+          link: 'https://vitejs.dev'
+        },
+        {
+          text: 'Vite 2 Docs',
+          link: 'https://v2.vitejs.dev'
+        }
+      ]
+    case 'release':
+      return [
+        {
+          text: 'Vite 2 Docs',
+          link: 'https://v2.vitejs.dev'
+        }
+      ]
+  }
+})()
+
 export default defineConfig({
+<<<<<<< HEAD
   title: 'Vite 官方中文文档',
   description: '下一代前端工具链',
   lang: 'zh-CN',
   
+=======
+  title: `Vite${additionalTitle}`,
+  description: 'Next Generation Frontend Tooling',
+
+>>>>>>> 7ae58a0b4a5f324903660f8332097f0cdb498abe
   head: [
     ['link', { rel: 'icon', type: 'image/svg+xml', href: '/logo.svg' }],
     ['meta', { property: 'og:type', content: 'website' }],
@@ -65,7 +123,11 @@ export default defineConfig({
     },
 
     footer: {
+<<<<<<< HEAD
       message: '根据 MIT 许可证发布。',
+=======
+      message: `Released under the MIT License. (${commitRef})`,
+>>>>>>> 7ae58a0b4a5f324903660f8332097f0cdb498abe
       copyright: 'Copyright © 2019-present Evan You & Vite Contributors'
     },
 
@@ -105,12 +167,16 @@ export default defineConfig({
       },
       {
         text: 'Version',
+<<<<<<< HEAD
         items: [
           {
             text: 'Vite v2 文档',
             link: 'https://v2.vitejs.dev'
           }
         ]
+=======
+        items: versionLinks
+>>>>>>> 7ae58a0b4a5f324903660f8332097f0cdb498abe
       }
     ],
 

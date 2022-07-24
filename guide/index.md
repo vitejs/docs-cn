@@ -18,7 +18,11 @@ Vite 意在提供开箱即用的配置，同时它的 [插件 API](./api-plugin)
 
 ## 浏览器支持 {#browser-support}
 
+<<<<<<< HEAD
 默认的构建目标浏览器是能 [在 script 标签上支持原生 ESM](https://caniuse.com/es6-module) 和 [原生 ESM 动态导入](https://caniuse.com/es6-module-dynamic-import)。传统浏览器可以通过官方插件 [@vitejs/plugin-legacy](https://github.com/vitejs/vite/tree/main/packages/plugin-legacy) 支持 —— 查看 [构建生产版本](./build) 章节获取更多细节。
+=======
+The default build targets browsers that support [native ES Modules](https://caniuse.com/es6-module), [native ESM dynamic import](https://caniuse.com/es6-module-dynamic-import), and [`import.meta`](https://caniuse.com/mdn-javascript_statements_import_meta). Legacy browsers can be supported via the official [@vitejs/plugin-legacy](https://github.com/vitejs/vite/tree/main/packages/plugin-legacy) - see the [Building for Production](./build) section for more details.
+>>>>>>> 7ae58a0b4a5f324903660f8332097f0cdb498abe
 
 ## 在线试用 Vite {#trying-vite-online}
 
