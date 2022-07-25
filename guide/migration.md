@@ -2,7 +2,7 @@
 
 ## Node 支持 {#node-support}
 
-Vite 不再支持 Node v12，因为它已经进入了 EOL 阶段。现在你必须使用 Node 14.18+ 及以上版本。
+Vite 不再支持 Node 12 / 13 / 15，因为上述版本已经进入了 EOL 阶段。现在你必须使用 Node 14.18+ / 16+ 版本。
 
 ## 现代浏览器基准线变化 {#modern-browser-baseline-change}
 
@@ -107,10 +107,10 @@ export default {
 
 ### 在构建阶段使用 esbuild 依赖优化
 
-在 v3 版本下，Vite 允许在构建阶段使用 esbuild 进行依赖优化。如果开启，it removes one of the most significant differences between dev and prod present in v2. [`@rollupjs/plugin-commonjs`](https://github.com/rollup/plugins/tree/master/packages/commonjs) is no longer needed in this case since esbuild converts CJS-only dependencies to ESM.
+在 v3 版本下，Vite 允许在构建阶段使用 esbuild 进行依赖优化。如果开启此项，那么它将消除 v2 版本中存在的最明显的开发与构建最终产物之间的区别。[`@rollupjs/plugin-commonjs`](https://github.com/rollup/plugins/tree/master/packages/commonjs) 在此处不再需要因为 esbuild 会将纯 CommonJS 依赖转换为 ESM。
 
-If you want to try this build strategy, you can use `optimizeDeps.disabled: false` (the default in v3 is `disabled: 'build'`). `@rollup/plugin-commonjs`
-can be removed by passing `build.commonjsOptions: { include: [] }`
+如果你想尝试该构建策略，你可以使用 `optimizeDeps.disabled: false`（在 v3 中默认是 `disabled: 'build'`）。`@rollup/plugin-commonjs`
+可以通过设置 `build.commonjsOptions: { include: [] }` 来移除。
 
 ## 进阶 {#advanced}
 
