@@ -61,7 +61,7 @@ if (import.meta.env.SSR) {
 
 **server.js**
 
-```js{17-19}
+```js{15-18}
 import fs from 'fs'
 import path from 'path'
 import { fileURLToPath } from 'url'
