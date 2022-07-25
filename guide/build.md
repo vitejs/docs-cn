@@ -4,11 +4,7 @@
 
 ## 浏览器兼容性 {#browser-compatibility}
 
-<<<<<<< HEAD
-用于生产环境的构建包会假设目标浏览器支持现代 JavaScript 语法。默认情况下，Vite 的目标浏览器是指能够 [支持原生 ESM script 标签](https://caniuse.com/es6-module) 和 [支持原生 ESM 动态导入](https://caniuse.com/es6-module-dynamic-import) 的。作为参考，Vite 使用这个 [browserslist](https://github.com/browserslist/browserslist) 作为查询标准：
-=======
-The production bundle assumes support for modern JavaScript. By default, Vite targets browsers which support the [native ES Modules](https://caniuse.com/es6-module), [native ESM dynamic import](https://caniuse.com/es6-module-dynamic-import), and [`import.meta`](https://caniuse.com/mdn-javascript_statements_import_meta):
->>>>>>> 7ae58a0b4a5f324903660f8332097f0cdb498abe
+用于生产环境的构建包会假设目标浏览器支持现代 JavaScript 语法。默认情况下，Vite 的目标是能够 [支持原生 ESM script 标签](https://caniuse.com/es6-module)、[支持原生 ESM 动态导入](https://caniuse.com/es6-module-dynamic-import) 和 [`import.meta`](https://caniuse.com/mdn-javascript_statements_import_meta) 的浏览器：
 
 - Chrome >=87
 - Firefox >=78
@@ -198,11 +194,7 @@ dist/my-lib.umd.cjs 0.30 KiB / gzip: 0.16 KiB
 ## 进阶基础路径选项 {#advanced-base-options}
 
 ::: warning
-<<<<<<< HEAD
 该功能是实验性的，这个 API 可能在未来后续版本中发生变更而不遵循语义化版本号。请在使用它时注意维护 Vite 的版本。
-=======
-This feature is experimental, the API may change in a future minor without following semver. Please always pin Vite's version to a minor when using it.
->>>>>>> 7ae58a0b4a5f324903660f8332097f0cdb498abe
 :::
 
 对更高级的使用场景，被部署的资源和公共文件可能想要分为不同的路径，例如使用不同缓存策略的场景。

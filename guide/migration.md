@@ -6,11 +6,7 @@ Vite 不再支持 Node 12 / 13 / 15，因为上述版本已经进入了 EOL 阶�
 
 ## 现代浏览器基准线变化 {#modern-browser-baseline-change}
 
-<<<<<<< HEAD
 生产构建打包时加会假定目标支持现代 JavaScript。默认情况下，Vite 的目标是支持 [原生 ES 模块](https://caniuse.com/es6-module)、[原生 ESM 动态导入](https://caniuse.com/es6-module-dynamic-import) 以及 [`import.meta`](https://caniuse.com/mdn-javascript_statements_import_meta) 的浏览器：
-=======
-The production bundle assumes support for modern JavaScript. By default, Vite targets browsers which support the [native ES Modules](https://caniuse.com/es6-module), [native ESM dynamic import](https://caniuse.com/es6-module-dynamic-import), and [`import.meta`](https://caniuse.com/mdn-javascript_statements_import_meta):
->>>>>>> 7ae58a0b4a5f324903660f8332097f0cdb498abe
 
 - Chrome >=87
 - Firefox >=78
@@ -111,14 +107,10 @@ export default {
 
 ### 在构建阶段使用 esbuild 依赖优化
 
-<<<<<<< HEAD
-在 v3 版本下，Vite 允许在构建阶段使用 esbuild 进行依赖优化。如果开启，it removes one of the most significant differences between dev and prod present in v2. [`@rollupjs/plugin-commonjs`](https://github.com/rollup/plugins/tree/master/packages/commonjs) is no longer needed in this case since esbuild converts CJS-only dependencies to ESM.
-=======
-In v3, Vite allows the use of esbuild to optimize dependencies during build time. If enabled, it removes one of the most significant differences between dev and prod present in v2. [`@rollup/plugin-commonjs`](https://github.com/rollup/plugins/tree/master/packages/commonjs) is no longer needed in this case since esbuild converts CJS-only dependencies to ESM.
->>>>>>> 7ae58a0b4a5f324903660f8332097f0cdb498abe
+在 v3 版本下，Vite 允许在构建阶段使用 esbuild 进行依赖优化。如果开启此项，那么它将消除 v2 版本中存在的最明显的开发与构建最终产物之间的区别。[`@rollupjs/plugin-commonjs`](https://github.com/rollup/plugins/tree/master/packages/commonjs) 在此处不再需要因为 esbuild 会将纯 CommonJS 依赖转换为 ESM。
 
-If you want to try this build strategy, you can use `optimizeDeps.disabled: false` (the default in v3 is `disabled: 'build'`). `@rollup/plugin-commonjs`
-can be removed by passing `build.commonjsOptions: { include: [] }`
+如果你想尝试该构建策略，你可以使用 `optimizeDeps.disabled: false`（在 v3 中默认是 `disabled: 'build'`）。`@rollup/plugin-commonjs`
+可以通过设置 `build.commonjsOptions: { include: [] }` 来移除。
 
 ## 进阶 {#advanced}
 
