@@ -328,7 +328,7 @@ const modules = {
 }
 ```
 
-`{ as: 'url' }` 还支持将资源作为URL加载。
+`{ as: 'url' }` 还支持将资源作为 URL 加载。
 
 ### 多个匹配模式 {#multiple-patterns}
 
@@ -480,7 +480,7 @@ init({
 
 ### 通过构造器导入 {#import-with-constructors}
 
-一个 Web Worker 可以使用  [`new Worker()`](https://developer.mozilla.org/en-US/docs/Web/API/Worker/Worker) 和 [`new SharedWorker()`](https://developer.mozilla.org/en-US/docs/Web/API/SharedWorker/SharedWorker) 导入。与 worker 后缀相比，这种语法更接近于标准，是创建 worker 的 **推荐** 方式。
+一个 Web Worker 可以使用 [`new Worker()`](https://developer.mozilla.org/en-US/docs/Web/API/Worker/Worker) 和 [`new SharedWorker()`](https://developer.mozilla.org/en-US/docs/Web/API/SharedWorker/SharedWorker) 导入。与 worker 后缀相比，这种语法更接近于标准，是创建 worker 的 **推荐** 方式。
 
 ```ts
 const worker = new Worker(new URL('./worker.js', import.meta.url))

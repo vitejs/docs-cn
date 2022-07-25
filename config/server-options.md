@@ -297,8 +297,8 @@ export default defineConfig({
 
 ```js
 export default defineConfig({
-server: {
-  origin: 'http://127.0.0.1:8080'
-}
+  server: {
+    origin: 'http://127.0.0.1:8080'
+  }
 })
 ```
