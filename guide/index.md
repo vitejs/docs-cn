@@ -22,7 +22,7 @@ Vite 意在提供开箱即用的配置，同时它的 [插件 API](./api-plugin)
 
 ## 在线试用 Vite {#trying-vite-online}
 
-你可以通过 [StackBlitz](https://vite.new/) 在线试用 vite。它直接在浏览器中运行基于  Vite 的构建，因此它与本地开发几乎无差别，同时无需在你的机器上安装任何东西。你可以浏览 `vite.new/{template}` 来选择你要使用的框架。
+你可以通过 [StackBlitz](https://vite.new/) 在线试用 vite。它直接在浏览器中运行基于 Vite 的构建，因此它与本地开发几乎无差别，同时无需在你的机器上安装任何东西。你可以浏览 `vite.new/{template}` 来选择你要使用的框架。
 
 目前支持的模板预设如下：
 

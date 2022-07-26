@@ -47,6 +47,7 @@ const __dirname = fileURLToPath(new URL('.', import.meta.url))
 ## `ResolvedConfig` {#resolvedconfig}
 
 `ResolvedConfig` 接口和 `UserConfig` 有完全相同的属性，期望多数属性是已经解析完成且不为 undefined 的。它同样包括下面这样的工具方法：
+
 - `config.assetsInclude`：一个函数，用来检查一个 `id` 是否被考虑为是一个资源。
 - `config.logger`：Vite 内部的日志对象。
 
