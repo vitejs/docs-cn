@@ -4,7 +4,7 @@
 
 ```
 Pre-bundling dependencies: （正在预构建依赖：）
-  react,
+  react
   react-dom
 (this will be run only when your dependencies or config have changed)（这将只会在你的依赖或配置发生变化时执行）
 ```
