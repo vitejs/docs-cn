@@ -1,0 +1,25 @@
+{
+	"name": "vite-docs-cn",
+	"version": "1.0.0",
+	"description": "Vite.js documentation Chinese translation.",
+	"repository": "https://github.com/vitejs/docs-cn",
+	"author": "Evan You",
+	"license": "MIT",
+	"private": true,
+	"devDependencies": {
+		"chalk": "^4.1.0",
+		"gray-matter": "^4.0.3",
+		"lodash": "^4.17.21",
+		"vite": "^2.9.12",
+		"vitepress": "^1.0.0-alpha.4",
+		"yorkie": "^2.0.0"
+	},
+	"scripts": {
+		"dev": "vitepress dev .",
+		"build": "node ./scripts/build.js && vitepress build .",
+		"serve": "vitepress serve ."
+	},
+	"gitHooks": {
+		"commit-msg": "node scripts/verifyCommit.js"
+	}
+}

@@ -1,16 +1,16 @@
-# JavaScript API
+# JavaScript API {#javascript-api}
 
-Vite's JavaScript APIs are fully typed, and it's recommended to use TypeScript or enable JS type checking in VS Code to leverage the intellisense and validation.
+Vite 的 JavaScript API 是完全类型化的，我们推荐使用 TypeScript 或者在 VS Code 中启用 JS 类型检查来利用智能提示和类型校验。
 
-## `createServer`
+## `createServer` {#createserver}
 
-**Type Signature:**
+**类型签名：**
 
 ```ts
 async function createServer(inlineConfig?: InlineConfig): Promise<ViteDevServer>
 ```
 
-**Example Usage:**
+**使用示例：**
 
 ```js
 import { fileURLToPath } from 'url'
@@ -20,7 +20,7 @@ const __dirname = fileURLToPath(new URL('.', import.meta.url))
 
 ;(async () => {
   const server = await createServer({
-    // any valid user config options, plus `mode` and `configFile`
+    // 任何合法的用户配置选项，加上 `mode` 和 `configFile`
     configFile: false,
     root: __dirname,
     server: {
@@ -33,107 +33,105 @@ const __dirname = fileURLToPath(new URL('.', import.meta.url))
 })()
 ```
 
-::: tip NOTE
-When using `createServer` and `build` in the same Node.js process, both functions rely on `process.env.`<wbr>`NODE_ENV` to work properly, which also depends on the `mode` config option. To prevent conflicting behavior, set `process.env.`<wbr>`NODE_ENV` or the `mode` of the two APIs to `development`. Otherwise, you can spawn a child process to run the APIs separately.
+::: tip 注意
+当在同一个 Node.js 进程中使用 `createServer` 和 `build` 时，两个函数都依赖于 `process.env.`<wbr>`NODE_ENV` 才可正常工作，而这个环境变量又依赖于 `mode` 配置项。为了避免行为冲突，请在这两个 API 传入参数 `development` 字段中设置 `process.env.`<wbr>`NODE_ENV` 或者 `mode` 配置项，或者你也可以生成另一个子进程，分别运行这两个 API。
 :::
 
-## `InlineConfig`
+## `InlineConfig` {#inlineconfig}
 
-The `InlineConfig` interface extends `UserConfig` with additional properties:
+`InlineConfig` 接口扩展了 `UserConfig` 并添加了以下属性：
 
-- `configFile`: specify config file to use. If not set, Vite will try to automatically resolve one from project root. Set to `false` to disable auto resolving.
-- `envFile`: Set to `false` to disable `.env` files.
+- `configFile`：指明要使用的配置文件。如果没有设置，Vite 将尝试从项目根目录自动解析。设置为 `false` 可以禁用自动解析功能。
+- `envFile`：设置为 `false` 时，则禁用 `.env` 文件。
 
-## `ResolvedConfig`
+## `ResolvedConfig` {#resolvedconfig}
 
-The `ResolvedConfig` interface has all the same properties of a `UserConfig`, except most properties are resolved and non-undefined. It also contains utilities like:
+`ResolvedConfig` 接口和 `UserConfig` 有完全相同的属性，期望多数属性是已经解析完成且不为 undefined 的。它同样包括下面这样的工具方法：
 
-- `config.assetsInclude`: A function to check if an `id` is considered an asset.
-- `config.logger`: Vite's internal logger object.
+- `config.assetsInclude`：一个函数，用来检查一个 `id` 是否被考虑为是一个资源。
+- `config.logger`：Vite 内部的日志对象。
 
-## `ViteDevServer`
+## `ViteDevServer` {#vitedevserver}
 
 ```ts
 interface ViteDevServer {
   /**
-   * The resolved Vite config object.
+   * 被解析的 Vite 配置对象
    */
   config: ResolvedConfig
   /**
-   * A connect app instance
-   * - Can be used to attach custom middlewares to the dev server.
-   * - Can also be used as the handler function of a custom http server
-   *   or as a middleware in any connect-style Node.js frameworks.
+   * 一个 connect 应用实例
+   * - 可以用于将自定义中间件附加到开发服务器。
+   * - 还可以用作自定义http服务器的处理函数。
+      或作为中间件用于任何 connect 风格的 Node.js 框架。
    *
    * https://github.com/senchalabs/connect#use-middleware
    */
   middlewares: Connect.Server
   /**
-   * Native Node http server instance.
-   * Will be null in middleware mode.
+   * 本机 node http 服务器实例
    */
   httpServer: http.Server | null
   /**
-   * Chokidar watcher instance.
+   * chokidar 监听器实例
    * https://github.com/paulmillr/chokidar#api
    */
   watcher: FSWatcher
   /**
-   * Web socket server with `send(payload)` method.
+   * web socket 服务器，带有 `send(payload)` 方法。
    */
   ws: WebSocketServer
   /**
-   * Rollup plugin container that can run plugin hooks on a given file.
+   * Rollup 插件容器，可以针对给定文件运行插件钩子。
    */
   pluginContainer: PluginContainer
   /**
-   * Module graph that tracks the import relationships, url to file mapping
-   * and hmr state.
+   * 跟踪导入关系、url 到文件映射和 hmr 状态的模块图。
    */
   moduleGraph: ModuleGraph
   /**
-   * Programmatically resolve, load and transform a URL and get the result
-   * without going through the http request pipeline.
+   * 以代码方式解析、加载和转换 url 并获取结果
+   * 而不需要通过 http 请求管道。
    */
   transformRequest(
     url: string,
     options?: TransformOptions
   ): Promise<TransformResult | null>
   /**
-   * Apply Vite built-in HTML transforms and any plugin HTML transforms.
+   * 应用 Vite 内建 HTML 转换和任意插件 HTML 转换
    */
   transformIndexHtml(url: string, html: string): Promise<string>
   /**
-   * Load a given URL as an instantiated module for SSR.
+   * 加载一个给定的 URL 作为 SSR 的实例化模块
    */
   ssrLoadModule(
     url: string,
     options?: { fixStacktrace?: boolean }
   ): Promise<Record<string, any>>
   /**
-   * Fix ssr error stacktrace.
+   * 解决 ssr 错误堆栈信息
    */
   ssrFixStacktrace(e: Error): void
   /**
-   * Start the server.
+   * 启动服务器
    */
   listen(port?: number, isRestart?: boolean): Promise<ViteDevServer>
   /**
-   * Restart the server.
+   * 重启服务器
    *
-   * @param forceOptimize - force the optimizer to re-bundle, same as --force cli flag
+   * @param forceOptimize - 强制优化器打包，和命令行内使用 --force 一致
    */
   restart(forceOptimize?: boolean): Promise<void>
   /**
-   * Stop the server.
+   * 停止服务器
    */
   close(): Promise<void>
 }
 ```
 
-## `build`
+## `build` {#build}
 
-**Type Signature:**
+**类型校验：**
 
 ```ts
 async function build(
@@ -141,7 +139,7 @@ async function build(
 ): Promise<RollupOutput | RollupOutput[]>
 ```
 
-**Example Usage:**
+**使用示例：**
 
 ```js
 import path from 'path'
@@ -163,21 +161,21 @@ const __dirname = fileURLToPath(new URL('.', import.meta.url))
 })()
 ```
 
-## `preview`
+## `preview` {#preview}
 
-**Type Signature:**
+**类型签名：**
 
 ```ts
 async function preview(inlineConfig?: InlineConfig): Promise<PreviewServer>
 ```
 
-**Example Usage:**
+**示例用法：**
 
 ```js
 import { preview } from 'vite'
 ;(async () => {
   const previewServer = await preview({
-    // any valid user config options, plus `mode` and `configFile`
+    // 任何有效的用户配置项，将加上 `mode` 和 `configFile`
     preview: {
       port: 8080,
       open: true
@@ -188,9 +186,9 @@ import { preview } from 'vite'
 })()
 ```
 
-## `resolveConfig`
+## `resolveConfig` {#resolveconfig}
 
-**Type Signature:**
+**类型校验：**
 
 ```ts
 async function resolveConfig(
@@ -266,7 +264,7 @@ Normalizes a path to interoperate between Vite plugins.
 
 ## `transformWithEsbuild`
 
-**Type Signature:**
+**类型签名：**
 
 ```ts
 async function transformWithEsbuild(

@@ -1,0 +1,84 @@
+.home-hero .image {
+  width: 200px;
+  height: 200px;
+}
+
+.nav-bar .logo {
+  height: 30px;
+  margin-right: 2px;
+}
+
+.content img {
+  border-radius: 10px;
+}
+
+.nav-dropdown-link-item .icon {
+  display: none;
+}
+
+:root {
+  --c-brand: #646cff;
+  --c-brand-light: #747bff;
+}
+
+.custom-block.tip {
+  border-color: var(--c-brand-light);
+}
+
+.DocSearch {
+  --docsearch-primary-color: var(--c-brand) !important;
+}
+
+#play-vite-audio {
+  padding: 0;
+  margin-left: 5px;
+  display: inline-flex;
+}
+
+#play-vite-audio img {
+  opacity: 0.8;
+}
+
+/* docs-cn specific */
+.cn-footnote {
+  margin-top: 20px;
+}
+
+.cn-footnote .title {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.docs-cn-github-release-tag {
+  font-size: 14px;
+  font-weight: bold;
+  padding: 4px 6px;
+  margin-left: 6px;
+  background: var(--c-brand);
+  color: white;
+  border-radius: 10px;
+}
+
+#wwads-container {
+  position: relative;
+  float: right;
+  z-index: 9;
+  margin: 0 0 16px 16px;
+}
+
+#wwads-container .wwads-text {
+  font-size: 12px;
+}
+
+.page .container .content {
+  clear: none !important;
+}
+
+@media (min-width: 1368px) {
+  #wwads-container {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    margin: 0;
+  }
+}

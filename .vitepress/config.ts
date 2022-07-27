@@ -1,61 +1,16 @@
-import { defineConfig, DefaultTheme } from 'vitepress'
+import { defineConfig } from 'vitepress'
+import renderPermaLink from './render-perma-link'
+import MarkDownItCustomAnchor from './markdown-it-custom-anchor'
 
 const ogDescription = 'Next Generation Frontend Tooling'
 const ogImage = 'https://vitejs.dev/og-image.png'
 const ogTitle = 'Vite'
 const ogUrl = 'https://vitejs.dev'
 
-// netlify envs
-const deployURL = process.env.DEPLOY_PRIME_URL || ''
-const commitRef = process.env.COMMIT_REF?.slice(0, 8) || 'dev'
-
-const deployType = (() => {
-  switch (deployURL) {
-    case 'https://main--vite-docs-main.netlify.app':
-      return 'main'
-    case '':
-      return 'local'
-    default:
-      return 'release'
-  }
-})()
-const additionalTitle = ((): string => {
-  switch (deployType) {
-    case 'main':
-      return ' (main branch)'
-    case 'local':
-      return ' (local)'
-    case 'release':
-      return ''
-  }
-})()
-const versionLinks = ((): DefaultTheme.NavItemWithLink[] => {
-  switch (deployType) {
-    case 'main':
-    case 'local':
-      return [
-        {
-          text: 'Vite 3 Docs (release)',
-          link: 'https://vitejs.dev'
-        },
-        {
-          text: 'Vite 2 Docs',
-          link: 'https://v2.vitejs.dev'
-        }
-      ]
-    case 'release':
-      return [
-        {
-          text: 'Vite 2 Docs',
-          link: 'https://v2.vitejs.dev'
-        }
-      ]
-  }
-})()
-
 export default defineConfig({
-  title: `Vite${additionalTitle}`,
-  description: 'Next Generation Frontend Tooling',
+  title: 'Vite 官方中文文档',
+  description: '下一代前端工具链',
+  lang: 'zh-CN',
 
   head: [
     ['link', { rel: 'icon', type: 'image/svg+xml', href: '/logo.svg' }],
@@ -76,8 +31,8 @@ export default defineConfig({
     logo: '/logo.svg',
 
     editLink: {
-      pattern: 'https://github.com/vitejs/vite/edit/main/docs/:path',
-      text: 'Suggest changes to this page'
+      text: '为此页提供修改建议',
+      pattern: 'https://github.com/vitejs/docs-cn/edit/main/docs/:path',
     },
 
     socialLinks: [
@@ -87,11 +42,11 @@ export default defineConfig({
     ],
 
     algolia: {
-      appId: 'BH4D9OD16A',
-      apiKey: 'b573aa848fd57fb47d693b531297403c',
+      appId: '7H67QR5P0A',
+      apiKey: 'deaab78bcdfe96b599497d25acc6460e',
       indexName: 'vitejs',
       searchParameters: {
-        facetFilters: ['tags:en']
+        facetFilters: ['tags:cn']
       }
     },
 
@@ -101,127 +56,128 @@ export default defineConfig({
     },
 
     localeLinks: {
-      text: 'English',
+      text: '简体中文',
       items: [
-        { text: '简体中文', link: 'https://cn.vitejs.dev' },
+        { text: 'English', link: 'https://vitejs.dev' },
         { text: '日本語', link: 'https://ja.vitejs.dev' },
         { text: 'Español', link: 'https://es.vitejs.dev' }
       ]
     },
 
     footer: {
-      message: `Released under the MIT License. (${commitRef})`,
+      message: '根据 MIT 许可证发布。',
       copyright: 'Copyright © 2019-present Evan You & Vite Contributors'
     },
 
     nav: [
-      { text: 'Guide', link: '/guide/', activeMatch: '/guide/' },
-      { text: 'Config', link: '/config/', activeMatch: '/config/' },
-      { text: 'Plugins', link: '/plugins/', activeMatch: '/plugins/' },
+      { text: '指引', link: '/guide/', activeMatch: '/guide/' },
+      { text: '配置', link: '/config/', activeMatch: '/config/' },
+      { text: '插件', link: '/plugins/', activeMatch: '/plugins/' },
       {
-        text: 'Resources',
+        text: '相关链接',
         items: [
           { text: 'Team', link: '/team' },
           {
-            items: [
-              {
-                text: 'Twitter',
-                link: 'https://twitter.com/vite_js'
-              },
-              {
-                text: 'Discord Chat',
-                link: 'https://chat.vitejs.dev'
-              },
-              {
-                text: 'Awesome Vite',
-                link: 'https://github.com/vitejs/awesome-vite'
-              },
-              {
-                text: 'DEV Community',
-                link: 'https://dev.to/t/vite'
-              },
-              {
-                text: 'Rollup Plugins Compat',
-                link: 'https://vite-rollup-plugins.patak.dev/'
-              },
-              {
-                text: 'Changelog',
-                link: 'https://github.com/vitejs/vite/blob/main/packages/vite/CHANGELOG.md'
-              }
-            ]
+            text: 'Twitter',
+            link: 'https://twitter.com/vite_js'
+          },
+          {
+            text: 'Discord Chat',
+            link: 'https://chat.vitejs.dev'
+          },
+          {
+            text: 'Awesome Vite',
+            link: 'https://github.com/vitejs/awesome-vite'
+          },
+          {
+            text: 'Dev.to 社区',
+            link: 'https://dev.to/t/vite'
+          },
+          {
+            text: 'Rollup 插件兼容',
+            link: 'https://vite-rollup-plugins.patak.dev/'
+          },
+          {
+            text: '更新日志',
+            link: 'https://github.com/vitejs/vite/blob/main/packages/vite/CHANGELOG.md'
           }
         ]
       },
       {
         text: 'Version',
-        items: versionLinks
+        items: [
+          {
+            text: 'Vite v2 文档',
+            link: 'https://v2.vitejs.dev'
+          }
+        ]
       }
     ],
 
     sidebar: {
       '/guide/': [
         {
-          text: 'Guide',
+          text: '指引',
           items: [
             {
-              text: 'Why Vite',
+              text: '为什么选 Vite',
               link: '/guide/why'
             },
             {
-              text: 'Getting Started',
+              text: '开始',
               link: '/guide/'
             },
             {
-              text: 'Features',
+              text: '功能',
               link: '/guide/features'
             },
             {
-              text: 'Using Plugins',
+              text: '使用插件',
               link: '/guide/using-plugins'
             },
             {
-              text: 'Dependency Pre-Bundling',
+              text: '依赖预构建',
               link: '/guide/dep-pre-bundling'
             },
             {
-              text: 'Static Asset Handling',
+              text: '静态资源处理',
               link: '/guide/assets'
             },
             {
-              text: 'Building for Production',
+              text: '构建生产版本',
               link: '/guide/build'
             },
             {
-              text: 'Deploying a Static Site',
+              text: '部署静态站点',
               link: '/guide/static-deploy'
             },
             {
-              text: 'Env Variables and Modes',
+              text: '环境变量与模式',
               link: '/guide/env-and-mode'
             },
             {
-              text: 'Server-Side Rendering (SSR)',
+              text: '服务端渲染（SSR）',
               link: '/guide/ssr'
             },
             {
-              text: 'Backend Integration',
+              text: '后端集成',
               link: '/guide/backend-integration'
             },
             {
-              text: 'Comparisons',
+              text: '比较',
               link: '/guide/comparisons'
             },
             {
-              text: 'Migration from v2',
+              text: '从 v2 迁移',
               link: '/guide/migration'
             }
           ]
         },
         {
-          text: 'APIs',
+          text: 'API',
           items: [
             {
-              text: 'Plugin API',
+              text: '插件 API',
               link: '/guide/api-plugin'
             },
             {
@@ -233,7 +189,7 @@ export default defineConfig({
               link: '/guide/api-javascript'
             },
             {
-              text: 'Config Reference',
+              text: '配置参考',
               link: '/config/'
             }
           ]
@@ -241,43 +197,52 @@ export default defineConfig({
       ],
       '/config/': [
         {
-          text: 'Config',
+          text: '配置',
           items: [
             {
-              text: 'Configuring Vite',
+              text: '配置 Vite',
               link: '/config/'
             },
             {
-              text: 'Shared Options',
+              text: '共享选项',
               link: '/config/shared-options'
             },
             {
-              text: 'Server Options',
+              text: '服务器选项',
               link: '/config/server-options'
             },
             {
-              text: 'Build Options',
+              text: '构建选项',
               link: '/config/build-options'
             },
             {
-              text: 'Preview Options',
+              text: '预览选项',
               link: '/config/preview-options'
             },
             {
-              text: 'Dep Optimization Options',
+              text: '依赖优化选项',
               link: '/config/dep-optimization-options'
             },
             {
-              text: 'SSR Options',
+              text: 'SSR 选项',
               link: '/config/ssr-options'
             },
             {
-              text: 'Worker Options',
+              text: 'Worker 选项',
               link: '/config/worker-options'
             }
           ]
         }
       ]
+    }
+  },
+
+  markdown: {
+    anchor: {
+      permalink: renderPermaLink,
+    },
+    config: (md) => {
+      md.use(MarkDownItCustomAnchor)
     }
   }
 })
