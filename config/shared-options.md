@@ -110,15 +110,11 @@ const obj = {
 
 更高级的自定义解析方法可以通过 [插件](/guide/api-plugin) 实现。
 
-<<<<<<< HEAD
-## resolve.dedupe {#resolve-dedupe}
-=======
-::: warning Using with SSR
+::: warning 在 SSR 中使用
 If you have configured aliases for [SSR externalized dependencies](/guide/ssr.md#ssr-externals), you may want to alias the actual `node_modules` packages. Both [Yarn](https://classic.yarnpkg.com/en/docs/cli/add/#toc-yarn-add-alias) and [pnpm](https://pnpm.js.org/en/aliases) support aliasing via the `npm:` prefix.
 :::
 
-## resolve.dedupe
->>>>>>> 5b413d53b71345b31031135f43eb650f964b5f09
+## resolve.dedupe {#resolve-dedupe}
 
 - **类型：** `string[]`
 
