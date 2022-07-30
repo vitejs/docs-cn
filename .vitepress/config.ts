@@ -168,7 +168,15 @@ export default defineConfig({
               link: '/guide/comparisons'
             },
             {
+<<<<<<< HEAD
               text: '从 v2 迁移',
+=======
+              text: 'Troubleshooting',
+              link: '/guide/troubleshooting'
+            },
+            {
+              text: 'Migration from v2',
+>>>>>>> 97b1b9013f6216232adc843ea72669442283724e
               link: '/guide/migration'
             }
           ]
