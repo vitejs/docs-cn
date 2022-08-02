@@ -1,81 +1,81 @@
-# Troubleshooting
+# 故障排除 {#troubleshooting}
 
-See [Rollup's troubleshooting guide](https://rollupjs.org/guide/en/#troubleshooting) for more information too.
+> 你还可以查看 [Rollup 的故障排除指南](https://rollupjs.org/guide/en/#troubleshooting) 了解更多。
 
-If the suggestions here don't work, please try posting questions on [GitHub Discussions](https://github.com/vitejs/vite/discussions) or in the `#help` channel of [Vite Land Discord](https://chat.vitejs.dev).
+如果这里的建议并未帮助到你，请将你的问题发送到 [GitHub 讨论区](https://github.com/vitejs/vite/discussions) 或 [Vite Land Discord](https://chat.vitejs.dev) 的 `#help` 频道。
 
-## CLI
+## CLI {#cli}
 
-### `Error: Cannot find module 'C:\foo\bar&baz\vite\bin\vite.js'`
+### `Error: Cannot find module 'C:\foo\bar&baz\vite\bin\vite.js'` {#error-cannot-find-module-cfoobarbazvitebinvitejs}
 
-The path to your project folder may include `?`, which doesn't work with `npm` on Windows ([npm/cmd-shim#45](https://github.com/npm/cmd-shim/issues/45)).
+你的项目文件夹路径中可能包含了问号 `?`，这在 Windows 上无法与 `npm` 配合正常工作 ([npm/cmd-shim#45](https://github.com/npm/cmd-shim/issues/45))。
 
-You will need to either:
+你可以选择以下两种修改方式：
 
-- Switch to another package manager (e.g. `pnpm`, `yarn`)
-- Remove `?` from the path to your project
+- 切换另一种包管理工具（例如 `pnpm` 或 `yarn`）
+- 从你的项目路径中移除问号 `?`
 
-## Dev Server
+## 开发服务器 {#dev-server}
 
-### Requests are stalled forever
+### 请求始终停滞 {#requests-are-stalled-forever}
 
-If you are using Linux, file descriptor limits and inotify limits may be causing the issue. As Vite does not bundle most of the files, browsers may request many files which require many file descriptors, going over the limit.
+如果你使用的是 Linux，文件描述符限制和 inotify 限制可能会导致这个问题。由于 Vite 不会打包大多数文件，浏览器可能会请求许多文件，而相应地需要许多文件描述符，因此超过了限制。
 
-To solve this:
+要解决这个问题：
 
-- Increase file descriptor limit by `ulimit`
+- 使用 `ulimit` 增加文件描述符的限制
 
   ```shell
-  # Check current limit
+  # 查看当前限制值
   $ ulimit -Sn
-  # Change limit (temporary)
-  $ ulimit -Sn 10000 # You might need to change the hard limit too
-  # Restart your browser
+  # （暂时）更改限制值
+  $ ulimit -Sn 10000 # 你可能也需要更改硬性限制值
+  # 重启你的浏览器
   ```
 
-- Increase the following inotify related limits by `sysctl`
+- 通过 `sysctl` 提升下列 inotify 相关的限制
 
   ```shell
-  # Check current limits
+  # 查看当前限制值
   $ sysctl fs.inotify
-  # Change limits (temporary)
+  # （暂时）更改限制值
   $ sudo sysctl fs.inotify.max_queued_events=16384
   $ sudo sysctl fs.inotify.max_user_instances=8192
   $ sudo sysctl fs.inotify.max_user_watches=524288
   ```
 
-## HMR
+## HMR {#hmr}
 
-### Vite detects a file change but the HMR is not working
+### Vite 检测到文件变化，但 HMR 不工作 {#vite-detects-a-file-change-but-the-hmr-is-not-working}
 
-You may be importing a file with a different case. For example, `src/foo.js` exists and `src/bar.js` contains:
+你可能导入了一个拥有不同大小写的文件，例如，存在 `src/foo.js` 文件而 `src/bar.js` 导入了它：
 
 ```js
-import './Foo.js' // should be './foo.js'
+import './Foo.js' // 应该为 './foo.js'
 ```
 
-Related issue: [#964](https://github.com/vitejs/vite/issues/964)
+相关 issue：[#964](https://github.com/vitejs/vite/issues/964)
 
-### Vite does not detect a file change
+### Vite 没有检测到文件变化 {#vite-does-not-detect-a-file-change}
 
-If you are running Vite with WSL2, Vite cannot watch file changes in some conditions. See [`server.watch` option](/config/server-options.md#server-watch).
+如果你正在 WSL2 中运行 Vite，Vite 无法在某些场景下监听文件变化。请查看 [`server.watch` 选项](/config/server-options.md#server-watch) 的描述。
 
-### A full reload happens instead of HMR
+### 完全重新加载了，而不是 HMR {#a-full-reload-happens-instead-of-hmr}
 
-If HMR is not handled by Vite or a plugin, a full reload will happen.
+如果 HMR 不是由 Vite 或一个插件处理的，那么将进行完全的重新加载。
 
-Also if there is a dependency loop, a full reload will happen. To solve this, try removing the loop.
+同时如果有依赖环，也会发生完全重载。要解决这个问题，请先尝试解决依赖循环。
 
-## Others
+## 其他 {#others}
 
-### Syntax Error / Type Error happens
+### Syntax Error / Type Error {#syntax-error-type-error-happens}
 
-Vite cannot handle and does not support code that only runs on non-strict mode (sloppy mode). This is because Vite uses ESM and it is always [strict mode](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode) inside ESM.
+Vite 无法处理、也不支持仅可在非严格模式（sloppy mode）下运行的代码。这是因为 Vite 使用了 ESM 并且始终在 ESM 中使用 [严格模式](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode)。
 
-For example, you might see these errors.
+例如，你可能会看到以下错误。
 
 > [ERROR] With statements cannot be used with the "esm" output format due to strict mode
 
 > TypeError: Cannot create property 'foo' on boolean 'false'
 
-If these code are used inside dependecies, you could use [`patch-package`](https://github.com/ds300/patch-package) (or [`yarn patch`](https://yarnpkg.com/cli/patch) or [`pnpm patch`](https://pnpm.io/cli/patch)) for an escape hatch.
+如果这些代码是在依赖中被使用的，你应该使用 [`patch-package`](https://github.com/ds300/patch-package)（或者 [`yarn patch`](https://yarnpkg.com/cli/patch)、[`pnpm patch`](https://pnpm.io/cli/patch) 工具）来做短期补丁处理。
