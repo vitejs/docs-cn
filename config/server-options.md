@@ -145,6 +145,8 @@ export default defineConfig({
 
 当 `server.hmr.server` 被定义后，Vite 将会通过所提供的的服务器来处理 HMR 连接。如果不是在中间件模式下，Vite 将尝试通过已有服务器处理 HMR 连接。这在使用自签证书或想通过网络在某端口暴露 Vite 的情况下，非常有用。
 
+查看 [`vite-setup-catalogue`](https://github.com/sapphi-red/vite-setup-catalogue) 一节获取更多实例。
+
 ::: tip NOTE
 
 在默认配置下, 在 Vite 之前的反向代理应该支持代理 WebSocket。如果 Vite HMR 客户端连接 WebSocket 失败，该客户端将兜底为绕过反向代理、直接连接 WebSocket 到 Vite HMR 服务器：
