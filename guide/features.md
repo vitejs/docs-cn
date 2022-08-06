@@ -102,7 +102,25 @@ Vite 默认的类型定义是写给它的 Node.js API 的。要将其补充到�
 - `import.meta.env` 上 Vite 注入的环境变量的类型定义
 - `import.meta.hot` 上的 [HMR API](./api-hmr) 类型定义
 
+<<<<<<< HEAD
 ## Vue {#vue}
+=======
+::: tip
+To override the default typing, declare it before the triple-slash reference. For example, to make the default import of `*.svg` a React component:
+
+```ts
+declare module '*.svg' {
+  const content: React.FC<React.SVGProps<SVGElement>>
+  export default content
+}
+
+/// <reference types="vite/client" />
+```
+
+:::
+
+## Vue
+>>>>>>> d473f455bf55b5cb1cfaaa6c675ec8002f888782
 
 Vite 为 Vue 提供第一优先级支持：
 
