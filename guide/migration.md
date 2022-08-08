@@ -107,7 +107,7 @@ export default {
 
 ### 在构建阶段使用 esbuild 依赖优化
 
-在 v3 版本下，Vite 允许在构建阶段使用 esbuild 进行依赖优化。如果开启此项，那么它将消除 v2 版本中存在的最明显的开发与构建最终产物之间的区别。[`@rollupjs/plugin-commonjs`](https://github.com/rollup/plugins/tree/master/packages/commonjs) 在此处不再需要因为 esbuild 会将纯 CommonJS 依赖转换为 ESM。
+在 v3 版本下，Vite 允许在构建阶段使用 esbuild 进行依赖优化。如果开启此项，那么它将消除 v2 版本中存在的最明显的开发与构建最终产物之间的区别。[`@rollupjs/plugin-commonjs`](https://github.com/rollup/plugins/tree/master/packages/commonjs) 在此处不再需要，因为 esbuild 会将纯 CommonJS 依赖转换为 ESM。
 
 如果你想尝试该构建策略，你可以使用 `optimizeDeps.disabled: false`（在 v3 中默认是 `disabled: 'build'`）。`@rollup/plugin-commonjs`
 可以通过设置 `build.commonjsOptions: { include: [] }` 来移除。
