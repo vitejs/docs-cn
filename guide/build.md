@@ -206,7 +206,7 @@ dist/my-lib.umd.cjs 0.30 KiB / gzip: 0.16 KiB
 
 单个静态的 [基础路径](#public-base-path) 在这种场景中就不够用了。Vite 在构建时为更高级的基础路径选项提供了实验性支持，可以使用 `experimental.renderBuiltUrl`。
 
-```js
+```ts
 experimental: {
   renderBuiltUrl: (filename: string, { hostType: 'js' | 'css' | 'html' }) => {
     if (hostType === 'js') {
@@ -218,9 +218,13 @@ experimental: {
 }
 ```
 
+<<<<<<< HEAD
 如果 hash 后的资源和公共文件没有被部署在一起，可以根据该函数的第三个参数 `context` 上的字段 `type` 分别定义各个资源组的选项：
+=======
+If the hashed assets and public files aren't deployed together, options for each group can be defined independently using asset `type` included in the second `context` param given to the function.
+>>>>>>> e8ffe0e4e7cbf01442e0d03d5cb473842b0dec6a
 
-```js
+```ts
 experimental: {
   renderBuiltUrl(filename: string, { hostType: 'js' | 'css' | 'html', type: 'public' | 'asset' }) {
     if (type === 'public') {

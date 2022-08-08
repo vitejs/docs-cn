@@ -8,12 +8,21 @@
 
 ### `Error: Cannot find module 'C:\foo\bar&baz\vite\bin\vite.js'` {#error-cannot-find-module-cfoobarbazvitebinvitejs}
 
+<<<<<<< HEAD
 你的项目文件夹路径中可能包含了问号 `?`，这在 Windows 上无法与 `npm` 配合正常工作 ([npm/cmd-shim#45](https://github.com/npm/cmd-shim/issues/45))。
+=======
+The path to your project folder may include `&`, which doesn't work with `npm` on Windows ([npm/cmd-shim#45](https://github.com/npm/cmd-shim/issues/45)).
+>>>>>>> e8ffe0e4e7cbf01442e0d03d5cb473842b0dec6a
 
 你可以选择以下两种修改方式：
 
+<<<<<<< HEAD
 - 切换另一种包管理工具（例如 `pnpm` 或 `yarn`）
 - 从你的项目路径中移除问号 `?`
+=======
+- Switch to another package manager (e.g. `pnpm`, `yarn`)
+- Remove `&` from the path to your project
+>>>>>>> e8ffe0e4e7cbf01442e0d03d5cb473842b0dec6a
 
 ## 开发服务器 {#dev-server}
 

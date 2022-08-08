@@ -65,7 +65,11 @@ export default defineConfig({
 - **类型：** `Record<string, string | ProxyOptions>`
 - **默认：** [`server.proxy`](#server_proxy)
 
+<<<<<<< HEAD
 为开发服务器配置自定义代理规则。其值的结构为 `{ key: options }` 的对象。如果 key 以 `^` 开头，它将被识别为 `RegExp`，其中 `configure` 选项可用于访问代理实例。
+=======
+Configure custom proxy rules for the preview server. Expects an object of `{ key: options }` pairs. If the key starts with `^`, it will be interpreted as a `RegExp`. The `configure` option can be used to access the proxy instance.
+>>>>>>> e8ffe0e4e7cbf01442e0d03d5cb473842b0dec6a
 
 基于 [`http-proxy`](https://github.com/http-party/node-http-proxy) 实现，完整的参数列表参见 [此链接](https://github.com/http-party/node-http-proxy#options)。
 
@@ -74,4 +78,8 @@ export default defineConfig({
 - **类型：** `boolean | CorsOptions`
 - **默认：** [`server.cors`](#server_proxy)
 
+<<<<<<< HEAD
 为开发服务器配置 CORS。此功能默认启用，支持任何来源。可传递一个 [options 对象](https://github.com/expressjs/cors) 来进行配置，或者传递 `false` 来禁用此行为。
+=======
+Configure CORS for the preview server. This is enabled by default and allows any origin. Pass an [options object](https://github.com/expressjs/cors) to fine tune the behavior or `false` to disable.
+>>>>>>> e8ffe0e4e7cbf01442e0d03d5cb473842b0dec6a

@@ -131,9 +131,17 @@ $ npm run preview
 
 ## Netlify {#netlify}
 
+<<<<<<< HEAD
 1. 安装 [Netlify CLI](https://cli.netlify.com/)。
 2. 使用 `ntl init` 创建一个新站点。
 3. 使用 `ntl deploy` 来部署。
+=======
+### Netlify CLI
+
+1. Install the [Netlify CLI](https://cli.netlify.com/).
+2. Create a new site using `ntl init`.
+3. Deploy using `ntl deploy`.
+>>>>>>> e8ffe0e4e7cbf01442e0d03d5cb473842b0dec6a
 
 ```bash
 # 安装 Netlify CLI
@@ -153,7 +161,21 @@ Netlify CLI 会给你分享一个预览的 URL 来检查部署结果。当你准
 $ ntl deploy --prod
 ```
 
+<<<<<<< HEAD
 ## Vercel {#vercel}
+=======
+### Netlify with Git
+
+1. Push your code to a git repository (GitHub, GitLab, BitBucket, Azure DevOps).
+2. [Import the project](https://app.netlify.com/start) to Netlify.
+3. Choose the branch, output directory, and set up environment variables if applicable.
+4. Click on **Deploy**.
+5. Your Vite app is deployed!
+
+After your project has been imported and deployed, all subsequent pushes to branches other than the production branch along with pull requests will generate [Preview Deployments](https://docs.netlify.com/site-deploys/deploy-previews/), and all changes made to the Production Branch (commonly “main”) will result in a [Production Deployment](https://docs.netlify.com/site-deploys/overview/#definitions).
+
+## Vercel
+>>>>>>> e8ffe0e4e7cbf01442e0d03d5cb473842b0dec6a
 
 ### Vercel CLI {#vercel-cli}
 
@@ -330,6 +352,7 @@ $ npx wrangler pages publish dist
 
 按照扩展程序的启动向导，给你的应用程序起个名字，选择框架预设，并指定应用程序的根目录（通常为 `/`）以及构建文件的路径 `/dist`。此向导完成后，会在你的 repo 中的 `.github` 文件夹中创建一个 Github Action。
 
+<<<<<<< HEAD
 这个 action 致力于部署你的应用程序（可以在仓库的 Actions 标签中，查看相关进度），成功完成后，你可以点击 Github 中出现的 “浏览站点” 的按钮，查看你的应用程序。
 
 ## 腾讯云 Webify
@@ -347,3 +370,29 @@ $ npx wrangler pages publish dist
 ![Webify 配置](../images/webify-configuration.png)
 
 应用创建之后，等待构建、部署完毕，便可以通过应用的默认域名（`.app.tcloudbase.com`）来访问应用。如 https://my-vite-vue-app-4gi9tn1478d8ee71-1255679239.ap-shanghai.app.tcloudbase.com/
+=======
+The action will work to deploy your app (watch its progress in your repo's Actions tab) and, when successfully completed, you can view your app in the address provided in the extension's progress window by clicking the 'Browse Website' button that appears when the GitHub action has run.
+
+## Render
+
+You can deploy your Vite app as a Static Site on [Render](https://render.com/).
+
+1. Create a [Render account](https://dashboard.render.com/register).
+
+2. In the [Dashboard](https://dashboard.render.com/), click the **New** button and select **Static Site**.
+
+3. Connect your GitHub/GitLab account or use a public repository.
+
+4. Specify a project name and branch.
+
+   - **Build Command**: `npm run build`
+   - **Publish Directory**: `dist`
+
+5. Click **Create Static Site**.
+
+   Your app should be deployed at `https://<PROJECTNAME>.onrender.com/`.
+
+By default, any new commit pushed to the specified branch will automatically trigger a new deploy. [Auto-Deploy](https://render.com/docs/deploys#toggling-auto-deploy-for-a-service) can be configured in the project settings.
+
+You can also add a [custom domain](https://render.com/docs/custom-domains) to your project.
+>>>>>>> e8ffe0e4e7cbf01442e0d03d5cb473842b0dec6a
