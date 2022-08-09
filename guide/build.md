@@ -206,9 +206,9 @@ dist/my-lib.umd.cjs 0.30 KiB / gzip: 0.16 KiB
 
 单个静态的 [基础路径](#public-base-path) 在这种场景中就不够用了。Vite 在构建时为更高级的基础路径选项提供了实验性支持，可以使用 `experimental.renderBuiltUrl`。
 
-```js
+```ts
 experimental: {
-  renderBuiltUrl: (filename: string, { hostType: 'js' | 'css' | 'html' }) => {
+  renderBuiltUrl(filename: string, { hostType }: { hostType: 'js' | 'css' | 'html' }) {
     if (hostType === 'js') {
       return { runtime: `window.__toCdnUrl(${JSON.stringify(filename)})` }
     } else {
@@ -218,15 +218,19 @@ experimental: {
 }
 ```
 
+<<<<<<< HEAD
 如果 hash 后的资源和公共文件没有被部署在一起，可以根据该函数的第三个参数 `context` 上的字段 `type` 分别定义各个资源组的选项：
+=======
+If the hashed assets and public files aren't deployed together, options for each group can be defined independently using asset `type` included in the second `context` param given to the function.
+>>>>>>> 2ee33290a41cb4a55ff166bf0eb41c22112d7335
 
-```js
+```ts
 experimental: {
-  renderBuiltUrl(filename: string, { hostType: 'js' | 'css' | 'html', type: 'public' | 'asset' }) {
+  renderBuiltUrl(filename: string, { hostId, hostType, type }: { hostId: string, hostType: 'js' | 'css' | 'html', type: 'public' | 'asset' }) {
     if (type === 'public') {
       return 'https://www.domain.com/' + filename
     }
-    else if (path.extname(importer) === '.js') {
+    else if (path.extname(hostId) === '.js') {
       return { runtime: `window.__assetsPath(${JSON.stringify(filename)})` }
     }
     else {

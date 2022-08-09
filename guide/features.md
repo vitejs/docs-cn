@@ -102,14 +102,39 @@ Vite 默认的类型定义是写给它的 Node.js API 的。要将其补充到�
 - `import.meta.env` 上 Vite 注入的环境变量的类型定义
 - `import.meta.hot` 上的 [HMR API](./api-hmr) 类型定义
 
+<<<<<<< HEAD
 ## Vue {#vue}
+=======
+::: tip
+To override the default typing, declare it before the triple-slash reference. For example, to make the default import of `*.svg` a React component:
+
+```ts
+declare module '*.svg' {
+  const content: React.FC<React.SVGProps<SVGElement>>
+  export default content
+}
+
+/// <reference types="vite/client" />
+```
+
+:::
+
+## Vue
+>>>>>>> 2ee33290a41cb4a55ff166bf0eb41c22112d7335
 
 Vite 为 Vue 提供第一优先级支持：
 
+<<<<<<< HEAD
 - Vue 3 单文件组件支持：[@vitejs/plugin-vue](https://github.com/vitejs/vite/tree/main/packages/plugin-vue)
 - Vue 3 JSX 支持：[@vitejs/plugin-vue-jsx](https://github.com/vitejs/vite/tree/main/packages/plugin-vue-jsx)
 - Vue 2 支持：[vitejs/vite-plugin-vue2](https://github.com/vitejs/vite-plugin-vue2)
 - Vue <2.7 的支持：[underfin/vite-plugin-vue2](https://github.com/underfin/vite-plugin-vue2)
+=======
+- Vue 3 SFC support via [@vitejs/plugin-vue](https://github.com/vitejs/vite/tree/main/packages/plugin-vue)
+- Vue 3 JSX support via [@vitejs/plugin-vue-jsx](https://github.com/vitejs/vite/tree/main/packages/plugin-vue-jsx)
+- Vue 2.7 support via [@vitejs/plugin-vue2](https://github.com/vitejs/vite-plugin-vue2)
+- Vue <2.7 support via [vite-plugin-vue2](https://github.com/underfin/vite-plugin-vue2)
+>>>>>>> 2ee33290a41cb4a55ff166bf0eb41c22112d7335
 
 ## JSX {#jsx}
 
