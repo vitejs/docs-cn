@@ -8,12 +8,21 @@
 
 ### `Error: Cannot find module 'C:\foo\bar&baz\vite\bin\vite.js'` {#error-cannot-find-module-cfoobarbazvitebinvitejs}
 
+<<<<<<< HEAD
 你的项目文件夹路径中可能包含了问号 `?`，这在 Windows 上无法与 `npm` 配合正常工作 ([npm/cmd-shim#45](https://github.com/npm/cmd-shim/issues/45))。
+=======
+The path to your project folder may include `&`, which doesn't work with `npm` on Windows ([npm/cmd-shim#45](https://github.com/npm/cmd-shim/issues/45)).
+>>>>>>> c02f3253fb852e25ae311122a3cb1e4b3bccbea8
 
 你可以选择以下两种修改方式：
 
+<<<<<<< HEAD
 - 切换另一种包管理工具（例如 `pnpm` 或 `yarn`）
 - 从你的项目路径中移除问号 `?`
+=======
+- Switch to another package manager (e.g. `pnpm`, `yarn`)
+- Remove `&` from the path to your project
+>>>>>>> c02f3253fb852e25ae311122a3cb1e4b3bccbea8
 
 ## 开发服务器 {#dev-server}
 
@@ -44,7 +53,21 @@
   $ sudo sysctl fs.inotify.max_user_watches=524288
   ```
 
+<<<<<<< HEAD
 ## HMR {#hmr}
+=======
+### 431 Request Header Fields Too Large
+
+When the server / WebSocket server receives a large HTTP header, the request will be dropped and the following warning will be shown.
+
+> Server responded with status code 431. See https://vitejs.dev/guide/troubleshooting.html#_431-request-header-fields-too-large.
+
+This is because Node.js limits request header size to mitigate [CVE-2018-12121](https://www.cve.org/CVERecord?id=CVE-2018-12121).
+
+To avoid this, try to reduce your request header size. For example, if the cookie is long, delete it. Or you can use [`--max-http-header-size`](https://nodejs.org/api/cli.html#--max-http-header-sizesize) to change max header size.
+
+## HMR
+>>>>>>> c02f3253fb852e25ae311122a3cb1e4b3bccbea8
 
 ### Vite 检测到文件变化，但 HMR 不工作 {#vite-detects-a-file-change-but-the-hmr-is-not-working}
 
