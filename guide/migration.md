@@ -58,7 +58,7 @@ Vite v3 默认在 SSR 构建时使用 ESM 格式。当使用 ESM 时，[SSR 外�
 ### `import.meta.glob` {#importmetaglob}
 
 - [原始 `import.meta.glob`](features.md#glob-import-as) 从 `{ assert: { type: 'raw' }}` 迁移为 `{ as: 'raw' }`
-- `import.meta.glob` 的 key 现在是相对与当前模块。
+- `import.meta.glob` 的 key 现在是相对于当前模块。
 
   ```diff
   // 文件：/foo/index.js
