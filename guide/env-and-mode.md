@@ -46,7 +46,11 @@ Vite 使用 [dotenv](https://github.com/motdotla/dotenv) 从你的 [环境目录
 
 加载的环境变量也会通过 `import.meta.env` 以字符串形式暴露给客户端源码。
 
+<<<<<<< HEAD
 为了防止意外地将一些环境变量泄漏到客户端，只有以 `VITE_` 为前缀的变量才会暴露给经过 vite 处理的代码。例如下面这个文件中：
+=======
+To prevent accidentally leaking env variables to the client, only variables prefixed with `VITE_` are exposed to your Vite-processed code. e.g. for the following env variables:
+>>>>>>> ac84bfbd8118911dd0812cd3caa5bf0f633f54a1
 
 ```
 VITE_SOME_KEY=123
@@ -61,7 +65,11 @@ console.log(import.meta.env.DB_PASSWORD) // undefined
 ```
 如果你想自定义 env 变量的前缀，请参阅 [envPrefix](/config/shared-options.html#envprefix)。
 
+<<<<<<< HEAD
 :::warning 安全注意事项
+=======
+If you want to customize the env variables prefix, see the [envPrefix](/config/shared-options.html#envprefix) option.
+>>>>>>> ac84bfbd8118911dd0812cd3caa5bf0f633f54a1
 
 - `.env.*.local` 文件应是本地的，可以包含敏感变量。你应该将 `.local` 添加到你的 `.gitignore` 中，以避免它们被 git 检入。
 
@@ -70,9 +78,15 @@ console.log(import.meta.env.DB_PASSWORD) // undefined
 
 ### TypeScript 的智能提示 {#intellisense}
 
+<<<<<<< HEAD
 默认情况下，Vite 在 [`vite/client.d.ts`](https://github.com/vitejs/vite/blob/main/packages/vite/client.d.ts) 中为 `import.meta.env` 提供了类型定义。随着在 `.env[mode]` 文件中自定义了越来越多的环境变量，你可能想要在代码中获取这些以 `VITE_` 为前缀的用户自定义环境变量的 TypeScript 智能提示。
 
 要想做到这一点，你可以在 `src` 目录下创建一个 `env.d.ts` 文件，接着按下面这样增加 `ImportMetaEnv` 的定义：
+=======
+By default, Vite provides type definitions for `import.meta.env` in [`vite/client.d.ts`](https://github.com/vitejs/vite/blob/main/packages/vite/client.d.ts). While you can define more custom env variables in `.env.[mode]` files, you may want to get TypeScript IntelliSense for user-defined env variables that are prefixed with `VITE_`.
+
+To achieve this, you can create an `env.d.ts` in `src` directory, then augment `ImportMetaEnv` like this:
+>>>>>>> ac84bfbd8118911dd0812cd3caa5bf0f633f54a1
 
 ```typescript
 /// <reference types="vite/client" />
@@ -97,7 +111,11 @@ interface ImportMeta {
 
 ## 模式 {#modes}
 
+<<<<<<< HEAD
 默认情况下，开发服务器 (`dev` 命令) 运行在 `development` (开发) 模式，而 `build` 命令则运行在 `production` (生产) 模式。
+=======
+By default, the dev server (`dev` command) runs in `development` mode and the `build` command runs in `production` mode.
+>>>>>>> ac84bfbd8118911dd0812cd3caa5bf0f633f54a1
 
 这意味着当执行 `vite build` 时，它会自动加载 `.env.production` 中可能存在的环境变量：
 

@@ -169,9 +169,13 @@ Direct websocket connection fallback. Check out https://vitejs.dev/config/server
 
 传递给 [chokidar](https://github.com/paulmillr/chokidar#api) 的文件系统监听器选项。
 
+<<<<<<< HEAD
 当需要再 Windows Subsystem for Linux (WSL) 2 上运行 Vite 时，如果项目文件夹位于 Windows 文件系统中，你需要将此选项设置为 `{ usePolling: true }`。这是由于 Windows 文件系统的 [WSL2 限制](https://github.com/microsoft/WSL/issues/4739) 造成的。
 
 Vite 服务器默认会忽略对 `.git/` 和 `node_modules/` 目录的监听。如果你需要对 `node_modules/` 内的包进行监听，你可以为 `server.watch.ignored` 赋值一个取反的 glob 模式，例如：
+=======
+The Vite server watcher skips `.git/` and `node_modules/` directories by default. If you want to watch a package inside `node_modules/`, you can pass a negated glob pattern to `server.watch.ignored`. That is:
+>>>>>>> ac84bfbd8118911dd0812cd3caa5bf0f633f54a1
 
 ```js
 export default defineConfig({
@@ -188,7 +192,24 @@ export default defineConfig({
 })
 ```
 
+<<<<<<< HEAD
 ## server.middlewareMode {#server-middlewaremode}
+=======
+::: warning Using Vite on Windows Subsystem for Linux (WSL) 2
+
+When running Vite on WSL2, file system watching does not work when a file is edited by Windows applications (non-WSL2 process). This is due to [a WSL2 limitation](https://github.com/microsoft/WSL/issues/4739). This also applies to running on Docker with a WSL2 backend.
+
+To fix it, you could either:
+
+- **Recommended**: Use WSL2 applications to edit your files.
+  - It is also recommended to move the project folder outside of a Windows filesystem. Accessing Windows filesystem from WSL2 is slow. Removing that overhead will improve performance.
+- Set `{ usePolling: true }`.
+  - Note that [`usePolling` leads to high CPU utilization](https://github.com/paulmillr/chokidar#performance).
+
+:::
+
+## server.middlewareMode
+>>>>>>> ac84bfbd8118911dd0812cd3caa5bf0f633f54a1
 
 - **类型：** `'ssr' | 'html'`
 
