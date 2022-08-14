@@ -20,7 +20,8 @@ export default defineConfig({
     ['meta', { property: 'og:url', content: ogUrl }],
     ['meta', { property: 'og:description', content: ogDescription }],
     ['meta', { name: 'twitter:card', content: 'summary_large_image' }],
-    ['meta', { name: 'twitter:site', content: '@vite_js' }]
+    ['meta', { name: 'twitter:site', content: '@vite_js' }],
+    ['meta', { name: 'theme-color', content: '#646cff' }]
   ],
 
   vue: {
@@ -166,6 +167,10 @@ export default defineConfig({
             {
               text: '比较',
               link: '/guide/comparisons'
+            },
+            {
+              text: '故障排除',
+              link: '/guide/troubleshooting'
             },
             {
               text: '从 v2 迁移',

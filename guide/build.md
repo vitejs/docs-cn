@@ -4,7 +4,7 @@
 
 ## 浏览器兼容性 {#browser-compatibility}
 
-用于生产环境的构建包会假设目标浏览器支持现代 JavaScript 语法。默认情况下，Vite 的目标是能够 [支持原生 ESM script 标签](https://caniuse.com/es6-module)、[支持原生 ESM 动态导入](https://caniuse.com/es6-module-dynamic-import) 和 [`import.meta`](https://caniuse.com/mdn-javascript_statements_import_meta) 的浏览器：
+用于生产环境的构建包会假设目标浏览器支持现代 JavaScript 语法。默认情况下，Vite 的目标是能够 [支持原生 ESM script 标签](https://caniuse.com/es6-module)、[支持原生 ESM 动态导入](https://caniuse.com/es6-module-dynamic-import) 和 [`import.meta`](https://caniuse.com/mdn-javascript_operators_import_meta) 的浏览器：
 
 - Chrome >=87
 - Firefox >=78
@@ -206,9 +206,9 @@ dist/my-lib.umd.cjs 0.30 KiB / gzip: 0.16 KiB
 
 单个静态的 [基础路径](#public-base-path) 在这种场景中就不够用了。Vite 在构建时为更高级的基础路径选项提供了实验性支持，可以使用 `experimental.renderBuiltUrl`。
 
-```js
+```ts
 experimental: {
-  renderBuiltUrl: (filename: string, { hostType: 'js' | 'css' | 'html' }) => {
+  renderBuiltUrl(filename: string, { hostType }: { hostType: 'js' | 'css' | 'html' }) {
     if (hostType === 'js') {
       return { runtime: `window.__toCdnUrl(${JSON.stringify(filename)})` }
     } else {
@@ -218,15 +218,15 @@ experimental: {
 }
 ```
 
-如果 hash 后的资源和公共文件没有被部署在一起，可以根据该函数的第三个参数 `context` 上的字段 `type` 分别定义各个资源组的选项：
+如果 hash 后的资源和公共文件没有被部署在一起，可以根据该函数的第二个参数 `context` 上的字段 `type` 分别定义各个资源组的选项：
 
-```js
+```ts
 experimental: {
-  renderBuiltUrl(filename: string, { hostType: 'js' | 'css' | 'html', type: 'public' | 'asset' }) {
+  renderBuiltUrl(filename: string, { hostId, hostType, type }: { hostId: string, hostType: 'js' | 'css' | 'html', type: 'public' | 'asset' }) {
     if (type === 'public') {
       return 'https://www.domain.com/' + filename
     }
-    else if (path.extname(importer) === '.js') {
+    else if (path.extname(hostId) === '.js') {
       return { runtime: `window.__assetsPath(${JSON.stringify(filename)})` }
     }
     else {

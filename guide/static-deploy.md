@@ -129,7 +129,7 @@ $ npm run preview
        - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
    ```
 
-## Netlify {#netlify}
+## Netlify CLI {#netlify}
 
 1. 安装 [Netlify CLI](https://cli.netlify.com/)。
 2. 使用 `ntl init` 创建一个新站点。
@@ -152,6 +152,16 @@ Netlify CLI 会给你分享一个预览的 URL 来检查部署结果。当你准
 # 部署站点到生产环境
 $ ntl deploy --prod
 ```
+
+### Netlify with Git {#netlify-with-git}
+
+1. 将你的代码推送到 git 仓库（GitHub、GitLab、BitBucket 或是 Azure DevOps 等服务）
+2. 在 Netlify 中 [导入该项目](https://app.netlify.com/start)
+3. 选择分支，输出目录，如果需要还可以设置环境变量。
+4. 点击 **部署**
+5. 你的 Vite 应用就部署完成了！
+
+在你的项目被导入和部署后，所有对生产分支以外的其他分支（可能来自合并请求）的后续推送都会生成 [预览部署](https://docs.netlify.com/site-deploys/deploy-previews/)，所有对生产分支（通常是 “main”）都会生成一个 [生产部署](https://docs.netlify.com/site-deploys/overview/#definitions)。
 
 ## Vercel {#vercel}
 
@@ -331,6 +341,29 @@ $ npx wrangler pages publish dist
 按照扩展程序的启动向导，给你的应用程序起个名字，选择框架预设，并指定应用程序的根目录（通常为 `/`）以及构建文件的路径 `/dist`。此向导完成后，会在你的 repo 中的 `.github` 文件夹中创建一个 Github Action。
 
 这个 action 致力于部署你的应用程序（可以在仓库的 Actions 标签中，查看相关进度），成功完成后，你可以点击 Github 中出现的 “浏览站点” 的按钮，查看你的应用程序。
+
+## Render {#render}
+
+你可以在 [Render](https://render.com/) 你的 Vite 应用。
+
+1. 创建一个 [Render 账号](https://dashboard.render.com/register)
+
+2. 在 [控制台](https://dashboard.render.com/) 页面点击 **New** 按钮并选择 **Static Site**。
+
+3. 链接你的 GitHub/GitLab 账号或使用一个公共仓库
+
+4. 指定一个项目名称和所用分支
+
+   - **构建命令**：`npm run build`
+   - **发布目录**：`dist`
+
+5. 点击 **Create Static Site**
+
+   你的应用将会被部署在 `https://<PROJECTNAME>.onrender.com/`。
+
+默认情况下，推送到该指定分支的任何新的 commit 都会自动触发一个新的部署。[Auto-Deploy](https://render.com/docs/deploys#toggling-auto-deploy-for-a-service) 可以在项目设置中部署。
+
+你也可以为你的项目添加一个 [自定义域名](https://render.com/docs/custom-domains)。
 
 ## 腾讯云 Webify
 

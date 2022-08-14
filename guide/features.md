@@ -102,13 +102,27 @@ Vite 默认的类型定义是写给它的 Node.js API 的。要将其补充到�
 - `import.meta.env` 上 Vite 注入的环境变量的类型定义
 - `import.meta.hot` 上的 [HMR API](./api-hmr) 类型定义
 
+::: tip
+要覆盖默认的类型定义，请在三斜线注释前添加定义。例如，要为 React 组件中的 `*.svg` 文件定义类型：
+
+```ts
+declare module '*.svg' {
+  const content: React.FC<React.SVGProps<SVGElement>>
+  export default content
+}
+
+/// <reference types="vite/client" />
+```
+
+:::
+
 ## Vue {#vue}
 
 Vite 为 Vue 提供第一优先级支持：
 
 - Vue 3 单文件组件支持：[@vitejs/plugin-vue](https://github.com/vitejs/vite/tree/main/packages/plugin-vue)
 - Vue 3 JSX 支持：[@vitejs/plugin-vue-jsx](https://github.com/vitejs/vite/tree/main/packages/plugin-vue-jsx)
-- Vue 2 支持：[vitejs/vite-plugin-vue2](https://github.com/vitejs/vite-plugin-vue2)
+- Vue 2.7 支持：[vitejs/vite-plugin-vue2](https://github.com/vitejs/vite-plugin-vue2)
 - Vue <2.7 的支持：[underfin/vite-plugin-vue2](https://github.com/underfin/vite-plugin-vue2)
 
 ## JSX {#jsx}
