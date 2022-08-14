@@ -189,7 +189,7 @@ interface CSSModulesOptions {
   hashPrefix?: string
   /**
    * 默认：null
-    */
+   */
   localsConvention?:
     | 'camelCase'
     | 'camelCaseOnly'
@@ -279,9 +279,9 @@ export default defineConfig({
 
 ```js
 export default defineConfig({
-esbuild: {
-  jsxInject: `import React from 'react'`
-}
+  esbuild: {
+    jsxInject: `import React from 'react'`
+  }
 })
 ```
 
@@ -306,7 +306,7 @@ esbuild: {
 
 ```js
 export default defineConfig({
-assetsInclude: ['**/*.gltf']
+  assetsInclude: ['**/*.gltf']
 })
 ```
 
