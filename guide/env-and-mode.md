@@ -46,7 +46,7 @@ Vite 使用 [dotenv](https://github.com/motdotla/dotenv) 从你的 [环境目录
 
 加载的环境变量也会通过 `import.meta.env` 以字符串形式暴露给客户端源码。
 
-为了防止意外地将一些环境变量泄漏到客户端，只有以 `VITE_` 为前缀的变量才会暴露给经过 vite 处理的代码。例如下面这个文件中：
+为了防止意外地将一些环境变量泄漏到客户端，只有以 `VITE_` 为前缀的变量才会暴露给经过 vite 处理的代码。例如下面这些环境变量：
 
 ```
 VITE_SOME_KEY=123
@@ -61,7 +61,9 @@ console.log(import.meta.env.DB_PASSWORD) // undefined
 ```
 如果你想自定义 env 变量的前缀，请参阅 [envPrefix](/config/shared-options.html#envprefix)。
 
-:::warning 安全注意事项
+  :::warning 安全注意事项
+
+如果你想要自定义 env 变量的前缀，请参阅 [envPrefix](/config/shared-options.html#envprefix) 选项。
 
 - `.env.*.local` 文件应是本地的，可以包含敏感变量。你应该将 `.local` 添加到你的 `.gitignore` 中，以避免它们被 git 检入。
 
