@@ -192,15 +192,11 @@ npm add -D terser
 - **类型：** [`WatcherOptions`](https://rollupjs.org/guide/en/#watch-options)`| null`
 - **默认：** `null`
 
-<<<<<<< HEAD
-设置为 `{}` 则会启用 rollup 的监听器。在涉及只用在构建时的插件时和集成开发流程中很常用。
-=======
-Set to `{}` to enable rollup watcher. This is mostly used in cases that involve build-only plugins or integrations processes.
+设置为 `{}` 则会启用 rollup 的监听器。对于只在构建阶段或者集成流程使用的插件很常用。
 
-::: warning Using Vite on Windows Subsystem for Linux (WSL) 2
+::: warning 在 Windows Linux 子系统（WSL）上使用 Vite
 
-There are cases that file system watching does not work with WSL2.
-See [`server.watch`](./server-options.md#server-watch) for more details.
+某些情况下 WSL2 的文件系统监听可能无法正常工作。
+查看 [`server.watch`](./server-options.md#server-watch) 了解更多细节。
 
 :::
->>>>>>> ac84bfbd8118911dd0812cd3caa5bf0f633f54a1

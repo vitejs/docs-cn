@@ -197,11 +197,11 @@ async function resolveConfig(
 ): Promise<ResolvedConfig>
 ```
 
-The `command` value is `serve` in dev (in the cli `vite`, `vite dev`, and `vite serve` are aliases).
+该 `command` 值在开发环境（即 CLI 命令 `vite`、`vite dev` 和 `vite serve`） 为 `serve`。
 
 ## `mergeConfig`
 
-**Type Signature:**
+**类型签名：**
 
 ```ts
 function mergeConfig(
@@ -211,11 +211,11 @@ function mergeConfig(
 ): Record<string, any>
 ```
 
-Deeply merge two Vite configs. `isRoot` represents the level within the Vite config which is being merged. For example, set `false` if you're merging two `build` options.
+深度合并两份配置。`isRoot` 代表着 Vite 配置被合并的层级。举个例子，如果你是要合并两个 `build` 选项请设为 `false`。
 
 ## `searchForWorkspaceRoot`
 
-**Type Signature:**
+**类型签名：**
 
 ```ts
 function searchForWorkspaceRoot(
@@ -224,18 +224,18 @@ function searchForWorkspaceRoot(
 ): string
 ```
 
-**Related:** [server.fs.allow](/config/server-options.md#server-fs-allow)
+**相关内容：** [server.fs.allow](/config/server-options.md#server-fs-allow)
 
-Search for the root of the potential workspace if it meets the following conditions, otherwise it would fallback to `root`:
+如果当前工作空间满足以下条件，则搜索它的根目录，否则它将回退到 `root`：
 
-- contains `workspaces` field in `package.json`
-- contains one of the following file
+- `package.json` 中包含 `workspaces` 字段
+- 包含以下文件之一：
   - `lerna.json`
   - `pnpm-workspace.yaml`
 
 ## `loadEnv`
 
-**Type Signature:**
+**类型签名：**
 
 ```ts
 function loadEnv(
@@ -245,21 +245,21 @@ function loadEnv(
 ): Record<string, string>
 ```
 
-**Related:** [`.env` Files](./env-and-mode.md#env-files)
+**相关内容：** [`.env` Files](./env-and-mode.md#env-files)
 
-Load `.env` files within the `envDir`. By default only env variables prefixed with `VITE_` are loaded, unless `prefixes` is changed.
+加载 `envDir` 中的 `.env` 文件。默认情况下只有前缀为 `VITE_` 会被加载，除非更改了 `prefixes` 配置。
 
 ## `normalizePath`
 
-**Type Signature:**
+**类型签名：**
 
 ```ts
 function normalizePath(id: string): string
 ```
 
-**Related:** [Path Normalization](./api-plugin.md#path-normalization)
+**相关内容：** [路径规范化](./api-plugin.md#path-normalization)
 
-Normalizes a path to interoperate between Vite plugins.
+规范化路径，以便在 Vite 插件之间互操作。
 
 ## `transformWithEsbuild`
 
@@ -274,11 +274,11 @@ async function transformWithEsbuild(
 ): Promise<ESBuildTransformResult>
 ```
 
-Transform JavaScript or TypeScript with esbuild. Useful for plugins that prefers matching Vite's internal esbuild transform.
+通过 esbuild 转换 JavaScript 或 TypeScript 文件。对于更想要匹配 Vite 内部 esbuild 转换的插件很有用。
 
 ## `loadConfigFromFile`
 
-**Type Signature:**
+**类型签名：**
 
 ```ts
 async function loadConfigFromFile(
@@ -293,4 +293,4 @@ async function loadConfigFromFile(
 } | null>
 ```
 
-Load a Vite config file manually with esbuild.
+手动通过 esbuild 加载一份 Vite 配置。

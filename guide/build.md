@@ -218,11 +218,7 @@ experimental: {
 }
 ```
 
-<<<<<<< HEAD
-如果 hash 后的资源和公共文件没有被部署在一起，可以根据该函数的第三个参数 `context` 上的字段 `type` 分别定义各个资源组的选项：
-=======
-If the hashed assets and public files aren't deployed together, options for each group can be defined independently using asset `type` included in the second `context` param given to the function.
->>>>>>> ac84bfbd8118911dd0812cd3caa5bf0f633f54a1
+如果 hash 后的资源和公共文件没有被部署在一起，可以根据该函数的第二个参数 `context` 上的字段 `type` 分别定义各个资源组的选项：
 
 ```ts
 experimental: {
