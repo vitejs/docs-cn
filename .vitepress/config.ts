@@ -33,7 +33,7 @@ export default defineConfig({
 
     editLink: {
       text: '为此页提供修改建议',
-      pattern: 'https://github.com/vitejs/docs-cn/edit/main/docs/:path',
+      pattern: 'https://github.com/vitejs/docs-cn/edit/main/docs/:path'
     },
 
     socialLinks: [
@@ -66,8 +66,8 @@ export default defineConfig({
     },
 
     footer: {
-      message: '根据 MIT 许可证发布。',
-      copyright: 'Copyright © 2019-present Evan You & Vite Contributors'
+      copyright:
+        '本中文文档内容版权为 Vite 官方中文翻译团队所有，保留所有权利。'
     },
 
     nav: [
@@ -244,7 +244,7 @@ export default defineConfig({
 
   markdown: {
     anchor: {
-      permalink: renderPermaLink,
+      permalink: renderPermaLink
     },
     config: (md) => {
       md.use(MarkDownItCustomAnchor)
