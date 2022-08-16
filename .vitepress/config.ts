@@ -33,7 +33,7 @@ export default defineConfig({
 
     editLink: {
       text: '为此页提供修改建议',
-      pattern: 'https://github.com/vitejs/docs-cn/edit/main/docs/:path',
+      pattern: 'https://github.com/vitejs/docs-cn/edit/main/:path',
     },
 
     socialLinks: [
