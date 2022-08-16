@@ -212,8 +212,15 @@ const html = await vueServerRenderer.renderToString(app, ctx)
 
 例如，如果依赖项需要通过 Vite 的管道进行转换，因为在这些依赖在管道中使用 Vite 特性时是不转翻译的，则可以将它们添加到 [`ssr.noExternal`](../config/ssr-options.md#ssrnoexternal) 中。
 
+<<<<<<< HEAD
 :::warning 使用别名
 如果你为某个包配置了一个别名，为了能使 SSR 外部化依赖功能正常工作，你可能想要使用的别名应该指的是实际的 `node_modules` 中的包。[Yarn](https://classic.yarnpkg.com/en/docs/cli/add/#toc-yarn-add-alias) 和 [pnpm](https://pnpm.js.org/en/aliases) 都支持通过 `npm:` 前缀来设置别名。
+=======
+For linked dependencies, they are not externalized by default to take advantage of Vite's HMR. If this isn't desired, for example, to test dependencies as if they aren't linked, you can add it to [`ssr.external`](../config/ssr-options.md#ssr-external).
+
+:::warning Working with Aliases
+If you have configured aliases that redirects one package to another, you may want to alias the actual `node_modules` packages instead to make it work for SSR externalized dependencies. Both [Yarn](https://classic.yarnpkg.com/en/docs/cli/add/#toc-yarn-add-alias) and [pnpm](https://pnpm.js.org/en/aliases) support aliasing via the `npm:` prefix.
+>>>>>>> a459a6384f569f757f5c4a02e6d0bf73c777f4a6
 :::
 
 ## SSR 专有插件逻辑 {#ssr-specific-plugin-logic}
