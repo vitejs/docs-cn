@@ -88,4 +88,8 @@ Vite 无法处理、也不支持仅可在非严格模式（sloppy mode）下运�
 
 > TypeError: Cannot create property 'foo' on boolean 'false'
 
+<<<<<<< HEAD
 如果这些代码是在依赖中被使用的，你应该使用 [`patch-package`](https://github.com/ds300/patch-package)（或者 [`yarn patch`](https://yarnpkg.com/cli/patch)、[`pnpm patch`](https://pnpm.io/cli/patch) 工具）来做短期补丁处理。
+=======
+If these code are used inside dependencies, you could use [`patch-package`](https://github.com/ds300/patch-package) (or [`yarn patch`](https://yarnpkg.com/cli/patch) or [`pnpm patch`](https://pnpm.io/cli/patch)) for an escape hatch.
+>>>>>>> 7bc55e24c34de69455834b9f84a6423195ad35f8
