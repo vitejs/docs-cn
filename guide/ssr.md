@@ -176,7 +176,11 @@ app.use('*', async (req, res, next) => {
 
 - 将 `vite` 开发服务器的创建和所有使用都移到 dev-only 条件分支后面，然后添加静态文件服务中间件来服务 `dist/client` 中的文件。
 
+<<<<<<< HEAD
 可以在此参考 [Vue](https://github.com/vitejs/vite/tree/main/playground/ssr-vue) 和 [React](https://github.com/vitejs/vite/tree/main/playground/ssr-react) 的设置范例。
+=======
+Refer to the [Vue](https://github.com/vitejs/vite/tree/main/playground/ssr-vue) and [React](https://github.com/vitejs/vite/tree/main/playground/ssr-react) demos for a working setup.
+>>>>>>> 704143150c6b15708104823bcabcc8c835199cd8
 
 ## 生成预加载指令 {#generating-preload-directives}
 
@@ -200,7 +204,11 @@ const html = await vueServerRenderer.renderToString(app, ctx)
 // ctx.modules 现在是一个渲染期间使用的模块 ID 的 Set
 ```
 
+<<<<<<< HEAD
 我们现在需要在 `server.js` 的生产环境分支下读取该清单，并将其传递到 `src/entry-server.js` 导出的 `render` 函数中。这将为我们提供足够的信息，来为异步路由相应的文件渲染预加载指令！查看 [示例代码](https://github.com/vitejs/vite/blob/main/playground/ssr-vue/src/entry-server.js) 获取完整示例。
+=======
+In the production branch of `server.js` we need to read and pass the manifest to the `render` function exported by `src/entry-server.js`. This would provide us with enough information to render preload directives for files used by async routes! See [demo source](https://github.com/vitejs/vite/blob/main/playground/ssr-vue/src/entry-server.js) for a full example.
+>>>>>>> 704143150c6b15708104823bcabcc8c835199cd8
 
 ## 预渲染 / SSG {#pre-rendering--ssg}
 
@@ -212,13 +220,24 @@ const html = await vueServerRenderer.renderToString(app, ctx)
 
 例如，如果依赖项需要通过 Vite 的管道进行转换，因为在这些依赖在管道中使用 Vite 特性时是不转翻译的，则可以将它们添加到 [`ssr.noExternal`](../config/ssr-options.md#ssrnoexternal) 中。
 
+<<<<<<< HEAD
 :::warning 使用别名
 如果你为某个包配置了一个别名，为了能使 SSR 外部化依赖功能正常工作，你可能想要使用的别名应该指的是实际的 `node_modules` 中的包。[Yarn](https://classic.yarnpkg.com/en/docs/cli/add/#toc-yarn-add-alias) 和 [pnpm](https://pnpm.js.org/en/aliases) 都支持通过 `npm:` 前缀来设置别名。
+=======
+For linked dependencies, they are not externalized by default to take advantage of Vite's HMR. If this isn't desired, for example, to test dependencies as if they aren't linked, you can add it to [`ssr.external`](../config/ssr-options.md#ssr-external).
+
+:::warning Working with Aliases
+If you have configured aliases that redirect one package to another, you may want to alias the actual `node_modules` packages instead to make it work for SSR externalized dependencies. Both [Yarn](https://classic.yarnpkg.com/en/docs/cli/add/#toc-yarn-add-alias) and [pnpm](https://pnpm.js.org/en/aliases) support aliasing via the `npm:` prefix.
+>>>>>>> 704143150c6b15708104823bcabcc8c835199cd8
 :::
 
 ## SSR 专有插件逻辑 {#ssr-specific-plugin-logic}
 
+<<<<<<< HEAD
 一些框架，如 Vue 或 Svelte，会根据客户端渲染和服务端渲染的区别，将组件编译成不同的格式。可以向以下的插件钩子中，给 Vite 传递额外的 `options` 对象，对象中包含 `ssr` 属性来支持根据情景转换：
+=======
+Some frameworks such as Vue or Svelte compile components into different formats based on client vs. SSR. To support conditional transforms, Vite passes an additional `ssr` property in the `options` object of the following plugin hooks:
+>>>>>>> 704143150c6b15708104823bcabcc8c835199cd8
 
 - `resolveId`
 - `load`
@@ -266,4 +285,8 @@ CLI 命令 `$ vite dev` 和 `$ vite preview` 也可以用于 SSR 应用：你可
 
 ## SSR 格式 {#ssr-format}
 
+<<<<<<< HEAD
 默认情况下，Vite 生成的 SSR 打包产物是 ESM 格式。实验性地支持配置 `ssr.format` ，但不推荐这样做。未来围绕 SSR 的开发工作将基于 ESM 格式，并且为了向下兼容，commonjs 仍然可用。如果你的 SSR 项目不能使用 ESM，你可以通过 [Vite v2 外部启发式方法](https://v2.vitejs.dev/guide/ssr.html#ssr-externals) 设置 `legacy.buildSsrCjsExternalHeuristics: true` 生成 CJS 格式的产物。
+=======
+By default, Vite generates the SSR bundle in ESM. There is experimental support for configuring `ssr.format`, but it isn't recommended. Future efforts around SSR development will be based on ESM, and CommonJS remains available for backward compatibility. If using ESM for SSR isn't possible in your project, you can set `legacy.buildSsrCjsExternalHeuristics: true` to generate a CJS bundle using the same [externalization heuristics of Vite v2](https://v2.vitejs.dev/guide/ssr.html#ssr-externals).
+>>>>>>> 704143150c6b15708104823bcabcc8c835199cd8

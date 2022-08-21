@@ -248,7 +248,11 @@ function loadEnv(
 
 **相关内容：** [`.env` Files](./env-and-mode.md#env-files)
 
+<<<<<<< HEAD
 加载 `envDir` 中的 `.env` 文件。默认情况下只有前缀为 `VITE_` 会被加载，除非更改了 `prefixes` 配置。
+=======
+Load `.env` files within the `envDir`. By default, only env variables prefixed with `VITE_` are loaded, unless `prefixes` is changed.
+>>>>>>> 704143150c6b15708104823bcabcc8c835199cd8
 
 ## `normalizePath`
 
@@ -275,7 +279,11 @@ async function transformWithEsbuild(
 ): Promise<ESBuildTransformResult>
 ```
 
+<<<<<<< HEAD
 通过 esbuild 转换 JavaScript 或 TypeScript 文件。对于更想要匹配 Vite 内部 esbuild 转换的插件很有用。
+=======
+Transform JavaScript or TypeScript with esbuild. Useful for plugins that prefer matching Vite's internal esbuild transform.
+>>>>>>> 704143150c6b15708104823bcabcc8c835199cd8
 
 ## `loadConfigFromFile`
 

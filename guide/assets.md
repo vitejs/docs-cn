@@ -28,7 +28,11 @@ document.getElementById('hero-img').src = imgUrl
 
 ### 显式 URL 引入 {#explicit-url-imports}
 
+<<<<<<< HEAD
 未被包含在内部列表或 `assetsInclude` 中的资源，可以使用 `?url` 后缀显式导入为一个 URL。这十分有用，例如，要导入 [Houdini Paint Worklets](https://houdini.how/usage) 时：
+=======
+Assets that are not included in the internal list or in `assetsInclude`, can be explicitly imported as a URL using the `?url` suffix. This is useful, for example, to import [Houdini Paint Worklets](https://houdini.how/usage).
+>>>>>>> 704143150c6b15708104823bcabcc8c835199cd8
 
 ```js
 import workletURL from 'extra-scalloped-border/worklet.js?url'

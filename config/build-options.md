@@ -13,7 +13,11 @@
 - 如果 [`build.minify`](#build-minify) 选项为 `'terser'`， `'esnext'` 将会强制降级为 `'es2019'`。
 - 其他情况下将完全不会执行转译。
 
+<<<<<<< HEAD
 转换过程将会由 esbuild 执行，并且此值应该是一个合法的 [esbuild 目标选项](https://esbuild.github.io/api/#target)。自定义目标也可以是一个 ES 版本（例如：`es2015`）、一个浏览器版本（例如：`chrome58`）或是多个目标组成的一个数组。
+=======
+The transform is performed with esbuild and the value should be a valid [esbuild target option](https://esbuild.github.io/api/#target). Custom targets can either be an ES version (e.g. `es2015`), a browser with version (e.g. `chrome58`), or an array of multiple target strings.
+>>>>>>> 704143150c6b15708104823bcabcc8c835199cd8
 
 注意：如果代码包含不能被 `esbuild` 安全地编译的特性，那么构建将会失败。查看 [esbuild 文档](https://esbuild.github.io/content-types/#javascript) 获取更多细节。
 
@@ -75,7 +79,11 @@ import 'vite/modulepreload-polyfill'
 - **类型：** `string | string[]`
 - **默认值：** 与 [`build.target`](/config/#build-target) 一致
 
+<<<<<<< HEAD
 此选项允许用户为 CSS 的压缩设置一个不同的浏览器 target，此处的 target 并非是用于 JavaScript 转写目标。
+=======
+This option allows users to set a different browser target for CSS minification from the one used for JavaScript transpilation.
+>>>>>>> 704143150c6b15708104823bcabcc8c835199cd8
 
 应只在针对非主流浏览器时使用。
 最直观的示例是当你要兼容的场景是安卓微信中的 webview 时，它支持大多数现代的 JavaScript 功能，但并不支持 [CSS 中的 `#RGBA` 十六进制颜色符号](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#rgb_colors)。
@@ -128,7 +136,11 @@ import 'vite/modulepreload-polyfill'
 - **默认值：** `false`
 - **相关链接：** [服务端渲染](/guide/ssr)
 
+<<<<<<< HEAD
 当设置为 `true` 时，构建也将生成 SSR 的 manifest 文件，以确定生产中的样式链接与资产预加载指令。当该值为一个字符串时，它将作为 manifest 文件的名字。
+=======
+When set to `true`, the build will also generate an SSR manifest for determining style links and asset preload directives in production. When the value is a string, it will be used as the manifest file name.
+>>>>>>> 704143150c6b15708104823bcabcc8c835199cd8
 
 ## build.ssr {#build-ssr}
 
@@ -145,7 +157,11 @@ import 'vite/modulepreload-polyfill'
 
 设置为 `false` 可以禁用最小化混淆，或是用来指定使用哪种混淆器。默认为 [Esbuild](https://github.com/evanw/esbuild)，它比 terser 快 20-40 倍，压缩率只差 1%-2%。[Benchmarks](https://github.com/privatenumber/minification-benchmarks)
 
+<<<<<<< HEAD
 注意，在 lib 模式下使用 `'es'` 时，`build.minify` 选项不会缩减空格，因为会移除掉 pure 标注，导致破坏 tree-shaking。
+=======
+Note the `build.minify` option does not minify whitespaces when using the `'es'` format in lib mode, as it removes pure annotations and breaks tree-shaking.
+>>>>>>> 704143150c6b15708104823bcabcc8c835199cd8
 
 当设置为 `'terser'` 时必须先安装 Terser。
 
