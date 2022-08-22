@@ -54,7 +54,11 @@ export default defineConfig({
 
 假值的插件将被忽略，可以用来轻松地启用或停用插件。
 
+<<<<<<< HEAD
 `plugins` 也可以接受将多个插件作为单个元素的预设。这对于使用多个插件实现的复杂特性（如框架集成）很有用。该数组将在内部被扁平化（flatten）。
+=======
+`plugins` also accepts presets including several plugins as a single element. This is useful for complex features (like framework integration) that are implemented using several plugins. The array will be flattened internally.
+>>>>>>> 4c3c535737097c413012b753ec436c6f469c4182
 
 ```js
 // 框架插件
@@ -214,7 +218,11 @@ Vite 插件也可以提供钩子来服务于特定的 Vite 目标。这些钩子
 - **类型：** `(config: ResolvedConfig) => void | Promise<void>`
 - **种类：** `async`, `parallel`
 
+<<<<<<< HEAD
   在解析 Vite 配置后调用。使用这个钩子读取和存储最终解析的配置。当插件需要根据运行的命令做一些不同的事情时，它也很有用。
+=======
+  Called after the Vite config is resolved. Use this hook to read and store the final resolved config. It is also useful when the plugin needs to do something different based on the command being run.
+>>>>>>> 4c3c535737097c413012b753ec436c6f469c4182
 
   **示例：**
 

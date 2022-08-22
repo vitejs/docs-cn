@@ -14,7 +14,11 @@
 
 在某些情况下，可能响应的是其他服务器而不是 Vite。
 
+<<<<<<< HEAD
 第一种情况是 `localhost` 被使用了。Node.js 在 v17 以下版本中默认会对 DNS 解析地址的结果进行重新排序。当访问 `localhost` 时，浏览器使用 DNS 来解析地址，这个地址可能与 Vite 正在监听的地址不同。当地址不一致时，Vite 会打印出来。
+=======
+The first case is when `localhost` is used. Node.js under v17 reorders the result of DNS-resolved addresses by default. When accessing `localhost`, browsers use DNS to resolve the address and that address might differ from the address which Vite is listening to. Vite prints the resolved address when it differs.
+>>>>>>> 4c3c535737097c413012b753ec436c6f469c4182
 
 你可以设置 [`dns.setDefaultResultOrder('verbatim')`](https://nodejs.org/api/dns.html#dns_dns_setdefaultresultorder_order) 来禁用这个重新排序的行为。Vite 将会将改地址打印为 `localhost`。
 
@@ -30,7 +34,11 @@ export default defineConfig({
 })
 ```
 
+<<<<<<< HEAD
 第二种情况是使用了通配主机地址（例如 `0.0.0.0`）。这是因为侦听非通配符主机的服务器优先于侦听通配符主机的服务器。
+=======
+The second case is when wildcard hosts (e.g. `0.0.0.0`) are used. This is because servers listening on non-wildcard hosts take priority over those listening on wildcard hosts.
+>>>>>>> 4c3c535737097c413012b753ec436c6f469c4182
 
 :::
 
@@ -149,7 +157,11 @@ export default defineConfig({
 
 ::: tip NOTE
 
+<<<<<<< HEAD
 在默认配置下, 在 Vite 之前的反向代理应该支持代理 WebSocket。如果 Vite HMR 客户端连接 WebSocket 失败，该客户端将兜底为绕过反向代理、直接连接 WebSocket 到 Vite HMR 服务器：
+=======
+With the default configuration, reverse proxies in front of Vite are expected to support proxying WebSocket. If the Vite HMR client fails to connect WebSocket, the client will fall back to connecting the WebSocket directly to the Vite HMR server bypassing the reverse proxies:
+>>>>>>> 4c3c535737097c413012b753ec436c6f469c4182
 
 ```
 Direct websocket connection fallback. Check out https://vitejs.dev/config/server-options.html#server-hmr to remove the previous connection error.
@@ -255,7 +267,11 @@ createServer()
 
 限制哪些文件可以通过 `/@fs/` 路径提供服务。当 `server.fs.strict` 设置为 true 时，访问这个目录列表外的文件将会返回 403 结果。
 
+<<<<<<< HEAD
 Vite 将会搜索此根目录下潜在工作空间并作默认使用。一个有效的工作空间应符合以下几个条件，否则会默认以 [项目 root 目录](/guide/#index-html-and-project-root) 作备选方案。
+=======
+Vite will search for the root of the potential workspace and use it as default. A valid workspace met the following conditions, otherwise will fall back to the [project root](/guide/#index-html-and-project-root).
+>>>>>>> 4c3c535737097c413012b753ec436c6f469c4182
 
 - 在 `package.json` 中包含 `workspaces` 字段
 - 包含以下几种文件之一
