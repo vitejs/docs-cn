@@ -40,15 +40,9 @@ $ npm run build
 $ npm run preview
 ```
 
-<<<<<<< HEAD
 `vite preview` 命令会在本地启动一个静态 Web 服务器，将 `dist` 文件夹运行在 `http://localhost:4173`。这样在本地环境下查看该构建产物是否正常可用就方便多了。
 
 你可以通过 `--port` 参数来配置服务的运行端口。
-=======
-The `vite preview` command will boot up a local static web server that serves the files from `dist` at `http://localhost:4173`. It's an easy way to check if the production build looks OK in your local environment.
-
-You may configure the port of the server by passing the `--port` flag as an argument.
->>>>>>> 4c3c535737097c413012b753ec436c6f469c4182
 
 ```json
 {
@@ -367,11 +361,7 @@ $ npx wrangler pages publish dist
 
    你的应用将会被部署在 `https://<PROJECTNAME>.onrender.com/`。
 
-<<<<<<< HEAD
 默认情况下，推送到该指定分支的任何新的 commit 都会自动触发一个新的部署。[Auto-Deploy](https://render.com/docs/deploys#toggling-auto-deploy-for-a-service) 可以在项目设置中部署。
-=======
-By default, any new commit pushed to the specified branch will automatically trigger a new deployment. [Auto-Deploy](https://render.com/docs/deploys#toggling-auto-deploy-for-a-service) can be configured in the project settings.
->>>>>>> 4c3c535737097c413012b753ec436c6f469c4182
 
 你也可以为你的项目添加一个 [自定义域名](https://render.com/docs/custom-domains)。
 

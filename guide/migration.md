@@ -114,11 +114,7 @@ export default {
 
 ## 进阶 {#advanced}
 
-<<<<<<< HEAD
 下列改动仅会影响到插件/工具的作者：
-=======
-There are some changes which only affect plugin/tool creators.
->>>>>>> 4c3c535737097c413012b753ec436c6f469c4182
 
 - [[#5868] refactor: remove deprecated api for 3.0](https://github.com/vitejs/vite/pull/5868)
   - `printHttpServerUrls` 被移除

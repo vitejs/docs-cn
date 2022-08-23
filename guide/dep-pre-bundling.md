@@ -59,13 +59,8 @@ export default defineConfig({
 
 当这个被链接的依赖发生变更后，在重启开发服务器时在命令中带上 `--force` 选项让所有更改生效。
 
-<<<<<<< HEAD
 ::: warning 重复删除
 由于对链接依赖的解析方式不同，传递性的依赖项可能会不正确地进行重复数据删除，而造成运行时的问题。如果你偶然发现了这个问题，请使用 `npm pack` 来修复它。
-=======
-::: warning Deduping
-Due to differences in linked dependency resolution, transitive dependencies can deduplicate incorrectly, causing issues when used in runtime. If you stumble on this issue, use `npm pack` on the linked dependency to fix it.
->>>>>>> 4c3c535737097c413012b753ec436c6f469c4182
 :::
 
 ## 自定义行为 {#customizing-the-behavior}

@@ -24,11 +24,7 @@ export default defineConfig({
 })
 ```
 
-<<<<<<< HEAD
 `plugins` 也可以接受包含多个插件作为单个元素的预设。这对于使用多个插件实现的复杂特性（如框架集成）很有用。该数组将在内部被扁平化。
-=======
-`plugins` also accepts presets including several plugins as a single element. This is useful for complex features (like framework integration) that are implemented using several plugins. The array will be flattened internally.
->>>>>>> 4c3c535737097c413012b753ec436c6f469c4182
 
 Falsy 虚值的插件将被忽略，可以用来轻松地启用或停用插件。
 
