@@ -26,7 +26,13 @@ document.getElementById('hero-img').src = imgUrl
 
 - 较小的资源体积小于 [`assetsInlineLimit` 选项值](/config/build-options.md#build-assetsinlinelimit) 则会被内联为 base64 data URL。
 
+<<<<<<< HEAD
 ### 显式 URL 引入 {#explicit-url-imports}
+=======
+- Git LFS placeholders are automatically excluded from inlining because they do not contain the content of the file they represent. To get inlining, make sure to download the file contents via Git LFS before building.
+
+### Explicit URL Imports
+>>>>>>> 686a15b7a0bc22e1449030bcebbb45337e7d448c
 
 未被包含在内部列表或 `assetsInclude` 中的资源，可以使用 `?url` 后缀显式导入为一个 URL。这十分有用，例如，要导入 [Houdini Paint Worklets](https://houdini.how/usage) 时：
 
