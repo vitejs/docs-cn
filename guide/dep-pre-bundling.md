@@ -40,7 +40,7 @@ Pre-bundling dependencies: （正在预构建依赖：）
 
 ## Monorepo 和链接依赖 {#monorepos-and-linked-dependencies}
 
-在一个 monorepo 启动中，该仓库中的某个依赖可能会成为另一个包的依赖。Vite 会自动侦测没有从 `node_modules` 解析的依赖项，并将链接的依赖视为源码。它不会尝试打包被链接的依赖，而是会分析被链接依赖的依赖列表。
+在一个 monorepo 启动中，该仓库中的某个包可能会成为另一个包的依赖。Vite 会自动侦测没有从 `node_modules` 解析的依赖项，并将链接的依赖视为源码。它不会尝试打包被链接的依赖，而是会分析被链接依赖的依赖列表。
 
 然而，这需要被链接的依赖被导出为 ESM 格式。如果不是，那么你可以在配置里将此依赖添加到 [`optimizeDeps.include`](/config/dep-optimization-options.md#optimizedeps-include) 和 [`build.commonjsOptions.include`](/config/build-options.md#build-commonjsoptions) 这两项中。
 
