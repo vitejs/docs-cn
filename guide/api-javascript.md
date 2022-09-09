@@ -90,8 +90,13 @@ interface ViteDevServer {
    */
   moduleGraph: ModuleGraph
   /**
-   * 以代码方式解析、加载和转换 url 并获取结果
-   * 而不需要通过 http 请求管道。
+   * Vite CLI 会打印出来的被解析的 URL。在中间件模式下、或是
+   * 在 `server.listen` 调用之前会是 null
+   */
+  resolvedUrls: ResolvedServerUrls | null
+  /**
+   * 编程式地解析、加载和转换一个 URL 并获得
+   * 还没有进入 HTTP 请求管道中的结果
    */
   transformRequest(
     url: string,

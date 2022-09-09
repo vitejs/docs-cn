@@ -53,8 +53,10 @@ import 'vite/modulepreload-polyfill'
 
 小于此阈值的导入或引用资源将内联为 base64 编码，以避免额外的 http 请求。设置为 `0` 可以完全禁用此项。
 
+Git LFS 占位符会自动排除在内联之外，因为它们不包含它们所表示的文件的内容。
+
 :::tip 注意
-如果你指定了 `build.lib`，那么 `build.assetsInlineLimit` 将被忽略，无论文件大小，资源都会被内联。
+如果你指定了 `build.lib`，那么 `build.assetsInlineLimit` 将被忽略，无论文件大小或是否为 Git LFS 占位符，资源都会被内联。
 :::
 
 ## build.cssCodeSplit {#build-csscodesplit}
