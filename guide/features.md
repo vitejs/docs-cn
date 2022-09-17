@@ -383,7 +383,7 @@ const modules = {
 }
 ```
 
-当与 `eager` 一同存在时，甚至可能可以对这些模块进行 tree-shaking。
+当与 `eager` 一同存在时，甚至可以对这些模块进行 tree-shaking。
 
 ```ts
 const modules = import.meta.glob('./dir/*.js', { import: 'setup', eager: true })
@@ -526,7 +526,7 @@ Worker 脚本也可以使用 `import` 语句来替代 `importScripts()` —— �
 import MyWorker from './worker?worker&inline'
 ```
 
-如果你想要将一个 URL 的形式读取该 worker，请添加 `url` 这个 query：
+如果你想要以一个 URL 的形式读取该 worker，请添加 `url` 这个 query：
 
 ```js
 import MyWorker from './worker?worker&url'
