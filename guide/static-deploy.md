@@ -274,6 +274,7 @@ $ npx wrangler pages publish dist
 
 你也可以通过添加 `surge dist yourdomain.com` 部署到一个 [自定义域名](http://surge.sh/help/adding-a-custom-domain)。
 
+<<<<<<< HEAD
 ## Heroku {#heroku}
 
 1. 安装 [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli)。
@@ -329,6 +330,9 @@ $ npx wrangler pages publish dist
    ```
 
 ## Azure 的静态网站应用 {#azure-static-web-apps}
+=======
+## Azure Static Web Apps
+>>>>>>> 173321c7ad9f6aee1bda0921cbc6a1b61872e69f
 
 你可以通过微软 Azure 的 [静态网站应用](https://aka.ms/staticwebapps) 服务来快速部署你的 Vite 应用。你只需：
 
