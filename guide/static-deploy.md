@@ -274,65 +274,7 @@ $ npx wrangler pages publish dist
 
 你也可以通过添加 `surge dist yourdomain.com` 部署到一个 [自定义域名](http://surge.sh/help/adding-a-custom-domain)。
 
-<<<<<<< HEAD
-## Heroku {#heroku}
-
-1. 安装 [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli)。
-
-2. [注册](https://signup.heroku.com)一个 Heroku 账号。
-
-3. 运行 `heroku login` 并填入你的 Heroku 凭证：
-
-   ```bash
-   $ heroku login
-   ```
-
-4. 在项目根目录创建一个 `static.json` ，包含以下内容：
-
-   `static.json`:
-
-   ```json
-   {
-     "root": "./dist"
-   }
-   ```
-
-   这是你站点的配置，阅读 [heroku-buildpack-static](https://github.com/heroku/heroku-buildpack-static) 文档来了解更多。
-
-5. 配置好你的 Heroku git 远程地址：
-
-   ```bash
-   # 版本变更
-   $ git init
-   $ git add .
-   $ git commit -m "My site ready for deployment."
-
-   # 创建一个具有指定名称的新应用
-   $ heroku apps:create example
-   ```
-
-6. 设置 buildpacks。我们使用 `heroku/nodejs` 来构建项目，`heroku-buildpack-static` 为其启动服务。
-
-   ```bash
-   # set buildpacks
-   $ heroku buildpacks:set heroku/nodejs
-   $ heroku buildpacks:add https://github.com/heroku/heroku-buildpack-static.git
-   ```
-
-7. 部署站点：
-
-   ```bash
-   # 发布站点
-   $ git push heroku main
-
-   # 在浏览器中打开 Heroku 的面板
-   $ heroku open
-   ```
-
 ## Azure 的静态网站应用 {#azure-static-web-apps}
-=======
-## Azure Static Web Apps
->>>>>>> 173321c7ad9f6aee1bda0921cbc6a1b61872e69f
 
 你可以通过微软 Azure 的 [静态网站应用](https://aka.ms/staticwebapps) 服务来快速部署你的 Vite 应用。你只需：
 
