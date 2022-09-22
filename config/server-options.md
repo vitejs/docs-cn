@@ -296,11 +296,18 @@ export default defineConfig({
 
 ## server.fs.deny {#server-fs-deny}
 
+<<<<<<< HEAD
 - **类型：** `string[]`
 
 用于限制 Vite 开发服务器提供敏感文件的黑名单。
 
 默认为 `['.env', '.env.*', '*.{pem,crt}']`。
+=======
+- **Type:** `string[]`
+- **Default:** `['.env', '.env.*', '*.{pem,crt}']`
+
+Blocklist for sensitive files being restricted to be served by Vite dev server. This will have higher priority than [`server.fs.allow`](#server-fs-allow). [picomatch patterns](https://github.com/micromatch/picomatch#globbing-features) are supported.
+>>>>>>> 7638276e3d497377bae38af9c1e3ecb73c36c5a1
 
 ## server.origin {#server-origin}
 
