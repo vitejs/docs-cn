@@ -305,7 +305,7 @@ Vite 插件也可以提供钩子来服务于特定的 Vite 目标。这些钩子
 
   注意 `configureServer` 在运行生产版本时不会被调用，所以其他钩子需要防范它缺失。
 
-### `configurePreviewServer`
+### `configurePreviewServer` {#configurepreviewserver}
 
 - **类型：** `(server: { middlewares: Connect.Server, httpServer: http.Server }) => (() => void) | void | Promise<(() => void) | void>`
 - **种类：** `async`, `sequential`
@@ -516,17 +516,17 @@ normalizePath('foo\\bar') // 'foo/bar'
 normalizePath('foo/bar') // 'foo/bar'
 ```
 
-## Filtering, include/exclude pattern
+## 过滤与 include/exclude 模式 {#filtering-include-exclude-pattern}
 
-Vite exposes [`@rollup/pluginutils`'s `createFilter`](https://github.com/rollup/plugins/tree/master/packages/pluginutils#createfilter) function to encourage Vite specific plugins and integrations to use the standard include/exclude filtering pattern, which is also used in Vite core itself.
+Vite 暴露了 [`@rollup/pluginutils` 的 `createFilter`](https://github.com/rollup/plugins/tree/master/packages/pluginutils#createfilter) 函数，以支持 Vite 独有插件和集成使用标准的 include/exclude 过滤模式，Vite 核心自身也正在使用它。
 
-## Client-server Communication
+## 客户端与服务端间通信 {#client-server-communication}
 
-Since Vite 2.9, we provide some utilities for plugins to help handle the communication with clients.
+从 Vite 2.9 开始，我们为插件提供了一些实用工具，以帮助处理与客户端的通信。
 
-### Server to Client
+### 服务端到客户端 {#server-to-client}
 
-On the plugin side, we could use `server.ws.send` to broadcast events to all the clients:
+在插件一侧，我们可以使用 `server.ws.send` 去给所有客户端广播事件：
 
 ```js
 // vite.config.js
@@ -542,11 +542,11 @@ export default defineConfig({
 })
 ```
 
-::: tip NOTE
-We recommend **always prefixing** your event names to avoid collisions with other plugins.
+::: tip 注意
+我们建议总是给你的事件名称 **添加前缀**，以避免与其他插件冲突。
 :::
 
-On the client side, use [`hot.on`](/guide/api-hmr.html#hot-on-event-cb) to listen to the events:
+在客户端侧，使用 [`hot.on`](/guide/api-hmr.html#hot-on-event-cb) 去监听事件：
 
 ```ts
 // client side
@@ -557,9 +557,9 @@ if (import.meta.hot) {
 }
 ```
 
-### Client to Server
+### 客户端到服务端 {#client-to-server}
 
-To send events from the client to the server, we can use [`hot.send`](/guide/api-hmr.html#hot-send-event-payload):
+为了从客户端向服务端发送事件，我们可以使用 [`hot.send`](/guide/api-hmr.html#hot-send-event-payload)：
 
 ```ts
 // client side
@@ -568,7 +568,7 @@ if (import.meta.hot) {
 }
 ```
 
-Then use `server.ws.on` and listen to the events on the server side:
+然后使用 `server.ws.on` 并在服务端监听这些事件：
 
 ```js
 // vite.config.js
