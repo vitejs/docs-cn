@@ -516,17 +516,17 @@ normalizePath('foo\\bar') // 'foo/bar'
 normalizePath('foo/bar') // 'foo/bar'
 ```
 
-## 过滤，include/exclude 模式 {#filtering-include-exclude-pattern}
+## 过滤与 include/exclude 模式 {#filtering-include-exclude-pattern}
 
-Vite 暴露了 [`@rollup/pluginutils` 的 `createFilter`](https://github.com/rollup/plugins/tree/master/packages/pluginutils#createfilter) 函数，以支持 Vite 独有插件和集成使用标准的 include/exclude 过滤模式，这也是 Vite 自身所使用的。
+Vite 暴露了 [`@rollup/pluginutils` 的 `createFilter`](https://github.com/rollup/plugins/tree/master/packages/pluginutils#createfilter) 函数，以支持 Vite 独有插件和集成使用标准的 include/exclude 过滤模式，Vite 核心自身也正在使用它。
 
-## 客户端-服务端 通信 {#client-server-communication}
+## 客户端与服务端间通信 {#client-server-communication}
 
-从 Vite 2.9开始，我们为插件提供了一些实用工具，以帮助处理与客户端的通信。
+从 Vite 2.9 开始，我们为插件提供了一些实用工具，以帮助处理与客户端的通信。
 
 ### 服务端到客户端 {#server-to-client}
 
-对于插件，我们可以使用 `server.ws.send` 去给所有客户端广播事件：
+在插件一侧，我们可以使用 `server.ws.send` 去给所有客户端广播事件：
 
 ```js
 // vite.config.js
@@ -543,10 +543,10 @@ export default defineConfig({
 ```
 
 ::: tip 注意
-我们建议总是给你的事件名称**添加前缀**，以避免与其他插件冲突。
+我们建议总是给你的事件名称 **添加前缀**，以避免与其他插件冲突。
 :::
 
-对于客户端，使用 [`hot.on`](/guide/api-hmr.html#hot-on-event-cb) 去监听事件：
+在客户端侧，使用 [`hot.on`](/guide/api-hmr.html#hot-on-event-cb) 去监听事件：
 
 ```ts
 // client side
@@ -559,7 +559,7 @@ if (import.meta.hot) {
 
 ### 客户端到服务端 {#client-to-server}
 
-为了让客户端向服务端发送事件，我们可以使用 [`hot.send`](/guide/api-hmr.html#hot-send-event-payload)：
+为了从客户端向服务端发送事件，我们可以使用 [`hot.send`](/guide/api-hmr.html#hot-send-event-payload)：
 
 ```ts
 // client side
