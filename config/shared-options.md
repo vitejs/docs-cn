@@ -158,6 +158,16 @@ Vite 有一个“允许的情景”列表，并且会匹配列表中第一个情
 
 `package.json` 中，在解析包的入口点时尝试的字段列表。注意：这比从 `exports` 字段解析的情景导出优先级低：如果一个入口点从 `exports` 成功解析，`resolve.mainFields` 将被忽略。
 
+## resolve.browserField {#resolve-browserfield}
+
+- **类型：** `boolean`
+- **默认：** `true`
+- **已废弃**
+
+是否启用对 `browser` 字段的解析。
+
+在未来，`resolve.mainFields` 的默认值会变成 `['browser', 'module', 'jsnext:main', 'jsnext']` 而这个选项将被移除。
+
 ## resolve.extensions {#resolve-extensions}
 
 - **类型：** `string[]`
