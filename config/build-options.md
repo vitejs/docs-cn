@@ -17,6 +17,7 @@
 
 注意：如果代码包含不能被 `esbuild` 安全地编译的特性，那么构建将会失败。查看 [esbuild 文档](https://esbuild.github.io/content-types/#javascript) 获取更多细节。
 
+<<<<<<< HEAD
 ## build.polyfillModulePreload {#build-polyfillmodulepreload}
 
 - **类型：** `boolean`
@@ -25,6 +26,14 @@
 用于决定是否自动注入 [module preload 的 polyfill](https://guybedford.com/es-module-preloading-integrity#modulepreload-polyfill).
 
 如果设置为 `true`，此 polyfill 会被自动注入到每个 `index.html` 入口的 proxy 模块中。如果是通过 `build.rollupOptions.input` 将构建配置为使用非 html 的自定义入口，那么则需要在你自定义入口中手动引入 polyfill：
+=======
+## build.modulePreload
+
+- **Type:** `boolean | { polyfill?: boolean, resolveDependencies?: ResolveModulePreloadDependenciesFn }`
+- **Default:** `true`
+
+By default, a [module preload polyfill](https://guybedford.com/es-module-preloading-integrity#modulepreload-polyfill) is automatically injected. The polyfill is auto injected into the proxy module of each `index.html` entry. If the build is configured to use a non-HTML custom entry via `build.rollupOptions.input`, then it is necessary to manually import the polyfill in your custom entry:
+>>>>>>> 836c818aa911f673f14788206e8f8cab55efbaee
 
 ```js
 import 'vite/modulepreload-polyfill'
@@ -32,7 +41,47 @@ import 'vite/modulepreload-polyfill'
 
 注意：此 polyfill **不适用于** [Library 模式](/guide/build#library-mode)。如果你需要支持不支持动态引入的浏览器，你应该避免在你的库中使用此选项。
 
+<<<<<<< HEAD
 ## build.outDir {#build-outdir}
+=======
+The polyfill can be disabled using `{ polyfill: false }`.
+
+The list of chunks to preload for each dynamic import is computed by Vite. By default, an absolute path including the `base` will be used when loading these dependencies. If the `base` is relative (`''` or `'./'`), `import.meta.url` is used at runtime to avoid absolute paths that depend on the final deployed base.
+
+There is experimental support for fine grained control over the dependencies list and their paths using the `resolveDependencies` function. It expects a function of type `ResolveModulePreloadDependenciesFn`:
+
+```ts
+type ResolveModulePreloadDependenciesFn = (
+  url: string,
+  deps: string[],
+  context: {
+    importer: string
+  }
+) => (string | { runtime?: string })[]
+```
+
+The `resolveDependencies` function will be called for each dynamic import with a list of the chunks it depends on, and it will also be called for each chunk imported in entry HTML files. A new dependencies array can be returned with these filtered or more dependencies injected, and their paths modified. The `deps` paths are relative to the `build.outDir`. Returning a relative path to the `hostId` for `hostType === 'js'` is allowed, in which case `new URL(dep, import.meta.url)` is used to get an absolute path when injecting this module preload in the HTML head.
+
+```js
+modulePreload: {
+  resolveDependencies: (filename, deps, { hostId, hostType }) => {
+    return deps.filter(condition)
+  }
+}
+```
+
+The resolved dependency paths can be further modified using [`experimental.renderBuiltUrl`](../guide/build.md#advanced-base-options).
+
+## build.polyfillModulePreload
+
+- **Type:** `boolean`
+- **Default:** `true`
+- **Deprecated** use `build.modulePreload.polyfill` instead
+
+Whether to automatically inject a [module preload polyfill](https://guybedford.com/es-module-preloading-integrity#modulepreload-polyfill).
+
+## build.outDir
+>>>>>>> 836c818aa911f673f14788206e8f8cab55efbaee
 
 - **类型：** `string`
 - **默认：** `dist`

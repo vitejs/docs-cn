@@ -76,7 +76,25 @@ import './Foo.js' // 应该为 './foo.js'
 
 同时如果有依赖环，也会发生完全重载。要解决这个问题，请先尝试解决依赖循环。
 
+<<<<<<< HEAD
 ## 其他 {#others}
+=======
+## Build
+
+### Built file does not work because of CORS error
+
+If the HTML file output was opened with `file` protocol, the scripts won't run with the following error.
+
+> Access to script at 'file:///foo/bar.js' from origin 'null' has been blocked by CORS policy: Cross origin requests are only supported for protocol schemes: http, data, isolated-app, chrome-extension, chrome, https, chrome-untrusted.
+
+> Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at file:///foo/bar.js. (Reason: CORS request not http).
+
+See [Reason: CORS request not HTTP - HTTP | MDN](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS/Errors/CORSRequestNotHttp) for more information about why this happens.
+
+You will need to access the file with `http` protocol. The easiest way to achieve this is to run `npx vite preview`.
+
+## Others
+>>>>>>> 836c818aa911f673f14788206e8f8cab55efbaee
 
 ### Syntax Error / Type Error {#syntax-error-type-error-happens}
 
