@@ -60,11 +60,11 @@ modulePreload: {
 
 ## build.polyfillModulePreload {#build-polyfillmodulepreload}
 
-- **Type:** `boolean`
-- **Default:** `true`
-- **Deprecated** use `build.modulePreload.polyfill` instead
+- **类型：** `boolean`
+- **默认：** `true`
+- **已废弃** 请使用 `build.modulePreload.polyfill` 替代
 
-Whether to automatically inject a [module preload polyfill](https://guybedford.com/es-module-preloading-integrity#modulepreload-polyfill).
+是否自动注入一个 [模块预加载 polyfill](https://guybedford.com/es-module-preloading-integrity#modulepreload-polyfill)。
 
 ## build.outDir {#build-outdir}
 
