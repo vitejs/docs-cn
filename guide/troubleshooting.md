@@ -76,25 +76,21 @@ import './Foo.js' // 应该为 './foo.js'
 
 同时如果有依赖环，也会发生完全重载。要解决这个问题，请先尝试解决依赖循环。
 
-<<<<<<< HEAD
-## 其他 {#others}
-=======
-## Build
+## 构建 {#build}
 
-### Built file does not work because of CORS error
+### 构建产物因为 CORS 错误无法工作 {#built-file-does-not-work-because-of-cors-error}
 
-If the HTML file output was opened with `file` protocol, the scripts won't run with the following error.
+如果导出的 HTML 文件是通过 `file` 协议打开的，那么其中的 script 将不会运行，且报告下列错误。
 
 > Access to script at 'file:///foo/bar.js' from origin 'null' has been blocked by CORS policy: Cross origin requests are only supported for protocol schemes: http, data, isolated-app, chrome-extension, chrome, https, chrome-untrusted.
 
 > Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at file:///foo/bar.js. (Reason: CORS request not http).
 
-See [Reason: CORS request not HTTP - HTTP | MDN](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS/Errors/CORSRequestNotHttp) for more information about why this happens.
+请查看 [释因：CORS 请求不是 HTTP 请求 - HTTP | MDN](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS/Errors/CORSRequestNotHttp) 了解为什么会发生这种情况的更多信息。
 
-You will need to access the file with `http` protocol. The easiest way to achieve this is to run `npx vite preview`.
+你需要通过 `http` 协议访问该文件。最简单的办法就是使用 `npx vite preview`。
 
-## Others
->>>>>>> 836c818aa911f673f14788206e8f8cab55efbaee
+## 其他 {#others}
 
 ### Syntax Error / Type Error {#syntax-error-type-error-happens}
 

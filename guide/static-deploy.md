@@ -76,14 +76,10 @@ $ npm run preview
    # 进入构建文件夹
    cd dist
 
-<<<<<<< HEAD
-   # 如果你要部署到自定义域名
-=======
-   # place .nojekyll to bypass Jekyll processing
+   # 放置 .nojekyll 以绕过 Jekyll 的处理。
    echo > .nojekyll
-
-   # if you are deploying to a custom domain
->>>>>>> 836c818aa911f673f14788206e8f8cab55efbaee
+   
+   # 如果你要部署到自定义域名
    # echo 'www.example.com' > CNAME
 
    git init
