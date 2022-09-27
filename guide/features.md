@@ -532,7 +532,7 @@ import MyWorker from './worker?worker&inline'
 import MyWorker from './worker?worker&url'
 ```
 
-查看 [Worker 选项](/config/worker-options.md) 了解更多关于如何配置打包全部 worker 的相关细节。
+关于如何配置打包全部 worker，可以查看 [Worker 选项](/config/worker-options.md) 了解更多相关细节。
 
 ## 构建优化 {#build-optimizations}
 
