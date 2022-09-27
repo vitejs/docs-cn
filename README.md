@@ -57,3 +57,13 @@ $ pnpm dev
 ## 版权声明
 
 本仓库所包含的中文翻译内容（即所有 `.md` 文件），其版权为 Vite 官方中文翻译团队所有。除官方中文文档 [cn.vitejs.dev](https://cn.vitejs.dev) 之外，不得在其它域名下进行未经授权的转载或部署。
+
+## 贡献者统计
+
+> 统计规则：所有通过 Pull Request 产生了对 `main` 分支 commit 的贡献者。
+> 
+> 头像图生成逻辑参见：[github-contributor-svg-generator](https://github.com/ShenQingchuan/github-contributor-svg-generator)
+
+<p align="center">
+  <img src="https://cdn.jsdelivr.net/gh/ShenQingchuan/github-contributor-svg-generator@main/dist/vitejs/docs-cn.png" />
+</p>
