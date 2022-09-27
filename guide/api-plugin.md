@@ -594,12 +594,21 @@ export default defineConfig({
 
 ```ts
 // events.d.ts
-import 'vite/types/customEvent'
+import 'vite'
+import 'vite/client/types'
 
-declare module 'vite/types/customEvent' {
-  interface CustomEventMap {
-    'custom:foo': { msg: string }
-    // 'event-key': payload
-  }
+interface MyCustomEventMap {
+  'custom:foo': { msg: string }
+  // 'event-key': payload
+}
+
+// extend interface for server-side
+declare module 'vite' {
+  interface CustomEventMap extends MyCustomEventMap {}
+}
+
+// extend interface for client-side
+declare module 'vite/client/types' {
+  interface CustomEventMap extends MyCustomEventMap {}
 }
 ```

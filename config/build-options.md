@@ -17,20 +17,54 @@
 
 注意：如果代码包含不能被 `esbuild` 安全地编译的特性，那么构建将会失败。查看 [esbuild 文档](https://esbuild.github.io/content-types/#javascript) 获取更多细节。
 
-## build.polyfillModulePreload {#build-polyfillmodulepreload}
+## build.modulePreload {#build-modulepreload}
 
-- **类型：** `boolean`
+- **类型：** `boolean | { polyfill?: boolean, resolveDependencies?: ResolveModulePreloadDependenciesFn }`
 - **默认值：** `true`
 
-用于决定是否自动注入 [module preload 的 polyfill](https://guybedford.com/es-module-preloading-integrity#modulepreload-polyfill).
-
-如果设置为 `true`，此 polyfill 会被自动注入到每个 `index.html` 入口的 proxy 模块中。如果是通过 `build.rollupOptions.input` 将构建配置为使用非 html 的自定义入口，那么则需要在你自定义入口中手动引入 polyfill：
+默认情况下，一个 [模块预加载 polyfill](https://guybedford.com/es-module-preloading-integrity#modulepreload-polyfill) 会被自动注入。该 polyfill 会自动注入到每个 `index.html` 入口的的代理模块中。如果构建通过 `build.rollupOptions.input` 被配置为了使用非 HTML 入口的形式，那么必须要在你的自定义入口中手动引入该 polyfill：
 
 ```js
 import 'vite/modulepreload-polyfill'
 ```
 
 注意：此 polyfill **不适用于** [Library 模式](/guide/build#library-mode)。如果你需要支持不支持动态引入的浏览器，你应该避免在你的库中使用此选项。
+
+此 polyfill 可以通过 `{ polyfill: false }` 来禁用。
+
+每个动态导入要预加载的块列表将由 Vite 计算。默认情况下，在载入这些依赖时，会使用一个包含 `base` 的绝对路径。如果 `base` 是相对路径（`''` 或者 './'），解析时则会使用 `import.meta.url`，以避免出现依赖于最终部署基路径的绝对路径。
+
+目前有一个实验性功能支持使用 `resolveDependencies` 函数对依赖项列表及其路径进行细粒度控制。它期望接收一个 `resolvemodulepreloaddependciesfn` 类型的函数:
+
+```ts
+type ResolveModulePreloadDependenciesFn = (
+  url: string,
+  deps: string[],
+  context: {
+    importer: string
+  }
+) => (string | { runtime?: string })[]
+```
+
+`resolveDependencies` 函数将为每个动态导入调用，同时带着一个它所依赖的 chunk 列表。并且它还会为每个在入口 HTML 文件中导入的 chunk 调用。 可以返回一个新的依赖关系数组，可能被过滤后变少了，也可能有更多依赖注入进来了，同时它们的路径也被修改过。`deps` 路径是相对于 `build.outDir` 的。若在注入该模块到 HTML head 时使用 `new URL(dep, import.meta.url)` 获取绝对路径，则对于 `hostType === 'js'`，允许返回一个相对于 `hostId` 的路径。
+
+```js
+modulePreload: {
+  resolveDependencies: (filename, deps, { hostId, hostType }) => {
+    return deps.filter(condition)
+  }
+}
+```
+
+解析得到的依赖路径可以再在之后使用 [`experimental.renderBuiltUrl`](../guide/build.md#advanced-base-options) 更改。
+
+## build.polyfillModulePreload {#build-polyfillmodulepreload}
+
+- **Type:** `boolean`
+- **Default:** `true`
+- **Deprecated** use `build.modulePreload.polyfill` instead
+
+Whether to automatically inject a [module preload polyfill](https://guybedford.com/es-module-preloading-integrity#modulepreload-polyfill).
 
 ## build.outDir {#build-outdir}
 
