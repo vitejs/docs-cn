@@ -125,7 +125,22 @@ if (import.meta.hot) {
 
 ## `hot.invalidate()` {#hot-invalidate}
 
+<<<<<<< HEAD
 现在调用 `import.meta.hot.invalidate()` 只是重新加载页面。
+=======
+A self-accepting module may realize during runtime that it can't handle a HMR update, and so the update needs to be forcefully propagated to importers. By calling `import.meta.hot.invalidate()`, the HMR server will invalidate the importers of the caller, as if the caller wasn't self-accepting.
+
+Note that you should always call `import.meta.hot.accept` even if you plan to call `invalidate` immediately afterwards, or else the HMR client won't listen for future changes to the self-accepting module. To communicate your intent clearly, we recommend calling `invalidate` within the `accept` callback like so:
+
+```js
+import.meta.hot.accept((module) => {
+  // You may use the new module instance to decide whether to invalidate.
+  if (cannotHandleUpdate(module)) {
+    import.meta.hot.invalidate()
+  }
+})
+```
+>>>>>>> c08da7f9b071bb73783b9ca52e5fe417eaf7644c
 
 ## `hot.on(event, cb)` {#hot-onevent-cb}
 
@@ -133,10 +148,18 @@ if (import.meta.hot) {
 
 以下 HMR 事件由 Vite 自动触发：
 
+<<<<<<< HEAD
 - `'vite:beforeUpdate'` 当更新即将被应用时（例如，一个模块将被替换）
 - `'vite:beforeFullReload'` 当完整的重载即将发生时
 - `'vite:beforePrune'` 当不再需要的模块即将被剔除时
 - `'vite:error'` 当发生错误时（例如，语法错误）
+=======
+- `'vite:beforeUpdate'` when an update is about to be applied (e.g. a module will be replaced)
+- `'vite:beforeFullReload'` when a full reload is about to occur
+- `'vite:beforePrune'` when modules that are no longer needed are about to be pruned
+- `'vite:invalidate'` when a module is invalidated with `import.meta.hot.invalidate()`
+- `'vite:error'` when an error occurs (e.g. syntax error)
+>>>>>>> c08da7f9b071bb73783b9ca52e5fe417eaf7644c
 
 自定义 HMR 事件可以由插件发送。更多细节详见 [handleHotUpdate](./api-plugin#handleHotUpdate)。
 

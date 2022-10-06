@@ -128,6 +128,7 @@ import { defineConfig } from 'vite'
 export default defineConfig({
   build: {
     lib: {
+      // Could also be a dictionary or array of multiple entry points
       entry: resolve(__dirname, 'lib/main.js'),
       name: 'MyLib',
       // the proper extensions will be added
@@ -183,8 +184,35 @@ dist/my-lib.umd.cjs 0.30 KiB / gzip: 0.16 KiB
 }
 ```
 
+<<<<<<< HEAD
 ::: tip 注意
 如果 `package.json` 不包含 `"type": "module"`，Vite 会生成不同的文件后缀名以兼容 Node.js。`.js` 会变为 `.mjs` 而 `.cjs` 会变为 `.js`.
+=======
+Or, if exposing multiple entry points:
+
+```json
+{
+  "name": "my-lib",
+  "type": "module",
+  "files": ["dist"],
+  "main": "./dist/my-lib.cjs",
+  "module": "./dist/my-lib.mjs",
+  "exports": {
+    ".": {
+      "import": "./dist/my-lib.mjs",
+      "require": "./dist/my-lib.cjs"
+    },
+    "./secondary": {
+      "import": "./dist/secondary.mjs",
+      "require": "./dist/secondary.cjs"
+    }
+  }
+}
+```
+
+::: tip Note
+If the `package.json` does not contain `"type": "module"`, Vite will generate different file extensions for Node.js compatibility. `.js` will become `.mjs` and `.cjs` will become `.js`.
+>>>>>>> c08da7f9b071bb73783b9ca52e5fe417eaf7644c
 :::
 
 ::: tip 环境变量
