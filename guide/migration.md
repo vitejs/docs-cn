@@ -31,7 +31,7 @@ Vite 不再支持 Node 12 / 13 / 15，因为上述版本已经进入了 EOL 阶�
 
 这一小节描述了 Vite v3 中最大的架构变更。在项目从 v2 迁移、遇到兼容性问题时，可以使用新添加的兼容选项来恢复到 Vite v2 策略。
 
-## 开发服务器变化 {#dev-server-changes}
+### 开发服务器变化 {#dev-server-changes}
 
 Vite 的默认开发服务器端口号现在改为了 5173。你可以使用 [`server.port`](../config/server-options.md#server-port) 将其设置为 3000。
 
@@ -39,7 +39,7 @@ Vite 的默认开发服务器主机地址现在改为了 `localhost`。在 Vite 
 
 请注意，现在 Vite v3 会打印出正确的主机地址。这意味着使用 `localhost` 时 Vite 可能会打印 `127.0.0.1` 作为正在监听的地址。你可以设置 [`dns.setDefaultResultOrder('verbatim')`](https://nodejs.org/api/dns.html#dns_dns_setdefaultresultorder_order) 来避免这一表现。查看 [`server.host`](../config/server-options.md#server-host) 了解详情。
 
-## SSR Changes {#ssr-changes}
+### SSR Changes {#ssr-changes}
 
 Vite v3 默认在 SSR 构建时使用 ESM 格式。当使用 ESM 时，[SSR 外部化的启发式方法](https://vitejs.dev/guide/ssr.html#ssr-externals) 将不再需要。默认情况下所有的依赖都将被外部化。你可以使用 [`ssr.noExternal`](../config/ssr-options.md#ssrnoexternal) 来控制哪些依赖需要被包含进 SSR 的打包产物中。
 
