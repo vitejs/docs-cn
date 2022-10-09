@@ -125,22 +125,19 @@ if (import.meta.hot) {
 
 ## `hot.invalidate()` {#hot-invalidate}
 
-<<<<<<< HEAD
-现在调用 `import.meta.hot.invalidate()` 只是重新加载页面。
-=======
-A self-accepting module may realize during runtime that it can't handle a HMR update, and so the update needs to be forcefully propagated to importers. By calling `import.meta.hot.invalidate()`, the HMR server will invalidate the importers of the caller, as if the caller wasn't self-accepting.
+一个接收自身的模块可以在运行时意识到它不能处理 HMR 更新，因此需要将更新强制传递给导入者。通过调用 `import.meta.hot.invalidate()`，HMR 服务将使调用方的导入失效，就像调用方不是接收自身的一样。
 
-Note that you should always call `import.meta.hot.accept` even if you plan to call `invalidate` immediately afterwards, or else the HMR client won't listen for future changes to the self-accepting module. To communicate your intent clearly, we recommend calling `invalidate` within the `accept` callback like so:
+请注意，你应该总是调用 `import.meta.hot.accept`，即使你打算随后立即调用 `invalidate`，否则 HMR 客户端将不会监听未来对接收自身模块的更改。为了清楚地表达你的意图，我们建议在 `accept` 回调中调用 `invalidate`，例如：
+
 
 ```js
 import.meta.hot.accept((module) => {
-  // You may use the new module instance to decide whether to invalidate.
+  // 你可以使用新的模块实例来决定是否使其失效。
   if (cannotHandleUpdate(module)) {
     import.meta.hot.invalidate()
   }
 })
 ```
->>>>>>> ed613bb5379da4cdd7a3ea6ae152cb2a03c2ec58
 
 ## `hot.on(event, cb)` {#hot-onevent-cb}
 
@@ -148,18 +145,11 @@ import.meta.hot.accept((module) => {
 
 以下 HMR 事件由 Vite 自动触发：
 
-<<<<<<< HEAD
 - `'vite:beforeUpdate'` 当更新即将被应用时（例如，一个模块将被替换）
 - `'vite:beforeFullReload'` 当完整的重载即将发生时
 - `'vite:beforePrune'` 当不再需要的模块即将被剔除时
+- `'vite:invalidate'` 当使用 `import.meta.hot.invalidate()` 使一个模块失效时
 - `'vite:error'` 当发生错误时（例如，语法错误）
-=======
-- `'vite:beforeUpdate'` when an update is about to be applied (e.g. a module will be replaced)
-- `'vite:beforeFullReload'` when a full reload is about to occur
-- `'vite:beforePrune'` when modules that are no longer needed are about to be pruned
-- `'vite:invalidate'` when a module is invalidated with `import.meta.hot.invalidate()`
-- `'vite:error'` when an error occurs (e.g. syntax error)
->>>>>>> ed613bb5379da4cdd7a3ea6ae152cb2a03c2ec58
 
 自定义 HMR 事件可以由插件发送。更多细节详见 [handleHotUpdate](./api-plugin#handleHotUpdate)。
 
