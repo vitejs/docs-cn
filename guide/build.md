@@ -184,11 +184,7 @@ dist/my-lib.umd.cjs 0.30 KiB / gzip: 0.16 KiB
 }
 ```
 
-<<<<<<< HEAD
-::: tip 注意
-如果 `package.json` 不包含 `"type": "module"`，Vite 会生成不同的文件后缀名以兼容 Node.js。`.js` 会变为 `.mjs` 而 `.cjs` 会变为 `.js`.
-=======
-Or, if exposing multiple entry points:
+或者，如果暴露了多个入口起点：
 
 ```json
 {
@@ -210,9 +206,8 @@ Or, if exposing multiple entry points:
 }
 ```
 
-::: tip Note
-If the `package.json` does not contain `"type": "module"`, Vite will generate different file extensions for Node.js compatibility. `.js` will become `.mjs` and `.cjs` will become `.js`.
->>>>>>> ed613bb5379da4cdd7a3ea6ae152cb2a03c2ec58
+::: tip 注意
+如果 `package.json` 不包含 `"type": "module"`，Vite 会生成不同的文件后缀名以兼容 Node.js。`.js` 会变为 `.mjs` 而 `.cjs` 会变为 `.js` 。
 :::
 
 ::: tip 环境变量
