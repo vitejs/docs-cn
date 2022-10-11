@@ -10,7 +10,7 @@
 
 另一个特殊值是 “esnext” —— 即假设有原生动态导入支持，并且将会转译得尽可能小：
 
-- 如果 [`build.minify`](#build-minify) 选项为 `'terser'`， `'esnext'` 将会强制降级为 `'es2019'`。
+- 如果 [`build.minify`](#build-minify) 选项为 `'terser'`，`'esnext'` 将会强制降级为 `'es2019'`。
 - 其他情况下将完全不会执行转译。
 
 转换过程将会由 esbuild 执行，并且此值应该是一个合法的 [esbuild 目标选项](https://esbuild.github.io/api/#target)。自定义目标也可以是一个 ES 版本（例如：`es2015`）、一个浏览器版本（例如：`chrome58`）或是多个目标组成的一个数组。
@@ -148,11 +148,7 @@ Git LFS 占位符会自动排除在内联之外，因为它们不包含它们所
 - **类型：** `{ entry: string | string[] | { [entryAlias: string]: string }, name?: string, formats?: ('es' | 'cjs' | 'umd' | 'iife')[], fileName?: string | ((format: ModuleFormat, entryName: string) => string) }`
 - **相关内容：** [库模式](/guide/build#library-mode)
 
-<<<<<<< HEAD
-构建为库。`entry` 是必需的，因为库不能使用 HTML 作为入口。`name` 则是暴露的全局变量，在 `formats` 包含 `'umd'` 或 `'iife'` 时是必需的。默认 `formats` 是 `['es', 'umd']` 。`fileName` 是输出的包文件名，默认 `fileName` 是 `package.json` 的 `name` 选项，同时，它还可以被定义为参数为 `format` 和 `entryAlias` 的函数。
-=======
-Build as a library. `entry` is required since the library cannot use HTML as entry. `name` is the exposed global variable and is required when `formats` includes `'umd'` or `'iife'`. Default `formats` are `['es', 'umd']`, or `['es', 'cjs']`, if multiple entries are used. `fileName` is the name of the package file output, default `fileName` is the name option of package.json, it can also be defined as function taking the `format` and `entryAlias` as arguments.
->>>>>>> 3591f5766ca52c91582072b639893f5fab01d49a
+构建为库。`entry` 是必需的，因为库不能使用 HTML 作为入口。`name` 则是暴露的全局变量，并且在 `formats` 包含 `'umd'` 或 `'iife'` 时是必需的。默认 `formats` 是 `['es', 'umd']`，如果使用了多个配置入口，则是 `['es', 'cjs']`。`fileName` 是输出的包文件名，默认 `fileName` 是 `package.json` 的 `name` 选项，同时，它还可以被定义为参数为 `format` 和 `entryAlias` 的函数。
 
 ## build.manifest {#build-manifest}
 
