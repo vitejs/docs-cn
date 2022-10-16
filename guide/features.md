@@ -57,7 +57,7 @@ export type { T }
 
 #### `useDefineForClassFields`
 
-从 Vite v2.5.0 开始，如果 TypeScript 的 target 是 `ESNext`，此选项默认值则为 `true`。这与 [`tsc` v4.3.2 及以后版本的行为](https://github.com/microsoft/TypeScript/pull/42663) 一致。这也是标准的 ECMAScript 的运行时行为。
+从 Vite v2.5.0 开始，如果 TypeScript 的 target 是 `ES2022` 或更高，包括 `ESNext`，则此选项默认值为 `true`。这与 [`tsc` v4.3.2 及以后版本的行为](https://github.com/microsoft/TypeScript/pull/42663) 一致。这也是标准的 ECMAScript 的运行时行为。
 
 但对于那些习惯其他编程语言或旧版本 TypeScript 的开发者来说，这可能是违反直觉的。
 你可以参阅 [TypeScript 3.7 发布日志](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-3-7.html#the-usedefineforclassfields-flag-and-the-declare-property-modifier) 中了解更多关于如何兼容的信息。
@@ -71,10 +71,13 @@ export type { T }
 #### 影响构建结果的其他编译器选项 {#other-compiler-options-affecting-the-build-result}
 
 - [`extends`](https://www.typescriptlang.org/tsconfig#extends)
+- [`alwaysStrict`](https://www.typescriptlang.org/tsconfig#alwaysStrict)
 - [`importsNotUsedAsValues`](https://www.typescriptlang.org/tsconfig#importsNotUsedAsValues)
-- [`preserveValueImports`](https://www.typescriptlang.org/tsconfig#preserveValueImports)
+- [`jsx`](https://www.typescriptlang.org/tsconfig#jsx)
 - [`jsxFactory`](https://www.typescriptlang.org/tsconfig#jsxFactory)
 - [`jsxFragmentFactory`](https://www.typescriptlang.org/tsconfig#jsxFragmentFactory)
+- [`jsxImportSource`](https://www.typescriptlang.org/tsconfig#jsxImportSource)
+- [`preserveValueImports`](https://www.typescriptlang.org/tsconfig#preserveValueImports)
 
 如果你的代码库很难迁移到 `"isolatedModules": true`，或许你可以尝试通过第三方插件来解决，比如 [rollup-plugin-friendly-type-imports](https://www.npmjs.com/package/rollup-plugin-friendly-type-imports)。但是，这种方式不被 Vite 官方支持。
 
