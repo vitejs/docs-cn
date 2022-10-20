@@ -71,7 +71,7 @@ interface ViteDevServer {
   /**
    * 本机 node http 服务器实例
    */
-  httpServer: http.Server | null
+  httpServer: http.Server | Http2SecureServer | null
   /**
    * chokidar 监听器实例
    * https://github.com/paulmillr/chokidar#api
