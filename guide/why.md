@@ -51,11 +51,7 @@ Vite 同时利用 HTTP 头来加速整个页面的重新加载（再次让浏览
 
 ### 为何不用 ESBuild 打包？ {#why-not-bundle-with-esbuild}
 
-<<<<<<< HEAD
 虽然 `esbuild` 快得惊人，并且已经是一个在构建库方面比较出色的工具，但一些针对构建 _应用_ 的重要功能仍然还在持续开发中 —— 特别是代码分割和 CSS 处理方面。就目前来说，Rollup 在应用打包方面更加成熟和灵活。尽管如此，当未来这些功能稳定后，我们也不排除使用 `esbuild` 作为生产构建器的可能。
-=======
-While `esbuild` is extremely fast and is already a very capable bundler for libraries, some of the important features needed for bundling _applications_ are still work in progress - in particular code-splitting and CSS handling. For the time being, Rollup is more mature and flexible in these regards. That said, we won't rule out the possibility of using `esbuild` for production builds when it stabilizes these features in the future.
->>>>>>> 1201f1eba38b24530432cbf75e7521306b030570
 
 ## Vite 与 X 的区别是？ {#how-is-vite-different-from-x}
 
