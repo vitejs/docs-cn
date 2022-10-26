@@ -209,7 +209,19 @@ npm add -D terser
 
 默认情况下，若 `outDir` 在 `root` 目录下，则 Vite 会在构建时清空该目录。若 `outDir` 在根目录之外则会抛出一个警告避免意外删除掉重要的文件。可以设置该选项来关闭这个警告。该功能也可以通过命令行参数 `--emptyOutDir` 来使用。
 
+<<<<<<< HEAD
 ## build.reportCompressedSize {#build-reportcompressedsize}
+=======
+## build.copyPublicDir
+
+- **Experimental**
+- **Type:** `boolean`
+- **Default:** `true`
+
+By default, Vite will copy files from the `publicDir` into the `outDir` on build. Set to `false` to disable this.
+
+## build.reportCompressedSize
+>>>>>>> 672e43aa80d4d1735cc86e6fa987da228f4fd517
 
 - **类型：** `boolean`
 - **默认：** `true`
