@@ -212,8 +212,8 @@ npm add -D terser
 ## build.copyPublicDir {#build-copypublicdir}
 
 - **实验性特性**
-- **类型:** `boolean`
-- **默认:** `true`
+- **类型：** `boolean`
+- **默认：** `true`
 
 默认情况下，Vite 会在构建阶段将 `publicDir` 目录中的所有文件复制到 `outDir` 目录中。可以通过设置该选项为 `false` 来禁用该行为。
 
