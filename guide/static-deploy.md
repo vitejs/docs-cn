@@ -64,7 +64,7 @@ $ npm run preview
 
 2. 在你的项目中，创建一个 `deploy.sh` 脚本，包含以下内容（注意高亮的行，按需使用），运行脚本来部署站点：
 
-   ```bash{13,21,24}
+   ```bash{16,24,27}
    #!/usr/bin/env sh
 
    # 发生错误时终止
@@ -76,11 +76,14 @@ $ npm run preview
    # 进入构建文件夹
    cd dist
 
+   # 放置 .nojekyll 以绕过 Jekyll 的处理。
+   echo > .nojekyll
+   
    # 如果你要部署到自定义域名
    # echo 'www.example.com' > CNAME
 
    git init
-   git checkout -b main
+   git checkout -B main
    git add -A
    git commit -m 'deploy'
 
