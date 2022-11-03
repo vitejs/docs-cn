@@ -145,11 +145,20 @@ import.meta.hot.accept((module) => {
 
 以下 HMR 事件由 Vite 自动触发：
 
+<<<<<<< HEAD
 - `'vite:beforeUpdate'` 当更新即将被应用时（例如，一个模块将被替换）
 - `'vite:beforeFullReload'` 当完整的重载即将发生时
 - `'vite:beforePrune'` 当不再需要的模块即将被剔除时
 - `'vite:invalidate'` 当使用 `import.meta.hot.invalidate()` 使一个模块失效时
 - `'vite:error'` 当发生错误时（例如，语法错误）
+=======
+- `'vite:beforeUpdate'` when an update is about to be applied (e.g. a module will be replaced)
+- `'vite:afterUpdate'` when an update has just been applied (e.g. a module has been replaced)
+- `'vite:beforeFullReload'` when a full reload is about to occur
+- `'vite:beforePrune'` when modules that are no longer needed are about to be pruned
+- `'vite:invalidate'` when a module is invalidated with `import.meta.hot.invalidate()`
+- `'vite:error'` when an error occurs (e.g. syntax error)
+>>>>>>> a4fe1a5911775ba44a1dbb87d22dddc24cfb9397
 
 自定义 HMR 事件可以由插件发送。更多细节详见 [handleHotUpdate](./api-plugin#handleHotUpdate)。
 
