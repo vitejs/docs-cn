@@ -145,7 +145,7 @@ import.meta.hot.accept((module) => {
 以下 HMR 事件由 Vite 自动触发：
 
 - `'vite:beforeUpdate'` 当更新即将被应用时（例如，一个模块将被替换）
-- `'vite:afterUpdate'`当更新已经被应用时（例如，一个模块已被替换）
+- `'vite:afterUpdate'` 当更新已经被应用时（例如，一个模块已被替换）
 - `'vite:beforeFullReload'` 当完整的重载即将发生时
 - `'vite:beforePrune'` 当不再需要的模块即将被剔除时
 - `'vite:invalidate'` 当使用 `import.meta.hot.invalidate()` 使一个模块失效时
