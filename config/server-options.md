@@ -77,7 +77,13 @@ export default defineConfig({
 
 - **类型：** `Record<string, string | ProxyOptions>`
 
+<<<<<<< HEAD
 为开发服务器配置自定义代理规则。期望接收一个 `{ key: options }` 对象。如果 key 值以 `^` 开头，将会被解释为 `RegExp`。`configure` 可用于访问 proxy 实例。
+=======
+Configure custom proxy rules for the dev server. Expects an object of `{ key: options }` pairs. Any requests that request path starts with that key will be proxied to that specified target. If the key starts with `^`, it will be interpreted as a `RegExp`. The `configure` option can be used to access the proxy instance.
+
+Note that if you are using non-relative [`base`](/config/shared-options.md#base), you must prefix each key with that `base`.
+>>>>>>> 7b9dfe5d52c91a6337a4fc6002c5459f32f3c703
 
 使用 [`http-proxy`](https://github.com/http-party/node-http-proxy)。完整选项详见 [此处](https://github.com/http-party/node-http-proxy#options).
 
@@ -89,15 +95,25 @@ export default defineConfig({
 export default defineConfig({
   server: {
     proxy: {
+<<<<<<< HEAD
       // 字符串简写写法
       '/foo': 'http://localhost:4567',
       // 选项写法
+=======
+      // string shorthand: http://localhost:5173/foo -> http://localhost:4567/foo
+      '/foo': 'http://localhost:4567',
+      // with options: http://localhost:5173/api/bar-> http://jsonplaceholder.typicode.com/bar
+>>>>>>> 7b9dfe5d52c91a6337a4fc6002c5459f32f3c703
       '/api': {
         target: 'http://jsonplaceholder.typicode.com',
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, '')
       },
+<<<<<<< HEAD
       // 正则表达式写法
+=======
+      // with RegEx: http://localhost:5173/fallback/ -> http://jsonplaceholder.typicode.com/
+>>>>>>> 7b9dfe5d52c91a6337a4fc6002c5459f32f3c703
       '^/fallback/.*': {
         target: 'http://jsonplaceholder.typicode.com',
         changeOrigin: true,
@@ -111,9 +127,13 @@ export default defineConfig({
           // proxy 是 'http-proxy' 的实例
         }
       },
-      // Proxying websockets or socket.io
+      // Proxying websockets or socket.io: ws://localhost:5173/socket.io -> ws://localhost:5174/socket.io
       '/socket.io': {
+<<<<<<< HEAD
         target: 'ws://localhost:3000',
+=======
+        target: 'ws://localhost:5174',
+>>>>>>> 7b9dfe5d52c91a6337a4fc6002c5459f32f3c703
         ws: true
       }
     }

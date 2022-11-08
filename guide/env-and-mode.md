@@ -60,7 +60,22 @@ console.log(import.meta.env.VITE_SOME_KEY) // 123
 console.log(import.meta.env.DB_PASSWORD) // undefined
 ```
 
+<<<<<<< HEAD
 如果你想自定义 env 变量的前缀，请参阅 [envPrefix](/config/shared-options.html#envprefix)。
+=======
+Also, Vite uses [dotenv-expand](https://github.com/motdotla/dotenv-expand) to expand variables out of the box. To learn more about the syntax, check out [their docs](https://github.com/motdotla/dotenv-expand#what-rules-does-the-expansion-engine-follow).
+
+Note that if you want to use `$` inside your environment value, you have to escape it with `\`.
+
+```
+KEY=123
+NEW_KEY1=test$foo   # test
+NEW_KEY2=test\$foo  # test$foo
+NEW_KEY3=test$KEY   # test123
+```
+
+If you want to customize the env variables prefix, see the [envPrefix](/config/shared-options.html#envprefix) option.
+>>>>>>> 7b9dfe5d52c91a6337a4fc6002c5459f32f3c703
 
   :::warning 安全注意事项
 
