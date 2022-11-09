@@ -174,7 +174,13 @@ Sass 和 Less 文件也支持 `@import` 别名和 URL 变基（具体请参阅 [
 
 如果项目包含有效的 PostCSS 配置 (任何受 [postcss-load-config](https://github.com/postcss/postcss-load-config) 支持的格式，例如 `postcss.config.js`)，它将会自动应用于所有已导入的 CSS。
 
+<<<<<<< HEAD
 ### CSS Modules {#css-modules}
+=======
+Note that CSS minification will run after PostCSS and will use [`build.cssTarget`](/config/build-options.md#build-csstarget) option.
+
+### CSS Modules
+>>>>>>> 50a418d915da6ea1e9ff672a8e85b4b50470f33d
 
 任何以 `.module.css` 为后缀名的 CSS 文件都被认为是一个 [CSS modules 文件](https://github.com/css-modules/css-modules)。导入这样的文件会返回一个相应的模块对象：
 
