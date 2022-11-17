@@ -60,6 +60,17 @@ console.log(import.meta.env.VITE_SOME_KEY) // 123
 console.log(import.meta.env.DB_PASSWORD) // undefined
 ```
 
+此外，Vite 使用 [dotenv-expand](https://github.com/motdotla/dotenv-expand) 来直接拓展变量。想要了解更多相关语法，请查看 [它们的文档](https://github.com/motdotla/dotenv-expand#what-rules-does-the-expansion-engine-follow)。
+
+请注意，如果想要在环境变量中使用 `$` 符号，则必须使用 `\` 对其进行转义。
+
+```
+KEY=123
+NEW_KEY1=test$foo   # test
+NEW_KEY2=test\$foo  # test$foo
+NEW_KEY3=test$KEY   # test123
+```
+
 如果你想自定义 env 变量的前缀，请参阅 [envPrefix](/config/shared-options.html#envprefix)。
 
   :::warning 安全注意事项
