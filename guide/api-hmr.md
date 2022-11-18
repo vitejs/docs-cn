@@ -30,7 +30,7 @@ interface ViteHotContext {
 
   dispose(cb: (data: any) => void): void
   decline(): void
-  invalidate(): void
+  invalidate(message?: string): void
 
   // `InferCustomEventPayload` provides types for built-in Vite events
   on<T extends string>(
@@ -123,9 +123,9 @@ if (import.meta.hot) {
 
 调用 `import.meta.hot.decline()` 表示此模块不可热更新，如果在传播 HMR 更新时遇到此模块，浏览器应该执行完全重新加载。
 
-## `hot.invalidate()` {#hot-invalidate}
+## `hot.invalidate(message?: string)` {#hot-invalidate}
 
-一个接收自身的模块可以在运行时意识到它不能处理 HMR 更新，因此需要将更新强制传递给导入者。通过调用 `import.meta.hot.invalidate()`，HMR 服务将使调用方的导入失效，就像调用方不是接收自身的一样。
+一个接收自身的模块可以在运行时意识到它不能处理 HMR 更新，因此需要将更新强制传递给导入者。通过调用 `import.meta.hot.invalidate()`，HMR 服务将使调用方的导入失效，就像调用方不是接收自身的一样。这会同时在浏览器控制台和命令行中打印出一条信息，你可以传入这条信息，对发生失效的原因给予一些上下文。
 
 请注意，你应该总是调用 `import.meta.hot.accept`，即使你打算随后立即调用 `invalidate`，否则 HMR 客户端将不会监听未来对接收自身模块的更改。为了清楚地表达你的意图，我们建议在 `accept` 回调中调用 `invalidate`，例如：
 
