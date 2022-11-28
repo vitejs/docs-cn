@@ -52,7 +52,7 @@ if (import.meta.hot) {
 }
 ```
 
-## `hot.accept(cb)` {#hot-acceptcb}
+## `hot.accept(cb)` {#hot-accept-cb}
 
 要接收模块自身，应使用 `import.meta.hot.accept`，参数为接收已更新模块的回调函数：
 
@@ -75,7 +75,7 @@ if (import.meta.hot) {
 
 这种简化的 HMR 实现对于大多数开发用例来说已经足够了，同时允许我们跳过生成代理模块的昂贵工作。
 
-## `hot.accept(deps, cb)`
+## `hot.accept(deps, cb)` {#hot-accept-deps-cb}
 
 模块也可以接受直接依赖项的更新，而无需重新加载自身：
 
@@ -101,7 +101,7 @@ if (import.meta.hot) {
 }
 ```
 
-## `hot.dispose(cb)`
+## `hot.dispose(cb)` {#hot-dispose-cb}
 
 一个接收自身的模块或一个期望被其他模块接收的模块可以使用 `hot.dispose` 来清除任何由其更新副本产生的持久副作用：
 
@@ -171,7 +171,7 @@ import.meta.hot.accept((module) => {
 
 自定义 HMR 事件可以由插件发送。更多细节详见 [handleHotUpdate](./api-plugin#handleHotUpdate)。
 
-## `hot.send(event, data)`
+## `hot.send(event, data)` {##hot-send-event-data}
 
 发送自定义事件到 Vite 开发服务器。
 
