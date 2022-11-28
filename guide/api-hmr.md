@@ -29,6 +29,7 @@ interface ViteHotContext {
   ): void
 
   dispose(cb: (data: any) => void): void
+  prune(cb: (data: any) => void): void
   decline(): void
   invalidate(message?: string): void
 
@@ -93,7 +94,12 @@ if (import.meta.hot) {
   import.meta.hot.accept(
     ['./foo.js', './bar.js'],
     ([newFooModule, newBarModule]) => {
+<<<<<<< HEAD
       // 回调函数接收一个更新后模块的数组
+=======
+      // The callback receives an array where only the updated module is non null
+      // If the update was not succeful (syntax error for ex.), the array is empty
+>>>>>>> 865063f88c03d0b4f9021196b409d4e397a4623b
     }
   )
 }
@@ -115,7 +121,27 @@ if (import.meta.hot) {
 }
 ```
 
+<<<<<<< HEAD
 ## `hot.data` {#hot-data}
+=======
+## `hot.prune(cb)`
+
+Register a callback that will call when the module is no longer imported on the page. Compared to `hot.dispose`, this can be used if the source code cleans up side-effects by itself on updates and you only need to clean-up when it's removed from the page. Vite currently uses this for `.css` imports.
+
+```js
+function setupOrReuseSideEffect() {}
+
+setupOrReuseSideEffect()
+
+if (import.meta.hot) {
+  import.meta.hot.prune((data) => {
+    // cleanup side effect
+  })
+}
+```
+
+## `hot.data`
+>>>>>>> 865063f88c03d0b4f9021196b409d4e397a4623b
 
 `import.meta.hot.data` 对象在同一个更新模块的不同实例之间持久化。它可以用于将信息从模块的前一个版本传递到下一个版本。
 

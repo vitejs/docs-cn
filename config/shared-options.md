@@ -360,8 +360,14 @@ export default defineConfig({
 
 无论你的应用是一个单页应用（SPA）还是一个 [多页应用（MPA）](../guide/build#multi-page-app)，亦或是一个定制化应用（SSR 和自定义 HTML 处理的框架）：
 
+<<<<<<< HEAD
 - `'spa'`：包含 SPA 回退中间件以及在预览中将 [sirv](https://github.com/lukeed/sirv) 配置为 `single: true`
 - `'mpa'`：仅包含非 SPA HTML 中间件
 - `'custom'`：不包含 HTML 中间件
+=======
+- `'spa'`: include HTML middlewares and use SPA fallback. Configure [sirv](https://github.com/lukeed/sirv) with `single: true` in preview
+- `'mpa'`: include HTML middlewares
+- `'custom'`: don't include HTML middlewares
+>>>>>>> 865063f88c03d0b4f9021196b409d4e397a4623b
 
 要了解更多，请查看 Vite 的 [SSR 指引](/guide/ssr#vite-cli)。相关内容：[`server.middlewareMode`](./server-options#server-middlewaremode)。
