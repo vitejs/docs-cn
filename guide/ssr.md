@@ -161,7 +161,7 @@ app.use('*', async (req, res, next) => {
   "scripts": {
     "dev": "node server",
     "build:client": "vite build --outDir dist/client",
-    "build:server": "vite build --outDir dist/server --ssr src/entry-server.js "
+    "build:server": "vite build --outDir dist/server --ssr src/entry-server.js"
   }
 }
 ```

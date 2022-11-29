@@ -122,20 +122,36 @@ VITE_APP_TITLE=My App
 
 在你的应用中，你可以使用 `import.meta.env.VITE_APP_TITLE` 渲染标题。
 
+<<<<<<< HEAD
 然而，重要的是要理解 **模式** 是一个更广泛的概念，而不仅仅是开发和生产。一个典型的例子是，你可能希望有一个 “staging” (预发布|预上线) 模式，它应该具有类似于生产的行为，但环境变量与生产环境略有不同。
 
 你可以通过传递 `--mode` 选项标志来覆盖命令使用的默认模式。例如，如果你想为我们假设的 staging 模式构建应用：
+=======
+In some cases, you may want to run `vite build` with a different mode to render a different title. You can overwrite the default mode used for a command by passing the `--mode` option flag. For example, if you want to build your app for a staging mode:
+>>>>>>> 4f240d6525880b669c148cedda6ea90c22470e97
 
 ```bash
 vite build --mode staging
 ```
 
+<<<<<<< HEAD
 为了使应用实现预期行为，我们还需要一个 `.env.staging` 文件：
+=======
+And create a `.env.staging` file:
+>>>>>>> 4f240d6525880b669c148cedda6ea90c22470e97
 
 ```
 # .env.staging
-NODE_ENV=production
 VITE_APP_TITLE=My App (staging)
 ```
 
+<<<<<<< HEAD
 现在，你的 staging 应用应该具有类似于生产的行为，但显示的标题与生产环境不同。
+=======
+As `vite build` runs a production build by default, you can also change this and run a development build by using a different mode and `.env` file configuration:
+
+```
+# .env.testing
+NODE_ENV=development
+```
+>>>>>>> 4f240d6525880b669c148cedda6ea90c22470e97
