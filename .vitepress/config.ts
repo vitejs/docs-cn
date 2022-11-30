@@ -142,15 +142,11 @@ export default defineConfig({
               link: '/guide/features'
             },
             {
-<<<<<<< HEAD
-              text: '使用插件',
-=======
-              text: 'CLI',
+              text: '命令行界面',
               link: '/guide/cli'
             },
             {
-              text: 'Using Plugins',
->>>>>>> 4f240d6525880b669c148cedda6ea90c22470e97
+              text: '使用插件',
               link: '/guide/using-plugins'
             },
             {
