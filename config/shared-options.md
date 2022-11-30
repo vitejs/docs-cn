@@ -124,7 +124,7 @@ const obj = {
 对于服务端渲染构建，配置项 `build.rollupOptions.output` 为 ESM 构建输出时去重过程将不工作。一个替代方案是先使用 CJS 构建输出，直到 ESM 在插件中有了更好的模块加载支持。
 :::
 
-## resolve.conditions
+## resolve.conditions {#resolve-conditions}
 
 - **类型：** `string[]`
 
@@ -353,7 +353,7 @@ export default defineConfig({
 `envPrefix` 不应被设置为空字符串 `''`，这将暴露你所有的环境变量，导致敏感信息的意外泄漏。 检测到配置为 `''` 时 Vite 将会抛出错误.
 :::
 
-## appType
+## appType {#apptype}
 
 - **类型：** `'spa' | 'mpa' | 'custom'`
 - **默认：** `'spa'`
