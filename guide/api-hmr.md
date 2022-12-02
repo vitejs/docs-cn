@@ -94,12 +94,8 @@ if (import.meta.hot) {
   import.meta.hot.accept(
     ['./foo.js', './bar.js'],
     ([newFooModule, newBarModule]) => {
-<<<<<<< HEAD
-      // 回调函数接收一个更新后模块的数组
-=======
-      // The callback receives an array where only the updated module is non null
-      // If the update was not succeful (syntax error for ex.), the array is empty
->>>>>>> 780b648c45276853daa4286510d82296e44bf90d
+      // 回调函数接收一个更新后模块的数组，只有更新的模块是非 null 的
+      // 如果更新未成功（例如语法错误等），则数组为空数组
     }
   )
 }
@@ -121,12 +117,9 @@ if (import.meta.hot) {
 }
 ```
 
-<<<<<<< HEAD
-## `hot.data` {#hot-data}
-=======
-## `hot.prune(cb)`
+## `hot.prune(cb)` {#hot-prune}
 
-Register a callback that will call when the module is no longer imported on the page. Compared to `hot.dispose`, this can be used if the source code cleans up side-effects by itself on updates and you only need to clean-up when it's removed from the page. Vite currently uses this for `.css` imports.
+注册一个回调函数，当模块不再被导入时被调用。与 `hot.dispose` 相比，它被用在代码可以在更新时自行清理副作用，只需要在这个模块被移除时清理的情况。Vite 目前在导入 `.css` 时使用了它。
 
 ```js
 function setupOrReuseSideEffect() {}
@@ -135,13 +128,12 @@ setupOrReuseSideEffect()
 
 if (import.meta.hot) {
   import.meta.hot.prune((data) => {
-    // cleanup side effect
+    // 清理副作用
   })
 }
 ```
 
-## `hot.data`
->>>>>>> 780b648c45276853daa4286510d82296e44bf90d
+## `hot.data` {#hot-data}
 
 `import.meta.hot.data` 对象在同一个更新模块的不同实例之间持久化。它可以用于将信息从模块的前一个版本传递到下一个版本。
 
