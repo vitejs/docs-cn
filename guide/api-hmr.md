@@ -29,6 +29,7 @@ interface ViteHotContext {
   ): void
 
   dispose(cb: (data: any) => void): void
+  prune(cb: (data: any) => void): void
   decline(): void
   invalidate(message?: string): void
 
@@ -51,7 +52,7 @@ if (import.meta.hot) {
 }
 ```
 
-## `hot.accept(cb)` {#hot-acceptcb}
+## `hot.accept(cb)` {#hot-accept-cb}
 
 要接收模块自身，应使用 `import.meta.hot.accept`，参数为接收已更新模块的回调函数：
 
@@ -74,7 +75,7 @@ if (import.meta.hot) {
 
 这种简化的 HMR 实现对于大多数开发用例来说已经足够了，同时允许我们跳过生成代理模块的昂贵工作。
 
-## `hot.accept(deps, cb)`
+## `hot.accept(deps, cb)` {#hot-accept-deps-cb}
 
 模块也可以接受直接依赖项的更新，而无需重新加载自身：
 
@@ -93,13 +94,14 @@ if (import.meta.hot) {
   import.meta.hot.accept(
     ['./foo.js', './bar.js'],
     ([newFooModule, newBarModule]) => {
-      // 回调函数接收一个更新后模块的数组
+      // 只有当更新模块非空时，回调函数接收一个数组
+      // 如果更新不成功（例如语法错误），则该数组为空
     }
   )
 }
 ```
 
-## `hot.dispose(cb)`
+## `hot.dispose(cb)` {#hot-dispose-cb}
 
 一个接收自身的模块或一个期望被其他模块接收的模块可以使用 `hot.dispose` 来清除任何由其更新副本产生的持久副作用：
 
@@ -110,6 +112,22 @@ setupSideEffect()
 
 if (import.meta.hot) {
   import.meta.hot.dispose((data) => {
+    // 清理副作用
+  })
+}
+```
+
+## `hot.prune(cb)` {#hot-prune-cb}
+
+注册一个回调，当模块在页面上不再被导入时调用。与 `hot.dispose` 相比，如果源代码更新时自行清理了副作用，你只需要在模块从页面上被删除时，使用此方法进行清理。Vite 目前在 `.css` 导入上使用此方法。
+
+```js
+function setupOrReuseSideEffect() {}
+
+setupOrReuseSideEffect()
+
+if (import.meta.hot) {
+  import.meta.hot.prune((data) => {
     // 清理副作用
   })
 }
@@ -153,7 +171,7 @@ import.meta.hot.accept((module) => {
 
 自定义 HMR 事件可以由插件发送。更多细节详见 [handleHotUpdate](./api-plugin#handleHotUpdate)。
 
-## `hot.send(event, data)`
+## `hot.send(event, data)` {##hot-send-event-data}
 
 发送自定义事件到 Vite 开发服务器。
 

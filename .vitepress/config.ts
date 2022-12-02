@@ -142,6 +142,10 @@ export default defineConfig({
               link: '/guide/features'
             },
             {
+              text: '命令行界面',
+              link: '/guide/cli'
+            },
+            {
               text: '使用插件',
               link: '/guide/using-plugins'
             },

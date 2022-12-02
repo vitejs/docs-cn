@@ -128,6 +128,8 @@ Vite 也支持多个 `.html` 作入口点的 [多页面应用模式](./build#mul
 
 可以指定额外的命令行选项，如 `--port` 或 `--https`。运行 `npx vite --help` 获得完整的命令行选项列表。
 
+查看 [命令行界面](./cli.md) 了解更多细节。
+
 ## 使用未发布的功能 {#using-unreleased-commits}
 
 如果你迫不及待想要体验最新的功能，可以自行克隆 [vite 仓库](https://github.com/vitejs/vite) 到本地机器上然后自行将其链接（将需要 [pnpm](https://pnpm.io/)）：

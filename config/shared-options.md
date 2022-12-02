@@ -124,7 +124,7 @@ const obj = {
 对于服务端渲染构建，配置项 `build.rollupOptions.output` 为 ESM 构建输出时去重过程将不工作。一个替代方案是先使用 CJS 构建输出，直到 ESM 在插件中有了更好的模块加载支持。
 :::
 
-## resolve.conditions
+## resolve.conditions {#resolve-conditions}
 
 - **类型：** `string[]`
 
@@ -353,15 +353,15 @@ export default defineConfig({
 `envPrefix` 不应被设置为空字符串 `''`，这将暴露你所有的环境变量，导致敏感信息的意外泄漏。 检测到配置为 `''` 时 Vite 将会抛出错误.
 :::
 
-## appType
+## appType {#apptype}
 
 - **类型：** `'spa' | 'mpa' | 'custom'`
 - **默认：** `'spa'`
 
 无论你的应用是一个单页应用（SPA）还是一个 [多页应用（MPA）](../guide/build#multi-page-app)，亦或是一个定制化应用（SSR 和自定义 HTML 处理的框架）：
 
-- `'spa'`：包含 SPA 回退中间件以及在预览中将 [sirv](https://github.com/lukeed/sirv) 配置为 `single: true`
-- `'mpa'`：仅包含非 SPA HTML 中间件
+- `'spa'`：包含 HTML 中间件以及使用 SPA 回退。在预览中将 [sirv](https://github.com/lukeed/sirv) 配置为 `single: true`
+- `'mpa'`：包含 HTML 中间件
 - `'custom'`：不包含 HTML 中间件
 
 要了解更多，请查看 Vite 的 [SSR 指引](/guide/ssr#vite-cli)。相关内容：[`server.middlewareMode`](./server-options#server-middlewaremode)。
