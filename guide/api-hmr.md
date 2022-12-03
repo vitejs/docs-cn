@@ -30,7 +30,6 @@ interface ViteHotContext {
 
   dispose(cb: (data: any) => void): void
   prune(cb: (data: any) => void): void
-  decline(): void
   invalidate(message?: string): void
 
   // `InferCustomEventPayload` provides types for built-in Vite events
@@ -139,7 +138,11 @@ if (import.meta.hot) {
 
 ## `hot.decline()` {#hot-decline}
 
+<<<<<<< HEAD
 调用 `import.meta.hot.decline()` 表示此模块不可热更新，如果在传播 HMR 更新时遇到此模块，浏览器应该执行完全重新加载。
+=======
+This is currently a noop and is there for backward compatibility. This could change in the future if there is a new usage for it. To indicate that the module is not hot-updatable, use `hot.invalidate()`.
+>>>>>>> c35bcb5e2fe9d612439f474273ca3b686309b62d
 
 ## `hot.invalidate(message?: string)` {#hot-invalidate}
 
