@@ -96,8 +96,8 @@ export default defineConfig(({ command, mode }) => {
   return {
     // vite 配置
     define: {
-      __APP_ENV__: env.APP_ENV
-    }
+      __APP_ENV__: env.APP_ENV,
+    },
   }
 })
 ```
