@@ -15,10 +15,17 @@
        // 在 outDir 中生成 manifest.json
        manifest: true,
        rollupOptions: {
+<<<<<<< HEAD
          // 覆盖默认的 .html 入口
          input: '/path/to/main.js'
        }
      }
+=======
+         // overwrite default .html entry
+         input: '/path/to/main.js',
+       },
+     },
+>>>>>>> 7ce860a52dbad4cd91080c9416793e0add1b1ce8
    })
    ```
 

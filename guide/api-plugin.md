@@ -48,7 +48,7 @@ import vitePlugin from 'vite-plugin-feature'
 import rollupPlugin from 'rollup-plugin-feature'
 
 export default defineConfig({
-  plugins: [vitePlugin(), rollupPlugin()]
+  plugins: [vitePlugin(), rollupPlugin()],
 })
 ```
 
@@ -72,7 +72,7 @@ import { defineConfig } from 'vite'
 import framework from 'vite-plugin-framework'
 
 export default defineConfig({
-  plugins: [framework()]
+  plugins: [framework()],
 })
 ```
 
@@ -95,10 +95,14 @@ export default function myPlugin() {
       if (fileRegex.test(id)) {
         return {
           code: compileFileToJS(src),
+<<<<<<< HEAD
           map: null // 如果可行将提供 source map
+=======
+          map: null, // provide source map if available
+>>>>>>> 7ce860a52dbad4cd91080c9416793e0add1b1ce8
         }
       }
-    }
+    },
   }
 }
 ```
@@ -127,7 +131,7 @@ export default function myPlugin() {
       if (id === resolvedVirtualModuleId) {
         return `export const msg = "from virtual module"`
       }
-    }
+    },
   }
 }
 ```
@@ -188,10 +192,10 @@ Vite 插件也可以提供钩子来服务于特定的 Vite 目标。这些钩子
     config: () => ({
       resolve: {
         alias: {
-          foo: 'bar'
-        }
-      }
-    })
+          foo: 'bar',
+        },
+      },
+    }),
   })
 
   // 直接改变配置（应仅在合并不起作用时使用）
@@ -201,7 +205,7 @@ Vite 插件也可以提供钩子来服务于特定的 Vite 目标。这些钩子
       if (command === 'build') {
         config.root = 'foo'
       }
-    }
+    },
   })
   ```
 
@@ -237,7 +241,7 @@ Vite 插件也可以提供钩子来服务于特定的 Vite 目标。这些钩子
         } else {
           // build: 由 Rollup 调用的插件
         }
-      }
+      },
     }
   }
   ```
@@ -259,7 +263,7 @@ Vite 插件也可以提供钩子来服务于特定的 Vite 目标。这些钩子
       server.middlewares.use((req, res, next) => {
         // 自定义请求处理...
       })
-    }
+    },
   })
   ```
 
@@ -278,7 +282,7 @@ Vite 插件也可以提供钩子来服务于特定的 Vite 目标。这些钩子
           // 自定义请求处理...
         })
       }
-    }
+    },
   })
   ```
 
@@ -298,7 +302,7 @@ Vite 插件也可以提供钩子来服务于特定的 Vite 目标。这些钩子
         if (server) {
           // 使用 server...
         }
-      }
+      },
     }
   }
   ```
@@ -322,14 +326,19 @@ Vite 插件也可以提供钩子来服务于特定的 Vite 目标。这些钩子
           // 自定义处理请求 ...
         })
       }
-    }
+    },
   })
   ```
 
 ### `transformIndexHtml` {#transformindexhtml}
 
+<<<<<<< HEAD
 - **类型：** `IndexHtmlTransformHook | { order?: 'pre' | 'post', handler: IndexHtmlTransformHook }`
 - **种类：** `async`, `sequential`
+=======
+- **Type:** `IndexHtmlTransformHook | { order?: 'pre' | 'post', handler: IndexHtmlTransformHook }`
+- **Kind:** `async`, `sequential`
+>>>>>>> 7ce860a52dbad4cd91080c9416793e0add1b1ce8
 
   转换 `index.html` 的专用钩子。钩子接收当前的 HTML 字符串和转换上下文。上下文在开发期间暴露[`ViteDevServer`](./api-javascript#vitedevserver)实例，在构建期间暴露 Rollup 输出的包。
 
@@ -348,9 +357,9 @@ Vite 插件也可以提供钩子来服务于特定的 Vite 目标。这些钩子
       transformIndexHtml(html) {
         return html.replace(
           /<title>(.*?)<\/title>/,
-          `<title>Title replaced!</title>`
+          `<title>Title replaced!</title>`,
         )
-      }
+      },
     }
   }
   ```
@@ -366,7 +375,7 @@ Vite 插件也可以提供钩子来服务于特定的 Vite 目标。这些钩子
       server?: ViteDevServer
       bundle?: import('rollup').OutputBundle
       chunk?: import('rollup').OutputChunk
-    }
+    },
   ) =>
     | IndexHtmlTransformResult
     | void
@@ -458,7 +467,11 @@ Vite 插件也可以提供钩子来服务于特定的 Vite 目标。这些钩子
 function myPlugin() {
   return {
     name: 'build-only',
+<<<<<<< HEAD
     apply: 'build' // 或 'serve'
+=======
+    apply: 'build', // or 'serve'
+>>>>>>> 7ce860a52dbad4cd91080c9416793e0add1b1ce8
   }
 }
 ```
@@ -495,9 +508,9 @@ export default defineConfig({
     {
       ...example(),
       enforce: 'post',
-      apply: 'build'
-    }
-  ]
+      apply: 'build',
+    },
+  ],
 })
 ```
 
@@ -536,9 +549,9 @@ export default defineConfig({
       // ...
       configureServer(server) {
         server.ws.send('my:greetings', { msg: 'hello' })
-      }
-    }
-  ]
+      },
+    },
+  ],
 })
 ```
 
@@ -582,9 +595,9 @@ export default defineConfig({
           // reply only to the client (if needed)
           client.send('my:ack', { msg: 'Hi! I got your message!' })
         })
-      }
-    }
-  ]
+      },
+    },
+  ],
 })
 ```
 

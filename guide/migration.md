@@ -99,7 +99,7 @@ Vite v3 默认在 SSR 构建时使用 ESM 格式。当使用 ESM 时，[SSR 外�
 import basicSsl from '@vitejs/plugin-basic-ssl'
 
 export default {
-  plugins: [basicSsl()]
+  plugins: [basicSsl()],
 }
 ```
 

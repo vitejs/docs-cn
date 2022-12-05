@@ -22,8 +22,8 @@ CommonJS 的依赖不应该排除在优化外。如果一个 ESM 依赖被排除
 ```js
 export default defineConfig({
   optimizeDeps: {
-    include: ['esm-dep > cjs-dep']
-  }
+    include: ['esm-dep > cjs-dep'],
+  },
 })
 ```
 

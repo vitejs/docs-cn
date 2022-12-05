@@ -8,15 +8,27 @@ Vite 旨在为常见的 web 开发工作提供开箱即用的支持。在搜索�
 
 ## 官方插件 {#official-plugins}
 
+<<<<<<< HEAD
 ### [@vitejs/plugin-vue](https://github.com/vitejs/vite/tree/main/packages/plugin-vue) {#vitejsplugin-vue}
+=======
+### [@vitejs/plugin-vue](https://github.com/vitejs/vite-plugin-vue/tree/main/packages/plugin-vue)
+>>>>>>> 7ce860a52dbad4cd91080c9416793e0add1b1ce8
 
 - 提供 Vue 3 单文件组件支持
 
+<<<<<<< HEAD
 ### [@vitejs/plugin-vue-jsx](https://github.com/vitejs/vite/tree/main/packages/plugin-vue-jsx) {#vitejsplugin-vue-jsx}
+=======
+### [@vitejs/plugin-vue-jsx](https://github.com/vitejs/vite-plugin-vue/tree/main/packages/plugin-vue-jsx)
+>>>>>>> 7ce860a52dbad4cd91080c9416793e0add1b1ce8
 
 - 提供 Vue 3 JSX 支持（通过 [专用的 Babel 转换插件](https://github.com/vuejs/jsx-next)）。
 
+<<<<<<< HEAD
 ### [@vitejs/plugin-react](https://github.com/vitejs/vite/tree/main/packages/plugin-react) {#vitejsplugin-react}
+=======
+### [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react)
+>>>>>>> 7ce860a52dbad4cd91080c9416793e0add1b1ce8
 
 - 提供完整的 React 支持
 
