@@ -39,8 +39,8 @@ export default defineConfig({
   build: {
     rollupOptions: {
       // https://rollupjs.org/guide/en/#big-list-of-options
-    }
-  }
+    },
+  },
 })
 ```
 
@@ -54,7 +54,7 @@ export default defineConfig({
 // vite.config.js
 import { splitVendorChunkPlugin } from 'vite'
 export default defineConfig({
-  plugins: [splitVendorChunkPlugin()]
+  plugins: [splitVendorChunkPlugin()],
 })
 ```
 
@@ -70,8 +70,8 @@ export default defineConfig({
   build: {
     watch: {
       // https://rollupjs.org/guide/en/#watch-options
-    }
-  }
+    },
+  },
 })
 ```
 
@@ -105,10 +105,10 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main: resolve(__dirname, 'index.html'),
-        nested: resolve(__dirname, 'nested/index.html')
-      }
-    }
-  }
+        nested: resolve(__dirname, 'nested/index.html'),
+      },
+    },
+  },
 })
 ```
 
@@ -132,7 +132,7 @@ export default defineConfig({
       entry: resolve(__dirname, 'lib/main.js'),
       name: 'MyLib',
       // the proper extensions will be added
-      fileName: 'my-lib'
+      fileName: 'my-lib',
     },
     rollupOptions: {
       // 确保外部化处理那些你不想打包进库的依赖
@@ -140,11 +140,11 @@ export default defineConfig({
       output: {
         // 在 UMD 构建模式下为这些外部化的依赖提供一个全局变量
         globals: {
-          vue: 'Vue'
-        }
-      }
-    }
-  }
+          vue: 'Vue',
+        },
+      },
+    },
+  },
 })
 ```
 

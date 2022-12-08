@@ -68,8 +68,13 @@ declare const __APP_VERSION__: string
 
 ```js
 const obj = {
+<<<<<<< HEAD
   __NAME__, // 不要以缩写形式定义对象属性
   __KEY__: value // 不要定义对象的 key
+=======
+  __NAME__, // Don't define object shorthand property names
+  __KEY__: value, // Don't define object key
+>>>>>>> c3b7ceba4348d06606f275c66449538582d9c13e
 }
 ```
 
@@ -234,13 +239,13 @@ export default defineConfig({
   css: {
     preprocessorOptions: {
       scss: {
-        additionalData: `$injectedColor: orange;`
+        additionalData: `$injectedColor: orange;`,
       },
       styl: {
-        additionalData: `$injectedColor ?= orange`
-      }
-    }
-  }
+        additionalData: `$injectedColor ?= orange`,
+      },
+    },
+  },
 })
 ```
 
@@ -278,8 +283,8 @@ export default defineConfig({
 export default defineConfig({
   esbuild: {
     jsxFactory: 'h',
-    jsxFragment: 'Fragment'
-  }
+    jsxFragment: 'Fragment',
+  },
 })
 ```
 
@@ -290,8 +295,8 @@ export default defineConfig({
 ```js
 export default defineConfig({
   esbuild: {
-    jsxInject: `import React from 'react'`
-  }
+    jsxInject: `import React from 'react'`,
+  },
 })
 ```
 
@@ -316,7 +321,7 @@ export default defineConfig({
 
 ```js
 export default defineConfig({
-  assetsInclude: ['**/*.gltf']
+  assetsInclude: ['**/*.gltf'],
 })
 ```
 
