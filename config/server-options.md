@@ -68,8 +68,8 @@ export default defineConfig({
 ```js
 export default defineConfig({
   server: {
-    open: '/docs/index.html'
-  }
+    open: '/docs/index.html',
+  },
 })
 ```
 
@@ -97,29 +97,34 @@ export default defineConfig({
       '/api': {
         target: 'http://jsonplaceholder.typicode.com',
         changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/api/, '')
+        rewrite: (path) => path.replace(/^\/api/, ''),
       },
       // 正则表达式写法：http://localhost:5173/fallback/ -> http://jsonplaceholder.typicode.com/
       '^/fallback/.*': {
         target: 'http://jsonplaceholder.typicode.com',
         changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/fallback/, '')
+        rewrite: (path) => path.replace(/^\/fallback/, ''),
       },
       // 使用 proxy 实例
       '/api': {
         target: 'http://jsonplaceholder.typicode.com',
         changeOrigin: true,
         configure: (proxy, options) => {
+<<<<<<< HEAD
           // proxy 是 'http-proxy' 的实例
         }
+=======
+          // proxy will be an instance of 'http-proxy'
+        },
+>>>>>>> 4008e8257dbc9104d20d8c1343e6d4107f7929b9
       },
       // 代理 websockets 或 socket.io 写法：ws://localhost:5173/socket.io -> ws://localhost:5174/socket.io
       '/socket.io': {
         target: 'ws://localhost:5174',
-        ws: true
-      }
-    }
-  }
+        ws: true,
+      },
+    },
+  },
 })
 ```
 
@@ -177,14 +182,14 @@ Vite 服务器默认会忽略对 `.git/` 和 `node_modules/` 目录的监听。�
 export default defineConfig({
   server: {
     watch: {
-      ignored: ['!**/node_modules/your-package-name/**']
-    }
+      ignored: ['!**/node_modules/your-package-name/**'],
+    },
   },
   // 被监听的包必须被排除在优化之外，
   // 以便它能出现在依赖关系图中并触发热更新。
   optimizeDeps: {
-    exclude: ['your-package-name']
-  }
+    exclude: ['your-package-name'],
+  },
 })
 ```
 
@@ -223,7 +228,12 @@ async function createServer() {
 
   // 以中间件模式创建 Vite 服务器
   const vite = await createViteServer({
+<<<<<<< HEAD
     server: { middlewareMode: 'ssr' }
+=======
+    server: { middlewareMode: true },
+    appType: 'custom', // don't include Vite's default HTML handling middlewares
+>>>>>>> 4008e8257dbc9104d20d8c1343e6d4107f7929b9
   })
   // 将 vite 的 connect 实例作中间件使用
   app.use(vite.middlewares)
@@ -270,10 +280,17 @@ Vite 将会搜索此根目录下潜在工作空间并作默认使用。一个有
 export default defineConfig({
   server: {
     fs: {
+<<<<<<< HEAD
       // 可以为项目根目录的上一级提供服务
       allow: ['..']
     }
   }
+=======
+      // Allow serving files from one level up to the project root
+      allow: ['..'],
+    },
+  },
+>>>>>>> 4008e8257dbc9104d20d8c1343e6d4107f7929b9
 })
 ```
 
@@ -288,11 +305,19 @@ export default defineConfig({
       allow: [
         // 搜索工作区的根目录
         searchForWorkspaceRoot(process.cwd()),
+<<<<<<< HEAD
         // 自定义规则
         '/path/to/custom/allow'
       ]
     }
   }
+=======
+        // your custom rules
+        '/path/to/custom/allow',
+      ],
+    },
+  },
+>>>>>>> 4008e8257dbc9104d20d8c1343e6d4107f7929b9
 })
 ```
 
@@ -314,7 +339,7 @@ export default defineConfig({
 ```js
 export default defineConfig({
   server: {
-    origin: 'http://127.0.0.1:8080'
-  }
+    origin: 'http://127.0.0.1:8080',
+  },
 })
 ```

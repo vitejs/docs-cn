@@ -1,11 +1,22 @@
+<<<<<<< HEAD
 # 从 v2 迁移 {#migration-from-v2}
 
 ## Node 支持 {#node-support}
 
 Vite 不再支持 Node 12 / 13 / 15，因为上述版本已经进入了 EOL 阶段。现在你必须使用 Node 14.18+ / 16+ 版本。
+=======
+# Migration from v3
+
+## Rollup 3
+
+Vite is now using [Rollup 3](https://github.com/vitejs/vite/issues/9870), which allowed us to simplify Vite's internal asset handling and has many improvements. See the [Rollup 3 release notes here](https://github.com/rollup/rollup/releases).
+
+Rollup 3 is mostly compatible with Rollup 2. If you are using custom [`rollupOptions`](../config/build-options.md#rollup-options) in your project and encounter issues, refer to the [Rollup migration guide](https://rollupjs.org/guide/en/#migration) to upgrade your config.
+>>>>>>> 4008e8257dbc9104d20d8c1343e6d4107f7929b9
 
 ## 现代浏览器基准线变化 {#modern-browser-baseline-change}
 
+<<<<<<< HEAD
 生产构建打包时会假定目标支持现代 JavaScript。默认情况下，Vite 的目标是支持 [原生 ES 模块](https://caniuse.com/es6-module)、[原生 ESM 动态导入](https://caniuse.com/es6-module-dynamic-import) 以及 [`import.meta`](https://caniuse.com/mdn-javascript_operators_import_meta) 的浏览器：
 
 - Chrome >=87
@@ -46,9 +57,13 @@ Vite v3 默认在 SSR 构建时使用 ESM 格式。当使用 ESM 时，[SSR 外�
 如果你无法在你的 SSR 项目中使用 ESM，你可以设置 `ssr.format: 'cjs'` 来生成一个 CJS 格式的产物。在这种情况下，会使用和 Vite v2 相同的外部化策略。
 
 同样 [`build.rollupOptions.output.inlineDynamicImports`](https://rollupjs.org/guide/en/#outputinlinedynamicimports) 现在在 `ssr.target` 是 `node` 时，也默认置为了 `false`。`inlineDynamicImports` 它会改变执行顺序，并且 node 构建不需要打包到单个文件。
+=======
+The modern browser build now targets `safari14` by default for wider ES2020 compatibility (bumped from `safari13`). This means that modern builds can now use [`BigInt`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt) and that the [nullish coalescing operator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Nullish_coalescing) isn't transpiled anymore. If you need to support older browsers, you can add [`@vitejs/plugin-legacy`](https://github.com/vitejs/vite/tree/main/packages/plugin-legacy) as usual.
+>>>>>>> 4008e8257dbc9104d20d8c1343e6d4107f7929b9
 
 ## 其他一般性变化 {#general-changes}
 
+<<<<<<< HEAD
 - SSR 和库模式中将会根据语法格式和包的类型，为输出的 JS 文件提供一个更合理的文件扩展名（`js`、`mjs` 或是 `cjs`）。
 - Terser 现在是一个可选依赖。如果你使用的是 `build.minify: 'terser'`，你需要手动安装它：
   ```
@@ -79,17 +94,36 @@ Vite v3 默认在 SSR 构建时使用 ESM 格式。当使用 ESM 时，[SSR 外�
 `import init from 'example.wasm'` 语法被弃用，以防止将来与 ["WASM 的 ESM 集成"](https://github.com/WebAssembly/esm-integration) 冲突。
 
 你可以使用 `?init` 参数，和之前的行为类似：
+=======
+### Encoding
 
-```diff
--import init from 'example.wasm'
-+import init from 'example.wasm?init'
+The build default charset is now utf8 (see [#10753](https://github.com/vitejs/vite/issues/10753) for details).
 
--init().then((exports) => {
-+init().then(({ exports }) => {
-  exports.test()
-})
+### Importing CSS as a String
+
+In Vite 3, importing the default export of a `.css` file could introduce a double loading of CSS.
+
+```ts
+import cssString from './global.css'
 ```
 
+This double loading could occur since a `.css` file will be emitted and it's likely that the CSS string will also be used by the application code — for example, injected by the framework runtime. From Vite 4, the `.css` default export [has been deprecated](https://github.com/vitejs/vite/issues/11094). The `?inline` query suffix modifier needs to be used in this case, as that doesn't emit the imported `.css` styles.
+
+```ts
+import stuff from './global.css?inline'
+```
+
+### Environment Variables
+
+Vite now uses `dotenv` 16 and `dotenv-expand` 9 (previously `dotenv` 14 and `dotenv-expand` 5). If you have a value including `#` or `` ` ``, you will need to wrap them with quotes.
+>>>>>>> 4008e8257dbc9104d20d8c1343e6d4107f7929b9
+
+```diff
+-VITE_APP=ab#cd`ef
++VITE_APP="ab#cd`ef"
+```
+
+<<<<<<< HEAD
 ### 自动生成 https 证书 {#automatic-https-certificate-generation}
 
 当使用 `https` 时需要一个合法可用的证书。在 Vite v2 中，如果没有配置证书，Vite 会自动生成和缓存一个自签名的证书。
@@ -111,11 +145,15 @@ export default {
 
 如果你想尝试该构建策略，你可以使用 `optimizeDeps.disabled: false`（在 v3 中默认是 `disabled: 'build'`）。`@rollup/plugin-commonjs`
 可以通过设置 `build.commonjsOptions: { include: [] }` 来移除。
+=======
+For more details, see the [`dotenv`](https://github.com/motdotla/dotenv/blob/master/CHANGELOG.md) and [`dotenv-expand` changelog](https://github.com/motdotla/dotenv-expand/blob/master/CHANGELOG.md).
+>>>>>>> 4008e8257dbc9104d20d8c1343e6d4107f7929b9
 
 ## 进阶 {#advanced}
 
 下列改动仅会影响到插件/工具的作者：
 
+<<<<<<< HEAD
 - [[#5868] refactor: remove deprecated api for 3.0](https://github.com/vitejs/vite/pull/5868)
   - `printHttpServerUrls` 被移除
   - `server.app`、`server.transformWithEsbuild` 被移除
@@ -129,9 +167,16 @@ export default {
   - `resolvePackageEntry`、`resolvePackageData` 在 CJS 构建中将不再可用（需要在 CJS 中使用动态导入）
 - [[#8626] refactor: type client maps](https://github.com/vitejs/vite/pull/8626)
   - `import.meta.hot.accept` 的回调函数类型现在更严格了。现在是 `(mod: (Record<string, any> & { [Symbol.toStringTag]: 'Module' }) | undefined) => void`（之前是 `(mod: any) => void`）。
+=======
+- [[#11036] feat(client)!: remove never implemented hot.decline](https://github.com/vitejs/vite/issues/11036)
+  - use `hot.invalidate` instead
+- [[#9669] feat: align object interface for `transformIndexHtml` hook](https://github.com/vitejs/vite/issues/9669)
+  - use `order` instead of `enforce`
+>>>>>>> 4008e8257dbc9104d20d8c1343e6d4107f7929b9
 
 此外，还有其他一些只影响少数用户的破坏性变化。
 
+<<<<<<< HEAD
 - [[#5018] feat: enable `generatedCode: 'es2015'` for rollup build](https://github.com/vitejs/vite/pull/5018)
   - 转义到 ES5 现在是必要的，即使用户代码仅含 ES5。
 - [[#7877] fix: vite client types](https://github.com/vitejs/vite/pull/7877)
@@ -146,3 +191,16 @@ export default {
 ## 从 v1 迁移 {#migration-from-v1}
 
 在 Vite v2 文档中查看 [Migration from v1 Guide](https://v2.vitejs.dev/guide/migration.html)（[中文版](https://cn.vitejs.dev/guide/migration-from-v1.html)），了解如何将你的应用迁移到 Vite v2，然后再处理本页中所提及的变化。
+=======
+- [[#11101] feat(ssr)!: remove dedupe and mode support for CJS](https://github.com/vitejs/vite/pull/11101)
+  - You should migrate to the default ESM mode for SSR, CJS SSR support may be removed in the next Vite major.
+- [[#10475] feat: handle static assets in case-sensitive manner](https://github.com/vitejs/vite/pull/10475)
+  - Your project shouldn't rely on an OS ignoring file names casing.
+- [[#10996] fix!: make `NODE_ENV` more predictable](https://github.com/vitejs/vite/pull/10996)
+  - Refer to the PR for an explanation about this change.
+- [[#10903] refactor(types)!: remove facade type files](https://github.com/vitejs/vite/pull/10903)
+
+## Migration from v2
+
+Check the [Migration from v2 Guide](https://v3.vitejs.dev/guide/migration.html) in the Vite v3 docs first to see the needed changes to port your app to Vite v3, and then proceed with the changes on this page.
+>>>>>>> 4008e8257dbc9104d20d8c1343e6d4107f7929b9

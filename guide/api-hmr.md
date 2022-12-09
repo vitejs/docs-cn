@@ -25,18 +25,17 @@ interface ViteHotContext {
   accept(dep: string, cb: (mod: ModuleNamespace | undefined) => void): void
   accept(
     deps: readonly string[],
-    cb: (mods: Array<ModuleNamespace | undefined>) => void
+    cb: (mods: Array<ModuleNamespace | undefined>) => void,
   ): void
 
   dispose(cb: (data: any) => void): void
   prune(cb: (data: any) => void): void
-  decline(): void
   invalidate(message?: string): void
 
   // `InferCustomEventPayload` provides types for built-in Vite events
   on<T extends string>(
     event: T,
-    cb: (payload: InferCustomEventPayload<T>) => void
+    cb: (payload: InferCustomEventPayload<T>) => void,
   ): void
   send<T extends string>(event: T, data?: InferCustomEventPayload<T>): void
 }
@@ -94,9 +93,15 @@ if (import.meta.hot) {
   import.meta.hot.accept(
     ['./foo.js', './bar.js'],
     ([newFooModule, newBarModule]) => {
+<<<<<<< HEAD
       // 只有当更新模块非空时，回调函数接收一个数组
       // 如果更新不成功（例如语法错误），则该数组为空
     }
+=======
+      // The callback receives an array where only the updated module is non null
+      // If the update was not succeful (syntax error for ex.), the array is empty
+    },
+>>>>>>> 4008e8257dbc9104d20d8c1343e6d4107f7929b9
   )
 }
 ```
@@ -139,7 +144,11 @@ if (import.meta.hot) {
 
 ## `hot.decline()` {#hot-decline}
 
+<<<<<<< HEAD
 调用 `import.meta.hot.decline()` 表示此模块不可热更新，如果在传播 HMR 更新时遇到此模块，浏览器应该执行完全重新加载。
+=======
+This is currently a noop and is there for backward compatibility. This could change in the future if there is a new usage for it. To indicate that the module is not hot-updatable, use `hot.invalidate()`.
+>>>>>>> 4008e8257dbc9104d20d8c1343e6d4107f7929b9
 
 ## `hot.invalidate(message?: string)` {#hot-invalidate}
 
