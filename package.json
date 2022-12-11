@@ -4,7 +4,6 @@
 	"description": "Vite.js documentation Chinese translation.",
 	"repository": "https://github.com/vitejs/docs-cn",
 	"author": "Evan You",
-	"license": "MIT",
 	"private": true,
 	"devDependencies": {
 		"chalk": "^4.1.0",

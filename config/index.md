@@ -1,7 +1,5 @@
 # 配置 Vite {#configuring-vite}
 
-## 配置文件 {#config-file}
-
 当以命令行方式运行 `vite` 时，Vite 会自动解析 [项目根目录](/guide/#index-html-and-project-root) 下名为 `vite.config.js` 的文件。
 
 最基础的配置文件是这样的：
@@ -23,7 +21,7 @@ vite --config my-config.js
 
 ## 配置智能提示 {#config-intellisense}
 
-因为 Vite 本身附带 Typescript 类型，所以你可以通过 IDE 和 jsdoc 的配合来实现智能提示：
+因为 Vite 本身附带 TypeScript 类型，所以你可以通过 IDE 和 jsdoc 的配合来实现智能提示：
 
 ```js
 /** @type {import('vite').UserConfig} */
@@ -80,7 +78,7 @@ export default defineConfig(async ({ command, mode }) => {
 })
 ```
 
-### 环境变量 {#environment-variables}
+## 环境变量 {#environment-variables}
 
 环境变量通常可以从 `process.env` 获得。
 

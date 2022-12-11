@@ -11,7 +11,7 @@ Pre-bundling dependencies: （正在预构建依赖：）
 
 ## 原因 {#the-why}
 
-这就是 Vite 执行的所谓的“依赖预构建”。这个过程有两个目的:
+这就是 Vite 执行时所做的“依赖预构建”。这个过程有两个目的:
 
 1. **CommonJS 和 UMD 兼容性:** 开发阶段中，Vite 的开发服务器将所有代码视为原生 ES 模块。因此，Vite 必须先将作为 CommonJS 或 UMD 发布的依赖项转换为 ESM。
 
@@ -40,7 +40,7 @@ Pre-bundling dependencies: （正在预构建依赖：）
 
 ## Monorepo 和链接依赖 {#monorepos-and-linked-dependencies}
 
-在一个 monorepo 启动中，该仓库中的某个依赖可能会成为另一个包的依赖。Vite 会自动侦测没有从 `node_modules` 解析的依赖项，并将链接的依赖视为源码。它不会尝试打包被链接的依赖，而是会分析被链接依赖的依赖列表。
+在一个 monorepo 启动中，该仓库中的某个包可能会成为另一个包的依赖。Vite 会自动侦测没有从 `node_modules` 解析的依赖项，并将链接的依赖视为源码。它不会尝试打包被链接的依赖，而是会分析被链接依赖的依赖列表。
 
 然而，这需要被链接的依赖被导出为 ESM 格式。如果不是，那么你可以在配置里将此依赖添加到 [`optimizeDeps.include`](/config/dep-optimization-options.md#optimizedeps-include) 和 [`build.commonjsOptions.include`](/config/build-options.md#build-commonjsoptions) 这两项中。
 
@@ -67,7 +67,7 @@ export default defineConfig({
 
 默认的依赖项发现为启发式可能并不总是可取的。在你想要显式地从列表中包含/排除依赖项的情况下, 请使用 [`optimizeDeps` 配置项](/config/dep-optimization-options.md)。
 
-当你遇到不能直接在源码中发现的 import 时，`optimizeDeps.include` 或 `optimizeDeps.exclude` 就是典型的用例。例如，import 可能是插件转换的结果。这意味着 Vite 无法在初始扫描时发现 import —— 它只能在浏览器请求文件时转换后才能发现。这将导致服务器在启动后立即重新打包。
+`optimizeDeps.include` 或 `optimizeDeps.exclude` 的一个典型使用场景，是当 Vite 在源码中无法直接发现 import 的时候。例如，import 可能是插件转换的结果。这意味着 Vite 无法在初始扫描时发现 import —— 只能在文件被浏览器请求并转换后才能发现。这将导致服务器在启动后立即重新打包。
 
 `include` 和 `exclude` 都可以用来处理这个问题。如果依赖项很大（包含很多内部模块）或者是 CommonJS，那么你应该包含它；如果依赖项很小，并且已经是有效的 ESM，则可以排除它，让浏览器直接加载它。
 

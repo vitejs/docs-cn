@@ -11,15 +11,4 @@ export default function(md) {
     const titleAndId = oldTitle(tokens, idx, options, env, slf);
     return removeAnchorFromTitle(titleAndId);
   };
-
-  const oldHeading = md.renderer.rules.heading_open;
-  md.renderer.rules.heading_open = (tokens, idx, options, env, slf) => {
-    const head = oldHeading(tokens, idx, options, env, slf);
-    const data = md.__data;
-    const headers = data.headers || (data.headers = []);
-    headers.forEach(element => {
-      element.title = removeAnchorFromTitle(element.title);
-    });
-    return head;
-  }
 };

@@ -385,7 +385,7 @@ const modules = {
 }
 ```
 
-当与 `eager` 一同存在时，甚至可能可以对这些模块进行 tree-shaking。
+当与 `eager` 一同存在时，甚至可以对这些模块进行 tree-shaking。
 
 ```ts
 const modules = import.meta.glob('./dir/*.js', { import: 'setup', eager: true })
@@ -492,7 +492,7 @@ init({
 请使用 [`vite-plugin-wasm`](https://github.com/Menci/vite-plugin-wasm) 或其他社区上的插件来处理。
 :::
 
-## Web Worker {#web-workers}
+## Web Workers {#web-workers}
 
 ### 通过构造器导入 {#import-with-constructors}
 
@@ -528,13 +528,13 @@ Worker 脚本也可以使用 `import` 语句来替代 `importScripts()` —— �
 import MyWorker from './worker?worker&inline'
 ```
 
-如果你想要将一个 URL 的形式读取该 worker，请添加 `url` 这个 query：
+如果你想要以一个 URL 的形式读取该 worker，请添加 `url` 这个 query：
 
 ```js
 import MyWorker from './worker?worker&url'
 ```
 
-查看 [Worker 选项](/config/worker-options.md) 了解更多关于如何配置打包全部 worker 的相关细节。workers.
+关于如何配置打包全部 worker，可以查看 [Worker 选项](/config/worker-options.md) 了解更多相关细节。
 
 ## 构建优化 {#build-optimizations}
 

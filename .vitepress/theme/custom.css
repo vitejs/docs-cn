@@ -57,6 +57,7 @@
   background: var(--c-brand);
   color: white;
   border-radius: 10px;
+  vertical-align: middle;
 }
 
 #wwads-container {

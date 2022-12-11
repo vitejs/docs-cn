@@ -48,7 +48,7 @@ export default defineConfig({
 
 ## 产物分块策略 {#chunking-strategy}
 
-你可以配置在使用 `build.rollupOptions.output.manualChunks` 时各个 chunk 是如何分割的（查看 [Rollup 相应文档](https://rollupjs.org/guide/en/#outputmanualchunks)）。到 Vite 2.8 时，默认的策略是将 chunk 分割为 `index` 和 `vendor`。这对一些 SPA 来说是好的策略，但是要对每一种用例目标都提供一种通用解决方案是非常困难的。从 Vite 2.9 起，`manualChunks` 默认情况下不再被更改。你可以通过在配置文件中添加 `splitVendorChunkPlugin` 来继续使用 “分割 Vendor Chunk” 策略：
+你可以通过配置 `build.rollupOptions.output.manualChunks` 来自定义 chunk 分割策略（查看 [Rollup 相应文档](https://rollupjs.org/guide/en/#outputmanualchunks)）。在 Vite 2.8 及更早版本中，默认的策略是将 chunk 分割为 `index` 和 `vendor`。这对一些 SPA 来说是好的策略，但是要对所有应用场景提供一种通用解决方案是非常困难的。从 Vite 2.9 起，`manualChunks` 默认情况下不再被更改。你可以通过在配置文件中添加 `splitVendorChunkPlugin` 来继续使用 “分割 Vendor Chunk” 策略：
 
 ```js
 // vite.config.js
@@ -60,7 +60,7 @@ export default defineConfig({
 
 也可以用一个工厂函数 `splitVendorChunk({ cache: SplitVendorChunkCache })` 来提供该策略，在需要与自定义逻辑组合的情况下，`cache.reset()` 需要在 `buildStart` 阶段被调用，以便构建的 watch 模式在这种情况下正常工作。
 
-## 文件变化时重新构建 {#rebuild-on-files-changs}
+## 文件变化时重新构建 {#rebuild-on-files-changes}
 
 你可以使用 `vite build --watch` 来启用 rollup 的监听器。或者，你可以直接通过 `build.watch` 调整底层的 [`WatcherOptions`](https://rollupjs.org/guide/en/#watch-options) 选项：
 

@@ -8,43 +8,29 @@ Vite 旨在为常见的 web 开发工作提供开箱即用的支持。在搜索�
 
 ## 官方插件 {#official-plugins}
 
-<<<<<<< HEAD
-### [@vitejs/plugin-vue](https://github.com/vitejs/vite/tree/main/packages/plugin-vue) {#vitejsplugin-vue}
-=======
-### [@vitejs/plugin-vue](https://github.com/vitejs/vite-plugin-vue/tree/main/packages/plugin-vue)
->>>>>>> 4008e8257dbc9104d20d8c1343e6d4107f7929b9
+### [@vitejs/plugin-vue](https://github.com/vitejs/vite-plugin-vue/tree/main/packages/plugin-vue) {#vitejsplugin-vue}
 
-- 提供 Vue 3 单文件组件支持
+- 提供 Vue 3 单文件组件支持。
 
-<<<<<<< HEAD
-### [@vitejs/plugin-vue-jsx](https://github.com/vitejs/vite/tree/main/packages/plugin-vue-jsx) {#vitejsplugin-vue-jsx}
-=======
-### [@vitejs/plugin-vue-jsx](https://github.com/vitejs/vite-plugin-vue/tree/main/packages/plugin-vue-jsx)
->>>>>>> 4008e8257dbc9104d20d8c1343e6d4107f7929b9
+### [@vitejs/plugin-vue-jsx](https://github.com/vitejs/vite-plugin-vue/tree/main/packages/plugin-vue-jsx) {#vitejsplugin-vue-jsx}
 
 - 提供 Vue 3 JSX 支持（通过 [专用的 Babel 转换插件](https://github.com/vuejs/jsx-next)）。
 
-<<<<<<< HEAD
-### [@vitejs/plugin-react](https://github.com/vitejs/vite/tree/main/packages/plugin-react) {#vitejsplugin-react}
+### [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react) {#vitejsplugin-react}
 
-- 提供完整的 React 支持
-=======
-### [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react)
+- 使用 esbuild 和 Babel，提供极速的 HMR 和一个微小体积的包脚注，同时提升灵活性，能够使用 Babel 的转换管线。
 
-- Uses esbuild and Babel, achieving fast HMR with a small package footprint and the flexibility of being able to use the Babel transform pipeline.
+### [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) {#vitejsplugin-react-swc}
 
-### [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc)
-
-- Uses esbuild during build, but replaces Babel with SWC during development. For big projects that don't require non-standard React extensions, cold start and Hot Module Replacement (HMR) can be significantly faster.
->>>>>>> 4008e8257dbc9104d20d8c1343e6d4107f7929b9
+- 在构建时使用 esbuild，但会在开发时使用 SWC 替换 Babel。对不需要标准 React 扩展的大型项目，冷启动和模块热替换（HMR）将会有显著提升。
 
 ### [@vitejs/plugin-legacy](https://github.com/vitejs/vite/tree/main/packages/plugin-legacy) {#vitejsplugin-legacy}
 
-- 为打包后的文件提供传统浏览器兼容性支持
+- 为打包后的文件提供传统浏览器兼容性支持。
 
 ## 社区插件 {#community-plugins}
 
-> 查看 [awesome-vite](https://github.com/vitejs/awesome-vite#plugins) - 你也可以通过 PR 的方式将你的插件添加到此列表中。
+查看 [awesome-vite](https://github.com/vitejs/awesome-vite#plugins) - 你也可以通过 PR 的方式将你的插件添加到此列表中。
 
 ## Rollup 插件 {#rollup-plugins}
 
