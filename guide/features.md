@@ -22,7 +22,7 @@ Vite 通过 HTTP 头来缓存请求得到的依赖，所以如果你想要编辑
 
 ## 模块热替换 {#hot-module-replacement}
 
-Vite 提供了一套原生 ESM 的 [HMR API](./api-hmr)。 具有 HMR 功能的框架可以利用该 API 提供即时、准确的更新，而无需重新加载页面或清除应用程序状态。Vite 内置了 HMR 到 [Vue 单文件组件（SFC）](https://github.com/vitejs/vite/tree/main/packages/plugin-vue) 和 [React Fast Refresh](https://github.com/vitejs/vite/tree/main/packages/plugin-react) 中。也通过 [@prefresh/vite](https://github.com/JoviDeCroock/prefresh/tree/main/packages/vite) 对 Preact 实现了官方集成。
+Vite 提供了一套原生 ESM 的 [HMR API](./api-hmr)。 具有 HMR 功能的框架可以利用该 API 提供即时、准确的更新，而无需重新加载页面或清除应用程序状态。Vite 内置了 HMR 到 [Vue 单文件组件（SFC）](https://github.com/vitejs/vite-plugin-vue/tree/main/packages/plugin-vue) 和 [React Fast Refresh](https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react) 中。也通过 [@prefresh/vite](https://github.com/JoviDeCroock/prefresh/tree/main/packages/vite) 对 Preact 实现了官方集成。
 
 注意，你不需要手动设置这些 —— 当你通过 [`create-vite`](./) 创建应用程序时，所选模板已经为你预先配置了这些。
 
@@ -120,8 +120,8 @@ declare module '*.svg' {
 
 Vite 为 Vue 提供第一优先级支持：
 
-- Vue 3 单文件组件支持：[@vitejs/plugin-vue](https://github.com/vitejs/vite/tree/main/packages/plugin-vue)
-- Vue 3 JSX 支持：[@vitejs/plugin-vue-jsx](https://github.com/vitejs/vite/tree/main/packages/plugin-vue-jsx)
+- Vue 3 单文件组件支持：[@vitejs/plugin-vue](https://github.com/vitejs/vite-plugin-vue/tree/main/packages/plugin-vue)
+- Vue 3 JSX 支持：[@vitejs/plugin-vue-jsx](https://github.com/vitejs/vite-plugin-vue/tree/main/packages/plugin-vue-jsx)
 - Vue 2.7 支持：[vitejs/vite-plugin-vue2](https://github.com/vitejs/vite-plugin-vue2)
 - Vue <2.7 的支持：[underfin/vite-plugin-vue2](https://github.com/underfin/vite-plugin-vue2)
 
@@ -129,7 +129,7 @@ Vite 为 Vue 提供第一优先级支持：
 
 `.jsx` 和 `.tsx` 文件同样开箱即用。JSX 的转译同样是通过 [esbuild](https://esbuild.github.io)。
 
-Vue 用户应使用官方提供的 [@vitejs/plugin-vue-jsx](https://github.com/vitejs/vite/tree/main/packages/plugin-vue-jsx) 插件，它提供了 Vue 3 特性的支持，包括 HMR，全局组件解析，指令和插槽。
+Vue 用户应使用官方提供的 [@vitejs/plugin-vue-jsx](https://github.com/vitejs/vite-plugin-vue/tree/main/packages/plugin-vue-jsx) 插件，它提供了 Vue 3 特性的支持，包括 HMR，全局组件解析，指令和插槽。
 
 如果不是在 React 或 Vue 中使用 JSX，自定义的 `jsxFactory` 和 `jsxFragment` 可以使用 [`esbuild` 选项](/config/shared-options.md#esbuild) 进行配置。例如对 Preact：
 
@@ -140,8 +140,8 @@ import { defineConfig } from 'vite'
 export default defineConfig({
   esbuild: {
     jsxFactory: 'h',
-    jsxFragment: 'Fragment'
-  }
+    jsxFragment: 'Fragment',
+  },
 })
 ```
 
@@ -155,8 +155,8 @@ import { defineConfig } from 'vite'
 
 export default defineConfig({
   esbuild: {
-    jsxInject: `import React from 'react'`
-  }
+    jsxInject: `import React from 'react'`,
+  },
 })
 ```
 
@@ -294,7 +294,7 @@ const modules = import.meta.glob('./dir/*.js')
 // vite 生成的代码
 const modules = {
   './dir/foo.js': () => import('./dir/foo.js'),
-  './dir/bar.js': () => import('./dir/bar.js')
+  './dir/bar.js': () => import('./dir/bar.js'),
 }
 ```
 
@@ -322,7 +322,7 @@ import * as __glob__0_0 from './dir/foo.js'
 import * as __glob__0_1 from './dir/bar.js'
 const modules = {
   './dir/foo.js': __glob__0_0,
-  './dir/bar.js': __glob__0_1
+  './dir/bar.js': __glob__0_1,
 }
 ```
 
@@ -340,7 +340,7 @@ const modules = import.meta.glob('./dir/*.js', { as: 'raw' })
 // code produced by vite（代码由 vite 输出）
 const modules = {
   './dir/foo.js': 'export default "foo"\n',
-  './dir/bar.js': 'export default "bar"\n'
+  './dir/bar.js': 'export default "bar"\n',
 }
 ```
 
@@ -365,7 +365,7 @@ const modules = import.meta.glob(['./dir/*.js', '!**/bar.js'])
 ```js
 // vite 生成的代码
 const modules = {
-  './dir/foo.js': () => import('./dir/foo.js')
+  './dir/foo.js': () => import('./dir/foo.js'),
 }
 ```
 
@@ -381,7 +381,7 @@ const modules = import.meta.glob('./dir/*.js', { import: 'setup' })
 // vite 生成的代码
 const modules = {
   './dir/foo.js': () => import('./dir/foo.js').then((m) => m.setup),
-  './dir/bar.js': () => import('./dir/bar.js').then((m) => m.setup)
+  './dir/bar.js': () => import('./dir/bar.js').then((m) => m.setup),
 }
 ```
 
@@ -397,7 +397,7 @@ import { setup as __glob__0_0 } from './dir/foo.js'
 import { setup as __glob__0_1 } from './dir/bar.js'
 const modules = {
   './dir/foo.js': __glob__0_0,
-  './dir/bar.js': __glob__0_1
+  './dir/bar.js': __glob__0_1,
 }
 ```
 
@@ -406,7 +406,7 @@ const modules = {
 ```ts
 const modules = import.meta.glob('./dir/*.js', {
   import: 'default',
-  eager: true
+  eager: true,
 })
 ```
 
@@ -416,7 +416,7 @@ import __glob__0_0 from './dir/foo.js'
 import __glob__0_1 from './dir/bar.js'
 const modules = {
   './dir/foo.js': __glob__0_0,
-  './dir/bar.js': __glob__0_1
+  './dir/bar.js': __glob__0_1,
 }
 ```
 
@@ -426,7 +426,7 @@ const modules = {
 
 ```ts
 const modules = import.meta.glob('./dir/*.js', {
-  query: { foo: 'bar', bar: true }
+  query: { foo: 'bar', bar: true },
 })
 ```
 
@@ -436,7 +436,7 @@ const modules = {
   './dir/foo.js': () =>
     import('./dir/foo.js?foo=bar&bar=true').then((m) => m.setup),
   './dir/bar.js': () =>
-    import('./dir/bar.js?foo=bar&bar=true').then((m) => m.setup)
+    import('./dir/bar.js?foo=bar&bar=true').then((m) => m.setup),
 }
 ```
 
@@ -478,8 +478,8 @@ init({
   imports: {
     someFunc: () => {
       /* ... */
-    }
-  }
+    },
+  },
 }).then(() => {
   /* ... */
 })
@@ -506,7 +506,7 @@ worker 构造函数会接受可以用来创建 “模块” worker 的选项：
 
 ```ts
 const worker = new Worker(new URL('./worker.js', import.meta.url), {
-  type: 'module'
+  type: 'module',
 })
 ```
 

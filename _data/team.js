@@ -5,64 +5,86 @@ export const core = [
     title: 'Creator',
     org: 'Vue.js',
     orgLink: 'https://vuejs.org/',
-    desc: '独立开源开发者，Vue.js & Vite 作者',
+    desc: 'Independent open source developer, creator of Vue.js and Vite.',
     links: [
       { icon: 'github', link: 'https://github.com/yyx990803' },
-      { icon: 'twitter', link: 'https://twitter.com/youyuxi' }
+      { icon: 'twitter', link: 'https://twitter.com/youyuxi' },
     ],
-    sponsor: 'https://github.com/sponsors/yyx990803'
+    sponsor: 'https://github.com/sponsors/yyx990803',
   },
   {
     avatar: 'https://www.github.com/patak-dev.png',
     name: 'Patak',
-    title: '合作伙伴',
+    title: 'A collaborative being',
     org: 'StackBlitz',
     orgLink: 'https://stackblitz.com/',
-    desc: 'Vite 核心团队成员，Vue 团队成员',
+    desc: 'Core team member of Vite. Team member of Vue.',
     links: [
       { icon: 'github', link: 'https://github.com/patak-dev' },
-      { icon: 'twitter', link: 'https://twitter.com/patak_dev' }
+      { icon: 'twitter', link: 'https://twitter.com/patak_dev' },
     ],
-    sponsor: 'https://github.com/sponsors/patak-dev'
+    sponsor: 'https://github.com/sponsors/patak-dev',
   },
   {
     avatar: 'https://www.github.com/antfu.png',
     name: 'Anthony Fu',
-    title: '极富热情的开源开发者',
+    title: 'A fanatical open sourceror',
     org: 'NuxtLabs',
     orgLink: 'https://nuxtlabs.com/',
-    desc: 'Vite & Vue 核心团队成员，在 NuxtLabs 工作',
+    desc: 'Core team member of Vite & Vue. Working at NuxtLabs.',
     links: [
       { icon: 'github', link: 'https://github.com/antfu' },
-      { icon: 'twitter', link: 'https://twitter.com/antfu7' }
+      { icon: 'twitter', link: 'https://twitter.com/antfu7' },
     ],
-    sponsor: 'https://github.com/sponsors/antfu'
+    sponsor: 'https://github.com/sponsors/antfu',
+  },
+  {
+    avatar: 'https://github.com/bluwy.png',
+    name: 'Bjorn Lu',
+    title: 'Open Source Developer',
+    desc: 'Astro core residency. Svelte and Vite core team member.',
+    links: [
+      { icon: 'github', link: 'https://github.com/bluwy' },
+      { icon: 'twitter', link: 'https://twitter.com/bluwyoo' },
+    ],
+    sponsor: 'https://bjornlu.com/sponsor',
+  },
+  {
+    avatar: 'https://github.com/sapphi-red.png',
+    name: 'green',
+    title: 'Web Developer',
+    desc: 'Vite team member. Call me sapphi or green or midori ;)',
+    links: [
+      { icon: 'github', link: 'https://github.com/sapphi-red' },
+      { icon: 'twitter', link: 'https://twitter.com/sapphi_red' },
+    ],
+    sponsor: 'https://github.com/sponsors/sapphi-red',
   },
   {
     avatar: 'https://github.com/sodatea.png',
-    name: '蒋豪群',
-    title: '开发者',
+    name: 'Haoqun Jiang',
+    title: 'Developer',
     org: 'Vue.js',
     orgLink: 'https://vuejs.org/',
-    desc: 'Vite/Vite 核心团队成员，全职开源开发者',
+    desc: 'Vite/Vite core team member. Full-time open sourcerer.',
     links: [
       { icon: 'github', link: 'https://github.com/sodatea' },
-      { icon: 'twitter', link: 'https://twitter.com/haoqunjiang' }
+      { icon: 'twitter', link: 'https://twitter.com/haoqunjiang' },
     ],
-    sponsor: 'https://github.com/sponsors/sodatea'
+    sponsor: 'https://github.com/sponsors/sodatea',
   },
   {
     avatar: 'https://github.com/Shinigami92.png',
     name: 'Shinigami',
-    title: '维护者',
+    title: 'Maintainer',
     org: 'Faker',
     orgLink: 'https://fakerjs.dev',
-    desc: '热衷于 TypeScript 的爱好者，广泛使用 Vue SPA 和 pug。',
+    desc: 'Passionate TypeScript enthusiast working extensively with Vue SPA and pug.',
     links: [
       { icon: 'github', link: 'https://github.com/Shinigami92' },
-      { icon: 'twitter', link: 'https://twitter.com/Shini_92' }
+      { icon: 'twitter', link: 'https://twitter.com/Shini_92' },
     ],
-    sponsor: 'https://github.com/sponsors/Shinigami92'
+    sponsor: 'https://github.com/sponsors/Shinigami92',
   },
   {
     avatar: 'https://i.imgur.com/KMed6rQ.jpeg',
@@ -71,42 +93,30 @@ export const core = [
     desc: 'Dabbling in social ecommerce, meta frameworks, and board games',
     links: [
       { icon: 'github', link: 'https://github.com/aleclarson' },
-      { icon: 'twitter', link: 'https://twitter.com/retropragma' }
+      { icon: 'twitter', link: 'https://twitter.com/retropragma' },
     ],
-    sponsor: 'https://github.com/sponsors/aleclarson'
-  },
-  {
-    avatar: 'https://github.com/bluwy.png',
-    name: 'Bjorn Lu',
-    title: '前端开发者',
-    desc: 'Svelte & Vite 团队成员',
-    links: [
-      { icon: 'github', link: 'https://github.com/bluwy' },
-      { icon: 'twitter', link: 'https://twitter.com/bluwyoo' }
-    ],
-    sponsor: 'https://bjornlu.com/sponsor'
+    sponsor: 'https://github.com/sponsors/aleclarson',
   },
   {
     avatar: 'https://github.com/poyoho.png',
     name: 'yoho',
-    title: '前端开发者',
-    desc: 'Vite 团队成员',
+    title: 'Frontend Developer',
+    desc: 'Frontend. Vite team member.',
     links: [
       { icon: 'github', link: 'https://github.com/poyoho' },
-      { icon: 'twitter', link: 'https://twitter.com/yoho_po' }
-    ]
+      { icon: 'twitter', link: 'https://twitter.com/yoho_po' },
+    ],
   },
   {
-    avatar: 'https://github.com/sapphi-red.png',
-    name: 'green',
-    title: 'Web 开发者',
-    desc: 'Vite 团队成员。（你可以叫我 sapphi、green（翠） 或者 midori）',
-    links: [
-      { icon: 'github', link: 'https://github.com/sapphi-red' },
-      { icon: 'twitter', link: 'https://twitter.com/sapphi_red' }
-    ],
-    sponsor: 'https://github.com/sponsors/sapphi-red'
+    avatar: 'https://github.com/ArnaudBarre.png',
+    name: 'Arnaud Barré',
+    title: 'Frontend Developer',
+    desc: 'Passionate by tooling around TypeScript and React.',
+    links: [{ icon: 'github', link: 'https://github.com/ArnaudBarre' }],
   },
+]
+
+export const emeriti = [
   {
     avatar: 'https://github.com/ygj6.png',
     name: 'ygj6',
@@ -114,8 +124,8 @@ export const core = [
     desc: 'Vue & Vite 团队成员',
     links: [
       { icon: 'github', link: 'https://github.com/ygj6' },
-      { icon: 'twitter', link: 'https://twitter.com/ygj_66' }
-    ]
+      { icon: 'twitter', link: 'https://twitter.com/ygj_66' },
+    ],
   },
   {
     avatar: 'https://github.com/Niputi.png',
@@ -125,12 +135,9 @@ export const core = [
     desc: 'Web/Javascript 爱好者',
     links: [
       { icon: 'github', link: 'https://github.com/Niputi' },
-      { icon: 'twitter', link: 'https://twitter.com/Niputi_' }
-    ]
-  }
-]
-
-export const emeriti = [
+      { icon: 'twitter', link: 'https://twitter.com/Niputi_' },
+    ],
+  },
   {
     avatar: 'https://github.com/underfin.png',
     name: 'underfin',

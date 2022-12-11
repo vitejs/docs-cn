@@ -48,7 +48,7 @@ import vitePlugin from 'vite-plugin-feature'
 import rollupPlugin from 'rollup-plugin-feature'
 
 export default defineConfig({
-  plugins: [vitePlugin(), rollupPlugin()]
+  plugins: [vitePlugin(), rollupPlugin()],
 })
 ```
 
@@ -72,7 +72,7 @@ import { defineConfig } from 'vite'
 import framework from 'vite-plugin-framework'
 
 export default defineConfig({
-  plugins: [framework()]
+  plugins: [framework()],
 })
 ```
 
@@ -98,7 +98,7 @@ export default function myPlugin() {
           map: null // 如果可行将提供 source map
         }
       }
-    }
+    },
   }
 }
 ```
@@ -127,7 +127,7 @@ export default function myPlugin() {
       if (id === resolvedVirtualModuleId) {
         return `export const msg = "from virtual module"`
       }
-    }
+    },
   }
 }
 ```
@@ -188,10 +188,10 @@ Vite 插件也可以提供钩子来服务于特定的 Vite 目标。这些钩子
     config: () => ({
       resolve: {
         alias: {
-          foo: 'bar'
-        }
-      }
-    })
+          foo: 'bar',
+        },
+      },
+    }),
   })
 
   // 直接改变配置（应仅在合并不起作用时使用）
@@ -201,7 +201,7 @@ Vite 插件也可以提供钩子来服务于特定的 Vite 目标。这些钩子
       if (command === 'build') {
         config.root = 'foo'
       }
-    }
+    },
   })
   ```
 
@@ -237,7 +237,7 @@ Vite 插件也可以提供钩子来服务于特定的 Vite 目标。这些钩子
         } else {
           // build: 由 Rollup 调用的插件
         }
-      }
+      },
     }
   }
   ```
@@ -259,7 +259,7 @@ Vite 插件也可以提供钩子来服务于特定的 Vite 目标。这些钩子
       server.middlewares.use((req, res, next) => {
         // 自定义请求处理...
       })
-    }
+    },
   })
   ```
 
@@ -278,7 +278,7 @@ Vite 插件也可以提供钩子来服务于特定的 Vite 目标。这些钩子
           // 自定义请求处理...
         })
       }
-    }
+    },
   })
   ```
 
@@ -298,7 +298,7 @@ Vite 插件也可以提供钩子来服务于特定的 Vite 目标。这些钩子
         if (server) {
           // 使用 server...
         }
-      }
+      },
     }
   }
   ```
@@ -322,7 +322,7 @@ Vite 插件也可以提供钩子来服务于特定的 Vite 目标。这些钩子
           // 自定义处理请求 ...
         })
       }
-    }
+    },
   })
   ```
 
@@ -348,9 +348,9 @@ Vite 插件也可以提供钩子来服务于特定的 Vite 目标。这些钩子
       transformIndexHtml(html) {
         return html.replace(
           /<title>(.*?)<\/title>/,
-          `<title>Title replaced!</title>`
+          `<title>Title replaced!</title>`,
         )
-      }
+      },
     }
   }
   ```
@@ -366,7 +366,7 @@ Vite 插件也可以提供钩子来服务于特定的 Vite 目标。这些钩子
       server?: ViteDevServer
       bundle?: import('rollup').OutputBundle
       chunk?: import('rollup').OutputChunk
-    }
+    },
   ) =>
     | IndexHtmlTransformResult
     | void
@@ -495,9 +495,9 @@ export default defineConfig({
     {
       ...example(),
       enforce: 'post',
-      apply: 'build'
-    }
-  ]
+      apply: 'build',
+    },
+  ],
 })
 ```
 
@@ -536,9 +536,9 @@ export default defineConfig({
       // ...
       configureServer(server) {
         server.ws.send('my:greetings', { msg: 'hello' })
-      }
-    }
-  ]
+      },
+    },
+  ],
 })
 ```
 
@@ -582,9 +582,9 @@ export default defineConfig({
           // reply only to the client (if needed)
           client.send('my:ack', { msg: 'Hi! I got your message!' })
         })
-      }
-    }
-  ]
+      },
+    },
+  ],
 })
 ```
 
