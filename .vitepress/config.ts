@@ -7,65 +7,6 @@ const ogImage = 'https://vitejs.dev/og-image.png'
 const ogTitle = 'Vite'
 const ogUrl = 'https://vitejs.dev'
 
-<<<<<<< HEAD
-=======
-// netlify envs
-const deployURL = process.env.DEPLOY_PRIME_URL || ''
-const commitRef = process.env.COMMIT_REF?.slice(0, 8) || 'dev'
-
-const deployType = (() => {
-  switch (deployURL) {
-    case 'https://main--vite-docs-main.netlify.app':
-      return 'main'
-    case '':
-      return 'local'
-    default:
-      return 'release'
-  }
-})()
-const additionalTitle = ((): string => {
-  switch (deployType) {
-    case 'main':
-      return ' (main branch)'
-    case 'local':
-      return ' (local)'
-    case 'release':
-      return ''
-  }
-})()
-const versionLinks = ((): DefaultTheme.NavItemWithLink[] => {
-  switch (deployType) {
-    case 'main':
-    case 'local':
-      return [
-        {
-          text: 'Vite 4 Docs (release)',
-          link: 'https://vitejs.dev',
-        },
-        {
-          text: 'Vite 3 Docs',
-          link: 'https://v3.vitejs.dev',
-        },
-        {
-          text: 'Vite 2 Docs',
-          link: 'https://v2.vitejs.dev',
-        },
-      ]
-    case 'release':
-      return [
-        {
-          text: 'Vite 3 Docs',
-          link: 'https://v3.vitejs.dev',
-        },
-        {
-          text: 'Vite 2 Docs',
-          link: 'https://v2.vitejs.dev',
-        },
-      ]
-  }
-})()
-
->>>>>>> 4008e8257dbc9104d20d8c1343e6d4107f7929b9
 export default defineConfig({
   title: 'Vite 官方中文文档',
   description: '下一代前端工具链',
@@ -100,13 +41,8 @@ export default defineConfig({
     logo: '/logo.svg',
 
     editLink: {
-<<<<<<< HEAD
-      text: '为此页提供修改建议',
       pattern: 'https://github.com/vitejs/docs-cn/edit/main/docs/:path',
-=======
-      pattern: 'https://github.com/vitejs/vite/edit/main/docs/:path',
-      text: 'Suggest changes to this page',
->>>>>>> 4008e8257dbc9104d20d8c1343e6d4107f7929b9
+      text: '为此页提供修改建议',
     },
 
     socialLinks: [
@@ -120,13 +56,8 @@ export default defineConfig({
       apiKey: 'deaab78bcdfe96b599497d25acc6460e',
       indexName: 'vitejs',
       searchParameters: {
-<<<<<<< HEAD
         facetFilters: ['tags:cn']
       }
-=======
-        facetFilters: ['tags:en'],
-      },
->>>>>>> 4008e8257dbc9104d20d8c1343e6d4107f7929b9
     },
 
     carbonAds: {
@@ -144,13 +75,8 @@ export default defineConfig({
     },
 
     footer: {
-<<<<<<< HEAD
       message: '根据 MIT 许可证发布。',
       copyright: 'Copyright © 2019-present Evan You & Vite Contributors'
-=======
-      message: `Released under the MIT License. (${commitRef})`,
-      copyright: 'Copyright © 2019-present Evan You & Vite Contributors',
->>>>>>> 4008e8257dbc9104d20d8c1343e6d4107f7929b9
     },
 
     nav: [
@@ -162,7 +88,6 @@ export default defineConfig({
         items: [
           { text: 'Team', link: '/team' },
           {
-<<<<<<< HEAD
             text: 'Twitter',
             link: 'https://twitter.com/vite_js'
           },
@@ -192,46 +117,15 @@ export default defineConfig({
         text: 'Version',
         items: [
           {
-            text: 'Vite v2 文档',
+            text: 'Vite v3 文档（英文）',
+            link: 'https://v3.vitejs.dev'
+          },
+          {
+            text: 'Vite v2 文档（英文）',
             link: 'https://v2.vitejs.dev'
-          }
+          },
         ]
       }
-=======
-            items: [
-              {
-                text: 'Twitter',
-                link: 'https://twitter.com/vite_js',
-              },
-              {
-                text: 'Discord Chat',
-                link: 'https://chat.vitejs.dev',
-              },
-              {
-                text: 'Awesome Vite',
-                link: 'https://github.com/vitejs/awesome-vite',
-              },
-              {
-                text: 'DEV Community',
-                link: 'https://dev.to/t/vite',
-              },
-              {
-                text: 'Rollup Plugins Compat',
-                link: 'https://vite-rollup-plugins.patak.dev/',
-              },
-              {
-                text: 'Changelog',
-                link: 'https://github.com/vitejs/vite/blob/main/packages/vite/CHANGELOG.md',
-              },
-            ],
-          },
-        ],
-      },
-      {
-        text: 'Version',
-        items: versionLinks,
-      },
->>>>>>> 4008e8257dbc9104d20d8c1343e6d4107f7929b9
     ],
 
     sidebar: {
@@ -240,7 +134,6 @@ export default defineConfig({
           text: '指引',
           items: [
             {
-<<<<<<< HEAD
               text: '为什么选 Vite',
               link: '/guide/why'
             },
@@ -297,84 +190,17 @@ export default defineConfig({
               link: '/guide/troubleshooting'
             },
             {
-              text: '从 v2 迁移',
+              text: '从 v3 迁移',
               link: '/guide/migration'
             }
           ]
-=======
-              text: 'Why Vite',
-              link: '/guide/why',
-            },
-            {
-              text: 'Getting Started',
-              link: '/guide/',
-            },
-            {
-              text: 'Features',
-              link: '/guide/features',
-            },
-            {
-              text: 'CLI',
-              link: '/guide/cli',
-            },
-            {
-              text: 'Using Plugins',
-              link: '/guide/using-plugins',
-            },
-            {
-              text: 'Dependency Pre-Bundling',
-              link: '/guide/dep-pre-bundling',
-            },
-            {
-              text: 'Static Asset Handling',
-              link: '/guide/assets',
-            },
-            {
-              text: 'Building for Production',
-              link: '/guide/build',
-            },
-            {
-              text: 'Deploying a Static Site',
-              link: '/guide/static-deploy',
-            },
-            {
-              text: 'Env Variables and Modes',
-              link: '/guide/env-and-mode',
-            },
-            {
-              text: 'Server-Side Rendering (SSR)',
-              link: '/guide/ssr',
-            },
-            {
-              text: 'Backend Integration',
-              link: '/guide/backend-integration',
-            },
-            {
-              text: 'Comparisons',
-              link: '/guide/comparisons',
-            },
-            {
-              text: 'Troubleshooting',
-              link: '/guide/troubleshooting',
-            },
-            {
-              text: 'Migration from v3',
-              link: '/guide/migration',
-            },
-          ],
->>>>>>> 4008e8257dbc9104d20d8c1343e6d4107f7929b9
         },
         {
           text: 'API',
           items: [
             {
-<<<<<<< HEAD
               text: '插件 API',
               link: '/guide/api-plugin'
-=======
-              text: 'Plugin API',
-              link: '/guide/api-plugin',
->>>>>>> 4008e8257dbc9104d20d8c1343e6d4107f7929b9
             },
             {
               text: 'HMR API',
@@ -385,26 +211,17 @@ export default defineConfig({
               link: '/guide/api-javascript',
             },
             {
-<<<<<<< HEAD
               text: '配置参考',
               link: '/config/'
             }
           ]
         }
-=======
-              text: 'Config Reference',
-              link: '/config/',
-            },
-          ],
-        },
->>>>>>> 4008e8257dbc9104d20d8c1343e6d4107f7929b9
       ],
       '/config/': [
         {
           text: '配置',
           items: [
             {
-<<<<<<< HEAD
               text: '配置 Vite',
               link: '/config/'
             },
@@ -450,42 +267,4 @@ export default defineConfig({
       md.use(MarkDownItCustomAnchor)
     }
   }
-=======
-              text: 'Configuring Vite',
-              link: '/config/',
-            },
-            {
-              text: 'Shared Options',
-              link: '/config/shared-options',
-            },
-            {
-              text: 'Server Options',
-              link: '/config/server-options',
-            },
-            {
-              text: 'Build Options',
-              link: '/config/build-options',
-            },
-            {
-              text: 'Preview Options',
-              link: '/config/preview-options',
-            },
-            {
-              text: 'Dep Optimization Options',
-              link: '/config/dep-optimization-options',
-            },
-            {
-              text: 'SSR Options',
-              link: '/config/ssr-options',
-            },
-            {
-              text: 'Worker Options',
-              link: '/config/worker-options',
-            },
-          ],
-        },
-      ],
-    },
-  },
->>>>>>> 4008e8257dbc9104d20d8c1343e6d4107f7929b9
 })

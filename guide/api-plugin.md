@@ -95,11 +95,7 @@ export default function myPlugin() {
       if (fileRegex.test(id)) {
         return {
           code: compileFileToJS(src),
-<<<<<<< HEAD
           map: null // 如果可行将提供 source map
-=======
-          map: null, // provide source map if available
->>>>>>> 4008e8257dbc9104d20d8c1343e6d4107f7929b9
         }
       }
     },
@@ -332,13 +328,8 @@ Vite 插件也可以提供钩子来服务于特定的 Vite 目标。这些钩子
 
 ### `transformIndexHtml` {#transformindexhtml}
 
-<<<<<<< HEAD
 - **类型：** `IndexHtmlTransformHook | { order?: 'pre' | 'post', handler: IndexHtmlTransformHook }`
 - **种类：** `async`, `sequential`
-=======
-- **Type:** `IndexHtmlTransformHook | { order?: 'pre' | 'post', handler: IndexHtmlTransformHook }`
-- **Kind:** `async`, `sequential`
->>>>>>> 4008e8257dbc9104d20d8c1343e6d4107f7929b9
 
   转换 `index.html` 的专用钩子。钩子接收当前的 HTML 字符串和转换上下文。上下文在开发期间暴露[`ViteDevServer`](./api-javascript#vitedevserver)实例，在构建期间暴露 Rollup 输出的包。
 
@@ -467,11 +458,7 @@ Vite 插件也可以提供钩子来服务于特定的 Vite 目标。这些钩子
 function myPlugin() {
   return {
     name: 'build-only',
-<<<<<<< HEAD
     apply: 'build' // 或 'serve'
-=======
-    apply: 'build', // or 'serve'
->>>>>>> 4008e8257dbc9104d20d8c1343e6d4107f7929b9
   }
 }
 ```

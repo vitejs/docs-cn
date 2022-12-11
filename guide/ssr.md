@@ -176,11 +176,7 @@ app.use('*', async (req, res, next) => {
 
 - 将 `vite` 开发服务器的创建和所有使用都移到 dev-only 条件分支后面，然后添加静态文件服务中间件来服务 `dist/client` 中的文件。
 
-<<<<<<< HEAD
-可以在此参考 [Vue](https://github.com/vitejs/vite/tree/main/playground/ssr-vue) 和 [React](https://github.com/vitejs/vite/tree/main/playground/ssr-react) 的设置范例。
-=======
-Refer to the [Vue](https://github.com/vitejs/vite-plugin-vue/tree/main/playground/ssr-vue) and [React](https://github.com/vitejs/vite-plugin-react/tree/main/playground/ssr-react) demos for a working setup.
->>>>>>> 4008e8257dbc9104d20d8c1343e6d4107f7929b9
+可以在此参考 [Vue](https://github.com/vitejs/vite-plugin-vue/tree/main/playground/ssr-vue) 和 [React](https://github.com/vitejs/vite-plugin-react/tree/main/playground/ssr-react) 的设置范例。
 
 ## 生成预加载指令 {#generating-preload-directives}
 
@@ -204,19 +200,11 @@ const html = await vueServerRenderer.renderToString(app, ctx)
 // ctx.modules 现在是一个渲染期间使用的模块 ID 的 Set
 ```
 
-<<<<<<< HEAD
-我们现在需要在 `server.js` 的生产环境分支下读取该清单，并将其传递到 `src/entry-server.js` 导出的 `render` 函数中。这将为我们提供足够的信息，来为异步路由相应的文件渲染预加载指令！查看 [示例代码](https://github.com/vitejs/vite/blob/main/playground/ssr-vue/src/entry-server.js) 获取完整示例。
-=======
-In the production branch of `server.js` we need to read and pass the manifest to the `render` function exported by `src/entry-server.js`. This would provide us with enough information to render preload directives for files used by async routes! See [demo source](https://github.com/vitejs/vite-plugin-vue/blob/main/playground/ssr-vue/src/entry-server.js) for a full example.
->>>>>>> 4008e8257dbc9104d20d8c1343e6d4107f7929b9
+我们现在需要在 `server.js` 的生产环境分支下读取该清单，并将其传递到 `src/entry-server.js` 导出的 `render` 函数中。这将为我们提供足够的信息，来为异步路由相应的文件渲染预加载指令！查看 [示例代码](https://github.com/vitejs/vite-plugin-vue/blob/main/playground/ssr-vue/src/entry-server.js) 获取完整示例。
 
 ## 预渲染 / SSG {#pre-rendering--ssg}
 
-<<<<<<< HEAD
-如果预先知道某些路由所需的路由和数据，我们可以使用与生产环境 SSR 相同的逻辑将这些路由预先渲染到静态 HTML 中。这也被视为一种静态站点生成（SSG）的形式。查看 [示例渲染代码](https://github.com/vitejs/vite/blob/main/playground/ssr-vue/prerender.js) 获取有效示例。
-=======
-If the routes and the data needed for certain routes are known ahead of time, we can pre-render these routes into static HTML using the same logic as production SSR. This can also be considered a form of Static-Site Generation (SSG). See [demo pre-render script](https://github.com/vitejs/vite-plugin-vue/blob/main/playground/ssr-vue/prerender.js) for working example.
->>>>>>> 4008e8257dbc9104d20d8c1343e6d4107f7929b9
+如果预先知道某些路由所需的路由和数据，我们可以使用与生产环境 SSR 相同的逻辑将这些路由预先渲染到静态 HTML 中。这也被视为一种静态站点生成（SSG）的形式。查看 [示例渲染代码](https://github.com/vitejs/vite-plugin-vue/blob/main/playground/ssr-vue/prerender.js) 获取有效示例。
 
 ## SSR 外部化 {#ssr-externals}
 

@@ -68,13 +68,8 @@ declare const __APP_VERSION__: string
 
 ```js
 const obj = {
-<<<<<<< HEAD
   __NAME__, // 不要以缩写形式定义对象属性
   __KEY__: value // 不要定义对象的 key
-=======
-  __NAME__, // Don't define object shorthand property names
-  __KEY__: value, // Don't define object key
->>>>>>> 4008e8257dbc9104d20d8c1343e6d4107f7929b9
 }
 ```
 
