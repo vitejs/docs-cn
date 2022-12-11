@@ -30,7 +30,19 @@ import cssString from './global.css'
 import stuff from './global.css?inline'
 ```
 
+<<<<<<< HEAD
 ### 环境变量 {#environment-variables}
+=======
+### Production Builds by Default
+
+`vite build` will now always build for production regardless of the `--mode` passed. Previously, changing `mode` to other than `production` would result in a development build. If you wish to still build for development, you can set `NODE_ENV=development` in the `.env.{mode}` file.
+
+In part of this change, `vite dev` and `vite build` will not override `process.env.`<wbr>`NODE_ENV` anymore if it is already defined. So if you've set `process.env.`<wbr>`NODE_ENV = 'development'` before building, it will also build for development. This gives more control when running multiple builds or dev servers in parallel.
+
+See the updated [`mode` documentation](https://vitejs.dev/guide/env-and-mode.html#modes) for more details.
+
+### Environment Variables
+>>>>>>> e4531c4af9e8aabef0904356caf7f68a8c93d4e7
 
 Vite 现在使用 `dotenv` 16 和 `dotenv-expand` 9（之前是 `dotenv` 14 和 `dotenv-expand` 5）如果你有一个包含 `#` 或者 `` ` `` 的值，你将需要将它们以双引号包裹起来。
 
