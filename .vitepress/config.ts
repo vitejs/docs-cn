@@ -28,27 +28,27 @@ export default defineConfig({
         src: 'https://cdn.usefathom.com/script.js',
         'data-site': 'CBDFBSLI',
         'data-spa': 'auto',
-        defer: ''
-      }
-    ]
+        defer: '',
+      },
+    ],
   ],
 
   vue: {
-    reactivityTransform: true
+    reactivityTransform: true,
   },
 
   themeConfig: {
     logo: '/logo.svg',
 
     editLink: {
+      pattern: 'https://github.com/vitejs/docs-cn/edit/main/docs/:path',
       text: '为此页提供修改建议',
-      pattern: 'https://github.com/vitejs/docs-cn/edit/main/:path'
     },
 
     socialLinks: [
       { icon: 'twitter', link: 'https://twitter.com/vite_js' },
       { icon: 'discord', link: 'https://chat.vitejs.dev' },
-      { icon: 'github', link: 'https://github.com/vitejs/vite' }
+      { icon: 'github', link: 'https://github.com/vitejs/vite' },
     ],
 
     algolia: {
@@ -62,7 +62,7 @@ export default defineConfig({
 
     carbonAds: {
       code: 'CEBIEK3N',
-      placement: 'vitejsdev'
+      placement: 'vitejsdev',
     },
 
     localeLinks: {
@@ -70,8 +70,8 @@ export default defineConfig({
       items: [
         { text: 'English', link: 'https://vitejs.dev' },
         { text: '日本語', link: 'https://ja.vitejs.dev' },
-        { text: 'Español', link: 'https://es.vitejs.dev' }
-      ]
+        { text: 'Español', link: 'https://es.vitejs.dev' },
+      ],
     },
 
     footer: {
@@ -117,9 +117,13 @@ export default defineConfig({
         text: 'Version',
         items: [
           {
-            text: 'Vite v2 文档',
+            text: 'Vite v3 文档（英文）',
+            link: 'https://v3.vitejs.dev'
+          },
+          {
+            text: 'Vite v2 文档（英文）',
             link: 'https://v2.vitejs.dev'
-          }
+          },
         ]
       }
     ],
@@ -140,6 +144,10 @@ export default defineConfig({
             {
               text: '功能',
               link: '/guide/features'
+            },
+            {
+              text: '命令行界面',
+              link: '/guide/cli'
             },
             {
               text: '使用插件',
@@ -182,7 +190,7 @@ export default defineConfig({
               link: '/guide/troubleshooting'
             },
             {
-              text: '从 v2 迁移',
+              text: '从 v3 迁移',
               link: '/guide/migration'
             }
           ]
@@ -196,11 +204,11 @@ export default defineConfig({
             },
             {
               text: 'HMR API',
-              link: '/guide/api-hmr'
+              link: '/guide/api-hmr',
             },
             {
               text: 'JavaScript API',
-              link: '/guide/api-javascript'
+              link: '/guide/api-javascript',
             },
             {
               text: '配置参考',

@@ -68,8 +68,8 @@ export default defineConfig({
 ```js
 export default defineConfig({
   server: {
-    open: '/docs/index.html'
-  }
+    open: '/docs/index.html',
+  },
 })
 ```
 
@@ -77,7 +77,9 @@ export default defineConfig({
 
 - **类型：** `Record<string, string | ProxyOptions>`
 
-为开发服务器配置自定义代理规则。期望接收一个 `{ key: options }` 对象。如果 key 值以 `^` 开头，将会被解释为 `RegExp`。`configure` 可用于访问 proxy 实例。
+为开发服务器配置自定义代理规则。期望接收一个 `{ key: options }` 对象。任何请求路径以 key 值开头的请求将被代理到对应的目标。如果 key 值以 `^` 开头，将被识别为 `RegExp`。`configure` 选项可用于访问 proxy 实例。
+
+请注意，如果使用了非相对的 [基础路径 `base`](/config/shared-options.md#base)，则必须在每个 key 值前加上该 `base`。
 
 使用 [`http-proxy`](https://github.com/http-party/node-http-proxy)。完整选项详见 [此处](https://github.com/http-party/node-http-proxy#options).
 
@@ -89,19 +91,19 @@ export default defineConfig({
 export default defineConfig({
   server: {
     proxy: {
-      // 字符串简写写法
+      // 字符串简写写法：http://localhost:5173/foo -> http://localhost:4567/foo
       '/foo': 'http://localhost:4567',
-      // 选项写法
+      // 带选项写法：http://localhost:5173/api/bar -> http://jsonplaceholder.typicode.com/bar
       '/api': {
         target: 'http://jsonplaceholder.typicode.com',
         changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/api/, '')
+        rewrite: (path) => path.replace(/^\/api/, ''),
       },
-      // 正则表达式写法
+      // 正则表达式写法：http://localhost:5173/fallback/ -> http://jsonplaceholder.typicode.com/
       '^/fallback/.*': {
         target: 'http://jsonplaceholder.typicode.com',
         changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/fallback/, '')
+        rewrite: (path) => path.replace(/^\/fallback/, ''),
       },
       // 使用 proxy 实例
       '/api': {
@@ -111,13 +113,13 @@ export default defineConfig({
           // proxy 是 'http-proxy' 的实例
         }
       },
-      // Proxying websockets or socket.io
+      // 代理 websockets 或 socket.io 写法：ws://localhost:5173/socket.io -> ws://localhost:5174/socket.io
       '/socket.io': {
-        target: 'ws://localhost:3000',
-        ws: true
-      }
-    }
-  }
+        target: 'ws://localhost:5174',
+        ws: true,
+      },
+    },
+  },
 })
 ```
 
@@ -175,14 +177,14 @@ Vite 服务器默认会忽略对 `.git/` 和 `node_modules/` 目录的监听。�
 export default defineConfig({
   server: {
     watch: {
-      ignored: ['!**/node_modules/your-package-name/**']
-    }
+      ignored: ['!**/node_modules/your-package-name/**'],
+    },
   },
   // 被监听的包必须被排除在优化之外，
   // 以便它能出现在依赖关系图中并触发热更新。
   optimizeDeps: {
-    exclude: ['your-package-name']
-  }
+    exclude: ['your-package-name'],
+  },
 })
 ```
 
@@ -221,7 +223,8 @@ async function createServer() {
 
   // 以中间件模式创建 Vite 服务器
   const vite = await createViteServer({
-    server: { middlewareMode: 'ssr' }
+    server: { middlewareMode: true },
+    appType: 'custom', // 不引入 Vite 默认的 HTML 处理中间件
   })
   // 将 vite 的 connect 实例作中间件使用
   app.use(vite.middlewares)
@@ -240,7 +243,7 @@ createServer()
 
 - **类型：** `string | undefined`
 
-在 HTTP 请求中预留此文件夹，用于代理 Vite 作为子文件夹时使用。应该以 `/` 字符开始和结束。
+在 HTTP 请求中预留此文件夹，用于代理 Vite 作为子文件夹时使用。应该以 `/` 字符开始。
 
 ## server.fs.strict {#server-fs-strict}
 
@@ -268,7 +271,7 @@ Vite 将会搜索此根目录下潜在工作空间并作默认使用。一个有
 export default defineConfig({
   server: {
     fs: {
-      // 可以为项目根目录的上一级提供服务
+      // 允许为项目根目录的上一级提供服务
       allow: ['..']
     }
   }
@@ -312,7 +315,7 @@ export default defineConfig({
 ```js
 export default defineConfig({
   server: {
-    origin: 'http://127.0.0.1:8080'
-  }
+    origin: 'http://127.0.0.1:8080',
+  },
 })
 ```

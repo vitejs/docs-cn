@@ -25,17 +25,17 @@ interface ViteHotContext {
   accept(dep: string, cb: (mod: ModuleNamespace | undefined) => void): void
   accept(
     deps: readonly string[],
-    cb: (mods: Array<ModuleNamespace | undefined>) => void
+    cb: (mods: Array<ModuleNamespace | undefined>) => void,
   ): void
 
   dispose(cb: (data: any) => void): void
-  decline(): void
-  invalidate(): void
+  prune(cb: (data: any) => void): void
+  invalidate(message?: string): void
 
   // `InferCustomEventPayload` provides types for built-in Vite events
   on<T extends string>(
     event: T,
-    cb: (payload: InferCustomEventPayload<T>) => void
+    cb: (payload: InferCustomEventPayload<T>) => void,
   ): void
   send<T extends string>(event: T, data?: InferCustomEventPayload<T>): void
 }
@@ -51,7 +51,7 @@ if (import.meta.hot) {
 }
 ```
 
-## `hot.accept(cb)` {#hot-acceptcb}
+## `hot.accept(cb)` {#hot-accept-cb}
 
 要接收模块自身，应使用 `import.meta.hot.accept`，参数为接收已更新模块的回调函数：
 
@@ -74,7 +74,7 @@ if (import.meta.hot) {
 
 这种简化的 HMR 实现对于大多数开发用例来说已经足够了，同时允许我们跳过生成代理模块的昂贵工作。
 
-## `hot.accept(deps, cb)`
+## `hot.accept(deps, cb)` {#hot-accept-deps-cb}
 
 模块也可以接受直接依赖项的更新，而无需重新加载自身：
 
@@ -93,13 +93,14 @@ if (import.meta.hot) {
   import.meta.hot.accept(
     ['./foo.js', './bar.js'],
     ([newFooModule, newBarModule]) => {
-      // 回调函数接收一个更新后模块的数组
+      // 只有当更新模块非空时，回调函数接收一个数组
+      // 如果更新不成功（例如语法错误），则该数组为空
     }
   )
 }
 ```
 
-## `hot.dispose(cb)`
+## `hot.dispose(cb)` {#hot-dispose-cb}
 
 一个接收自身的模块或一个期望被其他模块接收的模块可以使用 `hot.dispose` 来清除任何由其更新副本产生的持久副作用：
 
@@ -115,20 +116,35 @@ if (import.meta.hot) {
 }
 ```
 
+## `hot.prune(cb)` {#hot-prune-cb}
+
+注册一个回调，当模块在页面上不再被导入时调用。与 `hot.dispose` 相比，如果源代码更新时自行清理了副作用，你只需要在模块从页面上被删除时，使用此方法进行清理。Vite 目前在 `.css` 导入上使用此方法。
+
+```js
+function setupOrReuseSideEffect() {}
+
+setupOrReuseSideEffect()
+
+if (import.meta.hot) {
+  import.meta.hot.prune((data) => {
+    // 清理副作用
+  })
+}
+```
+
 ## `hot.data` {#hot-data}
 
 `import.meta.hot.data` 对象在同一个更新模块的不同实例之间持久化。它可以用于将信息从模块的前一个版本传递到下一个版本。
 
 ## `hot.decline()` {#hot-decline}
 
-调用 `import.meta.hot.decline()` 表示此模块不可热更新，如果在传播 HMR 更新时遇到此模块，浏览器应该执行完全重新加载。
+目前是一个空操作并暂留用于向后兼容。若有新的用途设计可能在未来会发生变更。要指明某模块是不可热更新的，请使用 `hot.invalidate()`。
 
-## `hot.invalidate()` {#hot-invalidate}
+## `hot.invalidate(message?: string)` {#hot-invalidate}
 
-一个接收自身的模块可以在运行时意识到它不能处理 HMR 更新，因此需要将更新强制传递给导入者。通过调用 `import.meta.hot.invalidate()`，HMR 服务将使调用方的导入失效，就像调用方不是接收自身的一样。
+一个接收自身的模块可以在运行时意识到它不能处理 HMR 更新，因此需要将更新强制传递给导入者。通过调用 `import.meta.hot.invalidate()`，HMR 服务将使调用方的导入失效，就像调用方不是接收自身的一样。这会同时在浏览器控制台和命令行中打印出一条信息，你可以传入这条信息，对发生失效的原因给予一些上下文。
 
 请注意，你应该总是调用 `import.meta.hot.accept`，即使你打算随后立即调用 `invalidate`，否则 HMR 客户端将不会监听未来对接收自身模块的更改。为了清楚地表达你的意图，我们建议在 `accept` 回调中调用 `invalidate`，例如：
-
 
 ```js
 import.meta.hot.accept((module) => {
@@ -146,6 +162,7 @@ import.meta.hot.accept((module) => {
 以下 HMR 事件由 Vite 自动触发：
 
 - `'vite:beforeUpdate'` 当更新即将被应用时（例如，一个模块将被替换）
+- `'vite:afterUpdate'` 当更新已经被应用时（例如，一个模块已被替换）
 - `'vite:beforeFullReload'` 当完整的重载即将发生时
 - `'vite:beforePrune'` 当不再需要的模块即将被剔除时
 - `'vite:invalidate'` 当使用 `import.meta.hot.invalidate()` 使一个模块失效时
@@ -153,7 +170,7 @@ import.meta.hot.accept((module) => {
 
 自定义 HMR 事件可以由插件发送。更多细节详见 [handleHotUpdate](./api-plugin#handleHotUpdate)。
 
-## `hot.send(event, data)`
+## `hot.send(event, data)` {##hot-send-event-data}
 
 发送自定义事件到 Vite 开发服务器。
 
