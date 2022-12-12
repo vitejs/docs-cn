@@ -30,19 +30,15 @@ import cssString from './global.css'
 import stuff from './global.css?inline'
 ```
 
-<<<<<<< HEAD
+### 默认情况下的生产构建 {#production-builds-by-default}
+
+不管所传递的 `--mode` 是什么，`vite build` 总是构建生产版本。之前，若将 `mode` 改为 `production` 之外的模式会构建开发版本，如果现在希望用于开发构建，可以在 `.env.{mode}` 文件中设置 `NODE_ENV=development`。
+
+在本次变动中，如果 `process.env.`<wbr>`NODE_ENV` 已经被定义，`vite dev` 和 `vite build` 将不再覆盖它。所以如果在构建前设置了 `process.env.`<wbr>`NODE_ENV = 'development'`，将会构建开发版本。这在并行执行多个构建或开发服务器时提供了更多的控制权。
+
+请参阅更新后的 [`mode` 文档](/guide/env-and-mode.md#modes) 了解更多详细信息。
+
 ### 环境变量 {#environment-variables}
-=======
-### Production Builds by Default
-
-`vite build` will now always build for production regardless of the `--mode` passed. Previously, changing `mode` to other than `production` would result in a development build. If you wish to still build for development, you can set `NODE_ENV=development` in the `.env.{mode}` file.
-
-In part of this change, `vite dev` and `vite build` will not override `process.env.`<wbr>`NODE_ENV` anymore if it is already defined. So if you've set `process.env.`<wbr>`NODE_ENV = 'development'` before building, it will also build for development. This gives more control when running multiple builds or dev servers in parallel.
-
-See the updated [`mode` documentation](https://vitejs.dev/guide/env-and-mode.html#modes) for more details.
-
-### Environment Variables
->>>>>>> e4531c4af9e8aabef0904356caf7f68a8c93d4e7
 
 Vite 现在使用 `dotenv` 16 和 `dotenv-expand` 9（之前是 `dotenv` 14 和 `dotenv-expand` 5）如果你有一个包含 `#` 或者 `` ` `` 的值，你将需要将它们以双引号包裹起来。
 
@@ -53,7 +49,7 @@ Vite 现在使用 `dotenv` 16 和 `dotenv-expand` 9（之前是 `dotenv` 14 和 
 
 了解更多详情，请查看 [`dotenv`](https://github.com/motdotla/dotenv/blob/master/CHANGELOG.md) 和 [`dotenv-expand` 更新日志](https://github.com/motdotla/dotenv-expand/blob/master/CHANGELOG.md)。
 
-## 进阶 {#advanced} {#advanced}
+## 进阶 {#advanced}
 
 下列改动仅会影响到插件/工具的作者：
 

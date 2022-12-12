@@ -57,11 +57,7 @@ export type { T }
 
 #### `useDefineForClassFields`
 
-<<<<<<< HEAD
-从 Vite v2.5.0 开始，如果 TypeScript 的 target 是 `ESNext`，此选项默认值则为 `true`。这与 [`tsc` v4.3.2 及以后版本的行为](https://github.com/microsoft/TypeScript/pull/42663) 一致。这也是标准的 ECMAScript 的运行时行为。
-=======
-Starting from Vite 2.5.0, the default value will be `true` if the TypeScript target is `ESNext` or `ES2022` or newer. It is consistent with the [behavior of `tsc` 4.3.2 and later](https://github.com/microsoft/TypeScript/pull/42663). It is also the standard ECMAScript runtime behavior.
->>>>>>> e4531c4af9e8aabef0904356caf7f68a8c93d4e7
+从 Vite v2.5.0 开始，如果 TypeScript 的 target 是 `ESNext` 或 `ES2022` 及更新版本，此选项默认值则为 `true`。这与 [`tsc` v4.3.2 及以后版本的行为](https://github.com/microsoft/TypeScript/pull/42663) 一致。这也是标准的 ECMAScript 的运行时行为。
 
 但对于那些习惯其他编程语言或旧版本 TypeScript 的开发者来说，这可能是违反直觉的。
 你可以参阅 [TypeScript 3.7 发布日志](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-3-7.html#the-usedefineforclassfields-flag-and-the-declare-property-modifier) 中了解更多关于如何兼容的信息。
