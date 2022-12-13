@@ -41,7 +41,7 @@ Vite 现在使用 `dotenv` 16 和 `dotenv-expand` 9（之前是 `dotenv` 14 和 
 
 了解更多详情，请查看 [`dotenv`](https://github.com/motdotla/dotenv/blob/master/CHANGELOG.md) 和 [`dotenv-expand` 更新日志](https://github.com/motdotla/dotenv-expand/blob/master/CHANGELOG.md)。
 
-## 进阶 {#advanced} {#advanced}
+## 进阶 {#advanced}
 
 下列改动仅会影响到插件/工具的作者：
 
