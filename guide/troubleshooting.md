@@ -51,7 +51,29 @@
 
 请注意，这些配置会持久作用，但需要 **重新启动**。
 
+<<<<<<< HEAD
 ### 431 Request Header Fields Too Large {#431-request-header-fields-too-large}
+=======
+### Network requests stop loading
+
+When using a self-signed SSL certificate, Chrome ignores all caching directives and reloads the content. Vite relies on these caching directives.
+
+To resolve the problem use a trusted SSL cert.
+
+See: [Cache problems](https://helpx.adobe.com/mt/experience-manager/kb/cache-problems-on-chrome-with-SSL-certificate-errors.html), [Chrome issue](https://bugs.chromium.org/p/chromium/issues/detail?id=110649#c8)
+
+#### macOS
+
+You can install a trusted cert via the CLI with this command:
+
+```
+security add-trusted-cert -d -r trustRoot -k ~/Library/Keychains/login.keychain-db your-cert.cer
+```
+
+Or, by importing it into the Keychain Access app and updating the trust of your cert to "Always Trust."
+
+### 431 Request Header Fields Too Large
+>>>>>>> b487b176946a6940b8f77176b07b19eed975456c
 
 当服务器或 WebSocket 服务收到一个较大的 HTTP 头，该请求可能会被遗落并且会显示下面这样的警告。
 
@@ -83,7 +105,15 @@ import './Foo.js' // 应该为 './foo.js'
 
 同时如果有依赖环，也会发生完全重载。要解决这个问题，请先尝试解决依赖循环。
 
+<<<<<<< HEAD
 ## 构建 {#build}
+=======
+### High number of HMR updates in console
+
+This can be caused by a circular dependency. To solve this, try breaking the loop.
+
+## Build
+>>>>>>> b487b176946a6940b8f77176b07b19eed975456c
 
 ### 构建产物因为 CORS 错误无法工作 {#built-file-does-not-work-because-of-cors-error}
 

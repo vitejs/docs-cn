@@ -1,5 +1,7 @@
 # Worker 选项 {#worker-options}
 
+Options related to Web Workers.
+
 ## worker.format
 
 - **类型：** `'es' | 'iife'`
