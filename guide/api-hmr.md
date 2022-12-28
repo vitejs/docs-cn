@@ -93,7 +93,7 @@ if (import.meta.hot) {
   import.meta.hot.accept(
     ['./foo.js', './bar.js'],
     ([newFooModule, newBarModule]) => {
-      // 只有当更新模块非空时，回调函数接收一个数组
+      // 只有当所更新的模块非空时，回调函数接收一个数组
       // 如果更新不成功（例如语法错误），则该数组为空
     }
   )
