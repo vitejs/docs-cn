@@ -58,7 +58,13 @@ export default defineConfig({
 - **类型：** `boolean | string`
 - **默认：** [`server.open`](#server_open)
 
+<<<<<<< HEAD
 开发服务器启动时，自动在浏览器中打开应用程序。当该值为字符串时，它将被用作 URL 的路径名。如果你想在你喜欢的某个浏览器打开该开发服务器，你可以设置环境变量 `process.env.BROWSER` （例如 `firefox`）。欲了解更多细节，请参阅 [`open` 包的源码](https://github.com/sindresorhus/open#app)。
+=======
+Automatically open the app in the browser on server start. When the value is a string, it will be used as the URL's pathname. If you want to open the server in a specific browser you like, you can set the env `process.env.BROWSER` (e.g. `firefox`). You can also set `process.env.BROWSER_ARGS` to pass additional arguments (e.g. `--incognito`).
+
+`BROWSER` and `BROWSER_ARGS` are also special environment variables you can set in the `.env` file to configure it. See [the `open` package](https://github.com/sindresorhus/open#app) for more details.
+>>>>>>> 3252d8751567c2305ecbcc43630adc2c66c4e007
 
 ## preview.proxy {#preview-proxy}
 
