@@ -6,7 +6,7 @@
 
 ## 总览 {#overview}
 
-Vite（法语意为 "快速的"，发音 `/vit/`<button id="play-vite-audio" onclick="document.getElementById('vite-audio').play();"><svg style="height:2em;width:2em"><use href="/voice.svg#voice" /></svg></button>，发音同 "veet"）是一种新型前端构建工具，能够显著提升前端开发体验。它主要由两部分组成：
+Vite（法语意为 "快速的"，发音 `/vit/`<button id="play-vite-audio" onclick="document.getElementById('vite-audio').play();" style="border: none; padding: 3px; border-radius: 4px; vertical-align: bottom;"><svg style="height:2em;width:2em"><use href="/voice.svg#voice" /></svg></button>，发音同 "veet"）是一种新型前端构建工具，能够显著提升前端开发体验。它主要由两部分组成：
 
 - 一个开发服务器，它基于 [原生 ES 模块](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules) 提供了 [丰富的内建功能](./features)，如速度快到惊人的 [模块热更新（HMR）](./features#hot-module-replacement)。
 
@@ -27,7 +27,7 @@ Vite 意在提供开箱即用的配置，同时它的 [插件 API](./api-plugin)
 目前支持的模板预设如下：
 
 |             JavaScript              |                TypeScript                 |
-| :---------------------------------: | :---------------------------------------: |
+|:-----------------------------------:|:-----------------------------------------:|
 | [vanilla](https://vite.new/vanilla) | [vanilla-ts](https://vite.new/vanilla-ts) |
 |     [vue](https://vite.new/vue)     |     [vue-ts](https://vite.new/vue-ts)     |
 |   [react](https://vite.new/react)   |   [react-ts](https://vite.new/react-ts)   |
