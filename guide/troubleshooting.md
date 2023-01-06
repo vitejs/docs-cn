@@ -51,6 +51,24 @@
 
 请注意，这些配置会持久作用，但需要 **重新启动**。
 
+### 网络请求停止加载 {#network-requests-stop-loading}
+
+使用自签名SSL证书时，Chrome 会忽略所有缓存指令并重新加载内容。而 Vite 依赖于这些缓存指令。
+
+要解决此问题，请使用受信任的SSL证书。
+
+请查看：[缓存问题](https://helpx.adobe.com/mt/experience-manager/kb/cache-problems-on-chrome-with-SSL-certificate-errors.html) 和相关的 [Chrome issue](https://bugs.chromium.org/p/chromium/issues/detail?id=110649#c8)
+
+#### macOS
+
+您可以使用以下命令通过 CLI 安装受信任的证书：
+
+```
+security add-trusted-cert -d -r trustRoot -k ~/Library/Keychains/login.keychain-db your-cert.cer
+```
+
+或者，通过将其导入 Keychain Access 应用程序并将您的证书的信任更新为“始终信任”。
+
 ### 431 Request Header Fields Too Large {#431-request-header-fields-too-large}
 
 当服务器或 WebSocket 服务收到一个较大的 HTTP 头，该请求可能会被遗落并且会显示下面这样的警告。
@@ -82,6 +100,10 @@ import './Foo.js' // 应该为 './foo.js'
 如果 HMR 不是由 Vite 或一个插件处理的，那么将进行完全的重新加载。
 
 同时如果有依赖环，也会发生完全重载。要解决这个问题，请先尝试解决依赖循环。
+
+### 控制台中大量热更新 {#high-number-of-hmr-updates-in-console}
+
+This can be caused by a circular dependency. To solve this, try breaking the loop.
 
 ## 构建 {#build}
 

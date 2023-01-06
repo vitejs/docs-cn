@@ -30,6 +30,14 @@ import cssString from './global.css'
 import stuff from './global.css?inline'
 ```
 
+### 默认情况下的生产构建 {#production-builds-by-default}
+
+不管所传递的 `--mode` 是什么，`vite build` 总是构建生产版本。之前，若将 `mode` 改为 `production` 之外的模式会构建开发版本，如果现在希望用于开发构建，可以在 `.env.{mode}` 文件中设置 `NODE_ENV=development`。
+
+在本次变动中，如果 `process.env.`<wbr>`NODE_ENV` 已经被定义，`vite dev` 和 `vite build` 将不再覆盖它。所以如果在构建前设置了 `process.env.`<wbr>`NODE_ENV = 'development'`，将会构建开发版本。这在并行执行多个构建或开发服务器时提供了更多的控制权。
+
+请参阅更新后的 [`mode` 文档](/guide/env-and-mode.md#modes) 了解更多详细信息。
+
 ### 环境变量 {#environment-variables}
 
 Vite 现在使用 `dotenv` 16 和 `dotenv-expand` 9（之前是 `dotenv` 14 和 `dotenv-expand` 5）如果你有一个包含 `#` 或者 `` ` `` 的值，你将需要将它们以双引号包裹起来。
