@@ -301,8 +301,13 @@ export default defineConfig({
 
 ## server.fs.deny {#server-fs-deny}
 
+<<<<<<< HEAD
 - **类型：** `string[]`
 - **类型：** `['.env', '.env.*', '*.{pem,crt}']`
+=======
+- **Type:** `string[]`
+- **Default:** `['.env', '.env.*', '*.{crt,pem}']`
+>>>>>>> e64ca5fc5e9b5afd42e4180e14dc486760b5c0ed
 
 用于限制 Vite 开发服务器提供敏感文件的黑名单。
 

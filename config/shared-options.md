@@ -170,8 +170,13 @@ Vite 有一个“允许的情景”列表，并且会匹配列表中第一个情
 
 ## resolve.extensions {#resolve-extensions}
 
+<<<<<<< HEAD
 - **类型：** `string[]`
 - **默认：** `['.mjs', '.js', '.ts', '.jsx', '.tsx', '.json']`
+=======
+- **Type:** `string[]`
+- **Default:** `['.mjs', '.js', '.mts', '.ts', '.jsx', '.tsx', '.json']`
+>>>>>>> e64ca5fc5e9b5afd42e4180e14dc486760b5c0ed
 
 导入时想要省略的扩展名列表。注意，**不** 建议忽略自定义导入类型的扩展名（例如：`.vue`），因为它会影响 IDE 和类型支持。
 
