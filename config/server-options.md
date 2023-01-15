@@ -302,7 +302,7 @@ export default defineConfig({
 ## server.fs.deny {#server-fs-deny}
 
 - **类型：** `string[]`
-- **类型：** `['.env', '.env.*', '*.{pem,crt}']`
+- **默认：** `['.env', '.env.*', '*.{crt,pem}']`
 
 用于限制 Vite 开发服务器提供敏感文件的黑名单。
 
