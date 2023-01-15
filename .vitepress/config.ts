@@ -44,6 +44,8 @@ export default defineConfig({
       pattern: 'https://github.com/vitejs/docs-cn/edit/main/:path',
       text: '为此页提供修改建议',
     },
+    
+    outlineTitle: '本页目录',
 
     socialLinks: [
       { icon: 'twitter', link: 'https://twitter.com/vite_js' },
