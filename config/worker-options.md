@@ -1,6 +1,6 @@
 # Worker 选项 {#worker-options}
 
-Options related to Web Workers.
+有关于 Web Worker 的选项。
 
 ## worker.format
 
