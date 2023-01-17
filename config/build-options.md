@@ -19,8 +19,13 @@
 
 ## build.modulePreload {#build-modulepreload}
 
+<<<<<<< HEAD
 - **类型：** `boolean | { polyfill?: boolean, resolveDependencies?: ResolveModulePreloadDependenciesFn }`
 - **默认值：** `true`
+=======
+- **Type:** `boolean | { polyfill?: boolean, resolveDependencies?: ResolveModulePreloadDependenciesFn }`
+- **Default:** `{ polyfill: true }`
+>>>>>>> ae17e2e2869acc4f842ea4374f6a32c757c0039c
 
 默认情况下，一个 [模块预加载 polyfill](https://guybedford.com/es-module-preloading-integrity#modulepreload-polyfill) 会被自动注入。该 polyfill 会自动注入到每个 `index.html` 入口的的代理模块中。如果构建通过 `build.rollupOptions.input` 被配置为了使用非 HTML 入口的形式，那么必须要在你的自定义入口中手动引入该 polyfill：
 
@@ -168,9 +173,15 @@ Git LFS 占位符会自动排除在内联之外，因为它们不包含它们所
 
 ## build.ssr {#build-ssr}
 
+<<<<<<< HEAD
 - **类型：** `boolean | string`
 - **默认值：** `undefined`
 - **相关链接：** [Server-Side Rendering](/guide/ssr)
+=======
+- **Type:** `boolean | string`
+- **Default:** `false`
+- **Related:** [Server-Side Rendering](/guide/ssr)
+>>>>>>> ae17e2e2869acc4f842ea4374f6a32c757c0039c
 
 生成面向 SSR 的构建。此选项的值可以是字符串，用于直接定义 SSR 的入口，也可以为 `true`，但这需要通过设置 `rollupOptions.input` 来指定 SSR 的入口。
 
