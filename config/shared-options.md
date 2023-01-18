@@ -33,11 +33,7 @@
 
 ## define {#define}
 
-<<<<<<< HEAD
-- **类型：** `Record<string, string>`
-=======
-- **Type:** `Record<string, any>`
->>>>>>> ae17e2e2869acc4f842ea4374f6a32c757c0039c
+- **类型：** `Record<string, any>`
 
 定义全局常量替换方式。其中每项在开发环境下会被定义在全局，而在构建时被静态替换。
 
