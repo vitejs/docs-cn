@@ -200,7 +200,11 @@ const html = await vueServerRenderer.renderToString(app, ctx)
 // ctx.modules 现在是一个渲染期间使用的模块 ID 的 Set
 ```
 
+<<<<<<< HEAD
 我们现在需要在 `server.js` 的生产环境分支下读取该清单，并将其传递到 `src/entry-server.js` 导出的 `render` 函数中。这将为我们提供足够的信息，来为异步路由相应的文件渲染预加载指令！查看 [示例代码](https://github.com/vitejs/vite-plugin-vue/blob/main/playground/ssr-vue/src/entry-server.js) 获取完整示例。
+=======
+In the production branch of `server.js` we need to read and pass the manifest to the `render` function exported by `src/entry-server.js`. This would provide us with enough information to render preload directives for files used by async routes! See [demo source](https://github.com/vitejs/vite-plugin-vue/blob/main/playground/ssr-vue/src/entry-server.js) for a full example. You can also use this information for [103 Early Hints](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/103).
+>>>>>>> 472335d69e069adf064bb9b4f73ec7e68c8ac1db
 
 ## 预渲染 / SSG {#pre-rendering--ssg}
 
