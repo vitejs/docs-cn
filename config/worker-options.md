@@ -17,6 +17,10 @@ worker 打包时的输出类型。
 
 ## worker.rollupOptions
 
+<<<<<<< HEAD
 - **类型：** [`RollupOptions`](https://rollupjs.org/guide/en/#big-list-of-options)
+=======
+- **Type:** [`RollupOptions`](https://rollupjs.org/configuration-options/)
+>>>>>>> c36f4ccfe75ce264a3636b9842c4d1061202a9c4
 
 用于打包 worker 的 Rollup 配置项。

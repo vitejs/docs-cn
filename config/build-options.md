@@ -6,7 +6,11 @@
 - **默认：** `'modules'`
 - **相关内容：** [浏览器兼容性](/guide/build#browser-compatibility)
 
+<<<<<<< HEAD
 设置最终构建的浏览器兼容目标。默认值是一个 Vite 特有的值——`'modules'`，这是指 [支持原生 ES 模块](https://caniuse.com/es6-module)、[原生 ESM 动态导入](https://caniuse.com/es6-module-dynamic-import) 和 [`import.meta`](https://caniuse.com/mdn-javascript_operators_import_meta) 的浏览器。
+=======
+Browser compatibility target for the final bundle. The default value is a Vite special value, `'modules'`, which targets browsers with [native ES Modules](https://caniuse.com/es6-module), [native ESM dynamic import](https://caniuse.com/es6-module-dynamic-import), and [`import.meta`](https://caniuse.com/mdn-javascript_operators_import_meta) support. Vite will replace `'modules'` to `['es2020', 'edge88', 'firefox78', 'chrome87', 'safari14']`
+>>>>>>> c36f4ccfe75ce264a3636b9842c4d1061202a9c4
 
 另一个特殊值是 “esnext” —— 即假设有原生动态导入支持，并且将会转译得尽可能小：
 
@@ -126,9 +130,15 @@ Git LFS 占位符会自动排除在内联之外，因为它们不包含它们所
 
 ## build.rollupOptions {#build-rollupoptions}
 
+<<<<<<< HEAD
 - **类型：** [`RollupOptions`](https://rollupjs.org/guide/en/#big-list-of-options)
 
 自定义底层的 Rollup 打包配置。这与从 Rollup 配置文件导出的选项相同，并将与 Vite 的内部 Rollup 选项合并。查看 [Rollup 选项文档](https://rollupjs.org/guide/en/#big-list-of-options) 获取更多细节。
+=======
+- **Type:** [`RollupOptions`](https://rollupjs.org/configuration-options/)
+
+Directly customize the underlying Rollup bundle. This is the same as options that can be exported from a Rollup config file and will be merged with Vite's internal Rollup options. See [Rollup options docs](https://rollupjs.org/configuration-options/) for more details.
+>>>>>>> c36f4ccfe75ce264a3636b9842c4d1061202a9c4
 
 ## build.commonjsOptions {#build-commonjsoptions}
 
@@ -233,8 +243,13 @@ npm add -D terser
 
 ## build.watch {#build-watch}
 
+<<<<<<< HEAD
 - **类型：** [`WatcherOptions`](https://rollupjs.org/guide/en/#watch-options)`| null`
 - **默认：** `null`
+=======
+- **Type:** [`WatcherOptions`](https://rollupjs.org/configuration-options/#watch)`| null`
+- **Default:** `null`
+>>>>>>> c36f4ccfe75ce264a3636b9842c4d1061202a9c4
 
 设置为 `{}` 则会启用 rollup 的监听器。对于只在构建阶段或者集成流程使用的插件很常用。
 
