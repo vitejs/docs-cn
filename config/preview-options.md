@@ -76,7 +76,11 @@ export default defineConfig({
 
 为开发服务器配置 CORS。此功能默认启用并支持任何来源。可传递一个 [options 对象](https://github.com/expressjs/cors) 来进行配置，或者传递 `false` 来禁用此行为。
 
+<<<<<<< HEAD
 ## preview.headers {#preview-headers}
+=======
+Configure CORS for the preview server. This is enabled by default and allows any origin. Pass an [options object](https://github.com/expressjs/cors#configuration-options) to fine tune the behavior or `false` to disable.
+>>>>>>> 0d4fabf5bdb7e336638aa417ad8a1f4a6e248660
 
 - **类型：** `OutgoingHttpHeaders`
 
