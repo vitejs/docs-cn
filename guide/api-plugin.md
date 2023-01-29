@@ -2,11 +2,7 @@
 
 Vite 插件扩展了设计出色的 Rollup 接口，带有一些 Vite 独有的配置项。因此，你只需要编写一个 Vite 插件，就可以同时为开发环境和生产环境工作。
 
-<<<<<<< HEAD
-**推荐在阅读下面的章节之前，首先阅读下 [Rollup 插件文档](https://rollupjs.org/guide/en/#plugin-development)**
-=======
-**It is recommended to go through [Rollup's plugin documentation](https://rollupjs.org/plugin-development/) first before reading the sections below.**
->>>>>>> 0d4fabf5bdb7e336638aa417ad8a1f4a6e248660
+**推荐在阅读下面的章节之前，首先阅读下 [Rollup 插件文档](https://rollupjs.org/plugin-development/)**
 
 ## 致插件创作者 {#authoring-a-plugin}
 
@@ -21,11 +17,7 @@ Vite 努力秉承开箱即用的原则，因此在创作一款新插件前，请
 
 ## 约定 {#conventions}
 
-<<<<<<< HEAD
-如果插件不使用 Vite 特有的钩子，可以作为 [兼容 Rollup 的插件](#rollup-plugin-compatibility) 来实现，推荐使用 [Rollup 插件名称约定](https://rollupjs.org/guide/en/#conventions)。
-=======
-If the plugin doesn't use Vite specific hooks and can be implemented as a [Compatible Rollup Plugin](#rollup-plugin-compatibility), then it is recommended to use the [Rollup Plugin naming conventions](https://rollupjs.org/plugin-development/#conventions).
->>>>>>> 0d4fabf5bdb7e336638aa417ad8a1f4a6e248660
+如果插件不使用 Vite 特有的钩子，可以作为 [兼容 Rollup 的插件](#rollup-plugin-compatibility) 来实现，推荐使用 [Rollup 插件名称约定](https://rollupjs.org/plugin-development/#conventions)。
 
 - Rollup 插件应该有一个带 `rollup-plugin-` 前缀、语义清晰的名称。
 - 在 package.json 中包含 `rollup-plugin` 和 `vite-plugin` 关键字。
@@ -154,11 +146,7 @@ console.log(msg)
 
 ## 通用钩子 {#universal-hooks}
 
-<<<<<<< HEAD
-在开发中，Vite 开发服务器会创建一个插件容器来调用 [Rollup 构建钩子](https://rollupjs.org/guide/en/#build-hooks)，与 Rollup 如出一辙。
-=======
-During dev, the Vite dev server creates a plugin container that invokes [Rollup Build Hooks](https://rollupjs.org/plugin-development/#build-hooks) the same way Rollup does it.
->>>>>>> 0d4fabf5bdb7e336638aa417ad8a1f4a6e248660
+在开发中，Vite 开发服务器会创建一个插件容器来调用 [Rollup 构建钩子](https://rollupjs.org/plugin-development/#build-hooks)，与 Rollup 如出一辙。
 
 以下钩子在服务器启动时被调用：
 
@@ -176,15 +164,9 @@ During dev, the Vite dev server creates a plugin container that invokes [Rollup 
 - [`buildEnd`](https://rollupjs.org/plugin-development/#buildend)
 - [`closeBundle`](https://rollupjs.org/plugin-development/#closebundle)
 
-<<<<<<< HEAD
-请注意 [`moduleParsed`](https://rollupjs.org/guide/en/#moduleparsed) 钩子在开发中是 **不会** 被调用的，因为 Vite 为了性能会避免完整的 AST 解析。
+请注意 [`moduleParsed`](https://rollupjs.org/plugin-development/#moduleparsed) 钩子在开发中是 **不会** 被调用的，因为 Vite 为了性能会避免完整的 AST 解析。
 
-[Output Generation Hooks](https://rollupjs.org/guide/en/#output-generation-hooks)（除了 `closeBundle`) 在开发中是 **不会** 被调用的。你可以认为 Vite 的开发服务器只调用了 `rollup.rollup()` 而没有调用 `bundle.generate()`。
-=======
-Note that the [`moduleParsed`](https://rollupjs.org/plugin-development/#moduleparsed) hook is **not** called during dev, because Vite avoids full AST parses for better performance.
-
-[Output Generation Hooks](https://rollupjs.org/plugin-development/#output-generation-hooks) (except `closeBundle`) are **not** called during dev. You can think of Vite's dev server as only calling `rollup.rollup()` without calling `bundle.generate()`.
->>>>>>> 0d4fabf5bdb7e336638aa417ad8a1f4a6e248660
+[Output Generation Hooks](https://rollupjs.org/plugin-development/#output-generation-hooks)（除了 `closeBundle`) 在开发中是 **不会** 被调用的。你可以认为 Vite 的开发服务器只调用了 `rollup.rollup()` 而没有调用 `bundle.generate()`。
 
 ## Vite 独有钩子 {#vite-specific-hooks}
 

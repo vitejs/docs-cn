@@ -33,13 +33,6 @@ export default defineConfig({
     ],
   ],
 
-  locales: {
-    root: { label: 'English' },
-    zh: { label: '简体中文', link: 'https://cn.vitejs.dev' },
-    ja: { label: '日本語', link: 'https://ja.vitejs.dev' },
-    es: { label: 'Español', link: 'https://es.vitejs.dev' },
-  },
-
   vue: {
     reactivityTransform: true,
   },
@@ -72,7 +65,6 @@ export default defineConfig({
       placement: 'vitejsdev',
     },
 
-<<<<<<< HEAD
     localeLinks: {
       text: '简体中文',
       items: [
@@ -82,8 +74,6 @@ export default defineConfig({
       ],
     },
 
-=======
->>>>>>> 0d4fabf5bdb7e336638aa417ad8a1f4a6e248660
     footer: {
       copyright:
         '本中文文档内容版权为 Vite 官方中文翻译团队所有，保留所有权利。'
