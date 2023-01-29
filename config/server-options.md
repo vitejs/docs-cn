@@ -129,7 +129,7 @@ export default defineConfig({
 
 - **类型：** `boolean | CorsOptions`
 
-为开发服务器配置 CORS。默认启用并允许任何源，传递一个 [选项对象](https://github.com/expressjs/cors) 来调整行为或设为 `false` 表示禁用。
+为开发服务器配置 CORS。默认启用并允许任何源，传递一个 [选项对象](https://github.com/expressjs/cors#configuration-options) 来调整行为或设为 `false` 表示禁用。
 
 ## server.headers {#server-headers}
 
