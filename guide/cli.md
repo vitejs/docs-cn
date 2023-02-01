@@ -4,7 +4,11 @@
 
 ### `vite` {#vite}
 
+<<<<<<< HEAD
 在当前目录下启动 Vite 开发服务器，将自动进入开发环境的观察模式和 CI 的运行模式。
+=======
+Start Vite dev server in the current directory.
+>>>>>>> d550a23a31b393f9fad0d2a4053adc1c65d4cc51
 
 #### 使用 {#usage}
 

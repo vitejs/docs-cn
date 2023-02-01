@@ -443,10 +443,15 @@ const modules = import.meta.glob('./dir/*.js', {
 ```ts
 // vite 生成的代码
 const modules = {
+<<<<<<< HEAD
   './dir/foo.js': () =>
     import('./dir/foo.js?foo=bar&bar=true'),
   './dir/bar.js': () =>
     import('./dir/bar.js?foo=bar&bar=true'),
+=======
+  './dir/foo.js': () => import('./dir/foo.js?foo=bar&bar=true'),
+  './dir/bar.js': () => import('./dir/bar.js?foo=bar&bar=true'),
+>>>>>>> d550a23a31b393f9fad0d2a4053adc1c65d4cc51
 }
 ```
 
