@@ -6,7 +6,7 @@
 - **默认：** `'modules'`
 - **相关内容：** [浏览器兼容性](/guide/build#browser-compatibility)
 
-设置最终构建的浏览器兼容目标。默认值是一个 Vite 特有的值——`'modules'`，这是指 [支持原生 ES 模块](https://caniuse.com/es6-module)、[原生 ESM 动态导入](https://caniuse.com/es6-module-dynamic-import) 和 [`import.meta`](https://caniuse.com/mdn-javascript_operators_import_meta) 的浏览器。
+设置最终构建的浏览器兼容目标。默认值是一个 Vite 特有的值：'modules'`，这是指 [支持原生 ES 模块](https://caniuse.com/es6-module)、[原生 ESM 动态导入](https://caniuse.com/es6-module-dynamic-import) 和 [`import.meta`](https://caniuse.com/mdn-javascript_operators_import_meta) 的浏览器。Vite 将替换 `modules` 为 `['es2020', 'edge88', 'firefox78', 'chrome87', 'safari14']`
 
 另一个特殊值是 “esnext” —— 即假设有原生动态导入支持，并且将会转译得尽可能小：
 
@@ -20,7 +20,7 @@
 ## build.modulePreload {#build-modulepreload}
 
 - **类型：** `boolean | { polyfill?: boolean, resolveDependencies?: ResolveModulePreloadDependenciesFn }`
-- **默认值：** `true`
+- **默认值：** `{ polyfill: true }`
 
 默认情况下，一个 [模块预加载 polyfill](https://guybedford.com/es-module-preloading-integrity#modulepreload-polyfill) 会被自动注入。该 polyfill 会自动注入到每个 `index.html` 入口的的代理模块中。如果构建通过 `build.rollupOptions.input` 被配置为了使用非 HTML 入口的形式，那么必须要在你的自定义入口中手动引入该 polyfill：
 
@@ -126,9 +126,9 @@ Git LFS 占位符会自动排除在内联之外，因为它们不包含它们所
 
 ## build.rollupOptions {#build-rollupoptions}
 
-- **类型：** [`RollupOptions`](https://rollupjs.org/guide/en/#big-list-of-options)
+- **类型：** [`RollupOptions`](https://rollupjs.org/configuration-options/)
 
-自定义底层的 Rollup 打包配置。这与从 Rollup 配置文件导出的选项相同，并将与 Vite 的内部 Rollup 选项合并。查看 [Rollup 选项文档](https://rollupjs.org/guide/en/#big-list-of-options) 获取更多细节。
+自定义底层的 Rollup 打包配置。这与从 Rollup 配置文件导出的选项相同，并将与 Vite 的内部 Rollup 选项合并。查看 [Rollup 选项文档](https://rollupjs.org/configuration-options/) 获取更多细节。
 
 ## build.commonjsOptions {#build-commonjsoptions}
 
@@ -169,8 +169,8 @@ Git LFS 占位符会自动排除在内联之外，因为它们不包含它们所
 ## build.ssr {#build-ssr}
 
 - **类型：** `boolean | string`
-- **默认值：** `undefined`
-- **相关链接：** [Server-Side Rendering](/guide/ssr)
+- **默认值：** `false`
+- **相关链接：** [服务端渲染](/guide/ssr)
 
 生成面向 SSR 的构建。此选项的值可以是字符串，用于直接定义 SSR 的入口，也可以为 `true`，但这需要通过设置 `rollupOptions.input` 来指定 SSR 的入口。
 
@@ -233,7 +233,7 @@ npm add -D terser
 
 ## build.watch {#build-watch}
 
-- **类型：** [`WatcherOptions`](https://rollupjs.org/guide/en/#watch-options)`| null`
+- **类型：** [`WatcherOptions`](https://rollupjs.org/configuration-options/#watch)`| null`
 - **默认：** `null`
 
 设置为 `{}` 则会启用 rollup 的监听器。对于只在构建阶段或者集成流程使用的插件很常用。

@@ -61,7 +61,9 @@ export default defineConfig({
 
 - **类型：** `boolean | string`
 
-在开发服务器启动时自动在浏览器中打开应用程序。当此值为字符串时，会被用作 URL 的路径名。若你想指定喜欢的浏览器打开服务器，你可以设置环境变量 `process.env.BROWSER`（例如：`firefox`）。查看 [这个 `open` 包](https://github.com/sindresorhus/open#app) 获取更多细节。
+开发服务器启动时，自动在浏览器中打开应用程序。当该值为字符串时，它将被用作 URL 的路径名。如果你想在你喜欢的某个浏览器打开该开发服务器，你可以设置环境变量 `process.env.BROWSER` （例如 `firefox`）。你还可以设置 `process.env.BROWSER_ARGS` 来传递额外的参数（例如 `--incognito`）。
+
+`BROWSER` 和 `BROWSER_ARGS` 都是特殊的环境变量，你可以将它们放在 `.env` 文件中进行设置，欲了解更多打开浏览器的更多内部细节，请参阅 [`open` 包的源码](https://github.com/sindresorhus/open#app)。
 
 **示例：**
 
@@ -127,7 +129,7 @@ export default defineConfig({
 
 - **类型：** `boolean | CorsOptions`
 
-为开发服务器配置 CORS。默认启用并允许任何源，传递一个 [选项对象](https://github.com/expressjs/cors) 来调整行为或设为 `false` 表示禁用。
+为开发服务器配置 CORS。默认启用并允许任何源，传递一个 [选项对象](https://github.com/expressjs/cors#configuration-options) 来调整行为或设为 `false` 表示禁用。
 
 ## server.headers {#server-headers}
 
@@ -300,7 +302,7 @@ export default defineConfig({
 ## server.fs.deny {#server-fs-deny}
 
 - **类型：** `string[]`
-- **默认：** `['.env', '.env.*', '*.{pem,crt}']`
+- **默认：** `['.env', '.env.*', '*.{crt,pem}']`
 
 用于限制 Vite 开发服务器提供敏感文件的黑名单。
 

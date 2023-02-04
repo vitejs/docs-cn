@@ -1,6 +1,6 @@
 # 故障排除 {#troubleshooting}
 
-> 你还可以查看 [Rollup 的故障排除指南](https://rollupjs.org/guide/en/#troubleshooting) 了解更多。
+> 你还可以查看 [Rollup 的故障排除指南](https://rollupjs.org/troubleshooting/) 了解更多。
 
 如果这里的建议并未帮助到你，请将你的问题发送到 [GitHub 讨论区](https://github.com/vitejs/vite/discussions) 或 [Vite Land Discord](https://chat.vitejs.dev) 的 `#help` 频道。
 
@@ -120,6 +120,16 @@ This can be caused by a circular dependency. To solve this, try breaking the loo
 你需要通过 `http` 协议访问该文件。最简单的办法就是使用 `npx vite preview`。
 
 ## 其他 {#others}
+
+### Module externalized for browser compatibility {#module-externalized-for-browser-compatibility}
+
+当你在浏览器中使用一个 Node.js 模块时，Vite 会输出以下警告：
+
+> Module "fs" has been externalized for browser compatibility. Cannot access "fs.readFile" in client code.
+
+这是因为 Vite 不会自动 polyfill Node.js 的内建模块。
+
+我们推荐你不要再浏览器中使用 Node.js 模块以减小包体积，尽管你可以为其手动添加 polyfill。如果该模块是被某个第三方库（这里意为某个在浏览器中使用的库）导入的，则建议向对应库提交一个 issue。
 
 ### Syntax Error / Type Error {#syntax-error-type-error-happens}
 

@@ -60,10 +60,12 @@ export default defineConfig({
 
 开发服务器启动时，自动在浏览器中打开应用程序。当该值为字符串时，它将被用作 URL 的路径名。如果你想在你喜欢的某个浏览器打开该开发服务器，你可以设置环境变量 `process.env.BROWSER` （例如 `firefox`）。欲了解更多细节，请参阅 [`open` 包的源码](https://github.com/sindresorhus/open#app)。
 
+`BROWSER` 和 `BROWSER_ARGS` 是两个特殊的环境变量，你可以在 `.env` 文件中设置它们用以配置本选项。查看 [`open` 这个包](https://github.com/sindresorhus/open#app) 了解更多详情。
+
 ## preview.proxy {#preview-proxy}
 
 - **类型：** `Record<string, string | ProxyOptions>`
-- **默认：** [`server.proxy`](#server_proxy)
+- **默认：** [`server.proxy`](./server-options#server-proxy)
 
 为开发服务器配置自定义代理规则。其值的结构为 `{ key: options }` 的对象。如果 key 以 `^` 开头，它将被识别为 `RegExp`，其中 `configure` 选项可用于访问代理实例。
 
@@ -74,7 +76,7 @@ export default defineConfig({
 - **类型：** `boolean | CorsOptions`
 - **默认：** [`server.cors`](#server_proxy)
 
-为开发服务器配置 CORS。此功能默认启用并支持任何来源。可传递一个 [options 对象](https://github.com/expressjs/cors) 来进行配置，或者传递 `false` 来禁用此行为。
+为开发服务器配置 CORS。此功能默认启用并支持任何来源。可传递一个 [options 对象](https://github.com/expressjs/cors#configuration-options) 来进行配置，或者传递 `false` 来禁用此行为。
 
 ## preview.headers {#preview-headers}
 

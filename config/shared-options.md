@@ -33,11 +33,11 @@
 
 ## define {#define}
 
-- **类型：** `Record<string, string>`
+- **类型：** `Record<string, any>`
 
 定义全局常量替换方式。其中每项在开发环境下会被定义在全局，而在构建时被静态替换。
 
-- 从 `2.0.0-beta.70` 开始，string 值会以原始表达式形式使用，所以如果定义了一个字符串常量，它需要被显式地打引号。（例如使用 `JSON.stringify`）
+- String 值会以原始表达式形式使用，所以如果定义了一个字符串常量，**它需要被显式地打引号。**（例如使用 `JSON.stringify`）
 
 - 为了与 [esbuild 的行为](https://esbuild.github.io/api/#define)保持一致，表达式必须为一个 JSON 对象（null、boolean、number、string、数组或对象），亦或是一个单独的标识符。
 
@@ -171,7 +171,7 @@ Vite 有一个“允许的情景”列表，并且会匹配列表中第一个情
 ## resolve.extensions {#resolve-extensions}
 
 - **类型：** `string[]`
-- **默认：** `['.mjs', '.js', '.ts', '.jsx', '.tsx', '.json']`
+- **默认：** `['.mjs', '.js', '.mts', '.ts', '.jsx', '.tsx', '.json']`
 
 导入时想要省略的扩展名列表。注意，**不** 建议忽略自定义导入类型的扩展名（例如：`.vue`），因为它会影响 IDE 和类型支持。
 
