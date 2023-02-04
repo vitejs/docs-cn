@@ -121,6 +121,16 @@ This can be caused by a circular dependency. To solve this, try breaking the loo
 
 ## 其他 {#others}
 
+### Module externalized for browser compatibility {#module-externalized-for-browser-compatibility}
+
+当你在浏览器中使用一个 Node.js 模块时，Vite 会输出以下警告：
+
+> Module "fs" has been externalized for browser compatibility. Cannot access "fs.readFile" in client code.
+
+这是因为 Vite 不会自动 polyfill Node.js 的内建模块。
+
+我们推荐你不要再浏览器中使用 Node.js 模块以减小包体积，尽管你可以为其手动添加 polyfill。如果该模块是被某个第三方库（这里意为某个在浏览器中使用的库）导入的，则建议向对应库提交一个 issue。
+
 ### Syntax Error / Type Error {#syntax-error-type-error-happens}
 
 Vite 无法处理、也不支持仅可在非严格模式（sloppy mode）下运行的代码。这是因为 Vite 使用了 ESM 并且始终在 ESM 中使用 [严格模式](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode)。

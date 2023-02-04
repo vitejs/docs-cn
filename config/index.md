@@ -78,7 +78,7 @@ export default defineConfig(async ({ command, mode }) => {
 })
 ```
 
-## 环境变量 {#environment-variables}
+## 在配置中使用环境变量 {#using-environment-variables-in-config}
 
 环境变量通常可以从 `process.env` 获得。
 

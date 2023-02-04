@@ -13,7 +13,7 @@ worker 打包时的输出类型。
 
 - **类型：** [`(Plugin | Plugin[])[]`](./shared-options#plugins)
 
-应用于 worker 打包的 Vite 插件。注意 [config.plugins](./shared-options#plugins) 不会应用于 worker，而是应该在这里配置所用到的插件。
+应用于 worker 打包的 Vite 插件。注意 [config.plugins](./shared-options#plugins) 仅会在开发（dev）阶段应用于 worker，若要配置在构建（build）阶段应用于 worker 的插件则应该在本选项这里配置。
 
 ## worker.rollupOptions
 
