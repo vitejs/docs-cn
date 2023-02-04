@@ -70,15 +70,9 @@ if (import.meta.hot) {
 
 “接受” 热更新的模块被认为是 **HMR 边界**。
 
-<<<<<<< HEAD
-请注意，Vite 的 HMR 实际上并不替换最初导入的模块：如果 HMR 边界模块从某个依赖重新导出其导入，则它应负责更新这些重新导出的模块（这些导出必须使用 `let`）。此外，从边界模块向上的导入者将不会收到更新。
+Vite 的 HMR 实际上并不替换最初导入的模块：如果 HMR 边界模块从某个依赖重新导出其导入，则它应负责更新这些重新导出的模块（这些导出必须使用 `let`）。此外，从边界模块向上的导入者将不会收到更新。这种简化的 HMR 实现对于大多数开发用例来说已经足够了，同时允许我们跳过生成代理模块的昂贵工作。
 
-这种简化的 HMR 实现对于大多数开发用例来说已经足够了，同时允许我们跳过生成代理模块的昂贵工作。
-=======
-Vite's HMR does not actually swap the originally imported module: if an HMR boundary module re-exports imports from a dep, then it is responsible for updating those re-exports (and these exports must be using `let`). In addition, importers up the chain from the boundary module will not be notified of the change. This simplified HMR implementation is sufficient for most dev use cases, while allowing us to skip the expensive work of generating proxy modules.
-
-Vite requires that the call to this function appears as `import.meta.hot.accept(` (whitespace-sensitive) in the source code in order for the module to accept update. This is a requirement of the static analysis that Vite does to enable HMR support for a module.
->>>>>>> d550a23a31b393f9fad0d2a4053adc1c65d4cc51
+Vite 要求这个函数的调用在源代码中显示为 `import.meta.hot.accept(`（对空格敏感），这样模块才能接受更新。这是 Vite 为使模块支持 HMR 而进行的静态分析的一个要求。
 
 ## `hot.accept(deps, cb)` {#hot-accept-deps-cb}
 
