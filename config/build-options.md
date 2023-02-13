@@ -6,7 +6,7 @@
 - **默认：** `'modules'`
 - **相关内容：** [浏览器兼容性](/guide/build#browser-compatibility)
 
-设置最终构建的浏览器兼容目标。默认值是一个 Vite 特有的值：'modules'`，这是指 [支持原生 ES 模块](https://caniuse.com/es6-module)、[原生 ESM 动态导入](https://caniuse.com/es6-module-dynamic-import) 和 [`import.meta`](https://caniuse.com/mdn-javascript_operators_import_meta) 的浏览器。Vite 将替换 `modules` 为 `['es2020', 'edge88', 'firefox78', 'chrome87', 'safari14']`
+设置最终构建的浏览器兼容目标。默认值是一个 Vite 特有的值：`'modules'`，这是指 [支持原生 ES 模块](https://caniuse.com/es6-module)、[原生 ESM 动态导入](https://caniuse.com/es6-module-dynamic-import) 和 [`import.meta`](https://caniuse.com/mdn-javascript_operators_import_meta) 的浏览器。Vite 将替换 `modules` 为 `['es2020', 'edge88', 'firefox78', 'chrome87', 'safari14']`
 
 另一个特殊值是 “esnext” —— 即假设有原生动态导入支持，并且将会转译得尽可能小：
 
