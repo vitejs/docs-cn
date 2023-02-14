@@ -33,7 +33,11 @@ import esmSvg from '../images/esm.svg?raw'
 
 ### 缓慢的更新 {#slow-updates}
 
+<<<<<<< HEAD
 基于打包器启动时，重建整个包的效率很低。原因显而易见：因为这样更新速度会随着应用体积增长而直线下降。
+=======
+When a file is edited in a bundler-based build setup, it is inefficient to rebuild the whole bundle for an obvious reason: the update speed will degrade linearly with the size of the app.
+>>>>>>> b16e713a02d64c16bd67fd83898bb4428c198f1a
 
 一些打包器的开发服务器将构建内容存入内存，这样它们只需要在文件更改时使模块图的一部分失活<sup>[[1]](#footnote-1)</sup>，但它也仍需要整个重新构建并重载页面。这样代价很高，并且重新加载页面会消除应用的当前状态，所以打包器支持了动态模块热替换（HMR）：允许一个模块 “热替换” 它自己，而不会影响页面其余部分。这大大改进了开发体验 —— 然而，在实践中我们发现，即使采用了 HMR 模式，其热更新速度也会随着应用规模的增长而显著下降。
 
