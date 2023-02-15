@@ -62,11 +62,17 @@ $ npm run preview
 
    如果你要部署在 `https://<USERNAME>.github.io/<REPO>/` 上，例如你的仓库地址为 `https://github.com/<USERNAME>/<REPO>`，那么请设置 `base` 为 `'/<REPO>/'`。
 
+<<<<<<< HEAD
 2. 在你的项目中，创建一个 `deploy.sh` 脚本，包含以下内容（注意高亮的行，按需使用），运行脚本来部署站点：
+=======
+2. Go to your GitHub Pages configuration in the repository settings page and choose the source of deployment as "GitHub Actions", this will lead you to create a workflow that builds and deploys your project, a sample workflow that installs dependencies and builds using npm is provided:
+>>>>>>> 4b4ef48a4a82ddc319e1887b143aeb00be407a4e
 
-   ```bash{16,24,27}
-   #!/usr/bin/env sh
+   ```yml
+   # Simple workflow for deploying static content to GitHub Pages
+   name: Deploy static content to Pages
 
+<<<<<<< HEAD
    # 发生错误时终止
    set -e
 
@@ -101,6 +107,59 @@ $ npm run preview
 :::
 
 ## GitLab Pages 配合 GitLab CI {#gitlab-pages-and-gitlab-ci}
+=======
+   on:
+     # Runs on pushes targeting the default branch
+     push:
+       branches: ['main']
+
+     # Allows you to run this workflow manually from the Actions tab
+     workflow_dispatch:
+
+   # Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+   permissions:
+     contents: read
+     pages: write
+     id-token: write
+
+   # Allow one concurrent deployment
+   concurrency:
+     group: 'pages'
+     cancel-in-progress: true
+
+   jobs:
+     # Single deploy job since we're just deploying
+     deploy:
+       environment:
+         name: github-pages
+         url: ${{ steps.deployment.outputs.page_url }}
+       runs-on: ubuntu-latest
+       steps:
+         - name: Checkout
+           uses: actions/checkout@v3
+         - name: Set up Node
+           uses: actions/setup-node@v3
+           with:
+             node-version: 18
+             cache: 'npm'
+         - name: Install dependencies
+           run: npm install
+         - name: Build
+           run: npm run build
+         - name: Setup Pages
+           uses: actions/configure-pages@v3
+         - name: Upload artifact
+           uses: actions/upload-pages-artifact@v1
+           with:
+             # Upload dist repository
+             path: './dist'
+         - name: Deploy to GitHub Pages
+           id: deployment
+           uses: actions/deploy-pages@v1
+   ```
+
+## GitLab Pages and GitLab CI
+>>>>>>> 4b4ef48a4a82ddc319e1887b143aeb00be407a4e
 
 1. 在 `vite.config.js` 中设置正确的 `base`。
 
