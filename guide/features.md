@@ -34,7 +34,11 @@ Vite 天然支持引入 `.ts` 文件。
 
 请注意，Vite 仅执行 `.ts` 文件的转译工作，**并不执行** 任何类型检查。并假定类型检查已经被你的 IDE 或构建过程处理了。
 
+<<<<<<< HEAD
 Vite 之所以不把类型检查作为转换过程的一部分，是因为这两项工作在本质上是不同的。转译可以在每个文件的基础上进行，与 Vite 的按需编译模式完全吻合。相比之下，类型检查需要了解整个模块图。把类型检查塞进 Vite 的转换管道，将不可避免地损害 Vite 的速度优势。
+=======
+The reason Vite does not perform type checking as part of the transform process is because the two jobs work fundamentally differently. Transpilation can work on a per-file basis and aligns perfectly with Vite's on-demand compile model. In comparison, type checking requires knowledge of the entire module graph. Shoe-horning type checking into Vite's transform pipeline will inevitably compromise Vite's speed benefits.
+>>>>>>> d13c3e024f6e26a511e477e245164d03c04fab6a
 
 Vite 的工作是尽可能快地将源模块转化为可以在浏览器中运行的形式。为此，我们建议将静态分析检查与 Vite 的转换管道分开。这一原则也适用于其他静态分析检查，例如 ESLint。
 
@@ -113,16 +117,26 @@ Vite 默认的类型定义是写给它的 Node.js API 的。要将其补充到�
 - `import.meta.hot` 上的 [HMR API](./api-hmr) 类型定义
 
 ::: tip
+<<<<<<< HEAD
 要覆盖默认的类型定义，请在三斜线注释前添加定义。例如，要为 React 组件中的 `*.svg` 文件定义类型：
+=======
+To override the default typing, add a type definition file that contains your typings. Then, add the type reference before `vite/client`.
+>>>>>>> d13c3e024f6e26a511e477e245164d03c04fab6a
 
-```ts
-declare module '*.svg' {
-  const content: React.FC<React.SVGProps<SVGElement>>
-  export default content
-}
+For example, to make the default import of `*.svg` a React component:
 
-/// <reference types="vite/client" />
-```
+- `vite-env-override.d.ts` (the file that contains your typings):
+  ```ts
+  declare module '*.svg' {
+    const content: React.FC<React.SVGProps<SVGElement>>
+    export default content
+  }
+  ```
+- The file containing the reference to `vite/client`:
+  ```ts
+  /// <reference types="./vite-env-override.d.ts" />
+  /// <reference types="vite/client" />
+  ```
 
 :::
 
