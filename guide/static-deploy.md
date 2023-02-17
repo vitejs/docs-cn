@@ -293,7 +293,7 @@ $ npx wrangler pages publish dist
 
 ## Render {#render}
 
-你可以在 [Render](https://render.com/) 你的 Vite 应用。
+你可以在 [Render](https://render.com/) 部署你的 Vite 应用。
 
 1. 创建一个 [Render 账号](https://dashboard.render.com/register)
 
