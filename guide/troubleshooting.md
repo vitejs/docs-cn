@@ -49,7 +49,13 @@
 - /etc/systemd/system.conf
 - /etc/systemd/user.conf
 
+<<<<<<< HEAD
 请注意，这些配置会持久作用，但需要 **重新启动**。
+=======
+For Ubuntu Linux, you may need to add the line `* - nofile 65536` to the file `/etc/security/limits.conf` instead of updating systemd config files.
+
+Note that these settings persist but a **restart is required**.
+>>>>>>> 229524eeb6264746d772796593453d1ac8acff03
 
 ### 网络请求停止加载 {#network-requests-stop-loading}
 
