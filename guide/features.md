@@ -113,16 +113,22 @@ Vite 默认的类型定义是写给它的 Node.js API 的。要将其补充到�
 - `import.meta.hot` 上的 [HMR API](./api-hmr) 类型定义
 
 ::: tip
-要覆盖默认的类型定义，请在三斜线注释前添加定义。例如，要为 React 组件中的 `*.svg` 文件定义类型：
+要覆盖默认的类型定义，请添加一个包含你所定义类型的文件，请在三斜线注释 reference `vite/client` 前添加定义。
 
-```ts
-declare module '*.svg' {
-  const content: React.FC<React.SVGProps<SVGElement>>
-  export default content
-}
+例如，要为 React 组件中的 `*.svg` 文件定义类型：
 
-/// <reference types="vite/client" />
-```
+- `vite-env-override.d.ts` (the file that contains your typings):
+  ```ts
+  declare module '*.svg' {
+    const content: React.FC<React.SVGProps<SVGElement>>
+    export default content
+  }
+  ```
+- The file containing the reference to `vite/client`:
+  ```ts
+  /// <reference types="./vite-env-override.d.ts" />
+  /// <reference types="vite/client" />
+  ```
 
 :::
 

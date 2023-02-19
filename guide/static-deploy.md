@@ -64,41 +64,59 @@ $ npm run preview
 
 2. 在你的项目中，创建一个 `deploy.sh` 脚本，包含以下内容（注意高亮的行，按需使用），运行脚本来部署站点：
 
-   ```bash{16,24,27}
-   #!/usr/bin/env sh
+   ```yml
+   # Simple workflow for deploying static content to GitHub Pages
+   name: Deploy static content to Pages
 
-   # 发生错误时终止
-   set -e
+   on:
+     # 仅在推送到默认分支时运行。
+     push:
+       branches: ['main']
 
-   # 构建
-   npm run build
+     # 这个选项可以使你手动在 Action tab 页面触发工作流
+     workflow_dispatch:      
 
-   # 进入构建文件夹
-   cd dist
+   # 设置 GITHUB_TOKEN 的权限，以允许部署到 GitHub Pages。
+   permissions:
+     contents: read
+     pages: write
+     id-token: write
 
-   # 放置 .nojekyll 以绕过 Jekyll 的处理。
-   echo > .nojekyll
-   
-   # 如果你要部署到自定义域名
-   # echo 'www.example.com' > CNAME
+   # 允许一个并发的部署
+   concurrency:
+     group: 'pages'
+     cancel-in-progress: true
 
-   git init
-   git checkout -B main
-   git add -A
-   git commit -m 'deploy'
-
-   # 如果你要部署在 https://<USERNAME>.github.io
-   # git push -f git@github.com:<USERNAME>/<USERNAME>.github.io.git main
-
-   # 如果你要部署在 https://<USERNAME>.github.io/<REPO>
-   # git push -f git@github.com:<USERNAME>/<REPO>.git main:gh-pages
-
-   cd -
+   jobs:
+     # 单次部署的工作描述
+     deploy:
+       environment:
+         name: github-pages
+         url: ${{ steps.deployment.outputs.page_url }}
+       runs-on: ubuntu-latest
+       steps:
+         - name: Checkout
+           uses: actions/checkout@v3
+         - name: Set up Node
+           uses: actions/setup-node@v3
+           with:
+             node-version: 18
+             cache: 'npm'
+         - name: Install dependencies
+           run: npm install
+         - name: Build
+           run: npm run build
+         - name: Setup Pages
+           uses: actions/configure-pages@v3
+         - name: Upload artifact
+           uses: actions/upload-pages-artifact@v1
+           with:
+             # Upload dist repository
+             path: './dist'
+         - name: Deploy to GitHub Pages
+           id: deployment
+           uses: actions/deploy-pages@v1
    ```
-
-::: tip
-你也可以在你的 CI 中配置该脚本，使得在每次推送代码时自动部署。
-:::
 
 ## GitLab Pages 配合 GitLab CI {#gitlab-pages-and-gitlab-ci}
 
