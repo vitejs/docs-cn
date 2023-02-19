@@ -22,19 +22,11 @@ Vite 旨在为常见的 web 开发工作提供开箱即用的支持。在搜索�
 
 ### [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react)
 
-<<<<<<< HEAD
-- 使用 esbuild 和 Babel，提供极速的 HMR 和一个微小体积的包脚注，同时提升灵活性，能够使用 Babel 的转换管线。
-=======
-- Uses esbuild and Babel, achieving fast HMR with a small package footprint and the flexibility of being able to use the Babel transform pipeline. Without additional Babel plugins, only esbuild is used during builds.
->>>>>>> 229524eeb6264746d772796593453d1ac8acff03
+- 使用 esbuild 和 Babel，使用一个微小体积的包脚注可以实现极速的 HMR，同时提升灵活性，能够使用 Babel 的转换管线。在构建时没有使用额外的 Babel 插件，只使用了 esbuild。
 
 ### [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) {#vitejsplugin-react-swc}
 
-<<<<<<< HEAD
-- 在构建时使用 esbuild，但会在开发时使用 SWC 替换 Babel。对不需要标准 React 扩展的大型项目，冷启动和模块热替换（HMR）将会有显著提升。
-=======
-- Replaces Babel with SWC during development. During builds, SWC+esbuild are used when using plugins, and esbuild only otherwise. For big projects that don't require non-standard React extensions, cold start and Hot Module Replacement (HMR) can be significantly faster.
->>>>>>> 229524eeb6264746d772796593453d1ac8acff03
+- 在开发时会将 Babel 替换为 SWC。在构建时，若使用了插件则会使用 SWC+esbuild，若没有使用插件则仅会用到 esbuild。对不需要标准 React 扩展的大型项目，冷启动和模块热替换（HMR）将会有显著提升。
 
 ### [@vitejs/plugin-legacy](https://github.com/vitejs/vite/tree/main/packages/plugin-legacy) {#vitejsplugin-legacy}
 

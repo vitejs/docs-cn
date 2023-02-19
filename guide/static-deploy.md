@@ -62,73 +62,33 @@ $ npm run preview
 
    如果你要部署在 `https://<USERNAME>.github.io/<REPO>/` 上，例如你的仓库地址为 `https://github.com/<USERNAME>/<REPO>`，那么请设置 `base` 为 `'/<REPO>/'`。
 
-<<<<<<< HEAD
 2. 在你的项目中，创建一个 `deploy.sh` 脚本，包含以下内容（注意高亮的行，按需使用），运行脚本来部署站点：
-=======
-2. Go to your GitHub Pages configuration in the repository settings page and choose the source of deployment as "GitHub Actions", this will lead you to create a workflow that builds and deploys your project, a sample workflow that installs dependencies and builds using npm is provided:
->>>>>>> 229524eeb6264746d772796593453d1ac8acff03
 
    ```yml
    # Simple workflow for deploying static content to GitHub Pages
    name: Deploy static content to Pages
 
-<<<<<<< HEAD
-   # 发生错误时终止
-   set -e
-
-   # 构建
-   npm run build
-
-   # 进入构建文件夹
-   cd dist
-
-   # 放置 .nojekyll 以绕过 Jekyll 的处理。
-   echo > .nojekyll
-   
-   # 如果你要部署到自定义域名
-   # echo 'www.example.com' > CNAME
-
-   git init
-   git checkout -B main
-   git add -A
-   git commit -m 'deploy'
-
-   # 如果你要部署在 https://<USERNAME>.github.io
-   # git push -f git@github.com:<USERNAME>/<USERNAME>.github.io.git main
-
-   # 如果你要部署在 https://<USERNAME>.github.io/<REPO>
-   # git push -f git@github.com:<USERNAME>/<REPO>.git main:gh-pages
-
-   cd -
-   ```
-
-::: tip
-你也可以在你的 CI 中配置该脚本，使得在每次推送代码时自动部署。
-:::
-
-## GitLab Pages 配合 GitLab CI {#gitlab-pages-and-gitlab-ci}
-=======
    on:
-     # Runs on pushes targeting the default branch
+     # 仅在推送到默认分支时运行。
      push:
        branches: ['main']
 
-     # Allows you to run this workflow manually from the Actions tab
-     workflow_dispatch:
+     # 这个选项可以使你手动在 Action tab 页面触发工作流
+     workflow_dispatch:      
 
-   # Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+   # 设置 GITHUB_TOKEN 的权限，以允许部署到 GitHub Pages。
    permissions:
      contents: read
      pages: write
      id-token: write
 
-   # Allow one concurrent deployment
+   # 允许一个并发的部署
    concurrency:
      group: 'pages'
      cancel-in-progress: true
 
    jobs:
-     # Single deploy job since we're just deploying
+     # 单次部署的工作描述
      deploy:
        environment:
          name: github-pages
@@ -158,8 +118,7 @@ $ npm run preview
            uses: actions/deploy-pages@v1
    ```
 
-## GitLab Pages and GitLab CI
->>>>>>> 229524eeb6264746d772796593453d1ac8acff03
+## GitLab Pages 配合 GitLab CI {#gitlab-pages-and-gitlab-ci}
 
 1. 在 `vite.config.js` 中设置正确的 `base`。
 
