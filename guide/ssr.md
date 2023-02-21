@@ -80,8 +80,13 @@ async function createServer() {
     appType: 'custom'
   })
 
+<<<<<<< HEAD
   // 使用 vite 的 Connect 实例作为中间件
   // 如果你使用了自己的 express 路由（express.Router()），你应该使用 router.use
+=======
+  // Use vite's connect instance as middleware. If you use your own
+  // express router (express.Router()), you should use router.use
+>>>>>>> 06028da570a7952c81e65d8c161b92e73d8ef4b3
   app.use(vite.middlewares)
 
   app.use('*', async (req, res) => {
@@ -109,6 +114,7 @@ app.use('*', async (req, res, next) => {
       'utf-8',
     )
 
+<<<<<<< HEAD
     // 2. 应用 Vite HTML 转换。这将会注入 Vite HMR 客户端，
     //    同时也会从 Vite 插件应用 HTML 转换。
     //    例如：@vitejs/plugin-react 中的 global preambles
@@ -122,6 +128,21 @@ app.use('*', async (req, res, next) => {
     // 4. 渲染应用的 HTML。这假设 entry-server.js 导出的 `render`
     //    函数调用了适当的 SSR 框架 API。
     //    例如 ReactDOMServer.renderToString()
+=======
+    // 2. Apply Vite HTML transforms. This injects the Vite HMR client,
+    //    and also applies HTML transforms from Vite plugins, e.g. global
+    //    preambles from @vitejs/plugin-react
+    template = await vite.transformIndexHtml(url, template)
+
+    // 3. Load the server entry. ssrLoadModule automatically transforms
+    //    ESM source code to be usable in Node.js! There is no bundling
+    //    required, and provides efficient invalidation similar to HMR.
+    const { render } = await vite.ssrLoadModule('/src/entry-server.js')
+
+    // 4. render the app HTML. This assumes entry-server.js's exported
+    //     `render` function calls appropriate framework SSR APIs,
+    //    e.g. ReactDOMServer.renderToString()
+>>>>>>> 06028da570a7952c81e65d8c161b92e73d8ef4b3
     const appHtml = await render(url)
 
     // 5. 注入渲染后的应用程序 HTML 到模板中。
@@ -130,8 +151,13 @@ app.use('*', async (req, res, next) => {
     // 6. 返回渲染后的 HTML。
     res.status(200).set({ 'Content-Type': 'text/html' }).end(html)
   } catch (e) {
+<<<<<<< HEAD
     // 如果捕获到了一个错误，让 Vite 来修复该堆栈，这样它就可以映射回
     // 你的实际源码中。
+=======
+    // If an error is caught, let Vite fix the stack trace so it maps back
+    // to your actual source code.
+>>>>>>> 06028da570a7952c81e65d8c161b92e73d8ef4b3
     vite.ssrFixStacktrace(e)
     next(e)
   }

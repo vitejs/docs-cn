@@ -78,7 +78,11 @@ modulePreload: {
 - **类型：** `string`
 - **默认：** `assets`
 
+<<<<<<< HEAD
 指定生成静态资源的存放路径（相对于 `build.outDir`）。
+=======
+Specify the directory to nest generated assets under (relative to `build.outDir`. This is not used in [Library Mode](/guide/build#library-mode)).
+>>>>>>> 06028da570a7952c81e65d8c161b92e73d8ef4b3
 
 ## build.assetsInlineLimit {#build-assetsinlinelimit}
 
