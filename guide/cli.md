@@ -47,6 +47,7 @@ vite build [root]
 
 #### 选项 {#options-1}
 
+<<<<<<< HEAD
 | 选项                           |                                                                                               |
 | ------------------------------ | -------------------------------------------------------------------------------------------- |
 | `--target <target>`            | 编译目标（默认为：`"modules"`）(`string`) |
@@ -69,6 +70,30 @@ vite build [root]
 | `-f, --filter <filter>`        | 过滤调试日志 (`string`) |
 | `-m, --mode <mode>`            | 设置环境模式 (`string`) |
 | `-h, --help`                   | 显示可用的 CLI 选项 |
+=======
+| Options                        |                                                                                                                     |
+| ------------------------------ | ------------------------------------------------------------------------------------------------------------------- |
+| `--target <target>`            | Transpile target (default: `"modules"`) (`string`)                                                                  |
+| `--outDir <dir>`               | Output directory (default: `dist`) (`string`)                                                                       |
+| `--assetsDir <dir>`            | Directory under outDir to place assets in (default: `"assets"`) (`string`)                                          |
+| `--assetsInlineLimit <number>` | Static asset base64 inline threshold in bytes (default: `4096`) (`number`)                                          |
+| `--ssr [entry]`                | Build specified entry for server-side rendering (`string`)                                                          |
+| `--sourcemap [output]`         | Output source maps for build (default: `false`) (`boolean \| "inline" \| "hidden"`)                                 |
+| `--minify [minifier]`          | Enable/disable minification, or specify minifier to use (default: `"esbuild"`) (`boolean \| "terser" \| "esbuild"`) |
+| `--manifest [name]`            | Emit build manifest json (`boolean \| string`)                                                                      |
+| `--ssrManifest [name]`         | Emit ssr manifest json (`boolean \| string`)                                                                        |
+| `--force`                      | Force the optimizer to ignore the cache and re-bundle (experimental)(`boolean`)                                     |
+| `--emptyOutDir`                | Force empty outDir when it's outside of root (`boolean`)                                                            |
+| `-w, --watch`                  | Rebuilds when modules have changed on disk (`boolean`)                                                              |
+| `-c, --config <file>`          | Use specified config file (`string`)                                                                                |
+| `--base <path>`                | Public base path (default: `/`) (`string`)                                                                          |
+| `-l, --logLevel <level>`       | Info \| warn \| error \| silent (`string`)                                                                          |
+| `--clearScreen`                | Allow/disable clear screen when logging (`boolean`)                                                                 |
+| `-d, --debug [feat]`           | Show debug logs (`string \| boolean`)                                                                               |
+| `-f, --filter <filter>`        | Filter debug logs (`string`)                                                                                        |
+| `-m, --mode <mode>`            | Set env mode (`string`)                                                                                             |
+| `-h, --help`                   | Display available CLI options                                                                                       |
+>>>>>>> de3f8f958d05de83cec381a0b501041fa660831f
 
 ## 其他 {#others}
 

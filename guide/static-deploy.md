@@ -76,7 +76,11 @@ $ npm run preview
      # 这个选项可以使你手动在 Action tab 页面触发工作流
      workflow_dispatch:      
 
+<<<<<<< HEAD
    # 设置 GITHUB_TOKEN 的权限，以允许部署到 GitHub Pages。
+=======
+   # Sets the GITHUB_TOKEN permissions to allow deployment to GitHub Pages
+>>>>>>> de3f8f958d05de83cec381a0b501041fa660831f
    permissions:
      contents: read
      pages: write
