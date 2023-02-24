@@ -78,7 +78,11 @@ modulePreload: {
 - **类型：** `string`
 - **默认：** `assets`
 
+<<<<<<< HEAD
 指定生成静态资源的存放路径（相对于 `build.outDir`）。
+=======
+Specify the directory to nest generated assets under (relative to `build.outDir`. This is not used in [Library Mode](/guide/build#library-mode)).
+>>>>>>> 5bf96b8acaf01274ae710d37812be037405857f9
 
 ## build.assetsInlineLimit {#build-assetsinlinelimit}
 
@@ -229,7 +233,11 @@ npm add -D terser
 - **类型：** `number`
 - **默认：** `500`
 
+<<<<<<< HEAD
 规定触发警告的 chunk 大小。（以 kbs 为单位）
+=======
+Limit for chunk size warnings (in kbs). It is compared against the uncompressed chunk size as the [JavaScript size itself is related to the execution time](https://v8.dev/blog/cost-of-javascript-2019).
+>>>>>>> 5bf96b8acaf01274ae710d37812be037405857f9
 
 ## build.watch {#build-watch}
 

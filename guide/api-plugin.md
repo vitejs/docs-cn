@@ -478,8 +478,13 @@ apply(config, { command }) {
 
 一般来说，只要 Rollup 插件符合以下标准，它就应该像 Vite 插件一样工作：
 
+<<<<<<< HEAD
 - 没有使用 [`moduleParsed`](https://rollupjs.org/guide/en/#moduleparsed) 钩子。
 - 它在打包钩子和输出钩子之间没有很强的耦合。
+=======
+- It doesn't use the [`moduleParsed`](https://rollupjs.org/plugin-development/#moduleparsed) hook.
+- It doesn't have strong coupling between bundle-phase hooks and output-phase hooks.
+>>>>>>> 5bf96b8acaf01274ae710d37812be037405857f9
 
 如果一个 Rollup 插件只在构建阶段有意义，则在 `build.rollupOptions.plugins` 下指定即可。它的工作原理与 Vite 插件的 `enforce: 'post'` 和 `apply: 'build'` 相同。
 
@@ -535,7 +540,10 @@ export default defineConfig({
     {
       // ...
       configureServer(server) {
-        server.ws.send('my:greetings', { msg: 'hello' })
+        // Example: wait for a client to connect before sending a message
+        server.ws.on('connection', () => {
+          server.ws.send('my:greetings', { msg: 'hello' })
+        })
       },
     },
   ],
