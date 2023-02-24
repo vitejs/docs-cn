@@ -56,6 +56,8 @@ $ pnpm dev
 
 ## 版权声明
 
+<a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="知识共享许可协议" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a><br />本作品采用<a rel="license" href="http://creativecommons.org/licenses/by/4.0/">知识共享署名 4.0 国际许可协议 (CC BY-NC-SA 4.0)</a> 进行许可。
+
 本仓库所包含的中文翻译内容（即所有 `.md` 文件），其版权为 Vite 官方中文翻译团队以及以下所列出的贡献者所有。除官方中文文档 [cn.vitejs.dev](https://cn.vitejs.dev) 之外，不得在其它域名下进行未经授权的转载或部署。
 
 ## 贡献者统计
