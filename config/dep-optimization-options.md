@@ -50,4 +50,22 @@ export default defineConfig({
 
 - **类型：** `boolean`
 
+<<<<<<< HEAD
 设置为 `true` 可以强制依赖预构建，而忽略之前已经缓存过的、已经优化过的依赖。
+=======
+Set to `true` to force dependency pre-bundling, ignoring previously cached optimized dependencies.
+
+## optimizeDeps.disabled
+
+- **Experimental**
+- **Type:** `boolean | 'build' | 'dev'`
+- **Default:** `'build'`
+
+Disables dependencies optimizations, `true` disables the optimizer during build and dev. Pass `'build'` or `'dev'` to only disable the optimizer in one of the modes. Dependency optimization is enabled by default in dev only.
+
+:::warning
+Optimizing dependencies in build mode is **experimental**. If enabled, it removes one of the most significant differences between dev and prod. [`@rollup/plugin-commonjs`](https://github.com/rollup/plugins/tree/master/packages/commonjs) is no longer needed in this case since esbuild converts CJS-only dependencies to ESM.
+
+If you want to try this build strategy, you can use `optimizeDeps.disabled: false`. `@rollup/plugin-commonjs` can be removed by passing `build.commonjsOptions: { include: [] }`.
+:::
+>>>>>>> 0be7c6cd895b536bc509704344637c0d78afe163

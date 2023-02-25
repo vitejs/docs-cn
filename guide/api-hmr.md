@@ -51,7 +51,19 @@ if (import.meta.hot) {
 }
 ```
 
+<<<<<<< HEAD
 ## `hot.accept(cb)` {#hot-accept-cb}
+=======
+## IntelliSense for TypeScript
+
+Vite provides type definitions for `import.meta.hot` in [`vite/client.d.ts`](https://github.com/vitejs/vite/blob/main/packages/vite/client.d.ts). You can create an `env.d.ts` in the `src` directory so TypeScript picks up the type definitions:
+
+```ts
+/// <reference types="vite/client" />
+```
+
+## `hot.accept(cb)`
+>>>>>>> 0be7c6cd895b536bc509704344637c0d78afe163
 
 要接收模块自身，应使用 `import.meta.hot.accept`，参数为接收已更新模块的回调函数：
 
@@ -93,9 +105,16 @@ if (import.meta.hot) {
   import.meta.hot.accept(
     ['./foo.js', './bar.js'],
     ([newFooModule, newBarModule]) => {
+<<<<<<< HEAD
       // 只有当所更新的模块非空时，回调函数接收一个数组
       // 如果更新不成功（例如语法错误），则该数组为空
     }
+=======
+      // The callback receives an array where only the updated module is
+      // non null. If the update was not successful (syntax error for ex.),
+      // the array is empty
+    },
+>>>>>>> 0be7c6cd895b536bc509704344637c0d78afe163
   )
 }
 ```
