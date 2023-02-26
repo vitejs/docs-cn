@@ -1,5 +1,6 @@
 # 依赖预构建 {#dependency-pre-bundling}
 
+<<<<<<< HEAD
 当你首次启动 `vite` 时，你可能会注意到打印出了以下信息：
 
 ```
@@ -8,6 +9,9 @@ Pre-bundling dependencies: （正在预构建依赖：）
   react-dom
 (this will be run only when your dependencies or config have changed)（这将只会在你的依赖或配置发生变化时执行）
 ```
+=======
+When you run `vite` for the first time, Vite prebundles your project dependencies before loading your site locally. It is done automatically and transparently by default.
+>>>>>>> d58f18373f6851c42126dd90ae035dbd27bafe30
 
 ## 原因 {#the-why}
 
@@ -36,7 +40,11 @@ Pre-bundling dependencies: （正在预构建依赖：）
 
 如果没有找到相应的缓存，Vite 将抓取你的源码，并自动寻找引入的依赖项（即 "bare import"，表示期望从 `node_modules` 解析），并将这些依赖项作为预构建包的入口点。预构建通过 `esbuild` 执行，所以它通常非常快。
 
+<<<<<<< HEAD
 在服务器已经启动之后，如果遇到一个新的依赖关系导入，而这个依赖关系还没有在缓存中，Vite 将重新运行依赖构建进程并重新加载页面。
+=======
+After the server has already started, if a new dependency import is encountered that isn't already in the cache, Vite will re-run the dep bundling process and reload the page if needed.
+>>>>>>> d58f18373f6851c42126dd90ae035dbd27bafe30
 
 ## Monorepo 和链接依赖 {#monorepos-and-linked-dependencies}
 
@@ -71,7 +79,13 @@ export default defineConfig({
 
 `include` 和 `exclude` 都可以用来处理这个问题。如果依赖项很大（包含很多内部模块）或者是 CommonJS，那么你应该包含它；如果依赖项很小，并且已经是有效的 ESM，则可以排除它，让浏览器直接加载它。
 
+<<<<<<< HEAD
 ## 缓存 {#caching}
+=======
+You can further customize esbuild too with the [`optimizeDeps.esbuildOptions` option](/config/dep-optimization-options.md#optimizedeps-esbuildoptions). For example, adding an esbuild plugin to handle special files in dependencies.
+
+## Caching
+>>>>>>> d58f18373f6851c42126dd90ae035dbd27bafe30
 
 ### 文件系统缓存 {#file-system-cache}
 
