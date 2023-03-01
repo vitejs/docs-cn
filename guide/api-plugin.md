@@ -159,13 +159,9 @@ console.log(msg)
 - [`load`](https://rollupjs.org/plugin-development/#load)
 - [`transform`](https://rollupjs.org/plugin-development/#transform)
 
-<<<<<<< HEAD
-以下钩子在服务器关闭时被调用：
-=======
-They also have an extended `options` parameter with additional Vite-specific properties. You can read more in the [SSR documentation](/guide/ssr#ssr-specific-plugin-logic).
+它们还有一个扩展的 `options` 参数，包含其他特定于 Vite 的属性。你可以在 [SSR 文档](/guide/ssr#ssr-specific-plugin-logic) 中查阅更多内容。
 
-The following hooks are called when the server is closed:
->>>>>>> d58f18373f6851c42126dd90ae035dbd27bafe30
+以下钩子在服务器关闭时被调用：
 
 - [`buildEnd`](https://rollupjs.org/plugin-development/#buildend)
 - [`closeBundle`](https://rollupjs.org/plugin-development/#closebundle)
@@ -484,13 +480,8 @@ apply(config, { command }) {
 
 一般来说，只要 Rollup 插件符合以下标准，它就应该像 Vite 插件一样工作：
 
-<<<<<<< HEAD
-- 没有使用 [`moduleParsed`](https://rollupjs.org/guide/en/#moduleparsed) 钩子。
+- 没有使用 [`moduleParsed`](https://rollupjs.org/plugin-development/#moduleparsed) 钩子。
 - 它在打包钩子和输出钩子之间没有很强的耦合。
-=======
-- It doesn't use the [`moduleParsed`](https://rollupjs.org/plugin-development/#moduleparsed) hook.
-- It doesn't have strong coupling between bundle-phase hooks and output-phase hooks.
->>>>>>> d58f18373f6851c42126dd90ae035dbd27bafe30
 
 如果一个 Rollup 插件只在构建阶段有意义，则在 `build.rollupOptions.plugins` 下指定即可。它的工作原理与 Vite 插件的 `enforce: 'post'` 和 `apply: 'build'` 相同。
 
@@ -546,7 +537,7 @@ export default defineConfig({
     {
       // ...
       configureServer(server) {
-        // Example: wait for a client to connect before sending a message
+        // 示例：等待客户端连接后再发送消息
         server.ws.on('connection', () => {
           server.ws.send('my:greetings', { msg: 'hello' })
         })

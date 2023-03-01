@@ -50,22 +50,18 @@ export default defineConfig({
 
 - **类型：** `boolean`
 
-<<<<<<< HEAD
 设置为 `true` 可以强制依赖预构建，而忽略之前已经缓存过的、已经优化过的依赖。
-=======
-Set to `true` to force dependency pre-bundling, ignoring previously cached optimized dependencies.
 
-## optimizeDeps.disabled
+## optimizeDeps.disabled {#optimizedeps-disabled}
 
-- **Experimental**
-- **Type:** `boolean | 'build' | 'dev'`
-- **Default:** `'build'`
+- **实验性**
+- **类型：** `boolean | 'build' | 'dev'`
+- **默认：** `'build'`
 
-Disables dependencies optimizations, `true` disables the optimizer during build and dev. Pass `'build'` or `'dev'` to only disable the optimizer in one of the modes. Dependency optimization is enabled by default in dev only.
+禁用依赖优化，值为 `true` 将在构建和开发期间均禁用优化器。传 `'build'` 或 `'dev'` 将仅在其中一种模式下禁用优化器。默认情况下，仅在开发阶段启用依赖优化。
 
 :::warning
-Optimizing dependencies in build mode is **experimental**. If enabled, it removes one of the most significant differences between dev and prod. [`@rollup/plugin-commonjs`](https://github.com/rollup/plugins/tree/master/packages/commonjs) is no longer needed in this case since esbuild converts CJS-only dependencies to ESM.
+在构建模式下依赖优化是 **实验性** 的。如果开启此项，那么它将消除开发与构建最终产物之间的最明显的区别之一。[`@rollup/plugin-commonjs`](https://github.com/rollup/plugins/tree/master/packages/commonjs) 在此处将不再需要，因为 esbuild 会将纯 CJS 依赖转换为 ESM。
 
-If you want to try this build strategy, you can use `optimizeDeps.disabled: false`. `@rollup/plugin-commonjs` can be removed by passing `build.commonjsOptions: { include: [] }`.
+如果你想尝试该构建策略，你可以使用 `optimizeDeps.disabled: false`。`@rollup/plugin-commonjs` 可以通过设置 `build.commonjsOptions: { include: [] }` 来移除。
 :::
->>>>>>> d58f18373f6851c42126dd90ae035dbd27bafe30

@@ -47,7 +47,6 @@ vite build [root]
 
 #### 选项 {#options-1}
 
-<<<<<<< HEAD
 | 选项                           |                                                                                               |
 | ------------------------------ | -------------------------------------------------------------------------------------------- |
 | `--target <target>`            | 编译目标（默认为：`"modules"`）(`string`) |
@@ -55,7 +54,7 @@ vite build [root]
 | `--assetsDir <dir>`            | 在输出目录下放置资源的目录（默认为：`"assets"`）(`string`) |
 | `--assetsInlineLimit <number>` | 静态资源内联为 base64 编码的阈值，以字节为单位（默认为：`4096`）(`number`) |
 | `--ssr [entry]`                | 为服务端渲染配置指定入口文件 (`string`) |
-| `--sourcemap`                  | 构建后输出 source map 文件（默认为：`false`）(`boolean`) |
+| `--sourcemap [output]`         | 构建后输出 source map 文件（默认为：`false`）(`boolean \| "inline" \| "hidden"`) |
 | `--minify [minifier]`          | 允许或禁用最小化混淆，或指定使用哪种混淆器（默认为：`"esbuild"`）(`boolean \| "terser" \| "esbuild"`) |
 | `--manifest [name]`            | 构建后生成 manifest.json 文件 (`boolean \| string`) |
 | `--ssrManifest [name]`         | 构建后生成 SSR manifest.json 文件 (`boolean \| string`) |
@@ -70,30 +69,6 @@ vite build [root]
 | `-f, --filter <filter>`        | 过滤调试日志 (`string`) |
 | `-m, --mode <mode>`            | 设置环境模式 (`string`) |
 | `-h, --help`                   | 显示可用的 CLI 选项 |
-=======
-| Options                        |                                                                                                                     |
-| ------------------------------ | ------------------------------------------------------------------------------------------------------------------- |
-| `--target <target>`            | Transpile target (default: `"modules"`) (`string`)                                                                  |
-| `--outDir <dir>`               | Output directory (default: `dist`) (`string`)                                                                       |
-| `--assetsDir <dir>`            | Directory under outDir to place assets in (default: `"assets"`) (`string`)                                          |
-| `--assetsInlineLimit <number>` | Static asset base64 inline threshold in bytes (default: `4096`) (`number`)                                          |
-| `--ssr [entry]`                | Build specified entry for server-side rendering (`string`)                                                          |
-| `--sourcemap [output]`         | Output source maps for build (default: `false`) (`boolean \| "inline" \| "hidden"`)                                 |
-| `--minify [minifier]`          | Enable/disable minification, or specify minifier to use (default: `"esbuild"`) (`boolean \| "terser" \| "esbuild"`) |
-| `--manifest [name]`            | Emit build manifest json (`boolean \| string`)                                                                      |
-| `--ssrManifest [name]`         | Emit ssr manifest json (`boolean \| string`)                                                                        |
-| `--force`                      | Force the optimizer to ignore the cache and re-bundle (experimental)(`boolean`)                                     |
-| `--emptyOutDir`                | Force empty outDir when it's outside of root (`boolean`)                                                            |
-| `-w, --watch`                  | Rebuilds when modules have changed on disk (`boolean`)                                                              |
-| `-c, --config <file>`          | Use specified config file (`string`)                                                                                |
-| `--base <path>`                | Public base path (default: `/`) (`string`)                                                                          |
-| `-l, --logLevel <level>`       | Info \| warn \| error \| silent (`string`)                                                                          |
-| `--clearScreen`                | Allow/disable clear screen when logging (`boolean`)                                                                 |
-| `-d, --debug [feat]`           | Show debug logs (`string \| boolean`)                                                                               |
-| `-f, --filter <filter>`        | Filter debug logs (`string`)                                                                                        |
-| `-m, --mode <mode>`            | Set env mode (`string`)                                                                                             |
-| `-h, --help`                   | Display available CLI options                                                                                       |
->>>>>>> d58f18373f6851c42126dd90ae035dbd27bafe30
 
 ## 其他 {#others}
 
