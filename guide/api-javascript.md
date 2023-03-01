@@ -33,8 +33,13 @@ const __dirname = fileURLToPath(new URL('.', import.meta.url))
 })()
 ```
 
+<<<<<<< HEAD
 ::: tip 注意
 当在同一个 Node.js 进程中使用 `createServer` 和 `build` 时，两个函数都依赖于 `process.env.`<wbr>`NODE_ENV` 才可正常工作，而这个环境变量又依赖于 `mode` 配置项。为了避免行为冲突，请在这两个 API 传入参数 `development` 字段中设置 `process.env.`<wbr>`NODE_ENV` 或者 `mode` 配置项，或者你也可以生成另一个子进程，分别运行这两个 API。
+=======
+::: tip NOTE
+When using `createServer` and `build` in the same Node.js process, both functions rely on `process.env.NODE_ENV` to work properly, which also depends on the `mode` config option. To prevent conflicting behavior, set `process.env.NODE_ENV` or the `mode` of the two APIs to `development`. Otherwise, you can spawn a child process to run the APIs separately.
+>>>>>>> 2053bd52da68127630460fe6266fa1fd51d0d359
 :::
 
 ## `InlineConfig` {#inlineconfig}
