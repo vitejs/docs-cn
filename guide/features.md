@@ -404,7 +404,10 @@ const modules = {
 当与 `eager` 一同存在时，甚至可以对这些模块进行 tree-shaking。
 
 ```ts
-const modules = import.meta.glob('./dir/*.js', { import: 'setup', eager: true })
+const modules = import.meta.glob('./dir/*.js', {
+  import: 'setup',
+  eager: true,
+})
 ```
 
 ```ts

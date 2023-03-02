@@ -326,6 +326,40 @@ export default defineConfig({
 
 调整控制台输出的级别，默认为 `'info'`。
 
+## customLogger {#customlogger}
+
+- **类型：**
+  ```ts
+  interface Logger {
+    info(msg: string, options?: LogOptions): void
+    warn(msg: string, options?: LogOptions): void
+    warnOnce(msg: string, options?: LogOptions): void
+    error(msg: string, options?: LogErrorOptions): void
+    clearScreen(type: LogType): void
+    hasErrorLogged(error: Error | RollupError): boolean
+    hasWarned: boolean
+  }
+  ```
+
+使用自定义 logger 记录消息。可以使用 Vite 的 `createLogger` API 获取默认的 logger 并对其进行自定义，例如，更改消息或过滤掉某些警告。
+
+```js
+import { createLogger, defineConfig } from 'vite'
+
+const logger = createLogger()
+const loggerWarn = logger.warn
+
+logger.warn = (msg, options) => {
+  // 忽略空 CSS 文件的警告
+  if (msg.includes('vite:css') && msg.includes(' is empty')) return
+  loggerWarn(msg, options)
+}
+
+export default defineConfig({
+  customLogger: logger,
+})
+```
+
 ## clearScreen {#clearscreen}
 
 - **类型：** `boolean`

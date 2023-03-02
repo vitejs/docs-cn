@@ -51,3 +51,17 @@ export default defineConfig({
 - **类型：** `boolean`
 
 设置为 `true` 可以强制依赖预构建，而忽略之前已经缓存过的、已经优化过的依赖。
+
+## optimizeDeps.disabled {#optimizedeps-disabled}
+
+- **实验性**
+- **类型：** `boolean | 'build' | 'dev'`
+- **默认：** `'build'`
+
+禁用依赖优化，值为 `true` 将在构建和开发期间均禁用优化器。传 `'build'` 或 `'dev'` 将仅在其中一种模式下禁用优化器。默认情况下，仅在开发阶段启用依赖优化。
+
+:::warning
+在构建模式下依赖优化是 **实验性** 的。如果开启此项，那么它将消除开发与构建最终产物之间的最明显的区别之一。[`@rollup/plugin-commonjs`](https://github.com/rollup/plugins/tree/master/packages/commonjs) 在此处将不再需要，因为 esbuild 会将纯 CJS 依赖转换为 ESM。
+
+如果你想尝试该构建策略，你可以使用 `optimizeDeps.disabled: false`。`@rollup/plugin-commonjs` 可以通过设置 `build.commonjsOptions: { include: [] }` 来移除。
+:::

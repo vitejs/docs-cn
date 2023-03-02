@@ -78,7 +78,7 @@ modulePreload: {
 - **类型：** `string`
 - **默认：** `assets`
 
-指定生成静态资源的存放路径（相对于 `build.outDir`）。
+指定生成静态资源的存放路径（相对于 `build.outDir`）。在 [库模式](/guide/build#library-mode) 下不能使用。
 
 ## build.assetsInlineLimit {#build-assetsinlinelimit}
 
@@ -229,7 +229,7 @@ npm add -D terser
 - **类型：** `number`
 - **默认：** `500`
 
-规定触发警告的 chunk 大小。（以 kbs 为单位）
+规定触发警告的 chunk 大小。（以 kbs 为单位）。它将与未压缩的 chunk 大小进行比较，因为 [JavaScript 大小本身与执行时间相关](https://v8.dev/blog/cost-of-javascript-2019)。
 
 ## build.watch {#build-watch}
 
