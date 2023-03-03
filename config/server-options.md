@@ -312,7 +312,7 @@ export default defineConfig({
 
 - **类型：** `string`
 
-用于定义开发调试阶段生成资产的 origin。
+用于定义开发调试阶段生成资源的 origin。
 
 ```js
 export default defineConfig({
