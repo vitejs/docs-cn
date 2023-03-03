@@ -322,20 +322,20 @@ export default defineConfig({
 })
 ```
 
-## server.sourcemapIgnoreList
+## server.sourcemapIgnoreList {#server-sourcemapignorelist}
 
-- **Type:** `false | (sourcePath: string, sourcemapPath: string) => boolean`
-- **Default:** `(sourcePath) => sourcePath.includes('node_modules')`
+- **类型：** `false | (sourcePath: string, sourcemapPath: string) => boolean`
+- **默认：** `(sourcePath) => sourcePath.includes('node_modules')`
 
-Whether or not to ignore source files in the server sourcemap, used to populate the [`x_google_ignoreList` source map extension](https://developer.chrome.com/blog/devtools-better-angular-debugging/#the-x_google_ignorelist-source-map-extension).
+是否忽略服务器 sourcemap 中的源文件，用于填充 [`x_google_ignoreList` source map 扩展](https://developer.chrome.com/blog/devtools-better-angular-debugging/#the-x_google_ignorelist-source-map-extension)。
 
-By default, it excludes all paths containing `node_modules`. You can pass `false` to disable this behavior, or, for full control, a function that takes the source path and sourcemap path and returns whether to ignore the source path.
+默认情况下，它会排除所有包含 `node_modules` 的路径。你可以传递 `false` 来禁用此行为，或者为了获得完全的控制，可以传递一个函数，该函数接受源路径和 sourcemap 的路径，并返回是否忽略源路径。
 
 ```js
 export default defineConfig({
   server: {
-    // This is the default value, and will add all files with node_modules in their paths
-    // to the ignore list.
+    // 这是默认值，它将把所有路径中含有 node_modules 的文件
+    // 添加到忽略列表中。
     sourcemapIgnoreList: (sourcePath, sourcemapPath) => sourcePath.includes('node_modules')
   }
 };
