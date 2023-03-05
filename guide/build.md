@@ -211,7 +211,7 @@ dist/my-lib.umd.cjs 0.30 KiB / gzip: 0.16 KiB
 :::
 
 ::: tip 环境变量
-在库模式下，所有 `import.meta.env.*` 用法在构建生产时都会被静态替换。但是，`process.env.*` 的用法不会被替换，所以你的库的使用者可以动态地更改它。如果不想允许他们这样做，你可以使用 `define: { 'process.env.`<wbr>`NODE_ENV': '"production"' }` 例如静态替换它们。
+在库模式下，所有 `import.meta.env.*` 用法在构建生产时都会被静态替换。但是，`process.env.*` 的用法不会被替换，所以你的库的使用者可以动态地更改它。如果不想允许他们这样做，你可以使用 `define: { 'process.env.NODE_ENV': '"production"' }` 例如静态替换它们。
 :::
 
 ## 进阶基础路径选项 {#advanced-base-options}
