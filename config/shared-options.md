@@ -225,9 +225,21 @@ interface CSSModulesOptions {
 
 ## css.preprocessorOptions {#css-preprocessoroptions}
 
+<<<<<<< HEAD
 - **类型：** `Record<string, object>`
 
 指定传递给 CSS 预处理器的选项。文件扩展名用作选项的键，例如：
+=======
+Specify options to pass to CSS pre-processors. The file extensions are used as keys for the options. The supported options for each preprocessors can be found in their respective documentation:
+
+- `sass`/`scss` - [Options](https://sass-lang.com/documentation/js-api/interfaces/LegacyStringOptions).
+- `less` - [Options](https://lesscss.org/usage/#less-options).
+- `styl`/`stylus` - Only [`define`](https://stylus-lang.com/docs/js.html#define-name-node) is supported, which can be passed as an object.
+
+All preprocessor options also support the `additionalData` option, which can be used to inject extra code for each style content.
+
+Example:
+>>>>>>> 7675576884b3bb81715f71bed801a2dc0c00324c
 
 ```js
 export default defineConfig({
@@ -236,8 +248,13 @@ export default defineConfig({
       scss: {
         additionalData: `$injectedColor: orange;`,
       },
+      less: {
+        math: 'parens-division',
+      },
       styl: {
-        additionalData: `$injectedColor ?= orange`,
+        define: {
+          $specialColor: new stylus.nodes.RGBA(51, 197, 255, 1),
+        },
       },
     },
   },
