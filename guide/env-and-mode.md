@@ -107,7 +107,22 @@ interface ImportMeta {
 }
 ```
 
+<<<<<<< HEAD
 ## 模式 {#modes}
+=======
+## HTML Env Replacement
+
+Vite also supports replacing env variables in HTML files. Any properties in `import.meta.env` can be used in HTML files with a special `%ENV_NAME%` syntax:
+
+```html
+<h1>Vite is running in %MODE%</h1>
+<p>Using data from %VITE_API_URL%</p>
+```
+
+If the env doesn't exist in `import.meta.env`, e.g. `%NON_EXISTENT%`, it will be ignored and not replaced, unlike `import.meta.env.NON_EXISTENT` in JS where it's replaced as `undefined`.
+
+## Modes
+>>>>>>> 9f9d1b9f4280241909519ca8e82d45a88b517fc7
 
 默认情况下，开发服务器 (`dev` 命令) 运行在 `development` (开发) 模式，而 `build` 命令则运行在 `production` (生产) 模式。
 
