@@ -225,21 +225,15 @@ interface CSSModulesOptions {
 
 ## css.preprocessorOptions {#css-preprocessoroptions}
 
-<<<<<<< HEAD
-- **类型：** `Record<string, object>`
+指定传递给 CSS 预处理器的选项。文件扩展名用作选项的键。每个预处理器支持的选项可以在它们各自的文档中找到：
 
-指定传递给 CSS 预处理器的选项。文件扩展名用作选项的键，例如：
-=======
-Specify options to pass to CSS pre-processors. The file extensions are used as keys for the options. The supported options for each preprocessors can be found in their respective documentation:
+- `sass`/`scss` - [选项](https://sass-lang.com/documentation/js-api/interfaces/LegacyStringOptions)。
+- `less` - [选项](https://lesscss.org/usage/#less-options)。
+- `styl`/`stylus` - 仅支持 [`define`](https://stylus-lang.com/docs/js.html#define-name-node)，可以作为对象传递。
 
-- `sass`/`scss` - [Options](https://sass-lang.com/documentation/js-api/interfaces/LegacyStringOptions).
-- `less` - [Options](https://lesscss.org/usage/#less-options).
-- `styl`/`stylus` - Only [`define`](https://stylus-lang.com/docs/js.html#define-name-node) is supported, which can be passed as an object.
+所有预处理器选项还支持 `additionalData` 选项，可以用于为每个样式内容注入额外代码。
 
-All preprocessor options also support the `additionalData` option, which can be used to inject extra code for each style content.
-
-Example:
->>>>>>> 7675576884b3bb81715f71bed801a2dc0c00324c
+示例：
 
 ```js
 export default defineConfig({
