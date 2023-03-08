@@ -117,7 +117,18 @@ Git LFS 占位符会自动排除在内联之外，因为它们不包含它们所
 最直观的示例是当你要兼容的场景是安卓微信中的 webview 时，它支持大多数现代的 JavaScript 功能，但并不支持 [CSS 中的 `#RGBA` 十六进制颜色符号](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#rgb_colors)。
 这种情况下，你需要将 `build.cssTarget` 设置为 `chrome61`，以防止 vite 将 `rgba()` 颜色转化为 `#RGBA` 十六进制符号的形式。
 
+<<<<<<< HEAD
 ## build.sourcemap {#build-sourcemap}
+=======
+## build.cssMinify
+
+- **Type:** `boolean`
+- **Default:** the same as [`build.minify`](#build-minify)
+
+This option allows users to override CSS minification specifically instead of defaulting to `build.minify`, so you can configure minification for JS and CSS separately. Vite uses `esbuild` to minify CSS.
+
+## build.sourcemap
+>>>>>>> 50b34aff4650f638dc75327c7cdc6e527c5fedc9
 
 - **类型：** `boolean | 'inline' | 'hidden'`
 - **默认：** `false`
