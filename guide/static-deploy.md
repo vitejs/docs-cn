@@ -74,7 +74,7 @@ $ npm run preview
        branches: ['main']
 
      # 这个选项可以使你手动在 Action tab 页面触发工作流
-     workflow_dispatch:      
+     workflow_dispatch:
 
    # 设置 GITHUB_TOKEN 的权限，以允许部署到 GitHub Pages。
    permissions:
@@ -305,9 +305,9 @@ $ npx wrangler pages publish dist
 
 安装完此扩展后，进入你应用的根目录。打开 SWA 的扩展程序，登录 Azure，并点击 '+'，来创建一个全新的 SWA。系统会提示你指定所需的订阅 key。
 
-按照扩展程序的启动向导，给你的应用程序起个名字，选择框架预设，并指定应用程序的根目录（通常为 `/`）以及构建文件的路径 `/dist`。此向导完成后，会在你的 repo 中的 `.github` 文件夹中创建一个 Github Action。
+按照扩展程序的启动向导，给你的应用程序起个名字，选择框架预设，并指定应用程序的根目录（通常为 `/`）以及构建文件的路径 `/dist`。此向导完成后，会在你的 repo 中的 `.github` 文件夹中创建一个 GitHub Action。
 
-这个 action 致力于部署你的应用程序（可以在仓库的 Actions 标签中，查看相关进度），成功完成后，你可以点击 Github 中出现的 “浏览站点” 的按钮，查看你的应用程序。
+这个 action 致力于部署你的应用程序（可以在仓库的 Actions 标签中，查看相关进度），成功完成后，你可以点击 GitHub 中出现的 “浏览站点” 的按钮，查看你的应用程序。
 
 ## Render {#render}
 
