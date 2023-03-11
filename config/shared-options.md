@@ -394,8 +394,22 @@ export default defineConfig({
 
 以 `envPrefix` 开头的环境变量会通过 import.meta.env 暴露在你的客户端源码中。
 
+<<<<<<< HEAD
 :::warning 安全注意事项
 `envPrefix` 不应被设置为空字符串 `''`，这将暴露你所有的环境变量，导致敏感信息的意外泄漏。 检测到配置为 `''` 时 Vite 将会抛出错误.
+=======
+:::warning SECURITY NOTES
+`envPrefix` should not be set as `''`, which will expose all your env variables and cause unexpected leaking of sensitive information. Vite will throw an error when detecting `''`.
+
+If you would like to expose an unprefixed variable, you can use [define](#define) to expose it:
+
+```js
+define: {
+  'import.meta.env.ENV_VARIABLE': JSON.stringify(process.env.ENV_VARIABLE)
+}
+```
+
+>>>>>>> 008a90d9e81a4882a649a2f546b3cf22a8921afd
 :::
 
 ## appType {#apptype}
