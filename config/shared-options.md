@@ -188,7 +188,6 @@ Vite 有一个“允许的情景”列表，并且会匹配列表中第一个情
 ## css.modules {#css-modules}
 
 - **类型：**
-
 ```ts
 interface CSSModulesOptions {
   scopeBehaviour?: 'global' | 'local'
@@ -224,6 +223,8 @@ interface CSSModulesOptions {
 注意：如果提供了该内联配置，Vite 将不会搜索其他 PostCSS 配置源。
 
 ## css.preprocessorOptions {#css-preprocessoroptions}
+
+- **类型：** `Record<string, object>`
 
 指定传递给 CSS 预处理器的选项。文件扩展名用作选项的键。每个预处理器支持的选项可以在它们各自的文档中找到：
 
@@ -394,14 +395,10 @@ export default defineConfig({
 
 以 `envPrefix` 开头的环境变量会通过 import.meta.env 暴露在你的客户端源码中。
 
-<<<<<<< HEAD
 :::warning 安全注意事项
 `envPrefix` 不应被设置为空字符串 `''`，这将暴露你所有的环境变量，导致敏感信息的意外泄漏。 检测到配置为 `''` 时 Vite 将会抛出错误.
-=======
-:::warning SECURITY NOTES
-`envPrefix` should not be set as `''`, which will expose all your env variables and cause unexpected leaking of sensitive information. Vite will throw an error when detecting `''`.
 
-If you would like to expose an unprefixed variable, you can use [define](#define) to expose it:
+如果你想暴露一个不含前缀的变量，可以使用 [define](#define) 选项：
 
 ```js
 define: {
@@ -409,7 +406,6 @@ define: {
 }
 ```
 
->>>>>>> 008a90d9e81a4882a649a2f546b3cf22a8921afd
 :::
 
 ## appType {#apptype}
