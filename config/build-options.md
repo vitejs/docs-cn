@@ -106,7 +106,7 @@ Git LFS 占位符会自动排除在内联之外，因为它们不包含它们所
 如果指定了 `build.lib`，`build.cssCodeSplit` 会默认为 `false`。
 :::
 
-## build.cssTarget
+## build.cssTarget {#build-csstarget}
 
 - **类型：** `string | string[]`
 - **默认值：** 与 [`build.target`](/config/#build-target) 一致
@@ -116,6 +116,13 @@ Git LFS 占位符会自动排除在内联之外，因为它们不包含它们所
 应只在针对非主流浏览器时使用。
 最直观的示例是当你要兼容的场景是安卓微信中的 webview 时，它支持大多数现代的 JavaScript 功能，但并不支持 [CSS 中的 `#RGBA` 十六进制颜色符号](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#rgb_colors)。
 这种情况下，你需要将 `build.cssTarget` 设置为 `chrome61`，以防止 vite 将 `rgba()` 颜色转化为 `#RGBA` 十六进制符号的形式。
+
+## build.cssMinify {#build-cssminify}
+
+- **类型：** `boolean`
+- **默认：** 与 [`build.minify`](#build-minify) 一致
+
+此选项允许用户覆盖 CSS 最小化压缩的配置，而不是使用默认的 `build.minify`，这样你就可以单独配置 JS 和 CSS 的最小化压缩方式。Vite 使用 `esbuild` 来最小化 CSS。
 
 ## build.sourcemap {#build-sourcemap}
 
