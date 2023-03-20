@@ -5,7 +5,7 @@
 ## worker.format
 
 - **类型：** `'es' | 'iife'`
-- **默认：** `iife`
+- **默认：** `'iife'`
 
 worker 打包时的输出类型。
 
