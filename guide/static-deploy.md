@@ -62,7 +62,7 @@ $ npm run preview
 
    如果你要部署在 `https://<USERNAME>.github.io/<REPO>/` 上，例如你的仓库地址为 `https://github.com/<USERNAME>/<REPO>`，那么请设置 `base` 为 `'/<REPO>/'`。
 
-2. 在你的项目中，创建一个 `deploy.sh` 脚本，包含以下内容（注意高亮的行，按需使用），运行脚本来部署站点：
+2. 进入仓库 settings 页面的 GitHub Pages 配置，选择部署来源为 "GitHub Actions"，这将引导你创建一个构建和部署项目的工作流程，我们提供了一个安装依赖项和使用 npm 构建的工作流程样本：
 
    ```yml
    # Simple workflow for deploying static content to GitHub Pages
