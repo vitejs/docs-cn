@@ -4,13 +4,8 @@
 
 ## worker.format
 
-<<<<<<< HEAD
 - **类型：** `'es' | 'iife'`
-- **默认：** `iife`
-=======
-- **Type:** `'es' | 'iife'`
-- **Default:** `'iife'`
->>>>>>> b02727c62cc86c0c757c2ebf80cba461d1558409
+- **默认：** `'iife'`
 
 worker 打包时的输出类型。
 
