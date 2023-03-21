@@ -62,10 +62,10 @@ $ npm run preview
 
    如果你要部署在 `https://<USERNAME>.github.io/<REPO>/` 上，例如你的仓库地址为 `https://github.com/<USERNAME>/<REPO>`，那么请设置 `base` 为 `'/<REPO>/'`。
 
-2. 进入仓库 settings 页面的 GitHub Pages 配置，选择部署来源为 "GitHub Actions"，这将引导你创建一个构建和部署项目的工作流程，我们提供了一个安装依赖项和使用 npm 构建的工作流程样本：
+2. 进入仓库 settings 页面的 GitHub Pages 配置，选择部署来源为“GitHub Actions”，这将引导你创建一个构建和部署项目的工作流程，我们提供了一个安装依赖项和使用 npm 构建的工作流程样本：
 
    ```yml
-   # Simple workflow for deploying static content to GitHub Pages
+   # 将静态内容部署到 GitHub Pages 的简易工作流程
    name: Deploy static content to Pages
 
    on:
@@ -150,7 +150,9 @@ $ npm run preview
        - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
    ```
 
-## Netlify CLI {#netlify}
+## Netlify {#netlify}
+
+### Netlify CLI {#netlify-cli}
 
 1. 安装 [Netlify CLI](https://cli.netlify.com/)。
 2. 使用 `ntl init` 创建一个新站点。
@@ -207,7 +209,7 @@ Vercel CLI
 3. Vercel 会检测到你正在使用 Vite，并会为你的部署开启相应的正确配置。
 4. 你的应用被部署好了！（示例：[vite-vue-template.vercel.app](https://vite-vue-template.vercel.app/)）
 
-在你的项目被导入和部署后，所有对分支的后续推送都会生成 [预览部署](https://vercel.com/docs/concepts/deployments/environments#preview)，而所有对生产分支（通常是 ”main“）的更改都会生成一个 [生产构建](https://vercel.com/docs/concepts/deployments/environments#production)
+在你的项目被导入和部署后，所有对分支的后续推送都会生成 [预览部署](https://vercel.com/docs/concepts/deployments/environments#preview)，而所有对生产分支（通常是“main”）的更改都会生成一个 [生产构建](https://vercel.com/docs/concepts/deployments/environments#production)
 
 查看 Vercel 的 [Git 集成](https://vercel.com/docs/concepts/git) 了解更多细节。
 
@@ -331,19 +333,3 @@ $ npx wrangler pages publish dist
 默认情况下，推送到该指定分支的任何新的 commit 都会自动触发一个新的部署。[Auto-Deploy](https://render.com/docs/deploys#toggling-auto-deploy-for-a-service) 可以在项目设置中部署。
 
 你也可以为你的项目添加一个 [自定义域名](https://render.com/docs/custom-domains)。
-
-## 腾讯云 Webify
-
-[腾讯云 Webify](https://webify.cloudbase.net/) 支持从 Git 仓库直接部署您的 Vite 应用。
-
-进入 [Webify 新建应用页面](https://console.cloud.tencent.com/webify/new)，根据选择您代码仓库所在的 Git 平台（GitHub、GitLab 或者 Gitee 码云），完成授权流程后，便可导入仓库。
-
-应用配置如下：
-
-- 构建命令填入 `npm run build`
-- 输出目录填入 `dist`，
-- 安装命令填入 `npm install`
-
-![Webify 配置](../images/webify-configuration.png)
-
-应用创建之后，等待构建、部署完毕，便可以通过应用的默认域名（`.app.tcloudbase.com`）来访问应用。如 https://my-vite-vue-app-4gi9tn1478d8ee71-1255679239.ap-shanghai.app.tcloudbase.com/
