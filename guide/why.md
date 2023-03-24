@@ -49,7 +49,7 @@ Vite 同时利用 HTTP 头来加速整个页面的重新加载（再次让浏览
 
 要确保开发服务器和生产环境构建之间的最优输出和行为一致并不容易。所以 Vite 附带了一套 [构建优化](./features#build-optimizations) 的 [构建命令](./build)，开箱即用。
 
-### 为何不用 ESBuild 打包？ {#why-not-bundle-with-esbuild}
+## 为何不用 ESBuild 打包？ {#why-not-bundle-with-esbuild}
 
 虽然 `esbuild` 快得惊人，并且已经是一个在构建库方面比较出色的工具，但一些针对构建 _应用_ 的重要功能仍然还在持续开发中 —— 特别是代码分割和 CSS 处理方面。就目前来说，Rollup 在应用打包方面更加成熟和灵活。尽管如此，当未来这些功能稳定后，我们也不排除使用 `esbuild` 作为生产构建器的可能。
 
