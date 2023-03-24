@@ -51,7 +51,7 @@ Vite 同时利用 HTTP 头来加速整个页面的重新加载（再次让浏览
 
 ## 为何不用 ESBuild 打包？ {#why-not-bundle-with-esbuild}
 
-目前，Vite 的插件 API 与使用 `esbuild` 作为打包工具不兼容。虽然 `esbuild` 速度更快，但Vite的成功很大程度上要归功于 Rollup 灵活的插件 API 和基础设施。因此，我们认为在性能与灵活性之间的平衡上，Rollup 仍然是更好的选择。
+目前，Vite 的插件 API 与使用 `esbuild` 作为打包工具不兼容。虽然 `esbuild` 速度更快，但 Vite 的成功很大程度上要归功于 Rollup 灵活的插件 API 和基础设施。因此，我们认为在性能与灵活性之间的平衡上，Rollup 仍然是更好的选择。
 
 然而，`esbuild` 近年来也有了很大的进展，我们并不排除在将来的生产构建中使用它的可能性。我们将继续利用新的功能，例如 `esbuild` 可帮助 Vite 进行 JS 和 CSS 压缩以提高性能，同时不会破坏生态系统的稳定性。
 
