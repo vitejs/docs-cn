@@ -1,13 +1,6 @@
 # 依赖预构建 {#dependency-pre-bundling}
 
-当你首次启动 `vite` 时，你可能会注意到打印出了以下信息：
-
-```
-Pre-bundling dependencies: （正在预构建依赖：）
-  react
-  react-dom
-(this will be run only when your dependencies or config have changed)（这将只会在你的依赖或配置发生变化时执行）
-```
+当你首次启动 `vite` 时，Vite 在本地加载你的站点之前预构建了项目依赖。默认情况下，它是自动且透明地完成的。
 
 ## 原因 {#the-why}
 
@@ -36,7 +29,7 @@ Pre-bundling dependencies: （正在预构建依赖：）
 
 如果没有找到相应的缓存，Vite 将抓取你的源码，并自动寻找引入的依赖项（即 "bare import"，表示期望从 `node_modules` 解析），并将这些依赖项作为预构建包的入口点。预构建通过 `esbuild` 执行，所以它通常非常快。
 
-在服务器已经启动之后，如果遇到一个新的依赖关系导入，而这个依赖关系还没有在缓存中，Vite 将重新运行依赖构建进程并重新加载页面。
+在服务器已经启动之后，如果遇到一个新的依赖关系导入，而这个依赖关系还没有在缓存中，Vite 将重新运行依赖构建进程并根据需要重新加载页面。
 
 ## Monorepo 和链接依赖 {#monorepos-and-linked-dependencies}
 
@@ -70,6 +63,8 @@ export default defineConfig({
 `optimizeDeps.include` 或 `optimizeDeps.exclude` 的一个典型使用场景，是当 Vite 在源码中无法直接发现 import 的时候。例如，import 可能是插件转换的结果。这意味着 Vite 无法在初始扫描时发现 import —— 只能在文件被浏览器请求并转换后才能发现。这将导致服务器在启动后立即重新打包。
 
 `include` 和 `exclude` 都可以用来处理这个问题。如果依赖项很大（包含很多内部模块）或者是 CommonJS，那么你应该包含它；如果依赖项很小，并且已经是有效的 ESM，则可以排除它，让浏览器直接加载它。
+
+你也可以使用 [`optimizeDeps.esbuildOptions` 选项](/config/dep-optimization-options.md#optimizedeps-esbuildoptions) 来进一步自定义 esbuild。例如，添加一个 esbuild 插件来处理依赖项中的特殊文件。
 
 ## 缓存 {#caching}
 

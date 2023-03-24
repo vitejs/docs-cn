@@ -38,6 +38,7 @@ export default defineConfig({
     en: { label: 'English', link: 'https://vitejs.dev' },
     ja: { label: '日本語', link: 'https://ja.vitejs.dev' },
     es: { label: 'Español', link: 'https://es.vitejs.dev' },
+    pt: { label: 'Português', link: 'https://pt.vitejs.dev' },
   },
 
   vue: {
