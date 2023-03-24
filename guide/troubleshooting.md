@@ -105,7 +105,7 @@ import './Foo.js' // 应该为 './foo.js'
 
 ### 控制台中大量热更新 {#high-number-of-hmr-updates-in-console}
 
-This can be caused by a circular dependency. To solve this, try breaking the loop.
+这可能是由循环依赖引起的。要解决这个问题，请先尝试解决依赖循环。
 
 ## 构建 {#build}
 
