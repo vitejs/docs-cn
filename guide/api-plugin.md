@@ -309,10 +309,18 @@ Vite 插件也可以提供钩子来服务于特定的 Vite 目标。这些钩子
 
 ### `configurePreviewServer` {#configurepreviewserver}
 
+<<<<<<< HEAD
 - **类型：** `(server: { middlewares: Connect.Server, httpServer: http.Server }) => (() => void) | void | Promise<(() => void) | void>`
 - **种类：** `async`, `sequential`
 
   与 [`configureServer`](/guide/api-plugin.html#configureserver) 相同但是作为预览服务器。它提供了一个 [connect](https://github.com/senchalabs/connect) 服务器实例及其底层的 [http server](https://nodejs.org/api/http.html)。与 `configureServer` 类似，`configurePreviewServer` 这个钩子也是在其他中间件安装前被调用的。如果你想要在其他中间件 **之后** 安装一个插件，你可以从 `configurePreviewServer` 返回一个函数，它将会在内部中间件被安装之后再调用：
+=======
+- **Type:** `(server: PreviewServerForHook) => (() => void) | void | Promise<(() => void) | void>`
+- **Kind:** `async`, `sequential`
+- **See also:** [PreviewServerForHook](./api-javascript#previewserverforhook)
+
+  Same as [`configureServer`](/guide/api-plugin.html#configureserver) but for the preview server. Similarly to `configureServer`, the `configurePreviewServer` hook is called before other middlewares are installed. If you want to inject a middleware **after** other middlewares, you can return a function from `configurePreviewServer`, which will be called after internal middlewares are installed:
+>>>>>>> 39e716ea2286a0369dc6d8de5a2586e47241aa37
 
   ```js
   const myPlugin = () => ({

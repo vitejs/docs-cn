@@ -196,7 +196,51 @@ import { preview } from 'vite'
 })()
 ```
 
+<<<<<<< HEAD
 ## `resolveConfig` {#resolveconfig}
+=======
+## `PreviewServer`
+
+```ts
+interface PreviewServer extends PreviewServerForHook {
+  resolvedUrls: ResolvedServerUrls
+}
+```
+
+## `PreviewServerForHook`
+
+```ts
+interface PreviewServerForHook {
+  /**
+   * The resolved vite config object
+   */
+  config: ResolvedConfig
+  /**
+   * A connect app instance.
+   * - Can be used to attach custom middlewares to the preview server.
+   * - Can also be used as the handler function of a custom http server
+   *   or as a middleware in any connect-style Node.js frameworks
+   *
+   * https://github.com/senchalabs/connect#use-middleware
+   */
+  middlewares: Connect.Server
+  /**
+   * native Node http server instance
+   */
+  httpServer: http.Server
+  /**
+   * The resolved urls Vite prints on the CLI
+   */
+  resolvedUrls: ResolvedServerUrls | null
+  /**
+   * Print server urls
+   */
+  printUrls(): void
+}
+```
+
+## `resolveConfig`
+>>>>>>> 39e716ea2286a0369dc6d8de5a2586e47241aa37
 
 **类型校验：**
 
