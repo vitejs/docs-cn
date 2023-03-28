@@ -65,5 +65,7 @@ $ pnpm dev
 > 头像图生成逻辑参见：[github-contributor-svg-generator](https://github.com/ShenQingchuan/github-contributor-svg-generator)
 
 <p align="center">
-  <img src="https://cdn.jsdelivr.net/gh/ShenQingchuan/github-contributor-svg-generator@main/dist/vitejs/docs-cn.png" />
+  <a href="https://cdn.jsdelivr.net/gh/ShenQingchuan/github-contributor-svg-generator@main/.github-contributors/vitejs_docs-cn.svg">
+    <img src="https://cdn.jsdelivr.net/gh/ShenQingchuan/github-contributor-svg-generator@main/.github-contributors/vitejs_docs-cn.svg" />
+  </a>
 </p>
