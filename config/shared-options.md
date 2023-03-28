@@ -188,7 +188,6 @@ Vite 有一个“允许的情景”列表，并且会匹配列表中第一个情
 ## css.modules {#css-modules}
 
 - **类型：**
-
 ```ts
 interface CSSModulesOptions {
   scopeBehaviour?: 'global' | 'local'
@@ -227,7 +226,15 @@ interface CSSModulesOptions {
 
 - **类型：** `Record<string, object>`
 
-指定传递给 CSS 预处理器的选项。文件扩展名用作选项的键，例如：
+指定传递给 CSS 预处理器的选项。文件扩展名用作选项的键。每个预处理器支持的选项可以在它们各自的文档中找到：
+
+- `sass`/`scss` - [选项](https://sass-lang.com/documentation/js-api/interfaces/LegacyStringOptions)。
+- `less` - [选项](https://lesscss.org/usage/#less-options)。
+- `styl`/`stylus` - 仅支持 [`define`](https://stylus-lang.com/docs/js.html#define-name-node)，可以作为对象传递。
+
+所有预处理器选项还支持 `additionalData` 选项，可以用于为每个样式内容注入额外代码。
+
+示例：
 
 ```js
 export default defineConfig({
@@ -236,8 +243,13 @@ export default defineConfig({
       scss: {
         additionalData: `$injectedColor: orange;`,
       },
+      less: {
+        math: 'parens-division',
+      },
       styl: {
-        additionalData: `$injectedColor ?= orange`,
+        define: {
+          $specialColor: new stylus.nodes.RGBA(51, 197, 255, 1),
+        },
       },
     },
   },
@@ -326,6 +338,40 @@ export default defineConfig({
 
 调整控制台输出的级别，默认为 `'info'`。
 
+## customLogger {#customlogger}
+
+- **类型：**
+  ```ts
+  interface Logger {
+    info(msg: string, options?: LogOptions): void
+    warn(msg: string, options?: LogOptions): void
+    warnOnce(msg: string, options?: LogOptions): void
+    error(msg: string, options?: LogErrorOptions): void
+    clearScreen(type: LogType): void
+    hasErrorLogged(error: Error | RollupError): boolean
+    hasWarned: boolean
+  }
+  ```
+
+使用自定义 logger 记录消息。可以使用 Vite 的 `createLogger` API 获取默认的 logger 并对其进行自定义，例如，更改消息或过滤掉某些警告。
+
+```js
+import { createLogger, defineConfig } from 'vite'
+
+const logger = createLogger()
+const loggerWarn = logger.warn
+
+logger.warn = (msg, options) => {
+  // 忽略空 CSS 文件的警告
+  if (msg.includes('vite:css') && msg.includes(' is empty')) return
+  loggerWarn(msg, options)
+}
+
+export default defineConfig({
+  customLogger: logger,
+})
+```
+
 ## clearScreen {#clearscreen}
 
 - **类型：** `boolean`
@@ -351,6 +397,15 @@ export default defineConfig({
 
 :::warning 安全注意事项
 `envPrefix` 不应被设置为空字符串 `''`，这将暴露你所有的环境变量，导致敏感信息的意外泄漏。 检测到配置为 `''` 时 Vite 将会抛出错误.
+
+如果你想暴露一个不含前缀的变量，可以使用 [define](#define) 选项：
+
+```js
+define: {
+  'import.meta.env.ENV_VARIABLE': JSON.stringify(process.env.ENV_VARIABLE)
+}
+```
+
 :::
 
 ## appType {#apptype}

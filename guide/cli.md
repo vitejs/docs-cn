@@ -54,7 +54,7 @@ vite build [root]
 | `--assetsDir <dir>`            | 在输出目录下放置资源的目录（默认为：`"assets"`）(`string`) |
 | `--assetsInlineLimit <number>` | 静态资源内联为 base64 编码的阈值，以字节为单位（默认为：`4096`）(`number`) |
 | `--ssr [entry]`                | 为服务端渲染配置指定入口文件 (`string`) |
-| `--sourcemap`                  | 构建后输出 source map 文件（默认为：`false`）(`boolean`) |
+| `--sourcemap [output]`         | 构建后输出 source map 文件（默认为：`false`）(`boolean \| "inline" \| "hidden"`) |
 | `--minify [minifier]`          | 允许或禁用最小化混淆，或指定使用哪种混淆器（默认为：`"esbuild"`）(`boolean \| "terser" \| "esbuild"`) |
 | `--manifest [name]`            | 构建后生成 manifest.json 文件 (`boolean \| string`) |
 | `--ssrManifest [name]`         | 构建后生成 SSR manifest.json 文件 (`boolean \| string`) |

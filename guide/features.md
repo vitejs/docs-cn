@@ -248,10 +248,13 @@ Vite 为 Sass 和 Less 改进了 `@import` 解析，以保证 Vite 别名也能�
 自动注入 CSS 内容的行为可以通过 `?inline` 参数来关闭。在关闭时，被处理过的 CSS 字符串将会作为该模块的默认导出，但样式并没有被注入到页面中。
 
 ```js
-import styles from './foo.css' // 样式将会注入页面
+import './foo.css' // 样式将会注入页面
 import otherStyles from './bar.css?inline' // 样式不会注入页面
 ```
 
+::: tip 注意
+自 Vite 4 起，CSS 文件的默认导入和按名导入（例如 `import style from './foo.css'`）将弃用。请使用 `?inline` 参数代替。
+:::
 ## 静态资源处理 {#static-assets}
 
 导入一个静态资源会返回解析后的 URL：
@@ -404,7 +407,10 @@ const modules = {
 当与 `eager` 一同存在时，甚至可以对这些模块进行 tree-shaking。
 
 ```ts
-const modules = import.meta.glob('./dir/*.js', { import: 'setup', eager: true })
+const modules = import.meta.glob('./dir/*.js', {
+  import: 'setup',
+  eager: true,
+})
 ```
 
 ```ts

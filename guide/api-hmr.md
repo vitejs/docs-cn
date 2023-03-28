@@ -51,6 +51,13 @@ if (import.meta.hot) {
 }
 ```
 
+## TypeScript 的智能提示 {#intellisense-for-typescript}
+Vite 在 [`vite/client.d.ts`](https://github.com/vitejs/vite/blob/main/packages/vite/client.d.ts) 中为 `import.meta.hot` 提供了类型定义。你可以在 `src` 目录中创建一个 `env.d.ts`，以便 TypeScript 获取类型定义：
+
+```ts
+/// <reference types="vite/client" />
+```
+
 ## `hot.accept(cb)` {#hot-accept-cb}
 
 要接收模块自身，应使用 `import.meta.hot.accept`，参数为接收已更新模块的回调函数：

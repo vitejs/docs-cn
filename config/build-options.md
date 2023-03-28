@@ -10,7 +10,7 @@
 
 另一个特殊值是 “esnext” —— 即假设有原生动态导入支持，并且将会转译得尽可能小：
 
-- 如果 [`build.minify`](#build-minify) 选项为 `'terser'`，`'esnext'` 将会强制降级为 `'es2021'`。
+- 如果 [`build.minify`](#build-minify) 选项为 `'terser'`，并且安装的 Terser 版本小于 5.16.0，`'esnext'` 将会强制降级为 `'es2021'`。
 - 其他情况下将完全不会执行转译。
 
 转换过程将会由 esbuild 执行，并且此值应该是一个合法的 [esbuild 目标选项](https://esbuild.github.io/api/#target)。自定义目标也可以是一个 ES 版本（例如：`es2015`）、一个浏览器版本（例如：`chrome58`）或是多个目标组成的一个数组。
@@ -78,7 +78,7 @@ modulePreload: {
 - **类型：** `string`
 - **默认：** `assets`
 
-指定生成静态资源的存放路径（相对于 `build.outDir`）。
+指定生成静态资源的存放路径（相对于 `build.outDir`）。在 [库模式](/guide/build#library-mode) 下不能使用。
 
 ## build.assetsInlineLimit {#build-assetsinlinelimit}
 
@@ -106,7 +106,7 @@ Git LFS 占位符会自动排除在内联之外，因为它们不包含它们所
 如果指定了 `build.lib`，`build.cssCodeSplit` 会默认为 `false`。
 :::
 
-## build.cssTarget
+## build.cssTarget {#build-csstarget}
 
 - **类型：** `string | string[]`
 - **默认值：** 与 [`build.target`](/config/#build-target) 一致
@@ -116,6 +116,13 @@ Git LFS 占位符会自动排除在内联之外，因为它们不包含它们所
 应只在针对非主流浏览器时使用。
 最直观的示例是当你要兼容的场景是安卓微信中的 webview 时，它支持大多数现代的 JavaScript 功能，但并不支持 [CSS 中的 `#RGBA` 十六进制颜色符号](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#rgb_colors)。
 这种情况下，你需要将 `build.cssTarget` 设置为 `chrome61`，以防止 vite 将 `rgba()` 颜色转化为 `#RGBA` 十六进制符号的形式。
+
+## build.cssMinify {#build-cssminify}
+
+- **类型：** `boolean`
+- **默认：** 与 [`build.minify`](#build-minify) 一致
+
+此选项允许用户覆盖 CSS 最小化压缩的配置，而不是使用默认的 `build.minify`，这样你就可以单独配置 JS 和 CSS 的最小化压缩方式。Vite 使用 `esbuild` 来最小化 CSS。
 
 ## build.sourcemap {#build-sourcemap}
 
@@ -229,7 +236,7 @@ npm add -D terser
 - **类型：** `number`
 - **默认：** `500`
 
-规定触发警告的 chunk 大小。（以 kbs 为单位）
+规定触发警告的 chunk 大小。（以 kbs 为单位）。它将与未压缩的 chunk 大小进行比较，因为 [JavaScript 大小本身与执行时间相关](https://v8.dev/blog/cost-of-javascript-2019)。
 
 ## build.watch {#build-watch}
 

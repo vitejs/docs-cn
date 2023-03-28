@@ -4,7 +4,7 @@
 
 Vite 现在正式启用 [Rollup 3](https://github.com/vitejs/vite/issues/9870)，这使得我们可以简化 Vite 内部的资源处理并同时拥有许多改进。详情请查看 [Rollup 3 版本记录](https://github.com/rollup/rollup/releases/tag/v3.0.0)。
 
-Rollup 3 尽最大可能兼容了 Rollup 2。如果你在项目中使用了自定义的 [`rollupOptions`](../config/build-options.md#rollup-options) 并（升级后）遇到了问题，请先查看 [Rollup 迁移指南](https://rollupjs.org/guide/en/#migration) 来更新升级你的配置。
+Rollup 3 尽最大可能兼容了 Rollup 2。如果你在项目中使用了自定义的 [`rollupOptions`](../config/build-options.md#rollup-options) 并（升级后）遇到了问题，请先查看 [Rollup 迁移指南](https://rollupjs.org/migration/) 来更新升级你的配置。
 
 ## 现代浏览器基准线变化 {#modern-browser-baseline-change}
 
@@ -34,7 +34,7 @@ import stuff from './global.css?inline'
 
 不管所传递的 `--mode` 是什么，`vite build` 总是构建生产版本。之前，若将 `mode` 改为 `production` 之外的模式会构建开发版本，如果现在希望用于开发构建，可以在 `.env.{mode}` 文件中设置 `NODE_ENV=development`。
 
-在本次变动中，如果 `process.env.`<wbr>`NODE_ENV` 已经被定义，`vite dev` 和 `vite build` 将不再覆盖它。所以如果在构建前设置了 `process.env.`<wbr>`NODE_ENV = 'development'`，将会构建开发版本。这在并行执行多个构建或开发服务器时提供了更多的控制权。
+在本次变动中，如果 `process.env.NODE_ENV` 已经被定义，`vite dev` 和 `vite build` 将不再覆盖它。所以如果在构建前设置了 `process.env.NODE_ENV = 'development'`，将会构建开发版本。这在并行执行多个构建或开发服务器时提供了更多的控制权。
 
 请参阅更新后的 [`mode` 文档](/guide/env-and-mode.md#modes) 了解更多详细信息。
 
