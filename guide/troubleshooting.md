@@ -131,7 +131,7 @@ import './Foo.js' // 应该为 './foo.js'
 
 这是因为 Vite 不会自动 polyfill Node.js 的内建模块。
 
-我们推荐你不要再浏览器中使用 Node.js 模块以减小包体积，尽管你可以为其手动添加 polyfill。如果该模块是被某个第三方库（这里意为某个在浏览器中使用的库）导入的，则建议向对应库提交一个 issue。
+我们推荐你不要在浏览器中使用 Node.js 模块以减小包体积，尽管你可以为其手动添加 polyfill。如果该模块是被某个第三方库（这里意为某个在浏览器中使用的库）导入的，则建议向对应库提交一个 issue。
 
 ### Syntax Error / Type Error {#syntax-error-type-error-happens}
 
