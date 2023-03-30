@@ -41,10 +41,6 @@ export default defineConfig({
     pt: { label: 'Português', link: 'https://pt.vitejs.dev' },
   },
 
-  vue: {
-    reactivityTransform: true,
-  },
-
   themeConfig: {
     logo: '/logo.svg',
 
