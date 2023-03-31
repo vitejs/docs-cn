@@ -96,11 +96,7 @@ Vite 默认的类型定义是写给它的 Node.js API 的。要将其补充到�
 /// <reference types="vite/client" />
 ```
 
-<<<<<<< HEAD
-同时，你也可以将 `vite/client` 添加到 `tsconfig` 中的 `compilerOptions.types` 下：
-=======
-Alternatively, you can add `vite/client` to `compilerOptions.types` inside `tsconfig.json`:
->>>>>>> c9deaacb34a4eeb8667b8479da0e5df558acb763
+或者，你也可以将 `vite/client` 添加到 `tsconfig.json` 中的 `compilerOptions.types` 下：
 
 ```json
 {
@@ -464,7 +460,7 @@ const modules = {
 }
 ```
 
-### Glob 导入注意事项
+### Glob 导入注意事项 {#glob-import-caveats}
 
 请注意：
 
