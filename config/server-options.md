@@ -327,7 +327,11 @@ export default defineConfig({
 - **类型：** `false | (sourcePath: string, sourcemapPath: string) => boolean`
 - **默认：** `(sourcePath) => sourcePath.includes('node_modules')`
 
+<<<<<<< HEAD
 是否忽略服务器 sourcemap 中的源文件，用于填充 [`x_google_ignoreList` source map 扩展](https://developer.chrome.com/blog/devtools-better-angular-debugging/#the-x_google_ignorelist-source-map-extension)。
+=======
+Whether or not to ignore source files in the server sourcemap, used to populate the [`x_google_ignoreList` source map extension](https://developer.chrome.com/articles/x-google-ignore-list/).
+>>>>>>> 739cb4b1ae6b29df9fcd47694d43a79b8836fe53
 
 对开发服务器来说 `server.sourcemapIgnoreList` 等价于 [`build.rollupOptions.output.sourcemapIgnoreList`](https://rollupjs.org/configuration-options/#output-sourcemapignorelist)。两个配置选项之间的区别在于，rollup 函数使用相对路径调用 `sourcePath`，而 `server.sourcemapIgnoreList` 使用绝对路径调用。在开发过程中，大多数模块的映射和源文件位于同一个文件夹中，因此 `sourcePath` 的相对路径就是文件名本身。在这些情况下，使用绝对路径更加方便。
 
