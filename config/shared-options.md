@@ -232,7 +232,11 @@ interface CSSModulesOptions {
 - `less` - [选项](https://lesscss.org/usage/#less-options)。
 - `styl`/`stylus` - 仅支持 [`define`](https://stylus-lang.com/docs/js.html#define-name-node)，可以作为对象传递。
 
+<<<<<<< HEAD
 所有预处理器选项还支持 `additionalData` 选项，可以用于为每个样式内容注入额外代码。
+=======
+All preprocessor options also support the `additionalData` option, which can be used to inject extra code for each style content. Note that if you include actual styles and not just variables, those styles will be duplicated in the final bundle.
+>>>>>>> b29ae8400b7f5404310fa27f95f85b70d9c8b2fe
 
 示例：
 
