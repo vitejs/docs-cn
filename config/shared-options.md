@@ -232,7 +232,7 @@ interface CSSModulesOptions {
 - `less` - [选项](https://lesscss.org/usage/#less-options)。
 - `styl`/`stylus` - 仅支持 [`define`](https://stylus-lang.com/docs/js.html#define-name-node)，可以作为对象传递。
 
-所有预处理器选项还支持 `additionalData` 选项，可以用于为每个样式内容注入额外代码。
+所有预处理器选项还支持 `additionalData` 选项，可以用于为每个样式内容注入额外代码。请注意，如果注入的是实际的样式而不仅仅是变量时，那么这些样式将会在最终的打包产物中重复出现。
 
 示例：
 
