@@ -121,7 +121,17 @@ This can be caused by a circular dependency. To solve this, try breaking the loo
 
 你需要通过 `http` 协议访问该文件。最简单的办法就是使用 `npx vite preview`。
 
+<<<<<<< HEAD
 ## 其他 {#others}
+=======
+## Optimized Dependencies
+
+### Outdated pre-bundled deps when linking to a local package
+
+The hash key used to invalidate optimized dependencies depend on the package lock contents, the patches applied to dependencies, and the options in the Vite config file that affects the bundling of node modules. This means that Vite will detect when a dependency is overridden using a feature as [npm overrides](https://docs.npmjs.com/cli/v9/configuring-npm/package-json#overrides), and re-bundle your dependencies on the next server start. Vite won't invalidate the dependencies when you use a feature like [npm link](https://docs.npmjs.com/cli/v9/commands/npm-link). In case you link or unlink a dependency, you'll need to force re-optimization on the next server start by using `vite --force`. We recommend using overrides instead, which are supported now by every package manager (see also [pnpm overrides](https://pnpm.io/package_json#pnpmoverrides) and [yarn resolutions](https://yarnpkg.com/configuration/manifest/#resolutions)).
+
+## Others
+>>>>>>> 12d05d4019b8b90b4eac2ad89d5b4dcbdf14bdcb
 
 ### Module externalized for browser compatibility {#module-externalized-for-browser-compatibility}
 

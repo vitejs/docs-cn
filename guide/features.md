@@ -74,7 +74,11 @@ export type { T }
 
 如果你正在使用一个严重依赖 class fields 的库，请注意该库对此选项的预期设置。
 
+<<<<<<< HEAD
 大多数库都希望 `"useDefineForClassFields": true`，如 [MobX](https://mobx.js.org/installation.html#use-spec-compliant-transpilation-for-class-properties)，[Vue Class Components 8.x](https://github.com/vuejs/vue-class-component/issues/465) 等。
+=======
+Most libraries expect `"useDefineForClassFields": true`, such as [MobX](https://mobx.js.org/installation.html#use-spec-compliant-transpilation-for-class-properties).
+>>>>>>> 12d05d4019b8b90b4eac2ad89d5b4dcbdf14bdcb
 
 但是有几个库还没有兼容这个新的默认值，其中包括 [`lit-element`](https://github.com/lit/lit-element/issues/1030)。如果遇到这种情况，请将 `useDefineForClassFields` 设置为 `false`。
 
