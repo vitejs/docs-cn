@@ -210,10 +210,10 @@ const html = await vueServerRenderer.renderToString(app, ctx)
 
 当运行 SSR 时依赖会由 Vite 的 SSR 转换模块系统作外部化。这会同时提速开发与构建。
 
-例如，如果依赖项需要通过 Vite 的管道进行转换，因为在这些依赖在管道中使用 Vite 特性时是不转翻译的，则可以将它们添加到 [`ssr.noExternal`](../config/ssr-options.md#ssrnoexternal) 中。
+对于采用链接的依赖，它们将默认不会被外部化，这是为了能使其利用 Vite HMR 的优势。如果你不需要这一功效，例如，想要把这些依赖当成非链接情况来测试，你可以将其添加到 [`ssr.external`](../config/ssr-options.md#ssr-external)。
 
 :::warning 使用别名
-如果你为某个包配置了一个别名，为了能使 SSR 外部化依赖功能正常工作，你可能想要使用的别名应该指的是实际的 `node_modules` 中的包。[Yarn](https://classic.yarnpkg.com/en/docs/cli/add/#toc-yarn-add-alias) 和 [pnpm](https://pnpm.js.org/en/aliases) 都支持通过 `npm:` 前缀来设置别名。
+如果你为某个包配置了一个别名，为了能使 SSR 外部化依赖功能正常工作，你可能想要使用的别名应该指的是实际的 `node_modules` 中的包。[Yarn](https://classic.yarnpkg.com/en/docs/cli/add/#toc-yarn-add-alias) 和 [pnpm](https://pnpm.io/aliases/) 都支持通过 `npm:` 前缀来设置别名。
 :::
 
 ## SSR 专有插件逻辑 {#ssr-specific-plugin-logic}
