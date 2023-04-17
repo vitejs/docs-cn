@@ -73,7 +73,8 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url))
 async function createServer() {
   const app = express()
 
-  // 以中间件模式创建 Vite 应用，这将禁用 Vite 自身的 HTML 服务逻辑
+  // 以中间件模式创建 Vite 应用，并将 appType 配置为 'custom'
+  // 这将禁用 Vite 自身的 HTML 服务逻辑
   // 并让上级服务器接管控制
   const vite = await createViteServer({
     server: { middlewareMode: true },
@@ -210,17 +211,12 @@ const html = await vueServerRenderer.renderToString(app, ctx)
 
 当运行 SSR 时依赖会由 Vite 的 SSR 转换模块系统作外部化。这会同时提速开发与构建。
 
+如果依赖需要被 Vite 的管道转换，例如因为其中使用了未经过转译的 Vite 特性，那么它们可以被添加到 [`ssr.noExternal`](../config/ssr-options.md#ssr-noexternal) 中。
+
 对于采用链接的依赖，它们将默认不会被外部化，这是为了能使其利用 Vite HMR 的优势。如果你不需要这一功效，例如，想要把这些依赖当成非链接情况来测试，你可以将其添加到 [`ssr.external`](../config/ssr-options.md#ssr-external)。
 
-<<<<<<< HEAD
 :::warning 使用别名
 如果你为某个包配置了一个别名，为了能使 SSR 外部化依赖功能正常工作，你可能想要使用的别名应该指的是实际的 `node_modules` 中的包。[Yarn](https://classic.yarnpkg.com/en/docs/cli/add/#toc-yarn-add-alias) 和 [pnpm](https://pnpm.io/aliases/) 都支持通过 `npm:` 前缀来设置别名。
-=======
-For linked dependencies, they are not externalized by default to take advantage of Vite's HMR. If this isn't desired, for example, to test dependencies as if they aren't linked, you can add it to [`ssr.external`](../config/ssr-options.md#ssr-external).
-
-:::warning Working with Aliases
-If you have configured aliases that redirect one package to another, you may want to alias the actual `node_modules` packages instead to make it work for SSR externalized dependencies. Both [Yarn](https://classic.yarnpkg.com/en/docs/cli/add/#toc-yarn-add-alias) and [pnpm](https://pnpm.io/aliases/) support aliasing via the `npm:` prefix.
->>>>>>> 12d05d4019b8b90b4eac2ad89d5b4dcbdf14bdcb
 :::
 
 ## SSR 专有插件逻辑 {#ssr-specific-plugin-logic}

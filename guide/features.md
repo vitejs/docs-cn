@@ -74,11 +74,7 @@ export type { T }
 
 如果你正在使用一个严重依赖 class fields 的库，请注意该库对此选项的预期设置。
 
-<<<<<<< HEAD
 大多数库都希望 `"useDefineForClassFields": true`，如 [MobX](https://mobx.js.org/installation.html#use-spec-compliant-transpilation-for-class-properties)。
-=======
-Most libraries expect `"useDefineForClassFields": true`, such as [MobX](https://mobx.js.org/installation.html#use-spec-compliant-transpilation-for-class-properties).
->>>>>>> 12d05d4019b8b90b4eac2ad89d5b4dcbdf14bdcb
 
 但是有几个库还没有兼容这个新的默认值，其中包括 [`lit-element`](https://github.com/lit/lit-element/issues/1030)。如果遇到这种情况，请将 `useDefineForClassFields` 设置为 `false`。
 
@@ -259,6 +255,7 @@ import otherStyles from './bar.css?inline' // 样式不会注入页面
 ::: tip 注意
 自 Vite 4 起，CSS 文件的默认导入和按名导入（例如 `import style from './foo.css'`）将弃用。请使用 `?inline` 参数代替。
 :::
+
 ## 静态资源处理 {#static-assets}
 
 导入一个静态资源会返回解析后的 URL：
