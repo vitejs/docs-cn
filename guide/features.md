@@ -255,6 +255,7 @@ import otherStyles from './bar.css?inline' // 样式不会注入页面
 ::: tip 注意
 自 Vite 4 起，CSS 文件的默认导入和按名导入（例如 `import style from './foo.css'`）将弃用。请使用 `?inline` 参数代替。
 :::
+
 ## 静态资源处理 {#static-assets}
 
 导入一个静态资源会返回解析后的 URL：

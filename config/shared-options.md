@@ -111,7 +111,7 @@ const obj = {
 更高级的自定义解析方法可以通过 [插件](/guide/api-plugin) 实现。
 
 ::: warning 在 SSR 中使用
-如果你已经为 [SSR 外部化的依赖](/guide/ssr.md#ssr-externals) 配置了别名，你可能想要为真实的 `node_modules` 包配别名. [Yarn](https://classic.yarnpkg.com/en/docs/cli/add/#toc-yarn-add-alias) 和 [pnpm](https://pnpm.io/aliases/) 都支持通过 `npm:` 前缀配置别名。
+如果你已经为 [SSR 外部化的依赖](/guide/ssr.md#ssr-externals) 配置了别名，你可能想要为真实的 `node_modules` 包配别名。[Yarn](https://classic.yarnpkg.com/en/docs/cli/add/#toc-yarn-add-alias) 和 [pnpm](https://pnpm.io/aliases/) 都支持通过 `npm:` 前缀配置别名。
 :::
 
 ## resolve.dedupe {#resolve-dedupe}
