@@ -121,6 +121,12 @@ import './Foo.js' // 应该为 './foo.js'
 
 你需要通过 `http` 协议访问该文件。最简单的办法就是使用 `npx vite preview`。
 
+## 优化依赖 {#optimize-dependencies}
+
+### 链接本地包时过期预构建依赖项 {#outdated-pre-bundled-deps-when-linking-to-a-local-package}
+
+在 Vite 中通过一个哈希值来决定优化后的依赖项是否有效，这个值取决于包锁定的内容、应用于依赖项的补丁以及 Vite 配置文件中影响 node_modules 打包的选项。这意味着，当使用像 [npm overrides](https://docs.npmjs.com/cli/v9/configuring-npm/package-json#overrides) 这样的功能覆盖依赖项时，Vite 将检测到，并在下一次服务器启动时重新打包您的依赖项。当您使用像 [npm link](https://docs.npmjs.com/cli/v9/commands/npm-link) 这样的功能时，Vite 不会使依赖项无效。如果您链接或取消链接一个依赖项，那么您需要使用 `vite --force` 在下一次服务器启动时强制重新预构建。我们建议使用 overrides，它们现在被每个包管理器所支持（还可以参见 [pnpm overrides](https://pnpm.io/package_json#pnpmoverrides) 和 [yarn resolutions](https://yarnpkg.com/configuration/manifest/#resolutions)）。
+
 ## 其他 {#others}
 
 ### Module externalized for browser compatibility {#module-externalized-for-browser-compatibility}
@@ -144,3 +150,7 @@ Vite 无法处理、也不支持仅可在非严格模式（sloppy mode）下运�
 > TypeError: Cannot create property 'foo' on boolean 'false'
 
 如果这些代码是在依赖中被使用的，你应该使用 [`patch-package`](https://github.com/ds300/patch-package)（或者 [`yarn patch`](https://yarnpkg.com/cli/patch)、[`pnpm patch`](https://pnpm.io/cli/patch) 工具）来做短期补丁处理。
+
+### 浏览器扩展程序 {#browser-extensions}
+
+一些浏览器扩展程序（例如 ad-blockers 广告拦截器），可能会阻止 Vite 客户端向 Vite 开发服务器发送请求。在这种情况下，你可能会看到一个空白屏且没有错误日志。如果遇到这类问题，请尝试禁用扩展程序。

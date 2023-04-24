@@ -309,10 +309,11 @@ Vite 插件也可以提供钩子来服务于特定的 Vite 目标。这些钩子
 
 ### `configurePreviewServer` {#configurepreviewserver}
 
-- **类型：** `(server: { middlewares: Connect.Server, httpServer: http.Server }) => (() => void) | void | Promise<(() => void) | void>`
+- **类型：** `(server: PreviewServerForHook) => (() => void) | void | Promise<(() => void) | void>`
 - **种类：** `async`, `sequential`
+- **参见：** [PreviewServerForHook](./api-javascript#previewserverforhook)
 
-  与 [`configureServer`](/guide/api-plugin.html#configureserver) 相同但是作为预览服务器。它提供了一个 [connect](https://github.com/senchalabs/connect) 服务器实例及其底层的 [http server](https://nodejs.org/api/http.html)。与 `configureServer` 类似，`configurePreviewServer` 这个钩子也是在其他中间件安装前被调用的。如果你想要在其他中间件 **之后** 安装一个插件，你可以从 `configurePreviewServer` 返回一个函数，它将会在内部中间件被安装之后再调用：
+  与 [`configureServer`](/guide/api-plugin.html#configureserver) 相同，但用于预览服务器。`configurePreviewServer` 这个钩子与 `configureServer` 类似，也是在其他中间件安装前被调用。如果你想要在其他中间件 **之后** 安装一个插件，你可以从 `configurePreviewServer` 返回一个函数，它将会在内部中间件被安装之后再调用：
 
   ```js
   const myPlugin = () => ({

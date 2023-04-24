@@ -111,7 +111,7 @@ const obj = {
 更高级的自定义解析方法可以通过 [插件](/guide/api-plugin) 实现。
 
 ::: warning 在 SSR 中使用
-如果你已经为 [SSR 外部化的依赖](/guide/ssr.md#ssr-externals) 配置了别名，你可能想要为真实的 `node_modules` 包配别名. [Yarn](https://classic.yarnpkg.com/en/docs/cli/add/#toc-yarn-add-alias) 和 [pnpm](https://pnpm.js.org/en/aliases) 都支持通过 `npm:` 前缀配置别名。
+如果你已经为 [SSR 外部化的依赖](/guide/ssr.md#ssr-externals) 配置了别名，你可能想要为真实的 `node_modules` 包配别名。[Yarn](https://classic.yarnpkg.com/en/docs/cli/add/#toc-yarn-add-alias) 和 [pnpm](https://pnpm.io/aliases/) 都支持通过 `npm:` 前缀配置别名。
 :::
 
 ## resolve.dedupe {#resolve-dedupe}
@@ -232,7 +232,7 @@ interface CSSModulesOptions {
 - `less` - [选项](https://lesscss.org/usage/#less-options)。
 - `styl`/`stylus` - 仅支持 [`define`](https://stylus-lang.com/docs/js.html#define-name-node)，可以作为对象传递。
 
-所有预处理器选项还支持 `additionalData` 选项，可以用于为每个样式内容注入额外代码。
+所有预处理器选项还支持 `additionalData` 选项，可以用于为每个样式内容注入额外代码。请注意，如果注入的是实际的样式而不仅仅是变量时，那么这些样式将会在最终的打包产物中重复出现。
 
 示例：
 

@@ -74,7 +74,7 @@ export type { T }
 
 如果你正在使用一个严重依赖 class fields 的库，请注意该库对此选项的预期设置。
 
-大多数库都希望 `"useDefineForClassFields": true`，如 [MobX](https://mobx.js.org/installation.html#use-spec-compliant-transpilation-for-class-properties)，[Vue Class Components 8.x](https://github.com/vuejs/vue-class-component/issues/465) 等。
+大多数库都希望 `"useDefineForClassFields": true`，如 [MobX](https://mobx.js.org/installation.html#use-spec-compliant-transpilation-for-class-properties)。
 
 但是有几个库还没有兼容这个新的默认值，其中包括 [`lit-element`](https://github.com/lit/lit-element/issues/1030)。如果遇到这种情况，请将 `useDefineForClassFields` 设置为 `false`。
 
@@ -96,7 +96,7 @@ Vite 默认的类型定义是写给它的 Node.js API 的。要将其补充到�
 /// <reference types="vite/client" />
 ```
 
-同时，你也可以将 `vite/client` 添加到 `tsconfig` 中的 `compilerOptions.types` 下：
+或者，你也可以将 `vite/client` 添加到 `tsconfig.json` 中的 `compilerOptions.types` 下：
 
 ```json
 {
@@ -255,6 +255,7 @@ import otherStyles from './bar.css?inline' // 样式不会注入页面
 ::: tip 注意
 自 Vite 4 起，CSS 文件的默认导入和按名导入（例如 `import style from './foo.css'`）将弃用。请使用 `?inline` 参数代替。
 :::
+
 ## 静态资源处理 {#static-assets}
 
 导入一个静态资源会返回解析后的 URL：
@@ -350,7 +351,7 @@ const modules = {
 `import.meta.glob` 都支持以字符串形式导入文件，类似于 [以字符串形式导入资源](https://vitejs.dev/guide/assets.html#importing-asset-as-string)。在这里，我们使用了 [Import Reflection](https://github.com/tc39/proposal-import-reflection) 语法对导入进行断言：
 
 ```js
-const modules = import.meta.glob('./dir/*.js', { as: 'raw' })
+const modules = import.meta.glob('./dir/*.js', { as: 'raw', eager: true })
 ```
 
 上面的代码会被转换为下面这样：
@@ -460,7 +461,7 @@ const modules = {
 }
 ```
 
-### Glob 导入注意事项
+### Glob 导入注意事项 {#glob-import-caveats}
 
 请注意：
 

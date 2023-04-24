@@ -196,6 +196,46 @@ import { preview } from 'vite'
 })()
 ```
 
+## `PreviewServer`
+
+```ts
+interface PreviewServer extends PreviewServerForHook {
+  resolvedUrls: ResolvedServerUrls
+}
+```
+
+## `PreviewServerForHook`
+
+```ts
+interface PreviewServerForHook {
+  /**
+   * 解析后的 vite 配置对象
+   */
+  config: ResolvedConfig
+  /**
+   * 一个 connect 应用实例。
+   * - 可用作将自定义中间件附加到预览服务器上。
+   * - 还可用作自定义 HTTP 服务器的处理函数
+   *   或作为任何 connect 风格的 Node.js 框架的中间件
+   *
+   * https://github.com/senchalabs/connect#use-middleware
+   */
+  middlewares: Connect.Server
+  /**
+   * 原生 Node http 服务器实例
+   */
+  httpServer: http.Server
+  /**
+   * Vite 在 CLI 中输出的解析后的 URL
+   */
+  resolvedUrls: ResolvedServerUrls | null
+  /**
+   * 打印服务器 URL
+   */
+  printUrls(): void
+}
+```
+
 ## `resolveConfig` {#resolveconfig}
 
 **类型校验：**
