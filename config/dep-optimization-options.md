@@ -39,7 +39,7 @@ export default defineConfig({
 
 - **类型：** [`EsbuildBuildOptions`](https://esbuild.github.io/api/#simple-options)
 
-在部署扫描和优化过程中传递给 esbuild 的选项。
+在依赖扫描和优化过程中传递给 esbuild 的选项。
 
 某些选项进行了省略，因为修改它们与 Vite 的优化方案并不兼容。
 
