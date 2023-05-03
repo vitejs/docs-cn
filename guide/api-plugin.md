@@ -159,7 +159,13 @@ console.log(msg)
 - [`load`](https://rollupjs.org/plugin-development/#load)
 - [`transform`](https://rollupjs.org/plugin-development/#transform)
 
+<<<<<<< HEAD
 它们还有一个扩展的 `options` 参数，包含其他特定于 Vite 的属性。你可以在 [SSR 文档](/guide/ssr#ssr-specific-plugin-logic) 中查阅更多内容。
+=======
+These hooks also have an extended `options` parameter with additional Vite-specific properties. You can read more in the [SSR documentation](/guide/ssr#ssr-specific-plugin-logic).
+
+Some `resolveId` calls' `importer` value may be an absolute path for a generic `index.html` at root as it's not always possible to derive the actual importer due to Vite's unbundled dev server pattern. For imports handled within Vite's resolve pipeline, the importer can be tracked during the import analysis phase, providing the correct `importer` value.
+>>>>>>> 1b4af2270b132406e1c0acc90de9acf4929c4ce4
 
 以下钩子在服务器关闭时被调用：
 
