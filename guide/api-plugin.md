@@ -161,6 +161,8 @@ console.log(msg)
 
 它们还有一个扩展的 `options` 参数，包含其他特定于 Vite 的属性。你可以在 [SSR 文档](/guide/ssr#ssr-specific-plugin-logic) 中查阅更多内容。
 
+一些 `resolveId` 调用的 `importer` 值可能是根目录下的通用 `index.html` 的绝对路径，因为由于 Vite 非打包的开发服务器模式无法始终推导出实际的导入者。对于在 Vite 的解析管道中处理的导入，导入者可以在导入分析阶段进行跟踪，那时所提供的 `importer` 值是正确的。
+
 以下钩子在服务器关闭时被调用：
 
 - [`buildEnd`](https://rollupjs.org/plugin-development/#buildend)
