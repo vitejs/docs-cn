@@ -136,9 +136,15 @@ Vite 默认的类型定义是写给它的 Node.js API 的。要将其补充到�
 
 Vite 为 Vue 提供第一优先级支持：
 
+<<<<<<< HEAD
 - Vue 3 单文件组件支持：[@vitejs/plugin-vue](https://github.com/vitejs/vite-plugin-vue/tree/main/packages/plugin-vue)
 - Vue 3 JSX 支持：[@vitejs/plugin-vue-jsx](https://github.com/vitejs/vite-plugin-vue/tree/main/packages/plugin-vue-jsx)
 - Vue 2.7 支持：[vitejs/vite-plugin-vue2](https://github.com/vitejs/vite-plugin-vue2)
+=======
+- Vue 3 SFC support via [@vitejs/plugin-vue](https://github.com/vitejs/vite-plugin-vue/tree/main/packages/plugin-vue)
+- Vue 3 JSX support via [@vitejs/plugin-vue-jsx](https://github.com/vitejs/vite-plugin-vue/tree/main/packages/plugin-vue-jsx)
+- Vue 2.7 SFC support via [@vitejs/plugin-vue2](https://github.com/vitejs/vite-plugin-vue2)
+>>>>>>> b38a5eb0cff0c7590319138606d0867749164c1b
 - Vue 2.7 JSX support via [@vitejs/plugin-vue2-jsx](https://github.com/vitejs/vite-plugin-vue2-jsx)
 
 ## JSX {#jsx}
@@ -541,7 +547,11 @@ import MyWorker from './worker?worker'
 const worker = new MyWorker()
 ```
 
+<<<<<<< HEAD
 Worker 脚本也可以使用 ESM 的 `import` 语句来替代 `importScripts()` —— **注意**，在开发过程中，这依赖于[浏览器原生支持](https://caniuse.com/?search=module%20worker)（目前在 Firefox 中不支持），而在生产版本中，它已经被编译掉了。
+=======
+The worker script can also use ESM `import` statements instead of `importScripts()`. **Note**: During dev this relies on [browser native support](https://caniuse.com/?search=module%20worker) (currently not supported in Firefox), but for the production build it is compiled away.
+>>>>>>> b38a5eb0cff0c7590319138606d0867749164c1b
 
 默认情况下，worker 脚本将在生产构建中编译成单独的 chunk。如果你想将 worker 内联为 base64 字符串，请添加 `inline` 查询参数：
 
