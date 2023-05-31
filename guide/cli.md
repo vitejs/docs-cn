@@ -98,7 +98,11 @@ vite optimize [root]
 
 ### `vite preview` {#vite-preview}
 
+<<<<<<< HEAD
 本地预览构建产物。
+=======
+Locally preview the production build. Do not use this as a production server as it's not designed for it.
+>>>>>>> 2bf5fee2d963bf74df387eefa871e68233d7fd1e
 
 #### 使用 {#usage-3}
 

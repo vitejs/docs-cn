@@ -114,7 +114,13 @@ export default defineConfig({
 
 如果你指定了另一个根目录，请记住，在解析输入路径时，`__dirname` 的值将仍然是 vite.config.js 文件所在的目录。因此，你需要把对应入口文件的 `root` 的路径添加到 `resolve` 的参数中。
 
+<<<<<<< HEAD
 ## 库模式 {#library-mode}
+=======
+Note that for HTML files, Vite ignores the name given to the entry in the `rollupOptions.input` object and instead respects the resolved id of the file when generating the HTML asset in the dist folder. This ensures a consistent structure with the way the dev server works.
+
+## Library Mode
+>>>>>>> 2bf5fee2d963bf74df387eefa871e68233d7fd1e
 
 当你开发面向浏览器的库时，你可能会将大部分时间花在该库的测试/演示页面上。在 Vite 中你可以使用 `index.html` 获得如丝般顺滑的开发体验。
 

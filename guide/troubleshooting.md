@@ -153,4 +153,19 @@ Vite 无法处理、也不支持仅可在非严格模式（sloppy mode）下运�
 
 ### 浏览器扩展程序 {#browser-extensions}
 
+<<<<<<< HEAD
 一些浏览器扩展程序（例如 ad-blockers 广告拦截器），可能会阻止 Vite 客户端向 Vite 开发服务器发送请求。在这种情况下，你可能会看到一个空白屏且没有错误日志。如果遇到这类问题，请尝试禁用扩展程序。
+=======
+Some browser extensions (like ad-blockers) may prevent the Vite client from sending requests to the Vite dev server. You may see a white screen without logged errors in this case. Try disabling extensions if you have this issue.
+
+### Cross drive links on Windows
+
+If there's a cross drive links in your project on Windows, Vite may not work.
+
+An example of cross drive links are:
+
+- a virtual drive linked to a folder by `subst` command
+- a symlink/junction to a different drive by `mklink` command (e.g. Yarn global cache)
+
+Related issue: [#10802](https://github.com/vitejs/vite/issues/10802)
+>>>>>>> 2bf5fee2d963bf74df387eefa871e68233d7fd1e
