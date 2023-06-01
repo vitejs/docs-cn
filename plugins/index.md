@@ -18,7 +18,7 @@ Vite 旨在为常见的 web 开发工作提供开箱即用的支持。在搜索�
 
 ### [@vitejs/plugin-vue2](https://github.com/vitejs/vite-plugin-vue2)
 
-- 提供对 Vue 2 的单文件组件支持。
+- 提供对 Vue 2.7 的单文件组件支持。
 
 ### [@vitejs/plugin-vue2-jsx](https://github.com/vitejs/vite-plugin-vue2-jsx)
 

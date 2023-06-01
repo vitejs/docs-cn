@@ -161,6 +161,8 @@ console.log(msg)
 
 它们还有一个扩展的 `options` 参数，包含其他特定于 Vite 的属性。你可以在 [SSR 文档](/guide/ssr#ssr-specific-plugin-logic) 中查阅更多内容。
 
+一些 `resolveId` 调用 `importer` 值可能是根目录下 `index.html` 的绝对路径，这是由于 Vite 的非打包的开发服务器模式，并不总是可以获取到出实际的 importer。对于在 Vite 解析管道中处理的导入，可以在导入分析阶段跟踪导入方，提供正确的 `importer` 值。
+
 一些 `resolveId` 调用的 `importer` 值可能是根目录下的通用 `index.html` 的绝对路径，因为由于 Vite 非打包的开发服务器模式无法始终推导出实际的导入者。对于在 Vite 的解析管道中处理的导入，导入者可以在导入分析阶段进行跟踪，那时所提供的 `importer` 值是正确的。
 
 以下钩子在服务器关闭时被调用：
@@ -344,6 +346,8 @@ Vite 插件也可以提供钩子来服务于特定的 Vite 目标。这些钩子
   - 注入到现有 HTML 中的标签描述符对象数组（`{ tag, attrs, children }`）。每个标签也可以指定它应该被注入到哪里（默认是在 `<head>` 之前）
   - 一个包含 `{ html, tags }` 的对象
 
+  默认情况下 `order` 是 `undefined`，这个钩子会在 HTML 被转换后应用。为了注入一个应该通过 Vite 插件管道的脚本， `order: 'pre'` 指将在处理 HTML 之前应用。 `order: 'post'` 是在所有未定义的 `order` 的钩子函数被应用后才应用。
+  
   **基础示例：**
 
   ```js

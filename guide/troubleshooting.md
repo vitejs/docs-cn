@@ -154,3 +154,14 @@ Vite 无法处理、也不支持仅可在非严格模式（sloppy mode）下运�
 ### 浏览器扩展程序 {#browser-extensions}
 
 一些浏览器扩展程序（例如 ad-blockers 广告拦截器），可能会阻止 Vite 客户端向 Vite 开发服务器发送请求。在这种情况下，你可能会看到一个空白屏且没有错误日志。如果遇到这类问题，请尝试禁用扩展程序。
+
+### Windows 上的跨驱动器链接 {#cross-drive-links-on-windows}
+
+如果你的项目中存在跨驱动器链接，Vite 可能无法工作。
+
+跨驱动器链接的一个例子是：
+
+- 通过 `subst` 命令将虚拟驱动器链接到一个文件夹
+- 通过 `mklink` 命令将符号链接/联接到另一个驱动器（例如 Yarn 全局缓存）
+
+相关 issue：[#10802](https://github.com/vitejs/vite/issues/10802)
