@@ -125,6 +125,7 @@ export default defineConfig({
         text: '相关链接',
         items: [
           { text: 'Team', link: '/team' },
+          { text: 'Releases', link: '/releases' },
           {
             text: 'Twitter',
             link: 'https://twitter.com/vite_js'

@@ -98,7 +98,7 @@ vite optimize [root]
 
 ### `vite preview` {#vite-preview}
 
-本地预览构建产物。
+本地预览构建产物。不要将其用作生产服务器，因为它不是为此而设计的。
 
 #### 使用 {#usage-3}
 

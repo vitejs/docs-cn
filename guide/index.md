@@ -109,7 +109,7 @@ Vite 也支持多个 `.html` 作入口点的 [多页面应用模式](./build#mul
 
 #### 指定替代根目录 {#specifying-alternative-root}
 
-`vite` 以当前工作目录作为根目录启动开发服务器。你也可以通过 `vite serve some/sub/dir` 来指定一个替代的根目录。
+`vite` 以当前工作目录作为根目录启动开发服务器。你也可以通过 `vite serve some/sub/dir` 来指定一个替代的根目录。注意 Vite 同时会解析项目根目录下的 [配置文件（即 `vite.config.js`）](/config/#configuring-vite)，因此如果根目录被改变了，你需要将配置文件移动到新的根目录下。
 
 ## 命令行界面 {#command-line-interface}
 
