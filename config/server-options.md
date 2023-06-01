@@ -34,18 +34,14 @@ export default defineConfig({
 
 :::
 
-<<<<<<< HEAD
-## server.port {#server-port}
-=======
-::: tip Accessing the server on WSL2 from your LAN
+::: tip 在 WSL2 中通过 LAN 访问开发服务器
 
-When running Vite on WSL2, it is not sufficient to set `host: true` to access the server from your LAN.
-See [the WSL document](https://learn.microsoft.com/en-us/windows/wsl/networking#accessing-a-wsl-2-distribution-from-your-local-area-network-lan) for more details.
+当你在 WSL2 运行 Vite 时，仅设置 `host: true` 来从局域网访问服务器是不够的。
+请看 [WSL 相关文档](https://learn.microsoft.com/en-us/windows/wsl/networking#accessing-a-wsl-2-distribution-from-your-local-area-network-lan) 了解更多细节。
 
 :::
 
-## server.port
->>>>>>> 2bf5fee2d963bf74df387eefa871e68233d7fd1e
+## server.port {#server-port}
 
 - **类型：** `number`
 - **默认值：** `5173`
