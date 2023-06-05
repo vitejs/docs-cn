@@ -34,7 +34,7 @@ const __dirname = fileURLToPath(new URL('.', import.meta.url))
 ```
 
 ::: tip 注意
-当在同一个 Node.js 进程中使用 `createServer` 和 `build` 时，两个函数都依赖于 `process.env.NODE_ENV` 才可正常工作，而这个环境变量又依赖于 `mode` 配置项。为了避免行为冲突，请在这两个 API 传入参数 `development` 字段中设置 `process.env.NODE_ENV` 或者 `mode` 配置项，或者你也可以生成另一个子进程，分别运行这两个 API。
+当在同一个 Node.js 进程中使用 `createServer` 和 `build` 时，两个函数都依赖于 `process.env.NODE_ENV` 才可正常工作，而这个环境变量又依赖于 `mode` 配置项。为了避免行为冲突，请在使用这两个 API 时为 `process.env.NODE_ENV` 或者 `mode` 配置项、字段设置参数值 `development`，或者你也可以生成另一个子进程，分别运行这两个 API。
 :::
 
 ## `InlineConfig` {#inlineconfig}
