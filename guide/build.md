@@ -114,7 +114,13 @@ export default defineConfig({
 
 如果你指定了另一个根目录，请记住，在解析输入路径时，`__dirname` 的值将仍然是 vite.config.js 文件所在的目录。因此，你需要把对应入口文件的 `root` 的路径添加到 `resolve` 的参数中。
 
+<<<<<<< HEAD
 请注意，在 HTML 文件中，Vite 忽略了 `rollupOptions.input` 对象中给定的入口名称，而是在生成 dist 文件夹中的 HTML 资源文件时，使用了文件已解析的路径 ID。这确保了与开发服务器的工作方式保持一致的结构。
+=======
+Note that for HTML files, Vite ignores the name given to the entry in the `rollupOptions.input` object and instead respects the resolved id of the file when generating the HTML asset in the dist folder. This ensures a consistent structure with the way the dev server works.
+
+## Library Mode
+>>>>>>> 05bff01ac222aa7b12839e9b7defb6e75500aabd
 
 ## 库模式 {#library-mode}
 
