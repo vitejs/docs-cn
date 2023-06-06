@@ -98,7 +98,11 @@ Git LFS 占位符会自动排除在内联之外，因为它们不包含它们所
 - **类型：** `boolean`
 - **默认：** `true`
 
+<<<<<<< HEAD
 启用/禁用 CSS 代码拆分。当启用时，在异步 chunk 中导入的 CSS 将内联到异步 chunk 本身，并在其被加载时一并获取。
+=======
+Enable/disable CSS code splitting. When enabled, CSS imported in async JS chunks will be preserved as chunks and fetched together when the chunk is fetched.
+>>>>>>> e21927c322611f4fdb92091b14343bd79052d86d
 
 如果禁用，整个项目中的所有 CSS 将被提取到一个 CSS 文件中。
 
