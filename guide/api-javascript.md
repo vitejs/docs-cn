@@ -264,6 +264,10 @@ function mergeConfig(
 
 深度合并两份配置。`isRoot` 代表着 Vite 配置被合并的层级。举个例子，如果你是要合并两个 `build` 选项请设为 `false`。
 
+::: tip NOTE
+`mergeConfig` accepts only config in object form. If you have a config in callback form, you should call it before passing into `mergeConfig`.
+:::
+
 ## `searchForWorkspaceRoot`
 
 **类型签名：**

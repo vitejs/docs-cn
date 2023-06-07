@@ -35,7 +35,21 @@ export default defineConfig({
 
 默认情况下，不在 `node_modules` 中的，链接的包不会被预构建。使用此选项可强制预构建链接的包。
 
+<<<<<<< HEAD
 ## optimizeDeps.esbuildOptions {#optimizedeps-esbuildoptions}
+=======
+**Experimental:** If you're using a library with many deep imports, you can also specify a trailing glob pattern to pre-bundle all deep imports at once. This will avoid constantly pre-bundling whenever a new deep import is used. For example:
+
+```js
+export default defineConfig({
+  optimizeDeps: {
+    include: ['my-lib/components/**/*.vue'],
+  },
+})
+```
+
+## optimizeDeps.esbuildOptions
+>>>>>>> ee4822d4315af40b06be97911157c3579fcd13cc
 
 - **类型：** [`EsbuildBuildOptions`](https://esbuild.github.io/api/#simple-options)
 
