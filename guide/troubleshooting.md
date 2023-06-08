@@ -15,7 +15,28 @@
 - 切换另一种包管理工具（例如 `pnpm` 或 `yarn`）
 - 从你的项目路径中移除符号 `&`
 
+<<<<<<< HEAD
 ## 开发服务器 {#dev-server}
+=======
+## Config
+
+### This package is ESM only
+
+When importing a ESM only package by `require`, the following error happens.
+
+> Failed to resolve "foo". This package is ESM only but it was tried to load by `require`.
+
+> "foo" resolved to an ESM file. ESM file cannot be loaded by `require`.
+
+ESM files cannot be loaded by [`require`](<https://nodejs.org/docs/latest-v18.x/api/esm.html#require:~:text=Using%20require%20to%20load%20an%20ES%20module%20is%20not%20supported%20because%20ES%20modules%20have%20asynchronous%20execution.%20Instead%2C%20use%20import()%20to%20load%20an%20ES%20module%20from%20a%20CommonJS%20module.>).
+
+We recommend converting your config to ESM by either:
+
+- adding `"type": "module"` to the nearest `package.json`
+- renaming `vite.config.js`/`vite.config.ts` to `vite.config.mjs`/`vite.config.mts`
+
+## Dev Server
+>>>>>>> 334f84ab655867a1a1b2e2f97fcf2210f51e5b67
 
 ### 请求始终停滞 {#requests-are-stalled-forever}
 
@@ -153,6 +174,7 @@ Vite 无法处理、也不支持仅可在非严格模式（sloppy mode）下运�
 
 ### 浏览器扩展程序 {#browser-extensions}
 
+<<<<<<< HEAD
 一些浏览器扩展程序（例如 ad-blockers 广告拦截器），可能会阻止 Vite 客户端向 Vite 开发服务器发送请求。在这种情况下，你可能会看到一个空白屏且没有错误日志。如果遇到这类问题，请尝试禁用扩展程序。
 
 ### Windows 上的跨驱动器链接 {#cross-drive-links-on-windows}
@@ -165,3 +187,17 @@ Vite 无法处理、也不支持仅可在非严格模式（sloppy mode）下运�
 - 通过 `mklink` 命令将符号链接/联接到另一个驱动器（例如 Yarn 全局缓存）
 
 相关 issue：[#10802](https://github.com/vitejs/vite/issues/10802)
+=======
+Some browser extensions (like ad-blockers) may prevent the Vite client from sending requests to the Vite dev server. You may see a white screen without logged errors in this case. Try disabling extensions if you have this issue.
+
+### Cross drive links on Windows
+
+If there's a cross drive links in your project on Windows, Vite may not work.
+
+An example of cross drive links are:
+
+- a virtual drive linked to a folder by `subst` command
+- a symlink/junction to a different drive by `mklink` command (e.g. Yarn global cache)
+
+Related issue: [#10802](https://github.com/vitejs/vite/issues/10802)
+>>>>>>> 334f84ab655867a1a1b2e2f97fcf2210f51e5b67

@@ -60,7 +60,15 @@ export default defineConfig({
 
 也可以用一个工厂函数 `splitVendorChunk({ cache: SplitVendorChunkCache })` 来提供该策略，在需要与自定义逻辑组合的情况下，`cache.reset()` 需要在 `buildStart` 阶段被调用，以便构建的 watch 模式在这种情况下正常工作。
 
+<<<<<<< HEAD
 ## 文件变化时重新构建 {#rebuild-on-files-changes}
+=======
+::: warning
+You should use `build.rollupOptions.output.manualChunks` function form when using this plugin. If the object form is used, the plugin won't have any effect.
+:::
+
+## Rebuild on files changes
+>>>>>>> 334f84ab655867a1a1b2e2f97fcf2210f51e5b67
 
 你可以使用 `vite build --watch` 来启用 rollup 的监听器。或者，你可以直接通过 `build.watch` 调整底层的 [`WatcherOptions`](https://rollupjs.org/configuration-options/#watch) 选项：
 
@@ -114,7 +122,13 @@ export default defineConfig({
 
 如果你指定了另一个根目录，请记住，在解析输入路径时，`__dirname` 的值将仍然是 vite.config.js 文件所在的目录。因此，你需要把对应入口文件的 `root` 的路径添加到 `resolve` 的参数中。
 
+<<<<<<< HEAD
 请注意，在 HTML 文件中，Vite 忽略了 `rollupOptions.input` 对象中给定的入口名称，而是在生成 dist 文件夹中的 HTML 资源文件时，使用了文件已解析的路径 ID。这确保了与开发服务器的工作方式保持一致的结构。
+=======
+Note that for HTML files, Vite ignores the name given to the entry in the `rollupOptions.input` object and instead respects the resolved id of the file when generating the HTML asset in the dist folder. This ensures a consistent structure with the way the dev server works.
+
+## Library Mode
+>>>>>>> 334f84ab655867a1a1b2e2f97fcf2210f51e5b67
 
 ## 库模式 {#library-mode}
 
