@@ -12,7 +12,13 @@ Vite（法语意为 "快速的"，发音 `/vit/`<button id="play-vite-audio" onc
 
 - 一套构建指令，它使用 [Rollup](https://rollupjs.org) 打包你的代码，并且它是预配置的，可输出用于生产环境的高度优化过的静态资源。
 
+<<<<<<< HEAD
 Vite 意在提供开箱即用的配置，同时它的 [插件 API](./api-plugin) 和 [JavaScript API](./api-javascript) 带来了高度的可扩展性，并有完整的类型支持。
+=======
+Vite is opinionated and comes with sensible defaults out of the box. Read about what's possible in the [Features Guide](./features). Support for frameworks or integration with other tools is possible through [Plugins](./using-plugins). The [Config Section](../config/) explains how to adapt Vite to your project if needed.
+
+Vite is also highly extensible via its [Plugin API](./api-plugin) and [JavaScript API](./api-javascript) with full typing support.
+>>>>>>> eb131b3ac26605c0f3a55d625f2f76e0d624c522
 
 你可以在 [为什么选 Vite](./why) 中了解更多关于项目的设计初衷。
 
@@ -109,7 +115,12 @@ Vite 也支持多个 `.html` 作入口点的 [多页面应用模式](./build#mul
 
 #### 指定替代根目录 {#specifying-alternative-root}
 
+<<<<<<< HEAD
 `vite` 以当前工作目录作为根目录启动开发服务器。你也可以通过 `vite serve some/sub/dir` 来指定一个替代的根目录。注意 Vite 同时会解析项目根目录下的 [配置文件（即 `vite.config.js`）](/config/#configuring-vite)，因此如果根目录被改变了，你需要将配置文件移动到新的根目录下。
+=======
+Running `vite` starts the dev server using the current working directory as root. You can specify an alternative root with `vite serve some/sub/dir`.
+Note that Vite will also resolve [its config file (i.e. `vite.config.js`)](/config/#configuring-vite) inside the project root, so you'll need to move it if the root is changed.
+>>>>>>> eb131b3ac26605c0f3a55d625f2f76e0d624c522
 
 ## 命令行界面 {#command-line-interface}
 
