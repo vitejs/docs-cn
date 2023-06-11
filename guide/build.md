@@ -67,6 +67,10 @@ export default defineConfig({
 You should use `build.rollupOptions.output.manualChunks` function form when using this plugin. If the object form is used, the plugin won't have any effect.
 :::
 
+::: warning
+You should use `build.rollupOptions.output.manualChunks` function form when using this plugin. If the object form is used, the plugin won't have any effect.
+:::
+
 ## Rebuild on files changes
 >>>>>>> 334f84ab655867a1a1b2e2f97fcf2210f51e5b67
 
@@ -125,6 +129,8 @@ export default defineConfig({
 <<<<<<< HEAD
 请注意，在 HTML 文件中，Vite 忽略了 `rollupOptions.input` 对象中给定的入口名称，而是在生成 dist 文件夹中的 HTML 资源文件时，使用了文件已解析的路径 ID。这确保了与开发服务器的工作方式保持一致的结构。
 =======
+Note that for HTML files, Vite ignores the name given to the entry in the `rollupOptions.input` object and instead respects the resolved id of the file when generating the HTML asset in the dist folder. This ensures a consistent structure with the way the dev server works.
+
 Note that for HTML files, Vite ignores the name given to the entry in the `rollupOptions.input` object and instead respects the resolved id of the file when generating the HTML asset in the dist folder. This ensures a consistent structure with the way the dev server works.
 
 ## Library Mode

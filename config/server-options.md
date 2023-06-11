@@ -44,6 +44,13 @@ See [the WSL document](https://learn.microsoft.com/en-us/windows/wsl/networking#
 
 :::
 
+::: tip Accessing the server on WSL2 from your LAN
+
+When running Vite on WSL2, it is not sufficient to set `host: true` to access the server from your LAN.
+See [the WSL document](https://learn.microsoft.com/en-us/windows/wsl/networking#accessing-a-wsl-2-distribution-from-your-local-area-network-lan) for more details.
+
+:::
+
 ## server.port
 >>>>>>> 334f84ab655867a1a1b2e2f97fcf2210f51e5b67
 
@@ -281,6 +288,8 @@ createServer()
 <<<<<<< HEAD
 Vite 将会搜索此根目录下潜在工作空间并作默认使用。一个有效的工作空间应符合以下几个条件，否则会默认以 [项目 root 目录](/guide/#index-html-and-project-root) 作备选方案。
 =======
+Both directories and files can be provided.
+
 Both directories and files can be provided.
 
 Vite will search for the root of the potential workspace and use it as default. A valid workspace met the following conditions, otherwise will fall back to the [project root](/guide/#index-html-and-project-root).
