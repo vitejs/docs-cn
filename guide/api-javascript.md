@@ -268,6 +268,10 @@ function mergeConfig(
 `mergeConfig` accepts only config in object form. If you have a config in callback form, you should call it before passing into `mergeConfig`.
 :::
 
+::: tip NOTE
+`mergeConfig` accepts only config in object form. If you have a config in callback form, you should call it before passing into `mergeConfig`.
+:::
+
 ## `searchForWorkspaceRoot`
 
 **类型签名：**

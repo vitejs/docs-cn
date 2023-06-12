@@ -48,6 +48,16 @@ export default defineConfig({
 })
 ```
 
+**Experimental:** If you're using a library with many deep imports, you can also specify a trailing glob pattern to pre-bundle all deep imports at once. This will avoid constantly pre-bundling whenever a new deep import is used. For example:
+
+```js
+export default defineConfig({
+  optimizeDeps: {
+    include: ['my-lib/components/**/*.vue'],
+  },
+})
+```
+
 ## optimizeDeps.esbuildOptions
 >>>>>>> 334f84ab655867a1a1b2e2f97fcf2210f51e5b67
 
