@@ -160,9 +160,15 @@ console.log(msg)
 - [`transform`](https://rollupjs.org/plugin-development/#transform)
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 它们还有一个扩展的 `options` 参数，包含其他特定于 Vite 的属性。你可以在 [SSR 文档](/guide/ssr#ssr-specific-plugin-logic) 中查阅更多内容。
 =======
 These hooks also have an extended `options` parameter with additional Vite-specific properties. You can read more in the [SSR documentation](/guide/ssr#ssr-specific-plugin-logic).
+=======
+These hooks also have an extended `options` parameter with additional Vite-specific properties. You can read more in the [SSR documentation](/guide/ssr#ssr-specific-plugin-logic).
+
+Some `resolveId` calls' `importer` value may be an absolute path for a generic `index.html` at root as it's not always possible to derive the actual importer due to Vite's unbundled dev server pattern. For imports handled within Vite's resolve pipeline, the importer can be tracked during the import analysis phase, providing the correct `importer` value.
+>>>>>>> b65e4bf26ba002297fc459800e29d08d10c15e32
 
 Some `resolveId` calls' `importer` value may be an absolute path for a generic `index.html` at root as it's not always possible to derive the actual importer due to Vite's unbundled dev server pattern. For imports handled within Vite's resolve pipeline, the importer can be tracked during the import analysis phase, providing the correct `importer` value.
 >>>>>>> 334f84ab655867a1a1b2e2f97fcf2210f51e5b67
@@ -358,6 +364,8 @@ Vite 插件也可以提供钩子来服务于特定的 Vite 目标。这些钩子
   **基础示例：**
 =======
   By default `order` is `undefined`, with this hook applied after the html has been transformed. In order to inject a script that should go through the Vite plugins pipeline, `order: 'pre'` will apply the hook before processing the HTML. `order: 'post'` applies the hook after all hooks with `order` undefined are applied.
+
+  By default `order` is `undefined`, with this hook applied after the HTML has been transformed. In order to inject a script that should go through the Vite plugins pipeline, `order: 'pre'` will apply the hook before processing the HTML. `order: 'post'` applies the hook after all hooks with `order` undefined are applied.
 
   **Basic Example:**
 >>>>>>> 334f84ab655867a1a1b2e2f97fcf2210f51e5b67

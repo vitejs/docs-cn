@@ -19,18 +19,24 @@ Vite 旨在为常见的 web 开发工作提供开箱即用的支持。在搜索�
 ### [@vitejs/plugin-vue2](https://github.com/vitejs/vite-plugin-vue2)
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 - 提供对 Vue 2.7 的单文件组件支持。
 
 ### [@vitejs/plugin-vue2-jsx](https://github.com/vitejs/vite-plugin-vue2-jsx)
 
 - 提供对 Vue 2.7 JSX 对支持（通过 [dedicated Babel transform](https://github.com/vuejs/jsx-vue2/)）。
 =======
+=======
+>>>>>>> b65e4bf26ba002297fc459800e29d08d10c15e32
 - Provides Vue 2.7 Single File Components support.
 
 ### [@vitejs/plugin-vue2-jsx](https://github.com/vitejs/vite-plugin-vue2-jsx)
 
 - Provides Vue 2.7 JSX support (via [dedicated Babel transform](https://github.com/vuejs/jsx-vue2/)).
+<<<<<<< HEAD
 >>>>>>> 334f84ab655867a1a1b2e2f97fcf2210f51e5b67
+=======
+>>>>>>> b65e4bf26ba002297fc459800e29d08d10c15e32
 
 ### [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react)
 

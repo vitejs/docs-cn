@@ -44,6 +44,13 @@ See [the WSL document](https://learn.microsoft.com/en-us/windows/wsl/networking#
 
 :::
 
+::: tip Accessing the server on WSL2 from your LAN
+
+When running Vite on WSL2, it is not sufficient to set `host: true` to access the server from your LAN.
+See [the WSL document](https://learn.microsoft.com/en-us/windows/wsl/networking#accessing-a-wsl-2-distribution-from-your-local-area-network-lan) for more details.
+
+:::
+
 ## server.port
 >>>>>>> 334f84ab655867a1a1b2e2f97fcf2210f51e5b67
 
@@ -259,6 +266,7 @@ async function createServer() {
 createServer()
 ```
 
+<<<<<<< HEAD
 ## server.base {#server-base}
 
 - **类型：** `string | undefined`
@@ -266,6 +274,9 @@ createServer()
 在 HTTP 请求中预留此文件夹，用于代理 Vite 作为子文件夹时使用。应该以 `/` 字符开始。
 
 ## server.fs.strict {#server-fs-strict}
+=======
+## server.fs.strict
+>>>>>>> b65e4bf26ba002297fc459800e29d08d10c15e32
 
 - **类型：** `boolean`
 - **默认：** `true` (自 Vite 2.7 起默认启用)
@@ -281,6 +292,8 @@ createServer()
 <<<<<<< HEAD
 Vite 将会搜索此根目录下潜在工作空间并作默认使用。一个有效的工作空间应符合以下几个条件，否则会默认以 [项目 root 目录](/guide/#index-html-and-project-root) 作备选方案。
 =======
+Both directories and files can be provided.
+
 Both directories and files can be provided.
 
 Vite will search for the root of the potential workspace and use it as default. A valid workspace met the following conditions, otherwise will fall back to the [project root](/guide/#index-html-and-project-root).

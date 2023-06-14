@@ -144,7 +144,10 @@ Vite 为 Vue 提供第一优先级支持：
 - Vue 3 SFC support via [@vitejs/plugin-vue](https://github.com/vitejs/vite-plugin-vue/tree/main/packages/plugin-vue)
 - Vue 3 JSX support via [@vitejs/plugin-vue-jsx](https://github.com/vitejs/vite-plugin-vue/tree/main/packages/plugin-vue-jsx)
 - Vue 2.7 SFC support via [@vitejs/plugin-vue2](https://github.com/vitejs/vite-plugin-vue2)
+<<<<<<< HEAD
 >>>>>>> 334f84ab655867a1a1b2e2f97fcf2210f51e5b67
+=======
+>>>>>>> b65e4bf26ba002297fc459800e29d08d10c15e32
 - Vue 2.7 JSX support via [@vitejs/plugin-vue2-jsx](https://github.com/vitejs/vite-plugin-vue2-jsx)
 
 ## JSX {#jsx}
@@ -548,10 +551,14 @@ const worker = new MyWorker()
 ```
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 Worker 脚本也可以使用 ESM 的 `import` 语句来替代 `importScripts()` —— **注意**，在开发过程中，这依赖于[浏览器原生支持](https://caniuse.com/?search=module%20worker)（目前在 Firefox 中不支持），而在生产版本中，它已经被编译掉了。
 =======
 The worker script can also use ESM `import` statements instead of `importScripts()`. **Note**: During dev this relies on [browser native support](https://caniuse.com/?search=module%20worker) (currently not supported in Firefox), but for the production build it is compiled away.
 >>>>>>> 334f84ab655867a1a1b2e2f97fcf2210f51e5b67
+=======
+The worker script can also use ESM `import` statements instead of `importScripts()`. **Note**: During dev this relies on [browser native support](https://caniuse.com/?search=module%20worker) (currently not supported in Firefox), but for the production build it is compiled away.
+>>>>>>> b65e4bf26ba002297fc459800e29d08d10c15e32
 
 默认情况下，worker 脚本将在生产构建中编译成单独的 chunk。如果你想将 worker 内联为 base64 字符串，请添加 `inline` 查询参数：
 
