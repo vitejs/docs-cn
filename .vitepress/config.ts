@@ -258,13 +258,4 @@ export default defineConfig({
       ]
     }
   },
-
-  markdown: {
-    anchor: {
-      permalink: renderPermaLink
-    },
-    config: (md) => {
-      md.use(MarkDownItCustomAnchor)
-    }
-  }
 })
