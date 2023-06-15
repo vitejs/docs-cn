@@ -35,10 +35,7 @@ export default defineConfig({
 
 默认情况下，不在 `node_modules` 中的，链接的包不会被预构建。使用此选项可强制预构建链接的包。
 
-<<<<<<< HEAD
-## optimizeDeps.esbuildOptions {#optimizedeps-esbuildoptions}
-=======
-**Experimental:** If you're using a library with many deep imports, you can also specify a trailing glob pattern to pre-bundle all deep imports at once. This will avoid constantly pre-bundling whenever a new deep import is used. For example:
+**实验性：** 如果你使用的是一个有很多深层导入的库，你也可以指定一个尾部的 glob 模式来一次性地预构建所有深层导入。这将避免在使用新的深层导入时不断地预构建。例如：
 
 ```js
 export default defineConfig({
@@ -48,8 +45,7 @@ export default defineConfig({
 })
 ```
 
-## optimizeDeps.esbuildOptions
->>>>>>> 334f84ab655867a1a1b2e2f97fcf2210f51e5b67
+## optimizeDeps.esbuildOptions {#optimizedeps-esbuild-options}
 
 - **类型：** [`EsbuildBuildOptions`](https://esbuild.github.io/api/#simple-options)
 
