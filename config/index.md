@@ -67,11 +67,7 @@ export default defineConfig(({ command, mode, ssrBuild }) => {
 
 ## 异步配置 {#async-config}
 
-<<<<<<< HEAD
-如果配置需要调用一个异步函数，也可以转而导出一个异步函数：
-=======
-If the config needs to call async functions, it can export an async function instead. And this async function can also be passed through `defineConfig` for improved intellisense support:
->>>>>>> b65e4bf26ba002297fc459800e29d08d10c15e32
+如果配置需要调用一个异步函数，也可以转而导出一个异步函数。这个异步函数也可以通过 `defineConfig` 传递，以便获得更好的智能提示：
 
 ```js
 export default defineConfig(async ({ command, mode }) => {
