@@ -256,7 +256,29 @@ import otherStyles from './bar.css?inline' // 样式不会注入页面
 自 Vite 4 起，CSS 文件的默认导入和按名导入（例如 `import style from './foo.css'`）将弃用。请使用 `?inline` 参数代替。
 :::
 
+<<<<<<< HEAD
 ## 静态资源处理 {#static-assets}
+=======
+### Lightning CSS
+
+Starting from Vite 4.4, there is experimental support for [Lightning CSS](https://lightningcss.dev/). You can opt into it by adding [`css.transformer: 'lightningcss'`](../config/shared-options.md#css-transformer) to your config file and install the optional [`lightningcss`](https://www.npmjs.com/package/lightningcss) dependency:
+
+```bash
+npm add -D lightningcss
+```
+
+If enabled, CSS files will be processed by Lightning CSS instead of PostCSS. To configure it, you can pass Lightining CSS options to the [`css.lightingcss`](../config/shared-options.md#css-lightningcss) config option.
+
+To configue CSS Modules, you'll use [`css.lightningcss.cssModules`](https://lightningcss.dev/css-modules.html) instead of [`css.modules`](../config/shared-options.md#css-modules) (wich configures the way PostCSS handles CSS modules).
+
+By default, Vite uses esbuild to minify CSS. Lightning CSS can also be used as the CSS minifier with [`build.cssMinify: 'lightningcss'`](../config/build-options.md#css-minify).
+
+::: tip NOTE
+[CSS Pre-processors](/#css-pre-processors) aren't supported when using Lightning CSS.
+:::
+
+## Static Assets
+>>>>>>> 15487060be4d970890d61d4e8b109ef9f7fab083
 
 导入一个静态资源会返回解析后的 URL：
 
