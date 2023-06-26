@@ -2,7 +2,13 @@
 
 当以命令行方式运行 `vite` 时，Vite 会自动解析 [项目根目录](/guide/#index-html-and-project-root) 下名为 `vite.config.js` 的文件。
 
+<<<<<<< HEAD
 最基础的配置文件是这样的：
+=======
+When running `vite` from the command line, Vite will automatically try to resolve a config file named `vite.config.js` inside [project root](/guide/#index-html-and-project-root) (other JS and TS extensions are also supported).
+
+The most basic config file looks like this:
+>>>>>>> 117b1947155d429f7dedf9382ad884a18c69abd9
 
 ```js
 // vite.config.js

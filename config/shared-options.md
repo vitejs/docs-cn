@@ -210,7 +210,13 @@ interface CSSModulesOptions {
 
 配置 CSS modules 的行为。选项将被传递给 [postcss-modules](https://github.com/css-modules/postcss-modules)。
 
+<<<<<<< HEAD
 ## css.postcss {#css-postcss}
+=======
+This option doesn't have any effect when using [Lightning CSS](../guide/features.md#lightning-css). If enabled, [`css.lightningcss.cssModules`](https://lightningcss.dev/css-modules.html) should be used instead.
+
+## css.postcss
+>>>>>>> 117b1947155d429f7dedf9382ad884a18c69abd9
 
 - **类型：** `string | (postcss.ProcessOptions & { plugins?: postcss.AcceptedPlugin[] })`
 
@@ -264,7 +270,51 @@ export default defineConfig({
 
 在开发过程中是否启用 sourcemap。
 
+<<<<<<< HEAD
 ## json.namedExports {#json-namedexports}
+=======
+## css.transformer
+
+- **Experimental**
+- **Type:** `'postcss' | 'lightningcss'`
+- **Default:** `'postcss'`
+
+Selects the engine used for CSS processing. Check out [Lightning CSS](../guide/features.md#lightning-css) for more information.
+
+## css.lightningcss
+
+- **Experimental**
+- **Type:**
+
+```js
+import type {
+  CSSModulesConfig,
+  Drafts,
+  Features,
+  NonStandard,
+  PseudoClasses,
+  Targets,
+} from 'lightningcss'
+```
+
+```js
+{
+  targets?: Targets
+  include?: Features
+  exclude?: Features
+  drafts?: Drafts
+  nonStandard?: NonStandard
+  pseudoClasses?: PseudoClasses
+  unusedSymbols?: string[]
+  cssModules?: CSSModulesConfig,
+  // ...
+}
+```
+
+Configures Lightning CSS. Full transform options can be found in [the Lightning CSS repo](https://github.com/parcel-bundler/lightningcss/blob/master/node/index.d.ts).
+
+## json.namedExports
+>>>>>>> 117b1947155d429f7dedf9382ad884a18c69abd9
 
 - **类型：** `boolean`
 - **默认：** `true`
