@@ -210,13 +210,9 @@ interface CSSModulesOptions {
 
 配置 CSS modules 的行为。选项将被传递给 [postcss-modules](https://github.com/css-modules/postcss-modules)。
 
-<<<<<<< HEAD
-## css.postcss {#css-postcss}
-=======
-This option doesn't have any effect when using [Lightning CSS](../guide/features.md#lightning-css). If enabled, [`css.lightningcss.cssModules`](https://lightningcss.dev/css-modules.html) should be used instead.
+当使用 [Lightning CSS](../guide/features.md#lightning-css) 时，该选项不会产生任何效果。如果要启用该选项，则应该使用 [`css.lightningcss.cssModules`](https://lightningcss.dev/css-modules.html) 来替代。
 
-## css.postcss
->>>>>>> 117b1947155d429f7dedf9382ad884a18c69abd9
+## css.postcss {#css-postcss}
 
 - **类型：** `string | (postcss.ProcessOptions & { plugins?: postcss.AcceptedPlugin[] })`
 
@@ -270,21 +266,18 @@ export default defineConfig({
 
 在开发过程中是否启用 sourcemap。
 
-<<<<<<< HEAD
-## json.namedExports {#json-namedexports}
-=======
 ## css.transformer
 
-- **Experimental**
-- **Type:** `'postcss' | 'lightningcss'`
-- **Default:** `'postcss'`
+- **实验性**
+- **类型：** `'postcss' | 'lightningcss'`
+- **默认：** `'postcss'`
 
-Selects the engine used for CSS processing. Check out [Lightning CSS](../guide/features.md#lightning-css) for more information.
+该选项用于选择用于 CSS 处理的引擎。详细信息请查看 [Lightning CSS](../guide/features.md#lightning-css)。
 
 ## css.lightningcss
 
-- **Experimental**
-- **Type:**
+- **实验性**
+- **类型：**
 
 ```js
 import type {
@@ -311,10 +304,9 @@ import type {
 }
 ```
 
-Configures Lightning CSS. Full transform options can be found in [the Lightning CSS repo](https://github.com/parcel-bundler/lightningcss/blob/master/node/index.d.ts).
+该选项用于配置 Lightning CSS。有关完整的转换选项，请参阅 [Lightning CSS 仓库](https://github.com/parcel-bundler/lightningcss/blob/master/node/index.d.ts)。
 
-## json.namedExports
->>>>>>> 117b1947155d429f7dedf9382ad884a18c69abd9
+## json.namedExports {#json-namedexports}
 
 - **类型：** `boolean`
 - **默认：** `true`

@@ -190,21 +190,14 @@ export default defineConfig({
               link: '/guide/troubleshooting'
             },
             {
-<<<<<<< HEAD
-              text: '从 v3 迁移',
-              link: '/guide/migration'
-            }
-          ]
-=======
-              text: 'Philosophy',
+              text: '理念',
               link: '/guide/philosophy',
             },
             {
-              text: 'Migration from v3',
-              link: '/guide/migration',
+              text: '从 v3 迁移',
+              link: '/guide/migration'
             },
           ],
->>>>>>> 117b1947155d429f7dedf9382ad884a18c69abd9
         },
         {
           text: 'API',

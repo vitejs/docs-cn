@@ -256,29 +256,25 @@ import otherStyles from './bar.css?inline' // 样式不会注入页面
 自 Vite 4 起，CSS 文件的默认导入和按名导入（例如 `import style from './foo.css'`）将弃用。请使用 `?inline` 参数代替。
 :::
 
-<<<<<<< HEAD
-## 静态资源处理 {#static-assets}
-=======
 ### Lightning CSS
 
-Starting from Vite 4.4, there is experimental support for [Lightning CSS](https://lightningcss.dev/). You can opt into it by adding [`css.transformer: 'lightningcss'`](../config/shared-options.md#css-transformer) to your config file and install the optional [`lightningcss`](https://www.npmjs.com/package/lightningcss) dependency:
+从 Vite 4.4 开始，已经实验性地支持 [Lightning CSS](https://lightningcss.dev/)。可以通过在配置文件中添加 [`css.transformer: 'lightningcss'`](../config/shared-options.md#css-transformer) 并安装可选的 [`lightningcss`](https://www.npmjs.com/package/lightningcss) 依赖项来选择使用它：
 
 ```bash
 npm add -D lightningcss
 ```
 
-If enabled, CSS files will be processed by Lightning CSS instead of PostCSS. To configure it, you can pass Lightining CSS options to the [`css.lightingcss`](../config/shared-options.md#css-lightningcss) config option.
+如果启用，CSS 文件将由 Lightning CSS 处理，而不是 PostCSS。可以将 Lightning CSS 的选项传递给 [`css.lightingcss`](../config/shared-options.md#css-lightningcss) 选项来配置。
 
-To configure CSS Modules, you'll use [`css.lightningcss.cssModules`](https://lightningcss.dev/css-modules.html) instead of [`css.modules`](../config/shared-options.md#css-modules) (which configures the way PostCSS handles CSS modules).
+要配置 CSS Modules，需要使用 [`css.lightningcss.cssModules`](https://lightningcss.dev/css-modules.html) 而不是 [`css.modules`](../config/shared-options.md#css-modules)（后者是用于配置 PostCSS 处理 CSS Modules 的方式）。
 
-By default, Vite uses esbuild to minify CSS. Lightning CSS can also be used as the CSS minifier with [`build.cssMinify: 'lightningcss'`](../config/build-options.md#css-minify).
+默认情况下，Vite 使用 esbuild 来压缩 CSS。通过 [`build.cssMinify: 'lightningcss'`](../config/build-options.md#css-minify) 进行配置，也可以将 Lightning CSS 用作 CSS 最小化压缩。
 
 ::: tip NOTE
-[CSS Pre-processors](#css-pre-processors) aren't supported when using Lightning CSS.
+在使用 Lightning CSS 时，不支持 [CSS 预处理器](#css-pre-processors)。
 :::
 
-## Static Assets
->>>>>>> 117b1947155d429f7dedf9382ad884a18c69abd9
+## 静态资源处理 {#static-assets}
 
 导入一个静态资源会返回解析后的 URL：
 

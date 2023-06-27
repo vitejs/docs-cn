@@ -12,11 +12,11 @@ Vite（法语意为 "快速的"，发音 `/vit/`<button id="play-vite-audio" onc
 
 - 一套构建指令，它使用 [Rollup](https://rollupjs.org) 打包你的代码，并且它是预配置的，可输出用于生产环境的高度优化过的静态资源。
 
-Vite 旨在为原生 ESM 提供开发时的基础设施。它假设你的目标浏览器支持原生 ESM，或者能够通过 [插件](./using-plugins.html#transpiling-and-polyfills) 支持原生 ESM。如果你需要支持老旧浏览器，你可以使用 [@vitejs/plugin-legacy](/zh/plugins.html#legacy) 插件。
+Vite 是一种具有明确建议的工具，具备合理的默认设置。您可以在 [功能指南](./features) 中了解 Vite 的各种可能性。通过 [插件](./using-plugins)，Vite 支持与其他框架或工具的集成。如有需要，您可以通过 [配置部分](../config/) 自定义适应你的项目。
 
-Vite 也同时具有很高的扩展性，你可以通过 [插件 API](./api-plugin.html) 和 [JavaScript API](./api-javascript.html) 来扩展它，并且它们都具有完整的类型支持。
+Vite 还提供了强大的扩展性，可通过其 [插件 API](./api-plugin) 和 [JavaScript API](./api-javascript) 进行扩展，并提供完整的类型支持。
 
-你可以在 [为什么选 Vite](./why) 中了解更多关于项目的设计初衷。
+你可以在 [为什么选 Vite](./why) 部分深入了解该项目的设计理念。
 
 ## 浏览器支持 {#browser-support}
 
