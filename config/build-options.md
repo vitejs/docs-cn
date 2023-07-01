@@ -129,7 +129,7 @@ Git LFS 占位符会自动排除在内联之外，因为它们不包含它们所
 - **类型：** `boolean | 'inline' | 'hidden'`
 - **默认：** `false`
 
-构建后是否生成 source map 文件。如果为 `true`，将会创建一个独立的 source map 文件。如果为 `'inline'`，source map 将作为一个 data URI 附加在输出文件中。`'hidden'` 的工作原理与 `'true'` 相似，只是 bundle 文件中相应的注释将不被保留。
+构建后是否生成 source map 文件。如果为 `true`，将会创建一个独立的 source map 文件。如果为 `'inline'`，source map 将作为一个 data URI 附加在输出文件中。`'hidden'` 的工作原理与 `true` 相似，只是 bundle 文件中相应的注释将不被保留。
 
 ## build.rollupOptions {#build-rollupoptions}
 
