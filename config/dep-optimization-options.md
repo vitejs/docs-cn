@@ -68,7 +68,8 @@ export default defineConfig({
 
 ## optimizeDeps.needsInterop
 
-- **Experimental**
-- **Type:** `string[]`
+- **实验性**
+- **类型:** `string[]`
 
-Forces ESM interop when importing these dependencies. Vite is able to properly detect when a dependency needs interop, so this option isn't generally needed. However, different combinations of dependencies could cause some of them to be prebundled differently. Adding these packages to `needsInterop` can speed up cold start by avoiding full-page reloads. You'll receive a warning if this is the case for one of your dependencies, suggesting to add the package name to this array in your config.
+当导入这些依赖项时，强制使用ESM交互操作。Vite能够正确检测到依赖项是否需要交互操作，因此通常不需要使用此选项。然而，不同的依赖项组合可能导致其中一些被以不同方式预打包。将这些包添加到 `needsInterop` 中可以通过避免完整页面重新加载来加快冷启动速度。如果您的某个依赖项符合此情况，将向您发出警告，建议你在配置中将该包名添加到这个数组中。
+
