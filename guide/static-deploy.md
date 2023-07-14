@@ -330,6 +330,7 @@ $ npx wrangler pages publish dist
 
 默认情况下，推送到该指定分支的任何新的 commit 都会自动触发一个新的部署。[Auto-Deploy](https://render.com/docs/deploys#toggling-auto-deploy-for-a-service) 可以在项目设置中部署。
 
+<<<<<<< HEAD
 你也可以为你的项目添加一个 [自定义域名](https://render.com/docs/custom-domains)。
 
 ## 腾讯云 Webify
@@ -347,3 +348,10 @@ $ npx wrangler pages publish dist
 ![Webify 配置](../images/webify-configuration.png)
 
 应用创建之后，等待构建、部署完毕，便可以通过应用的默认域名（`.app.tcloudbase.com`）来访问应用。如 https://my-vite-vue-app-4gi9tn1478d8ee71-1255679239.ap-shanghai.app.tcloudbase.com/
+=======
+You can also add a [custom domain](https://render.com/docs/custom-domains) to your project.
+
+## Flightcontrol
+
+Deploy your static site using [Flightcontrol](https://www.flightcontrol.dev/?ref=docs-vite), by following these [instructions](https://www.flightcontrol.dev/docs/reference/examples/vite?ref=docs-vite)
+>>>>>>> 273f73b7636fe8d60176d97cc6915dea067f77dd
