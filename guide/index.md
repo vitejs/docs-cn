@@ -34,6 +34,8 @@ Vite 意在提供开箱即用的配置，同时它的 [插件 API](./api-plugin)
 |  [preact](https://vite.new/preact)  |  [preact-ts](https://vite.new/preact-ts)  |
 |     [lit](https://vite.new/lit)     |     [lit-ts](https://vite.new/lit-ts)     |
 |  [svelte](https://vite.new/svelte)  |  [svelte-ts](https://vite.new/svelte-ts)  |
+|   [solid](https://vite.new/solid)   |   [solid-ts](https://vite.new/solid-ts)   |
+|    [qwik](https://vite.new/qwik)    |    [qwik-ts](https://vite.new/qwik-ts)    |
 
 ## 搭建第一个 Vite 项目 {#scaffolding-your-first-vite-project}
 
