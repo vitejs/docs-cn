@@ -260,24 +260,41 @@ export default defineConfig({
 
 ## css.devSourcemap {#css-devsourcemap}
 
+<<<<<<< HEAD
 - **实验性**
 - **类型：** `boolean`
 - **默认：** `false`
+=======
+- **Experimental:** [Give Feedback](https://github.com/vitejs/vite/discussions/13845)
+- **Type:** `boolean`
+- **Default:** `false`
+>>>>>>> 024ad119e53fb63ad36dc1b79401dccc80871120
 
 在开发过程中是否启用 sourcemap。
 
 ## css.transformer
 
+<<<<<<< HEAD
 - **实验性**
 - **类型：** `'postcss' | 'lightningcss'`
 - **默认：** `'postcss'`
+=======
+- **Experimental:** [Give Feedback](https://github.com/vitejs/vite/discussions/13835)
+- **Type:** `'postcss' | 'lightningcss'`
+- **Default:** `'postcss'`
+>>>>>>> 024ad119e53fb63ad36dc1b79401dccc80871120
 
 该选项用于选择用于 CSS 处理的引擎。详细信息请查看 [Lightning CSS](../guide/features.md#lightning-css)。
 
 ## css.lightningcss
 
+<<<<<<< HEAD
 - **实验性**
 - **类型：**
+=======
+- **Experimental:** [Give Feedback](https://github.com/vitejs/vite/discussions/13835)
+- **Type:**
+>>>>>>> 024ad119e53fb63ad36dc1b79401dccc80871120
 
 ```js
 import type {
