@@ -269,4 +269,12 @@ CLI 命令 `$ vite dev` 和 `$ vite preview` 也可以用于 SSR 应用：你可
 
 ## SSR 格式 {#ssr-format}
 
+<<<<<<< HEAD
 默认情况下，Vite 生成的 SSR 打包产物是 ESM 格式。实验性地支持配置 `ssr.format` ，但不推荐这样做。未来围绕 SSR 的开发工作将基于 ESM 格式，并且为了向下兼容，commonjs 仍然可用。如果你的 SSR 项目不能使用 ESM，你可以通过 [Vite v2 外部启发式方法](https://v2.vitejs.dev/guide/ssr.html#ssr-externals) 设置 `legacy.buildSsrCjsExternalHeuristics: true` 生成 CJS 格式的产物。
+=======
+By default, Vite generates the SSR bundle in ESM. There is experimental support for configuring `ssr.format`, but it isn't recommended. Future efforts around SSR development will be based on ESM, and CommonJS remains available for backward compatibility. If using ESM for SSR isn't possible in your project, you can set `legacy.buildSsrCjsExternalHeuristics: true` to generate a CJS bundle using the same [externalization heuristics of Vite v2](https://v2.vitejs.dev/guide/ssr.html#ssr-externals).
+
+:::warning Warning
+Experimental `legacy.buildSsrCjsExternalHeuristics` and `ssr.format: 'cjs'` are going to be removed in Vite 5. Find more information and give feedback [in this discussion](https://github.com/vitejs/vite/discussions/13816).
+:::
+>>>>>>> f9180423b31ee2c41ba36b47fd68d7facde81d82

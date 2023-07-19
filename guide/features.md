@@ -86,7 +86,11 @@ export type { T }
 - [`jsxFactory`](https://www.typescriptlang.org/tsconfig#jsxFactory)
 - [`jsxFragmentFactory`](https://www.typescriptlang.org/tsconfig#jsxFragmentFactory)
 
+<<<<<<< HEAD
 如果你的代码库很难迁移到 `"isolatedModules": true`，或许你可以尝试通过第三方插件来解决，比如 [rollup-plugin-friendly-type-imports](https://www.npmjs.com/package/rollup-plugin-friendly-type-imports)。但是，这种方式不被 Vite 官方支持。
+=======
+If migrating your codebase to `"isolatedModules": true` is an insurmountable effort, you may be able to get around it with a third-party plugin such as [rollup-plugin-friendly-type-imports](https://www.npmjs.com/package/rollup-plugin-friendly-type-imports). However, this approach is not officially supported by Vite.
+>>>>>>> f9180423b31ee2c41ba36b47fd68d7facde81d82
 
 ### 客户端类型 {#client-types}
 
@@ -268,7 +272,11 @@ npm add -D lightningcss
 
 要配置 CSS Modules，需要使用 [`css.lightningcss.cssModules`](https://lightningcss.dev/css-modules.html) 而不是 [`css.modules`](../config/shared-options.md#css-modules)（后者是用于配置 PostCSS 处理 CSS Modules 的方式）。
 
+<<<<<<< HEAD
 默认情况下，Vite 使用 esbuild 来压缩 CSS。通过 [`build.cssMinify: 'lightningcss'`](../config/build-options.md#css-minify) 进行配置，也可以将 Lightning CSS 用作 CSS 最小化压缩。
+=======
+By default, Vite uses esbuild to minify CSS. Lightning CSS can also be used as the CSS minifier with [`build.cssMinify: 'lightningcss'`](../config/build-options.md#build-cssminify).
+>>>>>>> f9180423b31ee2c41ba36b47fd68d7facde81d82
 
 ::: tip NOTE
 在使用 Lightning CSS 时，不支持 [CSS 预处理器](#css-pre-processors)。

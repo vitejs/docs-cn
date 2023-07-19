@@ -64,9 +64,15 @@ export default defineConfig({
 
 ## optimizeDeps.disabled {#optimizedeps-disabled}
 
+<<<<<<< HEAD
 - **实验性**
 - **类型：** `boolean | 'build' | 'dev'`
 - **默认：** `'build'`
+=======
+- **Experimental:** [Give Feedback](https://github.com/vitejs/vite/discussions/13839)
+- **Type:** `boolean | 'build' | 'dev'`
+- **Default:** `'build'`
+>>>>>>> f9180423b31ee2c41ba36b47fd68d7facde81d82
 
 禁用依赖优化，值为 `true` 将在构建和开发期间均禁用优化器。传 `'build'` 或 `'dev'` 将仅在其中一种模式下禁用优化器。默认情况下，仅在开发阶段启用依赖优化。
 
