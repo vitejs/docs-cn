@@ -268,7 +268,7 @@ npm add -D lightningcss
 
 要配置 CSS Modules，需要使用 [`css.lightningcss.cssModules`](https://lightningcss.dev/css-modules.html) 而不是 [`css.modules`](../config/shared-options.md#css-modules)（后者是用于配置 PostCSS 处理 CSS Modules 的方式）。
 
-默认情况下，Vite 使用 esbuild 来压缩 CSS。通过 [`build.cssMinify: 'lightningcss'`](../config/build-options.md#css-minify) 进行配置，也可以将 Lightning CSS 用作 CSS 最小化压缩。
+默认情况下，Vite 使用 esbuild 来压缩 CSS。通过 [`build.cssMinify: 'lightningcss'`](../config/build-options.md#build-cssminify) 进行配置，也可以将 Lightning CSS 用作 CSS 最小化压缩。
 
 ::: tip NOTE
 在使用 Lightning CSS 时，不支持 [CSS 预处理器](#css-pre-processors)。

@@ -260,7 +260,7 @@ export default defineConfig({
 
 ## css.devSourcemap {#css-devsourcemap}
 
-- **实验性**
+- **实验性：** [提供反馈](https://github.com/vitejs/vite/discussions/13845)
 - **类型：** `boolean`
 - **默认：** `false`
 
@@ -268,7 +268,7 @@ export default defineConfig({
 
 ## css.transformer
 
-- **实验性**
+- **实验性：** [提供反馈](https://github.com/vitejs/vite/discussions/13835)
 - **类型：** `'postcss' | 'lightningcss'`
 - **默认：** `'postcss'`
 
@@ -276,7 +276,7 @@ export default defineConfig({
 
 ## css.lightningcss
 
-- **实验性**
+- **实验性：** [提供反馈](https://github.com/vitejs/vite/discussions/13835)
 - **类型：**
 
 ```js

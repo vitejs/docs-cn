@@ -34,7 +34,7 @@ import 'vite/modulepreload-polyfill'
 
 每个动态导入要预加载的块列表将由 Vite 计算。默认情况下，在载入这些依赖时，会使用一个包含 `base` 的绝对路径。如果 `base` 是相对路径（`''` 或者 './'），解析时则会使用 `import.meta.url`，以避免出现依赖于最终部署基路径的绝对路径。
 
-目前有一个实验性功能支持使用 `resolveDependencies` 函数对依赖项列表及其路径进行细粒度控制。它期望接收一个 `ResolveModulePreloadDependenciesFn` 类型的函数:
+目前有一个实验性功能支持使用 `resolveDependencies` 函数对依赖项列表及其路径进行细粒度控制。可以在这里 [提供反馈](https://github.com/vitejs/vite/discussions/13841)。它期望接收一个 `ResolveModulePreloadDependenciesFn` 类型的函数:
 
 ```ts
 type ResolveModulePreloadDependenciesFn = (
@@ -218,7 +218,7 @@ npm add -D terser
 
 ## build.copyPublicDir {#build-copypublicdir}
 
-- **实验性特性**
+- **实验性：** [提供反馈](https://github.com/vitejs/vite/discussions/13807)
 - **类型：** `boolean`
 - **默认：** `true`
 

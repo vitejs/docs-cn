@@ -223,7 +223,7 @@ dist/my-lib.umd.cjs 0.30 KiB / gzip: 0.16 KiB
 ## 进阶基础路径选项 {#advanced-base-options}
 
 ::: warning
-该功能是实验性的，这个 API 可能在未来后续版本中发生变更而不遵循语义化版本号。请在使用它时注意维护 Vite 的版本。
+该功能是实验性的，可以在这里 [提供反馈](https://github.com/vitejs/vite/discussions/13834)。
 :::
 
 对更高级的使用场景，被部署的资源和公共文件可能想要分为不同的路径，例如使用不同缓存策略的场景。

@@ -64,7 +64,7 @@ export default defineConfig({
 
 ## optimizeDeps.disabled {#optimizedeps-disabled}
 
-- **实验性**
+- **实验性：** [提供反馈](https://github.com/vitejs/vite/discussions/13839)
 - **类型：** `boolean | 'build' | 'dev'`
 - **默认：** `'build'`
 

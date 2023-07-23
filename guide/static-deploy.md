@@ -330,20 +330,8 @@ $ npx wrangler pages publish dist
 
 默认情况下，推送到该指定分支的任何新的 commit 都会自动触发一个新的部署。[Auto-Deploy](https://render.com/docs/deploys#toggling-auto-deploy-for-a-service) 可以在项目设置中部署。
 
-你也可以为你的项目添加一个 [自定义域名](https://render.com/docs/custom-domains)。
+还可以为在项目添加一个 [自定义域名](https://render.com/docs/custom-domains)。
 
-## 腾讯云 Webify
+## Flightcontrol
 
-[腾讯云 Webify](https://webify.cloudbase.net/) 支持从 Git 仓库直接部署您的 Vite 应用。
-
-进入 [Webify 新建应用页面](https://console.cloud.tencent.com/webify/new)，根据选择您代码仓库所在的 Git 平台（GitHub、GitLab 或者 Gitee 码云），完成授权流程后，便可导入仓库。
-
-应用配置如下：
-
-- 构建命令填入 `npm run build`
-- 输出目录填入 `dist`，
-- 安装命令填入 `npm install`
-
-![Webify 配置](../images/webify-configuration.png)
-
-应用创建之后，等待构建、部署完毕，便可以通过应用的默认域名（`.app.tcloudbase.com`）来访问应用。如 https://my-vite-vue-app-4gi9tn1478d8ee71-1255679239.ap-shanghai.app.tcloudbase.com/
+使用 [Flightcontrol](https://www.flightcontrol.dev/?ref=docs-vite) 部署静态站点，可以按照 [说明](https://www.flightcontrol.dev/docs/reference/examples/vite?ref=docs-vite) 进行操作。
