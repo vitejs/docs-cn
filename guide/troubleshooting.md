@@ -15,6 +15,23 @@
 - 切换另一种包管理工具（例如 `pnpm` 或 `yarn`）
 - 从你的项目路径中移除符号 `&`
 
+## 配置 {#config}
+
+### 该包仅支持 ESM {#this-package-is-esm-only}
+
+当使用 `require` 导入一个仅支持 ESM 的包时，会出现以下错误。
+
+> Failed to resolve "foo". This package is ESM only but it was tried to load by `require`.
+
+> "foo" resolved to an ESM file. ESM file cannot be loaded by `require`.
+
+ESM 格式的文件无法被 [`require`](<https://nodejs.org/docs/latest-v18.x/api/esm.html#require:~:text=Using%20require%20to%20load%20an%20ES%20module%20is%20not%20supported%20because%20ES%20modules%20have%20asynchronous%20execution.%20Instead%2C%20use%20import()%20to%20load%20an%20ES%20module%20from%20a%20CommonJS%20module.>) 加载。
+
+我们建议你通过以下方式将你的配置文件转换为 ESM 格式：
+
+- 在邻近的 `package.json` 中添加 `"type": "module"`
+- 将 `vite.config.js`/`vite.config.ts` 重命名为 `vite.config.mjs`/`vite.config.mts`
+
 ## 开发服务器 {#dev-server}
 
 ### 请求始终停滞 {#requests-are-stalled-forever}

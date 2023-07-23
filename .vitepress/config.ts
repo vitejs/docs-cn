@@ -39,6 +39,7 @@ export default defineConfig({
     ja: { label: '日本語', link: 'https://ja.vitejs.dev' },
     es: { label: 'Español', link: 'https://es.vitejs.dev' },
     pt: { label: 'Português', link: 'https://pt.vitejs.dev' },
+    ko: { label: '한국어', link: 'https://ko.vitejs.dev' },
   },
 
   themeConfig: {
@@ -229,10 +230,14 @@ export default defineConfig({
               link: '/guide/troubleshooting'
             },
             {
+              text: '理念',
+              link: '/guide/philosophy',
+            },
+            {
               text: '从 v3 迁移',
               link: '/guide/migration'
-            }
-          ]
+            },
+          ],
         },
         {
           text: 'API',
@@ -297,13 +302,4 @@ export default defineConfig({
       ]
     }
   },
-
-  markdown: {
-    anchor: {
-      permalink: renderPermaLink
-    },
-    config: (md) => {
-      md.use(MarkDownItCustomAnchor)
-    }
-  }
 })

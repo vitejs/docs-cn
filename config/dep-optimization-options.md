@@ -35,7 +35,17 @@ export default defineConfig({
 
 默认情况下，不在 `node_modules` 中的，链接的包不会被预构建。使用此选项可强制预构建链接的包。
 
-## optimizeDeps.esbuildOptions {#optimizedeps-esbuildoptions}
+**实验性：** 如果你使用的是一个有很多深层导入的库，你也可以指定一个尾部的 glob 模式来一次性地预构建所有深层导入。这将避免在使用新的深层导入时不断地预构建。例如：
+
+```js
+export default defineConfig({
+  optimizeDeps: {
+    include: ['my-lib/components/**/*.vue'],
+  },
+})
+```
+
+## optimizeDeps.esbuildOptions {#optimizedeps-esbuild-options}
 
 - **类型：** [`EsbuildBuildOptions`](https://esbuild.github.io/api/#simple-options)
 
@@ -54,7 +64,7 @@ export default defineConfig({
 
 ## optimizeDeps.disabled {#optimizedeps-disabled}
 
-- **实验性**
+- **实验性：** [提供反馈](https://github.com/vitejs/vite/discussions/13839)
 - **类型：** `boolean | 'build' | 'dev'`
 - **默认：** `'build'`
 
@@ -71,5 +81,4 @@ export default defineConfig({
 - **实验性**
 - **类型:** `string[]`
 
-当导入这些依赖项时，会强制 ESM 转换。Vite 能够正确检测到依赖项是否需要转换处理（interop），因此通常不需要使用此选项。然而，不同的依赖项组合可能导致其中一些包以不同方式预构建。将这些包添加到 `needsInterop` 中可以通过避免重新加载整个页面、加快冷启动速度。如果您的某个依赖项符合此情况，Vite 将抛出警告，建议你在配置中添加该包名。
-
+当导入这些依赖项时，会强制 ESM 转换。Vite 能够正确检测到依赖项是否需要转换处理（interop），因此通常不需要使用此选项。然而，不同的依赖项组合可能导致其中一些包以不同方式预构建。将这些包添加到 `needsInterop` 中可以通过避免重新加载整个页面、加快冷启动速度。如果某个依赖项符合此情况，Vite 将抛出警告，建议你在配置中添加该包名。

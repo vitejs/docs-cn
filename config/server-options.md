@@ -213,13 +213,11 @@ export default defineConfig({
 ## server.middlewareMode {#server-middlewaremode}
 
 - **类型：** `'ssr' | 'html'`
+- **默认值：** `false`
 
-以中间件模式创建 Vite 服务器。（不含 HTTP 服务器）
+以中间件模式创建 Vite 服务器。
 
-- `'ssr'` 将禁用 Vite 自身的 HTML 服务逻辑，因此你应该手动为 `index.html` 提供服务。
-- `'html'` 将启用 Vite 自身的 HTML 服务逻辑。
-
-- **相关：** [SSR - 设置开发服务器](/guide/ssr#setting-up-the-dev-server)
+- **相关：** [appType](./shared-options#apptype)，[SSR - 设置开发服务器](/guide/ssr#setting-up-the-dev-server)
 
 - **示例：**
 
@@ -239,20 +237,15 @@ async function createServer() {
   app.use(vite.middlewares)
 
   app.use('*', async (req, res) => {
-    // 如果 `middlewareMode` 是 `'ssr'`，应在此为 `index.html` 提供服务.
-    // 如果 `middlewareMode` 是 `'html'`，则此处无需手动服务 `index.html`
-    // 因为 Vite 自会接管
+    // 由于 `appType` 的值是 `'custom'`，因此应在此处提供响应。
+    // 请注意：如果 `appType` 值为 `'spa'` 或 `'mpa'`，Vite 会包含
+    // 处理 HTML 请求和 404 的中间件，因此用户中间件应该在
+    // Vite 的中间件之前添加，以确保其生效。
   })
 }
 
 createServer()
 ```
-
-## server.base {#server-base}
-
-- **类型：** `string | undefined`
-
-在 HTTP 请求中预留此文件夹，用于代理 Vite 作为子文件夹时使用。应该以 `/` 字符开始。
 
 ## server.fs.strict {#server-fs-strict}
 
@@ -266,6 +259,8 @@ createServer()
 - **类型：** `string[]`
 
 限制哪些文件可以通过 `/@fs/` 路径提供服务。当 `server.fs.strict` 设置为 true 时，访问这个目录列表外的文件将会返回 403 结果。
+
+可以提供目录和文件。
 
 Vite 将会搜索此根目录下潜在工作空间并作默认使用。一个有效的工作空间应符合以下几个条件，否则会默认以 [项目 root 目录](/guide/#index-html-and-project-root) 作备选方案。
 
@@ -299,10 +294,11 @@ export default defineConfig({
         // 搜索工作区的根目录
         searchForWorkspaceRoot(process.cwd()),
         // 自定义规则
-        '/path/to/custom/allow'
-      ]
-    }
-  }
+        '/path/to/custom/allow_directory',
+        '/path/to/custom/allow_file.demo',
+      ],
+    },
+  },
 })
 ```
 
@@ -311,9 +307,7 @@ export default defineConfig({
 - **类型：** `string[]`
 - **默认：** `['.env', '.env.*', '*.{crt,pem}']`
 
-用于限制 Vite 开发服务器提供敏感文件的黑名单。
-
-默认为 `['.env', '.env.*', '*.{pem,crt}']`。这会比 [`server.fs.allow`](#server-fs-allow) 选项的优先级更高。同时还支持 [picomatch patterns](https://github.com/micromatch/picomatch#globbing-features)。
+用于限制 Vite 开发服务器提供敏感文件的黑名单。这会比 [`server.fs.allow`](#server-fs-allow) 选项的优先级更高。同时还支持 [picomatch 模式](https://github.com/micromatch/picomatch#globbing-features)。
 
 ## server.origin {#server-origin}
 

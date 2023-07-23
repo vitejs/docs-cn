@@ -332,4 +332,8 @@ $ npx wrangler pages publish dist
 
 默认情况下，推送到该指定分支的任何新的 commit 都会自动触发一个新的部署。[Auto-Deploy](https://render.com/docs/deploys#toggling-auto-deploy-for-a-service) 可以在项目设置中部署。
 
-你也可以为你的项目添加一个 [自定义域名](https://render.com/docs/custom-domains)。
+还可以为项目添加一个 [自定义域名](https://render.com/docs/custom-domains)。
+
+## Flightcontrol
+
+使用 [Flightcontrol](https://www.flightcontrol.dev/?ref=docs-vite) 部署静态站点，可以按照 [说明](https://www.flightcontrol.dev/docs/reference/examples/vite?ref=docs-vite) 进行操作。

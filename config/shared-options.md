@@ -210,6 +210,8 @@ interface CSSModulesOptions {
 
 配置 CSS modules 的行为。选项将被传递给 [postcss-modules](https://github.com/css-modules/postcss-modules)。
 
+当使用 [Lightning CSS](../guide/features.md#lightning-css) 时，该选项不会产生任何效果。如果要启用该选项，则应该使用 [`css.lightningcss.cssModules`](https://lightningcss.dev/css-modules.html) 来替代。
+
 ## css.postcss {#css-postcss}
 
 - **类型：** `string | (postcss.ProcessOptions & { plugins?: postcss.AcceptedPlugin[] })`
@@ -258,11 +260,51 @@ export default defineConfig({
 
 ## css.devSourcemap {#css-devsourcemap}
 
-- **实验性**
+- **实验性：** [提供反馈](https://github.com/vitejs/vite/discussions/13845)
 - **类型：** `boolean`
 - **默认：** `false`
 
 在开发过程中是否启用 sourcemap。
+
+## css.transformer
+
+- **实验性：** [提供反馈](https://github.com/vitejs/vite/discussions/13835)
+- **类型：** `'postcss' | 'lightningcss'`
+- **默认：** `'postcss'`
+
+该选项用于选择用于 CSS 处理的引擎。详细信息请查看 [Lightning CSS](../guide/features.md#lightning-css)。
+
+## css.lightningcss
+
+- **实验性：** [提供反馈](https://github.com/vitejs/vite/discussions/13835)
+- **类型：**
+
+```js
+import type {
+  CSSModulesConfig,
+  Drafts,
+  Features,
+  NonStandard,
+  PseudoClasses,
+  Targets,
+} from 'lightningcss'
+```
+
+```js
+{
+  targets?: Targets
+  include?: Features
+  exclude?: Features
+  drafts?: Drafts
+  nonStandard?: NonStandard
+  pseudoClasses?: PseudoClasses
+  unusedSymbols?: string[]
+  cssModules?: CSSModulesConfig,
+  // ...
+}
+```
+
+该选项用于配置 Lightning CSS。有关完整的转换选项，请参阅 [Lightning CSS 仓库](https://github.com/parcel-bundler/lightningcss/blob/master/node/index.d.ts)。
 
 ## json.namedExports {#json-namedexports}
 

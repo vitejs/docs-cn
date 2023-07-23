@@ -34,7 +34,7 @@ import 'vite/modulepreload-polyfill'
 
 每个动态导入要预加载的块列表将由 Vite 计算。默认情况下，在载入这些依赖时，会使用一个包含 `base` 的绝对路径。如果 `base` 是相对路径（`''` 或者 './'），解析时则会使用 `import.meta.url`，以避免出现依赖于最终部署基路径的绝对路径。
 
-目前有一个实验性功能支持使用 `resolveDependencies` 函数对依赖项列表及其路径进行细粒度控制。它期望接收一个 `ResolveModulePreloadDependenciesFn` 类型的函数:
+目前有一个实验性功能支持使用 `resolveDependencies` 函数对依赖项列表及其路径进行细粒度控制。可以在这里 [提供反馈](https://github.com/vitejs/vite/discussions/13841)。它期望接收一个 `ResolveModulePreloadDependenciesFn` 类型的函数:
 
 ```ts
 type ResolveModulePreloadDependenciesFn = (
@@ -119,10 +119,10 @@ Git LFS 占位符会自动排除在内联之外，因为它们不包含它们所
 
 ## build.cssMinify {#build-cssminify}
 
-- **类型：** `boolean`
+- **类型：** `boolean | 'esbuild' | 'lightningcss'`
 - **默认：** 与 [`build.minify`](#build-minify) 一致
 
-此选项允许用户覆盖 CSS 最小化压缩的配置，而不是使用默认的 `build.minify`，这样你就可以单独配置 JS 和 CSS 的最小化压缩方式。Vite 使用 `esbuild` 来最小化 CSS。
+此选项允许用户覆盖 CSS 最小化压缩的配置，而不是使用默认的 `build.minify`，这样你就可以单独配置 JS 和 CSS 的最小化压缩方式。Vite 默认使用 `esbuild` 来最小化 CSS。将此选项设置为 `'lightningcss'` 可以改用 [Lightning CSS](https://lightningcss.dev/minification.html) 进行压缩。设置为该项，便可以使用 [`css.lightningcss`](./shared-options.md#css-lightningcss) 选项来进行配置。
 
 ## build.sourcemap {#build-sourcemap}
 
@@ -218,7 +218,7 @@ npm add -D terser
 
 ## build.copyPublicDir {#build-copypublicdir}
 
-- **实验性特性**
+- **实验性：** [提供反馈](https://github.com/vitejs/vite/discussions/13807)
 - **类型：** `boolean`
 - **默认：** `true`
 

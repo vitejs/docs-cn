@@ -1,6 +1,10 @@
+---
+title: 配置 Vite
+---
+
 # 配置 Vite {#configuring-vite}
 
-当以命令行方式运行 `vite` 时，Vite 会自动解析 [项目根目录](/guide/#index-html-and-project-root) 下名为 `vite.config.js` 的文件。
+当以命令行方式运行 `vite` 时，Vite 会自动解析 [项目根目录](/guide/#index-html-and-project-root) 下名为 `vite.config.js` 的配置文件（也支持其他 JS 和 TS 扩展名）。
 
 最基础的配置文件是这样的：
 
@@ -67,7 +71,7 @@ export default defineConfig(({ command, mode, ssrBuild }) => {
 
 ## 异步配置 {#async-config}
 
-如果配置需要调用一个异步函数，也可以转而导出一个异步函数：
+如果配置需要调用一个异步函数，也可以转而导出一个异步函数。这个异步函数也可以通过 `defineConfig` 传递，以便获得更好的智能提示：
 
 ```js
 export default defineConfig(async ({ command, mode }) => {
@@ -94,7 +98,7 @@ export default defineConfig(({ command, mode }) => {
   return {
     // vite 配置
     define: {
-      __APP_ENV__: env.APP_ENV,
+      __APP_ENV__: JSON.stringify(env.APP_ENV),
     },
   }
 })
