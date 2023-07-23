@@ -88,7 +88,7 @@ security add-trusted-cert -d -r trustRoot -k ~/Library/Keychains/login.keychain-
 
 或者，通过将其导入 Keychain Access 应用程序并将您的证书的信任更新为“始终信任”。
 
-### 431 Request Header Fields Too Large {#431-request-header-fields-too-large}
+### 431 Request Header Fields Too Large {#_431-request-header-fields-too-large}
 
 当服务器或 WebSocket 服务收到一个较大的 HTTP 头，该请求可能会被遗落并且会显示下面这样的警告。
 
@@ -122,7 +122,7 @@ import './Foo.js' // 应该为 './foo.js'
 
 ### 控制台中大量热更新 {#high-number-of-hmr-updates-in-console}
 
-This can be caused by a circular dependency. To solve this, try breaking the loop.
+这可能是由循环依赖引起的。要解决这个问题，请先尝试解决依赖循环。
 
 ## 构建 {#build}
 
@@ -154,9 +154,9 @@ This can be caused by a circular dependency. To solve this, try breaking the loo
 
 这是因为 Vite 不会自动 polyfill Node.js 的内建模块。
 
-我们推荐你不要再浏览器中使用 Node.js 模块以减小包体积，尽管你可以为其手动添加 polyfill。如果该模块是被某个第三方库（这里意为某个在浏览器中使用的库）导入的，则建议向对应库提交一个 issue。
+我们推荐你不要在浏览器中使用 Node.js 模块以减小包体积，尽管你可以为其手动添加 polyfill。如果该模块是被某个第三方库（这里意为某个在浏览器中使用的库）导入的，则建议向对应库提交一个 issue。
 
-### Syntax Error / Type Error {#syntax-error-type-error-happens}
+### 出现 Syntax Error 或 Type Error {#syntax-error-type-error-happens}
 
 Vite 无法处理、也不支持仅可在非严格模式（sloppy mode）下运行的代码。这是因为 Vite 使用了 ESM 并且始终在 ESM 中使用 [严格模式](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode)。
 

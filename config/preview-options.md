@@ -3,7 +3,7 @@
 ## preview.host {#preview-host}
 
 - **类型：** `string | boolean`
-- **默认：** [`server.host`](#server_host)
+- **默认：** [`server.host`](./server-options#server-host)
 
 为开发服务器指定 ip 地址。
 设置为 `0.0.0.0` 或 `true` 会监听所有地址，包括局域网和公共地址。
@@ -40,23 +40,23 @@ export default defineConfig({
 ## preview.strictPort {#preview-strictport}
 
 - **类型：** `boolean`
-- **默认：** [`server.strictPort`](#server_strictport)
+- **默认：** [`server.strictPort`](./server-options#server-strictport)
 
 设置为 `true` 时，如果端口已被使用，则直接退出，而不会再进行后续端口的尝试。
 
 ## preview.https {#preview-https}
 
 - **类型：** `boolean | https.ServerOptions`
-- **默认：** [`server.https`](#server_https)
+- **默认：** [`server.https`](./server-options#server-https)
 
-启用 TLS + HTTP/2。注意，只有在与 [`server.proxy` 选项](#server-proxy) 同时使用时，才会降级为 TLS。
+启用 TLS + HTTP/2。注意，只有在与 [`server.proxy` 选项](./server-options#server-proxy) 同时使用时，才会降级为 TLS。
 
 该值也可以传递给 `https.createServer()` 的 [options 对象](https://nodejs.org/api/https.html#https_https_createserver_options_requestlistener)。
 
 ## preview.open {#preview-open}
 
 - **类型：** `boolean | string`
-- **默认：** [`server.open`](#server_open)
+- **默认：** [`server.open`](./server-options#server-open)
 
 开发服务器启动时，自动在浏览器中打开应用程序。当该值为字符串时，它将被用作 URL 的路径名。如果你想在你喜欢的某个浏览器打开该开发服务器，你可以设置环境变量 `process.env.BROWSER` （例如 `firefox`）。欲了解更多细节，请参阅 [`open` 包的源码](https://github.com/sindresorhus/open#app)。
 
@@ -74,7 +74,7 @@ export default defineConfig({
 ## preview.cors {#preview-cors}
 
 - **类型：** `boolean | CorsOptions`
-- **默认：** [`server.cors`](#server_proxy)
+- **默认：** [`server.cors`](./server-options#server-cors)
 
 为开发服务器配置 CORS。此功能默认启用并支持任何来源。可传递一个 [options 对象](https://github.com/expressjs/cors#configuration-options) 来进行配置，或者传递 `false` 来禁用此行为。
 
