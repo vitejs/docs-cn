@@ -16,7 +16,7 @@
 
 第一种情况是 `localhost` 被使用了。Node.js 在 v17 以下版本中默认会对 DNS 解析地址的结果进行重新排序。当访问 `localhost` 时，浏览器使用 DNS 来解析地址，这个地址可能与 Vite 正在监听的地址不同。当地址不一致时，Vite 会打印出来。
 
-你可以设置 [`dns.setDefaultResultOrder('verbatim')`](https://nodejs.org/api/dns.html#dns_dns_setdefaultresultorder_order) 来禁用这个重新排序的行为。Vite 将会将改地址打印为 `localhost`。
+你可以设置 [`dns.setDefaultResultOrder('verbatim')`](https://nodejs.org/api/dns.html#dns_dns_setdefaultresultorder_order) 来禁用这个重新排序的行为。Vite 会将地址打印为 `localhost`。
 
 ```js
 // vite.config.js
@@ -33,7 +33,6 @@ export default defineConfig({
 第二种情况是使用了通配主机地址（例如 `0.0.0.0`）。这是因为侦听非通配符主机的服务器优先于侦听通配符主机的服务器。
 
 :::
-
 
 ::: tip 在 WSL2 中通过 LAN 访问开发服务器
 
@@ -214,13 +213,11 @@ export default defineConfig({
 ## server.middlewareMode {#server-middlewaremode}
 
 - **类型：** `'ssr' | 'html'`
+- **默认值：** `false`
 
-以中间件模式创建 Vite 服务器。（不含 HTTP 服务器）
+以中间件模式创建 Vite 服务器。
 
-- `'ssr'` 将禁用 Vite 自身的 HTML 服务逻辑，因此你应该手动为 `index.html` 提供服务。
-- `'html'` 将启用 Vite 自身的 HTML 服务逻辑。
-
-- **相关：** [SSR - 设置开发服务器](/guide/ssr#setting-up-the-dev-server)
+- **相关：** [appType](./shared-options#apptype)，[SSR - 设置开发服务器](/guide/ssr#setting-up-the-dev-server)
 
 - **示例：**
 
@@ -240,9 +237,10 @@ async function createServer() {
   app.use(vite.middlewares)
 
   app.use('*', async (req, res) => {
-    // 如果 `middlewareMode` 是 `'ssr'`，应在此为 `index.html` 提供服务.
-    // 如果 `middlewareMode` 是 `'html'`，则此处无需手动服务 `index.html`
-    // 因为 Vite 自会接管
+    // 由于 `appType` 的值是 `'custom'`，因此应在此处提供响应。
+    // 请注意：如果 `appType` 值为 `'spa'` 或 `'mpa'`，Vite 会包含
+    // 处理 HTML 请求和 404 的中间件，因此用户中间件应该在
+    // Vite 的中间件之前添加，以确保其生效。
   })
 }
 
@@ -309,9 +307,7 @@ export default defineConfig({
 - **类型：** `string[]`
 - **默认：** `['.env', '.env.*', '*.{crt,pem}']`
 
-用于限制 Vite 开发服务器提供敏感文件的黑名单。
-
-默认为 `['.env', '.env.*', '*.{pem,crt}']`。这会比 [`server.fs.allow`](#server-fs-allow) 选项的优先级更高。同时还支持 [picomatch patterns](https://github.com/micromatch/picomatch#globbing-features)。
+用于限制 Vite 开发服务器提供敏感文件的黑名单。这会比 [`server.fs.allow`](#server-fs-allow) 选项的优先级更高。同时还支持 [picomatch 模式](https://github.com/micromatch/picomatch#globbing-features)。
 
 ## server.origin {#server-origin}
 

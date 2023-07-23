@@ -24,12 +24,6 @@ Vite 旨在为常见的 web 开发工作提供开箱即用的支持。在搜索�
 
 - 提供对 Vue 2.7 JSX 对支持（通过 [dedicated Babel transform](https://github.com/vuejs/jsx-vue2/)）。
 
-- Provides Vue 2.7 Single File Components support.
-
-### [@vitejs/plugin-vue2-jsx](https://github.com/vitejs/vite-plugin-vue2-jsx)
-
-- Provides Vue 2.7 JSX support (via [dedicated Babel transform](https://github.com/vuejs/jsx-vue2/)).
-
 ### [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react)
 
 - 使用 esbuild 和 Babel，使用一个微小体积的包脚注可以实现极速的 HMR，同时提升灵活性，能够使用 Babel 的转换管线。在构建时没有使用额外的 Babel 插件，只使用了 esbuild。

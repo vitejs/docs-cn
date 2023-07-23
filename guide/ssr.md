@@ -242,7 +242,7 @@ export function mySSRPlugin() {
 }
 ```
 
-`options` 中的 `load` 和 `transform` 为可选项，rollup 目前并未使用该对象，但将来可能会用额外的元数据来扩展这些钩子函数。
+`load` 和 `transform` 中的 `options` 对象为可选项，rollup 目前并未使用该对象，但将来可能会用额外的元数据来扩展这些钩子函数。
 
 :::tip Note
 Vite 2.7 之前的版本，会提示你 `ssr` 参数的位置不应该是 `options` 对象。目前所有主要框架和插件都已对应更新，但你可能还是会发现使用过时 API 的旧文章。

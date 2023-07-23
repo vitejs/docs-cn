@@ -5,6 +5,7 @@
 	"repository": "https://github.com/vitejs/docs-cn",
 	"author": "Evan You",
 	"private": true,
+	"license": "CC BY-NC-SA 4.0",
 	"devDependencies": {
 		"chalk": "^4.1.0",
 		"gray-matter": "^4.0.3",
