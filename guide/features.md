@@ -559,11 +559,7 @@ import MyWorker from './worker?worker'
 const worker = new MyWorker()
 ```
 
-<<<<<<< HEAD
-Worker 脚本也可以使用 ESM 的 `import` 语句来替代 `importScripts()` —— **注意**，在开发过程中，这依赖于[浏览器原生支持](https://caniuse.com/?search=module%20worker)（目前在 Firefox 中不支持），而在生产版本中，它已经被编译掉了。
-=======
-The worker script can also use ESM `import` statements instead of `importScripts()`. **Note**: During dev this relies on [browser native support](https://caniuse.com/?search=module%20worker), but for the production build it is compiled away.
->>>>>>> 00eed324d1ca08f62d9e4f62c5ee604ec07317a4
+这个 worker 脚本也可以使用 ESM `import` 语句而不是 `importScripts()`。**注意**：在开发时，这依赖于 [浏览器原生支持](https://caniuse.com/?search=module%20worker)，但是在生产构建中，它会被编译掉。
 
 默认情况下，worker 脚本将在生产构建中编译成单独的 chunk。如果你想将 worker 内联为 base64 字符串，请添加 `inline` 查询参数：
 
