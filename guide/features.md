@@ -500,7 +500,8 @@ const module = await import(`./dir/${file}.js`)
 
 ## WebAssembly {#webassembly}
 
-预编译的 `.wasm` 文件可以通过 `?init` 来导入。默认导出一个初始化函数，返回值为所导出 wasm 实例对象的 Promise：
+预编译的 `.wasm` 文件可以通过 `?init` 来导入。
+默认导出一个初始化函数，返回值为所导出 [`WebAssembly.Instance`](https://developer.mozilla.org/en-US/docs/WebAssembly/JavaScript_interface/Instance) 实例对象的 Promise：
 
 ```js
 import init from './example.wasm?init'
@@ -510,7 +511,7 @@ init().then((instance) => {
 })
 ```
 
-`init` 函数还可以将传递给 `WebAssembly.instantiate` 的导入对象作为其第二个参数：
+`init` 函数还可以将传递给 [`WebAssembly.instantiate`](https://developer.mozilla.org/en-US/docs/WebAssembly/JavaScript_interface/instantiate) 的导入对象作为其第二个参数：
 
 ```js
 init({
@@ -524,12 +525,53 @@ init({
 })
 ```
 
-在生产构建当中，体积小于 `assetInlineLimit` 的 `.wasm` 文件将会被内联为 base64 字符串。否则，它们将作为资源复制到 `dist` 目录中，并按需获取。
+在生产构建当中，体积小于 `assetInlineLimit` 的 `.wasm` 文件将会被内联为 base64 字符串。否则，它们将被视为 [静态资源](./assets) ，并按需获取。
 
-::: warning
+::: tip 注意
 [对 WebAssembly 的 ES 模块集成提案](https://github.com/WebAssembly/esm-integration) 尚未支持。
 请使用 [`vite-plugin-wasm`](https://github.com/Menci/vite-plugin-wasm) 或其他社区上的插件来处理。
 :::
+
+### 访问 WebAssembly 模块 {#accessing-the-webassembly-module}
+
+如果需要访问 `Module` 对象，例如将它多次实例化，可以使用 [显式 URL 引入](./assets#explicit-url-imports) 来解析资源，然后执行实例化：
+
+```js
+import wasmUrl from 'foo.wasm?url'
+
+const main = async () => {
+  const responsePromise = fetch(wasmUrl)
+  const { module, instance } = await WebAssembly.instantiateStreaming(
+    responsePromise,
+  )
+  /* ... */
+}
+
+main()
+```
+
+### 在 Node.js 中获取模块 {#fetching-the-module-in-node-js}
+
+在 SSR 中，作为 `?init` 导入的 `fetch()` 可能会失败，导致 `TypeError: Invalid URL` 报错。
+请参见问题 [在 SSR 中支持 wasm](https://github.com/vitejs/vite/issues/8882)。
+
+以下是一种替代方案，假设项目根目录在当前目录：
+
+```js
+import wasmUrl from 'foo.wasm?url'
+import { readFile } from 'node:fs/promises'
+
+const main = async () => {
+  const resolvedUrl = (await import('./test/boot.test.wasm?url')).default
+  const buffer = await readFile('.' + resolvedUrl)
+  const { instance } = await WebAssembly.instantiate(buffer, {
+    /* ... */
+  })
+  /* ... */
+}
+
+main()
+```
 
 ## Web Workers {#web-workers}
 
