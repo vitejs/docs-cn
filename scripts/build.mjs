@@ -9,6 +9,6 @@ import chalk from 'chalk'
  * （若有顺序必要，则依次调用）
  */
 
-import rewriteTitle from '../.vitepress/rewrite-title'
+import rewriteTitle from '../.vitepress/rewrite-title/index.js'
 
 rewriteTitle().then(() => {})
