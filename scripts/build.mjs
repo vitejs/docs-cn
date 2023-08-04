@@ -1,6 +1,6 @@
-const vitpress = require('vitepress')
-const path = require('path')
-const chalk = require('chalk')
+import path from 'node:path'
+import vitpress from 'vitepress'
+import chalk from 'chalk'
 
 /** 构建说明：
  *
@@ -9,6 +9,6 @@ const chalk = require('chalk')
  * （若有顺序必要，则依次调用）
  */
 
-const rewriteTitle = require('../.vitepress/rewrite-title')
+import rewriteTitle from '../.vitepress/rewrite-title'
 
 rewriteTitle().then(() => {})
