@@ -1,7 +1,3 @@
-import path from 'node:path'
-import vitpress from 'vitepress'
-import chalk from 'chalk'
-
 /** 构建说明：
  *
  *  所有需要的构建步骤，都应封装为返回 Promise 的函数
