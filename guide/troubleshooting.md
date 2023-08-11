@@ -144,7 +144,33 @@ import './Foo.js' // 应该为 './foo.js'
 
 在 Vite 中通过一个哈希值来决定优化后的依赖项是否有效，这个值取决于包锁定的内容、应用于依赖项的补丁以及 Vite 配置文件中影响 node_modules 打包的选项。这意味着，当使用像 [npm overrides](https://docs.npmjs.com/cli/v9/configuring-npm/package-json#overrides) 这样的功能覆盖依赖项时，Vite 将检测到，并在下一次服务器启动时重新打包您的依赖项。当您使用像 [npm link](https://docs.npmjs.com/cli/v9/commands/npm-link) 这样的功能时，Vite 不会使依赖项无效。如果您链接或取消链接一个依赖项，那么您需要使用 `vite --force` 在下一次服务器启动时强制重新预构建。我们建议使用 overrides，它们现在被每个包管理器所支持（还可以参见 [pnpm overrides](https://pnpm.io/package_json#pnpmoverrides) 和 [yarn resolutions](https://yarnpkg.com/configuration/manifest/#resolutions)）。
 
+<<<<<<< HEAD
 ## 其他 {#others}
+=======
+## Performance bottlenecks
+
+If you suffer any application performance bottlenecks resulting in slow load times, you can start the built-in Node.js inspector with your Vite dev server or when building your application to create the CPU profile:
+
+::: code-group
+
+```bash [dev server]
+vite --profile --open
+```
+
+```bash [build]
+vite build --profile
+```
+
+:::
+
+::: tip Vite Dev Server
+Once your application is opened in the browser, just await finish loading it and then go back to the terminal and press `p` key (will stop the Node.js inspector) then press `q` key to stop the dev server.
+:::
+
+Node.js inspector will generate `vite-profile-0.cpuprofile` in the root folder, go to https://www.speedscope.app/, and upload the CPU profile using the `BROWSE` button to inspect the result.
+
+## Others
+>>>>>>> d508009a71058d02563d45e4e519f44453d414c0
 
 ### Module externalized for browser compatibility {#module-externalized-for-browser-compatibility}
 
