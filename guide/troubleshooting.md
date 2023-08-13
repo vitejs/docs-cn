@@ -144,12 +144,9 @@ import './Foo.js' // 应该为 './foo.js'
 
 在 Vite 中通过一个哈希值来决定优化后的依赖项是否有效，这个值取决于包锁定的内容、应用于依赖项的补丁以及 Vite 配置文件中影响 node_modules 打包的选项。这意味着，当使用像 [npm overrides](https://docs.npmjs.com/cli/v9/configuring-npm/package-json#overrides) 这样的功能覆盖依赖项时，Vite 将检测到，并在下一次服务器启动时重新打包您的依赖项。当您使用像 [npm link](https://docs.npmjs.com/cli/v9/commands/npm-link) 这样的功能时，Vite 不会使依赖项无效。如果您链接或取消链接一个依赖项，那么您需要使用 `vite --force` 在下一次服务器启动时强制重新预构建。我们建议使用 overrides，它们现在被每个包管理器所支持（还可以参见 [pnpm overrides](https://pnpm.io/package_json#pnpmoverrides) 和 [yarn resolutions](https://yarnpkg.com/configuration/manifest/#resolutions)）。
 
-<<<<<<< HEAD
-## 其他 {#others}
-=======
-## Performance bottlenecks
+## 性能瓶颈 {#performance-bottlenecks}
 
-If you suffer any application performance bottlenecks resulting in slow load times, you can start the built-in Node.js inspector with your Vite dev server or when building your application to create the CPU profile:
+如果你遇到应用程序性能瓶颈导致加载缓慢，可以在启动 Vite 开发服务器或在构建应用程序时使用内置的 Node.js 调试器来创建 CPU 性能分析文件：
 
 ::: code-group
 
@@ -163,16 +160,15 @@ vite build --profile
 
 :::
 
-::: tip Vite Dev Server
-Once your application is opened in the browser, just await finish loading it and then go back to the terminal and press `p` key (will stop the Node.js inspector) then press `q` key to stop the dev server.
+::: tip Vite 开发服务器
+一旦应用程序在浏览器中打开，请等待其完成加载，然后返回终端并按下 `p` 键（将停止 Node.js 调试器），然后按下 `q` 键停止开发服务器。
 :::
 
-Node.js inspector will generate `vite-profile-0.cpuprofile` in the root folder, go to https://www.speedscope.app/, and upload the CPU profile using the `BROWSE` button to inspect the result.
+Node.js 调试器将在根文件夹中生成 `vite-profile-0.cpuprofile` 文件，前往 https://www.speedscope.app/，点击 `BROWSE` 按钮上传 CPU 性能分析文件以检查结果。
 
-## Others
->>>>>>> d508009a71058d02563d45e4e519f44453d414c0
+## 其他 {#others}
 
-### Module externalized for browser compatibility {#module-externalized-for-browser-compatibility}
+### 为了浏览器兼容性而模块外部化 {#module-externalized-for-browser-compatibility}
 
 当你在浏览器中使用一个 Node.js 模块时，Vite 会输出以下警告：
 
