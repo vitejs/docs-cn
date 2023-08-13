@@ -14,8 +14,8 @@ vite [root]
 
 #### 选项 {#options}
 
-| 选项                     |                                              |
-| ------------------------ | ------------------------------------------- |
+| 选项                     |                                                                                         |
+| ------------------------ | -------------------------------------------------------------------------------------- |
 | `--host [host]`          | 指定主机名称 (`string`) |
 | `--port <port>`          | 指定端口 (`number`) |
 | `--https`                | 使用 TLS + HTTP/2 (`boolean`) |
@@ -27,6 +27,7 @@ vite [root]
 | `--base <path>`          | 公共基础路径（默认为：`/`）(`string`) |
 | `-l, --logLevel <level>` | Info \| warn \| error \| silent (`string`) |
 | `--clearScreen`          | 允许或禁用打印日志时清除屏幕 (`boolean`) |
+| `--profile`              | 启动内置的 Node.js 调试器（查看 [性能瓶颈](/guide/troubleshooting#performance-bottlenecks)）|
 | `-d, --debug [feat]`     | 显示调试日志 (`string \| boolean`) |
 | `-f, --filter <filter>`  | 过滤调试日志 (`string`) |
 | `-m, --mode <mode>`      | 设置环境模式 (`string`) |
@@ -65,6 +66,7 @@ vite build [root]
 | `--base <path>`                | 公共基础路径（默认为：`/`）(`string`) |
 | `-l, --logLevel <level>`       | Info \| warn \| error \| silent (`string`) |
 | `--clearScreen`                | 允许或禁用打印日志时清除屏幕 (`boolean`) |
+| `--profile`                    | 启动内置的 Node.js 调试器（查看 [性能瓶颈](/guide/troubleshooting#performance-bottlenecks)）|
 | `-d, --debug [feat]`           | 显示调试日志 (`string \| boolean`) |
 | `-f, --filter <filter>`        | 过滤调试日志 (`string`) |
 | `-m, --mode <mode>`            | 设置环境模式 (`string`) |

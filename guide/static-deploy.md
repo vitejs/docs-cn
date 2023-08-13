@@ -337,3 +337,7 @@ $ npx wrangler pages publish dist
 ## Flightcontrol
 
 使用 [Flightcontrol](https://www.flightcontrol.dev/?ref=docs-vite) 部署静态站点，可以按照 [说明](https://www.flightcontrol.dev/docs/reference/examples/vite?ref=docs-vite) 进行操作。
+
+## AWS Amplify 部署 {#aws-amplify-hoisting}
+
+使用 [AWS Amplify 部署](https://aws.amazon.com/amplify/hosting/) 部署静态站点，可以按照 [说明](https://docs.amplify.aws/guides/hosting/vite/q/platform/js/) 进行操作。
