@@ -1,4 +1,12 @@
+<<<<<<< HEAD
 # 静态资源处理 {#static-asset-handling}
+=======
+---
+outline: [2, 3]
+---
+
+# Static Asset Handling
+>>>>>>> 9b4dc24a513230536ac9e0810451cf2b6012ea29
 
 - 相关: [公共基础路径](./build#public-base-path)
 - 相关: [`assetsInclude` 配置项](/config/shared-options.md#assetsinclude)

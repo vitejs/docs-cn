@@ -128,8 +128,41 @@ export default defineConfig({
           { text: 'Team', link: '/team' },
           { text: 'Releases', link: '/releases' },
           {
+<<<<<<< HEAD
             text: 'Twitter',
             link: 'https://twitter.com/vite_js'
+=======
+            items: [
+              {
+                text: 'Twitter',
+                link: 'https://twitter.com/vite_js',
+              },
+              {
+                text: 'Discord Chat',
+                link: 'https://chat.vitejs.dev',
+              },
+              {
+                text: 'Awesome Vite',
+                link: 'https://github.com/vitejs/awesome-vite',
+              },
+              {
+                text: 'DEV Community',
+                link: 'https://dev.to/t/vite',
+              },
+              {
+                text: 'Rollup Plugins Compat',
+                link: 'https://vite-rollup-plugins.patak.dev/',
+              },
+              {
+                text: 'Changelog',
+                link: 'https://github.com/vitejs/vite/blob/main/packages/vite/CHANGELOG.md',
+              },
+              {
+                text: 'Contributing',
+                link: 'https://github.com/vitejs/vite/blob/main/CONTRIBUTING.md',
+              },
+            ],
+>>>>>>> 9b4dc24a513230536ac9e0810451cf2b6012ea29
           },
           {
             text: 'Discord Chat',

@@ -166,7 +166,13 @@ vite build --profile
 
 Node.js 调试器将在根文件夹中生成 `vite-profile-0.cpuprofile` 文件，前往 https://www.speedscope.app/，点击 `BROWSE` 按钮上传 CPU 性能分析文件以检查结果。
 
+<<<<<<< HEAD
 ## 其他 {#others}
+=======
+You can install [vite-plugin-inspect](https://github.com/antfu/vite-plugin-inspect), which lets you inspect the intermediate state of Vite plugins and can also help you to identify which plugins or middlewares are the bottleneck in your applications. The plugin can be used in both dev and build modes. Check the readme file for more details.
+
+## Others
+>>>>>>> 9b4dc24a513230536ac9e0810451cf2b6012ea29
 
 ### 为了浏览器兼容性而模块外部化 {#module-externalized-for-browser-compatibility}
 
