@@ -1,12 +1,8 @@
-<<<<<<< HEAD
-# 命令行界面 {#command-line-interface}
-=======
 ---
 outline: [2, 3]
 ---
 
-# Command Line Interface
->>>>>>> 9b4dc24a513230536ac9e0810451cf2b6012ea29
+# 命令行界面 {#command-line-interface}
 
 ## 开发服务器 {#dev-server}
 
