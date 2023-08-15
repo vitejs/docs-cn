@@ -45,23 +45,21 @@ Vite 还提供了强大的扩展性，可通过其 [插件 API](./api-plugin) �
 Vite 需要 [Node.js](https://nodejs.org/en/) 版本 14.18+，16+。然而，有些模板需要依赖更高的 Node 版本才能正常运行，当你的包管理器发出警告时，请注意升级你的 Node 版本。
 :::
 
-使用 NPM:
+::: code-group
 
-```bash
+```bash [NPM]
 $ npm create vite@latest
 ```
 
-使用 Yarn:
-
-```bash
+```bash [Yarn]
 $ yarn create vite
 ```
 
-使用 PNPM:
-
-```bash
+```bash [PNPM]
 $ pnpm create vite
 ```
+
+:::
 
 然后按照提示操作即可！
 

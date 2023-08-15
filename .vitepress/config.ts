@@ -128,29 +128,37 @@ export default defineConfig({
           { text: 'Team', link: '/team' },
           { text: 'Releases', link: '/releases' },
           {
-            text: 'Twitter',
-            link: 'https://twitter.com/vite_js'
+            items: [
+              {
+                text: 'Twitter',
+                link: 'https://twitter.com/vite_js',
+              },
+              {
+                text: 'Discord 聊天室',
+                link: 'https://chat.vitejs.dev'
+              },
+              {
+                text: 'Awesome Vite',
+                link: 'https://github.com/vitejs/awesome-vite'
+              },
+              {
+                text: 'Dev.to 社区',
+                link: 'https://dev.to/t/vite'
+              },
+              {
+                text: 'Rollup 插件兼容',
+                link: 'https://vite-rollup-plugins.patak.dev/'
+              },
+              {
+                text: '更新日志',
+                link: 'https://github.com/vitejs/vite/blob/main/packages/vite/CHANGELOG.md'
+              },
+              {
+                text: '贡献指南',
+                link: 'https://github.com/vitejs/vite/blob/main/CONTRIBUTING.md',
+              },
+            ],
           },
-          {
-            text: 'Discord Chat',
-            link: 'https://chat.vitejs.dev'
-          },
-          {
-            text: 'Awesome Vite',
-            link: 'https://github.com/vitejs/awesome-vite'
-          },
-          {
-            text: 'Dev.to 社区',
-            link: 'https://dev.to/t/vite'
-          },
-          {
-            text: 'Rollup 插件兼容',
-            link: 'https://vite-rollup-plugins.patak.dev/'
-          },
-          {
-            text: '更新日志',
-            link: 'https://github.com/vitejs/vite/blob/main/packages/vite/CHANGELOG.md'
-          }
         ]
       },
       {
