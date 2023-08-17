@@ -311,7 +311,7 @@ Vite 插件也可以提供钩子来服务于特定的 Vite 目标。这些钩子
 
 ### `configurePreviewServer` {#configurepreviewserver}
 
-- **类型：** `(server: PreviewServerForHook) => (() => void) | void | Promise<(() => void) | void>`
+- **类型：** `(server: PreviewServer) => (() => void) | void | Promise<(() => void) | void>`
 - **种类：** `async`, `sequential`
 - **参见：** [PreviewServerForHook](./api-javascript#previewserverforhook)
 
