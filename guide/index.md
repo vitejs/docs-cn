@@ -41,13 +41,8 @@ Vite 还提供了强大的扩展性，可通过其 [插件 API](./api-plugin) �
 
 ## 搭建第一个 Vite 项目 {#scaffolding-your-first-vite-project}
 
-<<<<<<< HEAD
 ::: tip 兼容性注意
-Vite 需要 [Node.js](https://nodejs.org/en/) 版本 14.18+，16+。然而，有些模板需要依赖更高的 Node 版本才能正常运行，当你的包管理器发出警告时，请注意升级你的 Node 版本。
-=======
-::: tip Compatibility Note
-Vite requires [Node.js](https://nodejs.org/en/) version 18+. 20+. However, some templates require a higher Node.js version to work, please upgrade if your package manager warns about it.
->>>>>>> d0e001fad5d5106c56042a560014ae7f8bef6140
+Vite 需要 [Node.js](https://nodejs.org/en/) 版本 18+，20+。然而，有些模板需要依赖更高的 Node 版本才能正常运行，当你的包管理器发出警告时，请注意升级你的 Node 版本。
 :::
 
 ::: code-group

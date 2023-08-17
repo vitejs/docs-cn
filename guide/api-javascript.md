@@ -218,12 +218,8 @@ interface PreviewServer {
    */
   httpServer: http.Server
   /**
-<<<<<<< HEAD
-   * Vite 在 CLI 中输出的解析后的 URL
-=======
-   * The resolved urls Vite prints on the CLI.
-   * null before server is listening.
->>>>>>> d0e001fad5d5106c56042a560014ae7f8bef6140
+   * Vite 在 CLI 中输出解析后的 URL
+   * 在服务器开始监听前，值为 null
    */
   resolvedUrls: ResolvedServerUrls | null
   /**
