@@ -259,6 +259,15 @@ function mergeConfig(
 
 ::: tip NOTE
 `mergeConfig` 只接受对象形式的配置。如果有一个回调形式的配置，应该在将其传递给 `mergeConfig` 之前先调用该回调函数，将其转换成对象形式。
+
+你可以使用 `defineConfig` 工具函数将回调形式的配置与另一个配置合并：
+
+```ts
+export default defineConfig((configEnv) =>
+  mergeConfig(configAsCallback(configEnv), configAsObject),
+)
+```
+
 :::
 
 ## `searchForWorkspaceRoot`

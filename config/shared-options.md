@@ -326,7 +326,7 @@ import type {
 
 - **类型：** `ESBuildOptions | false`
 
-`ESBuildOptions` 继承自 [esbuild 转换选项](https://esbuild.github.io/api/#transform-api)。最常见的用例是自定义 JSX：
+`ESBuildOptions` 继承自 [esbuild 转换选项](https://esbuild.github.io/api/#transform)。最常见的用例是自定义 JSX：
 
 ```js
 export default defineConfig({
