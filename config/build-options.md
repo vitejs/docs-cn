@@ -82,8 +82,13 @@ modulePreload: {
 
 ## build.assetsInlineLimit {#build-assetsinlinelimit}
 
+<<<<<<< HEAD
 - **类型：** `number`
 - **默认：** `4096` (4kb)
+=======
+- **Type:** `number`
+- **Default:** `4096` (4 KiB)
+>>>>>>> 1aad300e538693eda79962813e13af76e2a99076
 
 小于此阈值的导入或引用资源将内联为 base64 编码，以避免额外的 http 请求。设置为 `0` 可以完全禁用此项。
 
@@ -218,9 +223,14 @@ npm add -D terser
 
 ## build.copyPublicDir {#build-copypublicdir}
 
+<<<<<<< HEAD
 - **实验性：** [提供反馈](https://github.com/vitejs/vite/discussions/13807)
 - **类型：** `boolean`
 - **默认：** `true`
+=======
+- **Type:** `boolean`
+- **Default:** `true`
+>>>>>>> 1aad300e538693eda79962813e13af76e2a99076
 
 默认情况下，Vite 会在构建阶段将 `publicDir` 目录中的所有文件复制到 `outDir` 目录中。可以通过设置该选项为 `false` 来禁用该行为。
 
@@ -236,7 +246,11 @@ npm add -D terser
 - **类型：** `number`
 - **默认：** `500`
 
+<<<<<<< HEAD
 规定触发警告的 chunk 大小。（以 kbs 为单位）。它将与未压缩的 chunk 大小进行比较，因为 [JavaScript 大小本身与执行时间相关](https://v8.dev/blog/cost-of-javascript-2019)。
+=======
+Limit for chunk size warnings (in kB). It is compared against the uncompressed chunk size as the [JavaScript size itself is related to the execution time](https://v8.dev/blog/cost-of-javascript-2019).
+>>>>>>> 1aad300e538693eda79962813e13af76e2a99076
 
 ## build.watch {#build-watch}
 

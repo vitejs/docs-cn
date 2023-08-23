@@ -168,8 +168,8 @@ export { Foo, Bar }
 ```
 $ vite build
 building for production...
-dist/my-lib.js      0.08 KiB / gzip: 0.07 KiB
-dist/my-lib.umd.cjs 0.30 KiB / gzip: 0.16 KiB
+dist/my-lib.js      0.08 kB / gzip: 0.07 kB
+dist/my-lib.umd.cjs 0.30 kB / gzip: 0.16 kB
 ```
 
 推荐在你库的 `package.json` 中使用如下格式：
