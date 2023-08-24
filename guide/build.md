@@ -168,8 +168,8 @@ export { Foo, Bar }
 ```
 $ vite build
 building for production...
-dist/my-lib.js      0.08 KiB / gzip: 0.07 KiB
-dist/my-lib.umd.cjs 0.30 KiB / gzip: 0.16 KiB
+dist/my-lib.js      0.08 kB / gzip: 0.07 kB
+dist/my-lib.umd.cjs 0.30 kB / gzip: 0.16 kB
 ```
 
 推荐在你库的 `package.json` 中使用如下格式：
@@ -212,15 +212,28 @@ dist/my-lib.umd.cjs 0.30 KiB / gzip: 0.16 KiB
 }
 ```
 
+<<<<<<< HEAD
 ::: tip 注意
 如果 `package.json` 不包含 `"type": "module"`，Vite 会生成不同的文件后缀名以兼容 Node.js。`.js` 会变为 `.mjs` 而 `.cjs` 会变为 `.js` 。
+=======
+::: tip File Extensions
+If the `package.json` does not contain `"type": "module"`, Vite will generate different file extensions for Node.js compatibility. `.js` will become `.mjs` and `.cjs` will become `.js`.
+>>>>>>> 8944e1d15120f524c5ee0031d34f641552e34853
 :::
 
 ::: tip 环境变量
 在库模式下，所有 `import.meta.env.*` 用法在构建生产时都会被静态替换。但是，`process.env.*` 的用法不会被替换，所以你的库的使用者可以动态地更改它。如果不想允许他们这样做，你可以使用 `define: { 'process.env.NODE_ENV': '"production"' }` 例如静态替换它们。
 :::
 
+<<<<<<< HEAD
 ## 进阶基础路径选项 {#advanced-base-options}
+=======
+::: warning Advanced Usage
+Library mode includes a simple and opinionated configuration for browser-oriented and JS framework libraries. If you are building non-browser libraries, or require advanced build flows, you can use [Rollup](https://rollupjs.org) or [esbuild](https://esbuild.github.io) directly.
+:::
+
+## Advanced Base Options
+>>>>>>> 8944e1d15120f524c5ee0031d34f641552e34853
 
 ::: warning
 该功能是实验性的，可以在这里 [提供反馈](https://github.com/vitejs/vite/discussions/13834)。
