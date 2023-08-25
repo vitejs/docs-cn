@@ -44,11 +44,7 @@
 
    这对于图片等资源的正确加载是必需的。
 
-<<<<<<< HEAD
-   如果你正使用 `@vitejs/plugin-react` 配合 React，你还需要在上述脚本前添加下面这个，因为插件不能修改你正在服务的 HTML：
-=======
-   Note if you are using React with `@vitejs/plugin-react`, you'll also need to add this before the above scripts, since the plugin is not able to modify the HTML you are serving (substitute `http://localhost:5173` with the local URL Vite is running at):
->>>>>>> 8944e1d15120f524c5ee0031d34f641552e34853
+   如果你正使用 `@vitejs/plugin-react` 配合 React，你还需要在上述脚本前添加下面这个，因为插件不能修改你正在服务的 HTML（请将 `http://localhost:5173` 替换为 Vite 正在运行的本地 URL）：
 
    ```html
    <script type="module">
