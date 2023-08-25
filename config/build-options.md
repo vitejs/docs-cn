@@ -83,7 +83,7 @@ modulePreload: {
 ## build.assetsInlineLimit {#build-assetsinlinelimit}
 
 - **类型：** `number`
-- **默认：** `4096` (4kb)
+- **默认：** `4096` (4 KiB)
 
 小于此阈值的导入或引用资源将内联为 base64 编码，以避免额外的 http 请求。设置为 `0` 可以完全禁用此项。
 
@@ -218,7 +218,6 @@ npm add -D terser
 
 ## build.copyPublicDir {#build-copypublicdir}
 
-- **实验性：** [提供反馈](https://github.com/vitejs/vite/discussions/13807)
 - **类型：** `boolean`
 - **默认：** `true`
 
@@ -236,7 +235,7 @@ npm add -D terser
 - **类型：** `number`
 - **默认：** `500`
 
-规定触发警告的 chunk 大小。（以 kbs 为单位）。它将与未压缩的 chunk 大小进行比较，因为 [JavaScript 大小本身与执行时间相关](https://v8.dev/blog/cost-of-javascript-2019)。
+规定触发警告的 chunk 大小。（以 kB 为单位）。它将与未压缩的 chunk 大小进行比较，因为 [JavaScript 大小本身与执行时间相关](https://v8.dev/blog/cost-of-javascript-2019)。
 
 ## build.watch {#build-watch}
 
