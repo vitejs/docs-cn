@@ -1,4 +1,12 @@
+<<<<<<< HEAD
 # 插件 API {#plugin-api}
+=======
+---
+outline: [2, 3]
+---
+
+# Plugin API
+>>>>>>> 3c69a7501c301366e6ae1fda54b83bba94ccb313
 
 Vite 插件扩展了设计出色的 Rollup 接口，带有一些 Vite 独有的配置项。因此，你只需要编写一个 Vite 插件，就可以同时为开发环境和生产环境工作。
 
