@@ -302,6 +302,7 @@ export default defineConfig({
               link: '/config/ssr-options'
             },
             {
+<<<<<<< HEAD
               text: 'Worker 选项',
               link: '/config/worker-options'
             }
@@ -309,5 +310,18 @@ export default defineConfig({
         }
       ]
     }
+=======
+              text: 'Worker Options',
+              link: '/config/worker-options',
+            },
+          ],
+        },
+      ],
+    },
+
+    outline: {
+      level: [2, 3],
+    },
+>>>>>>> 4efd3ef7d25897974153a6f2f91541fb06036fbd
   },
 })
