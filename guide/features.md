@@ -1,8 +1,12 @@
+<<<<<<< HEAD
 ---
 outline: [2, 3]
 ---
 
 # 功能 {#features}
+=======
+# Features
+>>>>>>> 271bcc0f7f47b0a0237442c6b5195755d1a0780a
 
 对非常基础的使用来说，使用 Vite 开发和使用一个静态文件服务器并没有太大区别。然而，Vite 还通过原生 ESM 导入提供了许多主要用于打包场景的增强功能。
 
@@ -182,7 +186,11 @@ export default defineConfig({
 
 ## CSS {#css}
 
+<<<<<<< HEAD
 导入 `.css` 文件将会把内容插入到 `<style>` 标签中，同时也带有 HMR 支持。也能够以字符串的形式检索处理后的、作为其模块默认导出的 CSS。
+=======
+Importing `.css` files will inject its content to the page via a `<style>` tag with HMR support.
+>>>>>>> 271bcc0f7f47b0a0237442c6b5195755d1a0780a
 
 ### `@import` 内联和变基 {#import-inlining-and-rebasing}
 
@@ -256,8 +264,13 @@ import './foo.css' // 样式将会注入页面
 import otherStyles from './bar.css?inline' // 样式不会注入页面
 ```
 
+<<<<<<< HEAD
 ::: tip 注意
 自 Vite 4 起，CSS 文件的默认导入和按名导入（例如 `import style from './foo.css'`）将弃用。请使用 `?inline` 参数代替。
+=======
+::: tip NOTE
+Default and named imports from CSS files (e.g `import style from './foo.css'`) are removed since Vite 5. Use the `?inline` query instead.
+>>>>>>> 271bcc0f7f47b0a0237442c6b5195755d1a0780a
 :::
 
 ### Lightning CSS

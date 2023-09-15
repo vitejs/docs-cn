@@ -1,8 +1,12 @@
+<<<<<<< HEAD
 ---
 outline: [2, 3]
 ---
 
 # 依赖预构建 {#dependency-pre-bundling}
+=======
+# Dependency Pre-Bundling
+>>>>>>> 271bcc0f7f47b0a0237442c6b5195755d1a0780a
 
 当你首次启动 `vite` 时，Vite 在本地加载你的站点之前预构建了项目依赖。默认情况下，它是自动且透明地完成的。
 

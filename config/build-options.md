@@ -181,7 +181,18 @@ Git LFS 占位符会自动排除在内联之外，因为它们不包含它们所
 
 生成面向 SSR 的构建。此选项的值可以是字符串，用于直接定义 SSR 的入口，也可以为 `true`，但这需要通过设置 `rollupOptions.input` 来指定 SSR 的入口。
 
+<<<<<<< HEAD
 ## build.minify {#build-minify}
+=======
+## build.ssrEmitAssets
+
+- **Type:** `boolean`
+- **Default:** `false`
+
+During the SSR build, static assets aren't emitted as it is assumed they would be emitted as part of the client build. This option allows frameworks to force emitting them in both the client and SSR build. It is responsability of the framework to merge the assets with a post build step.
+
+## build.minify
+>>>>>>> 271bcc0f7f47b0a0237442c6b5195755d1a0780a
 
 - **类型：** `boolean | 'terser' | 'esbuild'`
 - **默认：** `'esbuild'`
