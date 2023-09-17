@@ -266,6 +266,7 @@ CLI 命令 `$ vite dev` 和 `$ vite preview` 也可以用于 SSR 应用：你可
 :::tip 注意
 使用一个后置钩子，使得你的 SSR 中间件在 Vite 的中间件 _之后_ 运行。
 :::
+<<<<<<< HEAD
 
 ## SSR 格式 {#ssr-format}
 
@@ -274,3 +275,5 @@ CLI 命令 `$ vite dev` 和 `$ vite preview` 也可以用于 SSR 应用：你可
 :::warning 安全注意事项
 实验性的 `legacy.buildSsrCjsExternalHeuristics` 和 `ssr.format: 'cjs'` 将在 Vite 5 中移除。可以在 [此讨论](https://github.com/vitejs/vite/discussions/13816) 中找到更多信息，并提供反馈意见。
 :::
+=======
+>>>>>>> db5679bb789246ebcf74456dc196cd32d96585a3

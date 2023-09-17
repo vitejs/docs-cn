@@ -217,10 +217,17 @@ Vercel CLI
 
 ### Cloudflare Pages via Wrangler {#cloudflare-pages-via-wrangler}
 
+<<<<<<< HEAD
 1. 安装 [Wrangler CLI](https://developers.cloudflare.com/workers/wrangler/get-started/).
 2. 使用 `wrangler login`、通过你的 Cloudflare 账号完成 Wrangler 身份校验。
 3. 运行你的构建命令
 4. 使用 `npx wrangler pages publish dist` 部署。
+=======
+1. Install [Wrangler CLI](https://developers.cloudflare.com/workers/wrangler/get-started/).
+2. Authenticate Wrangler with your Cloudflare account using `wrangler login`.
+3. Run your build command.
+4. Deploy using `npx wrangler pages deploy dist`.
+>>>>>>> db5679bb789246ebcf74456dc196cd32d96585a3
 
 ```bash
 # 安装 Wrangler CLI

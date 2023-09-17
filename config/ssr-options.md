@@ -19,6 +19,7 @@
 - **类型：** `'node' | 'webworker'`
 - **默认：** `node`
 
+<<<<<<< HEAD
 SSR 服务器的构建目标。
 
 ## ssr.format
@@ -29,3 +30,6 @@ SSR 服务器的构建目标。
 - **默认：** `esm`
 
 SSR 服务器的构建语法格式。从 Vite v3 开始，SSR 构建默认生成 ESM 格式。设置为 `'cjs'` 可以构建为 CJS 格式，但不推荐这样做。这个选项被标记为实验性的，以便给用户更多时间更新到 ESM。CJS 构建需要复杂的外部化启发式，但在 ESM 格式中则不需要。
+=======
+Build target for the SSR server.
+>>>>>>> db5679bb789246ebcf74456dc196cd32d96585a3
