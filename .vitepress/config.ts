@@ -1,6 +1,4 @@
 import { defineConfig } from 'vitepress'
-import renderPermaLink from './render-perma-link'
-import MarkDownItCustomAnchor from './markdown-it-custom-anchor'
 
 const ogDescription = 'Next Generation Frontend Tooling'
 const ogImage = 'https://vitejs.dev/og-image.png'

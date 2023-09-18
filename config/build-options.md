@@ -187,7 +187,6 @@ Git LFS 占位符会自动排除在内联之外，因为它们不包含它们所
 - **默认：** `false`
 
 在 SSR 构建过程中，静态资源不会输出，因为其通常被认为会当作客户端构建的一部分输出。这个选项允许框架强制在客户端和 SSR 构建中都输出它们。将静态资源在构建后合并是框架的责任。
-During the SSR build, static assets aren't emitted as it is assumed they would be emitted as part of the client build. This option allows frameworks to force emitting them in both the client and SSR build. It is responsability of the framework to merge the assets with a post build step.
 
 ## build.minify {#build-minify}
 
