@@ -220,7 +220,7 @@ Vercel CLI
 1. 安装 [Wrangler CLI](https://developers.cloudflare.com/workers/wrangler/get-started/).
 2. 使用 `wrangler login`、通过你的 Cloudflare 账号完成 Wrangler 身份校验。
 3. 运行你的构建命令
-4. 使用 `npx wrangler pages publish dist` 部署。
+4. 使用 `npx wrangler pages deploy dist` 部署。
 
 ```bash
 # 安装 Wrangler CLI

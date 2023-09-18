@@ -1,6 +1,4 @@
 import { defineConfig } from 'vitepress'
-import renderPermaLink from './render-perma-link'
-import MarkDownItCustomAnchor from './markdown-it-custom-anchor'
 
 const ogDescription = 'Next Generation Frontend Tooling'
 const ogImage = 'https://vitejs.dev/og-image.png'
@@ -51,7 +49,8 @@ export default defineConfig({
     },
 
     outline: {
-      label: '本页目录'
+      label: '本页目录',
+      level: [2, 3],
     },
 
     socialLinks: [
@@ -303,11 +302,11 @@ export default defineConfig({
             },
             {
               text: 'Worker 选项',
-              link: '/config/worker-options'
-            }
-          ]
-        }
-      ]
-    }
+              link: '/config/worker-options',
+            },
+          ],
+        },
+      ],
+    },
   },
 })

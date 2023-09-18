@@ -1,7 +1,3 @@
----
-outline: [2, 3]
----
-
 # 为什么选 Vite {#why-vite}
 
 ## 现实问题 {#the-problems}

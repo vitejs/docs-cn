@@ -1,7 +1,3 @@
----
-outline: [2, 3]
----
-
 # 命令行界面 {#command-line-interface}
 
 ## 开发服务器 {#dev-server}
