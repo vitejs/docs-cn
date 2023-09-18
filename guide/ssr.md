@@ -181,14 +181,22 @@ app.use('*', async (req, res, next) => {
 
 ## 生成预加载指令 {#generating-preload-directives}
 
+<<<<<<< HEAD
 `vite build` 支持使用 `--ssrManifest` 标志，这将会在构建输出目录中生成一份 `ssr-manifest.json`：
+=======
+`vite build` supports the `--ssrManifest` flag which will generate `.vite/ssr-manifest.json` in build output directory:
+>>>>>>> 8052801f441569d648c4c25f3a5d807d110de47d
 
 ```diff
 - "build:client": "vite build --outDir dist/client",
 + "build:client": "vite build --outDir dist/client --ssrManifest",
 ```
 
+<<<<<<< HEAD
 上面的脚本将会为客户端构建生成 `dist/client/ssr-manifest.json`（是的，该 SSR 清单是从客户端构建生成而来，因为我们想要将模块 ID 映射到客户端文件上）。清单包含模块 ID 到它们关联的 chunk 和资源文件的映射。
+=======
+The above script will now generate `dist/client/.vite/ssr-manifest.json` for the client build (Yes, the SSR manifest is generated from the client build because we want to map module IDs to client files). The manifest contains mappings of module IDs to their associated chunks and asset files.
+>>>>>>> 8052801f441569d648c4c25f3a5d807d110de47d
 
 为了利用该清单，框架需要提供一种方法来收集在服务器渲染调用期间使用到的组件模块 ID。
 
