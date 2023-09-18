@@ -1,12 +1,4 @@
-<<<<<<< HEAD
----
-outline: [2, 3]
----
-
 # 为什么选 Vite {#why-vite}
-=======
-# Why Vite
->>>>>>> db5679bb789246ebcf74456dc196cd32d96585a3
 
 ## 现实问题 {#the-problems}
 
