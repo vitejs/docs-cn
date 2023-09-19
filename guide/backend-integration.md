@@ -12,7 +12,11 @@
    // vite.config.js
    export default defineConfig({
      build: {
+<<<<<<< HEAD
        // 在 outDir 中生成 manifest.json
+=======
+       // generate .vite/manifest.json in outDir
+>>>>>>> 27a68382e9eb6fd99bdc3ccf41fc34ce00c48411
        manifest: true,
        rollupOptions: {
          // 覆盖默认的 .html 入口
@@ -56,7 +60,11 @@
    </script>
    ```
 
+<<<<<<< HEAD
 3. 在生产环境中：在运行 `vite build` 之后，一个 `manifest.json` 文件将与静态资源文件一同生成。一个示例清单文件会像下面这样：
+=======
+3. For production: after running `vite build`, a `.vite/manifest.json` file will be generated alongside other asset files. An example manifest file looks like this:
+>>>>>>> 27a68382e9eb6fd99bdc3ccf41fc34ce00c48411
 
    ```json
    {
