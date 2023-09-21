@@ -176,11 +176,7 @@ Direct websocket connection fallback. Check out https://vitejs.dev/config/server
 
 ## server.watch {#server-watch}
 
-<<<<<<< HEAD
-- **类型：** `object`
-=======
-- **Type:** `object | null`
->>>>>>> 27a68382e9eb6fd99bdc3ccf41fc34ce00c48411
+- **类型：** `object | null`
 
 传递给 [chokidar](https://github.com/paulmillr/chokidar#api) 的文件系统监听器选项。
 
@@ -201,13 +197,9 @@ export default defineConfig({
 })
 ```
 
-<<<<<<< HEAD
-::: warning 在 Windows Linux 子系统（WSL）上使用 Vite
-=======
-If set to `null`, no files will be watched. `server.watcher` will provide a compatible event emitter, but calling `add` or `unwatch` will have no effect.
+如果设置为 `null`，则不会监听任何文件。`server.watcher` 将提供一个兼容的事件发射器，但是调用 `add` 或 `unwatch` 将没有任何效果。
 
-::: warning Using Vite on Windows Subsystem for Linux (WSL) 2
->>>>>>> 27a68382e9eb6fd99bdc3ccf41fc34ce00c48411
+::: warning 在 Windows Linux 子系统（WSL）上使用 Vite
 
 当需要再 Windows Subsystem for Linux (WSL) 2 上运行 Vite 时，如果项目文件夹位于 Windows 文件系统中，你需要将此选项设置为 `{ usePolling: true }`。这是由于 Windows 文件系统的 [WSL2 限制](https://github.com/microsoft/WSL/issues/4739) 造成的。
 
