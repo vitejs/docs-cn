@@ -163,7 +163,7 @@ Git LFS 占位符会自动排除在内联之外，因为它们不包含它们所
 - **默认：** `false`
 - **相关内容：** [后端集成](/guide/backend-integration)
 
-当设置为 `true`，构建后将会生成 `manifest.json` 文件，包含了没有被 hash 过的资源文件名和 hash 后版本的映射。可以为一些服务器框架渲染时提供正确的资源引入链接。当该值为一个字符串时，它将作为 manifest 文件的名字。
+当设置为 `true`，构建后将会生成 `.vite/manifest.json` 文件，包含了没有被 hash 过的资源文件名和 hash 后版本的映射。可以为一些服务器框架渲染时提供正确的资源引入链接。当该值为一个字符串时，它将作为 manifest 文件的名字。
 
 ## build.ssrManifest {#build-ssrmanifest}
 

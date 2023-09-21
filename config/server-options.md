@@ -176,7 +176,7 @@ Direct websocket connection fallback. Check out https://vitejs.dev/config/server
 
 ## server.watch {#server-watch}
 
-- **类型：** `object`
+- **类型：** `object | null`
 
 传递给 [chokidar](https://github.com/paulmillr/chokidar#api) 的文件系统监听器选项。
 
@@ -196,6 +196,8 @@ export default defineConfig({
   },
 })
 ```
+
+如果设置为 `null`，则不会监听任何文件。`server.watcher` 将提供一个兼容的事件发射器，但是调用 `add` 或 `unwatch` 将没有任何效果。
 
 ::: warning 在 Windows Linux 子系统（WSL）上使用 Vite
 
