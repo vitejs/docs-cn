@@ -209,7 +209,13 @@ npm add -D terser
 
 传递给 Terser 的更多 [minify 选项](https://terser.org/docs/api-reference#minify-options)。
 
+<<<<<<< HEAD
 ## build.write {#build-write}
+=======
+In addition, you can also pass a `maxWorkers: number` option to specify the max number of workers to spawn. Defaults to the number of CPUs minus 1.
+
+## build.write
+>>>>>>> f4133b7d8c81239dfae7fe52952409abbcf0fc96
 
 - **类型：** `boolean`
 - **默认：** `true`
