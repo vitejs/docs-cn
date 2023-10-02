@@ -108,10 +108,11 @@ export default defineConfig({
       },
     },
 
-    carbonAds: {
-      code: 'CEBIEK3N',
-      placement: 'vitejsdev',
-    },
+    // Using WwAds for China
+    // carbonAds: {
+    //   code: 'CEBIEK3N',
+    //   placement: 'vitejsdev',
+    // },
 
     footer: {
       copyright:
