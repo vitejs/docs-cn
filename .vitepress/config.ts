@@ -26,7 +26,7 @@ export default defineConfig({
       'script',
       {
         src: 'https://cdn.usefathom.com/script.js',
-        'data-site': 'CBDFBSLI',
+        'data-site': 'TPLGJZGR',
         'data-spa': 'auto',
         defer: '',
       },
