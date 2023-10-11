@@ -52,11 +52,15 @@ export default defineConfig({
 
 当对链接的依赖进行更改时，请使用 `--force` 命令行选项重新启动开发服务器，以使更改生效。
 
+<<<<<<< HEAD
 ::: warning 重复删除
 由于链接的依赖项解析方式不同，传递依赖项（transitive dependencies）可能会被错误地去重，从而在运行时出现问题。如果遇到此问题，请使用 `npm pack` 命令来修复它。
 :::
 
 ## 自定义行为 {#customizing-the-behavior}
+=======
+## Customizing the Behavior
+>>>>>>> 32fdb0a1ab27db58a9f46ee2da40847cc43fe47a
 
 有时候默认的依赖启发式算法（discovery heuristics）可能并不总是理想的。如果您想要明确地包含或排除依赖项，可以使用 [`optimizeDeps` 配置项](/config/dep-optimization-options.md) 来进行设置。
 
