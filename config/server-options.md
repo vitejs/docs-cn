@@ -180,6 +180,7 @@ Direct websocket connection fallback. Check out https://vitejs.dev/config/server
 
 传递给 [chokidar](https://github.com/paulmillr/chokidar#api) 的文件系统监听器选项。
 
+<<<<<<< HEAD
 Vite 服务器默认会忽略对 `.git/` 和 `node_modules/` 目录的监听。如果你需要对 `node_modules/` 内的包进行监听，你可以为 `server.watch.ignored` 赋值一个取反的 glob 模式，例如：
 
 ```js
@@ -196,10 +197,23 @@ export default defineConfig({
   },
 })
 ```
+=======
+The Vite server watcher watches the `root` and skips the `.git/` and `node_modules/` directories by default. When updating a watched file, Vite will apply HMR and update the page only if needed.
+>>>>>>> e8594c3fc998850579225caf2d96e4f5d8b875f3
 
 如果设置为 `null`，则不会监听任何文件。`server.watcher` 将提供一个兼容的事件发射器，但是调用 `add` 或 `unwatch` 将没有任何效果。
 
+<<<<<<< HEAD
 ::: warning 在 Windows Linux 子系统（WSL）上使用 Vite
+=======
+::: warning Watching files in `node_modules`
+
+It's currently not possible to watch files and packages in `node_modules`. For further progress and workarounds, you can follow [issue #8619](https://github.com/vitejs/vite/issues/8619).
+
+:::
+
+::: warning Using Vite on Windows Subsystem for Linux (WSL) 2
+>>>>>>> e8594c3fc998850579225caf2d96e4f5d8b875f3
 
 当需要再 Windows Subsystem for Linux (WSL) 2 上运行 Vite 时，如果项目文件夹位于 Windows 文件系统中，你需要将此选项设置为 `{ usePolling: true }`。这是由于 Windows 文件系统的 [WSL2 限制](https://github.com/microsoft/WSL/issues/4739) 造成的。
 

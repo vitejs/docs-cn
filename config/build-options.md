@@ -43,7 +43,7 @@ type ResolveModulePreloadDependenciesFn = (
   context: {
     importer: string
   },
-) => (string | { runtime?: string })[]
+) => string[]
 ```
 
 `resolveDependencies` 函数将为每个动态导入调用，同时带着一个它所依赖的 chunk 列表。并且它还会为每个在入口 HTML 文件中导入的 chunk 调用。 可以返回一个新的依赖关系数组，可能被过滤后变少了，也可能有更多依赖注入进来了，同时它们的路径也被修改过。`deps` 路径是相对于 `build.outDir` 的。若在注入该模块到 HTML head 时使用 `new URL(dep, import.meta.url)` 获取绝对路径，则对于 `hostType === 'js'`，允许返回一个相对于 `hostId` 的路径。
@@ -186,7 +186,11 @@ Git LFS 占位符会自动排除在内联之外，因为它们不包含它们所
 - **类型：** `boolean`
 - **默认：** `false`
 
+<<<<<<< HEAD
 在 SSR 构建过程中，静态资源不会输出，因为其通常被认为会当作客户端构建的一部分输出。这个选项允许框架强制在客户端和 SSR 构建中都输出它们。将静态资源在构建后合并是框架的责任。
+=======
+During the SSR build, static assets aren't emitted as it is assumed they would be emitted as part of the client build. This option allows frameworks to force emitting them in both the client and SSR build. It is responsibility of the framework to merge the assets with a post build step.
+>>>>>>> e8594c3fc998850579225caf2d96e4f5d8b875f3
 
 ## build.minify {#build-minify}
 
@@ -209,7 +213,13 @@ npm add -D terser
 
 传递给 Terser 的更多 [minify 选项](https://terser.org/docs/api-reference#minify-options)。
 
+<<<<<<< HEAD
 ## build.write {#build-write}
+=======
+In addition, you can also pass a `maxWorkers: number` option to specify the max number of workers to spawn. Defaults to the number of CPUs minus 1.
+
+## build.write
+>>>>>>> e8594c3fc998850579225caf2d96e4f5d8b875f3
 
 - **类型：** `boolean`
 - **默认：** `true`
