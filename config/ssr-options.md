@@ -14,18 +14,25 @@
 
 列出的是防止被 SSR 外部化依赖项。如果设为 `true`，将没有依赖被外部化。
 
-## ssr.target
+## ssr.target {#ssr-target}
 
 - **类型：** `'node' | 'webworker'`
 - **默认：** `node`
 
 SSR 服务器的构建目标。
 
-## ssr.format
+## ssr.resolve.conditions {#ssr-resolve-conditions}
 
-- **实验性：** [CJS 的支持将在 Vite 5 中移除](https://github.com/vitejs/vite/discussions/13816)
-- **弃用** 在 Vite 5 将只支持 ESM 输出
-- **类型：** `'esm' | 'cjs'`
-- **默认：** `esm`
+- **类型：** `string[]`
+- **相关：** [解析条件](./shared-options.md#resolve-conditions)
 
-SSR 服务器的构建语法格式。从 Vite v3 开始，SSR 构建默认生成 ESM 格式。设置为 `'cjs'` 可以构建为 CJS 格式，但不推荐这样做。这个选项被标记为实验性的，以便给用户更多时间更新到 ESM。CJS 构建需要复杂的外部化启发式，但在 ESM 格式中则不需要。
+默认为根 [`resolve.conditions`](./shared-options.md#resolve-conditions)。
+
+这些条件用于插件管道，并且仅在 SSR 构建期间影响非外部化依赖项。使用 `ssr.resolve.externalConditions` 影响外部化导入。
+
+## ssr.resolve.externalConditions {#ssr-resolve-externalConditions}
+
+- **类型：** `string[]`
+- **相关：** `[]`
+
+在 SSR 导入（包括 `ssrLoadModule`）外部化依赖项期间使用的条件。

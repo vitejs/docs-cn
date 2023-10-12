@@ -233,7 +233,7 @@ $ wrangler login
 $ npm run build
 
 # 创建一个新的部署
-$ npx wrangler pages publish dist
+$ npx wrangler pages deploy dist
 ```
 
 在你的资产上传后，Wrangler 会给你一个预览 URL 来检查你的网站。当你登录到 Cloudflare Pages 仪表板时，你会看到你的新项目。

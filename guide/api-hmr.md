@@ -37,6 +37,10 @@ interface ViteHotContext {
     event: T,
     cb: (payload: InferCustomEventPayload<T>) => void,
   ): void
+  off<T extends string>(
+    event: T,
+    cb: (payload: InferCustomEventPayload<T>) => void,
+  ): void
   send<T extends string>(event: T, data?: InferCustomEventPayload<T>): void
 }
 ```
@@ -178,6 +182,10 @@ import.meta.hot.accept((module) => {
 - `'vite:ws:connect'` 当 WebSocket 链接重修建立时
 
 自定义 HMR 事件可以由插件发送。更多细节详见 [handleHotUpdate](./api-plugin#handleHotUpdate)。
+
+## `hot.off(event, cb)` {##hot-offevent-cb}
+
+移除自定义 HMR 事件。
 
 ## `hot.send(event, data)` {##hot-send-event-data}
 

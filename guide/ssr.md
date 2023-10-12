@@ -259,6 +259,10 @@ SSR 构建的默认目标为 node 环境，但你也可以让服务运行在 Web
 - 将所有依赖视为 `noExternal`（非外部化）
 - 若任何 Node.js 内置内容被引入，将抛出一个错误
 
+## SSR 解析条件 {#ssr-resolve-conditions}
+
+默认情况下，包入口解析将使用 SSR 构建中设置的 [`resolve.conditions`](../config/shared-options.md#resolve-conditions)。您可以使用 [`ssr.resolve.conditions`](../config/ssr-options.md#ssr-resolve-conditions) 和 [`ssr.resolve.externalConditions`](../config/ssr-options.md#ssr-resolve-externalconditions) 来自定义此行为。
+
 ## Vite CLI {#vite-cli}
 
 CLI 命令 `$ vite dev` 和 `$ vite preview` 也可以用于 SSR 应用：你可以将你的 SSR 中间件通过 [`configureServer`](/guide/api-plugin#configureserver) 添加到开发服务器、以及通过 [`configurePreviewServer`](/guide/api-plugin#configurepreviewserver) 添加到预览服务器。
