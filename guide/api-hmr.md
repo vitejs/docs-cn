@@ -183,15 +183,11 @@ import.meta.hot.accept((module) => {
 
 自定义 HMR 事件可以由插件发送。更多细节详见 [handleHotUpdate](./api-plugin#handleHotUpdate)。
 
-<<<<<<< HEAD
-## `hot.send(event, data)` {##hot-send-event-data}
-=======
-## `hot.off(event, cb)`
+## `hot.off(event, cb)` {#hot-offevent-cb}
 
-Remove callback from the event listeners
+从事件监听器中移除回调函数。
 
-## `hot.send(event, data)`
->>>>>>> e8594c3fc998850579225caf2d96e4f5d8b875f3
+## `hot.send(event, data)` {#hot-send-event-data}
 
 发送自定义事件到 Vite 开发服务器。
 

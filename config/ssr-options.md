@@ -19,24 +19,20 @@
 - **类型：** `'node' | 'webworker'`
 - **默认：** `node`
 
-<<<<<<< HEAD
 SSR 服务器的构建目标。
-=======
-Build target for the SSR server.
 
-## ssr.resolve.conditions
+## ssr.resolve.conditions {#ssr-resolve-conditions}
 
-- **Type:** `string[]`
-- **Related:** [Resolve Conditions](./shared-options.md#resolve-conditions)
+- **类型：** `string[]`
+- **相关：** [解析情景](./shared-options.md#resolve-conditions)
 
-Defaults to the the root [`resolve.conditions`](./shared-options.md#resolve-conditions).
+在 SSR 构建中，包入口的解析条件。默认为 [`resolve.conditions`](./shared-options.md#resolve-conditions)。
 
-These conditions are used in the plugin pipeline, and only affect non-externalized dependencies during the SSR build. Use `ssr.resolve.externalConditions` to affect externalized imports.
+这些条件会在插件管道中使用，并且只会影响 SSR 构建期间的非外部化依赖项。使用 `ssr.resolve.externalConditions` 来影响外部化导入。
 
-## ssr.resolve.externalConditions
+## ssr.resolve.externalConditions {#ssr-resolve-externalconditions}
 
-- **Type:** `string[]`
-- **Default:** `[]`
+- **类型：** `string[]`
+- **默认：** `[]`
 
-Conditions that are used during ssr import (including `ssrLoadModule`) of externalized dependencies.
->>>>>>> e8594c3fc998850579225caf2d96e4f5d8b875f3
+在 SSR 导入（包括 `ssrLoadModule`）外部化依赖项时使用的条件。

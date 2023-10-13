@@ -241,13 +241,8 @@ export default defineConfig({
               link: '/guide/philosophy',
             },
             {
-<<<<<<< HEAD
-              text: '从 v3 迁移',
+              text: '从 v4 迁移',
               link: '/guide/migration'
-=======
-              text: 'Migration from v4',
-              link: '/guide/migration',
->>>>>>> e8594c3fc998850579225caf2d96e4f5d8b875f3
             },
           ],
         },
