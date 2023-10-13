@@ -192,7 +192,7 @@ Vite 服务器的文件监听器默认会监听 `root` 目录，同时会跳过 
 
 ::: warning 在 Windows Linux 子系统（WSL）上使用 Vite
 
-当需要再 Windows Subsystem for Linux (WSL) 2 上运行 Vite 时，如果项目文件夹位于 Windows 文件系统中，你需要将此选项设置为 `{ usePolling: true }`。这是由于 Windows 文件系统的 [WSL2 限制](https://github.com/microsoft/WSL/issues/4739) 造成的。
+当需要在 Windows Subsystem for Linux (WSL) 2 上运行 Vite 时，如果项目文件夹位于 Windows 文件系统中，你需要将此选项设置为 `{ usePolling: true }`。这是由于 Windows 文件系统的 [WSL2 限制](https://github.com/microsoft/WSL/issues/4739) 造成的。
 
 要解决这一问题，你可以采取以下两种办法之一：
 

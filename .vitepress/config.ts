@@ -24,7 +24,7 @@ export default defineConfig({
       'script',
       {
         src: 'https://cdn.usefathom.com/script.js',
-        'data-site': 'CBDFBSLI',
+        'data-site': 'TPLGJZGR',
         'data-spa': 'auto',
         defer: '',
       },
@@ -107,10 +107,11 @@ export default defineConfig({
       },
     },
 
-    carbonAds: {
-      code: 'CEBIEK3N',
-      placement: 'vitejsdev',
-    },
+    // Using WwAds for China
+    // carbonAds: {
+    //   code: 'CEBIEK3N',
+    //   placement: 'vitejsdev',
+    // },
 
     footer: {
       copyright:

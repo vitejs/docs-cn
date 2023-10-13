@@ -5,6 +5,7 @@ import './styles/vars.css'
 import HomeSponsors from './components/HomeSponsors.vue'
 import AsideSponsors from './components/AsideSponsors.vue'
 import SvgImage from './components/SvgImage.vue'
+import WwAds from './components/WwAds.vue'
 import './custom.css'
 
 export default {
@@ -12,10 +13,12 @@ export default {
   Layout() {
     return h(DefaultTheme.Layout, null, {
       'home-features-after': () => h(HomeSponsors),
-      'aside-ads-before': () => h(AsideSponsors),
+      'aside-outline-after': () => h(WwAds),
+      'aside-bottom': () => h(AsideSponsors)
     })
   },
   enhanceApp({ app }) {
     app.component('SvgImage', SvgImage)
   },
 } satisfies Theme
+
