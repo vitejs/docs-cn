@@ -39,7 +39,34 @@ CLI 快捷功能键，例如 `r` 重启开发服务器，现在需要额外的 `
 
 这个改动防止 Vite 吞噬和控制操作系统特定的快捷键，允许更好的兼容性，当将 Vite 开发服务器与其他进程结合使用时，并避免了[之前的注意事项](https://github.com/vitejs/vite/pull/14342)。
 
+<<<<<<< HEAD
 ## 移除部分废弃 API
+=======
+### Remove `resolvePackageEntry` and `resolvePackageData` APIs
+
+The `resolvePackageEntry` and `resolvePackageData` APIs are removed as they exposed Vite's internals and blocked potential Vite 4.3 optimizations in the past. These APIs can be replaced with third-party packages, for example:
+
+- `resolvePackageEntry`: [`import.meta.resolve`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/import.meta/resolve) or the [`import-meta-resolve`](https://github.com/wooorm/import-meta-resolve) package.
+- `resolvePackageData`: Same as above, and crawl up the package directory to get the root `package.json`. Or use the community [`vitefu`](https://github.com/svitejs/vitefu) package.
+
+```js
+import { resolve } from 'import-meta-env'
+import { findDepPkgJsonPath } from 'vitefu'
+import fs from 'node:fs'
+
+const pkg = 'my-lib'
+const basedir = process.cwd()
+
+// `resolvePackageEntry`:
+const packageEntry = resolve(pkg, basedir)
+
+// `resolvePackageData`:
+const packageJsonPath = findDepPkgJsonPath(pkg, basedir)
+const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf-8'))
+```
+
+## Removed Deprecated APIs
+>>>>>>> 6dfbb9189b93d95e733dbc9beaab59c1521b932c
 
 - CSS 文件的默认导出（例如 `import style from './foo.css'`）：使用 `?inline` 查询参数代替
 - `import.meta.globEager`：使用 `import.meta.glob('*', { eager: true })` 来代替
@@ -56,7 +83,15 @@ CLI 快捷功能键，例如 `r` 重启开发服务器，现在需要额外的 `
 - [[#14098] fix!: avoid rewriting this (reverts #5312)](https://github.com/vitejs/vite/pull/14098)
   - 之前顶层 `this` 将会在构建时被默认地改写为 `globalThis`，这个行为现在已被移除
 - [[#14231] feat!: add extension to internal virtual modules](https://github.com/vitejs/vite/pull/14231)
+<<<<<<< HEAD
   - 内置虚拟模块的 id 现在包含一个扩展名（`.js`）
+=======
+  - Internal virtual modules' id now has an extension (`.js`).
+- [[#14583] refactor!: remove exporting internal APIs](https://github.com/vitejs/vite/pull/14583)
+  - Removed accidentally exported internal APIs: `isDepsOptimizerEnabled` and `getDepOptimizationConfig`
+  - Removed exported internal types: `DepOptimizationResult`, `DepOptimizationProcessing`, and `DepsOptimizer`
+  - Renamed `ResolveWorkerOptions` type to `ResolvedWorkerOptions`
+>>>>>>> 6dfbb9189b93d95e733dbc9beaab59c1521b932c
 - [[#5657] fix: return 404 for resources requests outside the base path](https://github.com/vitejs/vite/pull/5657)
   - 过去，Vite 对于不带 `Accept: text/html` 的请求，会将其当作带有基础路径的请求来处理。现在 Vite 不再这样做，而是返回 404。
 
