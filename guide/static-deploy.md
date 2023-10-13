@@ -233,7 +233,7 @@ $ wrangler login
 $ npm run build
 
 # 创建一个新的部署
-$ npx wrangler pages publish dist
+$ npx wrangler pages deploy dist
 ```
 
 在你的资产上传后，Wrangler 会给你一个预览 URL 来检查你的网站。当你登录到 Cloudflare Pages 仪表板时，你会看到你的新项目。
@@ -334,7 +334,7 @@ $ npx wrangler pages publish dist
 
 还可以为项目添加一个 [自定义域名](https://render.com/docs/custom-domains)。
 
-## Flightcontrol
+## Flightcontrol {#flightcontrol}
 
 使用 [Flightcontrol](https://www.flightcontrol.dev/?ref=docs-vite) 部署静态站点，可以按照 [说明](https://www.flightcontrol.dev/docs/reference/examples/vite?ref=docs-vite) 进行操作。
 

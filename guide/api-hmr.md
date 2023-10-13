@@ -37,6 +37,10 @@ interface ViteHotContext {
     event: T,
     cb: (payload: InferCustomEventPayload<T>) => void,
   ): void
+  off<T extends string>(
+    event: T,
+    cb: (payload: InferCustomEventPayload<T>) => void,
+  ): void
   send<T extends string>(event: T, data?: InferCustomEventPayload<T>): void
 }
 ```
@@ -179,7 +183,11 @@ import.meta.hot.accept((module) => {
 
 自定义 HMR 事件可以由插件发送。更多细节详见 [handleHotUpdate](./api-plugin#handleHotUpdate)。
 
-## `hot.send(event, data)` {##hot-send-event-data}
+## `hot.off(event, cb)` {#hot-offevent-cb}
+
+从事件监听器中移除回调函数。
+
+## `hot.send(event, data)` {#hot-send-event-data}
 
 发送自定义事件到 Vite 开发服务器。
 

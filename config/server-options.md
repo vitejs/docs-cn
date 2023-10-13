@@ -180,24 +180,15 @@ Direct websocket connection fallback. Check out https://vitejs.dev/config/server
 
 传递给 [chokidar](https://github.com/paulmillr/chokidar#api) 的文件系统监听器选项。
 
-Vite 服务器默认会忽略对 `.git/` 和 `node_modules/` 目录的监听。如果你需要对 `node_modules/` 内的包进行监听，你可以为 `server.watch.ignored` 赋值一个取反的 glob 模式，例如：
-
-```js
-export default defineConfig({
-  server: {
-    watch: {
-      ignored: ['!**/node_modules/your-package-name/**'],
-    },
-  },
-  // 被监听的包必须被排除在优化之外，
-  // 以便它能出现在依赖关系图中并触发热更新。
-  optimizeDeps: {
-    exclude: ['your-package-name'],
-  },
-})
-```
+Vite 服务器的文件监听器默认会监听 `root` 目录，同时会跳过 `.git/` 和 `node_modules/` 目录。当监听到文件更新时，Vite 会应用 HMR 并且只在需要时更新页面。
 
 如果设置为 `null`，则不会监听任何文件。`server.watcher` 将提供一个兼容的事件发射器，但是调用 `add` 或 `unwatch` 将没有任何效果。
+
+::: warning 监听 `node_modules` 中的文件
+
+目前没有可行的方式来监听 `node_modules` 中的文件。若要了解更多详情和可能的临时替代方案，你可以关注 [issue #8619](https://github.com/vitejs/vite/issues/8619)。
+
+:::
 
 ::: warning 在 Windows Linux 子系统（WSL）上使用 Vite
 
