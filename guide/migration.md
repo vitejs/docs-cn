@@ -4,7 +4,22 @@
 
 Vite 不再支持 Node.js 14 / 16 / 17 / 19，因为它们已经到了 EOL。现在需要 Node.js 18 / 20+。
 
+<<<<<<< HEAD
 ## 废弃 CJS Node API {#deprecate-cjs-node-api}
+=======
+## Rollup 4
+
+Vite is now using Rollup 4 which also brings along its breaking changes, in particular:
+
+- Import assertions (`assertions` prop) has been renamed to import attributes (`attributes` prop).
+- Acorn plugins are no longer supported.
+- For Vite plugins, `this.resolve` `skipSelf` option is now `true` by default.
+- For Vite plugins, `this.parse` now only supports the `allowReturnOutsideFunction` option for now.
+
+Read the full breaking changes in [Rollup's release notes](https://github.com/rollup/rollup/releases/tag/v4.0.0) for build-related changes in `build.rollupOptions`.
+
+## Deprecate CJS Node API
+>>>>>>> c763633e5e47adccd03f23172e4c71416b88a966
 
 CJS 的 Node API 已经被废弃。当调用 `require('vite')` 时，将会记录一个废弃警告。你应该更新你的文件或框架来导入 Vite 的 ESM 构建。
 
@@ -39,7 +54,34 @@ CLI 快捷功能键，例如 `r` 重启开发服务器，现在需要额外的 `
 
 这个改动防止 Vite 吞噬和控制操作系统特定的快捷键，允许更好的兼容性，当将 Vite 开发服务器与其他进程结合使用时，并避免了[之前的注意事项](https://github.com/vitejs/vite/pull/14342)。
 
+<<<<<<< HEAD
 ## 移除部分废弃 API
+=======
+### Remove `resolvePackageEntry` and `resolvePackageData` APIs
+
+The `resolvePackageEntry` and `resolvePackageData` APIs are removed as they exposed Vite's internals and blocked potential Vite 4.3 optimizations in the past. These APIs can be replaced with third-party packages, for example:
+
+- `resolvePackageEntry`: [`import.meta.resolve`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/import.meta/resolve) or the [`import-meta-resolve`](https://github.com/wooorm/import-meta-resolve) package.
+- `resolvePackageData`: Same as above, and crawl up the package directory to get the root `package.json`. Or use the community [`vitefu`](https://github.com/svitejs/vitefu) package.
+
+```js
+import { resolve } from 'import-meta-env'
+import { findDepPkgJsonPath } from 'vitefu'
+import fs from 'node:fs'
+
+const pkg = 'my-lib'
+const basedir = process.cwd()
+
+// `resolvePackageEntry`:
+const packageEntry = resolve(pkg, basedir)
+
+// `resolvePackageData`:
+const packageJsonPath = findDepPkgJsonPath(pkg, basedir)
+const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf-8'))
+```
+
+## Removed Deprecated APIs
+>>>>>>> c763633e5e47adccd03f23172e4c71416b88a966
 
 - CSS 文件的默认导出（例如 `import style from './foo.css'`）：使用 `?inline` 查询参数代替
 - `import.meta.globEager`：使用 `import.meta.glob('*', { eager: true })` 来代替
@@ -56,7 +98,15 @@ CLI 快捷功能键，例如 `r` 重启开发服务器，现在需要额外的 `
 - [[#14098] fix!: avoid rewriting this (reverts #5312)](https://github.com/vitejs/vite/pull/14098)
   - 之前顶层 `this` 将会在构建时被默认地改写为 `globalThis`，这个行为现在已被移除
 - [[#14231] feat!: add extension to internal virtual modules](https://github.com/vitejs/vite/pull/14231)
+<<<<<<< HEAD
   - 内置虚拟模块的 id 现在包含一个扩展名（`.js`）
+=======
+  - Internal virtual modules' id now has an extension (`.js`).
+- [[#14583] refactor!: remove exporting internal APIs](https://github.com/vitejs/vite/pull/14583)
+  - Removed accidentally exported internal APIs: `isDepsOptimizerEnabled` and `getDepOptimizationConfig`
+  - Removed exported internal types: `DepOptimizationResult`, `DepOptimizationProcessing`, and `DepsOptimizer`
+  - Renamed `ResolveWorkerOptions` type to `ResolvedWorkerOptions`
+>>>>>>> c763633e5e47adccd03f23172e4c71416b88a966
 - [[#5657] fix: return 404 for resources requests outside the base path](https://github.com/vitejs/vite/pull/5657)
   - 过去，Vite 对于不带 `Accept: text/html` 的请求，会将其当作带有基础路径的请求来处理。现在 Vite 不再这样做，而是返回 404。
 
