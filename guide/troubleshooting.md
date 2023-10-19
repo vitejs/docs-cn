@@ -33,7 +33,13 @@ VITE_CJS_TRACE=true vite dev
 VITE_CJS_IGNORE_WARNING=true vite dev
 ```
 
+<<<<<<< HEAD
 ## CLI {#cli}
+=======
+Note that postcss config files does not support ESM + TypeScript (`.mts` or `.ts` in `"type": "module"`) yet. If you have postcss configs with `.ts` and added `"type": "module"` to package.json, you'll also need to rename the postcss config to use `.cts`.
+
+## CLI
+>>>>>>> 09e3b8e842c138c9304185f8c11bfe96fb024b3d
 
 ### `Error: Cannot find module 'C:\foo\bar&baz\vite\bin\vite.js'` {#error-cannot-find-module-cfoobarbazvitebinvitejs}
 
