@@ -5,7 +5,7 @@
 
 ## 将资源引入为 URL {#importing-asset-as-url}
 
-服务时引入一个静态资源会返回解析后的公共路径：
+导入静态资源时，将返回解析后的公共URL:
 
 ```js
 import imgUrl from './img.png'
