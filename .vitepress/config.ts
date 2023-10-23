@@ -142,8 +142,17 @@ export default defineConfig({
                 link: 'https://github.com/vitejs/awesome-vite'
               },
               {
+<<<<<<< HEAD
                 text: 'Dev.to 社区',
                 link: 'https://dev.to/t/vite'
+=======
+                text: 'ViteConf',
+                link: 'https://viteconf.org',
+              },
+              {
+                text: 'DEV Community',
+                link: 'https://dev.to/t/vite',
+>>>>>>> 66152620639b59b2160bf17e381bdb2fac0ca2c4
               },
               {
                 text: 'Rollup 插件兼容',
@@ -238,7 +247,15 @@ export default defineConfig({
               link: '/guide/troubleshooting'
             },
             {
+<<<<<<< HEAD
               text: '理念',
+=======
+              text: 'Performance',
+              link: '/guide/performance',
+            },
+            {
+              text: 'Philosophy',
+>>>>>>> 66152620639b59b2160bf17e381bdb2fac0ca2c4
               link: '/guide/philosophy',
             },
             {
