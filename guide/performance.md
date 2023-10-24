@@ -49,7 +49,7 @@ Vite 的内部和官方插件已经优化，以在提供与更广泛的生态系
 
 ## 避免使用桶文件 {#avoid-barrel-files}
 
-Barrel 文件是重新导出同一目录下其他文件 API 的文件。例如：
+桶文件（barrel files）是重新导出同一目录下其他文件 API 的文件。例如：
 
 ```js
 // src/utils/index.js
@@ -58,9 +58,9 @@ export * from './dom'
 export * from './string'
 ```
 
-当你只导入一个单独的API，例如 `import { slash } from './utils'`，需要获取和转换桶文件中的所有文件，因为它们可能包含 `slash` API，也可能包含在初始化时运行的其他副作用。这意味着在初始页面加载时，你加载的文件比所需的要更多，导致页面加载速度变慢。
+当你只导入一个单独的 API，例如 `import { slash } from './utils'`，需要获取和转换桶文件中的所有文件，因为它们可能包含 `slash` API，也可能包含在初始化时运行的其他副作用。这意味着在初始页面加载时，你加载的文件比所需的要更多，导致页面加载速度变慢。
 
-可能的话，你应该避免使用桶文件，直接导入单独的API，例如 `import { slash } from './utils/slash'`。你可以阅读[issue #8237](https://github.com/vitejs/vite/issues/8237) 获取更多信息。
+可能的话，你应该避免使用桶文件，直接导入单独的 API，例如 `import { slash } from './utils/slash'`。你可以阅读[issue #8237](https://github.com/vitejs/vite/issues/8237) 获取更多信息。
 
 ## 预热常用文件 {#warm-up-frequently-used-files}
 
