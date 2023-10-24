@@ -142,6 +142,10 @@ export default defineConfig({
                 link: 'https://github.com/vitejs/awesome-vite'
               },
               {
+                text: 'ViteConf',
+                link: 'https://viteconf.org',
+              },
+              {
                 text: 'Dev.to 社区',
                 link: 'https://dev.to/t/vite'
               },
@@ -236,6 +240,10 @@ export default defineConfig({
             {
               text: '故障排除',
               link: '/guide/troubleshooting'
+            },
+            {
+              text: '性能',
+              link: '/guide/performance',
             },
             {
               text: '理念',

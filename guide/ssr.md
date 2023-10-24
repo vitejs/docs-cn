@@ -16,10 +16,16 @@ SSR 特别指支持在 Node.js 中运行相同应用程序的前端框架（例�
 
 ## 示例项目 {#example-projects}
 
-Vite 为服务端渲染（SSR）提供了内建支持。这里的 Vite 范例包含了 Vue 3 和 React 的 SSR 设置示例，可以作为本指南的参考：
+Vite 为服务端渲染（SSR）提供了内建支持。[`create-vite-extra`](https://github.com/bluwy/create-vite-extra) 包含了一些你可以用作参考的SSR设置示例：
 
-- [Vue 3](https://github.com/vitejs/vite-plugin-vue/tree/main/playground/ssr-vue)
-- [React](https://github.com/vitejs/vite-plugin-react/tree/main/playground/ssr-react)
+- [Vanilla](https://github.com/bluwy/create-vite-extra/tree/master/template-ssr-vanilla)
+- [Vue](https://github.com/bluwy/create-vite-extra/tree/master/template-ssr-vue)
+- [React](https://github.com/bluwy/create-vite-extra/tree/master/template-ssr-react)
+- [Preact](https://github.com/bluwy/create-vite-extra/tree/master/template-ssr-preact)
+- [Svelte](https://github.com/bluwy/create-vite-extra/tree/master/template-ssr-svelte)
+- [Solid](https://github.com/bluwy/create-vite-extra/tree/master/template-ssr-solid)
+
+你也可以通过 [运行 `create-vite`](./index.md#scaffolding-your-first-vite-project) 在本地搭建这些项目，并在框架选项下选择 `Others > create-vite-extra`。
 
 ## 源码结构 {#source-structure}
 
@@ -177,7 +183,7 @@ app.use('*', async (req, res, next) => {
 
 - 将 `vite` 开发服务器的创建和所有使用都移到 dev-only 条件分支后面，然后添加静态文件服务中间件来服务 `dist/client` 中的文件。
 
-可以在此参考 [Vue](https://github.com/vitejs/vite-plugin-vue/tree/main/playground/ssr-vue) 和 [React](https://github.com/vitejs/vite-plugin-react/tree/main/playground/ssr-react) 的设置范例。
+可以参考 [示例项目](#example-projects) 以获取一个可运行的设置。
 
 ## 生成预加载指令 {#generating-preload-directives}
 

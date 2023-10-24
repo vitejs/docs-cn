@@ -18,7 +18,6 @@ vite [root]
 | ------------------------ | -------------------------------------------------------------------------------------- |
 | `--host [host]`          | 指定主机名称 (`string`) |
 | `--port <port>`          | 指定端口 (`number`) |
-| `--https`                | 使用 TLS + HTTP/2 (`boolean`) |
 | `--open [path]`          | 启动时打开浏览器 (`boolean \| string`) |
 | `--cors`                 | 启用 CORS (`boolean`) |
 | `--strictPort`           | 如果指定的端口已在使用中，则退出 (`boolean`) |
@@ -115,7 +114,6 @@ vite preview [root]
 | `--host [host]`          | 指定主机名称 (`string`) |
 | `--port <port>`          | 指定端口 (`number`) |
 | `--strictPort`           | 如果指定的端口已在使用中，则退出 (`boolean`) |
-| `--https`                | 使用 TLS + HTTP/2 (`boolean`) |
 | `--open [path]`          | 启动时打开浏览器 (`boolean \| string`) |
 | `--outDir <dir>`         | 输出目录（默认为：`dist`)(`string`) |
 | `-c, --config <file>`    | 使用指定的配置文件 (`string`) |
