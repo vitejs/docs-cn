@@ -132,11 +132,7 @@ Vite 也支持多个 `.html` 作入口点的 [多页面应用模式](./build#mul
 }
 ```
 
-<<<<<<< HEAD
-可以指定额外的命令行选项，如 `--port` 或 `--https`。运行 `npx vite --help` 获得完整的命令行选项列表。
-=======
-You can specify additional CLI options like `--port` or `--open`. For a full list of CLI options, run `npx vite --help` in your project.
->>>>>>> 66152620639b59b2160bf17e381bdb2fac0ca2c4
+可以指定额外的命令行选项，如 `--port` 或 `--open`。运行 `npx vite --help` 获得完整的命令行选项列表。
 
 查看 [命令行界面](./cli.md) 了解更多细节。
 

@@ -174,19 +174,16 @@ Direct websocket connection fallback. Check out https://vitejs.dev/config/server
 
 :::
 
-<<<<<<< HEAD
-## server.watch {#server-watch}
-=======
 ## server.warmup
 
-- **Type:** `{ clientFiles?: string[], ssrFiles?: string[] }`
-- **Related:** [Warm Up Frequently Used Files](/guide/performance.html#warm-up-frequently-used-files)
+- **类型：** `{ clientFiles?: string[], ssrFiles?: string[] }`
+- **相关：** [预热常用文件](/guide/performance.html#warm-up-frequently-used-files)
 
-Warm up files to transform and cache the results in advance. This improves the initial page load during server starts and prevents transform waterfalls.
+提前转换和缓存文件以进行预热。可以在服务器启动时提高初始页面加载速度，并防止转换瀑布。
 
-`clientFiles` are files that are used in the client only, while `ssrFiles` are files that are used in SSR only. They accept an array of file paths or [`fast-glob`](https://github.com/mrmlnc/fast-glob) patterns relative to the `root`.
+`clientFiles` 是仅在客户端使用的文件，而 `ssrFiles` 是仅在服务器端渲染中使用的文件。它们接受一个文件路径数组或相对于 `root` 的 [`fast-glob`](https://github.com/mrmlnc/fast-glob) 通配符。
 
-Make sure to only add files that are frequently used to not overload the Vite dev server on startup.
+请确保只添加经常使用的文件，以免在启动时过载 Vite 开发服务器。
 
 ```js
 export default defineConfig({
@@ -199,8 +196,7 @@ export default defineConfig({
 })
 ```
 
-## server.watch
->>>>>>> 66152620639b59b2160bf17e381bdb2fac0ca2c4
+## server.watch {#server-watch}
 
 - **类型：** `object | null`
 

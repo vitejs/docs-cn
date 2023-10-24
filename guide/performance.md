@@ -1,55 +1,55 @@
-# Performance
+# 性能 {#performance}
 
-While Vite is fast by default, performance issues can creep in as the project's requirements grow. This guide aims to help you identify and fix common performance issues, such as:
+虽然 Vite 默认运行速度很快，但随着项目需求的增长，性能问题可能会悄然出现。本指南旨在帮助您识别并修复常见的性能问题，例如：
 
-- Slow server starts
-- Slow page loads
-- Slow builds
+- 服务器启动慢
+- 页面加载慢
+- 构建慢
 
-## Audit Configured Vite Plugins
+## 审核配置的 Vite 插件 {#audit-configured-vite-plugins}
 
-Vite's internal and official plugins are optimized to do the least amount of work possible while providing compatibility with the broader ecosystem. For example, code transformations use regex in dev, but do a complete parse in build to ensure correctness.
+Vite 的内部和官方插件已经优化，以在提供与更广泛的生态系统兼容性的同时做尽可能少的工作。例如，代码转换在开发中使用正则表达式，但在构建中进行完整解析以确保正确性。
 
-However, the performance of community plugins is out of Vite's control, which may affect the developer experience. Here are a few things you can look out for when using additional Vite plugins:
+然而，社区插件的性能是 Vite 无法控制的，这可能会影响开发者的体验。在使用额外的 Vite 插件时，有一些事情可以注意：
 
-1. The `buildStart`, `config`, and `configResolved` hooks should not run long and extensive operations. These hooks are awaited during dev server startup, which delays when you can access the site in the browser.
+1. `buildStart`，`config`，和 `configResolved` 钩子不应运行过长的时间和进行大量的操作。这些钩子会在开发服务器启动期间等待，这会延迟可以在浏览器中访问站点的时间。
 
-2. The `resolveId`, `load`, and `transform` hooks may cause some files to load slower than others. While sometimes unavoidable, it's still worth checking for possible areas to optimize. For example, checking if the `code` contains a specific keyword, or the `id` matches a specific extension, before doing the full transformation.
+2. `resolveId`，`load`，和 `transform` 钩子可能会导致一些文件加载速度比其他文件慢。虽然有时无法避免，但仍值得检查可能的优化区域。例如，检查 `code` 是否包含特定关键字，或 `id` 是否匹配特定扩展名，然后再进行完整的转换。
 
-   The longer it takes to transform a file, the more significant the request waterfall will be when loading the site in the browser.
+   转换文件所需的时间越长，加载站点时在浏览器中的请求瀑布图就会越明显。
 
-   You can inspect the duration it takes to transform a file using `DEBUG="vite:plugin-transform" vite` or [vite-plugin-inspect](https://github.com/antfu/vite-plugin-inspect). Note that as asynchronous operations tend to provide inaccurate timings, you should treat the numbers as a rough estimate, but it should still reveal the more expensive operations.
+   您可以使用 `DEBUG="vite:plugin-transform" vite` 或 [vite-plugin-inspect](https://github.com/antfu/vite-plugin-inspect) 检查转换文件所需的时间。请注意，由于异步操作往往提供不准确的时间，应将这些数字视为粗略的估计，但它仍应揭示消耗很大的操作。
 
-::: tip Profiling
-You can run `vite --profile`, visit the site, and press `p + enter` in your terminal to record a `.cpuprofile`. A tool like [speedscope](https://www.speedscope.app) can then be used to inspect the profile and identify the bottlenecks. You can also [share the profiles](https://chat.vitejs.dev) with the Vite team to help us identify performance issues.
+::: tip 性能分析
+可以运行 `vite --profile`，访问站点，并在终端中按 `p + enter` 来记录一个 `.cpuprofile`。然后可以使用像 [speedscope](https://www.speedscope.app) 这样的工具来检查配置文件并识别瓶颈。也可以 [分享配置文件](https://chat.vitejs.dev) 给 Vite 团队，帮助我们识别性能问题。
 :::
 
-## Reduce Resolve Operations
+## 减少解析操作 {#reduce-resolve-operations}
 
-Resolving import paths can be an expensive operation when hitting its worst case often. For example, Vite supports "guessing" import paths with the [`resolve.extensions`](/config/shared-options.md#resolve-extensions) option, which defaults to `['.mjs', '.js', '.mts', '.ts', '.jsx', '.tsx', '.json']`.
+当经常遇到最糟糕的情况时，解析导入路径可能是一项昂贵的操作。例如，Vite 支持通过 [`resolve.extensions`](/config/shared-options.md#resolve-extensions) 选项“猜测”导入路径，该选项默认为 `['.mjs', '.js', '.mts', '.ts', '.jsx', '.tsx', '.json']`。
 
-When you try to import `./Component.jsx` with `import './Component'`, Vite will run these steps to resolve it:
+当您尝试使用 `import './Component'` 导入 `./Component.jsx` 时，Vite 将运行以下步骤来解析它：
 
-1. Check if `./Component` exists, no.
-2. Check if `./Component.mjs` exists, no.
-3. Check if `./Component.js` exists, no.
-4. Check if `./Component.mts` exists, no.
-5. Check if `./Component.ts` exists, no.
-6. Check if `./Component.jsx` exists, yes!
+1. 检查 `./Component` 是否存在，不存在。
+2. 检查 `./Component.mjs` 是否存在，不存在。
+3. 检查 `./Component.js` 是否存在，不存在。
+4. 检查 `./Component.mts` 是否存在，不存在。
+5. 检查 `./Component.ts` 是否存在，不存在。
+6. 检查 `./Component.jsx` 是否存在，存在！
 
-As shown, a total of 6 filesystem checks is required to resolve an import path. The more implicit imports you have, the more time it adds up to resolve the paths.
+如上所示，解析一个导入路径需要进行 6 次文件系统检查。您的隐式导入越多，解析路径所需的时间就越多。
 
-Hence, it's usually better to be explicit with your import paths, e.g. `import './Component.jsx'`. You can also narrow down the list for `resolve.extensions` to reduce the general filesystem checks, but you have to make sure it works for files in `node_modules` too.
+因此，通常最好明确您的导入路径，例如 `import './Component.jsx'`。也可以缩小 `resolve.extensions` 的列表以减少一般的文件系统检查，但必须确保它也适用于 `node_modules` 中的文件。
 
-If you're a plugin author, make sure to only call [`this.resolve`](https://rollupjs.org/plugin-development/#this-resolve) when needed to reduce the number of checks above.
+如果你是插件作者，请确保只在需要时调用 [`this.resolve`](https://rollupjs.org/plugin-development/#this-resolve) 以减少上述检查的次数。
 
 ::: tip TypeScript
-If you are using TypeScript, enable `"moduleResolution": "bundler"` and `"allowImportingTsExtensions": true` in your `tsconfig.json`'s `compilerOptions` to use `.ts` and `.tsx` extensions directly in your code.
+如果你正在使用 TypeScript，启用 `tsconfig.json` 中的 `compilerOptions` 的 `"moduleResolution": "bundler"` 和 `"allowImportingTsExtensions": true` 以直接在代码中使用 `.ts` 和 `.tsx` 扩展名。
 :::
 
-## Avoid Barrel Files
+## 避免使用桶文件 {#avoid-barrel-files}
 
-Barrel files are files that re-export the APIs of other files in the same directory. For example:
+Barrel 文件是重新导出同一目录下其他文件 API 的文件。例如：
 
 ```js
 // src/utils/index.js
@@ -58,25 +58,25 @@ export * from './dom'
 export * from './string'
 ```
 
-When you only import an individual API, e.g. `import { slash } from './utils'`, all the files in that barrel file need to be fetched and transformed as they may contain the `slash` API and may also contain side-effects that run on initialization. This means you're loading more files than required on the initial page load, resulting in a slower page load.
+当你只导入一个单独的API，例如 `import { slash } from './utils'`，需要获取和转换桶文件中的所有文件，因为它们可能包含 `slash` API，也可能包含在初始化时运行的其他副作用。这意味着在初始页面加载时，你加载的文件比所需的要更多，导致页面加载速度变慢。
 
-If possible, you should avoid barrel files and import the individual APIs directly, e.g. `import { slash } from './utils/slash'`. You can read [issue #8237](https://github.com/vitejs/vite/issues/8237) for more information.
+可能的话，你应该避免使用桶文件，直接导入单独的API，例如 `import { slash } from './utils/slash'`。你可以阅读[issue #8237](https://github.com/vitejs/vite/issues/8237) 获取更多信息。
 
-## Warm Up Frequently Used Files
+## 预热常用文件 {#warm-up-frequently-used-files}
 
-The Vite dev server only transforms files as requested by the browser, which allows it to start up quickly and only apply transformations for used files. It can also pre-transform files if it anticipates certain files will be requested shortly. However, request waterfalls may still happen if some files take longer to transform than others. For example:
+Vite 开发服务器只转换浏览器请求的文件，这使得它能够快速启动，并且只对使用的文件执行转换。如果预计某些文件将被短时间内请求，也可以预先转换。然而，如果某些文件的转换时间比其他文件长，仍然可能发生请求瀑布。例如：
 
-Given an import graph where the left file imports the right file:
+给定一个导入图，左边的文件导入右边的文件：
 
 ```
 main.js -> BigComponent.vue -> big-utils.js -> large-data.json
 ```
 
-The import relationship can only be known after the file is transformed. If `BigComponent.vue` takes some time to transform, `big-utils.js` has to wait for its turn, and so on. This causes an internal waterfall even with pre-transformation built-in.
+导入关系只有在文件转换后才能知道。如果 `BigComponent.vue` 需要一些时间来转换，`big-utils.js` 就必须等待它的轮次，依此类推。即使内置了预先转换，这也会导致内部瀑布。
 
-Vite allows you to warm up files that you know are frequently used, e.g. `big-utils.js`, using the [`server.warmup`](/config/server-options.md#server-warmup) option. This way `big-utils.js` will be ready and cached to be served immediately when requested.
+Vite 允许预热你确定频繁使用的文件，例如 `big-utils.js`，可以使用 [`server.warmup`](/config/server-options.md#server-warmup) 选项。这样，当请求时，`big-utils.js` 将准备好并被缓存，以便立即提供服务。
 
-You can find files that are frequently used by running `DEBUG="vite:transform" vite` and inspect the logs:
+你可以通过运行 `DEBUG="vite:transform" vite` 并检查日志来找到频繁使用的文件：
 
 ```bash
 vite:transform 28.72ms /@vite/client +1ms
@@ -97,6 +97,6 @@ export default defineConfig({
 })
 ```
 
-Note that you should only warm up files that are frequently used to not overload the Vite dev server on startup. Check the [`server.warmup`](/config/server-options.md#server-warmup) option for more information.
+请注意，只应该预热频繁使用的文件，以免在启动时过载 Vite 开发服务器。查看 [`server.warmup`](/config/server-options.md#server-warmup) 选项以获取更多信息。
 
-Using [`--open` or `server.open`](/config/server-options.html#server-open) also provides a performance boost, as Vite will automatically warm up the entry point of your app or the provided URL to open.
+使用 [`--open` 或 `server.open`](/config/server-options.html#server-open) 也可以提供性能提升，因为 Vite 将自动预热你的应用的入口起点或被提供的要打开的 URL。

@@ -33,13 +33,9 @@ VITE_CJS_TRACE=true vite dev
 VITE_CJS_IGNORE_WARNING=true vite dev
 ```
 
-<<<<<<< HEAD
-## CLI {#cli}
-=======
-Note that postcss config files does not support ESM + TypeScript (`.mts` or `.ts` in `"type": "module"`) yet. If you have postcss configs with `.ts` and added `"type": "module"` to package.json, you'll also need to rename the postcss config to use `.cts`.
+请注意，postcss 配置文件还不支持 ESM + TypeScript（`"type": "module"` 中的 `.mts` 或 `.ts`）。如果你有带 `.ts` 的 postcss 配置，并在 package.json 中添加了 `"type": "module"`，你还需要将 postcss 配置重命名为 `.cts`。
 
-## CLI
->>>>>>> 66152620639b59b2160bf17e381bdb2fac0ca2c4
+## CLI {#cli}
 
 ### `Error: Cannot find module 'C:\foo\bar&baz\vite\bin\vite.js'` {#error-cannot-find-module-cfoobarbazvitebinvitejs}
 

@@ -1,25 +1,21 @@
-# Migration from v4 {#migration-from-v4}
+# 从 v4 迁移 {#migration-from-v4}
 
 ## Node.js 支持 {#nodejs-support}
 
 Vite 不再支持 Node.js 14 / 16 / 17 / 19，因为它们已经到了 EOL。现在需要 Node.js 18 / 20+。
 
-<<<<<<< HEAD
-## 废弃 CJS Node API {#deprecate-cjs-node-api}
-=======
 ## Rollup 4
 
-Vite is now using Rollup 4 which also brings along its breaking changes, in particular:
+Vite 现在使用 Rollup 4，它也带来了一些重大的变化，特别是：
 
-- Import assertions (`assertions` prop) has been renamed to import attributes (`attributes` prop).
-- Acorn plugins are no longer supported.
-- For Vite plugins, `this.resolve` `skipSelf` option is now `true` by default.
-- For Vite plugins, `this.parse` now only supports the `allowReturnOutsideFunction` option for now.
+- 导入断言（`assertions` 属性）已被重命名为导入属性（`attributes` 属性）。
+- 不再支持 Acorn 插件。
+- 对于 Vite 插件，`this.resolve` 的 `skipSelf` 选项现在默认为 `true`。
+- 对于 Vite 插件，`this.parse` 现在只支持 `allowReturnOutsideFunction` 选项。
 
-Read the full breaking changes in [Rollup's release notes](https://github.com/rollup/rollup/releases/tag/v4.0.0) for build-related changes in `build.rollupOptions`.
+你可以阅读 [Rollup 的发布说明](https://github.com/rollup/rollup/releases/tag/v4.0.0) 中的破坏性变更，了解在 `build.rollupOptions` 中构建相关的变更。
 
-## Deprecate CJS Node API
->>>>>>> 66152620639b59b2160bf17e381bdb2fac0ca2c4
+## 废弃 CJS Node API {#deprecate-cjs-node-api}
 
 CJS 的 Node API 已经被废弃。当调用 `require('vite')` 时，将会记录一个废弃警告。你应该更新你的文件或框架来导入 Vite 的 ESM 构建。
 
@@ -34,49 +30,41 @@ CJS 的 Node API 已经被废弃。当调用 `require('vite')` 时，将会记�
 - **保持 CJS 为默认，如果需要则选择 ESM：** 如果项目 `package.json` 没有 `"type": "module"`，所有 `*.js` 文件都被解释为 CJS。你可以将一个文件重命名为 `.mjs` 扩展名来使用 ESM。
 - **动态导入 Vite：** 如果你需要继续使用 CJS，你可以使用 `import('vite')` 动态导入 Vite。这要求你的代码必须在一个 `async` 上下文中编写，但是由于 Vite 的 API 大多是异步的，所以应该还是可以管理的。
 
-<<<<<<< HEAD
-查看 [排错指南](https://cn.vitejs.dev/guide/troubleshooting.html#vite-cjs-node-api-deprecated) 获取更多信息。
-=======
-See the [troubleshooting guide](/guide/troubleshooting.html#vite-cjs-node-api-deprecated) for more information.
->>>>>>> 66152620639b59b2160bf17e381bdb2fac0ca2c4
+查看 [排错指南](/guide/troubleshooting.html#vite-cjs-node-api-deprecated) 获取更多信息。
 
 ## 其他一般性变化 {#general-changes}
 
-<<<<<<< HEAD
-### 允许路径包含 `.` 回退到 index.html {#allow-path-containing-to-fallback-to-index-html}
-=======
-### SSR externalized modules value now matches production
+### SSR 外部模块值现在符合生产环境行为 {#ssr-externalized-modules-value-now-matches-production}
 
-In Vite 4, SSR externalized modules are wrapped with `.default` and `.__esModule` handling for better interoperability, but it doesn't match the production behaviour when loaded by the runtime environment (e.g. Node.js), causing hard-to-catch inconsistencies. By default, all direct project dependencies are SSR externalized.
+在 Vite 4 中，服务器端渲染的外部模块被包装为 `.default` 和 `.__esModule` 处理，以实现更好的互操作性，但是它并不符合运行时环境（例如 Node.js）加载时的生产环境行为，导致难以捕获的不一致性。默认情况下，所有直接的项目依赖都是 SSR 外部化的。
 
-Vite 5 now removes the `.default` and `.__esModule` handling to match the production behaviour. In practice, this shouldn't affect properly-packaged dependencies, but if you encounter new issues loading modules, you can try these refactors:
+Vite 5 现在删除了 `.default` 和 `.__esModule` 处理，以匹配生产环境行为。在实践中，这不应影响正确打包的依赖项，但是如果你在加载模块时遇到新的问题，你可以尝试以下重构：
 
 ```js
-// Before:
+// 之前：
 import { foo } from 'bar'
 
-// After:
+// 之后：
 import _bar from 'bar'
 const { foo } = _bar
 ```
 
 ```js
-// Before:
+// 之前：
 import foo from 'bar'
 
-// After:
+// 之后：
 import * as _foo from 'bar'
 const foo = _foo.default
 ```
 
-Note that these changes matches the Node.js behaviour, so you can also run the imports in Node.js to test it out. If you prefer to stick with the previous behaviour, you can set `legacy.proxySsrExternalModules` to `true`.
+注意，这些更改符合 Node.js 的行为，因此也可以在 Node.js 中运行这些导入进行测试。如果你更喜欢坚持使用之前的方式，你可以将 `legacy.proxySsrExternalModules` 设置为 `true`。
 
-### `worker.plugins` is now a function
+### `worker.plugins` 现在是一个函数 {#worker-plugins-is-now-a-function}
 
-In Vite 4, `worker.plugins` accepted an array of plugins (`(Plugin | Plugin[])[]`). From Vite 5, it needs to be configured as a function that returns an array of plugins (`() => (Plugin | Plugin[])[]`). This change is required so parallel worker builds run more consistently and predictably.
+在 Vite 4 中，`worker.plugins` 接受一个插件数组 (`(Plugin | Plugin[])[]`)。从 Vite 5 开始，它需要配置为一个返回插件数组的函数 (`() => (Plugin | Plugin[])[]`)。这个改变是为了让并行的 worker 构建运行得更加一致和可预测。
 
-### Allow path containing `.` to fallback to index.html
->>>>>>> 66152620639b59b2160bf17e381bdb2fac0ca2c4
+### 允许路径包含 `.` 回退到 index.html {#allow-path-containing-to-fallback-to-index-html}
 
 在 Vite 4 中，即使 `appType` 被设置为 `'SPA'`（默认），访问包含 `.` 的路径也不会回退到 index.html。从 Vite 5 开始，它将会回退到 index.html。
 
@@ -92,20 +80,17 @@ CLI 快捷功能键，例如 `r` 重启开发服务器，现在需要额外的 `
 
 这个改动防止 Vite 吞噬和控制操作系统特定的快捷键，允许更好的兼容性，当将 Vite 开发服务器与其他进程结合使用时，并避免了[之前的注意事项](https://github.com/vitejs/vite/pull/14342)。
 
-<<<<<<< HEAD
-## 移除部分废弃 API
-=======
-### Remove `--https` flag and `https: true`
+### 移除 `--https` 标志和 `https: true` {#remove-https-flag-and-https-true}
 
-`--https` flag sets `https: true`. This config was meant to be used together with the automatic https certification generation feature which [was dropped in Vite 3](https://v3.vitejs.dev/guide/migration.html#automatic-https-certificate-generation). This config no longer makes sense as it will make Vite start a HTTPS server without a certificate.
-Both [`@vitejs/plugin-basic-ssl`](https://github.com/vitejs/vite-plugin-basic-ssl) and [`vite-plugin-mkcert`](https://github.com/liuweiGL/vite-plugin-mkcert) sets `https` setting regardless of the `https` value, so you can just remove `--https` and `https: true`.
+`--https` 标志设置 `https: true`。这个配置本来是要与自动 https 证书生成特性一起使用的，但这个特性在 [Vite 3 中被移除](https://v3.vitejs.dev/guide/migration.html#automatic-https-certificate-generation)。这个配置现在已经没有意义了，因为它会让Vite启动一个没有证书的 HTTPS 服务器。
+[`@vitejs/plugin-basic-ssl`](https://github.com/vitejs/vite-plugin-basic-ssl) 和 [`vite-plugin-mkcert`](https://github.com/liuweiGL/vite-plugin-mkcert) 都会设置 `https` 配置，无论 `https` 值是什么，所以你可以直接移除 `--https` 和 `https: true`。
 
-### Remove `resolvePackageEntry` and `resolvePackageData` APIs
+### 移除 `resolvePackageEntry` 和 `resolvePackageData` API {#remove-resolvepackageentry-and-resolvepackagedata-apis}
 
-The `resolvePackageEntry` and `resolvePackageData` APIs are removed as they exposed Vite's internals and blocked potential Vite 4.3 optimizations in the past. These APIs can be replaced with third-party packages, for example:
+`resolvePackageEntry` 和 `resolvePackageData` API 已被移除，因为它们暴露了 Vite 的内部机制，并在过去阻碍了 Vite 4.3 的潜在优化。这些 API 可以被第三方包替代，例如：
 
-- `resolvePackageEntry`: [`import.meta.resolve`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/import.meta/resolve) or the [`import-meta-resolve`](https://github.com/wooorm/import-meta-resolve) package.
-- `resolvePackageData`: Same as above, and crawl up the package directory to get the root `package.json`. Or use the community [`vitefu`](https://github.com/svitejs/vitefu) package.
+- `resolvePackageEntry`: [`import.meta.resolve`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/import.meta/resolve) 或者 [`import-meta-resolve`](https://github.com/wooorm/import-meta-resolve) 库。
+- `resolvePackageData`: 与上述相同，向上爬取包目录以获取根 `package.json`。或者使用社区的 [`vitefu`](https://github.com/svitejs/vitefu) 库。
 
 ```js
 import { resolve } from 'import-meta-env'
@@ -123,8 +108,7 @@ const packageJsonPath = findDepPkgJsonPath(pkg, basedir)
 const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf-8'))
 ```
 
-## Removed Deprecated APIs
->>>>>>> 66152620639b59b2160bf17e381bdb2fac0ca2c4
+## 移除部分废弃 API {#removed-deprecated-apis}
 
 - CSS 文件的默认导出（例如 `import style from './foo.css'`）：使用 `?inline` 查询参数代替
 - `import.meta.globEager`：使用 `import.meta.glob('*', { eager: true })` 来代替
@@ -141,21 +125,15 @@ const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf-8'))
 - [[#14098] fix!: avoid rewriting this (reverts #5312)](https://github.com/vitejs/vite/pull/14098)
   - 之前顶层 `this` 将会在构建时被默认地改写为 `globalThis`，这个行为现在已被移除
 - [[#14231] feat!: add extension to internal virtual modules](https://github.com/vitejs/vite/pull/14231)
-<<<<<<< HEAD
   - 内置虚拟模块的 id 现在包含一个扩展名（`.js`）
+- [[#14583] refactor!: remove exporting internal APIs](https://github.com/vitejs/vite/pull/14583)
+  - 移除意外导出的内部 API：`isDepsOptimizerEnabled` 和 `getDepOptimizationConfig`
+  - 移除导出的内部类型：`DepOptimizationResult`，`DepOptimizationProcessing` 和 `DepsOptimizer`
+  - 改名 `ResolveWorkerOptions` 类型为 `ResolvedWorkerOptions`
 - [[#5657] fix: return 404 for resources requests outside the base path](https://github.com/vitejs/vite/pull/5657)
   - 过去，Vite 对于不带 `Accept: text/html` 的请求，会将其当作带有基础路径的请求来处理。现在 Vite 不再这样做，而是返回 404。
-=======
-  - Internal virtual modules' id now has an extension (`.js`).
-- [[#14583] refactor!: remove exporting internal APIs](https://github.com/vitejs/vite/pull/14583)
-  - Removed accidentally exported internal APIs: `isDepsOptimizerEnabled` and `getDepOptimizationConfig`
-  - Removed exported internal types: `DepOptimizationResult`, `DepOptimizationProcessing`, and `DepsOptimizer`
-  - Renamed `ResolveWorkerOptions` type to `ResolvedWorkerOptions`
-- [[#5657] fix: return 404 for resources requests outside the base path](https://github.com/vitejs/vite/pull/5657)
-  - In the past, Vite responded to requests outside the base path without `Accept: text/html`, as if they were requested with the base path. Vite no longer does that and responds with 404 instead.
 - [[#14723] fix(resolve)!: remove special .mjs handling](https://github.com/vitejs/vite/pull/14723)
-  - In the past, when a library `"exports"` field maps to an `.mjs` file, Vite will still try to match the `"browser"` and `"module"` fields to fix compatibility with certain libraries. This behavior is now removed to align with the exports resolution algorithm.
->>>>>>> 66152620639b59b2160bf17e381bdb2fac0ca2c4
+  - 在过去，当一个库的 `"exports"` 字段映射到一个 `.mjs` 文件时，Vite 仍然会尝试匹配 `"browser"` 和 `"module"` 字段，以修复与某些库的兼容性。现在，这种行为已被移除，以便与导出解析算法保持一致。
 
 ## 从 v3 迁移 {#migration-from-v3}
 
