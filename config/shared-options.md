@@ -153,11 +153,17 @@ Vite 有一个“允许的情景”列表，并且会匹配列表中第一个情
 
 ## resolve.mainFields {#resolve-mainfields}
 
+<<<<<<< HEAD
 - **类型：** `string[]`
 - **默认：** `['module', 'jsnext:main', 'jsnext']`
+=======
+- **Type:** `string[]`
+- **Default:** `['browser', 'module', 'jsnext:main', 'jsnext']`
+>>>>>>> 26ee3d4ab92a80b2f4f3b5e65436490f7b81a8fd
 
 `package.json` 中，在解析包的入口点时尝试的字段列表。注意：这比从 `exports` 字段解析的情景导出优先级低：如果一个入口点从 `exports` 成功解析，`resolve.mainFields` 将被忽略。
 
+<<<<<<< HEAD
 ## resolve.browserField {#resolve-browserfield}
 
 - **类型：** `boolean`
@@ -169,6 +175,9 @@ Vite 有一个“允许的情景”列表，并且会匹配列表中第一个情
 在未来，`resolve.mainFields` 的默认值会变成 `['browser', 'module', 'jsnext:main', 'jsnext']` 而这个选项将被移除。
 
 ## resolve.extensions {#resolve-extensions}
+=======
+## resolve.extensions
+>>>>>>> 26ee3d4ab92a80b2f4f3b5e65436490f7b81a8fd
 
 - **类型：** `string[]`
 - **默认：** `['.mjs', '.js', '.mts', '.ts', '.jsx', '.tsx', '.json']`
