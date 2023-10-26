@@ -37,6 +37,7 @@
 
 定义全局常量替换方式。其中每项在开发环境下会被定义在全局，而在构建时被静态替换。
 
+<<<<<<< HEAD
 - String 值会以原始表达式形式使用，所以如果定义了一个字符串常量，**它需要被显式地打引号。**（例如使用 `JSON.stringify`）
 
 - 为了与 [esbuild 的行为](https://esbuild.github.io/api/#define)保持一致，表达式必须为一个 JSON 对象（null、boolean、number、string、数组或对象），亦或是一个单独的标识符。
@@ -48,6 +49,20 @@
 
 例如，`process.env.FOO` 和 `__APP_VERSION__` 就非常适合。但 `process` 或 `global` 不应使用此选项。变量相关应使用 shim 或 polyfill 代替。
 :::
+=======
+Vite uses [esbuild defines](https://esbuild.github.io/api/#define) to perform replacements, so value expressions must be a string that contains a JSON-serializable value (null, boolean, number, string, array, or object) or a single identifier. For non-string values, Vite will automatically convert it to a string with `JSON.stringify`.
+
+**Example:**
+
+```js
+export default defineConfig({
+  define: {
+    __APP_VERSION__: JSON.stringify('v1.0.0'),
+    __API_URL__: 'window.__backend_api_url',
+  },
+})
+```
+>>>>>>> ebcc5fbeb9df63c6cde4eb5ea852271ac2c99588
 
 ::: tip NOTE
 对于使用 TypeScript 的开发者来说，请确保在 `env.d.ts` 或 `vite-env.d.ts` 文件中添加类型声明，以获得类型检查以及代码提示。
@@ -61,6 +76,7 @@ declare const __APP_VERSION__: string
 
 :::
 
+<<<<<<< HEAD
 ::: tip NOTE
 由于开发模式和构建模式实现 `define` 的差异性，我们应该避免采用一些可能导致不一致的用例。
 
@@ -76,6 +92,9 @@ const obj = {
 :::
 
 ## plugins {#plugins}
+=======
+## plugins
+>>>>>>> ebcc5fbeb9df63c6cde4eb5ea852271ac2c99588
 
 - **类型：** `(Plugin | Plugin[] | Promise<Plugin | Plugin[]>)[]`
 
@@ -153,11 +172,17 @@ Vite 有一个“允许的情景”列表，并且会匹配列表中第一个情
 
 ## resolve.mainFields {#resolve-mainfields}
 
+<<<<<<< HEAD
 - **类型：** `string[]`
 - **默认：** `['module', 'jsnext:main', 'jsnext']`
+=======
+- **Type:** `string[]`
+- **Default:** `['browser', 'module', 'jsnext:main', 'jsnext']`
+>>>>>>> ebcc5fbeb9df63c6cde4eb5ea852271ac2c99588
 
 `package.json` 中，在解析包的入口点时尝试的字段列表。注意：这比从 `exports` 字段解析的情景导出优先级低：如果一个入口点从 `exports` 成功解析，`resolve.mainFields` 将被忽略。
 
+<<<<<<< HEAD
 ## resolve.browserField {#resolve-browserfield}
 
 - **类型：** `boolean`
@@ -169,6 +194,9 @@ Vite 有一个“允许的情景”列表，并且会匹配列表中第一个情
 在未来，`resolve.mainFields` 的默认值会变成 `['browser', 'module', 'jsnext:main', 'jsnext']` 而这个选项将被移除。
 
 ## resolve.extensions {#resolve-extensions}
+=======
+## resolve.extensions
+>>>>>>> ebcc5fbeb9df63c6cde4eb5ea852271ac2c99588
 
 - **类型：** `string[]`
 - **默认：** `['.mjs', '.js', '.mts', '.ts', '.jsx', '.tsx', '.json']`
