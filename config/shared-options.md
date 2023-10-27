@@ -37,7 +37,7 @@
 
 定义全局常量替换方式。其中每项在开发环境下会被定义在全局，而在构建时被静态替换。
 
-Vite 使用 [esbuild define](https://esbuild.github.io/api/#define) 来进行替换，因此值的表达式必须是一个包含 JSON 可序列化值（null、boolean、number、string、array 或 object）或单一标识符的字符串。对于非字符串值，Vite将自动使用 `JSON.stringify` 将其转换为字符串。
+Vite 使用 [esbuild define](https://esbuild.github.io/api/#define) 来进行替换，因此值的表达式必须是一个包含 JSON 可序列化值（null、boolean、number、string、array 或 object）或单一标识符的字符串。对于非字符串值，Vite 将自动使用 `JSON.stringify` 将其转换为字符串。
 
 **示例：**
 

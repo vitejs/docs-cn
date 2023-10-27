@@ -64,9 +64,9 @@ Vite 5 通过在构建中使用 `esbuild` 来处理替换，使其与开发行�
 
 这个改动不应该影响大部分设置，因为已经在文档中说明了 `define` 的值应该遵循 esbuild 的语法：
 
-> 为了与 esbuild 行为保持一致，表达式必须是一个 JSON 对象（null、boolean、number、string、array 或 object）或一个单一标识符。
+> 为了与 esbuild 行为保持一致，表达式必须是一个 JSON 对象（null、boolean、number、string、array 或 object）或一个单一标识符字符串。
 
-然而，如果你更喜欢直接使用静态替换值，你可以使用 [`@rollup/plugin-replace`](https://github.com/rollup/plugins/tree/master/packages/replace)。
+然而，如果你更喜欢对值直接使用静态替换，你可以使用 [`@rollup/plugin-replace`](https://github.com/rollup/plugins/tree/master/packages/replace)。
 
 ## 其他一般性变化 {#general-changes}
 
