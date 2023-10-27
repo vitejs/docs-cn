@@ -32,17 +32,14 @@ CJS 的 Node API 已经被废弃。当调用 `require('vite')` 时，将会记�
 
 查看 [排错指南](/guide/troubleshooting.html#vite-cjs-node-api-deprecated) 获取更多信息。
 
-<<<<<<< HEAD
-## 其他一般性变化 {#general-changes}
-=======
-## Rework `define` and `import.meta.env.*` replacement strategy
+## 重新设计 `define` 和 `import.meta.env.*` 的替换策略 {#rework-define-and-import-meta-env-replacement-strategy}
 
-In Vite 4, the `define` and `import.meta.env.*` features use different replacement strategies in dev and build:
+在 Vite 4 中，`define` 和 `import.meta.env.*` 特性在开发和构建中使用的是不同的替换策略：
 
-- In dev, both features are injected as global variables to `globalThis` and `import.meta` respectively.
-- In build, both features are statically replaced with a regex.
+- 在开发时，这两个特性分别作为全局变量注入到 `globalThis` 和 `import.meta` 中。
+- 在构建时，这两个特性都使用正则表达式进行静态替换。
 
-This results in a dev and build inconsistency when trying to access the variables, and sometimes even caused failed builds. For example:
+这导致在尝试访问这些变量时，开发和构建存在一致性问题，有时甚至导致构建失败。例如：
 
 ```js
 // vite.config.js
@@ -55,24 +52,23 @@ export default defineConfig({
 
 ```js
 const data = { __APP_VERSION__ }
-// dev: { __APP_VERSION__: "1.0.0" } ✅
-// build: { "1.0.0" } ❌
+// 开发：{ __APP_VERSION__: "1.0.0" } ✅
+// 构建：{ "1.0.0" } ❌
 
 const docs = 'I like import.meta.env.MODE'
-// dev: "I like import.meta.env.MODE" ✅
-// build: "I like "production"" ❌
+// 开发："I like import.meta.env.MODE" ✅
+// 构建："I like "production"" ❌
 ```
 
-Vite 5 fixes this by using `esbuild` to handle the replacements in builds, aligning with the dev behaviour.
+Vite 5 通过在构建中使用 `esbuild` 来处理替换，使其与开发行为保持一致。
 
-This change should not affect most setups, as it's already documented that `define` values should follow esbuild's syntax:
+这个改动不应该影响大部分设置，因为已经在文档中说明了 `define` 的值应该遵循 esbuild 的语法：
 
-> To be consistent with esbuild behavior, expressions must either be a JSON object (null, boolean, number, string, array, or object) or a single identifier.
+> 为了与 esbuild 行为保持一致，表达式必须是一个 JSON 对象（null、boolean、number、string、array 或 object）或一个单一标识符。
 
-However, if you prefer to keep statically replacing values directly, you can use [`@rollup/plugin-replace`](https://github.com/rollup/plugins/tree/master/packages/replace).
+然而，如果你更喜欢直接使用静态替换值，你可以使用 [`@rollup/plugin-replace`](https://github.com/rollup/plugins/tree/master/packages/replace)。
 
-## General Changes
->>>>>>> ebcc5fbeb9df63c6cde4eb5ea852271ac2c99588
+## 其他一般性变化 {#general-changes}
 
 ### SSR 外部模块值现在符合生产环境行为 {#ssr-externalized-modules-value-now-matches-production}
 
@@ -173,13 +169,9 @@ const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf-8'))
 - [[#5657] fix: return 404 for resources requests outside the base path](https://github.com/vitejs/vite/pull/5657)
   - 过去，Vite 对于不带 `Accept: text/html` 的请求，会将其当作带有基础路径的请求来处理。现在 Vite 不再这样做，而是返回 404。
 - [[#14723] fix(resolve)!: remove special .mjs handling](https://github.com/vitejs/vite/pull/14723)
-<<<<<<< HEAD
   - 在过去，当一个库的 `"exports"` 字段映射到一个 `.mjs` 文件时，Vite 仍然会尝试匹配 `"browser"` 和 `"module"` 字段，以修复与某些库的兼容性。现在，这种行为已被移除，以便与导出解析算法保持一致。
-=======
-  - In the past, when a library `"exports"` field maps to an `.mjs` file, Vite will still try to match the `"browser"` and `"module"` fields to fix compatibility with certain libraries. This behavior is now removed to align with the exports resolution algorithm.
 - [[#14733] feat(resolve)!: remove `resolve.browserField`](https://github.com/vitejs/vite/pull/14733)
-  - `resolve.browserField` has been deprecated since Vite 3 in favour of an updated default of `['browser', 'module', 'jsnext:main', 'jsnext']` for `resolve.mainFields`.
->>>>>>> ebcc5fbeb9df63c6cde4eb5ea852271ac2c99588
+  - `resolve.browserField` has been deprecated since Vite 3 in favour of an updated default of `['browser', 'module', 'jsnext:main', 'jsnext']` for `resolve.mainFields`。
 
 ## 从 v3 迁移 {#migration-from-v3}
 
