@@ -102,9 +102,35 @@ const foo = _foo.default
 
 ### 允许路径包含 `.` 回退到 index.html {#allow-path-containing-to-fallback-to-index-html}
 
+<<<<<<< HEAD
 在 Vite 4 中，即使 `appType` 被设置为 `'SPA'`（默认），访问包含 `.` 的路径也不会回退到 index.html。从 Vite 5 开始，它将会回退到 index.html。
 
 注意浏览器将不再在控制台中显示 404 错误消息，如果你将图片路径指向一个不存在的文件（例如 `<img src="./file-does-not-exist.png">`）。
+=======
+In Vite 4, accessing a path in dev containing `.` did not fallback to index.html even if `appType` is set to `'spa'` (default). From Vite 5, it will fallback to index.html.
+
+Note that the browser will no longer show a 404 error message in the console if you point the image path to a non-existent file (e.g. `<img src="./file-does-not-exist.png">`).
+
+### Align dev and preview HTML serving behaviour
+
+In Vite 4, the dev and preview servers serve HTML based on its directory structure and trailing slash differently. This causes inconsistencies when testing your built app. Vite 5 refactors into a single behaviour like below, given the following file structure:
+
+```
+├── index.html
+├── file.html
+└── dir
+    └── index.html
+```
+
+| Request           | Before (dev)                 | Before (preview)  | After (dev & preview)        |
+| ----------------- | ---------------------------- | ----------------- | ---------------------------- |
+| `/dir/index.html` | `/dir/index.html`            | `/dir/index.html` | `/dir/index.html`            |
+| `/dir`            | `/index.html` (SPA fallback) | `/dir/index.html` | `/dir.html` (SPA fallback)   |
+| `/dir/`           | `/dir/index.html`            | `/dir/index.html` | `/dir/index.html`            |
+| `/file.html`      | `/file.html`                 | `/file.html`      | `/file.html`                 |
+| `/file`           | `/index.html` (SPA fallback) | `/file.html`      | `/file.html`                 |
+| `/file/`          | `/index.html` (SPA fallback) | `/file.html`      | `/index.html` (SPA fallback) |
+>>>>>>> 2a89f1c2d0d3ed2730c3d790f4658d98a3a5b680
 
 ### Manifest 文件现在默认生成到 `.vite` 目录中 {#manifest-files-are-now-generated-in-vite-directory-by-default}
 
@@ -116,7 +142,36 @@ CLI 快捷功能键，例如 `r` 重启开发服务器，现在需要额外的 `
 
 这个改动防止 Vite 吞噬和控制操作系统特定的快捷键，允许更好的兼容性，当将 Vite 开发服务器与其他进程结合使用时，并避免了[之前的注意事项](https://github.com/vitejs/vite/pull/14342)。
 
+<<<<<<< HEAD
 ### 移除 `--https` 标志和 `https: true` {#remove-https-flag-and-https-true}
+=======
+### Update `experimentalDecorators` and `useDefineForClassFields` TypeScript behaviour
+
+Vite 5 uses esbuild 0.19 and removes the compatibility layer for esbuild 0.18, which changes how `experimentalDecorators` and `useDefineForClassFields` are handled.
+
+- **`experimentalDecorators` is not enabled by default**
+
+  You need to set `compilerOptions.experimentalDecorators` to `true` in `tsconfig.json` to use decorators.
+
+- **`useDefineForClassFields` defaults depend on the TypeScript `target` value**
+
+  If `target` is not `ESNext` or `ES2022` or newer, or if there's no `tsconfig.json` file, `useDefineForClassFields` will default to `false` which can be problematic with the default `esbuild.target` value of `esnext`. It may transpile to [static initialization blocks](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/Static_initialization_blocks#browser_compatibility) which may not be supported in your browser.
+
+  As such, it is recommended to set `target` to `ESNext` or `ES2022` or newer, or set `useDefineForClassFields` to `true` explicitly when configuring `tsconfig.json`.
+
+```jsonc
+{
+  "compilerOptions": {
+    // Set true if you use decorators
+    "experimentalDecorators": true,
+    // Set true if you see parsing errors in your browser
+    "useDefineForClassFields": true
+  }
+}
+```
+
+### Remove `--https` flag and `https: true`
+>>>>>>> 2a89f1c2d0d3ed2730c3d790f4658d98a3a5b680
 
 `--https` 标志设置 `https: true`。这个配置本来是要与自动 https 证书生成特性一起使用的，但这个特性在 [Vite 3 中被移除](https://v3.vitejs.dev/guide/migration.html#automatic-https-certificate-generation)。这个配置现在已经没有意义了，因为它会让Vite启动一个没有证书的 HTTPS 服务器。
 [`@vitejs/plugin-basic-ssl`](https://github.com/vitejs/vite-plugin-basic-ssl) 和 [`vite-plugin-mkcert`](https://github.com/liuweiGL/vite-plugin-mkcert) 都会设置 `https` 配置，无论 `https` 值是什么，所以你可以直接移除 `--https` 和 `https: true`。
@@ -146,9 +201,16 @@ const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf-8'))
 
 ## 移除部分废弃 API {#removed-deprecated-apis}
 
+<<<<<<< HEAD
 - CSS 文件的默认导出（例如 `import style from './foo.css'`）：使用 `?inline` 查询参数代替
 - `import.meta.globEager`：使用 `import.meta.glob('*', { eager: true })` 来代替
 - `ssr.format: 'cjs'` 和 `legacy.buildSsrCjsExternalHeuristics`（[#13816](https://github.com/vitejs/vite/discussions/13816)）
+=======
+- Default exports of CSS files (e.g `import style from './foo.css'`): Use the `?inline` query instead
+- `import.meta.globEager`: Use `import.meta.glob('*', { eager: true })` instead
+- `ssr.format: 'cjs'` and `legacy.buildSsrCjsExternalHeuristics` ([#13816](https://github.com/vitejs/vite/discussions/13816))
+- `server.middlewareMode: 'ssr'` and `server.middlewareMode: 'html'`: Use [`appType`](/config/shared-options.md#apptype) + [`server.middlewareMode: true`](/config/server-options.md#server-middlewaremode) instead ([#8452](https://github.com/vitejs/vite/pull/8452))
+>>>>>>> 2a89f1c2d0d3ed2730c3d790f4658d98a3a5b680
 
 ## 进阶 {#advanced}
 
