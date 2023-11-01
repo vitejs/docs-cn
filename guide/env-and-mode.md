@@ -14,6 +14,7 @@ Vite 在一个特殊的 **`import.meta.env`** 对象上暴露环境变量。这�
 
 - **`import.meta.env.SSR`**: {boolean} 应用是否运行在 [server](./ssr.md#conditional-logic) 上。
 
+<<<<<<< HEAD
 ### 生产环境替换 {#production-replacement}
 
 在生产环境中，这些环境变量会在构建时被**静态替换**，因此，在引用它们时请使用完全静态的字符串。动态的 key 将无法生效。例如，动态 key 取值 `import.meta.env[key]` 是无效的。
@@ -25,6 +26,9 @@ Vite 在一个特殊的 **`import.meta.env`** 对象上暴露环境变量。这�
 - 对于 Vue 模板或其他编译到 JavaScript 字符串的 HTML，你可以使用 [`<wbr>` 标签](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/wbr)，例如：`import.meta.<wbr>env.MODE`。
 
 ## `.env` 文件 {#env-files}
+=======
+## `.env` Files
+>>>>>>> 5802efb224ccaa2cd42e3eddedffc2133f09baa4
 
 Vite 使用 [dotenv](https://github.com/motdotla/dotenv) 从你的 [环境目录](/config/shared-options.md#envdir) 中的下列文件加载额外的环境变量：
 

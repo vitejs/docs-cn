@@ -147,7 +147,21 @@ if (import.meta.hot) {
 
 `import.meta.hot.data` 对象在同一个更新模块的不同实例之间持久化。它可以用于将信息从模块的前一个版本传递到下一个版本。
 
+<<<<<<< HEAD
 ## `hot.decline()` {#hot-decline}
+=======
+Note that re-assignment of `data` itself is not supported. Instead, you should mutate properties of the `data` object so information added from other handlers are preserved.
+
+```js
+// ok
+import.meta.hot.data.someValue = 'hello'
+
+// not supported
+import.meta.hot.data = { someValue: 'hello' }
+```
+
+## `hot.decline()`
+>>>>>>> 5802efb224ccaa2cd42e3eddedffc2133f09baa4
 
 目前是一个空操作并暂留用于向后兼容。若有新的用途设计可能在未来会发生变更。要指明某模块是不可热更新的，请使用 `hot.invalidate()`。
 

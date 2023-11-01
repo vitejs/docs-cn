@@ -57,7 +57,13 @@ export type { T }
 
 #### `isolatedModules`
 
+<<<<<<< HEAD
 应该设置为 `true`。
+=======
+- [TypeScript documentation](https://www.typescriptlang.org/tsconfig#isolatedModules)
+
+Should be set to `true`.
+>>>>>>> 5802efb224ccaa2cd42e3eddedffc2133f09baa4
 
 这是因为 `esbuild` 只执行没有类型信息的转译，它并不支持某些特性，如 `const enum` 和隐式类型导入。
 
@@ -67,10 +73,21 @@ export type { T }
 
 #### `useDefineForClassFields`
 
+<<<<<<< HEAD
 从 Vite v2.5.0 开始，如果 TypeScript 的 target 是 `ESNext` 或 `ES2022` 及更新版本，此选项默认值则为 `true`。这与 [`tsc` v4.3.2 及以后版本的行为](https://github.com/microsoft/TypeScript/pull/42663) 一致。这也是标准的 ECMAScript 的运行时行为。
 
 但对于那些习惯其他编程语言或旧版本 TypeScript 的开发者来说，这可能是违反直觉的。
 你可以参阅 [TypeScript 3.7 发布日志](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-3-7.html#the-usedefineforclassfields-flag-and-the-declare-property-modifier) 中了解更多关于如何兼容的信息。
+=======
+- [TypeScript documentation](https://www.typescriptlang.org/tsconfig#useDefineForClassFields)
+
+Starting from Vite 2.5.0, the default value will be `true` if the TypeScript target is `ESNext` or `ES2022` or newer. It is consistent with the [behavior of `tsc` 4.3.2 and later](https://github.com/microsoft/TypeScript/pull/42663). It is also the standard ECMAScript runtime behavior.
+
+Other TypeScript targets will default to `false`.
+
+But it may be counter-intuitive for those coming from other programming languages or older versions of TypeScript.
+You can read more about the transition in the [TypeScript 3.7 release notes](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-3-7.html#the-usedefineforclassfields-flag-and-the-declare-property-modifier).
+>>>>>>> 5802efb224ccaa2cd42e3eddedffc2133f09baa4
 
 如果你正在使用一个严重依赖 class fields 的库，请注意该库对此选项的预期设置。
 
@@ -78,13 +95,36 @@ export type { T }
 
 但是有几个库还没有兼容这个新的默认值，其中包括 [`lit-element`](https://github.com/lit/lit-element/issues/1030)。如果遇到这种情况，请将 `useDefineForClassFields` 设置为 `false`。
 
+<<<<<<< HEAD
 #### 影响构建结果的其他编译器选项 {#other-compiler-options-affecting-the-build-result}
+=======
+#### `target`
+
+- [TypeScript documentation](https://www.typescriptlang.org/tsconfig#target)
+
+Vite does not transpile TypeScript with the configured `target` value by default, following the same behaviour as `esbuild`.
+
+The [`esbuild.target`](/config/shared-options.html#esbuild) option can be used instead, which defaults to `esnext` for minimal transpilation. In builds, the [`build.target`](/config/build-options.html#build-target) option takes higher priority and can also be set if needed.
+
+::: warning `useDefineForClassFields`
+If `target` is not `ESNext` or `ES2022` or newer, or if there's no `tsconfig.json` file, `useDefineForClassFields` will default to `false` which can be problematic with the default `esbuild.target` value of `esnext`. It may transpile to [static initialization blocks](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/Static_initialization_blocks#browser_compatibility) which may not be supported in your browser.
+
+As such, it is recommended to set `target` to `ESNext` or `ES2022` or newer, or set `useDefineForClassFields` to `true` explicitly when configuring `tsconfig.json`.
+:::
+
+#### Other Compiler Options Affecting the Build Result
+>>>>>>> 5802efb224ccaa2cd42e3eddedffc2133f09baa4
 
 - [`extends`](https://www.typescriptlang.org/tsconfig#extends)
 - [`importsNotUsedAsValues`](https://www.typescriptlang.org/tsconfig#importsNotUsedAsValues)
 - [`preserveValueImports`](https://www.typescriptlang.org/tsconfig#preserveValueImports)
+- [`verbatimModuleSyntax`](https://www.typescriptlang.org/tsconfig#verbatimModuleSyntax)
+- [`jsx`](https://www.typescriptlang.org/tsconfig#jsx)
 - [`jsxFactory`](https://www.typescriptlang.org/tsconfig#jsxFactory)
 - [`jsxFragmentFactory`](https://www.typescriptlang.org/tsconfig#jsxFragmentFactory)
+- [`jsxImportSource`](https://www.typescriptlang.org/tsconfig#jsxImportSource)
+- [`experimentalDecorators`](https://www.typescriptlang.org/tsconfig#experimentalDecorators)
+- [`alwaysStrict`](https://www.typescriptlang.org/tsconfig#alwaysStrict)
 
 如果你的代码库很难迁移到 `"isolatedModules": true`，或许你可以尝试通过第三方插件来解决，比如 [rollup-plugin-friendly-type-imports](https://www.npmjs.com/package/rollup-plugin-friendly-type-imports)。但是，这种方式不被 Vite 官方支持。
 
