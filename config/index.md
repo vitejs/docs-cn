@@ -48,10 +48,14 @@ Vite 也直接支持 TS 配置文件。你可以在 `vite.config.ts` 中使用 `
 
 ## 情景配置 {#conditional-config}
 
+<<<<<<< HEAD
 如果配置文件需要基于（`dev`/`serve` 或 `build`）命令或者不同的 [模式](/guide/env-and-mode) 来决定选项，亦或者是一个 SSR 构建（`ssrBuild`），则可以选择导出这样一个函数：
+=======
+If the config needs to conditionally determine options based on the command (`serve` or `build`), the [mode](/guide/env-and-mode) being used, if it's an SSR build (`isSsrBuild`), or is previewing the build (`isPreview`), it can export a function instead:
+>>>>>>> cb28b1ffb3de626548c59cb2211f8f1cdfcd07d0
 
 ```js
-export default defineConfig(({ command, mode, ssrBuild }) => {
+export default defineConfig(({ command, mode, isSsrBuild, isPreview }) => {
   if (command === 'serve') {
     return {
       // dev 独有配置
@@ -67,7 +71,11 @@ export default defineConfig(({ command, mode, ssrBuild }) => {
 
 需要注意的是，在 Vite 的 API 中，在开发环境下 `command` 的值为 `serve`（在 CLI 中， `vite dev` 和 `vite serve` 是 `vite` 的别名），而在生产环境下为 `build`（`vite build`）。
 
+<<<<<<< HEAD
 `ssrBuild` 仍是实验性的。它只在构建过程中可用，而不是一个更通用的 `ssr` 标志，因为在开发过程中，我们唯一的服务器会共享处理 SSR 和非 SSR 请求的配置。某些工具可能没有区分浏览器和 SSR 两种构建目标的命令，那么这个值可能是 `undefined`，因此需要采用显式的比较表达式。
+=======
+`isSsrBuild` and `isPreview` are additional optional flags to differentiate the kind of `build` and `serve` commands respectively. Some tools that load the Vite config may not support these flags and will pass `undefined` instead. Hence, it's recommended to use explicit comparison against `true` and `false`.
+>>>>>>> cb28b1ffb3de626548c59cb2211f8f1cdfcd07d0
 
 ## 异步配置 {#async-config}
 

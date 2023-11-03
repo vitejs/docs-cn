@@ -12,9 +12,17 @@ Vite 的内部和官方插件已经优化，以在提供与更广泛的生态系
 
 然而，社区插件的性能是 Vite 无法控制的，这可能会影响开发者的体验。在使用额外的 Vite 插件时，有一些事情可以注意：
 
+<<<<<<< HEAD
 1. `buildStart`，`config`，和 `configResolved` 钩子不应运行过长的时间和进行大量的操作。这些钩子会在开发服务器启动期间等待，这会延迟可以在浏览器中访问站点的时间。
 
 2. `resolveId`，`load`，和 `transform` 钩子可能会导致一些文件加载速度比其他文件慢。虽然有时无法避免，但仍值得检查可能的优化区域。例如，检查 `code` 是否包含特定关键字，或 `id` 是否匹配特定扩展名，然后再进行完整的转换。
+=======
+1. Large dependencies that are only used in certain cases should be dynamically imported to reduce the Node.js startup time. Example refactors: [vite-plugin-react#212](https://github.com/vitejs/vite-plugin-react/pull/212) and [vite-plugin-pwa#224](https://github.com/vite-pwa/vite-plugin-pwa/pull/244).
+
+2. The `buildStart`, `config`, and `configResolved` hooks should not run long and extensive operations. These hooks are awaited during dev server startup, which delays when you can access the site in the browser.
+
+3. The `resolveId`, `load`, and `transform` hooks may cause some files to load slower than others. While sometimes unavoidable, it's still worth checking for possible areas to optimize. For example, checking if the `code` contains a specific keyword, or the `id` matches a specific extension, before doing the full transformation.
+>>>>>>> cb28b1ffb3de626548c59cb2211f8f1cdfcd07d0
 
    转换文件所需的时间越长，加载站点时在浏览器中的请求瀑布图就会越明显。
 

@@ -56,7 +56,11 @@ export default defineConfig({
 
 ## server.https {#server-https}
 
+<<<<<<< HEAD
 - **类型：** `boolean | https.ServerOptions`
+=======
+- **Type:** `https.ServerOptions`
+>>>>>>> cb28b1ffb3de626548c59cb2211f8f1cdfcd07d0
 
 启用 TLS + HTTP/2。注意：当 [`server.proxy` 选项](#server-proxy) 也被使用时，将会仅使用 TLS。
 
