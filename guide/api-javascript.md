@@ -254,11 +254,7 @@ async function resolveConfig(
 ): Promise<ResolvedConfig>
 ```
 
-<<<<<<< HEAD
-该 `command` 值在开发环境（即 CLI 命令 `vite`、`vite dev` 和 `vite serve`） 为 `serve`。
-=======
-The `command` value is `serve` in dev and preview, and `build` in build.
->>>>>>> cb28b1ffb3de626548c59cb2211f8f1cdfcd07d0
+该 `command` 值在开发环境和预览环境 为 `serve`，而在构建环境是 `build`。
 
 ## `mergeConfig`
 

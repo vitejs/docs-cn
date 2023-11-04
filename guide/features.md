@@ -57,13 +57,9 @@ export type { T }
 
 #### `isolatedModules`
 
-<<<<<<< HEAD
-应该设置为 `true`。
-=======
-- [TypeScript documentation](https://www.typescriptlang.org/tsconfig#isolatedModules)
+- [TypeScript 文档](https://www.typescriptlang.org/tsconfig#isolatedModules)
 
-Should be set to `true`.
->>>>>>> cb28b1ffb3de626548c59cb2211f8f1cdfcd07d0
+应该设置为 `true`。
 
 这是因为 `esbuild` 只执行没有类型信息的转译，它并不支持某些特性，如 `const enum` 和隐式类型导入。
 
@@ -73,21 +69,14 @@ Should be set to `true`.
 
 #### `useDefineForClassFields`
 
-<<<<<<< HEAD
+- [TypeScript 文档](https://www.typescriptlang.org/tsconfig#useDefineForClassFields)
+
 从 Vite v2.5.0 开始，如果 TypeScript 的 target 是 `ESNext` 或 `ES2022` 及更新版本，此选项默认值则为 `true`。这与 [`tsc` v4.3.2 及以后版本的行为](https://github.com/microsoft/TypeScript/pull/42663) 一致。这也是标准的 ECMAScript 的运行时行为。
+
+若设了其他 TypeScript 目标，则本项会默认为 `false`.
 
 但对于那些习惯其他编程语言或旧版本 TypeScript 的开发者来说，这可能是违反直觉的。
 你可以参阅 [TypeScript 3.7 发布日志](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-3-7.html#the-usedefineforclassfields-flag-and-the-declare-property-modifier) 中了解更多关于如何兼容的信息。
-=======
-- [TypeScript documentation](https://www.typescriptlang.org/tsconfig#useDefineForClassFields)
-
-Starting from Vite 2.5.0, the default value will be `true` if the TypeScript target is `ESNext` or `ES2022` or newer. It is consistent with the [behavior of `tsc` 4.3.2 and later](https://github.com/microsoft/TypeScript/pull/42663). It is also the standard ECMAScript runtime behavior.
-
-Other TypeScript targets will default to `false`.
-
-But it may be counter-intuitive for those coming from other programming languages or older versions of TypeScript.
-You can read more about the transition in the [TypeScript 3.7 release notes](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-3-7.html#the-usedefineforclassfields-flag-and-the-declare-property-modifier).
->>>>>>> cb28b1ffb3de626548c59cb2211f8f1cdfcd07d0
 
 如果你正在使用一个严重依赖 class fields 的库，请注意该库对此选项的预期设置。
 
@@ -95,25 +84,21 @@ You can read more about the transition in the [TypeScript 3.7 release notes](htt
 
 但是有几个库还没有兼容这个新的默认值，其中包括 [`lit-element`](https://github.com/lit/lit-element/issues/1030)。如果遇到这种情况，请将 `useDefineForClassFields` 设置为 `false`。
 
-<<<<<<< HEAD
-#### 影响构建结果的其他编译器选项 {#other-compiler-options-affecting-the-build-result}
-=======
-#### `target`
+#### `target` {#target}
 
-- [TypeScript documentation](https://www.typescriptlang.org/tsconfig#target)
+- [TypeScript 文档](https://www.typescriptlang.org/tsconfig#target)
 
-Vite does not transpile TypeScript with the configured `target` value by default, following the same behaviour as `esbuild`.
+Vite 默认不会转译 TypeScript，而是使用 `esbuild` 的默认行为。
 
-The [`esbuild.target`](/config/shared-options.html#esbuild) option can be used instead, which defaults to `esnext` for minimal transpilation. In builds, the [`build.target`](/config/build-options.html#build-target) option takes higher priority and can also be set if needed.
+该 [`esbuild.target`](/config/shared-options.html#esbuild) 选项可以用来代替上述行为，默认值为 `esnext`，以进行最小的转译。在构建中，[`build.target`](/config/build-options.html#build-target) 选项优先级更高，如果需要也可以设置。
 
 ::: warning `useDefineForClassFields`
-If `target` is not `ESNext` or `ES2022` or newer, or if there's no `tsconfig.json` file, `useDefineForClassFields` will default to `false` which can be problematic with the default `esbuild.target` value of `esnext`. It may transpile to [static initialization blocks](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/Static_initialization_blocks#browser_compatibility) which may not be supported in your browser.
+如果 `target` 不是 `ESNext` 或 `ES2022` 或更新版本，或者没有 `tsconfig.json` 文件，`useDefineForClassFields` 将默认为 `false`，这可能会导致默认的 `esbuild.target` 值为 `esnext` 的问题。它可能会转译为 [static initialization blocks](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/Static_initialization_blocks#browser_compatibility)，这在你的浏览器中可能不被支持。
 
-As such, it is recommended to set `target` to `ESNext` or `ES2022` or newer, or set `useDefineForClassFields` to `true` explicitly when configuring `tsconfig.json`.
+因此，建议将 `target` 设置为 `ESNext` 或 `ES2022` 或更新版本，或者在配置 `tsconfig.json` 时将 `useDefineForClassFields` 显式设置为 `true`。
 :::
 
-#### Other Compiler Options Affecting the Build Result
->>>>>>> cb28b1ffb3de626548c59cb2211f8f1cdfcd07d0
+#### 影响构建结果的其他编译器选项 {#other-compiler-options-affecting-the-build-result}
 
 - [`extends`](https://www.typescriptlang.org/tsconfig#extends)
 - [`importsNotUsedAsValues`](https://www.typescriptlang.org/tsconfig#importsNotUsedAsValues)
