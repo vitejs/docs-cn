@@ -13,7 +13,7 @@ Vite 现在使用 Rollup 4，它也带来了一些重大的变化，特别是：
 - 对于 Vite 插件，`this.resolve` 的 `skipSelf` 选项现在默认为 `true`。
 - 对于 Vite 插件，`this.parse` 现在只支持 `allowReturnOutsideFunction` 选项。
 
-你可以阅读 [Rollup 的发布说明](https://github.com/rollup/rollup/releases/tag/v4.0.0) 中的破坏性变更，了解在 `build.rollupOptions` 中构建相关的变更。
+你可以阅读 [Rollup 的发布说明](https://github.com/rollup/rollup/releases/tag/v4.0.0) 中的破坏性变更，了解在 [`build.rollupOptions`](/config/build-options.md#build-rollupoptions) 中构建相关的变更。
 
 ## 废弃 CJS Node API {#deprecate-cjs-node-api}
 
@@ -34,7 +34,7 @@ CJS 的 Node API 已经被废弃。当调用 `require('vite')` 时，将会记�
 
 ## 重新设计 `define` 和 `import.meta.env.*` 的替换策略 {#rework-define-and-import-meta-env-replacement-strategy}
 
-在 Vite 4 中，`define` 和 `import.meta.env.*` 特性在开发和构建中使用的是不同的替换策略：
+在 Vite 4 中，[`define`](/config/shared-options.md#define) 和 [`import.meta.env.*`](/guide/env-and-mode.md#env-variables) 特性在开发和构建中使用的是不同的替换策略：
 
 - 在开发时，这两个特性分别作为全局变量注入到 `globalThis` 和 `import.meta` 中。
 - 在构建时，这两个特性都使用正则表达式进行静态替换。
@@ -98,23 +98,68 @@ const foo = _foo.default
 
 ### `worker.plugins` 现在是一个函数 {#worker-plugins-is-now-a-function}
 
-在 Vite 4 中，`worker.plugins` 接受一个插件数组 (`(Plugin | Plugin[])[]`)。从 Vite 5 开始，它需要配置为一个返回插件数组的函数 (`() => (Plugin | Plugin[])[]`)。这个改变是为了让并行的 worker 构建运行得更加一致和可预测。
+在 Vite 4 中，[`worker.plugins`](/config/worker-options.md#worker-plugins) 接受一个插件数组 (`(Plugin | Plugin[])[]`)。从 Vite 5 开始，它需要配置为一个返回插件数组的函数 (`() => (Plugin | Plugin[])[]`)。这个改变是为了让并行的 worker 构建运行得更加一致和可预测。
 
 ### 允许路径包含 `.` 回退到 index.html {#allow-path-containing-to-fallback-to-index-html}
 
-在 Vite 4 中，即使 `appType` 被设置为 `'SPA'`（默认），访问包含 `.` 的路径也不会回退到 index.html。从 Vite 5 开始，它将会回退到 index.html。
+在 Vite 4 中，即使 [`appType`](/config/shared-options.md#apptype) 被设置为 `'SPA'`（默认），访问包含 `.` 的路径也不会回退到 index.html。从 Vite 5 开始，它将会回退到 index.html。
 
 注意浏览器将不再在控制台中显示 404 错误消息，如果你将图片路径指向一个不存在的文件（例如 `<img src="./file-does-not-exist.png">`）。
 
+### Align dev and preview HTML serving behaviour {#align-dev-and-preview-html-serving-behaviour}
+
+在 Vite 4 中，开发服务器和预览服务器会根据 HTML 的目录结构和尾部斜杠的不同来提供 HTML。这会导致在测试构建后的应用时出现不一致的情况。Vite 5 重构成了一个单一的行为，如下所示，给定以下文件结构：
+
+```
+├── index.html
+├── file.html
+└── dir
+    └── index.html
+```
+
+| 请求               | 过往版本 (dev)                | 过往版本 (preview) | 现在 (dev & preview)          |
+| ----------------- | ---------------------------- | ----------------- | ---------------------------- |
+| `/dir/index.html` | `/dir/index.html`            | `/dir/index.html` | `/dir/index.html`            |
+| `/dir`            | `/index.html` (SPA fallback) | `/dir/index.html` | `/dir.html` (SPA fallback)   |
+| `/dir/`           | `/dir/index.html`            | `/dir/index.html` | `/dir/index.html`            |
+| `/file.html`      | `/file.html`                 | `/file.html`      | `/file.html`                 |
+| `/file`           | `/index.html` (SPA fallback) | `/file.html`      | `/file.html`                 |
+| `/file/`          | `/index.html` (SPA fallback) | `/file.html`      | `/index.html` (SPA fallback) |
+
 ### Manifest 文件现在默认生成到 `.vite` 目录中 {#manifest-files-are-now-generated-in-vite-directory-by-default}
 
-在 Vite 4 中，manifest 文件（`build.manifest`，`build.ssrManifest`）默认会生成在 `build.outDir` 的根目录中。从 Vite 5 开始，这些文件将默认生成在 `build.outDir` 中的 `.vite` 目录中。
+在 Vite 4 中，manifest 文件（[`build.manifest`](/config/build-options.md#build-manifest)，[`build.ssrManifest`](/config/build-options.md#build-ssrmanifest)）默认会生成在 [`build.outDir`](/config/build-options.md#build-outdir) 的根目录中。从 Vite 5 开始，这些文件将默认生成在 `build.outDir` 中的 `.vite` 目录中。
 
 ### CLI 快捷功能键需要一个额外的 `Enter` 按键 {#cli-shortcuts-require-an-additional-enter-press}
 
 CLI 快捷功能键，例如 `r` 重启开发服务器，现在需要额外的 `Enter` 按键来触发快捷功能。例如，`r + Enter` 重启开发服务器。
 
 这个改动防止 Vite 吞噬和控制操作系统特定的快捷键，允许更好的兼容性，当将 Vite 开发服务器与其他进程结合使用时，并避免了[之前的注意事项](https://github.com/vitejs/vite/pull/14342)。
+
+### Update `experimentalDecorators` and `useDefineForClassFields` TypeScript behaviour {#update-experimentaldecorators-and-usedefineforclassfields-typescript-behaviour}
+
+Vite 5 使用 esbuild 0.19 并移除了 esbuild 0.18 的兼容层，这改变了 [`experimentalDecorators`](https://www.typescriptlang.org/tsconfig#experimentalDecorators) 和 [`useDefineForClassFields`](https://www.typescriptlang.org/tsconfig#useDefineForClassFields) 的处理方式。
+
+- **`useDefineForClassFields` 默认不启用**
+
+  你需要在 `tsconfig.json` 中设置 `compilerOptions.experimentalDecorators` 为 `true` 来使用装饰器。
+
+- **`useDefineForClassFields` 默认依赖 TypeScript 的 `target` 值**
+
+  如果 `target` 不是 `ESNext` 或 `ES2022` 或更新的版本，或者没有 `tsconfig.json` 文件，`useDefineForClassFields` 将默认为 `false`，这可能会导致默认的 `esbuild.target` 值 `esnext` 出现问题。它可能会转译为[静态初始化块](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/Static_initialization_blocks#browser_compatibility)，这在你的浏览器中可能不被支持。
+
+  因此，建议在配置 `tsconfig.json` 时将 `target` 设置为 `ESNext` 或 `ES2022` 或更新的版本，或者将 `useDefineForClassFields` 显式地设置为 `true`。
+
+```jsonc
+{
+  "compilerOptions": {
+    // 若要使用装饰器就设为 true
+    "experimentalDecorators": true,
+    // 如果你在浏览器中看到解析错误，请设置为 true
+    "useDefineForClassFields": true
+  }
+}
+```
 
 ### 移除 `--https` 标志和 `https: true` {#remove-https-flag-and-https-true}
 
@@ -149,12 +194,16 @@ const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf-8'))
 - CSS 文件的默认导出（例如 `import style from './foo.css'`）：使用 `?inline` 查询参数代替
 - `import.meta.globEager`：使用 `import.meta.glob('*', { eager: true })` 来代替
 - `ssr.format: 'cjs'` 和 `legacy.buildSsrCjsExternalHeuristics`（[#13816](https://github.com/vitejs/vite/discussions/13816)）
+- `server.middlewareMode: 'ssr'` 和 `server.middlewareMode: 'html'`：使用 [`appType`](/config/shared-options.md#apptype) + [`server.middlewareMode: true`](/config/server-options.md#server-middlewaremode) 来代替（[#8452](https://github.com/vitejs/vite/pull/8452)）
 
 ## 进阶 {#advanced}
 
 下列改动仅会影响到插件/工具的作者：
 
 - [[#14119] refactor!: merge `PreviewServerForHook` into `PreviewServer` type](https://github.com/vitejs/vite/pull/14119)
+  - The `configurePreviewServer` hook now accepts the `PreviewServer` type instead of `PreviewServerForHook` type.
+- [[#14818] refactor(preview)!: use base middleware](https://github.com/vitejs/vite/pull/14818)
+  - Middlewares added from the returned function in `configurePreviewServer` now does not have access to the `base` when comparing the `req.url` value. This aligns the behaviour with the dev server. You can check the `base` from the `configResolved` hook if needed.
 
 此外，还有其他一些只影响少数用户的破坏性变化。
 
@@ -171,7 +220,8 @@ const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf-8'))
 - [[#14723] fix(resolve)!: remove special .mjs handling](https://github.com/vitejs/vite/pull/14723)
   - 在过去，当一个库的 `"exports"` 字段映射到一个 `.mjs` 文件时，Vite 仍然会尝试匹配 `"browser"` 和 `"module"` 字段，以修复与某些库的兼容性。现在，这种行为已被移除，以便与导出解析算法保持一致。
 - [[#14733] feat(resolve)!: remove `resolve.browserField`](https://github.com/vitejs/vite/pull/14733)
-  - `resolve.browserField` has been deprecated since Vite 3 in favour of an updated default of `['browser', 'module', 'jsnext:main', 'jsnext']` for `resolve.mainFields`。
+  - `resolve.browserField` 已从 Vite 3 开始被弃用，而是使用 [`resolve.mainFields`](/config/shared-options.md#resolve-mainfields) 的更新默认值 `['browser', 'module', 'jsnext:main', 'jsnext']`。
+  - 重命名 `ssrBuild` 为 `isSsrBuild`。
 
 ## 从 v3 迁移 {#migration-from-v3}
 
