@@ -341,3 +341,7 @@ $ npx wrangler pages deploy dist
 ## AWS Amplify 部署 {#aws-amplify-hoisting}
 
 使用 [AWS Amplify 部署](https://aws.amazon.com/amplify/hosting/) 部署静态站点，可以按照 [说明](https://docs.amplify.aws/guides/hosting/vite/q/platform/js/) 进行操作。
+
+## Kinsta 静态站点托管 {#kinsta-static-site-hosting}
+
+你可以按照这些 [说明](https://kinsta.com/docs/react-vite-example/) 在 [Kinsta](https://kinsta.com/static-site-hosting/) 上部署你的 Vite 应用作为一个静态站点。

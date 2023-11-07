@@ -120,7 +120,7 @@ const foo = _foo.default
 | 请求               | 过往版本 (dev)                | 过往版本 (preview) | 现在 (dev & preview)          |
 | ----------------- | ---------------------------- | ----------------- | ---------------------------- |
 | `/dir/index.html` | `/dir/index.html`            | `/dir/index.html` | `/dir/index.html`            |
-| `/dir`            | `/index.html` (SPA fallback) | `/dir/index.html` | `/dir.html` (SPA fallback)   |
+| `/dir`            | `/index.html` (SPA fallback) | `/dir/index.html` | `/index.html` (SPA fallback) |
 | `/dir/`           | `/dir/index.html`            | `/dir/index.html` | `/dir/index.html`            |
 | `/file.html`      | `/file.html`                 | `/file.html`      | `/file.html`                 |
 | `/file`           | `/index.html` (SPA fallback) | `/file.html`      | `/file.html`                 |
@@ -128,7 +128,9 @@ const foo = _foo.default
 
 ### Manifest 文件现在默认生成到 `.vite` 目录中 {#manifest-files-are-now-generated-in-vite-directory-by-default}
 
-在 Vite 4 中，manifest 文件（[`build.manifest`](/config/build-options.md#build-manifest)，[`build.ssrManifest`](/config/build-options.md#build-ssrmanifest)）默认会生成在 [`build.outDir`](/config/build-options.md#build-outdir) 的根目录中。从 Vite 5 开始，这些文件将默认生成在 `build.outDir` 中的 `.vite` 目录中。
+在 Vite 4 中，manifest 文件（[`build.manifest`](/config/build-options.md#build-manifest)，[`build.ssrManifest`](/config/build-options.md#build-ssrmanifest)）默认会生成在 [`build.outDir`](/config/build-options.md#build-outdir) 的根目录中。
+
+从 Vite 5 开始，这些文件将默认生成在 `build.outDir` 中的 `.vite` 目录中。这个改变有助于解决当公共文件被复制到 `build.outDir` 时，具有相同 manifest 文件名时的冲突。
 
 ### CLI 快捷功能键需要一个额外的 `Enter` 按键 {#cli-shortcuts-require-an-additional-enter-press}
 
@@ -163,8 +165,9 @@ Vite 5 使用 esbuild 0.19 并移除了 esbuild 0.18 的兼容层，这改变了
 
 ### 移除 `--https` 标志和 `https: true` {#remove-https-flag-and-https-true}
 
-`--https` 标志设置 `https: true`。这个配置本来是要与自动 https 证书生成特性一起使用的，但这个特性在 [Vite 3 中被移除](https://v3.vitejs.dev/guide/migration.html#automatic-https-certificate-generation)。这个配置现在已经没有意义了，因为它会让Vite启动一个没有证书的 HTTPS 服务器。
-[`@vitejs/plugin-basic-ssl`](https://github.com/vitejs/vite-plugin-basic-ssl) 和 [`vite-plugin-mkcert`](https://github.com/liuweiGL/vite-plugin-mkcert) 都会设置 `https` 配置，无论 `https` 值是什么，所以你可以直接移除 `--https` 和 `https: true`。
+`--https` 标志会在内部设置 `server.https: true` 和 `preview.https: true`。这个配置本来是为了与自动 https 证书生成功能一起使用的，但是这个功能在[Vite 3 中被移除](https://v3.vitejs.dev/guide/migration.html#automatic-https-certificate-generation)。因此，这个配置已经不再有用，因为它会启动一个没有证书的 Vite HTTPS 服务器。
+
+如果你使用 [`@vitejs/plugin-basic-ssl`](https://github.com/vitejs/vite-plugin-basic-ssl) 或者 [`vite-plugin-mkcert`](https://github.com/liuweiGL/vite-plugin-mkcert)，它们已经在内部设置了 `https` 配置，所以你可以在你的设置中移除 `--https`，`server.https: true`，和`preview.https: true`。
 
 ### 移除 `resolvePackageEntry` 和 `resolvePackageData` API {#remove-resolvepackageentry-and-resolvepackagedata-apis}
 
@@ -204,6 +207,8 @@ const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf-8'))
   - The `configurePreviewServer` hook now accepts the `PreviewServer` type instead of `PreviewServerForHook` type.
 - [[#14818] refactor(preview)!: use base middleware](https://github.com/vitejs/vite/pull/14818)
   - Middlewares added from the returned function in `configurePreviewServer` now does not have access to the `base` when comparing the `req.url` value. This aligns the behaviour with the dev server. You can check the `base` from the `configResolved` hook if needed.
+- [[#14834] fix(types)!: expose httpServer with Http2SecureServer union](https://github.com/vitejs/vite/pull/14834)
+  - `http.Server | http2.Http2SecureServer` is now used instead of `http.Server` where appropriate.
 
 此外，还有其他一些只影响少数用户的破坏性变化。
 
