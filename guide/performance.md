@@ -55,14 +55,20 @@ Vite 的内部和官方插件已经优化，以在提供与更广泛的生态系
 
 ```js
 // src/utils/index.js
-export * from './color'
-export * from './dom'
-export * from './string'
+export * from './color.js'
+export * from './dom.js'
+export * from './string.js'
 ```
 
+<<<<<<< HEAD
 当你只导入一个单独的 API，例如 `import { slash } from './utils'`，需要获取和转换桶文件中的所有文件，因为它们可能包含 `slash` API，也可能包含在初始化时运行的其他副作用。这意味着在初始页面加载时，你加载的文件比所需的要更多，导致页面加载速度变慢。
 
 可能的话，你应该避免使用桶文件，直接导入单独的 API，例如 `import { slash } from './utils/slash'`。你可以阅读[issue #8237](https://github.com/vitejs/vite/issues/8237) 获取更多信息。
+=======
+When you only import an individual API, e.g. `import { slash } from './utils.js'`, all the files in that barrel file need to be fetched and transformed as they may contain the `slash` API and may also contain side-effects that run on initialization. This means you're loading more files than required on the initial page load, resulting in a slower page load.
+
+If possible, you should avoid barrel files and import the individual APIs directly, e.g. `import { slash } from './utils/slash.js'`. You can read [issue #8237](https://github.com/vitejs/vite/issues/8237) for more information.
+>>>>>>> af2f106d4f95872d20baa421dae605e0e8198906
 
 ## 预热常用文件 {#warm-up-frequently-used-files}
 
@@ -101,4 +107,25 @@ export default defineConfig({
 
 请注意，只应该预热频繁使用的文件，以免在启动时过载 Vite 开发服务器。查看 [`server.warmup`](/config/server-options.md#server-warmup) 选项以获取更多信息。
 
+<<<<<<< HEAD
 使用 [`--open` 或 `server.open`](/config/server-options.html#server-open) 也可以提供性能提升，因为 Vite 将自动预热你的应用的入口起点或被提供的要打开的 URL。
+=======
+Using [`--open` or `server.open`](/config/server-options.html#server-open) also provides a performance boost, as Vite will automatically warm up the entry point of your app or the provided URL to open.
+
+## Use Lesser or Native Tooling
+
+Keeping Vite fast with a growing codebase is about reducing the amount of work for the source files (JS/TS/CSS).
+
+Examples of doing less work:
+
+- Use CSS instead of Sass/Less/Stylus when possible (nesting can be handled by PostCSS)
+- Don't transform SVGs into UI framework components (React, Vue, etc). Import them as strings or URLs instead.
+- When using `@vitejs/plugin-react`, avoid configuring the Babel options, so it skips the transformation during build (only esbuild will be used).
+
+Examples of using native tooling:
+
+Using native tooling often brings larger installation size and as so is not the default when starting a new Vite project. But it may be worth the cost for larger applications.
+
+- Try out the experimental support for [LightningCSS](https://github.com/vitejs/vite/discussions/13835)
+- Use [`@vitejs/plugin-react-swc`](https://github.com/vitejs/vite-plugin-react-swc) in place of `@vitejs/plugin-react`.
+>>>>>>> af2f106d4f95872d20baa421dae605e0e8198906
