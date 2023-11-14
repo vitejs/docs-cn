@@ -5,6 +5,64 @@ const ogImage = 'https://vitejs.dev/og-image.png'
 const ogTitle = 'Vite'
 const ogUrl = 'https://vitejs.dev'
 
+<<<<<<< HEAD
+=======
+// netlify envs
+const deployURL = process.env.DEPLOY_PRIME_URL || ''
+const commitRef = process.env.COMMIT_REF?.slice(0, 8) || 'dev'
+
+const deployType = (() => {
+  switch (deployURL) {
+    case 'https://main--vite-docs-main.netlify.app':
+      return 'main'
+    case '':
+      return 'local'
+    default:
+      return 'release'
+  }
+})()
+const additionalTitle = ((): string => {
+  switch (deployType) {
+    case 'main':
+      return ' (main branch)'
+    case 'local':
+      return ' (local)'
+    case 'release':
+      return ''
+  }
+})()
+const versionLinks = ((): DefaultTheme.NavItemWithLink[] => {
+  const oldVersions: DefaultTheme.NavItemWithLink[] = [
+    {
+      text: 'Vite 4 Docs',
+      link: 'https://v4.vitejs.dev',
+    },
+    {
+      text: 'Vite 3 Docs',
+      link: 'https://v3.vitejs.dev',
+    },
+    {
+      text: 'Vite 2 Docs',
+      link: 'https://v2.vitejs.dev',
+    },
+  ]
+
+  switch (deployType) {
+    case 'main':
+    case 'local':
+      return [
+        {
+          text: 'Vite 5 Docs (release)',
+          link: 'https://vitejs.dev',
+        },
+        ...oldVersions,
+      ]
+    case 'release':
+      return oldVersions
+  }
+})()
+
+>>>>>>> 7b703700d27a2e39a6eb6d2a9765321ecfdcb119
 export default defineConfig({
   title: 'Vite 官方中文文档',
   description: '下一代前端工具链',
@@ -38,6 +96,7 @@ export default defineConfig({
     es: { label: 'Español', link: 'https://es.vitejs.dev' },
     pt: { label: 'Português', link: 'https://pt.vitejs.dev' },
     ko: { label: '한국어', link: 'https://ko.vitejs.dev' },
+    de: { label: 'Deutsch', link: 'https://de.vitejs.dev' },
   },
 
   themeConfig: {
