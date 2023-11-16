@@ -147,6 +147,7 @@ import './Foo.js' // 应该为 './foo.js'
 
 ### 完全重新加载了，而不是 HMR {#a-full-reload-happens-instead-of-hmr}
 
+<<<<<<< HEAD
 如果 HMR 不是由 Vite 或一个插件处理的，那么将进行完全的重新加载。
 
 同时如果有依赖环，也会发生完全重载。要解决这个问题，请先尝试解决依赖循环。
@@ -154,6 +155,11 @@ import './Foo.js' // 应该为 './foo.js'
 ### 控制台中大量热更新 {#high-number-of-hmr-updates-in-console}
 
 这可能是由循环依赖引起的。要解决这个问题，请先尝试解决依赖循环。
+=======
+If HMR is not handled by Vite or a plugin, a full reload will happen as it's the only way to refresh the state.
+
+If HMR is handled but it is within a circular dependency, a full reload will also happen to recover the execution order. To solve this, try breaking the loop. You can run `vite --debug hmr` to log the circular dependency path if a file change triggered it.
+>>>>>>> 17faaddc69bc3669a283a1845d47a348fc159488
 
 ## 构建 {#build}
 

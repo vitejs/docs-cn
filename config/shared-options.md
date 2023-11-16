@@ -11,14 +11,26 @@
 
 ## base {#base}
 
+<<<<<<< HEAD
 - **类型：** `string`
 - **默认：** `/`
+=======
+- **Type:** `string`
+- **Default:** `/`
+- **Related:** [`server.origin`](/config/server-options.md#server-origin)
+>>>>>>> 17faaddc69bc3669a283a1845d47a348fc159488
 
 开发或生产环境服务的公共基础路径。合法的值包括以下几种：
 
+<<<<<<< HEAD
 - 绝对 URL 路径名，例如 `/foo/`
 - 完整的 URL，例如 `https://foo.com/`
 - 空字符串或 `./`（用于嵌入形式的开发）
+=======
+- Absolute URL pathname, e.g. `/foo/`
+- Full URL, e.g. `https://foo.com/` (The origin part won't be used in development)
+- Empty string or `./` (for embedded deployment)
+>>>>>>> 17faaddc69bc3669a283a1845d47a348fc159488
 
 更多信息详见 [公共基础路径](/guide/build#public-base-path)。
 
