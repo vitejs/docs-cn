@@ -15,14 +15,25 @@ Vite 现在使用 Rollup 4，它也带来了一些重大的变化，特别是：
 
 你可以阅读 [Rollup 的发布说明](https://github.com/rollup/rollup/releases/tag/v4.0.0) 中的破坏性变更，了解在 [`build.rollupOptions`](/config/build-options.md#build-rollupoptions) 中构建相关的变更。
 
+<<<<<<< HEAD
 ## 废弃 CJS Node API {#deprecate-cjs-node-api}
+=======
+If you are using TypeScript, make sure to set `moduleResolution: 'bundler'` (or `node16`/`nodenext`) as Rollup 4 requires it. Or you can set `skipLibCheck: true` instead.
+
+## Deprecate CJS Node API
+>>>>>>> 8b72e23084a5bf4f2af26c9cef6ed2e89e20d001
 
 CJS 的 Node API 已经被废弃。当调用 `require('vite')` 时，将会记录一个废弃警告。你应该更新你的文件或框架来导入 Vite 的 ESM 构建。
 
 在一个基础的 Vite 项目中，请确保：
 
+<<<<<<< HEAD
 1. `vite.config.js` 配置文件的内容使用 ESM 语法。
 2. 最近的 `package.json` 文件中有 `"type": "module"`，或者使用 `.mjs` 扩展名，例如 `vite.config.mjs`。
+=======
+1. The `vite.config.js` file content is using the ESM syntax.
+2. The closest `package.json` file has `"type": "module"`, or use the `.mjs`/`.mts` extension, e.g. `vite.config.mjs` or `vite.config.mts`.
+>>>>>>> 8b72e23084a5bf4f2af26c9cef6ed2e89e20d001
 
 对于其他项目，有几种常见的方法：
 

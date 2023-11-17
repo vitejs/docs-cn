@@ -38,7 +38,48 @@ const __dirname = fileURLToPath(new URL('.', import.meta.url))
 当在同一个 Node.js 进程中使用 `createServer` 和 `build` 时，两个函数都依赖于 `process.env.NODE_ENV` 才可正常工作，而这个环境变量又依赖于 `mode` 配置项。为了避免行为冲突，请在使用这两个 API 时为 `process.env.NODE_ENV` 或者 `mode` 配置项、字段设置参数值 `development`，或者你也可以生成另一个子进程，分别运行这两个 API。
 :::
 
+<<<<<<< HEAD
 ## `InlineConfig` {#inlineconfig}
+=======
+::: tip NOTE
+When using [middleware mode](/config/server-options.html#server-middlewaremode) combined with [proxy config for WebSocket](/config/server-options.html#server-proxy), the parent http server should be provided in `middlewareMode` to bind the proxy correctly.
+
+<details>
+<summary>Example</summary>
+
+```ts
+import http from 'http'
+import { createServer } from 'vite'
+
+const parentServer = http.createServer() // or express, koa, etc.
+
+const vite = await createServer({
+  server: {
+    // Enable middleware mode
+    middlewareMode: {
+      // Provide the parent http server for proxy WebSocket
+      server: parentServer,
+    },
+  },
+  proxy: {
+    '/ws': {
+      target: 'ws://localhost:3000',
+      // Proxying WebSocket
+      ws: true,
+    },
+  },
+})
+
+server.use((req, res, next) => {
+  vite.middlewares.handle(req, res, next)
+})
+```
+
+</details>
+:::
+
+## `InlineConfig`
+>>>>>>> 8b72e23084a5bf4f2af26c9cef6ed2e89e20d001
 
 `InlineConfig` 接口扩展了 `UserConfig` 并添加了以下属性：
 

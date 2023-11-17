@@ -60,7 +60,11 @@ export default defineConfig({
 
 `include` 和 `exclude` 都可以用来处理这个问题。如果依赖项很大（包含很多内部模块）或者是 CommonJS，那么你应该包含它；如果依赖项很小，并且已经是有效的 ESM，则可以排除它，让浏览器直接加载它。
 
+<<<<<<< HEAD
 你也可以使用 [`optimizeDeps.esbuildOptions` 选项](/config/dep-optimization-options.md#optimizedeps-esbuildoptions) 来进一步自定义 esbuild。例如，添加一个 esbuild 插件来处理依赖项中的特殊文件。
+=======
+You can further customize esbuild too with the [`optimizeDeps.esbuildOptions` option](/config/dep-optimization-options.md#optimizedeps-esbuildoptions). For example, adding an esbuild plugin to handle special files in dependencies or changing the [build `target`](https://esbuild.github.io/api/#target).
+>>>>>>> 8b72e23084a5bf4f2af26c9cef6ed2e89e20d001
 
 ## 缓存 {#caching}
 
