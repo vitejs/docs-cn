@@ -13,7 +13,7 @@
 
 你也可以通过 [`build.target` 配置项](/config/build-options.md#build-target) 指定构建目标，最低支持 `es2015`。
 
-请注意，默认情况下 Vite 只处理语法转译，且 **不包含任何 polyfill**。你可以前往 [Polyfill.io](https://polyfill.io/v3/) 查看，这是一个基于用户浏览器 User-Agent 字符串自动生成 polyfill 包的服务。
+请注意，默认情况下 Vite 只处理语法转译，且 **不包含任何 polyfill**。你可以前往 [Polyfill.io](https://polyfill.io/) 查看，这是一个基于用户浏览器 User-Agent 字符串自动生成 polyfill 包的服务。
 
 传统浏览器可以通过插件 [@vitejs/plugin-legacy](https://github.com/vitejs/vite/tree/main/packages/plugin-legacy) 来支持，它将自动生成传统版本的 chunk 及与其相对应 ES 语言特性方面的 polyfill。兼容版的 chunk 只会在不支持原生 ESM 的浏览器中进行按需加载。
 
@@ -168,8 +168,8 @@ export { Foo, Bar }
 ```
 $ vite build
 building for production...
-dist/my-lib.js      0.08 KiB / gzip: 0.07 KiB
-dist/my-lib.umd.cjs 0.30 KiB / gzip: 0.16 KiB
+dist/my-lib.js      0.08 kB / gzip: 0.07 kB
+dist/my-lib.umd.cjs 0.30 kB / gzip: 0.16 kB
 ```
 
 推荐在你库的 `package.json` 中使用如下格式：
@@ -212,12 +212,16 @@ dist/my-lib.umd.cjs 0.30 KiB / gzip: 0.16 KiB
 }
 ```
 
-::: tip 注意
+::: tip 文件扩展名
 如果 `package.json` 不包含 `"type": "module"`，Vite 会生成不同的文件后缀名以兼容 Node.js。`.js` 会变为 `.mjs` 而 `.cjs` 会变为 `.js` 。
 :::
 
 ::: tip 环境变量
-在库模式下，所有 `import.meta.env.*` 用法在构建生产时都会被静态替换。但是，`process.env.*` 的用法不会被替换，所以你的库的使用者可以动态地更改它。如果不想允许他们这样做，你可以使用 `define: { 'process.env.NODE_ENV': '"production"' }` 例如静态替换它们。
+在库模式中，所有 [`import.meta.env.*`](./env-and-mode.md) 的使用都会在构建生产版本时被静态替换。但是，`process.env.*` 的使用不会，这样你的库的使用者就可以动态地改变它。如果这是不可取的，你可以使用 `define: { 'process.env.NODE_ENV': '"production"' }` 来静态替换它们，或者使用 [`esm-env`](https://github.com/benmccann/esm-env) 来更好地兼容打包工具和运行时。
+:::
+
+::: warning 进阶用法
+库模式包括了一种简单而又有见地的配置，适用于面向浏览器和 JS 框架的库。如果你正在构建非面向浏览器的库，或需要高级构建流程，可以直接使用 [Rollup](https://rollupjs.org) 或 [esbuild](https://esbuild.github.io)。
 :::
 
 ## 进阶基础路径选项 {#advanced-base-options}

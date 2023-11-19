@@ -1,11 +1,64 @@
 import { defineConfig } from 'vitepress'
-import renderPermaLink from './render-perma-link'
-import MarkDownItCustomAnchor from './markdown-it-custom-anchor'
 
 const ogDescription = 'Next Generation Frontend Tooling'
 const ogImage = 'https://vitejs.dev/og-image.png'
 const ogTitle = 'Vite'
 const ogUrl = 'https://vitejs.dev'
+
+// netlify envs
+const deployURL = process.env.DEPLOY_PRIME_URL || ''
+const commitRef = process.env.COMMIT_REF?.slice(0, 8) || 'dev'
+
+const deployType = (() => {
+  switch (deployURL) {
+    case 'https://main--vite-docs-main.netlify.app':
+      return 'main'
+    case '':
+      return 'local'
+    default:
+      return 'release'
+  }
+})()
+const additionalTitle = ((): string => {
+  switch (deployType) {
+    case 'main':
+      return ' (main branch)'
+    case 'local':
+      return ' (local)'
+    case 'release':
+      return ''
+  }
+})()
+const versionLinks = ((): DefaultTheme.NavItemWithLink[] => {
+  const oldVersions: DefaultTheme.NavItemWithLink[] = [
+    {
+      text: 'Vite 4 Docs',
+      link: 'https://v4.vitejs.dev',
+    },
+    {
+      text: 'Vite 3 Docs',
+      link: 'https://v3.vitejs.dev',
+    },
+    {
+      text: 'Vite 2 Docs',
+      link: 'https://v2.vitejs.dev',
+    },
+  ]
+
+  switch (deployType) {
+    case 'main':
+    case 'local':
+      return [
+        {
+          text: 'Vite 5 Docs (release)',
+          link: 'https://vitejs.dev',
+        },
+        ...oldVersions,
+      ]
+    case 'release':
+      return oldVersions
+  }
+})()
 
 export default defineConfig({
   title: 'Vite 官方中文文档',
@@ -40,6 +93,7 @@ export default defineConfig({
     es: { label: 'Español', link: 'https://es.vitejs.dev' },
     pt: { label: 'Português', link: 'https://pt.vitejs.dev' },
     ko: { label: '한국어', link: 'https://ko.vitejs.dev' },
+    de: { label: 'Deutsch', link: 'https://de.vitejs.dev' },
   },
 
   themeConfig: {
@@ -51,7 +105,8 @@ export default defineConfig({
     },
 
     outline: {
-      label: '本页目录'
+      label: '本页目录',
+      level: [2, 3],
     },
 
     socialLinks: [
@@ -127,31 +182,44 @@ export default defineConfig({
         text: '相关链接',
         items: [
           { text: 'Team', link: '/team' },
+          { text: 'Blog', link: '/blog' },
           { text: 'Releases', link: '/releases' },
           {
-            text: 'Twitter',
-            link: 'https://twitter.com/vite_js'
+            items: [
+              {
+                text: 'Twitter',
+                link: 'https://twitter.com/vite_js',
+              },
+              {
+                text: 'Discord 聊天室',
+                link: 'https://chat.vitejs.dev'
+              },
+              {
+                text: 'Awesome Vite',
+                link: 'https://github.com/vitejs/awesome-vite'
+              },
+              {
+                text: 'ViteConf',
+                link: 'https://viteconf.org',
+              },
+              {
+                text: 'Dev.to 社区',
+                link: 'https://dev.to/t/vite'
+              },
+              {
+                text: 'Rollup 插件兼容',
+                link: 'https://vite-rollup-plugins.patak.dev/'
+              },
+              {
+                text: '更新日志',
+                link: 'https://github.com/vitejs/vite/blob/main/packages/vite/CHANGELOG.md'
+              },
+              {
+                text: '贡献指南',
+                link: 'https://github.com/vitejs/vite/blob/main/CONTRIBUTING.md',
+              },
+            ],
           },
-          {
-            text: 'Discord Chat',
-            link: 'https://chat.vitejs.dev'
-          },
-          {
-            text: 'Awesome Vite',
-            link: 'https://github.com/vitejs/awesome-vite'
-          },
-          {
-            text: 'Dev.to 社区',
-            link: 'https://dev.to/t/vite'
-          },
-          {
-            text: 'Rollup 插件兼容',
-            link: 'https://vite-rollup-plugins.patak.dev/'
-          },
-          {
-            text: '更新日志',
-            link: 'https://github.com/vitejs/vite/blob/main/packages/vite/CHANGELOG.md'
-          }
         ]
       },
       {
@@ -231,11 +299,15 @@ export default defineConfig({
               link: '/guide/troubleshooting'
             },
             {
+              text: '性能',
+              link: '/guide/performance',
+            },
+            {
               text: '理念',
               link: '/guide/philosophy',
             },
             {
-              text: '从 v3 迁移',
+              text: '从 v4 迁移',
               link: '/guide/migration'
             },
           ],
@@ -296,11 +368,11 @@ export default defineConfig({
             },
             {
               text: 'Worker 选项',
-              link: '/config/worker-options'
-            }
-          ]
-        }
-      ]
-    }
+              link: '/config/worker-options',
+            },
+          ],
+        },
+      ],
+    },
   },
 })

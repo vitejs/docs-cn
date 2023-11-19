@@ -30,11 +30,49 @@ const __dirname = fileURLToPath(new URL('.', import.meta.url))
   await server.listen()
 
   server.printUrls()
+  server.bindCLIShortcuts({ print: true })
 })()
 ```
 
 ::: tip 注意
 当在同一个 Node.js 进程中使用 `createServer` 和 `build` 时，两个函数都依赖于 `process.env.NODE_ENV` 才可正常工作，而这个环境变量又依赖于 `mode` 配置项。为了避免行为冲突，请在使用这两个 API 时为 `process.env.NODE_ENV` 或者 `mode` 配置项、字段设置参数值 `development`，或者你也可以生成另一个子进程，分别运行这两个 API。
+:::
+
+::: tip 注意
+当使用 [中间件模式](/config/server-options.md#server-middlewaremode) 与 [WebSocket 代理配置](/config/server-options.md#server-proxy) 时，父 http 服务器应该在 `middlewareMode` 中提供，以正确绑定代理。
+
+<details>
+<summary>示例</summary>
+
+```ts
+import http from 'http'
+import { createServer } from 'vite'
+
+const parentServer = http.createServer() // or express, koa, etc.
+
+const vite = await createServer({
+  server: {
+    // 开启中间件模式
+    middlewareMode: {
+      // 提供父 http 服务器以代理 WebSocket
+      server: parentServer,
+    },
+  },
+  proxy: {
+    '/ws': {
+      target: 'ws://localhost:3000',
+      // Proxying WebSocket
+      ws: true,
+    },
+  },
+})
+
+server.use((req, res, next) => {
+  vite.middlewares.handle(req, res, next)
+})
+```
+
+</details>
 :::
 
 ## `InlineConfig` {#inlineconfig}
@@ -73,7 +111,8 @@ interface ViteDevServer {
    */
   httpServer: http.Server | null
   /**
-   * chokidar 监听器实例
+   * chokidar 监听器实例。如果 `config.server.watch` 被设置为 `null`，
+   * 则返回一个无实际操作的事件发射器。
    * https://github.com/paulmillr/chokidar#api
    */
   watcher: FSWatcher
@@ -136,6 +175,10 @@ interface ViteDevServer {
    * 停止服务器
    */
   close(): Promise<void>
+  /**
+   * Bind CLI shortcuts
+   */
+  bindCLIShortcuts(options?: BindCLIShortcutsOptions<ViteDevServer>): void
 }
 ```
 
@@ -193,21 +236,14 @@ import { preview } from 'vite'
   })
 
   previewServer.printUrls()
+  previewServer.bindCLIShortcuts({ print: true })
 })()
 ```
 
 ## `PreviewServer`
 
 ```ts
-interface PreviewServer extends PreviewServerForHook {
-  resolvedUrls: ResolvedServerUrls
-}
-```
-
-## `PreviewServerForHook`
-
-```ts
-interface PreviewServerForHook {
+interface PreviewServer {
   /**
    * 解析后的 vite 配置对象
    */
@@ -226,13 +262,18 @@ interface PreviewServerForHook {
    */
   httpServer: http.Server
   /**
-   * Vite 在 CLI 中输出的解析后的 URL
+   * Vite 在 CLI 中输出解析后的 URL
+   * 在服务器开始监听前，值为 null
    */
   resolvedUrls: ResolvedServerUrls | null
   /**
    * 打印服务器 URL
    */
   printUrls(): void
+  /**
+   * Bind CLI shortcuts
+   */
+  bindCLIShortcuts(options?: BindCLIShortcutsOptions<PreviewServer>): void
 }
 ```
 
@@ -245,10 +286,12 @@ async function resolveConfig(
   inlineConfig: InlineConfig,
   command: 'build' | 'serve',
   defaultMode = 'development',
+  defaultNodeEnv = 'development',
+  isPreview = false,
 ): Promise<ResolvedConfig>
 ```
 
-该 `command` 值在开发环境（即 CLI 命令 `vite`、`vite dev` 和 `vite serve`） 为 `serve`。
+该 `command` 值在开发环境和预览环境 为 `serve`，而在构建环境是 `build`。
 
 ## `mergeConfig`
 
@@ -266,6 +309,15 @@ function mergeConfig(
 
 ::: tip NOTE
 `mergeConfig` 只接受对象形式的配置。如果有一个回调形式的配置，应该在将其传递给 `mergeConfig` 之前先调用该回调函数，将其转换成对象形式。
+
+你可以使用 `defineConfig` 工具函数将回调形式的配置与另一个配置合并：
+
+```ts
+export default defineConfig((configEnv) =>
+  mergeConfig(configAsCallback(configEnv), configAsObject),
+)
+```
+
 :::
 
 ## `searchForWorkspaceRoot`

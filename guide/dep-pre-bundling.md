@@ -52,10 +52,6 @@ export default defineConfig({
 
 当对链接的依赖进行更改时，请使用 `--force` 命令行选项重新启动开发服务器，以使更改生效。
 
-::: warning 重复删除
-由于链接的依赖项解析方式不同，传递依赖项（transitive dependencies）可能会被错误地去重，从而在运行时出现问题。如果遇到此问题，请使用 `npm pack` 命令来修复它。
-:::
-
 ## 自定义行为 {#customizing-the-behavior}
 
 有时候默认的依赖启发式算法（discovery heuristics）可能并不总是理想的。如果您想要明确地包含或排除依赖项，可以使用 [`optimizeDeps` 配置项](/config/dep-optimization-options.md) 来进行设置。
@@ -64,7 +60,7 @@ export default defineConfig({
 
 `include` 和 `exclude` 都可以用来处理这个问题。如果依赖项很大（包含很多内部模块）或者是 CommonJS，那么你应该包含它；如果依赖项很小，并且已经是有效的 ESM，则可以排除它，让浏览器直接加载它。
 
-你也可以使用 [`optimizeDeps.esbuildOptions` 选项](/config/dep-optimization-options.md#optimizedeps-esbuildoptions) 来进一步自定义 esbuild。例如，添加一个 esbuild 插件来处理依赖项中的特殊文件。
+你可以通过 [`optimizeDeps.esbuildOptions` 选项](/config/dep-optimization-options.md#optimizedeps-esbuildoptions) 进一步自定义 esbuild。例如，添加一个 esbuild 插件来处理依赖项中的特殊文件，或者更改 [build `target`](https://esbuild.github.io/api/#target)。
 
 ## 缓存 {#caching}
 

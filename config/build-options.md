@@ -43,7 +43,7 @@ type ResolveModulePreloadDependenciesFn = (
   context: {
     importer: string
   },
-) => (string | { runtime?: string })[]
+) => string[]
 ```
 
 `resolveDependencies` 函数将为每个动态导入调用，同时带着一个它所依赖的 chunk 列表。并且它还会为每个在入口 HTML 文件中导入的 chunk 调用。 可以返回一个新的依赖关系数组，可能被过滤后变少了，也可能有更多依赖注入进来了，同时它们的路径也被修改过。`deps` 路径是相对于 `build.outDir` 的。若在注入该模块到 HTML head 时使用 `new URL(dep, import.meta.url)` 获取绝对路径，则对于 `hostType === 'js'`，允许返回一个相对于 `hostId` 的路径。
@@ -83,7 +83,7 @@ modulePreload: {
 ## build.assetsInlineLimit {#build-assetsinlinelimit}
 
 - **类型：** `number`
-- **默认：** `4096` (4kb)
+- **默认：** `4096` (4 KiB)
 
 小于此阈值的导入或引用资源将内联为 base64 编码，以避免额外的 http 请求。设置为 `0` 可以完全禁用此项。
 
@@ -163,7 +163,7 @@ Git LFS 占位符会自动排除在内联之外，因为它们不包含它们所
 - **默认：** `false`
 - **相关内容：** [后端集成](/guide/backend-integration)
 
-当设置为 `true`，构建后将会生成 `manifest.json` 文件，包含了没有被 hash 过的资源文件名和 hash 后版本的映射。可以为一些服务器框架渲染时提供正确的资源引入链接。当该值为一个字符串时，它将作为 manifest 文件的名字。
+当设置为 `true`，构建后将会生成 `.vite/manifest.json` 文件，包含了没有被 hash 过的资源文件名和 hash 后版本的映射。可以为一些服务器框架渲染时提供正确的资源引入链接。当该值为一个字符串时，它将作为 manifest 文件的名字。
 
 ## build.ssrManifest {#build-ssrmanifest}
 
@@ -180,6 +180,13 @@ Git LFS 占位符会自动排除在内联之外，因为它们不包含它们所
 - **相关链接：** [服务端渲染](/guide/ssr)
 
 生成面向 SSR 的构建。此选项的值可以是字符串，用于直接定义 SSR 的入口，也可以为 `true`，但这需要通过设置 `rollupOptions.input` 来指定 SSR 的入口。
+
+## build.ssrEmitAssets {#build-ssremitassets}
+
+- **类型：** `boolean`
+- **默认：** `false`
+
+在 SSR 构建期间，静态资源不会被输出，因为它们通常被认为是客户端构建的一部分。这个选项允许框架强制在客户端和 SSR 构建中都输出它们。将静态资源在构建后合并是框架的责任。
 
 ## build.minify {#build-minify}
 
@@ -202,6 +209,8 @@ npm add -D terser
 
 传递给 Terser 的更多 [minify 选项](https://terser.org/docs/api-reference#minify-options)。
 
+此外，你还可以传递一个 `maxWorkers: number` 选项来指定最大的工作线程数。默认为 CPU 核心数减 1。
+
 ## build.write {#build-write}
 
 - **类型：** `boolean`
@@ -218,7 +227,6 @@ npm add -D terser
 
 ## build.copyPublicDir {#build-copypublicdir}
 
-- **实验性：** [提供反馈](https://github.com/vitejs/vite/discussions/13807)
 - **类型：** `boolean`
 - **默认：** `true`
 
@@ -236,7 +244,7 @@ npm add -D terser
 - **类型：** `number`
 - **默认：** `500`
 
-规定触发警告的 chunk 大小。（以 kbs 为单位）。它将与未压缩的 chunk 大小进行比较，因为 [JavaScript 大小本身与执行时间相关](https://v8.dev/blog/cost-of-javascript-2019)。
+规定触发警告的 chunk 大小。（以 kB 为单位）。它将与未压缩的 chunk 大小进行比较，因为 [JavaScript 大小本身与执行时间相关](https://v8.dev/blog/cost-of-javascript-2019)。
 
 ## build.watch {#build-watch}
 

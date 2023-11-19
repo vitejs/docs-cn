@@ -1,8 +1,39 @@
-# 故障排除 {#troubleshooting}
+# 排错指南 {#troubleshooting}
 
 > 你还可以查看 [Rollup 的故障排除指南](https://rollupjs.org/troubleshooting/) 了解更多。
 
 如果这里的建议并未帮助到你，请将你的问题发送到 [GitHub 讨论区](https://github.com/vitejs/vite/discussions) 或 [Vite Land Discord](https://chat.vitejs.dev) 的 `#help` 频道。
+
+## CJS
+
+### Vite CJS Node API deprecated {#vite-cjs-node-api-deprecated}
+
+Vite 的 CJS Node API 构建已经被废弃，并将在 Vite 6 中移除。查看 [GitHub 讨论区](https://github.com/vitejs/vite/discussions/13928) 了解更多背景信息。你应该更新你的文件或框架来导入 Vite 的 ESM 构建。
+
+在一个基础的 Vite 项目中，请确保：
+
+1. `vite.config.js` 配置文件的内容使用 ESM 语法。
+2. 最近的 `package.json` 文件中有 `"type": "module"`，或者使用 `.mjs`/`.mts` 扩展名，例如 `vite.config.mjs` 或者 `vite.config.mts`。
+
+对于其他项目，有几种常见的方法：
+
+- **配置 ESM 为默认，如果需要则选择 CJS：** 在项目 `package.json` 中添加 `"type": "module"`。所有 `*.js` 文件现在都被解释为 ESM，并且需要使用 ESM 语法。你可以将一个文件重命名为 `.cjs` 扩展名来继续使用 CJS。
+- **保持 CJS 为默认，如果需要则选择 ESM：** 如果项目 `package.json` 没有 `"type": "module"`，所有 `*.js` 文件都被解释为 CJS。你可以将一个文件重命名为 `.mjs` 扩展名来使用 ESM。
+- **动态导入 Vite：** 如果你需要继续使用 CJS，你可以使用 `import('vite')` 动态导入 Vite。这要求你的代码必须在一个 `async` 上下文中编写，但是由于 Vite 的 API 大多是异步的，所以应该还是可以管理的。
+
+如果你不确定警告来自哪里，你可以通过 `VITE_CJS_TRACE=true` 标志运行你的脚本来记录堆栈跟踪：
+
+```bash
+VITE_CJS_TRACE=true vite dev
+```
+
+如果你想暂时忽略警告，你可以通过 `VITE_CJS_IGNORE_WARNING=true` 标志运行你的脚本：
+
+```bash
+VITE_CJS_IGNORE_WARNING=true vite dev
+```
+
+请注意，postcss 配置文件还不支持 ESM + TypeScript（`"type": "module"` 中的 `.mts` 或 `.ts`）。如果你有带 `.ts` 的 postcss 配置，并在 package.json 中添加了 `"type": "module"`，你还需要将 postcss 配置重命名为 `.cts`。
 
 ## CLI {#cli}
 
@@ -116,13 +147,9 @@ import './Foo.js' // 应该为 './foo.js'
 
 ### 完全重新加载了，而不是 HMR {#a-full-reload-happens-instead-of-hmr}
 
-如果 HMR 不是由 Vite 或一个插件处理的，那么将进行完全的重新加载。
+如果 HMR 不是由 Vite 或一个插件处理的，那么将进行完全的重新加载，因为这是唯一刷新状态的方式。
 
-同时如果有依赖环，也会发生完全重载。要解决这个问题，请先尝试解决依赖循环。
-
-### 控制台中大量热更新 {#high-number-of-hmr-updates-in-console}
-
-这可能是由循环依赖引起的。要解决这个问题，请先尝试解决依赖循环。
+如果 HMR 被处理了，但是在循环依赖中，那么也会发生完全的重新加载，以恢复执行顺序。要解决这个问题，请尝试打破循环。你可以运行 `vite --debug hmr` 来记录循环依赖路径，如果文件变化触发了它。
 
 ## 构建 {#build}
 
@@ -165,6 +192,8 @@ vite build --profile
 :::
 
 Node.js 调试器将在根文件夹中生成 `vite-profile-0.cpuprofile` 文件，前往 https://www.speedscope.app/ ，点击 `BROWSE` 按钮上传 CPU 性能分析文件以检查结果。
+
+可以安装 [vite-plugin-inspect](https://github.com/antfu/vite-plugin-inspect) 插件，它可以让你检查 Vite 插件转换时的中间态，并帮助你确定哪些插件或中间件是你应用的瓶颈。该插件可以在开发和构建模式下使用。请查看其 readme 以获取更多详细信息。
 
 ## 其他 {#others}
 

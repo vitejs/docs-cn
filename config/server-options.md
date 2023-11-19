@@ -56,7 +56,7 @@ export default defineConfig({
 
 ## server.https {#server-https}
 
-- **类型：** `boolean | https.ServerOptions`
+- **类型：** `https.ServerOptions`
 
 启用 TLS + HTTP/2。注意：当 [`server.proxy` 选项](#server-proxy) 也被使用时，将会仅使用 TLS。
 
@@ -90,7 +90,7 @@ export default defineConfig({
 
 请注意，如果使用了非相对的 [基础路径 `base`](/config/shared-options.md#base)，则必须在每个 key 值前加上该 `base`。
 
-继承自 [`http-proxy`](https://github.com/http-party/node-http-proxy#options)。完整选项详见 [此处](https://github.com/vitejs/vite/blob/main/packages/vite/src/node/server/middlewares/proxy.ts#L13).
+继承自 [`http-proxy`](https://github.com/http-party/node-http-proxy#options)。完整选项详见 [此处](https://github.com/vitejs/vite/blob/main/packages/vite/src/node/server/middlewares/proxy.ts#L12).
 
 在某些情况下，你可能也想要配置底层的开发服务器。（例如添加自定义的中间件到内部的 [connect](https://github.com/senchalabs/connect) 应用中）为了实现这一点，你需要编写你自己的 [插件](/guide/using-plugins.html) 并使用 [configureServer](/guide/api-plugin.html#configureserver) 函数。
 
@@ -174,28 +174,43 @@ Direct websocket connection fallback. Check out https://vitejs.dev/config/server
 
 :::
 
-## server.watch {#server-watch}
+## server.warmup
 
-- **类型：** `object`
+- **类型：** `{ clientFiles?: string[], ssrFiles?: string[] }`
+- **相关：** [预热常用文件](/guide/performance.html#warm-up-frequently-used-files)
 
-传递给 [chokidar](https://github.com/paulmillr/chokidar#api) 的文件系统监听器选项。
+提前转换和缓存文件以进行预热。可以在服务器启动时提高初始页面加载速度，并防止转换瀑布。
 
-Vite 服务器默认会忽略对 `.git/` 和 `node_modules/` 目录的监听。如果你需要对 `node_modules/` 内的包进行监听，你可以为 `server.watch.ignored` 赋值一个取反的 glob 模式，例如：
+`clientFiles` 是仅在客户端使用的文件，而 `ssrFiles` 是仅在服务器端渲染中使用的文件。它们接受一个文件路径数组或相对于 `root` 的 [`fast-glob`](https://github.com/mrmlnc/fast-glob) 通配符。
+
+请确保只添加经常使用的文件，以免在启动时过载 Vite 开发服务器。
 
 ```js
 export default defineConfig({
   server: {
-    watch: {
-      ignored: ['!**/node_modules/your-package-name/**'],
+    warmup: {
+      clientFiles: ['./src/components/*.vue', './src/utils/big-utils.js'],
+      ssrFiles: ['./src/server/modules/*.js'],
     },
-  },
-  // 被监听的包必须被排除在优化之外，
-  // 以便它能出现在依赖关系图中并触发热更新。
-  optimizeDeps: {
-    exclude: ['your-package-name'],
   },
 })
 ```
+
+## server.watch {#server-watch}
+
+- **类型：** `object | null`
+
+传递给 [chokidar](https://github.com/paulmillr/chokidar#api) 的文件系统监听器选项。
+
+Vite 服务器的文件监听器默认会监听 `root` 目录，同时会跳过 `.git/` 和 `node_modules/` 目录。当监听到文件更新时，Vite 会应用 HMR 并且只在需要时更新页面。
+
+如果设置为 `null`，则不会监听任何文件。`server.watcher` 将提供一个兼容的事件发射器，但是调用 `add` 或 `unwatch` 将没有任何效果。
+
+::: warning 监听 `node_modules` 中的文件
+
+目前没有可行的方式来监听 `node_modules` 中的文件。若要了解更多详情和可能的临时替代方案，你可以关注 [issue #8619](https://github.com/vitejs/vite/issues/8619)。
+
+:::
 
 ::: warning 在 Windows Linux 子系统（WSL）上使用 Vite
 
@@ -234,7 +249,9 @@ async function createServer() {
     appType: 'custom', // 不引入 Vite 默认的 HTML 处理中间件
   })
   // 将 vite 的 connect 实例作中间件使用
-  app.use(vite.middlewares)
+  app.use((req, res, next) => {
+    vite.middlewares.handle(req, res, next)
+  })
 
   app.use('*', async (req, res) => {
     // 由于 `appType` 的值是 `'custom'`，因此应在此处提供响应。

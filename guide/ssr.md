@@ -16,10 +16,16 @@ SSR 特别指支持在 Node.js 中运行相同应用程序的前端框架（例�
 
 ## 示例项目 {#example-projects}
 
-Vite 为服务端渲染（SSR）提供了内建支持。这里的 Vite 范例包含了 Vue 3 和 React 的 SSR 设置示例，可以作为本指南的参考：
+Vite 为服务端渲染（SSR）提供了内建支持。[`create-vite-extra`](https://github.com/bluwy/create-vite-extra) 包含了一些你可以用作参考的SSR设置示例：
 
-- [Vue 3](https://github.com/vitejs/vite-plugin-vue/tree/main/playground/ssr-vue)
-- [React](https://github.com/vitejs/vite-plugin-react/tree/main/playground/ssr-react)
+- [Vanilla](https://github.com/bluwy/create-vite-extra/tree/master/template-ssr-vanilla)
+- [Vue](https://github.com/bluwy/create-vite-extra/tree/master/template-ssr-vue)
+- [React](https://github.com/bluwy/create-vite-extra/tree/master/template-ssr-react)
+- [Preact](https://github.com/bluwy/create-vite-extra/tree/master/template-ssr-preact)
+- [Svelte](https://github.com/bluwy/create-vite-extra/tree/master/template-ssr-svelte)
+- [Solid](https://github.com/bluwy/create-vite-extra/tree/master/template-ssr-solid)
+
+你也可以通过 [运行 `create-vite`](./index.md#scaffolding-your-first-vite-project) 在本地搭建这些项目，并在框架选项下选择 `Others > create-vite-extra`。
 
 ## 源码结构 {#source-structure}
 
@@ -83,7 +89,13 @@ async function createServer() {
 
   // 使用 vite 的 Connect 实例作为中间件
   // 如果你使用了自己的 express 路由（express.Router()），你应该使用 router.use
-  app.use(vite.middlewares)
+  app.use((req, res, next) => {
+    // 当服务器重启（例如用户修改了 vite.config.js 后），
+    // `vite.middlewares` 将会被重新赋值。在包装处理程序中调用
+    // `vite.middlewares` 可以确保
+    // 始终使用最新的 Vite 中间件。
+    vite.middlewares.handle(req, res, next)
+  })
 
   app.use('*', async (req, res) => {
     // 服务 index.html - 下面我们来处理这个问题
@@ -177,18 +189,18 @@ app.use('*', async (req, res, next) => {
 
 - 将 `vite` 开发服务器的创建和所有使用都移到 dev-only 条件分支后面，然后添加静态文件服务中间件来服务 `dist/client` 中的文件。
 
-可以在此参考 [Vue](https://github.com/vitejs/vite-plugin-vue/tree/main/playground/ssr-vue) 和 [React](https://github.com/vitejs/vite-plugin-react/tree/main/playground/ssr-react) 的设置范例。
+可以参考 [示例项目](#example-projects) 以获取一个可运行的设置。
 
 ## 生成预加载指令 {#generating-preload-directives}
 
-`vite build` 支持使用 `--ssrManifest` 标志，这将会在构建输出目录中生成一份 `ssr-manifest.json`：
+`vite build` 支持使用 `--ssrManifest` 标志，这将会在构建输出目录中生成一份 `.vite/ssr-manifest.json`：
 
 ```diff
 - "build:client": "vite build --outDir dist/client",
 + "build:client": "vite build --outDir dist/client --ssrManifest",
 ```
 
-上面的脚本将会为客户端构建生成 `dist/client/ssr-manifest.json`（是的，该 SSR 清单是从客户端构建生成而来，因为我们想要将模块 ID 映射到客户端文件上）。清单包含模块 ID 到它们关联的 chunk 和资源文件的映射。
+上面的脚本将会为客户端构建生成 `dist/client/.vite/ssr-manifest.json`（是的，该 SSR 清单是从客户端构建生成而来，因为我们想要将模块 ID 映射到客户端文件上）。清单包含模块 ID 到它们关联的 chunk 和资源文件的映射。
 
 为了利用该清单，框架需要提供一种方法来收集在服务器渲染调用期间使用到的组件模块 ID。
 
@@ -259,18 +271,15 @@ SSR 构建的默认目标为 node 环境，但你也可以让服务运行在 Web
 - 将所有依赖视为 `noExternal`（非外部化）
 - 若任何 Node.js 内置内容被引入，将抛出一个错误
 
+## SSR Resolve Conditions
+
+By default package entry resolution will use the conditions set in [`resolve.conditions`](../config/shared-options.md#resolve-conditions) for the SSR build. You can use [`ssr.resolve.conditions`](../config/ssr-options.md#ssr-resolve-conditions) and [`ssr.resolve.externalConditions`](../config/ssr-options.md#ssr-resolve-externalconditions) to customize this behavior.
+默认情况下包的入口解析将会使用 [`resolve.conditions`](../config/shared-options.md#resolve-conditions) 中设置的条件来进行 SSR 构建。你可以使用 [`ssr.resolve.conditions`](../config/ssr-options.md#ssr-resolve-conditions) 和 [`ssr.resolve.externalConditions`](../config/ssr-options.md#ssr-resolve-externalconditions) 来自定义这个行为。
+
 ## Vite CLI {#vite-cli}
 
 CLI 命令 `$ vite dev` 和 `$ vite preview` 也可以用于 SSR 应用：你可以将你的 SSR 中间件通过 [`configureServer`](/guide/api-plugin#configureserver) 添加到开发服务器、以及通过 [`configurePreviewServer`](/guide/api-plugin#configurepreviewserver) 添加到预览服务器。
 
 :::tip 注意
 使用一个后置钩子，使得你的 SSR 中间件在 Vite 的中间件 _之后_ 运行。
-:::
-
-## SSR 格式 {#ssr-format}
-
-默认情况下，Vite 生成的 SSR 打包产物是 ESM 格式。实验性地支持配置 `ssr.format` ，但不推荐这样做。未来围绕 SSR 的开发工作将基于 ESM 格式，并且为了向下兼容，commonjs 仍然可用。如果你的 SSR 项目不能使用 ESM，你可以通过 [Vite v2 外部启发式方法](https://v2.vitejs.dev/guide/ssr.html#ssr-externals) 设置 `legacy.buildSsrCjsExternalHeuristics: true` 生成 CJS 格式的产物。
-
-:::warning 安全注意事项
-实验性的 `legacy.buildSsrCjsExternalHeuristics` 和 `ssr.format: 'cjs'` 将在 Vite 5 中移除。可以在 [此讨论](https://github.com/vitejs/vite/discussions/13816) 中找到更多信息，并提供反馈意见。
 :::

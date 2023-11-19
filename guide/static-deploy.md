@@ -58,9 +58,9 @@ $ npm run preview
 
 1. 在 `vite.config.js` 中设置正确的 `base`。
 
-   如果你要部署在 `https://<USERNAME>.github.io/` 上，你可以省略 `base` 使其默认为 `'/'`。
+   如果你正要部署到 `https://<USERNAME>.github.io/`，或者通过 GitHub Pages 部署到一个自定义域名（例如 `www.example.com`），请将 `base` 设置为 `'/'`。或者，你也可以从配置中移除 `base`，因为它默认为 `'/'`。
 
-   如果你要部署在 `https://<USERNAME>.github.io/<REPO>/` 上，例如你的仓库地址为 `https://github.com/<USERNAME>/<REPO>`，那么请设置 `base` 为 `'/<REPO>/'`。
+   如果你正在部署到 `https://<USERNAME>.github.io/<REPO>/`（例如你的仓库地址为 `https://github.com<USERNAME>/<REPO>`），那么请将 `base` 设置为 `'/<REPO>/'`。
 
 2. 进入仓库 settings 页面的 GitHub Pages 配置，选择部署来源为“GitHub Actions”，这将引导你创建一个构建和部署项目的工作流程，我们提供了一个安装依赖项和使用 npm 构建的工作流程样本：
 
@@ -96,7 +96,7 @@ $ npm run preview
        runs-on: ubuntu-latest
        steps:
          - name: Checkout
-           uses: actions/checkout@v3
+           uses: actions/checkout@v4
          - name: Set up Node
            uses: actions/setup-node@v3
            with:
@@ -109,13 +109,13 @@ $ npm run preview
          - name: Setup Pages
            uses: actions/configure-pages@v3
          - name: Upload artifact
-           uses: actions/upload-pages-artifact@v1
+           uses: actions/upload-pages-artifact@v2
            with:
              # Upload dist repository
              path: './dist'
          - name: Deploy to GitHub Pages
            id: deployment
-           uses: actions/deploy-pages@v1
+           uses: actions/deploy-pages@v2
    ```
 
 ## GitLab Pages 配合 GitLab CI {#gitlab-pages-and-gitlab-ci}
@@ -220,7 +220,7 @@ Vercel CLI
 1. 安装 [Wrangler CLI](https://developers.cloudflare.com/workers/wrangler/get-started/).
 2. 使用 `wrangler login`、通过你的 Cloudflare 账号完成 Wrangler 身份校验。
 3. 运行你的构建命令
-4. 使用 `npx wrangler pages publish dist` 部署。
+4. 使用 `npx wrangler pages deploy dist` 部署。
 
 ```bash
 # 安装 Wrangler CLI
@@ -233,7 +233,7 @@ $ wrangler login
 $ npm run build
 
 # 创建一个新的部署
-$ npx wrangler pages publish dist
+$ npx wrangler pages deploy dist
 ```
 
 在你的资产上传后，Wrangler 会给你一个预览 URL 来检查你的网站。当你登录到 Cloudflare Pages 仪表板时，你会看到你的新项目。
@@ -334,10 +334,14 @@ $ npx wrangler pages publish dist
 
 还可以为项目添加一个 [自定义域名](https://render.com/docs/custom-domains)。
 
-## Flightcontrol
+## Flightcontrol {#flightcontrol}
 
 使用 [Flightcontrol](https://www.flightcontrol.dev/?ref=docs-vite) 部署静态站点，可以按照 [说明](https://www.flightcontrol.dev/docs/reference/examples/vite?ref=docs-vite) 进行操作。
 
 ## AWS Amplify 部署 {#aws-amplify-hoisting}
 
 使用 [AWS Amplify 部署](https://aws.amazon.com/amplify/hosting/) 部署静态站点，可以按照 [说明](https://docs.amplify.aws/guides/hosting/vite/q/platform/js/) 进行操作。
+
+## Kinsta 静态站点托管 {#kinsta-static-site-hosting}
+
+你可以按照这些 [说明](https://kinsta.com/docs/react-vite-example/) 在 [Kinsta](https://kinsta.com/static-site-hosting/) 上部署你的 Vite 应用作为一个静态站点。

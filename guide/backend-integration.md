@@ -12,7 +12,7 @@
    // vite.config.js
    export default defineConfig({
      build: {
-       // 在 outDir 中生成 manifest.json
+       // 在 outDir 中生成 .vite/manifest.json
        manifest: true,
        rollupOptions: {
          // 覆盖默认的 .html 入口
@@ -44,7 +44,7 @@
 
    这对于图片等资源的正确加载是必需的。
 
-   如果你正使用 `@vitejs/plugin-react` 配合 React，你还需要在上述脚本前添加下面这个，因为插件不能修改你正在服务的 HTML：
+   如果你正使用 `@vitejs/plugin-react` 配合 React，你还需要在上述脚本前添加下面这个，因为插件不能修改你正在服务的 HTML（请将 `http://localhost:5173` 替换为 Vite 正在运行的本地 URL）：
 
    ```html
    <script type="module">
@@ -56,7 +56,7 @@
    </script>
    ```
 
-3. 在生产环境中：在运行 `vite build` 之后，一个 `manifest.json` 文件将与静态资源文件一同生成。一个示例清单文件会像下面这样：
+3. 在生产环境中：在运行 `vite build` 之后，一个 `.vite/manifest.json` 文件将与静态资源文件一同生成。一个示例清单文件会像下面这样：
 
    ```json
    {

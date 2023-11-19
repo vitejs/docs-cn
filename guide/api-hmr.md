@@ -37,6 +37,10 @@ interface ViteHotContext {
     event: T,
     cb: (payload: InferCustomEventPayload<T>) => void,
   ): void
+  off<T extends string>(
+    event: T,
+    cb: (payload: InferCustomEventPayload<T>) => void,
+  ): void
   send<T extends string>(event: T, data?: InferCustomEventPayload<T>): void
 }
 ```
@@ -143,6 +147,16 @@ if (import.meta.hot) {
 
 `import.meta.hot.data` 对象在同一个更新模块的不同实例之间持久化。它可以用于将信息从模块的前一个版本传递到下一个版本。
 
+注意，不支持对 `data` 本身的重新赋值。相反，你应该对 `data` 对象的属性进行突变，以便保留从其他处理程序添加的信息。
+
+```js
+// ok
+import.meta.hot.data.someValue = 'hello'
+
+// 不支持
+import.meta.hot.data = { someValue: 'hello' }
+```
+
 ## `hot.decline()` {#hot-decline}
 
 目前是一个空操作并暂留用于向后兼容。若有新的用途设计可能在未来会发生变更。要指明某模块是不可热更新的，请使用 `hot.invalidate()`。
@@ -179,7 +193,11 @@ import.meta.hot.accept((module) => {
 
 自定义 HMR 事件可以由插件发送。更多细节详见 [handleHotUpdate](./api-plugin#handleHotUpdate)。
 
-## `hot.send(event, data)` {##hot-send-event-data}
+## `hot.off(event, cb)` {#hot-offevent-cb}
+
+从事件监听器中移除回调函数。
+
+## `hot.send(event, data)` {#hot-send-event-data}
 
 发送自定义事件到 Vite 开发服务器。
 
