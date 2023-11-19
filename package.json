@@ -3,15 +3,16 @@
 	"version": "1.0.0",
 	"description": "Vite.js documentation Chinese translation.",
 	"repository": "https://github.com/vitejs/docs-cn",
+	"type": "module",
 	"author": "Evan You",
 	"private": true,
 	"license": "CC BY-NC-SA 4.0",
 	"devDependencies": {
-		"chalk": "^4.1.0",
+		"chalk": "^4.1.2",
 		"gray-matter": "^4.0.3",
 		"lodash": "^4.17.21",
-		"vite": "^2.9.12",
-		"vitepress": "^1.0.0-alpha.43",
+		"vite": "^4.5.0",
+		"vitepress": "^1.0.0-rc.29",
 		"yorkie": "^2.0.0"
 	},
 	"scripts": {
