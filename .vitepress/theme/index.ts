@@ -7,6 +7,9 @@ import AsideSponsors from './components/AsideSponsors.vue'
 import SvgImage from './components/SvgImage.vue'
 import WwAds from './components/WwAds.vue'
 import './custom.css'
+// temporary fix for vitepress not including component css when only
+// imported in a single page
+import './components/BlogIndex.vue'
 
 export default {
   extends: DefaultTheme,

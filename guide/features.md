@@ -111,7 +111,9 @@ Vite 默认不会转译 TypeScript，而是使用 `esbuild` 的默认行为。
 - [`experimentalDecorators`](https://www.typescriptlang.org/tsconfig#experimentalDecorators)
 - [`alwaysStrict`](https://www.typescriptlang.org/tsconfig#alwaysStrict)
 
-如果你的代码库很难迁移到 `"isolatedModules": true`，或许你可以尝试通过第三方插件来解决，比如 [rollup-plugin-friendly-type-imports](https://www.npmjs.com/package/rollup-plugin-friendly-type-imports)。但是，这种方式不被 Vite 官方支持。
+::: tip `skipLibCheck`
+Vite 启动模板默认情况下会设置 `"skipLibCheck": "true"`，以避免对依赖项进行类型检查，因为它们可能只支持特定版本和配置的 TypeScript。你可以在 [vuejs/vue-cli#5688](https://github.com/vuejs/vue-cli/pull/5688)。
+:::
 
 ### 客户端类型 {#client-types}
 

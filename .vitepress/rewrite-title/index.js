@@ -1,6 +1,8 @@
-const path = require('path')
-const fsp = require('fs').promises
-const matterService = require('../utils/frontmatter-service')
+import path from 'node:path'
+import fsp from 'node:fs/promises'
+import matterService from '../utils/frontmatter-service.js'
+import { fileURLToPath } from 'node:url'
+const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const workspacePath = path.resolve(__dirname, '..', '..')
 
 const h1MdRegExp = /^#\s+(.+)\s+(\{#([\w-]+)\})$/
@@ -41,4 +43,4 @@ const ergodicDirectory = async (dirPath) => {
   }
 }
 
-module.exports = () => ergodicDirectory(workspacePath)
+export default () => ergodicDirectory(workspacePath)
