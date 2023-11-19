@@ -12,13 +12,8 @@ Vite 的 CJS Node API 构建已经被废弃，并将在 Vite 6 中移除。查�
 
 在一个基础的 Vite 项目中，请确保：
 
-<<<<<<< HEAD
 1. `vite.config.js` 配置文件的内容使用 ESM 语法。
-2. 最近的 `package.json` 文件中有 `"type": "module"`，或者使用 `.mjs` 扩展名，例如 `vite.config.mjs`。
-=======
-1. The `vite.config.js` file content is using the ESM syntax.
-2. The closest `package.json` file has `"type": "module"`, or use the `.mjs`/`.mts` extension, e.g. `vite.config.mjs` or `vite.config.mts`.
->>>>>>> 8b72e23084a5bf4f2af26c9cef6ed2e89e20d001
+2. 最近的 `package.json` 文件中有 `"type": "module"`，或者使用 `.mjs`/`.mts` 扩展名，例如 `vite.config.mjs` 或者 `vite.config.mts`。
 
 对于其他项目，有几种常见的方法：
 
@@ -152,19 +147,9 @@ import './Foo.js' // 应该为 './foo.js'
 
 ### 完全重新加载了，而不是 HMR {#a-full-reload-happens-instead-of-hmr}
 
-<<<<<<< HEAD
-如果 HMR 不是由 Vite 或一个插件处理的，那么将进行完全的重新加载。
+如果 HMR 不是由 Vite 或一个插件处理的，那么将进行完全的重新加载，因为这是唯一刷新状态的方式。
 
-同时如果有依赖环，也会发生完全重载。要解决这个问题，请先尝试解决依赖循环。
-
-### 控制台中大量热更新 {#high-number-of-hmr-updates-in-console}
-
-这可能是由循环依赖引起的。要解决这个问题，请先尝试解决依赖循环。
-=======
-If HMR is not handled by Vite or a plugin, a full reload will happen as it's the only way to refresh the state.
-
-If HMR is handled but it is within a circular dependency, a full reload will also happen to recover the execution order. To solve this, try breaking the loop. You can run `vite --debug hmr` to log the circular dependency path if a file change triggered it.
->>>>>>> 8b72e23084a5bf4f2af26c9cef6ed2e89e20d001
+如果 HMR 被处理了，但是在循环依赖中，那么也会发生完全的重新加载，以恢复执行顺序。要解决这个问题，请尝试打破循环。你可以运行 `vite --debug hmr` 来记录循环依赖路径，如果文件变化触发了它。
 
 ## 构建 {#build}
 

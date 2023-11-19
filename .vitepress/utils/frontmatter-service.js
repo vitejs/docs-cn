@@ -1,6 +1,7 @@
-const fs = require('fs')
-const matter = require('gray-matter')
-const { extend, isEmpty: _isEmpty } = require('lodash')
+import fs from 'node:fs'
+import matter from 'gray-matter'
+import _ from 'lodash'
+
 // gray-matter is a dep for vitepress,
 // no need to specify that in package.json
 
@@ -21,7 +22,7 @@ class FrontMatterService {
   }
 
   isEmpty() {
-    return _isEmpty(this.matter.data)
+    return _._isEmpty(this.matter.data)
   }
 
   /** @param{(data: string) => void} callback */
@@ -48,7 +49,7 @@ class FrontMatterService {
 
   /** @param {Record<string, any>} src */
   extend(src) {
-    extend(this.matter.data, src)
+    _.extend(this.matter.data, src)
     return this
   }
 
@@ -63,4 +64,4 @@ class FrontMatterService {
   }
 }
 
-module.exports = new FrontMatterService()
+export default new FrontMatterService()

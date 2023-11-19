@@ -5,14 +5,11 @@ import './styles/vars.css'
 import HomeSponsors from './components/HomeSponsors.vue'
 import AsideSponsors from './components/AsideSponsors.vue'
 import SvgImage from './components/SvgImage.vue'
-<<<<<<< HEAD
 import WwAds from './components/WwAds.vue'
 import './custom.css'
-=======
 // temporary fix for vitepress not including component css when only
 // imported in a single page
 import './components/BlogIndex.vue'
->>>>>>> 8b72e23084a5bf4f2af26c9cef6ed2e89e20d001
 
 export default {
   extends: DefaultTheme,

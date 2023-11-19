@@ -107,13 +107,9 @@ Vite 还支持在 HTML 文件中替换环境变量。`import.meta.env` 中的任
 
 如果环境变量在 `import.meta.env` 中不存在，比如不存在的 `%NON_EXISTENT%`，则会将被忽略而不被替换，这与 JS 中的 `import.meta.env.NON_EXISTENT` 不同，JS 中会被替换为 `undefined`。
 
-<<<<<<< HEAD
-## 模式 {#modes}
-=======
-Given that Vite is used by many frameworks, it is intentionally unopinionated about complex replacements like conditionals. Vite can be extended using [an existing userland plugin](https://github.com/vitejs/awesome-vite#transformers) or a custom plugin that implements the [`transformIndexHtml` hook](./api-plugin#transformindexhtml).
+正因为 Vite 被许多框架使用，它在复杂的替换（如条件替换）上故意不持任何意见。Vite 可以使用 [现有的用户插件](https://github.com/vitejs/awesome-vite#transformers) 或者一个实现了 [`transformIndexHtml` 钩子](./api-plugin#transformindexhtml) 的自定义插件来扩展。
 
-## Modes
->>>>>>> 8b72e23084a5bf4f2af26c9cef6ed2e89e20d001
+## 模式 {#modes}
 
 默认情况下，开发服务器 (`dev` 命令) 运行在 `development` (开发) 模式，而 `build` 命令则运行在 `production` (生产) 模式。
 

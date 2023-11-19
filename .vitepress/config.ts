@@ -5,8 +5,6 @@ const ogImage = 'https://vitejs.dev/og-image.png'
 const ogTitle = 'Vite'
 const ogUrl = 'https://vitejs.dev'
 
-<<<<<<< HEAD
-=======
 // netlify envs
 const deployURL = process.env.DEPLOY_PRIME_URL || ''
 const commitRef = process.env.COMMIT_REF?.slice(0, 8) || 'dev'
@@ -62,7 +60,6 @@ const versionLinks = ((): DefaultTheme.NavItemWithLink[] => {
   }
 })()
 
->>>>>>> 8b72e23084a5bf4f2af26c9cef6ed2e89e20d001
 export default defineConfig({
   title: 'Vite 官方中文文档',
   description: '下一代前端工具链',

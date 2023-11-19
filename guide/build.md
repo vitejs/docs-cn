@@ -216,13 +216,8 @@ dist/my-lib.umd.cjs 0.30 kB / gzip: 0.16 kB
 如果 `package.json` 不包含 `"type": "module"`，Vite 会生成不同的文件后缀名以兼容 Node.js。`.js` 会变为 `.mjs` 而 `.cjs` 会变为 `.js` 。
 :::
 
-<<<<<<< HEAD
 ::: tip 环境变量
-在库模式下，所有 `import.meta.env.*` 用法在构建生产时都会被静态替换。但是，`process.env.*` 的用法不会被替换，所以你的库的使用者可以动态地更改它。如果不想允许他们这样做，你可以使用 `define: { 'process.env.NODE_ENV': '"production"' }` 例如静态替换它们。
-=======
-::: tip Environment Variables
-In library mode, all [`import.meta.env.*`](./env-and-mode.md) usage are statically replaced when building for production. However, `process.env.*` usage are not, so that consumers of your library can dynamically change it. If this is undesirable, you can use `define: { 'process.env.NODE_ENV': '"production"' }` for example to statically replace them, or use [`esm-env`](https://github.com/benmccann/esm-env) for better compatibility with bundlers and runtimes.
->>>>>>> 8b72e23084a5bf4f2af26c9cef6ed2e89e20d001
+在库模式中，所有 [`import.meta.env.*`](./env-and-mode.md) 的使用都会在构建生产版本时被静态替换。但是，`process.env.*` 的使用不会，这样你的库的使用者就可以动态地改变它。如果这是不可取的，你可以使用 `define: { 'process.env.NODE_ENV': '"production"' }` 来静态替换它们，或者使用 [`esm-env`](https://github.com/benmccann/esm-env) 来更好地兼容打包工具和运行时。
 :::
 
 ::: warning 进阶用法

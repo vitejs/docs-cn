@@ -62,11 +62,7 @@ export * from './slash.js'
 
 当你只导入一个单独的 API，例如 `import { slash } from './utils'`，需要获取和转换桶文件中的所有文件，因为它们可能包含 `slash` API，也可能包含在初始化时运行的其他副作用。这意味着在初始页面加载时，你加载的文件比所需的要更多，导致页面加载速度变慢。
 
-<<<<<<< HEAD
-可能的话，你应该避免使用桶文件，直接导入单独的 API，例如 `import { slash } from './utils/slash'`。你可以阅读[issue #8237](https://github.com/vitejs/vite/issues/8237) 获取更多信息。
-=======
-If possible, you should avoid barrel files and import the individual APIs directly, e.g. `import { slash } from './utils/slash.js'`. You can read [issue #8237](https://github.com/vitejs/vite/issues/8237) for more information.
->>>>>>> 8b72e23084a5bf4f2af26c9cef6ed2e89e20d001
+如果可能的话，你应该尽量避免使用桶文件（barrel files），直接导入单独的 API，例如 `import { slash } from './utils/slash.js'`。你可以阅读 [issue #8237](https://github.com/vitejs/vite/issues/8237) 了解更多信息。
 
 ## 预热常用文件 {#warm-up-frequently-used-files}
 
@@ -105,25 +101,21 @@ export default defineConfig({
 
 请注意，只应该预热频繁使用的文件，以免在启动时过载 Vite 开发服务器。查看 [`server.warmup`](/config/server-options.md#server-warmup) 选项以获取更多信息。
 
-<<<<<<< HEAD
 使用 [`--open` 或 `server.open`](/config/server-options.html#server-open) 也可以提供性能提升，因为 Vite 将自动预热你的应用的入口起点或被提供的要打开的 URL。
-=======
-Using [`--open` or `server.open`](/config/server-options.html#server-open) also provides a performance boost, as Vite will automatically warm up the entry point of your app or the provided URL to open.
 
-## Use Lesser or Native Tooling
+## 使用更少或更原生化的工具链 {#use-lesser-or-native-tooling}
 
-Keeping Vite fast with a growing codebase is about reducing the amount of work for the source files (JS/TS/CSS).
+保持 Vite 如此之快的关键在于减少源文件（JS/TS/CSS）的工作量。
 
-Examples of doing less work:
+精简工作的例子：
 
-- Use CSS instead of Sass/Less/Stylus when possible (nesting can be handled by PostCSS)
-- Don't transform SVGs into UI framework components (React, Vue, etc). Import them as strings or URLs instead.
-- When using `@vitejs/plugin-react`, avoid configuring the Babel options, so it skips the transformation during build (only esbuild will be used).
+- 使用 CSS 而不是 Sass/Less/Stylus（可以由 PostCSS 处理嵌套）
+- 不要使用 `@vitejs/plugin-react-refresh`，而是使用 React Fast Refresh 的原生支持。
+- 当使用 `@vitejs/plugin-react` 时，避免配置 Babel 选项，这样它就会在构建期间跳过转换（只使用 esbuild）。
 
-Examples of using native tooling:
+使用更原生化工具链的例子：
 
-Using native tooling often brings larger installation size and as so is not the default when starting a new Vite project. But it may be worth the cost for larger applications.
+使用更原生化的工具链往往会带来更大的安装大小，因此在启动新的 Vite 项目时不是默认的。但对于较大的应用程序来说，这可能是值得的。
 
-- Try out the experimental support for [LightningCSS](https://github.com/vitejs/vite/discussions/13835)
-- Use [`@vitejs/plugin-react-swc`](https://github.com/vitejs/vite-plugin-react-swc) in place of `@vitejs/plugin-react`.
->>>>>>> 8b72e23084a5bf4f2af26c9cef6ed2e89e20d001
+- 尝试实验性的 [LightningCSS](https://github.com/vitejs/vite/discussions/13835)
+- 使用 [`@vitejs/plugin-react-swc`](https://github.com/vitejs/vite-plugin-react-swc) 代替 `@vitejs/plugin-react`。

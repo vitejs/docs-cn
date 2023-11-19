@@ -11,26 +11,15 @@
 
 ## base {#base}
 
-<<<<<<< HEAD
 - **类型：** `string`
 - **默认：** `/`
-=======
-- **Type:** `string`
-- **Default:** `/`
-- **Related:** [`server.origin`](/config/server-options.md#server-origin)
->>>>>>> 8b72e23084a5bf4f2af26c9cef6ed2e89e20d001
+- **相关：** [`server.origin`](/config/server-options.md#server-origin)
 
 开发或生产环境服务的公共基础路径。合法的值包括以下几种：
 
-<<<<<<< HEAD
 - 绝对 URL 路径名，例如 `/foo/`
-- 完整的 URL，例如 `https://foo.com/`
+- 完整的 URL，例如 `https://foo.com/`（原始的部分在开发环境中不会被使用）
 - 空字符串或 `./`（用于嵌入形式的开发）
-=======
-- Absolute URL pathname, e.g. `/foo/`
-- Full URL, e.g. `https://foo.com/` (The origin part won't be used in development)
-- Empty string or `./` (for embedded deployment)
->>>>>>> 8b72e23084a5bf4f2af26c9cef6ed2e89e20d001
 
 更多信息详见 [公共基础路径](/guide/build#public-base-path)。
 
@@ -176,29 +165,7 @@ Vite 有一个“允许的情景”列表，并且会匹配列表中第一个情
 
 ## css.modules {#css-modules}
 
-<<<<<<< HEAD
 - **类型：**
-```ts
-interface CSSModulesOptions {
-  scopeBehaviour?: 'global' | 'local'
-  globalModulePaths?: RegExp[]
-  generateScopedName?:
-    | string
-    | ((name: string, filename: string, css: string) => string)
-  hashPrefix?: string
-  /**
-   * 默认：null
-   */
-  localsConvention?:
-    | 'camelCase'
-    | 'camelCaseOnly'
-    | 'dashes'
-    | 'dashesOnly'
-    | null
-}
-```
-=======
-- **Type:**
   ```ts
   interface CSSModulesOptions {
     getJSON?: (
@@ -228,7 +195,6 @@ interface CSSModulesOptions {
         ) => string)
   }
   ```
->>>>>>> 8b72e23084a5bf4f2af26c9cef6ed2e89e20d001
 
 配置 CSS modules 的行为。选项将被传递给 [postcss-modules](https://github.com/css-modules/postcss-modules)。
 
