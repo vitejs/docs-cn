@@ -12,9 +12,11 @@ Vite 的内部和官方插件已经优化，以在提供与更广泛的生态系
 
 然而，社区插件的性能是 Vite 无法控制的，这可能会影响开发者的体验。在使用额外的 Vite 插件时，有一些事情可以注意：
 
-1. `buildStart`，`config`，和 `configResolved` 钩子不应运行过长的时间和进行大量的操作。这些钩子会在开发服务器启动期间等待，这会延迟可以在浏览器中访问站点的时间。
+1. 只在特定情况下，大型依赖项应动态导入，以减少Node.js的启动时间。重构示例：[vite-plugin-react#212](https://github.com/vitejs/vite-plugin-react/pull/212) 和 [vite-plugin-pwa#224](https://github.com/vite-pwa/vite-plugin-pwa/pull/244)。
 
-2. `resolveId`，`load`，和 `transform` 钩子可能会导致一些文件加载速度比其他文件慢。虽然有时无法避免，但仍值得检查可能的优化区域。例如，检查 `code` 是否包含特定关键字，或 `id` 是否匹配特定扩展名，然后再进行完整的转换。
+2. `buildStart`，`config`，和 `configResolved` 钩子不应运行过长的时间和进行大量的操作。这些钩子会在开发服务器启动期间等待，这会延迟可以在浏览器中访问站点的时间。
+
+3. `resolveId`，`load`，和 `transform` 钩子可能会导致一些文件加载速度比其他文件慢。虽然有时无法避免，但仍值得检查可能的优化区域。例如，检查 `code` 是否包含特定关键字，或 `id` 是否匹配特定扩展名，然后再进行完整的转换。
 
    转换文件所需的时间越长，加载站点时在浏览器中的请求瀑布图就会越明显。
 
