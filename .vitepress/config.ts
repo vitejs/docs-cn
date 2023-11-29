@@ -1,4 +1,9 @@
+<<<<<<< HEAD
 import { defineConfig } from 'vitepress'
+=======
+import { defineConfig, DefaultTheme } from 'vitepress'
+import { buildEnd } from './buildEnd.config'
+>>>>>>> 6cdc59378945d5bdc0a2bcc97ac5e9d739c76ae7
 
 const ogDescription = 'Next Generation Frontend Tooling'
 const ogImage = 'https://vitejs.dev/og-image.png'
@@ -67,6 +72,10 @@ export default defineConfig({
 
   head: [
     ['link', { rel: 'icon', type: 'image/svg+xml', href: '/logo.svg' }],
+    [
+      'link',
+      { rel: 'alternate', type: 'application/rss+xml', href: '/blog.rss' },
+    ],
     ['meta', { property: 'og:type', content: 'website' }],
     ['meta', { property: 'og:title', content: ogTitle }],
     ['meta', { property: 'og:image', content: ogImage }],
@@ -375,4 +384,5 @@ export default defineConfig({
       ],
     },
   },
+  buildEnd,
 })
