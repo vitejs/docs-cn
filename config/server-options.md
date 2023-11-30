@@ -248,10 +248,15 @@ async function createServer() {
     server: { middlewareMode: true },
     appType: 'custom', // 不引入 Vite 默认的 HTML 处理中间件
   })
+<<<<<<< HEAD
   // 将 vite 的 connect 实例作中间件使用
   app.use((req, res, next) => {
     vite.middlewares.handle(req, res, next)
   })
+=======
+  // Use vite's connect instance as middleware
+  app.use(vite.middlewares)
+>>>>>>> 9abcaa496fdc868ca4a62947ca4f83216aab85c8
 
   app.use('*', async (req, res) => {
     // 由于 `appType` 的值是 `'custom'`，因此应在此处提供响应。

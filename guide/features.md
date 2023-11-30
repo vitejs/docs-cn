@@ -1,6 +1,10 @@
 # 功能 {#features}
 
+<<<<<<< HEAD
 对非常基础的使用来说，使用 Vite 开发和使用一个静态文件服务器并没有太大区别。然而，Vite 还通过原生 ESM 导入提供了许多主要用于打包场景的增强功能。
+=======
+At the very basic level, developing using Vite is not that different from using a static file server. However, Vite provides many enhancements over native ESM imports to support various features that are typically seen in bundler-based setups.
+>>>>>>> 9abcaa496fdc868ca4a62947ca4f83216aab85c8
 
 ## NPM 依赖解析和预构建 {#npm-dependency-resolving-and-pre-bundling}
 
@@ -627,7 +631,11 @@ import MyWorker from './worker?worker'
 const worker = new MyWorker()
 ```
 
+<<<<<<< HEAD
 这个 worker 脚本也可以使用 ESM `import` 语句而不是 `importScripts()`。**注意**：在开发时，这依赖于 [浏览器原生支持](https://caniuse.com/?search=module%20worker)，但是在生产构建中，它会被编译掉。
+=======
+The worker script can also use ESM `import` statements instead of `importScripts()`. **Note**: During development this relies on [browser native support](https://caniuse.com/?search=module%20worker), but for the production build it is compiled away.
+>>>>>>> 9abcaa496fdc868ca4a62947ca4f83216aab85c8
 
 默认情况下，worker 脚本将在生产构建中编译成单独的 chunk。如果你想将 worker 内联为 base64 字符串，请添加 `inline` 查询参数：
 
