@@ -64,7 +64,23 @@ export default defineConfig({
 你应该使用 `build.rollupOptions.output.manualChunks` 函数形式来使用此插件。如果使用对象形式，插件将不会生效。
 :::
 
+<<<<<<< HEAD
 ## 文件变化时重新构建 {#rebuild-on-files-changes}
+=======
+## Load Error Handling
+
+Vite emits `vite:preloadError` event when it fails to load dynamic imports. `event.payload` contains the original import error. If you call `event.preventDefault()`, the error will not be thrown.
+
+```js
+window.addEventListener('vite:preloadError', (event) => {
+  window.reload() // for example, refresh the page
+})
+```
+
+When a new deployment occurs, the hosting service may delete the assets from previous deployments. As a result, a user who visited your site before the new deployment might encounter an import error. This error happens because the assets running on that user's device are outdated and it tries to import the corresponding old chunk, which is deleted. This event is useful for addressing this situation.
+
+## Rebuild on files changes
+>>>>>>> 9719dff91b3912851a160523e1ae0153a912ad89
 
 你可以使用 `vite build --watch` 来启用 rollup 的监听器。或者，你可以直接通过 `build.watch` 调整底层的 [`WatcherOptions`](https://rollupjs.org/configuration-options/#watch) 选项：
 
