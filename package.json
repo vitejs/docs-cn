@@ -5,7 +5,6 @@
 	"repository": "https://github.com/vitejs/docs-cn",
 	"type": "module",
 	"author": "Evan You",
-	"type": "module",
 	"private": true,
 	"license": "CC BY-NC-SA 4.0",
 	"devDependencies": {
@@ -15,6 +14,7 @@
 		"lodash": "^4.17.21",
 		"vite": "^4.5.0",
 		"vitepress": "^1.0.0-rc.29",
+		"feed": "^4.2.2",
 		"yorkie": "^2.0.0"
 	},
 	"scripts": {

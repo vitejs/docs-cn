@@ -1,9 +1,5 @@
-<<<<<<< HEAD
-import { defineConfig } from 'vitepress'
-=======
 import { defineConfig, DefaultTheme } from 'vitepress'
 import { buildEnd } from './buildEnd.config'
->>>>>>> 9719dff91b3912851a160523e1ae0153a912ad89
 
 const ogDescription = 'Next Generation Frontend Tooling'
 const ogImage = 'https://vitejs.dev/og-image.png'
@@ -180,6 +176,7 @@ export default defineConfig({
     // },
 
     footer: {
+      message: `Released under the MIT License. (${commitRef})`,
       copyright:
         '本中文文档内容版权为 Vite 官方中文翻译团队所有，保留所有权利。'
     },
