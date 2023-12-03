@@ -89,13 +89,11 @@ async function createServer() {
 
   // 使用 vite 的 Connect 实例作为中间件
   // 如果你使用了自己的 express 路由（express.Router()），你应该使用 router.use
-  app.use((req, res, next) => {
-    // 当服务器重启（例如用户修改了 vite.config.js 后），
-    // `vite.middlewares` 将会被重新赋值。在包装处理程序中调用
-    // `vite.middlewares` 可以确保
-    // 始终使用最新的 Vite 中间件。
-    vite.middlewares.handle(req, res, next)
-  })
+  // 当服务器重启（例如用户修改了 vite.config.js 后），
+  // `vite.middlewares` 仍将保持相同的引用
+  // （带有新的 Vite 和插件注入的内部中间件堆栈）。
+  // 即使在重新启动后，以下内容仍然有效。
+  app.use(vite.middlewares)
 
   app.use('*', async (req, res) => {
     // 服务 index.html - 下面我们来处理这个问题

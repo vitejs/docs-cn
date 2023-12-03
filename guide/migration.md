@@ -134,6 +134,14 @@ const foo = _foo.default
 
 从 Vite 5 开始，这些文件将默认生成在 `build.outDir` 中的 `.vite` 目录中。这个改变有助于解决当公共文件被复制到 `build.outDir` 时，具有相同 manifest 文件名时的冲突。
 
+### 对应的 CSS 文件未在 manifest.json 文件中作为顶级入口列出 {#corresponding-css-files-are-not-listed-as-top-level-entry-in-manifest-json-file}
+
+在 Vite 4 中，JavaScript 入口起点的对应 CSS 文件也被列为了 manifest 文件的顶级入口（[`build.manifest`](/config/build-options.md#build-manifest)）。这些条目是非故意添加的，仅对简单情况有效。
+
+在 Vite 5 中，对应的 CSS 文件只能在 JavaScript 入口起点中找到。
+在注入 JS 文件时，对应的 CSS 文件 [应被注入](/guide/backend-integration.md#:~:text=%3C!%2D%2D%20if%20production%20%2D%2D%3E%0A%3Clink%20rel%3D%22stylesheet%22%20href%3D%22/assets/%7B%7B%20manifest%5B%27main.js%27%5D.css%20%7D%7D%22%20/%3E%0A%3Cscript%20type%3D%22module%22%20src%3D%22/assets/%7B%7B%20manifest%5B%27main.js%27%5D.file%20%7D%7D%22%3E%3C/script%3E)。
+当需要单独注入 CSS 时，必需将其添加为单独的入口起点。
+
 ### CLI 快捷功能键需要一个额外的 `Enter` 按键 {#cli-shortcuts-require-an-additional-enter-press}
 
 CLI 快捷功能键，例如 `r` 重启开发服务器，现在需要额外的 `Enter` 按键来触发快捷功能。例如，`r + Enter` 重启开发服务器。
@@ -228,7 +236,10 @@ const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf-8'))
   - 在过去，当一个库的 `"exports"` 字段映射到一个 `.mjs` 文件时，Vite 仍然会尝试匹配 `"browser"` 和 `"module"` 字段，以修复与某些库的兼容性。现在，这种行为已被移除，以便与导出解析算法保持一致。
 - [[#14733] feat(resolve)!: remove `resolve.browserField`](https://github.com/vitejs/vite/pull/14733)
   - `resolve.browserField` 已从 Vite 3 开始被弃用，而是使用 [`resolve.mainFields`](/config/shared-options.md#resolve-mainfields) 的更新默认值 `['browser', 'module', 'jsnext:main', 'jsnext']`。
-  - 重命名 `ssrBuild` 为 `isSsrBuild`。
+- [[#14855] feat!: add isPreview to ConfigEnv and resolveConfig](https://github.com/vitejs/vite/pull/14855)
+  - 在 `ConfigEnv` 对象中，重命名 `ssrBuild` 为 `isSsrBuild`。
+- [[#14945] fix(css): correctly set manifest source name and emit CSS file](https://github.com/vitejs/vite/pull/14945)
+  - CSS 文件名现在是基于 chunk 名生成的。
 
 ## 从 v3 迁移 {#migration-from-v3}
 

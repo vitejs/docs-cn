@@ -89,20 +89,18 @@ bunx create-vite my-vue-app --template vue
 
 ## 社区模板 {#community-templates}
 
-create-vite 是一个快速生成主流框架基础模板的工具。查看 Awesome Vite 仓库的 [社区维护模板](https://github.com/vitejs/awesome-vite#templates)，里面包含各种工具和不同框架的模板。你可以用如 [degit](https://github.com/Rich-Harris/degit) 之类的工具，使用社区模版来搭建项目。
+create-vite 是一个快速生成主流框架基础模板的工具。查看 Awesome Vite 仓库的 [社区维护模板](https://github.com/vitejs/awesome-vite#templates)，里面包含各种工具和不同框架的模板。
+
+对于一个 `https://github.com/user/project` 中的模板，可以尝试使用 `https://github.stackblitz.com/user/project`（即在项目 URL 的 `github` 后添加 `.stackblitz`）。
+
+你也可以用如 [degit](https://github.com/Rich-Harris/degit) 之类的工具，使用社区模版来搭建项目。假设项目在 GitHub 上并使用 `main` 作为默认分支，可以使用以下命令创建本地副本：
 
 ```bash
-npx degit user/project my-project
+npx degit user/project#main my-project
 cd my-project
 
 npm install
 npm run dev
-```
-
-如果该项目使用 `main` 作为默认分支, 需要在项目名后添加 `#main`。
-
-```bash
-npx degit user/project#main my-project
 ```
 
 ## `index.html` 与项目根目录 {#index-html-and-project-root}

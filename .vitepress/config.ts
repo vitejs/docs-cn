@@ -1,4 +1,5 @@
-import { defineConfig } from 'vitepress'
+import { defineConfig, DefaultTheme } from 'vitepress'
+import { buildEnd } from './buildEnd.config'
 
 const ogDescription = 'Next Generation Frontend Tooling'
 const ogImage = 'https://vitejs.dev/og-image.png'
@@ -67,6 +68,11 @@ export default defineConfig({
 
   head: [
     ['link', { rel: 'icon', type: 'image/svg+xml', href: '/logo.svg' }],
+    [
+      'link',
+      { rel: 'alternate', type: 'application/rss+xml', href: '/blog.rss' },
+    ],
+    ['link', { rel: 'me', href: 'https://m.webtoo.ls/@vite' }],
     ['meta', { property: 'og:type', content: 'website' }],
     ['meta', { property: 'og:title', content: ogTitle }],
     ['meta', { property: 'og:image', content: ogImage }],
@@ -170,6 +176,7 @@ export default defineConfig({
     // },
 
     footer: {
+      message: `Released under the MIT License. (${commitRef})`,
       copyright:
         '本中文文档内容版权为 Vite 官方中文翻译团队所有，保留所有权利。'
     },
@@ -375,4 +382,5 @@ export default defineConfig({
       ],
     },
   },
+  buildEnd,
 })
