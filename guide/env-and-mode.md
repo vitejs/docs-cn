@@ -50,16 +50,12 @@ console.log(import.meta.env.VITE_SOME_KEY) // "123"
 console.log(import.meta.env.DB_PASSWORD) // undefined
 ```
 
-<<<<<<< HEAD
-此外，Vite 使用 [dotenv-expand](https://github.com/motdotla/dotenv-expand) 来直接拓展变量。想要了解更多相关语法，请查看 [它们的文档](https://github.com/motdotla/dotenv-expand#what-rules-does-the-expansion-engine-follow)。
-=======
-:::tip Env parsing
+:::tip 环境变量解析
 
-As shown above, `VITE_SOME_KEY` is a number but returns a string when parsed. The same would also happen for boolean env variables. Make sure to convert to the desired type when using it in your code.
+如上所示，`VITE_SOME_KEY` 是一个数字，但在解析时会返回一个字符串。布尔类型的环境变量也会发生同样的情况。在代码中使用时，请确保转换为所需的类型。
 :::
 
-Also, Vite uses [dotenv-expand](https://github.com/motdotla/dotenv-expand) to expand variables out of the box. To learn more about the syntax, check out [their docs](https://github.com/motdotla/dotenv-expand#what-rules-does-the-expansion-engine-follow).
->>>>>>> 2a1a8bc8cfe6952a047539b9e3616729622b1c49
+此外，Vite 使用 [dotenv-expand](https://github.com/motdotla/dotenv-expand) 来直接拓展变量。想要了解更多相关语法，请查看 [它们的文档](https://github.com/motdotla/dotenv-expand#what-rules-does-the-expansion-engine-follow)。
 
 请注意，如果想要在环境变量中使用 `$` 符号，则必须使用 `\` 对其进行转义。
 
@@ -83,11 +79,7 @@ NEW_KEY3=test$KEY   # test123
 
 默认情况下，Vite 在 [`vite/client.d.ts`](https://github.com/vitejs/vite/blob/main/packages/vite/client.d.ts) 中为 `import.meta.env` 提供了类型定义。随着在 `.env[mode]` 文件中自定义了越来越多的环境变量，你可能想要在代码中获取这些以 `VITE_` 为前缀的用户自定义环境变量的 TypeScript 智能提示。
 
-<<<<<<< HEAD
-要想做到这一点，你可以在 `src` 目录下创建一个 `env.d.ts` 文件，接着按下面这样增加 `ImportMetaEnv` 的定义：
-=======
-To achieve this, you can create an `vite-env.d.ts` in `src` directory, then augment `ImportMetaEnv` like this:
->>>>>>> 2a1a8bc8cfe6952a047539b9e3616729622b1c49
+要想做到这一点，你可以在 `src` 目录下创建一个 `vite-env.d.ts` 文件，接着按下面这样增加 `ImportMetaEnv` 的定义：
 
 ```typescript
 /// <reference types="vite/client" />
@@ -110,19 +102,14 @@ interface ImportMeta {
 }
 ```
 
-<<<<<<< HEAD
-## HTML 环境变量替换 {#html-env-replacement}
-Vite 还支持在 HTML 文件中替换环境变量。`import.meta.env` 中的任何属性都可以通过特殊的 `%ENV_NAME%` 语法在 HTML 文件中使用：
-=======
-:::warning Imports will break type augmentation
+:::warning 导入语句会破坏类型增强
 
-If the `ImportMetaEnv` augmentation does not work, make sure you do not have any `import` statements in `vite-env.d.ts`. See the [TypeScript documentation](https://www.typescriptlang.org/docs/handbook/2/modules.html#how-javascript-modules-are-defined) for more information.
+如果 `ImportMetaEnv` 增强不起作用，请确保在 `vite-env.d.ts` 中没有任何 `import` 语句。更多信息请参阅 [TypeScript 文档](https://www.typescriptlang.org/docs/handbook/2/modules.html#how-javascript-modules-are-defined)。
 :::
 
-## HTML Env Replacement
+## HTML 环境变量替换 {#html-env-replacement}
 
-Vite also supports replacing env variables in HTML files. Any properties in `import.meta.env` can be used in HTML files with a special `%ENV_NAME%` syntax:
->>>>>>> 2a1a8bc8cfe6952a047539b9e3616729622b1c49
+Vite 还支持在 HTML 文件中替换环境变量。`import.meta.env` 中的任何属性都可以通过特殊的 `%ENV_NAME%` 语法在 HTML 文件中使用：
 
 ```html
 <h1>Vite is running in %MODE%</h1>
