@@ -1,4 +1,4 @@
-# 共享配置 {#shared-options}
+# 共享选项 {#shared-options}
 
 ## root {#root}
 
