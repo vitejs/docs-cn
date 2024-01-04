@@ -87,12 +87,21 @@ async function createServer() {
     appType: 'custom'
   })
 
+<<<<<<< HEAD
   // 使用 vite 的 Connect 实例作为中间件
   // 如果你使用了自己的 express 路由（express.Router()），你应该使用 router.use
   // 当服务器重启（例如用户修改了 vite.config.js 后），
   // `vite.middlewares` 仍将保持相同的引用
   // （带有新的 Vite 和插件注入的内部中间件堆栈）。
   // 即使在重新启动后，以下内容仍然有效。
+=======
+  // Use vite's connect instance as middleware. If you use your own
+  // express router (express.Router()), you should use router.use
+  // When the server restarts (for example after the user modifies
+  // vite.config.js), `vite.middlewares` is still going to be the same
+  // reference (with a new internal stack of Vite and plugin-injected
+  // middlewares). The following is valid even after restarts.
+>>>>>>> f3bffabd2b8829a68f6841e42153e79bed682f59
   app.use(vite.middlewares)
 
   app.use('*', async (req, res) => {
