@@ -91,7 +91,7 @@ async function createServer() {
   // 如果你使用了自己的 express 路由（express.Router()），你应该使用 router.use
   // 当服务器重启（例如用户修改了 vite.config.js 后），
   // `vite.middlewares` 仍将保持相同的引用
-  // （带有新的 Vite 和插件注入的内部中间件堆栈）。
+  // （带有 Vite 和插件注入的新的内部中间件堆栈）。
   // 即使在重新启动后，以下内容仍然有效。
   app.use(vite.middlewares)
 

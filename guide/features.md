@@ -291,7 +291,7 @@ import otherStyles from './bar.css?inline' // 样式不会注入页面
 npm add -D lightningcss
 ```
 
-如果启用，CSS 文件将由 Lightning CSS 处理，而不是 PostCSS。可以将 Lightning CSS 的选项传递给 [`css.lightingcss`](../config/shared-options.md#css-lightningcss) 选项来配置。
+如果启用，CSS 文件将由 Lightning CSS 处理，而不是 PostCSS。可以将 Lightning CSS 的选项传递给 [`css.lightningcss`](../config/shared-options.md#css-lightningcss) 选项来配置。
 
 要配置 CSS Modules，需要使用 [`css.lightningcss.cssModules`](https://lightningcss.dev/css-modules.html) 而不是 [`css.modules`](../config/shared-options.md#css-modules)（后者是用于配置 PostCSS 处理 CSS Modules 的方式）。
 
