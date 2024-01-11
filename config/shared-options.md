@@ -18,7 +18,7 @@
 开发或生产环境服务的公共基础路径。合法的值包括以下几种：
 
 - 绝对 URL 路径名，例如 `/foo/`
-- 完整的 URL，例如 `https://foo.com/`（原始的部分在开发环境中不会被使用）
+- 完整的 URL，例如 `https://foo.com/`（[origin](https://developer.mozilla.org/zh-CN/docs/Glossary/Origin) 的部分在开发环境中不会被使用）
 - 空字符串或 `./`（用于嵌入形式的开发）
 
 更多信息详见 [公共基础路径](/guide/build#public-base-path)。
