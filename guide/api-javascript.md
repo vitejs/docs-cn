@@ -184,7 +184,7 @@ interface ViteDevServer {
 
 ## `build` {#build}
 
-**类型校验：**
+**类型签名：**
 
 ```ts
 async function build(
@@ -279,7 +279,7 @@ interface PreviewServer {
 
 ## `resolveConfig` {#resolveconfig}
 
-**类型校验：**
+**类型签名：**
 
 ```ts
 async function resolveConfig(
