@@ -6,7 +6,15 @@
 - 页面加载慢
 - 构建慢
 
+<<<<<<< HEAD
 ## 审核配置的 Vite 插件 {#audit-configured-vite-plugins}
+=======
+## Avoid Browser Extensions
+
+Some browser extensions may interfere with requests and slow down startup and reload times for large apps, especially when using browser dev tools. We recommend creating a dev-only profile without extensions, or switch to incognito mode, while using Vite's dev server in these cases. Incognito mode should also be faster than a regular profile without extensions.
+
+## Audit Configured Vite Plugins
+>>>>>>> f6e841f5aa887805a64e292645336cc7e99e618e
 
 Vite 的内部和官方插件已经优化，以在提供与更广泛的生态系统兼容性的同时做尽可能少的工作。例如，代码转换在开发中使用正则表达式，但在构建中进行完整解析以确保正确性。
 
