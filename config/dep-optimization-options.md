@@ -64,6 +64,7 @@ export default defineConfig({
 
 ## optimizeDeps.disabled {#optimizedeps-disabled}
 
+<<<<<<< HEAD
 - **实验性：** [提供反馈](https://github.com/vitejs/vite/discussions/13839)
 - **类型：** `boolean | 'build' | 'dev'`
 - **默认：** `'build'`
@@ -74,6 +75,19 @@ export default defineConfig({
 在构建模式下依赖优化是 **实验性** 的。如果开启此项，那么它将消除开发与构建最终产物之间的最明显的区别之一。[`@rollup/plugin-commonjs`](https://github.com/rollup/plugins/tree/master/packages/commonjs) 在此处将不再需要，因为 esbuild 会将纯 CJS 依赖转换为 ESM。
 
 如果你想尝试该构建策略，你可以使用 `optimizeDeps.disabled: false`。`@rollup/plugin-commonjs` 可以通过设置 `build.commonjsOptions: { include: [] }` 来移除。
+=======
+- **Deprecated**
+- **Experimental:** [Give Feedback](https://github.com/vitejs/vite/discussions/13839)
+- **Type:** `boolean | 'build' | 'dev'`
+- **Default:** `'build'`
+
+This option is deprecated. As of Vite 5.1, pre-bundling of dependencies during build have been removed. Setting `optimizeDeps.disabled` to `true` or `'dev'` disables the optimizer, and configured to `false` or `'build'` leaves the optimizer during dev enabled.
+
+To disable the optimizer completely, use `optimizeDeps.noDiscovery: true` to disallow automatic discovery of dependencies and leave `optimizeDeps.include` undefined or empty.
+
+:::warning
+Optimizing dependencies during build time was an **experimental** feature. Projects trying out this strategy also removed `@rollup/plugin-commonjs` using `build.commonjsOptions: { include: [] }`. If you did so, a warning will guide you to re-enable it to support CJS only packages while bundling.
+>>>>>>> 052067c80fc0f52ebce1b4c29537dac34afb6a45
 :::
 
 ## optimizeDeps.needsInterop

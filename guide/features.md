@@ -391,6 +391,7 @@ const modules = {
 }
 ```
 
+<<<<<<< HEAD
 ### Glob 导入形式 {#glob-import-as}
 
 `import.meta.glob` 都支持以字符串形式导入文件，类似于 [以字符串形式导入资源](./assets.html#importing-asset-as-string)。在这里，我们使用了 [Import Reflection](https://github.com/tc39/proposal-import-reflection) 语法对导入进行断言：
@@ -412,6 +413,9 @@ const modules = {
 `{ as: 'url' }` 还支持将资源作为 URL 加载。
 
 ### 多个匹配模式 {#multiple-patterns}
+=======
+### Multiple Patterns
+>>>>>>> 052067c80fc0f52ebce1b4c29537dac34afb6a45
 
 第一个参数可以是一个 glob 数组，例如：
 
@@ -490,20 +494,48 @@ const modules = {
 
 #### 自定义查询 {#custom-queries}
 
+<<<<<<< HEAD
 你也可以使用 `query` 选项来提供对导入的自定义查询，以供其他插件使用。
+=======
+You can also use the `query` option to provide queries to imports, for example, to import assets [as a string](https://vitejs.dev/guide/assets.html#importing-asset-as-string) or [as a url](https://vitejs.dev/guide/assets.html#importing-asset-as-url):
+>>>>>>> 052067c80fc0f52ebce1b4c29537dac34afb6a45
+
+```ts
+const moduleStrings = import.meta.glob('./dir/*.svg', {
+  query: '?raw',
+  import: 'default',
+})
+const moduleUrls = import.meta.glob('./dir/*.svg', {
+  query: '?url',
+  import: 'default',
+})
+```
+
+```ts
+<<<<<<< HEAD
+// vite 生成的代码
+const modules = {
+  './dir/foo.js': () => import('./dir/foo.js?foo=bar&bar=true'),
+  './dir/bar.js': () => import('./dir/bar.js?foo=bar&bar=true'),
+=======
+// code produced by vite:
+const moduleStrings = {
+  './dir/foo.svg': () => import('./dir/foo.js?raw').then((m) => m['default']),
+  './dir/bar.svg': () => import('./dir/bar.js?raw').then((m) => m['default']),
+>>>>>>> 052067c80fc0f52ebce1b4c29537dac34afb6a45
+}
+const moduleUrls = {
+  './dir/foo.svg': () => import('./dir/foo.js?url').then((m) => m['default']),
+  './dir/bar.svg': () => import('./dir/bar.js?url').then((m) => m['default']),
+}
+```
+
+You can also provide custom queries for other plugins to consume:
 
 ```ts
 const modules = import.meta.glob('./dir/*.js', {
   query: { foo: 'bar', bar: true },
 })
-```
-
-```ts
-// vite 生成的代码
-const modules = {
-  './dir/foo.js': () => import('./dir/foo.js?foo=bar&bar=true'),
-  './dir/bar.js': () => import('./dir/bar.js?foo=bar&bar=true'),
-}
 ```
 
 ### Glob 导入注意事项 {#glob-import-caveats}
