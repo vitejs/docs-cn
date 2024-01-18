@@ -82,12 +82,23 @@ modulePreload: {
 
 ## build.assetsInlineLimit {#build-assetsinlinelimit}
 
+<<<<<<< HEAD
 - **类型：** `number`
 - **默认：** `4096` (4 KiB)
+=======
+- **Type:** `number` | `((filePath: string, content: Buffer) => boolean | undefined)`
+- **Default:** `4096` (4 KiB)
+>>>>>>> dbe022e6389dae2f3e6d0930f857dd71db5fa083
 
 小于此阈值的导入或引用资源将内联为 base64 编码，以避免额外的 http 请求。设置为 `0` 可以完全禁用此项。
 
+<<<<<<< HEAD
 Git LFS 占位符会自动排除在内联之外，因为它们不包含它们所表示的文件的内容。
+=======
+If a callback is passed, a boolean can be returned to opt-in or opt-out. If nothing is returned the default logic applies.
+
+Git LFS placeholders are automatically excluded from inlining because they do not contain the content of the file they represent.
+>>>>>>> dbe022e6389dae2f3e6d0930f857dd71db5fa083
 
 :::tip 注意
 如果你指定了 `build.lib`，那么 `build.assetsInlineLimit` 将被忽略，无论文件大小或是否为 Git LFS 占位符，资源都会被内联。
@@ -190,8 +201,13 @@ Git LFS 占位符会自动排除在内联之外，因为它们不包含它们所
 
 ## build.minify {#build-minify}
 
+<<<<<<< HEAD
 - **类型：** `boolean | 'terser' | 'esbuild'`
 - **默认：** `'esbuild'`
+=======
+- **Type:** `boolean | 'terser' | 'esbuild'`
+- **Default:** `'esbuild'` for client build, `false` for SSR build
+>>>>>>> dbe022e6389dae2f3e6d0930f857dd71db5fa083
 
 设置为 `false` 可以禁用最小化混淆，或是用来指定使用哪种混淆器。默认为 [Esbuild](https://github.com/evanw/esbuild)，它比 terser 快 20-40 倍，压缩率只差 1%-2%。[Benchmarks](https://github.com/privatenumber/minification-benchmarks)
 
