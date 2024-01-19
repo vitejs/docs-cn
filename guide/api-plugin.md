@@ -422,11 +422,15 @@ Vite 插件也可以提供钩子来服务于特定的 Vite 目标。这些钩子
 
   - 过滤和缩小受影响的模块列表，使 HMR 更准确。
 
+<<<<<<< HEAD
   - 返回一个空数组，并通过向客户端发送自定义事件来执行完整的自定义 HMR 处理:
+=======
+  - Return an empty array and perform complete custom HMR handling by sending custom events to the client (example uses `server.hot` which was introduced in Vite 5.1, it is recommended to also use `server.ws` if you support lower versions):
+>>>>>>> ea77a28be06b3ee5d562c5aa6d74311bedb2f42c
 
     ```js
     handleHotUpdate({ server }) {
-      server.ws.send({
+      server.hot.send({
         type: 'custom',
         event: 'special-update',
         data: {}
@@ -533,7 +537,11 @@ Vite 暴露了 [`@rollup/pluginutils` 的 `createFilter`](https://github.com/rol
 
 ### 服务端到客户端 {#server-to-client}
 
+<<<<<<< HEAD
 在插件一侧，我们可以使用 `server.ws.send` 去给所有客户端广播事件：
+=======
+On the plugin side, we could use `server.hot.send` (since Vite 5.1) or `server.ws.send` to broadcast events to all the clients:
+>>>>>>> ea77a28be06b3ee5d562c5aa6d74311bedb2f42c
 
 ```js
 // vite.config.js
@@ -542,9 +550,15 @@ export default defineConfig({
     {
       // ...
       configureServer(server) {
+<<<<<<< HEAD
         // 示例：等待客户端连接后再发送消息
         server.ws.on('connection', () => {
           server.ws.send('my:greetings', { msg: 'hello' })
+=======
+        // Example: wait for a client to connect before sending a message
+        server.hot.on('connection', () => {
+          server.hot.send('my:greetings', { msg: 'hello' })
+>>>>>>> ea77a28be06b3ee5d562c5aa6d74311bedb2f42c
         })
       },
     },
@@ -578,7 +592,11 @@ if (import.meta.hot) {
 }
 ```
 
+<<<<<<< HEAD
 然后使用 `server.ws.on` 并在服务端监听这些事件：
+=======
+Then use `server.hot.on` (since Vite 5.1) or `server.ws.on` and listen to the events on the server side:
+>>>>>>> ea77a28be06b3ee5d562c5aa6d74311bedb2f42c
 
 ```js
 // vite.config.js
@@ -587,7 +605,7 @@ export default defineConfig({
     {
       // ...
       configureServer(server) {
-        server.ws.on('my:from-client', (data, client) => {
+        server.hot.on('my:from-client', (data, client) => {
           console.log('Message from client:', data.msg) // Hey!
           // reply only to the client (if needed)
           client.send('my:ack', { msg: 'Hi! I got your message!' })
