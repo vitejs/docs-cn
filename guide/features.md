@@ -391,26 +391,6 @@ const modules = {
 }
 ```
 
-### Glob 导入形式 {#glob-import-as}
-
-`import.meta.glob` 都支持以字符串形式导入文件，类似于 [以字符串形式导入资源](./assets.html#importing-asset-as-string)。在这里，我们使用了 [Import Reflection](https://github.com/tc39/proposal-import-reflection) 语法对导入进行断言：
-
-```js
-const modules = import.meta.glob('./dir/*.js', { as: 'raw', eager: true })
-```
-
-上面的代码会被转换为下面这样：
-
-```js
-// code produced by vite（代码由 vite 输出）
-const modules = {
-  './dir/foo.js': 'export default "foo"\n',
-  './dir/bar.js': 'export default "bar"\n',
-}
-```
-
-`{ as: 'url' }` 还支持将资源作为 URL 加载。
-
 ### 多个匹配模式 {#multiple-patterns}
 
 第一个参数可以是一个 glob 数组，例如：
@@ -490,20 +470,37 @@ const modules = {
 
 #### 自定义查询 {#custom-queries}
 
-你也可以使用 `query` 选项来提供对导入的自定义查询，以供其他插件使用。
+你也可以使用 `query` 选项来提供对导入的自定义查询，比如，可以将资源 [作为字符串引入](/guide/assets#importing-asset-as-string) 或者 [作为 URL 引入](/guide/assets#importing-asset-as-url) ：
 
 ```ts
-const modules = import.meta.glob('./dir/*.js', {
-  query: { foo: 'bar', bar: true },
+const moduleStrings = import.meta.glob('./dir/*.svg', {
+  query: '?raw',
+  import: 'default',
+})
+const moduleUrls = import.meta.glob('./dir/*.svg', {
+  query: '?url',
+  import: 'default',
 })
 ```
 
 ```ts
 // vite 生成的代码
-const modules = {
-  './dir/foo.js': () => import('./dir/foo.js?foo=bar&bar=true'),
-  './dir/bar.js': () => import('./dir/bar.js?foo=bar&bar=true'),
+const moduleStrings = {
+  './dir/foo.svg': () => import('./dir/foo.js?raw').then((m) => m['default']),
+  './dir/bar.svg': () => import('./dir/bar.js?raw').then((m) => m['default']),
 }
+const moduleUrls = {
+  './dir/foo.svg': () => import('./dir/foo.js?url').then((m) => m['default']),
+  './dir/bar.svg': () => import('./dir/bar.js?url').then((m) => m['default']),
+}
+```
+
+你还可以为其他插件提供定制化的查询参数：
+
+```ts
+const modules = import.meta.glob('./dir/*.js', {
+  query: { foo: 'bar', bar: true },
+})
 ```
 
 ### Glob 导入注意事项 {#glob-import-caveats}

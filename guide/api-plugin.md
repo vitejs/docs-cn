@@ -422,11 +422,11 @@ Vite 插件也可以提供钩子来服务于特定的 Vite 目标。这些钩子
 
   - 过滤和缩小受影响的模块列表，使 HMR 更准确。
 
-  - 返回一个空数组，并通过向客户端发送自定义事件来执行完整的自定义 HMR 处理:
+  - 返回一个空数组，并通过向客户端发送自定义事件来执行完整的自定义 HMR 处理（示例使用了在 Vite 5.1 中引入的 `server.hot`，如果你想支持较低版本，建议使用 `server.ws`）:
 
     ```js
     handleHotUpdate({ server }) {
-      server.ws.send({
+      server.hot.send({
         type: 'custom',
         event: 'special-update',
         data: {}
@@ -533,7 +533,7 @@ Vite 暴露了 [`@rollup/pluginutils` 的 `createFilter`](https://github.com/rol
 
 ### 服务端到客户端 {#server-to-client}
 
-在插件一侧，我们可以使用 `server.ws.send` 去给所有客户端广播事件：
+在插件一侧，我们可以使用 `server.hot.send`（自 Vite 5.1 起）或 `server.ws.send` 去给所有客户端广播事件：
 
 ```js
 // vite.config.js
@@ -543,8 +543,8 @@ export default defineConfig({
       // ...
       configureServer(server) {
         // 示例：等待客户端连接后再发送消息
-        server.ws.on('connection', () => {
-          server.ws.send('my:greetings', { msg: 'hello' })
+        server.hot.on('connection', () => {
+          server.hot.send('my:greetings', { msg: 'hello' })
         })
       },
     },
@@ -578,7 +578,7 @@ if (import.meta.hot) {
 }
 ```
 
-然后使用 `server.ws.on` 并在服务端监听这些事件：
+然后使用 `server.hot.on`（自 Vite 5.1 起） 或 `server.ws.on` 并在服务端监听这些事件：
 
 ```js
 // vite.config.js
@@ -587,7 +587,7 @@ export default defineConfig({
     {
       // ...
       configureServer(server) {
-        server.ws.on('my:from-client', (data, client) => {
+        server.hot.on('my:from-client', (data, client) => {
           console.log('Message from client:', data.msg) // Hey!
           // reply only to the client (if needed)
           client.send('my:ack', { msg: 'Hi! I got your message!' })
