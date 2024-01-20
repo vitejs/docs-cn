@@ -202,11 +202,7 @@ export default defineConfig({
 
 传递给 [chokidar](https://github.com/paulmillr/chokidar#api) 的文件系统监听器选项。
 
-<<<<<<< HEAD
-Vite 服务器的文件监听器默认会监听 `root` 目录，同时会跳过 `.git/` 和 `node_modules/` 目录。当监听到文件更新时，Vite 会应用 HMR 并且只在需要时更新页面。
-=======
-The Vite server watcher watches the `root` and skips the `.git/`, `node_modules/`, and Vite's `cacheDir` and `build.outDir` directories by default. When updating a watched file, Vite will apply HMR and update the page only if needed.
->>>>>>> ea77a28be06b3ee5d562c5aa6d74311bedb2f42c
+Vite 服务器的文件监听器默认会监听 `root` 目录，同时会跳过 `.git/`、`node_modules/`，以及 Vite 的 `cacheDir` 和 `build.outDir` 这些目录。当监听到文件更新时，Vite 会应用 HMR 并且只在需要时更新页面。
 
 如果设置为 `null`，则不会监听任何文件。`server.watcher` 将提供一个兼容的事件发射器，但是调用 `add` 或 `unwatch` 将没有任何效果。
 

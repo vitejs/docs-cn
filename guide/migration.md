@@ -167,15 +167,9 @@ Vite 5 使用 esbuild 0.19 并移除了 esbuild 0.18 的兼容层，这改变了
   "compilerOptions": {
     // 若要使用装饰器就设为 true
     "experimentalDecorators": true,
-<<<<<<< HEAD
     // 如果你在浏览器中看到解析错误，请设置为 true
-    "useDefineForClassFields": true
-  }
-=======
-    // Set true if you see parsing errors in your browser
     "useDefineForClassFields": true,
   },
->>>>>>> ea77a28be06b3ee5d562c5aa6d74311bedb2f42c
 }
 ```
 
