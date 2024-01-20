@@ -193,7 +193,7 @@ Git LFS 占位符会自动排除在内联之外，因为它们不包含其所表
 ## build.minify {#build-minify}
 
 - **类型：** `boolean | 'terser' | 'esbuild'`
-- **默认：** 客户端构建为`'esbuild'`，SSR构建为 `false`
+- **默认：** 客户端构建默认为`'esbuild'`，SSR构建默认为 `false`
 
 设置为 `false` 可以禁用最小化混淆，或是用来指定使用哪种混淆器。默认为 [Esbuild](https://github.com/evanw/esbuild)，它比 terser 快 20-40 倍，压缩率只差 1%-2%。[Benchmarks](https://github.com/privatenumber/minification-benchmarks)
 
