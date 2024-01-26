@@ -62,7 +62,19 @@ export default defineConfig({
 
 设置为 `true` 可以强制依赖预构建，而忽略之前已经缓存过的、已经优化过的依赖。
 
+<<<<<<< HEAD
 ## optimizeDeps.disabled {#optimizedeps-disabled}
+=======
+## optimizeDeps.holdUntilCrawlEnd
+
+- **Experimental**
+- **Type:** `boolean`
+- **Default:** `true`
+
+When enabled, it will hold the first optimized deps results until all static imports are crawled on cold start. This avoids the need for full-page reloads when new dependencies are discovered and they trigger the generation of new common chunks. If all dependencies are found by the scanner plus the explicitely defined ones in `include`, it is better to disable this option to let the browser process more requests in parallel.
+
+## optimizeDeps.disabled
+>>>>>>> 5be96038f0970c56af483e3fbd40a3fcb11a4b5a
 
 - **已废弃**
 - **实验性：** [提供反馈](https://github.com/vitejs/vite/discussions/13839)

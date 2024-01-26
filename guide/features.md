@@ -614,7 +614,13 @@ const worker = new Worker(new URL('./worker.js', import.meta.url), {
 })
 ```
 
+<<<<<<< HEAD
 ### 带有查询后缀的导入 {#import-with-query-suffixes}
+=======
+The worker detection will only work if the `new URL()` constructor is used directly inside the `new Worker()` declaration. Additionally, all options parameters must be static values (i.e. string literals).
+
+### Import with Query Suffixes
+>>>>>>> 5be96038f0970c56af483e3fbd40a3fcb11a4b5a
 
 你可以在导入请求上添加 `?worker` 或 `?sharedworker` 查询参数来直接导入一个 web worker 脚本。默认导出会是一个自定义 worker 的构造函数：
 
