@@ -90,7 +90,11 @@ export default defineConfig({
 
 请注意，如果使用了非相对的 [基础路径 `base`](/config/shared-options.md#base)，则必须在每个 key 值前加上该 `base`。
 
+<<<<<<< HEAD
 继承自 [`http-proxy`](https://github.com/http-party/node-http-proxy#options)。完整选项详见 [此处](https://github.com/vitejs/vite/blob/main/packages/vite/src/node/server/middlewares/proxy.ts#L12).
+=======
+Extends [`http-proxy`](https://github.com/http-party/node-http-proxy#options). Additional options are [here](https://github.com/vitejs/vite/blob/main/packages/vite/src/node/server/middlewares/proxy.ts#L13).
+>>>>>>> e6566cae14f02786b4a5b87d6c510a148ba1035e
 
 在某些情况下，你可能也想要配置底层的开发服务器。（例如添加自定义的中间件到内部的 [connect](https://github.com/senchalabs/connect) 应用中）为了实现这一点，你需要编写你自己的 [插件](/guide/using-plugins.html) 并使用 [configureServer](/guide/api-plugin.html#configureserver) 函数。
 
