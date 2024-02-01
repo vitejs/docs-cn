@@ -31,6 +31,8 @@ Vite 使用 [dotenv](https://github.com/motdotla/dotenv) 从你的 [环境目录
 
 另外，Vite 执行时已经存在的环境变量有最高的优先级，不会被 `.env` 类文件覆盖。例如当运行 `VITE_SOME_KEY=123 vite build` 的时候。
 
+:::
+:::tip 环境加载优先级
 `.env` 类文件会在 Vite 启动一开始时被加载，而改动会在重启服务器后生效。
 :::
 
