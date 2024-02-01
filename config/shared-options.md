@@ -222,13 +222,7 @@ Vite 有一个“允许的情景”列表，并且会匹配列表中第一个情
 - `less` - [选项](https://lesscss.org/usage/#less-options)。
 - `styl`/`stylus` - 仅支持 [`define`](https://stylus-lang.com/docs/js.html#define-name-node)，可以作为对象传递。
 
-<<<<<<< HEAD
-所有预处理器选项还支持 `additionalData` 选项，可以用于为每个样式内容注入额外代码。请注意，如果注入的是实际的样式而不仅仅是变量时，那么这些样式将会在最终的打包产物中重复出现。
-
-示例：
-=======
-**Example:**
->>>>>>> e6566cae14f02786b4a5b87d6c510a148ba1035e
+**示例：**
 
 ```js
 export default defineConfig({
@@ -247,16 +241,13 @@ export default defineConfig({
 })
 ```
 
-<<<<<<< HEAD
-## css.devSourcemap {#css-devsourcemap}
-=======
 ### css.preprocessorOptions[extension].additionalData
 
-- **Type:** `string | ((source: string, filename: string) => (string | { content: string; map?: SourceMap }))`
+- **类型：** `string | ((source: string, filename: string) => (string | { content: string; map?: SourceMap }))`
 
-This option can be used to inject extra code for each style content. Note that if you include actual styles and not just variables, those styles will be duplicated in the final bundle.
+该选项可以用来为每一段样式内容添加额外的代码。但是要注意，如果你添加的是实际的样式而不仅仅是变量，那这些样式在最终的产物中会重复。
 
-**Example:**
+**示例：**
 
 ```js
 export default defineConfig({
@@ -272,14 +263,13 @@ export default defineConfig({
 
 ## css.preprocessorMaxWorkers
 
-- **Experimental:** [Give Feedback](TODO: update)
-- **Type:** `number | true`
-- **Default:** `0` (does not create any workers and run in the main thread)
+- **实验性：** [提供反馈](TODO: update)
+- **类型：** `number | true`
+- **默认：** `0`（不会创建任何 worker 线程，而是在主线程中运行）
 
-If this option is set, CSS preprocessors will run in workers when possible. `true` means the number of CPUs minus 1.
+如果启用了这个选项，那么 CSS 预处理器会尽可能在 worker 线程中运行。`true` 表示 CPU 数量减 1。
 
-## css.devSourcemap
->>>>>>> e6566cae14f02786b4a5b87d6c510a148ba1035e
+## css.devSourcemap {#css-devsourcemap}
 
 - **实验性：** [提供反馈](https://github.com/vitejs/vite/discussions/13845)
 - **类型：** `boolean`
