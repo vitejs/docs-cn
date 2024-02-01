@@ -62,6 +62,14 @@ export default defineConfig({
 
 设置为 `true` 可以强制依赖预构建，而忽略之前已经缓存过的、已经优化过的依赖。
 
+## optimizeDeps.holdUntilCrawlEnd
+
+- **实验性**
+- **类型：** `boolean`
+- **默认：** `true`
+
+当该功能被启用时，系统会在冷启动时保持第一个优化的依赖结果，直到所有的静态导入都被检索完毕。这样可以避免因为发现新的依赖项而触发新的公共 chunk 生成，从而需要刷新整个页面。如果通过扫描和在 `include` 中明确定义的方式能找到所有的依赖项，那么最好关闭这个功能，这样浏览器可以并行处理更多的请求。
+
 ## optimizeDeps.disabled {#optimizedeps-disabled}
 
 - **已废弃**
