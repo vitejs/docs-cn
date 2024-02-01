@@ -125,10 +125,22 @@ app.use('*', async (req, res, next) => {
     //    例如：@vitejs/plugin-react 中的 global preambles
     template = await vite.transformIndexHtml(url, template)
 
+<<<<<<< HEAD
     // 3. 加载服务器入口。vite.ssrLoadModule 将自动转换
     //    你的 ESM 源码使之可以在 Node.js 中运行！无需打包
     //    并提供类似 HMR 的根据情况随时失效。
+=======
+    // 3a. Load the server entry. ssrLoadModule automatically transforms
+    //    ESM source code to be usable in Node.js! There is no bundling
+    //    required, and provides efficient invalidation similar to HMR.
+>>>>>>> 101218e85e960a8d862f4412b0bccdbdba19167e
     const { render } = await vite.ssrLoadModule('/src/entry-server.js')
+    // 3b. Since Vite 5.1, you can use createViteRuntime API instead.
+    //    It fully supports HMR and works in a simillar way to ssrLoadModule
+    //    More advanced use case would be creating a runtime in a separate
+    //    thread or even a different machine using ViteRuntime class
+    const runtime = await vite.createViteRuntime(server)
+    const { render } = await runtime.executeEntrypoint('/src/entry-server.js')
 
     // 4. 渲染应用的 HTML。这假设 entry-server.js 导出的 `render`
     //    函数调用了适当的 SSR 框架 API。
@@ -162,8 +174,13 @@ app.use('*', async (req, res, next) => {
 
 为了将 SSR 项目交付生产，我们需要：
 
+<<<<<<< HEAD
 1. 正常生成一个客户端构建；
 2. 再生成一个 SSR 构建，使其通过 `import()` 直接加载，这样便无需再使用 Vite 的 `ssrLoadModule`；
+=======
+1. Produce a client build as normal;
+2. Produce an SSR build, which can be directly loaded via `import()` so that we don't have to go through Vite's `ssrLoadModule` or `runtime.executeEntrypoint`;
+>>>>>>> 101218e85e960a8d862f4412b0bccdbdba19167e
 
 `package.json` 中的脚本应该看起来像这样：
 
@@ -181,9 +198,15 @@ app.use('*', async (req, res, next) => {
 
 接着，在 `server.js` 中，通过 `process.env.NODE_ENV` 条件分支，需要添加一些用于生产环境的特定逻辑：
 
+<<<<<<< HEAD
 - 使用 `dist/client/index.html` 作为模板，而不是根目录的 `index.html`，因为前者包含了到客户端构建的正确资源链接。
 
 - 使用 `import('./dist/server/entry-server.js')` ，而不是 `await vite.ssrLoadModule('/src/entry-server.js')`（前者是 SSR 构建后的最终结果）。
+=======
+- Instead of reading the root `index.html`, use the `dist/client/index.html` as the template, since it contains the correct asset links to the client build.
+
+- Instead of `await vite.ssrLoadModule('/src/entry-server.js')` or `await runtime.executeEntrypoint('/src/entry-server.js')`, use `import('./dist/server/entry-server.js')` (this file is the result of the SSR build).
+>>>>>>> 101218e85e960a8d862f4412b0bccdbdba19167e
 
 - 将 `vite` 开发服务器的创建和所有使用都移到 dev-only 条件分支后面，然后添加静态文件服务中间件来服务 `dist/client` 中的文件。
 
