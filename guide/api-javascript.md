@@ -144,7 +144,7 @@ interface ViteDevServer {
   /**
    * 应用 Vite 内建 HTML 转换和任意插件 HTML 转换
    */
-  transformIndexHtml(url: string, html: string): Promise<string>
+  transformIndexHtml(url: string, html: string, originalUrl?: string): Promise<string>
   /**
    * 加载一个给定的 URL 作为 SSR 的实例化模块
    */
