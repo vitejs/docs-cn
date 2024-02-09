@@ -335,11 +335,23 @@ export default defineConfig({
               link: '/guide/api-javascript',
             },
             {
+<<<<<<< HEAD
               text: '配置参考',
               link: '/config/'
             }
           ]
         }
+=======
+              text: 'Vite Runtime API',
+              link: '/guide/api-vite-runtime',
+            },
+            {
+              text: 'Config Reference',
+              link: '/config/',
+            },
+          ],
+        },
+>>>>>>> 43d04380ae0cdbf352d5b2ac55ebb37c90b02898
       ],
       '/config/': [
         {
