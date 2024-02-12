@@ -35,7 +35,11 @@ export default defineConfig({
 
 默认情况下，不在 `node_modules` 中的，链接的包不会被预构建。使用此选项可强制预构建链接的包。
 
+<<<<<<< HEAD
 **实验性：** 如果你使用的是一个有很多深层导入的库，你也可以指定一个尾部的 glob 模式来一次性地预构建所有深层导入。这将避免在使用新的深层导入时不断地预构建。例如：
+=======
+**Experimental:** If you're using a library with many deep imports, you can also specify a trailing glob pattern to pre-bundle all deep imports at once. This will avoid constantly pre-bundling whenever a new deep import is used. [Give Feedback](https://github.com/vitejs/vite/discussions/15833). For example:
+>>>>>>> f9c4d7f965b8caf6bb074f7456e563dd7a3a6250
 
 ```js
 export default defineConfig({
@@ -47,7 +51,21 @@ export default defineConfig({
 
 ## optimizeDeps.esbuildOptions {#optimizedeps-esbuild-options}
 
+<<<<<<< HEAD
 - **类型：** [`EsbuildBuildOptions`](https://esbuild.github.io/api/#simple-options)
+=======
+- **Type:** [`Omit`](https://www.typescriptlang.org/docs/handbook/utility-types.html#omittype-keys)`<`[`EsbuildBuildOptions`](https://esbuild.github.io/api/#simple-options)`,
+| 'bundle'
+| 'entryPoints'
+| 'external'
+| 'write'
+| 'watch'
+| 'outdir'
+| 'outfile'
+| 'outbase'
+| 'outExtension'
+| 'metafile'>`
+>>>>>>> f9c4d7f965b8caf6bb074f7456e563dd7a3a6250
 
 在依赖扫描和优化过程中传递给 esbuild 的选项。
 
@@ -64,9 +82,15 @@ export default defineConfig({
 
 ## optimizeDeps.holdUntilCrawlEnd
 
+<<<<<<< HEAD
 - **实验性**
 - **类型：** `boolean`
 - **默认：** `true`
+=======
+- **Experimental:** [Give Feedback](https://github.com/vitejs/vite/discussions/15834)
+- **Type:** `boolean`
+- **Default:** `true`
+>>>>>>> f9c4d7f965b8caf6bb074f7456e563dd7a3a6250
 
 当该功能被启用时，系统会在冷启动时保持第一个优化的依赖结果，直到所有的静态导入都被检索完毕。这样可以避免因为发现新的依赖项而触发新的公共 chunk 生成，从而需要刷新整个页面。如果通过扫描和在 `include` 中明确定义的方式能找到所有的依赖项，那么最好关闭这个功能，这样浏览器可以并行处理更多的请求。
 
