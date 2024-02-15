@@ -6,11 +6,21 @@
 - 页面加载慢
 - 构建慢
 
+<<<<<<< HEAD
 ## 避免使用浏览器扩展 {#avoid-browser-extensions}
+=======
+## Review your Browser Setup
+>>>>>>> c215eea866b3ad83929e50d1387c44ba87d28840
 
 有些浏览器插件可能会干涉请求，对于大型应用，特别是在使用浏览器开发工具时，可能会拖慢启动和刷新速度。我们建议在这种情况下，使用 Vite 的开发服务器时，创建一个专门用于开发且不含插件的配置，或者切换到无痕模式。无痕模式的速度也应该比没有插件的常规模式更快。
 
+<<<<<<< HEAD
 ## 审核配置的 Vite 插件 {#audit-configured-vite-plugins}
+=======
+The Vite dev server does hard caching of pre-bundled dependencies and implements fast 304 responses for source code. Disabling the cache while the Browser Dev Tools are open can have a big impact in startup and full-page reload times. Please check that "Disable Cache" isn't enabled while you work with the Vite server.
+
+## Audit Configured Vite Plugins
+>>>>>>> c215eea866b3ad83929e50d1387c44ba87d28840
 
 Vite 的内部和官方插件已经优化，以在提供与更广泛的生态系统兼容性的同时做尽可能少的工作。例如，代码转换在开发中使用正则表达式，但在构建中进行完整解析以确保正确性。
 
