@@ -125,21 +125,15 @@ app.use('*', async (req, res, next) => {
     //    例如：@vitejs/plugin-react 中的 global preambles
     template = await vite.transformIndexHtml(url, template)
 
-<<<<<<< HEAD
-    // 3. 加载服务器入口。vite.ssrLoadModule 将自动转换
+    // 3a. 加载服务器入口。vite.ssrLoadModule 将自动转换
     //    你的 ESM 源码使之可以在 Node.js 中运行！无需打包
     //    并提供类似 HMR 的根据情况随时失效。
-=======
-    // 3a. Load the server entry. ssrLoadModule automatically transforms
-    //    ESM source code to be usable in Node.js! There is no bundling
-    //    required, and provides efficient invalidation similar to HMR.
->>>>>>> c215eea866b3ad83929e50d1387c44ba87d28840
     const { render } = await vite.ssrLoadModule('/src/entry-server.js')
-    // 3b. Since Vite 5.1, you can use the experimental createViteRuntime API
-    //    instead.
-    //    It fully supports HMR and works in a simillar way to ssrLoadModule
-    //    More advanced use case would be creating a runtime in a separate
-    //    thread or even a different machine using ViteRuntime class
+    // 3b. 从 Vite 5.1 版本开始，你可以试用实验性的 createViteRuntime
+    // API。
+    // 这个 API 完全支持热更新（HMR），其工作原理与 ssrLoadModule 相似
+    // 如果你想尝试更高级的用法，可以考虑在另一个线程，甚至是在另一台机器上，
+    // 使用 ViteRuntime 类来创建运行环境。
     const runtime = await vite.createViteRuntime(server)
     const { render } = await runtime.executeEntrypoint('/src/entry-server.js')
 
@@ -175,13 +169,8 @@ app.use('*', async (req, res, next) => {
 
 为了将 SSR 项目交付生产，我们需要：
 
-<<<<<<< HEAD
 1. 正常生成一个客户端构建；
-2. 再生成一个 SSR 构建，使其通过 `import()` 直接加载，这样便无需再使用 Vite 的 `ssrLoadModule`；
-=======
-1. Produce a client build as normal;
-2. Produce an SSR build, which can be directly loaded via `import()` so that we don't have to go through Vite's `ssrLoadModule` or `runtime.executeEntrypoint`;
->>>>>>> c215eea866b3ad83929e50d1387c44ba87d28840
+2. 再生成一个 SSR 构建，使其通过 `import()` 直接加载，这样便无需再使用 Vite 的 `ssrLoadModule` 或 `runtime.executeEntrypoint`；
 
 `package.json` 中的脚本应该看起来像这样：
 
@@ -199,15 +188,9 @@ app.use('*', async (req, res, next) => {
 
 接着，在 `server.js` 中，通过 `process.env.NODE_ENV` 条件分支，需要添加一些用于生产环境的特定逻辑：
 
-<<<<<<< HEAD
 - 使用 `dist/client/index.html` 作为模板，而不是根目录的 `index.html`，因为前者包含了到客户端构建的正确资源链接。
 
-- 使用 `import('./dist/server/entry-server.js')` ，而不是 `await vite.ssrLoadModule('/src/entry-server.js')`（前者是 SSR 构建后的最终结果）。
-=======
-- Instead of reading the root `index.html`, use the `dist/client/index.html` as the template, since it contains the correct asset links to the client build.
-
-- Instead of `await vite.ssrLoadModule('/src/entry-server.js')` or `await runtime.executeEntrypoint('/src/entry-server.js')`, use `import('./dist/server/entry-server.js')` (this file is the result of the SSR build).
->>>>>>> c215eea866b3ad83929e50d1387c44ba87d28840
+- 使用 `import('./dist/server/entry-server.js')` （该文件是 SSR 构建产物），而不是使用 `await vite.ssrLoadModule('/src/entry-server.js')` 或 `await runtime.executeEntrypoint('/src/entry-server.js')`。
 
 - 将 `vite` 开发服务器的创建和所有使用都移到 dev-only 条件分支后面，然后添加静态文件服务中间件来服务 `dist/client` 中的文件。
 
@@ -295,7 +278,6 @@ SSR 构建的默认目标为 node 环境，但你也可以让服务运行在 Web
 
 ## SSR Resolve Conditions
 
-By default package entry resolution will use the conditions set in [`resolve.conditions`](../config/shared-options.md#resolve-conditions) for the SSR build. You can use [`ssr.resolve.conditions`](../config/ssr-options.md#ssr-resolve-conditions) and [`ssr.resolve.externalConditions`](../config/ssr-options.md#ssr-resolve-externalconditions) to customize this behavior.
 默认情况下包的入口解析将会使用 [`resolve.conditions`](../config/shared-options.md#resolve-conditions) 中设置的条件来进行 SSR 构建。你可以使用 [`ssr.resolve.conditions`](../config/ssr-options.md#ssr-resolve-conditions) 和 [`ssr.resolve.externalConditions`](../config/ssr-options.md#ssr-resolve-externalconditions) 来自定义这个行为。
 
 ## Vite CLI {#vite-cli}

@@ -263,15 +263,9 @@ export default defineConfig({
 
 ## css.preprocessorMaxWorkers
 
-<<<<<<< HEAD
-- **实验性：** [提供反馈](TODO: update)
+- **实验性：** [提供反馈](https://github.com/vitejs/vite/discussions/15835)
 - **类型：** `number | true`
 - **默认：** `0`（不会创建任何 worker 线程，而是在主线程中运行）
-=======
-- **Experimental:** [Give Feedback](https://github.com/vitejs/vite/discussions/15835)
-- **Type:** `number | true`
-- **Default:** `0` (does not create any workers and run in the main thread)
->>>>>>> c215eea866b3ad83929e50d1387c44ba87d28840
 
 如果启用了这个选项，那么 CSS 预处理器会尽可能在 worker 线程中运行。`true` 表示 CPU 数量减 1。
 
