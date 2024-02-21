@@ -203,4 +203,14 @@ import.meta.hot.accept((module) => {
 
 如果在连接前调用，数据会先被缓存、等到连接建立好后再发送。
 
+<<<<<<< HEAD
 查看 [客户端与服务器的数据交互](/guide/api-plugin.html#client-server-communication) 一节获取更多细节。
+=======
+See [Client-server Communication](/guide/api-plugin.html#client-server-communication) for more details.
+
+## Further Reading
+
+If you'd like to learn more about how to use the HMR API and how it works under-the-hood. Check out these resources:
+
+- [Hot Module Replacement is Easy](https://bjornlu.com/blog/hot-module-replacement-is-easy)
+>>>>>>> 9bc79d63d2f591607f3ab4e345ba25d2957d1f58

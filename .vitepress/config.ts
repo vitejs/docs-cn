@@ -214,12 +214,17 @@ export default defineConfig({
                 link: 'https://dev.to/t/vite'
               },
               {
+<<<<<<< HEAD
                 text: 'Rollup 插件兼容',
                 link: 'https://vite-rollup-plugins.patak.dev/'
               },
               {
                 text: '更新日志',
                 link: 'https://github.com/vitejs/vite/blob/main/packages/vite/CHANGELOG.md'
+=======
+                text: 'Changelog',
+                link: 'https://github.com/vitejs/vite/blob/main/packages/vite/CHANGELOG.md',
+>>>>>>> 9bc79d63d2f591607f3ab4e345ba25d2957d1f58
               },
               {
                 text: '贡献指南',
@@ -335,11 +340,23 @@ export default defineConfig({
               link: '/guide/api-javascript',
             },
             {
+<<<<<<< HEAD
               text: '配置参考',
               link: '/config/'
             }
           ]
         }
+=======
+              text: 'Vite Runtime API',
+              link: '/guide/api-vite-runtime',
+            },
+            {
+              text: 'Config Reference',
+              link: '/config/',
+            },
+          ],
+        },
+>>>>>>> 9bc79d63d2f591607f3ab4e345ba25d2957d1f58
       ],
       '/config/': [
         {
@@ -381,6 +398,17 @@ export default defineConfig({
         },
       ],
     },
+  },
+  transformPageData(pageData) {
+    const canonicalUrl = `${ogUrl}/${pageData.relativePath}`
+      .replace(/\/index\.md$/, '/')
+      .replace(/\.md$/, '/')
+    pageData.frontmatter.head ??= []
+    pageData.frontmatter.head.unshift([
+      'link',
+      { rel: 'canonical', href: canonicalUrl },
+    ])
+    return pageData
   },
   buildEnd,
 })

@@ -400,7 +400,12 @@ Vite 插件也可以提供钩子来服务于特定的 Vite 目标。这些钩子
 
 ### `handleHotUpdate` {#handlehotupdate}
 
+<<<<<<< HEAD
 - **类型：** `(ctx: HmrContext) => Array<ModuleNode> | void | Promise<Array<ModuleNode> | void>`
+=======
+- **Type:** `(ctx: HmrContext) => Array<ModuleNode> | void | Promise<Array<ModuleNode> | void>`
+- **See also:** [HMR API](./api-hmr)
+>>>>>>> 9bc79d63d2f591607f3ab4e345ba25d2957d1f58
 
   执行自定义 HMR 更新处理。钩子接收一个带有以下签名的上下文对象：
 
@@ -422,10 +427,35 @@ Vite 插件也可以提供钩子来服务于特定的 Vite 目标。这些钩子
 
   - 过滤和缩小受影响的模块列表，使 HMR 更准确。
 
+<<<<<<< HEAD
   - 返回一个空数组，并通过向客户端发送自定义事件来执行完整的自定义 HMR 处理（示例使用了在 Vite 5.1 中引入的 `server.hot`，如果你想支持较低版本，建议使用 `server.ws`）:
+=======
+  - Return an empty array and perform a full reload:
+
+    ```js
+    handleHotUpdate({ server, modules, timestamp }) {
+      // Also use `server.ws.send` to support Vite <5.1 if needed
+      server.hot.send({ type: 'full-reload' })
+      // Invalidate modules manually
+      const invalidatedModules = new Set()
+      for (const mod of modules) {
+        server.moduleGraph.invalidateModule(
+          mod,
+          invalidatedModules,
+          timestamp,
+          true
+        )
+      }
+      return []
+    }
+    ```
+
+  - Return an empty array and perform complete custom HMR handling by sending custom events to the client:
+>>>>>>> 9bc79d63d2f591607f3ab4e345ba25d2957d1f58
 
     ```js
     handleHotUpdate({ server }) {
+      // Also use `server.ws.send` to support Vite <5.1 if needed
       server.hot.send({
         type: 'custom',
         event: 'special-update',
@@ -508,9 +538,13 @@ export default defineConfig({
 })
 ```
 
+<<<<<<< HEAD
 查看 [Vite Rollup 插件](https://vite-rollup-plugins.patak.dev) 获取兼容的官方 Rollup 插件列表及其使用指南。
 
 ## 路径规范化 {#path-normalization}
+=======
+## Path Normalization
+>>>>>>> 9bc79d63d2f591607f3ab4e345ba25d2957d1f58
 
 Vite 对路径进行了规范化处理，在解析路径时使用 POSIX 分隔符（ / ），同时保留了 Windows 中的卷名。而另一方面，Rollup 在默认情况下保持解析的路径不变，因此解析的路径在 Windows 中会使用 win32 分隔符（ \\ ）。然而，Rollup 插件会使用 `@rollup/pluginutils` 内部的 [`normalizePath` 工具函数](https://github.com/rollup/plugins/tree/master/packages/pluginutils#normalizepath)，它在执行比较之前将分隔符转换为 POSIX。所以意味着当这些插件在 Vite 中使用时，`include` 和 `exclude` 两个配置模式，以及与已解析路径比较相似的路径会正常工作。
 

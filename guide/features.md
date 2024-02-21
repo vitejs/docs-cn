@@ -174,7 +174,11 @@ Vite 为 Vue 提供第一优先级支持：
 
 Vue 用户应使用官方提供的 [@vitejs/plugin-vue-jsx](https://github.com/vitejs/vite-plugin-vue/tree/main/packages/plugin-vue-jsx) 插件，它提供了 Vue 3 特性的支持，包括 HMR，全局组件解析，指令和插槽。
 
+<<<<<<< HEAD
 如果不是在 React 或 Vue 中使用 JSX，自定义的 `jsxFactory` 和 `jsxFragment` 可以使用 [`esbuild` 选项](/config/shared-options.md#esbuild) 进行配置。例如对 Preact：
+=======
+If using JSX without React or Vue, custom `jsxFactory` and `jsxFragment` can be configured using the [`esbuild` option](/config/shared-options.md#esbuild). For example for Preact:
+>>>>>>> 9bc79d63d2f591607f3ab4e345ba25d2957d1f58
 
 ```js
 // vite.config.js
