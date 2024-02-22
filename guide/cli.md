@@ -58,7 +58,6 @@ vite build [root]
 | `--minify [minifier]`          | 允许或禁用最小化混淆，或指定使用哪种混淆器（默认为：`"esbuild"`）(`boolean \| "terser" \| "esbuild"`) |
 | `--manifest [name]`            | 构建后生成 manifest.json 文件 (`boolean \| string`) |
 | `--ssrManifest [name]`         | 构建后生成 SSR manifest.json 文件 (`boolean \| string`) |
-| `--force`                      | 强制优化器忽略缓存并重新构建（实验性）(`boolean`) |
 | `--emptyOutDir`                | 若输出目录在根目录外，强制清空输出目录 (`boolean`) |
 | `-w, --watch`                  | 在磁盘中模块发生变化时，重新构建 (`boolean`) |
 | `-c, --config <file>`          | 使用指定的配置文件 (`string`) |

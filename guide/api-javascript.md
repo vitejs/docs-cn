@@ -67,9 +67,7 @@ const vite = await createServer({
   },
 })
 
-server.use((req, res, next) => {
-  vite.middlewares.handle(req, res, next)
-})
+parentServer.use(vite.middlewares)
 ```
 
 </details>
@@ -144,7 +142,11 @@ interface ViteDevServer {
   /**
    * 应用 Vite 内建 HTML 转换和任意插件 HTML 转换
    */
-  transformIndexHtml(url: string, html: string): Promise<string>
+  transformIndexHtml(
+    url: string,
+    html: string,
+    originalUrl?: string,
+  ): Promise<string>
   /**
    * 加载一个给定的 URL 作为 SSR 的实例化模块
    */
@@ -393,6 +395,7 @@ async function loadConfigFromFile(
   configFile?: string,
   configRoot: string = process.cwd(),
   logLevel?: LogLevel,
+  customLogger?: Logger,
 ): Promise<{
   path: string
   config: UserConfig

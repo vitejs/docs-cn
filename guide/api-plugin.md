@@ -422,11 +422,11 @@ Vite 插件也可以提供钩子来服务于特定的 Vite 目标。这些钩子
 
   - 过滤和缩小受影响的模块列表，使 HMR 更准确。
 
-  - 返回一个空数组，并通过向客户端发送自定义事件来执行完整的自定义 HMR 处理:
+  - 返回一个空数组，并通过向客户端发送自定义事件来执行完整的自定义 HMR 处理（示例使用了在 Vite 5.1 中引入的 `server.hot`，如果你想支持较低版本，建议使用 `server.ws`）:
 
     ```js
     handleHotUpdate({ server }) {
-      server.ws.send({
+      server.hot.send({
         type: 'custom',
         event: 'special-update',
         data: {}
@@ -508,8 +508,6 @@ export default defineConfig({
 })
 ```
 
-查看 [Vite Rollup 插件](https://vite-rollup-plugins.patak.dev) 获取兼容的官方 Rollup 插件列表及其使用指南。
-
 ## 路径规范化 {#path-normalization}
 
 Vite 对路径进行了规范化处理，在解析路径时使用 POSIX 分隔符（ / ），同时保留了 Windows 中的卷名。而另一方面，Rollup 在默认情况下保持解析的路径不变，因此解析的路径在 Windows 中会使用 win32 分隔符（ \\ ）。然而，Rollup 插件会使用 `@rollup/pluginutils` 内部的 [`normalizePath` 工具函数](https://github.com/rollup/plugins/tree/master/packages/pluginutils#normalizepath)，它在执行比较之前将分隔符转换为 POSIX。所以意味着当这些插件在 Vite 中使用时，`include` 和 `exclude` 两个配置模式，以及与已解析路径比较相似的路径会正常工作。
@@ -533,7 +531,7 @@ Vite 暴露了 [`@rollup/pluginutils` 的 `createFilter`](https://github.com/rol
 
 ### 服务端到客户端 {#server-to-client}
 
-在插件一侧，我们可以使用 `server.ws.send` 去给所有客户端广播事件：
+在插件一侧，我们可以使用 `server.hot.send`（自 Vite 5.1 起）或 `server.ws.send` 去给所有客户端广播事件：
 
 ```js
 // vite.config.js
@@ -543,8 +541,8 @@ export default defineConfig({
       // ...
       configureServer(server) {
         // 示例：等待客户端连接后再发送消息
-        server.ws.on('connection', () => {
-          server.ws.send('my:greetings', { msg: 'hello' })
+        server.hot.on('connection', () => {
+          server.hot.send('my:greetings', { msg: 'hello' })
         })
       },
     },
@@ -578,7 +576,7 @@ if (import.meta.hot) {
 }
 ```
 
-然后使用 `server.ws.on` 并在服务端监听这些事件：
+然后使用 `server.hot.on`（自 Vite 5.1 起） 或 `server.ws.on` 并在服务端监听这些事件：
 
 ```js
 // vite.config.js
@@ -587,7 +585,7 @@ export default defineConfig({
     {
       // ...
       configureServer(server) {
-        server.ws.on('my:from-client', (data, client) => {
+        server.hot.on('my:from-client', (data, client) => {
           console.log('Message from client:', data.msg) // Hey!
           // reply only to the client (if needed)
           client.send('my:ack', { msg: 'Hi! I got your message!' })

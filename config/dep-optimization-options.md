@@ -35,7 +35,7 @@ export default defineConfig({
 
 默认情况下，不在 `node_modules` 中的，链接的包不会被预构建。使用此选项可强制预构建链接的包。
 
-**实验性：** 如果你使用的是一个有很多深层导入的库，你也可以指定一个尾部的 glob 模式来一次性地预构建所有深层导入。这将避免在使用新的深层导入时不断地预构建。例如：
+**实验性：** 如果你使用的是一个有很多深层导入的库，你也可以指定一个尾部的 glob 模式来一次性地预构建所有深层导入。这将避免在使用新的深层导入时不断地预构建。可以在此 [提供反馈](https://github.com/vitejs/vite/discussions/15833)。例如：
 
 ```js
 export default defineConfig({
@@ -47,7 +47,17 @@ export default defineConfig({
 
 ## optimizeDeps.esbuildOptions {#optimizedeps-esbuild-options}
 
-- **类型：** [`EsbuildBuildOptions`](https://esbuild.github.io/api/#simple-options)
+- **类型：** [`Omit`](https://www.typescriptlang.org/docs/handbook/utility-types.html#omittype-keys)`<`[`EsbuildBuildOptions`](https://esbuild.github.io/api/#simple-options)`,
+| 'bundle'
+| 'entryPoints'
+| 'external'
+| 'write'
+| 'watch'
+| 'outdir'
+| 'outfile'
+| 'outbase'
+| 'outExtension'
+| 'metafile'>`
 
 在依赖扫描和优化过程中传递给 esbuild 的选项。
 
@@ -62,18 +72,27 @@ export default defineConfig({
 
 设置为 `true` 可以强制依赖预构建，而忽略之前已经缓存过的、已经优化过的依赖。
 
+## optimizeDeps.holdUntilCrawlEnd
+
+- **实验性：** [提供反馈](https://github.com/vitejs/vite/discussions/15834)
+- **类型：** `boolean`
+- **默认：** `true`
+
+当该功能被启用时，系统会在冷启动时保持第一个优化的依赖结果，直到所有的静态导入都被检索完毕。这样可以避免因为发现新的依赖项而触发新的公共 chunk 生成，从而需要刷新整个页面。如果通过扫描和在 `include` 中明确定义的方式能找到所有的依赖项，那么最好关闭这个功能，这样浏览器可以并行处理更多的请求。
+
 ## optimizeDeps.disabled {#optimizedeps-disabled}
 
+- **已废弃**
 - **实验性：** [提供反馈](https://github.com/vitejs/vite/discussions/13839)
 - **类型：** `boolean | 'build' | 'dev'`
 - **默认：** `'build'`
 
-禁用依赖优化，值为 `true` 将在构建和开发期间均禁用优化器。传 `'build'` 或 `'dev'` 将仅在其中一种模式下禁用优化器。默认情况下，仅在开发阶段启用依赖优化。
+此选项已被弃用。从 Vite 5.1 版本开始，构建过程中对依赖项的预打包已经被移除。将 `optimizeDeps.disabled` 设置为 `true` 或 `'dev'` 将会禁用优化器，配置为 `false` 或 `'build'` 将会在开发模式下启用优化器。
+
+如果你想完全禁用优化器，可以设置 `optimizeDeps.noDiscovery: true` 来禁止自动发现依赖项，并保持 `optimizeDeps.include` 未定义或为空。
 
 :::warning
-在构建模式下依赖优化是 **实验性** 的。如果开启此项，那么它将消除开发与构建最终产物之间的最明显的区别之一。[`@rollup/plugin-commonjs`](https://github.com/rollup/plugins/tree/master/packages/commonjs) 在此处将不再需要，因为 esbuild 会将纯 CJS 依赖转换为 ESM。
-
-如果你想尝试该构建策略，你可以使用 `optimizeDeps.disabled: false`。`@rollup/plugin-commonjs` 可以通过设置 `build.commonjsOptions: { include: [] }` 来移除。
+在构建过程中优化依赖项是一个 **实验性** 的功能。尝试这种策略的项目也会使用 `build.commonjsOptions: { include: [] }` 来移除 `@rollup/plugin-commonjs`。如果你这样做，将会有一个警告提示你在打包时需要重新启用它，以支持仅使用 CJS 的包。
 :::
 
 ## optimizeDeps.needsInterop

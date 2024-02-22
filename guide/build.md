@@ -64,6 +64,18 @@ export default defineConfig({
 你应该使用 `build.rollupOptions.output.manualChunks` 函数形式来使用此插件。如果使用对象形式，插件将不会生效。
 :::
 
+## 处理加载报错 {#load-error-handling}
+
+当 Vite 加载动态导入失败时，会触发 `vite:preloadError` 事件。`event.payload` 包含原始的导入错误信息。如果调用 `event.preventDefault()`，则不会抛出错误。
+
+```js
+window.addEventListener('vite:preloadError', (event) => {
+  window.reload() // 例如，刷新页面
+})
+```
+
+当重新部署时，托管服务可能会删除之前部署的资源。因此，之前访问过您站点的用户可能会遇到导入错误。这种错误发生的原因是用户设备上运行的资源过时，并尝试导入相应的旧代码块，而这些代码块已经被删除。这个事件对于解决这种情况会很有帮助。
+
 ## 文件变化时重新构建 {#rebuild-on-files-changes}
 
 你可以使用 `vite build --watch` 来启用 rollup 的监听器。或者，你可以直接通过 `build.watch` 调整底层的 [`WatcherOptions`](https://rollupjs.org/configuration-options/#watch) 选项：
