@@ -22,26 +22,26 @@ export class ViteRuntime {
     private debug?: ViteRuntimeDebugger,
   ) {}
   /**
-   * URL to execute. Accepts file path, server path, or id relative to the root.
+   * 要执行的 URL。可以是文件路径、服务器路径，或者是相对于根目录的 id。
    */
   public async executeUrl<T = any>(url: string): Promise<T>
   /**
-   * Entry point URL to execute. Accepts file path, server path or id relative to the root.
-   * In the case of a full reload triggered by HMR, this is the module that will be reloaded.
-   * If this method is called multiple times, all entry points will be reloaded one at a time.
+   * 执行的入口文件 URL。可以是文件路径、服务器路径，或者是相对于根目录的 id。
+   * 如果是由 HMR 触发的全面重载，那么这就是将要被重载的模块。
+   * 如果这个方法被多次调用，所有的入口文件都将逐一被重新加载。
    */
   public async executeEntrypoint<T = any>(url: string): Promise<T>
   /**
-   * Clear all caches including HMR listeners.
+   * 清除所有缓存，包括 HMR 监听器。
    */
   public clearCache(): void
   /**
-   * Clears all caches, removes all HMR listeners, and resets source map support.
-   * This method doesn't stop the HMR connection.
+   * 清除所有缓存，移除所有 HMR 监听器，并重置 sourcemap 支持。
+   * 此方法不会停止 HMR 连接。
    */
   public async destroy(): Promise<void>
   /**
-   * Returns `true` if the runtime has been destroyed by calling `destroy()` method.
+   * 如果通过调用 `destroy()` 方法销毁了运行时，则返回 `true`。
    */
   public isDestroyed(): boolean
 }
@@ -67,7 +67,7 @@ const runtime = new ViteRuntime(
   {
     root,
     fetchModule,
-    // you can also provide hmr.connection to support HMR
+    // 你也可以提供 hmr.connection 以支持 HMR。
   },
   new ESModulesRunner(),
 )
@@ -80,19 +80,19 @@ await runtime.executeEntrypoint('/src/entry-point.js')
 ```ts
 export interface ViteRuntimeOptions {
   /**
-   * Root of the project
+   * 项目根目录
    */
   root: string
   /**
-   * A method to get the information about the module.
-   * For SSR, Vite exposes `server.ssrFetchModule` function that you can use here.
-   * For other runtime use cases, Vite also exposes `fetchModule` from its main entry point.
+   * 获取模块信息的方法
+   * 对于 SSR，Vite 提供了你可以使用的 `server.ssrFetchModule` 函数。
+   * 对于其他运行时用例，Vite 也从其主入口点提供了 `fetchModule`。
    */
   fetchModule: FetchFunction
   /**
-   * Configure how source maps are resolved. Prefers `node` if `process.setSourceMapsEnabled` is available.
-   * Otherwise it will use `prepareStackTrace` by default which overrides `Error.prepareStackTrace` method.
-   * You can provide an object to configure how file contents and source maps are resolved for files that were not processed by Vite.
+   * 配置 sourcemap 的解析方式。如果 `process.setSourceMapsEnabled` 可用，优先选择 `node`。
+   * 否则，默认使用 `prepareStackTrace`，这会覆盖 `Error.prepareStackTrace` 方法。
+   * 你可以提供一个对象来配置如何解析那些没有被 Vite 处理过的文件的内容和源代码映射。
    */
   sourcemapInterceptor?:
     | false
@@ -100,22 +100,22 @@ export interface ViteRuntimeOptions {
     | 'prepareStackTrace'
     | InterceptorOptions
   /**
-   * Disable HMR or configure HMR options.
+   * 禁用 HMR 或配置 HMR 选项。
    */
   hmr?:
     | false
     | {
         /**
-         * Configure how HMR communicates between the client and the server.
+         * 配置 HMR 如何在客户端和服务器之间通信。
          */
         connection: HMRRuntimeConnection
         /**
-         * Configure HMR logger.
+         * 配置 HMR 日志。
          */
         logger?: false | HMRLogger
       }
   /**
-   * Custom module cache. If not provided, it creates a separate module cache for each ViteRuntime instance.
+   * 自定义模块缓存。如果未提供，它将为每个 Vite 运行环境实例创建一个独立的模块缓存。
    */
   moduleCache?: ModuleCacheMap
 }
@@ -128,7 +128,7 @@ export interface ViteRuntimeOptions {
 ```ts
 export interface ViteModuleRunner {
   /**
-   * Run code that was transformed by Vite.
+   * 运行被 Vite 转换过的代码。
    * @param context Function context
    * @param code Transformed code
    * @param id ID that was used to fetch the module
@@ -139,7 +139,7 @@ export interface ViteModuleRunner {
     id: string,
   ): Promise<any>
   /**
-   * Run externalized module.
+   * 运行已外部化的模块。
    * @param file File URL to the external module
    */
   runExternalModule(file: string): Promise<any>
@@ -155,16 +155,16 @@ Vite 默认导出了实现了这个接口的 `ESModulesRunner`。它使用 `new 
 ```ts
 export interface HMRRuntimeConnection {
   /**
-   * Checked before sending messages to the client.
+   * 在向客户端发送消息之前进行检查
    */
   isReady(): boolean
   /**
-   * Send message to the client.
+   * 向客户端发送消息
    */
   send(message: string): void
   /**
-   * Configure how HMR is handled when this connection triggers an update.
-   * This method expects that connection will start listening for HMR updates and call this callback when it's received.
+   * 配置当此连接触发更新时如何处理 HMR。
+   * 此方法期望连接将开始监听 HMR 更新，并在接收到时调用此回调。
    */
   onUpdate(callback: (payload: HMRPayload) => void): void
 }
@@ -193,7 +193,7 @@ async function createViteRuntime(
 ): Promise<ViteRuntime>
 ```
 
-**Example Usage:**
+**使用示例：**
 
 ```js
 import { createServer } from 'vite'
@@ -219,7 +219,7 @@ const __dirname = fileURLToPath(new URL('.', import.meta.url))
 export interface MainThreadRuntimeOptions
   extends Omit<ViteRuntimeOptions, 'root' | 'fetchModule' | 'hmr'> {
   /**
-   * Disable HMR or configure HMR logger.
+   * 禁用 HMR 或配置 HMR 日志。
    */
   hmr?:
     | false
@@ -227,7 +227,7 @@ export interface MainThreadRuntimeOptions
         logger?: false | HMRLogger
       }
   /**
-   * Provide a custom module runner. This controls how the code is executed.
+   * 提供自定义模块运行器。这决定了代码的执行方式。
    */
   runner?: ViteModuleRunner
 }
