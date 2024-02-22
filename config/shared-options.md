@@ -263,7 +263,7 @@ export default defineConfig({
 
 ## css.preprocessorMaxWorkers
 
-- **实验性：** [提供反馈](TODO: update)
+- **实验性：** [提供反馈](https://github.com/vitejs/vite/discussions/15835)
 - **类型：** `number | true`
 - **默认：** `0`（不会创建任何 worker 线程，而是在主线程中运行）
 

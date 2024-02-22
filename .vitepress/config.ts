@@ -214,12 +214,8 @@ export default defineConfig({
                 link: 'https://dev.to/t/vite'
               },
               {
-                text: 'Rollup 插件兼容',
-                link: 'https://vite-rollup-plugins.patak.dev/'
-              },
-              {
                 text: '更新日志',
-                link: 'https://github.com/vitejs/vite/blob/main/packages/vite/CHANGELOG.md'
+                link: 'https://github.com/vitejs/vite/blob/main/packages/vite/CHANGELOG.md',
               },
               {
                 text: '贡献指南',
@@ -335,11 +331,15 @@ export default defineConfig({
               link: '/guide/api-javascript',
             },
             {
+              text: 'Vite 运行时 API',
+              link: '/guide/api-vite-runtime',
+            },
+            {
               text: '配置参考',
-              link: '/config/'
-            }
-          ]
-        }
+              link: '/config/',
+            },
+          ],
+        },
       ],
       '/config/': [
         {

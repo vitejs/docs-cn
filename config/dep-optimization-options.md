@@ -35,7 +35,7 @@ export default defineConfig({
 
 默认情况下，不在 `node_modules` 中的，链接的包不会被预构建。使用此选项可强制预构建链接的包。
 
-**实验性：** 如果你使用的是一个有很多深层导入的库，你也可以指定一个尾部的 glob 模式来一次性地预构建所有深层导入。这将避免在使用新的深层导入时不断地预构建。例如：
+**实验性：** 如果你使用的是一个有很多深层导入的库，你也可以指定一个尾部的 glob 模式来一次性地预构建所有深层导入。这将避免在使用新的深层导入时不断地预构建。可以在此 [提供反馈](https://github.com/vitejs/vite/discussions/15833)。例如：
 
 ```js
 export default defineConfig({
@@ -47,7 +47,17 @@ export default defineConfig({
 
 ## optimizeDeps.esbuildOptions {#optimizedeps-esbuild-options}
 
-- **类型：** [`EsbuildBuildOptions`](https://esbuild.github.io/api/#simple-options)
+- **类型：** [`Omit`](https://www.typescriptlang.org/docs/handbook/utility-types.html#omittype-keys)`<`[`EsbuildBuildOptions`](https://esbuild.github.io/api/#simple-options)`,
+| 'bundle'
+| 'entryPoints'
+| 'external'
+| 'write'
+| 'watch'
+| 'outdir'
+| 'outfile'
+| 'outbase'
+| 'outExtension'
+| 'metafile'>`
 
 在依赖扫描和优化过程中传递给 esbuild 的选项。
 
@@ -64,7 +74,7 @@ export default defineConfig({
 
 ## optimizeDeps.holdUntilCrawlEnd
 
-- **实验性**
+- **实验性：** [提供反馈](https://github.com/vitejs/vite/discussions/15834)
 - **类型：** `boolean`
 - **默认：** `true`
 
