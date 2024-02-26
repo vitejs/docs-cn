@@ -382,5 +382,16 @@ export default defineConfig({
       ],
     },
   },
+  transformPageData(pageData) {
+    const canonicalUrl = `${ogUrl}/${pageData.relativePath}`
+      .replace(/\/index\.md$/, '/')
+      .replace(/\.md$/, '/')
+    pageData.frontmatter.head ??= []
+    pageData.frontmatter.head.unshift([
+      'link',
+      { rel: 'canonical', href: canonicalUrl },
+    ])
+    return pageData
+  },
   buildEnd,
 })

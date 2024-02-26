@@ -204,3 +204,9 @@ import.meta.hot.accept((module) => {
 如果在连接前调用，数据会先被缓存、等到连接建立好后再发送。
 
 查看 [客户端与服务器的数据交互](/guide/api-plugin.html#client-server-communication) 一节获取更多细节。
+
+## 推荐阅读 {#further-reading}
+
+如果你想深入了解如何使用 HMR API，以及它的内部运作机制，可以参考以下资源：
+
+- [热模块替换其实很简单](https://bjornlu.com/blog/hot-module-replacement-is-easy)
