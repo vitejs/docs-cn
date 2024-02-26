@@ -400,12 +400,8 @@ Vite 插件也可以提供钩子来服务于特定的 Vite 目标。这些钩子
 
 ### `handleHotUpdate` {#handlehotupdate}
 
-<<<<<<< HEAD
 - **类型：** `(ctx: HmrContext) => Array<ModuleNode> | void | Promise<Array<ModuleNode> | void>`
-=======
-- **Type:** `(ctx: HmrContext) => Array<ModuleNode> | void | Promise<Array<ModuleNode> | void>`
-- **See also:** [HMR API](./api-hmr)
->>>>>>> 9bc79d63d2f591607f3ab4e345ba25d2957d1f58
+- **参见：** [HMR API](./api-hmr)
 
   执行自定义 HMR 更新处理。钩子接收一个带有以下签名的上下文对象：
 
@@ -427,16 +423,13 @@ Vite 插件也可以提供钩子来服务于特定的 Vite 目标。这些钩子
 
   - 过滤和缩小受影响的模块列表，使 HMR 更准确。
 
-<<<<<<< HEAD
-  - 返回一个空数组，并通过向客户端发送自定义事件来执行完整的自定义 HMR 处理（示例使用了在 Vite 5.1 中引入的 `server.hot`，如果你想支持较低版本，建议使用 `server.ws`）:
-=======
-  - Return an empty array and perform a full reload:
+  - 返回一个空数组并进行全面刷新：
 
     ```js
     handleHotUpdate({ server, modules, timestamp }) {
-      // Also use `server.ws.send` to support Vite <5.1 if needed
+      // 如果需要，也可使用 `server.ws.send` 来支持 Vite <5.1 版本
       server.hot.send({ type: 'full-reload' })
-      // Invalidate modules manually
+      // 手动使模块失效
       const invalidatedModules = new Set()
       for (const mod of modules) {
         server.moduleGraph.invalidateModule(
@@ -450,12 +443,11 @@ Vite 插件也可以提供钩子来服务于特定的 Vite 目标。这些钩子
     }
     ```
 
-  - Return an empty array and perform complete custom HMR handling by sending custom events to the client:
->>>>>>> 9bc79d63d2f591607f3ab4e345ba25d2957d1f58
+  - 返回一个空数组，并通过向客户端发送自定义事件，来进行完全自定义的 HMR处理：
 
     ```js
     handleHotUpdate({ server }) {
-      // Also use `server.ws.send` to support Vite <5.1 if needed
+      // 如果需要，也可使用 `server.ws.send` 来支持 Vite <5.1 版本
       server.hot.send({
         type: 'custom',
         event: 'special-update',
