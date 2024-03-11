@@ -195,7 +195,11 @@ import.meta.hot.accept((module) => {
 
 ## `hot.off(event, cb)` {#hot-offevent-cb}
 
+<<<<<<< HEAD
 从事件监听器中移除回调函数。
+=======
+Remove callback from the event listeners.
+>>>>>>> 6a160cdee8ec2e193d978477d8af1120f6f6d723
 
 ## `hot.send(event, data)` {#hot-send-event-data}
 

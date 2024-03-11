@@ -30,7 +30,21 @@ document.getElementById('hero-img').src = imgUrl
 
 - 默认情况下，TypeScript 不会将静态资源导入视为有效的模块。要解决这个问题，需要添加 [`vite/client`](./features#client-types)。
 
+<<<<<<< HEAD
 ### 显式 URL 引入 {#explicit-url-imports}
+=======
+::: tip Inlining SVGs through `url()`
+When passing a URL of SVG to a manually constructed `url()` by JS, the variable should be wrapped within double quotes.
+
+```js
+import imgUrl from './img.svg'
+document.getElementById('hero-img').style.background = `url("${imgUrl}")`
+```
+
+:::
+
+### Explicit URL Imports
+>>>>>>> 6a160cdee8ec2e193d978477d8af1120f6f6d723
 
 未被包含在内部列表或 `assetsInclude` 中的资源，可以使用 `?url` 后缀显式导入为一个 URL。这十分有用，例如，要导入 [Houdini Paint Worklets](https://houdini.how/usage) 时：
 
