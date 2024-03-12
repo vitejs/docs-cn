@@ -4,7 +4,11 @@
 
 ### `vite` {#vite}
 
+<<<<<<< HEAD
 在当前目录下启动 Vite 开发服务器。
+=======
+Start Vite dev server in the current directory. `vite dev` and `vite serve` are aliases for `vite`.
+>>>>>>> b4e46edda81f33f7f6280267aeafa840b3fc8b1a
 
 #### 使用 {#usage}
 
