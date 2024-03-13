@@ -26,7 +26,11 @@ Vite 的内部和官方插件已经优化，以在提供与更广泛的生态系
 
    转换文件所需的时间越长，加载站点时在浏览器中的请求瀑布图就会越明显。
 
+<<<<<<< HEAD
    您可以使用 `DEBUG="vite:plugin-transform" vite` 或 [vite-plugin-inspect](https://github.com/antfu/vite-plugin-inspect) 检查转换文件所需的时间。请注意，由于异步操作往往提供不准确的时间，应将这些数字视为粗略的估计，但它仍应揭示消耗很大的操作。
+=======
+   You can inspect the duration it takes to transform a file using `vite --debug plugin-transform` or [vite-plugin-inspect](https://github.com/antfu/vite-plugin-inspect). Note that as asynchronous operations tend to provide inaccurate timings, you should treat the numbers as a rough estimate, but it should still reveal the more expensive operations.
+>>>>>>> f342a05350899a3cce7e395f6fcc96d2f335351e
 
 ::: tip 性能分析
 可以运行 `vite --profile`，访问站点，并在终端中按 `p + enter` 来记录一个 `.cpuprofile`。然后可以使用像 [speedscope](https://www.speedscope.app) 这样的工具来检查配置文件并识别瓶颈。也可以 [分享配置文件](https://chat.vitejs.dev) 给 Vite 团队，帮助我们识别性能问题。
@@ -84,7 +88,11 @@ main.js -> BigComponent.vue -> big-utils.js -> large-data.json
 
 Vite 允许预热你确定频繁使用的文件，例如 `big-utils.js`，可以使用 [`server.warmup`](/config/server-options.md#server-warmup) 选项。这样，当请求时，`big-utils.js` 将准备好并被缓存，以便立即提供服务。
 
+<<<<<<< HEAD
 你可以通过运行 `DEBUG="vite:transform" vite` 并检查日志来找到频繁使用的文件：
+=======
+You can find files that are frequently used by running `vite --debug transform` and inspect the logs:
+>>>>>>> f342a05350899a3cce7e395f6fcc96d2f335351e
 
 ```bash
 vite:transform 28.72ms /@vite/client +1ms
