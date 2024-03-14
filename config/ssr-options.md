@@ -18,7 +18,11 @@
 
 这个选项可以防止列出的依赖项在服务端渲染（SSR）时被外部化，这些依赖项将会在构建过程中被打包。默认情况下，只有软链接的依赖项不会被外部化（这是为了HMR）。如果你希望将软链接的依赖项也外部化，可以将其名称传给 `ssr.external` 选项。
 
+<<<<<<< HEAD
 如果这个选项设置为 `true`，那么没有任何依赖项会被外部化。然而，如果你在 `ssr.external` 中明确列出了一些依赖项（使用 `string[]` 类型），那么这些依赖项可以优先被外部化。
+=======
+If `true`, no dependencies are externalized. However, dependencies explicitly listed in `ssr.external` (using `string[]` type) can take priority and still be externalized. If `ssr.target: 'node'` is set, Node.js built-ins will also be externalized by default.
+>>>>>>> d4cb9d97376cb7c3bb435d307c79b28e206f1c72
 
 需要注意的是，如果 `ssr.noExternal: true` 和 `ssr.external: true` 都被设置了，那么 `ssr.noExternal` 将优先生效，没有任何依赖项会被外部化。
 

@@ -70,7 +70,11 @@ export default defineConfig({
 
 ```js
 window.addEventListener('vite:preloadError', (event) => {
+<<<<<<< HEAD
   window.reload() // 例如，刷新页面
+=======
+  window.location.reload() // for example, refresh the page
+>>>>>>> d4cb9d97376cb7c3bb435d307c79b28e206f1c72
 })
 ```
 
@@ -280,3 +284,5 @@ experimental: {
   }
 }
 ```
+
+Note that the `filename` passed is a decoded URL, and if the function returns a URL string, it should also be decoded. Vite will handle the encoding automatically when rendering the URLs. If an object with `runtime` is returned, encoding should be handled yourself where needed as the runtime code will be rendered as is.

@@ -66,7 +66,8 @@
        "isEntry": true,
        "dynamicImports": ["views/foo.js"],
        "css": ["assets/main.b82dbe22.css"],
-       "assets": ["assets/asset.0ab0f9cd.png"]
+       "assets": ["assets/asset.0ab0f9cd.png"],
+       "imports": ["_shared.83069a53.js"]
      },
      "views/foo.js": {
        "file": "assets/foo.869aea0d.js",
@@ -75,7 +76,8 @@
        "imports": ["_shared.83069a53.js"]
      },
      "_shared.83069a53.js": {
-       "file": "assets/shared.83069a53.js"
+       "file": "assets/shared.83069a53.js",
+       "css": ["assets/shared.a834bfc3.css"]
      }
    }
    ```
@@ -85,10 +87,63 @@
    - 对于非入口 chunk，键是生成文件的名称并加上前缀 `_`。
    - Chunk 将信息包含在其静态和动态导入上（两者都是映射到清单中相应 chunk 的键)，以及任何与之相关的 CSS 和资源文件。
 
+<<<<<<< HEAD
    你可以使用这个文件来渲染链接或者用散列文件名预加载指令（注意：这里的语法只是为了解释，实际使用时请你的服务器模板语言代替）：
 
    ```html
    <!-- 如果是在生产环境中 -->
    <link rel="stylesheet" href="/assets/{{ manifest['main.js'].css }}" />
    <script type="module" src="/assets/{{ manifest['main.js'].file }}"></script>
+=======
+4. You can use this file to render links or preload directives with hashed filenames.
+
+   Here is an example HTML template to render the proper links. The syntax here is for
+   explanation only, substitute with your server templating language. The `importedChunks`
+   function is for illustration and isn't provided by Vite.
+
+   ```html
+   <!-- if production -->
+
+   <!-- for cssFile of manifest[name].css -->
+   <link rel="stylesheet" href="/{{ cssFile }}" />
+
+   <!-- for chunk of importedChunks(manifest, name) -->
+   <!-- for cssFile of chunk.css -->
+   <link rel="stylesheet" href="/{{ cssFile }}" />
+
+   <script type="module" src="/{{ manifest[name].file }}"></script>
+
+   <!-- for chunk of importedChunks(manifest, name) -->
+   <link rel="modulepreload" src="/{{ chunk.file }}" />
+   ```
+
+   Specifically, a backend generating HTML should include the following tags given a manifest
+   file and an entry point:
+
+   - A `<link rel="stylesheet">` tag for each file in the entry point chunk's `css` list
+   - Recursively follow all chunks in the entry point's `imports` list and include a
+     `<link rel="stylesheet">` tag for each css file of each imported chunk.
+   - A tag for the `file` key of the entry point chunk (`<script type="moudle">` for Javascript,
+     or `<link rel="stylesheet">` for css)
+   - Optionally, `<link rel="modulepreload">` tag for the `file` of each imported Javascript
+     chunk, again recursively following the imports starting from the entry point chunk.
+
+   Following the above example manifest, for the entry point `main.js` the following tags should be included in production:
+
+   ```html
+   <link rel="stylesheet" href="assets/main.b82dbe22.css" />
+   <link rel="stylesheet" href="assets/shared.a834bfc3.css" />
+   <script type="module" src="assets/main.4889e940.js"></script>
+   <!-- optional -->
+   <link rel="modulepreload" src="assets/shared.83069a53.js" />
+   ```
+
+   While the following should be included for the entry point `views/foo.js`:
+
+   ```html
+   <link rel="stylesheet" href="assets/shared.a834bfc3.css" />
+   <script type="module" src="assets/foo.869aea0d.js"></script>
+   <!-- optional -->
+   <link rel="modulepreload" src="assets/shared.83069a53.js" />
+>>>>>>> d4cb9d97376cb7c3bb435d307c79b28e206f1c72
    ```
