@@ -7,7 +7,9 @@
 
 服务时引入一个静态资源会返回解析后的公共路径：
 
-```js
+```js twoslash
+import 'vite/client'
+// ---cut---
 import imgUrl from './img.png'
 document.getElementById('hero-img').src = imgUrl
 ```
@@ -30,11 +32,29 @@ document.getElementById('hero-img').src = imgUrl
 
 - 默认情况下，TypeScript 不会将静态资源导入视为有效的模块。要解决这个问题，需要添加 [`vite/client`](./features#client-types)。
 
+<<<<<<< HEAD
 ### 显式 URL 引入 {#explicit-url-imports}
+=======
+::: tip Inlining SVGs through `url()`
+When passing a URL of SVG to a manually constructed `url()` by JS, the variable should be wrapped within double quotes.
+
+```js twoslash
+import 'vite/client'
+// ---cut---
+import imgUrl from './img.svg'
+document.getElementById('hero-img').style.background = `url("${imgUrl}")`
+```
+
+:::
+
+### Explicit URL Imports
+>>>>>>> 7d52e9105212d56475f86d759d0d77c071cbbdcf
 
 未被包含在内部列表或 `assetsInclude` 中的资源，可以使用 `?url` 后缀显式导入为一个 URL。这十分有用，例如，要导入 [Houdini Paint Worklets](https://houdini.how/usage) 时：
 
-```js
+```js twoslash
+import 'vite/client'
+// ---cut---
 import workletURL from 'extra-scalloped-border/worklet.js?url'
 CSS.paintWorklet.addModule(workletURL)
 ```
@@ -43,7 +63,9 @@ CSS.paintWorklet.addModule(workletURL)
 
 资源可以使用 `?raw` 后缀声明作为字符串引入。
 
-```js
+```js twoslash
+import 'vite/client'
+// ---cut---
 import shaderString from './shader.glsl?raw'
 ```
 
@@ -51,20 +73,36 @@ import shaderString from './shader.glsl?raw'
 
 脚本可以通过 `?worker` 或 `?sharedworker` 后缀导入为 web worker。
 
+<<<<<<< HEAD
 ```js
 // 在生产构建中将会分离出 chunk
+=======
+```js twoslash
+import 'vite/client'
+// ---cut---
+// Separate chunk in the production build
+>>>>>>> 7d52e9105212d56475f86d759d0d77c071cbbdcf
 import Worker from './shader.js?worker'
 const worker = new Worker()
 ```
 
-```js
+```js twoslash
+import 'vite/client'
+// ---cut---
 // sharedworker
 import SharedWorker from './shader.js?sharedworker'
 const sharedWorker = new SharedWorker()
 ```
 
+<<<<<<< HEAD
 ```js
 // 内联为 base64 字符串
+=======
+```js twoslash
+import 'vite/client'
+// ---cut---
+// Inlined as base64 strings
+>>>>>>> 7d52e9105212d56475f86d759d0d77c071cbbdcf
 import InlineWorker from './shader.js?worker&inline'
 ```
 

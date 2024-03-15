@@ -65,7 +65,11 @@ export type { T }
 
 你必须在 `tsconfig.json` 中的 `compilerOptions` 下设置 `"isolatedModules": true`。如此做，TS 会警告你不要使用隔离（isolated）转译的功能。
 
+<<<<<<< HEAD
 然而，一些库（如：[`vue`](https://github.com/vuejs/core/issues/1228)）不能很好地与 `"isolatedModules": true` 共同工作。你可以在上游仓库修复好之前暂时使用 `"skipLibCheck": true` 来缓解这个错误。
+=======
+If a dependency doesn't work well with `"isolatedModules": true`. You can use `"skipLibCheck": true` to temporarily suppress the errors until it is fixed upstream.
+>>>>>>> 7d52e9105212d56475f86d759d0d77c071cbbdcf
 
 #### `useDefineForClassFields`
 
@@ -176,7 +180,7 @@ Vue 用户应使用官方提供的 [@vitejs/plugin-vue-jsx](https://github.com/v
 
 如果不是在 React 或 Vue 中使用 JSX，自定义的 `jsxFactory` 和 `jsxFragment` 可以使用 [`esbuild` 选项](/config/shared-options.md#esbuild) 进行配置。例如对 Preact：
 
-```js
+```js twoslash
 // vite.config.js
 import { defineConfig } from 'vite'
 
@@ -192,7 +196,7 @@ export default defineConfig({
 
 你可以使用 `jsxInject`（这是一个仅在 Vite 中使用的选项）为 JSX 注入 helper，以避免手动导入：
 
-```js
+```js twoslash
 // vite.config.js
 import { defineConfig } from 'vite'
 
@@ -230,7 +234,9 @@ Sass 和 Less 文件也支持 `@import` 别名和 URL 变基（具体请参阅 [
 }
 ```
 
-```js
+```js twoslash
+import 'vite/client'
+// ---cut---
 import classes from './example.module.css'
 document.getElementById('foo').className = classes.red
 ```
@@ -239,7 +245,9 @@ CSS modules 行为可以通过 [`css.modules` 选项](/config/shared-options.md#
 
 如果 `css.modules.localsConvention` 设置开启了 camelCase 格式变量名转换（例如 `localsConvention: 'camelCaseOnly'`），你还可以使用按名导入。
 
-```js
+```js twoslash
+import 'vite/client'
+// ---cut---
 // .apply-color -> applyColor
 import { applyColor } from './example.module.css'
 document.getElementById('foo').className = applyColor
@@ -274,9 +282,17 @@ Vite 为 Sass 和 Less 改进了 `@import` 解析，以保证 Vite 别名也能�
 
 自动注入 CSS 内容的行为可以通过 `?inline` 参数来关闭。在关闭时，被处理过的 CSS 字符串将会作为该模块的默认导出，但样式并没有被注入到页面中。
 
+<<<<<<< HEAD
 ```js
 import './foo.css' // 样式将会注入页面
 import otherStyles from './bar.css?inline' // 样式不会注入页面
+=======
+```js twoslash
+import 'vite/client'
+// ---cut---
+import './foo.css' // will be injected into the page
+import otherStyles from './bar.css?inline' // will not be injected
+>>>>>>> 7d52e9105212d56475f86d759d0d77c071cbbdcf
 ```
 
 ::: tip 注意
@@ -305,13 +321,16 @@ npm add -D lightningcss
 
 导入一个静态资源会返回解析后的 URL：
 
-```js
+```js twoslash
+import 'vite/client'
+// ---cut---
 import imgUrl from './img.png'
 document.getElementById('hero-img').src = imgUrl
 ```
 
 添加一些特殊的查询参数可以更改资源被引入的方式：
 
+<<<<<<< HEAD
 ```js
 // 显式加载资源为一个 URL
 import assetAsURL from './asset.js?url'
@@ -329,6 +348,33 @@ import Worker from './worker.js?worker'
 
 ```js
 // 在构建时 Web Worker 内联为 base64 字符串
+=======
+```js twoslash
+import 'vite/client'
+// ---cut---
+// Explicitly load assets as URL
+import assetAsURL from './asset.js?url'
+```
+
+```js twoslash
+import 'vite/client'
+// ---cut---
+// Load assets as strings
+import assetAsString from './shader.glsl?raw'
+```
+
+```js twoslash
+import 'vite/client'
+// ---cut---
+// Load Web Workers
+import Worker from './worker.js?worker'
+```
+
+```js twoslash
+import 'vite/client'
+// ---cut---
+// Web Workers inlined as base64 strings at build time
+>>>>>>> 7d52e9105212d56475f86d759d0d77c071cbbdcf
 import InlineWorker from './worker.js?worker&inline'
 ```
 
@@ -338,8 +384,15 @@ import InlineWorker from './worker.js?worker&inline'
 
 JSON 可以被直接导入 —— 同样支持具名导入：
 
+<<<<<<< HEAD
 ```js
 // 导入整个对象
+=======
+```js twoslash
+import 'vite/client'
+// ---cut---
+// import the entire object
+>>>>>>> 7d52e9105212d56475f86d759d0d77c071cbbdcf
 import json from './example.json'
 // 对一个根字段使用具名导入 —— 有效帮助 treeshaking！
 import { field } from './example.json'
@@ -349,7 +402,9 @@ import { field } from './example.json'
 
 Vite 支持使用特殊的 `import.meta.glob` 函数从文件系统导入多个模块：
 
-```js
+```js twoslash
+import 'vite/client'
+// ---cut---
 const modules = import.meta.glob('./dir/*.js')
 ```
 
@@ -375,7 +430,9 @@ for (const path in modules) {
 
 匹配到的文件默认是懒加载的，通过动态导入实现，并会在构建时分离为独立的 chunk。如果你倾向于直接引入所有的模块（例如依赖于这些模块中的副作用首先被应用），你可以传入 `{ eager: true }` 作为第二个参数：
 
-```js
+```js twoslash
+import 'vite/client'
+// ---cut---
 const modules = import.meta.glob('./dir/*.js', { eager: true })
 ```
 
@@ -395,7 +452,9 @@ const modules = {
 
 第一个参数可以是一个 glob 数组，例如：
 
-```js
+```js twoslash
+import 'vite/client'
+// ---cut---
 const modules = import.meta.glob(['./dir/*.js', './another/*.js'])
 ```
 
@@ -403,7 +462,9 @@ const modules = import.meta.glob(['./dir/*.js', './another/*.js'])
 
 同样也支持反面 glob 匹配模式（以 `!` 作为前缀）。若要忽略结果中的一些文件，你可以添加“排除匹配模式”作为第一个参数：
 
-```js
+```js twoslash
+import 'vite/client'
+// ---cut---
 const modules = import.meta.glob(['./dir/*.js', '!**/bar.js'])
 ```
 
@@ -418,7 +479,9 @@ const modules = {
 
 也可能你只想要导入模块中的部分内容，那么可以利用 `import` 选项。
 
-```ts
+```ts twoslash
+import 'vite/client'
+// ---cut---
 const modules = import.meta.glob('./dir/*.js', { import: 'setup' })
 ```
 
@@ -432,7 +495,9 @@ const modules = {
 
 当与 `eager` 一同存在时，甚至可以对这些模块进行 tree-shaking。
 
-```ts
+```ts twoslash
+import 'vite/client'
+// ---cut---
 const modules = import.meta.glob('./dir/*.js', {
   import: 'setup',
   eager: true,
@@ -451,7 +516,9 @@ const modules = {
 
 设置 `import` 为 `default` 可以加载默认导出。
 
-```ts
+```ts twoslash
+import 'vite/client'
+// ---cut---
 const modules = import.meta.glob('./dir/*.js', {
   import: 'default',
   eager: true,
@@ -472,7 +539,9 @@ const modules = {
 
 你也可以使用 `query` 选项来提供对导入的自定义查询，比如，可以将资源 [作为字符串引入](/guide/assets#importing-asset-as-string) 或者 [作为 URL 引入](/guide/assets#importing-asset-as-url) ：
 
-```ts
+```ts twoslash
+import 'vite/client'
+// ---cut---
 const moduleStrings = import.meta.glob('./dir/*.svg', {
   query: '?raw',
   import: 'default',
@@ -497,7 +566,9 @@ const moduleUrls = {
 
 你还可以为其他插件提供定制化的查询参数：
 
-```ts
+```ts twoslash
+import 'vite/client'
+// ---cut---
 const modules = import.meta.glob('./dir/*.js', {
   query: { foo: 'bar', bar: true },
 })
@@ -527,7 +598,9 @@ const module = await import(`./dir/${file}.js`)
 预编译的 `.wasm` 文件可以通过 `?init` 来导入。
 默认导出一个初始化函数，返回值为所导出 [`WebAssembly.Instance`](https://developer.mozilla.org/en-US/docs/WebAssembly/JavaScript_interface/Instance) 实例对象的 Promise：
 
-```js
+```js twoslash
+import 'vite/client'
+// ---cut---
 import init from './example.wasm?init'
 
 init().then((instance) => {
@@ -537,7 +610,10 @@ init().then((instance) => {
 
 `init` 函数还可以将传递给 [`WebAssembly.instantiate`](https://developer.mozilla.org/en-US/docs/WebAssembly/JavaScript_interface/instantiate) 的导入对象作为其第二个参数：
 
-```js
+```js twoslash
+import 'vite/client'
+import init from './example.wasm?init'
+// ---cut---
 init({
   imports: {
     someFunc: () => {
@@ -560,7 +636,9 @@ init({
 
 如果需要访问 `Module` 对象，例如将它多次实例化，可以使用 [显式 URL 引入](./assets#explicit-url-imports) 来解析资源，然后执行实例化：
 
-```js
+```js twoslash
+import 'vite/client'
+// ---cut---
 import wasmUrl from 'foo.wasm?url'
 
 const main = async () => {
@@ -580,7 +658,9 @@ main()
 
 以下是一种替代方案，假设项目根目录在当前目录：
 
-```js
+```js twoslash
+import 'vite/client'
+// ---cut---
 import wasmUrl from 'foo.wasm?url'
 import { readFile } from 'node:fs/promises'
 
@@ -620,7 +700,9 @@ const worker = new Worker(new URL('./worker.js', import.meta.url), {
 
 你可以在导入请求上添加 `?worker` 或 `?sharedworker` 查询参数来直接导入一个 web worker 脚本。默认导出会是一个自定义 worker 的构造函数：
 
-```js
+```js twoslash
+import 'vite/client'
+// ---cut---
 import MyWorker from './worker?worker'
 
 const worker = new MyWorker()
@@ -630,19 +712,49 @@ const worker = new MyWorker()
 
 默认情况下，worker 脚本将在生产构建中编译成单独的 chunk。如果你想将 worker 内联为 base64 字符串，请添加 `inline` 查询参数：
 
-```js
+```js twoslash
+import 'vite/client'
+// ---cut---
 import MyWorker from './worker?worker&inline'
 ```
 
 如果你想要以一个 URL 的形式读取该 worker，请添加 `url` 这个 query：
 
-```js
+```js twoslash
+import 'vite/client'
+// ---cut---
 import MyWorker from './worker?worker&url'
 ```
 
 关于如何配置打包全部 worker，可以查看 [Worker 选项](/config/worker-options.md) 了解更多相关细节。
 
+<<<<<<< HEAD
 ## 构建优化 {#build-optimizations}
+=======
+## Content Security Policy (CSP)
+
+To deploy CSP, certain directives or configs must be set due to Vite's internals.
+
+### [`'nonce-{RANDOM}'`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/Sources#nonce-base64-value)
+
+When [`html.cspNonce`](/config/shared-options#html-cspnonce) is set, Vite adds a nonce attribute with the specified value to the output script tag and link tag for stylesheets. Note that Vite will not add a nonce attribute to other tags, such as `<style>`. Additionally, when this option is set, Vite will inject a meta tag (`<meta property="csp-nonce" nonce="PLACEHOLDER" />`).
+
+The nonce value of a meta tag with `property="csp-nonce"` will be used by Vite whenever necessary during both dev and after build.
+
+:::warning
+Ensure that you replace the placeholder with a unique value for each request. This is important to prevent bypassing a resource's policy, which can otherwise be easily done.
+:::
+
+### [`data:`](<https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/Sources#scheme-source:~:text=schemes%20(not%20recommended).-,data%3A,-Allows%20data%3A>)
+
+By default, during build, Vite inlines small assets as data URIs. Allowing `data:` for related directives (e.g. [`img-src`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/img-src), [`font-src`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/font-src)), or, disabling it by setting [`build.assetsInlineLimit: 0`](/config/build-options#build-assetsinlinelimit) is necessary.
+
+:::warning
+Do not allow `data:` for [`script-src`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/script-src). It will allow injection of arbitrary scripts.
+:::
+
+## Build Optimizations
+>>>>>>> 7d52e9105212d56475f86d759d0d77c071cbbdcf
 
 > 下面所罗列的功能会自动应用为构建过程的一部分，除非你想禁用它们，否则没有必要显式配置。
 

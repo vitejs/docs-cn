@@ -50,7 +50,9 @@ Vite 也直接支持 TS 配置文件。你可以在 `vite.config.ts` 中使用 `
 
 如果配置文件需要基于（`dev`/`serve` 或 `build`）命令或者不同的 [模式](/guide/env-and-mode) 来决定选项，亦或者是一个 SSR 构建（`isSsrBuild`）、一个正在预览的构建产物（`isPreview`），则可以选择导出这样一个函数：
 
-```js
+```js twoslash
+import { defineConfig } from 'vite'
+// ---cut---
 export default defineConfig(({ command, mode, isSsrBuild, isPreview }) => {
   if (command === 'serve') {
     return {
@@ -65,7 +67,11 @@ export default defineConfig(({ command, mode, isSsrBuild, isPreview }) => {
 })
 ```
 
+<<<<<<< HEAD
 需要注意的是，在 Vite 的 API 中，在开发环境下 `command` 的值为 `serve`（在 CLI 中， `vite dev` 和 `vite serve` 是 `vite` 的别名），而在生产环境下为 `build`（`vite build`）。
+=======
+It is important to note that in Vite's API the `command` value is `serve` during dev (in the cli [`vite`](/guide/cli#vite), `vite dev`, and `vite serve` are aliases), and `build` when building for production ([`vite build`](/guide/cli#vite-build)).
+>>>>>>> 7d52e9105212d56475f86d759d0d77c071cbbdcf
 
 `isSsrBuild` 和 `isPreview` 是额外的可选标志，用于区分 `build` 和 `serve` 命令的类型。一些加载 Vite 配置的工具可能不支持这些标志，而会传递 `undefined`。因此，建议使用 `true` 和 `false` 的显式比较。
 
@@ -73,7 +79,9 @@ export default defineConfig(({ command, mode, isSsrBuild, isPreview }) => {
 
 如果配置需要调用一个异步函数，也可以转而导出一个异步函数。这个异步函数也可以通过 `defineConfig` 传递，以便获得更好的智能提示：
 
-```js
+```js twoslash
+import { defineConfig } from 'vite'
+// ---cut---
 export default defineConfig(async ({ command, mode }) => {
   const data = await asyncFunction()
   return {
@@ -88,7 +96,7 @@ export default defineConfig(async ({ command, mode }) => {
 
 注意 Vite 默认是不加载 `.env` 文件的，因为这些文件需要在执行完 Vite 配置后才能确定加载哪一个，举个例子，`root` 和 `envDir` 选项会影响加载行为。不过当你的确需要时，你可以使用 Vite 导出的 `loadEnv` 函数来加载指定的 `.env` 文件。
 
-```js
+```js twoslash
 import { defineConfig, loadEnv } from 'vite'
 
 export default defineConfig(({ command, mode }) => {

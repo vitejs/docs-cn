@@ -578,7 +578,9 @@ export default defineConfig({
 
 在客户端侧，使用 [`hot.on`](/guide/api-hmr.html#hot-on-event-cb) 去监听事件：
 
-```ts
+```ts twoslash
+import 'vite/client'
+// ---cut---
 // client side
 if (import.meta.hot) {
   import.meta.hot.on('my:greetings', (data) => {

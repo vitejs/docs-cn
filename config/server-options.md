@@ -18,10 +18,10 @@
 
 你可以设置 [`dns.setDefaultResultOrder('verbatim')`](https://nodejs.org/api/dns.html#dns_dns_setdefaultresultorder_order) 来禁用这个重新排序的行为。Vite 会将地址打印为 `localhost`。
 
-```js
+```js twoslash
 // vite.config.js
 import { defineConfig } from 'vite'
-import dns from 'dns'
+import dns from 'node:dns'
 
 dns.setDefaultResultOrder('verbatim')
 
@@ -152,7 +152,13 @@ export default defineConfig({
 
 设置 `server.hmr.overlay` 为 `false` 可以禁用开发服务器错误的屏蔽。
 
+<<<<<<< HEAD
 `clientPort` 是一个高级选项，只在客户端的情况下覆盖端口，这允许你为 websocket 提供不同的端口，而并非在客户端代码中查找。如果需要在 dev-server 情况下使用 SSL 代理，这非常有用。
+=======
+`protocol` sets the WebSocket protocol used for the HMR connection: `ws` (WebSocket) or `wss` (WebSocket Secure).
+
+`clientPort` is an advanced option that overrides the port only on the client side, allowing you to serve the websocket on a different port than the client code looks for it on.
+>>>>>>> 7d52e9105212d56475f86d759d0d77c071cbbdcf
 
 当 `server.hmr.server` 被定义后，Vite 将会通过所提供的的服务器来处理 HMR 连接。如果不是在中间件模式下，Vite 将尝试通过已有服务器处理 HMR 连接。这在使用自签证书或想通过网络在某端口暴露 Vite 的情况下，非常有用。
 
@@ -236,7 +242,7 @@ Vite 服务器的文件监听器默认会监听 `root` 目录，同时会跳过 
 
 - **示例：**
 
-```js
+```js twoslash
 import express from 'express'
 import { createServer as createViteServer } from 'vite'
 
@@ -356,9 +362,9 @@ export default defineConfig({
     // 添加到忽略列表中。
     sourcemapIgnoreList(sourcePath, sourcemapPath) {
       return sourcePath.includes('node_modules')
-    }
-  }
-};
+    },
+  },
+})
 ```
 
 ::: tip 注意
