@@ -69,11 +69,7 @@ export default defineConfig({
 
 ```js twoslash
 window.addEventListener('vite:preloadError', (event) => {
-<<<<<<< HEAD
-  window.reload() // 例如，刷新页面
-=======
-  window.location.reload() // for example, refresh the page
->>>>>>> 7d52e9105212d56475f86d759d0d77c071cbbdcf
+  window.location.reload() // 例如，刷新页面
 })
 ```
 
@@ -295,4 +291,4 @@ const config: UserConfig = {
 }
 ```
 
-Note that the `filename` passed is a decoded URL, and if the function returns a URL string, it should also be decoded. Vite will handle the encoding automatically when rendering the URLs. If an object with `runtime` is returned, encoding should be handled yourself where needed as the runtime code will be rendered as is.
+请注意，传递的 `filename` 是一个已解码的 URL，如果函数返回了一个 URL 字符串，那么它也应该是已解码的。当 Vite 渲染 URL 时会自动处理编码。如果返回的是一个带有 `runtime` 的对象，就需要在必要的地方自行处理编码，因为运行时的代码将会按照原样呈现。

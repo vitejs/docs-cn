@@ -163,18 +163,14 @@ Vite 有一个“允许的情景”列表，并且会匹配列表中第一个情
 - **相关：** [esbuild#preserve-symlinks](https://esbuild.github.io/api/#preserve-symlinks)，[webpack#resolve.symlinks
   ](https://webpack.js.org/configuration/resolve/#resolvesymlinks)
 
-<<<<<<< HEAD
-## css.modules {#css-modules}
-=======
 ## html.cspNonce
 
-- **Type:** `string`
-- **Related:** [Content Security Policy (CSP)](/guide/features#content-security-policy-csp)
+- **类型：** `string`
+- **相关：** [内容安全策略（CSP）](/guide/features#content-security-policy-csp)
 
-A nonce value placeholder that will be used when generating script / style tags. Setting this value will also generate a meta tag with nonce value.
+一个在生成脚本或样式标签时会用到的 nonce 值占位符。设置此值还会生成一个带有 nonce 值的 meta 标签。
 
 ## css.modules
->>>>>>> 7d52e9105212d56475f86d759d0d77c071cbbdcf
 
 - **类型：**
   ```ts

@@ -65,11 +65,7 @@ export type { T }
 
 你必须在 `tsconfig.json` 中的 `compilerOptions` 下设置 `"isolatedModules": true`。如此做，TS 会警告你不要使用隔离（isolated）转译的功能。
 
-<<<<<<< HEAD
-然而，一些库（如：[`vue`](https://github.com/vuejs/core/issues/1228)）不能很好地与 `"isolatedModules": true` 共同工作。你可以在上游仓库修复好之前暂时使用 `"skipLibCheck": true` 来缓解这个错误。
-=======
-If a dependency doesn't work well with `"isolatedModules": true`. You can use `"skipLibCheck": true` to temporarily suppress the errors until it is fixed upstream.
->>>>>>> 7d52e9105212d56475f86d759d0d77c071cbbdcf
+如果一个依赖项和 `"isolatedModules": true` 不兼容的话，你可以在上游仓库修复好之前暂时使用 `"skipLibCheck": true` 来缓解这个错误。
 
 #### `useDefineForClassFields`
 
@@ -282,17 +278,11 @@ Vite 为 Sass 和 Less 改进了 `@import` 解析，以保证 Vite 别名也能�
 
 自动注入 CSS 内容的行为可以通过 `?inline` 参数来关闭。在关闭时，被处理过的 CSS 字符串将会作为该模块的默认导出，但样式并没有被注入到页面中。
 
-<<<<<<< HEAD
-```js
-import './foo.css' // 样式将会注入页面
-import otherStyles from './bar.css?inline' // 样式不会注入页面
-=======
 ```js twoslash
 import 'vite/client'
 // ---cut---
-import './foo.css' // will be injected into the page
-import otherStyles from './bar.css?inline' // will not be injected
->>>>>>> 7d52e9105212d56475f86d759d0d77c071cbbdcf
+import './foo.css' // 样式将会注入页面
+import otherStyles from './bar.css?inline' // 样式不会注入页面
 ```
 
 ::: tip 注意
@@ -330,51 +320,31 @@ document.getElementById('hero-img').src = imgUrl
 
 添加一些特殊的查询参数可以更改资源被引入的方式：
 
-<<<<<<< HEAD
-```js
+```js twoslash
+import 'vite/client'
+// ---cut---
 // 显式加载资源为一个 URL
 import assetAsURL from './asset.js?url'
 ```
 
-```js
+```js twoslash
+import 'vite/client'
+// ---cut---
 // 以字符串形式加载资源
 import assetAsString from './shader.glsl?raw'
 ```
 
-```js
+```js twoslash
+import 'vite/client'
+// ---cut---
 // 加载为 Web Worker
 import Worker from './worker.js?worker'
 ```
 
-```js
+```js twoslash
+import 'vite/client'
+// ---cut---
 // 在构建时 Web Worker 内联为 base64 字符串
-=======
-```js twoslash
-import 'vite/client'
-// ---cut---
-// Explicitly load assets as URL
-import assetAsURL from './asset.js?url'
-```
-
-```js twoslash
-import 'vite/client'
-// ---cut---
-// Load assets as strings
-import assetAsString from './shader.glsl?raw'
-```
-
-```js twoslash
-import 'vite/client'
-// ---cut---
-// Load Web Workers
-import Worker from './worker.js?worker'
-```
-
-```js twoslash
-import 'vite/client'
-// ---cut---
-// Web Workers inlined as base64 strings at build time
->>>>>>> 7d52e9105212d56475f86d759d0d77c071cbbdcf
 import InlineWorker from './worker.js?worker&inline'
 ```
 
@@ -384,15 +354,10 @@ import InlineWorker from './worker.js?worker&inline'
 
 JSON 可以被直接导入 —— 同样支持具名导入：
 
-<<<<<<< HEAD
-```js
-// 导入整个对象
-=======
 ```js twoslash
 import 'vite/client'
 // ---cut---
-// import the entire object
->>>>>>> 7d52e9105212d56475f86d759d0d77c071cbbdcf
+// 导入整个对象
 import json from './example.json'
 // 对一个根字段使用具名导入 —— 有效帮助 treeshaking！
 import { field } from './example.json'
@@ -728,33 +693,29 @@ import MyWorker from './worker?worker&url'
 
 关于如何配置打包全部 worker，可以查看 [Worker 选项](/config/worker-options.md) 了解更多相关细节。
 
-<<<<<<< HEAD
-## 构建优化 {#build-optimizations}
-=======
-## Content Security Policy (CSP)
+## 内容安全策略（CSP） {#content-security-policy-csp}
 
-To deploy CSP, certain directives or configs must be set due to Vite's internals.
+由于 Vite 的内部机制，为了部署 CSP 必须设置某些指令或配置。
 
 ### [`'nonce-{RANDOM}'`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/Sources#nonce-base64-value)
 
-When [`html.cspNonce`](/config/shared-options#html-cspnonce) is set, Vite adds a nonce attribute with the specified value to the output script tag and link tag for stylesheets. Note that Vite will not add a nonce attribute to other tags, such as `<style>`. Additionally, when this option is set, Vite will inject a meta tag (`<meta property="csp-nonce" nonce="PLACEHOLDER" />`).
+当设置了 [`html.cspNonce`](/config/shared-options#html-cspnonce) 时，Vite 会在输出的脚本标签和样式表的链接标签中添加一个带有指定值的 nonce 属性。请注意，Vite 不会将 nonce 属性添加到其他标签中，例如 `<style>`。此外，设置此选项时，Vite 将注入一个 meta 标签（`<meta property="csp-nonce" nonce="PLACEHOLDER" />`）。
 
-The nonce value of a meta tag with `property="csp-nonce"` will be used by Vite whenever necessary during both dev and after build.
+带有 `property="csp-nonce"` 的 meta 标签的 nonce 值将在开发和构建后的必要时刻被 Vite 使用。
 
 :::warning
-Ensure that you replace the placeholder with a unique value for each request. This is important to prevent bypassing a resource's policy, which can otherwise be easily done.
+确保为每个请求替换的占位符为唯一值。这对于防止绕过资源的策略非常重要，否则很容易被绕过。
 :::
 
 ### [`data:`](<https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/Sources#scheme-source:~:text=schemes%20(not%20recommended).-,data%3A,-Allows%20data%3A>)
 
-By default, during build, Vite inlines small assets as data URIs. Allowing `data:` for related directives (e.g. [`img-src`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/img-src), [`font-src`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/font-src)), or, disabling it by setting [`build.assetsInlineLimit: 0`](/config/build-options#build-assetsinlinelimit) is necessary.
+默认情况下，Vite 在构建过程中会将小型资源内联为 data URI。允许 `data:` 用于相关指令（例如 [`img-src`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/img-src)，[`font-src`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/font-src)），或者，通过设置 [`build.assetsInlineLimit: 0`](/config/build-options#build-assetsinlinelimit) 来禁用它是必要的。
 
 :::warning
-Do not allow `data:` for [`script-src`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/script-src). It will allow injection of arbitrary scripts.
+不要为 [`script-src`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/script-src) 允许 `data:`。这将会允许注入任何脚本。
 :::
 
-## Build Optimizations
->>>>>>> 7d52e9105212d56475f86d759d0d77c071cbbdcf
+## 构建优化 {#build-optimizations}
 
 > 下面所罗列的功能会自动应用为构建过程的一部分，除非你想禁用它们，否则没有必要显式配置。
 

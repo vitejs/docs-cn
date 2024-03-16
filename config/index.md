@@ -67,11 +67,7 @@ export default defineConfig(({ command, mode, isSsrBuild, isPreview }) => {
 })
 ```
 
-<<<<<<< HEAD
-需要注意的是，在 Vite 的 API 中，在开发环境下 `command` 的值为 `serve`（在 CLI 中， `vite dev` 和 `vite serve` 是 `vite` 的别名），而在生产环境下为 `build`（`vite build`）。
-=======
-It is important to note that in Vite's API the `command` value is `serve` during dev (in the cli [`vite`](/guide/cli#vite), `vite dev`, and `vite serve` are aliases), and `build` when building for production ([`vite build`](/guide/cli#vite-build)).
->>>>>>> 7d52e9105212d56475f86d759d0d77c071cbbdcf
+需要注意的是，在 Vite 的 API 中，在开发环境下 `command` 的值为 `serve`（在 CLI 中， `vite dev` 和 `vite serve` 是 [`vite`](/guide/cli#vite) 的别名），而在生产环境下为 `build`（[`vite build`](/guide/cli#vite-build)）。
 
 `isSsrBuild` 和 `isPreview` 是额外的可选标志，用于区分 `build` 和 `serve` 命令的类型。一些加载 Vite 配置的工具可能不支持这些标志，而会传递 `undefined`。因此，建议使用 `true` 和 `false` 的显式比较。
 
