@@ -8,13 +8,13 @@
 
 Vite 通过特殊的 `import.meta.hot` 对象暴露手动 HMR API。
 
-```ts
+```ts twoslash
+import type { ModuleNamespace } from 'vite/types/hot.d.ts'
+import type { InferCustomEventPayload } from 'vite/types/customEvent.d.ts'
+
+// ---cut---
 interface ImportMeta {
   readonly hot?: ViteHotContext
-}
-
-type ModuleNamespace = Record<string, any> & {
-  [Symbol.toStringTag]: 'Module'
 }
 
 interface ViteHotContext {
@@ -32,7 +32,6 @@ interface ViteHotContext {
   prune(cb: (data: any) => void): void
   invalidate(message?: string): void
 
-  // `InferCustomEventPayload` provides types for built-in Vite events
   on<T extends string>(
     event: T,
     cb: (payload: InferCustomEventPayload<T>) => void,
@@ -66,7 +65,9 @@ Vite 在 [`vite/client.d.ts`](https://github.com/vitejs/vite/blob/main/packages/
 
 要接收模块自身，应使用 `import.meta.hot.accept`，参数为接收已更新模块的回调函数：
 
-```js
+```js twoslash
+import 'vite/client'
+// ---cut---
 export const count = 1
 
 if (import.meta.hot) {
@@ -89,7 +90,13 @@ Vite 要求这个函数的调用在源代码中显示为 `import.meta.hot.accept
 
 模块也可以接受直接依赖项的更新，而无需重新加载自身：
 
-```js
+```js twoslash
+// @filename: /foo.d.ts
+export declare const foo: () => void
+
+// @filename: /example.js
+import 'vite/client'
+// ---cut---
 import { foo } from './foo.js'
 
 foo()
@@ -115,7 +122,9 @@ if (import.meta.hot) {
 
 一个接收自身的模块或一个期望被其他模块接收的模块可以使用 `hot.dispose` 来清除任何由其更新副本产生的持久副作用：
 
-```js
+```js twoslash
+import 'vite/client'
+// ---cut---
 function setupSideEffect() {}
 
 setupSideEffect()
@@ -131,7 +140,9 @@ if (import.meta.hot) {
 
 注册一个回调，当模块在页面上不再被导入时调用。与 `hot.dispose` 相比，如果源代码更新时自行清理了副作用，你只需要在模块从页面上被删除时，使用此方法进行清理。Vite 目前在 `.css` 导入上使用此方法。
 
-```js
+```js twoslash
+import 'vite/client'
+// ---cut---
 function setupOrReuseSideEffect() {}
 
 setupOrReuseSideEffect()
@@ -149,7 +160,9 @@ if (import.meta.hot) {
 
 注意，不支持对 `data` 本身的重新赋值。相反，你应该对 `data` 对象的属性进行突变，以便保留从其他处理程序添加的信息。
 
-```js
+```js twoslash
+import 'vite/client'
+// ---cut---
 // ok
 import.meta.hot.data.someValue = 'hello'
 
@@ -167,7 +180,9 @@ import.meta.hot.data = { someValue: 'hello' }
 
 请注意，你应该总是调用 `import.meta.hot.accept`，即使你打算随后立即调用 `invalidate`，否则 HMR 客户端将不会监听未来对接收自身模块的更改。为了清楚地表达你的意图，我们建议在 `accept` 回调中调用 `invalidate`，例如：
 
-```js
+```js twoslash
+import 'vite/client'
+// ---cut---
 import.meta.hot.accept((module) => {
   // 你可以使用新的模块实例来决定是否使其失效。
   if (cannotHandleUpdate(module)) {

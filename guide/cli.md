@@ -4,7 +4,7 @@
 
 ### `vite` {#vite}
 
-在当前目录下启动 Vite 开发服务器。
+在当前目录下启动 Vite 开发服务器。`vite dev` 和 `vite serve` 是 `vite` 的别名。
 
 #### 使用 {#usage}
 

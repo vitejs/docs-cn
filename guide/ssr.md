@@ -53,7 +53,9 @@ Vite 为服务端渲染（SSR）提供了内建支持。[`create-vite-extra`](ht
 
 如果需要执行 SSR 和客户端间情景逻辑，可以使用：
 
-```js
+```js twoslash
+import 'vite/client'
+// ---cut---
 if (import.meta.env.SSR) {
   // ... 仅在服务端执行的逻辑
 }
@@ -67,10 +69,10 @@ if (import.meta.env.SSR) {
 
 **server.js**
 
-```js{15-18}
-import fs from 'fs'
-import path from 'path'
-import { fileURLToPath } from 'url'
+```js{15-18} twoslash
+import fs from 'node:fs'
+import path from 'node:path'
+import { fileURLToPath } from 'node:url'
 import express from 'express'
 import { createServer as createViteServer } from 'vite'
 
@@ -109,7 +111,18 @@ createServer()
 
 下一步是实现 `*` 处理程序供给服务端渲染的 HTML：
 
-```js
+```js twoslash
+// @noErrors
+import fs from 'node:fs'
+import path from 'node:path'
+import { fileURLToPath } from 'node:url'
+
+/** @type {import('express').Express} */
+var app
+/** @type {import('vite').ViteDevServer}  */
+var vite
+
+// ---cut---
 app.use('*', async (req, res, next) => {
   const url = req.originalUrl
 
@@ -246,7 +259,9 @@ const html = await vueServerRenderer.renderToString(app, ctx)
 
 **示例：**
 
-```js
+```js twoslash
+/** @type {() => import('vite').Plugin} */
+// ---cut---
 export function mySSRPlugin() {
   return {
     name: 'my-ssr',

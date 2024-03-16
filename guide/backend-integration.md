@@ -8,7 +8,9 @@
 
 1. 在你的 Vite 配置中配置入口文件和启用创建 `manifest`：
 
-   ```js
+   ```js twoslash
+   import { defineConfig } from 'vite'
+   // ---cut---
    // vite.config.js
    export default defineConfig({
      build: {
@@ -66,7 +68,8 @@
        "isEntry": true,
        "dynamicImports": ["views/foo.js"],
        "css": ["assets/main.b82dbe22.css"],
-       "assets": ["assets/asset.0ab0f9cd.png"]
+       "assets": ["assets/asset.0ab0f9cd.png"],
+       "imports": ["_shared.83069a53.js"]
      },
      "views/foo.js": {
        "file": "assets/foo.869aea0d.js",
@@ -75,7 +78,8 @@
        "imports": ["_shared.83069a53.js"]
      },
      "_shared.83069a53.js": {
-       "file": "assets/shared.83069a53.js"
+       "file": "assets/shared.83069a53.js",
+       "css": ["assets/shared.a834bfc3.css"]
      }
    }
    ```
@@ -83,12 +87,56 @@
    - 清单是一个 `Record<name, chunk>` 结构的对象。
    - 对于 入口 或动态入口 chunk，键是相对于项目根目录的资源路径。
    - 对于非入口 chunk，键是生成文件的名称并加上前缀 `_`。
-   - Chunk 将信息包含在其静态和动态导入上（两者都是映射到清单中相应 chunk 的键)，以及任何与之相关的 CSS 和资源文件。
+   - Chunk 将信息包含在其静态和动态导入上（两者都是映射到清单中相应 chunk 的键），以及任何与之相关的 CSS 和资源文件。
 
-   你可以使用这个文件来渲染链接或者用散列文件名预加载指令（注意：这里的语法只是为了解释，实际使用时请你的服务器模板语言代替）：
+4. 你可以利用这个文件来渲染带有哈希文件名的链接或预加载指令。
+
+   这是一个用来渲染正确链接的 HTML 模板示例。这里的语法仅用于解释，
+   你需要用你的服务器模板语言来替换。`importedChunks` 函数只是
+   用来说明，并不是 Vite 提供的。
 
    ```html
-   <!-- 如果是在生产环境中 -->
-   <link rel="stylesheet" href="/assets/{{ manifest['main.js'].css }}" />
-   <script type="module" src="/assets/{{ manifest['main.js'].file }}"></script>
+   <!-- 如果是生产环境 -->
+
+   <!-- 对于 manifest[name].css 中的 cssFile -->
+   <link rel="stylesheet" href="/{{ cssFile }}" />
+
+   <!-- 对于 importedChunks(manifest, name) 中的 chunk  -->
+   <!-- 对于 chunk.css 中的 cssFile -->
+   <link rel="stylesheet" href="/{{ cssFile }}" />
+
+   <script type="module" src="/{{ manifest[name].file }}"></script>
+
+   <!-- 对于 importedChunks(manifest, name) 中的 chunk  -->
+   <link rel="modulepreload" src="/{{ chunk.file }}" />
+   ```
+
+   具体来说，一个生成 HTML 的后端在给定 manifest 文件和一个入口文件的情况下，
+   应该包含以下标签：
+
+   - 对于入口文件 chunk 的 `css` 列表中的每个文件，都应包含一个 `<link rel="stylesheet">` 标签。
+   - 递归追踪入口文件的 `imports` 列表中的所有 chunk，并为每个导入的 chunk 的每个 css 文件
+     包含一个 `<link rel="stylesheet">` 标签。
+   - 对于入口文件 chunk 的 `file` 键的标签（对于 Javascript 是 
+     `<script type="moudle">`，对于 css 是 `<link rel="stylesheet">`）
+   - 可选项，对于每个导入的 Javascript chunk 的 `file` 键的 `<link rel="modulepreload">` 标签，
+     同样从入口文件 chunk 开始递归追踪导入。
+
+   按照上面的示例 manifest，对于入口文件 `main.js`，在生产环境中应包含以下标签：
+
+   ```html
+   <link rel="stylesheet" href="assets/main.b82dbe22.css" />
+   <link rel="stylesheet" href="assets/shared.a834bfc3.css" />
+   <script type="module" src="assets/main.4889e940.js"></script>
+   <!-- 可选 -->
+   <link rel="modulepreload" src="assets/shared.83069a53.js" />
+   ```
+
+   而对于入口文件 `views/foo.js`，应该包含以下标签：
+
+   ```html
+   <link rel="stylesheet" href="assets/shared.a834bfc3.css" />
+   <script type="module" src="assets/foo.869aea0d.js"></script>
+   <!-- 可选 -->
+   <link rel="modulepreload" src="assets/shared.83069a53.js" />
    ```
