@@ -10,7 +10,7 @@ Vite 可以使用插件进行扩展，这得益于 Rollup 优秀的插件接口�
 $ npm add -D @vitejs/plugin-legacy
 ```
 
-```js
+```js twoslash
 // vite.config.js
 import legacy from '@vitejs/plugin-legacy'
 import { defineConfig } from 'vite'
@@ -46,7 +46,7 @@ Vite 旨在为常见的 Web 开发范式提供开箱即用的支持。在寻找�
 - 默认：在 Vite 核心插件之后调用该插件
 - `post`：在 Vite 构建插件之后调用该插件
 
-```js
+```js twoslash
 // vite.config.js
 import image from '@rollup/plugin-image'
 import { defineConfig } from 'vite'
@@ -67,7 +67,7 @@ export default defineConfig({
 
 默认情况下插件在开发 (serve) 和生产 (build) 模式中都会调用。如果插件在服务或构建期间按需使用，请使用 `apply` 属性指明它们仅在 `'build'` 或 `'serve'` 模式时调用：
 
-```js
+```js twoslash
 // vite.config.js
 import typescript2 from 'rollup-plugin-typescript2'
 import { defineConfig } from 'vite'

@@ -163,7 +163,14 @@ Vite 有一个“允许的情景”列表，并且会匹配列表中第一个情
 - **相关：** [esbuild#preserve-symlinks](https://esbuild.github.io/api/#preserve-symlinks)，[webpack#resolve.symlinks
   ](https://webpack.js.org/configuration/resolve/#resolvesymlinks)
 
-## css.modules {#css-modules}
+## html.cspNonce
+
+- **类型：** `string`
+- **相关：** [内容安全策略（CSP）](/guide/features#content-security-policy-csp)
+
+一个在生成脚本或样式标签时会用到的 nonce 值占位符。设置此值还会生成一个带有 nonce 值的 meta 标签。
+
+## css.modules
 
 - **类型：**
   ```ts
@@ -408,7 +415,7 @@ export default defineConfig({
 
 使用自定义 logger 记录消息。可以使用 Vite 的 `createLogger` API 获取默认的 logger 并对其进行自定义，例如，更改消息或过滤掉某些警告。
 
-```js
+```ts twoslash
 import { createLogger, defineConfig } from 'vite'
 
 const logger = createLogger()

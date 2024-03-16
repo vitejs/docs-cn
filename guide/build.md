@@ -34,7 +34,6 @@
 构建过程可以通过多种 [构建配置选项](/config/#build-options) 来自定义构建。具体来说，你可以通过 `build.rollupOptions` 直接调整底层的 [Rollup 选项](https://rollupjs.org/configuration-options/)：
 
 ```js
-// vite.config.js
 export default defineConfig({
   build: {
     rollupOptions: {
@@ -68,9 +67,9 @@ export default defineConfig({
 
 当 Vite 加载动态导入失败时，会触发 `vite:preloadError` 事件。`event.payload` 包含原始的导入错误信息。如果调用 `event.preventDefault()`，则不会抛出错误。
 
-```js
+```js twoslash
 window.addEventListener('vite:preloadError', (event) => {
-  window.reload() // 例如，刷新页面
+  window.location.reload() // 例如，刷新页面
 })
 ```
 
@@ -111,7 +110,7 @@ export default defineConfig({
 
 在构建过程中，你只需指定多个 `.html` 文件作为入口点即可：
 
-```js
+```js twoslash
 // vite.config.js
 import { resolve } from 'path'
 import { defineConfig } from 'vite'
@@ -138,7 +137,7 @@ export default defineConfig({
 
 当这个库要进行发布构建时，请使用 [`build.lib` 配置项](/config/build-options.md#build-lib)，以确保将那些你不想打包进库的依赖进行外部化处理，例如 `vue` 或 `react`：
 
-```js
+```js twoslash
 // vite.config.js
 import { resolve } from 'path'
 import { defineConfig } from 'vite'
@@ -251,32 +250,45 @@ dist/my-lib.umd.cjs 0.30 kB / gzip: 0.16 kB
 
 单个静态的 [基础路径](#public-base-path) 在这种场景中就不够用了。Vite 在构建时为更高级的基础路径选项提供了实验性支持，可以使用 `experimental.renderBuiltUrl`。
 
-```ts
+<!-- prettier-ignore-start -->
+```ts twoslash
+import type { UserConfig } from 'vite'
+const config: UserConfig = {
+// ---cut-before---
 experimental: {
-  renderBuiltUrl(filename: string, { hostType }: { hostType: 'js' | 'css' | 'html' }) {
+  renderBuiltUrl(filename, { hostType }) {
     if (hostType === 'js') {
       return { runtime: `window.__toCdnUrl(${JSON.stringify(filename)})` }
     } else {
       return { relative: true }
     }
-  }
+  },
+},
+// ---cut-after---
 }
 ```
+<!-- prettier-ignore-end -->
 
 如果 hash 后的资源和公共文件没有被部署在一起，可以根据该函数的第二个参数 `context` 上的字段 `type` 分别定义各个资源组的选项：
 
-```ts
-experimental: {
-  renderBuiltUrl(filename: string, { hostId, hostType, type }: { hostId: string, hostType: 'js' | 'css' | 'html', type: 'public' | 'asset' }) {
-    if (type === 'public') {
-      return 'https://www.domain.com/' + filename
-    }
-    else if (path.extname(hostId) === '.js') {
-      return { runtime: `window.__assetsPath(${JSON.stringify(filename)})` }
-    }
-    else {
-      return 'https://cdn.domain.com/assets/' + filename
-    }
-  }
+```ts twoslash
+import type { UserConfig } from 'vite'
+import path from 'node:path'
+const config: UserConfig = {
+  // ---cut-before---
+  experimental: {
+    renderBuiltUrl(filename, { hostId, hostType, type }) {
+      if (type === 'public') {
+        return 'https://www.domain.com/' + filename
+      } else if (path.extname(hostId) === '.js') {
+        return { runtime: `window.__assetsPath(${JSON.stringify(filename)})` }
+      } else {
+        return 'https://cdn.domain.com/assets/' + filename
+      }
+    },
+  },
+  // ---cut-after---
 }
 ```
+
+请注意，传递的 `filename` 是一个已解码的 URL，如果函数返回了一个 URL 字符串，那么它也应该是已解码的。当 Vite 渲染 URL 时会自动处理编码。如果返回的是一个带有 `runtime` 的对象，就需要在必要的地方自行处理编码，因为运行时的代码将会按照原样呈现。
