@@ -114,6 +114,7 @@
    具体来说，一个生成 HTML 的后端在给定 manifest 文件和一个入口文件的情况下，
    应该包含以下标签：
 
+<<<<<<< HEAD
    - 对于入口文件 chunk 的 `css` 列表中的每个文件，都应包含一个 `<link rel="stylesheet">` 标签。
    - 递归追踪入口文件的 `imports` 列表中的所有 chunk，并为每个导入的 chunk 的每个 css 文件
      包含一个 `<link rel="stylesheet">` 标签。
@@ -121,6 +122,15 @@
      `<script type="moudle">`，对于 css 是 `<link rel="stylesheet">`）
    - 可选项，对于每个导入的 Javascript chunk 的 `file` 键的 `<link rel="modulepreload">` 标签，
      同样从入口文件 chunk 开始递归追踪导入。
+=======
+   - A `<link rel="stylesheet">` tag for each file in the entry point chunk's `css` list
+   - Recursively follow all chunks in the entry point's `imports` list and include a
+     `<link rel="stylesheet">` tag for each css file of each imported chunk.
+   - A tag for the `file` key of the entry point chunk (`<script type="module">` for Javascript,
+     or `<link rel="stylesheet">` for css)
+   - Optionally, `<link rel="modulepreload">` tag for the `file` of each imported Javascript
+     chunk, again recursively following the imports starting from the entry point chunk.
+>>>>>>> b5fa372f25f0e5ac6202fa833bca3656e4196965
 
    按照上面的示例 manifest，对于入口文件 `main.js`，在生产环境中应包含以下标签：
 

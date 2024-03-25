@@ -479,7 +479,13 @@ Vite 插件也可以提供钩子来服务于特定的 Vite 目标。这些钩子
 - 带有 `enforce: 'post'` 的用户插件
 - Vite 后置构建插件（最小化，manifest，报告）
 
+<<<<<<< HEAD
 ## 情景应用 {#conditional-application}
+=======
+Note that this is separate from hooks ordering, those are still separately subject to their `order` attribute [as usual for Rollup hooks](https://rollupjs.org/plugin-development/#build-hooks).
+
+## Conditional Application
+>>>>>>> b5fa372f25f0e5ac6202fa833bca3656e4196965
 
 默认情况下插件在开发（serve）和构建（build）模式中都会调用。如果插件只需要在预览或构建期间有条件地应用，请使用 `apply` 属性指明它们仅在 `'build'` 或 `'serve'` 模式时调用：
 
