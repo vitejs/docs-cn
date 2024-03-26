@@ -117,8 +117,8 @@
    - 对于入口文件 chunk 的 `css` 列表中的每个文件，都应包含一个 `<link rel="stylesheet">` 标签。
    - 递归追踪入口文件的 `imports` 列表中的所有 chunk，并为每个导入的 chunk 的每个 css 文件
      包含一个 `<link rel="stylesheet">` 标签。
-   - 对于入口文件 chunk 的 `file` 键的标签（对于 Javascript 是 
-     `<script type="moudle">`，对于 css 是 `<link rel="stylesheet">`）
+   - 对于入口文件 chunk 的 `file` 键的标签（对于 Javascript 是
+     `<script type="module">`，对于 css 是 `<link rel="stylesheet">`）
    - 可选项，对于每个导入的 Javascript chunk 的 `file` 键的 `<link rel="modulepreload">` 标签，
      同样从入口文件 chunk 开始递归追踪导入。
 
