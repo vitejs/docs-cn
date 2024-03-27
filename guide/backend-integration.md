@@ -107,8 +107,13 @@
 
    <script type="module" src="/{{ manifest[name].file }}"></script>
 
+<<<<<<< HEAD
    <!-- 对于 importedChunks(manifest, name) 中的 chunk  -->
    <link rel="modulepreload" src="/{{ chunk.file }}" />
+=======
+   <!-- for chunk of importedChunks(manifest, name) -->
+   <link rel="modulepreload" href="/{{ chunk.file }}" />
+>>>>>>> 70cf6392e735f6681739a1cfdef9482926a8dd03
    ```
 
    具体来说，一个生成 HTML 的后端在给定 manifest 文件和一个入口文件的情况下，
@@ -128,8 +133,13 @@
    <link rel="stylesheet" href="assets/main.b82dbe22.css" />
    <link rel="stylesheet" href="assets/shared.a834bfc3.css" />
    <script type="module" src="assets/main.4889e940.js"></script>
+<<<<<<< HEAD
    <!-- 可选 -->
    <link rel="modulepreload" src="assets/shared.83069a53.js" />
+=======
+   <!-- optional -->
+   <link rel="modulepreload" href="assets/shared.83069a53.js" />
+>>>>>>> 70cf6392e735f6681739a1cfdef9482926a8dd03
    ```
 
    而对于入口文件 `views/foo.js`，应该包含以下标签：
@@ -137,6 +147,11 @@
    ```html
    <link rel="stylesheet" href="assets/shared.a834bfc3.css" />
    <script type="module" src="assets/foo.869aea0d.js"></script>
+<<<<<<< HEAD
    <!-- 可选 -->
    <link rel="modulepreload" src="assets/shared.83069a53.js" />
+=======
+   <!-- optional -->
+   <link rel="modulepreload" href="assets/shared.83069a53.js" />
+>>>>>>> 70cf6392e735f6681739a1cfdef9482926a8dd03
    ```
