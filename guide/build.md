@@ -47,6 +47,7 @@ export default defineConfig({
 
 ## 产物分块策略 {#chunking-strategy}
 
+<<<<<<< HEAD
 你可以通过配置 `build.rollupOptions.output.manualChunks` 来自定义 chunk 分割策略（查看 [Rollup 相应文档](https://rollupjs.org/configuration-options/#output-manualchunks)）。在 Vite 2.8 及更早版本中，默认的策略是将 chunk 分割为 `index` 和 `vendor`。这对一些 SPA 来说是好的策略，但是要对所有应用场景提供一种通用解决方案是非常困难的。从 Vite 2.9 起，`manualChunks` 默认情况下不再被更改。你可以通过在配置文件中添加 `splitVendorChunkPlugin` 来继续使用 “分割 Vendor Chunk” 策略：
 
 ```js
@@ -62,6 +63,9 @@ export default defineConfig({
 ::: warning
 你应该使用 `build.rollupOptions.output.manualChunks` 函数形式来使用此插件。如果使用对象形式，插件将不会生效。
 :::
+=======
+You can configure how chunks are split using `build.rollupOptions.output.manualChunks` (see [Rollup docs](https://rollupjs.org/configuration-options/#output-manualchunks)). If you use a framework, refer to their documentation for configuring how chunks are splitted.
+>>>>>>> 9b8ae7257819a8140a25833dd6f1d6a09848a1a6
 
 ## 处理加载报错 {#load-error-handling}
 

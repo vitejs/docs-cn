@@ -292,6 +292,10 @@ export default defineConfig({
 
 该选项用于选择用于 CSS 处理的引擎。详细信息请查看 [Lightning CSS](../guide/features.md#lightning-css)。
 
+::: info Duplicate `@import`s
+Note that postcss (postcss-import) has a different behavior with duplicated `@import` from browsers. See [postcss/postcss-import#462](https://github.com/postcss/postcss-import/issues/462).
+:::
+
 ## css.lightningcss
 
 - **实验性：** [提供反馈](https://github.com/vitejs/vite/discussions/13835)
