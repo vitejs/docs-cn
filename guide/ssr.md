@@ -7,13 +7,9 @@ SSR 特别指支持在 Node.js 中运行相同应用程序的前端框架（例�
 :::
 
 :::warning Low-level API
-<<<<<<< HEAD
 这是一个底层 API，是为库和框架作者准备的。如果你的目标是构建一个应用程序，请确保优先查看 [Vite SSR 章节](https://github.com/vitejs/awesome-vite#ssr) 中更上层的 SSR 插件和工具。也就是说，大部分应用都是基于 Vite 的底层 API 之上构建的。
-=======
-This is a low-level API meant for library and framework authors. If your goal is to create an application, make sure to check out the higher-level SSR plugins and tools at [Awesome Vite SSR section](https://github.com/vitejs/awesome-vite#ssr) first. That said, many applications are successfully built directly on top of Vite's native low-level API.
 
-Currently, Vite is working on an improved SSR API with the [Environment API](https://github.com/vitejs/vite/discussions/16358). Check out the link for more details.
->>>>>>> 6428d5ffcbe43f389be4e65a4992c5545e7fedd1
+目前，Vite 正在用 [环境 API](https://github.com/vitejs/vite/discussions/16358) 来改进 SSR API。查看链接了解更多详情。
 :::
 
 :::tip 帮助
@@ -144,24 +140,10 @@ app.use('*', async (req, res, next) => {
     //    例如：@vitejs/plugin-react 中的 global preambles
     template = await vite.transformIndexHtml(url, template)
 
-<<<<<<< HEAD
-    // 3a. 加载服务器入口。vite.ssrLoadModule 将自动转换
+    // 3. 加载服务器入口。vite.ssrLoadModule 将自动转换
     //    你的 ESM 源码使之可以在 Node.js 中运行！无需打包
     //    并提供类似 HMR 的根据情况随时失效。
     const { render } = await vite.ssrLoadModule('/src/entry-server.js')
-    // 3b. 从 Vite 5.1 版本开始，你可以试用实验性的 createViteRuntime
-    // API。
-    // 这个 API 完全支持热更新（HMR），其工作原理与 ssrLoadModule 相似
-    // 如果你想尝试更高级的用法，可以考虑在另一个线程，甚至是在另一台机器上，
-    // 使用 ViteRuntime 类来创建运行环境。
-    const runtime = await vite.createViteRuntime(server)
-    const { render } = await runtime.executeEntrypoint('/src/entry-server.js')
-=======
-    // 3. Load the server entry. ssrLoadModule automatically transforms
-    //    ESM source code to be usable in Node.js! There is no bundling
-    //    required, and provides efficient invalidation similar to HMR.
-    const { render } = await vite.ssrLoadModule('/src/entry-server.js')
->>>>>>> 6428d5ffcbe43f389be4e65a4992c5545e7fedd1
 
     // 4. 渲染应用的 HTML。这假设 entry-server.js 导出的 `render`
     //    函数调用了适当的 SSR 框架 API。
@@ -195,13 +177,8 @@ app.use('*', async (req, res, next) => {
 
 为了将 SSR 项目交付生产，我们需要：
 
-<<<<<<< HEAD
 1. 正常生成一个客户端构建；
-2. 再生成一个 SSR 构建，使其通过 `import()` 直接加载，这样便无需再使用 Vite 的 `ssrLoadModule` 或 `runtime.executeEntrypoint`；
-=======
-1. Produce a client build as normal;
-2. Produce an SSR build, which can be directly loaded via `import()` so that we don't have to go through Vite's `ssrLoadModule`;
->>>>>>> 6428d5ffcbe43f389be4e65a4992c5545e7fedd1
+2. 再生成一个 SSR 构建，使其通过 `import()` 直接加载，这样便无需再使用 Vite 的 `ssrLoadModule`；
 
 `package.json` 中的脚本应该看起来像这样：
 
@@ -221,11 +198,7 @@ app.use('*', async (req, res, next) => {
 
 - 使用 `dist/client/index.html` 作为模板，而不是根目录的 `index.html`，因为前者包含了到客户端构建的正确资源链接。
 
-<<<<<<< HEAD
-- 使用 `import('./dist/server/entry-server.js')` （该文件是 SSR 构建产物），而不是使用 `await vite.ssrLoadModule('/src/entry-server.js')` 或 `await runtime.executeEntrypoint('/src/entry-server.js')`。
-=======
-- Instead of `await vite.ssrLoadModule('/src/entry-server.js')`, use `import('./dist/server/entry-server.js')` (this file is the result of the SSR build).
->>>>>>> 6428d5ffcbe43f389be4e65a4992c5545e7fedd1
+- 使用 `import('./dist/server/entry-server.js')` （该文件是 SSR 构建产物），而不是使用 `await vite.ssrLoadModule('/src/entry-server.js')`。
 
 - 将 `vite` 开发服务器的创建和所有使用都移到 dev-only 条件分支后面，然后添加静态文件服务中间件来服务 `dist/client` 中的文件。
 
