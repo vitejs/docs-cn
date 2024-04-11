@@ -15,7 +15,7 @@ Vite 现在使用 Rollup 4，它也带来了一些重大的变化，特别是：
 
 你可以阅读 [Rollup 的发布说明](https://github.com/rollup/rollup/releases/tag/v4.0.0) 中的破坏性变更，了解在 [`build.rollupOptions`](/config/build-options.md#build-rollupoptions) 中构建相关的变更。
 
-如果你正在使用 TypeScript，请确保将 `moduleResolution: 'bundler'`（或 `node16`/`nodenext`）设置为 Rollup 4 需要它。或者你可以设置 `skipLibCheck: true`。
+如果你正在使用 TypeScript，请确保设置 `moduleResolution: 'bundler'`（或 `node16`/`nodenext`）因为 Rollup 4 需要它。或者你可以设置 `skipLibCheck: true`。
 
 ## 废弃 CJS Node API {#deprecate-cjs-node-api}
 
