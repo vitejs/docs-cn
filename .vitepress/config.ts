@@ -230,6 +230,10 @@ export default defineConfig({
         text: 'Version',
         items: [
           {
+            text: 'Vite v4 文档（英文）',
+            link: 'https://v4.vitejs.dev'
+          },
+          {
             text: 'Vite v3 文档（英文）',
             link: 'https://v3.vitejs.dev'
           },

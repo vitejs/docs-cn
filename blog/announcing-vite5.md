@@ -25,60 +25,60 @@ head:
       content: summary_large_image
 ---
 
-# Vite 5.0 is out!
+# Vite 5.0 发布了！{#vite-5-0-is-out}
 
-_November 16, 2023_
+_2023年11月16日_
 
-![Vite 5 Announcement Cover Image](/og-image-announcing-vite5.png)
+![Vite 5公告封面图片](/og-image-announcing-vite5.png)
 
-Vite 4 [was released](./announcing-vite4.md) almost a year ago, and it served as a solid base for the ecosystem. npm downloads per week jumped from 2.5 million to 7.5 million, as projects keep building on a shared infrastructure. Frameworks continued to innovate, and on top of [Astro](https://astro.build/), [Nuxt](https://nuxt.com/), [SvelteKit](https://kit.svelte.dev/), [Solid Start](https://www.solidjs.com/blog/introducing-solidstart), [Qwik City](https://qwik.builder.io/qwikcity/overview/), between others, we saw new frameworks joining and making the ecosystem stronger. [RedwoodJS](https://redwoodjs.com/) and [Remix](https://remix.run/) switching to Vite paves the way for further adoption in the React ecosystem. [Vitest](https://vitest.dev) kept growing at an even faster pace than Vite. Its team has been hard at work and will soon [release Vitest 1.0](https://github.com/vitest-dev/vitest/issues/3596). The story of Vite when used with other tools such as [Storybook](https://storybook.js.org), [Nx](https://nx.dev), and [Playwright](https://playwright.dev) kept improving, and the same goes for environments, with Vite dev working both in [Deno](https://deno.com) and [Bun](https://bun.sh).
+Vite 4 发布了将近一年，它为生态系统奠定了坚实的基础。每周的 npm 下载量从250万增加到了750万，因为项目不断在共享基础设施上构建。各种框架不断创新，除了 [Astro](https://astro.build/)、[Nuxt](https://nuxt.com/)、[SvelteKit](https://kit.svelte.dev/)、[Solid Start](https://www.solidjs.com/blog/introducing-solidstart)、[Qwik City](https://qwik.builder.io/qwikcity/overview/) 等等之外，我们看到新的框架加入并使生态系统变得更加强大。[RedwoodJS](https://redwoodjs.com/) 和 [Remix](https://remix.run/) 转向 Vite 为 React 生态系统的进一步采用铺平了道路。[Vitest](https://vitest.dev) 的增长速度甚至比 Vite 还要快。其团队一直在努力工作，并将很快 [发布 Vitest 1.0](https://github.com/vitest-dev/vitest/issues/3596)。当与其他工具一起使用时，如 [Storybook](https://storybook.js.org)、[Nx](https://nx.dev) 和 [Playwright](https://playwright.dev)，Vite 的故事不断改善，环境也是如此，Vite 的开发在 [Deno](https://deno.com) 和 [Bun](https://bun.sh) 中都可以工作。
 
-We had the second edition of [ViteConf](https://viteconf.org/23/replay) a month ago, hosted by [StackBlitz](https://stackblitz.com). Like last year, most of the projects in the ecosystem got together to share ideas and connect to keep expanding the commons. We're also seeing new pieces complement the meta-framework toolbelt like [Volar](https://volarjs.dev/) and [Nitro](https://nitro.unjs.io/). The Rollup team released [Rollup 4](https://rollupjs.org) that same day, a tradition Lukas started last year.
+一个月前，我们举办了第二届 [ViteConf](https://viteconf.org/23/replay)，由 [StackBlitz](https://stackblitz.com) 主办。像去年一样，生态系统中的大多数项目聚在一起分享想法，并保持连接以持续扩展共同体。我们也看到新的组件补充了元框架工具包，比如 [Volar](https://volarjs.dev/) 和 [Nitro](https://nitro.unjs.io/)。Rollup 团队在同一天发布了 [Rollup 4](https://rollupjs.org)，这是去年 Lukas 开创的传统。
 
-Six months ago, Vite 4.3 [was released](./announcing-vite4.md). This release significantly improved the dev server performance. However, there is still ample room for improvement. At ViteConf, [Evan You unveiled Vite's long-term plan to work on Rolldown](https://www.youtube.com/watch?v=hrdwQHoAp0M), a Rust-port of Rollup with compatible APIs. Once it is ready, we intend to use it in Vite Core to take on the tasks of both Rollup and esbuild. This will mean a boost in build performance (and later on in dev performance too as we move perf-sensitive parts of Vite itself to Rust), and a big reduction of inconsistencies between dev and build. Rolldown is currently in early stages and the team is preparing to open source the codebase before the end of the year. Stay tuned!
+六个月前，Vite 4.3 [发布了](./announcing-vite4.md)。这个版本显著改善了开发服务器的性能。但是，还有很大的改进空间。在 ViteConf 上，[Evan You 揭示了 Vite 的长期计划，即着手开发 Rolldown](https://www.youtube.com/watch?v=hrdwQHoAp0M)，这是 Rollup 的 Rust 版本，具有兼容的 API。一旦准备就绪，我们打算在 Vite Core 中使用它，以执行 Rollup 和 esbuild 的任务。这将意味着构建性能的提升（随着我们将 Vite 本身的性能敏感部分转移到 Rust，开发性能也将在以后提升），以及减少开发和构建之间的不一致性。Rolldown 目前处于早期阶段，团队正准备在年底之前开源代码库。敬请期待！
 
-Today, we mark another big milestone in Vite's path. The Vite [team](/team), [contributors](https://github.com/vitejs/vite/graphs/contributors), and ecosystem partners, are excited to announce the release of Vite 5. Vite is now using [Rollup 4](https://github.com/vitejs/vite/pull/14508), which already represents a big boost in build performance. And there are also new options to improve your dev server performance profile.
+今天，我们在 Vite 的道路上又迈出了一个重要的里程碑。Vite [团队](/team)、[贡献者](https://github.com/vitejs/vite/graphs/contributors) 和生态系统合作伙伴，很高兴地宣布发布 Vite 5。Vite 现在使用 [Rollup 4](https://github.com/vitejs/vite/pull/14508)，这已经是构建性能的重大提升。而且还有一些新选项可以改进你的开发服务器性能。
 
-Vite 5 focuses on cleaning up the API (removing deprecated features) and streamlines several features closing long-standing issues, for example switching `define` to use proper AST replacements instead of regexes. We also continue to take steps to future-proof Vite (Node.js 18+ is now required, and [the CJS Node API has been deprecated](/guide/migration#deprecate-cjs-node-api)).
+Vite 5 的重点是清理 API（删除已弃用的功能）并简化几个功能，解决了长期存在的问题，例如切换 `define` 以使用正确的 AST 替换而不是正则表达式。我们还在继续采取措施未来证明 Vite（现在需要 Node.js 18+，并且已经 [弃用了 CJS Node API](/guide/migration#deprecate-cjs-node-api)）。
 
-Quick links:
+快速链接：
 
-- [Docs](/)
-- [Migration Guide](/guide/migration)
-- [Changelog](https://github.com/vitejs/vite/blob/main/packages/vite/CHANGELOG.md#500-2023-11-16)
+- [文档](/)
+- [迁移指南](/guide/migration)
+- [变更日志](https://github.com/vitejs/vite/blob/main/packages/vite/CHANGELOG.md#500-2023-11-16)
 
-Docs in other languages:
+其他语言的文档：
 
 - [简体中文](https://cn.vitejs.dev/)
 - [日本語](https://ja.vitejs.dev/)
 - [Español](https://es.vitejs.dev/)
 - [Português](https://pt.vitejs.dev/)
 - [한국어](https://ko.vitejs.dev/)
-- [Deutsch](https://de.vitejs.dev/) (new translation!)
+- [Deutsch](https://de.vitejs.dev/)（新增翻译！）
 
-If you're new to Vite, we suggest reading first the [Getting Started](/guide/) and [Features](/guide/features) guides.
+如果你是 Vite 的新用户，我们建议你先阅读 [入门指南](/guide/) 和 [功能](/guide/features) 指南。
 
-We appreciate the more than [850 contributors to Vite Core](https://github.com/vitejs/vite/graphs/contributors), and the maintainers and contributors of Vite plugins, integrations, tools, and translations that have helped us reach here. We encourage you to get involved and continue to improve Vite with us. You can learn more at our [Contributing Guide](https://github.com/vitejs/vite/blob/main/CONTRIBUTING.md). To get started, we recommend [triaging issues](https://github.com/vitejs/vite/issues), [reviewing PRs](https://github.com/vitejs/vite/pulls), sending failing tests PRs based on open issues, and helping others in [Discussions](https://github.com/vitejs/vite/discussions) and Vite Land's [help forum](https://discord.com/channels/804011606160703521/1019670660856942652). You'll learn a lot along the way and have a smooth path to further contributions to the project. If you have doubts, join us on our [Discord community](http://chat.vitejs.dev/) and say hi on the [#contributing channel](https://discord.com/channels/804011606160703521/804439875226173480).
+我们感谢超过 [850 位对 Vite Core 作出贡献的贡献者](https://github.com/vitejs/vite/graphs/contributors)，以及 Vite 插件、集成、工具和翻译的维护者和贡献者，他们帮助我们达到了这一里程碑。我们鼓励你参与进来，继续与我们一起改进 Vite。你可以在我们的 [贡献指南](https://github.com/vitejs/vite/blob/main/CONTRIBUTING.md) 中了解更多信息。要开始，我们建议你 [处理问题](https://github.com/vitejs/vite/issues)，[审查 PR](https://github.com/vitejs/vite/pulls)，基于开放的问题发送失败的测试 PR，并在 [讨论](https://github.com/vitejs/vite/discussions) 和 Vite Land 的 [帮助论坛](https://discord.com/channels/804011606160703521/1019670660856942652) 中帮助其他人。你会在这个过程中学到很多，并顺利地进一步为项目做出贡献。如果你有疑问，请加入我们的 [Discord 社区](http://chat.vitejs.dev/)，并在 [#contributing 频道](https://discord.com/channels/804011606160703521/804439875226173480) 上打个招呼。
 
-To stay up to date, follow us on [X](https://twitter.com/vite_js) or [Mastodon](https://webtoo.ls/@vite).
+要保持最新，请关注我们在 [X](https://twitter.com/vite_js) 或 [Mastodon](https://webtoo.ls/@vite) 上的动态。
 
-## Quick start with Vite 5
+##  使用 Vite 5 快速开始 {#quick-start-with-vite-5}
 
-Use `pnpm create vite` to scaffold a Vite project with your preferred framework, or open a started template online to play with Vite 5 using [vite.new](https://vite.new). You can also run `pnpm create vite-extra` to get access to templates from other frameworks and runtimes (Solid, Deno, SSR, and library starters). `create vite-extra` templates are also available when you run `create vite` under the `Others` option.
+使用 `pnpm create vite` 来创建一个 Vite 项目，并选择你喜欢的框架，或者通过在线的模板使用 [vite.new](https://vite.new/) 来体验 Vite 5。你也可以运行 `pnpm create vite-extra` 来获取其他框架和运行时的模板（如 Solid、Deno、SSR 和库的起始模板）。当你在 `Others` 选项下运行 `create vite` 时，`create vite-extra` 的模板也是可用的。
 
-Note that Vite starter templates are intended to be used as a playground to test Vite with different frameworks. When building your next project, we recommend reaching out to the starters recommended by each framework. Some frameworks now redirect in `create vite` to their starters too (`create-vue` and `Nuxt 3` for Vue, and `SvelteKit` for Svelte).
+请注意，Vite 起始模板旨在用作测试 Vite 与不同框架的沙盒。在构建下一个项目时，我们建议使用每个框架推荐的起始模板。一些框架现在在 `create vite` 中也重定向到它们的起始模板（Vue 的 `create-vue` 和 `Nuxt 3`，以及 Svelte 的 `SvelteKit`）。
 
-## Node.js Support
+## Node.js 支持 {#node-js-support}
 
-Vite no longer supports Node.js 14 / 16 / 17 / 19, which reached its EOL. Node.js 18 / 20+ is now required.
+Vite 不再支持已达到 EOL 的 Node.js 14 / 16 / 17 / 19。现在需要 Node.js 18 / 20+。
 
-## Performance
+## 性能方面 {#performance}
 
-On top of Rollup 4's build performance improvements, there is a new guide to help you identify and fix common performance issues at [https://vitejs.dev/guide/performance](/guide/performance).
+除了 Rollup 4 的构建性能改进之外，现在还有一个新指南，帮助你识别和修复常见的性能问题，网址为 [https://vitejs.dev/guide/performance](/guide/performance)。
 
-Vite 5 also introduces [server.warmup](/guide/performance.html#warm-up-frequently-used-files), a new feature to improve startup time. It lets you define a list of modules that should be pre-transformed as soon as the server starts. When using [`--open` or `server.open`](/config/server-options.html#server-open), Vite will also automatically warm up the entry point of your app or the provided URL to open.
+Vite 5 还引入了 [server.warmup](/guide/performance.html#warm-up-frequently-used-files)，这是一个新功能，用于改善启动时间。它允许你定义一个模块列表，在服务器启动时应预先转换。当使用 [`--open` 或 `server.open`](/config/server-options.html#server-open) 时，Vite 还将自动预热你的应用程序的入口点或提供的要打开的 URL。
 
-## Main Changes
+## 主要变化 {#main-changes}
 
 - [Vite is now powered by Rollup 4](/guide/migration#rollup-4)
 - [The CJS Node API has been deprecated](/guide/migration#deprecate-cjs-node-api)
@@ -95,16 +95,16 @@ Vite 5 also introduces [server.warmup](/guide/performance.html#warm-up-frequentl
 - [Removes previously deprecated APIs](/guide/migration#removed-deprecated-apis)
 - [Read more about advanced changes affecting plugin and tool authors](/guide/migration#advanced)
 
-## Migrating to Vite 5
+## 迁移到 Vite 5 {#migrating-to-vite-5}
 
-We have worked with ecosystem partners to ensure a smooth migration to this new major. Once again, [vite-ecosystem-ci](https://www.youtube.com/watch?v=7L4I4lDzO48) has been crucial to help us make bolder changes while avoiding regressions. We're thrilled to see other ecosystems adopt similar schemes to improve the collaboration between their projects and downstream maintainers.
+我们与生态系统合作伙伴合作，确保平稳迁移到这个新的主要版本。再次感谢 [vite-ecosystem-ci](https://www.youtube.com/watch?v=7L4I4lDzO48)，它对我们进行更大胆的改变并避免回退起到了关键作用。我们很高兴看到其他生态系统采用类似的方案，以改善其项目与下游维护者之间的协作。
 
-For most projects, the update to Vite 5 should be straight forward. But we advise reviewing the [detailed Migration Guide](/guide/migration) before upgrading.
+对于大多数项目来说，升级到 Vite 5 应该是直截了当的。但我们建议在升级之前查看 [详细的迁移指南](/guide/migration)。
 
-A low level breakdown with the full list of changes to Vite core can be found at the [Vite 5 Changelog](https://github.com/vitejs/vite/blob/main/packages/vite/CHANGELOG.md#500-2023-11-16).
+你可以在 [Vite 5 变更日志](https://github.com/vitejs/vite/blob/main/packages/vite/CHANGELOG.md#500-2023-11-16) 中找到对 Vite 核心的全面变更列表。
 
-## Acknowledgments
+## 致谢 {#acknowledgments}
 
-Vite 5 is the result of long hours of work by our community of contributors, downstream maintainers, plugins authors, and the [Vite Team](/team). A big shoutout to [Bjorn Lu](https://twitter.com/bluwyoo) for leading the release process for this major.
+Vite 5 是我们社区的贡献者、下游维护者、插件作者和 [Vite 团队](/team) 长时间工作的结果。特别感谢 [Bjorn Lu](https://twitter.com/bluwyoo) 在这个主要版本的发布过程中的领导。
 
-We're also thankful to individuals and companies sponsoring Vite development. [StackBlitz](https://stackblitz.com/), [Nuxt Labs](https://nuxtlabs.com/), and [Astro](https://astro.build) continue to invest in Vite by hiring Vite team members. A shoutout to sponsors on [Vite's GitHub Sponsors](https://github.com/sponsors/vitejs), [Vite's Open Collective](https://opencollective.com/vite), and [Evan You's GitHub Sponsors](https://github.com/sponsors/yyx990803). A special mention to [Remix](https://remix.run/) for becoming a Gold sponsor and contributing back after switching to Vite.
+我们还要感谢个人和公司对 Vite 开发的赞助。[StackBlitz](https://stackblitz.com/)、[Nuxt Labs](https://nuxtlabs.com/) 和 [Astro](https://astro.build/) 继续通过雇佣 Vite 团队成员来投资 Vite。向 [Vite](https://github.com/sponsors/vitejs)、[Vite 的 Open Collective](https://opencollective.com/vite) 和 [Evan You](https://github.com/sponsors/yyx990803) 的赞助者表示感谢。特别感谢 [Remix](https://remix.run/) 成为金牌赞助商，并在转向 Vite 后回馈社区。
