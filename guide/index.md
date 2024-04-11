@@ -72,7 +72,7 @@ $ bun create vite
 你还可以通过附加的命令行选项直接指定项目名称和你想要使用的模板。例如，要构建一个 Vite + Vue 项目，运行:
 
 ```bash
-# npm 7+, extra double-dash is needed:
+# npm 7+, 需要额外加 --:
 npm create vite@latest my-vue-app -- --template vue
 
 # yarn
