@@ -699,7 +699,11 @@ import MyWorker from './worker?worker&url'
 
 ### [`'nonce-{RANDOM}'`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/Sources#nonce-base64-value)
 
+<<<<<<< HEAD
 当设置了 [`html.cspNonce`](/config/shared-options#html-cspnonce) 时，Vite 会在输出的脚本标签和样式表的链接标签中添加一个带有指定值的 nonce 属性。请注意，Vite 不会将 nonce 属性添加到其他标签中，例如 `<style>`。此外，设置此选项时，Vite 将注入一个 meta 标签（`<meta property="csp-nonce" nonce="PLACEHOLDER" />`）。
+=======
+When [`html.cspNonce`](/config/shared-options#html-cspnonce) is set, Vite adds a nonce attribute with the specified value to any `<script>` and `<style>` tags, as well as `<link>` tags for stylesheets and module preloading. Additionally, when this option is set, Vite will inject a meta tag (`<meta property="csp-nonce" nonce="PLACEHOLDER" />`).
+>>>>>>> 77838978388580aaa835c1875de5d86a89d1ed99
 
 带有 `property="csp-nonce"` 的 meta 标签的 nonce 值将在开发和构建后的必要时刻被 Vite 使用。
 
