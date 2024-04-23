@@ -257,24 +257,26 @@ experimental: {
 
 如果 hash 后的资源和公共文件没有被部署在一起，可以根据该函数的第二个参数 `context` 上的字段 `type` 分别定义各个资源组的选项：
 
+<!-- prettier-ignore-start -->
 ```ts twoslash
 import type { UserConfig } from 'vite'
 import path from 'node:path'
 const config: UserConfig = {
-  // ---cut-before---
-  experimental: {
-    renderBuiltUrl(filename, { hostId, hostType, type }) {
-      if (type === 'public') {
-        return 'https://www.domain.com/' + filename
-      } else if (path.extname(hostId) === '.js') {
-        return { runtime: `window.__assetsPath(${JSON.stringify(filename)})` }
-      } else {
-        return 'https://cdn.domain.com/assets/' + filename
-      }
-    },
+// ---cut-before---
+experimental: {
+  renderBuiltUrl(filename, { hostId, hostType, type }) {
+    if (type === 'public') {
+      return 'https://www.domain.com/' + filename
+    } else if (path.extname(hostId) === '.js') {
+      return { runtime: `window.__assetsPath(${JSON.stringify(filename)})` }
+    } else {
+      return 'https://cdn.domain.com/assets/' + filename
+    }
   },
-  // ---cut-after---
+},
+// ---cut-after---
 }
 ```
+<!-- prettier-ignore-end -->
 
 请注意，传递的 `filename` 是一个已解码的 URL，如果函数返回了一个 URL 字符串，那么它也应该是已解码的。当 Vite 渲染 URL 时会自动处理编码。如果返回的是一个带有 `runtime` 的对象，就需要在必要的地方自行处理编码，因为运行时的代码将会按照原样呈现。
