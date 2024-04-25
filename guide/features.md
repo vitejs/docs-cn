@@ -660,6 +660,7 @@ const worker = new Worker(new URL('./worker.js', import.meta.url), {
 ```
 
 只有在 `new Worker()` 声明中直接使用 `new URL()` 构造函数时，work 线程的检测才会生效。此外，所有选项参数必须是静态值（即字符串字面量）。
+注：如果默认Vite.config.ts打包时报错，新增worker.formate = "es",将worker独立文件打包为模块，不使用默认iief（该模式会添加document.style.....)。
 
 ### 带有查询后缀的导入 {#import-with-query-suffixes}
 
