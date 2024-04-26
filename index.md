@@ -21,9 +21,6 @@ hero:
     - theme: alt
       text: 在 GitHub 上查看
       link: https://github.com/vitejs/vite
-    - theme: alt
-      text: 📅 Vite Meetup SF
-      link: https://lu.ma/vite
 
 features:
   - icon: 💡
@@ -46,7 +43,6 @@ features:
     details: 灵活的 API 和完整的 TypeScript 类型。
 ---
 
-<<<<<<< HEAD
 <script setup>
 import { onMounted } from 'vue'
 import { fetchReleaseTag } from './.vitepress/utils/fetchReleaseTag.js'
@@ -55,13 +51,3 @@ onMounted(() => {
   fetchReleaseTag()
 })
 </script>
-=======
-<style>
-.VPButton.alt[href="https://lu.ma/vite"] {
-  background: var(--vp-home-hero-name-background);
-  border: none;
-  padding: 1px 21px;
-  color: #fff !important;
-}
-</style>
->>>>>>> ebfa5935341a0787f39d6c6275758734edee32dd
