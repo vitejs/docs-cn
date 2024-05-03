@@ -2,7 +2,11 @@
 
 ## 环境变量 {#env-variables}
 
+<<<<<<< HEAD
 Vite 在一个特殊的 **`import.meta.env`** 对象上暴露环境变量。这里有一些在所有情况下都可以使用的内建变量：
+=======
+Vite exposes env variables on the special **`import.meta.env`** object, which are statically replaced at build time. Some built-in variables are available in all cases:
+>>>>>>> d8391f25acab04c8cb5e3a4cfd0fbc935dc6d1bd
 
 - **`import.meta.env.MODE`**: {string} 应用运行的[模式](#modes)。
 
