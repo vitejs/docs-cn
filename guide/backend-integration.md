@@ -140,15 +140,15 @@
    <link rel="stylesheet" href="assets/foo-5UjPuW-k.css" />
    <link rel="stylesheet" href="assets/shared-ChJ_j-JJ.css" />
    <script type="module" src="assets/foo-BRBmoGS9.js"></script>
-   <!-- optional -->
+   <!-- 可选 -->
    <link rel="modulepreload" href="assets/shared-B7PI925R.js" />
    ```
 
-   While the following should be included for the entry point `views/bar.js`:
+   而对于入口文件 `views/bar.js`，应该包含以下标签：
 
    ```html
    <link rel="stylesheet" href="assets/shared-ChJ_j-JJ.css" />
    <script type="module" src="assets/bar-gkvgaI9m.js"></script>
-   <!-- optional -->
+   <!-- 可选 -->
    <link rel="modulepreload" href="assets/shared-B7PI925R.js" />
    ```

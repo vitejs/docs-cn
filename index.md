@@ -21,12 +21,9 @@ hero:
     - theme: alt
       text: 在 GitHub 上查看
       link: https://github.com/vitejs/vite
-<<<<<<< HEAD
-=======
     - theme: brand
       text: 🎉 ViteConf 23!
       link: https://viteconf.org/23/replay?utm=vite-homepage
->>>>>>> 20f5d16b15b63d6a0b4f1ef42ed66a150c2a5508
 
 features:
   - icon: 💡
@@ -51,12 +48,7 @@ features:
 
 <script setup>
 import { onMounted } from 'vue'
-<<<<<<< HEAD
 import { fetchReleaseTag } from './.vitepress/utils/fetchReleaseTag.js'
-
-onMounted(() => {
-  fetchReleaseTag()
-=======
 
 onMounted(() => {
   const urlParams = new URLSearchParams(window.location.search)
@@ -65,6 +57,7 @@ onMounted(() => {
     img.src = '/logo-uwu.png'
     img.alt = 'Vite Kawaii Logo by @icarusgkx'
   }
->>>>>>> 20f5d16b15b63d6a0b4f1ef42ed66a150c2a5508
+
+  fetchReleaseTag()
 })
 </script>
