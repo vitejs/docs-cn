@@ -134,26 +134,7 @@
    - 可选项，对于每个导入的 JavaScript chunk 的 `file` 键的 `<link rel="modulepreload">` 标签，
      同样从入口文件 chunk 开始递归追踪导入。
 
-<<<<<<< HEAD
-   按照上面的示例 manifest，对于入口文件 `main.js`，在生产环境中应包含以下标签：
-
-   ```html
-   <link rel="stylesheet" href="assets/main.b82dbe22.css" />
-   <link rel="stylesheet" href="assets/shared.a834bfc3.css" />
-   <script type="module" src="assets/main.4889e940.js"></script>
-   <!-- 可选 -->
-   <link rel="modulepreload" href="assets/shared.83069a53.js" />
-   ```
-
-   而对于入口文件 `views/foo.js`，应该包含以下标签：
-
-   ```html
-   <link rel="stylesheet" href="assets/shared.a834bfc3.css" />
-   <script type="module" src="assets/foo.869aea0d.js"></script>
-   <!-- 可选 -->
-   <link rel="modulepreload" href="assets/shared.83069a53.js" />
-=======
-   Following the above example manifest, for the entry point `views/foo.js` the following tags should be included in production:
+   按照上面的示例 manifest，对于入口文件 `views/foo.js`，在生产环境中应包含以下标签：
 
    ```html
    <link rel="stylesheet" href="assets/foo-5UjPuW-k.css" />
@@ -170,5 +151,4 @@
    <script type="module" src="assets/bar-gkvgaI9m.js"></script>
    <!-- optional -->
    <link rel="modulepreload" href="assets/shared-B7PI925R.js" />
->>>>>>> 20f5d16b15b63d6a0b4f1ef42ed66a150c2a5508
    ```

@@ -624,15 +624,11 @@ export default defineConfig({
 
 ### 自定义事件的 TypeScript 类型定义指南 {#typeScript-for-custom-events}
 
-<<<<<<< HEAD
-可以通过扩展 `CustomEventMap` 这个 interface 来为自定义事件标注类型：
-=======
-Internally, vite infers the type of a payload from the `CustomEventMap` interface, it is possible to type custom events by extending the interface:
+Vite 会在内部从 `CustomEventMap` 这个接口推断出 payload 的类型，可以通过扩展这个接口来为自定义事件进行类型定义：
 
-:::tip Note
-Make sure to include the `.d.ts` extension when specifying TypeScript declaration files. Otherwise, Typescript may not know which file the module is trying to extend.
+:::tip 提示
+在指定 TypeScript 声明文件时，确保包含 `.d.ts` 扩展名。否则，TypeScript 可能不会知道试图扩展的是哪个文件。
 :::
->>>>>>> 20f5d16b15b63d6a0b4f1ef42ed66a150c2a5508
 
 ```ts
 // events.d.ts
@@ -659,9 +655,9 @@ declare module 'vite/types/customEvent.d.ts' {
 // ---cut---
 type CustomFooPayload = InferCustomEventPayload<'custom:foo'>
 import.meta.hot?.on('custom:foo', (payload) => {
-  // The type of payload will be { msg: string }
+  // payload 的类型为 { msg: string }
 })
 import.meta.hot?.on('unknown:event', (payload) => {
-  // The type of payload will be any
+  // payload 的类型为 any
 })
 ```
