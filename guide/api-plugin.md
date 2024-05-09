@@ -642,7 +642,7 @@ declare module 'vite/types/customEvent.d.ts' {
 }
 ```
 
-This interface extension is utilized by `InferCustomEventPayload<T>` to infer the payload type for event `T`. For more information on how this interface is utilized, refer to the [HMR API Documentation](./api-hmr#hmr-api).
+这个接口扩展被 `InferCustomEventPayload<T>` 所使用，用来推断事件 `T` 的 payload 类型。要了解更多关于这个接口如何被使用的信息，请参考 [HMR API 文档](./api-hmr#hmr-api)。
 
 ```ts twoslash
 import 'vite/client'
