@@ -47,21 +47,7 @@ export default defineConfig({
 
 ## 产物分块策略 {#chunking-strategy}
 
-你可以通过配置 `build.rollupOptions.output.manualChunks` 来自定义 chunk 分割策略（查看 [Rollup 相应文档](https://rollupjs.org/configuration-options/#output-manualchunks)）。在 Vite 2.8 及更早版本中，默认的策略是将 chunk 分割为 `index` 和 `vendor`。这对一些 SPA 来说是好的策略，但是要对所有应用场景提供一种通用解决方案是非常困难的。从 Vite 2.9 起，`manualChunks` 默认情况下不再被更改。你可以通过在配置文件中添加 `splitVendorChunkPlugin` 来继续使用 “分割 Vendor Chunk” 策略：
-
-```js
-// vite.config.js
-import { splitVendorChunkPlugin } from 'vite'
-export default defineConfig({
-  plugins: [splitVendorChunkPlugin()],
-})
-```
-
-也可以用一个工厂函数 `splitVendorChunk({ cache: SplitVendorChunkCache })` 来提供该策略，在需要与自定义逻辑组合的情况下，`cache.reset()` 需要在 `buildStart` 阶段被调用，以便构建的 watch 模式在这种情况下正常工作。
-
-::: warning
-你应该使用 `build.rollupOptions.output.manualChunks` 函数形式来使用此插件。如果使用对象形式，插件将不会生效。
-:::
+你可以通过配置 `build.rollupOptions.output.manualChunks` 来自定义 chunk 分割策略（查看 [Rollup 相应文档](https://cn.rollupjs.org/configuration-options/#output-manualchunks)）。如果你使用的是一个框架，那么请参考他们的文档来了解如何配置分割 chunk。
 
 ## 处理加载报错 {#load-error-handling}
 
@@ -271,24 +257,26 @@ experimental: {
 
 如果 hash 后的资源和公共文件没有被部署在一起，可以根据该函数的第二个参数 `context` 上的字段 `type` 分别定义各个资源组的选项：
 
+<!-- prettier-ignore-start -->
 ```ts twoslash
 import type { UserConfig } from 'vite'
 import path from 'node:path'
 const config: UserConfig = {
-  // ---cut-before---
-  experimental: {
-    renderBuiltUrl(filename, { hostId, hostType, type }) {
-      if (type === 'public') {
-        return 'https://www.domain.com/' + filename
-      } else if (path.extname(hostId) === '.js') {
-        return { runtime: `window.__assetsPath(${JSON.stringify(filename)})` }
-      } else {
-        return 'https://cdn.domain.com/assets/' + filename
-      }
-    },
+// ---cut-before---
+experimental: {
+  renderBuiltUrl(filename, { hostId, hostType, type }) {
+    if (type === 'public') {
+      return 'https://www.domain.com/' + filename
+    } else if (path.extname(hostId) === '.js') {
+      return { runtime: `window.__assetsPath(${JSON.stringify(filename)})` }
+    } else {
+      return 'https://cdn.domain.com/assets/' + filename
+    }
   },
-  // ---cut-after---
+},
+// ---cut-after---
 }
 ```
+<!-- prettier-ignore-end -->
 
 请注意，传递的 `filename` 是一个已解码的 URL，如果函数返回了一个 URL 字符串，那么它也应该是已解码的。当 Vite 渲染 URL 时会自动处理编码。如果返回的是一个带有 `runtime` 的对象，就需要在必要的地方自行处理编码，因为运行时的代码将会按照原样呈现。

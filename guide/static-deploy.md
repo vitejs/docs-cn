@@ -334,14 +334,28 @@ $ npx wrangler pages deploy dist
 
 还可以为项目添加一个 [自定义域名](https://render.com/docs/custom-domains)。
 
-## Flightcontrol {#flightcontrol}
+<!--
+  NOTE: The sections below are reserved for more deployment platforms not listed above.
+  Feel free to submit a PR that adds a new section with a link to your platform's
+  deployment guide, as long as it meets these criteria:
 
-使用 [Flightcontrol](https://www.flightcontrol.dev/?ref=docs-vite) 部署静态站点，可以按照 [说明](https://www.flightcontrol.dev/docs/reference/examples/vite?ref=docs-vite) 进行操作。
+  1. Users should be able to deploy their site for free.
+  2. Free tier offerings should host the site indefinitely and are not time-bound.
+     Offering a limited number of computation resource or site counts in exchange is fine.
+  3. The linked guides should not contain any malicious content.
 
-## AWS Amplify 部署 {#aws-amplify-hoisting}
+  The Vite team may change the criteria and audit the current list from time to time.
+  If a section is removed, we will ping the original PR authors before doing so.
+-->
 
-使用 [AWS Amplify 部署](https://aws.amazon.com/amplify/hosting/) 部署静态站点，可以按照 [说明](https://docs.amplify.aws/guides/hosting/vite/q/platform/js/) 进行操作。
+## Flightcontrol
+
+根据 [说明](https://www.flightcontrol.dev/docs/reference/examples/vite?ref=docs-vite)，使用 [Flightcontrol](https://www.flightcontrol.dev/?ref=docs-vite) 来部署你的静态站点。
 
 ## Kinsta 静态站点托管 {#kinsta-static-site-hosting}
 
-你可以按照这些 [说明](https://kinsta.com/docs/react-vite-example/) 在 [Kinsta](https://kinsta.com/static-site-hosting/) 上部署你的 Vite 应用作为一个静态站点。
+根据 [说明](https://kinsta.com/docs/react-vite-example/)，使用 [Kinsta](https://kinsta.com/static-site-hosting/) 来部署你的静态站点。
+
+## xmit 静态站点托管 {#xmit-static-site-hosting}
+
+根据 [说明](https://xmit.dev/posts/vite-quickstart/)，使用 [xmit](https://xmit.co) 来部署你的静态站点。

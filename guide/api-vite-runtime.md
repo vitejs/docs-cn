@@ -1,7 +1,9 @@
 # Vite 运行时 API {#vite-runtime-api}
 
-:::warning 低级别 API
-这个 API 在 Vite 5.1 中作为一个实验性特性引入。它被添加以 [收集反馈](https://github.com/vitejs/vite/discussions/15774)。在Vite 5.2 中，它可能会有破坏性的变化，所以在使用它时，请确保将 Vite 版本固定在 `~5.1.0`。这是一个面向库和框架作者的低级别 API。如果你的目标是开发应用，请确保首先查看 [Vite SSR 精选板块](https://github.com/vitejs/awesome-vite#ssr) 的高级 SSR 插件和工具。
+:::warning 底层 API
+这个 API 在 Vite 5.1 中作为一个实验性特性引入。它被添加以 [收集反馈](https://github.com/vitejs/vite/discussions/15774)。在Vite 5.2 中，它可能会有破坏性的变化，所以在使用它时，请确保将 Vite 版本固定在 `~5.1.0`。这是一个面向库和框架作者的底层 API。如果你的目标是开发应用，请确保首先查看 [Vite SSR 精选板块](https://github.com/vitejs/awesome-vite#ssr) 的高级 SSR 插件和工具。
+
+目前，这种 API 正在以 [环境 API](https://github.com/vitejs/vite/discussions/16358) 的形式进行修正，并在 `^6.0.0-alpha.0` 版本中发布。
 :::
 
 "Vite 运行时" 是一个工具，它允许首先用 Vite 插件处理任何代码后运行。它与 `server.ssrLoadModule` 不同，因为运行时实现是从服务器解耦的。这允许库和框架作者实现他们自己的服务器和运行时之间的通信层。

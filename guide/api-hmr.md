@@ -218,7 +218,7 @@ import.meta.hot.accept((module) => {
 
 如果在连接前调用，数据会先被缓存、等到连接建立好后再发送。
 
-查看 [客户端与服务器的数据交互](/guide/api-plugin.html#client-server-communication) 一节获取更多细节。
+查看 [客户端与服务端间通信](/guide/api-plugin.html#client-server-communication) 以及 [自定义事件的 TypeScript 类型定义指南](/guide/api-plugin.html#typescript-for-custom-events) 章节获取更多细节。
 
 ## 推荐阅读 {#further-reading}
 

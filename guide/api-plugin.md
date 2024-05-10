@@ -479,6 +479,8 @@ Vite 插件也可以提供钩子来服务于特定的 Vite 目标。这些钩子
 - 带有 `enforce: 'post'` 的用户插件
 - Vite 后置构建插件（最小化，manifest，报告）
 
+请注意，这与钩子的排序是分开的，钩子的顺序仍然会受到它们的 `order` 属性的影响，这一点 [和 Rollup 钩子的表现一样](https://rollupjs.org/plugin-development/#build-hooks)。
+
 ## 情景应用 {#conditional-application}
 
 默认情况下插件在开发（serve）和构建（build）模式中都会调用。如果插件只需要在预览或构建期间有条件地应用，请使用 `apply` 属性指明它们仅在 `'build'` 或 `'serve'` 模式时调用：
@@ -622,16 +624,40 @@ export default defineConfig({
 
 ### 自定义事件的 TypeScript 类型定义指南 {#typeScript-for-custom-events}
 
-可以通过扩展 `CustomEventMap` 这个 interface 来为自定义事件标注类型：
+Vite 会在内部从 `CustomEventMap` 这个接口推断出 payload 的类型，可以通过扩展这个接口来为自定义事件进行类型定义：
+
+:::tip 提示
+在指定 TypeScript 声明文件时，确保包含 `.d.ts` 扩展名。否则，TypeScript 可能不会知道试图扩展的是哪个文件。
+:::
 
 ```ts
 // events.d.ts
-import 'vite/types/customEvent'
+import 'vite/types/customEvent.d.ts'
 
-declare module 'vite/types/customEvent' {
+declare module 'vite/types/customEvent.d.ts' {
   interface CustomEventMap {
     'custom:foo': { msg: string }
     // 'event-key': payload
   }
 }
+```
+
+这个接口扩展被 `InferCustomEventPayload<T>` 所使用，用来推断事件 `T` 的 payload 类型。要了解更多关于这个接口如何被使用的信息，请参考 [HMR API 文档](./api-hmr#hmr-api)。
+
+```ts twoslash
+import 'vite/client'
+import type { InferCustomEventPayload } from 'vite/types/customEvent.d.ts'
+declare module 'vite/types/customEvent.d.ts' {
+  interface CustomEventMap {
+    'custom:foo': { msg: string }
+  }
+}
+// ---cut---
+type CustomFooPayload = InferCustomEventPayload<'custom:foo'>
+import.meta.hot?.on('custom:foo', (payload) => {
+  // payload 的类型为 { msg: string }
+})
+import.meta.hot?.on('unknown:event', (payload) => {
+  // payload 的类型为 any
+})
 ```

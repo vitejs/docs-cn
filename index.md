@@ -48,6 +48,13 @@ import { onMounted } from 'vue'
 import { fetchReleaseTag } from './.vitepress/utils/fetchReleaseTag.js'
 
 onMounted(() => {
+  const urlParams = new URLSearchParams(window.location.search)
+  if (urlParams.get('uwu') != null) {
+    const img = document.querySelector('.VPHero .VPImage.image-src')
+    img.src = '/logo-uwu.png'
+    img.alt = 'Vite Kawaii Logo by @icarusgkx'
+  }
+
   fetchReleaseTag()
 })
 </script>
