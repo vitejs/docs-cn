@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
 	"name": "vite-docs-cn",
 	"version": "1.0.0",
 	"description": "Vite.js documentation Chinese translation.",
@@ -16,6 +17,18 @@
 		"feed": "^4.2.2",
 		"yorkie": "^2.0.0",
     "@shikijs/vitepress-twoslash": "^1.4.0",
+=======
+  "name": "docs",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "docs": "vitepress dev",
+    "docs-build": "vitepress build",
+    "docs-serve": "vitepress serve"
+  },
+  "devDependencies": {
+    "@shikijs/vitepress-twoslash": "^1.5.1",
+>>>>>>> d949f3ddd1d117a911c968e51dce86659f3a189c
     "@types/express": "^4.17.21",
     "vitepress": "1.1.4",
     "vue": "^3.4.26"
