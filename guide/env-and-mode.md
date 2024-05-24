@@ -153,7 +153,7 @@ VITE_APP_TITLE=My App (staging)
 NODE_ENV=development
 ```
 
-## NODE_ENV 和 模式 {#NODE_ENV and Modes}
+## NODE_ENV 和 模式 {#node-env-and-modes}
 
 需要注意的是，`NODE_ENV`（`process.env.NODE_ENV`）和模式是两个不同的概念。以下是不同命令如何影响 `NODE_ENV` 和模式：
 
@@ -180,7 +180,7 @@ NODE_ENV=development
 
 :::tip `.env` 文件中的 `NODE_ENV`
 
-`NODE_ENV=...` 可以在命令中设置，也可以在 `.env` 文件中设置。如果在`.env.[mode]`文件中指定了`NODE_ENV`，则可以使用模式来控制其值。不过，`NODE_ENV` 和模式仍然是两个不同的概念。
+`NODE_ENV=...` 可以在命令中设置，也可以在 `.env` 文件中设置。如果在 `.env.[mode]` 文件中指定了 `NODE_ENV`，则可以使用模式来控制其值。不过，`NODE_ENV` 和模式仍然是两个不同的概念。
 
 命令中使用 `NODE_ENV=...` 的主要好处是，它允许 Vite 提前检测到该值。这也使你能够在 Vite 配置中读取 `process.env.NODE_ENV`，因为 Vite 只有在解析配置之后才能加载环境变量文件。
 :::
