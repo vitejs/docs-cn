@@ -87,7 +87,13 @@ bun create vite my-vue-app --template vue
 
 查看 [create-vite](https://github.com/vitejs/vite/tree/main/packages/create-vite) 以获取每个模板的更多细节：`vanilla`，`vanilla-ts`, `vue`, `vue-ts`，`react`，`react-ts`，`react-swc`，`react-swc-ts`，`preact`，`preact-ts`，`lit`，`lit-ts`，`svelte`，`svelte-ts`，`solid`，`solid-ts`，`qwik`，`qwik-ts`。
 
+<<<<<<< HEAD
 ## 社区模板 {#community-templates}
+=======
+You can use `.` for the project name to scaffold in the current directory.
+
+## Community Templates
+>>>>>>> 4b58b43fca23ed1e55a26ad9ec23ad2ac38cfdef
 
 create-vite 是一个快速生成主流框架基础模板的工具。查看 Awesome Vite 仓库的 [社区维护模板](https://github.com/vitejs/awesome-vite#templates)，里面包含各种工具和不同框架的模板。
 

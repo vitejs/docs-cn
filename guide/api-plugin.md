@@ -427,9 +427,14 @@ Vite 插件也可以提供钩子来服务于特定的 Vite 目标。这些钩子
 
     ```js
     handleHotUpdate({ server, modules, timestamp }) {
+<<<<<<< HEAD
       // 如果需要，也可使用 `server.ws.send` 来支持 Vite <5.1 版本
       server.hot.send({ type: 'full-reload' })
       // 手动使模块失效
+=======
+      server.ws.send({ type: 'full-reload' })
+      // Invalidate modules manually
+>>>>>>> 4b58b43fca23ed1e55a26ad9ec23ad2ac38cfdef
       const invalidatedModules = new Set()
       for (const mod of modules) {
         server.moduleGraph.invalidateModule(
@@ -447,8 +452,12 @@ Vite 插件也可以提供钩子来服务于特定的 Vite 目标。这些钩子
 
     ```js
     handleHotUpdate({ server }) {
+<<<<<<< HEAD
       // 如果需要，也可使用 `server.ws.send` 来支持 Vite <5.1 版本
       server.hot.send({
+=======
+      server.ws.send({
+>>>>>>> 4b58b43fca23ed1e55a26ad9ec23ad2ac38cfdef
         type: 'custom',
         event: 'special-update',
         data: {}
@@ -555,7 +564,11 @@ Vite 暴露了 [`@rollup/pluginutils` 的 `createFilter`](https://github.com/rol
 
 ### 服务端到客户端 {#server-to-client}
 
+<<<<<<< HEAD
 在插件一侧，我们可以使用 `server.hot.send`（自 Vite 5.1 起）或 `server.ws.send` 去给所有客户端广播事件：
+=======
+On the plugin side, we could use `server.ws.send` to broadcast events to the client:
+>>>>>>> 4b58b43fca23ed1e55a26ad9ec23ad2ac38cfdef
 
 ```js
 // vite.config.js
@@ -564,9 +577,14 @@ export default defineConfig({
     {
       // ...
       configureServer(server) {
+<<<<<<< HEAD
         // 示例：等待客户端连接后再发送消息
         server.hot.on('connection', () => {
           server.hot.send('my:greetings', { msg: 'hello' })
+=======
+        server.ws.on('connection', () => {
+          server.ws.send('my:greetings', { msg: 'hello' })
+>>>>>>> 4b58b43fca23ed1e55a26ad9ec23ad2ac38cfdef
         })
       },
     },
@@ -602,7 +620,11 @@ if (import.meta.hot) {
 }
 ```
 
+<<<<<<< HEAD
 然后使用 `server.hot.on`（自 Vite 5.1 起） 或 `server.ws.on` 并在服务端监听这些事件：
+=======
+Then use `server.ws.on` and listen to the events on the server side:
+>>>>>>> 4b58b43fca23ed1e55a26ad9ec23ad2ac38cfdef
 
 ```js
 // vite.config.js
@@ -611,7 +633,7 @@ export default defineConfig({
     {
       // ...
       configureServer(server) {
-        server.hot.on('my:from-client', (data, client) => {
+        server.ws.on('my:from-client', (data, client) => {
           console.log('Message from client:', data.msg) // Hey!
           // reply only to the client (if needed)
           client.send('my:ack', { msg: 'Hi! I got your message!' })

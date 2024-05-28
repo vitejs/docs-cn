@@ -17,6 +17,7 @@
 		"yorkie": "^2.0.0",
     "@shikijs/vitepress-twoslash": "^1.4.0",
     "@types/express": "^4.17.21",
+<<<<<<< HEAD
     "vitepress": "1.1.4",
     "vue": "^3.4.26"
 	},
@@ -28,4 +29,10 @@
 	"gitHooks": {
 		"commit-msg": "node scripts/verifyCommit.js"
 	}
+=======
+    "feed": "^4.2.2",
+    "vitepress": "1.2.2",
+    "vue": "^3.4.27"
+  }
+>>>>>>> 4b58b43fca23ed1e55a26ad9ec23ad2ac38cfdef
 }
