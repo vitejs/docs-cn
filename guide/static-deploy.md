@@ -36,7 +36,6 @@ $ npm run build
 当你构建完成应用后，你可以通过运行 `npm run preview` 命令，在本地测试该应用。
 
 ```bash
-$ npm run build
 $ npm run preview
 ```
 

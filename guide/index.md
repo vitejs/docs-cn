@@ -43,8 +43,13 @@ Vite 还提供了强大的扩展性，可通过其 [插件 API](./api-plugin) �
 
 ## 搭建第一个 Vite 项目 {#scaffolding-your-first-vite-project}
 
+<<<<<<< HEAD
 ::: tip 兼容性注意
 Vite 需要 [Node.js](https://nodejs.org/en/) 版本 18+，20+。然而，有些模板需要依赖更高的 Node 版本才能正常运行，当你的包管理器发出警告时，请注意升级你的 Node 版本。
+=======
+::: tip Compatibility Note
+Vite requires [Node.js](https://nodejs.org/en/) version 18+ or 20+. However, some templates require a higher Node.js version to work, please upgrade if your package manager warns about it.
+>>>>>>> eda4c66f8e57ba1337949aaa8cf7c306b91f7284
 :::
 
 ::: code-group
@@ -87,7 +92,13 @@ bun create vite my-vue-app --template vue
 
 查看 [create-vite](https://github.com/vitejs/vite/tree/main/packages/create-vite) 以获取每个模板的更多细节：`vanilla`，`vanilla-ts`, `vue`, `vue-ts`，`react`，`react-ts`，`react-swc`，`react-swc-ts`，`preact`，`preact-ts`，`lit`，`lit-ts`，`svelte`，`svelte-ts`，`solid`，`solid-ts`，`qwik`，`qwik-ts`。
 
+<<<<<<< HEAD
 ## 社区模板 {#community-templates}
+=======
+You can use `.` for the project name to scaffold in the current directory.
+
+## Community Templates
+>>>>>>> eda4c66f8e57ba1337949aaa8cf7c306b91f7284
 
 create-vite 是一个快速生成主流框架基础模板的工具。查看 Awesome Vite 仓库的 [社区维护模板](https://github.com/vitejs/awesome-vite#templates)，里面包含各种工具和不同框架的模板。
 
