@@ -427,14 +427,8 @@ Vite 插件也可以提供钩子来服务于特定的 Vite 目标。这些钩子
 
     ```js
     handleHotUpdate({ server, modules, timestamp }) {
-<<<<<<< HEAD
-      // 如果需要，也可使用 `server.ws.send` 来支持 Vite <5.1 版本
-      server.hot.send({ type: 'full-reload' })
-      // 手动使模块失效
-=======
       server.ws.send({ type: 'full-reload' })
-      // Invalidate modules manually
->>>>>>> eda4c66f8e57ba1337949aaa8cf7c306b91f7284
+      // 手动使模块失效
       const invalidatedModules = new Set()
       for (const mod of modules) {
         server.moduleGraph.invalidateModule(
@@ -452,12 +446,7 @@ Vite 插件也可以提供钩子来服务于特定的 Vite 目标。这些钩子
 
     ```js
     handleHotUpdate({ server }) {
-<<<<<<< HEAD
-      // 如果需要，也可使用 `server.ws.send` 来支持 Vite <5.1 版本
-      server.hot.send({
-=======
       server.ws.send({
->>>>>>> eda4c66f8e57ba1337949aaa8cf7c306b91f7284
         type: 'custom',
         event: 'special-update',
         data: {}
@@ -564,11 +553,7 @@ Vite 暴露了 [`@rollup/pluginutils` 的 `createFilter`](https://github.com/rol
 
 ### 服务端到客户端 {#server-to-client}
 
-<<<<<<< HEAD
-在插件一侧，我们可以使用 `server.hot.send`（自 Vite 5.1 起）或 `server.ws.send` 去给所有客户端广播事件：
-=======
-On the plugin side, we could use `server.ws.send` to broadcast events to the client:
->>>>>>> eda4c66f8e57ba1337949aaa8cf7c306b91f7284
+在插件一侧，我们可以使用 `server.ws.send` 来向客户端广播事件：
 
 ```js
 // vite.config.js
@@ -577,14 +562,8 @@ export default defineConfig({
     {
       // ...
       configureServer(server) {
-<<<<<<< HEAD
-        // 示例：等待客户端连接后再发送消息
-        server.hot.on('connection', () => {
-          server.hot.send('my:greetings', { msg: 'hello' })
-=======
         server.ws.on('connection', () => {
           server.ws.send('my:greetings', { msg: 'hello' })
->>>>>>> eda4c66f8e57ba1337949aaa8cf7c306b91f7284
         })
       },
     },
@@ -620,11 +599,7 @@ if (import.meta.hot) {
 }
 ```
 
-<<<<<<< HEAD
-然后使用 `server.hot.on`（自 Vite 5.1 起） 或 `server.ws.on` 并在服务端监听这些事件：
-=======
-Then use `server.ws.on` and listen to the events on the server side:
->>>>>>> eda4c66f8e57ba1337949aaa8cf7c306b91f7284
+然后使用 `server.ws.on` 并在服务端监听这些事件：
 
 ```js
 // vite.config.js
