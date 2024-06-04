@@ -44,7 +44,7 @@ Vite 还提供了强大的扩展性，可通过其 [插件 API](./api-plugin) �
 ## 搭建第一个 Vite 项目 {#scaffolding-your-first-vite-project}
 
 ::: tip 兼容性注意
-Vite 需要 [Node.js](https://nodejs.org/en/) 版本 18+，20+。然而，有些模板需要依赖更高的 Node 版本才能正常运行，当你的包管理器发出警告时，请注意升级你的 Node 版本。
+Vite 需要 [Node.js](https://nodejs.org/en/) 版本 18+ 或 20+。然而，有些模板需要依赖更高的 Node 版本才能正常运行，当你的包管理器发出警告时，请注意升级你的 Node 版本。
 :::
 
 ::: code-group
@@ -86,6 +86,8 @@ bun create vite my-vue-app --template vue
 ```
 
 查看 [create-vite](https://github.com/vitejs/vite/tree/main/packages/create-vite) 以获取每个模板的更多细节：`vanilla`，`vanilla-ts`, `vue`, `vue-ts`，`react`，`react-ts`，`react-swc`，`react-swc-ts`，`preact`，`preact-ts`，`lit`，`lit-ts`，`svelte`，`svelte-ts`，`solid`，`solid-ts`，`qwik`，`qwik-ts`。
+
+你可以使用 `.` 作为项目名称，在当前目录中创建项目脚手架。
 
 ## 社区模板 {#community-templates}
 
