@@ -108,6 +108,11 @@ export default defineConfig({
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, ''),
       },
+      // 代理https，证书无法验证的情况：http://localhost:5173/api/bar -> https://jsonplaceholder.typicode.com/bar
+      '/api': {
+        target: 'http://jsonplaceholder.typicode.com',
+        secure: false
+      },
       // 正则表达式写法：http://localhost:5173/fallback/ -> http://jsonplaceholder.typicode.com/
       '^/fallback/.*': {
         target: 'http://jsonplaceholder.typicode.com',
