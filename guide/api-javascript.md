@@ -421,16 +421,13 @@ async function loadConfigFromFile(
 } | null>
 ```
 
-<<<<<<< HEAD
 手动通过 esbuild 加载一份 Vite 配置。
-=======
-Load a Vite config file manually with esbuild.
 
 ## `preprocessCSS`
 
-- **Experimental:** [Give Feedback](https://github.com/vitejs/vite/discussions/13815)
+- **实验性：** [提供反馈](https://github.com/vitejs/vite/discussions/13815)
 
-**Type Signature:**
+**类型签名：**
 
 ```ts
 async function preprocessCSS(
@@ -447,9 +444,8 @@ interface PreprocessCSSResult {
 }
 ```
 
-Pre-processes `.css`, `.scss`, `.sass`, `.less`, `.styl` and `.stylus` files to plain CSS so it can be used in browsers or parsed by other tools. Similar to the [built-in CSS pre-processing support](/guide/features#css-pre-processors), the corresponding pre-processor must be installed if used.
+预处理 `.css`、`.scss`、`.sass`、`.less`、`.styl` 和 `.stylus` 文件，将它们转化为纯 CSS，这样就可以在浏览器中使用或者被其他工具解析了。这和 [内置的 CSS 预处理器](/guide/features#css-pre-processors) 很像，如果你使用了这个功能，则必须安装相应的预处理器。
 
-The pre-processor used is inferred from the `filename` extension. If the `filename` ends with `.module.{ext}`, it is inferred as a [CSS module](https://github.com/css-modules/css-modules) and the returned result will include a `modules` object mapping the original class names to the transformed ones.
+使用哪个预处理器是根据 `filename` 的扩展名来推断的。如果 `filename` 以 `.module.{ext}` 结尾，那么它就会被推断为 [CSS module](https://github.com/css-modules/css-modules)，返回的结果会包含一个 `modules` 对象，这个对象将原始的类名映射到转换后的类名。
 
-Note that pre-processing will not resolve URLs in `url()` or `image-set()`.
->>>>>>> caa5ad9316aa44c462bba67a51a14056becda05b
+需要注意的是，预处理不会解析 `url()` 或 `image-set()` 中的 URL。
