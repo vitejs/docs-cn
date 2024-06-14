@@ -211,7 +211,7 @@ export default defineConfig({
 
 Vite 通过 `postcss-import` 预配置支持了 CSS `@import` 内联，Vite 的路径别名也遵从 CSS `@import`。换句话说，所有 CSS `url()` 引用，即使导入的文件在不同的目录中，也总是自动变基，以确保正确性。
 
-Sass 和 Less 文件也支持 `@import` 别名和 URL 变基（具体请参阅 [CSS Pre-processors](#css-pre-processors)）。
+Sass 和 Less 文件也支持 `@import` 别名和 URL 变基（具体请参阅 [CSS 预处理器](#css-pre-processors)）。
 
 ### PostCSS {#postcss}
 
