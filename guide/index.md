@@ -105,7 +105,49 @@ npm install
 npm run dev
 ```
 
+<<<<<<< HEAD
 ## `index.html` 与项目根目录 {#index-html-and-project-root}
+=======
+## Manual Installation
+
+In your project, you can install the `vite` CLI using:
+
+::: code-group
+
+```bash [NPM]
+$ npm install -D vite
+```
+
+```bash [Yarn]
+$ yarn add -D vite
+```
+
+```bash [PNPM]
+$ pnpm add -D vite
+```
+
+```bash [Bun]
+$ bun add -D vite
+```
+
+:::
+
+And create an `index.html` file like this:
+
+```html
+<p>Hello Vite!</p>
+```
+
+Then run the `vite` CLI in your terminal:
+
+```bash
+vite
+```
+
+The `index.html` will be served on `http://localhost:5173`.
+
+## `index.html` and Project Root
+>>>>>>> 836b1750236fdfee271990eb8c5e520d7aaa7795
 
 你可能已经注意到，在一个 Vite 项目中，`index.html` 在项目最外层而不是在 `public` 文件夹内。这是有意而为之的：在开发期间 Vite 是一个服务器，而 `index.html` 是该 Vite 项目的入口文件。
 
