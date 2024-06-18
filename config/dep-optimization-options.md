@@ -82,7 +82,11 @@ export default defineConfig({
 - **类型：** `boolean`
 - **默认：** `true`
 
+<<<<<<< HEAD
 当该功能被启用时，系统会在冷启动时保持第一个优化的依赖结果，直到所有的静态导入都被检索完毕。这样可以避免因为发现新的依赖项而触发新的公共 chunk 生成，从而需要刷新整个页面。如果通过扫描和在 `include` 中明确定义的方式能找到所有的依赖项，那么最好关闭这个功能，这样浏览器可以并行处理更多的请求。
+=======
+When enabled, it will hold the first optimized deps results until all static imports are crawled on cold start. This avoids the need for full-page reloads when new dependencies are discovered and they trigger the generation of new common chunks. If all dependencies are found by the scanner plus the explicitly defined ones in `include`, it is better to disable this option to let the browser process more requests in parallel.
+>>>>>>> 7d940cea5e9e9d2d65487cddbfea3a97d2cc7fac
 
 ## optimizeDeps.disabled {#optimizedeps-disabled}
 
