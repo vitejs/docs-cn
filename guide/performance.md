@@ -10,7 +10,11 @@
 
 有些浏览器插件可能会干涉请求，对于大型应用，特别是在使用浏览器开发工具时，可能会拖慢启动和刷新速度。我们建议在这种情况下，使用 Vite 的开发服务器时，创建一个专门用于开发且不含插件的配置，或者切换到无痕模式。无痕模式的速度也应该比没有插件的常规模式更快。
 
+<<<<<<< HEAD
 Vite 开发服务器对预打包的依赖项进行了强缓存，同时对源代码实现快速的 304 响应。如果在浏览器的开发者工具打开的情况下关闭缓存，可能会大幅影响启动速度和全页刷新的时间。因此，在使用 Vite 服务器的时候，请确保没有启用 "禁用缓存" 功能。
+=======
+The Vite dev server does hard caching of pre-bundled dependencies and implements fast 304 responses for source code. Disabling the cache while the Browser Dev Tools are open can have a big impact on startup and full-page reload times. Please check that "Disable Cache" isn't enabled while you work with the Vite server.
+>>>>>>> cfa53198f6c859029ffa3fd28b08724973a8867b
 
 ## 审核配置的 Vite 插件 {#audit-configured-vite-plugins}
 
