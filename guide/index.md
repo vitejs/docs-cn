@@ -44,7 +44,7 @@ Vite 还提供了强大的扩展性，可通过其 [插件 API](./api-plugin) �
 ## 搭建第一个 Vite 项目 {#scaffolding-your-first-vite-project}
 
 ::: tip 兼容性注意
-Vite 需要 [Node.js](https://nodejs.org/en/) 版本 18+，20+。然而，有些模板需要依赖更高的 Node 版本才能正常运行，当你的包管理器发出警告时，请注意升级你的 Node 版本。
+Vite 需要 [Node.js](https://nodejs.org/en/) 版本 18+ 或 20+。然而，有些模板需要依赖更高的 Node 版本才能正常运行，当你的包管理器发出警告时，请注意升级你的 Node 版本。
 :::
 
 ::: code-group
@@ -87,6 +87,8 @@ bun create vite my-vue-app --template vue
 
 查看 [create-vite](https://github.com/vitejs/vite/tree/main/packages/create-vite) 以获取每个模板的更多细节：`vanilla`，`vanilla-ts`, `vue`, `vue-ts`，`react`，`react-ts`，`react-swc`，`react-swc-ts`，`preact`，`preact-ts`，`lit`，`lit-ts`，`svelte`，`svelte-ts`，`solid`，`solid-ts`，`qwik`，`qwik-ts`。
 
+你可以使用 `.` 作为项目名称，在当前目录中创建项目脚手架。
+
 ## 社区模板 {#community-templates}
 
 create-vite 是一个快速生成主流框架基础模板的工具。查看 Awesome Vite 仓库的 [社区维护模板](https://github.com/vitejs/awesome-vite#templates)，里面包含各种工具和不同框架的模板。
@@ -102,6 +104,44 @@ cd my-project
 npm install
 npm run dev
 ```
+
+## 手动安装 {#manual-installation}
+
+在你的项目中，可以用以下方法来安装 `vite` 命令行工具：
+
+::: code-group
+
+```bash [NPM]
+$ npm install -D vite
+```
+
+```bash [Yarn]
+$ yarn add -D vite
+```
+
+```bash [PNPM]
+$ pnpm add -D vite
+```
+
+```bash [Bun]
+$ bun add -D vite
+```
+
+:::
+
+并创建一个像这样的 `index.html` 文件：
+
+```html
+<p>Hello Vite!</p>
+```
+
+然后在终端中运行 `vite`：
+
+```bash
+vite
+```
+
+就可以在 `http://localhost:5173` 上访问 `index.html`。
 
 ## `index.html` 与项目根目录 {#index-html-and-project-root}
 
