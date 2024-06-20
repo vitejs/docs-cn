@@ -141,7 +141,7 @@ $ bun add -D vite
 vite
 ```
 
-`index.html` 将在 `http://localhost:5173` 上被访问。
+就可以在 `http://localhost:5173` 上访问 `index.html`。
 
 ## `index.html` 与项目根目录 {#index-html-and-project-root}
 
