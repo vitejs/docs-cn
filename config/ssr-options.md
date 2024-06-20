@@ -34,11 +34,7 @@ SSR 服务器的构建目标。
 - **类型：** `string[]`
 - **相关：** [解析情景](./shared-options.md#resolve-conditions)
 
-<<<<<<< HEAD
 在 SSR 构建中，包入口的解析条件。默认为 [`resolve.conditions`](./shared-options.md#resolve-conditions)。
-=======
-Defaults to the root [`resolve.conditions`](./shared-options.md#resolve-conditions).
->>>>>>> cfa53198f6c859029ffa3fd28b08724973a8867b
 
 这些条件会在插件管道中使用，并且只会影响 SSR 构建期间的非外部化依赖项。使用 `ssr.resolve.externalConditions` 来影响外部化导入。
 

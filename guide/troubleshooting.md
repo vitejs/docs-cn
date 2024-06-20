@@ -17,15 +17,9 @@ Vite 的 CJS Node API 构建已经被废弃，并将在 Vite 6 中移除。查�
 
 对于其他项目，有几种常见的方法：
 
-<<<<<<< HEAD
 - **配置 ESM 为默认，如果需要则选择 CJS：** 在项目 `package.json` 中添加 `"type": "module"`。所有 `*.js` 文件现在都被解释为 ESM，并且需要使用 ESM 语法。你可以将一个文件重命名为 `.cjs` 扩展名来继续使用 CJS。
 - **保持 CJS 为默认，如果需要则选择 ESM：** 如果项目 `package.json` 没有 `"type": "module"`，所有 `*.js` 文件都被解释为 CJS。你可以将一个文件重命名为 `.mjs` 扩展名来使用 ESM。
 - **动态导入 Vite：** 如果你需要继续使用 CJS，你可以使用 `import('vite')` 动态导入 Vite。这要求你的代码必须在一个 `async` 上下文中编写，但是由于 Vite 的 API 大多是异步的，所以应该还是可以管理的。
-=======
-- **Configure ESM as default, opt-in to CJS if needed:** Add `"type": "module"` in the project `package.json`. All `*.js` files are now interpreted as ESM and need to use the ESM syntax. You can rename a file with the `.cjs` extension to keep using CJS instead.
-- **Keep CJS as default, opt-in to ESM if needed:** If the project `package.json` does not have `"type": "module"`, all `*.js` files are interpreted as CJS. You can rename a file with the `.mjs` extension to use ESM instead.
-- **Dynamically import Vite:** If you need to keep using CJS, you can dynamically import Vite using `import('vite')` instead. This requires your code to be written in an `async` context, but should still be manageable as Vite's API is mostly asynchronous.
->>>>>>> cfa53198f6c859029ffa3fd28b08724973a8867b
 
 如果你不确定警告来自哪里，你可以通过 `VITE_CJS_TRACE=true` 标志运行你的脚本来记录堆栈跟踪：
 
@@ -39,11 +33,7 @@ VITE_CJS_TRACE=true vite dev
 VITE_CJS_IGNORE_WARNING=true vite dev
 ```
 
-<<<<<<< HEAD
 请注意，postcss 配置文件还不支持 ESM + TypeScript（`"type": "module"` 中的 `.mts` 或 `.ts`）。如果你有带 `.ts` 的 postcss 配置，并在 package.json 中添加了 `"type": "module"`，你还需要将 postcss 配置重命名为 `.cts`。
-=======
-Note that postcss config files do not support ESM + TypeScript (`.mts` or `.ts` in `"type": "module"`) yet. If you have postcss configs with `.ts` and added `"type": "module"` to package.json, you'll also need to rename the postcss config to use `.cts`.
->>>>>>> cfa53198f6c859029ffa3fd28b08724973a8867b
 
 ## CLI {#cli}
 
@@ -179,11 +169,7 @@ import './Foo.js' // 应该为 './foo.js'
 
 ### 链接本地包时过期预构建依赖项 {#outdated-pre-bundled-deps-when-linking-to-a-local-package}
 
-<<<<<<< HEAD
 在 Vite 中通过一个哈希值来决定优化后的依赖项是否有效，这个值取决于包锁定的内容、应用于依赖项的补丁以及 Vite 配置文件中影响 node_modules 打包的选项。这意味着，当使用像 [npm overrides](https://docs.npmjs.com/cli/v9/configuring-npm/package-json#overrides) 这样的功能覆盖依赖项时，Vite 将检测到，并在下一次服务器启动时重新打包您的依赖项。当您使用像 [npm link](https://docs.npmjs.com/cli/v9/commands/npm-link) 这样的功能时，Vite 不会使依赖项无效。如果您链接或取消链接一个依赖项，那么您需要使用 `vite --force` 在下一次服务器启动时强制重新预构建。我们建议使用 overrides，它们现在被每个包管理器所支持（还可以参见 [pnpm overrides](https://pnpm.io/package_json#pnpmoverrides) 和 [yarn resolutions](https://yarnpkg.com/configuration/manifest/#resolutions)）。
-=======
-The hash key used to invalidate optimized dependencies depends on the package lock contents, the patches applied to dependencies, and the options in the Vite config file that affects the bundling of node modules. This means that Vite will detect when a dependency is overridden using a feature as [npm overrides](https://docs.npmjs.com/cli/v9/configuring-npm/package-json#overrides), and re-bundle your dependencies on the next server start. Vite won't invalidate the dependencies when you use a feature like [npm link](https://docs.npmjs.com/cli/v9/commands/npm-link). In case you link or unlink a dependency, you'll need to force re-optimization on the next server start by using `vite --force`. We recommend using overrides instead, which are supported now by every package manager (see also [pnpm overrides](https://pnpm.io/package_json#pnpmoverrides) and [yarn resolutions](https://yarnpkg.com/configuration/manifest/#resolutions)).
->>>>>>> cfa53198f6c859029ffa3fd28b08724973a8867b
 
 ## 性能瓶颈 {#performance-bottlenecks}
 
@@ -231,11 +217,7 @@ Vite 无法处理、也不支持仅可在非严格模式（sloppy mode）下运�
 
 > TypeError: Cannot create property 'foo' on boolean 'false'
 
-<<<<<<< HEAD
 如果这些代码是在依赖中被使用的，你应该使用 [`patch-package`](https://github.com/ds300/patch-package)（或者 [`yarn patch`](https://yarnpkg.com/cli/patch)、[`pnpm patch`](https://pnpm.io/cli/patch) 工具）来做短期补丁处理。
-=======
-If these codes are used inside dependencies, you could use [`patch-package`](https://github.com/ds300/patch-package) (or [`yarn patch`](https://yarnpkg.com/cli/patch) or [`pnpm patch`](https://pnpm.io/cli/patch)) for an escape hatch.
->>>>>>> cfa53198f6c859029ffa3fd28b08724973a8867b
 
 ### 浏览器扩展程序 {#browser-extensions}
 
