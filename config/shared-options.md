@@ -17,9 +17,15 @@
 
 开发或生产环境服务的公共基础路径。合法的值包括以下几种：
 
+<<<<<<< HEAD
 - 绝对 URL 路径名，例如 `/foo/`
 - 完整的 URL，例如 `https://foo.com/`（原始的部分在开发环境中不会被使用）
 - 空字符串或 `./`（用于嵌入形式的开发）
+=======
+- Absolute URL pathname, e.g. `/foo/`
+- Full URL, e.g. `https://bar.com/foo/` (The origin part won't be used in development so the value is the same as as `/foo/`)
+- Empty string or `./` (for embedded deployment)
+>>>>>>> 2bc4b75cdc05b8a22a2f250a75cf68488aaa7772
 
 更多信息详见 [公共基础路径](/guide/build#public-base-path)。
 
