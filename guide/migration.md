@@ -187,7 +187,7 @@ Vite 5 使用 esbuild 0.19 并移除了 esbuild 0.18 的兼容层，这改变了
 - `resolvePackageData`: 与上述相同，向上爬取包目录以获取根 `package.json`。或者使用社区的 [`vitefu`](https://github.com/svitejs/vitefu) 库。
 
 ```js
-import { resolve } from 'import-meta-env'
+import { resolve } from 'import-meta-resolve'
 import { findDepPkgJsonPath } from 'vitefu'
 import fs from 'node:fs'
 
