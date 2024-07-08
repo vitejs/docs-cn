@@ -13,7 +13,11 @@
 
 你也可以通过 [`build.target` 配置项](/config/build-options.md#build-target) 指定构建目标，最低支持 `es2015`。
 
+<<<<<<< HEAD
 请注意，默认情况下 Vite 只处理语法转译，且 **不包含任何 polyfill**。你可以前往 [Polyfill.io](https://polyfill.io/) 查看，这是一个基于用户浏览器 User-Agent 字符串自动生成 polyfill 包的服务。
+=======
+Note that by default, Vite only handles syntax transforms and **does not cover polyfills**. You can check out https://cdnjs.cloudflare.com/polyfill/ which automatically generates polyfill bundles based on the user's browser UserAgent string.
+>>>>>>> 83861f9df64f9956675b61ebacfb384069ff799f
 
 传统浏览器可以通过插件 [@vitejs/plugin-legacy](https://github.com/vitejs/vite/tree/main/packages/plugin-legacy) 来支持，它将自动生成传统版本的 chunk 及与其相对应 ES 语言特性方面的 polyfill。兼容版的 chunk 只会在不支持原生 ESM 的浏览器中进行按需加载。
 
