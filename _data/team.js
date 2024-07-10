@@ -174,7 +174,19 @@ export const emeriti = [
     name: 'Nihal Gonsalves',
     title: '高级软件工程师',
     links: [{ icon: 'github', link: 'https://github.com/nihalgonsalves' }]
-  }
+  },
+  {
+    avatar: 'https://github.com/Shinigami92.png',
+    name: 'Shinigami',
+    title: 'Senior Frontend Engineer',
+    org: 'Faker',
+    orgLink: 'https://fakerjs.dev',
+    desc: 'Passionate TypeScript enthusiast working extensively with Vue SPA.',
+    links: [
+      { icon: 'github', link: 'https://github.com/Shinigami92' },
+      { icon: 'mastodon', link: 'https://elk.zone/mas.to/@Shini92' },
+    ],
+  },
 ]
 
 export const cnTranslator = [
@@ -190,16 +202,5 @@ export const cnTranslator = [
       { icon: 'twitter', link: 'https://twitter.com/ShenQingchuan' }
     ],
   },
-  {
-    avatar: 'https://github.com/Shinigami92.png',
-    name: 'Shinigami',
-    title: 'Senior Frontend Engineer',
-    org: 'Faker',
-    orgLink: 'https://fakerjs.dev',
-    desc: 'Passionate TypeScript enthusiast working extensively with Vue SPA.',
-    links: [
-      { icon: 'github', link: 'https://github.com/Shinigami92' },
-      { icon: 'mastodon', link: 'https://elk.zone/mas.to/@Shini92' },
-    ],
-  },
+  
 ]
