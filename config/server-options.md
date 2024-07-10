@@ -90,7 +90,7 @@ export default defineConfig({
 
 请注意，如果使用了非相对的 [基础路径 `base`](/config/shared-options.md#base)，则必须在每个 key 值前加上该 `base`。
 
-继承自 [`http-proxy`](https://github.com/http-party/node-http-proxy#options)。完整选项详见 [此处](https://github.com/vitejs/vite/blob/main/packages/vite/src/node/server/middlewares/proxy.ts#L13)。需要注意的是，[与 http-proxy 不同](https://github.com/http-party/node-http-proxy/issues/1669)，`changeOrigin` 选项会同时改变 host 和 origin 头以匹配目标。
+继承自 [`http-proxy`](https://github.com/http-party/node-http-proxy#options)。完整选项详见 [此处](https://github.com/vitejs/vite/blob/main/packages/vite/src/node/server/middlewares/proxy.ts#L13)。
 
 在某些情况下，你可能也想要配置底层的开发服务器。（例如添加自定义的中间件到内部的 [connect](https://github.com/senchalabs/connect) 应用中）为了实现这一点，你需要编写你自己的 [插件](/guide/using-plugins.html) 并使用 [configureServer](/guide/api-plugin.html#configureserver) 函数。
 
@@ -123,9 +123,11 @@ export default defineConfig({
         }
       },
       // 代理 websockets 或 socket.io 写法：ws://localhost:5173/socket.io -> ws://localhost:5174/socket.io
+      // 在使用 `rewriteWsOrigin` 时要特别谨慎，因为这可能会让代理服务器暴露在 CSRF 攻击之下
       '/socket.io': {
         target: 'ws://localhost:5174',
         ws: true,
+        rewriteWsOrigin: true,
       },
     },
   },
