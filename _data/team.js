@@ -202,5 +202,4 @@ export const cnTranslator = [
       { icon: 'twitter', link: 'https://twitter.com/ShenQingchuan' }
     ],
   },
-  
 ]
