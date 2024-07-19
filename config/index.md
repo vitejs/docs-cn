@@ -44,7 +44,19 @@ export default defineConfig({
 })
 ```
 
+<<<<<<< HEAD
 Vite 也直接支持 TS 配置文件。你可以在 `vite.config.ts` 中使用 `defineConfig` 工具函数。
+=======
+Vite also supports TypeScript config files. You can use `vite.config.ts` with the `defineConfig` helper function above, or with the `satisfies` operator:
+
+```ts
+import type { UserConfig } from 'vite'
+
+export default {
+  // ...
+} satisfies UserConfig
+```
+>>>>>>> 4e2d04023e74a6fc630186dd1e1815b5d46a6584
 
 ## 情景配置 {#conditional-config}
 
