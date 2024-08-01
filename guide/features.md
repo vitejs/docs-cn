@@ -257,7 +257,7 @@ document.getElementById('foo').className = applyColor
 
 ```bash
 # .scss and .sass
-npm add -D sass
+npm add -D sass-embedded # or sass
 
 # .less
 npm add -D less

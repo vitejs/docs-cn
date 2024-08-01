@@ -328,7 +328,19 @@ export default defineConfig({
 
 用于限制 Vite 开发服务器提供敏感文件的黑名单。这会比 [`server.fs.allow`](#server-fs-allow) 选项的优先级更高。同时还支持 [picomatch 模式](https://github.com/micromatch/picomatch#globbing-features)。
 
+<<<<<<< HEAD
 ## server.origin {#server-origin}
+=======
+## server.fs.cachedChecks
+
+- **Type:** `boolean`
+- **Default:** `false`
+- **Experimental**
+
+Caches filenames of accessed directories to avoid repeated filesystem operations. Particularly in Windows, this could result in a performance boost. It is disabled by default due to edge cases when writing a file in a cached folder and immediately importing it.
+
+## server.origin
+>>>>>>> 1af1599e26b1b642673ae4df7e7b4ec25f65eedc
 
 - **类型：** `string`
 
