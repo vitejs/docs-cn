@@ -398,15 +398,11 @@ Vite 插件也可以提供钩子来服务于特定的 Vite 目标。这些钩子
   }
   ```
 
-<<<<<<< HEAD
-### `handleHotUpdate` {#handlehotupdate}
-=======
-  ::: warning Note
-  This hook won't be called if you are using a framework that has custom handling of entry files (for example [SvelteKit](https://github.com/sveltejs/kit/discussions/8269#discussioncomment-4509145)).
+  ::: warning 注意
+  如果你正在使用一个对入口文件有特殊处理方式的框架（比如 [SvelteKit](https://github.com/sveltejs/kit/discussions/8269#discussioncomment-4509145)），那么这个钩子就不会被触发。
   :::
 
-### `handleHotUpdate`
->>>>>>> 254bc09f4f563cb1f53d6f2524617e8622c035f2
+### `handleHotUpdate` {#handlehotupdate}
 
 - **类型：** `(ctx: HmrContext) => Array<ModuleNode> | void | Promise<Array<ModuleNode> | void>`
 - **参见：** [HMR API](./api-hmr)

@@ -74,13 +74,10 @@ $ bun create vite
 ::: code-group
 
 ```bash [NPM]
-# npm 7+, extra double-dash is needed:
+# npm 7+，需要添加额外的双破折号：
 $ npm create vite@latest my-vue-app -- --template vue
 ```
 
-<<<<<<< HEAD
-查看 [create-vite](https://github.com/vitejs/vite/tree/main/packages/create-vite) 以获取每个模板的更多细节：`vanilla`，`vanilla-ts`, `vue`, `vue-ts`，`react`，`react-ts`，`react-swc`，`react-swc-ts`，`preact`，`preact-ts`，`lit`，`lit-ts`，`svelte`，`svelte-ts`，`solid`，`solid-ts`，`qwik`，`qwik-ts`。
-=======
 ```bash [Yarn]
 $ yarn create vite my-vue-app --template vue
 ```
@@ -95,8 +92,7 @@ $ bun create vite my-vue-app --template vue
 
 :::
 
-See [create-vite](https://github.com/vitejs/vite/tree/main/packages/create-vite) for more details on each supported template: `vanilla`, `vanilla-ts`, `vue`, `vue-ts`, `react`, `react-ts`, `react-swc`, `react-swc-ts`, `preact`, `preact-ts`, `lit`, `lit-ts`, `svelte`, `svelte-ts`, `solid`, `solid-ts`, `qwik`, `qwik-ts`.
->>>>>>> 254bc09f4f563cb1f53d6f2524617e8622c035f2
+查看 [create-vite](https://github.com/vitejs/vite/tree/main/packages/create-vite) 以获取每个模板的更多细节：`vanilla`，`vanilla-ts`, `vue`, `vue-ts`，`react`，`react-ts`，`react-swc`，`react-swc-ts`，`preact`，`preact-ts`，`lit`，`lit-ts`，`svelte`，`svelte-ts`，`solid`，`solid-ts`，`qwik`，`qwik-ts`。
 
 你可以使用 `.` 作为项目名称，在当前目录中创建项目脚手架。
 

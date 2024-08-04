@@ -225,15 +225,9 @@ Vite 有一个“允许的情景”列表，并且会匹配列表中第一个情
 
 指定传递给 CSS 预处理器的选项。文件扩展名用作选项的键。每个预处理器支持的选项可以在它们各自的文档中找到：
 
-<<<<<<< HEAD
-- `sass`/`scss` - [选项](https://sass-lang.com/documentation/js-api/interfaces/LegacyStringOptions)。
+- `sass`/`scss` - 上层选项 `api: "legacy" | "modern" | "modern-compiler"`（默认值是 `"legacy"`）可以让你选择使用哪种 sass API。为获得最佳的性能，建议你使用 `sass-embedded` 包并设置 `api: "modern-compiler"`。[选项（legacy）](https://sass-lang.com/documentation/js-api/interfaces/LegacyStringOptions)，[选项（modern）](https://sass-lang.com/documentation/js-api/interfaces/stringoptions/)。
 - `less` - [选项](https://lesscss.org/usage/#less-options)。
 - `styl`/`stylus` - 仅支持 [`define`](https://stylus-lang.com/docs/js.html#define-name-node)，可以作为对象传递。
-=======
-- `sass`/`scss` - top level option `api: "legacy" | "modern" | "modern-compiler"` (default `"legacy"`) allows switching which sass API to use. For the best performance, it's recommended to use `api: "modern-compiler"` with `sass-embedded` package. [Options (legacy)](https://sass-lang.com/documentation/js-api/interfaces/LegacyStringOptions), [Options (modern)](https://sass-lang.com/documentation/js-api/interfaces/stringoptions/).
-- `less` - [Options](https://lesscss.org/usage/#less-options).
-- `styl`/`stylus` - Only [`define`](https://stylus-lang.com/docs/js.html#define-name-node) is supported, which can be passed as an object.
->>>>>>> 254bc09f4f563cb1f53d6f2524617e8622c035f2
 
 **示例：**
 
@@ -250,7 +244,7 @@ export default defineConfig({
         },
       },
       scss: {
-        api: 'modern-compiler', // or "modern", "legacy"
+        api: 'modern-compiler', // 或 "modern"，"legacy"
         importers: [
           // ...
         ],
