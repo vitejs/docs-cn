@@ -153,9 +153,9 @@ VITE_APP_TITLE=My App (staging)
 NODE_ENV=development
 ```
 
-## NODE_ENV and Modes
+## NODE_ENV 和 模式 {#node-env-and-modes}
 
-It's important to note that `NODE_ENV` (`process.env.NODE_ENV`) and modes are two different concepts. Here's how different commands affect the `NODE_ENV` and mode:
+需要注意的是，`NODE_ENV`（`process.env.NODE_ENV`）和模式是两个不同的概念。以下是不同命令如何影响 `NODE_ENV` 和模式：
 
 | Command                                              | NODE_ENV        | Mode            |
 | ---------------------------------------------------- | --------------- | --------------- |
@@ -164,7 +164,7 @@ It's important to note that `NODE_ENV` (`process.env.NODE_ENV`) and modes are tw
 | `NODE_ENV=development vite build`                    | `"development"` | `"production"`  |
 | `NODE_ENV=development vite build --mode development` | `"development"` | `"development"` |
 
-The different values of `NODE_ENV` and mode also reflect on its corresponding `import.meta.env` properties:
+`NODE_ENV` 和模式的不同值也会反映在相应的 `import.meta.env` 属性上：
 
 | Command                | `import.meta.env.PROD` | `import.meta.env.DEV` |
 | ---------------------- | ---------------------- | --------------------- |
@@ -178,9 +178,9 @@ The different values of `NODE_ENV` and mode also reflect on its corresponding `i
 | `--mode development` | `"development"`        |
 | `--mode staging`     | `"staging"`            |
 
-:::tip `NODE_ENV` in `.env` files
+:::tip `.env` 文件中的 `NODE_ENV`
 
-`NODE_ENV=...` can be set in the command, and also in your `.env` file. If `NODE_ENV` is specified in a `.env.[mode]` file, the mode can be used to control its value. However, both `NODE_ENV` and modes remain as two different concepts.
+`NODE_ENV=...` 可以在命令中设置，也可以在 `.env` 文件中设置。如果在 `.env.[mode]` 文件中指定了 `NODE_ENV`，则可以使用模式来控制其值。不过，`NODE_ENV` 和模式仍然是两个不同的概念。
 
-The main benefit with `NODE_ENV=...` in the command is that it allows Vite to detect the value early. It also allows you to read `process.env.NODE_ENV` in your Vite config as Vite can only load the env files once the config is evaluated.
+命令中使用 `NODE_ENV=...` 的主要好处是，它允许 Vite 提前检测到该值。这也使你能够在 Vite 配置中读取 `process.env.NODE_ENV`，因为 Vite 只有在解析配置之后才能加载环境变量文件。
 :::

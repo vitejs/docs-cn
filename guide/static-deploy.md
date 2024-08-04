@@ -59,7 +59,7 @@ $ npm run preview
 
    如果你正要部署到 `https://<USERNAME>.github.io/`，或者通过 GitHub Pages 部署到一个自定义域名（例如 `www.example.com`），请将 `base` 设置为 `'/'`。或者，你也可以从配置中移除 `base`，因为它默认为 `'/'`。
 
-   如果你正在部署到 `https://<USERNAME>.github.io/<REPO>/`（例如你的仓库地址为 `https://github.com<USERNAME>/<REPO>`），那么请将 `base` 设置为 `'/<REPO>/'`。
+   如果你正在部署到 `https://<USERNAME>.github.io/<REPO>/`（例如你的仓库地址为 `https://github.com/<USERNAME>/<REPO>`），那么请将 `base` 设置为 `'/<REPO>/'`。
 
 2. 进入仓库 settings 页面的 GitHub Pages 配置，选择部署来源为“GitHub Actions”，这将引导你创建一个构建和部署项目的工作流程，我们提供了一个安装依赖项和使用 npm 构建的工作流程样本：
 
@@ -183,7 +183,7 @@ $ ntl deploy --prod
 4. 点击 **部署**
 5. 你的 Vite 应用就部署完成了！
 
-在你的项目被导入和部署后，所有对生产分支以外的其他分支（可能来自合并请求）的后续推送都会生成 [预览部署](https://docs.netlify.com/site-deploys/deploy-previews/)，所有对生产分支（通常是 “main”）都会生成一个 [生产部署](https://docs.netlify.com/site-deploys/overview/#definitions)。
+在你的项目被导入和部署后，所有对生产分支以外的其他分支（可能来自合并请求）的后续推送都会生成 [预览部署](https://docs.netlify.com/site-deploys/deploy-previews/)，所有对生产分支（通常是 "main"）的更改都会生成一个 [生产部署](https://docs.netlify.com/site-deploys/overview/#definitions)。
 
 ## Vercel {#vercel}
 
@@ -208,7 +208,7 @@ Vercel CLI
 3. Vercel 会检测到你正在使用 Vite，并会为你的部署开启相应的正确配置。
 4. 你的应用被部署好了！（示例：[vite-vue-template.vercel.app](https://vite-vue-template.vercel.app/)）
 
-在你的项目被导入和部署后，所有对分支的后续推送都会生成 [预览部署](https://vercel.com/docs/concepts/deployments/environments#preview)，而所有对生产分支（通常是“main”）的更改都会生成一个 [生产构建](https://vercel.com/docs/concepts/deployments/environments#production)
+在你的项目被导入和部署后，所有对分支的后续推送都会生成 [预览部署](https://vercel.com/docs/concepts/deployments/environments#preview)，而所有对生产分支（通常是"main"）的更改都会生成一个 [生产构建](https://vercel.com/docs/concepts/deployments/environments#production)
 
 查看 Vercel 的 [Git 集成](https://vercel.com/docs/concepts/git) 了解更多细节。
 
