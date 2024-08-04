@@ -2,9 +2,9 @@
 
 ## WMR {#wmr}
 
-Preact 团队的 [WMR](https://github.com/preactjs/wmr) 提供了类似的特性集，而 Vite 2.0 对 Rollup 插件接口的支持正是受到了它的启发。
+Preact 团队的 [WMR](https://github.com/preactjs/wmr) 旨在提供类似的功能集，Vite 的通用 Rollup 插件 API（用于开发和构建）就是受此启发而设计的。
 
-WMR 主要是为了 [Preact](https://preactjs.com/) 项目而设计，并为其提供了集成度更高的功能，比如预渲染。就使用范围而言，它更加贴合于 Preact 框架，与 Preact 本身一样强调紧凑的大小。如果你正在使用 Preact，那么 WMR 可能会提供更好的体验。
+目前，WMR 已经停止维护。Preact 团队现在建议搭配使用 Vite 和 [@preactjs/preset-vite](https://github.com/preactjs/preset-vite)。
 
 ## @web/dev-server {#web-dev-server}
 

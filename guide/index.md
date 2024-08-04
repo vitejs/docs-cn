@@ -71,19 +71,26 @@ $ bun create vite
 
 你还可以通过附加的命令行选项直接指定项目名称和你想要使用的模板。例如，要构建一个 Vite + Vue 项目，运行:
 
-```bash
-# npm 7+, 需要额外加 --:
-npm create vite@latest my-vue-app -- --template vue
+::: code-group
 
-# yarn
-yarn create vite my-vue-app --template vue
-
-# pnpm
-pnpm create vite my-vue-app --template vue
-
-# bun
-bun create vite my-vue-app --template vue
+```bash [NPM]
+# npm 7+，需要添加额外的 --：
+$ npm create vite@latest my-vue-app -- --template vue
 ```
+
+```bash [Yarn]
+$ yarn create vite my-vue-app --template vue
+```
+
+```bash [PNPM]
+$ pnpm create vite my-vue-app --template vue
+```
+
+```bash [Bun]
+$ bun create vite my-vue-app --template vue
+```
+
+:::
 
 查看 [create-vite](https://github.com/vitejs/vite/tree/main/packages/create-vite) 以获取每个模板的更多细节：`vanilla`，`vanilla-ts`, `vue`, `vue-ts`，`react`，`react-ts`，`react-swc`，`react-swc-ts`，`preact`，`preact-ts`，`lit`，`lit-ts`，`svelte`，`svelte-ts`，`solid`，`solid-ts`，`qwik`，`qwik-ts`。
 
@@ -155,7 +162,8 @@ Vite 也支持多个 `.html` 作入口点的 [多页面应用模式](./build#mul
 
 #### 指定替代根目录 {#specifying-alternative-root}
 
-`vite` 以当前工作目录作为根目录启动开发服务器。你也可以通过 `vite serve some/sub/dir` 来指定一个替代的根目录。注意 Vite 同时会解析项目根目录下的 [配置文件（即 `vite.config.js`）](/config/#configuring-vite)，因此如果根目录被改变了，你需要将配置文件移动到新的根目录下。
+执行 `vite` 命令会以当前工作目录作为根目录启动开发服务器。你也可以通过 `vite serve some/sub/dir` 来指定一个不同的根目录。
+需要注意的是，Vite 也会在项目的根目录中寻找 [它的配置文件（即 `vite.config.js`）](/config/#configuring-vite)，所以如果更改了根目录，你需要将配置文件一起移动过去。
 
 ## 命令行界面 {#command-line-interface}
 

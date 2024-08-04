@@ -21,6 +21,9 @@ hero:
     - theme: alt
       text: 在 GitHub 上查看
       link: https://github.com/vitejs/vite
+    - theme: brand
+      text: ⚡ ViteConf 24!
+      link: https://viteconf.org/?utm=vite-homepage
 
 features:
   - icon: 💡
