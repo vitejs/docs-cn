@@ -256,13 +256,13 @@ document.getElementById('foo').className = applyColor
 话虽如此，但 Vite 也同时提供了对 `.scss`, `.sass`, `.less`, `.styl` 和 `.stylus` 文件的内置支持。没有必要为它们安装特定的 Vite 插件，但必须安装相应的预处理器依赖：
 
 ```bash
-# .scss and .sass
-npm add -D sass
+# .scss 和 .sass
+npm add -D sass-embedded # 或 sass
 
 # .less
 npm add -D less
 
-# .styl and .stylus
+# .styl 和 .stylus
 npm add -D stylus
 ```
 
