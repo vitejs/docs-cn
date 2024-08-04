@@ -74,7 +74,7 @@ $ bun create vite
 ::: code-group
 
 ```bash [NPM]
-# npm 7+，需要添加额外的双破折号：
+# npm 7+，需要添加额外的 --：
 $ npm create vite@latest my-vue-app -- --template vue
 ```
 
