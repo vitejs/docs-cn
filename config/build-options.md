@@ -47,11 +47,7 @@ type ResolveModulePreloadDependenciesFn = (
 ) => string[]
 ```
 
-<<<<<<< HEAD
-`resolveDependencies` 函数将为每个动态导入调用，同时带着一个它所依赖的 chunk 列表。并且它还会为每个在入口 HTML 文件中导入的 chunk 调用。 可以返回一个新的依赖关系数组，可能被过滤后变少了，也可能有更多依赖注入进来了，同时它们的路径也被修改过。`deps` 路径是相对于 `build.outDir` 的。若在注入该模块到 HTML head 时使用 `new URL(dep, import.meta.url)` 获取绝对路径，则对于 `hostType === 'js'`，允许返回一个相对于 `hostId` 的路径。
-=======
-The `resolveDependencies` function will be called for each dynamic import with a list of the chunks it depends on, and it will also be called for each chunk imported in entry HTML files. A new dependencies array can be returned with these filtered or more dependencies injected, and their paths modified. The `deps` paths are relative to the `build.outDir`. The return value should be a relative path to the `build.outDir`.
->>>>>>> ebcefc9f82ef11e97725282684564cb68aaa1d93
+`resolveDependencies` 函数将为每个动态导入调用，同时带着一个它所依赖的 chunk 列表。并且它还会为每个在入口 HTML 文件中导入的 chunk 调用。 可以返回一个新的依赖关系数组，可能被过滤后变少了，也可能有更多依赖注入进来了，同时它们的路径也被修改过。`deps` 路径是相对于 `build.outDir` 的。返回值应是指向 `build.outDir` 的相对路径。
 
 ```js twoslash
 /** @type {import('vite').UserConfig} */
