@@ -47,7 +47,7 @@ type ResolveModulePreloadDependenciesFn = (
 ) => string[]
 ```
 
-`resolveDependencies` 函数将为每个动态导入调用，同时带着一个它所依赖的 chunk 列表。并且它还会为每个在入口 HTML 文件中导入的 chunk 调用。 可以返回一个新的依赖关系数组，可能被过滤后变少了，也可能有更多依赖注入进来了，同时它们的路径也被修改过。`deps` 路径是相对于 `build.outDir` 的。返回值应是指向 `build.outDir` 的相对路径。
+`resolveDependencies` 函数会在每次动态导入时被调用，并包含其依赖的 chunk 列表。同时，它也会在入口 HTML 文件中导入每个 chunk 时被调用。你可以返回一个新的依赖数组，其中可以过滤掉或注入更多的依赖，或修改它们的路径。`deps` 路径是相对于 `build.outDir` 的。返回值应是对于 `build.outDir` 的相对路径。
 
 ```js twoslash
 /** @type {import('vite').UserConfig} */
