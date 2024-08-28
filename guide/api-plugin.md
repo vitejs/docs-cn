@@ -431,7 +431,6 @@ Vite 插件也可以提供钩子来服务于特定的 Vite 目标。这些钩子
 
     ```js
     handleHotUpdate({ server, modules, timestamp }) {
-      server.ws.send({ type: 'full-reload' })
       // 手动使模块失效
       const invalidatedModules = new Set()
       for (const mod of modules) {
@@ -442,6 +441,7 @@ Vite 插件也可以提供钩子来服务于特定的 Vite 目标。这些钩子
           true
         )
       }
+      server.ws.send({ type: 'full-reload' })
       return []
     }
     ```
