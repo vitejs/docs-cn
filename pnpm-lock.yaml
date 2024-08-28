@@ -33,8 +33,8 @@ importers:
         specifier: ^5.1.6
         version: 5.2.11(@types/node@20.12.12)
       vitepress:
-        specifier: 1.3.3
-        version: 1.3.3(@algolia/client-search@4.23.3)(@types/node@20.12.12)(postcss@8.4.41)(search-insights@2.13.0)(typescript@5.4.5)
+        specifier: 1.3.4
+        version: 1.3.4(@algolia/client-search@4.23.3)(@types/node@20.12.12)(postcss@8.4.41)(search-insights@2.13.0)(typescript@5.4.5)
       vue:
         specifier: ^3.4.38
         version: 3.4.38(typescript@5.4.5)
@@ -1156,10 +1156,6 @@ packages:
     resolution: {integrity: sha512-Wglpdk03BSfXkHoQa3b/oulrotAkwrlLDRSOb9D0bN86FdRyE9lppSp33aHNPgBa0JKCoB+drFLZkQoRRYae5A==}
     engines: {node: ^10 || ^12 || >=14}
 
-  postcss@8.4.40:
-    resolution: {integrity: sha512-YF2kKIUzAofPMpfH6hOi2cGnv/HrUlfucspc7pDyvv7kGdqXrfj8SCl/t8owkEgKEuu8ZcRjSOxFxVLqwChZ2Q==}
-    engines: {node: ^10 || ^12 || >=14}
-
   postcss@8.4.41:
     resolution: {integrity: sha512-TesUflQ0WKZqAvg52PWL6kHgLKP6xB6heTOdoYM0Wt2UHyxNa4K25EZZMgKns3BH1RLVbZCREPpLY0rhnNoHVQ==}
     engines: {node: ^10 || ^12 || >=14}
@@ -1349,8 +1345,8 @@ packages:
       terser:
         optional: true
 
-  vitepress@1.3.3:
-    resolution: {integrity: sha512-6UzEw/wZ41S/CATby7ea7UlffvRER/uekxgN6hbEvSys9ukmLOKsz87Ehq9yOx1Rwiw+Sj97yjpivP8w1sUmng==}
+  vitepress@1.3.4:
+    resolution: {integrity: sha512-I1/F6OW1xl3kW4PaIMC6snxjWgf3qfziq2aqsDoFc/Gt41WbcRv++z8zjw8qGRIJ+I4bUW7ZcKFDHHN/jkH9DQ==}
     hasBin: true
     peerDependencies:
       markdown-it-mathjax3: ^4
@@ -1957,7 +1953,7 @@ snapshots:
       '@vue/shared': 3.4.38
       estree-walker: 2.0.2
       magic-string: 0.30.10
-      postcss: 8.4.40
+      postcss: 8.4.41
       source-map-js: 1.2.0
 
   '@vue/compiler-ssr@3.4.38':
@@ -1987,7 +1983,7 @@ snapshots:
     dependencies:
       '@volar/language-core': 2.4.0-alpha.15
       '@vue/compiler-dom': 3.4.35
-      '@vue/shared': 3.4.35
+      '@vue/shared': 3.4.38
       computeds: 0.0.1
       minimatch: 9.0.4
       muggle-string: 0.4.1
@@ -2557,12 +2553,6 @@ snapshots:
       picocolors: 1.0.1
       source-map-js: 1.2.0
 
-  postcss@8.4.40:
-    dependencies:
-      nanoid: 3.3.7
-      picocolors: 1.0.1
-      source-map-js: 1.2.0
-
   postcss@8.4.41:
     dependencies:
       nanoid: 3.3.7
@@ -2742,7 +2732,7 @@ snapshots:
       '@types/node': 20.12.12
       fsevents: 2.3.3
 
-  vitepress@1.3.3(@algolia/client-search@4.23.3)(@types/node@20.12.12)(postcss@8.4.41)(search-insights@2.13.0)(typescript@5.4.5):
+  vitepress@1.3.4(@algolia/client-search@4.23.3)(@types/node@20.12.12)(postcss@8.4.41)(search-insights@2.13.0)(typescript@5.4.5):
     dependencies:
       '@docsearch/css': 3.6.1
       '@docsearch/js': 3.6.1(@algolia/client-search@4.23.3)(search-insights@2.13.0)
