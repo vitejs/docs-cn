@@ -1,11 +1,20 @@
+<<<<<<< HEAD
 # 从 v4 迁移 {#migration-from-v4}
 
 ## Node.js 支持 {#nodejs-support}
 
 Vite 不再支持 Node.js 14 / 16 / 17 / 19，因为它们已经到了 EOL。现在需要 Node.js 18 / 20+。
+=======
+# Migration from v5
 
-## Rollup 4
+## Environment API
 
+As part of the new experimental [Environment API](/guide/api-environment.md), a big internal refactoring was needed. Vite 6 strives to avoid breaking changes to ensure most projects can quickly upgrade to the new major. We'll wait until a big portion of the ecosystem has moved to stabilize and start recommending the use of the new APIs. There may be some edge cases but these should only affect low level usage by frameworks and tools. We have worked with maintainers in the ecosystem to mitigate these differences before the release. Please [open an issue](https://github.com/vitejs/vite/issues/new?assignees=&labels=pending+triage&projects=&template=bug_report.yml) if you spot a regression.
+>>>>>>> 38040ec03eb76a8059445a51181b2e3599f403ca
+
+Some internal APIs have been removed due to changes in Vite's implementation. If you were relying on one of them, please create a [feature request](https://github.com/vitejs/vite/issues/new?assignees=&labels=enhancement%3A+pending+triage&projects=&template=feature_request.yml).
+
+<<<<<<< HEAD
 Vite 现在使用 Rollup 4，它也带来了一些重大的变化，特别是：
 
 - 导入断言（`assertions` 属性）已被重命名为导入属性（`attributes` 属性）。
@@ -244,3 +253,12 @@ const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf-8'))
 ## 从 v3 迁移 {#migration-from-v3}
 
 请先查看 [从 v3 迁移指南](https://cn.vitejs.dev/guide/migration-from-v3.html) 文档查看对您的应用所有需要迁移的改动，然后再执行本篇指南所述的改动。
+=======
+## Vite Runtime API
+
+The experimental Vite Runtime API evolved into the Module Runner API, released in Vite 6 as part of the new experimental [Environment API](/guide/api-environment). Given that the feature was experimental the removal of the previous API introduced in Vite 5.1 isn't a breaking change, but users will need to update their use to the Module Runner equivalent as part of migrating to Vite 6.
+
+## Migration from v4
+
+Check the [Migration from v4 Guide](https://v5.vitejs.dev/guide/migration.html) in the Vite v5 docs first to see the needed changes to port your app to Vite 5, and then proceed with the changes on this page.
+>>>>>>> 38040ec03eb76a8059445a51181b2e3599f403ca

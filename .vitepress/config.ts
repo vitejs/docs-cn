@@ -321,8 +321,17 @@ export default defineConfig({
               link: '/guide/philosophy',
             },
             {
+<<<<<<< HEAD
               text: '从 v4 迁移',
               link: '/guide/migration'
+=======
+              text: 'Migration from v5',
+              link: '/guide/migration',
+>>>>>>> 38040ec03eb76a8059445a51181b2e3599f403ca
+            },
+            {
+              text: 'Breaking Changes',
+              link: '/changes/',
             },
           ],
         },
@@ -342,8 +351,13 @@ export default defineConfig({
               link: '/guide/api-javascript',
             },
             {
+<<<<<<< HEAD
               text: 'Vite 运行时 API',
               link: '/guide/api-vite-runtime',
+=======
+              text: 'Environment API',
+              link: '/guide/api-environment',
+>>>>>>> 38040ec03eb76a8059445a51181b2e3599f403ca
             },
             {
               text: '配置参考',
@@ -389,6 +403,45 @@ export default defineConfig({
               link: '/config/worker-options',
             },
           ],
+        },
+      ],
+      '/changes/': [
+        {
+          text: 'Breaking Changes',
+          link: '/changes/',
+        },
+        {
+          text: 'Current',
+          items: [],
+        },
+        {
+          text: 'Future',
+          items: [
+            {
+              text: 'this.environment in Hooks',
+              link: '/changes/this-environment-in-hooks',
+            },
+            {
+              text: 'HMR hotUpdate Plugin Hook',
+              link: '/changes/hotupdate-hook',
+            },
+            {
+              text: 'Move to per-environment APIs',
+              link: '/changes/per-environment-apis',
+            },
+            {
+              text: 'SSR using ModuleRunner API',
+              link: '/changes/ssr-using-modulerunner',
+            },
+            {
+              text: 'Shared plugins during build',
+              link: '/changes/shared-plugins-during-build',
+            },
+          ],
+        },
+        {
+          text: 'Past',
+          items: [],
         },
       ],
     },
