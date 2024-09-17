@@ -142,13 +142,37 @@ $ bun add -D vite
 <p>Hello Vite!</p>
 ```
 
+<<<<<<< HEAD
 然后在终端中运行 `vite`：
+=======
+Then run the appropriate CLI command in your terminal:
+>>>>>>> 20f1b911bf88b94c61d2d5e82ec44f786882a6b4
 
-```bash
-vite
+::: code-group
+
+```bash [NPM]
+$ npx vite
 ```
 
+<<<<<<< HEAD
 就可以在 `http://localhost:5173` 上访问 `index.html`。
+=======
+```bash [Yarn]
+$ yarn vite
+```
+
+```bash [PNPM]
+$ pnpm vite
+```
+
+```bash [Bun]
+$ bunx vite
+```
+
+:::
+
+The `index.html` will be served on `http://localhost:5173`.
+>>>>>>> 20f1b911bf88b94c61d2d5e82ec44f786882a6b4
 
 ## `index.html` 与项目根目录 {#index-html-and-project-root}
 
