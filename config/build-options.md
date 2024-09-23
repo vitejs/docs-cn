@@ -192,12 +192,27 @@ Git LFS 占位符会自动排除在内联之外，因为它们不包含其所表
 
 生成面向 SSR 的构建。此选项的值可以是字符串，用于直接定义 SSR 的入口，也可以为 `true`，但这需要通过设置 `rollupOptions.input` 来指定 SSR 的入口。
 
+<<<<<<< HEAD
 ## build.ssrEmitAssets {#build-ssremitassets}
+=======
+## build.emitAssets
+
+- **Type:** `boolean`
+- **Default:** `false`
+
+During non-client builds, static assets aren't emitted as it is assumed they would be emitted as part of the client build. This option allows frameworks to force emitting them in other environments build. It is responsibility of the framework to merge the assets with a post build step.
+
+## build.ssrEmitAssets
+>>>>>>> 720d6d7c0f1432ac554f12d5fc576157edffab80
 
 - **类型：** `boolean`
 - **默认：** `false`
 
+<<<<<<< HEAD
 在 SSR 构建期间，静态资源不会被输出，因为它们通常被认为是客户端构建的一部分。这个选项允许框架强制在客户端和 SSR 构建中都输出它们。将静态资源在构建后合并是框架的责任。
+=======
+During the SSR build, static assets aren't emitted as it is assumed they would be emitted as part of the client build. This option allows frameworks to force emitting them in both the client and SSR build. It is responsibility of the framework to merge the assets with a post build step. This option will be replaced by `build.emitAssets` once Environment API is stable.
+>>>>>>> 720d6d7c0f1432ac554f12d5fc576157edffab80
 
 ## build.minify {#build-minify}
 

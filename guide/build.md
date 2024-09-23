@@ -33,7 +33,7 @@
 
 构建过程可以通过多种 [构建配置选项](/config/#build-options) 来自定义构建。具体来说，你可以通过 `build.rollupOptions` 直接调整底层的 [Rollup 选项](https://rollupjs.org/configuration-options/)：
 
-```js
+```js [vite.config.js]
 export default defineConfig({
   build: {
     rollupOptions: {
@@ -65,8 +65,7 @@ window.addEventListener('vite:preloadError', (event) => {
 
 你可以使用 `vite build --watch` 来启用 rollup 的监听器。或者，你可以直接通过 `build.watch` 调整底层的 [`WatcherOptions`](https://rollupjs.org/configuration-options/#watch) 选项：
 
-```js
-// vite.config.js
+```js [vite.config.js]
 export default defineConfig({
   build: {
     watch: {
@@ -96,8 +95,7 @@ export default defineConfig({
 
 在构建过程中，你只需指定多个 `.html` 文件作为入口点即可：
 
-```js twoslash
-// vite.config.js
+```js twoslash [vite.config.js]
 import { resolve } from 'path'
 import { defineConfig } from 'vite'
 
@@ -123,8 +121,7 @@ export default defineConfig({
 
 当这个库要进行发布构建时，请使用 [`build.lib` 配置项](/config/build-options.md#build-lib)，以确保将那些你不想打包进库的依赖进行外部化处理，例如 `vue` 或 `react`：
 
-```js twoslash
-// vite.config.js
+```js twoslash [vite.config.js]
 import { resolve } from 'path'
 import { defineConfig } from 'vite'
 
@@ -153,8 +150,7 @@ export default defineConfig({
 
 入口文件将包含可以由你的包的用户导入的导出：
 
-```js
-// lib/main.js
+```js [lib/main.js]
 import Foo from './Foo.vue'
 import Bar from './Bar.vue'
 export { Foo, Bar }
@@ -171,7 +167,7 @@ dist/my-lib.umd.cjs 0.30 kB / gzip: 0.16 kB
 
 推荐在你库的 `package.json` 中使用如下格式：
 
-```json
+```json [package.json]
 {
   "name": "my-lib",
   "type": "module",
@@ -189,7 +185,7 @@ dist/my-lib.umd.cjs 0.30 kB / gzip: 0.16 kB
 
 或者，如果暴露了多个入口起点：
 
-```json
+```json [package.json]
 {
   "name": "my-lib",
   "type": "module",

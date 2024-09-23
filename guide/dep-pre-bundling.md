@@ -37,7 +37,7 @@
 
 然而，这需要被链接的依赖被导出为 ESM 格式。如果不是，那么你可以在配置里将此依赖添加到 [`optimizeDeps.include`](/config/dep-optimization-options.md#optimizedeps-include) 和 [`build.commonjsOptions.include`](/config/build-options.md#build-commonjsoptions) 这两项中。
 
-```js twoslash
+```js twoslash [vite.config.js]
 import { defineConfig } from 'vite'
 // ---cut---
 export default defineConfig({
