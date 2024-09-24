@@ -7,8 +7,12 @@ import './styles/vars.css'
 import HomeSponsors from './components/HomeSponsors.vue'
 import AsideSponsors from './components/AsideSponsors.vue'
 import SvgImage from './components/SvgImage.vue'
+<<<<<<< HEAD
 import WwAds from './components/WwAds.vue'
 import './custom.css'
+=======
+import 'virtual:group-icons.css'
+>>>>>>> b4504c3760813bbfa8dba34e7db905f59eb6eef6
 
 export default {
   extends: DefaultTheme,
