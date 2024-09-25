@@ -6,7 +6,7 @@
 - 你正在使用 NPM；或者 Yarn 等其他可以运行下面的脚本指令的包管理工具。
 - Vite 已作为一个本地开发依赖（dev dependency）安装在你的项目中，并且你已经配置好了如下的 npm scripts：
 
-```json
+```json [package.json]
 {
   "scripts": {
     "build": "vite build",
@@ -43,7 +43,7 @@ $ npm run preview
 
 你可以通过 `--port` 参数来配置服务的运行端口。
 
-```json
+```json [package.json]
 {
   "scripts": {
     "preview": "vite preview --port 8080"
@@ -127,7 +127,7 @@ $ npm run preview
 
 2. 在项目根目录创建一个 `.gitlab-ci.yml` 文件，并包含以下内容。它将使得每次你更改内容时都重新构建与部署站点：
 
-   ```yaml
+   ```yaml [.gitlab-ci.yml]
    image: node:16.5.0
    pages:
      stage: deploy
@@ -257,9 +257,7 @@ $ npx wrangler pages deploy dist
 
 2. 在项目根目录创建 `firebase.json` 和 `.firebaserc` 两个文件，包含以下内容：
 
-   `firebase.json`:
-
-   ```json
+   ```json [firebase.json]
    {
      "hosting": {
        "public": "dist",
@@ -274,9 +272,7 @@ $ npx wrangler pages deploy dist
    }
    ```
 
-   `.firebaserc`:
-
-   ```js
+   ```js [.firebaserc]
    {
      "projects": {
        "default": "<YOUR_FIREBASE_ID>"
@@ -322,8 +318,13 @@ $ npx wrangler pages deploy dist
 
 4. 指定一个项目名称和所用分支
 
+<<<<<<< HEAD
    - **构建命令**：`npm run build`
    - **发布目录**：`dist`
+=======
+   - **Build Command**: `npm install && npm run build`
+   - **Publish Directory**: `dist`
+>>>>>>> 83429c82bba3c4cfe400e497b44cb1b4c8e26c48
 
 5. 点击 **Create Static Site**
 
