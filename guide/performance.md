@@ -59,8 +59,7 @@ Vite 的内部和官方插件已经优化，以在提供与更广泛的生态系
 
 桶文件（barrel files）是重新导出同一目录下其他文件 API 的文件。例如：
 
-```js
-// src/utils/index.js
+```js [src/utils/index.js]
 export * from './color.js'
 export * from './dom.js'
 export * from './slash.js'
@@ -92,7 +91,7 @@ vite:transform 62.95ms /src/components/BigComponent.vue +1ms
 vite:transform 102.54ms /src/utils/big-utils.js +1ms
 ```
 
-```js
+```js [vite.config.js]
 export default defineConfig({
   server: {
     warmup: {
