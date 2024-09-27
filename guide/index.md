@@ -142,13 +142,37 @@ $ bun add -D vite
 <p>Hello Vite!</p>
 ```
 
+<<<<<<< HEAD
 然后在终端中运行 `vite`：
+=======
+Then run the appropriate CLI command in your terminal:
+>>>>>>> 612ad3c753e2e5b937784f85f7ed0ff9c9340bf5
 
-```bash
-vite
+::: code-group
+
+```bash [NPM]
+$ npx vite
 ```
 
+<<<<<<< HEAD
 就可以在 `http://localhost:5173` 上访问 `index.html`。
+=======
+```bash [Yarn]
+$ yarn vite
+```
+
+```bash [PNPM]
+$ pnpm vite
+```
+
+```bash [Bun]
+$ bunx vite
+```
+
+:::
+
+The `index.html` will be served on `http://localhost:5173`.
+>>>>>>> 612ad3c753e2e5b937784f85f7ed0ff9c9340bf5
 
 ## `index.html` 与项目根目录 {#index-html-and-project-root}
 
@@ -170,7 +194,7 @@ Vite 也支持多个 `.html` 作入口点的 [多页面应用模式](./build#mul
 在安装了 Vite 的项目中，可以在 npm scripts 中使用 `vite` 可执行文件，或者直接使用 `npx vite` 运行它。下面是通过脚手架创建的 Vite 项目中默认的 npm scripts：
 
 <!-- prettier-ignore -->
-```json
+```json [package.json]
 {
   "scripts": {
     "dev": "vite", // 启动开发服务器，别名：`vite dev`，`vite serve`

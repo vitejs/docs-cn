@@ -38,7 +38,7 @@ Vite 使用 [dotenv](https://github.com/motdotla/dotenv) 从你的 [环境目录
 
 为了防止意外地将一些环境变量泄漏到客户端，只有以 `VITE_` 为前缀的变量才会暴露给经过 vite 处理的代码。例如下面这些环境变量：
 
-```
+```[.env]
 VITE_SOME_KEY=123
 DB_PASSWORD=foobar
 ```
@@ -59,7 +59,7 @@ console.log(import.meta.env.DB_PASSWORD) // undefined
 
 请注意，如果想要在环境变量中使用 `$` 符号，则必须使用 `\` 对其进行转义。
 
-```
+```[.env]
 KEY=123
 NEW_KEY1=test$foo   # test
 NEW_KEY2=test\$foo  # test$foo
@@ -81,7 +81,7 @@ NEW_KEY3=test$KEY   # test123
 
 要想做到这一点，你可以在 `src` 目录下创建一个 `vite-env.d.ts` 文件，接着按下面这样增加 `ImportMetaEnv` 的定义：
 
-```typescript
+```typescript [vite-env.d.ts]
 /// <reference types="vite/client" />
 
 interface ImportMetaEnv {
@@ -96,7 +96,7 @@ interface ImportMeta {
 
 如果你的代码依赖于浏览器环境的类型，比如 [DOM](https://github.com/microsoft/TypeScript/blob/main/src/lib/dom.generated.d.ts) 和 [WebWorker](https://github.com/microsoft/TypeScript/blob/main/src/lib/webworker.generated.d.ts)，你可以在 `tsconfig.json` 中修改 [lib](https://www.typescriptlang.org/tsconfig#lib) 字段来获取类型支持。
 
-```json
+```json [tsconfig.json]
 {
   "lib": ["WebWorker"]
 }
