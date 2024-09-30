@@ -42,8 +42,7 @@ Vite 努力秉承开箱即用的原则，因此在创作一款新插件前，请
 
 用户会将插件添加到项目的 `devDependencies` 中并使用数组形式的 `plugins` 选项配置它们。
 
-```js
-// vite.config.js
+```js [vite.config.js]
 import vitePlugin from 'vite-plugin-feature'
 import rollupPlugin from 'rollup-plugin-feature'
 
@@ -66,8 +65,7 @@ export default function framework(config) {
 }
 ```
 
-```js
-// vite.config.js
+```js [vite.config.js]
 import { defineConfig } from 'vite'
 import framework from 'vite-plugin-framework'
 
@@ -518,8 +516,7 @@ apply(config, { command }) {
 
 你也可以用 Vite 独有的属性来扩展现有的 Rollup 插件:
 
-```js
-// vite.config.js
+```js [vite.config.js]
 import example from 'rollup-plugin-example'
 import { defineConfig } from 'vite'
 
@@ -559,8 +556,7 @@ Vite 暴露了 [`@rollup/pluginutils` 的 `createFilter`](https://github.com/rol
 
 在插件一侧，我们可以使用 `server.ws.send` 来向客户端广播事件：
 
-```js
-// vite.config.js
+```js [vite.config.js]
 export default defineConfig({
   plugins: [
     {
@@ -605,8 +601,7 @@ if (import.meta.hot) {
 
 然后使用 `server.ws.on` 并在服务端监听这些事件：
 
-```js
-// vite.config.js
+```js [vite.config.js]
 export default defineConfig({
   plugins: [
     {
@@ -631,8 +626,7 @@ Vite 会在内部从 `CustomEventMap` 这个接口推断出 payload 的类型，
 在指定 TypeScript 声明文件时，确保包含 `.d.ts` 扩展名。否则，TypeScript 可能不会知道试图扩展的是哪个文件。
 :::
 
-```ts
-// events.d.ts
+```ts [events.d.ts]
 import 'vite/types/customEvent.d.ts'
 
 declare module 'vite/types/customEvent.d.ts' {
