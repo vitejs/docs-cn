@@ -166,7 +166,11 @@ Git LFS 占位符会自动排除在内联之外，因为它们不包含其所表
 - **类型：** `{ entry: string | string[] | { [entryAlias: string]: string }, name?: string, formats?: ('es' | 'cjs' | 'umd' | 'iife')[], fileName?: string | ((format: ModuleFormat, entryName: string) => string) }`
 - **相关内容：** [库模式](/guide/build#library-mode)
 
+<<<<<<< HEAD
 构建为库。`entry` 是必需的，因为库不能使用 HTML 作为入口。`name` 则是暴露的全局变量，并且在 `formats` 包含 `'umd'` 或 `'iife'` 时是必需的。默认 `formats` 是 `['es', 'umd']`，如果使用了多个配置入口，则是 `['es', 'cjs']`。`fileName` 是输出的包文件名，默认 `fileName` 是 `package.json` 的 `name` 选项，同时，它还可以被定义为参数为 `format` 和 `entryAlias` 的函数。
+=======
+Build as a library. `entry` is required since the library cannot use HTML as entry. `name` is the exposed global variable and is required when `formats` includes `'umd'` or `'iife'`. Default `formats` are `['es', 'umd']`, or `['es', 'cjs']`, if multiple entries are used. `fileName` is the name of the package file output, default `fileName` is the name option of package.json, it can also be defined as function taking the `format` and `entryName` as arguments.
+>>>>>>> e6572f5dbcc9f890cad963a999caf9fe1aeb501b
 
 ## build.manifest {#build-manifest}
 
@@ -192,12 +196,27 @@ Git LFS 占位符会自动排除在内联之外，因为它们不包含其所表
 
 生成面向 SSR 的构建。此选项的值可以是字符串，用于直接定义 SSR 的入口，也可以为 `true`，但这需要通过设置 `rollupOptions.input` 来指定 SSR 的入口。
 
+<<<<<<< HEAD
 ## build.ssrEmitAssets {#build-ssremitassets}
+=======
+## build.emitAssets
+
+- **Type:** `boolean`
+- **Default:** `false`
+
+During non-client builds, static assets aren't emitted as it is assumed they would be emitted as part of the client build. This option allows frameworks to force emitting them in other environments build. It is responsibility of the framework to merge the assets with a post build step.
+
+## build.ssrEmitAssets
+>>>>>>> e6572f5dbcc9f890cad963a999caf9fe1aeb501b
 
 - **类型：** `boolean`
 - **默认：** `false`
 
+<<<<<<< HEAD
 在 SSR 构建期间，静态资源不会被输出，因为它们通常被认为是客户端构建的一部分。这个选项允许框架强制在客户端和 SSR 构建中都输出它们。将静态资源在构建后合并是框架的责任。
+=======
+During the SSR build, static assets aren't emitted as it is assumed they would be emitted as part of the client build. This option allows frameworks to force emitting them in both the client and SSR build. It is responsibility of the framework to merge the assets with a post build step. This option will be replaced by `build.emitAssets` once Environment API is stable.
+>>>>>>> e6572f5dbcc9f890cad963a999caf9fe1aeb501b
 
 ## build.minify {#build-minify}
 

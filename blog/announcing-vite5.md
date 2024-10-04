@@ -13,10 +13,10 @@ head:
       content: Announcing Vite 5
   - - meta
     - property: og:image
-      content: https://vitejs.dev/og-image-announcing-vite5.png
+      content: https://vite.dev/og-image-announcing-vite5.png
   - - meta
     - property: og:url
-      content: https://vitejs.dev/blog/announcing-vite5
+      content: https://vite.dev/blog/announcing-vite5
   - - meta
     - property: og:description
       content: Vite 5 Release Announcement
@@ -49,16 +49,29 @@ Vite 5 的重点是清理 API（删除已弃用的功能）并简化几个功能
 
 其他语言的文档：
 
+<<<<<<< HEAD
 - [简体中文](https://cn.vitejs.dev/)
 - [日本語](https://ja.vitejs.dev/)
 - [Español](https://es.vitejs.dev/)
 - [Português](https://pt.vitejs.dev/)
 - [한국어](https://ko.vitejs.dev/)
 - [Deutsch](https://de.vitejs.dev/)（新增翻译！）
+=======
+- [简体中文](https://cn.vite.dev/)
+- [日本語](https://ja.vite.dev/)
+- [Español](https://es.vite.dev/)
+- [Português](https://pt.vite.dev/)
+- [한국어](https://ko.vite.dev/)
+- [Deutsch](https://de.vite.dev/) (new translation!)
+>>>>>>> e6572f5dbcc9f890cad963a999caf9fe1aeb501b
 
 如果你是 Vite 的新用户，我们建议你先阅读 [入门指南](/guide/) 和 [功能](/guide/features) 指南。
 
+<<<<<<< HEAD
 我们感谢超过 [850 位对 Vite Core 作出贡献的贡献者](https://github.com/vitejs/vite/graphs/contributors)，以及 Vite 插件、集成、工具和翻译的维护者和贡献者，他们帮助我们达到了这一里程碑。我们鼓励你参与进来，继续与我们一起改进 Vite。你可以在我们的 [贡献指南](https://github.com/vitejs/vite/blob/main/CONTRIBUTING.md) 中了解更多信息。要开始，我们建议你 [处理问题](https://github.com/vitejs/vite/issues)，[审查 PR](https://github.com/vitejs/vite/pulls)，基于开放的问题发送失败的测试 PR，并在 [讨论](https://github.com/vitejs/vite/discussions) 和 Vite Land 的 [帮助论坛](https://discord.com/channels/804011606160703521/1019670660856942652) 中帮助其他人。你会在这个过程中学到很多，并顺利地进一步为项目做出贡献。如果你有疑问，请加入我们的 [Discord 社区](http://chat.vitejs.dev/)，并在 [#contributing 频道](https://discord.com/channels/804011606160703521/804439875226173480) 上打个招呼。
+=======
+We appreciate the more than [850 contributors to Vite Core](https://github.com/vitejs/vite/graphs/contributors), and the maintainers and contributors of Vite plugins, integrations, tools, and translations that have helped us reach here. We encourage you to get involved and continue to improve Vite with us. You can learn more at our [Contributing Guide](https://github.com/vitejs/vite/blob/main/CONTRIBUTING.md). To get started, we recommend [triaging issues](https://github.com/vitejs/vite/issues), [reviewing PRs](https://github.com/vitejs/vite/pulls), sending failing tests PRs based on open issues, and helping others in [Discussions](https://github.com/vitejs/vite/discussions) and Vite Land's [help forum](https://discord.com/channels/804011606160703521/1019670660856942652). You'll learn a lot along the way and have a smooth path to further contributions to the project. If you have doubts, join us on our [Discord community](http://chat.vite.dev/) and say hi on the [#contributing channel](https://discord.com/channels/804011606160703521/804439875226173480).
+>>>>>>> e6572f5dbcc9f890cad963a999caf9fe1aeb501b
 
 要保持最新，请关注我们在 [X](https://twitter.com/vite_js) 或 [Mastodon](https://webtoo.ls/@vite) 上的动态。
 
@@ -74,7 +87,11 @@ Vite 不再支持已达到 EOL 的 Node.js 14 / 16 / 17 / 19。现在需要 Node
 
 ## 性能方面 {#performance}
 
+<<<<<<< HEAD
 除了 Rollup 4 的构建性能改进之外，现在还有一个新指南，帮助你识别和修复常见的性能问题，网址为 [https://vitejs.dev/guide/performance](/guide/performance)。
+=======
+On top of Rollup 4's build performance improvements, there is a new guide to help you identify and fix common performance issues at [https://vite.dev/guide/performance](/guide/performance).
+>>>>>>> e6572f5dbcc9f890cad963a999caf9fe1aeb501b
 
 Vite 5 还引入了 [server.warmup](/guide/performance.html#warm-up-frequently-used-files)，这是一个新功能，用于改善启动时间。它允许你定义一个模块列表，在服务器启动时应预先转换。当使用 [`--open` 或 `server.open`](/config/server-options.html#server-open) 时，Vite 还将自动预热你的应用程序的入口点或提供的要打开的 URL。
 

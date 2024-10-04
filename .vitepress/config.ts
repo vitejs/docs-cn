@@ -1,12 +1,16 @@
 import type { DefaultTheme } from 'vitepress'
 import { defineConfig } from 'vitepress'
 import { transformerTwoslash } from '@shikijs/vitepress-twoslash'
+import {
+  groupIconMdPlugin,
+  groupIconVitePlugin,
+} from 'vitepress-plugin-group-icons'
 import { buildEnd } from './buildEnd.config'
 
 const ogDescription = 'Next Generation Frontend Tooling'
-const ogImage = 'https://vitejs.dev/og-image.png'
+const ogImage = 'https://vite.dev/og-image.jpg'
 const ogTitle = 'Vite'
-const ogUrl = 'https://vitejs.dev'
+const ogUrl = 'https://vite.dev'
 
 // netlify envs
 const deployURL = process.env.DEPLOY_PRIME_URL || ''
@@ -36,15 +40,15 @@ const versionLinks = ((): DefaultTheme.NavItemWithLink[] => {
   const oldVersions: DefaultTheme.NavItemWithLink[] = [
     {
       text: 'Vite 4 Docs',
-      link: 'https://v4.vitejs.dev',
+      link: 'https://v4.vite.dev',
     },
     {
       text: 'Vite 3 Docs',
-      link: 'https://v3.vitejs.dev',
+      link: 'https://v3.vite.dev',
     },
     {
       text: 'Vite 2 Docs',
-      link: 'https://v2.vitejs.dev',
+      link: 'https://v2.vite.dev',
     },
   ]
 
@@ -54,7 +58,7 @@ const versionLinks = ((): DefaultTheme.NavItemWithLink[] => {
       return [
         {
           text: 'Vite 5 Docs (release)',
-          link: 'https://vitejs.dev',
+          link: 'https://vite.dev',
         },
         ...oldVersions,
       ]
@@ -73,6 +77,30 @@ export default defineConfig({
     [
       'link',
       { rel: 'alternate', type: 'application/rss+xml', href: '/blog.rss' },
+    ],
+    ['link', { rel: 'preconnect', href: 'https://fonts.googleapis.com' }],
+    [
+      'link',
+      {
+        rel: 'preconnect',
+        href: 'https://fonts.gstatic.com',
+        crossorigin: 'true',
+      },
+    ],
+    [
+      'link',
+      {
+        rel: 'preload',
+        href: 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Manrope:wght@600&family=IBM+Plex+Mono:wght@400&display=swap',
+        as: 'style',
+      },
+    ],
+    [
+      'link',
+      {
+        rel: 'stylesheet',
+        href: 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Manrope:wght@600&family=IBM+Plex+Mono:wght@400&display=swap',
+      },
     ],
     ['link', { rel: 'me', href: 'https://m.webtoo.ls/@vite' }],
     ['meta', { property: 'og:type', content: 'website' }],
@@ -96,6 +124,7 @@ export default defineConfig({
   ],
 
   locales: {
+<<<<<<< HEAD
     root: { label: '简体中文' },
     en: { label: 'English', link: 'https://vitejs.dev' },
     ja: { label: '日本語', link: 'https://ja.vitejs.dev' },
@@ -103,6 +132,15 @@ export default defineConfig({
     pt: { label: 'Português', link: 'https://pt.vitejs.dev' },
     ko: { label: '한국어', link: 'https://ko.vitejs.dev' },
     de: { label: 'Deutsch', link: 'https://de.vitejs.dev' },
+=======
+    root: { label: 'English' },
+    zh: { label: '简体中文', link: 'https://cn.vite.dev' },
+    ja: { label: '日本語', link: 'https://ja.vite.dev' },
+    es: { label: 'Español', link: 'https://es.vite.dev' },
+    pt: { label: 'Português', link: 'https://pt.vite.dev' },
+    ko: { label: '한국어', link: 'https://ko.vite.dev' },
+    de: { label: 'Deutsch', link: 'https://de.vite.dev' },
+>>>>>>> e6572f5dbcc9f890cad963a999caf9fe1aeb501b
   },
 
   themeConfig: {
@@ -121,13 +159,13 @@ export default defineConfig({
     socialLinks: [
       { icon: 'mastodon', link: 'https://elk.zone/m.webtoo.ls/@vite' },
       { icon: 'twitter', link: 'https://twitter.com/vite_js' },
-      { icon: 'discord', link: 'https://chat.vitejs.dev' },
+      { icon: 'discord', link: 'https://chat.vite.dev' },
       { icon: 'github', link: 'https://github.com/vitejs/vite' },
     ],
 
     algolia: {
       appId: '7H67QR5P0A',
-      apiKey: 'deaab78bcdfe96b599497d25acc6460e',
+      apiKey: '208bb9c14574939326032b937431014b',
       indexName: 'vitejs',
       searchParameters: {
         facetFilters: ['tags:cn']
@@ -180,8 +218,12 @@ export default defineConfig({
 
     footer: {
       message: `Released under the MIT License. (${commitRef})`,
+<<<<<<< HEAD
       copyright:
         '本中文文档内容版权为 Vite 官方中文翻译团队所有，保留所有权利。'
+=======
+      copyright: 'Copyright © 2019-present VoidZero Inc. & Vite Contributors',
+>>>>>>> e6572f5dbcc9f890cad963a999caf9fe1aeb501b
     },
 
     nav: [
@@ -205,8 +247,13 @@ export default defineConfig({
                 link: 'https://twitter.com/vite_js',
               },
               {
+<<<<<<< HEAD
                 text: 'Discord 聊天室',
                 link: 'https://chat.vitejs.dev'
+=======
+                text: 'Discord Chat',
+                link: 'https://chat.vite.dev',
+>>>>>>> e6572f5dbcc9f890cad963a999caf9fe1aeb501b
               },
               {
                 text: 'Awesome Vite',
@@ -321,8 +368,17 @@ export default defineConfig({
               link: '/guide/philosophy',
             },
             {
+<<<<<<< HEAD
               text: '从 v4 迁移',
               link: '/guide/migration'
+=======
+              text: 'Migration from v5',
+              link: '/guide/migration',
+>>>>>>> e6572f5dbcc9f890cad963a999caf9fe1aeb501b
+            },
+            {
+              text: 'Breaking Changes',
+              link: '/changes/',
             },
           ],
         },
@@ -342,8 +398,13 @@ export default defineConfig({
               link: '/guide/api-javascript',
             },
             {
+<<<<<<< HEAD
               text: 'Vite 运行时 API',
               link: '/guide/api-vite-runtime',
+=======
+              text: 'Environment API',
+              link: '/guide/api-environment',
+>>>>>>> e6572f5dbcc9f890cad963a999caf9fe1aeb501b
             },
             {
               text: '配置参考',
@@ -391,6 +452,45 @@ export default defineConfig({
           ],
         },
       ],
+      '/changes/': [
+        {
+          text: 'Breaking Changes',
+          link: '/changes/',
+        },
+        {
+          text: 'Current',
+          items: [],
+        },
+        {
+          text: 'Future',
+          items: [
+            {
+              text: 'this.environment in Hooks',
+              link: '/changes/this-environment-in-hooks',
+            },
+            {
+              text: 'HMR hotUpdate Plugin Hook',
+              link: '/changes/hotupdate-hook',
+            },
+            {
+              text: 'Move to per-environment APIs',
+              link: '/changes/per-environment-apis',
+            },
+            {
+              text: 'SSR using ModuleRunner API',
+              link: '/changes/ssr-using-modulerunner',
+            },
+            {
+              text: 'Shared plugins during build',
+              link: '/changes/shared-plugins-during-build',
+            },
+          ],
+        },
+        {
+          text: 'Past',
+          items: [],
+        },
+      ],
     },
   },
   transformPageData(pageData) {
@@ -406,6 +506,19 @@ export default defineConfig({
   },
   markdown: {
     codeTransformers: [transformerTwoslash()],
+    config(md) {
+      md.use(groupIconMdPlugin)
+    },
+  },
+  vite: {
+    plugins: [
+      groupIconVitePlugin({
+        customIcon: {
+          firebase: 'vscode-icons:file-type-firebase',
+          '.gitlab-ci.yml': 'vscode-icons:file-type-gitlab',
+        },
+      }),
+    ],
   },
   buildEnd,
 })

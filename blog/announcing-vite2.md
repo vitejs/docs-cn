@@ -13,7 +13,7 @@ head:
       content: Announcing Vite 2.0
   - - meta
     - property: og:url
-      content: https://vitejs.dev/blog/announcing-vite2
+      content: https://vite.dev/blog/announcing-vite2
   - - meta
     - property: og:description
       content: Vite 2 Release Announcement
@@ -33,7 +33,11 @@ Vite（法语意思是 “快”，发音为 `/vit/`，类似 veet）是一种�
 
 想知道 Vite 有多快？看看这个[视频比较](https://twitter.com/amasad/status/1355379680275128321)， 在 Repl.it 上从零启动一个基于 Vite 的 React 应用，浏览器页面加载完毕的时候，基于 CRA（`create-react-app`）的应用甚至还没有安装完依赖。
 
+<<<<<<< HEAD
 如果你还没听说过 Vite 到底是什么，可以到 [这里](/guide/why) 了解一下项目的设计初衷。如果你想要了解 Vite 跟其它一些类似的工具有什么区别，可以参考这里的 [对比](/guide/comparisons)。
+=======
+If you've never heard of Vite before and would love to learn more about it, check out [the rationale behind the project](https://vite.dev/guide/why.html). If you are interested in how Vite differs from other similar tools, check out the [comparisons](https://vite.dev/guide/comparisons.html).
+>>>>>>> e6572f5dbcc9f890cad963a999caf9fe1aeb501b
 
 ## 2.0 带来了什么 {#whats-new-in-2-0}
 
@@ -49,7 +53,11 @@ Vite 1.0 虽然之前进入了 RC 阶段，但在发布之前我们决定进行�
 
 Vite 2.0 受 [WMR](https://github.com/preactjs/wmr) 的启发采用了基于 Rollup 插件 API 的设计。[很多 Rollup 插件可以跟 Vite 直接兼容](https://vite-rollup-plugins.patak.dev/)。插件可以在使用 Rollup 插件钩子之外使用一些额外的 Vite 特有的 API 来处理一些打包中不存在的需求，比如区分开发与生产环境 ，或是自定义热更新处理。
 
+<<<<<<< HEAD
 Vite 的 [程序化 API](/guide/api-javascript) 也得到了大幅改进 - 已经有不少用户在开发基于 Vite 的上层框架，Nuxt 团队也已经在 Nuxt 3 中验证了初步整合的可行性。
+=======
+The [programmatic API](https://vite.dev/guide/api-javascript.html) has also been greatly improved to facilitate higher level tools / frameworks built on top of Vite.
+>>>>>>> e6572f5dbcc9f890cad963a999caf9fe1aeb501b
 
 ### 基于 esbuild 的依赖预打包 {#esbuild-powered-dep-pre-bundling}
 
@@ -65,7 +73,11 @@ Vite 将 CSS 看作模块系统中的一等公民，并且内置了以下支持�
 
 ### 服务端渲染（SSR）支持 {#server-side-rendering-ssr-support}
 
+<<<<<<< HEAD
 Vite 2.0 提供 [实验性的 SSR 支持](/guide/ssr)。Vite 提供了灵活的 API，以便于在开发过程中直接通过 Node.js 高效率地加载和更新 ESM 的源码（几乎与服务端的 HMR 一致），并自动外部化与 CommonJS 兼容的依赖关系，以提高开发和 SSR 的构建速度。生产环境下，服务器可以和 Vite 完全解耦。基于 Vite SSR 的架构也可以很方便的做静态预渲染（SSG)。
+=======
+Vite 2.0 ships with [experimental SSR support](https://vite.dev/guide/ssr.html). Vite provides APIs to efficiently load and update ESM-based source code in Node.js during development (almost like server-side HMR), and automatically externalizes CommonJS-compatible dependencies to improve development and SSR build speed. The production server can be completely decoupled from Vite, and the same setup can be easily adapted to perform pre-rendering / SSG.
+>>>>>>> e6572f5dbcc9f890cad963a999caf9fe1aeb501b
 
 Vite SSR 会作为一个底层功能，而我们期待看到更高层级的框架在此基础上的应用。
 
@@ -81,4 +93,8 @@ Vite 默认只支持原生支持 ESM 的现代浏览器，但可以通过官方�
 npm init @vitejs/app
 ```
 
+<<<<<<< HEAD
 然后，你可以阅读 [指引文档](/guide/) 了解 Vite 提供了哪些开箱即用的功能，也可以在 [GitHub](https://github.com/vitejs/vite) 上查看源码，关注我们的 [Twitter](https://twitter.com/vite_js) 以了解最新的进展，或与其他 Vite 用户在 [Discord](http://chat.vitejs.dev/) 上一起讨论。
+=======
+Then, check out [the guide](https://vite.dev/guide/) to see what Vite provides out of the box. You can also check out the source code on [GitHub](https://github.com/vitejs/vite), follow updates on [Twitter](https://twitter.com/vite_js), or join discussions with other Vite users on our [Discord chat server](http://chat.vite.dev/).
+>>>>>>> e6572f5dbcc9f890cad963a999caf9fe1aeb501b
