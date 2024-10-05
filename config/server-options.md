@@ -18,8 +18,7 @@
 
 你可以设置 [`dns.setDefaultResultOrder('verbatim')`](https://nodejs.org/api/dns.html#dns_dns_setdefaultresultorder_order) 来禁用这个重新排序的行为。Vite 会将地址打印为 `localhost`。
 
-```js twoslash
-// vite.config.js
+```js twoslash [vite.config.js]
 import { defineConfig } from 'vite'
 import dns from 'node:dns'
 
@@ -167,7 +166,7 @@ export default defineConfig({
 在默认配置下, 在 Vite 之前的反向代理应该支持代理 WebSocket。如果 Vite HMR 客户端连接 WebSocket 失败，该客户端将兜底为绕过反向代理、直接连接 WebSocket 到 Vite HMR 服务器：
 
 ```
-Direct websocket connection fallback. Check out https://vitejs.dev/config/server-options.html#server-hmr to remove the previous connection error.
+Direct websocket connection fallback. Check out https://vite.dev/config/server-options.html#server-hmr to remove the previous connection error.
 ```
 
 当该兜底策略偶然地可以被忽略时，这条报错将会出现在浏览器中。若要通过直接绕过反向代理来避免此错误，你可以:

@@ -24,4 +24,8 @@ Vite 自其诞生之初（详见：[为什么选 Vite](./why.md)）就一直致�
 
 ## 活跃的生态系统 {#an-active-ecosystem}
 
+<<<<<<< HEAD
 Vite 的发展是一个由框架和插件维护者、用户以及 Vite 团队共同协作的过程。我们鼓励当项目采用 Vite 时，也可以积极参与 Vite 核心开发。我们借助如 [vite-ecosystem-ci](https://github.com/vitejs/vite-ecosystem-ci) 等工具与生态中的主要项目紧密合作，在每次发布时尽量减少回归问题。该工具允许我们在选定的 PR 上运行使用 Vite 的主要项目的 CI，并让我们清晰了解生态系统对新版本发布的反应情况。我们力求在问题影响到用户之前修复回归问题，确保项目能够尽快更新至最新版本。如果您正在使用 Vite，我们诚邀您加入 [Vite Discord 频道](https://chat.vitejs.dev) ，一同参与项目的发展。
+=======
+Vite evolution is a cooperation between framework and plugin maintainers, users, and the Vite team. We encourage active participation in Vite's Core development once a project adopts Vite. We work closely with the main projects in the ecosystem to minimize regressions on each release, aided by tools like [vite-ecosystem-ci](https://github.com/vitejs/vite-ecosystem-ci). It allows us to run the CI of major projects using Vite on selected PRs and gives us a clear status of how the Ecosystem would react to a release. We strive to fix regressions before they hit users and allow projects to update to the next versions as soon as they are released. If you are working with Vite, we invite you to join [Vite's Discord](https://chat.vite.dev) and get involved in the project too.
+>>>>>>> 0fd7d2e8b36cf55fe5385ff2f957b92e9d44054b

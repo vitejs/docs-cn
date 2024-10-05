@@ -51,7 +51,11 @@ export default defineConfig({
 
 ## optimizeDeps.esbuildOptions {#optimizedeps-esbuild-options}
 
+<<<<<<< HEAD
 - **类型：** [`Omit`](https://www.typescriptlang.org/docs/handbook/utility-types.html#omittype-keys)`<`[`EsbuildBuildOptions`](https://esbuild.github.io/api/#simple-options)`,
+=======
+- **Type:** [`Omit`](https://www.typescriptlang.org/docs/handbook/utility-types.html#omittype-keys)`<`[`EsbuildBuildOptions`](https://esbuild.github.io/api/#general-options)`,
+>>>>>>> 0fd7d2e8b36cf55fe5385ff2f957b92e9d44054b
 | 'bundle'
 | 'entryPoints'
 | 'external'
