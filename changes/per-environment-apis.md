@@ -1,19 +1,19 @@
-# Move to per-environment APIs
+# 迁移到按环境划分的 API {#move-to-per-environment-apis}
 
-::: tip Feedback
-Give us feedback at [Environment API feedback discussion](https://github.com/vitejs/vite/discussions/16358)
+::: tip 反馈
+可以在 [环境 API 讨论](https://github.com/vitejs/vite/discussions/16358) 中向我们提供反馈
 :::
 
-Multiple APIs from ViteDevServer related to module graph has replaced with more isolated Environment APIs.
+ViteDevServer 中与模块图相关的多个 API 已经被更加独立的环境 API 所替代。
 
 - `server.moduleGraph` -> [`environment.moduleGraph`](/guide/api-environment#separate-module-graphs)
 - `server.transformRequest` -> `environment.transformRequest`
 - `server.warmupRequest` -> `environment.warmupRequest`
 
-Affect scope: `Vite Plugin Authors`
+影响范围：`Vite 插件作者`
 
-::: warning Future Deprecation
-The Environment instance was first introduced at `v6.0`. The deprecation of `server.moduleGraph` and other methods that are now in environments is planned for `v7.0`. We don't recommend moving away from server methods yet. To identify your usage, set these in your vite config.
+::: warning 即将废弃
+环境实例首次在 `v6.0` 中引入。计划在 `v7.0` 中废弃现在的 `server.moduleGraph` 和其他方法。我们不建议你现在就放弃 server 方法。要识别你的使用情况，请在你的 vite 配置中设置以下。
 
 ```ts
 future: {
@@ -24,10 +24,10 @@ future: {
 
 :::
 
-## Motivation
+## 动机 {#motivation}
 
-// TODO:
+// TODO: （保持原文）
 
-## Migration Guide
+## 迁移指南 {#migration-guide}
 
-// TODO:
+// TODO: （保持原文）

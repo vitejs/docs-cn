@@ -124,23 +124,13 @@ export default defineConfig({
   ],
 
   locales: {
-<<<<<<< HEAD
     root: { label: '简体中文' },
-    en: { label: 'English', link: 'https://vitejs.dev' },
-    ja: { label: '日本語', link: 'https://ja.vitejs.dev' },
-    es: { label: 'Español', link: 'https://es.vitejs.dev' },
-    pt: { label: 'Português', link: 'https://pt.vitejs.dev' },
-    ko: { label: '한국어', link: 'https://ko.vitejs.dev' },
-    de: { label: 'Deutsch', link: 'https://de.vitejs.dev' },
-=======
-    root: { label: 'English' },
-    zh: { label: '简体中文', link: 'https://cn.vite.dev' },
+    en: { label: 'English', link: 'https://vite.dev' },
     ja: { label: '日本語', link: 'https://ja.vite.dev' },
     es: { label: 'Español', link: 'https://es.vite.dev' },
     pt: { label: 'Português', link: 'https://pt.vite.dev' },
     ko: { label: '한국어', link: 'https://ko.vite.dev' },
     de: { label: 'Deutsch', link: 'https://de.vite.dev' },
->>>>>>> 0fd7d2e8b36cf55fe5385ff2f957b92e9d44054b
   },
 
   themeConfig: {
@@ -218,12 +208,8 @@ export default defineConfig({
 
     footer: {
       message: `Released under the MIT License. (${commitRef})`,
-<<<<<<< HEAD
       copyright:
-        '本中文文档内容版权为 Vite 官方中文翻译团队所有，保留所有权利。'
-=======
-      copyright: 'Copyright © 2019-present VoidZero Inc. & Vite Contributors',
->>>>>>> 0fd7d2e8b36cf55fe5385ff2f957b92e9d44054b
+        'Copyright © 2019-present VoidZero Inc. & Vite Contributors'
     },
 
     nav: [
@@ -247,13 +233,8 @@ export default defineConfig({
                 link: 'https://twitter.com/vite_js',
               },
               {
-<<<<<<< HEAD
                 text: 'Discord 聊天室',
-                link: 'https://chat.vitejs.dev'
-=======
-                text: 'Discord Chat',
                 link: 'https://chat.vite.dev',
->>>>>>> 0fd7d2e8b36cf55fe5385ff2f957b92e9d44054b
               },
               {
                 text: 'Awesome Vite',
@@ -284,15 +265,15 @@ export default defineConfig({
         items: [
           {
             text: 'Vite v4 文档（英文）',
-            link: 'https://v4.vitejs.dev'
+            link: 'https://v4.vite.dev'
           },
           {
             text: 'Vite v3 文档（英文）',
-            link: 'https://v3.vitejs.dev'
+            link: 'https://v3.vite.dev'
           },
           {
             text: 'Vite v2 文档（英文）',
-            link: 'https://v2.vitejs.dev'
+            link: 'https://v2.vite.dev'
           },
         ]
       }
@@ -368,16 +349,11 @@ export default defineConfig({
               link: '/guide/philosophy',
             },
             {
-<<<<<<< HEAD
-              text: '从 v4 迁移',
+              text: '从 v5 迁移',
               link: '/guide/migration'
-=======
-              text: 'Migration from v5',
-              link: '/guide/migration',
->>>>>>> 0fd7d2e8b36cf55fe5385ff2f957b92e9d44054b
             },
             {
-              text: 'Breaking Changes',
+              text: '破坏性变更',
               link: '/changes/',
             },
           ],
@@ -398,13 +374,8 @@ export default defineConfig({
               link: '/guide/api-javascript',
             },
             {
-<<<<<<< HEAD
-              text: 'Vite 运行时 API',
-              link: '/guide/api-vite-runtime',
-=======
-              text: 'Environment API',
+              text: '环境 API',
               link: '/guide/api-environment',
->>>>>>> 0fd7d2e8b36cf55fe5385ff2f957b92e9d44054b
             },
             {
               text: '配置参考',
@@ -454,40 +425,40 @@ export default defineConfig({
       ],
       '/changes/': [
         {
-          text: 'Breaking Changes',
+          text: '破坏性变更',
           link: '/changes/',
         },
         {
-          text: 'Current',
+          text: '现在',
           items: [],
         },
         {
-          text: 'Future',
+          text: '未来',
           items: [
             {
-              text: 'this.environment in Hooks',
+              text: '钩子函数中的 this.environment',
               link: '/changes/this-environment-in-hooks',
             },
             {
-              text: 'HMR hotUpdate Plugin Hook',
+              text: 'HMR hotUpdate 插件钩子',
               link: '/changes/hotupdate-hook',
             },
             {
-              text: 'Move to per-environment APIs',
+              text: '迁移到按环境划分的 API',
               link: '/changes/per-environment-apis',
             },
             {
-              text: 'SSR using ModuleRunner API',
+              text: '使用 ModuleRunner API 进行服务端渲染',
               link: '/changes/ssr-using-modulerunner',
             },
             {
-              text: 'Shared plugins during build',
+              text: '构建过程中的共享插件',
               link: '/changes/shared-plugins-during-build',
             },
           ],
         },
         {
-          text: 'Past',
+          text: '过去',
           items: [],
         },
       ],

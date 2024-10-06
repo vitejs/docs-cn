@@ -86,10 +86,9 @@ SolidJS in mind, they should scale from our simplest template to opinionated sta
 
 <template>
   <section class="community-section">
-    <h2>Loved by the community</h2>
+    <h2>深受社区喜爱</h2>
     <h3>
-      Don't take our word for it - listen to what Vite community members have to
-      say.
+      不要只听我们说 —— 来听听 Vite 社区成员的声音
     </h3>
     <div class="community-grid-container">
       <div class="community-grid">

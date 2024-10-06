@@ -184,7 +184,7 @@ Direct websocket connection fallback. Check out https://vite.dev/config/server-o
 
 提前转换和缓存文件以进行预热。可以在服务器启动时提高初始页面加载速度，并防止转换瀑布。
 
-`clientFiles` 是仅在客户端使用的文件，而 `ssrFiles` 是仅在服务器端渲染中使用的文件。它们接受一个文件路径数组或相对于 `root` 的 [`fast-glob`](https://github.com/mrmlnc/fast-glob) 通配符。
+`clientFiles` 是仅在客户端使用的文件，而 `ssrFiles` 是仅在服务端渲染中使用的文件。它们接受一个文件路径数组或相对于 `root` 的 [`fast-glob`](https://github.com/mrmlnc/fast-glob) 通配符。
 
 请确保只添加经常使用的文件，以免在启动时过载 Vite 开发服务器。
 

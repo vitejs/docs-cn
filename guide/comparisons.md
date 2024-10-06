@@ -18,8 +18,4 @@ Preact 团队的 [WMR](https://github.com/preactjs/wmr) 旨在提供类似的功
 
 [Snowpack](https://www.snowpack.dev/) 也是一个与 Vite 十分类似的非构建式原生 ESM 开发服务器。该项目已经不维护了。团队目前正在开发 [Astro](https://astro.build/)，一个由 Vite 驱动的静态站点构建工具。Astro 团队目前是我们生态中非常活跃的成员，他们帮助 Vite 进益良多。
 
-<<<<<<< HEAD
-除了不同的实现细节外，这两个项目在技术上比传统工具有很多共同优势。Vite 的依赖预构建也受到了 Snowpack v1（现在是 [`esinstall`](https://github.com/snowpackjs/snowpack/tree/main/esinstall)）的启发。若想了解 Vite 同这两个项目之间的一些主要区别，可以查看 [Vite v2 比较指南](https://v2.vitejs.dev/guide/comparisons)。
-=======
-Aside from different implementation details, the two projects shared a lot in terms of technical advantages over traditional tooling. Vite's dependency pre-bundling is also inspired by Snowpack v1 (now [`esinstall`](https://github.com/snowpackjs/snowpack/tree/main/esinstall)). Some of the main differences between the two projects are listed in [the v2 Comparisons Guide](https://v2.vite.dev/guide/comparisons).
->>>>>>> 0fd7d2e8b36cf55fe5385ff2f957b92e9d44054b
+除了不同的实现细节外，这两个项目在技术上比传统工具有很多共同优势。Vite 的依赖预构建也受到了 Snowpack v1（现在是 [`esinstall`](https://github.com/snowpackjs/snowpack/tree/main/esinstall)）的启发。若想了解 Vite 同这两个项目之间的一些主要区别，可以查看 [Vite v2 比较指南](https://v2.vite.dev/guide/comparisons)。

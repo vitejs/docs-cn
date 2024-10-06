@@ -1,11 +1,11 @@
 > ### 敬请所有读者注意
 >
 > - 原则上这里只进行英文版对应的翻译工作，如果觉得原文有改进之处，或任何不仅针对中文版，而受益所有语言版本的想法，建议直接在英文版仓库讨论。
-> - **原则上这里不适合讨论 Vite 的使用问题**，建议相关问题在 Vite 的 [issues 区](https://github.com/vitejs/vite/issues)、[Vite 官方讨论区](https://chat.vitejs.dev/) 或各大主流技术社区讨论，以便得到更多帮助和更充分的讨论。
+> - **原则上这里不适合讨论 Vite 的使用问题**，建议相关问题在 Vite 的 [issues 区](https://github.com/vitejs/vite/issues)、[Vite 官方讨论区](https://chat.vite.dev/) 或各大主流技术社区讨论，以便得到更多帮助和更充分的讨论。
 
 <p align="center">
-  <a href="https://vitejs.dev" target="_blank" rel="noopener noreferrer">
-    <img width="180" src="https://vitejs.dev/logo.svg" alt="Vite logo">
+  <a href="https://vite.dev" target="_blank" rel="noopener noreferrer">
+    <img width="180" src="https://vite.dev/logo.svg" alt="Vite logo">
   </a>
 </p>
 <br/>
@@ -14,7 +14,7 @@
   <a href="https://nodejs.org/en/about/releases/"><img src="https://img.shields.io/node/v/vite.svg" alt="node compatility"></a>
   <a href="https://app.circleci.com/pipelines/github/vitejs/vite?branch=main"><img src="https://circleci.com/gh/vitejs/vite/tree/main.svg?style=shield" alt="unix build status"></a>
   <a href="https://ci.appveyor.com/project/yyx990803/vite/branch/main"><img src="https://ci.appveyor.com/api/projects/status/0q4j8062olbcs71l/branch/main?svg=true" alt="windows build status"></a>
-  <a href="https://chat.vitejs.dev"><img src="https://img.shields.io/badge/chat-discord-blue?style=flat&logo=discord" alt="discord chat"></a>
+  <a href="https://chat.vite.dev"><img src="https://img.shields.io/badge/chat-discord-blue?style=flat&logo=discord" alt="discord chat"></a>
 </p>
 <br/>
 
@@ -23,7 +23,7 @@
 > Vite：下一代前端开发与构建工具
 
 - 💡 极速的开发服务器启动
-- ⚡️ 轻量快速的热模块重载（HMR）
+- ⚡️ 轻量快速的模块热替换（HMR）
 - 🛠️ 丰富的功能
 - 📦 自带优化的构建
 - 🔩 通用的插件接口

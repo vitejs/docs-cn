@@ -1,21 +1,21 @@
-# SSR using `ModuleRunner` API
+# 使用 ModuleRunner API 进行服务端渲染 {#ssr-using-modulerunner-api}
 
-::: tip Feedback
-Give us feedback at [Environment API feedback discussion](https://github.com/vitejs/vite/discussions/16358)
+::: tip 反馈
+可以在 [环境 API 讨论](https://github.com/vitejs/vite/discussions/16358) 中向我们提供反馈
 :::
 
-`server.ssrLoadModule` has been replaced by [Module Runner](/guide/api-environment#modulerunner).
+`server.ssrLoadModule` 已经被 [Module Runner](/guide/api-environment#modulerunner) 取代。
 
-Affect scope: `Vite Plugin Authors`
+影响范围：`Vite 插件作者`
 
-::: warning Future Deprecation
-`ModuleRunner` was first introduce in `v6.0`. The deprecation of `server.ssrLoadModule` is planned for a future major. To identify your usage, set `future.removeSrLoadModule` to `"warn"` in your vite config.
+::: warning 即将废弃
+`ModuleRunner` 最初在 `v6.0` 版本中被引入。我们计划在未来的主要版本中废弃 `server.ssrLoadModule`。如果想识别你的使用情况，可以在你的 vite 配置文件中将 `future.removeSrLoadModule` 设置为 `"warn"`。
 :::
 
-## Motivation
+## 动机 {#motivation}
 
-// TODO:
+// TODO: （保持原文）
 
-## Migration Guide
+## 迁移指南 {#migration-guide}
 
-// TODO:
+// TODO: （保持原文）

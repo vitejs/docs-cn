@@ -499,11 +499,7 @@ const modules = {
 
 #### 自定义查询 {#custom-queries}
 
-<<<<<<< HEAD
 你也可以使用 `query` 选项来提供对导入的自定义查询，比如，可以将资源 [作为字符串引入](/guide/assets#importing-asset-as-string) 或者 [作为 URL 引入](/guide/assets#importing-asset-as-url) ：
-=======
-You can also use the `query` option to provide queries to imports, for example, to import assets [as a string](https://vite.dev/guide/assets.html#importing-asset-as-string) or [as a url](https://vite.dev/guide/assets.html#importing-asset-as-url):
->>>>>>> 0fd7d2e8b36cf55fe5385ff2f957b92e9d44054b
 
 ```ts twoslash
 import 'vite/client'

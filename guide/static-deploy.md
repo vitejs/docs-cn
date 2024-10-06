@@ -318,13 +318,8 @@ $ npx wrangler pages deploy dist
 
 4. 指定一个项目名称和所用分支
 
-<<<<<<< HEAD
-   - **构建命令**：`npm run build`
+   - **构建命令**：`npm install && npm run build`
    - **发布目录**：`dist`
-=======
-   - **Build Command**: `npm install && npm run build`
-   - **Publish Directory**: `dist`
->>>>>>> 0fd7d2e8b36cf55fe5385ff2f957b92e9d44054b
 
 5. 点击 **Create Static Site**
 

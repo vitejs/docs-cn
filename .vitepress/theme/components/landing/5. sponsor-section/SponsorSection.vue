@@ -46,13 +46,12 @@ const { data } = useSponsor()
       width="58"
       height="55"
     />
-    <h2>Free &amp; open source</h2>
+    <h2>免费 &amp; 开源</h2>
     <h4>
-      Vite is MIT Licensed and will always be free and open source. This is made
-      possible by our contributors and these companies:
+      Vite 采用 MIT 许可证，并将始终保持免费和开源。这一切都要感谢我们的贡献者和以下公司：
     </h4>
 
-    <h4>Brought to you by</h4>
+    <h4>由以下团队呈现</h4>
     <div class="voidzero">
       <a href="https://voidzero.dev" target="_blank">
         <img src="./voidzero.svg" />

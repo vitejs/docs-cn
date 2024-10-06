@@ -126,9 +126,9 @@ const { isCardActive, startAnimation } = useCardAnimation(
       <div class="center-glow" />
     </div>
     <div class="feature__meta meta--center">
-      <div class="meta__title">Rich features</div>
+      <div class="meta__title">丰富的功能</div>
       <div class="meta__description">
-        Out-of-the-box support for TypeScript, JSX, CSS and more.
+        对 TypeScript、JSX、CSS 等支持开箱即用
       </div>
     </div>
   </div>

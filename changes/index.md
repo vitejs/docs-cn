@@ -1,27 +1,27 @@
-# Breaking Changes
+# 破坏性变更 {#breaking-changes}
 
-List of breaking changes in Vite including API deprecations, removals, and changes. Most of the changes below can be opt-in using the [`future` option](/config/shared-options.html#future) in your Vite config.
+Vite 中的破坏性变更列表，包括 API 废弃、移除和变更。在你的 Vite 配置中，大多数下面的变更可以使用 [`future` 选项](/config/shared-options.html#future) 进行选择。
 
-## Planned
+## 计划中 {#planned}
 
-These changes are planned for the next major version of Vite. The deprecation or usage warnings will guide you where possible, and we're reaching out to framework, plugin authors, and users to apply these changes.
+这些变更计划在 Vite 的下一个主要版本中进行。我们会通过废弃或使用警告来尽可能地引导你，同时我们也正在联系框架、插件的作者以及用户来实施这些变更。
 
-- _No planned changes yet_
+- _目前还没有计划中的变更_
 
-## Considering
+## 考虑中 {#considering}
 
-These changes are being considered and are often experimental APIs that intend to improve upon current usage patterns. As not all changes are listed here, please check out the [Experimental Label in Vite GitHub Discussions](https://github.com/vitejs/vite/discussions/categories/feedback?discussions_q=label%3Aexperimental+category%3AFeedback) for the full list.
+这些变更正在考虑中，通常是希望改进当前使用模式的实验性 API。由于这里并未列出所有的变更，所以请访问 [Vite GitHub Discussions 中的 Experimental 标签](https://github.com/vitejs/vite/discussions/categories/feedback?discussions_q=label%3Aexperimental+category%3AFeedback) 来查看完整的列表。
 
-We don't recommend switching to these APIs yet. They are included in Vite to help us gather feedback. Please check these proposals and let us know how they work in your use case in each's linked GitHub Discussions.
+我们目前还不建议你切换到这些 API。我们将它们包含在 Vite 中是为了帮助我们收集反馈。请查看这些提案，并在每个提案相关联的 GitHub Discussions 中告诉我们它们在你的使用场景中的表现如何。
 
-- [`this.environment` in Hooks](/changes/this-environment-in-hooks)
-- [HMR `hotUpdate` Plugin Hook](/changes/hotupdate-hook)
-- [Move to per-environment APIs](/changes/per-environment-apis)
-- [SSR using `ModuleRunner` API](/changes/ssr-using-modulerunner)
-- [Shared plugins during build](/changes/shared-plugins-during-build)
+- [钩子函数中的 `this.environment`](/changes/this-environment-in-hooks)
+- [HMR `hotUpdate` 插件钩子](/changes/hotupdate-hook)
+- [迁移到按环境划分的 API](/changes/per-environment-apis)
+- [使用 `ModuleRunner` API 进行服务端渲染](/changes/ssr-using-modulerunner)
+- [构建过程中的共享插件](/changes/shared-plugins-during-build)
 
-## Past
+## 历史 {#past}
 
-The changes below has been done or reverted. They are no longer relevant in the current major version.
+以下的变更已经被实施或者撤销。在当前的主要版本中，它们已经不再相关。
 
-- _No past changes yet_
+- _目前还没有历史的变更_

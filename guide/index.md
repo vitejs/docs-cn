@@ -8,7 +8,7 @@
 
 Vite（法语意为 "快速的"，发音 `/vit/`<button id="play-vite-audio" onclick="document.getElementById('vite-audio').play();" style="border: none; padding: 3px; border-radius: 4px; vertical-align: bottom;"><svg style="height:2em;width:2em"><use href="/voice.svg#voice" /></svg></button>，发音同 "veet"）是一种新型前端构建工具，能够显著提升前端开发体验。它主要由两部分组成：
 
-- 一个开发服务器，它基于 [原生 ES 模块](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules) 提供了 [丰富的内建功能](./features)，如速度快到惊人的 [模块热更新（HMR）](./features#hot-module-replacement)。
+- 一个开发服务器，它基于 [原生 ES 模块](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules) 提供了 [丰富的内建功能](./features)，如速度快到惊人的 [模块热替换（HMR）](./features#hot-module-replacement)。
 
 - 一套构建指令，它使用 [Rollup](https://rollupjs.org) 打包你的代码，并且它是预配置的，可输出用于生产环境的高度优化过的静态资源。
 
@@ -142,11 +142,7 @@ $ bun add -D vite
 <p>Hello Vite!</p>
 ```
 
-<<<<<<< HEAD
-然后在终端中运行 `vite`：
-=======
-Then run the appropriate CLI command in your terminal:
->>>>>>> 0fd7d2e8b36cf55fe5385ff2f957b92e9d44054b
+然后在终端上运行相应的命令:
 
 ::: code-group
 
@@ -154,9 +150,6 @@ Then run the appropriate CLI command in your terminal:
 $ npx vite
 ```
 
-<<<<<<< HEAD
-就可以在 `http://localhost:5173` 上访问 `index.html`。
-=======
 ```bash [Yarn]
 $ yarn vite
 ```
@@ -171,8 +164,7 @@ $ bunx vite
 
 :::
 
-The `index.html` will be served on `http://localhost:5173`.
->>>>>>> 0fd7d2e8b36cf55fe5385ff2f957b92e9d44054b
+之后就可以在 `http://localhost:5173` 上访问 `index.html`。
 
 ## `index.html` 与项目根目录 {#index-html-and-project-root}
 
@@ -225,8 +217,4 @@ pnpm link --global # 在这一步中可使用你喜欢的包管理器
 
 ## 社区 {#community}
 
-<<<<<<< HEAD
-如果你有疑问或者需要帮助，可以到 [Discord](https://chat.vitejs.dev) 和 [GitHub Discussions](https://github.com/vitejs/vite/discussions) 社区来寻求帮助。
-=======
-If you have questions or need help, reach out to the community at [Discord](https://chat.vite.dev) and [GitHub Discussions](https://github.com/vitejs/vite/discussions).
->>>>>>> 0fd7d2e8b36cf55fe5385ff2f957b92e9d44054b
+如果你有疑问或者需要帮助，可以到 [Discord](https://chat.vite.dev) 和 [GitHub Discussions](https://github.com/vitejs/vite/discussions) 社区来寻求帮助。

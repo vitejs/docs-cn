@@ -2,11 +2,7 @@
 
 > 你还可以查看 [Rollup 的故障排除指南](https://rollupjs.org/troubleshooting/) 了解更多。
 
-<<<<<<< HEAD
-如果这里的建议并未帮助到你，请将你的问题发送到 [GitHub 讨论区](https://github.com/vitejs/vite/discussions) 或 [Vite Land Discord](https://chat.vitejs.dev) 的 `#help` 频道。
-=======
-If the suggestions here don't work, please try posting questions on [GitHub Discussions](https://github.com/vitejs/vite/discussions) or in the `#help` channel of [Vite Land Discord](https://chat.vite.dev).
->>>>>>> 0fd7d2e8b36cf55fe5385ff2f957b92e9d44054b
+如果这里的建议并未帮助到你，请将你的问题发送到 [GitHub 讨论区](https://github.com/vitejs/vite/discussions) 或 [Vite Land Discord](https://chat.vite.dev) 的 `#help` 频道。
 
 ## CJS
 

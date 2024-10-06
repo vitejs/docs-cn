@@ -489,17 +489,13 @@ define: {
 - `'mpa'`：包含 HTML 中间件
 - `'custom'`：不包含 HTML 中间件
 
-<<<<<<< HEAD
 要了解更多，请查看 Vite 的 [SSR 指引](/guide/ssr#vite-cli)。相关内容：[`server.middlewareMode`](./server-options#server-middlewaremode)。
-=======
-Learn more in Vite's [SSR guide](/guide/ssr#vite-cli). Related: [`server.middlewareMode`](./server-options#server-middlewaremode).
 
 ## future
 
-- **Type:** `Record<string, 'warn' | undefined>`
-- **Related:** [Breaking Changes](/changes/)
+- **类型：** `Record<string, 'warn' | undefined>`
+- **默认：** [破坏性变更](/changes/)
 
-Enable future breaking changes to prepare for a smooth migration to the next major version of Vite. The list may be updated, added, or removed at any time as new features are developed.
+启用未来的重大变更，为顺利迁移到 Vite 的下一个主要版本做好准备。随着新功能的开发，这个列表可能会随时进行更新、添加或移除。
 
-See the [Breaking Changes](/changes/) page for details of the possible options.
->>>>>>> 0fd7d2e8b36cf55fe5385ff2f957b92e9d44054b
+请查看 [破坏性变更](/changes/) 页面，了解可能的选项详情。
