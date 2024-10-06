@@ -125,7 +125,7 @@ Vite 默认的类型定义是写给它的 Node.js API 的。要将其补充到�
 
 或者，你也可以将 `vite/client` 添加到 `tsconfig.json` 中的 `compilerOptions.types` 下：
 
-```json
+```json [tsconfig.json]
 {
   "compilerOptions": {
     "types": ["vite/client"]
@@ -176,8 +176,7 @@ Vue 用户应使用官方提供的 [@vitejs/plugin-vue-jsx](https://github.com/v
 
 如果不是在 React 或 Vue 中使用 JSX，自定义的 `jsxFactory` 和 `jsxFragment` 可以使用 [`esbuild` 选项](/config/shared-options.md#esbuild) 进行配置。例如对 Preact：
 
-```js twoslash
-// vite.config.js
+```js twoslash [vite.config.js]
 import { defineConfig } from 'vite'
 
 export default defineConfig({
@@ -192,8 +191,7 @@ export default defineConfig({
 
 你可以使用 `jsxInject`（这是一个仅在 Vite 中使用的选项）为 JSX 注入 helper，以避免手动导入：
 
-```js twoslash
-// vite.config.js
+```js twoslash [vite.config.js]
 import { defineConfig } from 'vite'
 
 export default defineConfig({
@@ -223,8 +221,7 @@ Sass 和 Less 文件也支持 `@import` 别名和 URL 变基（具体请参阅 [
 
 任何以 `.module.css` 为后缀名的 CSS 文件都被认为是一个 [CSS modules 文件](https://github.com/css-modules/css-modules)。导入这样的文件会返回一个相应的模块对象：
 
-```css
-/* example.module.css */
+```css [example.module.css]
 .red {
   color: red;
 }

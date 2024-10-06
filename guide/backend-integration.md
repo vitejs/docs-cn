@@ -8,10 +8,9 @@
 
 1. 在你的 Vite 配置中配置入口文件和启用创建 `manifest`：
 
-   ```js twoslash
+   ```js twoslash [vite.config.js]
    import { defineConfig } from 'vite'
    // ---cut---
-   // vite.config.js
    export default defineConfig({
      build: {
        // 在 outDir 中生成 .vite/manifest.json
@@ -60,7 +59,7 @@
 
 3. 在生产环境中：在运行 `vite build` 之后，一个 `.vite/manifest.json` 文件将与静态资源文件一同生成。一个示例清单文件会像下面这样：
 
-   ```json
+   ```json [.vite/manifest.json]
    {
      "_shared-!~{003}~.js": {
        "file": "assets/shared-ChJ_j-JJ.css",

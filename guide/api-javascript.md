@@ -207,7 +207,7 @@ async function build(
 
 **使用示例：**
 
-```ts twoslash
+```ts twoslash [vite.config.js]
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { build } from 'vite'
@@ -281,7 +281,7 @@ interface PreviewServer {
    */
   printUrls(): void
   /**
-   * Bind CLI shortcuts
+   * 设置 CLI 快捷键
    */
   bindCLIShortcuts(options?: BindCLIShortcutsOptions<PreviewServer>): void
 }
