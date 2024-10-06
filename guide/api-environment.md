@@ -1,35 +1,35 @@
-# Environment API
+# 环境 API {#environment-api}
 
-:::warning Low-level API
-Initial work for this API was introduced in Vite 5.1 with the name "Vite Runtime API". This guide describes a revised API, renamed to Environment API. This API will be released in Vite 6 as experimental. You can already test it in the latest `vite@6.0.0-beta.x` version.
+:::warning 底层 API
+这个 API 的初始版本在 Vite 5.1 中以 "Vite 运行时 API" 的名字被引入。这份指南描述了一个经过修订的 API，被重新命名为环境 API（Environment API）。这个 API 将在 Vite 6 中作为实验性功能发布。你现在已经可以在最新的 `vite@6.0.0-beta.x` 版本中进行测试。
 
-Resources:
+资料：
 
-- [Feedback discussion](https://github.com/vitejs/vite/discussions/16358) where we are gathering feedback about the new APIs.
-- [Environment API PR](https://github.com/vitejs/vite/pull/16471) where the new API were implemented and reviewed.
+- [反馈讨论](https://github.com/vitejs/vite/discussions/16358) 我们在此处收集新 API 的反馈。
+- [环境 API PR](https://github.com/vitejs/vite/pull/16471) 新 API 在此处被实现并进行了审查。
 
-Please share with us your feedback as you test the proposal.
+在你测试这个提议的过程中，请与我们分享你的反馈。
 :::
 
-Vite 6 formalizes the concept of Environments, introducing new APIs to create and configure them as well as accessing options and context utilities with a consistent API. Since Vite 2, there were two implicit Environments (`client` and `ssr`). Plugin Hooks received a `ssr` boolean in the last options parameter to identify the target environment for each processed module. Several APIs expected an optional last `ssr` parameter to properly associate modules to the correct environment (for example `server.moduleGraph.getModuleByUrl(url, { ssr })`). The `ssr` environment was configured using `config.ssr` that had a partial set of the options present in the client environment. During dev, both `client` and `ssr` environment were running concurrently with a single shared plugin pipeline. During build, each build got a new resolved config instance with a new set of plugins.
+Vite 6 正式引入了环境（Environments）的概念，引入了新的 API 来创建和配置环境，以及使用一致的 API 访问其选项和上下文工具。自 Vite 2 以来，有两个默认的环境（`client` 和 `ssr`）。插件钩子在最后的选项参数中接收到一个 `ssr` 布尔值，以识别每个处理模块的目标环境。一些 API 预期一个可选的最后 `ssr` 参数，以正确地将模块关联到正确的环境（例如 `server.moduleGraph.getModuleByUrl(url, { ssr })`）。`ssr` 环境使用 `config.ssr` 进行配置，该配置包含了客户端环境中的部分选项。在开发过程中，`client` 和 `ssr` 环境与单个共享的插件管道一起并发运行。在构建过程中，每个构建都获得了一个新的已解析的配置实例和一组新的插件。
 
-The new Environment API not only makes these two default environment explicit, but allows users to create as many named environments as needed. There is a uniform way to configure environments (using `config.environments`) and the environment options and context utilities associated to a module being processed is accessible in plugin hooks using `this.environment`. APIs that previously expected a `ssr` boolean are now scoped to the proper environment (for example `environment.moduleGraph.getModuleByUrl(url)`). During dev, all environments are run concurrently as before. During build, for backward compatibility each build gets its own resolved config instance. But plugins or users can opt-in into a shared build pipeline.
+新的环境 API 不仅明确了这两个默认环境，而且允许用户创建尽可能多的命名环境。配置环境有一种统一的方式（使用 `config.environments`），并且可以在插件钩子中使用 `this.environment` 访问正在处理的模块的环境选项和上下文工具。之前预期 `ssr` 设为一个布尔值的 API 现在限定在适当的环境中（例如 `environment.moduleGraph.getModuleByUrl(url)`）。在开发过程中，所有环境像以前一样并发运行。在构建过程中，为了向后兼容，每个构建都获得自己的已解析配置实例。但插件或用户可以选择共享构建管道。
 
-Even if there are big changes internally, and new opt-in APIs, there are no breaking changes from Vite 5. The initial goal of Vite 6 will be to move the ecosystem to the new major as smoothly as possible, delaying promoting the adoption of new APIs in plugins until there is enough users ready to consume the new versions of these plugins.
+即使在内部有大的变化，并且有新的可选 API，但是从 Vite 5 到 Vite 6 并没有破坏性的更改。Vite 6 的初始目标将是尽可能平滑地将生态系统迁移到新的主要版本，直到有足够的用户准备好使用这些插件的新版本，才会在插件中采用新的 API。
 
-## Using environments in the Vite server
+## 在 Vite 服务器中使用环境 {#using-environments-in-the-vite-server}
 
-A single Vite dev server can be used to interact with different module execution environments concurrently. We'll use the word environment to refer to a configured Vite processing pipeline that can resolve ids, load, and process source code and is connected to a runtime where the code is executed. The transformed source code is called a module, and the relationships between the modules processed in each environment are kept in a module graph. The code for these modules is sent to the runtimes associated with each environment to be executed. When a module is evaluated, the runtime will request its imported modules triggering the processing of a section of the module graph. In a typical Vite app, environments will be used for the ES modules served to the client and for the server program that does SSR. An app can do SSR in a Node server, but also other JS runtimes like [Cloudflare's workerd](https://github.com/cloudflare/workerd). So we can have different types of environments on the same Vite server: browser environments, node environments, and workerd environments, to name a few.
+一个单一的 Vite 开发服务器可以同时与不同的模块执行环境进行交互。我们将“环境”这个词用来指代一个配置好的 Vite 处理流程，它可以解析 id，加载和处理源代码，并且连接到执行代码的运行环境。转化后的源代码被称为模块，每个环境中处理的模块之间的关系被保留在一个模块图谱中。这些模块的代码被发送到与每个环境相关联的运行环境中执行。当一个模块被评估时，运行环境会请求其导入的模块，触发模块图谱的一部分处理。在一个典型的 Vite 应用中，环境将被用来处理发送给客户端的 ES 模块和进行 SSR 的服务器程序。一个应用可以在 Node 服务器中进行 SSR，但也可以在其他 JS 运行环境，如 [Cloudflare 的 workerd](https://github.com/cloudflare/workerd) 中进行。因此，我们可以在同一台 Vite 服务器上拥有不同类型的环境：例如浏览器环境，Node 环境，以及 workerd 环境。
 
-A Vite Module Runner allows running any code by processing it with Vite plugins first. It is different from `server.ssrLoadModule` because the runner implementation is decoupled from the server. This allows library and framework authors to implement their layer of communication between the Vite server and the runner. The browser communicates with its corresponding environment using the server Web Socket and through HTTP requests. The Node Module runner can directly do function calls to process modules as it is running in the same process. Other environments could run modules connecting to a JS runtime like workerd, or a Worker Thread as Vitest does.
+Vite 模块运行器（Module Runner）允许首先通过 Vite 插件处理代码来运行它。这与 `server.ssrLoadModule` 不同，因为运行器的实现是从服务器中解耦的。这允许库和框架的作者实现 Vite 服务器和运行器之间的通信层。浏览器使用服务器的 Web Socket 和通过 HTTP 请求与其对应的环境进行通信。Node 模块运行器可以直接进行函数调用来处理模块，因为它在同一进程中运行。其他环境可以像 workerd 或 Vitest 那样连接到 JS 运行时来运行模块。
 
-All these environments share Vite's HTTP server, middlewares, and Web Socket. The resolved config and plugins pipeline are also shared, but plugins can use `apply` so its hooks are only called for certain environments. The environment can also be accessed inside hooks for fine-grained control.
+所有这些环境都共享 Vite 的 HTTP 服务器，中间件和 Web Socket。已解析的配置和插件管道也是共享的，但插件可以使用 `apply`，所以它的钩子只会被某些环境调用。环境也可以在钩子内部访问以进行精细控制。
 
 ![Vite Environments](../images/vite-environments.svg)
 
-A Vite dev server exposes two environments by default: a `client` environment and an `ssr` environment. The client environment is a browser environment by default, and the module runner is implemented by importing the virtual module `/@vite/client` to client apps. The SSR environment runs in the same Node runtime as the Vite server by default and allows application servers to be used to render requests during dev with full HMR support. We'll discuss later how frameworks and users can change the environment types for the default client and SSR environments, or register new environments (for example to have a separate module graph for [RSC](https://react.dev/blog/2023/03/22/react-labs-what-we-have-been-working-on-march-2023#react-server-components)).
+Vite 开发服务器默认提供两个环境：一个 `client` 环境和一个 `ssr` 环境。默认情况下，客户端环境是一个浏览器环境，模块运行器通过将虚拟模块 `/@vite/client` 导入到客户端应用程序来实现。默认情况下，SSR 环境在与 Vite 服务器相同的 Node 运行时中运行，并且允许应用服务器在开发过程中用于渲染请求，同时完全支持模块热替换（HMR）。我们稍后将讨论框架和用户如何更改默认客户端和 SSR 环境的环境类型，或者注册新的环境（例如，为 [RSC](https://react.dev/blog/2023/03/22/react-labs-what-we-have-been-working-on-march-2023#react-server-components) 创建一个单独的模块图）。
 
-The available environments can be accessed using `server.environments`:
+可以通过 `server.environments` 来访问可用的环境：
 
 ```js
 const environment = server.environments.client
@@ -39,9 +39,9 @@ environment.transformRequest(url)
 console.log(server.environments.ssr.moduleGraph)
 ```
 
-Most of the time, the current `environment` instance will be available as part of the context of the code being run so the need to access them through `server.environments` should be rare. For example, inside plugin hooks the environment is exposed as part of the `PluginContext`, so it can be accessed using `this.environment`.
+通常情况下，当前的 `environment` 实例将作为正在运行的代码的上下文的一部分，因此很少需要通过 `server.environments` 来访问它们。例如，在插件钩子中，环境作为 `PluginContext` 的一部分被暴露出来，因此可以使用 `this.environment` 来访问它。
 
-A dev environment is an instance of the `DevEnvironment` class:
+开发环境是 `DevEnvironment` 类的一个实例：
 
 ```ts
 class DevEnvironment {
@@ -95,7 +95,7 @@ class DevEnvironment {
 }
 ```
 
-With `TransformResult` being:
+`TransformResult` 如下：
 
 ```ts
 interface TransformResult {
@@ -107,10 +107,10 @@ interface TransformResult {
 }
 ```
 
-Vite also supports a `RunnableDevEnvironment`, that extends a `DevEnvironment` exposing a `ModuleRunner` instance. You can guard any runnable environment with an `isRunnableDevEnvironment` function.
+Vite 还支持 `RunnableDevEnvironment`，它扩展了 `DevEnvironment`，暴露了一个 `ModuleRunner` 实例。你可以使用 `isRunnableDevEnvironment` 函数来保护任何可运行的环境。
 
 :::warning
-The `runner` is evaluated eagerly when it's accessed for the first time. Beware that Vite enables source map support when the `runner` is created by calling `process.setSourceMapsEnabled` or by overriding `Error.prepareStackTrace` if it's not available.
+当 `runner` 第一次被访问时，它会立即被评估。请注意，当通过调用 `process.setSourceMapsEnabled` 或者如果它不可用，通过覆盖 `Error.prepareStackTrace` 创建 `runner` 时，Vite 会启用源映射（source map）支持。
 :::
 
 ```ts
@@ -122,20 +122,19 @@ if (isRunnableDevEnvironment(server.environments.ssr)) {
   await server.environments.ssr.runner.import('/entry-point.js')
 }
 ```
+Vite 服务器中的环境实例让你可以使用 `environment.transformRequest(url)` 方法来处理 URL。这个函数会利用插件管道将 `url` 解析为模块 `id`，加载它（从文件系统读取文件或通过实现虚拟模块的插件），然后转换代码。在转换模块的过程中，导入和其他元数据会通过创建或更新相应的模块节点，在环境模块图中被记录下来。处理完成后，转换结果也会存储在模块中。
 
-An environment instance in the Vite server lets you process a URL using the `environment.transformRequest(url)` method. This function will use the plugin pipeline to resolve the `url` to a module `id`, load it (reading the file from the file system or through a plugin that implements a virtual module), and then transform the code. While transforming the module, imports and other metadata will be recorded in the environment module graph by creating or updating the corresponding module node. When processing is done, the transform result is also stored in the module.
+但是，环境实例本身无法执行代码，因为执行模块的运行时可能与 Vite 服务器运行的运行时不同。这就是浏览器环境的情况。当在浏览器中加载 HTML 时，其脚本被执行，触发整个静态模块图的评估。每个导入的 URL 都会生成一个向 Vite 服务器获取模块代码的请求，最终这个请求会通过调用 `server.environments.client.transformRequest(url)` 被 Transform Middleware 处理。在这种情况下，服务器中的环境实例和浏览器中的模块运行器之间的连接是通过 HTTP 进行的。
 
-But the environment instance can't execute the code itself, as the runtime where the module will be run could be different from the one the Vite server is running in. This is the case for the browser environment. When a html is loaded in the browser, its scripts are executed triggering the evaluation of the entire static module graph. Each imported URL generates a request to the Vite server to get the module code, which ends up handled by the Transform Middleware by calling `server.environments.client.transformRequest(url)`. The connection between the environment instance in the server and the module runner in the browser is carried out through HTTP in this case.
-
-:::info transformRequest naming
-We are using `transformRequest(url)` and `warmupRequest(url)` in the current version of this proposal so it is easier to discuss and understand for users used to Vite's current API. Before releasing, we can take the opportunity to review these names too. For example, it could be named `environment.processModule(url)` or `environment.loadModule(url)` taking a page from Rollup's `context.load(id)` in plugin hooks. For the moment, we think keeping the current names and delaying this discussion is better.
+:::info transformRequest 命名
+在这个提案的当前版本中，我们使用 `transformRequest(url)` 和 `warmupRequest(url)`，这样对于习惯于 Vite 当前 API 的用户来说，更容易进行讨论和理解。在发布前，我们也可以借此机会回顾这些名称。例如，它可以被命名为 `environment.processModule(url)` 或 `environment.loadModule(url)`，借鉴 Rollup 的插件钩子中的 `context.load(id)`。目前，我们认为保持当前的名称并推迟这次讨论是更好的。
 :::
 
-:::info Running a module
-The initial proposal had a `run` method that would allow consumers to invoke an import on the runner side by using the `transport` option. During our testing we found out that the API was not universal enough to start recommending it. We are open to implement a built-in layer for remote SSR implementation based on the frameworks feedback. In the meantime, Vite still exposes a [`RunnerTransport` API](#runnertransport) to hide the complexity of the runner RPC.
+:::info 运行模块
+初始提案中有一个 `run` 方法，它允许消费者通过使用 `transport` 选项在运行器端调用导入。在我们的测试中，我们发现 API 不够通用，无法开始推荐它。我们愿意基于框架反馈实现一个内置的远程 SSR 实现层。同时，Vite 仍然暴露一个 [`RunnerTransport` API](#runnertransport) 来隐藏运行器 RPC 的复杂性。
 :::
 
-In dev mode the default `ssr` environment is a `RunnableDevEnvironment` with a module runner that implements evaluation using `new AsyncFunction` running in the same JS runtime as the dev server. This runner is an instance of `ModuleRunner` that exposes:
+在开发模式下，默认的 `ssr` 环境是一个 `RunnableDevEnvironment`，它有一个模块运行器，该运行器使用 `new AsyncFunction` 在与开发服务器相同的 JS 运行时中实现评估。这个运行器是 `ModuleRunner` 的一个实例，它暴露：
 
 ```ts
 class ModuleRunner {
@@ -150,10 +149,10 @@ class ModuleRunner {
 ```
 
 :::info
-In the v5.1 Runtime API, there were `executeUrl` and `executeEntryPoint` methods - they are now merged into a single `import` method. If you want to opt-out of the HMR support, create a runner with `hmr: false` flag.
+在 v5.1 运行时 API 中，有 `executeUrl` 和 `executeEntryPoint` 方法 - 现在它们被合并到一个 `import` 方法中。如果你想退出 HMR 支持，可以使用 `hmr: false` 标志创建一个运行器。
 :::
 
-Given a Vite server configured in middleware mode as described by the [SSR setup guide](/guide/ssr#setting-up-the-dev-server), let's implement the SSR middleware using the environment API. Error handling is omitted.
+给定一个按照 [SSR 设置指南](/guide/ssr#setting-up-the-dev-server) 描述的方式配置为中间件模式的 Vite 服务器，让我们使用环境 API 实现 SSR 中间件。错误处理会被省略。
 
 ```js
 import { createServer, createRunnableDevEnvironment } from 'vite'
@@ -207,21 +206,21 @@ app.use('*', async (req, res, next) => {
 })
 ```
 
-## Environment agnostic SSR
+## 环境无关的 SSR {#environment-agnostic-ssr}
 
 ::: info
-It isn't clear yet what APIs Vite should provide to cover the most common SSR use cases. We are thinking on releasing the Environment API without an official way to do environment agnostic SSR to let the ecosystem explore common patterns first.
+目前还不清楚 Vite 应该提供什么 API 来覆盖最常见的 SSR 使用场景。我们正在考虑发布环境 API，但不提供官方的环境无关 SSR 方法，以让生态系统首先探索常见模式。
 :::
 
-## Separate module graphs
+## 独立的模块图 {#separate-module-graphs}
 
-Each environment has an isolated module graph. All module graphs have the same signature, so generic algorithms can be implemented to crawl or query the graph without depending on the environment. `hotUpdate` is a good example. When a file is modified, the module graph of each environment will be used to discover the affected modules and perform HMR for each environment independently.
+每个环境都有一个独立的模块图。所有模块图都有相同的签名，因此可以实现通用算法来爬取或查询图，而无需依赖环境。`hotUpdate` 是一个很好的例子。当一个文件被修改时，每个环境的模块图将被用来发现受影响的模块，并为每个环境独立执行 HMR。
 
 ::: info
-Vite v5 had a mixed Client and SSR module graph. Given an unprocessed or invalidated node, it isn't possible to know if it corresponds to the Client, SSR, or both environments. Module nodes have some properties prefixed, like `clientImportedModules` and `ssrImportedModules` (and `importedModules` that returns the union of both). `importers` contains all importers from both the Client and SSR environment for each module node. A module node also has `transformResult` and `ssrTransformResult`. A backward compatibility layer allows the ecosystem to migrate from the deprecated `server.moduleGraph`.
+Vite v5 有一个混合的 Client 和 SSR 模块图。给定一个未处理的或无效的节点，我们无法知道它是否对应于 Client，SSR，还是两者都有。模块节点有一些带前缀的属性，如 `clientImportedModules` 和 `ssrImportedModules`（以及 `importedModules`，返回两者的并集）。`importers` 包含每个模块节点的 Client 和 SSR 环境的所有导入者。模块节点还有 `transformResult` 和 `ssrTransformResult`。一个向后兼容层允许生态系统从已弃用的 `server.moduleGraph` 迁移。
 :::
 
-Each module is represented by a `EnvironmentModuleNode` instance. Modules may be registered in the graph without yet being processed (`transformResult` would be `null` in that case). `importers` and `importedModules` are also updated after the module is processed.
+每个模块都由一个 `EnvironmentModuleNode` 实例表示。模块可能在图中注册，但尚未处理（在这种情况下，`transformResult` 会是 `null`）。在模块处理后，`importers` 和 `importedModules` 也会更新。
 
 ```ts
 class EnvironmentModuleNode {
@@ -300,9 +299,9 @@ export class EnvironmentModuleGraph {
 }
 ```
 
-## Creating new environments
+## 创建新的环境 {#creating-new-environments}
 
-One of the goals of this feature is to provide a customizable API to process and run code. Users can create new environment types using the exposed primitives.
+这个功能的一个目标是提供一个可定制的 API 来处理和运行代码。用户可以使用公开的基础设施来创建新的环境类型。
 
 ```ts
 import { DevEnvironment, RemoteEnvironmentTransport } from 'vite'
@@ -329,15 +328,15 @@ function createWorkerdDevEnvironment(name: string, config: ResolvedConfig, conte
 }
 ```
 
-Then users can create a workerd environment to do SSR using:
+然后，用户可以创建一个 workerd 环境来进行服务端渲染（SSR）：
 
 ```js
 const ssrEnvironment = createWorkerdEnvironment('ssr', config)
 ```
 
-## Environment Configuration
+## 环境配置 {#environment-configuration}
 
-Environments are explicitly configured with the `environments` config option.
+环境是通过 `environments` 配置选项显式配置的。
 
 ```js
 export default {
@@ -361,7 +360,7 @@ export default {
 }
 ```
 
-All environment configs extend from user's root config, allowing users add defaults for all environments at the root level. This is quite useful for the common use case of configuring a Vite client only app, that can be done without going through `environments.client`.
+所有环境配置都从用户的根配置扩展，允许用户在根级别为所有环境添加默认值。这对于配置只有 Vite 客户端的应用程序的常见场景非常有用，可以在不通过 `environments.client` 的情况下完成。
 
 ```js
 export default {
@@ -371,7 +370,7 @@ export default {
 }
 ```
 
-The `EnvironmentOptions` interface exposes all the per-environment options. There are `SharedEnvironmentOptions` that apply to both `build` and `dev`, like `resolve`. And there are `DevEnvironmentOptions` and `BuildEnvironmentOptions` for dev and build specific options (like `dev.optimizeDeps` or `build.outDir`).
+`EnvironmentOptions` 接口展示了所有每个环境的选项。有些 `SharedEnvironmentOptions` 适用于 `build` 和 `dev`，比如 `resolve`。还有 `DevEnvironmentOptions` 和 `BuildEnvironmentOptions` 用于开发和构建特定的选项（比如 `dev.optimizeDeps` 或 `build.outDir`）。
 
 ```ts
 interface EnvironmentOptions extends SharedEnvironmentOptions {
@@ -380,7 +379,7 @@ interface EnvironmentOptions extends SharedEnvironmentOptions {
 }
 ```
 
-As we explained, Environment specific options defined at the root level of user config are used for the default client environment (the `UserConfig` interface extends from the `EnvironmentOptions` interface). And environments can be configured explicitly using the `environments` record. The `client` and `ssr` environments are always present during dev, even if an empty object is set to `environments`. This allows backward compatibility with `server.ssrLoadModule(url)` and `server.moduleGraph`. During build, the `client` environment is always present, and the `ssr` environment is only present if it is explicitly configured (using `environments.ssr` or for backward compatibility `build.ssr`).
+如我们所解释的，用户配置的根级别定义的环境特定选项用于默认的客户端环境（`UserConfig` 接口继承自 `EnvironmentOptions` 接口）。并且可以使用 `environments` 记录显式配置环境。`client` 和 `ssr` 环境在开发过程中总是存在的，即使将空对象设置为 `environments`。这允许与 `server.ssrLoadModule(url)` 和 `server.moduleGraph` 的向后兼容性。在构建过程中，`client` 环境总是存在的，而 `ssr` 环境只有在显式配置（使用 `environments.ssr` 或为了向后兼容 `build.ssr`）时才存在。
 
 ```ts
 interface UserConfig extends EnvironmentOptions {
@@ -391,13 +390,13 @@ interface UserConfig extends EnvironmentOptions {
 
 ::: info
 
-The `ssr` top level property has many options in common with `EnvironmentOptions`. This option was created for the same use case as `environments` but only allowed configuration of a small number of options. We're going to deprecate it in favour of a unified way to define environment configuration.
+顶层属性 `ssr` 与 `EnvironmentOptions` 有许多相同的选项。这个选项是为了与 `environments` 相同的使用场景创建的，但只允许配置少数几个选项。我们将弃用它，以支持统一定义环境配置的方式。
 
 :::
 
-## Custom environment instances
+## 自定义环境实例 {#custom-environment-instances}
 
-To create custom dev or build environment instances, you can use the `dev.createEnvironment` or `build.createEnvironment` functions.
+要创建自定义的开发或构建环境实例，你可以使用 `dev.createEnvironment` 或 `build.createEnvironment` 函数。
 
 ```js
 export default {
@@ -424,9 +423,9 @@ export default {
 }
 ```
 
-The environment will be accessible in middlewares or plugin hooks through `server.environments`. In plugin hooks, the environment instance is passed in the options so they can do conditions depending on the way they are configured.
+环境将通过 `server.environments` 在中间件或插件钩子中可访问。在插件钩子中，环境实例被传递给选项，所以它们可以根据配置的方式做条件判断。
 
-Environment providers like Workerd, can expose an environment provider for the most common case of using the same runtime for both dev and build environments. The default environment options can also be set so the user doesn't need to do it.
+像 Workerd 这样的环境提供者，可以为使用相同运行时的开发和构建环境的最常见场景提供环境提供者。也可以设置默认的环境选项，这样用户就不需要这样做了。
 
 ```js
 function createWorkedEnvironment(userConfig) {
@@ -456,7 +455,7 @@ function createWorkedEnvironment(userConfig) {
 }
 ```
 
-Then the config file can be written as
+然后配置文件可以写成
 
 ```js
 import { createWorkerdEnvironment } from 'vite-environment-workerd'
@@ -477,18 +476,18 @@ export default {
 }
 ```
 
-In this case we see how the `ssr` environment can be configured to use workerd as it's runtime. Additionally a new custom RSC environment is also defined, backed by a separate instance of the workerd runtime.
+在这种情况下，我们看到如何将 `ssr` 环境配置为使用 workerd 作为其运行时。此外，还定义了一个新的自定义 RSC 环境，由一个单独的 workerd 运行时实例支持。
 
-## Plugins and environments
+## 插件和环境 {#plugins-and-environments}
 
-### Accessing the current environment in hooks
+### 在钩子中访问当前环境 {#accessing-the-current-environment-in-hooks}
 
-The Vite server has a shared plugin pipeline, but when a module is processed it is always done in the context of a given environment. The `environment` instance is available in the plugin context of `resolveId`, `load`, and `transform`.
+Vite 服务器有一个共享的插件管道，但是当一个模块被处理时，它总是在给定环境的上下文中完成的。`environment` 实例在 `resolveId`、`load` 和 `transform` 的插件上下文中可用。
 
-A plugin could use the `environment` instance to:
+插件可以使用 `environment` 实例来：
 
-- Only apply logic for certain environments.
-- Change the way they work depending on the configuration for the environment, which can be accessed using `environment.config`. The vite core resolve plugin modifies the way it resolves ids based on `environment.config.resolve.conditions` for example.
+- 仅对特定环境应用逻辑。
+- 根据环境的配置改变它们的工作方式，可以使用 `environment.config` 访问。例如，vite 核心解析插件会根据 `environment.config.resolve.conditions` 修改它解析 ids 的方式。
 
 ```ts
   transform(code, id) {
@@ -496,9 +495,9 @@ A plugin could use the `environment` instance to:
   }
 ```
 
-### Registering new environments using hooks
+### 使用钩子注册新环境 {#registering-new-environments-using-hooks}
 
-Plugins can add new environments in the `config` hook:
+插件可以在 `config` 钩子中添加新的环境：
 
 ```ts
   config(config: UserConfig) {
@@ -506,12 +505,12 @@ Plugins can add new environments in the `config` hook:
   }
 ```
 
-An empty object is enough to register the environment, default values from the root level environment config.
+一个空对象就足够注册环境，其默认值来自根级别的环境配置。
 
-### Configuring environment using hooks
+### 使用钩子配置环境 {#configuring-environment-using-hooks}
 
-While the `config` hook is running, the complete list of environments isn't yet known and the environments can be affected by both the default values from the root level environment config or explicitly through the `config.environments` record.
-Plugins should set default values using the `config` hook. To configure each environment, they can use the new `configEnvironment` hook. This hook is called for each environment with its partially resolved config including resolution of final defaults.
+当 `config` 钩子运行时，尚未知道完整的环境列表，环境可以受到来自根级别环境配置的默认值的影响，也可以通过 `config.environments` 记录显式影响。
+插件应使用 `config` 钩子设置默认值。要配置每个环境，它们可以使用新的 `configEnvironment` 钩子。这个钩子对每个环境调用，其部分解析的配置包括最终默认值的解析。
 
 ```ts
   configEnvironment(name: string, options: EnvironmentOptions) {
@@ -519,12 +518,12 @@ Plugins should set default values using the `config` hook. To configure each env
       options.resolve.conditions = // ...
 ```
 
-### The `hotUpdate` hook
+### `hotUpdate` 钩子 {#the-hot-update-hook}
 
-- **Type:** `(this: { environment: DevEnvironment }, options: HotUpdateOptions) => Array<EnvironmentModuleNode> | void | Promise<Array<EnvironmentModuleNode> | void>`
-- **See also:** [HMR API](./api-hmr)
+- **类型：** `(this: { environment: DevEnvironment }, options: HotUpdateOptions) => Array<EnvironmentModuleNode> | void | Promise<Array<EnvironmentModuleNode> | void>`
+- **相关链接：** [HMR API](./api-hmr)
 
-The `hotUpdate` hook allows plugins to perform custom HMR update handling for a given environment. When a file changes, the HMR algorithm is run for each environment in series according to the order in `server.environments`, so the `hotUpdate` hook will be called multiple times. The hook receives a context object with the following signature:
+`hotUpdate` 钩子允许插件为特定环境执行自定义的热模块替换（HMR）更新处理。当一个文件发生变化时，HMR 算法将按照 `server.environments` 中的顺序依次为每个环境运行，因此 `hotUpdate` 钩子将被多次调用。该钩子接收一个具有以下签名的上下文对象：
 
 ```ts
 interface HotUpdateContext {
@@ -537,17 +536,17 @@ interface HotUpdateContext {
 }
 ```
 
-- `this.environment` is the module execution environment where a file update is currently being processed.
+- `this.environment` 是当前正在处理文件更新的模块执行环境。
 
-- `modules` is an array of modules in this environment that are affected by the changed file. It's an array because a single file may map to multiple served modules (e.g. Vue SFCs).
+- `modules` 是由于文件更改而受影响的此环境中的模块的数组。它是一个数组，因为一个文件可能映射到多个服务的模块（例如 Vue SFCs）。
 
-- `read` is an async read function that returns the content of the file. This is provided because, on some systems, the file change callback may fire too fast before the editor finishes updating the file, and direct `fs.readFile` will return empty content. The read function passed in normalizes this behavior.
+- `read` 是一个异步读取函数，返回文件的内容。这是因为，在某些系统上，文件更改回调可能在编辑器完成文件更新之前触发得太快，直接的 `fs.readFile` 将返回空内容。传入的读取函数规范化了这种行为。
 
-The hook can choose to:
+钩子可以选择：
 
-- Filter and narrow down the affected module list so that the HMR is more accurate.
+- 过滤和缩小受影响的模块列表，使模块热替换（HMR）更准确。
 
-- Return an empty array and perform a full reload:
+- 返回一个空数组并执行完全重载：
 
   ```js
   hotUpdate({ modules, timestamp }) {
@@ -569,7 +568,7 @@ The hook can choose to:
   }
   ```
 
-- Return an empty array and perform complete custom HMR handling by sending custom events to the client:
+- 返回一个空数组并通过向客户端发送自定义事件来执行完全自定义的模块热替换（HMR）处理：
 
   ```js
   hotUpdate() {
@@ -585,7 +584,7 @@ The hook can choose to:
   }
   ```
 
-  Client code should register the corresponding handler using the [HMR API](./api-hmr) (this could be injected by the same plugin's `transform` hook):
+  客户端代码应使用 [HMR API](./api-hmr) 注册相应的处理程序（这可以通过相同插件的 `transform` 钩子注入）：
 
   ```js
   if (import.meta.hot) {
@@ -595,9 +594,9 @@ The hook can choose to:
   }
   ```
 
-### Per-environment Plugins
+### 针对每个环境的插件 {#per-environment-plugins}
 
-A plugin can define what are the environments it should apply to with the `applyToEnvironment` function.
+插件可以通过 `applyToEnvironment` 函数定义它应该适用于哪些环境。
 
 ```js
 const UnoCssPlugin = () => {
@@ -622,9 +621,9 @@ const UnoCssPlugin = () => {
 
 ## `ModuleRunner`
 
-A module runner is instantiated in the target runtime. All APIs in the next section are imported from `vite/module-runner` unless stated otherwise. This export entry point is kept as lightweight as possible, only exporting the minimal needed to create module runners.
+在目标运行时实例化一个模块运行器（module runner）。除非特别说明，否则下一节中的所有 API 都从 `vite/module-runner` 导入。这个导出入口点尽可能保持轻量，只导出创建模块运行器所需的最小内容。
 
-**Type Signature:**
+**类型签名：**
 
 ```ts
 export class ModuleRunner {
@@ -653,11 +652,11 @@ export class ModuleRunner {
 }
 ```
 
-The module evaluator in `ModuleRunner` is responsible for executing the code. Vite exports `ESModulesEvaluator` out of the box, it uses `new AsyncFunction` to evaluate the code. You can provide your own implementation if your JavaScript runtime doesn't support unsafe evaluation.
+`ModuleRunner` 中的模块评估器负责执行代码。Vite 默认导出 `ESModulesEvaluator`，它使用 `new AsyncFunction` 来评估代码。如果你的 JavaScript 运行时不支持不安全的评估，你可以提供你自己的实现。
 
-Module runner exposes `import` method. When Vite server triggers `full-reload` HMR event, all affected modules will be re-executed. Be aware that Module Runner doesn't update `exports` object when this happens (it overrides it), you would need to run `import` or get the module from `evaluatedModules` again if you rely on having the latest `exports` object.
+模块运行器暴露了 `import` 方法。当 Vite 服务器触发 `full-reload` 热模块替换（HMR）事件时，所有受影响的模块将被重新执行。请注意，当这种情况发生时，模块运行器不更新 `exports` 对象（它覆盖了它），如果你依赖于拥有最新的 `exports` 对象，你需要再次运行 `import` 或从 `evaluatedModules` 中获取模块。
 
-**Example Usage:**
+**使用示例：**
 
 ```js
 import { ModuleRunner, ESModulesEvaluator } from 'vite/module-runner'
@@ -721,7 +720,7 @@ export interface ModuleRunnerOptions {
 
 ## `ModuleEvaluator`
 
-**Type Signature:**
+**使用示例：**
 
 ```ts
 export interface ModuleEvaluator {
@@ -748,11 +747,11 @@ export interface ModuleEvaluator {
 }
 ```
 
-Vite exports `ESModulesEvaluator` that implements this interface by default. It uses `new AsyncFunction` to evaluate code, so if the code has inlined source map it should contain an [offset of 2 lines](https://tc39.es/ecma262/#sec-createdynamicfunction) to accommodate for new lines added. This is done automatically by the `ESModulesEvaluator`. Custom evaluators will not add additional lines.
+Vite 默认导出实现此接口的 `ESModulesEvaluator`。它使用 `new AsyncFunction` 来评估代码，因此如果代码有内联源映射，它应该包含 [2 行的偏移](https://tc39.es/ecma262/#sec-createdynamicfunction) 来适应新添加的行。这是由 `ESModulesEvaluator` 自动完成的。自定义评估器不会添加额外的行。
 
 ## RunnerTransport
 
-**Type Signature:**
+**使用示例：**
 
 ```ts
 interface RunnerTransport {
@@ -763,7 +762,7 @@ interface RunnerTransport {
 }
 ```
 
-Transport object that communicates with the environment via an RPC or by directly calling the function. By default, you need to pass an object with `fetchModule` method - it can use any type of RPC inside of it, but Vite also exposes bidirectional transport interface via a `RemoteRunnerTransport` class to make the configuration easier. You need to couple it with the `RemoteEnvironmentTransport` instance on the server like in this example where module runner is created in the worker thread:
+通过 RPC 或直接调用函数与环境通信的传输对象。默认情况下，你需要传递一个带有 `fetchModule` 方法的对象 - 它可以在其中使用任何类型的 RPC，但 Vite 也通过 `RemoteRunnerTransport` 类公开双向传输接口以使配置更容易。你需要将它与服务器上的 `RemoteEnvironmentTransport` 实例配对，就像在这个例子中，模块运行器在工作线程中创建：
 
 ::: code-group
 
@@ -819,7 +818,7 @@ await createServer({
 
 :::
 
-`RemoteRunnerTransport` and `RemoteEnvironmentTransport` are meant to be used together, but you don't have to use them at all. You can define your own function to communicate between the runner and the server. For example, if you connect to the environment via an HTTP request, you can call `fetch().json()` in `fetchModule` function:
+`RemoteRunnerTransport` 和 `RemoteEnvironmentTransport` 是设计为一起使用的，但你完全不必使用它们。你可以定义你自己的函数在运行器和服务器之间进行通信。例如，如果你通过 HTTP 请求连接到环境，你可以在 `fetchModule` 函数中调用 `fetch().json()`：
 
 ```ts
 import { ESModulesEvaluator, ModuleRunner } from 'vite/module-runner'
@@ -842,8 +841,8 @@ export const runner = new ModuleRunner(
 await runner.import('/entry.js')
 ```
 
-::: warning Accessing Module on the Server
-We do not want to encourage communication between the server and the runner. One of the problems that was exposed with `vite.ssrLoadModule` is over-reliance on the server state inside the processed modules. This makes it harder to implement runtime-agnostic SSR since user environment might have no access to server APIs. For example, this code assumes that Vite server and user code can run in the same context:
+::: warning 在服务器上访问模块
+我们不希望鼓励服务器和运行器之间的通信。`vite.ssrLoadModule` 揭示的问题之一是对处理模块内的服务器状态的过度依赖。这使得实现与运行时无关的服务端渲染（SSR）变得更困难，因为用户环境可能无法访问服务器 API。例如，这段代码假设 Vite 服务器和用户代码可以在同一上下文中运行：
 
 ```ts
 const vite = createServer()
@@ -853,7 +852,7 @@ const { processRoutes } = await vite.ssrLoadModule('internal:routes-processor')
 processRoutes(routes)
 ```
 
-This makes it impossible to run user code in the same way it might run in production (for example, on the edge) because the server state and user state are coupled. So instead, we recommend using virtual modules to import the state and process it inside the user module:
+这使得无法以可能在生产环境中运行的相同方式运行用户代码（例如，在边缘），因为服务器状态和用户状态是耦合的。因此，我们建议使用虚拟模块来导入状态并在用户模块内部处理它：
 
 ```ts
 // this code runs on another machine or in another thread
@@ -865,7 +864,7 @@ const { routes } = await runner.import('virtual:ssr-routes')
 processRoutes(routes)
 ```
 
-Simple setups like in [SSR Guide](/guide/ssr) can still use `server.transformIndexHtml` directly if it's not expected that the server will run in a different process in production. However, if the server will run in an edge environment or a separate process, we recommend creating a virtual module to load HTML:
+像 [服务端渲染指南](/guide/ssr) 中的简单设置仍然可以直接使用 `server.transformIndexHtml`，如果预期服务器在生产中不会在不同的进程中运行。然而，如果服务器将在边缘环境或单独的进程中运行，我们建议创建一个虚拟模块来加载 HTML：
 
 ```ts {13-21}
 function vitePluginVirtualIndexHtml(): Plugin {
@@ -896,7 +895,7 @@ function vitePluginVirtualIndexHtml(): Plugin {
 }
 ```
 
-Then in SSR entry point you can call `import('virtual:index-html')` to retrieve the processed HTML:
+然后在服务端渲染（SSR）入口文件，你可以调用 `import('virtual:index-html')` 来检索处理过的 HTML：
 
 ```ts
 import { render } from 'framework'
@@ -914,13 +913,13 @@ export default {
 }
 ```
 
-This keeps the HTML processing server agnostic.
+这使得 HTML 处理与服务器无关。
 
 :::
 
 ## ModuleRunnerHMRConnection
 
-**Type Signature:**
+**使用示例：**
 
 ```ts
 export interface ModuleRunnerHMRConnection {
@@ -940,9 +939,9 @@ export interface ModuleRunnerHMRConnection {
 }
 ```
 
-This interface defines how HMR communication is established. Vite exports `ServerHMRConnector` from the main entry point to support HMR during Vite SSR. The `isReady` and `send` methods are usually called when the custom event is triggered (like, `import.meta.hot.send("my-event")`).
+此接口定义了如何建立模块热替换（HMR）通信。Vite 从主入口文件导出 `ServerHMRConnector` 来支持 Vite 服务端渲染（SSR）期间的 HMR。当触发自定义事件时（如，`import.meta.hot.send("my-event")`），通常会调用 `isReady` 和 `send` 方法。
 
-`onUpdate` is called only once when the new module runner is initiated. It passed down a method that should be called when connection triggers the HMR event. The implementation depends on the type of connection (as an example, it can be `WebSocket`/`EventEmitter`/`MessageChannel`), but it usually looks something like this:
+当新的模块运行器被启动时，只调用一次 `onUpdate`。它传递了一个在连接触发 HMR 事件时应该调用的方法。实现取决于连接的类型（例如，它可以是 `WebSocket`/`EventEmitter`/`MessageChannel`），但通常看起来像这样：
 
 ```js
 function onUpdate(callback) {
@@ -950,13 +949,13 @@ function onUpdate(callback) {
 }
 ```
 
-The callback is queued and it will wait for the current update to be resolved before processing the next update. Unlike the browser implementation, HMR updates in a module runner will wait until all listeners (like, `vite:beforeUpdate`/`vite:beforeFullReload`) are finished before updating the modules.
+回调会排队，它会等待当前更新被解决后再处理下一个更新。与浏览器实现不同，模块运行器中的模块热替换（HMR）更新会等待所有监听器（如，`vite:beforeUpdate`/`vite:beforeFullReload`）完成后再更新模块。
 
-## Environments during build
+## 构建过程中的环境 {#environments-during-build}
 
-In the CLI, calling `vite build` and `vite build --ssr` will still build the client only and ssr only environments for backward compatibility.
+在命令行界面中，调用 `vite build` 和 `vite build --ssr` 仍将只构建客户端和仅服务端渲染（ssr）环境以向后兼容。
 
-When `builder.entireApp` is `true` (or when calling `vite build --app`), `vite build` will opt-in into building the entire app instead. This would later on become the default in a future major. A `ViteBuilder` instance will be created (build-time equivalent to a `ViteDevServer`) to build all configured environments for production. By default the build of environments is run in series respecting the order of the `environments` record. A framework or user can further configure how the environments are built using:
+当 `builder.entireApp` 为 `true`（或当调用 `vite build --app` 时），`vite build` 将选择构建整个应用程序。在未来的主要版本中，这将成为默认设置。将创建一个 `ViteBuilder` 实例（构建时间等同于 `ViteDevServer`）来为生产环境构建所有配置的环境。默认情况下，环境的构建按照 `environments` 记录的顺序依次运行。框架或用户可以进一步配置如何构建环境，方法如下：
 
 ```js
 export default {
@@ -971,29 +970,29 @@ export default {
 }
 ```
 
-### Environment in build hooks
+### 构建钩子中的环境 {#environment-in-build-hooks}
 
-In the same way as during dev, plugin hooks also receive the environment instance during build, replacing the `ssr` boolean.
-This also works for `renderChunk`, `generateBundle`, and other build only hooks.
+与开发时一样，插件钩子在构建期间也会接收环境实例，替换 `ssr` 布尔值。
+这也适用于 `renderChunk`、`generateBundle` 和其他仅构建钩子。
 
-### Shared plugins during build
+### 在构建期间共享插件 {#shared-plugins-during-build}
 
-Before Vite 6, the plugins pipelines worked in a different way during dev and build:
+在 Vite 6 之前，插件管道在开发和构建期间的工作方式不同：
 
-- **During dev:** plugins are shared
-- **During Build:** plugins are isolated for each environment (in different processes: `vite build` then `vite build --ssr`).
+- **在开发期间：** 插件是共享的
+- **在构建期间：** 插件对于每个环境是隔离的（在不同的进程中：`vite build` 然后 `vite build --ssr`）。
 
-This forced frameworks to share state between the `client` build and the `ssr` build through manifest files written to the file system. In Vite 6, we are now building all environments in a single process so the way the plugins pipeline and inter-environment communication can be aligned with dev.
+这迫使框架通过写入文件系统的清单文件在 `client` 构建和 `ssr` 构建之间共享状态。在 Vite 6 中，我们现在在一个单独的进程中构建所有环境，所以插件管道和环境间通信的方式可以与开发对齐。
 
-In a future major (Vite 7 or 8), we aim to have complete alignment:
+在未来的主要版本（Vite 7 或 8）中，我们的目标是完全对齐：
 
-- **During both dev and build:** plugins are shared, with [per-environment filtering](#per-environment-plugins)
+- **在开发和构建期间：** 插件是共享的，具有 [每个环境过滤](#per-environment-plugins)
 
-There will also be a single `ResolvedConfig` instance shared during build, allowing for caching at entire app build process level in the same way as we have been doing with `WeakMap<ResolvedConfig, CachedData>` during dev.
+在构建期间也将共享一个 `ResolvedConfig` 实例，允许在整个应用构建过程级别进行缓存，就像我们在开发期间使用 `WeakMap<ResolvedConfig, CachedData>` 一样。
 
-For Vite 6, we need to do a smaller step to keep backward compatibility. Ecosystem plugins are currently using `config.build` instead of `environment.config.build` to access configuration, so we need to create a new `ResolvedConfig` per environment by default. A project can opt-in into sharing the full config and plugins pipeline setting `builder.sharedConfigBuild` to `true`.
+对于 Vite 6，我们需要做一个较小的步骤来保持向后兼容性。生态系统插件当前使用 `config.build` 而不是 `environment.config.build` 来访问配置，所以我们需要默认为每个环境创建一个新的 `ResolvedConfig`。一个项目可以选择共享完整的配置和插件管道，将 `builder.sharedConfigBuild` 设置为 `true`。
 
-This option would only work of a small subset of projects at first, so plugin authors can opt-in for a particular plugin to be shared by setting the `sharedDuringBuild` flag to `true`. This allows for easily sharing state both for regular plugins:
+这个选项最初只能适用于一小部分项目，所以插件作者可以选择让特定插件通过设置 `sharedDuringBuild` 标志为 `true` 来共享。这允许轻松共享常规插件的状态：
 
 ```js
 function myPlugin() {
@@ -1009,16 +1008,16 @@ function myPlugin() {
 }
 ```
 
-## Backward Compatibility
+## 向后兼容性 {#backward-compatibility}
 
-The current Vite server API are not yet deprecated and are backward compatible with Vite 5. The new Environment API is experimental.
+当前的 Vite 服务器 API 尚未被弃用，并且与 Vite 5 向后兼容。新的环境 API 是实验性的。
 
-The `server.moduleGraph` returns a mixed view of the client and ssr module graphs. Backward compatible mixed module nodes will be returned from all its methods. The same scheme is used for the module nodes passed to `handleHotUpdate`.
+`server.moduleGraph` 返回客户端和服务器端渲染（ssr）模块图的混合视图。所有其方法都将返回向后兼容的混合模块节点。对于传递给 `handleHotUpdate` 的模块节点，也使用相同的方案。
 
-We don't recommend switching to Environment API yet. We are aiming for a good portion of the user base to adopt Vite 6 before so plugins don't need to maintain two versions. Checkout the future breaking changes section for information on future deprecations and upgrade path:
+我们不建议现在就切换到环境 API。我们的目标是在插件不需要维护两个版本之前，让大部分用户基础采用 Vite 6。查看未来破坏性更改部分以获取未来弃用和升级路径的信息：
 
-- [`this.environment` in Hooks](/changes/this-environment-in-hooks)
-- [HMR `hotUpdate` Plugin Hook](/changes/hotupdate-hook)
-- [Move to per-environment APIs](/changes/per-environment-apis)
-- [SSR using `ModuleRunner` API](/changes/ssr-using-modulerunner)
-- [Shared plugins during build](/changes/shared-plugins-during-build)
+- [钩子函数中的 `this.environment`](/changes/this-environment-in-hooks)
+- [HMR `hotUpdate` 插件钩子](/changes/hotupdate-hook)
+- [迁移到按环境划分的 API](/changes/per-environment-apis)
+- [使用 `ModuleRunner` API 进行服务端渲染](/changes/ssr-using-modulerunner)
+- [构建过程中的共享插件](/changes/shared-plugins-during-build)

@@ -73,7 +73,7 @@ export const count = 1
 if (import.meta.hot) {
   import.meta.hot.accept((newModule) => {
     if (newModule) {
-      // newModule is undefined when SyntaxError happened
+      //  当语法错误发生时，newModule 是 undefined
       console.log('updated: count is now ', newModule.count)
     }
   })

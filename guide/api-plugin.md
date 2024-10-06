@@ -580,7 +580,7 @@ export default defineConfig({
 ```ts twoslash
 import 'vite/client'
 // ---cut---
-// client side
+// 客户端
 if (import.meta.hot) {
   import.meta.hot.on('my:greetings', (data) => {
     console.log(data.msg) // hello
@@ -593,7 +593,7 @@ if (import.meta.hot) {
 为了从客户端向服务端发送事件，我们可以使用 [`hot.send`](/guide/api-hmr.html#hot-send-event-payload)：
 
 ```ts
-// client side
+// 客户端
 if (import.meta.hot) {
   import.meta.hot.send('my:from-client', { msg: 'Hey!' })
 }
@@ -609,7 +609,7 @@ export default defineConfig({
       configureServer(server) {
         server.ws.on('my:from-client', (data, client) => {
           console.log('Message from client:', data.msg) // Hey!
-          // reply only to the client (if needed)
+          //  只回复客户端（如果需要的话）
           client.send('my:ack', { msg: 'Hi! I got your message!' })
         })
       },

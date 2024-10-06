@@ -281,7 +281,7 @@ interface PreviewServer {
    */
   printUrls(): void
   /**
-   * Bind CLI shortcuts
+   * 设置 CLI 快捷键
    */
   bindCLIShortcuts(options?: BindCLIShortcutsOptions<PreviewServer>): void
 }
