@@ -50,14 +50,14 @@ export class ViteRuntime {
 ```
 
 ::: tip 进阶用法
-如果你是从 `server.ssrLoadModule` 迁移过来，并且想要支持热模块替换（HMR），你可以考虑用 [`createViteRuntime`](#createviteruntime) 替代。
+如果你是从 `server.ssrLoadModule` 迁移过来，并且想要支持模块热替换（HMR），你可以考虑用 [`createViteRuntime`](#createviteruntime) 替代。
 :::
 
 当你初始化 `ViteRuntime` 类时，需要 `root` 和 `fetchModule` 这两个选项。Vite 在 [`server`](/guide/api-javascript) 实例中公开了 `ssrFetchModule`，以便更方便地与 Vite SSR 集成。Vite 主入口也导出了 `fetchModule` - 它不会假设代码的运行方式，这与期望代码通过 `new Function` 运行的 `ssrFetchModule` 是不同的，这一点可以从这些函数返回的 sourcemap 中看出。
 
 `ViteRuntime` 中的 Runner 负责执行代码。Vite 开箱即用地提供了 `ESModulesRunner`，它使用 `new AsyncFunction` 来运行代码。如果你的 JavaScript 运行环境不支持不安全的执行，你可以提供你自己的实现。
 
-运行时公开的两个主要方法是 `executeUrl` 和 `executeEntrypoint`。它们之间唯一的区别是，如果热模块替换（HMR）触发了 `full-reload` 事件，那么 `executeEntrypoint` 执行的所有模块都将重新执行。但请注意，当这种情况发生时，Vite 运行时不会更新 `exports` 对象（它会被覆盖），如果你需要最新的 `exports` 对象，你需要重新运行 `executeUrl` 或从 `moduleCache` 再次获取模块。
+运行时公开的两个主要方法是 `executeUrl` 和 `executeEntrypoint`。它们之间唯一的区别是，如果模块热替换（HMR）触发了 `full-reload` 事件，那么 `executeEntrypoint` 执行的所有模块都将重新执行。但请注意，当这种情况发生时，Vite 运行时不会更新 `exports` 对象（它会被覆盖），如果你需要最新的 `exports` 对象，你需要重新运行 `executeUrl` 或从 `moduleCache` 再次获取模块。
 
 **使用示例：**
 
@@ -172,7 +172,7 @@ export interface HMRRuntimeConnection {
 }
 ```
 
-这个接口定义了如何建立热模块替换（HMR）的通信。Vite 从主入口处导出 `ServerHMRConnector`，以在 Vite SSR 期间支持 HMR。当自定义事件被触发时（例如，`import.meta.hot.send("my-event")`），通常会调用 `isReady` 和 `send` 方法。
+这个接口定义了如何建立模块热替换（HMR）的通信。Vite 从主入口处导出 `ServerHMRConnector`，以在 Vite SSR 期间支持 HMR。当自定义事件被触发时（例如，`import.meta.hot.send("my-event")`），通常会调用 `isReady` 和 `send` 方法。
 
 只有在新的运行环境启动时，才会调用 `onUpdate`。它传递下来一个在连接触发 HMR 事件时应该调用的方法。实现方式取决于连接的类型（例如，它可以是 `WebSocket`/`EventEmitter`/`MessageChannel`），但通常看起来像这样：
 

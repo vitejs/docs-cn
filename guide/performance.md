@@ -29,7 +29,7 @@ Vite 的内部和官方插件已经优化，以在提供与更广泛的生态系
    你可以使用 `vite --debug plugin-transform` 或 [vite-plugin-inspect](https://github.com/antfu/vite-plugin-inspect) 检查转换文件所需的时间。请注意，由于异步操作往往提供不准确的时间，应将这些数字视为粗略的估计，但它仍应揭示消耗很大的操作。
 
 ::: tip 性能分析
-可以运行 `vite --profile`，访问站点，并在终端中按 `p + enter` 来记录一个 `.cpuprofile`。然后可以使用像 [speedscope](https://www.speedscope.app) 这样的工具来检查配置文件并识别瓶颈。也可以 [分享配置文件](https://chat.vitejs.dev) 给 Vite 团队，帮助我们识别性能问题。
+可以运行 `vite --profile`，访问站点，并在终端中按 `p + enter` 来记录一个 `.cpuprofile`。然后可以使用像 [speedscope](https://www.speedscope.app) 这样的工具来检查配置文件并识别瓶颈。也可以 [分享配置文件](https://chat.vite.dev) 给 Vite 团队，帮助我们识别性能问题。
 :::
 
 ## 减少解析操作 {#reduce-resolve-operations}
@@ -59,8 +59,7 @@ Vite 的内部和官方插件已经优化，以在提供与更广泛的生态系
 
 桶文件（barrel files）是重新导出同一目录下其他文件 API 的文件。例如：
 
-```js
-// src/utils/index.js
+```js [src/utils/index.js]
 export * from './color.js'
 export * from './dom.js'
 export * from './slash.js'
@@ -92,7 +91,7 @@ vite:transform 62.95ms /src/components/BigComponent.vue +1ms
 vite:transform 102.54ms /src/utils/big-utils.js +1ms
 ```
 
-```js
+```js [vite.config.js]
 export default defineConfig({
   server: {
     warmup: {

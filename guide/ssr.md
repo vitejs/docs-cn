@@ -44,7 +44,7 @@ Vite 为服务端渲染（SSR）提供了内建支持。[`create-vite-extra`](ht
 
 `index.html` 将需要引用 `entry-client.js` 并包含一个占位标记供给服务端渲染时注入：
 
-```html
+```html [index.html]
 <div id="app"><!--ssr-outlet--></div>
 <script type="module" src="/src/entry-client.js"></script>
 ```
@@ -69,9 +69,7 @@ if (import.meta.env.SSR) {
 
 在构建 SSR 应用程序时，你可能希望完全控制主服务器，并将 Vite 与生产环境脱钩。因此，建议以中间件模式使用 Vite。下面是一个关于 [express](https://expressjs.com/) 的例子：
 
-**server.js**
-
-```js{15-18} twoslash
+```js{15-18} twoslash [server.js]
 import fs from 'node:fs'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
@@ -113,7 +111,7 @@ createServer()
 
 下一步是实现 `*` 处理程序供给服务端渲染的 HTML：
 
-```js twoslash
+```js twoslash [server.js]
 // @noErrors
 import fs from 'node:fs'
 import path from 'node:path'
@@ -166,7 +164,7 @@ app.use('*', async (req, res, next) => {
 
 `package.json` 中的 `dev` 脚本也应该相应地改变，使用服务器脚本：
 
-```diff
+```diff [package.json]
   "scripts": {
 -   "dev": "vite"
 +   "dev": "node server"
@@ -182,7 +180,7 @@ app.use('*', async (req, res, next) => {
 
 `package.json` 中的脚本应该看起来像这样：
 
-```json
+```json [package.json]
 {
   "scripts": {
     "dev": "node server",
@@ -215,12 +213,11 @@ app.use('*', async (req, res, next) => {
 
 上面的脚本将会为客户端构建生成 `dist/client/.vite/ssr-manifest.json`（是的，该 SSR 清单是从客户端构建生成而来，因为我们想要将模块 ID 映射到客户端文件上）。清单包含模块 ID 到它们关联的 chunk 和资源文件的映射。
 
-为了利用该清单，框架需要提供一种方法来收集在服务器渲染调用期间使用到的组件模块 ID。
+为了利用该清单，框架需要提供一种方法来收集在服务端渲染调用期间使用到的组件模块 ID。
 
 `@vitejs/plugin-vue` 支持该功能，开箱即用，并会自动注册使用的组件模块 ID 到相关的 Vue SSR 上下文：
 
-```js
-// src/entry-server.js
+```js [src/entry-server.js]
 const ctx = {}
 const html = await vueServerRenderer.renderToString(app, ctx)
 // ctx.modules 现在是一个渲染期间使用的模块 ID 的 Set
