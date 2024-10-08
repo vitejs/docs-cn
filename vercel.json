@@ -19,5 +19,32 @@
         }
       ]
     }
+  ],
+  "redirects": [
+    {
+      "source": "https://cn.vitejs.dev/:path*",
+      "destination": "https://cn.vite.dev/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/guide/api-vite-runtime",
+      "destination": "/guide/api-environment",
+      "statusCode": 302
+    },
+    {
+      "source": "/guide/api-vite-runtime.html",
+      "destination": "/guide/api-environment",
+      "statusCode": 302
+    },
+    {
+      "source": "/guide/api-vite-environment",
+      "destination": "/guide/api-environment",
+      "statusCode": 302
+    },
+    {
+      "source": "/guide/api-vite-environment.html",
+      "destination": "/guide/api-environment",
+      "statusCode": 302
+    }
   ]
 }
