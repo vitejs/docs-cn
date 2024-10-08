@@ -22,7 +22,7 @@
   ],
   "redirects": [
     {
-      "source": "https://cn.vitejs.dev/:path*",
+      "source": "/:path*",
       "destination": "https://cn.vite.dev/:path*",
       "permanent": true
     },
