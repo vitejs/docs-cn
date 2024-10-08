@@ -12,4 +12,4 @@
 
 ## 从 v4 迁移 {#migration-from-v4}
 
-在 Vite v5 文档中查看 [从 v4 迁移指南](https://v4.vite.dev/guide/migration.html)（[中文版](https://cn.vite.dev/guide/migration-from-v4.html)），了解如何将你的应用迁移到 Vite v5，然后再处理本页中所提及的变化。
+在 Vite v5 文档中查看 [从 v4 迁移指南](https://v4.vite.dev/guide/migration.html)（[中文版](/guide/migration-from-v4)），了解如何将你的应用迁移到 Vite v5，然后再处理本页中所提及的变化。
