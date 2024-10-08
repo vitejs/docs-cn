@@ -66,4 +66,4 @@ Vite 现在使用 `dotenv` 16 和 `dotenv-expand` 9（之前是 `dotenv` 14 和 
 
 ## 从 v2 迁移 {#migration-from-v2}
 
-请先查看之前 Vite v3 文档中的 [从 v2 迁移指南](https://cn.vite.dev/guide/migration-from-v2.html) 了解迁移到 v3 所需要的更改，然后再继续执行本页提到的相关更改。
+请先查看之前 Vite v3 文档中的 [从 v2 迁移指南](/guide/migration-from-v2) 了解迁移到 v3 所需要的更改，然后再继续执行本页提到的相关更改。
