@@ -73,13 +73,8 @@ $ bun create vite
 
 ::: code-group
 
-<<<<<<< HEAD
-```bash [NPM]
-# npm 7+，需要添加额外的 --：
-=======
 ```bash [npm]
-# npm 7+, extra double-dash is needed:
->>>>>>> b13e66083d5633f332d292e003cec59c6b45139e
+# npm 7+，需要添加额外的 --：
 $ npm create vite@latest my-vue-app -- --template vue
 ```
 
