@@ -55,7 +55,11 @@ console.log(import.meta.env.DB_PASSWORD) // undefined
 如上所示，`VITE_SOME_KEY` 是一个数字，但在解析时会返回一个字符串。布尔类型的环境变量也会发生同样的情况。在代码中使用时，请确保转换为所需的类型。
 :::
 
+<<<<<<< HEAD
 此外，Vite 使用 [dotenv-expand](https://github.com/motdotla/dotenv-expand) 来直接拓展变量。想要了解更多相关语法，请查看 [它们的文档](https://github.com/motdotla/dotenv-expand#what-rules-does-the-expansion-engine-follow)。
+=======
+Also, Vite uses [dotenv-expand](https://github.com/motdotla/dotenv-expand) to expand variables written in env files out of the box. To learn more about the syntax, check out [their docs](https://github.com/motdotla/dotenv-expand#what-rules-does-the-expansion-engine-follow).
+>>>>>>> a315155b9bef2e679954bf4a4cad516ad939328a
 
 请注意，如果想要在环境变量中使用 `$` 符号，则必须使用 `\` 对其进行转义。
 

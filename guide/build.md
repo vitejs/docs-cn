@@ -29,7 +29,21 @@
 
 若想要进一步控制基础路径，请查看 [高级 base 选项](#advanced-base-options).
 
+<<<<<<< HEAD
 ## 自定义构建 {#customizing-the-build}
+=======
+### Relative base
+
+If you don't know the base path in advance, you may set a relative base path with `"base": "./"` or `"base": ""`. This will make all generated URLs to be relative to each file.
+
+:::warning Support for older browsers when using relative bases
+
+`import.meta` support is required for relative bases. If you need to support [browsers that do not support `import.meta`](https://caniuse.com/mdn-javascript_operators_import_meta), you can use [the `legacy` plugin](https://github.com/vitejs/vite/tree/main/packages/plugin-legacy).
+
+:::
+
+## Customizing the Build
+>>>>>>> a315155b9bef2e679954bf4a4cad516ad939328a
 
 构建过程可以通过多种 [构建配置选项](/config/#build-options) 来自定义构建。具体来说，你可以通过 `build.rollupOptions` 直接调整底层的 [Rollup 选项](https://rollupjs.org/configuration-options/)：
 
