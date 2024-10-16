@@ -29,7 +29,21 @@
 
 若想要进一步控制基础路径，请查看 [高级 base 选项](#advanced-base-options).
 
+<<<<<<< HEAD
 ## 自定义构建 {#customizing-the-build}
+=======
+### Relative base
+
+If you don't know the base path in advance, you may set a relative base path with `"base": "./"` or `"base": ""`. This will make all generated URLs to be relative to each file.
+
+:::warning Support for older browsers when using relative bases
+
+`import.meta` support is required for relative bases. If you need to support [browsers that do not support `import.meta`](https://caniuse.com/mdn-javascript_operators_import_meta), you can use [the `legacy` plugin](https://github.com/vitejs/vite/tree/main/packages/plugin-legacy).
+
+:::
+
+## Customizing the Build
+>>>>>>> d99d2948d399a2e2fa56a53e37e3de028733d873
 
 构建过程可以通过多种 [构建配置选项](/config/#build-options) 来自定义构建。具体来说，你可以通过 `build.rollupOptions` 直接调整底层的 [Rollup 选项](https://rollupjs.org/configuration-options/)：
 
@@ -121,14 +135,15 @@ export default defineConfig({
 
 当这个库要进行发布构建时，请使用 [`build.lib` 配置项](/config/build-options.md#build-lib)，以确保将那些你不想打包进库的依赖进行外部化处理，例如 `vue` 或 `react`：
 
-```js twoslash [vite.config.js]
+::: code-group
+
+```js twoslash [vite.config.js (single entry)]
 import { resolve } from 'path'
 import { defineConfig } from 'vite'
 
 export default defineConfig({
   build: {
     lib: {
-      // Could also be a dictionary or array of multiple entry points
       entry: resolve(__dirname, 'lib/main.js'),
       name: 'MyLib',
       // the proper extensions will be added
@@ -148,7 +163,42 @@ export default defineConfig({
 })
 ```
 
+<<<<<<< HEAD
 入口文件将包含可以由你的包的用户导入的导出：
+=======
+```js twoslash [vite.config.js (multiple entries)]
+import { resolve } from 'path'
+import { defineConfig } from 'vite'
+
+export default defineConfig({
+  build: {
+    lib: {
+      entry: {
+        'my-lib': resolve(__dirname, 'lib/main.js'),
+        secondary: resolve(__dirname, 'lib/secondary.js'),
+      },
+      name: 'MyLib',
+    },
+    rollupOptions: {
+      // make sure to externalize deps that shouldn't be bundled
+      // into your library
+      external: ['vue'],
+      output: {
+        // Provide global variables to use in the UMD build
+        // for externalized deps
+        globals: {
+          vue: 'Vue',
+        },
+      },
+    },
+  },
+})
+```
+
+:::
+
+The entry file would contain exports that can be imported by users of your package:
+>>>>>>> d99d2948d399a2e2fa56a53e37e3de028733d873
 
 ```js [lib/main.js]
 import Foo from './Foo.vue'
@@ -167,7 +217,9 @@ dist/my-lib.umd.cjs 0.30 kB / gzip: 0.16 kB
 
 推荐在你库的 `package.json` 中使用如下格式：
 
-```json [package.json]
+::: code-group
+
+```json [package.json (single entry)]
 {
   "name": "my-lib",
   "type": "module",
@@ -183,9 +235,13 @@ dist/my-lib.umd.cjs 0.30 kB / gzip: 0.16 kB
 }
 ```
 
+<<<<<<< HEAD
 或者，如果暴露了多个入口起点：
 
 ```json [package.json]
+=======
+```json [package.json (multiple entries)]
+>>>>>>> d99d2948d399a2e2fa56a53e37e3de028733d873
 {
   "name": "my-lib",
   "type": "module",
@@ -205,8 +261,15 @@ dist/my-lib.umd.cjs 0.30 kB / gzip: 0.16 kB
 }
 ```
 
+<<<<<<< HEAD
 ::: tip 文件扩展名
 如果 `package.json` 不包含 `"type": "module"`，Vite 会生成不同的文件后缀名以兼容 Node.js。`.js` 会变为 `.mjs` 而 `.cjs` 会变为 `.js` 。
+=======
+:::
+
+::: tip File Extensions
+If the `package.json` does not contain `"type": "module"`, Vite will generate different file extensions for Node.js compatibility. `.js` will become `.mjs` and `.cjs` will become `.js`.
+>>>>>>> d99d2948d399a2e2fa56a53e37e3de028733d873
 :::
 
 ::: tip 环境变量

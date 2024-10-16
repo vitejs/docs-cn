@@ -1,7 +1,12 @@
 # 环境 API {#environment-api}
 
+<<<<<<< HEAD
 :::warning 底层 API
 这个 API 的初始版本在 Vite 5.1 中以 "Vite 运行时 API" 的名字被引入。这份指南描述了一个经过修订的 API，被重新命名为环境 API（Environment API）。这个 API 将在 Vite 6 中作为实验性功能发布。你现在已经可以在最新的 `vite@6.0.0-beta.x` 版本中进行测试。
+=======
+:::warning Experimental
+Initial work for this API was introduced in Vite 5.1 with the name "Vite Runtime API". This guide describes a revised API, renamed to Environment API. This API will be released in Vite 6 as experimental. You can already test it in the latest `vite@6.0.0-beta.x` version.
+>>>>>>> d99d2948d399a2e2fa56a53e37e3de028733d873
 
 资料：
 
@@ -11,6 +16,7 @@
 在你测试这个提议的过程中，请与我们分享你的反馈。
 :::
 
+<<<<<<< HEAD
 Vite 6 正式引入了环境（Environments）的概念，引入了新的 API 来创建和配置环境，以及使用一致的 API 访问其选项和上下文工具。自 Vite 2 以来，有两个默认的环境（`client` 和 `ssr`）。插件钩子在最后的选项参数中接收到一个 `ssr` 布尔值，以识别每个处理模块的目标环境。一些 API 预期一个可选的最后 `ssr` 参数，以正确地将模块关联到正确的环境（例如 `server.moduleGraph.getModuleByUrl(url, { ssr })`）。`ssr` 环境使用 `config.ssr` 进行配置，该配置包含了客户端环境中的部分选项。在开发过程中，`client` 和 `ssr` 环境与单个共享的插件管道一起并发运行。在构建过程中，每个构建都获得了一个新的已解析的配置实例和一组新的插件。
 
 新的环境 API 不仅明确了这两个默认环境，而且允许用户创建尽可能多的命名环境。配置环境有一种统一的方式（使用 `config.environments`），并且可以在插件钩子中使用 `this.environment` 访问正在处理的模块的环境选项和上下文工具。之前预期 `ssr` 设为一个布尔值的 API 现在限定在适当的环境中（例如 `environment.moduleGraph.getModuleByUrl(url)`）。在开发过程中，所有环境像以前一样并发运行。在构建过程中，为了向后兼容，每个构建都获得自己的已解析配置实例。但插件或用户可以选择共享构建管道。
@@ -335,6 +341,23 @@ const ssrEnvironment = createWorkerdEnvironment('ssr', config)
 ```
 
 ## 环境配置 {#environment-configuration}
+=======
+## Formalizing Environments
+
+Vite 6 formalizes the concept of Environments. Until Vite 5, there were two implicit Environments (`client` and `ssr`). The new Environment API allows users to create as many environments as needed to map the way their apps work in production. This new capabilities required a big internal refactoring, but a big effort has been placed on backward compatibility. The initial goal of Vite 6 is to move the ecosystem to the new major as smoothly as possible, delaying the adoption of these new experimental APIs until enough users have migrated and frameworks and plugin authors have validated the new design.
+
+## Closing the gap between build and dev
+
+For a simple SPA, there is a single environment. The app will run in the user browser. During dev, except for Vite's requiring a modern browser, the environment matches closely the production runtime. In Vite 6, it would still be possible to use Vite without users knowing about environments. The usual vite config works for the default client environment in this case.
+
+In a typical server side rendered Vite app, there are two environments. The client environment is running the app in the browser, and the node environment runs the server that performs SSR. When running Vite in dev mode, the server code is executed in the same Node process as the Vite dev server giving a close approximation of the production environment. But an app can run servers in other JS runtimes, like [Cloudflare's workerd](https://github.com/cloudflare/workerd). And it is also common for modern apps to have more than two environments (for example, an app could be running by a browser, a node server, and an edge server). Vite 5 didn't allow for these cases to be properly represented.
+
+Vite 6 allows users to configure their app during build and dev to map all of its environments. During dev, a single Vite dev server can now be used to run code in multiple different environments concurrently. The app source code is still transformed by Vite dev server. On top of the shared HTTP server, middlewares, resolved config, and plugins pipeline, the Vite server now has a set of independent dev environments. Each of them is configured to match the production environment as closely as possible, and is connected to a dev runtime where the code is executed (for workerd, the server code can now run in miniflare locally). In the client, the browser imports and executes the code. In other environments, a module runner fetches and evaluates the transformed code.
+
+![Vite Environments](../images/vite-environments.svg)
+
+## Environment Configuration
+>>>>>>> d99d2948d399a2e2fa56a53e37e3de028733d873
 
 环境是通过 `environments` 配置选项显式配置的。
 
@@ -396,6 +419,7 @@ interface UserConfig extends EnvironmentOptions {
 
 ## 自定义环境实例 {#custom-environment-instances}
 
+<<<<<<< HEAD
 要创建自定义的开发或构建环境实例，你可以使用 `dev.createEnvironment` 或 `build.createEnvironment` 函数。
 
 ```js
@@ -459,14 +483,26 @@ function createWorkedEnvironment(userConfig) {
 
 ```js
 import { createWorkerdEnvironment } from 'vite-environment-workerd'
+=======
+Low level configuration APIs are available so runtime providers can provide environments for their runtimes.
+
+```js
+import { createCustomEnvironment } from 'vite-environment-provider'
+>>>>>>> d99d2948d399a2e2fa56a53e37e3de028733d873
 
 export default {
   environments: {
-    ssr: createWorkerdEnvironment({
+    client: {
+      build: {
+        outDir: '/dist/client',
+      },
+    }
+    ssr: createCustomEnvironment({
       build: {
         outDir: '/dist/ssr',
       },
     }),
+<<<<<<< HEAD
     rsc: createWorkerdEnvironment({
       build: {
         outDir: '/dist/rsc',
@@ -1005,6 +1041,9 @@ function myPlugin() {
     // Opt-in into a single instance for all environments
     sharedDuringBuild: true,
   }
+=======
+  },
+>>>>>>> d99d2948d399a2e2fa56a53e37e3de028733d873
 }
 ```
 
@@ -1016,8 +1055,26 @@ function myPlugin() {
 
 我们不建议现在就切换到环境 API。我们的目标是在插件不需要维护两个版本之前，让大部分用户基础采用 Vite 6。查看未来破坏性更改部分以获取未来弃用和升级路径的信息：
 
+<<<<<<< HEAD
 - [钩子函数中的 `this.environment`](/changes/this-environment-in-hooks)
 - [HMR `hotUpdate` 插件钩子](/changes/hotupdate-hook)
 - [迁移到按环境划分的 API](/changes/per-environment-apis)
 - [使用 `ModuleRunner` API 进行服务端渲染](/changes/ssr-using-modulerunner)
 - [构建过程中的共享插件](/changes/shared-plugins-during-build)
+=======
+- [`this.environment` in Hooks](/changes/this-environment-in-hooks)
+- [HMR `hotUpdate` Plugin Hook](/changes/hotupdate-hook)
+- [Move to per-environment APIs](/changes/per-environment-apis)
+- [SSR using `ModuleRunner` API](/changes/ssr-using-modulerunner)
+- [Shared plugins during build](/changes/shared-plugins-during-build)
+
+## Target users
+
+This guide provides the basic concepts about environments for end users.
+
+Plugin authors have a more consistent API available to interact with the current environment configuration. If you're building on top of Vite, the [Environment API Plugins Guide](./api-environment-plugins.md) guide describes the way extended plugin APIs available to support multiple custom environments.
+
+Frameworks could decide to expose environments at different levels. If you're a framework author, continue reading the [Environment API Frameworks Guide](./api-environment-frameworks) to learn about the Environment API programmatic side.
+
+For Runtime providers, the [Environment API Runtimes Guide](./api-environment-runtimes.md) explains how to offer custom environment to be consumed by frameworks and users.
+>>>>>>> d99d2948d399a2e2fa56a53e37e3de028733d873
