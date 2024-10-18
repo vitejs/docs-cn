@@ -1,6 +1,12 @@
 # 构建选项 {#build-options}
 
+<<<<<<< HEAD
 ## build.target {#build-target}
+=======
+Unless noted, the options in this section are only applied to build.
+
+## build.target
+>>>>>>> 4dcf01e87b0733f49e1dfe506104f90e862aa87b
 
 - **类型：** `string | string[]`
 - **默认：** `'modules'`
