@@ -1,4 +1,4 @@
-# Vite 运行时 API {#vite-runtime-api}
+# Vite Runtime API {#vite-runtime-api}
 
 :::warning 底层 API
 这个 API 在 Vite 5.1 中作为一个实验性特性引入。它被添加以 [收集反馈](https://github.com/vitejs/vite/discussions/15774)。在Vite 5.2 中，它可能会有破坏性的变化，所以在使用它时，请确保将 Vite 版本固定在 `~5.1.0`。这是一个面向库和框架作者的底层 API。如果你的目标是开发应用，请确保首先查看 [Vite SSR 精选板块](https://github.com/vitejs/awesome-vite#ssr) 的高级 SSR 插件和工具。
