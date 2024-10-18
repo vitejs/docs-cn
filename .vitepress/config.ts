@@ -374,12 +374,33 @@ export default defineConfig({
               link: '/guide/api-javascript',
             },
             {
-              text: '环境 API',
+              text: '配置参考',
+              link: '/config/',
+            },
+          ],
+        },
+        {
+          text: '环境 API',
+          items: [
+            {
+              text: '介绍',
               link: '/guide/api-environment',
             },
             {
-              text: '配置参考',
-              link: '/config/',
+              text: '环境实例',
+              link: '/guide/api-environment-instances',
+            },
+            {
+              text: '插件',
+              link: '/guide/api-environment-plugins',
+            },
+            {
+              text: '框架',
+              link: '/guide/api-environment-frameworks',
+            },
+            {
+              text: '运行时',
+              link: '/guide/api-environment-runtimes',
             },
           ],
         },

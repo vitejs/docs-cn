@@ -29,6 +29,16 @@
 
 若想要进一步控制基础路径，请查看 [高级 base 选项](#advanced-base-options).
 
+### 相对基础路径 {#relative-base}
+
+如果无法提前确定基础路径，可以使用 `"base": "./"` 或 `"base": ""` 设置相对基础路径。这将使所有生成的 URL 相对于每个文件。
+
+:::warning 使用相对基础路径时对旧浏览器的支持
+
+使用相对基础路径需要 `import.meta` 的支持。如果你需要支持 [不支持 `import.meta` 的浏览器](https://caniuse.com/mdn-javascript_operators_import_meta)，可以使用 [`legacy` 插件](https://github.com/vitejs/vite/tree/main/packages/plugin-legacy)。
+
+:::
+
 ## 自定义构建 {#customizing-the-build}
 
 构建过程可以通过多种 [构建配置选项](/config/#build-options) 来自定义构建。具体来说，你可以通过 `build.rollupOptions` 直接调整底层的 [Rollup 选项](https://rollupjs.org/configuration-options/)：
