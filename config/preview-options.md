@@ -1,6 +1,12 @@
 # 预览选项 {#preview-options}
 
+<<<<<<< HEAD
 ## preview.host {#preview-host}
+=======
+Unless noted, the options in this section are only applied to preview.
+
+## preview.host
+>>>>>>> 4dcf01e87b0733f49e1dfe506104f90e862aa87b
 
 - **类型：** `string | boolean`
 - **默认：** [`server.host`](./server-options#server-host)

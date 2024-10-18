@@ -2,13 +2,23 @@
 
 - **相关内容：** [依赖预构建](/guide/dep-pre-bundling)
 
+<<<<<<< HEAD
 ## optimizeDeps.entries {#optimizedeps-entries}
+=======
+Unless noted, the options in this section are only applied to the dependency optimizer, which is only used in dev.
+
+## optimizeDeps.entries
+>>>>>>> 4dcf01e87b0733f49e1dfe506104f90e862aa87b
 
 - **类型：** `string | string[]`
 
 默认情况下，Vite 会抓取你的 `index.html` 来检测需要预构建的依赖项（忽略了`node_modules`、`build.outDir`、`__tests__` 和 `coverage`）。如果指定了 `build.rollupOptions.input`，Vite 将转而去抓取这些入口点。
 
+<<<<<<< HEAD
 如果这两者都不合你意，则可以使用此选项指定自定义条目——该值需要遵循 [fast-glob 模式](https://github.com/mrmlnc/fast-glob#basic-syntax) ，或者是相对于 Vite 项目根目录的匹配模式数组。当显式声明了 `optimizeDeps.entries` 时默认只有 `node_modules` 和 `build.outDir` 文件夹会被忽略。如果还需忽略其他文件夹，你可以在模式列表中使用以 `!` 为前缀的、用来匹配忽略项的模式。如果你不想忽略 `node_modules` 和 `build.outDir`，你可以选择直接使用字符串路径（不使用 fast-glob 模式）。
+=======
+If neither of these fit your needs, you can specify custom entries using this option - the value should be a [`tinyglobby` pattern](https://github.com/SuperchupuDev/tinyglobby) or array of patterns that are relative from Vite project root. This will overwrite default entries inference. Only `node_modules` and `build.outDir` folders will be ignored by default when `optimizeDeps.entries` is explicitly defined. If other folders need to be ignored, you can use an ignore pattern as part of the entries list, marked with an initial `!`. If you don't want to ignore `node_modules` and `build.outDir`, you can specify using literal string paths (without `tinyglobby` patterns) instead.
+>>>>>>> 4dcf01e87b0733f49e1dfe506104f90e862aa87b
 
 ## optimizeDeps.exclude {#optimizedeps-exclude}
 

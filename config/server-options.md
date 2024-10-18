@@ -1,6 +1,12 @@
 # 开发服务器选项 {#server-options}
 
+<<<<<<< HEAD
 ## server.host {#server-host}
+=======
+Unless noted, the options in this section are only applied to dev.
+
+## server.host
+>>>>>>> 4dcf01e87b0733f49e1dfe506104f90e862aa87b
 
 - **类型：** `string | boolean`
 - **默认：** `'localhost'`
@@ -85,7 +91,11 @@ export default defineConfig({
 
 - **类型：** `Record<string, string | ProxyOptions>`
 
+<<<<<<< HEAD
 为开发服务器配置自定义代理规则。期望接收一个 `{ key: options }` 对象。任何请求路径以 key 值开头的请求将被代理到对应的目标。如果 key 值以 `^` 开头，将被识别为 `RegExp`。`configure` 选项可用于访问 proxy 实例。
+=======
+Configure custom proxy rules for the dev server. Expects an object of `{ key: options }` pairs. Any requests that request path starts with that key will be proxied to that specified target. If the key starts with `^`, it will be interpreted as a `RegExp`. The `configure` option can be used to access the proxy instance. If a request matches any of the configured proxy rules, the request won't be transformed by Vite.
+>>>>>>> 4dcf01e87b0733f49e1dfe506104f90e862aa87b
 
 请注意，如果使用了非相对的 [基础路径 `base`](/config/shared-options.md#base)，则必须在每个 key 值前加上该 `base`。
 
@@ -184,7 +194,11 @@ Direct websocket connection fallback. Check out https://vite.dev/config/server-o
 
 提前转换和缓存文件以进行预热。可以在服务器启动时提高初始页面加载速度，并防止转换瀑布。
 
+<<<<<<< HEAD
 `clientFiles` 是仅在客户端使用的文件，而 `ssrFiles` 是仅在服务端渲染中使用的文件。它们接受一个文件路径数组或相对于 `root` 的 [`fast-glob`](https://github.com/mrmlnc/fast-glob) 通配符。
+=======
+`clientFiles` are files that are used in the client only, while `ssrFiles` are files that are used in SSR only. They accept an array of file paths or [`tinyglobby`](https://github.com/SuperchupuDev/tinyglobby) patterns relative to the `root`.
+>>>>>>> 4dcf01e87b0733f49e1dfe506104f90e862aa87b
 
 请确保只添加经常使用的文件，以免在启动时过载 Vite 开发服务器。
 
@@ -322,8 +336,13 @@ export default defineConfig({
 
 ## server.fs.deny {#server-fs-deny}
 
+<<<<<<< HEAD
 - **类型：** `string[]`
 - **默认：** `['.env', '.env.*', '*.{crt,pem}']`
+=======
+- **Type:** `string[]`
+- **Default:** `['.env', '.env.*', '*.{crt,pem}', '**/.git/**']`
+>>>>>>> 4dcf01e87b0733f49e1dfe506104f90e862aa87b
 
 用于限制 Vite 开发服务器提供敏感文件的黑名单。这会比 [`server.fs.allow`](#server-fs-allow) 选项的优先级更高。同时还支持 [picomatch 模式](https://github.com/micromatch/picomatch#globbing-features)。
 

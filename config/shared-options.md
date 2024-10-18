@@ -1,6 +1,12 @@
 # 共享选项 {#shared-options}
 
+<<<<<<< HEAD
 ## root {#root}
+=======
+Unless noted, the options in this section are applied to all dev, build, and preview.
+
+## root
+>>>>>>> 4dcf01e87b0733f49e1dfe506104f90e862aa87b
 
 - **类型：** `string`
 - **默认：** `process.cwd()`
