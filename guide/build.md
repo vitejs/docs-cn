@@ -159,9 +159,6 @@ export default defineConfig({
 })
 ```
 
-<<<<<<< HEAD
-入口文件将包含可以由你的包的用户导入的导出：
-=======
 ```js twoslash [vite.config.js (multiple entries)]
 import { resolve } from 'path'
 import { defineConfig } from 'vite'
@@ -193,8 +190,7 @@ export default defineConfig({
 
 :::
 
-The entry file would contain exports that can be imported by users of your package:
->>>>>>> 4dcf01e87b0733f49e1dfe506104f90e862aa87b
+入口文件将包含可以被您的包的用户导入的导出内容：
 
 ```js [lib/main.js]
 import Foo from './Foo.vue'
@@ -231,13 +227,7 @@ dist/my-lib.umd.cjs 0.30 kB / gzip: 0.16 kB
 }
 ```
 
-<<<<<<< HEAD
-或者，如果暴露了多个入口起点：
-
-```json [package.json]
-=======
 ```json [package.json (multiple entries)]
->>>>>>> 4dcf01e87b0733f49e1dfe506104f90e862aa87b
 {
   "name": "my-lib",
   "type": "module",
@@ -257,15 +247,8 @@ dist/my-lib.umd.cjs 0.30 kB / gzip: 0.16 kB
 }
 ```
 
-<<<<<<< HEAD
 ::: tip 文件扩展名
 如果 `package.json` 不包含 `"type": "module"`，Vite 会生成不同的文件后缀名以兼容 Node.js。`.js` 会变为 `.mjs` 而 `.cjs` 会变为 `.js` 。
-=======
-:::
-
-::: tip File Extensions
-If the `package.json` does not contain `"type": "module"`, Vite will generate different file extensions for Node.js compatibility. `.js` will become `.mjs` and `.cjs` will become `.js`.
->>>>>>> 4dcf01e87b0733f49e1dfe506104f90e862aa87b
 :::
 
 ::: tip 环境变量

@@ -153,8 +153,7 @@
    ```
 
    ::: details Pseudo implementation of `importedChunks`
-   An example pseudo implementation of `importedChunks` in TypeScript (This will
-   need to be adapted for your programming language and templating language):
+   `importedChunks` 在 TypeScript 中的一个示例伪实现（这需要根据您的编程语言和模板语言进行调整）：
 
    ```ts
    import type { Manifest, ManifestChunk } from 'vite'
