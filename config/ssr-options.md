@@ -1,6 +1,12 @@
 # SSR 选项 {#ssr-options}
 
+<<<<<<< HEAD
 ## ssr.external {#ssr-external}
+=======
+Unless noted, the options in this section are applied to both dev and build.
+
+## ssr.external
+>>>>>>> 84ff10107ef932a2a3581a2502eb46d92f81b9e5
 
 - **类型:** `string[] | true`
 - **相关：** [SSR 外部化](/guide/ssr#ssr-externals)

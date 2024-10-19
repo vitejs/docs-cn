@@ -106,10 +106,14 @@ import InlineWorker from './shader.js?worker&inline'
 
 目录默认是 `<root>/public`，但可以通过 [`publicDir` 选项](/config/shared-options.md#publicdir) 来配置。
 
+<<<<<<< HEAD
 请注意：
 
 - 引入 `public` 中的资源永远应该使用根绝对路径 —— 举个例子，`public/icon.png` 应该在源码中被引用为 `/icon.png`。
 - `public` 中的资源不应该被 JavaScript 文件引用。
+=======
+Note that you should always reference `public` assets using root absolute path - for example, `public/icon.png` should be referenced in source code as `/icon.png`.
+>>>>>>> 84ff10107ef932a2a3581a2502eb46d92f81b9e5
 
 ## new URL(url, import.meta.url)
 

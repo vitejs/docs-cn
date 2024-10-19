@@ -1,6 +1,10 @@
 # Worker 选项 {#worker-options}
 
+<<<<<<< HEAD
 有关于 Web Worker 的选项。
+=======
+Unless noted, the options in this section are applied to all dev, build, and preview.
+>>>>>>> 84ff10107ef932a2a3581a2502eb46d92f81b9e5
 
 ## worker.format
 
