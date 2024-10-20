@@ -1,6 +1,8 @@
 # 构建选项 {#build-options}
 
-## build.target {#build-target}
+除非另有说明，本节中的选项仅适用于构建。
+
+## build.target
 
 - **类型：** `string | string[]`
 - **默认：** `'modules'`

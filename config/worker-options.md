@@ -1,6 +1,6 @@
 # Worker 选项 {#worker-options}
 
-有关于 Web Worker 的选项。
+除非另有说明，本节中的选项适用于所有开发、构建和预览。
 
 ## worker.format
 
