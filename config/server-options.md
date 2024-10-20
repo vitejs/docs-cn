@@ -186,11 +186,7 @@ Direct websocket connection fallback. Check out https://vite.dev/config/server-o
 
 提前转换和缓存文件以进行预热。可以在服务器启动时提高初始页面加载速度，并防止转换瀑布。
 
-<<<<<<< HEAD
-`clientFiles` 是仅在客户端使用的文件，而 `ssrFiles` 是仅在服务端渲染中使用的文件。它们接受一个文件路径数组或相对于 `root` 的 [`fast-glob`](https://github.com/mrmlnc/fast-glob) 通配符。
-=======
-`clientFiles` are files that are used in the client only, while `ssrFiles` are files that are used in SSR only. They accept an array of file paths or [`tinyglobby`](https://github.com/SuperchupuDev/tinyglobby) patterns relative to the `root`.
->>>>>>> 4dcf01e87b0733f49e1dfe506104f90e862aa87b
+`clientFiles` 是仅在客户端使用的文件，而 `ssrFiles` 是仅在服务端渲染中使用的文件。它们接受相对于 `root` 的文件路径数组或 [`tinyglobby`](https://github.com/SuperchupuDev/tinyglobby) 模式。
 
 请确保只添加经常使用的文件，以免在启动时过载 Vite 开发服务器。
 
@@ -328,13 +324,8 @@ export default defineConfig({
 
 ## server.fs.deny {#server-fs-deny}
 
-<<<<<<< HEAD
 - **类型：** `string[]`
-- **默认：** `['.env', '.env.*', '*.{crt,pem}']`
-=======
-- **Type:** `string[]`
-- **Default:** `['.env', '.env.*', '*.{crt,pem}', '**/.git/**']`
->>>>>>> 4dcf01e87b0733f49e1dfe506104f90e862aa87b
+- **默认：** `['.env', '.env.*', '*.{crt,pem}', '**/.git/**']`
 
 用于限制 Vite 开发服务器提供敏感文件的黑名单。这会比 [`server.fs.allow`](#server-fs-allow) 选项的优先级更高。同时还支持 [picomatch 模式](https://github.com/micromatch/picomatch#globbing-features)。
 
