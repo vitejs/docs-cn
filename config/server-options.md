@@ -1,12 +1,8 @@
 # 开发服务器选项 {#server-options}
 
-<<<<<<< HEAD
-## server.host {#server-host}
-=======
-Unless noted, the options in this section are only applied to dev.
+除非另有说明，本节中的选项仅适用于开发环境。
 
 ## server.host
->>>>>>> 4dcf01e87b0733f49e1dfe506104f90e862aa87b
 
 - **类型：** `string | boolean`
 - **默认：** `'localhost'`
@@ -91,11 +87,7 @@ export default defineConfig({
 
 - **类型：** `Record<string, string | ProxyOptions>`
 
-<<<<<<< HEAD
-为开发服务器配置自定义代理规则。期望接收一个 `{ key: options }` 对象。任何请求路径以 key 值开头的请求将被代理到对应的目标。如果 key 值以 `^` 开头，将被识别为 `RegExp`。`configure` 选项可用于访问 proxy 实例。
-=======
-Configure custom proxy rules for the dev server. Expects an object of `{ key: options }` pairs. Any requests that request path starts with that key will be proxied to that specified target. If the key starts with `^`, it will be interpreted as a `RegExp`. The `configure` option can be used to access the proxy instance. If a request matches any of the configured proxy rules, the request won't be transformed by Vite.
->>>>>>> 4dcf01e87b0733f49e1dfe506104f90e862aa87b
+为开发服务器配置自定义代理规则。期望接收一个 `{ key: options }` 对象。任何请求路径以 key 值开头的请求将被代理到对应的目标。如果 key 值以 `^` 开头，将被识别为 `RegExp`。`configure` 选项可用于访问 proxy 实例。如果请求匹配任何配置的代理规则，该请求将不会被 Vite 转换。
 
 请注意，如果使用了非相对的 [基础路径 `base`](/config/shared-options.md#base)，则必须在每个 key 值前加上该 `base`。
 

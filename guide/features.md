@@ -88,22 +88,12 @@ export type { T }
 
 - [TypeScript 文档](https://www.typescriptlang.org/tsconfig#target)
 
-<<<<<<< HEAD
-Vite 默认不会转译 TypeScript，而是使用 `esbuild` 的默认行为。
+Vite 忽略 `tsconfig.json` 中的 `target` 值，遵循与 `esbuild` 相同的行为。
 
-该 [`esbuild.target`](/config/shared-options.html#esbuild) 选项可以用来代替上述行为，默认值为 `esnext`，以进行最小的转译。在构建中，[`build.target`](/config/build-options.html#build-target) 选项优先级更高，如果需要也可以设置。
+要在开发中指定目标，可使用 [`esbuild.target`](/config/shared-options.html#esbuild) 选项，默认值为 `esnext`，以实现最小的转译。在构建中，[`build.target`](/config/build-options.html#build-target) 选项优先于 `esbuild.target`，如有需要也可以进行设置。
 
 ::: warning `useDefineForClassFields`
 如果 `target` 不是 `ESNext` 或 `ES2022` 或更新版本，或者没有 `tsconfig.json` 文件，`useDefineForClassFields` 将默认为 `false`，这可能会导致默认的 `esbuild.target` 值为 `esnext` 的问题。它可能会转译为 [static initialization blocks](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/Static_initialization_blocks#browser_compatibility)，这在你的浏览器中可能不被支持。
-=======
-Vite ignores the `target` value in the `tsconfig.json`, following the same behavior as `esbuild`.
-
-To specify the target in dev, the [`esbuild.target`](/config/shared-options.html#esbuild) option can be used, which defaults to `esnext` for minimal transpilation. In builds, the [`build.target`](/config/build-options.html#build-target) option takes higher priority over `esbuild.target` and can also be set if needed.
-
-::: warning `useDefineForClassFields`
-
-If `target` in `tsconfig.json` is not `ESNext` or `ES2022` or newer, or if there's no `tsconfig.json` file, `useDefineForClassFields` will default to `false` which can be problematic with the default `esbuild.target` value of `esnext`. It may transpile to [static initialization blocks](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/Static_initialization_blocks#browser_compatibility) which may not be supported in your browser.
->>>>>>> 4dcf01e87b0733f49e1dfe506104f90e862aa87b
 
 因此，建议将 `target` 设置为 `ESNext` 或 `ES2022` 或更新版本，或者在配置 `tsconfig.json` 时将 `useDefineForClassFields` 显式设置为 `true`。
 :::
@@ -550,17 +540,10 @@ const modules = import.meta.glob('./dir/*.js', {
 
 请注意：
 
-<<<<<<< HEAD
 - 这只是一个 Vite 独有的功能而不是一个 Web 或 ES 标准
 - 该 Glob 模式会被当成导入标识符：必须是相对路径（以 `./` 开头）或绝对路径（以 `/` 开头，相对于项目根目录解析）或一个别名路径（请看 [`resolve.alias` 选项](/config/shared-options.md#resolve-alias))。
-- Glob 匹配是使用 [fast-glob](https://github.com/mrmlnc/fast-glob) 来实现的 —— 阅读它的文档来查阅 [支持的 Glob 模式](https://github.com/mrmlnc/fast-glob#pattern-syntax)。
+- Glob 匹配是使用 [`tinyglobby`](https://github.com/SuperchupuDev/tinyglobby) 来实现的 —— 阅读它的文档来查阅 [支持的 Glob 模式](https://github.com/mrmlnc/fast-glob#pattern-syntax)。
 - 你还需注意，所有 `import.meta.glob` 的参数都必须以字面量传入。你 **不** 可以在其中使用变量或表达式。
-=======
-- This is a Vite-only feature and is not a web or ES standard.
-- The glob patterns are treated like import specifiers: they must be either relative (start with `./`) or absolute (start with `/`, resolved relative to project root) or an alias path (see [`resolve.alias` option](/config/shared-options.md#resolve-alias)).
-- The glob matching is done via [`tinyglobby`](https://github.com/SuperchupuDev/tinyglobby).
-- You should also be aware that all the arguments in the `import.meta.glob` must be **passed as literals**. You can NOT use variables or expressions in them.
->>>>>>> 4dcf01e87b0733f49e1dfe506104f90e862aa87b
 
 ## 动态导入 {#dynamic-import}
 
