@@ -34,17 +34,17 @@ export default {
   environments: {
     client: {
       resolve: {
-        conditions: [], // configure the Client environment
+        conditions: [], // 配置客户端环境
       },
     },
     ssr: {
       dev: {
-        optimizeDeps: {}, // configure the SSR environment
+        optimizeDeps: {}, // 配置 SSR 环境
       },
     },
     rsc: {
       resolve: {
-        noExternal: true, // configure a custom environment
+        noExternal: true, // 配置自定义环境
       },
     },
   },
@@ -56,7 +56,7 @@ export default {
 ```js
 export default {
   resolve: {
-    conditions: [], // configure a default for all environments
+    conditions: [], // 为所有环境配置默认值
   },
 }
 ```
@@ -75,7 +75,7 @@ interface EnvironmentOptions extends SharedEnvironmentOptions {
 ```ts
 interface UserConfig extends EnvironmentOptions {
   environments: Record<string, EnvironmentOptions>
-  // other options
+  // 其他选项
 }
 ```
 

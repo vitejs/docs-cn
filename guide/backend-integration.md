@@ -152,8 +152,9 @@
    <link rel="modulepreload" href="assets/shared-B7PI925R.js" />
    ```
 
-   ::: details Pseudo implementation of `importedChunks`
-   `importedChunks` 在 TypeScript 中的一个示例伪实现（这需要根据您的编程语言和模板语言进行调整）：
+   ::: details `importedChunks` 的伪代码实现
+   `importedChunks` 在 TypeScript 中的一个伪实现示例
+   （这需要根据您的编程语言和模板语言进行调整）：
 
    ```ts
    import type { Manifest, ManifestChunk } from 'vite'

@@ -133,7 +133,7 @@ export default defineConfig({
 
 ::: code-group
 
-```js twoslash [vite.config.js (single entry)]
+```js twoslash [vite.config.js (单入口)]
 import { resolve } from 'path'
 import { defineConfig } from 'vite'
 
@@ -142,14 +142,16 @@ export default defineConfig({
     lib: {
       entry: resolve(__dirname, 'lib/main.js'),
       name: 'MyLib',
-      // the proper extensions will be added
+      // 将添加适当的扩展名后缀
       fileName: 'my-lib',
     },
     rollupOptions: {
-      // 确保外部化处理那些你不想打包进库的依赖
+      // 确保外部化处理那些
+      // 你不想打包进库的依赖
       external: ['vue'],
       output: {
-        // 在 UMD 构建模式下为这些外部化的依赖提供一个全局变量
+        // 在 UMD 构建模式下为这些外部化的依赖
+        // 提供一个全局变量
         globals: {
           vue: 'Vue',
         },
@@ -159,7 +161,7 @@ export default defineConfig({
 })
 ```
 
-```js twoslash [vite.config.js (multiple entries)]
+```js twoslash [vite.config.js (多入口)]
 import { resolve } from 'path'
 import { defineConfig } from 'vite'
 
@@ -173,12 +175,12 @@ export default defineConfig({
       name: 'MyLib',
     },
     rollupOptions: {
-      // make sure to externalize deps that shouldn't be bundled
-      // into your library
+      // 确保外部化处理那些
+      // 你不想打包进库的依赖
       external: ['vue'],
       output: {
-        // Provide global variables to use in the UMD build
-        // for externalized deps
+        // 在 UMD 构建模式下为这些外部化的依赖
+        // 提供一个全局变量
         globals: {
           vue: 'Vue',
         },
@@ -207,11 +209,11 @@ dist/my-lib.js      0.08 kB / gzip: 0.07 kB
 dist/my-lib.umd.cjs 0.30 kB / gzip: 0.16 kB
 ```
 
-推荐在你库的 `package.json` 中使用如下格式：
+推荐在库的 `package.json` 中使用如下格式：
 
 ::: code-group
 
-```json [package.json (single entry)]
+```json [package.json (单入口)]
 {
   "name": "my-lib",
   "type": "module",
@@ -227,7 +229,7 @@ dist/my-lib.umd.cjs 0.30 kB / gzip: 0.16 kB
 }
 ```
 
-```json [package.json (multiple entries)]
+```json [package.json (多入口)]
 {
   "name": "my-lib",
   "type": "module",
@@ -246,6 +248,8 @@ dist/my-lib.umd.cjs 0.30 kB / gzip: 0.16 kB
   }
 }
 ```
+
+:::
 
 ::: tip 文件扩展名
 如果 `package.json` 不包含 `"type": "module"`，Vite 会生成不同的文件后缀名以兼容 Node.js。`.js` 会变为 `.mjs` 而 `.cjs` 会变为 `.js` 。
