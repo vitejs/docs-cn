@@ -29,6 +29,16 @@
 
 若想要进一步控制基础路径，请查看 [高级 base 选项](#advanced-base-options).
 
+### 相对基础路径 {#relative-base}
+
+如果无法提前确定基础路径，可以使用 `"base": "./"` 或 `"base": ""` 设置相对基础路径。这将使所有生成的 URL 相对于每个文件。
+
+:::warning 使用相对基础路径时对旧浏览器的支持
+
+使用相对基础路径需要 `import.meta` 的支持。如果你需要支持 [不支持 `import.meta` 的浏览器](https://caniuse.com/mdn-javascript_operators_import_meta)，可以使用 [`legacy` 插件](https://github.com/vitejs/vite/tree/main/packages/plugin-legacy)。
+
+:::
+
 ## 自定义构建 {#customizing-the-build}
 
 构建过程可以通过多种 [构建配置选项](/config/#build-options) 来自定义构建。具体来说，你可以通过 `build.rollupOptions` 直接调整底层的 [Rollup 选项](https://rollupjs.org/configuration-options/)：
@@ -121,14 +131,15 @@ export default defineConfig({
 
 当这个库要进行发布构建时，请使用 [`build.lib` 配置项](/config/build-options.md#build-lib)，以确保将那些你不想打包进库的依赖进行外部化处理，例如 `vue` 或 `react`：
 
-```js twoslash [vite.config.js]
+::: code-group
+
+```js twoslash [vite.config.js (single entry)]
 import { resolve } from 'path'
 import { defineConfig } from 'vite'
 
 export default defineConfig({
   build: {
     lib: {
-      // Could also be a dictionary or array of multiple entry points
       entry: resolve(__dirname, 'lib/main.js'),
       name: 'MyLib',
       // the proper extensions will be added
@@ -148,7 +159,38 @@ export default defineConfig({
 })
 ```
 
-入口文件将包含可以由你的包的用户导入的导出：
+```js twoslash [vite.config.js (multiple entries)]
+import { resolve } from 'path'
+import { defineConfig } from 'vite'
+
+export default defineConfig({
+  build: {
+    lib: {
+      entry: {
+        'my-lib': resolve(__dirname, 'lib/main.js'),
+        secondary: resolve(__dirname, 'lib/secondary.js'),
+      },
+      name: 'MyLib',
+    },
+    rollupOptions: {
+      // make sure to externalize deps that shouldn't be bundled
+      // into your library
+      external: ['vue'],
+      output: {
+        // Provide global variables to use in the UMD build
+        // for externalized deps
+        globals: {
+          vue: 'Vue',
+        },
+      },
+    },
+  },
+})
+```
+
+:::
+
+入口文件将包含可以被您的包的用户导入的导出内容：
 
 ```js [lib/main.js]
 import Foo from './Foo.vue'
@@ -167,7 +209,9 @@ dist/my-lib.umd.cjs 0.30 kB / gzip: 0.16 kB
 
 推荐在你库的 `package.json` 中使用如下格式：
 
-```json [package.json]
+::: code-group
+
+```json [package.json (single entry)]
 {
   "name": "my-lib",
   "type": "module",
@@ -183,9 +227,7 @@ dist/my-lib.umd.cjs 0.30 kB / gzip: 0.16 kB
 }
 ```
 
-或者，如果暴露了多个入口起点：
-
-```json [package.json]
+```json [package.json (multiple entries)]
 {
   "name": "my-lib",
   "type": "module",

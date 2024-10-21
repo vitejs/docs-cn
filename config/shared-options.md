@@ -1,6 +1,8 @@
 # 共享选项 {#shared-options}
 
-## root {#root}
+除非另有说明，本节中的选项适用于所有开发、构建和预览。
+
+## root
 
 - **类型：** `string`
 - **默认：** `process.cwd()`

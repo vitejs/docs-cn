@@ -1,6 +1,8 @@
 # 开发服务器选项 {#server-options}
 
-## server.host {#server-host}
+除非另有说明，本节中的选项仅适用于开发环境。
+
+## server.host
 
 - **类型：** `string | boolean`
 - **默认：** `'localhost'`
@@ -85,7 +87,7 @@ export default defineConfig({
 
 - **类型：** `Record<string, string | ProxyOptions>`
 
-为开发服务器配置自定义代理规则。期望接收一个 `{ key: options }` 对象。任何请求路径以 key 值开头的请求将被代理到对应的目标。如果 key 值以 `^` 开头，将被识别为 `RegExp`。`configure` 选项可用于访问 proxy 实例。
+为开发服务器配置自定义代理规则。期望接收一个 `{ key: options }` 对象。任何请求路径以 key 值开头的请求将被代理到对应的目标。如果 key 值以 `^` 开头，将被识别为 `RegExp`。`configure` 选项可用于访问 proxy 实例。如果请求匹配任何配置的代理规则，该请求将不会被 Vite 转换。
 
 请注意，如果使用了非相对的 [基础路径 `base`](/config/shared-options.md#base)，则必须在每个 key 值前加上该 `base`。
 
@@ -184,7 +186,7 @@ Direct websocket connection fallback. Check out https://vite.dev/config/server-o
 
 提前转换和缓存文件以进行预热。可以在服务器启动时提高初始页面加载速度，并防止转换瀑布。
 
-`clientFiles` 是仅在客户端使用的文件，而 `ssrFiles` 是仅在服务端渲染中使用的文件。它们接受一个文件路径数组或相对于 `root` 的 [`fast-glob`](https://github.com/mrmlnc/fast-glob) 通配符。
+`clientFiles` 是仅在客户端使用的文件，而 `ssrFiles` 是仅在服务端渲染中使用的文件。它们接受相对于 `root` 的文件路径数组或 [`tinyglobby`](https://github.com/SuperchupuDev/tinyglobby) 模式。
 
 请确保只添加经常使用的文件，以免在启动时过载 Vite 开发服务器。
 
@@ -323,7 +325,7 @@ export default defineConfig({
 ## server.fs.deny {#server-fs-deny}
 
 - **类型：** `string[]`
-- **默认：** `['.env', '.env.*', '*.{crt,pem}']`
+- **默认：** `['.env', '.env.*', '*.{crt,pem}', '**/.git/**']`
 
 用于限制 Vite 开发服务器提供敏感文件的黑名单。这会比 [`server.fs.allow`](#server-fs-allow) 选项的优先级更高。同时还支持 [picomatch 模式](https://github.com/micromatch/picomatch#globbing-features)。
 
