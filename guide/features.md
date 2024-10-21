@@ -93,6 +93,7 @@ Vite 忽略 `tsconfig.json` 中的 `target` 值，遵循与 `esbuild` 相同的�
 要在开发中指定目标，可使用 [`esbuild.target`](/config/shared-options.html#esbuild) 选项，默认值为 `esnext`，以实现最小的转译。在构建中，[`build.target`](/config/build-options.html#build-target) 选项优先于 `esbuild.target`，如有需要也可以进行设置。
 
 ::: warning `useDefineForClassFields`
+
 如果 `target` 不是 `ESNext` 或 `ES2022` 或更新版本，或者没有 `tsconfig.json` 文件，`useDefineForClassFields` 将默认为 `false`，这可能会导致默认的 `esbuild.target` 值为 `esnext` 的问题。它可能会转译为 [static initialization blocks](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/Static_initialization_blocks#browser_compatibility)，这在你的浏览器中可能不被支持。
 
 因此，建议将 `target` 设置为 `ESNext` 或 `ES2022` 或更新版本，或者在配置 `tsconfig.json` 时将 `useDefineForClassFields` 显式设置为 `true`。
