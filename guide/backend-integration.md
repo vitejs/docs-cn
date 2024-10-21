@@ -152,7 +152,7 @@
    <link rel="modulepreload" href="assets/shared-B7PI925R.js" />
    ```
 
-   ::: `importedChunks` 的伪实现
+   ::: details `importedChunks` 的伪代码实现
    `importedChunks` 在 TypeScript 中的一个伪实现示例
    （这需要根据您的编程语言和模板语言进行调整）：
 
