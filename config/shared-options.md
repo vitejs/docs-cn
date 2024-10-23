@@ -345,12 +345,21 @@ import type {
 
 ## json.stringify {#json-stringify}
 
+<<<<<<< HEAD
 - **类型：** `boolean`
 - **默认：** `false`
+=======
+- **Type:** `boolean | 'auto'`
+- **Default:** `'auto'`
+>>>>>>> c4698689ed68aca455e6d6e59d71fe1ab32a1336
 
 若设置为 `true`，导入的 JSON 会被转换为 `export default JSON.parse("...")`，这样会比转译成对象字面量性能更好，尤其是当 JSON 文件较大的时候。
 
+<<<<<<< HEAD
 开启此项，则会禁用按名导入。
+=======
+If set to `'auto'`, the data will be stringified only if [the data is bigger than 10kB](https://v8.dev/blog/cost-of-javascript-2019#json:~:text=A%20good%20rule%20of%20thumb%20is%20to%20apply%20this%20technique%20for%20objects%20of%2010%20kB%20or%20larger).
+>>>>>>> c4698689ed68aca455e6d6e59d71fe1ab32a1336
 
 ## esbuild {#esbuild}
 
