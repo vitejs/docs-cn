@@ -69,7 +69,7 @@ vite build [root]
 | `-f, --filter <filter>`        | 过滤调试日志 (`string`) |
 | `-m, --mode <mode>`            | 设置环境模式 (`string`) |
 | `-h, --help`                   | 显示可用的 CLI 选项 |
-| `--app`                        | 构建所有环境，这与 `builder.entireApp` 是一样的（`boolean`，实验性）|
+| `--app`                        | 构建所有环境，这与 `builder: {}` 是一样的（`boolean`，实验性）|
 
 ## 其他 {#others}
 

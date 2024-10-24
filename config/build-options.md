@@ -10,10 +10,7 @@
 
 设置最终构建的浏览器兼容目标。默认值是一个 Vite 特有的值：`'modules'`，这是指 [支持原生 ES 模块](https://caniuse.com/es6-module)、[原生 ESM 动态导入](https://caniuse.com/es6-module-dynamic-import) 和 [`import.meta`](https://caniuse.com/mdn-javascript_operators_import_meta) 的浏览器。Vite 将替换 `modules` 为 `['es2020', 'edge88', 'firefox78', 'chrome87', 'safari14']`
 
-另一个特殊值是 “esnext” —— 即假设有原生动态导入支持，并且将会转译得尽可能小：
-
-- 如果 [`build.minify`](#build-minify) 选项为 `'terser'`，并且安装的 Terser 版本小于 5.16.0，`'esnext'` 将会强制降级为 `'es2021'`。
-- 其他情况下将完全不会执行转译。
+另一个特殊值是 `'esnext'` —— 即假设有原生动态导入支持，并只执行最低限度的转译。
 
 转换过程将会由 esbuild 执行，并且此值应该是一个合法的 [esbuild 目标选项](https://esbuild.github.io/api/#target)。自定义目标也可以是一个 ES 版本（例如：`es2015`）、一个浏览器版本（例如：`chrome58`）或是多个目标组成的一个数组。
 
