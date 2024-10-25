@@ -1,6 +1,6 @@
 import { onMounted, ref } from 'vue'
 
-export function useFetchReleaseTag() {
+export function useReleaseTag() {
   const releaseTag = ref('')
 
   onMounted(async () => {
