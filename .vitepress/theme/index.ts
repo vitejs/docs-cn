@@ -8,6 +8,7 @@ import './styles/landing.css'
 import AsideSponsors from './components/AsideSponsors.vue'
 import SvgImage from './components/SvgImage.vue'
 import WwAds from './components/WwAds.vue'
+import ReleaseTag from './components/ReleaseTag.vue'
 import './custom.css'
 import 'virtual:group-icons.css'
 
@@ -21,6 +22,7 @@ export default {
   },
   enhanceApp({ app }) {
     app.component('SvgImage', SvgImage)
+    app.component('ReleaseTag', ReleaseTag)
     app.use(TwoslashFloatingVue)
   },
 } satisfies Theme
