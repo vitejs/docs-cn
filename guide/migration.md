@@ -1,4 +1,4 @@
-# 从 v5 迁移
+# 从 v5 迁移 {#migration-from-v5}
 
 ## 环境 API {#environment-api}
 
