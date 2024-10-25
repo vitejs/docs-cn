@@ -126,13 +126,8 @@ interface ViteDevServer {
    */
   moduleGraph: ModuleGraph
   /**
-<<<<<<< HEAD
-   * Vite CLI 会打印出来的被解析的 URL。在中间件模式下、或是
-   * 在 `server.listen` 调用之前会是 null
-=======
-   * The resolved urls Vite prints on the CLI (URL-encoded). Returns `null`
-   * in middleware mode or if the server is not listening on any port.
->>>>>>> 65779bb96007c6deb76538a7c32f13543c380fe6
+   * Vite CLI(URL-encoded). 会打印出来的被解析的 URL。返回 `null`
+   * 在中间件模式下，或者服务器没有监听任何端口。
    */
   resolvedUrls: ResolvedServerUrls | null
   /**
@@ -277,13 +272,8 @@ interface PreviewServer {
    */
   httpServer: http.Server
   /**
-<<<<<<< HEAD
-   * Vite 在 CLI 中输出解析后的 URL
-   * 在服务器开始监听前，值为 null
-=======
-   * The resolved urls Vite prints on the CLI (URL-encoded). Returns `null`
-   * if the server is not listening on any port.
->>>>>>> 65779bb96007c6deb76538a7c32f13543c380fe6
+   * Vite 在 CLI(URL-encoded) 中输出解析后的 URL。返回 `null`
+   * 如果服务器没有监听任何端口。
    */
   resolvedUrls: ResolvedServerUrls | null
   /**
