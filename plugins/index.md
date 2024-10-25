@@ -26,7 +26,7 @@ Vite 旨在为常见的 web 开发工作提供开箱即用的支持。在搜索�
 
 ### [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react) {#vitejs-plugin-react}
 
-- 使用 esbuild 和 Babel，使用一个微小体积的包脚注可以实现极速的 HMR，同时提升灵活性，能够使用 Babel 的转换管线。在构建时没有使用额外的 Babel 插件，只使用了 esbuild。
+- 使用 esbuild 和 Babel，以较小的软件包占用空间和使用 Babel 转换管道的灵活性实现快速 HMR。如果没有额外的 Babel 插件，在构建过程中只能使用 esbuild。
 
 ### [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) {#vitejs-plugin-react-swc}
 
