@@ -20,7 +20,7 @@
 
 Vite 6 还为 `json.stringify` 引入了一个新的默认值，即 `'auto'`，它只会对大型 JSON 文件进行字符串化处理。要禁用此行为，请设置 `json.stringify: false`。
 
-## 进阶
+## 进阶 {#advanced}
 
 还有其他一些只影响少数用户的破坏性更改。
 
