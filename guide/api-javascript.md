@@ -126,8 +126,8 @@ interface ViteDevServer {
    */
   moduleGraph: ModuleGraph
   /**
-   * Vite CLI 会打印出来的被解析的 URL。在中间件模式下、或是
-   * 在 `server.listen` 调用之前会是 null
+   * Vite 在 CLI 上打印的已解析的 URL（经 URL 编码处理）。
+   * 在中间件模式下或服务器未监听任何端口时，返回 `null`。
    */
   resolvedUrls: ResolvedServerUrls | null
   /**
@@ -272,8 +272,8 @@ interface PreviewServer {
    */
   httpServer: http.Server
   /**
-   * Vite 在 CLI 中输出解析后的 URL
-   * 在服务器开始监听前，值为 null
+   * Vite 在 CLI 上打印的已解析的 URL（经 URL 编码处理）。
+   * 在服务器未监听任何端口时，返回 `null`。
    */
   resolvedUrls: ResolvedServerUrls | null
   /**

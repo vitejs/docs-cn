@@ -217,7 +217,7 @@ Vite 有一个“允许的情景”列表，并且会匹配列表中第一个情
 
 对内联的 POSTCSS 配置，它期望接收与 `postcss.config.js` 一致的格式。但对于 `plugins` 属性有些特别，只接收使用 [数组格式](https://github.com/postcss/postcss-load-config/blob/main/README.md#array)。
 
-搜索是使用 [postcss-load-config](https://github.com/postcss/postcss-load-config) 完成的，只有被支持的文件名才会被加载。
+搜索是使用 [postcss-load-config](https://github.com/postcss/postcss-load-config) 完成的，只有被支持的文件名才会被加载。默认情况下，不会搜索工作区根目录（或 [项目根目录](/guide/#index-html-and-project-root)，如果未找到工作区）之外的配置文件。如有必要，您可以指定根目录之外的自定义路径来加载特定的配置文件。
 
 注意：如果提供了该内联配置，Vite 将不会搜索其他 PostCSS 配置源。
 
