@@ -213,6 +213,9 @@ export default defineConfig({
     },
 
     nav: [
+      {
+        component: 'ReleaseTag'
+      },
       { text: '指引', link: '/guide/', activeMatch: '/guide/' },
       { text: '配置', link: '/config/', activeMatch: '/config/' },
       { text: '插件', link: '/plugins/', activeMatch: '/plugins/' },
