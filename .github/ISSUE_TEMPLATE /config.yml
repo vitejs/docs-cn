@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Vite Issue 区
+    url: https://github.com/vitejs/vite/issues
+    about: 与 Vite 相关的 Bug 上报，请移步 Vite 主仓库 issue 区
+  - name: Vite Discussion 区
+    url: https://github.com/vitejs/vite/discussions
+    about: 与 Vite 相关的使用问题和讨论，请移步 Vite 主仓库 discussion 区
