@@ -18,7 +18,7 @@ body:
     id: description
     attributes:
       label: 详细描述
-      description: 请简明扼要地阐述您的问题。如果您愿意提交 PR 修改，请参考 [贡献指南](https://github.com/vitejs/docs-cn/wiki/%E5%90%88%E4%BD%9C%E8%A7%84%E8%8C%83)
-      placeholder: 功能章节下的翻译有歧义...
+      description: 请简明扼要地阐述您的问题。如果您愿意提交 PR 修改，请参考 [贡献指南](https://github.com/vitejs/docs-cn/wiki/%E5%90%88%E4%BD%9C%E8%A7%84%E8%8C%83)。
+      placeholder: xxx章节下的翻译有歧义... xxx章节与英文原文对应不上...
     validations:
       required: true
