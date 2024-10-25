@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { useFetchReleaseTag } from '../../utils/useFetchReleaseTag.js'
+import { useReleaseTag } from '../../utils/useReleaseTag'
 
-const { releaseTag } = useFetchReleaseTag()
+const { releaseTag } = useReleaseTag()
 </script>
 
 <template>
