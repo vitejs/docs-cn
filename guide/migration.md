@@ -20,7 +20,7 @@
 
 Vite 6 还为 `json.stringify` 引入了一个新的默认值，即 `'auto'`，它只会对大型 JSON 文件进行字符串化处理。要禁用此行为，请设置 `json.stringify: false`。
 
-### Sass 现在默认使用现代 API
+### Sass 现在默认使用现代 API {#sass-now-uses-modern-api-by-default}
 
 在 Vite 5 中，Sass 默认使用传统 API。Vite 5.4 增加了对现代 API 的支持。
 
