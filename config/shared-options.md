@@ -217,7 +217,7 @@ Vite 有一个“允许的情景”列表，并且会匹配列表中第一个情
 
 对内联的 POSTCSS 配置，它期望接收与 `postcss.config.js` 一致的格式。但对于 `plugins` 属性有些特别，只接收使用 [数组格式](https://github.com/postcss/postcss-load-config/blob/main/README.md#array)。
 
-搜索是使用 [postcss-load-config](https://github.com/postcss/postcss-load-config) 完成的，只有被支持的文件名才会被加载。
+搜索是使用 [postcss-load-config](https://github.com/postcss/postcss-load-config) 完成的，只有被支持的文件名才会被加载。默认情况下，不会搜索工作区根目录（或 [项目根目录](/guide/#index-html-and-project-root)，如果未找到工作区）之外的配置文件。如有必要，您可以指定根目录之外的自定义路径来加载特定的配置文件。
 
 注意：如果提供了该内联配置，Vite 将不会搜索其他 PostCSS 配置源。
 
@@ -227,9 +227,12 @@ Vite 有一个“允许的情景”列表，并且会匹配列表中第一个情
 
 指定传递给 CSS 预处理器的选项。文件扩展名用作选项的键。每个预处理器支持的选项可以在它们各自的文档中找到：
 
-- `sass`/`scss` - 上层选项 `api: "legacy" | "modern" | "modern-compiler"`（默认值是 `"legacy"`）可以让你选择使用哪种 sass API。为获得最佳的性能，建议你使用 `sass-embedded` 包并设置 `api: "modern-compiler"`。[选项（legacy）](https://sass-lang.com/documentation/js-api/interfaces/LegacyStringOptions)，[选项（modern）](https://sass-lang.com/documentation/js-api/interfaces/stringoptions/)。
-- `less` - [选项](https://lesscss.org/usage/#less-options)。
-- `styl`/`stylus` - 仅支持 [`define`](https://stylus-lang.com/docs/js.html#define-name-node)，可以作为对象传递。
+- `sass`/`scss`:
+  - 选择要使用的 sass 应用程序接口 `api: "modern-compiler" | "modern" | "legacy"` (如果安装了`sass-embedded`，默认为`"modern-compiler"`，否则为 `"modern"`). 为获得最佳性能，建议使用 `api: "modern-compiler"` 和 `sass-embedded` 软件包。`"legacy"` API 已过时，将在 Vite 7 中移除。
+  - [Options (modern)](https://sass-lang.com/documentation/js-api/interfaces/stringoptions/)
+  - [Options (legacy)](https://sass-lang.com/documentation/js-api/interfaces/LegacyStringOptions).
+- `less`: [选项](https://lesscss.org/usage/#less-options).
+- `styl`/`stylus`: 仅支持 [`define`](https://stylus-lang.com/docs/js.html#define-name-node)，可以作为对象传递。
 
 **示例：**
 
