@@ -20,32 +20,24 @@
 
 Vite 6 还为 `json.stringify` 引入了一个新的默认值，即 `'auto'`，它只会对大型 JSON 文件进行字符串化处理。要禁用此行为，请设置 `json.stringify: false`。
 
-<<<<<<< HEAD
+### Sass 现在默认使用现代 API
+
+在 Vite 5 中，Sass 默认使用传统 API。Vite 5.4 增加了对现代 API 的支持。
+
+从 Vite 6 开始，Sass 默认使用现代 API。如果想继续使用传统 API，可以设置 [`css.preprocessorOptions.sass.api: 'legacy'` / `css.preprocessorOptions.scss.api: 'legacy'`](/config/shared-options#css-preprocessoroptions)。但请注意，传统 API 支持将在 Vite 7 中移除。
+
+要迁移到现代 API，请参阅 [Sass 文档](https://sass-lang.com/documentation/breaking-changes/legacy-js-api/)。
+
 ## 进阶 {#advanced}
-=======
-### Sass now uses modern API by default
-
-In Vite 5, the legacy API was used by default for Sass. Vite 5.4 added support for the modern API.
-
-From Vite 6, the modern API is used by default for Sass. If you wish to still use the legacy API, you can set [`css.preprocessorOptions.sass.api: 'legacy'` / `css.preprocessorOptions.scss.api: 'legacy'`](/config/shared-options#css-preprocessoroptions). But note that the legacy API support will be removed in Vite 7.
-
-To migrate to the modern API, see [the Sass documentation](https://sass-lang.com/documentation/breaking-changes/legacy-js-api/).
-
-## Advanced
->>>>>>> 1b4114812080d9cd1d9b5cf5f80bcf88e1113044
 
 还有其他一些只影响少数用户的破坏性更改。
 
 - [[#15637] fix!: default `build.cssMinify` to `'esbuild'` for SSR](https://github.com/vitejs/vite/pull/15637)
   - [`build.cssMinify`](/config/build-options#build-cssminify) 现在即使是 SSR 版本也默认为启用。
 - [[#18209] refactor!: bump minimal terser version to 5.16.0](https://github.com/vitejs/vite/pull/18209)
-<<<<<<< HEAD
-  - Minimal [`build.minify: 'terser'`](/config/build-options#build-minify) 所支持的最小 terser 版本从 5.4.0 提升至 5.16.0。
-=======
-  - Minimal supported terser version for [`build.minify: 'terser'`](/config/build-options#build-minify) was bumped to 5.16.0 from 5.4.0.
+  - [`build.minify: 'terser'`](/config/build-options#build-minify) 所支持的最小 terser 版本从 5.4.0 提升至 5.16.0
 - [[#18231] chore(deps): update dependency @rollup/plugin-commonjs to v28](https://github.com/vitejs/vite/pull/18231)
-  - [`commonjsOptions.strictRequires`](https://github.com/rollup/plugins/blob/master/packages/commonjs/README.md#strictrequires) is now `true` by default (was `'auto'` before).
->>>>>>> 1b4114812080d9cd1d9b5cf5f80bcf88e1113044
+  - [`commonjsOptions.strictRequires`](https://github.com/rollup/plugins/blob/master/packages/commonjs/README.md#strictrequires) 现在默认为 `true`（之前为 `'auto'`)。
 - [[#18243] chore(deps)!: migrate `fast-glob` to `tinyglobby`](https://github.com/vitejs/vite/pull/18243)
   - globs 中不再支持范围大括号 (`{01..03}` ⇒ `['01', '02', '03']`) 和递增大括号 (`{2..8..2}` ⇒ `['2', '4', '6', '8']`) 。
 
