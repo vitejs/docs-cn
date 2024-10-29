@@ -15,8 +15,8 @@
 在开发阶段，可以使用 `server.environments` 来访问开发服务器中的可用环境：
 
 ```js
-// create the server, or get it from the configureServer hook
-const server = await createServer(/* options */)
+// 创建服务器，或通过 configureServer 钩子来获取
+const server = await createServer(/* 选项 */)
 
 const environment = server.environments.client
 environment.transformRequest(url)
@@ -32,50 +32,50 @@ console.log(server.environments.ssr.moduleGraph)
 ```ts
 class DevEnvironment {
   /**
-   * Unique identifier for the environment in a Vite server.
-   * By default Vite exposes 'client' and 'ssr' environments.
+   * 环境在 Vite 服务器中的唯一标识符。
+   * 默认情况下，Vite 暴露 'client' 和 'ssr' 环境。
    */
   name: string
   /**
-   * Communication channel to send and receive messages from the
-   * associated module runner in the target runtime.
+   * 用于在目标运行时的关联模块运行器中
+   * 发送和接收消息的通信通道。
    */
   hot: HotChannel | null
   /**
-   * Graph of module nodes, with the imported relationship between
-   * processed modules and the cached result of the processed code.
+   * 模块节点的图，包含处理过的模块之间的
+   * 导入关系和处理代码的缓存结果。
    */
   moduleGraph: EnvironmentModuleGraph
   /**
-   * Resolved plugins for this environment, including the ones
-   * created using the per-environment `create` hook
+   * 为此环境解析的插件，包括使用按环境的
+   * `create` 钩子创建的插件。
    */
   plugins: Plugin[]
   /**
-   * Allows to resolve, load, and transform code through the
-   * environment plugins pipeline
+   * 允许通过环境插件管道解析、加载
+   * 和转换代码。
    */
   pluginContainer: EnvironmentPluginContainer
   /**
-   * Resolved config options for this environment. Options at the server
-   * global scope are taken as defaults for all environments, and can
-   * be overridden (resolve conditions, external, optimizedDeps)
+   * 为此环境解析的配置选项。服务器全局范围内的选项
+   * 作为所有环境的默认值，并可以被覆盖（解析条件、
+   * 外部依赖、优化的依赖）。
    */
   config: ResolvedConfig & ResolvedDevEnvironmentOptions
 
   constructor(name, config, { hot, options }: DevEnvironmentSetup)
 
   /**
-   * Resolve the URL to an id, load it, and process the code using the
-   * plugins pipeline. The module graph is also updated.
+   * 解析 URL 到一个 id，加载它，并使用插件管道
+   * 处理代码。模块图也会被更新。
    */
   async transformRequest(url: string): TransformResult
 
   /**
-   * Register a request to be processed with low priority. This is useful
-   * to avoid waterfalls. The Vite server has information about the imported
-   * modules by other requests, so it can warmup the module graph so the
-   * modules are already processed when they are requested.
+   * 注册一个低优先级处理的请求。这对于避免瀑布效应
+   * 非常有用。Vite 服务器有关于其他请求导入模块的
+   * 信息，因此它可以预热模块图，使得当模块被请求时
+   * 已经处理完毕。
    */
   async warmupRequest(url: string): void
 }

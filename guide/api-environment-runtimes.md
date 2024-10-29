@@ -120,20 +120,20 @@ export class ModuleRunner {
     private debug?: ModuleRunnerDebugger,
   ) {}
   /**
-   * URL to execute. Accepts file path, server path, or id relative to the root.
+   * 要执行的 URL。可以是文件路径，服务器路径，或者相对于根路径的 id
    */
   public async import<T = any>(url: string): Promise<T>
   /**
-   * Clear all caches including HMR listeners.
+   * 清除所有缓存，包括 HMR 监听器
    */
   public clearCache(): void
   /**
-   * Clears all caches, removes all HMR listeners, and resets source map support.
-   * This method doesn't stop the HMR connection.
+   * 清除所有缓存，移除所有 HMR 监听器，并重置源映射支持
+   * 此方法不会停止 HMR 连接
    */
   public async close(): Promise<void>
   /**
-   * Returns `true` if the runner has been closed by calling `close()` method.
+   * 如果通过调用 `close()` 方法关闭了运行器，则返回 `true`
    */
   public isClosed(): boolean
 }
@@ -153,7 +153,7 @@ const moduleRunner = new ModuleRunner(
   {
     root,
     fetchModule,
-    // you can also provide hmr.connection to support HMR
+    // 你也可以提供 hmr.connection 来支持 HMR
   },
   new ESModulesEvaluator(),
 )
@@ -166,17 +166,17 @@ await moduleRunner.import('/src/entry-point.js')
 ```ts
 export interface ModuleRunnerOptions {
   /**
-   * Root of the project
+   * 项目根目录
    */
   root: string
   /**
-   * A set of methods to communicate with the server.
+   * 一组与服务器通信的方法
    */
   transport: RunnerTransport
   /**
-   * Configure how source maps are resolved. Prefers `node` if `process.setSourceMapsEnabled` is available.
-   * Otherwise it will use `prepareStackTrace` by default which overrides `Error.prepareStackTrace` method.
-   * You can provide an object to configure how file contents and source maps are resolved for files that were not processed by Vite.
+   * 配置如何解析源映射。如果 `process.setSourceMapsEnabled` 可用，首选 `node`
+   * 否则，它将默认使用 `prepareStackTrace`，这将覆盖 `Error.prepareStackTrace` 方法
+   * 你可以提供一个对象来配置如何解析未被 Vite 处理的文件的内容和其源映射
    */
   sourcemapInterceptor?:
     | false
@@ -184,22 +184,22 @@ export interface ModuleRunnerOptions {
     | 'prepareStackTrace'
     | InterceptorOptions
   /**
-   * Disable HMR or configure HMR options.
+   * 禁用 HMR 或配置 HMR 选项
    */
   hmr?:
     | false
     | {
         /**
-         * Configure how HMR communicates between the client and the server.
+         * 配置 HMR 如何在客户端和服务器之间通信
          */
         connection: ModuleRunnerHMRConnection
         /**
-         * Configure HMR logger.
+         * 配置 HMR 日志
          */
         logger?: false | HMRLogger
       }
   /**
-   * Custom module cache. If not provided, it creates a separate module cache for each module runner instance.
+   * 自定义模块缓存。如果未提供，它将为每个模块运行器实例创建一个单独的模块缓存
    */
   evaluatedModules?: EvaluatedModules
 }
@@ -212,14 +212,14 @@ export interface ModuleRunnerOptions {
 ```ts
 export interface ModuleEvaluator {
   /**
-   * Number of prefixed lines in the transformed code.
+   *  转换后代码中前缀行的数量。
    */
   startOffset?: number
   /**
-   * Evaluate code that was transformed by Vite.
-   * @param context Function context
-   * @param code Transformed code
-   * @param id ID that was used to fetch the module
+   * 运行由 Vite 转换的代码。
+   * @param context 函数上下文
+   * @param code 转换后的代码
+   * @param id 用于获取模块的 ID
    */
   runInlinedModule(
     context: ModuleRunnerContext,
@@ -227,8 +227,8 @@ export interface ModuleEvaluator {
     id: string,
   ): Promise<any>
   /**
-   * evaluate externalized module.
-   * @param file File URL to the external module
+   * 运行外部化的模块
+   * @param file 外部模块的文件 URL
    */
   runExternalModule(file: string): Promise<any>
 }
@@ -243,7 +243,7 @@ Vite 默认导出了实现此接口的 `ESModulesEvaluator`。它使用 `new Asy
 ```ts
 interface RunnerTransport {
   /**
-   * A method to get the information about the module.
+   * 获取模块信息的方法
    */
   fetchModule: FetchFunction
 }
@@ -282,7 +282,7 @@ import { createServer, RemoteEnvironmentTransport, DevEnvironment } from 'vite'
 function createWorkerEnvironment(name, config, context) {
   const worker = new Worker('./worker.js')
   return new DevEnvironment(name, config, {
-    hot: /* custom hot channel */,
+    hot: /* 自定义热更新通道 */,
     remoteRunner: {
       transport: new RemoteEnvironmentTransport({
         send: (data) => worker.postMessage(data),
@@ -335,16 +335,16 @@ await runner.import('/entry.js')
 ```ts
 export interface ModuleRunnerHMRConnection {
   /**
-   * Checked before sending messages to the server.
+   * 是否在向服务器发送消息之前完成检查
    */
   isReady(): boolean
   /**
-   * Send a message to the server.
+   * 向服务器发送消息
    */
   send(payload: HotPayload): void
   /**
-   * Configure how HMR is handled when this connection triggers an update.
-   * This method expects that the connection will start listening for HMR updates and call this callback when it's received.
+   * 配置当此连接触发更新时如何处理 HMR
+   * 此方法期望连接开始监听 HMR 更新，并在接收到更新时调用此回调
    */
   onUpdate(callback: (payload: HotPayload) => void): void
 }

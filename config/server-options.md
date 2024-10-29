@@ -337,8 +337,6 @@ export default defineConfig({
 
 该选项可以缓存访问过的目录的文件名，从而避免重复的文件系统操作。尤其在 Windows 系统中，这个选项可能会带来性能提升。但由于存在一些边缘情况，比如在一个已缓存的文件夹中写入文件并立即导入它，所以这个选项默认是关闭的。
 
-Caches filenames of accessed directories to avoid repeated filesystem operations. Particularly in Windows, this could result in a performance boost. It is disabled by default due to edge cases when writing a file in a cached folder and immediately importing it.
-
 ## server.origin {#server-origin}
 
 - **类型：** `string`

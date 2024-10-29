@@ -73,7 +73,7 @@ export type { T }
 
 从 Vite v2.5.0 开始，如果 TypeScript 的 target 是 `ESNext` 或 `ES2022` 及更新版本，此选项默认值则为 `true`。这与 [`tsc` v4.3.2 及以后版本的行为](https://github.com/microsoft/TypeScript/pull/42663) 一致。这也是标准的 ECMAScript 的运行时行为。
 
-若设了其他 TypeScript 目标，则本项会默认为 `false`.
+若设了其他 TypeScript target，则本项会默认为 `false`.
 
 但对于那些习惯其他编程语言或旧版本 TypeScript 的开发者来说，这可能是违反直觉的。
 你可以参阅 [TypeScript 3.7 发布日志](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-3-7.html#the-usedefineforclassfields-flag-and-the-declare-property-modifier) 中了解更多关于如何兼容的信息。
@@ -93,6 +93,7 @@ Vite 忽略 `tsconfig.json` 中的 `target` 值，遵循与 `esbuild` 相同的�
 要在开发中指定目标，可使用 [`esbuild.target`](/config/shared-options.html#esbuild) 选项，默认值为 `esnext`，以实现最小的转译。在构建中，[`build.target`](/config/build-options.html#build-target) 选项优先于 `esbuild.target`，如有需要也可以进行设置。
 
 ::: warning `useDefineForClassFields`
+
 如果 `target` 不是 `ESNext` 或 `ES2022` 或更新版本，或者没有 `tsconfig.json` 文件，`useDefineForClassFields` 将默认为 `false`，这可能会导致默认的 `esbuild.target` 值为 `esnext` 的问题。它可能会转译为 [static initialization blocks](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/Static_initialization_blocks#browser_compatibility)，这在你的浏览器中可能不被支持。
 
 因此，建议将 `target` 设置为 `ESNext` 或 `ES2022` 或更新版本，或者在配置 `tsconfig.json` 时将 `useDefineForClassFields` 显式设置为 `true`。

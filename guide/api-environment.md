@@ -88,7 +88,7 @@ interface EnvironmentOptions {
 ```ts
 interface UserConfig extends EnvironmentOptions {
   environments: Record<string, EnvironmentOptions>
-  // other options
+  // 其他选项
 }
 ```
 

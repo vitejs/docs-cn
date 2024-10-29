@@ -142,4 +142,4 @@ export default {
 
 ## 从 v1 迁移 {#migration-from-v1}
 
-在 Vite v2 文档中查看 [从 v1 迁移指南](https://v2.vite.dev/guide/migration.html)（[中文版](https://cn.vite.dev/guide/migration-from-v1.html)），了解如何将你的应用迁移到 Vite v2，然后再处理本页中所提及的变化。
+在 Vite v2 文档中查看 [从 v1 迁移指南](https://v2.vite.dev/guide/migration.html)（[中文版](/guide/migration-from-v1)），了解如何将你的应用迁移到 Vite v2，然后再处理本页中所提及的变化。

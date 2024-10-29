@@ -84,7 +84,7 @@ interface HotUpdateContext {
     if (this.environment.name !== 'client')
       return
 
-    // Invalidate modules manually
+    // 手动使模块失效
     const invalidatedModules = new Set()
     for (const mod of modules) {
       this.environment.moduleGraph.invalidateModule(
@@ -120,7 +120,7 @@ interface HotUpdateContext {
   ```js
   if (import.meta.hot) {
     import.meta.hot.on('special-update', (data) => {
-      // perform custom update
+      // 执行自定义更新
     })
   }
   ```
@@ -131,20 +131,20 @@ interface HotUpdateContext {
 
 ```js
 const UnoCssPlugin = () => {
-  // shared global state
+  // 共享的全局状态
   return {
     buildStart() {
-      // init per environment state with WeakMap<Environment,Data>, this.environment
+      // 使用 WeakMap<Environment, Data>，this.environment 初始化每个环境的状态
     },
     configureServer() {
-      // use global hooks normally
+      // 正常使用全局钩子
     },
     applyToEnvironment(environment) {
-      // return true if this plugin should be active in this environment
-      // if the function isn't provided, the plugin is active in all environments
+      // 如果这个插件应该在这个环境中激活，则返回 true
+      // 如果没有提供这个函数，则插件在所有环境中都是激活的
     },
     resolveId(id, importer) {
-      // only called for environments this plugin apply to
+      // 只对此插件适用的环境进行调用
     },
   }
 }
@@ -176,13 +176,13 @@ const UnoCssPlugin = () => {
 
 ```js
 function myPlugin() {
-  // Share state among all environments in dev and build
+  // 在开发和构建中的所有环境之间共享状态
   const sharedState = ...
   return {
     name: 'shared-plugin',
     transform(code, id) { ... },
 
-    // Opt-in into a single instance for all environments
+    // 选择在所有环境中使用单个实例
     sharedDuringBuild: true,
   }
 }

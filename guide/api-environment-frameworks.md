@@ -22,12 +22,12 @@ export class RunnableDevEnvironment extends DevEnvironment {
 
 class ModuleRunner {
   /**
-   * URL to execute. Accepts file path, server path, or id relative to the root.
-   * Returns an instantiated module (same as in ssrLoadModule)
+   * 要执行的 URL。可以接受文件路径，服务器路径，或者相对于根路径的 id。
+   * 返回一个实例化的模块（和 ssrLoadModule 中的一样）
    */
   public async import(url: string): Promise<Record<string, any>>
   /**
-   * Other ModuleRunner methods...
+   * 其他的 ModuleRunner 方法...
    */
 }
 
@@ -52,40 +52,40 @@ const server = await createServer({
   appType: 'custom',
   environments: {
     server: {
-      // by default, the modules are run in the same process as the vite dev server during dev
+      // 默认情况下，模块在开发过程中与 vite 开发服务器在同一进程中运行
     },
   },
 })
 
-// You might need to cast this to RunnableDevEnvironment in TypeScript or use
-// the "isRunnableDevEnvironment" function to guard the access to the runner
+// 在 TypeScript 中，你可能需要将这个转换为 RunnableDevEnvironment，或者使用
+// "isRunnableDevEnvironment" 函数来保护对运行器的访问
 const environment = server.environments.node
 
 app.use('*', async (req, res, next) => {
   const url = req.originalUrl
 
-  // 1. Read index.html
+  // 1. 读取 index.html
   let template = fs.readFileSync(path.resolve(__dirname, 'index.html'), 'utf-8')
 
-  // 2. Apply Vite HTML transforms. This injects the Vite HMR client,
-  //    and also applies HTML transforms from Vite plugins, e.g. global
-  //    preambles from @vitejs/plugin-react
+  // 2. 应用 Vite HTML 转换。这将注入 Vite HMR 客户端，
+  //    并应用来自 Vite 插件的 HTML 转换，例如
+  //    @vitejs/plugin-react 提供的全局前置代码
   template = await server.transformIndexHtml(url, template)
 
-  // 3. Load the server entry. import(url) automatically transforms
-  //    ESM source code to be usable in Node.js! There is no bundling
-  //    required, and provides full HMR support.
+  // 3. 加载服务器入口文件。import(url) 自动将
+  //    ESM 源代码转换为 Node.js 可用的代码！
+  //    不需要打包，并且提供全面的 HMR 支持。
   const { render } = await environment.runner.import('/src/entry-server.js')
 
-  // 4. render the app HTML. This assumes entry-server.js's exported
-  //     `render` function calls appropriate framework SSR APIs,
-  //    e.g. ReactDOMServer.renderToString()
+  // 4. 渲染应用的 HTML。将假设 entry-server.js 导出的
+  //    `render` 函数调用了对应框架的 SSR API，
+  //    例如 ReactDOMServer.renderToString()
   const appHtml = await render(url)
 
-  // 5. Inject the app-rendered HTML into the template.
+  // 5. 将应用渲染的 HTML 注入到模板中。
   const html = template.replace(`<!--ssr-outlet-->`, appHtml)
 
-  // 6. Send the rendered HTML back.
+  // 6. 发送渲染后的 HTML 回去。
   res.status(200).set({ 'Content-Type': 'text/html' }).end(html)
 })
 ```
@@ -105,7 +105,7 @@ app.use('*', async (req, res, next) => {
 例如，下面的例子中，使用 Vite API 的代码使用了用户模块的值：
 
 ```ts
-// code using the Vite's APIs
+// 使用 Vite API 的代码
 import { createServer } from 'vite'
 
 const server = createServer()
@@ -128,23 +128,23 @@ export function createHandler(input) {
 如果你的代码可以在与用户模块相同的运行时中运行（即，它不依赖于 Node.js 特定的 API），你可以使用虚拟模块。这种方法避免了从使用 Vite API 的代码中获取值的需求。
 
 ```ts
-// code using the Vite's APIs
+// 使用 Vite API 的代码
 import { createServer } from 'vite'
 
 const server = createServer({
   plugins: [
-    // a plugin that handles `virtual:entrypoint`
+    // 处理 `virtual:entrypoint` 的插件
     {
       name: 'virtual-module',
-      /* plugin implementation */
+      /* 插件实现 */
     },
   ],
 })
 const ssrEnvironment = server.environment.ssr
 const input = {}
 
-// use exposed functions by each environment factories that runs the code
-// check for each environment factories what they provide
+// 使用每个环境工厂暴露的函数来运行代码
+// 检查每个环境工厂提供了什么
 if (ssrEnvironment instanceof RunnableDevEnvironment) {
   ssrEnvironment.runner.import('virtual:entrypoint')
 } else if (ssrEnvironment instanceof CustomDevEnvironment) {
@@ -202,23 +202,23 @@ function vitePluginVirtualIndexHtml(): Plugin {
 如果你的代码需要 Node.js API，你可以使用 `hot.send` 从用户模块与使用 Vite API 的代码进行通信。但是，请注意，这种方式在构建过程后可能无法以相同的方式工作。
 
 ```ts
-// code using the Vite's APIs
+// 使用 Vite API 的代码
 import { createServer } from 'vite'
 
 const server = createServer({
   plugins: [
-    // a plugin that handles `virtual:entrypoint`
+    // 处理 `virtual:entrypoint` 的插件
     {
       name: 'virtual-module',
-      /* plugin implementation */
+      /* 插件实现 */
     },
   ],
 })
 const ssrEnvironment = server.environment.ssr
 const input = {}
 
-// use exposed functions by each environment factories that runs the code
-// check for each environment factories what they provide
+// 使用每个环境工厂暴露的函数来运行代码
+// 检查每个环境工厂提供了什么
 if (ssrEnvironment instanceof RunnableDevEnvironment) {
   ssrEnvironment.runner.import('virtual:entrypoint')
 } else if (ssrEnvironment instanceof CustomDevEnvironment) {
