@@ -203,8 +203,8 @@ import.meta.hot.accept((module) => {
 - `'vite:beforePrune'` 当不再需要的模块即将被剔除时
 - `'vite:invalidate'` 当使用 `import.meta.hot.invalidate()` 使一个模块失效时
 - `'vite:error'` 当发生错误时（例如，语法错误）
-- `'vite:ws:disconnect'` 当 WebSocket 链接丢失时
-- `'vite:ws:connect'` 当 WebSocket 链接重修建立时
+- `'vite:ws:disconnect'` 当 WebSocket 连接丢失时
+- `'vite:ws:connect'` 当 WebSocket 重新建立连接时
 
 自定义 HMR 事件可以由插件发送。更多细节详见 [handleHotUpdate](./api-plugin#handleHotUpdate)。
 

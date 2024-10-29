@@ -1,0 +1,24 @@
+name: "\U0001F4DA 反馈中文文档项目问题"
+description: 反馈 Vite 官方中文文档项目的相关问题
+labels: [documentation]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        感谢您对 Vite 的支持，这里是 Vite 官方中文文档的翻译项目相关 issue 区，请不要在此提交关于 Vite 使用的问题或报 Bug。
+  - type: checkboxes
+    id: documentation_is
+    attributes:
+      label: 文档的
+      options:
+        - label: 翻译缺失
+        - label: 翻译不准确
+        - label: 其他问题
+  - type: textarea
+    id: description
+    attributes:
+      label: 详细描述
+      description: 请简明扼要地阐述您的问题。如果您愿意提交 PR 修改，请参考 [贡献指南](https://github.com/vitejs/docs-cn/wiki/%E5%90%88%E4%BD%9C%E8%A7%84%E8%8C%83)。
+      placeholder: xxx章节下的翻译有歧义... xxx章节与英文原文对应不上...
+    validations:
+      required: true

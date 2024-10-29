@@ -243,4 +243,4 @@ const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf-8'))
 
 ## 从 v3 迁移 {#migration-from-v3}
 
-请先查看 [从 v3 迁移指南](https://cn.vitejs.dev/guide/migration-from-v3.html) 文档查看对您的应用所有需要迁移的改动，然后再执行本篇指南所述的改动。
+请先查看 [从 v3 迁移指南](/guide/migration-from-v3) 文档查看对您的应用所有需要迁移的改动，然后再执行本篇指南所述的改动。
