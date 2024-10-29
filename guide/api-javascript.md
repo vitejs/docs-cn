@@ -108,9 +108,15 @@ interface ViteDevServer {
    */
   httpServer: http.Server | null
   /**
+<<<<<<< HEAD
    * chokidar 监听器实例。如果 `config.server.watch` 被设置为 `null`，
    * 则返回一个无实际操作的事件发射器。
    * https://github.com/paulmillr/chokidar#api
+=======
+   * Chokidar watcher instance. If `config.server.watch` is set to `null`,
+   * it will not watch any files and calling `add` will have no effect.
+   * https://github.com/paulmillr/chokidar#getting-started
+>>>>>>> 9d2006f830d254110df07e0b7e8dacfaa90af12d
    */
   watcher: FSWatcher
   /**
