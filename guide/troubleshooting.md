@@ -54,11 +54,12 @@ VITE_CJS_IGNORE_WARNING=true vite dev
 
 > Failed to resolve "foo". This package is ESM only but it was tried to load by `require`.
 
-> "foo" resolved to an ESM file. ESM file cannot be loaded by `require`.
+> Error [ERR_REQUIRE_ESM]: require() of ES Module /path/to/dependency.js from /path/to/vite.config.js not supported.
+> Instead change the require of index.js in /path/to/vite.config.js to a dynamic import() which is available in all CommonJS modules.
 
-ESM 格式的文件无法被 [`require`](<https://nodejs.org/docs/latest-v18.x/api/esm.html#require:~:text=Using%20require%20to%20load%20an%20ES%20module%20is%20not%20supported%20because%20ES%20modules%20have%20asynchronous%20execution.%20Instead%2C%20use%20import()%20to%20load%20an%20ES%20module%20from%20a%20CommonJS%20module.>) 加载。
+在 Node.js <=22 中，ESM 文件默认情况下无法通过 [`require`](https://nodejs.org/docs/latest-v22.x/api/esm.html#require) 加载。
 
-我们建议你通过以下方式将你的配置文件转换为 ESM 格式：
+虽然使用 [`--experimental-require-module`](https://nodejs.org/docs/latest-v22.x/api/modules.html#loading-ecmascript-modules-using-require)、Node.js >22 或其他运行时也可能有效，但我们仍建议通过这两种方式之一将配置转换为 ESM：
 
 - 在邻近的 `package.json` 中添加 `"type": "module"`
 - 将 `vite.config.js`/`vite.config.ts` 重命名为 `vite.config.mjs`/`vite.config.mts`

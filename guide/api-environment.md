@@ -13,64 +13,77 @@
 
 ## 引入环境概念 {#formalizing-environments} 
 
-Vite 6 正式引入了环境（Environments）的概念。在 Vite 5 之前，有两个隐式环境（`client` 和 `ssr`）。新的环境 API 允许用户根据他们的应用在生产环境中的工作方式创建尽可能多的环境。这些新的功能需要大规模的内部重构，而我们也已经在保持向后兼容性上做出了很大的努力。Vite 6 的初始目标是尽可能平滑地将整个生态系统迁移到新的主要版本，直到有足够的用户已经迁移，并且框架和插件作者已经验证了新的设计后，再采用这些新的实验性 API。
+Vite 6 正式引入了环境（Environments）的概念。在 Vite 5 之前，有两个隐式环境（`client`，以及可选的 `ssr`）。新的环境 API 允许用户和框架作者根据他们的应用在生产环境中的工作方式创建尽可能多的环境。这些新的功能需要大规模的内部重构，而我们也已经在保持向后兼容性上做出了很大的努力。Vite 6 的初始目标是尽可能平滑地将整个生态系统迁移到新的主要版本，直到有足够的用户已经迁移，并且框架和插件作者已经验证了新的设计后，再采用这些新的实验性 API。
 
 ## 缩小构建和开发模式间的差距 {#closing-the-gap-between-build-and-dev}
 
-对于一个简单的单页应用（SPA），只会有一个环境。应用将在用户浏览器中运行。在开发阶段，除了 Vite 需要一个现代浏览器外，开发环境与生产环境非常接近。在 Vite 6 中，用户仍然可以在不需要了解环境的情况下使用 Vite。在这种情况下，常规的 vite 配置适用于默认的客户端环境。
+对于简单的 SPA/MPA，配置中不会暴露任何与环境有关的新 API。在内部，Vite 会将选项应用于 `client` 环境，但在配置 Vite 时无需了解这一概念。Vite 5 中的配置和行为应能在此无缝运行。
 
-在典型的服务端渲染（SSR）Vite 应用中，会存在两个环境。客户端环境在浏览器中运行应用，而 Node 环境运行执行 SSR 的服务器。在开发模式下运行 Vite 时，服务器代码在与 Vite 开发服务器相同的 Node 进程中执行，从而接近生产环境。但是应用可以在其他 JS 运行时中运行服务器，比如 [Cloudflare的workerd](https://github.com/cloudflare/workerd)。而且对于现代应用来说，拥有两个以上环境也很常见（例如，一个应用可以在浏览器、Node 服务器和边缘服务器中运行）。Vite 5 中并未允许这些情况得到适当的表示。
+当我们移动到一个典型的服务器端渲染（SSR）应用程序时，我们将有两个环境：
 
-Vite 6 允许用户在构建和开发过程中配置应用以映射其所有环境。在开发过程中，现在可以使用单个 Vite 开发服务器同时在多个不同环境中运行代码。应用源代码仍然由 Vite 开发服务器转换。在共享的 HTTP 服务器、中间件、解析的配置和插件管道之上，Vite 服务器现在有一组独立的开发环境。每个环境都配置为尽可能接近生产环境，并连接到一个开发运行时来执行代码（对于 workerd，服务器代码现在可以在本地的 miniflare 中运行）。在客户端，浏览器将导入并执行代码。在其他环境中，模块运行器会获取并执行转换后的代码。
+- `client`: 在浏览器中运行应用程序。
+- `server`: 在 node（或其他服务器运行时）中运行应用程序，渲染页面后再发送到浏览器。
+
+在开发过程中，Vite 会在与 Vite 开发服务器相同的 Node 进程中执行服务器代码，从而接近生产环境。不过，服务器也有可能在其他 JS 运行时中运行，如[Cloudflare 的 workerd](https://github.com/cloudflare/workerd)，它们有不同的限制。现代应用程序也可能在两个以上的环境中运行，例如浏览器、节点服务器和边缘服务器。Vite 5 无法正确表示这些环境。
+
+Vite 6 允许用户在构建和开发过程中配置应用程序，以映射其所有环境。在开发期间，一个 Vite 开发服务器现在可用于在多个不同环境中同时运行代码。应用程序源代码仍由 Vite 开发服务器进行转换。在共享 HTTP 服务器、中间件、解析配置和插件管道的基础上，Vite 开发服务器现在拥有一组独立的开发环境。每个开发环境的配置都尽可能与生产环境相匹配，并连接到执行代码的开发运行时（对于 Workerd，服务器代码现在可以在本地 miniflare 中运行）。在客户端，浏览器导入并执行代码。在其他环境中，模块运行程序会获取并评估转换后的代码。
 
 ![Vite Environments](../images/vite-environments.svg)
 
-## 环境配置 {#environment-configuration}
+## 环境配置 {#environments-configuration}
 
-环境是通过 `environments` 配置选项显式配置的。
+对于 SPA/MPA，配置与 Vite 5 类似。在内部，这些选项用于配置 `client` 环境。
+
+```js
+export default defineConfig({
+  build: {
+    sourcemap: false,
+  },
+  optimizeDeps: {
+    include: ['lib'],
+  },
+})
+```
+
+这一点很重要，因为我们希望 Vite 保持平易近人，避免在需要时才公开新概念。
+
+如果应用程序由多个环境组成，则可以使用 `environments` 配置选项显式配置这些环境。
 
 ```js
 export default {
+  build: {
+    sourcemap: false,
+  },
+  optimizeDeps: {
+    include: ['lib'],
+  },
   environments: {
-    client: {
+    server: {},
+    edge: {
       resolve: {
-        conditions: [], // 配置客户端环境
-      },
-    },
-    ssr: {
-      dev: {
-        optimizeDeps: {}, // 配置 SSR 环境
-      },
-    },
-    rsc: {
-      resolve: {
-        noExternal: true, // 配置自定义环境
+        noExternal: true,
       },
     },
   },
 }
 ```
 
-所有环境配置都从用户的根配置扩展，允许用户在根级别为所有环境添加默认值。这对于配置只有 Vite 客户端的应用程序的常见场景非常有用，可以在不通过 `environments.client` 的情况下完成。
+如果没有明确说明，环境将继承已配置的顶级配置选项（例如，新的 `server` 和 `edge` 环境将继承 `build.sourcemap: false` 选项）。少数顶级选项（如 `optimizeDeps`）仅适用于 `client` 环境，因为它们在默认应用于服务器环境时效果不佳。也可以通过 `environments.client` 明确配置 `client` 环境，但我们建议使用顶级选项进行配置，以便在添加新环境时客户端配置保持不变。
 
-```js
-export default {
-  resolve: {
-    conditions: [], // 为所有环境配置默认值
-  },
-}
-```
-
-`EnvironmentOptions` 接口展示了所有每个环境的选项。有些 `SharedEnvironmentOptions` 适用于 `build` 和 `dev`，比如 `resolve`。还有 `DevEnvironmentOptions` 和 `BuildEnvironmentOptions` 用于开发和构建特定的选项（比如 `dev.optimizeDeps` 或 `build.outDir`）。
+`EnvironmentOptions` 接口公开所有每个环境选项。有些环境选项适用于 `build` 和 `dev`，如 `resolve`。还有 `DevEnvironmentOptions` 和 `BuildEnvironmentOptions` 用于开发和构建特定选项（如 `dev.warmup` 或 `build.outDir`）。一些选项（例如`optimizeDeps`）仅适用于 dev，但为了向后兼容，它保留为顶层而不是嵌套在`dev`中。
 
 ```ts
-interface EnvironmentOptions extends SharedEnvironmentOptions {
+interface EnvironmentOptions {
+  define?: Record<string, any>
+  resolve?: EnvironmentResolveOptions
+  optimizeDeps: DepOptimizationOptions
+  consumer?: 'client' | 'server'
   dev: DevOptions
   build: BuildOptions
 }
 ```
 
-如我们所解释的，用户配置的根级别定义的环境特定选项用于默认的客户端环境（`UserConfig` 接口继承自 `EnvironmentOptions` 接口）。并且可以使用 `environments` 记录显式配置环境。`client` 和 `ssr` 环境在开发过程中总是存在的，即使将空对象设置为 `environments`。这允许与 `server.ssrLoadModule(url)` 和 `server.moduleGraph` 的向后兼容性。在构建过程中，`client` 环境总是存在的，而 `ssr` 环境只有在显式配置（使用 `environments.ssr` 或为了向后兼容 `build.ssr`）时才存在。
+`UserConfig` 接口从 `EnvironmentOptions` 接口扩展而来，允许通过 `environments` 选项配置客户端和其他环境的默认值。在开发过程中，名为 `ssr` 的 `client` 和服务器环境始终存在。这允许与 `server.ssrLoadModule(url)` 和 `server.moduleGraph` 向后兼容。在构建期间，`client` 环境始终存在，而 `ssr` 环境仅在明确配置时才存在（使用 `environments.ssr` 或为了向后兼容而使用 `build.ssr`）。应用程序不需要为其 SSR 环境使用 `ssr` 名称，例如，它可以将其命名为 `server`。
 
 ```ts
 interface UserConfig extends EnvironmentOptions {
@@ -79,27 +92,21 @@ interface UserConfig extends EnvironmentOptions {
 }
 ```
 
-::: info
-
-顶层属性 `ssr` 与 `EnvironmentOptions` 有许多相同的选项。这个选项是为了与 `environments` 相同的使用场景创建的，但只允许配置少数几个选项。我们将弃用它，以支持统一定义环境配置的方式。
-
-:::
+请注意，一旦环境 API 稳定， `ssr` 顶级属性将被废弃。该选项的作用与 `environments` 相同，但针对的是默认的 `ssr` 环境，而且只允许配置一小部分选项。
 
 ## 自定义环境实例 {#custom-environment-instances}
 
-底层 API 配置已可用，因此可以支持为运行时提供环境。
+底层 API 配置已可用，因此可以支持为运行时提供环境。这些环境还可以生成其他进程或线程，以便在更接近生产环境的运行时间内运行开发模块。
 
 ```js
-import { createCustomEnvironment } from 'vite-environment-provider'
+import { customEnvironment } from 'vite-environment-provider'
 
 export default {
+  build: {
+    outDir: '/dist/client',
+  },
   environments: {
-    client: {
-      build: {
-        outDir: '/dist/client',
-      },
-    }
-    ssr: createCustomEnvironment({
+    ssr: customEnvironment({
       build: {
         outDir: '/dist/ssr',
       },
