@@ -162,10 +162,35 @@ Git LFS 占位符会自动排除在内联之外，因为它们不包含其所表
 
 ## build.lib {#build-lib}
 
+<<<<<<< HEAD
 - **类型：** `{ entry: string | string[] | { [entryAlias: string]: string }, name?: string, formats?: ('es' | 'cjs' | 'umd' | 'iife')[], fileName?: string | ((format: ModuleFormat, entryName: string) => string) }`
 - **相关内容：** [库模式](/guide/build#library-mode)
 
 构建为库。`entry` 是必需的，因为库不能使用 HTML 作为入口。`name` 则是暴露的全局变量，并且在 `formats` 包含 `'umd'` 或 `'iife'` 时是必需的。默认 `formats` 是 `['es', 'umd']`，如果使用了多个配置入口，则是 `['es', 'cjs']`。`fileName` 是输出的包文件名，默认 `fileName` 是 `package.json` 的 `name` 选项，同时，它还可以被定义为参数为 `format` 和 `entryName` 的函数。
+=======
+- **Type:** `{ entry: string | string[] | { [entryAlias: string]: string }, name?: string, formats?: ('es' | 'cjs' | 'umd' | 'iife')[], fileName?: string | ((format: ModuleFormat, entryName: string) => string), cssFileName?: string }`
+- **Related:** [Library Mode](/guide/build#library-mode)
+
+Build as a library. `entry` is required since the library cannot use HTML as entry. `name` is the exposed global variable and is required when `formats` includes `'umd'` or `'iife'`. Default `formats` are `['es', 'umd']`, or `['es', 'cjs']`, if multiple entries are used.
+
+`fileName` is the name of the package file output, which defaults to the `"name"` in `package.json`. It can also be defined as a function taking the `format` and `entryName` as arguments, and returning the file name.
+
+If your package imports CSS, `cssFileName` can be used to specify the name of the CSS file output. It defaults to the same value as `fileName` if it's set a string, otherwise it also falls back to the `"name"` in `package.json`.
+
+```js twoslash [vite.config.js]
+import { defineConfig } from 'vite'
+
+export default defineConfig({
+  build: {
+    lib: {
+      entry: ['src/main.js'],
+      fileName: (format, entryName) => `my-lib-${entryName}.${format}.js`,
+      cssFileName: 'my-lib-style',
+    },
+  },
+})
+```
+>>>>>>> d8c74e66bba83268fb86bc8aef187cf2a9f1be55
 
 ## build.manifest {#build-manifest}
 

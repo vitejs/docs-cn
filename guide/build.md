@@ -200,7 +200,16 @@ import Bar from './Bar.vue'
 export { Foo, Bar }
 ```
 
+<<<<<<< HEAD
 使用如上配置运行 `vite build` 时，将会使用一套面向库的 Rollup 预设，并且将为该库提供两种构建格式：`es` 和 `umd` (可在 `build.lib` 中配置)：
+=======
+Running `vite build` with this config uses a Rollup preset that is oriented towards shipping libraries and produces two bundle formats:
+
+- `es` and `umd` (for single entry)
+- `es` and `cjs` (for multiple entries)
+
+The formats can be configured with the [`build.lib.formats`](/config/build-options.md#build-lib) option.
+>>>>>>> d8c74e66bba83268fb86bc8aef187cf2a9f1be55
 
 ```
 $ vite build
@@ -251,8 +260,36 @@ dist/my-lib.umd.cjs 0.30 kB / gzip: 0.16 kB
 
 :::
 
+<<<<<<< HEAD
 ::: tip 文件扩展名
 如果 `package.json` 不包含 `"type": "module"`，Vite 会生成不同的文件后缀名以兼容 Node.js。`.js` 会变为 `.mjs` 而 `.cjs` 会变为 `.js` 。
+=======
+### CSS support
+
+If your library imports any CSS, it will be bundled as a single CSS file besides the built JS files, e.g. `dist/my-lib.css`. The name defaults to `build.lib.fileName`, but can also be changed with [`build.lib.cssFileName`](/config/build-options.md#build-lib).
+
+You can export the CSS file in your `package.json` to be imported by users:
+
+```json {12}
+{
+  "name": "my-lib",
+  "type": "module",
+  "files": ["dist"],
+  "main": "./dist/my-lib.umd.cjs",
+  "module": "./dist/my-lib.js",
+  "exports": {
+    ".": {
+      "import": "./dist/my-lib.js",
+      "require": "./dist/my-lib.umd.cjs"
+    },
+    "./style.css": "./dist/my-lib.css"
+  }
+}
+```
+
+::: tip File Extensions
+If the `package.json` does not contain `"type": "module"`, Vite will generate different file extensions for Node.js compatibility. `.js` will become `.mjs` and `.cjs` will become `.js`.
+>>>>>>> d8c74e66bba83268fb86bc8aef187cf2a9f1be55
 :::
 
 ::: tip 环境变量

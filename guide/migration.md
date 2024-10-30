@@ -32,12 +32,42 @@ Vite 6 还为 `json.stringify` 引入了一个新的默认值，即 `'auto'`，�
 
 要迁移到现代 API，请参阅 [Sass 文档](https://sass-lang.com/documentation/breaking-changes/legacy-js-api/)。
 
+<<<<<<< HEAD
 ## 进阶 {#advanced}
+=======
+### Customize CSS output file name in library mode
+
+In Vite 5, the CSS output file name in library mode was always `style.css` and cannot be easily changed through the Vite config.
+
+From Vite 6, the default file name now uses `"name"` in `package.json` similar to the JS output files. If [`build.lib.fileName`](/config/build-options.md#build-lib) is set with a string, the value will also be used for the CSS output file name. To explicitly set a different CSS file name, you can use the new [`build.lib.cssFileName`](/config/build-options.md#build-lib) to configure it.
+
+To migrate, if you had relied on the `style.css` file name, you should update references to it to the new name based on your package name. For example:
+
+```json [package.json]
+{
+  "name": "my-lib",
+  "exports": {
+    "./style.css": "./dist/style.css" // [!code --]
+    "./style.css": "./dist/my-lib.css" // [!code ++]
+  }
+}
+```
+
+If you prefer to stick with `style.css` like in Vite 5, you can set `build.lib.cssFileName: 'style'` instead.
+
+## Advanced
+>>>>>>> d8c74e66bba83268fb86bc8aef187cf2a9f1be55
 
 还有其他一些只影响少数用户的破坏性更改。
 
 - [[#15637] fix!: default `build.cssMinify` to `'esbuild'` for SSR](https://github.com/vitejs/vite/pull/15637)
+<<<<<<< HEAD
   - [`build.cssMinify`](/config/build-options#build-cssminify) 现在即使是 SSR 版本也默认为启用。
+=======
+  - [`build.cssMinify`](/config/build-options#build-cssminify) is now enabled by default even for SSR builds.
+- [[#18070] feat!: proxy bypass with WebSocket](https://github.com/vitejs/vite/pull/18070)
+  - `server.proxy[path].bypass` is now called for WebSocket upgrade requests and in that case, the `res` parameter will be `undefined`.
+>>>>>>> d8c74e66bba83268fb86bc8aef187cf2a9f1be55
 - [[#18209] refactor!: bump minimal terser version to 5.16.0](https://github.com/vitejs/vite/pull/18209)
   - [`build.minify: 'terser'`](/config/build-options#build-minify) 所支持的最小 terser 版本从 5.4.0 提升至 5.16.0
 - [[#18231] chore(deps): update dependency @rollup/plugin-commonjs to v28](https://github.com/vitejs/vite/pull/18231)
