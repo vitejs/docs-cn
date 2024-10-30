@@ -209,7 +209,7 @@ export default defineConfig({
 
 Vite 服务器的文件监听器默认会监听 `root` 目录，同时会跳过 `.git/`、`node_modules/`，以及 Vite 的 `cacheDir` 和 `build.outDir` 这些目录。当监听到文件更新时，Vite 会应用 HMR 并且只在需要时更新页面。
 
-如果设置为 `null`，则不会监视任何文件。`server.watcher` 将不会监视任何文件，并且调用 `add` 将不起作用。
+如果设置为 `null`，`server.watcher` 将不会监听任何文件，并且调用 `add` 将不起作用。
 
 ::: warning 监听 `node_modules` 中的文件
 
