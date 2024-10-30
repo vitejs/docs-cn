@@ -205,11 +205,11 @@ export default defineConfig({
 
 - **类型：** `object | null`
 
-传递给 [chokidar](https://github.com/paulmillr/chokidar#api) 的文件系统监听器选项。
+传递给 [chokidar](https://github.com/paulmillr/chokidar#getting-started) 的文件系统监听器选项。如果传递了 `ignored` 选项，Vite 还会自动将任何字符串转换为 [picomatch 模式](https://github.com/micromatch/picomatch#globbing-features)。
 
 Vite 服务器的文件监听器默认会监听 `root` 目录，同时会跳过 `.git/`、`node_modules/`，以及 Vite 的 `cacheDir` 和 `build.outDir` 这些目录。当监听到文件更新时，Vite 会应用 HMR 并且只在需要时更新页面。
 
-如果设置为 `null`，则不会监听任何文件。`server.watcher` 将提供一个兼容的事件发射器，但是调用 `add` 或 `unwatch` 将没有任何效果。
+如果设置为 `null`，`server.watcher` 将不会监听任何文件，并且调用 `add` 将不起作用。
 
 ::: warning 监听 `node_modules` 中的文件
 
