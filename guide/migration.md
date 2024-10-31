@@ -12,6 +12,23 @@
 
 ## 总体变化 {#general-changes}
 
+### Default value for `resolve.conditions`
+
+This change does not affect users that did not configure [`resolve.conditions`](/config/shared-options#resolve-conditions) / [`ssr.resolve.conditions`](/config/ssr-options#ssr-resolve-conditions) / [`ssr.resolve.externalConditions`](/config/ssr-options#ssr-resolve-externalconditions).
+
+In Vite 5, the default value for `resolve.conditions` was `[]` and some conditions were added internally. The default value for `ssr.resolve.conditions` was the value of `resolve.conditions`.
+
+From Vite 6, some of the conditions are no longer added internally and need to be included in the config values.
+The conditions that are no longer added internally for
+
+- `resolve.conditions` are `['module', 'browser', 'development|production']`
+- `ssr.resolve.conditions` are `['module', 'node', 'development|production']`
+
+The default values for those options are updated to the corresponding values and `ssr.resolve.conditions` no longer uses `resolve.conditions` as the default value. Note that `development|production` is a special variable that is replaced with `production` or `development` depending on the value of `process.env.NODE_ENV`.
+
+If you specified a custom value for `resolve.conditions` or `ssr.resolve.conditions`, you need to update it to include the new conditions.
+For example, if you previously specified `['custom']` for `resolve.conditions`, you need to specify `['custom', 'module', 'browser', 'development|production']` instead.
+
 ### JSON stringify
 
 在 Vite 5 中，当设置 [`json.stringify: true`](/config/shared-options#json-stringify) 时，[`json.namedExports`](/config/shared-options#json-namedexports) 会被禁用。
@@ -19,6 +36,14 @@
 从 Vite 6 开始，即使设置了 `json.stringify: true`，`json.namedExports` 也不会被禁用。如果希望实现以前的行为，可以设置 `json.namedExports: false`。
 
 Vite 6 还为 `json.stringify` 引入了一个新的默认值，即 `'auto'`，它只会对大型 JSON 文件进行字符串化处理。要禁用此行为，请设置 `json.stringify: false`。
+
+### Extended support of asset references in HTML elements
+
+In Vite 5, only a few supported HTML elements were able to reference assets that will be processed and bundled by Vite, such as `<link href>`, `<img src>`, etc.
+
+Vite 6 extends the support to even more HTML elements. The full list can be found at the [HTML features](/guide/features.html#html) docs.
+
+To opt-out of HTML processing on certain elements, you can add the `vite-ignore` attribute on the element.
 
 ### postcss-load-config
 
@@ -65,7 +90,13 @@ Vite 6 还为 `json.stringify` 引入了一个新的默认值，即 `'auto'`，�
 - [[#18231] chore(deps): update dependency @rollup/plugin-commonjs to v28](https://github.com/vitejs/vite/pull/18231)
   - [`commonjsOptions.strictRequires`](https://github.com/rollup/plugins/blob/master/packages/commonjs/README.md#strictrequires) 现在默认为 `true`（之前为 `'auto'`)。
 - [[#18243] chore(deps)!: migrate `fast-glob` to `tinyglobby`](https://github.com/vitejs/vite/pull/18243)
+<<<<<<< HEAD
   - globs 中不再支持范围大括号 (`{01..03}` ⇒ `['01', '02', '03']`) 和递增大括号 (`{2..8..2}` ⇒ `['2', '4', '6', '8']`) 。
+=======
+  - Range braces (`{01..03}` ⇒ `['01', '02', '03']`) and incremental braces (`{2..8..2}` ⇒ `['2', '4', '6', '8']`) are no longer supported in globs.
+- [[#18493] refactor!: remove fs.cachedChecks option](https://github.com/vitejs/vite/pull/18493)
+  - This opt-in optimization was removed due to edge cases when writing a file in a cached folder and immediately importing it.
+>>>>>>> fa188e85396ed2c2371c7cb2b396b100ddfec2e3
 
 ## 从 v4 迁移 {#migration-from-v4}
 

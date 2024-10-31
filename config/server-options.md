@@ -329,6 +329,7 @@ export default defineConfig({
 
 用于限制 Vite 开发服务器提供敏感文件的黑名单。这会比 [`server.fs.allow`](#server-fs-allow) 选项的优先级更高。同时还支持 [picomatch 模式](https://github.com/micromatch/picomatch#globbing-features)。
 
+<<<<<<< HEAD
 ## server.fs.cachedChecks
 
 - **类型：** `boolean`
@@ -338,6 +339,9 @@ export default defineConfig({
 该选项可以缓存访问过的目录的文件名，从而避免重复的文件系统操作。尤其在 Windows 系统中，这个选项可能会带来性能提升。但由于存在一些边缘情况，比如在一个已缓存的文件夹中写入文件并立即导入它，所以这个选项默认是关闭的。
 
 ## server.origin {#server-origin}
+=======
+## server.origin
+>>>>>>> fa188e85396ed2c2371c7cb2b396b100ddfec2e3
 
 - **类型：** `string`
 
