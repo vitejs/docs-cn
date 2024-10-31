@@ -200,16 +200,12 @@ import Bar from './Bar.vue'
 export { Foo, Bar }
 ```
 
-<<<<<<< HEAD
-使用如上配置运行 `vite build` 时，将会使用一套面向库的 Rollup 预设，并且将为该库提供两种构建格式：`es` 和 `umd` (可在 `build.lib` 中配置)：
-=======
-Running `vite build` with this config uses a Rollup preset that is oriented towards shipping libraries and produces two bundle formats:
+使用如上配置运行 `vite build` 时，将会使用一套面向库的 Rollup 预设，并且将为该库提供两种构建格式：
 
-- `es` and `umd` (for single entry)
-- `es` and `cjs` (for multiple entries)
+- `es` 和 `umd` (单入口)
+- `es` 和 `cjs` (多入口)
 
-The formats can be configured with the [`build.lib.formats`](/config/build-options.md#build-lib) option.
->>>>>>> d8c74e66bba83268fb86bc8aef187cf2a9f1be55
+格式可通过 [`build.lib.format`](/config/build-options.md#build-lib)选项配置。
 
 ```
 $ vite build
@@ -260,15 +256,11 @@ dist/my-lib.umd.cjs 0.30 kB / gzip: 0.16 kB
 
 :::
 
-<<<<<<< HEAD
-::: tip 文件扩展名
-如果 `package.json` 不包含 `"type": "module"`，Vite 会生成不同的文件后缀名以兼容 Node.js。`.js` 会变为 `.mjs` 而 `.cjs` 会变为 `.js` 。
-=======
-### CSS support
+### CSS 支持 {#css-support}
 
-If your library imports any CSS, it will be bundled as a single CSS file besides the built JS files, e.g. `dist/my-lib.css`. The name defaults to `build.lib.fileName`, but can also be changed with [`build.lib.cssFileName`](/config/build-options.md#build-lib).
+如果您的库导入了 CSS，除了内置的 JS 文件外，它还将作为一个 CSS 文件捆绑在一起，例如 `dist/my-lib.css`。文件名默认为 `build.lib.fileName`，但也可以使用 [`build.lib.cssFileName`](/config/build-options.md#build-lib)进行更改。
 
-You can export the CSS file in your `package.json` to be imported by users:
+您可以在 `package.json` 中导出 CSS 文件，以便用户导入：
 
 ```json {12}
 {
@@ -287,9 +279,8 @@ You can export the CSS file in your `package.json` to be imported by users:
 }
 ```
 
-::: tip File Extensions
-If the `package.json` does not contain `"type": "module"`, Vite will generate different file extensions for Node.js compatibility. `.js` will become `.mjs` and `.cjs` will become `.js`.
->>>>>>> d8c74e66bba83268fb86bc8aef187cf2a9f1be55
+::: tip 文件扩展名
+如果 `package.json` 不包含 `"type": "module"`，Vite 会生成不同的文件后缀名以兼容 Node.js。`.js` 会变为 `.mjs` 而 `.cjs` 会变为 `.js` 。
 :::
 
 ::: tip 环境变量

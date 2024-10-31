@@ -32,16 +32,13 @@ Vite 6 还为 `json.stringify` 引入了一个新的默认值，即 `'auto'`，�
 
 要迁移到现代 API，请参阅 [Sass 文档](https://sass-lang.com/documentation/breaking-changes/legacy-js-api/)。
 
-<<<<<<< HEAD
-## 进阶 {#advanced}
-=======
-### Customize CSS output file name in library mode
+### 在 library 模式下自定义 CSS 输出文件名 {#customize-css-output-file-name-in-library-mode}
 
-In Vite 5, the CSS output file name in library mode was always `style.css` and cannot be easily changed through the Vite config.
+在 Vite 5 中，library 模式下的 CSS 输出文件名始终是 `style.css`，无法通过 Vite 配置轻松更改。
 
-From Vite 6, the default file name now uses `"name"` in `package.json` similar to the JS output files. If [`build.lib.fileName`](/config/build-options.md#build-lib) is set with a string, the value will also be used for the CSS output file name. To explicitly set a different CSS file name, you can use the new [`build.lib.cssFileName`](/config/build-options.md#build-lib) to configure it.
+从 Vite 6 开始，默认文件名将使用 `package.json` 中的 `"name"`，与 JS 输出文件类似。如果 [`build.lib.fileName`](/config/build-options.md#build-lib) 设置为字符串，该值也将用于 CSS 输出文件名。要明确设置不同的 CSS 文件名，可以使用新的 [`build.lib.cssFileName`](/config/build-options.md#build-lib) 进行配置。
 
-To migrate, if you had relied on the `style.css` file name, you should update references to it to the new name based on your package name. For example:
+迁移时，如果您依赖于 `style.css` 文件名，则应根据软件包名称将对该文件的引用更新为新名称。例如:
 
 ```json [package.json]
 {
@@ -53,21 +50,16 @@ To migrate, if you had relied on the `style.css` file name, you should update re
 }
 ```
 
-If you prefer to stick with `style.css` like in Vite 5, you can set `build.lib.cssFileName: 'style'` instead.
+如果你更喜欢像在 Vite 5 中那样使用 `style.css`，可以设置 `build.lib.cssFileName: 'style'`。
 
-## Advanced
->>>>>>> d8c74e66bba83268fb86bc8aef187cf2a9f1be55
+## 进阶 {#advanced}
 
 还有其他一些只影响少数用户的破坏性更改。
 
 - [[#15637] fix!: default `build.cssMinify` to `'esbuild'` for SSR](https://github.com/vitejs/vite/pull/15637)
-<<<<<<< HEAD
   - [`build.cssMinify`](/config/build-options#build-cssminify) 现在即使是 SSR 版本也默认为启用。
-=======
-  - [`build.cssMinify`](/config/build-options#build-cssminify) is now enabled by default even for SSR builds.
 - [[#18070] feat!: proxy bypass with WebSocket](https://github.com/vitejs/vite/pull/18070)
-  - `server.proxy[path].bypass` is now called for WebSocket upgrade requests and in that case, the `res` parameter will be `undefined`.
->>>>>>> d8c74e66bba83268fb86bc8aef187cf2a9f1be55
+  - `server.proxy[path].bypass` 现在用于 WebSocket 升级请求，在这种情况下，`res` 参数将是 `undefined`。
 - [[#18209] refactor!: bump minimal terser version to 5.16.0](https://github.com/vitejs/vite/pull/18209)
   - [`build.minify: 'terser'`](/config/build-options#build-minify) 所支持的最小 terser 版本从 5.4.0 提升至 5.16.0
 - [[#18231] chore(deps): update dependency @rollup/plugin-commonjs to v28](https://github.com/vitejs/vite/pull/18231)

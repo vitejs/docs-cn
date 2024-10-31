@@ -160,20 +160,17 @@ Vite 默认的类型定义是写给它的 Node.js API 的。要将其补充到�
 
 :::
 
-<<<<<<< HEAD
-## Vue {#vue}
-=======
-## HTML
+## HTML {#html}
 
-HTML files stand [front-and-center](/guide/#index-html-and-project-root) of a Vite project, serving as the entry points for your application, making it simple to build single-page and [multi-page applications](/guide/build.html#multi-page-app).
+HTML 文件位于 Vite 项目的[最前端和中心](/guide/#index-html-and-project-root)，作为应用程序的入口点，可轻松构建单页和[多页应用程序](/guide/build.html#multi-page-app)。
 
-Any HTML files in your project root can be directly accessed by its respective directory path:
+项目根目录中的任何 HTML 文件都可以通过各自的目录路径直接访问：
 
 - `<root>/index.html` -> `http://localhost:5173/`
 - `<root>/about.html` -> `http://localhost:5173/about.html`
 - `<root>/blog/index.html` -> `http://localhost:5173/blog/index.html`
 
-HTML elements such as `<script type="module">` and `<link href>` tags are processed by default, which enables using Vite features in the linked files. General asset elements, such as `<img src>`, `<video src>`, and `<source src>`, are also rebased to ensure they are optimized and linked to the right path.
+HTML元素，如 `<script type="module">` 和 `<link href>` 标记，默认情况下都会被处理，这样就能在链接文件中使用Vite功能。一般的 asset 元素，如 `<img src>`、`<video src>` 和 `<source src>`，也会进行重置，以确保它们得到优化并链接到正确的路径。
 
 ```html
 <!doctype html>
@@ -190,10 +187,9 @@ HTML elements such as `<script type="module">` and `<link href>` tags are proces
 </html>
 ```
 
-To opt-out of HTML processing on certain elements, you can add the `vite-ignore` attribute on the element, which can be useful when referencing external assets or CDN.
+要退出对某些元素的 HTML 处理，可以在元素上添加 `vite-ignore` 属性，这在引用外部 assets 或 CDN 时非常有用。
 
-## Vue
->>>>>>> d8c74e66bba83268fb86bc8aef187cf2a9f1be55
+## Vue {#vue}
 
 Vite 为 Vue 提供第一优先级支持：
 
