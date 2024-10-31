@@ -200,7 +200,12 @@ import Bar from './Bar.vue'
 export { Foo, Bar }
 ```
 
-使用如上配置运行 `vite build` 时，将会使用一套面向库的 Rollup 预设，并且将为该库提供两种构建格式：`es` 和 `umd` (可在 `build.lib` 中配置)：
+使用如上配置运行 `vite build` 时，将会使用一套面向库的 Rollup 预设，并且将为该库提供两种构建格式：
+
+- `es` 和 `umd` (单入口)
+- `es` 和 `cjs` (多入口)
+
+格式可通过 [`build.lib.format`](/config/build-options.md#build-lib)选项配置。
 
 ```
 $ vite build
@@ -250,6 +255,29 @@ dist/my-lib.umd.cjs 0.30 kB / gzip: 0.16 kB
 ```
 
 :::
+
+### CSS 支持 {#css-support}
+
+如果您的库导入了 CSS，除了内置的 JS 文件外，它还将作为一个 CSS 文件捆绑在一起，例如 `dist/my-lib.css`。文件名默认为 `build.lib.fileName`，但也可以使用 [`build.lib.cssFileName`](/config/build-options.md#build-lib)进行更改。
+
+您可以在 `package.json` 中导出 CSS 文件，以便用户导入：
+
+```json {12}
+{
+  "name": "my-lib",
+  "type": "module",
+  "files": ["dist"],
+  "main": "./dist/my-lib.umd.cjs",
+  "module": "./dist/my-lib.js",
+  "exports": {
+    ".": {
+      "import": "./dist/my-lib.js",
+      "require": "./dist/my-lib.umd.cjs"
+    },
+    "./style.css": "./dist/my-lib.css"
+  }
+}
+```
 
 ::: tip 文件扩展名
 如果 `package.json` 不包含 `"type": "module"`，Vite 会生成不同的文件后缀名以兼容 Node.js。`.js` 会变为 `.mjs` 而 `.cjs` 会变为 `.js` 。

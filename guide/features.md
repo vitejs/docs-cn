@@ -160,6 +160,35 @@ Vite 默认的类型定义是写给它的 Node.js API 的。要将其补充到�
 
 :::
 
+## HTML {#html}
+
+HTML 文件位于 Vite 项目的[最前端和中心](/guide/#index-html-and-project-root)，作为应用程序的入口点，可轻松构建单页和[多页应用程序](/guide/build.html#multi-page-app)。
+
+项目根目录中的任何 HTML 文件都可以通过各自的目录路径直接访问：
+
+- `<root>/index.html` -> `http://localhost:5173/`
+- `<root>/about.html` -> `http://localhost:5173/about.html`
+- `<root>/blog/index.html` -> `http://localhost:5173/blog/index.html`
+
+HTML元素，如 `<script type="module">` 和 `<link href>` 标记，默认情况下都会被处理，这样就能在链接文件中使用Vite功能。一般的 asset 元素，如 `<img src>`、`<video src>` 和 `<source src>`，也会进行重置，以确保它们得到优化并链接到正确的路径。
+
+```html
+<!doctype html>
+<html>
+  <head>
+    <link rel="icon" href="/favicon.ico" />
+    <link rel="stylesheet" href="/src/styles.css" />
+  </head>
+  <body>
+    <div id="app"></div>
+    <img src="/src/images/logo.svg" alt="logo" />
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
+```
+
+要退出对某些元素的 HTML 处理，可以在元素上添加 `vite-ignore` 属性，这在引用外部 assets 或 CDN 时非常有用。
+
 ## Vue {#vue}
 
 Vite 为 Vue 提供第一优先级支持：
