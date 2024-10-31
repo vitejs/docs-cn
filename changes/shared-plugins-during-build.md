@@ -4,12 +4,7 @@
 可以在 [环境 API 讨论](https://github.com/vitejs/vite/discussions/16358) 中向我们提供反馈
 :::
 
-<<<<<<< HEAD
-// TODO:（保持原文）
 查看 [构建过程中的共享插件](/guide/api-environment.md#shared-plugins-during-build).
-=======
-See [Shared plugins during build](/guide/api-environment.md#shared-plugins-during-build).
->>>>>>> d8c74e66bba83268fb86bc8aef187cf2a9f1be55
 
 影响范围：`Vite 插件作者`
 
@@ -19,18 +14,11 @@ See [Shared plugins during build](/guide/api-environment.md#shared-plugins-durin
 
 ## 动机 {#motivation}
 
-<<<<<<< HEAD
-// TODO: （保持原文）
-=======
-Align dev and build plugin pipelines.
->>>>>>> d8c74e66bba83268fb86bc8aef187cf2a9f1be55
+调整开发和构建插件管道。
 
 ## 迁移指南 {#migration-guide}
 
-<<<<<<< HEAD
-// TODO: （保持原文）
-=======
-To be able to share plugins across environments, plugin state must be keyed by the current environment. A plugin of the following form will count the number of transformed modules across all environments.
+为实现跨环境共享插件，插件状态必须以当前环境为关键。以下形式的插件将计算所有环境中已转换模块的数量。
 
 ```js
 function CountTransformedModulesPlugin() {
@@ -50,7 +38,7 @@ function CountTransformedModulesPlugin() {
 }
 ```
 
-If we instead want to count the number of transformed modules for each environment, we need to keep a map:
+如果我们想要计算每个环境中已转换模块的数量，我们需要维护一个映射表。
 
 ```js
 function PerEnvironmentCountTransformedModulesPlugin() {
@@ -71,7 +59,7 @@ function PerEnvironmentCountTransformedModulesPlugin() {
 }
 ```
 
-To simplify this pattern, internally in Vite, we use a `usePerEnvironmentState` helper:
+为了简化这种模式，我们在 Vite 内部使用了 `usePerEnvironmentState` 助手：
 
 ```js
 function PerEnvironmentCountTransformedModulesPlugin() {
@@ -91,4 +79,3 @@ function PerEnvironmentCountTransformedModulesPlugin() {
   }
 }
 ```
->>>>>>> d8c74e66bba83268fb86bc8aef187cf2a9f1be55
