@@ -329,7 +329,7 @@ export default defineConfig({
 
 用于限制 Vite 开发服务器提供敏感文件的黑名单。这会比 [`server.fs.allow`](#server-fs-allow) 选项的优先级更高。同时还支持 [picomatch 模式](https://github.com/micromatch/picomatch#globbing-features)。
 
-## server.origin
+## server.origin {#server-origin}
 
 - **类型：** `string`
 

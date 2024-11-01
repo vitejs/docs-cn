@@ -37,13 +37,13 @@ For example, if you previously specified `['custom']` for `resolve.conditions`, 
 
 Vite 6 还为 `json.stringify` 引入了一个新的默认值，即 `'auto'`，它只会对大型 JSON 文件进行字符串化处理。要禁用此行为，请设置 `json.stringify: false`。
 
-### Extended support of asset references in HTML elements
+### 扩展对 HTML 元素中 asset 引用的支持 {#extended-support-of-asset-references-in-html-elements}
 
-In Vite 5, only a few supported HTML elements were able to reference assets that will be processed and bundled by Vite, such as `<link href>`, `<img src>`, etc.
+在 Vite 5 中，只有少数受支持的 HTML 元素能够引用由 Vite 处理和捆绑的 asset，如`<link href>`、`<img src>`等。
 
-Vite 6 extends the support to even more HTML elements. The full list can be found at the [HTML features](/guide/features.html#html) docs.
+Vite 6 扩展了对更多 HTML 元素的支持。完整列表请参见 [HTML features](/guide/features.html#html) 文档。
 
-To opt-out of HTML processing on certain elements, you can add the `vite-ignore` attribute on the element.
+要退出对某些元素的 HTML 处理，可以在元素上添加 `vite-ignore` 属性。
 
 ### postcss-load-config
 
