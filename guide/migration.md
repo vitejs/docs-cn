@@ -12,22 +12,22 @@
 
 ## 总体变化 {#general-changes}
 
-### Default value for `resolve.conditions`
+### `resolve.conditions` 的默认值 {#default-value-for-resolve-conditions}
 
-This change does not affect users that did not configure [`resolve.conditions`](/config/shared-options#resolve-conditions) / [`ssr.resolve.conditions`](/config/ssr-options#ssr-resolve-conditions) / [`ssr.resolve.externalConditions`](/config/ssr-options#ssr-resolve-externalconditions).
+此更改不会影响未配置 [`resolve.conditions`](/config/shared-options#resolve-conditions) / [`ssr.resolve.conditions`](/config/ssr-options#ssr-resolve-conditions) / [`ssr.resolve.externalConditions`](/config/ssr-options#ssr-resolve-externalconditions) 的用户。
 
-In Vite 5, the default value for `resolve.conditions` was `[]` and some conditions were added internally. The default value for `ssr.resolve.conditions` was the value of `resolve.conditions`.
+在 Vite 5 中，`resolve.conditions` 的默认值是 `[]`，某些条件是内部添加的。`ssr.resolve.conditions` 的默认值是 `resolve.conditions` 的值。
 
-From Vite 6, some of the conditions are no longer added internally and need to be included in the config values.
-The conditions that are no longer added internally for
+从 Vite 6 开始，部分条件不再在内部添加，需要包含在配置值中。
+不再在内部添加的条件为
 
-- `resolve.conditions` are `['module', 'browser', 'development|production']`
-- `ssr.resolve.conditions` are `['module', 'node', 'development|production']`
+- `resolve.conditions` 是 `['module', 'browser', 'development|production']`
+- `ssr.resolve.conditions` 是 `['module', 'node', 'development|production']`
 
-The default values for those options are updated to the corresponding values and `ssr.resolve.conditions` no longer uses `resolve.conditions` as the default value. Note that `development|production` is a special variable that is replaced with `production` or `development` depending on the value of `process.env.NODE_ENV`.
+这些选项的默认值会更新为相应的值，`ssr.resolve.conditions` 不再使用 `resolve.conditions` 作为默认值。请注意，`development|production`是一个特殊变量，会根据 `process.env.NODE_ENV` 的值被替换为 `production` 或 `development`。
 
-If you specified a custom value for `resolve.conditions` or `ssr.resolve.conditions`, you need to update it to include the new conditions.
-For example, if you previously specified `['custom']` for `resolve.conditions`, you need to specify `['custom', 'module', 'browser', 'development|production']` instead.
+如果为 `resolve.conditions` 或 `ssr.resolve.conditions` 指定了自定义值，则需要更新该值以包含新条件。
+例如，如果先前为 `resolve.conditions` 指定了 `['custom']`，那么现在就需要指定 `['custom','module','browser','develop|production']`。
 
 ### JSON stringify
 
