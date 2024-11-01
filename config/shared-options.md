@@ -117,6 +117,7 @@ declare const __APP_VERSION__: string
 ## resolve.conditions {#resolve-conditions}
 
 - **类型：** `string[]`
+- **默认：** `['module', 'browser', 'development|production']`
 
 解决程序包中 [情景导出](https://nodejs.org/api/packages.html#packages_conditional_exports) 时的其他允许条件。
 
@@ -135,7 +136,9 @@ declare const __APP_VERSION__: string
 
 在这里，`import` 和 `require` 被称为“情景”。情景可以嵌套，并且应该从最特定的到最不特定的指定。
 
-Vite 有一个“允许的情景”列表，并且会匹配列表中第一个情景。默认允许的情景是：`import`，`module`，`browser`，`default` 和基于当前情景为 `production/development`。`resolve.conditions` 配置项使得我们可以指定其他允许的情景。
+`development|production` 是一个特殊值，会根据 `process.env.NODE_ENV` 的值被替换为 `production` 或  `development` 。如果 `process.env.NODE_ENV === 'production'`，则替换为`production`，否则替换为`development`。
+
+请注意，如果符合要求，`import`, `require`, `default` 条件始终会被应用。
 
 :::warning 解决子路径导出问题
 导出以“/”结尾的 key 已被 Node 弃用，可能无法正常工作。请联系包的作者改为使用 [`*` 子路径模式](https://nodejs.org/api/packages.html#package-entry-points)。
