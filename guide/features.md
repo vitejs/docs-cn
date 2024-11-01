@@ -170,9 +170,25 @@ HTML 文件位于 Vite 项目的[最前端和中心](/guide/#index-html-and-proj
 - `<root>/about.html` -> `http://localhost:5173/about.html`
 - `<root>/blog/index.html` -> `http://localhost:5173/blog/index.html`
 
-HTML元素，如 `<script type="module">` 和 `<link href>` 标记，默认情况下都会被处理，这样就能在链接文件中使用Vite功能。一般的 asset 元素，如 `<img src>`、`<video src>` 和 `<source src>`，也会进行重置，以确保它们得到优化并链接到正确的路径。
+由 HTML 元素（如 `<script type="module" src>` 和 `<link href>`）引用的 Assets 会作为应用程序的一部分进行处理和捆绑。受支持元素的完整列表如下：
 
-```html
+- `<audio src>`
+- `<embed src>`
+- `<img src>` 和 `<img srcset>`
+- `<image src>`
+- `<input src>`
+- `<link href>` 和 `<link imagesrcet>`
+- `<object data>`
+- `<script type="module" src>`
+- `<source src>` 和 `<source srcset>`
+- `<track src>`
+- `<use href>` 和 `<use xlink:href>`
+- `<video src>` 和 `<video poster>`
+- `<meta content>`
+  - 仅当 `name` 属性与 `msapplication-tileimage`, `msapplication-square70x70logo`, `msapplication-square150x150logo`, `msapplication-wide310x150logo`匹配时, `msapplication-square310x310logo`, `msapplication-config`, 或 `twitter:image`
+  - 或者仅当 `property` 属性与 `og:image`, `og:image:url`, `og:image:secure_url`, `og:audio`, `og:audio:secure_url`, `og:video`匹配时, 或 `og:video:secure_url`
+
+```html {4-5,8-9}
 <!doctype html>
 <html>
   <head>
@@ -180,7 +196,6 @@ HTML元素，如 `<script type="module">` 和 `<link href>` 标记，默认情�
     <link rel="stylesheet" href="/src/styles.css" />
   </head>
   <body>
-    <div id="app"></div>
     <img src="/src/images/logo.svg" alt="logo" />
     <script type="module" src="/src/main.js"></script>
   </body>

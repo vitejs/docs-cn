@@ -12,6 +12,23 @@
 
 ## 总体变化 {#general-changes}
 
+### `resolve.conditions` 的默认值 {#default-value-for-resolve-conditions}
+
+此更改不会影响未配置 [`resolve.conditions`](/config/shared-options#resolve-conditions) / [`ssr.resolve.conditions`](/config/ssr-options#ssr-resolve-conditions) / [`ssr.resolve.externalConditions`](/config/ssr-options#ssr-resolve-externalconditions) 的用户。
+
+在 Vite 5 中，`resolve.conditions` 的默认值是 `[]`，某些条件是内部添加的。`ssr.resolve.conditions` 的默认值是 `resolve.conditions` 的值。
+
+从 Vite 6 开始，部分条件不再在内部添加，需要包含在配置值中。
+不再在内部添加的条件为
+
+- `resolve.conditions` 是 `['module', 'browser', 'development|production']`
+- `ssr.resolve.conditions` 是 `['module', 'node', 'development|production']`
+
+这些选项的默认值会更新为相应的值，`ssr.resolve.conditions` 不再使用 `resolve.conditions` 作为默认值。请注意，`development|production`是一个特殊变量，会根据 `process.env.NODE_ENV` 的值被替换为 `production` 或 `development`。
+
+如果为 `resolve.conditions` 或 `ssr.resolve.conditions` 指定了自定义值，则需要更新该值以包含新条件。
+例如，如果先前为 `resolve.conditions` 指定了 `['custom']`，那么现在就需要指定 `['custom','module','browser','develop|production']`。
+
 ### JSON stringify
 
 在 Vite 5 中，当设置 [`json.stringify: true`](/config/shared-options#json-stringify) 时，[`json.namedExports`](/config/shared-options#json-namedexports) 会被禁用。
@@ -19,6 +36,14 @@
 从 Vite 6 开始，即使设置了 `json.stringify: true`，`json.namedExports` 也不会被禁用。如果希望实现以前的行为，可以设置 `json.namedExports: false`。
 
 Vite 6 还为 `json.stringify` 引入了一个新的默认值，即 `'auto'`，它只会对大型 JSON 文件进行字符串化处理。要禁用此行为，请设置 `json.stringify: false`。
+
+### 扩展对 HTML 元素中 asset 引用的支持 {#extended-support-of-asset-references-in-html-elements}
+
+在 Vite 5 中，只有少数受支持的 HTML 元素能够引用由 Vite 处理和捆绑的 asset，如`<link href>`、`<img src>`等。
+
+Vite 6 扩展了对更多 HTML 元素的支持。完整列表请参见 [HTML features](/guide/features.html#html) 文档。
+
+要退出对某些元素的 HTML 处理，可以在元素上添加 `vite-ignore` 属性。
 
 ### postcss-load-config
 
@@ -66,6 +91,8 @@ Vite 6 还为 `json.stringify` 引入了一个新的默认值，即 `'auto'`，�
   - [`commonjsOptions.strictRequires`](https://github.com/rollup/plugins/blob/master/packages/commonjs/README.md#strictrequires) 现在默认为 `true`（之前为 `'auto'`)。
 - [[#18243] chore(deps)!: migrate `fast-glob` to `tinyglobby`](https://github.com/vitejs/vite/pull/18243)
   - globs 中不再支持范围大括号 (`{01..03}` ⇒ `['01', '02', '03']`) 和递增大括号 (`{2..8..2}` ⇒ `['2', '4', '6', '8']`) 。
+- [[#18493] refactor!: remove fs.cachedChecks option](https://github.com/vitejs/vite/pull/18493)
+  - 由于在缓存文件夹中写入文件并立即导入时会出现边缘情况，因此删除了这一选择优化。
 
 ## 从 v4 迁移 {#migration-from-v4}
 
