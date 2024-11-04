@@ -125,9 +125,9 @@ interface HotUpdateContext {
   }
   ```
 
-## 分环境的插件 {#per-environment-plugins}
+## 基于环境的插件 {#per-environment-plugins}
 
-插件可以使用 `applyToEnvironment` 函数定义其应适用于哪些环境。
+插件可以使用 `applyToEnvironment` 函数来定义它适用的环境。
 
 ```js
 const UnoCssPlugin = () => {
@@ -166,7 +166,7 @@ const UnoCssPlugin = () => {
 
 在未来的主要版本（Vite 7 或 8）中，我们的目标是完全对齐：
 
-- **在开发和构建期间：** 插件是共享的，并具有[按环境的过滤](#per-environment-plugins)
+- **在开发和构建期间：** 插件是共享的，并可以 [根据环境进行过滤](#per-environment-plugins)
 
 在构建期间还会共享一个单一的 `ResolvedConfig` 实例，允许在整个应用构建过程中进行缓存，类似于我们在开发期间使用 `WeakMap<ResolvedConfig, CachedData>` 的方式。
 
