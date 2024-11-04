@@ -55,7 +55,22 @@ import workletURL from 'extra-scalloped-border/worklet.js?url'
 CSS.paintWorklet.addModule(workletURL)
 ```
 
+<<<<<<< HEAD
 ### 将资源引入为字符串 {#importing-asset-as-string}
+=======
+### Explicit Inline Handling
+
+Assets can be explicitly imported with inlining or no inlining using the `?inline` or `?no-inline` suffix respectively.
+
+```js twoslash
+import 'vite/client'
+// ---cut---
+import imgUrl1 from './img.svg?no-inline'
+import imgUrl2 from './img.png?inline'
+```
+
+### Importing Asset as String
+>>>>>>> 468ce9d92cdc8553faeac00faa564b746b38f332
 
 资源可以使用 `?raw` 后缀声明作为字符串引入。
 
