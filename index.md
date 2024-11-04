@@ -28,7 +28,7 @@ import FeatureCI from './.vitepress/theme/components/landing/2. feature-section/
 
 <div class="VPHome">
   <Hero/>
-  <FeatureSection title="重新定义开发者体验" description="Vite 让 Web 开发重回简单" type="blue">
+  <FeatureSection title="重新诠释开发者体验" description="Vite 让 Web 开发重回简单" type="blue">
     <FeatureInstantServerStart />
     <FeatureHMR />
     <FeatureRichFeatures />

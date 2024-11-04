@@ -468,7 +468,7 @@ export default defineConfig({
               link: '/changes/hotupdate-hook',
             },
             {
-              text: '迁移到按环境划分的 API',
+              text: '迁移到基于环境的API',
               link: '/changes/per-environment-apis',
             },
             {

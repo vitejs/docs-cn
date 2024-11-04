@@ -170,7 +170,7 @@ HTML 文件位于 Vite 项目的[最前端和中心](/guide/#index-html-and-proj
 - `<root>/about.html` -> `http://localhost:5173/about.html`
 - `<root>/blog/index.html` -> `http://localhost:5173/blog/index.html`
 
-由 HTML 元素（如 `<script type="module" src>` 和 `<link href>`）引用的 Assets 会作为应用程序的一部分进行处理和捆绑。受支持元素的完整列表如下：
+由 HTML 元素引用的资源，例如 `<script type="module" src>` 和 `<link href>`，会作为应用的一部分进行处理和打包。支持的完整元素列表如下：
 
 - `<audio src>`
 - `<embed src>`
@@ -185,8 +185,8 @@ HTML 文件位于 Vite 项目的[最前端和中心](/guide/#index-html-and-proj
 - `<use href>` 和 `<use xlink:href>`
 - `<video src>` 和 `<video poster>`
 - `<meta content>`
-  - 仅当 `name` 属性与 `msapplication-tileimage`, `msapplication-square70x70logo`, `msapplication-square150x150logo`, `msapplication-wide310x150logo`匹配时, `msapplication-square310x310logo`, `msapplication-config`, 或 `twitter:image`
-  - 或者仅当 `property` 属性与 `og:image`, `og:image:url`, `og:image:secure_url`, `og:audio`, `og:audio:secure_url`, `og:video`匹配时, 或 `og:video:secure_url`
+  - 仅当 `name` 属性匹配以下值时：`msapplication-tileimage`，`msapplication-square70x70logo`，`msapplication-square150x150logo`，`msapplication-wide310x150logo`，`msapplication-square310x310logo`，`msapplication-config`，或 `twitter:image`
+  - 或仅当 `property` 属性匹配以下值时：`og:image`，`og:image:url`，`og:image:secure_url`，`og:audio`，`og:audio:secure_url`，`og:video`，或 `og:video:secure_url`
 
 ```html {4-5,8-9}
 <!doctype html>
