@@ -69,7 +69,7 @@ const { data } = useSponsor()
         href="https://github.com/sponsors/vitejs"
         target="_blank"
         class="btn btn--outline btn--rounded"
-        >Become a Sponsor</a
+        >成为赞助商</a
       >
     </div>
   </div>
@@ -132,7 +132,7 @@ const { data } = useSponsor()
     font-weight: 400;
     line-height: 150%; /* 24px */
     letter-spacing: -0.32px;
-    width: 520px;
+    width: 480px;
     max-width: 100%;
     margin: 0 auto 40px;
     padding: 0 20px;

@@ -34,7 +34,7 @@ SSR 服务器的构建目标。
 ## ssr.resolve.conditions {#ssr-resolve-conditions}
 
 - **类型：** `string[]`
-- **默认：** `['module', 'node', 'development|production']` (当`ssr.target === 'webworker'`时为`['module', 'browser', 'development|production']`)
+- **默认：** `['module', 'node', 'development|production']`（当 `ssr.target === 'webworker'` 时为 `['module', 'browser', 'development|production']`）
 - **相关：** [解析情景](./shared-options.md#resolve-conditions)
 
 这些条件会在插件管道中使用，并且只会影响 SSR 构建期间的非外部化依赖项。使用 `ssr.resolve.externalConditions` 来影响外部化导入。

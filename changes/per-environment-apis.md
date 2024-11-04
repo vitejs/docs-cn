@@ -1,4 +1,4 @@
-# 迁移到按环境划分的 API {#move-to-per-environment-apis}
+# 迁移到基于环境的API {#move-to-per-environment-apis}
 
 ::: tip 反馈
 可以在 [环境 API 讨论](https://github.com/vitejs/vite/discussions/16358) 中向我们提供反馈
