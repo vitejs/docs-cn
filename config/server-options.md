@@ -101,15 +101,31 @@ export default defineConfig({
 export default defineConfig({
   server: {
     proxy: {
+<<<<<<< HEAD
       // 字符串简写写法：http://localhost:5173/foo -> http://localhost:4567/foo
       '/foo': 'http://localhost:4567',
       // 带选项写法：http://localhost:5173/api/bar -> http://jsonplaceholder.typicode.com/bar
+=======
+      // string shorthand:
+      // http://localhost:5173/foo
+      //   -> http://localhost:4567/foo
+      '/foo': 'http://localhost:4567',
+      // with options:
+      // http://localhost:5173/api/bar
+      //   -> http://jsonplaceholder.typicode.com/bar
+>>>>>>> 4df5f1bcc102d2f3bb3f937b62b09868cc84b88f
       '/api': {
         target: 'http://jsonplaceholder.typicode.com',
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, ''),
       },
+<<<<<<< HEAD
       // 正则表达式写法：http://localhost:5173/fallback/ -> http://jsonplaceholder.typicode.com/
+=======
+      // with RegExp:
+      // http://localhost:5173/fallback/
+      //   -> http://jsonplaceholder.typicode.com/
+>>>>>>> 4df5f1bcc102d2f3bb3f937b62b09868cc84b88f
       '^/fallback/.*': {
         target: 'http://jsonplaceholder.typicode.com',
         changeOrigin: true,
@@ -123,8 +139,16 @@ export default defineConfig({
           // proxy 是 'http-proxy' 的实例
         }
       },
+<<<<<<< HEAD
       // 代理 websockets 或 socket.io 写法：ws://localhost:5173/socket.io -> ws://localhost:5174/socket.io
       // 在使用 `rewriteWsOrigin` 时要特别谨慎，因为这可能会让代理服务器暴露在 CSRF 攻击之下
+=======
+      // Proxying websockets or socket.io:
+      // ws://localhost:5173/socket.io
+      //   -> ws://localhost:5174/socket.io
+      // Exercise caution using `rewriteWsOrigin` as it can leave the
+      // proxying open to CSRF attacks.
+>>>>>>> 4df5f1bcc102d2f3bb3f937b62b09868cc84b88f
       '/socket.io': {
         target: 'ws://localhost:5174',
         ws: true,
@@ -251,16 +275,28 @@ async function createServer() {
   // 以中间件模式创建 Vite 服务器
   const vite = await createViteServer({
     server: { middlewareMode: true },
+<<<<<<< HEAD
     appType: 'custom', // 不引入 Vite 默认的 HTML 处理中间件
+=======
+    // don't include Vite's default HTML handling middlewares
+    appType: 'custom',
+>>>>>>> 4df5f1bcc102d2f3bb3f937b62b09868cc84b88f
   })
   // 将 vite 的 connect 实例作中间件使用
   app.use(vite.middlewares)
 
   app.use('*', async (req, res) => {
+<<<<<<< HEAD
     // 由于 `appType` 的值是 `'custom'`，因此应在此处提供响应。
     // 请注意：如果 `appType` 值为 `'spa'` 或 `'mpa'`，Vite 会包含
     // 处理 HTML 请求和 404 的中间件，因此用户中间件应该在
     // Vite 的中间件之前添加，以确保其生效。
+=======
+    // Since `appType` is `'custom'`, should serve response here.
+    // Note: if `appType` is `'spa'` or `'mpa'`, Vite includes middlewares
+    // to handle HTML requests and 404s so user middlewares should be added
+    // before Vite's middlewares to take effect instead
+>>>>>>> 4df5f1bcc102d2f3bb3f937b62b09868cc84b88f
   })
 }
 

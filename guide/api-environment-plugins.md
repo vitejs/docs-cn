@@ -134,14 +134,24 @@ const UnoCssPlugin = () => {
   // 共享的全局状态
   return {
     buildStart() {
+<<<<<<< HEAD
       // 使用 WeakMap<Environment, Data>，this.environment 初始化每个环境的状态
+=======
+      // init per environment state with WeakMap<Environment,Data>
+      // using this.environment
+>>>>>>> 4df5f1bcc102d2f3bb3f937b62b09868cc84b88f
     },
     configureServer() {
       // 正常使用全局钩子
     },
     applyToEnvironment(environment) {
+<<<<<<< HEAD
       // 如果这个插件应该在这个环境中激活，则返回 true
       // 如果没有提供这个函数，则插件在所有环境中都是激活的
+=======
+      // return true if this plugin should be active in this environment
+      // if the hook is not used, the plugin is active in all environments
+>>>>>>> 4df5f1bcc102d2f3bb3f937b62b09868cc84b88f
     },
     resolveId(id, importer) {
       // 只对此插件适用的环境进行调用

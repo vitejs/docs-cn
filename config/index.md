@@ -103,9 +103,16 @@ export default defineConfig(async ({ command, mode }) => {
 ```js twoslash
 import { defineConfig, loadEnv } from 'vite'
 
+<<<<<<< HEAD
 export default defineConfig(({ command, mode }) => {
   // 根据当前工作目录中的 `mode` 加载 .env 文件
   // 设置第三个参数为 '' 来加载所有环境变量，而不管是否有 `VITE_` 前缀。
+=======
+export default defineConfig(({ mode }) => {
+  // Load env file based on `mode` in the current working directory.
+  // Set the third parameter to '' to load all env regardless of the
+  // `VITE_` prefix.
+>>>>>>> 4df5f1bcc102d2f3bb3f937b62b09868cc84b88f
   const env = loadEnv(mode, process.cwd(), '')
   return {
     // vite 配置

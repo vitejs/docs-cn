@@ -84,7 +84,11 @@ Vite 模块运行器允许首先使用 Vite 插件处理代码来运行任何代
 ```ts
 import { DevEnvironment, RemoteEnvironmentTransport } from 'vite'
 
-function createWorkerdDevEnvironment(name: string, config: ResolvedConfig, context: DevEnvironmentContext) {
+function createWorkerdDevEnvironment(
+  name: string,
+  config: ResolvedConfig,
+  context: DevEnvironmentContext
+) {
   const hot = /* ... */
   const connection = /* ... */
   const transport = new RemoteEnvironmentTransport({
@@ -120,7 +124,12 @@ export class ModuleRunner {
     private debug?: ModuleRunnerDebugger,
   ) {}
   /**
+<<<<<<< HEAD
    * 要执行的 URL。可以是文件路径，服务器路径，或者相对于根路径的 id
+=======
+   * URL to execute.
+   * Accepts file path, server path, or id relative to the root.
+>>>>>>> 4df5f1bcc102d2f3bb3f937b62b09868cc84b88f
    */
   public async import<T = any>(url: string): Promise<T>
   /**
@@ -128,12 +137,21 @@ export class ModuleRunner {
    */
   public clearCache(): void
   /**
+<<<<<<< HEAD
    * 清除所有缓存，移除所有 HMR 监听器，并重置源映射支持
    * 此方法不会停止 HMR 连接
    */
   public async close(): Promise<void>
   /**
    * 如果通过调用 `close()` 方法关闭了运行器，则返回 `true`
+=======
+   * Clear all caches, remove all HMR listeners, reset sourcemap support.
+   * This method doesn't stop the HMR connection.
+   */
+  public async close(): Promise<void>
+  /**
+   * Returns `true` if the runner has been closed by calling `close()`.
+>>>>>>> 4df5f1bcc102d2f3bb3f937b62b09868cc84b88f
    */
   public isClosed(): boolean
 }
@@ -174,9 +192,18 @@ export interface ModuleRunnerOptions {
    */
   transport: RunnerTransport
   /**
+<<<<<<< HEAD
    * 配置如何解析源映射。如果 `process.setSourceMapsEnabled` 可用，首选 `node`
    * 否则，它将默认使用 `prepareStackTrace`，这将覆盖 `Error.prepareStackTrace` 方法
    * 你可以提供一个对象来配置如何解析未被 Vite 处理的文件的内容和其源映射
+=======
+   * Configure how source maps are resolved.
+   * Prefers `node` if `process.setSourceMapsEnabled` is available.
+   * Otherwise it will use `prepareStackTrace` by default which overrides
+   * `Error.prepareStackTrace` method.
+   * You can provide an object to configure how file contents and
+   * source maps are resolved for files that were not processed by Vite.
+>>>>>>> 4df5f1bcc102d2f3bb3f937b62b09868cc84b88f
    */
   sourcemapInterceptor?:
     | false
@@ -190,7 +217,11 @@ export interface ModuleRunnerOptions {
     | false
     | {
         /**
+<<<<<<< HEAD
          * 配置 HMR 如何在客户端和服务器之间通信
+=======
+         * Configure how HMR communicates between client and server.
+>>>>>>> 4df5f1bcc102d2f3bb3f937b62b09868cc84b88f
          */
         connection: ModuleRunnerHMRConnection
         /**
@@ -199,7 +230,12 @@ export interface ModuleRunnerOptions {
         logger?: false | HMRLogger
       }
   /**
+<<<<<<< HEAD
    * 自定义模块缓存。如果未提供，它将为每个模块运行器实例创建一个单独的模块缓存
+=======
+   * Custom module cache. If not provided, it creates a separate module
+   * cache for each module runner instance.
+>>>>>>> 4df5f1bcc102d2f3bb3f937b62b09868cc84b88f
    */
   evaluatedModules?: EvaluatedModules
 }
@@ -343,8 +379,14 @@ export interface ModuleRunnerHMRConnection {
    */
   send(payload: HotPayload): void
   /**
+<<<<<<< HEAD
    * 配置当此连接触发更新时如何处理 HMR
    * 此方法期望连接开始监听 HMR 更新，并在接收到更新时调用此回调
+=======
+   * Configure how HMR is handled when this connection triggers an update.
+   * This method expects that the connection will start listening for HMR
+   * updates and call this callback when it's received.
+>>>>>>> 4df5f1bcc102d2f3bb3f937b62b09868cc84b88f
    */
   onUpdate(callback: (payload: HotPayload) => void): void
 }
