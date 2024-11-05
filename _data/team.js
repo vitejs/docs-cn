@@ -177,16 +177,11 @@ export const emeriti = [
   {
     avatar: 'https://github.com/GrygrFlzr.png',
     name: 'GrygrFlzr',
-<<<<<<< HEAD
     title: '开发者',
-    links: [{ icon: 'github', link: 'https://github.com/GrygrFlzr' }]
-=======
-    title: 'Developer',
     links: [
       { icon: 'github', link: 'https://github.com/GrygrFlzr' },
       { icon: 'bluesky', link: 'https://bsky.app/profile/bsky.cybeast.dev' },
     ],
->>>>>>> 468ce9d92cdc8553faeac00faa564b746b38f332
   },
   {
     avatar: 'https://github.com/nihalgonsalves.png',
