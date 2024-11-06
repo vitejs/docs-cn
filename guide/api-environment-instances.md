@@ -72,17 +72,10 @@ class DevEnvironment {
   async transformRequest(url: string): TransformResult
 
   /**
-<<<<<<< HEAD
    * 注册一个低优先级处理的请求。这对于避免瀑布效应
    * 非常有用。Vite 服务器有关于其他请求导入模块的
    * 信息，因此它可以预热模块图，使得当模块被请求时
    * 已经处理完毕。
-=======
-   * Register a request to be processed with low priority. This is useful
-   * to avoid waterfalls. The Vite server has information about the
-   * imported modules by other requests, so it can warmup the module graph
-   * so the modules are already processed when they are requested.
->>>>>>> 4df5f1bcc102d2f3bb3f937b62b09868cc84b88f
    */
   async warmupRequest(url: string): void
 }

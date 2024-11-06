@@ -22,14 +22,9 @@ export class RunnableDevEnvironment extends DevEnvironment {
 
 class ModuleRunner {
   /**
-<<<<<<< HEAD
-   * 要执行的 URL。可以接受文件路径，服务器路径，或者相对于根路径的 id。
+   * 要执行的 URL。
+   * 可以接受文件路径，服务器路径，或者相对于根路径的 id。
    * 返回一个实例化的模块（和 ssrLoadModule 中的一样）
-=======
-   * URL to execute.
-   * Accepts file path, server path, or id relative to the root.
-   * Returns an instantiated module (same as in ssrLoadModule)
->>>>>>> 4df5f1bcc102d2f3bb3f937b62b09868cc84b88f
    */
   public async import(url: string): Promise<Record<string, any>>
   /**
@@ -58,35 +53,21 @@ const server = await createServer({
   appType: 'custom',
   environments: {
     server: {
-<<<<<<< HEAD
-      // 默认情况下，模块在开发过程中与 vite 开发服务器在同一进程中运行
-=======
-      // by default, modules are run in the same process as the vite server
->>>>>>> 4df5f1bcc102d2f3bb3f937b62b09868cc84b88f
+      // 默认情况下，模块与 vite 开发服务器在同一进程中运行
     },
   },
 })
 
-<<<<<<< HEAD
-// 在 TypeScript 中，你可能需要将这个转换为 RunnableDevEnvironment，或者使用
-// "isRunnableDevEnvironment" 函数来保护对运行器的访问
-=======
-// You might need to cast this to RunnableDevEnvironment in TypeScript or
-// use isRunnableDevEnvironment to guard the access to the runner
->>>>>>> 4df5f1bcc102d2f3bb3f937b62b09868cc84b88f
+// 在 TypeScript 中，你可能需要将这个转换为 RunnableDevEnvironment，或者
+// 使用 "isRunnableDevEnvironment" 来保护对运行器的访问
 const environment = server.environments.node
 
 app.use('*', async (req, res, next) => {
   const url = req.originalUrl
 
-<<<<<<< HEAD
   // 1. 读取 index.html
-  let template = fs.readFileSync(path.resolve(__dirname, 'index.html'), 'utf-8')
-=======
-  // 1. Read index.html
   const indexHtmlPath = path.resolve(__dirname, 'index.html')
   let template = fs.readFileSync(indexHtmlPath, 'utf-8')
->>>>>>> 4df5f1bcc102d2f3bb3f937b62b09868cc84b88f
 
   // 2. 应用 Vite HTML 转换。这将注入 Vite HMR 客户端，
   //    并应用来自 Vite 插件的 HTML 转换，例如
