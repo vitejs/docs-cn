@@ -135,6 +135,7 @@ document.getElementById('hero-img').src = imgUrl
 
 ```js
 function getImageUrl(name) {
+  // note that this does not include files in subdirectories
   return new URL(`./dir/${name}.png`, import.meta.url).href
 }
 ```
@@ -146,6 +147,30 @@ function getImageUrl(name) {
 const imgUrl = new URL(imagePath, import.meta.url).href
 ```
 
+<<<<<<< HEAD
 ::: warning 注意：无法在 SSR 中使用
 如果你正在以服务端渲染模式使用 Vite 则此模式不支持，因为 `import.meta.url` 在浏览器和 Node.js 中有不同的语义。服务端的产物也无法预先确定客户端主机 URL。
+=======
+::: details How it works
+
+Vite will transform the `getImageUrl` function to:
+
+```js
+import __img0png from './dir/img0.png'
+import __img1png from './dir/img1.png'
+
+function getImageUrl(name) {
+  const modules = {
+    './dir/img0.png': __img0png,
+    './dir/img1.png': __img1png,
+  }
+  return new URL(modules[`./dir/${name}.png`], import.meta.url).href
+}
+```
+
+:::
+
+::: warning Does not work with SSR
+This pattern does not work if you are using Vite for Server-Side Rendering, because `import.meta.url` have different semantics in browsers vs. Node.js. The server bundle also cannot determine the client host URL ahead of time.
+>>>>>>> f9673b1ae634ee6fe5f1b9a95a1c9445ae6c5dc7
 :::
