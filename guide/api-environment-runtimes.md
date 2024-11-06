@@ -84,7 +84,11 @@ Vite 模块运行器允许首先使用 Vite 插件处理代码来运行任何代
 ```ts
 import { DevEnvironment, RemoteEnvironmentTransport } from 'vite'
 
-function createWorkerdDevEnvironment(name: string, config: ResolvedConfig, context: DevEnvironmentContext) {
+function createWorkerdDevEnvironment(
+  name: string,
+  config: ResolvedConfig,
+  context: DevEnvironmentContext
+) {
   const hot = /* ... */
   const connection = /* ... */
   const transport = new RemoteEnvironmentTransport({
@@ -120,7 +124,8 @@ export class ModuleRunner {
     private debug?: ModuleRunnerDebugger,
   ) {}
   /**
-   * 要执行的 URL。可以是文件路径，服务器路径，或者相对于根路径的 id
+   * 要执行的 URL。
+   * 可以是文件路径，服务器路径，或者相对于根路径的 id
    */
   public async import<T = any>(url: string): Promise<T>
   /**
@@ -133,7 +138,7 @@ export class ModuleRunner {
    */
   public async close(): Promise<void>
   /**
-   * 如果通过调用 `close()` 方法关闭了运行器，则返回 `true`
+   * 如果通过调用 `close()` 关闭了运行器，则返回 `true`
    */
   public isClosed(): boolean
 }
@@ -174,9 +179,12 @@ export interface ModuleRunnerOptions {
    */
   transport: RunnerTransport
   /**
-   * 配置如何解析源映射。如果 `process.setSourceMapsEnabled` 可用，首选 `node`
-   * 否则，它将默认使用 `prepareStackTrace`，这将覆盖 `Error.prepareStackTrace` 方法
-   * 你可以提供一个对象来配置如何解析未被 Vite 处理的文件的内容和其源映射
+   * 配置如何解析源映射。
+   * 如果 `process.setSourceMapsEnabled` 可用，首选 `node`
+   * 否则，它将默认使用 `prepareStackTrace`，这将
+   * 覆盖 `Error.prepareStackTrace` 方法
+   * 你可以提供一个对象来配置如何解析
+   * 未被 Vite 处理的文件的内容和其源映射
    */
   sourcemapInterceptor?:
     | false
@@ -199,7 +207,8 @@ export interface ModuleRunnerOptions {
         logger?: false | HMRLogger
       }
   /**
-   * 自定义模块缓存。如果未提供，它将为每个模块运行器实例创建一个单独的模块缓存
+   * 自定义模块缓存。如果未提供，它将创建一个单独的模块缓存给
+   * 每个模块运行器实例
    */
   evaluatedModules?: EvaluatedModules
 }
@@ -344,7 +353,8 @@ export interface ModuleRunnerHMRConnection {
   send(payload: HotPayload): void
   /**
    * 配置当此连接触发更新时如何处理 HMR
-   * 此方法期望连接开始监听 HMR 更新，并在接收到更新时调用此回调
+   * 此方法期望连接开始监听 HMR 更新
+   * 并在接收到更新时调用此回调
    */
   onUpdate(callback: (payload: HotPayload) => void): void
 }

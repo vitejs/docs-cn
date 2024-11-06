@@ -22,7 +22,8 @@ export class RunnableDevEnvironment extends DevEnvironment {
 
 class ModuleRunner {
   /**
-   * 要执行的 URL。可以接受文件路径，服务器路径，或者相对于根路径的 id。
+   * 要执行的 URL。
+   * 可以接受文件路径，服务器路径，或者相对于根路径的 id。
    * 返回一个实例化的模块（和 ssrLoadModule 中的一样）
    */
   public async import(url: string): Promise<Record<string, any>>
@@ -52,20 +53,21 @@ const server = await createServer({
   appType: 'custom',
   environments: {
     server: {
-      // 默认情况下，模块在开发过程中与 vite 开发服务器在同一进程中运行
+      // 默认情况下，模块与 vite 开发服务器在同一进程中运行
     },
   },
 })
 
-// 在 TypeScript 中，你可能需要将这个转换为 RunnableDevEnvironment，或者使用
-// "isRunnableDevEnvironment" 函数来保护对运行器的访问
+// 在 TypeScript 中，你可能需要将这个转换为 RunnableDevEnvironment，或者
+// 使用 "isRunnableDevEnvironment" 来保护对运行器的访问
 const environment = server.environments.node
 
 app.use('*', async (req, res, next) => {
   const url = req.originalUrl
 
   // 1. 读取 index.html
-  let template = fs.readFileSync(path.resolve(__dirname, 'index.html'), 'utf-8')
+  const indexHtmlPath = path.resolve(__dirname, 'index.html')
+  let template = fs.readFileSync(indexHtmlPath, 'utf-8')
 
   // 2. 应用 Vite HTML 转换。这将注入 Vite HMR 客户端，
   //    并应用来自 Vite 插件的 HTML 转换，例如
@@ -112,7 +114,7 @@ const server = createServer()
 const ssrEnvironment = server.environment.ssr
 const input = {}
 
-const { createHandler } = await ssrEnvironment.runner.import('./entrypoint.js')
+const { createHandler } = await ssrEnvironment.runner.import('./entry.js')
 const handler = createHandler(input)
 const response = handler(new Request('/'))
 
@@ -186,10 +188,10 @@ function vitePluginVirtualIndexHtml(): Plugin {
         let html: string
         if (server) {
           this.addWatchFile('index.html')
-          html = await fs.promises.readFile('index.html', 'utf-8')
+          html = fs.readFileSync('index.html', 'utf-8')
           html = await server.transformIndexHtml('/', html)
         } else {
-          html = await fs.promises.readFile('dist/client/index.html', 'utf-8')
+          html = fs.readFileSync('dist/client/index.html', 'utf-8')
         }
         return `export default ${JSON.stringify(html)}`
       }
