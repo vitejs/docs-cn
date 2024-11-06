@@ -101,15 +101,21 @@ export default defineConfig({
 export default defineConfig({
   server: {
     proxy: {
-      // 字符串简写写法：http://localhost:5173/foo -> http://localhost:4567/foo
+      // 字符串简写写法：
+      // http://localhost:5173/foo 
+      // -> http://localhost:4567/foo
       '/foo': 'http://localhost:4567',
-      // 带选项写法：http://localhost:5173/api/bar -> http://jsonplaceholder.typicode.com/bar
+      // 带选项写法：
+      // http://localhost:5173/api/bar 
+      // -> http://jsonplaceholder.typicode.com/bar
       '/api': {
         target: 'http://jsonplaceholder.typicode.com',
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, ''),
       },
-      // 正则表达式写法：http://localhost:5173/fallback/ -> http://jsonplaceholder.typicode.com/
+      // 正则表达式写法：
+      // http://localhost:5173/fallback/ 
+      // -> http://jsonplaceholder.typicode.com/
       '^/fallback/.*': {
         target: 'http://jsonplaceholder.typicode.com',
         changeOrigin: true,
@@ -123,8 +129,11 @@ export default defineConfig({
           // proxy 是 'http-proxy' 的实例
         }
       },
-      // 代理 websockets 或 socket.io 写法：ws://localhost:5173/socket.io -> ws://localhost:5174/socket.io
-      // 在使用 `rewriteWsOrigin` 时要特别谨慎，因为这可能会让代理服务器暴露在 CSRF 攻击之下
+      // 代理 websockets 或 socket.io 写法：
+      // ws://localhost:5173/socket.io 
+      // -> ws://localhost:5174/socket.io
+      // 在使用 `rewriteWsOrigin` 时要特别谨慎，因为这可能会让
+      // 代理服务器暴露在 CSRF 攻击之下
       '/socket.io': {
         target: 'ws://localhost:5174',
         ws: true,
@@ -251,7 +260,8 @@ async function createServer() {
   // 以中间件模式创建 Vite 服务器
   const vite = await createViteServer({
     server: { middlewareMode: true },
-    appType: 'custom', // 不引入 Vite 默认的 HTML 处理中间件
+    appType: 'custom',
+    // 不引入 Vite 默认的 HTML 处理中间件
   })
   // 将 vite 的 connect 实例作中间件使用
   app.use(vite.middlewares)
