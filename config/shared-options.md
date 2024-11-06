@@ -228,11 +228,7 @@ declare const __APP_VERSION__: string
 
 - **类型：** `Record<string, object>`
 
-<<<<<<< HEAD
 指定传递给 CSS 预处理器的选项。文件扩展名用作选项的键。每个预处理器支持的选项可以在它们各自的文档中找到：
-=======
-Specify options to pass to CSS pre-processors. The file extensions are used as keys for the options. The supported options for each preprocessor can be found in their respective documentation:
->>>>>>> 4df5f1bcc102d2f3bb3f937b62b09868cc84b88f
 
 - `sass`/`scss`:
   - 选择要使用的 sass 应用程序接口 `api: "modern-compiler" | "modern" | "legacy"` (如果安装了`sass-embedded`，默认为`"modern-compiler"`，否则为 `"modern"`). 为获得最佳性能，建议使用 `api: "modern-compiler"` 和 `sass-embedded` 软件包。`"legacy"` API 已过时，将在 Vite 7 中移除。
