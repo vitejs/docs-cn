@@ -40,7 +40,7 @@ class DevEnvironment {
    * 用于在目标运行时的关联模块运行器中
    * 发送和接收消息的通信通道。
    */
-  hot: HotChannel | null
+  hot: NormalizedHotChannel
   /**
    * 模块节点的图，包含处理过的模块之间的
    * 导入关系和处理代码的缓存结果。
