@@ -155,12 +155,7 @@ import { root, transport } from './rpc-implementation.js'
 const moduleRunner = new ModuleRunner(
   {
     root,
-<<<<<<< HEAD
-    fetchModule,
-    // 你也可以提供 hmr.connection 来支持 HMR
-=======
     transport,
->>>>>>> 741b26cbfdcc2107cb6d337dc87c763eff3fa684
   },
   new ESModulesEvaluator(),
 )
@@ -200,15 +195,7 @@ export interface ModuleRunnerOptions {
     | false
     | {
         /**
-<<<<<<< HEAD
-         * 配置 HMR 如何在客户端和服务器之间通信
-         */
-        connection: ModuleRunnerHMRConnection
-        /**
-         * 配置 HMR 日志
-=======
-         * Configure HMR logger.
->>>>>>> 741b26cbfdcc2107cb6d337dc87c763eff3fa684
+         * 配置 HMR 日志.
          */
         logger?: false | HMRLogger
       }
@@ -251,22 +238,11 @@ export interface ModuleEvaluator {
 
 Vite 默认导出了实现此接口的 `ESModulesEvaluator`。它使用 `new AsyncFunction` 来执行代码，因此，如果代码有内联源映射，它应该包含 [2 行的偏移](https://tc39.es/ecma262/#sec-createdynamicfunction) 以适应新增的行。这是由 `ESModulesEvaluator` 自动完成的。自定义评估器不会添加额外的行。
 
-## `ModuleRunnerTransport`
+## `ModuleRunnerTransport` {#modulerunnertransport}
 
 **类型签名：**
 
 ```ts
-<<<<<<< HEAD
-interface RunnerTransport {
-  /**
-   * 获取模块信息的方法
-   */
-  fetchModule: FetchFunction
-}
-```
-
-通过 RPC 或直接调用函数与环境通信的传输对象。默认情况下，你需要传递一个带有 `fetchModule` 方法的对象 - 它可以在其中使用任何类型的 RPC，但 Vite 也通过 `RemoteRunnerTransport` 类暴露双向传输接口，以使配置更容易。你需要将它与服务器上的 `RemoteEnvironmentTransport` 实例配对，就像在这个例子中，模块运行器在工作线程中创建：
-=======
 interface ModuleRunnerTransport {
   connect?(handlers: ModuleRunnerTransportHandlers): Promise<void> | void
   disconnect?(): Promise<void> | void
@@ -278,10 +254,9 @@ interface ModuleRunnerTransport {
 }
 ```
 
-Transport object that communicates with the environment via an RPC or by directly calling the function. When `invoke` method is not implemented, the `send` method and `connect` method is required to be implemented. Vite will construct the `invoke` internally.
+通过 RPC 或直接调用函数与环境通信的传输对象。如果未执行 `invoke` 方法，则必须执行 `send` 方法和 `connect` 方法。Vite 将在内部构建 `invoke` 方法。
 
-You need to couple it with the `HotChannel` instance on the server like in this example where module runner is created in the worker thread:
->>>>>>> 741b26cbfdcc2107cb6d337dc87c763eff3fa684
+你需要将它与服务器上的 `HotChannel` 实例结合起来，就像本例中在工作线程中创建模块运行程序一样：
 
 ::: code-group
 
@@ -316,15 +291,6 @@ import { createServer, RemoteEnvironmentTransport, DevEnvironment } from 'vite'
 
 function createWorkerEnvironment(name, config, context) {
   const worker = new Worker('./worker.js')
-<<<<<<< HEAD
-  return new DevEnvironment(name, config, {
-    hot: /* 自定义热更新通道 */,
-    remoteRunner: {
-      transport: new RemoteEnvironmentTransport({
-        send: (data) => worker.postMessage(data),
-        onMessage: (listener) => worker.on('message', listener),
-      }),
-=======
   const handlerToWorkerListener = new WeakMap()
 
   const workerHotChannel = {
@@ -344,7 +310,6 @@ function createWorkerEnvironment(name, config, context) {
       }
       handlerToWorkerListener.set(handler, listener)
       w.on('message', listener)
->>>>>>> 741b26cbfdcc2107cb6d337dc87c763eff3fa684
     },
     off: (event, handler) => {
       if (event === 'connection') return
@@ -374,11 +339,7 @@ await createServer({
 
 :::
 
-<<<<<<< HEAD
-`RemoteRunnerTransport` 和 `RemoteEnvironmentTransport` 旨在一起使用，但你完全不必使用它们。你可以定义你自己的函数在运行器和服务器之间进行通信。例如，如果你通过 HTTP 请求连接到环境，你可以在 `fetchModule` 函数中调用 `fetch().json()`：
-=======
-A different example using an HTTP request to communicate between the runner and the server:
->>>>>>> 741b26cbfdcc2107cb6d337dc87c763eff3fa684
+使用 HTTP 请求在运行程序和服务器之间进行通信的另一个示例：
 
 ```ts
 import { ESModulesEvaluator, ModuleRunner } from 'vite/module-runner'
@@ -402,43 +363,7 @@ export const runner = new ModuleRunner(
 await runner.import('/entry.js')
 ```
 
-<<<<<<< HEAD
-## ModuleRunnerHMRConnection
-
-**类型签名：**
-
-```ts
-export interface ModuleRunnerHMRConnection {
-  /**
-   * 是否在向服务器发送消息之前完成检查
-   */
-  isReady(): boolean
-  /**
-   * 向服务器发送消息
-   */
-  send(payload: HotPayload): void
-  /**
-   * 配置当此连接触发更新时如何处理 HMR
-   * 此方法期望连接开始监听 HMR 更新
-   * 并在接收到更新时调用此回调
-   */
-  onUpdate(callback: (payload: HotPayload) => void): void
-}
-```
-
-这个接口定义了如何建立 HMR 通信。Vite 从主入口文件导出 `ServerHMRConnector`，以支持在 Vite SSR 期间的 HMR。当触发自定义事件时（比如，`import.meta.hot.send("my-event")`），通常会调用 `isReady` 和 `send` 方法。
-
-`onUpdate` 只在新的模块运行器启动时调用一次。它传递了一个方法，当连接触发 HMR 事件时应该调用这个方法。实现取决于连接类型（例如，它可以是 `WebSocket`/`EventEmitter`/`MessageChannel`），但通常看起来像这样：
-
-```js
-function onUpdate(callback) {
-  this.connection.on('hmr', (event) => callback(event.data))
-}
-```
-
-回调会排队，它将等待当前更新解决后再处理下一个更新。与浏览器实现不同，模块运行器中的 HMR 更新将等待所有监听器（如，`vite:beforeUpdate`/`vite:beforeFullReload`）完成后再更新模块。
-=======
-In this case, the `handleInvoke` method in the `NormalizedHotChannel` can be used:
+在这种情况下，可以使用 `NormalizedHotChannel` 中的 `handleInvoke` 方法：
 
 ```ts
 const customEnvironment = new DevEnvironment(name, config, context)
@@ -454,7 +379,7 @@ server.onRequest((request: Request) => {
 })
 ```
 
-But note that for HMR support, `send` and `connect` methods are required. The `send` method is usually called when the custom event is triggered (like, `import.meta.hot.send("my-event")`).
+但请注意，要支持 HMR，必须使用 `send` 和 `connect` 方法。`send` 方法通常在触发自定义事件时调用（如`import.meta.hot.send("my-event")`）。
 
-Vite exports `createServerHotChannel` from the main entry point to support HMR during Vite SSR.
->>>>>>> 741b26cbfdcc2107cb6d337dc87c763eff3fa684
+Vite 从主入口导出 `createServerHotChannel`，以支持 Vite SSR 期间的 HMR。
+
