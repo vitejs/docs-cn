@@ -382,4 +382,3 @@ server.onRequest((request: Request) => {
 但请注意，要支持 HMR，必须使用 `send` 和 `connect` 方法。`send` 方法通常在触发自定义事件时调用（如`import.meta.hot.send("my-event")`）。
 
 Vite 从主入口导出 `createServerHotChannel`，以支持 Vite SSR 期间的 HMR。
-
