@@ -44,4 +44,16 @@ SSR 服务器的构建目标。
 - **类型：** `string[]`
 - **默认：** `['node']`
 
+<<<<<<< HEAD
 在 SSR 导入（包括 `ssrLoadModule`）外部化依赖项时使用的条件。
+=======
+Conditions that are used during ssr import (including `ssrLoadModule`) of externalized direct dependencies (external dependencies imported by Vite).
+
+:::tip
+
+When using this option, make sure to run Node with [`--conditions` flag](https://nodejs.org/docs/latest/api/cli.html#-c-condition---conditionscondition) with the same values in both dev and build to get a consistent behavior.
+
+For example, when setting `['node', 'custom']`, you should run `NODE_OPTIONS='--conditions custom' vite` in dev and `NODE_OPTIONS="--conditions custom" node ./dist/server.js` after build.
+
+:::
+>>>>>>> 388d49971e1d2fcd40ca1b4495e2618f0e85218c

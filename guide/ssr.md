@@ -148,8 +148,13 @@ app.use('*', async (req, res, next) => {
     //    例如 ReactDOMServer.renderToString()
     const appHtml = await render(url)
 
+<<<<<<< HEAD
     // 5. 注入渲染后的应用程序 HTML 到模板中。
     const html = template.replace(`<!--ssr-outlet-->`, appHtml)
+=======
+    // 5. Inject the app-rendered HTML into the template.
+    const html = template.replace(`<!--ssr-outlet-->`, () => appHtml)
+>>>>>>> 388d49971e1d2fcd40ca1b4495e2618f0e85218c
 
     // 6. 返回渲染后的 HTML。
     res.status(200).set({ 'Content-Type': 'text/html' }).end(html)
