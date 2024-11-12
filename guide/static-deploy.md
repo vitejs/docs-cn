@@ -203,7 +203,7 @@ Vercel CLI
 
 ### Vercel for Git {#vercel-for-git}
 
-1. 将你的代码推送到远程仓库（GitHub, GitLab, Bitbucket）
+1. 将你的代码推送到远程仓库（GitHub，GitLab，Bitbucket）
 2. [导入你的 Vite 仓库](https://vercel.com/new) 到 Vercel
 3. Vercel 会检测到你正在使用 Vite，并会为你的部署开启相应的正确配置。
 4. 你的应用被部署好了！（示例：[vite-vue-template.vercel.app](https://vite-vue-template.vercel.app/)）

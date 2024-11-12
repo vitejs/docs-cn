@@ -136,9 +136,9 @@ declare const __APP_VERSION__: string
 
 在这里，`import` 和 `require` 被称为“情景”。情景可以嵌套，并且应该从最特定的到最不特定的指定。
 
-`development|production` 是一个特殊值，会根据 `process.env.NODE_ENV` 的值被替换为 `production` 或  `development` 。如果 `process.env.NODE_ENV === 'production'`，则替换为`production`，否则替换为`development`。
+`development|production` 是一个特殊值，根据 `process.env.NODE_ENV` 的值替换为 `production` 或  `development` 。如果 `process.env.NODE_ENV === 'production'`，则替换为 `production`，否则替换为 `development`。
 
-请注意，如果符合要求，`import`, `require`, `default` 条件始终会被应用。
+请注意，如果符合要求，`import`，`require`，`default` 始终会被应用。
 
 :::warning 解决子路径导出问题
 导出以“/”结尾的 key 已被 Node 弃用，可能无法正常工作。请联系包的作者改为使用 [`*` 子路径模式](https://nodejs.org/api/packages.html#package-entry-points)。
