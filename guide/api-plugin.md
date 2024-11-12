@@ -177,7 +177,7 @@ Vite 插件也可以提供钩子来服务于特定的 Vite 目标。这些钩子
 ### `config` {#config}
 
 - **类型：** `(config: UserConfig, env: { mode: string, command: string }) => UserConfig | null | void`
-- **种类：** `async`, `sequential`
+- **种类：** `async`，`sequential`
 
   在解析 Vite 配置前调用。钩子接收原始用户配置（命令行选项指定的会与配置文件合并）和一个描述配置环境的变量，包含正在使用的 `mode` 和 `command`。它可以返回一个将被深度合并到现有配置中的部分配置对象，或者直接改变配置（如果默认的合并不能达到预期的结果）。
 
@@ -214,7 +214,7 @@ Vite 插件也可以提供钩子来服务于特定的 Vite 目标。这些钩子
 ### `configResolved` {#configresolved}
 
 - **类型：** `(config: ResolvedConfig) => void | Promise<void>`
-- **种类：** `async`, `parallel`
+- **种类：** `async`，`parallel`
 
   在解析 Vite 配置后调用。使用这个钩子读取和存储最终解析的配置。当插件需要根据运行的命令做一些不同的事情时，它也很有用。
 
@@ -249,7 +249,7 @@ Vite 插件也可以提供钩子来服务于特定的 Vite 目标。这些钩子
 ### `configureServer` {#configureserver}
 
 - **类型：** `(server: ViteDevServer) => (() => void) | void | Promise<(() => void) | void>`
-- **种类：** `async`, `sequential`
+- **种类：** `async`，`sequential`
 - **此外请看** [ViteDevServer](./api-javascript#vitedevserver)
 
   是用于配置开发服务器的钩子。最常见的用例是在内部 [connect](https://github.com/senchalabs/connect) 应用程序中添加自定义中间件:
@@ -310,7 +310,7 @@ Vite 插件也可以提供钩子来服务于特定的 Vite 目标。这些钩子
 ### `configurePreviewServer` {#configurepreviewserver}
 
 - **类型：** `(server: PreviewServer) => (() => void) | void | Promise<(() => void) | void>`
-- **种类：** `async`, `sequential`
+- **种类：** `async`，`sequential`
 - **参见：** [PreviewServerForHook](./api-javascript#previewserverforhook)
 
   与 [`configureServer`](/guide/api-plugin.html#configureserver) 相同，但用于预览服务器。`configurePreviewServer` 这个钩子与 `configureServer` 类似，也是在其他中间件安装前被调用。如果你想要在其他中间件 **之后** 安装一个插件，你可以从 `configurePreviewServer` 返回一个函数，它将会在内部中间件被安装之后再调用：
@@ -332,7 +332,7 @@ Vite 插件也可以提供钩子来服务于特定的 Vite 目标。这些钩子
 ### `transformIndexHtml` {#transformindexhtml}
 
 - **类型：** `IndexHtmlTransformHook | { order?: 'pre' | 'post', handler: IndexHtmlTransformHook }`
-- **种类：** `async`, `sequential`
+- **种类：** `async`，`sequential`
 
   转换 `index.html` 的专用钩子。钩子接收当前的 HTML 字符串和转换上下文。上下文在开发期间暴露[`ViteDevServer`](./api-javascript#vitedevserver)实例，在构建期间暴露 Rollup 输出的包。
 
