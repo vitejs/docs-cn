@@ -44,4 +44,12 @@ SSR 服务器的构建目标。
 - **类型：** `string[]`
 - **默认：** `['node']`
 
-在 SSR 导入（包括 `ssrLoadModule`）外部化依赖项时使用的条件。
+在对外部化的直接依赖项（由 Vite 导入的外部依赖项）进行 SSR 导入（包括 `ssrLoadModule`）期间所使用的条件。
+
+:::tip
+
+使用该选项时，请确保在开发和构建中使用[`--conditions` flag](https://nodejs.org/docs/latest/api/cli.html#-c-condition---conditionscondition) 以相同的值运行 Node，以获得一致的行为。
+
+例如，当设置 `['node', 'custom']` 时，应该在 dev 中运行 `NODE_OPTIONS='--conditions custom' vite`，在 build 后运行 `NODE_OPTIONS="--conditions custom" node ./dist/server.js`。
+
+:::
