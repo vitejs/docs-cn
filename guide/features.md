@@ -177,11 +177,7 @@ HTML 文件位于 Vite 项目的[最前端和中心](/guide/#index-html-and-proj
 - `<img src>` 和 `<img srcset>`
 - `<image src>`
 - `<input src>`
-<<<<<<< HEAD
-- `<link href>` 和 `<link imagesrcet>`
-=======
-- `<link href>` and `<link imagesrcset>`
->>>>>>> 388d49971e1d2fcd40ca1b4495e2618f0e85218c
+- `<link href>` 和 `<link imagesrcset>`
 - `<object data>`
 - `<script type="module" src>`
 - `<source src>` 和 `<source srcset>`
