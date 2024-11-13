@@ -92,7 +92,13 @@ Vite 6 扩展了对更多 HTML 元素的支持。完整列表请参见 [HTML 功
     - 这可能会导致包的大小增大，但会使构建更加确定。
     - 如果将 CommonJS 文件指定为入口点，则可能需要额外的步骤。阅读 [commonjs plugin 文档](https://github.com/rollup/plugins/blob/master/packages/commonjs/README.md#using-commonjs-files-as-entry-points) 了解更多详情.
 - [[#18243] chore(deps)!: migrate `fast-glob` to `tinyglobby`](https://github.com/vitejs/vite/pull/18243)
+<<<<<<< HEAD
   - globs 中不再支持范围大括号 (`{01..03}` ⇒ `['01', '02', '03']`) 和递增大括号 (`{2..8..2}` ⇒ `['2', '4', '6', '8']`) 。
+=======
+  - Range braces (`{01..03}` ⇒ `['01', '02', '03']`) and incremental braces (`{2..8..2}` ⇒ `['2', '4', '6', '8']`) are no longer supported in globs.
+- [[#18395] feat(resolve)!: allow removing conditions](https://github.com/vitejs/vite/pull/18395)
+  - This PR not only introduces a breaking change mentioned above as "Default value for `resolve.conditions`", but also makes `resolve.mainFields` to not be used for no-externalized dependencies in SSR. If you were using `resolve.mainFields` and want to apply that to no-externalized dependencies in SSR, you can use [`ssr.resolve.mainFields`](/config/ssr-options#ssr-resolve-mainfields).
+>>>>>>> ad763748fc34afdadf29b2ac95a909c0eff119e3
 - [[#18493] refactor!: remove fs.cachedChecks option](https://github.com/vitejs/vite/pull/18493)
   - 由于在缓存文件夹中写入文件并立即导入时会出现边缘情况，因此删除了这一选择优化。
 

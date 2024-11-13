@@ -141,8 +141,14 @@ const UnoCssPlugin = () => {
       // 正常使用全局钩子
     },
     applyToEnvironment(environment) {
+<<<<<<< HEAD
       // 如果这个插件应该在这个环境中激活，则返回 true
       // 如果不使用这个 hook，则插件在所有环境中都是激活的
+=======
+      // return true if this plugin should be active in this environment,
+      // or return a new plugin to replace it.
+      // if the hook is not used, the plugin is active in all environments
+>>>>>>> ad763748fc34afdadf29b2ac95a909c0eff119e3
     },
     resolveId(id, importer) {
       // 只对此插件适用的环境进行调用
@@ -151,7 +157,42 @@ const UnoCssPlugin = () => {
 }
 ```
 
+<<<<<<< HEAD
 ## 构建钩子中的环境 {#environment-in-build-hooks}
+=======
+If a plugin isn't environment aware and has state that isn't keyed on the current environment, the `applyToEnvironment` hook allows to easily make it per-environment.
+
+```js
+import { nonShareablePlugin } from 'non-shareable-plugin'
+
+export default defineConfig({
+  plugins: [
+    {
+      name: 'per-environment-plugin',
+      applyToEnvironment(environment) {
+        return nonShareablePlugin({ outputName: environment.name })
+      },
+    },
+  ],
+})
+```
+
+Vite exports a `perEnvironmentPlugin` helper to simplify these cases where no other hooks are required:
+
+```js
+import { nonShareablePlugin } from 'non-shareable-plugin'
+
+export default defineConfig({
+  plugins: [
+    perEnvironmentPlugin('per-environment-plugin', (environment) =>
+      nonShareablePlugin({ outputName: environment.name }),
+    ),
+  ],
+})
+```
+
+## Environment in build hooks
+>>>>>>> ad763748fc34afdadf29b2ac95a909c0eff119e3
 
 与开发期间一样，插件钩子在构建期间也接收环境实例，取代了 `ssr` 布尔值。
 这同样适用于 `renderChunk`、`generateBundle` 和其他仅在构建时使用的钩子。
