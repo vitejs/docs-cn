@@ -1,28 +1,25 @@
-# Use the official Node.js image as the base
 FROM node:18-alpine
 
-# Set the working directory inside the container
 WORKDIR /app
 
-# Install pnpm globally
-RUN npm install -g pnpm
+# Install pnpm and required build dependencies
+RUN npm install -g pnpm && \
+  apk add --no-cache git python3 make g++
 
-# Copy package.json to install dependencies
-COPY package.json ./
+# Copy package files first
+COPY package.json pnpm-lock.yaml* ./
 
-# Install dependencies using pnpm
-RUN pnpm install
+# Install dependencies
+RUN npm install
 
-# Copy the application code except for node_modules
+# Copy rest of the code
 COPY . .
 
-# Build the VitePress site
-RUN pnpm run docs:build
+# Build VitePress site
+# RUN pnpm run docs:build
 
-# Install a lightweight static file server as a local dependency
-RUN pnpm add serve
-
-# Expose port 5000 for the server
+# Expose VitePress dev server port
 EXPOSE 5173
 
+# Start VitePress dev server
 CMD ["pnpm", "run", "docs:dev"]
