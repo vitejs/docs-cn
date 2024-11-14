@@ -1,4 +1,7 @@
 <script setup lang="ts">
+import { useSlideIn } from '../../../composables/useSlideIn'
+import { useCardAnimation } from '../../../composables/useCardAnimation'
+
 /**
  * Slide the card in when the page loads
  */
@@ -414,9 +417,9 @@ const { isCardActive, startAnimation } = useCardAnimation(
       </svg>
     </div>
     <div class="feature__meta">
-      <div class="meta__title">First-class SSR Support</div>
+      <div class="meta__title">一流的 SSR 支持</div>
       <div class="meta__description">
-        Setting up custom SSR (Server-Side Rendering) or building your own SSR framework has never been easier
+        设置自定义 SSR（服务端渲染）或构建自己的 SSR 框架从未如此简单
       </div>
     </div>
   </div>
