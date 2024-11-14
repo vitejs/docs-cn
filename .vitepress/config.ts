@@ -68,8 +68,8 @@ const versionLinks = ((): DefaultTheme.NavItemWithLink[] => {
 })()
 
 export default defineConfig({
-  title: 'Vite 官方中文文档',
-  description: '下一代前端工具链',
+  title: 'Vite Official Chinese Documentation',
+  description: 'Next Generation Frontend Tooling',
   lang: 'zh-CN',
 
   head: [
@@ -138,11 +138,11 @@ export default defineConfig({
 
     editLink: {
       pattern: 'https://github.com/vitejs/docs-cn/edit/main/:path',
-      text: '为此页提供修改建议',
+      text: 'Suggest changes to this page',
     },
 
     outline: {
-      label: '本页目录',
+      label: 'On this page',
       level: [2, 3],
     },
 
@@ -163,42 +163,42 @@ export default defineConfig({
         searchParameters: {
           facetFilters: ['tags:cn']
         },
-        placeholder: '搜索文档',
+        placeholder: 'Search documentation',
         translations: {
           button: {
-            buttonText: '搜索',
-            buttonAriaLabel: '搜索'
+            buttonText: 'Search',
+            buttonAriaLabel: 'Search'
           },
           modal: {
             searchBox: {
-              resetButtonTitle: '清除查询条件',
-              resetButtonAriaLabel: '清除查询条件',
-              cancelButtonText: '取消',
-              cancelButtonAriaLabel: '取消'
+              resetButtonTitle: 'Clear the query',
+              resetButtonAriaLabel: 'Clear the query',
+              cancelButtonText: 'Cancel',
+              cancelButtonAriaLabel: 'Cancel'
             },
             startScreen: {
-              recentSearchesTitle: '搜索历史',
-              noRecentSearchesText: '没有搜索历史',
-              saveRecentSearchButtonTitle: '保存到搜索历史',
-              removeRecentSearchButtonTitle: '从搜索历史中移除',
-              favoriteSearchesTitle: '收藏',
-              removeFavoriteSearchButtonTitle: '从收藏中移除'
+              recentSearchesTitle: 'Search history',
+              noRecentSearchesText: 'No search history',
+              saveRecentSearchButtonTitle: 'Save to search history',
+              removeRecentSearchButtonTitle: 'Remove from search history',
+              favoriteSearchesTitle: 'Favorites',
+              removeFavoriteSearchButtonTitle: 'Remove from favorites'
             },
             errorScreen: {
-              titleText: '无法获取结果',
-              helpText: '你可能需要检查你的网络连接'
+              titleText: 'Unable to fetch results',
+              helpText: 'You might need to check your network connection'
             },
             footer: {
-              selectText: '选择',
-              navigateText: '切换',
-              closeText: '关闭',
-              searchByText: '搜索供应商'
+              selectText: 'Select',
+              navigateText: 'Navigate',
+              closeText: 'Close',
+              searchByText: 'Search provider'
             },
             noResultsScreen: {
-              noResultsText: '无法找到相关结果',
-              suggestedQueryText: '你可以尝试查询',
-              reportMissingResultsText: '你认为这个查询应该有结果？',
-              reportMissingResultsLinkText: '向我们反馈'
+              noResultsText: 'No relevant results found',
+              suggestedQueryText: 'You can try querying',
+              reportMissingResultsText: 'Do you think this query should have results?',
+              reportMissingResultsLinkText: 'Let us know'
             }
           }
         },
@@ -206,8 +206,8 @@ export default defineConfig({
     },
 
     docFooter: {
-      prev: '上一页',
-      next: '下一页'
+      prev: 'Previous page',
+      next: 'Next page'
     },
 
     // Using WwAds for China
@@ -226,11 +226,11 @@ export default defineConfig({
       {
         component: 'ReleaseTag'
       },
-      { text: '指引', link: '/guide/', activeMatch: '/guide/' },
-      { text: '配置', link: '/config/', activeMatch: '/config/' },
-      { text: '插件', link: '/plugins/', activeMatch: '/plugins/' },
+      { text: 'Guide', link: '/guide/', activeMatch: '/guide/' },
+      { text: 'Config', link: '/config/', activeMatch: '/config/' },
+      { text: 'Plugins', link: '/plugins/', activeMatch: '/plugins/' },
       {
-        text: '相关链接',
+        text: 'Related Links',
         items: [
           { text: 'Team', link: '/team' },
           { text: 'Blog', link: '/blog' },
@@ -250,7 +250,7 @@ export default defineConfig({
                 link: 'https://x.com/vite_js',
               },
               {
-                text: 'Discord 聊天室',
+                text: 'Discord Chat',
                 link: 'https://chat.vite.dev',
               },
               {
@@ -262,15 +262,15 @@ export default defineConfig({
                 link: 'https://viteconf.org',
               },
               {
-                text: 'Dev.to 社区',
+                text: 'Dev.to Community',
                 link: 'https://dev.to/t/vite'
               },
               {
-                text: '更新日志',
+                text: 'Changelog',
                 link: 'https://github.com/vitejs/vite/blob/main/packages/vite/CHANGELOG.md',
               },
               {
-                text: '贡献指南',
+                text: 'Contributing Guide',
                 link: 'https://github.com/vitejs/vite/blob/main/CONTRIBUTING.md',
               },
             ],
@@ -278,18 +278,18 @@ export default defineConfig({
         ]
       },
       {
-        text: '历史版本',
+        text: 'Previous Versions',
         items: [
           {
-            text: 'Vite v4 文档（英文）',
+            text: 'Vite v4 Docs (English)',
             link: 'https://v4.vite.dev'
           },
           {
-            text: 'Vite v3 文档（英文）',
+            text: 'Vite v3 Docs (English)',
             link: 'https://v3.vite.dev'
           },
           {
-            text: 'Vite v2 文档（英文）',
+            text: 'Vite v2 Docs (English)',
             link: 'https://v2.vite.dev'
           },
         ]
@@ -299,78 +299,78 @@ export default defineConfig({
     sidebar: {
       '/guide/': [
         {
-          text: '指引',
+          text: 'Guide',
           items: [
             {
-              text: 'Pourquoi choisir Vite',
+              text: 'Why Vite',
               link: '/guide/why'
             },
             {
-              text: 'commencer',
+              text: 'Getting Started',
               link: '/guide/'
             },
             {
-              text: 'Fonction',
+              text: 'Features',
               link: '/guide/features'
             },
             {
-              text: '命令行界面',
+              text: 'CLI',
               link: '/guide/cli'
             },
             {
-              text: '使用插件',
+              text: 'Using Plugins',
               link: '/guide/using-plugins'
             },
             {
-              text: '依赖预构建',
+              text: 'Dependency Pre-Bundling',
               link: '/guide/dep-pre-bundling'
             },
             {
-              text: '静态资源处理',
+              text: 'Handling Static Assets',
               link: '/guide/assets'
             },
             {
-              text: '构建生产版本',
+              text: 'Building for Production',
               link: '/guide/build'
             },
             {
-              text: '部署静态站点',
+              text: 'Deploying a Static Site',
               link: '/guide/static-deploy'
             },
             {
-              text: '环境变量与模式',
+              text: 'Environment Variables and Modes',
               link: '/guide/env-and-mode'
             },
             {
-              text: '服务端渲染（SSR）',
+              text: 'Server-Side Rendering (SSR)',
               link: '/guide/ssr'
             },
             {
-              text: '后端集成',
+              text: 'Backend Integration',
               link: '/guide/backend-integration'
             },
             {
-              text: '比较',
+              text: 'Comparisons',
               link: '/guide/comparisons'
             },
             {
-              text: '故障排除',
+              text: 'Troubleshooting',
               link: '/guide/troubleshooting'
             },
             {
-              text: '性能',
+              text: 'Performance',
               link: '/guide/performance',
             },
             {
-              text: '理念',
+              text: 'Philosophy',
               link: '/guide/philosophy',
             },
             {
-              text: '从 v5 迁移',
+              text: 'Migration from v5',
               link: '/guide/migration'
             },
             {
-              text: '破坏性变更',
+              text: 'Breaking Changes',
               link: '/changes/',
             },
           ],
@@ -379,7 +379,7 @@ export default defineConfig({
           text: 'API',
           items: [
             {
-              text: '插件 API',
+              text: 'Plugin API',
               link: '/guide/api-plugin'
             },
             {
@@ -391,32 +391,32 @@ export default defineConfig({
               link: '/guide/api-javascript',
             },
             {
-              text: '配置参考',
+              text: 'Config Reference',
               link: '/config/',
             },
           ],
         },
         {
-          text: '环境 API',
+          text: 'Environment API',
           items: [
             {
-              text: '介绍',
+              text: 'Introduction',
               link: '/guide/api-environment',
             },
             {
-              text: '环境实例',
+              text: 'Environment Instances',
               link: '/guide/api-environment-instances',
             },
             {
-              text: '插件',
+              text: 'Plugins',
               link: '/guide/api-environment-plugins',
             },
             {
-              text: '框架',
+              text: 'Frameworks',
               link: '/guide/api-environment-frameworks',
             },
             {
-              text: '运行时',
+              text: 'Runtimes',
               link: '/guide/api-environment-runtimes',
             },
           ],
@@ -424,38 +424,38 @@ export default defineConfig({
       ],
       '/config/': [
         {
-          text: '配置',
+          text: 'Config',
           items: [
             {
-              text: '配置 Vite',
+              text: 'Configuring Vite',
               link: '/config/'
             },
             {
-              text: '共享选项',
+              text: 'Shared Options',
               link: '/config/shared-options'
             },
             {
-              text: '服务器选项',
+              text: 'Server Options',
               link: '/config/server-options'
             },
             {
-              text: '构建选项',
+              text: 'Build Options',
               link: '/config/build-options'
             },
             {
-              text: '预览选项',
+              text: 'Preview Options',
               link: '/config/preview-options'
             },
             {
-              text: '依赖优化选项',
+              text: 'Dependency Optimization Options',
               link: '/config/dep-optimization-options'
             },
             {
-              text: 'SSR 选项',
+              text: 'SSR Options',
               link: '/config/ssr-options'
             },
             {
-              text: 'Worker 选项',
+              text: 'Worker Options',
               link: '/config/worker-options',
             },
           ],
@@ -463,40 +463,40 @@ export default defineConfig({
       ],
       '/changes/': [
         {
-          text: '破坏性变更',
+          text: 'Breaking Changes',
           link: '/changes/',
         },
         {
-          text: '现在',
+          text: 'Now',
           items: [],
         },
         {
-          text: '未来',
+          text: 'Future',
           items: [
             {
-              text: '钩子函数中的 this.environment',
+              text: 'this.environment in Hook Functions',
               link: '/changes/this-environment-in-hooks',
             },
             {
-              text: 'HMR hotUpdate 插件钩子',
+              text: 'HMR hotUpdate Plugin Hook',
               link: '/changes/hotupdate-hook',
             },
             {
-              text: '迁移到基于环境的API',
+              text: 'Migrating to Environment-Based APIs',
               link: '/changes/per-environment-apis',
             },
             {
-              text: '使用 ModuleRunner API 进行服务端渲染',
+              text: 'Server-Side Rendering Using ModuleRunner API',
               link: '/changes/ssr-using-modulerunner',
             },
             {
-              text: '构建过程中的共享插件',
+              text: 'Shared Plugins During Build',
               link: '/changes/shared-plugins-during-build',
             },
           ],
         },
         {
-          text: '过去',
+          text: 'Past',
           items: [],
         },
       ],
