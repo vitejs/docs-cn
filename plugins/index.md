@@ -5,3 +5,7 @@ Vite aims to provide out-of-the-box support for common web development tasks. Be
 :::
 
 Please check the Using Plugins section to learn more about how to use plugins.
+
+## Related Guides
+
+- [Docker Guide](../guide/Docker.md)

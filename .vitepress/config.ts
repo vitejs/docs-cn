@@ -68,9 +68,9 @@ const versionLinks = ((): DefaultTheme.NavItemWithLink[] => {
 })()
 
 export default defineConfig({
-  title: 'Vite Official Chinese Documentation',
-  description: 'Next Generation Frontend Tooling',
-  lang: 'zh-CN',
+  title: 'Satcom - Docs',
+  description: 'DevSecOps Documentation',
+  lang: 'en-EN',
 
   head: [
     ['link', { rel: 'icon', type: 'image/svg+xml', href: '/logo.svg' }],
@@ -123,16 +123,6 @@ export default defineConfig({
     ]
   ],
 
-  locales: {
-    root: { label: '简体中文' },
-    en: { label: 'English', link: 'https://vite.dev' },
-    ja: { label: '日本語', link: 'https://ja.vite.dev' },
-    es: { label: 'Español', link: 'https://es.vite.dev' },
-    pt: { label: 'Português', link: 'https://pt.vite.dev' },
-    ko: { label: '한국어', link: 'https://ko.vite.dev' },
-    de: { label: 'Deutsch', link: 'https://de.vite.dev' }
-  },
-
   themeConfig: {
     logo: '/logo.svg',
 
@@ -145,14 +135,6 @@ export default defineConfig({
       label: 'On this page',
       level: [2, 3]
     },
-
-    socialLinks: [
-      { icon: 'bluesky', link: 'https://bsky.app/profile/vite.dev' },
-      { icon: 'mastodon', link: 'https://elk.zone/m.webtoo.ls/@vite' },
-      { icon: 'x', link: 'https://x.com/vite_js' },
-      { icon: 'discord', link: 'https://chat.vite.dev' },
-      { icon: 'github', link: 'https://github.com/vitejs/vite' }
-    ],
 
     search: {
       provider: 'algolia',
@@ -276,23 +258,6 @@ export default defineConfig({
             ]
           }
         ]
-      },
-      {
-        text: 'Previous Versions',
-        items: [
-          {
-            text: 'Vite v4 Docs (English)',
-            link: 'https://v4.vite.dev'
-          },
-          {
-            text: 'Vite v3 Docs (English)',
-            link: 'https://v3.vite.dev'
-          },
-          {
-            text: 'Vite v2 Docs (English)',
-            link: 'https://v2.vite.dev'
-          }
-        ]
       }
     ],
 
@@ -302,122 +267,8 @@ export default defineConfig({
           text: 'Guide',
           items: [
             {
-              text: 'Why Vite',
-              link: '/guide/why'
-            },
-            {
-              text: 'Getting Started',
-              link: '/guide/'
-            },
-            {
-              text: 'Features',
-              link: '/guide/features'
-            },
-            {
-              text: 'CLI',
-              link: '/guide/cli'
-            },
-            {
-              text: 'Using Plugins',
-              link: '/guide/using-plugins'
-            },
-            {
-              text: 'Dependency Pre-Bundling',
-              link: '/guide/dep-pre-bundling'
-            },
-            {
-              text: 'Handling Static Assets',
-              link: '/guide/assets'
-            },
-            {
-              text: 'Building for Production',
-              link: '/guide/build'
-            },
-            {
-              text: 'Deploying a Static Site',
-              link: '/guide/static-deploy'
-            },
-            {
-              text: 'Environment Variables and Modes',
-              link: '/guide/env-and-mode'
-            },
-            {
-              text: 'Server-Side Rendering (SSR)',
-              link: '/guide/ssr'
-            },
-            {
-              text: 'Backend Integration',
-              link: '/guide/backend-integration'
-            },
-            {
-              text: 'Comparisons',
-              link: '/guide/comparisons'
-            },
-            {
-              text: 'Troubleshooting',
-              link: '/guide/troubleshooting'
-            },
-            {
-              text: 'Performance',
-              link: '/guide/performance'
-            },
-            {
-              text: 'Philosophy',
-              link: '/guide/philosophy'
-            },
-            {
-              text: 'Migration from v5',
-              link: '/guide/migration'
-            },
-            {
-              text: 'Breaking Changes',
-              link: '/changes/'
-            }
-          ]
-        },
-        {
-          text: 'API',
-          items: [
-            {
-              text: 'Plugin API',
-              link: '/guide/api-plugin'
-            },
-            {
-              text: 'HMR API',
-              link: '/guide/api-hmr'
-            },
-            {
-              text: 'JavaScript API',
-              link: '/guide/api-javascript'
-            },
-            {
-              text: 'Config Reference',
-              link: '/config/'
-            }
-          ]
-        },
-        {
-          text: 'Environment API',
-          items: [
-            {
-              text: 'Introduction',
-              link: '/guide/api-environment'
-            },
-            {
-              text: 'Environment Instances',
-              link: '/guide/api-environment-instances'
-            },
-            {
-              text: 'Plugins',
-              link: '/guide/api-environment-plugins'
-            },
-            {
-              text: 'Frameworks',
-              link: '/guide/api-environment-frameworks'
-            },
-            {
-              text: 'Runtimes',
-              link: '/guide/api-environment-runtimes'
+              text: 'Docker',
+              link: '/guide/docker'
             }
           ]
         }
