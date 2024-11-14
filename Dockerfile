@@ -17,7 +17,7 @@ RUN pnpm install
 COPY . .
 
 # Build the VitePress site
-RUN pnpm run docs:build
+# RUN pnpm run docs:build
 
 # Install a lightweight static file server as a local dependency
 RUN pnpm add serve
