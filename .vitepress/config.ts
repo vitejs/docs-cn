@@ -179,7 +179,6 @@ export default defineConfig({
         activeMatch: '/Infrastructure/'
       },
       { text: 'CyberSec', link: '/CyberSec/', activeMatch: '/CyberSec/' },
-      { text: 'Plugins', link: '/plugins/', activeMatch: '/plugins/' },
       {
         text: 'Related Links',
         items: [
