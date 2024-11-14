@@ -36,7 +36,28 @@ const additionalTitle = ((): string => {
       return ''
   }
 })()
+const versionLinks = ((): DefaultTheme.NavItemWithLink[] => {
+  const oldVersions: DefaultTheme.NavItemWithLink[] = [
+    {
+      text: 'Vite 4 Docs',
+      link: 'https://v4.vite.dev'
+    }
+  ]
 
+  switch (deployType) {
+    case 'main':
+    case 'local':
+      return [
+        {
+          text: 'Vite 5 Docs (release)',
+          link: 'https://vite.dev'
+        },
+        ...oldVersions
+      ]
+    case 'release':
+      return oldVersions
+  }
+})()
 
 export default defineConfig({
   title: 'Satcom - Docs',
