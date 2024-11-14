@@ -8,6 +8,8 @@ COPY package.json pnpm-lock.yaml* ./
 
 RUN pnpm install
 
+RUN pnpm install --shamefully-hoist
+
 COPY . .
 
 RUN pnpm run build

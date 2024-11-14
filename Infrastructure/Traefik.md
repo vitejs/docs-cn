@@ -21,6 +21,10 @@ A reverse proxy acts as an intermediate server between clients and backend servi
    - SSL/TLS termination
    - Request filtering
 
+::: tip Reverse Proxy Best Practice
+When implementing a reverse proxy, always start with defining clear entry points and ensure proper SSL termination at the edge of your network.
+:::
+
 ### Traefik's Architecture {#traefik-architecture}
 
 ```plaintext
@@ -56,6 +60,10 @@ Client Request → EntryPoints → Routers → Middlewares → Services → Back
 
 ### Authentication Middleware {#auth-middleware}
 
+::: tip Authentication Security
+Store authentication tokens and secrets in a secure vault or environment variables rather than directly in configuration files.
+:::
+
 ```yaml
 http:
   middlewares:
@@ -77,6 +85,10 @@ http:
 ```
 
 ### Advanced Rate Limiting {#rate-limiting}
+
+::: tip Rate Limiting Strategy
+Start with conservative rate limits and adjust based on actual usage patterns. Monitor rate limit hits to identify potential DOS attacks.
+:::
 
 ```yaml
 http:
@@ -104,6 +116,10 @@ http:
 ```
 
 ### Circuit Breaker {#circuit-breaker}
+
+::: tip Circuit Breaker Configuration
+Fine-tune the circuit breaker expression based on your application's specific needs and response time patterns. Start with higher thresholds and adjust downward.
+:::
 
 ```yaml
 http:
@@ -159,6 +175,10 @@ http:
 
 ### OAuth2 Configuration {#oauth2}
 
+::: tip OAuth Implementation
+Always use HTTPS for OAuth endpoints and implement state parameter validation to prevent CSRF attacks.
+:::
+
 ```yaml
 http:
   middlewares:
@@ -178,6 +198,10 @@ http:
 ## Advanced Service Discovery {#service-discovery}
 
 ### Consul Integration {#consul}
+
+::: tip Service Discovery
+Regular health checks and proper timeout configurations are crucial for maintaining service availability in distributed systems.
+:::
 
 ```yaml
 providers:
@@ -206,6 +230,10 @@ providers:
 ## Advanced Metrics and Monitoring {#advanced-metrics}
 
 ### Detailed Prometheus Configuration {#detailed-prometheus}
+
+::: tip Metrics Collection
+Consider the cardinality of your metrics and choose appropriate labels to avoid overwhelming your monitoring system.
+:::
 
 ```yaml
 metrics:
@@ -265,6 +293,10 @@ metrics:
 
 ### MTLS Configuration {#mtls}
 
+::: tip TLS Security
+Regularly audit your TLS configuration using tools like SSL Labs to ensure compliance with security best practices.
+:::
+
 ```yaml
 tls:
   options:
@@ -317,6 +349,10 @@ experimental:
 
 ### Caching Strategy {#caching}
 
+::: tip Cache Configuration
+Implement cache busting mechanisms and carefully consider cache duration based on your content update frequency.
+:::
+
 ```yaml
 http:
   middlewares:
@@ -339,6 +375,10 @@ http:
 ## High Availability Setup {#high-availability}
 
 ### Cluster Configuration {#cluster}
+
+::: tip High Availability
+Plan for N+1 redundancy and implement proper failover testing procedures in your high availability setup.
+:::
 
 ```yaml
 cluster:
@@ -374,6 +414,10 @@ http:
 ## Logging and Debugging {#logging-debugging}
 
 ### Advanced Logging Configuration {#advanced-logging}
+
+::: tip Logging Strategy
+Implement log rotation and retention policies to manage disk space while maintaining adequate history for troubleshooting.
+:::
 
 ```yaml
 log:
@@ -439,4 +483,12 @@ accessLog:
 
 ::: tip Security Reminder
 Always follow the principle of least privilege and regularly audit your security configurations. Keep all components updated and monitor security advisories.
+:::
+
+::: tip Performance Optimization
+Monitor resource usage and adjust worker pool sizes based on actual load patterns and server capabilities.
+:::
+
+::: tip Maintenance Window
+Schedule regular maintenance windows for updates and security patches, and maintain a rollback strategy for all changes.
 :::

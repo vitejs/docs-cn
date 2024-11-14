@@ -6,6 +6,7 @@ import {
   groupIconVitePlugin
 } from 'vitepress-plugin-group-icons'
 import { buildEnd } from './buildEnd.config'
+import { withMermaid } from 'vitepress-plugin-mermaid'
 
 const ogDescription = 'Next Generation Frontend Tooling'
 const ogImage = 'https://vite.dev/og-image.jpg'
@@ -38,6 +39,9 @@ const additionalTitle = ((): string => {
 })()
 
 export default defineConfig({
+  mermaid: {
+    // refer https://mermaid.js.org/config/setup/modules/mermaidAPI.html#mermaidapi-configuration-defaults for options
+  },
   title: 'Satcom - Docs',
   description: 'DevSecOps Documentation',
   lang: 'en-EN',
