@@ -67,6 +67,7 @@ interface HotUpdateContext {
   server: ViteDevServer
 }
 ```
+
 - `this.environment` 是当前正在处理文件更新的模块执行环境。
 
 - `modules` 是由于文件更改而受影响的此环境中的模块的数组。它是一个数组，因为一个文件可能映射到多个服务的模块（例如 Vue SFCs）。
@@ -141,14 +142,9 @@ const UnoCssPlugin = () => {
       // 正常使用全局钩子
     },
     applyToEnvironment(environment) {
-<<<<<<< HEAD
-      // 如果这个插件应该在这个环境中激活，则返回 true
+      // 如果此插件应在此环境中激活，则返回 true
+      // 或返回一个新插件来替代它。
       // 如果不使用这个 hook，则插件在所有环境中都是激活的
-=======
-      // return true if this plugin should be active in this environment,
-      // or return a new plugin to replace it.
-      // if the hook is not used, the plugin is active in all environments
->>>>>>> ad763748fc34afdadf29b2ac95a909c0eff119e3
     },
     resolveId(id, importer) {
       // 只对此插件适用的环境进行调用
@@ -157,10 +153,7 @@ const UnoCssPlugin = () => {
 }
 ```
 
-<<<<<<< HEAD
-## 构建钩子中的环境 {#environment-in-build-hooks}
-=======
-If a plugin isn't environment aware and has state that isn't keyed on the current environment, the `applyToEnvironment` hook allows to easily make it per-environment.
+如果一个插件没有环境感知功能，并且其状态不是以当前环境为关键的， `applyToEnvironment` 钩子可以轻松地将其设置为针对每个环境。
 
 ```js
 import { nonShareablePlugin } from 'non-shareable-plugin'
@@ -177,7 +170,7 @@ export default defineConfig({
 })
 ```
 
-Vite exports a `perEnvironmentPlugin` helper to simplify these cases where no other hooks are required:
+Vite 输出了一个 `perEnvironmentPlugin` 助手，以简化这些不需要其他钩子的情况：
 
 ```js
 import { nonShareablePlugin } from 'non-shareable-plugin'
@@ -191,8 +184,7 @@ export default defineConfig({
 })
 ```
 
-## Environment in build hooks
->>>>>>> ad763748fc34afdadf29b2ac95a909c0eff119e3
+## 构建钩子中的环境 {#environment-in-build-hooks}
 
 与开发期间一样，插件钩子在构建期间也接收环境实例，取代了 `ssr` 布尔值。
 这同样适用于 `renderChunk`、`generateBundle` 和其他仅在构建时使用的钩子。
