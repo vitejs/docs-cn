@@ -1,6 +1,6 @@
 # Breaking Changes {#breaking-changes}
 
-A list of breaking changes in Vite, including API deprecations, removals, and changes. Most of the changes below can be opted into using the [`future` option](/config/shared-options.html#future) in your Vite configuration.
+A list of breaking changes in Vite, including API deprecations, removals, and changes. Most of the changes below can be opted into using the [`future` option](../config/shared-options.md#future) in your Vite configuration.
 
 ## Planned {#planned}
 
@@ -14,11 +14,11 @@ These changes are under consideration, usually as experimental APIs aimed at imp
 
 We do not recommend switching to these APIs yet. They are included in Vite to help us gather feedback. Please review these proposals and let us know how they perform in your use cases in the associated GitHub Discussions.
 
-- [`this.environment` in hook functions](/changes/this-environment-in-hooks)
-- [HMR `hotUpdate` plugin hook](/changes/hotupdate-hook)
-- [Migration to environment-based APIs](/changes/per-environment-apis)
-- [Server-side rendering using `ModuleRunner` API](/changes/ssr-using-modulerunner)
-- [Shared plugins during the build process](/changes/shared-plugins-during-build)
+- [`this.environment` in hook functions](./this-environment-in-hooks.md)
+- [HMR `hotUpdate` plugin hook](./hotupdate-hook.md)
+- [Migration to environment-based APIs](./per-environment-apis.md)
+- [Server-side rendering using `ModuleRunner` API](./ssr-using-modulerunner.md)
+- [Shared plugins during the build process](./shared-plugins-during-build.md)
 
 ## Past {#past}
 
