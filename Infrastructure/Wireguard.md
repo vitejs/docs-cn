@@ -4,6 +4,27 @@ title: WireGuard Web UI & AdGuard Home
 
 # Advanced WireGuard UI & AdGuard Technical Guide {#advanced-guide}
 
+## Prerequisites {#prerequisites}
+
+### System Requirements {#system-requirements}
+
+Base system: Ubuntu 20.04 LTS or newer
+
+### Package Installation {#package-installation}
+
+Update system and install core packages:
+
+    sudo apt update
+    sudo apt install -y wireguard wireguard-tools iptables fail2ban ufw tcpdump net-tools qrencode
+
+Install monitoring tools:
+
+    sudo apt install -y prometheus-node-exporter unattended-upgrades nethogs iftop nload vnstat
+
+Install security tools:
+
+    sudo apt install -y snort lynis auditd acl rsyslog logrotate
+
 ## VPN Architecture Overview {#vpn-architecture}
 
 ### WireGuard Protocol {#wireguard-protocol}
@@ -23,6 +44,60 @@ WireGuard operates on these key principles:
    - Constant-time operations
    - Memory-safe implementation
    - Kernel-space implementation
+
+## Multi-Layer Security Architecture {#security-architecture}
+
+### OSI Layer Security Implementation {#osi-security}
+
+| Layer | Components | Security Measures |
+|-------|------------|------------------|
+| L7 Application | AdGuard, WG-UI | Authentication, DNS filtering |
+| L6 Presentation | WireGuard | Encryption (ChaCha20) |
+| L5 Session | WireGuard | Key exchange, session management |
+| L4 Transport | UDP/TCP | Port filtering, rate limiting |
+| L3 Network | IP | Network segmentation, firewalling |
+| L2 Data Link | Interface | MAC filtering (optional) |
+| L1 Physical | Hardware | Physical security |
+
+### Security Tools Matrix {#security-tools}
+
+| Category | Tool | Purpose | Implementation |
+|----------|------|---------|----------------|
+| Firewall | UFW/iptables | Network filtering | Dynamic rules |
+| IDS/IPS | Snort | Traffic inspection | Signature-based |
+| Access Control | Fail2ban | Brute force prevention | Ban mechanisms |
+| Monitoring | Prometheus | Metrics collection | Real-time data |
+| Audit | Auditd | System auditing | Log analysis |
+| DNS Security | AdGuard | DNS filtering | DoT/DoH |
+
+### Network Zone Segmentation {#network-zones}
+
+| Zone | CIDR | Purpose | Security Level |
+|------|------|---------|---------------|
+| Management | 10.2.0.0/24 | Admin access | Highest |
+| User VPN | 10.2.1.0/24 | Client connections | Medium |
+| Services | 10.2.2.0/24 | Internal applications | High |
+| DMZ | 10.2.3.0/24 | Public services | Restricted |
+
+### Security Checklist {#security-checklist}
+
+Network Security:
+- ⬜ Interface hardening
+- ⬜ Network isolation
+- ⬜ Traffic monitoring
+- ⬜ Packet filtering
+
+System Security:
+- ⬜ Kernel hardening
+- ⬜ Service hardening
+- ⬜ Resource limits
+- ⬜ Update policy
+
+Application Security:
+- ⬜ Access control
+- ⬜ Authentication
+- ⬜ Encryption
+- ⬜ Logging
 
 ## Advanced Network Configuration {#advanced-network}
 
@@ -367,29 +442,37 @@ Remember to:
 
 ### WireGuard Kernel Parameters {#kernel-parameters}
 
-Add to `/etc/sysctl.conf`:
+Add to the end of file `/etc/sysctl.conf`:
 
 ```bash
-# General networking optimizations
-net.core.rmem_max = 16777216
-net.core.wmem_max = 16777216
-net.ipv4.tcp_rmem = 4096 87380 16777216
-net.ipv4.tcp_wmem = 4096 87380 16777216
+# Disable IPv6 if not needed
+net.ipv6.conf.all.disable_ipv6 = 1
+net.ipv6.conf.default.disable_ipv6 = 1
+net.ipv6.conf.lo.disable_ipv6 = 1
 
-# WireGuard specific
+# Essential WireGuard Requirements
 net.ipv4.ip_forward = 1
 net.ipv4.conf.all.src_valid_mark = 1
 
-# Increase UDP buffer sizes
-net.core.rmem_default = 1048576
-net.core.wmem_default = 1048576
+# TCP Memory Settings
+net.ipv4.tcp_rmem = 4096 87380 16777216
+net.ipv4.tcp_wmem = 4096 87380 16777216
 
-# Increase the maximum amount of option memory buffers
+# UDP Settings (if available)
+net.ipv4.udp_rmem_min = 8192
+net.ipv4.udp_wmem_min = 8192
+
+# Memory Settings (verified working)
 net.core.optmem_max = 65536
 
-# BBR congestion control
-net.core.default_qdisc = fq
-net.ipv4.tcp_congestion_control = bbr
+# TCP Settings
+net.ipv4.tcp_mtu_probing = 1
+net.ipv4.tcp_slow_start_after_idle = 0
+
+```
+
+```sh
+sysctl -p
 ```
 
 ### IO Optimization {#io-optimization}
@@ -418,9 +501,15 @@ Update Docker daemon configuration `/etc/docker/daemon.json`:
 ```
 
 ## Advanced Security Configuration {#advanced-security}
+### Install Fail2ban
+
+```sh
+sudo apt -y install fail2ban
+```
+
+
 
 ### Fail2ban Configuration {#fail2ban}
-
 Create `/etc/fail2ban/jail.d/wireguard.conf`:
 
 ```ini
@@ -435,7 +524,7 @@ bantime = 3600
 findtime = 600
 
 [wireguard-ui]
-enabled = true
+enabled = false # disabled
 port = 5000
 protocol = tcp
 filter = wireguard-ui
