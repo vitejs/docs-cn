@@ -6,9 +6,10 @@ RUN npm install -g pnpm
 
 COPY package.json pnpm-lock.yaml* ./
 
+RUN pnpm install --shamefully-hoist
+
 RUN pnpm install
 
-RUN pnpm install --shamefully-hoist
 
 COPY . .
 
