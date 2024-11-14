@@ -36,28 +36,7 @@ const additionalTitle = ((): string => {
       return ''
   }
 })()
-const versionLinks = ((): DefaultTheme.NavItemWithLink[] => {
-  const oldVersions: DefaultTheme.NavItemWithLink[] = [
-    {
-      text: 'Vite 4 Docs',
-      link: 'https://v4.vite.dev'
-    }
-  ]
 
-  switch (deployType) {
-    case 'main':
-    case 'local':
-      return [
-        {
-          text: 'Vite 5 Docs (release)',
-          link: 'https://vite.dev'
-        },
-        ...oldVersions
-      ]
-    case 'release':
-      return oldVersions
-  }
-})()
 
 export default defineConfig({
   title: 'Satcom - Docs',
@@ -194,7 +173,11 @@ export default defineConfig({
       {
         component: 'ReleaseTag'
       },
-      { text: 'Guide', link: '/guide/', activeMatch: '/guide/' },
+      {
+        text: 'Infrastructure',
+        link: '/Infrastructure/',
+        activeMatch: '/Infrastructure/'
+      },
       { text: 'CyberSec', link: '/CyberSec/', activeMatch: '/CyberSec/' },
       { text: 'Plugins', link: '/plugins/', activeMatch: '/plugins/' },
       {
@@ -219,7 +202,7 @@ export default defineConfig({
           items: [
             {
               text: 'Docker',
-              link: '/guide/Docker'
+              link: '/Infrastructure/Docker'
             }
           ]
         }

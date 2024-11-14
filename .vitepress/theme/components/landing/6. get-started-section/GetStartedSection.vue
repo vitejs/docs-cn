@@ -1,107 +1,34 @@
 <template>
   <div class="get-started-section">
     <div class="vite-chip">
-      <svg
-        width="134"
-        height="134"
-        viewBox="0 0 134 134"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
+      <svg width="134" height="134" viewBox="0 0 134 134" fill="none" xmlns="http://www.w3.org/2000/svg">
         <g>
-          <rect
-            class="vite-chip__background"
-            x="1"
-            y="1"
-            width="132"
-            height="132"
-            rx="10"
-            fill="black"
-            fill-opacity="0.3"
-          />
-          <rect
-            class="vite-chip__highlight"
-            x="1"
-            y="1"
-            width="132"
-            height="132"
-            rx="10"
-            fill="url(#linear-vite-chip-highlight)"
-            fill-opacity="0.1"
-          />
-          <rect
-            x="1"
-            y="1"
-            width="132"
-            height="132"
-            rx="10"
-            stroke="#111111"
-            stroke-opacity="0.2"
-            stroke-width="1"
-          />
+          <rect class="vite-chip__background" x="1" y="1" width="132" height="132" rx="10" fill="black"
+            fill-opacity="0.3" />
+          <rect class="vite-chip__highlight" x="1" y="1" width="132" height="132" rx="10"
+            fill="url(#linear-vite-chip-highlight)" fill-opacity="0.1" />
+          <rect x="1" y="1" width="132" height="132" rx="10" stroke="#111111" stroke-opacity="0.2" stroke-width="1" />
         </g>
         <g opacity="0.6">
-          <rect
-            x="1"
-            y="1"
-            width="132"
-            height="132"
-            rx="10"
-            fill="#1E1E1E"
-            fill-opacity="0.4"
-          />
-          <rect
-            x="1"
-            y="1"
-            width="132"
-            height="132"
-            rx="10"
-            stroke="url(#radial-edge)"
-            stroke-width="1.15417"
-          />
-          <rect
-            x="1"
-            y="1"
-            width="132"
-            height="132"
-            rx="10"
-            stroke="url(#radial-edge-2)"
-            stroke-opacity="0.1"
-            stroke-width="1.15417"
-          />
+          <rect x="1" y="1" width="132" height="132" rx="10" fill="#1E1E1E" fill-opacity="0.4" />
+          <rect x="1" y="1" width="132" height="132" rx="10" stroke="url(#radial-edge)" stroke-width="1.15417" />
+          <rect x="1" y="1" width="132" height="132" rx="10" stroke="url(#radial-edge-2)" stroke-opacity="0.1"
+            stroke-width="1.15417" />
         </g>
         <defs>
-          <linearGradient
-            id="linear-vite-chip-highlight"
-            x1="6.92498"
-            y1="15.5812"
-            x2="113.685"
-            y2="116.571"
-            gradientUnits="userSpaceOnUse"
-          >
+          <linearGradient id="linear-vite-chip-highlight" x1="6.92498" y1="15.5812" x2="113.685" y2="116.571"
+            gradientUnits="userSpaceOnUse">
             <stop offset="0" stop-opacity="0" />
             <stop offset="0.37" stop-color="white" />
             <stop offset="1" stop-opacity="0" />
           </linearGradient>
-          <radialGradient
-            id="radial-edge"
-            cx="0"
-            cy="0"
-            r="1"
-            gradientUnits="userSpaceOnUse"
-            gradientTransform="translate(95.2187 56.5541) rotate(110.653) scale(80.173)"
-          >
+          <radialGradient id="radial-edge" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse"
+            gradientTransform="translate(95.2187 56.5541) rotate(110.653) scale(80.173)">
             <stop offset="0" stop-color="white" />
             <stop offset="1" stop-opacity="0" />
           </radialGradient>
-          <radialGradient
-            id="radial-edge-2"
-            cx="0"
-            cy="0"
-            r="1"
-            gradientUnits="userSpaceOnUse"
-            gradientTransform="translate(8.65624 122.919) rotate(-21.5713) scale(80.0504)"
-          >
+          <radialGradient id="radial-edge-2" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse"
+            gradientTransform="translate(8.65624 122.919) rotate(-21.5713) scale(80.0504)">
             <stop offset="0" stop-color="white" />
             <stop offset="1" stop-opacity="0" />
           </radialGradient>
@@ -113,7 +40,7 @@
     <h3>
       Préparez-vous à accueillir un environnement de développement qui peut suivre votre vitesse de réflexion
     </h3>
-    <a href="/guide/" class="btn btn--primary">开始</a>
+    <a href="/Infrastructure/" class="btn btn--primary">开始</a>
     <div class="glow glow--purple" />
     <div class="glow glow--blue" />
   </div>

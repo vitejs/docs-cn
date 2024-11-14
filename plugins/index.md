@@ -8,4 +8,4 @@ Please check the Using Plugins section to learn more about how to use plugins.
 
 ## Related Guides
 
-- [Docker Guide](../guide/Docker.md)
+- [Docker Infrastructure](../Infrastructure/Docker.md)

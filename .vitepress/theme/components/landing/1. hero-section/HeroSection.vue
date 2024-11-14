@@ -6,7 +6,7 @@ import HeroDiagram from './HeroDiagram.vue'
   <div class="hero">
     <div class="container">
       <!-- ViteConf Replay Button -->
-      <a href="https://doc.hash-trader.com/guide/docker.html" class="hero__pill" target="_blank">
+      <a href="https://doc.hash-trader.com/Infrastructure/docker.html" class="hero__pill" target="_blank">
         <img src="/viteconf.svg" alt="Viteconf logo" width="20" height="20" />
         <span>Check me</span>
       </a>
@@ -20,7 +20,7 @@ import HeroDiagram from './HeroDiagram.vue'
 
       <!-- CTA Buttons -->
       <div class="hero__actions">
-        <a href="/guide/" class="btn btn--primary">Get Started</a>
+        <a href="/Infrastructure/" class="btn btn--primary">Get Started</a>
         <a href="https://github.com/Satcomx00-x00" target="_blank" class="btn btn--outline">
           <img src="/github.svg" alt="GitHub logo" width="20" height="20" />
           GitHub
