@@ -1,0 +1,5 @@
+services:
+  vitepress:
+    image: satcomx00/custom-doc-website
+    ports:
+      - "5173:5173"
