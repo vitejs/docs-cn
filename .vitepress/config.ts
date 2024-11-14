@@ -3,7 +3,7 @@ import { defineConfig } from 'vitepress'
 import { transformerTwoslash } from '@shikijs/vitepress-twoslash'
 import {
   groupIconMdPlugin,
-  groupIconVitePlugin,
+  groupIconVitePlugin
 } from 'vitepress-plugin-group-icons'
 import { buildEnd } from './buildEnd.config'
 
@@ -40,16 +40,16 @@ const versionLinks = ((): DefaultTheme.NavItemWithLink[] => {
   const oldVersions: DefaultTheme.NavItemWithLink[] = [
     {
       text: 'Vite 4 Docs',
-      link: 'https://v4.vite.dev',
+      link: 'https://v4.vite.dev'
     },
     {
       text: 'Vite 3 Docs',
-      link: 'https://v3.vite.dev',
+      link: 'https://v3.vite.dev'
     },
     {
       text: 'Vite 2 Docs',
-      link: 'https://v2.vite.dev',
-    },
+      link: 'https://v2.vite.dev'
+    }
   ]
 
   switch (deployType) {
@@ -58,9 +58,9 @@ const versionLinks = ((): DefaultTheme.NavItemWithLink[] => {
       return [
         {
           text: 'Vite 5 Docs (release)',
-          link: 'https://vite.dev',
+          link: 'https://vite.dev'
         },
-        ...oldVersions,
+        ...oldVersions
       ]
     case 'release':
       return oldVersions
@@ -76,7 +76,7 @@ export default defineConfig({
     ['link', { rel: 'icon', type: 'image/svg+xml', href: '/logo.svg' }],
     [
       'link',
-      { rel: 'alternate', type: 'application/rss+xml', href: '/blog.rss' },
+      { rel: 'alternate', type: 'application/rss+xml', href: '/blog.rss' }
     ],
     ['link', { rel: 'preconnect', href: 'https://fonts.googleapis.com' }],
     [
@@ -84,23 +84,23 @@ export default defineConfig({
       {
         rel: 'preconnect',
         href: 'https://fonts.gstatic.com',
-        crossorigin: 'true',
-      },
+        crossorigin: 'true'
+      }
     ],
     [
       'link',
       {
         rel: 'preload',
         href: 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Manrope:wght@600&family=IBM+Plex+Mono:wght@400&display=swap',
-        as: 'style',
-      },
+        as: 'style'
+      }
     ],
     [
       'link',
       {
         rel: 'stylesheet',
-        href: 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Manrope:wght@600&family=IBM+Plex+Mono:wght@400&display=swap',
-      },
+        href: 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Manrope:wght@600&family=IBM+Plex+Mono:wght@400&display=swap'
+      }
     ],
     ['link', { rel: 'me', href: 'https://m.webtoo.ls/@vite' }],
     ['meta', { property: 'og:type', content: 'website' }],
@@ -118,9 +118,9 @@ export default defineConfig({
         src: 'https://cdn.usefathom.com/script.js',
         'data-site': 'TPLGJZGR',
         'data-spa': 'auto',
-        defer: '',
-      },
-    ],
+        defer: ''
+      }
+    ]
   ],
 
   locales: {
@@ -130,7 +130,7 @@ export default defineConfig({
     es: { label: 'Español', link: 'https://es.vite.dev' },
     pt: { label: 'Português', link: 'https://pt.vite.dev' },
     ko: { label: '한국어', link: 'https://ko.vite.dev' },
-    de: { label: 'Deutsch', link: 'https://de.vite.dev' },
+    de: { label: 'Deutsch', link: 'https://de.vite.dev' }
   },
 
   themeConfig: {
@@ -138,12 +138,12 @@ export default defineConfig({
 
     editLink: {
       pattern: 'https://github.com/vitejs/docs-cn/edit/main/:path',
-      text: 'Suggest changes to this page',
+      text: 'Suggest changes to this page'
     },
 
     outline: {
       label: 'On this page',
-      level: [2, 3],
+      level: [2, 3]
     },
 
     socialLinks: [
@@ -151,11 +151,11 @@ export default defineConfig({
       { icon: 'mastodon', link: 'https://elk.zone/m.webtoo.ls/@vite' },
       { icon: 'x', link: 'https://x.com/vite_js' },
       { icon: 'discord', link: 'https://chat.vite.dev' },
-      { icon: 'github', link: 'https://github.com/vitejs/vite' },
+      { icon: 'github', link: 'https://github.com/vitejs/vite' }
     ],
 
     search: {
-      provider: 'algolia', 
+      provider: 'algolia',
       options: {
         appId: '7H67QR5P0A',
         apiKey: '208bb9c14574939326032b937431014b',
@@ -197,11 +197,12 @@ export default defineConfig({
             noResultsScreen: {
               noResultsText: 'No relevant results found',
               suggestedQueryText: 'You can try querying',
-              reportMissingResultsText: 'Do you think this query should have results?',
+              reportMissingResultsText:
+                'Do you think this query should have results?',
               reportMissingResultsLinkText: 'Let us know'
             }
           }
-        },
+        }
       }
     },
 
@@ -218,8 +219,7 @@ export default defineConfig({
 
     footer: {
       message: `Released under the MIT License. (${commitRef})`,
-      copyright:
-        'Copyright © 2019-present VoidZero Inc. & Vite Contributors'
+      copyright: 'Copyright © 2019-present VoidZero Inc. & Vite Contributors'
     },
 
     nav: [
@@ -239,19 +239,19 @@ export default defineConfig({
             items: [
               {
                 text: 'Bluesky',
-                link: 'https://bsky.app/profile/vite.dev',
+                link: 'https://bsky.app/profile/vite.dev'
               },
               {
                 text: 'Mastodon',
-                link: 'https://elk.zone/m.webtoo.ls/@vite',
+                link: 'https://elk.zone/m.webtoo.ls/@vite'
               },
               {
                 text: 'X',
-                link: 'https://x.com/vite_js',
+                link: 'https://x.com/vite_js'
               },
               {
                 text: 'Discord Chat',
-                link: 'https://chat.vite.dev',
+                link: 'https://chat.vite.dev'
               },
               {
                 text: 'Awesome Vite',
@@ -259,7 +259,7 @@ export default defineConfig({
               },
               {
                 text: 'ViteConf',
-                link: 'https://viteconf.org',
+                link: 'https://viteconf.org'
               },
               {
                 text: 'Dev.to Community',
@@ -267,14 +267,14 @@ export default defineConfig({
               },
               {
                 text: 'Changelog',
-                link: 'https://github.com/vitejs/vite/blob/main/packages/vite/CHANGELOG.md',
+                link: 'https://github.com/vitejs/vite/blob/main/packages/vite/CHANGELOG.md'
               },
               {
                 text: 'Contributing Guide',
-                link: 'https://github.com/vitejs/vite/blob/main/CONTRIBUTING.md',
-              },
-            ],
-          },
+                link: 'https://github.com/vitejs/vite/blob/main/CONTRIBUTING.md'
+              }
+            ]
+          }
         ]
       },
       {
@@ -291,7 +291,7 @@ export default defineConfig({
           {
             text: 'Vite v2 Docs (English)',
             link: 'https://v2.vite.dev'
-          },
+          }
         ]
       }
     ],
@@ -359,11 +359,11 @@ export default defineConfig({
             },
             {
               text: 'Performance',
-              link: '/guide/performance',
+              link: '/guide/performance'
             },
             {
               text: 'Philosophy',
-              link: '/guide/philosophy',
+              link: '/guide/philosophy'
             },
             {
               text: 'Migration from v5',
@@ -371,9 +371,9 @@ export default defineConfig({
             },
             {
               text: 'Breaking Changes',
-              link: '/changes/',
-            },
-          ],
+              link: '/changes/'
+            }
+          ]
         },
         {
           text: 'API',
@@ -384,43 +384,43 @@ export default defineConfig({
             },
             {
               text: 'HMR API',
-              link: '/guide/api-hmr',
+              link: '/guide/api-hmr'
             },
             {
               text: 'JavaScript API',
-              link: '/guide/api-javascript',
+              link: '/guide/api-javascript'
             },
             {
               text: 'Config Reference',
-              link: '/config/',
-            },
-          ],
+              link: '/config/'
+            }
+          ]
         },
         {
           text: 'Environment API',
           items: [
             {
               text: 'Introduction',
-              link: '/guide/api-environment',
+              link: '/guide/api-environment'
             },
             {
               text: 'Environment Instances',
-              link: '/guide/api-environment-instances',
+              link: '/guide/api-environment-instances'
             },
             {
               text: 'Plugins',
-              link: '/guide/api-environment-plugins',
+              link: '/guide/api-environment-plugins'
             },
             {
               text: 'Frameworks',
-              link: '/guide/api-environment-frameworks',
+              link: '/guide/api-environment-frameworks'
             },
             {
               text: 'Runtimes',
-              link: '/guide/api-environment-runtimes',
-            },
-          ],
-        },
+              link: '/guide/api-environment-runtimes'
+            }
+          ]
+        }
       ],
       '/config/': [
         {
@@ -452,51 +452,51 @@ export default defineConfig({
             },
             {
               text: 'Worker Options',
-              link: '/config/worker-options',
-            },
-          ],
-        },
+              link: '/config/worker-options'
+            }
+          ]
+        }
       ],
       '/changes/': [
         {
           text: 'Breaking Changes',
-          link: '/changes/',
+          link: '/changes/'
         },
         {
           text: 'Now',
-          items: [],
+          items: []
         },
         {
           text: 'Future',
           items: [
             {
               text: 'this.environment in Hook Functions',
-              link: '/changes/this-environment-in-hooks',
+              link: '/changes/this-environment-in-hooks'
             },
             {
               text: 'HMR hotUpdate Plugin Hook',
-              link: '/changes/hotupdate-hook',
+              link: '/changes/hotupdate-hook'
             },
             {
               text: 'Migrating to Environment-Based APIs',
-              link: '/changes/per-environment-apis',
+              link: '/changes/per-environment-apis'
             },
             {
               text: 'Server-Side Rendering Using ModuleRunner API',
-              link: '/changes/ssr-using-modulerunner',
+              link: '/changes/ssr-using-modulerunner'
             },
             {
               text: 'Shared Plugins During Build',
-              link: '/changes/shared-plugins-during-build',
-            },
-          ],
+              link: '/changes/shared-plugins-during-build'
+            }
+          ]
         },
         {
           text: 'Past',
-          items: [],
-        },
-      ],
-    },
+          items: []
+        }
+      ]
+    }
   },
   transformPageData(pageData) {
     const canonicalUrl = `${ogUrl}/${pageData.relativePath}`
@@ -505,7 +505,7 @@ export default defineConfig({
     pageData.frontmatter.head ??= []
     pageData.frontmatter.head.unshift(
       ['link', { rel: 'canonical', href: canonicalUrl }],
-      ['meta', { property: 'og:title', content: pageData.title }],
+      ['meta', { property: 'og:title', content: pageData.title }]
     )
     return pageData
   },
@@ -513,25 +513,25 @@ export default defineConfig({
     codeTransformers: [transformerTwoslash()],
     config(md) {
       md.use(groupIconMdPlugin)
-    },
+    }
   },
   vite: {
     plugins: [
       groupIconVitePlugin({
         customIcon: {
           firebase: 'vscode-icons:file-type-firebase',
-          '.gitlab-ci.yml': 'vscode-icons:file-type-gitlab',
-        },
-      }),
+          '.gitlab-ci.yml': 'vscode-icons:file-type-gitlab'
+        }
+      })
     ],
     optimizeDeps: {
       include: [
         '@shikijs/vitepress-twoslash/client',
         'gsap',
         'gsap/dist/ScrollTrigger',
-        'gsap/dist/MotionPathPlugin',
-      ],
-    },
+        'gsap/dist/MotionPathPlugin'
+      ]
+    }
   },
-  buildEnd,
+  buildEnd
 })
