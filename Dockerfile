@@ -17,9 +17,10 @@ RUN pnpm install
 COPY . .
 
 # Build the VitePress site
-# RUN pnpm run docs:build
+RUN pnpm run docs:build
+
 
 # Expose port 5000 for the server
 EXPOSE 5173
 
-CMD ["npm", "run", "docs:dev"]
+CMD ["pnpm", "run", "docs:dev"]
