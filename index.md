@@ -13,8 +13,6 @@ markdownStyles: false
 import Hero from '.vitepress/theme/components/landing/1. hero-section/HeroSection.vue'
 import FeatureSection from './.vitepress/theme/components/landing/2. feature-section/FeatureSection.vue'
 import FrameworksSection from './.vitepress/theme/components/landing/3. frameworks-section/FrameworksSection.vue'
-import CommunitySection from './.vitepress/theme/components/landing/4. community-section/CommunitySection.vue'
-import SponsorSection from './.vitepress/theme/components/landing/5. sponsor-section/SponsorSection.vue'
 import GetStartedSection from '.vitepress/theme/components/landing/6. get-started-section/GetStartedSection.vue'
 import FeatureInstantServerStart from './.vitepress/theme/components/landing/2. feature-section/FeatureInstantServerStart.vue'
 import FeatureHMR from './.vitepress/theme/components/landing/2. feature-section/FeatureHMR.vue'

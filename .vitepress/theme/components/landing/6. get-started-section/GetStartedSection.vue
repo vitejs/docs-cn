@@ -109,9 +109,9 @@
       </svg>
       <img src="/logo.svg" alt="Vite Logo" class="vite-chip__logo" />
     </div>
-    <h2>使用 Vite 开始构建</h2>
+    <h2>Utilisez Vite pour commencer à construire</h2>
     <h3>
-      准备好迎接一个能跟上您思维速度的开发环境
+      Préparez-vous à accueillir un environnement de développement qui peut suivre votre vitesse de réflexion
     </h3>
     <a href="/guide/" class="btn btn--primary">开始</a>
     <div class="glow glow--purple" />

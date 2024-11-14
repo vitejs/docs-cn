@@ -1,7 +1,7 @@
 {
 	"name": "vite-docs-cn",
 	"version": "1.0.0",
-	"description": "Vite.js documentation Chinese translation.",
+	"description": "Vite.js",
 	"repository": "https://github.com/vitejs/docs-cn",
 	"type": "module",
 	"author": "Evan You",
