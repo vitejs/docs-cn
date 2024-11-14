@@ -24,8 +24,8 @@
 	},
 	"packageManager": "pnpm@9.6.0",
 	"scripts": {
-		"dev": "vitepress dev . --port 5174",
-		"build": "vitepress build .",
+		"dev": "vitepress dev . --port 5174 --host",
+		"build": "vitepress build",
 		"serve": "vitepress serve ."
 	},
 	"gitHooks": {
