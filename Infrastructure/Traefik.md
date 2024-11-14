@@ -2,376 +2,441 @@
 title: Traefik v3
 ---
 
-# Traefik v3 Configuration Guide {#traefik-v3}
+# Advanced Traefik v3 Technical Guide {#advanced-traefik}
 
-## Introduction {#introduction}
+## Understanding Reverse Proxy Architecture {#reverse-proxy}
 
-Traefik v3 is a modern HTTP reverse proxy and load balancer that makes deploying microservices easy. This guide provides practical configurations for setting up Traefik v3 with Docker.
+### Core Concepts {#core-concepts}
 
-## Environment Variables {#environment}
+A reverse proxy acts as an intermediate server between clients and backend services. Key advantages include:
 
-Create a `.env` file in your project root:
+1. **Load Distribution**:
+   - Layer 4 (TCP/UDP)
+   - Layer 7 (HTTP/HTTPS)
+   - Dynamic service discovery
 
-```env
-# Traefik Dashboard
-TRAEFIK_DASHBOARD_DOMAIN=traefik.example.com
-TRAEFIK_DASHBOARD_USER=admin
-TRAEFIK_DASHBOARD_PASSWORD_HASH=$apr1$d9hr9HBB$4HxwgUir3HP4EsggP/QNo0  # htpasswd -nb admin password
+2. **Security Benefits**:
+   - Hide backend infrastructure
+   - DDoS protection
+   - SSL/TLS termination
+   - Request filtering
 
-# SSL Configuration
-ACME_EMAIL=admin@example.com
-SSL_RESOLVER=https://acme-staging-v02.api.letsencrypt.org/directory
-# https://acme-v02.api.letsencrypt.org/directory
+### Traefik's Architecture {#traefik-architecture}
 
-# Network Configuration
-TRAEFIK_NETWORK=traefik_proxy
-
-# Ports
-TRAEFIK_HTTP_PORT=80
-TRAEFIK_HTTPS_PORT=443
-
-# Log Configuration
-LOG_LEVEL=INFO
-LOG_FILE=/var/log/traefik/traefik.log
-
-# Middleware Configurations
-RATE_LIMIT_AVERAGE=100
-RATE_LIMIT_BURST=50
-
-# Redis Configuration (for rate limiting)
-REDIS_HOST=redis
-REDIS_PORT=6379
+```plaintext
+Client Request → EntryPoints → Routers → Middlewares → Services → Backend
 ```
 
-## Directory Structure {#directory}
+#### Components Breakdown:
 
-```bash
-/etc/traefik/
-├── config/
-│   ├── dynamic/
-│   │   ├── middleware.yml
-│   │   └── tls.yml
-│   └── traefik.yml
-├── certs/
-│   └── acme.json
-└── logs/
-    └── traefik.log
-```
+1. **EntryPoints**:
+   - Network entry points (TCP/UDP)
+   - Protocol definitions
+   - Port bindings
 
-## Static Configuration {#static-configuration}
+2. **Routers**:
+   - Rule matching
+   - Priority handling
+   - TLS configuration
+   - Service binding
 
-Create `/etc/traefik/config/traefik.yml`:
+3. **Middlewares**:
+   - Request modification
+   - Authentication
+   - Rate limiting
+   - Headers manipulation
 
-```yaml
-global:
-  checkNewVersion: true
-  sendAnonymousUsage: false
+4. **Services**:
+   - Load balancing
+   - Health checks
+   - Sticky sessions
+   - Failover strategies
 
-log:
-  level: ${LOG_LEVEL}
-  filePath: ${LOG_FILE}
-  format: json
+## Advanced Middleware Configurations {#advanced-middleware}
 
-api:
-  dashboard: true
-  debug: false
-
-metrics:
-  prometheus: {}
-
-entryPoints:
-  web:
-    address: ":${TRAEFIK_HTTP_PORT}"
-    http:
-      redirections:
-        entryPoint:
-          to: websecure
-          scheme: https
-          permanent: true
-  
-  websecure:
-    address: ":${TRAEFIK_HTTPS_PORT}"
-    http:
-      tls:
-        certResolver: letsencrypt
-        domains:
-          - main: "${TRAEFIK_DASHBOARD_DOMAIN}"
-            sans:
-              - "*.${TRAEFIK_DASHBOARD_DOMAIN}"
-
-certificatesResolvers:
-  letsencrypt:
-    acme:
-      email: ${ACME_EMAIL}
-      storage: /etc/traefik/certs/acme.json
-      httpChallenge:
-        entryPoint: web
-      caServer: ${SSL_RESOLVER}
-
-providers:
-  docker:
-    endpoint: "unix:///var/run/docker.sock"
-    watch: true
-    exposedByDefault: false
-    network: ${TRAEFIK_NETWORK}
-    
-  file:
-    directory: /etc/traefik/config/dynamic
-    watch: true
-```
-
-## Dynamic Configuration {#dynamic-configuration}
-
-### Middleware Configuration {#middleware}
-
-Create `/etc/traefik/config/dynamic/middleware.yml`:
+### Authentication Middleware {#auth-middleware}
 
 ```yaml
 http:
   middlewares:
-    secure-headers:
-      headers:
-        sslRedirect: true
-        forceSTSHeader: true
-        stsIncludeSubdomains: true
-        stsPreload: true
-        stsSeconds: 31536000
-        customFrameOptionsValue: "SAMEORIGIN"
-        contentTypeNosniff: true
-        browserXssFilter: true
-        referrerPolicy: "strict-origin-when-cross-origin"
-        permissionsPolicy: "camera=(), microphone=(), geolocation=(), payment=()"
-        customResponseHeaders:
-          X-Robots-Tag: "none,noarchive,nosnippet,notranslate,noimageindex"
-          server: ""
+    oauth-auth:
+      forwardAuth:
+        address: "http://oauth-server:4181"
+        trustForwardHeader: true
+        authResponseHeaders:
+          - "X-Forwarded-User"
+        tls:
+          insecureSkipVerify: false
+          
+    jwt-auth:
+      forwardAuth:
+        address: "http://jwt-validator:3000"
+        authResponseHeaders:
+          - "X-User-ID"
+          - "X-User-Role"
+```
 
-    rate-limit:
+### Advanced Rate Limiting {#rate-limiting}
+
+```yaml
+http:
+  middlewares:
+    complex-ratelimit:
       rateLimit:
-        average: ${RATE_LIMIT_AVERAGE}
-        burst: ${RATE_LIMIT_BURST}
+        average: 100
+        burst: 50
+        period: 1s
         sourceCriterion:
+          requestHeaderName: "X-Real-IP"
+          requestHost: true
           ipStrategy:
-            depth: 1
+            depth: 2
             excludedIPs:
               - "127.0.0.1/32"
               - "10.0.0.0/8"
-
-    compression:
-      compress:
-        excludedContentTypes:
-          - "text/event-stream"
-
-    basic-auth:
-      basicAuth:
-        users:
-          - "${TRAEFIK_DASHBOARD_USER}:${TRAEFIK_DASHBOARD_PASSWORD_HASH}"
+        rateLimiters:
+          - name: "global"
+            limit: 1000
+            period: "1m"
+          - name: "per-ip"
+            limit: 100
+            period: "1m"
 ```
 
-### TLS Configuration {#tls}
+### Circuit Breaker {#circuit-breaker}
 
-Create `/etc/traefik/config/dynamic/tls.yml`:
+```yaml
+http:
+  middlewares:
+    circuit-breaker:
+      circuitBreaker:
+        expression: "NetworkErrorRatio() > 0.30 || ResponseCodeRatio(500, 600, 0, 600) > 0.25"
+        checkPeriod: "10s"
+        fallbackDuration: "30s"
+```
+
+### Request Transformation {#request-transform}
+
+```yaml
+http:
+  middlewares:
+    request-transform:
+      headers:
+        customRequestHeaders:
+          X-Script-Name: "/api"
+        customResponseHeaders:
+          X-Custom-Response: "Modified"
+        sslRedirect: true
+        sslHost: "example.com"
+        sslForceHost: true
+        stsSeconds: 31536000
+        stsIncludeSubdomains: true
+        stsPreload: true
+        forceSTSHeader: true
+        frameDeny: true
+        customFrameOptionsValue: "SAMEORIGIN"
+        contentTypeNosniff: true
+        browserXssFilter: true
+        contentSecurityPolicy: "default-src 'self'"
+        referrerPolicy: "strict-origin-when-cross-origin"
+```
+
+## Enhanced Security Configurations {#enhanced-security}
+
+### ModSecurity Integration {#modsecurity}
+
+```yaml
+http:
+  middlewares:
+    modsecurity:
+      plugin:
+        modsecurity:
+          configFile: "/etc/modsecurity/modsecurity.conf"
+          rules: |
+            SecRuleEngine On
+            SecRule REQUEST_HEADERS:User-Agent "@contains bad" "id:1,deny,status:403"
+```
+
+### OAuth2 Configuration {#oauth2}
+
+```yaml
+http:
+  middlewares:
+    oauth2-proxy:
+      forwardAuth:
+        address: "http://oauth2-proxy:4180"
+        trustForwardHeader: true
+        authResponseHeaders:
+          - "X-Auth-Request-Access-Token"
+          - "X-Auth-Request-User"
+          - "X-Auth-Request-Email"
+        tls:
+          cert: "/path/to/cert.pem"
+          key: "/path/to/key.pem"
+```
+
+## Advanced Service Discovery {#service-discovery}
+
+### Consul Integration {#consul}
+
+```yaml
+providers:
+  consul:
+    endpoints:
+      - "consul-server:8500"
+    rootKey: "traefik"
+    namespaces: ["production", "staging"]
+    token: "consul-token"
+    refreshInterval: "30s"
+```
+
+### Kubernetes CRD Configuration {#kubernetes-crd}
+
+```yaml
+providers:
+  kubernetesIngress:
+    ingressClass: "traefik-internal"
+    allowExternalNameServices: true
+    allowCrossNamespace: true
+    namespaces:
+      - "default"
+      - "kube-system"
+```
+
+## Advanced Metrics and Monitoring {#advanced-metrics}
+
+### Detailed Prometheus Configuration {#detailed-prometheus}
+
+```yaml
+metrics:
+  prometheus:
+    buckets:
+      - 0.1
+      - 0.3
+      - 1.2
+      - 5.0
+    addEntryPointsLabels: true
+    addServicesLabels: true
+    statsd:
+      address: "localhost:8125"
+      pushInterval: "10s"
+    influxDB:
+      address: "localhost:8089"
+      protocol: "udp"
+      database: "traefik"
+      retentionPolicy: "autogen"
+      pushInterval: "10s"
+```
+
+### Grafana Dashboard Configuration {#grafana}
+
+```json
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": "-- Grafana --",
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "panels": [
+    {
+      "title": "Request Duration",
+      "type": "graph",
+      "datasource": "Prometheus",
+      "targets": [
+        {
+          "expr": "histogram_quantile(0.95, sum(rate(traefik_service_request_duration_seconds_bucket[5m])) by (le, service))",
+          "legendFormat": "{{service}}"
+        }
+      ]
+    }
+  ]
+}
+```
+
+## Advanced TLS Configuration {#advanced-tls}
+
+### MTLS Configuration {#mtls}
 
 ```yaml
 tls:
   options:
-    default:
-      minVersion: VersionTLS12
+    mtls:
+      minVersion: VersionTLS13
       sniStrict: true
+      clientAuth:
+        caFiles:
+          - /path/to/ca.crt
+        clientAuthType: RequireAndVerifyClientCert
+      curvePreferences:
+        - CurveP521
+        - CurveP384
       cipherSuites:
-        - TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256
         - TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384
-        - TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305
-        - TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
         - TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-        - TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305
+        - TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305
 ```
 
-## Docker Compose Configuration {#docker-compose}
-
-Create `docker-compose.yml`:
+### Dynamic Certificate Configuration {#dynamic-certs}
 
 ```yaml
-version: '3.8'
-
-services:
-  traefik:
-    image: traefik:v3.0
-    container_name: traefik
-    restart: unless-stopped
-    security_opt:
-      - no-new-privileges:true
-    networks:
-      - ${TRAEFIK_NETWORK}
-    ports:
-      - "${TRAEFIK_HTTP_PORT}:${TRAEFIK_HTTP_PORT}"
-      - "${TRAEFIK_HTTPS_PORT}:${TRAEFIK_HTTPS_PORT}"
-    volumes:
-      - /etc/localtime:/etc/localtime:ro
-      - /var/run/docker.sock:/var/run/docker.sock:ro
-      - /etc/traefik/config:/etc/traefik
-      - /etc/traefik/certs:/etc/traefik/certs
-      - /etc/traefik/logs:/var/log/traefik
-    environment:
-      - TZ=UTC
-    labels:
-      - "traefik.enable=true"
-      # Dashboard
-      - "traefik.http.routers.dashboard.rule=Host(`${TRAEFIK_DASHBOARD_DOMAIN}`)"
-      - "traefik.http.routers.dashboard.service=api@internal"
-      - "traefik.http.routers.dashboard.entrypoints=websecure"
-      - "traefik.http.routers.dashboard.middlewares=basic-auth,secure-headers"
-      # API
-      - "traefik.http.routers.api.rule=Host(`${TRAEFIK_DASHBOARD_DOMAIN}`) && PathPrefix(`/api`)"
-      - "traefik.http.routers.api.service=api@internal"
-      - "traefik.http.routers.api.entrypoints=websecure"
-      - "traefik.http.routers.api.middlewares=basic-auth,secure-headers"
-
-  redis:
-    image: redis:alpine
-    container_name: traefik_redis
-    restart: unless-stopped
-    networks:
-      - ${TRAEFIK_NETWORK}
-    volumes:
-      - redis_data:/data
-    ports:
-      - "${REDIS_PORT}:${REDIS_PORT}"
-
-volumes:
-  redis_data:
-
-networks:
-  traefik_proxy:
-    name: ${TRAEFIK_NETWORK}
-    external: true
+tls:
+  certificates:
+    - certFile: /path/to/cert.pem
+      keyFile: /path/to/key.pem
+      stores:
+        - default
+  stores:
+    default:
+      defaultCertificate:
+        certFile: /path/to/default.pem
+        keyFile: /path/to/default.key
 ```
 
-## Example Service Configuration {#example-service}
+## Performance Optimization {#performance}
 
-Here's an example of how to configure a service to use Traefik:
+### Worker Pool Configuration {#worker-pool}
 
 ```yaml
-version: '3.8'
-
-services:
-  whoami:
-    image: traefik/whoami
-    container_name: whoami
-    networks:
-      - ${TRAEFIK_NETWORK}
-    labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.whoami.rule=Host(`whoami.${TRAEFIK_DASHBOARD_DOMAIN}`)"
-      - "traefik.http.routers.whoami.entrypoints=websecure"
-      - "traefik.http.routers.whoami.middlewares=secure-headers,rate-limit"
-      - "traefik.http.services.whoami.loadbalancer.server.port=80"
+experimental:
+  plugins:
+    performance:
+      poolSize: 10
+      maxIdleConnsPerHost: 100
+      maxConnsPerHost: 250
+      idleTimeout: "90s"
+      responseHeaderTimeout: "30s"
 ```
 
-## Initial Setup {#initial-setup}
-
-1. Create required directories and files:
-
-```bash
-# Create directories
-sudo mkdir -p /etc/traefik/{config/{dynamic},certs,logs}
-
-# Set permissions
-sudo chmod 600 /etc/traefik/certs/acme.json
-sudo chown -R root:root /etc/traefik
-
-# Create network
-docker network create ${TRAEFIK_NETWORK}
-```
-
-2. Generate password hash:
-
-```bash
-docker run --rm httpd:alpine htpasswd -nb admin password
-```
-
-3. Start Traefik:
-
-```bash
-docker-compose up -d
-```
-
-## Monitoring {#monitoring}
-
-### Prometheus Configuration {#prometheus}
-
-Add to your Prometheus configuration:
-
-```yaml
-scrape_configs:
-  - job_name: 'traefik'
-    static_configs:
-      - targets: ['traefik:8082']
-```
-
-### Health Check Configuration {#health-check}
-
-Create a health check endpoint in dynamic configuration:
+### Caching Strategy {#caching}
 
 ```yaml
 http:
-  routers:
-    health:
-      rule: "Path(`/health`)"
-      service: health
-      middlewares:
-        - "secure-headers"
-  services:
-    health:
-      loadBalancer:
-        healthCheck:
-          path: /ping
-          interval: "10s"
-          timeout: "3s"
+  middlewares:
+    cache:
+      plugin:
+        caching:
+          maxAge: 3600
+          staleWhileRevalidate: 300
+          staleIfError: 600
+          methods:
+            - GET
+            - HEAD
+          headers:
+            - Authorization
+          statusCodes:
+            - 200
+            - 404
 ```
 
-## Best Practices {#best-practices}
+## High Availability Setup {#high-availability}
 
-1. **Security**:
-   - Always use HTTPS
-   - Implement rate limiting
-   - Use secure headers
-   - Regularly update Traefik and dependencies
-   - Restrict dashboard access
+### Cluster Configuration {#cluster}
 
-2. **Performance**:
-   - Enable compression
-   - Use Redis for rate limiting
-   - Implement proper caching strategies
-   - Monitor resource usage
-
-3. **Maintenance**:
-   - Regularly backup certificates
-   - Monitor logs
-   - Keep configurations in version control
-   - Document all customizations
-
-## Troubleshooting {#troubleshooting}
-
-1. Check logs:
-```bash
-docker logs traefik
+```yaml
+cluster:
+  node:
+    id: "node1"
+    address: "10.0.0.1:4242"
+  peers:
+    - id: "node2"
+      address: "10.0.0.2:4242"
+    - id: "node3"
+      address: "10.0.0.3:4242"
+  retry:
+    attempts: 3
+    initialInterval: "500ms"
 ```
 
-2. Verify configuration:
-```bash
-docker exec traefik traefik healthcheck
+### Redis Configuration for Session Persistence {#redis-session}
+
+```yaml
+http:
+  middlewares:
+    sticky-session:
+      plugin:
+        sticky:
+          cookieName: "SERVERID"
+          redis:
+            endpoints:
+              - "redis:6379"
+            password: "${REDIS_PASSWORD}"
+            db: 0
 ```
 
-3. Test TLS configuration:
-```bash
-curl -vI https://${TRAEFIK_DASHBOARD_DOMAIN}
+## Logging and Debugging {#logging-debugging}
+
+### Advanced Logging Configuration {#advanced-logging}
+
+```yaml
+log:
+  level: DEBUG
+  format: json
+  filePath: "/var/log/traefik/access.log"
+  fields:
+    defaultMode: keep
+    names:
+      ClientUsername: drop
+    headers:
+      defaultMode: keep
+      names:
+        User-Agent: redact
+        Authorization: drop
+        Cookie: drop
 ```
 
-::: tip Important
-Remember to:
-1. Replace example.com with your actual domain
-2. Generate secure passwords
-3. Backup certificates and configurations
-4. Monitor logs and metrics
-5. Keep Traefik updated
+### Access Log Configuration {#access-log}
+
+```yaml
+accessLog:
+  filePath: "/var/log/traefik/access.log"
+  format: json
+  bufferingSize: 100
+  fields:
+    defaultMode: keep
+    names:
+      ClientUsername: drop
+    headers:
+      defaultMode: drop
+      names:
+        User-Agent: keep
+        Authorization: redact
+        Content-Type: keep
+```
+
+## Best Security Practices {#security-practices}
+
+1. **Headers Security**:
+   - Use CSP (Content Security Policy)
+   - Enable HSTS (HTTP Strict Transport Security)
+   - Implement X-Frame-Options
+   - Configure X-Content-Type-Options
+
+2. **Network Security**:
+   - Implement IP whitelisting
+   - Use VPN or private networks
+   - Configure proper firewall rules
+   - Monitor network traffic
+
+3. **Authentication**:
+   - Implement MFA where possible
+   - Use strong password policies
+   - Regularly rotate credentials
+   - Audit authentication logs
+
+4. **Certificate Management**:
+   - Automate certificate renewal
+   - Monitor certificate expiration
+   - Use strong key algorithms
+   - Implement OCSP stapling
+
+::: tip Security Reminder
+Always follow the principle of least privilege and regularly audit your security configurations. Keep all components updated and monitor security advisories.
 :::
