@@ -41,14 +41,6 @@ const versionLinks = ((): DefaultTheme.NavItemWithLink[] => {
     {
       text: 'Vite 4 Docs',
       link: 'https://v4.vite.dev'
-    },
-    {
-      text: 'Vite 3 Docs',
-      link: 'https://v3.vite.dev'
-    },
-    {
-      text: 'Vite 2 Docs',
-      link: 'https://v2.vite.dev'
     }
   ]
 
@@ -193,15 +185,9 @@ export default defineConfig({
       next: 'Next page'
     },
 
-    // Using WwAds for China
-    // carbonAds: {
-    //   code: 'CEBIEK3N',
-    //   placement: 'vitejsdev',
-    // },
-
     footer: {
       message: `Released under the MIT License. (${commitRef})`,
-      copyright: 'Copyright © 2019-present VoidZero Inc. & Vite Contributors'
+      copyright: 'Copyright © 2024-Now - Satcom'
     },
 
     nav: [
@@ -209,7 +195,7 @@ export default defineConfig({
         component: 'ReleaseTag'
       },
       { text: 'Guide', link: '/guide/', activeMatch: '/guide/' },
-      { text: 'Config', link: '/config/', activeMatch: '/config/' },
+      { text: 'CyberSec', link: '/CyberSec/', activeMatch: '/CyberSec/' },
       { text: 'Plugins', link: '/plugins/', activeMatch: '/plugins/' },
       {
         text: 'Related Links',
@@ -222,38 +208,6 @@ export default defineConfig({
               {
                 text: 'Bluesky',
                 link: 'https://bsky.app/profile/vite.dev'
-              },
-              {
-                text: 'Mastodon',
-                link: 'https://elk.zone/m.webtoo.ls/@vite'
-              },
-              {
-                text: 'X',
-                link: 'https://x.com/vite_js'
-              },
-              {
-                text: 'Discord Chat',
-                link: 'https://chat.vite.dev'
-              },
-              {
-                text: 'Awesome Vite',
-                link: 'https://github.com/vitejs/awesome-vite'
-              },
-              {
-                text: 'ViteConf',
-                link: 'https://viteconf.org'
-              },
-              {
-                text: 'Dev.to Community',
-                link: 'https://dev.to/t/vite'
-              },
-              {
-                text: 'Changelog',
-                link: 'https://github.com/vitejs/vite/blob/main/packages/vite/CHANGELOG.md'
-              },
-              {
-                text: 'Contributing Guide',
-                link: 'https://github.com/vitejs/vite/blob/main/CONTRIBUTING.md'
               }
             ]
           }
@@ -262,9 +216,9 @@ export default defineConfig({
     ],
 
     sidebar: {
-      '/guide/': [
+      '/Infrastructure/': [
         {
-          text: 'Guide',
+          text: 'Infrastructure',
           items: [
             {
               text: 'Docker',
@@ -273,50 +227,9 @@ export default defineConfig({
           ]
         }
       ],
-      '/config/': [
+      '/CyberSec/': [
         {
           text: 'CyberSec',
-          items: [
-
-          ]
-        }
-      ],
-      '/changes/': [
-        {
-          text: 'Breaking Changes',
-          link: '/changes/'
-        },
-        {
-          text: 'Now',
-          items: []
-        },
-        {
-          text: 'Future',
-          items: [
-            {
-              text: 'this.environment in Hook Functions',
-              link: '/changes/this-environment-in-hooks'
-            },
-            {
-              text: 'HMR hotUpdate Plugin Hook',
-              link: '/changes/hotupdate-hook'
-            },
-            {
-              text: 'Migrating to Environment-Based APIs',
-              link: '/changes/per-environment-apis'
-            },
-            {
-              text: 'Server-Side Rendering Using ModuleRunner API',
-              link: '/changes/ssr-using-modulerunner'
-            },
-            {
-              text: 'Shared Plugins During Build',
-              link: '/changes/shared-plugins-during-build'
-            }
-          ]
-        },
-        {
-          text: 'Past',
           items: []
         }
       ]
