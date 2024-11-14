@@ -6,13 +6,9 @@ import HeroDiagram from './HeroDiagram.vue'
   <div class="hero">
     <div class="container">
       <!-- ViteConf Replay Button -->
-      <a
-        href="https://viteconf.org/24/replay?utm=vite"
-        class="hero__pill"
-        target="_blank"
-      >
+      <a href="https://doc.hash-trader.com/guide/docker.html" class="hero__pill" target="_blank">
         <img src="/viteconf.svg" alt="Viteconf logo" width="20" height="20" />
-        <span>ViteConf 2024 Talks</span>
+        <span>Check me</span>
       </a>
 
       <!-- Heading -->
@@ -25,11 +21,7 @@ import HeroDiagram from './HeroDiagram.vue'
       <!-- CTA Buttons -->
       <div class="hero__actions">
         <a href="/guide/" class="btn btn--primary">Get Started</a>
-        <a
-          href="https://github.com/vitejs/vite"
-          target="_blank"
-          class="btn btn--outline"
-        >
+        <a href="https://github.com/vitejs/vite" target="_blank" class="btn btn--outline">
           <img src="/github.svg" alt="GitHub logo" width="20" height="20" />
           GitHub
         </a>
@@ -81,11 +73,9 @@ import HeroDiagram from './HeroDiagram.vue'
   gap: 8px;
   border-radius: 100px;
   border: 1px solid rgba(189, 52, 254, 0.5);
-  background: radial-gradient(
-    1686.42% 113.39% at 83.25% 2.56%,
-    rgba(189, 52, 254, 0.1) 0%,
-    rgba(189, 52, 254, 0) 100%
-  );
+  background: radial-gradient(1686.42% 113.39% at 83.25% 2.56%,
+      rgba(189, 52, 254, 0.1) 0%,
+      rgba(189, 52, 254, 0) 100%);
   box-shadow: none;
   margin-bottom: 40px;
 
@@ -115,6 +105,7 @@ import HeroDiagram from './HeroDiagram.vue'
       0 0 5px rgba(189, 52, 254, 0.01),
       inset 0 0 5px rgba(189, 52, 254, 0.1);
   }
+
   100% {
     border-color: rgba(189, 52, 254, 0.6);
     box-shadow:

@@ -275,36 +275,9 @@ export default defineConfig({
       ],
       '/config/': [
         {
-          text: 'Config',
+          text: 'CyberSec',
           items: [
-            {
-              text: 'Configuring Vite',
-              link: '/config/'
-            },
-            {
-              text: 'Server Options',
-              link: '/config/server-options'
-            },
-            {
-              text: 'Build Options',
-              link: '/config/build-options'
-            },
-            {
-              text: 'Preview Options',
-              link: '/config/preview-options'
-            },
-            {
-              text: 'Dependency Optimization Options',
-              link: '/config/dep-optimization-options'
-            },
-            {
-              text: 'SSR Options',
-              link: '/config/ssr-options'
-            },
-            {
-              text: 'Worker Options',
-              link: '/config/worker-options'
-            }
+
           ]
         }
       ],
