@@ -417,9 +417,9 @@ const { isCardActive, startAnimation } = useCardAnimation(
       </svg>
     </div>
     <div class="feature__meta">
-      <div class="meta__title">一流的 SSR 支持</div>
+      <div class="meta__title">First-class SSR Support</div>
       <div class="meta__description">
-        设置自定义 SSR（服务端渲染）或构建自己的 SSR 框架从未如此简单
+        Setting up custom SSR (Server-Side Rendering) or building your own SSR framework has never been easier
       </div>
     </div>
   </div>

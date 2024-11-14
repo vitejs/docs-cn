@@ -109,11 +109,11 @@
       </svg>
       <img src="/logo.svg" alt="Vite Logo" class="vite-chip__logo" />
     </div>
-    <h2>使用 Vite 开始构建</h2>
+    <h2>Get Started with Vite</h2>
     <h3>
-      准备好迎接一个能跟上您思维速度的开发环境
+      Ready for a development environment that keeps up with your thinking speed
     </h3>
-    <a href="/guide/" class="btn btn--primary">开始</a>
+    <a href="/guide/" class="btn btn--primary">Get Started</a>
     <div class="glow glow--purple" />
     <div class="glow glow--blue" />
   </div>
