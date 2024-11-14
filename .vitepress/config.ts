@@ -431,10 +431,6 @@ export default defineConfig({
               link: '/config/'
             },
             {
-              text: 'Shared Options',
-              link: '/config/shared-options'
-            },
-            {
               text: 'Server Options',
               link: '/config/server-options'
             },
