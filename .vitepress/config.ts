@@ -206,6 +206,10 @@ export default defineConfig({
             {
               text: 'Traefik',
               link: '/Infrastructure/Traefik'
+            },
+            {
+              text: 'Wireguard',
+              link: '/Infrastructure/Wireguard'
             }
           ]
         }
