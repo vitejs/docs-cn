@@ -6,6 +6,15 @@ title: WireGuard Web UI & AdGuard Home
 
 ## Prerequisites {#prerequisites}
 
+::: tip System Preparation
+Before installation:
+1. Update system packages
+2. Enable required kernel modules
+3. Check system compatibility
+4. Backup existing configurations
+5. Prepare network information
+:::
+
 ### System Requirements {#system-requirements}
 
 Base system: Ubuntu 20.04 LTS or newer
@@ -100,6 +109,15 @@ Application Security:
 - ⬜ Logging
 
 ## Advanced Network Configuration {#advanced-network}
+
+::: tip Network Planning
+When configuring networks:
+1. Use non-overlapping subnets
+2. Plan IP allocation strategy
+3. Document network layout
+4. Consider future expansion
+5. Implement VLAN segregation
+:::
 
 ### Network Topology {#network-topology}
 
@@ -440,6 +458,15 @@ Remember to:
 
 ## Performance Optimization {#performance-optimization}
 
+::: tip Performance Tuning
+For better performance:
+1. Optimize MTU settings
+2. Configure appropriate buffer sizes
+3. Monitor system resources
+4. Adjust network queues
+5. Enable hardware offloading
+:::
+
 ### WireGuard Kernel Parameters {#kernel-parameters}
 
 Add to the end of file `/etc/sysctl.conf`:
@@ -501,13 +528,21 @@ Update Docker daemon configuration `/etc/docker/daemon.json`:
 ```
 
 ## Advanced Security Configuration {#advanced-security}
+
+::: tip Security Best Practices
+For optimal security:
+1. Use strong cryptographic keys
+2. Rotate keys periodically
+3. Implement access controls
+4. Monitor network traffic
+5. Keep audit logs
+:::
+
 ### Install Fail2ban
 
 ```sh
 sudo apt -y install fail2ban
 ```
-
-
 
 ### Fail2ban Configuration {#fail2ban}
 Create `/etc/fail2ban/jail.d/wireguard.conf`:
@@ -542,8 +577,16 @@ failregex = Failed authentication attempt from <HOST>
 ignoreregex =
 ```
 
-
 ## Advanced Monitoring {#advanced-monitoring}
+
+::: tip Monitoring Guidelines
+For effective monitoring:
+1. Set up alerts for critical events
+2. Monitor resource usage
+3. Track connection states
+4. Log security events
+5. Review performance metrics
+:::
 
 ### Prometheus Metrics {#prometheus-metrics}
 
@@ -604,6 +647,15 @@ scrape_configs:
 
 ## Disaster Recovery {#disaster-recovery}
 
+::: tip Backup Strategy
+For reliable backups:
+1. Automate backup process
+2. Verify backup integrity
+3. Store offsite copies
+4. Test restoration regularly
+5. Document recovery procedures
+:::
+
 ### Automated Backup Script {#backup-script}
 
 Create `/usr/local/bin/backup-vpn.sh`:
@@ -658,8 +710,6 @@ else
     exit 1
 fi
 ```
-
-
 
 ::: tip Important Security Notes
 1. Regularly audit peer configurations
