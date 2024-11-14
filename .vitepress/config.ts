@@ -37,7 +37,6 @@ const additionalTitle = ((): string => {
   }
 })()
 
-
 export default defineConfig({
   title: 'Satcom - Docs',
   description: 'DevSecOps Documentation',
@@ -210,6 +209,10 @@ export default defineConfig({
             {
               text: 'Wireguard',
               link: '/Infrastructure/Wireguard'
+            },
+            {
+              text: 'Vaultwarden',
+              link: '/Infrastructure/Vaultwarden'
             }
           ]
         }
