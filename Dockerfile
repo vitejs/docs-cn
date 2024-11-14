@@ -19,7 +19,7 @@ COPY . .
 # RUN pnpm run docs:build
 
 # Expose VitePress dev server port
-EXPOSE 5173
+EXPOSE 5174
 
 # Start VitePress dev server
 CMD ["pnpm", "run", "docs:dev"]

@@ -2,4 +2,4 @@ services:
   vitepress:
     image: satcomx00/custom-doc-website:latest
     ports:
-      - "5173:5173"
+      - "5173:5174"
