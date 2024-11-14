@@ -24,9 +24,9 @@
 	},
 	"packageManager": "pnpm@9.6.0",
 	"scripts": {
-		"dev": "vitepress dev . --port 5173 --host",
-		"build": "vitepress build .",
-		"serve": "vitepress serve ."
+		"dev": "vitepress dev --host",
+		"build": "vitepress build",
+		"serve": "vitepress serve"
 	},
 	"gitHooks": {
 		"commit-msg": "node scripts/verifyCommit.js"

@@ -7,8 +7,8 @@ WORKDIR /app
 # Install pnpm globally
 RUN npm install -g pnpm
 
-# Copy package.json to install dependencies
-COPY package.json ./
+# Copy package files first
+COPY package.json pnpm-lock.yaml* ./
 
 # Install dependencies using pnpm
 RUN pnpm install
@@ -18,9 +18,6 @@ COPY . .
 
 # Build the VitePress site
 # RUN pnpm run docs:build
-
-# Install a lightweight static file server as a local dependency
-RUN pnpm add serve
 
 # Expose port 5000 for the server
 EXPOSE 5173
