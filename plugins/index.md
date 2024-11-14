@@ -42,4 +42,4 @@ Check out [awesome-vite](https://github.com/vitejs/awesome-vite#plugins) - you c
 
 ## Rollup Plugins {#rollup-plugins}
 
-[Vite plugins](../guide/api-plugin.md) are an extension of the Rollup plugin interface. Check out the [Rollup Plugin Compatibility section](../guide/api-plugin.md#rollup-plugin-compatibility) for more information.
+[Vite plugins](../guide/api-plugin.md) are an extension of the Rollup plugin interface. Check out the Rollup Plugin Compatibility section for more information.

@@ -1,7 +1,4 @@
 <script setup lang="ts">
-import { useSlideIn } from '../../../composables/useSlideIn'
-import { useCardAnimation } from '../../../composables/useCardAnimation'
-
 /**
  * Slide the card in when the page loads
  */

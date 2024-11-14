@@ -4,7 +4,7 @@ title: Configuring Vite
 
 # Configuring Vite {#configuring-vite}
 
-When running `vite` from the command line, Vite will automatically resolve a configuration file named `vite.config.js` in the [project root directory](../guide/#index-html-and-project-root) (other JS and TS extensions are also supported).
+When running `vite` from the command line, Vite will automatically resolve a configuration file named `vite.config.js` in the project root directory (other JS and TS extensions are also supported).
 
 The most basic configuration file looks like this:
 
@@ -56,7 +56,7 @@ export default {
 
 ## Conditional Config {#conditional-config}
 
-If the configuration file needs to determine options based on the command (`dev`/`serve` or `build`) or different [modes](/guide/env-and-mode), or if it is an SSR build (`isSsrBuild`), or a preview of the build output (`isPreview`), you can choose to export a function:
+If the configuration file needs to determine options based on the command (`dev`/`serve` or `build`) or different modes, or if it is an SSR build (`isSsrBuild`), or a preview of the build output (`isPreview`), you can choose to export a function:
 
 ```js twoslash
 import { defineConfig } from 'vite'
@@ -75,7 +75,7 @@ export default defineConfig(({ command, mode, isSsrBuild, isPreview }) => {
 })
 ```
 
-Note that in Vite's API, the value of `command` is `serve` in development mode (in the CLI, `vite dev` and `vite serve` are aliases for [`vite`](../guide/cli.md#vite)), and `build` in production mode ([`vite build`](../guide/cli.md#vite-build)).
+Note that in Vite's API, the value of `command` is `serve` in development mode (in the CLI, `vite dev` and `vite serve` are aliases for `vite`), and `build` in production mode (`vite build`).
 
 `isSsrBuild` and `isPreview` are additional optional flags used to distinguish the types of `build` and `serve` commands. Some tools that load Vite configurations may not support these flags and will pass `undefined`. Therefore, it is recommended to use explicit comparisons with `true` and `false`.
 

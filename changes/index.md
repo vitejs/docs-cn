@@ -14,11 +14,11 @@ These changes are under consideration, usually as experimental APIs aimed at imp
 
 We do not recommend switching to these APIs yet. They are included in Vite to help us gather feedback. Please review these proposals and let us know how they perform in your use cases in the associated GitHub Discussions.
 
-- [`this.environment` in hook functions](./this-environment-in-hooks.md)
-- [HMR `hotUpdate` plugin hook](./hotupdate-hook.md)
-- [Migration to environment-based APIs](./per-environment-apis.md)
-- [Server-side rendering using `ModuleRunner` API](./ssr-using-modulerunner.md)
-- [Shared plugins during the build process](./shared-plugins-during-build.md)
+- [`this.environment` in hook functions]
+- [HMR `hotUpdate` plugin hook]
+- [Migration to environment-based APIs]
+- [Server-side rendering using `ModuleRunner` API]
+- [Shared plugins during the build process]
 
 ## Past {#past}
 
