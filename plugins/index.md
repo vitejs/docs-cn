@@ -1,10 +1,10 @@
 # Plugins {#plugins}
 
 :::tip Note
-Vite aims to provide out-of-the-box support for common web development tasks. Before searching for a Vite or Rollup compatible plugin, please check the [Feature Guide](../guide/features.md). In many cases, plugins that need to be added in a Rollup project are already supported natively in Vite.
+Vite aims to provide out-of-the-box support for common web development tasks. Before searching for a Vite or Rollup compatible plugin, please check the [Feature Guide](../../guide/features.md). In many cases, plugins that need to be added in a Rollup project are already supported natively in Vite.
 :::
 
-Please check the [Using Plugins](../guide/using-plugins.md) section to learn more about how to use plugins.
+Please check the [Using Plugins](../../guide/using-plugins.md) section to learn more about how to use plugins.
 
 ## Official Plugins {#official-plugins}
 
@@ -41,5 +41,3 @@ Please check the [Using Plugins](../guide/using-plugins.md) section to learn mor
 Check out [awesome-vite](https://github.com/vitejs/awesome-vite#plugins) - you can also add your plugin to this list via a PR.
 
 ## Rollup Plugins {#rollup-plugins}
-
-[Vite plugins](../guide/api-plugin.md) are an extension of the Rollup plugin interface. Check out the Rollup Plugin Compatibility section for more information.

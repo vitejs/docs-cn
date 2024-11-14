@@ -1,6 +1,6 @@
 # Breaking Changes {#breaking-changes}
 
-A list of breaking changes in Vite, including API deprecations, removals, and changes. Most of the changes below can be opted into using the [`future` option](../config/shared-options.md#future) in your Vite configuration.
+A list of breaking changes in Vite, including API deprecations, removals, and changes. Most of the changes below can be opted into using the [`future` option](../../config/shared-options.md#future) in your Vite configuration.
 
 ## Planned {#planned}
 
