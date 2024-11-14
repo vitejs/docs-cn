@@ -182,9 +182,9 @@ onUnmounted(() => {
       <div class="connection-line" :class="{ active: commandTriggered }" />
     </div>
     <div class="feature__meta">
-      <div class="meta__title">极速的服务启动</div>
+      <div class="meta__title">Speed ​​service startup</div>
       <div class="meta__description">
-        使用原生 ESM 文件，无需打包
+        Use the native ESM file without packing
       </div>
     </div>
   </div>

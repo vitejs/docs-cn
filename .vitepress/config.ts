@@ -200,9 +200,6 @@ export default defineConfig({
       {
         text: 'Related Links',
         items: [
-          { text: 'Team', link: '/team' },
-          { text: 'Blog', link: '/blog' },
-          { text: 'Releases', link: '/releases' },
           {
             items: [
               {
