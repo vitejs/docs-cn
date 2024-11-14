@@ -12,16 +12,16 @@ import HeroDiagram from './HeroDiagram.vue'
       </a>
 
       <!-- Heading -->
-      <h1>The Build Tool<br />for the Web</h1>
+      <h1>Welcome :)<br />Searching someting to lean ?</h1>
       <!-- Tagline -->
       <h3>
-        Vite is an ultra-fast frontend build tool driving the next generation of web applications
+        Here you learn about Cyber, CI/CD, Infrastructure and more !
       </h3>
 
       <!-- CTA Buttons -->
       <div class="hero__actions">
         <a href="/guide/" class="btn btn--primary">Get Started</a>
-        <a href="https://github.com/vitejs/vite" target="_blank" class="btn btn--outline">
+        <a href="https://github.com/Satcomx00-x00" target="_blank" class="btn btn--outline">
           <img src="/github.svg" alt="GitHub logo" width="20" height="20" />
           GitHub
         </a>
