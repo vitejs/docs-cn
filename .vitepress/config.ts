@@ -37,7 +37,7 @@ const additionalTitle = ((): string => {
       return ''
   }
 })()
-
+// export default defineConfig
 export default withMermaid({
   mermaid: {
     // refer https://mermaid.js.org/config/setup/modules/mermaidAPI.html#mermaidapi-configuration-defaults for options
