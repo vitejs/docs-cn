@@ -302,15 +302,15 @@ export default defineConfig({
           text: '指引',
           items: [
             {
-              text: '为什么选 Vite',
+              text: 'Pourquoi choisir Vite',
               link: '/guide/why'
             },
             {
-              text: '开始',
+              text: 'commencer',
               link: '/guide/'
             },
             {
-              text: '功能',
+              text: 'Fonction',
               link: '/guide/features'
             },
             {
