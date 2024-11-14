@@ -1,4 +1,4 @@
-# JavaScript API {#javascript-api}
+<!-- # JavaScript API {#javascript-api}
 
 Vite 的 JavaScript API 是完全类型化的，我们推荐使用 TypeScript 或者在 VS Code 中启用 JS 类型检查来利用智能提示和类型签名。
 
@@ -448,4 +448,4 @@ interface PreprocessCSSResult {
 
 使用哪个预处理器是根据 `filename` 的扩展名来推断的。如果 `filename` 以 `.module.{ext}` 结尾，那么它就会被推断为 [CSS module](https://github.com/css-modules/css-modules)，返回的结果会包含一个 `modules` 对象，这个对象将原始的类名映射到转换后的类名。
 
-需要注意的是，预处理不会解析 `url()` 或 `image-set()` 中的 URL。
+需要注意的是，预处理不会解析 `url()` 或 `image-set()` 中的 URL。 -->
