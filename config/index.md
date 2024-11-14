@@ -1,31 +1,31 @@
 ---
-title: 配置 Vite
+title: Configuring Vite
 ---
 
-# 配置 Vite {#configuring-vite}
+# Configuring Vite {#configuring-vite}
 
-当以命令行方式运行 `vite` 时，Vite 会自动解析 [项目根目录](/guide/#index-html-and-project-root) 下名为 `vite.config.js` 的配置文件（也支持其他 JS 和 TS 扩展名）。
+When running `vite` from the command line, Vite will automatically resolve a configuration file named `vite.config.js` in the [project root directory](/guide/#index-html-and-project-root) (other JS and TS extensions are also supported).
 
-最基础的配置文件是这样的：
+The most basic configuration file looks like this:
 
 ```js
 // vite.config.js
 export default {
-  // 配置选项
+  // Configuration options
 }
 ```
 
-注意：即使项目没有在 `package.json` 中开启 `type: "module"`，Vite 也支持在配置文件中使用 ESM 语法。这种情况下，配置文件会在被加载前自动进行预处理。
+Note: Even if the project does not enable `type: "module"` in `package.json`, Vite supports using ESM syntax in the configuration file. In this case, the configuration file will be preprocessed automatically before being loaded.
 
-你可以显式地通过 `--config` 命令行选项指定一个配置文件（相对于 `cwd` 路径进行解析）
+You can explicitly specify a configuration file via the `--config` command line option (resolved relative to the `cwd` path)
 
 ```bash
 vite --config my-config.js
 ```
 
-## 配置智能提示 {#config-intellisense}
+## Config Intellisense {#config-intellisense}
 
-因为 Vite 本身附带 TypeScript 类型，所以你可以通过 IDE 和 jsdoc 的配合来实现智能提示：
+Since Vite comes with TypeScript types, you can achieve Intellisense with the help of IDE and jsdoc:
 
 ```js
 /** @type {import('vite').UserConfig} */
@@ -34,7 +34,7 @@ export default {
 }
 ```
 
-另外你可以使用 `defineConfig` 工具函数，这样不用 jsdoc 注解也可以获取类型提示：
+Alternatively, you can use the `defineConfig` utility function to get type hints without jsdoc annotations:
 
 ```js
 import { defineConfig } from 'vite'
@@ -44,7 +44,7 @@ export default defineConfig({
 })
 ```
 
-Vite 也直接支持 TypeScript 配置文件。你可以在 `vite.config.ts` 中使用上述的 `defineConfig` 工具函数，或者 `satisfies` 运算符：
+Vite also directly supports TypeScript configuration files. You can use the `defineConfig` utility function or the `satisfies` operator in `vite.config.ts`:
 
 ```ts
 import type { UserConfig } from 'vite'
@@ -54,9 +54,9 @@ export default {
 } satisfies UserConfig
 ```
 
-## 情景配置 {#conditional-config}
+## Conditional Config {#conditional-config}
 
-如果配置文件需要基于（`dev`/`serve` 或 `build`）命令或者不同的 [模式](/guide/env-and-mode) 来决定选项，亦或者是一个 SSR 构建（`isSsrBuild`）、一个正在预览的构建产物（`isPreview`），则可以选择导出这样一个函数：
+If the configuration file needs to determine options based on the command (`dev`/`serve` or `build`) or different [modes](/guide/env-and-mode), or if it is an SSR build (`isSsrBuild`), or a preview of the build output (`isPreview`), you can choose to export a function:
 
 ```js twoslash
 import { defineConfig } from 'vite'
@@ -64,24 +64,24 @@ import { defineConfig } from 'vite'
 export default defineConfig(({ command, mode, isSsrBuild, isPreview }) => {
   if (command === 'serve') {
     return {
-      // dev 独有配置
+      // dev specific config
     }
   } else {
     // command === 'build'
     return {
-      // build 独有配置
+      // build specific config
     }
   }
 })
 ```
 
-需要注意的是，在 Vite 的 API 中，在开发环境下 `command` 的值为 `serve`（在 CLI 中， `vite dev` 和 `vite serve` 是 [`vite`](/guide/cli#vite) 的别名），而在生产环境下为 `build`（[`vite build`](/guide/cli#vite-build)）。
+Note that in Vite's API, the value of `command` is `serve` in development mode (in the CLI, `vite dev` and `vite serve` are aliases for [`vite`](/guide/cli#vite)), and `build` in production mode ([`vite build`](/guide/cli#vite-build)).
 
-`isSsrBuild` 和 `isPreview` 是额外的可选标志，用于区分 `build` 和 `serve` 命令的类型。一些加载 Vite 配置的工具可能不支持这些标志，而会传递 `undefined`。因此，建议使用 `true` 和 `false` 的显式比较。
+`isSsrBuild` and `isPreview` are additional optional flags used to distinguish the types of `build` and `serve` commands. Some tools that load Vite configurations may not support these flags and will pass `undefined`. Therefore, it is recommended to use explicit comparisons with `true` and `false`.
 
-## 异步配置 {#async-config}
+## Async Config {#async-config}
 
-如果配置需要调用一个异步函数，也可以转而导出一个异步函数。这个异步函数也可以通过 `defineConfig` 传递，以便获得更好的智能提示：
+If the configuration needs to call an async function, you can export an async function instead. This async function can also be passed through `defineConfig` for better Intellisense:
 
 ```js twoslash
 import { defineConfig } from 'vite'
@@ -89,27 +89,26 @@ import { defineConfig } from 'vite'
 export default defineConfig(async ({ command, mode }) => {
   const data = await asyncFunction()
   return {
-    // vite 配置
+    // vite config
   }
 })
 ```
 
-## 在配置中使用环境变量 {#using-environment-variables-in-config}
+## Using Environment Variables in Config {#using-environment-variables-in-config}
 
-环境变量通常可以从 `process.env` 获得。
+Environment variables are usually accessed from `process.env`.
 
-注意 Vite 默认是不加载 `.env` 文件的，因为这些文件需要在执行完 Vite 配置后才能确定加载哪一个，举个例子，`root` 和 `envDir` 选项会影响加载行为。不过当你的确需要时，你可以使用 Vite 导出的 `loadEnv` 函数来加载指定的 `.env` 文件。
+Note that Vite does not load `.env` files by default, as these files need to be determined after the Vite configuration is executed. For example, the `root` and `envDir` options affect the loading behavior. However, when you do need it, you can use the `loadEnv` function exported by Vite to load a specific `.env` file.
 
 ```js twoslash
 import { defineConfig, loadEnv } from 'vite'
 
 export default defineConfig(({ mode }) => {
-  // 根据当前工作目录中的 `mode` 加载 .env 文件
-  // 设置第三个参数为 '' 来加载所有环境变量，而不管是否有 
-  // `VITE_` 前缀。
+  // Load .env file based on the `mode` in the current working directory
+  // Set the third parameter to '' to load all environment variables, regardless of whether they have the `VITE_` prefix.
   const env = loadEnv(mode, process.cwd(), '')
   return {
-    // vite 配置
+    // vite config
     define: {
       __APP_ENV__: JSON.stringify(env.APP_ENV),
     },

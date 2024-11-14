@@ -1,12 +1,12 @@
-# 开始 {#getting-started}
+# Getting Started {#getting-started}
 
 <audio id="vite-audio">
   <source src="/vite.mp3" type="audio/mpeg">
 </audio>
 
-## 总览 {#overview}
+## Overview {#overview}
 
-Vite（法语意为 "快速的"，发音 `/vit/`<button id="play-vite-audio" onclick="document.getElementById('vite-audio').play();" style="border: none; padding: 3px; border-radius: 4px; vertical-align: bottom;"><svg style="height:2em;width:2em"><use href="/voice.svg#voice" /></svg></button>，发音同 "veet"）是一种新型前端构建工具，能够显著提升前端开发体验。它主要由两部分组成：
+Vite (French for "quick", pronounced `/vit/`<button id="play-vite-audio" onclick="document.getElementById('vite-audio').play();" style="border: none; padding: 3px; border-radius: 4px; vertical-align: bottom;"><svg style="height:2em;width:2em"><use href="/voice.svg#voice" /></svg></button>, pronounced "veet") is a new kind of front-end build tool that significantly improves the front-end development experience. It consists of two main parts:
 
 
 ```bash
