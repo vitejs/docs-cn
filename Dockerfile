@@ -22,4 +22,4 @@ COPY . .
 # Expose port 5000 for the server
 EXPOSE 5173
 
-CMD ["pnpm", "run", "docs:dev"]
+CMD ["npm", "run", "docs:dev"]
