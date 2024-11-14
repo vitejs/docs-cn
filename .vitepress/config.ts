@@ -202,6 +202,10 @@ export default defineConfig({
             {
               text: 'Docker',
               link: '/Infrastructure/Docker'
+            },
+            {
+              text: 'Traefik',
+              link: '/Infrastructure/Traefik'
             }
           ]
         }
@@ -209,7 +213,12 @@ export default defineConfig({
       '/CyberSec/': [
         {
           text: 'CyberSec',
-          items: []
+          items: [
+            {
+              text: 'CrowdSec',
+              link: '/CyberSec/CrowdSec'
+            }
+          ]
         }
       ]
     }
