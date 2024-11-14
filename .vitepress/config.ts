@@ -268,7 +268,7 @@ export default defineConfig({
           items: [
             {
               text: 'Docker',
-              link: '/guide/docker'
+              link: '/guide/Docker'
             }
           ]
         }
