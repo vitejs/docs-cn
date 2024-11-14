@@ -37,11 +37,8 @@ const additionalTitle = ((): string => {
       return ''
   }
 })()
-// export default defineConfig
-export default withMermaid({
-  mermaid: {
-    // refer https://mermaid.js.org/config/setup/modules/mermaidAPI.html#mermaidapi-configuration-defaults for options
-  },
+
+const config = defineConfig({
   title: 'Satcom - Docs',
   description: 'DevSecOps Documentation',
   lang: 'en-EN',
@@ -270,4 +267,16 @@ export default withMermaid({
     }
   },
   buildEnd
+})
+
+export default withMermaid(config, {
+  mermaid: {
+    theme: 'default', // Theme for light mode
+    darkTheme: 'dark', // Theme for dark mode
+    sequence: {
+      useMaxWidth: false, // Allows diagrams to grow beyond default width
+      diagramMarginX: 50,
+      diagramMarginY: 10,
+    }
+  }
 })
