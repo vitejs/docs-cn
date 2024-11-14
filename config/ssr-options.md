@@ -53,3 +53,10 @@ SSR 服务器的构建目标。
 例如，当设置 `['node', 'custom']` 时，应该在 dev 中运行 `NODE_OPTIONS='--conditions custom' vite`，在 build 后运行 `NODE_OPTIONS="--conditions custom" node ./dist/server.js`。
 
 :::
+
+### ssr.resolve.mainFields
+
+- **类型：** `string[]`
+- **默认：** `['module', 'jsnext:main', 'jsnext']`
+  
+在解析一个包的入口点时可尝试的 `package.json` 中的字段列表。请注意，这比从 `exports` 字段解析出的条件导出的优先级要低：如果能从 `exports` 字段成功解析出入口点，那么 main 字段将会被忽略。此设置仅影响未外部化的依赖项。
