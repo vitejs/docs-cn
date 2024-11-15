@@ -1,553 +1,463 @@
 ---
-title: WireGuard Web UI & AdGuard Home
+layout: doc
+title: WireGuard UI Installation Learning Guide
+description: A comprehensive learning guide for WireGuard UI setup with Docker and AdGuard integration
 ---
 
-# Advanced WireGuard UI & AdGuard Technical Guide {#advanced-guide}
+# WireGuard UI with AdGuard - Learning Guide
 
-## Prerequisites {#prerequisites}
+## Introduction
 
-::: tip System Preparation
-Before installation:
-1. Update system packages
-2. Enable required kernel modules
-3. Check system compatibility
-4. Backup existing configurations
-5. Prepare network information
+This guide explains how to set up a WireGuard VPN server with a web UI and AdGuard DNS integration using Docker. It's designed as a learning resource to understand container networking and VPN configuration.
+
+::: tip Learning Objectives
+After completing this guide, you will understand:
+- Docker networking concepts
+- WireGuard VPN configuration
+- DNS management with AdGuard
+- Security best practices
 :::
 
-### System Requirements {#system-requirements}
+## Prerequisites
 
-Base system: Ubuntu 20.04 LTS or newer
+Before starting, ensure you have:
+- Linux server (Ubuntu 20.04+ recommended)
+- Docker and Docker Compose installed
+- Basic networking knowledge
+- Access to ports:
+  - 5000 (WireGuard UI)
+  - 51830 (WireGuard VPN)
+  - 5553 (AdGuard DNS)
 
-### Package Installation {#package-installation}
+## Initial Setup
 
-Update system and install core packages:
+### Directory Structure
 
-    sudo apt update
-    sudo apt install -y wireguard wireguard-tools iptables fail2ban ufw tcpdump net-tools qrencode
+Create your project structure:
 
-Install monitoring tools:
-
-    sudo apt install -y prometheus-node-exporter unattended-upgrades nethogs iftop nload vnstat
-
-Install security tools:
-
-    sudo apt install -y snort lynis auditd acl rsyslog logrotate
-
-## VPN Architecture Overview {#vpn-architecture}
-
-### WireGuard Protocol {#wireguard-protocol}
-
-WireGuard operates on these key principles:
-
-1. **Cryptographic Primitives**:
-   - ChaCha20 for symmetric encryption
-   - Poly1305 for authentication
-   - Curve25519 for ECDH
-   - BLAKE2s for hashing
-   - SipHash24 for hashtable keys
-   - HKDF for key derivation
-
-2. **Performance Characteristics**:
-   - Minimal attack surface (~4,000 LOC)
-   - Constant-time operations
-   - Memory-safe implementation
-   - Kernel-space implementation
-
-## Multi-Layer Security Architecture {#security-architecture}
-
-### OSI Layer Security Implementation {#osi-security}
-
-| Layer | Components | Security Measures |
-|-------|------------|------------------|
-| L7 Application | AdGuard, WG-UI | Authentication, DNS filtering |
-| L6 Presentation | WireGuard | Encryption (ChaCha20) |
-| L5 Session | WireGuard | Key exchange, session management |
-| L4 Transport | UDP/TCP | Port filtering, rate limiting |
-| L3 Network | IP | Network segmentation, firewalling |
-| L2 Data Link | Interface | MAC filtering (optional) |
-| L1 Physical | Hardware | Physical security |
-
-### Security Tools Matrix {#security-tools}
-
-| Category | Tool | Purpose | Implementation |
-|----------|------|---------|----------------|
-| Firewall | UFW/iptables | Network filtering | Dynamic rules |
-| IDS/IPS | Snort | Traffic inspection | Signature-based |
-| Access Control | Fail2ban | Brute force prevention | Ban mechanisms |
-| Monitoring | Prometheus | Metrics collection | Real-time data |
-| Audit | Auditd | System auditing | Log analysis |
-| DNS Security | AdGuard | DNS filtering | DoT/DoH |
-
-### Network Zone Segmentation {#network-zones}
-
-| Zone | CIDR | Purpose | Security Level |
-|------|------|---------|---------------|
-| Management | 10.2.0.0/24 | Admin access | Highest |
-| User VPN | 10.2.1.0/24 | Client connections | Medium |
-| Services | 10.2.2.0/24 | Internal applications | High |
-| DMZ | 10.2.3.0/24 | Public services | Restricted |
-
-### Security Checklist {#security-checklist}
-
-Network Security:
-- ⬜ Interface hardening
-- ⬜ Network isolation
-- ⬜ Traffic monitoring
-- ⬜ Packet filtering
-
-System Security:
-- ⬜ Kernel hardening
-- ⬜ Service hardening
-- ⬜ Resource limits
-- ⬜ Update policy
-
-Application Security:
-- ⬜ Access control
-- ⬜ Authentication
-- ⬜ Encryption
-- ⬜ Logging
-
-## Advanced Network Configuration {#advanced-network}
-
-::: tip Network Planning
-When configuring networks:
-1. Use non-overlapping subnets
-2. Plan IP allocation strategy
-3. Document network layout
-4. Consider future expansion
-5. Implement VLAN segregation
-:::
-
-### Network Topology {#network-topology}
-
-```plaintext
-Internet
-   ↓
-Firewall (UFW/iptables)
-   ↓
-WireGuard Server (10.2.0.202)
-   ↓
-   ├── Client 1 (10.2.1.2)
-   ├── Client 2 (10.2.1.3)
-   └── AdGuard DNS (10.2.0.204)
+```bash
+mkdir -p ~/wireguard-setup/{db,wireguard,adguard}
+mkdir -p ~/wireguard-setup/adguard/{opt-adguard-work,opt-adguard-conf}
+cd ~/wireguard-setup
 ```
 
-### Advanced IPTables Configuration {#iptables-config}
+### Environment Configuration
 
-Create `/etc/wireguard/iptables.sh`:
+Create `.env` file:
+
+```bash
+# Network Configuration
+PRIVATE_NETWORK_SUBNET=10.2.0.0/24
+WIREGUARD_UI_IP=10.2.0.202
+ADGUARD_IP=10.2.0.204
+
+# WireGuard UI Settings
+WGUI_USERNAME=admin           # Change this
+WGUI_PASSWORD=SecurePass123   # Change this
+WGUI_SERVER_INTERFACE_ADDRESSES=10.2.1.1/24
+WGUI_ENDPOINT_ADDRESS=your.public.ip.address
+WGUI_DNS=1.1.1.1
+BIND_ADDRESS=0.0.0.0:5000
+
+# WireGuard Client Settings
+WGUI_DEFAULT_CLIENT_ALLOWED_IPS=0.0.0.0/0
+WGUI_DEFAULT_CLIENT_USE_SERVER_DNS=true
+WGUI_DEFAULT_CLIENT_ENABLE_AFTER_CREATION=true
+WGUI_DEFAULT_CLIENT_PERSISTENT_KEEPALIVE=25
+
+# Management Settings
+WGUI_MANAGE_START=true
+WGUI_MANAGE_RESTART=true
+
+# Optional Email Configuration
+SENDGRID_API_KEY=your_sendgrid_key
+EMAIL_FROM_ADDRESS=your@email.com
+EMAIL_FROM_NAME=VPN_Admin
+SESSION_SECRET=generate_random_secret_here
+```
+
+### Docker Compose Configuration
+
+Create `docker-compose.yml`:
+
+```yaml
+version: '3.8'
+
+networks:
+  private_network:
+    ipam:
+      driver: default
+      config:
+        - subnet: ${PRIVATE_NETWORK_SUBNET}
+
+services:
+  wireguard-ui:
+    image: ngoduykhanh/wireguard-ui:latest
+    restart: always
+    container_name: wireguard
+    cap_add:
+      - NET_ADMIN
+      - SYS_MODULE
+    sysctls:
+      net.ipv4.ip_forward: '1'
+      net.ipv4.conf.all.src_valid_mark: '1'
+    environment:
+      - SENDGRID_API_KEY=${SENDGRID_API_KEY}
+      - EMAIL_FROM_ADDRESS=${EMAIL_FROM_ADDRESS}
+      - EMAIL_FROM_NAME=${EMAIL_FROM_NAME}
+      - SESSION_SECRET=${SESSION_SECRET}
+      - WGUI_USERNAME=${WGUI_USERNAME}
+      - WGUI_PASSWORD=${WGUI_PASSWORD}
+      - WGUI_MANAGE_START=${WGUI_MANAGE_START}
+      - WGUI_MANAGE_RESTART=${WGUI_MANAGE_RESTART}
+      - WGUI_SERVER_INTERFACE_ADDRESSES=${WGUI_SERVER_INTERFACE_ADDRESSES}
+      - WGUI_DEFAULT_CLIENT_ALLOWED_IPS=${WGUI_DEFAULT_CLIENT_ALLOWED_IPS}
+      - WGUI_DEFAULT_CLIENT_USE_SERVER_DNS=${WGUI_DEFAULT_CLIENT_USE_SERVER_DNS}
+      - WGUI_DEFAULT_CLIENT_ENABLE_AFTER_CREATION=${WGUI_DEFAULT_CLIENT_ENABLE_AFTER_CREATION}
+      - WGUI_DEFAULT_CLIENT_PERSISTENT_KEEPALIVE=${WGUI_DEFAULT_CLIENT_PERSISTENT_KEEPALIVE}
+      - WGUI_DNS=${WGUI_DNS}
+      - BIND_ADDRESS=${BIND_ADDRESS}
+      - WGUI_ENDPOINT_ADDRESS=${WGUI_ENDPOINT_ADDRESS}
+    ports:
+      - "5000:5000"
+      - "51830:51830/udp"
+    volumes:
+      - ./db:/app/db
+      - ./wireguard:/etc/wireguard
+    networks:
+      private_network:
+        ipv4_address: ${WIREGUARD_UI_IP}
+
+  adguard:
+    container_name: adguard
+    image: adguard/adguardhome
+    restart: always
+    hostname: adguard
+    volumes:
+      - "./adguard/opt-adguard-work:/opt/adguardhome/work"
+      - "./adguard/opt-adguard-conf:/opt/adguardhome/conf"
+    ports:
+      - "5553:53"
+    networks:
+      private_network:
+        ipv4_address: ${ADGUARD_IP}
+```
+
+## Installation Steps
+
+### 1. System Preparation
+
+```bash
+# Update system
+sudo apt update && sudo apt upgrade -y
+
+# Install required packages
+sudo apt install -y \
+    docker.io \
+    docker-compose \
+    wireguard \
+    iptables
+```
+
+### 2. Network Configuration
+
+Set up system networking parameters:
+
+```bash
+# Create sysctl configuration
+sudo tee /etc/sysctl.d/99-wireguard.conf << EOF
+net.ipv4.ip_forward = 1
+net.ipv4.conf.all.src_valid_mark = 1
+EOF
+
+# Apply settings
+sudo sysctl -p /etc/sysctl.d/99-wireguard.conf
+```
+
+### 3. Firewall Configuration
+
+```bash
+# Configure UFW
+sudo ufw allow 5000/tcp      # WireGuard UI
+sudo ufw allow 51830/udp     # WireGuard VPN
+sudo ufw allow 5553/udp      # AdGuard DNS
+```
+
+### 4. Launch Services
+
+```bash
+# Start containers
+docker-compose up -d
+
+# Verify status
+docker-compose ps
+```
+
+## Configuration Guide
+
+### WireGuard UI Setup
+
+1. Access the UI at `http://your-server-ip:5000`
+2. Log in with credentials from `.env`
+3. Configure server interface:
+   - Interface name: `wg0`
+   - Listen port: `51830`
+   - Addresses: `10.2.1.1/24`
+
+### AdGuard Configuration
+
+1. Access AdGuard at `http://your-server-ip:5553`
+2. Complete initial setup:
+   - Set admin credentials
+   - Configure DNS settings
+   - Enable ad blocking features
+
+## Client Management
+
+### Adding New Clients
+
+1. In WireGuard UI:
+   - Click "Add Client"
+   - Set client name
+   - Configure allowed IPs
+   - Enable client
+
+2. Client Configuration:
+   - Download config file
+   - Import into WireGuard client
+   - Test connection
+
+::: tip Client Settings
+Default client configuration:
+- DNS: `1.1.1.1`
+- Allowed IPs: `0.0.0.0/0`
+- Keep-alive: 25 seconds
+:::
+
+## Security Considerations
+
+::: warning Important Security Notes
+1. Change default credentials
+2. Use strong passwords
+3. Limit access to management ports
+4. Regular security updates
+5. Monitor access logs
+:::
+
+## Troubleshooting
+
+### Common Issues
+
+1. Connection Problems:
+```bash
+# Check container status
+docker-compose ps
+docker-compose logs wireguard-ui
+```
+
+2. DNS Issues:
+```bash
+# Verify AdGuard
+docker-compose logs adguard
+```
+
+3. Permission Problems:
+```bash
+# Fix volume permissions
+sudo chown -R root:root ./wireguard
+sudo chmod -R 600 ./wireguard
+```
+
+## Maintenance
+
+### Backup Process
+
+```bash
+# Create backup script
+cat > backup.sh << 'EOF'
+#!/bin/bash
+BACKUP_DIR="backups/$(date +%Y%m%d)"
+mkdir -p $BACKUP_DIR
+cp -r {db,wireguard,adguard} .env docker-compose.yml $BACKUP_DIR/
+EOF
+chmod +x backup.sh
+```
+
+### Updates
+
+```bash
+# Update containers
+docker-compose pull
+docker-compose up -d
+```
+
+## Learning Resources
+
+::: tip Additional Learning
+- [WireGuard Documentation](https://www.wireguard.com/quickstart/)
+- [Docker Networking Guide](https://docs.docker.com/network/)
+- [AdGuard DNS Documentation](https://adguard.com/en/adguard-dns/overview.html)
+:::
+
+## Environment Variables Reference
+
+| Variable | Description | Default | Notes |
+|----------|-------------|---------|-------|
+| WGUI_ENDPOINT_ADDRESS | Public IP/hostname | - | Server's public IP |
+| WGUI_SERVER_INTERFACE_ADDRESSES | VPN subnet | 10.2.1.1/24 | Internal VPN network |
+| WGUI_MANAGE_START | Auto-start WireGuard | true | Service management |
+| WGUI_MANAGE_RESTART | Auto-restart WireGuard | true | Service management |
+| PERSISTENT_KEEPALIVE | Keep-alive interval | 25 | In seconds |
+| SESSION_SECRET | UI session secret | - | Random string |
+| SENDGRID_API_KEY | Email API key | - | Optional |
+| EMAIL_FROM_ADDRESS | Sender email | - | Optional |
+| EMAIL_FROM_NAME | Sender name | - | Optional |
+
+## Advanced Network Configuration
+
+### MTU Optimization
+
+Add to your `.env`:
+
+```bash
+# Network Performance
+WG_MTU=1420                    # Optimal for most networks
+WG_KEEPALIVE=25               # Connection persistence
+WG_FWMARK=0x51820            # Packet marking
+WG_TX_QUEUE_LENGTH=1000      # Transmission queue
+```
+
+### Quality of Service (QoS)
+
+Create `qos-setup.sh`:
 
 ```bash
 #!/bin/bash
 
-# Variables
-WG_INTERFACE="wg0"
-PRIVATE_SUBNET="10.2.1.0/24"
-DOCKER_SUBNET="172.16.0.0/12"
+# QoS configuration for WireGuard
+IFACE="wg0"
+UPLINK="1000mbit"  # Adjust to your bandwidth
+DOWNLINK="1000mbit"
 
-# Flush existing rules
-iptables -F
-iptables -t nat -F
+# Apply QoS rules
+tc qdisc add dev $IFACE root handle 1: htb default 10
+tc class add dev $IFACE parent 1: classid 1:1 htb rate $UPLINK burst 15k
 
-# Default policies
-iptables -P INPUT DROP
-iptables -P FORWARD DROP
-iptables -P OUTPUT ACCEPT
+# Priority classes
+tc class add dev $IFACE parent 1:1 classid 1:10 htb rate 500mbit ceil $UPLINK burst 15k
+tc class add dev $IFACE parent 1:1 classid 1:20 htb rate 400mbit ceil $UPLINK burst 15k
+tc class add dev $IFACE parent 1:1 classid 1:30 htb rate 100mbit ceil $UPLINK burst 15k
 
-# Allow established connections
-iptables -A INPUT -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
-iptables -A FORWARD -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
-
-# Allow WireGuard UDP port
-iptables -A INPUT -p udp --dport 51830 -j ACCEPT
-
-# Allow VPN traffic forwarding
-iptables -A FORWARD -i $WG_INTERFACE -j ACCEPT
-iptables -A FORWARD -o $WG_INTERFACE -j ACCEPT
-
-# NAT configuration
-iptables -t nat -A POSTROUTING -s $PRIVATE_SUBNET -o eth0 -j MASQUERADE
-
-# Allow internal Docker communication
-iptables -A FORWARD -s $DOCKER_SUBNET -d $PRIVATE_SUBNET -j ACCEPT
-iptables -A FORWARD -s $PRIVATE_SUBNET -d $DOCKER_SUBNET -j ACCEPT
-
-# Save rules
-iptables-save > /etc/iptables/rules.v4
+# Apply FQ_CODEL for smart queue management
+tc qdisc add dev $IFACE parent 1:10 handle 10: fq_codel
+tc qdisc add dev $IFACE parent 1:20 handle 20: fq_codel
+tc qdisc add dev $IFACE parent 1:30 handle 30: fq_codel
 ```
 
-### Advanced WireGuard Configuration {#advanced-wireguard}
+## Monitoring Setup
 
-Create `/etc/wireguard/wg0.conf`:
+### Prometheus Integration
 
-```ini
-[Interface]
-Address = 10.2.1.1/24
-ListenPort = 51830
-PrivateKey = <server_private_key>
-PostUp = /etc/wireguard/iptables.sh
-PostDown = iptables-restore /etc/iptables/rules.v4.backup
-
-# Enhanced MTU configuration
-MTU = 1420
-
-# Enable fwmark for custom routing
-FwMark = 0xca6c
-
-# Client Template
-[Peer]
-# Client 1
-PublicKey = <client_public_key>
-AllowedIPs = 10.2.1.2/32
-PersistentKeepalive = 25
-
-# Rate limiting
-# WireGuard itself doesn't support rate limiting, but you can use tc:
-# tc qdisc add dev wg0 root tbf rate 1mbit burst 32kbit latency 50ms
-```
-
-## Advanced AdGuard Configuration {#advanced-adguard}
-
-### Custom DNS Configuration {#custom-dns}
-
-Create `/opt/adguard/conf/AdGuardHome.yaml`:
+Create `prometheus/wireguard.yml`:
 
 ```yaml
-bind_host: 0.0.0.0
-bind_port: 80
-users:
-  - name: admin
-    password: $2a$10$...  # BCrypt hash
+global:
+  scrape_interval: 15s
+  evaluation_interval: 15s
 
-dns:
-  bind_hosts:
-    - 0.0.0.0
-  port: 53
-  protection_enabled: true
-  blocking_mode: default
-  blocked_response_ttl: 10
-  querylog_enabled: true
-  ratelimit: 20
-  ratelimit_whitelist: []
-  refuse_any: true
-  bootstrap_dns:
-    - 1.1.1.1
-    - 1.0.0.1
-  upstream_dns:
-    - '[/home/]10.2.0.1'
-    - '[/office/]10.2.0.2'
-    - 'https://dns.cloudflare.com/dns-query'
-    - 'tls://1.1.1.1'
-  
-  # DNS rewrites
-  rewrites:
-    - domain: 'internal.company'
-      answer: '10.2.0.100'
-    - domain: '*.dev.local'
-      answer: '10.2.0.150'
+scrape_configs:
+  - job_name: 'wireguard'
+    static_configs:
+      - targets: ['localhost:9586']
+    metrics_path: '/metrics'
 
-  # Optimistic caching
-  cache_optimistic: true
-  cache_size: 4194304
-  cache_ttl_min: 300
-  cache_ttl_max: 3600
-
-filtering:
-  enabled: true
-  url_filtering_enabled: true
-  safebrowsing_enabled: true
-  safesearch_enabled: true
-  safebrowsing_cache_size: 1048576
-  safesearch_cache_size: 1048576
-  parental_cache_size: 1048576
-  cache_time: 30
-  filters:
-    - enabled: true
-      url: 'https://adguardteam.github.io/AdGuardSDNSFilter/Filters/filter.txt'
-      name: 'AdGuard DNS filter'
-    - enabled: true
-      url: 'https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts'
-      name: 'StevenBlack unified hosts'
-```
-## Interface Settings Configuration {#interface-settings}
-
-### Accessing Interface Settings {#accessing-settings}
-
-1. Log into WireGuard UI web interface
-2. Navigate to "Settings" tab
-3. Locate "Interface Settings" section
-
-### Configuring Post Up/Down Scripts {#post-scripts}
-
-#### Post Up Script Configuration {#post-up}
-
-This script enables packet forwarding and NAT for VPN clients:
-
-```bash
-iptables -A FORWARD -i %i -j ACCEPT; iptables -A FORWARD -o %i -j ACCEPT; iptables -t nat -A POSTROUTING -o eth0+ -j MASQUERADE
+  - job_name: 'adguard'
+    static_configs:
+      - targets: ['adguard:80']
+    metrics_path: '/metrics'
 ```
 
-The script breakdown:
-- `-A FORWARD`: Append to FORWARD chain
-- `-i %i`: Input interface (WireGuard interface)
-- `-o %i`: Output interface (WireGuard interface)
-- `-t nat`: Use NAT table
-- `-o eth0+`: Match any interface starting with eth0
-- `-j MASQUERADE`: Perform IP masquerading
+### Grafana Dashboard
 
-#### Post Down Script Configuration {#post-down}
-
-This script removes the forwarding rules when the interface goes down:
-
-```bash
-iptables -D FORWARD -i %i -j ACCEPT; iptables -D FORWARD -o %i -j ACCEPT; iptables -t nat -D POSTROUTING -o eth0+ -j MASQUERADE
-```
-
-The script breakdown:
-- `-D FORWARD`: Delete from FORWARD chain
-- Other parameters match the Post Up script but remove rules instead of adding them
-
-### Step-by-Step Implementation {#implementation}
-
-1. **Access WireGuard UI Settings**:
-   ```plaintext
-   URL: http://your-server-ip:5000/settings
-   ```
-
-2. **Navigate to Interface Section**:
-   - Look for "WireGuard Interface Settings"
-   - Find "Post Up Script" and "Post Down Script" fields
-
-3. **Configure Post Up Script**:
-   ```plaintext
-   1. Click on "Post Up Script" field
-   2. Paste the following command exactly as shown:
-   iptables -A FORWARD -i %i -j ACCEPT; iptables -A FORWARD -o %i -j ACCEPT; iptables -t nat -A POSTROUTING -o eth0+ -j MASQUERADE
-   3. Ensure no extra spaces or characters are added
-   ```
-
-4. **Configure Post Down Script**:
-   ```plaintext
-   1. Click on "Post Down Script" field
-   2. Paste the following command exactly as shown:
-   iptables -D FORWARD -i %i -j ACCEPT; iptables -D FORWARD -o %i -j ACCEPT; iptables -t nat -D POSTROUTING -o eth0+ -j MASQUERADE
-   3. Ensure no extra spaces or characters are added
-   ```
-
-5. **Save Configuration**:
-   - Click "Save" or "Apply Changes"
-   - The interface will restart automatically
-
-### Verification Steps {#verification}
-
-1. **Check IPTables Rules**:
-```bash
-# List forward rules
-sudo iptables -L FORWARD -v -n
-
-# List NAT rules
-sudo iptables -t nat -L POSTROUTING -v -n
-```
-
-2. **Verify Interface Status**:
-```bash
-# Check WireGuard interface
-sudo wg show
-
-# Verify routing
-ip route show table all
-```
-
-3. **Test Client Connection**:
-```bash
-# From client side
-ping 8.8.8.8
-curl ifconfig.me
-```
-
-### Troubleshooting {#troubleshooting}
-
-1. **Interface Not Starting**:
-```bash
-# Check WireGuard logs
-sudo tail -f /var/log/syslog | grep wg0
-
-# Verify interface exists
-ip link show wg0
-```
-
-2. **No Internet Access on Clients**:
-```bash
-# Check forwarding is enabled
-cat /proc/sys/net/ipv4/ip_forward
-
-# Enable forwarding if needed
-echo 1 > /proc/sys/net/ipv4/ip_forward
-```
-
-3. **NAT Issues**:
-```bash
-# Clear existing rules
-sudo iptables -F
-sudo iptables -t nat -F
-
-# Manually apply rules
-sudo iptables -A FORWARD -i wg0 -j ACCEPT
-sudo iptables -A FORWARD -o wg0 -j ACCEPT
-sudo iptables -t nat -A POSTROUTING -o eth0+ -j MASQUERADE
-```
-
-### Security Considerations {#security}
-
-1. **Network Interface Matching**:
-   - `eth0+` matches any interface starting with eth0
-   - Customize this if you have specific interface requirements
-   - Example for multiple interfaces:
-     ```bash
-     -o eth0 -j MASQUERADE; iptables -t nat -A POSTROUTING -o ens+ -j MASQUERADE
-     ```
-
-2. **IPTables Persistence**:
-```bash
-# Save current rules
-sudo iptables-save > /etc/iptables/rules.v4
-
-# Restore rules on boot
-sudo iptables-restore < /etc/iptables/rules.v4
-```
-
-3. **Logging Configuration**:
-```bash
-# Add logging for forwarded packets
-iptables -A FORWARD -j LOG --log-prefix "WireGuard Forward: "
-```
-
-### Best Practices {#best-practices}
-
-1. **Regular Verification**:
-   - Periodically check rules are applied
-   - Monitor system logs for issues
-   - Test client connectivity
-
-2. **Backup Configuration**:
-```bash
-# Backup iptables rules
-sudo iptables-save > /etc/iptables/rules.v4.backup
-
-# Backup WireGuard config
-cp /etc/wireguard/wg0.conf /etc/wireguard/wg0.conf.backup
-```
-
-3. **Monitoring**:
-```bash
-# Monitor interface traffic
-watch -n 1 'sudo wg show wg0'
-
-# Check active connections
-sudo netstat -tunlp | grep wg0
-```
-
-::: tip Important
-Remember to:
-1. Test configuration after changes
-2. Backup working configurations
-3. Monitor system logs
-4. Keep interface scripts updated
-5. Verify client connectivity
-:::
-
-## Performance Optimization {#performance-optimization}
-
-::: tip Performance Tuning
-For better performance:
-1. Optimize MTU settings
-2. Configure appropriate buffer sizes
-3. Monitor system resources
-4. Adjust network queues
-5. Enable hardware offloading
-:::
-
-### WireGuard Kernel Parameters {#kernel-parameters}
-
-Add to the end of file `/etc/sysctl.conf`:
-
-```bash
-# Disable IPv6 if not needed
-net.ipv6.conf.all.disable_ipv6 = 1
-net.ipv6.conf.default.disable_ipv6 = 1
-net.ipv6.conf.lo.disable_ipv6 = 1
-
-# Essential WireGuard Requirements
-net.ipv4.ip_forward = 1
-net.ipv4.conf.all.src_valid_mark = 1
-
-# TCP Memory Settings
-net.ipv4.tcp_rmem = 4096 87380 16777216
-net.ipv4.tcp_wmem = 4096 87380 16777216
-
-# UDP Settings (if available)
-net.ipv4.udp_rmem_min = 8192
-net.ipv4.udp_wmem_min = 8192
-
-# Memory Settings (verified working)
-net.core.optmem_max = 65536
-
-# TCP Settings
-net.ipv4.tcp_mtu_probing = 1
-net.ipv4.tcp_slow_start_after_idle = 0
-
-```
-
-```sh
-sysctl -p
-```
-
-### IO Optimization {#io-optimization}
-
-Update Docker daemon configuration `/etc/docker/daemon.json`:
+Create `grafana/dashboards/wireguard.json`:
 
 ```json
 {
-  "storage-driver": "overlay2",
-  "storage-opts": [
-    "overlay2.override_kernel_check=true"
-  ],
-  "log-driver": "json-file",
-  "log-opts": {
-    "max-size": "10m",
-    "max-file": "3"
+  "annotations": {
+    "list": []
   },
-  "default-ulimits": {
-    "nofile": {
-      "Name": "nofile",
-      "Hard": 64000,
-      "Soft": 64000
+  "panels": [
+    {
+      "title": "Active Connections",
+      "type": "stat",
+      "datasource": "Prometheus",
+      "targets": [
+        {
+          "expr": "wireguard_peer_count"
+        }
+      ]
+    },
+    {
+      "title": "Traffic Overview",
+      "type": "graph",
+      "datasource": "Prometheus",
+      "targets": [
+        {
+          "expr": "rate(wireguard_received_bytes_total[5m])",
+          "legend": "Received"
+        },
+        {
+          "expr": "rate(wireguard_sent_bytes_total[5m])",
+          "legend": "Sent"
+        }
+      ]
     }
-  }
+  ]
 }
 ```
 
-## Advanced Security Configuration {#advanced-security}
+## Advanced Security Configuration
 
-::: tip Security Best Practices
-For optimal security:
-1. Use strong cryptographic keys
-2. Rotate keys periodically
-3. Implement access controls
-4. Monitor network traffic
-5. Keep audit logs
-:::
+### SSH Hardening
 
-### Install Fail2ban
+Create `ssh-hardening.sh`:
 
-```sh
-sudo apt -y install fail2ban
+```bash
+#!/bin/bash
+
+# Backup original configuration
+cp /etc/ssh/sshd_config /etc/ssh/sshd_config.backup
+
+# Apply security settings
+cat << EOF > /etc/ssh/sshd_config
+Port 22
+Protocol 2
+PermitRootLogin no
+PasswordAuthentication no
+PubkeyAuthentication yes
+AuthorizedKeysFile .ssh/authorized_keys
+PermitEmptyPasswords no
+X11Forwarding no
+MaxAuthTries 3
+ClientAliveInterval 300
+ClientAliveCountMax 2
+AllowUsers your_username
+EOF
+
+# Restart SSH service
+systemctl restart sshd
 ```
 
-### Fail2ban Configuration {#fail2ban}
-Create `/etc/fail2ban/jail.d/wireguard.conf`:
+### Fail2ban Configuration
+
+Create `fail2ban/jail.local`:
 
 ```ini
+[DEFAULT]
+bantime = 3600
+findtime = 600
+maxretry = 3
+
 [wireguard]
 enabled = true
 port = 51830
@@ -556,165 +466,178 @@ filter = wireguard
 logpath = /var/log/wireguard.log
 maxretry = 3
 bantime = 3600
-findtime = 600
 
 [wireguard-ui]
-enabled = false # disabled
+enabled = true
 port = 5000
 protocol = tcp
 filter = wireguard-ui
 logpath = /var/log/wireguard-ui.log
 maxretry = 5
-bantime = 3600
-findtime = 600
+bantime = 7200
 ```
 
-Create `/etc/fail2ban/filter.d/wireguard.conf`:
+## Performance Tuning
 
-```ini
-[Definition]
-failregex = Failed authentication attempt from <HOST>
-ignoreregex =
+### System Limits
+
+Add to `/etc/security/limits.conf`:
+
+```bash
+# Increase system limits
+*       soft    nofile      1048576
+*       hard    nofile      1048576
+*       soft    nproc       unlimited
+*       hard    nproc       unlimited
 ```
 
-## Advanced Monitoring {#advanced-monitoring}
+### Network Stack Optimization
 
-::: tip Monitoring Guidelines
-For effective monitoring:
-1. Set up alerts for critical events
-2. Monitor resource usage
-3. Track connection states
-4. Log security events
-5. Review performance metrics
-:::
+Add to `/etc/sysctl.d/99-network-performance.conf`:
 
-### Prometheus Metrics {#prometheus-metrics}
+```bash
+# TCP optimizations
+net.core.rmem_max = 67108864
+net.core.wmem_max = 67108864
+net.ipv4.tcp_rmem = 4096 87380 67108864
+net.ipv4.tcp_wmem = 4096 87380 67108864
+net.ipv4.tcp_congestion_control = bbr
+net.core.default_qdisc = fq
 
-Create `/etc/prometheus/config.yml`:
-
-```yaml
-global:
-  scrape_interval: 15s
-
-scrape_configs:
-  - job_name: 'wireguard'
-    static_configs:
-      - targets: ['localhost:9586']
-    metrics_path: '/metrics'
-    
-  - job_name: 'adguard'
-    static_configs:
-      - targets: ['localhost:9617']
-    metrics_path: '/metrics'
+# UDP optimizations for WireGuard
+net.core.netdev_max_backlog = 16384
+net.core.somaxconn = 8192
 ```
 
-### Grafana Dashboard {#grafana-dashboard}
+## Backup and Recovery
 
-```json
-{
-  "annotations": {
-    "list": [
-      {
-        "builtIn": 1,
-        "datasource": "-- Grafana --",
-        "enable": true,
-        "hide": true,
-        "iconColor": "rgba(0, 211, 255, 1)",
-        "name": "Annotations & Alerts",
-        "type": "dashboard"
-      }
-    ]
-  },
-  "panels": [
-    {
-      "title": "WireGuard Connections",
-      "type": "graph",
-      "datasource": "Prometheus",
-      "targets": [
-        {
-          "expr": "wireguard_peer_receive_bytes_total",
-          "legendFormat": "{{peer_name}} RX"
-        },
-        {
-          "expr": "wireguard_peer_transmit_bytes_total",
-          "legendFormat": "{{peer_name}} TX"
-        }
-      ]
-    }
-  ]
-}
-```
+### Automated Backup Script
 
-## Disaster Recovery {#disaster-recovery}
-
-::: tip Backup Strategy
-For reliable backups:
-1. Automate backup process
-2. Verify backup integrity
-3. Store offsite copies
-4. Test restoration regularly
-5. Document recovery procedures
-:::
-
-### Automated Backup Script {#backup-script}
-
-Create `/usr/local/bin/backup-vpn.sh`:
+Create `backup-wireguard.sh`:
 
 ```bash
 #!/bin/bash
 
 # Configuration
-BACKUP_ROOT="/backup/vpn"
+BACKUP_ROOT="/backup/wireguard"
+BACKUP_DIR="${BACKUP_ROOT}/$(date +%Y%m%d_%H%M%S)"
 RETENTION_DAYS=30
-DATE=$(date +%Y%m%d_%H%M%S)
-BACKUP_DIR="${BACKUP_ROOT}/${DATE}"
 
 # Create backup directory
-mkdir -p "${BACKUP_DIR}"
+mkdir -p "$BACKUP_DIR"
+
+# Backup configurations
+cp -r db/ "$BACKUP_DIR/db"
+cp -r wireguard/ "$BACKUP_DIR/wireguard"
+cp -r adguard/ "$BACKUP_DIR/adguard"
+cp .env docker-compose.yml "$BACKUP_DIR/"
+
+# Compress backup
+tar czf "${BACKUP_DIR}.tar.gz" -C "$BACKUP_DIR" .
+
+# Cleanup old backups
+find "$BACKUP_ROOT" -type d -mtime +$RETENTION_DAYS -exec rm -rf {} \;
+```
+
+### Recovery Procedure
+
+Create `restore-wireguard.sh`:
+
+```bash
+#!/bin/bash
+
+# Usage: ./restore-wireguard.sh /path/to/backup.tar.gz
+
+if [ -z "$1" ]; then
+    echo "Usage: $0 /path/to/backup.tar.gz"
+    exit 1
+fi
+
+BACKUP_FILE="$1"
+RESTORE_DIR="restore_$(date +%Y%m%d_%H%M%S)"
 
 # Stop services
 docker-compose down
 
-# Backup configuration files
-tar -czf "${BACKUP_DIR}/configs.tar.gz" \
-    /etc/wireguard \
-    /etc/adguard \
-    /opt/wireguard-ui/docker-compose.yml \
-    /opt/wireguard-ui/.env
+# Create restore directory
+mkdir -p "$RESTORE_DIR"
 
-# Backup databases
-tar -czf "${BACKUP_DIR}/data.tar.gz" \
-    /opt/wireguard-ui/db \
-    /opt/adguard/opt-adguard-work
+# Extract backup
+tar xzf "$BACKUP_FILE" -C "$RESTORE_DIR"
 
-# Export container configurations
-docker-compose config > "${BACKUP_DIR}/docker-compose-resolved.yml"
-
-# Create backup checksum
-cd "${BACKUP_DIR}"
-sha256sum * > SHA256SUMS
+# Restore configurations
+cp -r "$RESTORE_DIR/db" .
+cp -r "$RESTORE_DIR/wireguard" .
+cp -r "$RESTORE_DIR/adguard" .
+cp "$RESTORE_DIR/.env" .
+cp "$RESTORE_DIR/docker-compose.yml" .
 
 # Restart services
 docker-compose up -d
 
-# Remove old backups
-find "${BACKUP_ROOT}" -type d -mtime +${RETENTION_DAYS} -exec rm -rf {} \;
-
-# Verify backup
-if [ -f "${BACKUP_DIR}/configs.tar.gz" ] && \
-   [ -f "${BACKUP_DIR}/data.tar.gz" ]; then
-    echo "Backup completed successfully"
-    exit 0
-else
-    echo "Backup failed!"
-    exit 1
-fi
+# Cleanup
+rm -rf "$RESTORE_DIR"
 ```
 
-::: tip Important Security Notes
-1. Regularly audit peer configurations
-2. Monitor for unauthorized access attempts
-3. Keep all systems updated
-4. Use secure DNS over TLS/HTTPS
-5. Implement proper network segmentation
+## Best Practices
+
+::: tip Production Deployment
+1. Regular Security Maintenance
+   - Update systems weekly
+   - Rotate encryption keys monthly
+   - Review access logs daily
+   - Test backups regularly
+
+2. Performance Monitoring
+   - Set up alerts for high resource usage
+   - Monitor connection quality
+   - Track bandwidth usage
+   - Check error rates
+
+3. Documentation
+   - Maintain configuration changelog
+   - Document custom scripts
+   - Keep network diagrams updated
+   - Record troubleshooting procedures
 :::
+
+::: warning Critical Reminders
+- Never expose management ports to the internet
+- Regularly update SSL certificates
+- Monitor for unusual traffic patterns
+- Keep backups in secure, off-site location
+- Test disaster recovery procedures
+:::
+
+## Advanced Troubleshooting
+
+### Network Diagnostics
+
+Create `diagnose-network.sh`:
+
+```bash
+#!/bin/bash
+
+echo "WireGuard Network Diagnostics"
+echo "============================"
+
+# Check WireGuard interface
+ip link show wg0
+
+# Display routing table
+ip route show table all
+
+# Check connection tracking
+conntrack -L
+
+# Display network statistics
+ss -s
+
+# Check DNS resolution
+dig @${WGUI_DNS} google.com
+
+# Test network performance
+iperf3 -c ${WGUI_ENDPOINT_ADDRESS}
+```
+
+This completes the comprehensive guide for setting up and maintaining a WireGuard VPN server with UI and AdGuard integration. The combination of basic setup, advanced configuration, monitoring, and maintenance procedures provides a complete learning resource for managing a production VPN service.

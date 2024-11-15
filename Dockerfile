@@ -6,7 +6,7 @@ RUN npm install -g pnpm
 
 COPY package.json pnpm-lock.yaml* ./
 
-RUN npm i vitepress-plugin-mermaid mermaid -D
+RUN npm i vitepress-plugin-mermaid mermaid vitepress-plugin-group-icons -D
 
 RUN pnpm install --shamefully-hoist
 
