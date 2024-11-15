@@ -312,15 +312,6 @@ export default withMermaid(
         ]
       }
     },
-    buildEnd,
-    mermaid: {
-      // Mermaid configuration options
-      theme: 'default',
-      darkMode: true,
-      viewport: {
-        width: 800,
-        height: 600
-      }
-    }
+    buildEnd
   })
 )
