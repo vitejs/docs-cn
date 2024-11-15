@@ -31,6 +31,69 @@ When implementing a reverse proxy, always start with defining clear entry points
 Client Request → EntryPoints → Routers → Middlewares → Services → Backend
 ```
 
+```mermaid
+graph LR
+    %% Define nodes
+    Client([Client Requests])
+    Internet((Internet))
+    SSL[SSL/TLS Termination]
+    Traefik[/Traefik v3\]
+    
+    %% EntryPoints
+    subgraph EntryPoints[Entry Points]
+        HTTP[HTTP :80]
+        HTTPS[HTTPS :443]
+        TCP[TCP]
+        UDP[UDP]
+    end
+    
+    %% Middlewares
+    subgraph Middlewares[Middlewares]
+        Auth[Authentication]
+        Headers[Headers Security]
+        RateLimit[Rate Limiting]
+        Circuit[Circuit Breaker]
+    end
+    
+    %% Routers and Services
+    subgraph LoadBalancing[Load Balancing]
+        Router1{Router Rules}
+        Router2{Path/Host Based}
+        Service1[(Service Discovery)]
+        LB[Load Balancer]
+    end
+    
+    %% Backend Services
+    subgraph Backends[Backend Services]
+        Web1([Web Service 1])
+        Web2([Web Service 2])
+        API([API Service])
+        DB([Database])
+    end
+
+    %% Define connections
+    Client --> Internet
+    Internet --> EntryPoints
+    HTTP & HTTPS --> SSL
+    SSL --> Traefik
+    TCP & UDP --> Traefik
+    Traefik --> Middlewares
+    Middlewares --> LoadBalancing
+    Router1 & Router2 --> Service1
+    Service1 --> LB
+    LB --> Backends
+    
+    %% Styling
+    classDef client fill:#f9f,stroke:#333,stroke-width:2px
+    classDef security fill:#ff9,stroke:#333,stroke-width:2px
+    classDef loadbalancer fill:#9f9,stroke:#333,stroke-width:2px
+    classDef service fill:#99f,stroke:#333,stroke-width:2px
+    
+    class Client,Internet client
+    class SSL,Auth,Headers,RateLimit,Circuit security
+    class LB,Service1 loadbalancer
+    class Web1,Web2,API,DB service
+```
 
 
 
