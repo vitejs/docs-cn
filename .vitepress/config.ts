@@ -60,12 +60,12 @@ export default withMermaid(
         securityLevel: 'loose',
         viewport: {
           width: 1200,
-          height: 600
+          height: 900
         },
         // Global font size settings
         fontSize: 16, // Increased base font size
         fontFamily: 'Inter',
-        scale: 1.2, // Global scale factor
+        scale: 1.8, // Global scale factor
         maxTextSize: 12, // Maximum text size in flowcharts
 
         // Sequence diagram specific settings
