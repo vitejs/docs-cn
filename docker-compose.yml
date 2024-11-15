@@ -5,3 +5,25 @@ services:
     ports:
       - "0.0.0.0:5173:5173"
     restart: unless-stopped
+    labels:
+      - "com.centurylinklabs.watchtower.enable=true"
+
+  watchtower:
+    image: containrrr/watchtower
+    container_name: watchtower
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    restart: unless-stopped
+    environment:
+      - WATCHTOWER_CLEANUP=true
+      - WATCHTOWER_INCLUDE_STOPPED=false
+      - WATCHTOWER_POLL_INTERVAL=300
+      - WATCHTOWER_LABEL_ENABLE=true
+      - TZ=Europe/Paris
+      - WATCHTOWER_NOTIFICATIONS=shoutrrr
+      # Discord webhook format: discord://webhook_id/webhook_token
+      - WATCHTOWER_NOTIFICATION_URL=discord://1306910562474786887/Jfr8aM1D3oZVCxEQk0Oi0b2dg-Sl420dSNyE6JgR_F1iP6FdbsOIHvLajV-JlbBSfUDL
+      # For multiple notifications, separate with comma:
+      # - WATCHTOWER_NOTIFICATION_URL=discord://webhook_id/webhook_token,discord://webhook_id2/webhook_token2
+    labels:
+      - "com.centurylinklabs.watchtower.enable=false"
