@@ -306,7 +306,7 @@ const rowStyle: ComputedRef<{ transform: string }> = computed(() => {
 
 <template>
   <section class="frameworks-section" id="frameworks-section">
-    <h2>Soutenez votre framework et outils préféré</h2>
+    <h2>Support your favorite framework and tools</h2>
     <div class="frameworks-container">
       <!-- Top Row -->
       <div class="framework-row" :style="rowStyle">

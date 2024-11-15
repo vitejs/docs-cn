@@ -40,6 +40,28 @@ const additionalTitle = ((): string => {
 
 export default withMermaid(
   defineConfig({
+    mermaid: {
+      // Theme configuration
+      theme: {
+        light: 'default',
+        dark: 'dark'
+      },
+
+      // Global Mermaid configuration
+      mermaidConfig: {
+        startOnLoad: true,
+        flowchart: {
+          useMaxWidth: true,
+          htmlLabels: true,
+          curve: 'basis'
+        },
+        securityLevel: 'loose',
+        viewport: {
+          width: 800,
+          height: 600
+        }
+      }
+    },
     title: 'Satcom - Docs',
     description: 'DevSecOps Documentation',
     lang: 'en-EN',
@@ -279,5 +301,3 @@ export default withMermaid(
     }
   })
 )
-
-

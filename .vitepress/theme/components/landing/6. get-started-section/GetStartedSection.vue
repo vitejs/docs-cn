@@ -36,9 +36,9 @@
       </svg>
       <img src="/logo.svg" alt="Vite Logo" class="vite-chip__logo" />
     </div>
-    <h2>Utilisez Vite pour commencer à construire</h2>
+    <h2>Use quickly to start building</h2>
     <h3>
-      Préparez-vous à accueillir un environnement de développement qui peut suivre votre vitesse de réflexion
+      Prepare to welcome a development environment that can follow your speed of reflection
     </h3>
     <a href="/Infrastructure/" class="btn btn--primary">开始</a>
     <div class="glow glow--purple" />
