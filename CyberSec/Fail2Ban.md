@@ -2,6 +2,7 @@
 layout: doc
 title: Fail2Ban Integration Guide
 description: Complete guide for integrating Fail2Ban in a DevSecOps environment using Docker
+mermaidTheme: forest
 ---
 
 # Fail2Ban Integration Guide

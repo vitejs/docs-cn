@@ -2,6 +2,7 @@
 layout: doc
 title: Comprehensive Debian Hardening Guide for DevSecOps
 description: A detailed guide on hardening Debian Linux systems with a DevSecOps approach, covering system security, access controls, network security, and monitoring.
+mermaidTheme: forest
 ---
 
 ## Introduction

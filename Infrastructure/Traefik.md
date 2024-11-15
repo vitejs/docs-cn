@@ -1,5 +1,7 @@
 ---
 title: Traefik v3
+description: Advanced Traefik v3 Technical Guide
+mermaidTheme: forest
 ---
 
 # Advanced Traefik v3 Technical Guide {#advanced-traefik}

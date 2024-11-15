@@ -2,6 +2,7 @@
 layout: doc
 title: WireGuard UI Installation Learning Guide
 description: A comprehensive learning guide for WireGuard UI setup with Docker and AdGuard integration
+mermaidTheme: forest
 ---
 
 # WireGuard UI with AdGuard - Learning Guide

@@ -1,10 +1,8 @@
-Sure, here's the updated guide with the commands for both `docker-compose` and `docker compose`:
-
 ---
 layout: doc
 title: DevSecOps Guide with Docker
 description: Setting up a configurable and automated DevSecOps environment with Docker
-
+mermaidTheme: forest
 ---
 
 ## Introduction
