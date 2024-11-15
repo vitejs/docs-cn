@@ -5,13 +5,8 @@ const { releaseTag } = useReleaseTag()
 </script>
 
 <template>
-  <a
-    v-if="releaseTag"
-    class="VPNavBarReleaseLink link"
-    href="https://github.com/vitejs/docs-cn/releases"
-    target="_blank"
-    tabindex="0"
-  >
+  <a v-if="releaseTag" class="VPNavBarReleaseLink link" href="https://github.com/Satcomx00-x00/docs-cn/releases"
+    target="_blank" tabindex="0">
     <span>{{ releaseTag }}</span>
   </a>
 </template>

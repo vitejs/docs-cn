@@ -40,7 +40,7 @@
     <h3>
       Prepare to welcome a development environment that can follow your speed of reflection
     </h3>
-    <a href="/Infrastructure/" class="btn btn--primary">开始</a>
+    <a href="/Infrastructure/" class="btn btn--primary">start</a>
     <div class="glow glow--purple" />
     <div class="glow glow--blue" />
   </div>
