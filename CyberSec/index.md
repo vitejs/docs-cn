@@ -2,7 +2,6 @@
 title: CyberSec
 mermaidTheme: forest
 description: Cybersecurity resources, tools, and best practices
-mermaidTheme: forest
 ---
 
 
