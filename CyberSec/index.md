@@ -2,12 +2,75 @@
 title: CyberSec
 ---
 
-<!-- do routing -->
+
 # CyberSec {#cybersec}
 
 ## Introduction {#introduction}
 
 Cybersecurity is the practice of protecting systems, networks, and programs from digital attacks. These cyberattacks are usually aimed at accessing, changing, or destroying sensitive information; extorting money from users; or interrupting normal business processes.
+
+```mermaid
+mindmap
+  root((Cybersecurity))
+    Fundamentals
+      Confidentiality
+      Integrity
+      Availability
+      Authentication
+      Authorization
+      Privacy
+      Risk Management
+      Compliance
+    Domains
+      Network Security
+      Application Security
+      Cloud Security
+      Endpoint Security
+      Data Security
+      Mobile Security
+      Identity and Access Management
+        Managing user access
+        Access rights
+      Security Operations Center
+        Monitoring
+        Detection
+        Response
+    Tools
+      IPS
+        Intrusion Prevention System
+        Attack prevention
+      IDS
+        Intrusion Detection System
+        Traffic analysis
+      Firewall
+        Traffic filtering
+        Access control
+      SIEM
+        Log collection
+        Security analysis
+      Antivirus
+      VPN
+      WAF
+      DLP
+    Security Activities
+      Penetration Testing
+      Security Auditing
+      Security Monitoring
+      Incident Response
+        Preparation
+        Detection
+        Recovery
+      Threat Intelligence
+        Monitoring
+        Analysis
+        Prevention
+      Security Awareness Training
+        User education
+        Best practices
+```
+
+
+
 
 ## Cybersecurity Fundamentals {#fundamentals}
 
