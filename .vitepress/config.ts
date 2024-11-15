@@ -252,15 +252,21 @@ export default withMermaid(
                   {
                     text: 'Docker',
                     link: '/Infrastructure/Docker'
-                  },
-                  {
-                    text: 'Traefik',
-                    link: '/Infrastructure/Traefik'
                   }
                 ]
               },
               {
-                text: 'Security',
+                text: 'Applications',
+                collapsed: false,
+                items: [
+                  {
+                    text: 'Vaultwarden',
+                    link: '/Infrastructure/Vaultwarden'
+                  }
+                ]
+              },
+              {
+                text: 'Networking',
                 collapsed: false,
                 items: [
                   {
@@ -268,12 +274,8 @@ export default withMermaid(
                     link: '/Infrastructure/Wireguard'
                   },
                   {
-                    text: 'Vaultwarden',
-                    link: '/Infrastructure/Vaultwarden'
-                  },
-                  {
-                    text: 'LinuxHardening',
-                    link: '/Infrastructure/LinuxHardening'
+                    text: 'Traefik',
+                    link: '/Infrastructure/Traefik'
                   }
                 ]
               }
@@ -285,8 +287,24 @@ export default withMermaid(
             text: 'CyberSec',
             items: [
               {
-                text: 'CrowdSec',
-                link: '/CyberSec/CrowdSec'
+                text: 'Applications',
+                collapsed: false,
+                items: [
+                  {
+                    text: 'CrowdSec',
+                    link: '/CyberSec/CrowdSec'
+                  }
+                ]
+              },
+              {
+                text: 'Methodologies',
+                collapsed: false,
+                items: [
+                  {
+                    text: 'LinuxHardening',
+                    link: '/CyberSec/LinuxHardening'
+                  }
+                ]
               }
             ]
           }
