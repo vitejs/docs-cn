@@ -53,12 +53,27 @@ export default withMermaid(
         flowchart: {
           useMaxWidth: true,
           htmlLabels: true,
-          curve: 'basis'
+          curve: 'basis',
+          nodeSpacing: 100, // Increase spacing between nodes
+          rankSpacing: 100 // Increase spacing between ranks/levels
         },
         securityLevel: 'loose',
         viewport: {
-          width: 800,
+          width: 1200,
           height: 600
+        },
+        // Global font size settings
+        fontSize: 16, // Increased base font size
+        fontFamily: 'Inter',
+        scale: 1.2, // Global scale factor
+        maxTextSize: 12, // Maximum text size in flowcharts
+
+        // Sequence diagram specific settings
+        sequence: {
+          width: 1200, // Width of sequence diagrams
+          height: 800, // Height of sequence diagrams
+          boxMargin: 20, // Margin around boxes
+          messageMargin: 60 // Margin between messages
         }
       }
     },
