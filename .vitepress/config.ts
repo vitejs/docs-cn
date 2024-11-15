@@ -252,6 +252,10 @@ export default withMermaid(
                   {
                     text: 'Docker',
                     link: '/Infrastructure/Docker'
+                  },
+                  {
+                    text: 'Docker Swarm',
+                    link: '/Infrastructure/DockerSwarm'
                   }
                 ]
               },
@@ -262,6 +266,10 @@ export default withMermaid(
                   {
                     text: 'Vaultwarden',
                     link: '/Infrastructure/Vaultwarden'
+                  },
+                  {
+                    text: 'Watchtower',
+                    link: '/Infrastructure/Watchtower'
                   }
                 ]
               },
@@ -293,6 +301,10 @@ export default withMermaid(
                   {
                     text: 'CrowdSec',
                     link: '/CyberSec/CrowdSec'
+                  },
+                  {
+                    text: 'Fail2Ban',
+                    link: '/CyberSec/Fail2Ban'
                   }
                 ]
               },
