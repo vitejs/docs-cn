@@ -246,20 +246,36 @@ export default withMermaid(
             text: 'Infrastructure',
             items: [
               {
-                text: 'Docker',
-                link: '/Infrastructure/Docker'
+                text: 'Containerization',
+                collapsed: false,
+                items: [
+                  {
+                    text: 'Docker',
+                    link: '/Infrastructure/Docker'
+                  },
+                  {
+                    text: 'Traefik',
+                    link: '/Infrastructure/Traefik'
+                  }
+                ]
               },
               {
-                text: 'Traefik',
-                link: '/Infrastructure/Traefik'
-              },
-              {
-                text: 'Wireguard',
-                link: '/Infrastructure/Wireguard'
-              },
-              {
-                text: 'Vaultwarden',
-                link: '/Infrastructure/Vaultwarden'
+                text: 'Security',
+                collapsed: false,
+                items: [
+                  {
+                    text: 'Wireguard',
+                    link: '/Infrastructure/Wireguard'
+                  },
+                  {
+                    text: 'Vaultwarden',
+                    link: '/Infrastructure/Vaultwarden'
+                  },
+                  {
+                    text: 'LinuxHardening',
+                    link: '/Infrastructure/LinuxHardening'
+                  }
+                ]
               }
             ]
           }
