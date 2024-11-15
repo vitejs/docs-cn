@@ -117,7 +117,7 @@ declare const __APP_VERSION__: string
 ## resolve.conditions {#resolve-conditions}
 
 - **类型：** `string[]`
-- **默认：** `['module', 'browser', 'development|production']`
+- **默认：** `['module', 'browser', 'development|production']` (`defaultClientConditions`)
 
 解决程序包中 [情景导出](https://nodejs.org/api/packages.html#packages_conditional_exports) 时的其他允许条件。
 
@@ -147,7 +147,7 @@ declare const __APP_VERSION__: string
 ## resolve.mainFields {#resolve-mainfields}
 
 - **类型：** `string[]`
-- **默认：** `['browser', 'module', 'jsnext:main', 'jsnext']`
+- **默认：** `['browser', 'module', 'jsnext:main', 'jsnext']` (`defaultClientMainFields`)
 
 `package.json` 中，在解析包的入口点时尝试的字段列表。注意：这比从 `exports` 字段解析的情景导出优先级低：如果一个入口起点从 `exports` 成功解析，`resolve.mainFields` 将被忽略。
 

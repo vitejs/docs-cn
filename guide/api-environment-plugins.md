@@ -153,7 +153,7 @@ const UnoCssPlugin = () => {
 }
 ```
 
-如果一个插件没有环境感知功能，并且其状态不是以当前环境为关键的， `applyToEnvironment` 钩子可以轻松地将其设置为针对每个环境。
+如果一个插件没有环境感知功能，并且其状态没有基于当前环境进行区分，`applyToEnvironment` 钩子可以轻松地将其设置为针对每个环境工作。
 
 ```js
 import { nonShareablePlugin } from 'non-shareable-plugin'
