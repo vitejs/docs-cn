@@ -24,10 +24,10 @@
 - `resolve.conditions` 是 `['module', 'browser', 'development|production']`
 - `ssr.resolve.conditions` 是 `['module', 'node', 'development|production']`
 
-这些选项的默认值会更新为相应的值，`ssr.resolve.conditions` 不再使用 `resolve.conditions` 作为默认值。请注意，`development|production`是一个特殊变量，会根据 `process.env.NODE_ENV` 的值被替换为 `production` 或 `development`。
+这些选项的默认值会更新为相应的值，`ssr.resolve.conditions` 不再使用 `resolve.conditions` 作为默认值。请注意，`development|production`是一个特殊变量，会根据 `process.env.NODE_ENV` 的值被替换为 `production` 或 `development`。这些默认值从 `vite` 导出为 `defaultClientConditions` 和 `defaultServerConditions`。
 
 如果为 `resolve.conditions` 或 `ssr.resolve.conditions` 指定了自定义值，则需要更新该值以包含新条件。
-例如，如果先前为 `resolve.conditions` 指定了 `['custom']`，那么现在就需要指定 `['custom','module','browser','develop|production']`。
+例如，如果先前为 `resolve.conditions` 指定了 `['custom']`，那么现在就需要指定 `['custom', ...defaultClientConditions]`。
 
 ### JSON stringify
 

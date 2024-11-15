@@ -214,11 +214,11 @@ export default defineConfig({
 
 - **类型：** `object | null`
 
-传递给 [chokidar](https://github.com/paulmillr/chokidar#getting-started) 的文件系统监听器选项。如果传递了 `ignored` 选项，Vite 还会自动将任何字符串转换为 [picomatch 模式](https://github.com/micromatch/picomatch#globbing-features)。
+文件系统监视器选项传递给 [chokidar](https://github.com/paulmillr/chokidar/tree/3.6.0#api)。
 
 Vite 服务器的文件监听器默认会监听 `root` 目录，同时会跳过 `.git/`、`node_modules/`，以及 Vite 的 `cacheDir` 和 `build.outDir` 这些目录。当监听到文件更新时，Vite 会应用 HMR 并且只在需要时更新页面。
 
-如果设置为 `null`，`server.watcher` 将不会监听任何文件，并且调用 `add` 将不起作用。
+如果设置为 `null`，则不会监视任何文件。`server.watcher` 将提供兼容的事件发射器，但调用 `add` 或 `unwatch` 将不起作用。
 
 ::: warning 监听 `node_modules` 中的文件
 
@@ -235,7 +235,7 @@ Vite 服务器的文件监听器默认会监听 `root` 目录，同时会跳过 
 - **推荐**：使用 WSL2 应用来编辑你的文件
   - 同时我们推荐将你的项目移出 Windows 文件系统，从 WSL2 访问 Windows 文件系统非常慢。移除这一开销将大大提升性能表现。
 - 设置 `{ usePolling: true }`
-  - 注意 [`usePolling` 会导致高 CPU 占用率](https://github.com/paulmillr/chokidar#performance)
+  - 注意 [`usePolling` 会导致高 CPU 占用率](https://github.com/paulmillr/chokidar/tree/3.6.0#performance)
 
 :::
 
