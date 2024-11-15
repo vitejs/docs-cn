@@ -62,6 +62,14 @@ export default withMermaid(
           width: 1200,
           height: 900
         },
+        interaction: {
+          enabled: true, // Enable all interactions
+          click: true, // Enable click events
+          hover: true, // Enable hover events
+          pan: true, // Enable panning
+          zoomInButton: true, // Show zoom in button
+          zoomOutButton: true // Show zoom out button
+        },
         // Global font size settings
         fontSize: 16, // Increased base font size
         fontFamily: 'Inter',
