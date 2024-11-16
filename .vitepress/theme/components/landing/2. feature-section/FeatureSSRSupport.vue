@@ -419,6 +419,7 @@ const { isCardActive, startAnimation } = useCardAnimation(
     <div class="feature__meta">
       <div class="meta__title">First -class SSR support</div>
       <div class="meta__description">
+        X
       </div>
     </div>
   </div>
