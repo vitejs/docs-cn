@@ -38,18 +38,28 @@ const inputLines: Ref<SvgNodeProps>[] = inputPaths.map((path) =>
 // Define the file set "combinations" that can be shown on the input side
 const inputFileSets = ref([
   [
-    { label: '.jsx' },
-    { label: '.sass' },
-    { label: '.svelte', color: '#ff8d67' },
+    { label: 'K8s' },
+    { label: 'Docker' },
+
+    { label: 'Terraform', color: '#7B42BC' }
   ],
-  [{ label: '.tsx' }, { label: '.scss' }, { label: '.vue', color: '#40b782' }],
   [
-    { label: '.js' },
-    { label: '.styl' },
-    { label: '.svelte', color: '#ff8d67' },
+    { label: 'Traefik' },
+    { label: 'WAF' },
+    { label: 'Ansible', color: '#EE0000' },
   ],
-  [{ label: '.ts' }, { label: '.less' }, { label: '.vue', color: '#40b782' }],
-  [{ label: '.mts' }, { label: '.html' }, { label: '.json' }],
+  [
+    { label: 'Prometheus' },
+    { label: 'ELK' },
+    { label: 'Grafana' },
+    { label: 'IDS' },
+    { label: 'Wireguard', color: '#335061' }
+  ],
+  [
+    { label: 'Workflow' },
+    { label: 'SIEM' },
+    { label: 'CI/CD' }
+  ],
 ])
 
 // Setup objects representing each output line's animation state
@@ -58,19 +68,19 @@ const outputLines: Ref[] = [
     position: 0,
     visible: false,
     labelVisible: false,
-    label: '.html',
+    label: 'SecOps',  // Security Operations
   }),
   ref({
     position: 0,
     visible: false,
     labelVisible: false,
-    label: '.css',
+    label: 'DevOps',  // Development Operations
   }),
   ref({
     position: 0,
     visible: false,
     labelVisible: false,
-    label: '.js',
+    label: 'InfraOps', // Infrastructure Operations
   }),
 ]
 
@@ -457,10 +467,7 @@ onMounted(() => {
     <div class="vite-chip" :class="{ active: illuminateLogo }">
       <div class="vite-chip__background">
         <div class="vite-chip__border" />
-        <div
-          class="vite-chip__edge"
-          :class="{ 'edge--animated': isChromiumBrowser }"
-        ></div>
+        <div class="vite-chip__edge" :class="{ 'edge--animated': isChromiumBrowser }"></div>
       </div>
       <div class="vite-chip__filter" />
       <img src="/logo.svg" alt="Vite Logo" class="vite-chip__logo" />
@@ -509,16 +516,12 @@ onMounted(() => {
     bottom: 0;
     transform: translate3d(0, 0, 0) scale(1);
     transition: transform 0.3s ease-in-out;
-    background: linear-gradient(
-        130deg,
+    background: linear-gradient(130deg,
         rgba(61, 61, 61, 0.3) 0%,
-        rgba(61, 61, 61, 0) 40%
-      ),
-      linear-gradient(
-        130deg,
+        rgba(61, 61, 61, 0) 40%),
+      linear-gradient(130deg,
         rgba(42, 33, 63, 0) 60%,
-        rgba(61, 61, 61, 0.3) 100%
-      ),
+        rgba(61, 61, 61, 0.3) 100%),
       linear-gradient(to bottom, rgba(16, 14, 26, 0.3) 60%, rgba(12, 12, 12, 0));
     border-radius: 10px;
     display: none;
@@ -535,12 +538,10 @@ onMounted(() => {
       right: 0;
       bottom: 0;
       z-index: 5;
-      background: linear-gradient(
-        130deg,
-        rgba(61, 61, 61, 0) 45%,
-        rgba(154, 152, 222, 0.3) 50%,
-        rgba(61, 61, 61, 0) 60%
-      );
+      background: linear-gradient(130deg,
+          rgba(61, 61, 61, 0) 45%,
+          rgba(154, 152, 222, 0.3) 50%,
+          rgba(61, 61, 61, 0) 60%);
       background-size: 500%;
       background-position-x: 100%;
       filter: blur(8px);
@@ -557,12 +558,10 @@ onMounted(() => {
       right: 0;
       bottom: 0;
       z-index: 5;
-      background: linear-gradient(
-        -130deg,
-        rgba(42, 33, 63, 0) 40%,
-        rgba(154, 152, 222, 0.2) 50%,
-        rgba(42, 33, 63, 0) 60%
-      );
+      background: linear-gradient(-130deg,
+          rgba(42, 33, 63, 0) 40%,
+          rgba(154, 152, 222, 0.2) 50%,
+          rgba(42, 33, 63, 0) 60%);
       background-size: 400%;
       background-position-x: 100%;
       filter: blur(10px);
@@ -572,6 +571,7 @@ onMounted(() => {
     }
 
     @media (min-width: 768px) {
+
       &:before,
       &:after {
         display: block;
@@ -587,23 +587,19 @@ onMounted(() => {
     bottom: 0;
     border: 2px solid;
     border-image-slice: 1;
-    border-image-source: linear-gradient(
-      to bottom right,
-      rgba(0, 0, 0, 0) 60%,
-      rgba(255, 255, 255, 0.15) 65%,
-      rgba(0, 0, 0, 0) 90%
-    );
+    border-image-source: linear-gradient(to bottom right,
+        rgba(0, 0, 0, 0) 60%,
+        rgba(255, 255, 255, 0.15) 65%,
+        rgba(0, 0, 0, 0) 90%);
     opacity: 0;
     will-change: opacity, border;
     transition: all 1s ease-in-out;
 
     @media (min-width: 768px) {
-      border-image-source: linear-gradient(
-        to bottom right,
-        rgba(0, 0, 0, 0) 50%,
-        rgba(255, 255, 255, 0.15) 60%,
-        rgba(0, 0, 0, 0) 90%
-      );
+      border-image-source: linear-gradient(to bottom right,
+          rgba(0, 0, 0, 0) 50%,
+          rgba(255, 255, 255, 0.15) 60%,
+          rgba(0, 0, 0, 0) 90%);
     }
   }
 
@@ -699,72 +695,56 @@ onMounted(() => {
   }
 
   background: url('/noise.png'),
-    radial-gradient(
-      circle at right center,
-      rgb(86, 50, 119) 0%,
-      rgba(74, 55, 140, 1) 30%,
-      rgb(65, 114, 194) 55%,
-      rgba(50, 81, 115, 0.5) 100%
-    );
-  mask-image: radial-gradient(
-    ellipse 300% 30% at center center,
+  radial-gradient(circle at right center,
+    rgb(86, 50, 119) 0%,
+    rgba(74, 55, 140, 1) 30%,
+    rgb(65, 114, 194) 55%,
+    rgba(50, 81, 115, 0.5) 100%);
+  mask-image: radial-gradient(ellipse 300% 30% at center center,
     rgba(0, 0, 0, 1) 20%,
     rgba(0, 0, 0, 0.5) 50%,
-    rgba(0, 0, 0, 0) 100%
-  );
+    rgba(0, 0, 0, 0) 100%);
 
   @media (min-width: 1024px) {
     background: url('/noise.png'),
-      radial-gradient(
-        circle at right center,
+      radial-gradient(circle at right center,
         rgba(75, 41, 105, 0.5) 0%,
         rgb(86, 50, 119) 25%,
         rgba(74, 55, 140, 1) 40%,
         rgb(64, 102, 168) 65%,
-        rgba(50, 81, 115, 0.5) 100%
-      );
-    mask-image: radial-gradient(
-      ellipse 150% 30% at center center,
-      rgba(0, 0, 0, 1) 20%,
-      rgba(0, 0, 0, 0.5) 50%,
-      rgba(0, 0, 0, 0) 100%
-    );
+        rgba(50, 81, 115, 0.5) 100%);
+    mask-image: radial-gradient(ellipse 150% 30% at center center,
+        rgba(0, 0, 0, 1) 20%,
+        rgba(0, 0, 0, 0.5) 50%,
+        rgba(0, 0, 0, 0) 100%);
   }
 
   @media (min-width: 1500px) {
     background: url('/noise.png'),
-      radial-gradient(
-        circle at right center,
+      radial-gradient(circle at right center,
         rgba(75, 41, 105, 0.5) 0%,
         rgb(86, 50, 119) 25%,
         rgba(74, 55, 140, 1) 45%,
         rgb(64, 102, 168) 65%,
-        rgba(50, 81, 115, 0.5) 100%
-      );
-    mask-image: radial-gradient(
-      ellipse 80% 40% at center center,
-      rgba(0, 0, 0, 1) 20%,
-      rgba(0, 0, 0, 0.5) 50%,
-      rgba(0, 0, 0, 0) 100%
-    );
+        rgba(50, 81, 115, 0.5) 100%);
+    mask-image: radial-gradient(ellipse 80% 40% at center center,
+        rgba(0, 0, 0, 1) 20%,
+        rgba(0, 0, 0, 0.5) 50%,
+        rgba(0, 0, 0, 0) 100%);
   }
 
   @media (min-width: 1800px) {
     background: url('/noise.png'),
-      radial-gradient(
-        circle at right center,
+      radial-gradient(circle at right center,
         rgba(75, 41, 105, 0.5) 0%,
         rgb(86, 50, 119) 25%,
         rgba(74, 55, 140, 1) 50%,
         rgb(64, 102, 168) 70%,
-        rgba(50, 81, 115, 0.5) 100%
-      );
-    mask-image: radial-gradient(
-      ellipse 80% 40% at center center,
-      rgba(0, 0, 0, 1) 20%,
-      rgba(0, 0, 0, 0.5) 50%,
-      rgba(0, 0, 0, 0) 100%
-    );
+        rgba(50, 81, 115, 0.5) 100%);
+    mask-image: radial-gradient(ellipse 80% 40% at center center,
+        rgba(0, 0, 0, 1) 20%,
+        rgba(0, 0, 0, 0.5) 50%,
+        rgba(0, 0, 0, 0) 100%);
   }
 
   &.active {
@@ -778,44 +758,38 @@ onMounted(() => {
 
 @keyframes rotateGradient {
   0% {
-    border-image-source: linear-gradient(
-      to bottom right,
-      rgba(0, 0, 0, 0) 60%,
-      rgba(255, 255, 255, 0.15) 65%,
-      rgba(0, 0, 0, 0) 90%
-    );
+    border-image-source: linear-gradient(to bottom right,
+        rgba(0, 0, 0, 0) 60%,
+        rgba(255, 255, 255, 0.15) 65%,
+        rgba(0, 0, 0, 0) 90%);
   }
+
   25% {
-    border-image-source: linear-gradient(
-      to right top,
-      rgba(0, 0, 0, 0) 60%,
-      rgba(255, 255, 255, 0.15) 65%,
-      rgba(0, 0, 0, 0) 90%
-    );
+    border-image-source: linear-gradient(to right top,
+        rgba(0, 0, 0, 0) 60%,
+        rgba(255, 255, 255, 0.15) 65%,
+        rgba(0, 0, 0, 0) 90%);
   }
+
   50% {
-    border-image-source: linear-gradient(
-      to top left,
-      rgba(0, 0, 0, 0) 60%,
-      rgba(255, 255, 255, 0.15) 65%,
-      rgba(0, 0, 0, 0) 90%
-    );
+    border-image-source: linear-gradient(to top left,
+        rgba(0, 0, 0, 0) 60%,
+        rgba(255, 255, 255, 0.15) 65%,
+        rgba(0, 0, 0, 0) 90%);
   }
+
   75% {
-    border-image-source: linear-gradient(
-      to left bottom,
-      rgba(0, 0, 0, 0) 60%,
-      rgba(255, 255, 255, 0.15) 65%,
-      rgba(0, 0, 0, 0) 90%
-    );
+    border-image-source: linear-gradient(to left bottom,
+        rgba(0, 0, 0, 0) 60%,
+        rgba(255, 255, 255, 0.15) 65%,
+        rgba(0, 0, 0, 0) 90%);
   }
+
   100% {
-    border-image-source: linear-gradient(
-      to bottom right,
-      rgba(0, 0, 0, 0) 60%,
-      rgba(255, 255, 255, 0.15) 65%,
-      rgba(0, 0, 0, 0) 90%
-    );
+    border-image-source: linear-gradient(to bottom right,
+        rgba(0, 0, 0, 0) 60%,
+        rgba(255, 255, 255, 0.15) 65%,
+        rgba(0, 0, 0, 0) 90%);
   }
 }
 </style>
