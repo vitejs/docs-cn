@@ -8,10 +8,7 @@ Docker enables you to separate your applications from your infrastructure, allow
 
 ## Getting Started {#getting-started}
 
-<!-- Load Docker svg image path .vitepress\theme\components\landing\2. feature-section\images\docker.svg -->
-<figure>
-  <img src="/assets/img/docker.svg" alt="Docker" style="max-width: 100%; margin: 2rem auto; display: block;">
-</figure>
+[![Docker](/assets/img/docker.svg)](https://www.docker.com/)
 
 ### Installation {#installation}
 
