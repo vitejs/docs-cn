@@ -10,7 +10,7 @@ Docker enables you to separate your applications from your infrastructure, allow
 
 <img src="/images/docker.svg" alt="drawing" width="200"/>
 
- <-- [![Docker](/images/docker.svg)](https://www.docker.com/) -->
+ <!-- [![Docker](/images/docker.svg)](https://www.docker.com/) -->
 
 ### Installation {#installation}
 
