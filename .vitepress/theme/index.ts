@@ -11,6 +11,7 @@ import WwAds from './components/WwAds.vue'
 import ReleaseTag from './components/ReleaseTag.vue'
 import './custom.css'
 import 'virtual:group-icons.css'
+import googleAnalytics from 'vitepress-plugin-google-analytics'
 
 export default {
   extends: DefaultTheme,
@@ -21,6 +22,7 @@ export default {
     })
   },
   enhanceApp({ app }) {
+    googleAnalytics({id:"G-W7BV29JNKS"})
     app.component('SvgImage', SvgImage)
     app.component('ReleaseTag', ReleaseTag)
     app.use(TwoslashFloatingVue)
