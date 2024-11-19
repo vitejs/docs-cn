@@ -256,6 +256,10 @@ export default withMermaid(
                   {
                     text: 'Docker Swarm',
                     link: '/Infrastructure/DockerSwarm'
+                  },
+                  {
+                    text: 'Kubernetes',
+                    link: '/Infrastructure/Kubernetes'
                   }
                 ]
               },

@@ -1,3 +1,9 @@
+---
+layout: doc
+title: Introduction to Docker
+description: Learn Docker basics and essential concepts
+---
+
 # Docker Documentation {#docker-documentation}
 
 Docker is a platform for developing, shipping, and running applications in containers. This documentation covers Docker basics and essential concepts.
@@ -8,7 +14,8 @@ Docker enables you to separate your applications from your infrastructure, allow
 
 ## Getting Started {#getting-started}
 
-<img src="/images/docker.svg" alt="drawing" width="200"/>
+<!-- make it center -->
+<img src="/images/docker.svg" alt="drawing" width="200" align="center"/>
 
  <!-- [![Docker](/images/docker.svg)](https://www.docker.com/) -->
 
