@@ -81,6 +81,8 @@ Vite 6 扩展了对更多 HTML 元素的支持。完整列表请参见 [HTML 功
 
 还有其他一些只影响少数用户的破坏性更改。
 
+- [[#17922] fix(css)!: remove default import in ssr dev](https://github.com/vitejs/vite/pull/17922)
+  - 对 CSS 文件默认导入的支持在 Vite 4 中[已被弃用](https://v4.vite.dev/guide/migration.html#importing-css-as-a-string)，并在 Vite 5 中被移除，但在 SSR 开发模式中仍被无意支持。现在该支持已被移除。
 - [[#15637] fix!: default `build.cssMinify` to `'esbuild'` for SSR](https://github.com/vitejs/vite/pull/15637)
   - [`build.cssMinify`](/config/build-options#build-cssminify) 现在即使是 SSR 版本也默认为启用。
 - [[#18070] feat!: proxy bypass with WebSocket](https://github.com/vitejs/vite/pull/18070)
