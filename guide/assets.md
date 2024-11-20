@@ -163,6 +163,7 @@ function getImageUrl(name) {
   return new URL(modules[`./dir/${name}.png`], import.meta.url).href
 }
 ```
+
 :::
 
 ::: warning 注意：无法在 SSR 中使用
