@@ -28,4 +28,10 @@ const { releaseTag } = useReleaseTag()
   transition: color 0.25s;
   cursor: pointer;
 }
+
+@media (max-width: 768px) {
+  .VPNavBarReleaseLink {
+    display: none;
+  }
+}
 </style>
