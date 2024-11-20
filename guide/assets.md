@@ -147,7 +147,7 @@ function getImageUrl(name) {
 const imgUrl = new URL(imagePath, import.meta.url).href
 ```
 
-::: 工作原理
+::: details 工作原理
 
 Vite 会将 `getImageUrl` 函数改造为：
 
