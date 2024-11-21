@@ -28,10 +28,10 @@ interface HmrContext {
 
 `handleHotUpdate` 钩子在所有环境中只调用一次，传入的模块只有来自客户端和 SSR 环境的混合信息。一旦框架开始使用自定义环境，就需要一个新的钩子为每个环境调用。
 
-新的 `hotUpdate` 钩子的工作方式与 `handleHotUpdate` 一样，但是它会在每个环境中被调用，并且会接收一个新的 `HotUpdateContext` 实例：
+新的 `hotUpdate` 钩子的工作方式与 `handleHotUpdate` 一样，但是它会在每个环境中被调用，并且会接收一个新的 `HotUpdateOptions` 实例：
 
 ```ts
-interface HotUpdateContext {
+interface HotUpdateOptions {
   type: 'create' | 'update' | 'delete'
   file: string
   timestamp: number
