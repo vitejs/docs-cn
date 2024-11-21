@@ -25,7 +25,7 @@
 	"scripts": {
 		"dev": "vitepress dev --host",
 		"build": "vitepress build",
-		"serve": "vitepress serve"
+		"serve": "vitepress serve --host"
 	},
 	"gitHooks": {
 		"commit-msg": "node scripts/verifyCommit.js"
