@@ -12,7 +12,6 @@ RUN pnpm install --shamefully-hoist
 
 RUN pnpm install
 
-
 COPY . .
 
 RUN pnpm run build
