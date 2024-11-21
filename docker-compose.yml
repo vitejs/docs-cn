@@ -1,7 +1,7 @@
 services:
   docs:
     image: satcomx00/custom-doc-website:latest
-    container_name: vitepress-docs
+    container_name: docs
     ports:
       - "0.0.0.0:5173:5173"
     restart: unless-stopped
