@@ -98,13 +98,9 @@ Vite 6 扩展了对更多 HTML 元素的支持。完整列表请参见 [HTML 功
 - [[#18395] feat(resolve)!: allow removing conditions](https://github.com/vitejs/vite/pull/18395)
   - 此 PR 不仅引入了上文提到的 " `resolve.conditions` 的默认值" 这一破坏性变更，还使得在 SSR 中，`resolve.mainFields` 不能用于无外部化依赖关系。如果您正在使用 `resolve.mainFields`，并希望将其应用于 SSR 中的无外部化依赖关系，您可以使用 [`ssr.resolve.mainFields`](/config/ssr-options#ssr-resolve-mainfields)。
 - [[#18493] refactor!: remove fs.cachedChecks option](https://github.com/vitejs/vite/pull/18493)
-<<<<<<< HEAD
   - 由于在缓存文件夹中写入文件并立即导入时会出现边缘情况，因此删除了这一选择优化。
-=======
-  - This opt-in optimization was removed due to edge cases when writing a file in a cached folder and immediately importing it.
 - [[#18697] fix(deps)!: update dependency dotenv-expand to v12](https://github.com/vitejs/vite/pull/18697)
-  - Variables used in interpolation should be declared before the interpolation now. For more details, see [the `dotenv-expand` changelog](https://github.com/motdotla/dotenv-expand/blob/v12.0.1/CHANGELOG.md#1200-2024-11-16).
->>>>>>> c514e341b044d5ee3afa7b01635e558e64860bab
+  - 插值中使用的变量应在插值之前声明。更多详情，请参阅 [`dotenv-expand` changelog](https://github.com/motdotla/dotenv-expand/blob/v12.0.1/CHANGELOG.md#1200-2024-11-16).
 
 ## 从 v4 迁移 {#migration-from-v4}
 
