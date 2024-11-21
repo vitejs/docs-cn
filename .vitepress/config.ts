@@ -260,6 +260,10 @@ export default withMermaid(
                   {
                     text: 'Kubernetes',
                     link: '/Infrastructure/Kubernetes'
+                  },
+                  {
+                    text: 'Portainer',
+                    link: '/Infrastructure/Portainer'
                   }
                 ]
               },
