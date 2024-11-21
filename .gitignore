@@ -9,3 +9,4 @@ yarn.lock
 .vitepress/dist
 *.local
 .vitepress/cache
+scripts/verifyCommit.js
