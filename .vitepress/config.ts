@@ -137,6 +137,21 @@ export default withMermaid(
           'data-spa': 'auto',
           defer: ''
         }
+      ],
+      [
+        'script',
+        {
+          async: '',
+          src: 'https://www.googletagmanager.com/gtag/js?id=GTM-P4PD4B4B'
+        }
+      ],
+      [
+        'script',
+        {},
+        `window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'GTM-P4PD4B4B');`
       ]
     ],
 
