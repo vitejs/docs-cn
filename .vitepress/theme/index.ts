@@ -5,7 +5,7 @@ import TwoslashFloatingVue from '@shikijs/vitepress-twoslash/client'
 import '@shikijs/vitepress-twoslash/style.css'
 import './styles/vars.css'
 import './styles/landing.css'
-import AsideSponsors from './components/AsideSponsors.vue'
+// import AsideSponsors from './components/AsideSponsors.vue'
 import SvgImage from './components/SvgImage.vue'
 import WwAds from './components/WwAds.vue'
 import ReleaseTag from './components/ReleaseTag.vue'
@@ -18,7 +18,7 @@ export default {
   Layout() {
     return h(DefaultTheme.Layout, null, {
       'aside-outline-after': () => h(WwAds),
-      'aside-ads-before': () => h(AsideSponsors),
+      // 'aside-ads-before': () => h(AsideSponsors),
     })
   },
   enhanceApp({ app }) {
