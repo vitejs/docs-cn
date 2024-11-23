@@ -3,22 +3,69 @@ services:
     image: satcomx00/custom-doc-website:latest
     container_name: docs
     ports:
-      - "0.0.0.0:5173:5173"
+      - "127.0.0.1:5173:5173"  # More secure binding to localhost
     restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:5173"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    deploy:
+      resources:
+        limits:
+          memory: 512M
+          cpus: '0.5'
+    security_opt:
+      - no-new-privileges:true
+    read_only: true
+    tmpfs:
+      - /tmp
     labels:
       - "com.centurylinklabs.watchtower.enable=true"
+      - "autoheal=true"
 
   watchtower:
     image: containrrr/watchtower
     container_name: watchtower
     volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
+      - /var/run/docker.sock:/var/run/docker.sock:ro  # Read-only access
     restart: unless-stopped
     environment:
       - WATCHTOWER_CLEANUP=true
       - WATCHTOWER_INCLUDE_STOPPED=false
-      - WATCHTOWER_POLL_INTERVAL=60
+      - WATCHTOWER_POLL_INTERVAL=300  # Changed to 5 minutes to reduce API calls
       - WATCHTOWER_LABEL_ENABLE=true
+      - WATCHTOWER_TIMEOUT=60s
       - TZ=Europe/Paris
+      - WATCHTOWER_NOTIFICATIONS=shoutrrr
+      - WATCHTOWER_NOTIFICATION_LEVEL=info
+    deploy:
+      resources:
+        limits:
+          memory: 128M
+          cpus: '0.2'
+    security_opt:
+      - no-new-privileges:true
+    read_only: true
     labels:
       - "com.centurylinklabs.watchtower.enable=false"
+      - "autoheal=true"
+
+  autoheal:
+    image: willfarrell/autoheal
+    container_name: autoheal
+    restart: unless-stopped
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    environment:
+      - AUTOHEAL_CONTAINER_LABEL=autoheal
+      - AUTOHEAL_INTERVAL=60
+      - AUTOHEAL_START_PERIOD=300
+    deploy:
+      resources:
+        limits:
+          memory: 64M
+          cpus: '0.1'
+    security_opt:
+      - no-new-privileges:true
