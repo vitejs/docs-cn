@@ -29,7 +29,7 @@ RUN pnpm install --shamefully-hoist && \
 COPY --chown=node:node . .
 
 # Switch to node user before building
-USER node
+# USER node
 
 # Build the application
 RUN pnpm run build
