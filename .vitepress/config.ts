@@ -265,20 +265,50 @@ export default withMermaid(
                 collapsed: false,
                 items: [
                   {
-                    text: 'Docker',
-                    link: '/Infrastructure/Docker'
+                    text: '📌 Docker',
+                    collapsed: false,
+                    items: [
+                      {
+                        text: 'Docker',
+                        link: '/Infrastructure/Docker/Docker'
+                      },
+                      {
+                        text: 'Docker Swarm',
+                        link: '/Infrastructure/Docker/DockerSwarm'
+                      },
+                      {
+                        text: 'Portainer',
+                        link: '/Infrastructure/Docker/Portainer'
+                      }
+                    ]
                   },
                   {
-                    text: 'Docker Swarm',
-                    link: '/Infrastructure/DockerSwarm'
+                    text: '📌 Kubernetes',
+                    collapsed: false,
+                    items: [
+                      {
+                        text: 'Install',
+                        link: '/Infrastructure/Kubernetes/Install'
+                      },
+                      {
+                        text: 'Configuration',
+                        link: '/Infrastructure/Kubernetes/Configuration'
+                      }
+                    ]
                   },
                   {
-                    text: 'Kubernetes',
-                    link: '/Infrastructure/Kubernetes'
-                  },
-                  {
-                    text: 'Portainer',
-                    link: '/Infrastructure/Portainer'
+                    text: '📌 Terraform',
+                    collapsed: false,
+                    items: [
+                      {
+                        text: 'Install',
+                        link: '/Infrastructure/Terraform/Install'
+                      },
+                      {
+                        text: 'Configuration',
+                        link: '/Infrastructure/Terraform/Configuration'
+                      }
+                    ]
                   }
                 ]
               },
@@ -296,6 +326,7 @@ export default withMermaid(
                   }
                 ]
               },
+              
               {
                 text: 'Networking',
                 collapsed: false,
