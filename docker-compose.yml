@@ -1,10 +1,15 @@
+version: '3.8'
+
 services:
   docs:
     image: satcomx00/custom-doc-website:latest
     container_name: docs
     ports:
-      - "127.0.0.1:5173:5173"  # More secure binding to localhost
+      - "0.0.0.0:5173:5173"
     restart: unless-stopped
+    volumes:
+      - vitepress_cache:/app/.vitepress/cache
+      - vitepress_temp:/app/.vitepress/temp
     healthcheck:
       test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:5173"]
       interval: 30s
@@ -18,28 +23,24 @@ services:
           cpus: '0.5'
     security_opt:
       - no-new-privileges:true
-    read_only: true
-    tmpfs:
-      - /tmp
     labels:
       - "com.centurylinklabs.watchtower.enable=true"
+      - "traefik.enable=true"
       - "autoheal=true"
 
   watchtower:
     image: containrrr/watchtower
     container_name: watchtower
     volumes:
-      - /var/run/docker.sock:/var/run/docker.sock:ro  # Read-only access
+      - /var/run/docker.sock:/var/run/docker.sock:ro
     restart: unless-stopped
     environment:
       - WATCHTOWER_CLEANUP=true
       - WATCHTOWER_INCLUDE_STOPPED=false
-      - WATCHTOWER_POLL_INTERVAL=300  # Changed to 5 minutes to reduce API calls
+      - WATCHTOWER_POLL_INTERVAL=300
       - WATCHTOWER_LABEL_ENABLE=true
       - WATCHTOWER_TIMEOUT=60s
       - TZ=Europe/Paris
-      - WATCHTOWER_NOTIFICATIONS=shoutrrr
-      - WATCHTOWER_NOTIFICATION_LEVEL=info
     deploy:
       resources:
         limits:
@@ -47,25 +48,9 @@ services:
           cpus: '0.2'
     security_opt:
       - no-new-privileges:true
-    read_only: true
     labels:
       - "com.centurylinklabs.watchtower.enable=false"
-      - "autoheal=true"
 
-  autoheal:
-    image: willfarrell/autoheal
-    container_name: autoheal
-    restart: unless-stopped
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock:ro
-    environment:
-      - AUTOHEAL_CONTAINER_LABEL=autoheal
-      - AUTOHEAL_INTERVAL=60
-      - AUTOHEAL_START_PERIOD=300
-    deploy:
-      resources:
-        limits:
-          memory: 64M
-          cpus: '0.1'
-    security_opt:
-      - no-new-privileges:true
+volumes:
+  vitepress_cache:
+  vitepress_temp:

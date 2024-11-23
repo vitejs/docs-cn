@@ -11,6 +11,11 @@ RUN apk update && \
 
 WORKDIR /app
 
+# Create and set permissions for temp directory
+RUN mkdir -p /app/.vitepress/cache && \
+    mkdir -p /app/.vitepress/temp && \
+    chown -R node:node /app
+
 # Copy only package files first to leverage cache
 COPY --chown=node:node package.json pnpm-lock.yaml* ./
 
@@ -28,6 +33,9 @@ USER node
 
 # Build the application
 RUN pnpm run build
+
+# Ensure temp directories are writable
+VOLUME ["/app/.vitepress/cache", "/app/.vitepress/temp"]
 
 EXPOSE 5173
 
