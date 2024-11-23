@@ -3,6 +3,7 @@ FROM node:18-alpine
 # Combine RUN commands to reduce layers and set PNPM_HOME
 ENV PNPM_HOME="/pnpm"
 ENV PATH="$PNPM_HOME:$PATH"
+
 RUN apk update && \
     apk upgrade && \
     apk add --no-cache bash git && \
@@ -11,7 +12,7 @@ RUN apk update && \
 WORKDIR /app
 
 # Copy only package files first to leverage cache
-COPY package.json pnpm-lock.yaml* ./
+COPY --chown=node:node package.json pnpm-lock.yaml* ./
 
 # Combine install commands and clean up cache
 RUN pnpm install --shamefully-hoist && \
@@ -19,14 +20,14 @@ RUN pnpm install --shamefully-hoist && \
     pnpm store prune && \
     rm -rf /root/.npm/* /root/.pnpm-store/* /root/.node-gyp/*
 
-# Copy source after installing dependencies
-COPY . .
+# Copy source after installing dependencies with correct permissions
+COPY --chown=node:node . .
+
+# Switch to node user before building
+USER node
 
 # Build the application
 RUN pnpm run build
-
-# Use non-root user for better security
-USER node
 
 EXPOSE 5173
 
