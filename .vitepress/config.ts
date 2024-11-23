@@ -321,11 +321,15 @@ export default withMermaid(
                 items: [
                   {
                     text: 'Wireguard',
-                    link: '/Infrastructure/Wireguard'
+                    link: '/Infrastructure/Networking/Wireguard'
                   },
                   {
                     text: 'Traefik',
-                    link: '/Infrastructure/Traefik'
+                    link: '/Infrastructure/Networking/Traefik'
+                  },
+                  {
+                    text: 'Authentik',
+                    link: '/Infrastructure/Networking/Authentik'
                   }
                 ]
               }
