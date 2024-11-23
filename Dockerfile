@@ -34,7 +34,7 @@ RUN ls -la /app/.vitepress && \
     chown -R node:node /app/.vitepress
 
 # Switch to node user before building
-USER node
+# USER node
 
 # Verify the config file exists and has correct permissions
 RUN if [ -f "/app/.vitepress/config.ts" ]; then \
