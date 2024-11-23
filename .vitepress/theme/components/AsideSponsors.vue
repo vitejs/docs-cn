@@ -58,7 +58,7 @@ const sponsors = computed(() => {
 }
 .viteconf img {
   transition: transform 0.5s;
-  transform: scale(1.25);
+  transform: scale(1.05);
 }
 .viteconf:hover img {
   transform: scale(1.75);

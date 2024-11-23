@@ -162,7 +162,6 @@ const { data } = useSponsor()
       border-radius: 12px;
       border: 1px solid rgba(38, 38, 38, 0.7);
       background: #161616;
-      padding: 24px;
 
       @media (min-width: 768px) {
         background: rgba(38, 38, 38, 0.25);
@@ -187,10 +186,7 @@ const { data } = useSponsor()
     }
 
     &:deep(.vp-sponsor-grid-item .vp-sponsor-grid-image) {
-      transition: transform 0.82s ease-in-out;
-      width: 180px;
-      height: auto;
-      max-width: 100%;
+      transition: transform 0.2s ease-in-out;
     }
 
     &:deep(.vp-sponsor-grid-item:hover .vp-sponsor-grid-image) {
