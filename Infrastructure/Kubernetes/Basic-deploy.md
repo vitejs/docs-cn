@@ -10,7 +10,7 @@ description: A comprehensive guide for deploying Kubernetes and Portainer on Lin
 
 Before beginning the installation, ensure your system meets these requirements:
 
-- Linux server (Ubuntu 20.04+ recommended)
+- Linux server (Ubuntu 22.04+ or Debian 11+ recommended)
 - Minimum 2 CPU cores
 - Minimum 4GB RAM
 - At least 20GB free disk space
@@ -23,17 +23,15 @@ Create a `.env` file to store our configuration variables:
 
 ```bash
 # Kubernetes Configuration
-K8S_VERSION=1.27.0
 POD_NETWORK_CIDR=10.244.0.0/16
 SERVICE_CIDR=10.96.0.0/12
-KUBERNETES_VERSION=1.27.0-00
 
 # Node Configuration
-NODE_IP=192.168
+NODE_IP=192.168.1.100  # Change to your server IP
 HOSTNAME=k8s-master
 
 # Portainer Configuration
-PORTAINER_VERSION=ce-latest-ee-2.24.0
+PORTAINER_VERSION=ce-latest-ee-2.19.1
 PORTAINER_PORT=30777
 ```
 
@@ -41,8 +39,7 @@ PORTAINER_PORT=30777
 
 First, let's update the system and install necessary dependencies:
 
-::: code-group
-```sh [Ubuntu/Debian]
+```bash
 # Update system
 sudo apt-get update && sudo apt-get upgrade -y
 
@@ -56,43 +53,27 @@ sudo apt-get install -y \
     software-properties-common
 ```
 
-```sh [RHEL/CentOS]
-# Update system
-sudo dnf update -y
-
-# Install required packages
-sudo dnf install -y \
-    curl \
-    gnupg2 \
-    container-selinux \
-    dnf-plugins-core
-```
-:::
-
 ## Container Runtime Installation
 
-We'll use containerd as our container runtime:
+We'll install and configure containerd:
 
 ```bash
 # Install containerd
-curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+sudo apt update
+sudo apt install -y containerd
 
-echo \
-  "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu \
-  $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
-
-sudo apt-get update
-sudo apt-get install -y containerd.io
-
-# Configure containerd
+# Create containerd configuration directory
 sudo mkdir -p /etc/containerd
-containerd config default | sudo tee /etc/containerd/config.toml
 
-# Enable SystemdCgroup
+# Generate default configuration
+containerd config default | sudo tee /etc/containerd/config.toml >/dev/null 2>&1
+
+# Update SystemdCgroup setting
 sudo sed -i 's/SystemdCgroup = false/SystemdCgroup = true/g' /etc/containerd/config.toml
 
 # Restart containerd
 sudo systemctl restart containerd
+sudo systemctl enable containerd
 ```
 
 ## Kubernetes Installation
@@ -122,18 +103,17 @@ sudo sysctl --system
 ### 2. Install Kubernetes Components
 
 ```bash
+# Create keyring directory
+sudo mkdir -p /etc/apt/keyrings
+
 # Add Kubernetes repository
-curl -fsSL https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo gpg --dearmor -o /usr/share/keyrings/kubernetes-archive-keyring.gpg
+curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.28/deb/Release.key | sudo gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg
 
-echo "deb [signed-by=/usr/share/keyrings/kubernetes-archive-keyring.gpg] https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee /etc/apt/sources.list.d/kubernetes.list
+echo "deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.28/deb/ /" | sudo tee /etc/apt/sources.list.d/kubernetes.list
 
-# Install specific version from .env
+# Install Kubernetes components
 sudo apt-get update
-sudo apt-get install -y \
-    kubelet=${KUBERNETES_VERSION} \
-    kubeadm=${KUBERNETES_VERSION} \
-    kubectl=${KUBERNETES_VERSION}
-
+sudo apt-get install -y kubelet kubeadm kubectl
 sudo apt-mark hold kubelet kubeadm kubectl
 ```
 
@@ -165,7 +145,7 @@ kubectl apply -f https://raw.githubusercontent.com/projectcalico/calico/v3.25.0/
 ### 1. Create Required Directories
 
 ```bash
-mkdir -p ./volumes/portainer
+sudo mkdir -p /volumes/portainer
 ```
 
 ### 2. Deploy Portainer
@@ -208,10 +188,10 @@ metadata:
 spec:
   type: NodePort
   ports:
-    - port: 9000
-      targetPort: 9000
-      nodePort: ${PORTAINER_PORT}
-      protocol: TCP
+  - port: 9000
+    targetPort: 9000
+    nodePort: ${PORTAINER_PORT}
+    protocol: TCP
   selector:
     app: portainer
 
@@ -290,7 +270,7 @@ http://<your-server-ip>:${PORTAINER_PORT}
 
 ::: tip Initial Setup
 When accessing Portainer for the first time:
-1. Create an admin user
+1. Create an admin user with a strong password
 2. Choose "Get Started"
 3. Select the local Kubernetes environment
 4. Begin managing your cluster
@@ -322,6 +302,15 @@ kubectl get svc -n portainer
 kubectl get endpoints -n portainer
 ```
 
+4. **Container Runtime Issues**:
+```bash
+# Check containerd status
+sudo systemctl status containerd
+
+# View containerd logs
+sudo journalctl -u containerd
+```
+
 ## Security Considerations
 
 ::: tip Security Best Practices
@@ -330,6 +319,7 @@ kubectl get endpoints -n portainer
 3. Implement network policies
 4. Enable RBAC for all resources
 5. Regular security audits
+6. Keep containerd and Kubernetes components updated
 :::
 
 ## Maintenance
@@ -342,8 +332,8 @@ Create a backup script `backup-k8s.sh`:
 #!/bin/bash
 
 # Backup directory
-BACKUP_DIR="./backups/$(date +%Y%m%d)"
-mkdir -p $BACKUP_DIR
+BACKUP_DIR="/backups/$(date +%Y%m%d)"
+sudo mkdir -p $BACKUP_DIR
 
 # Backup etcd
 sudo cp -r /var/lib/etcd $BACKUP_DIR/
@@ -352,7 +342,7 @@ sudo cp -r /var/lib/etcd $BACKUP_DIR/
 sudo cp -r /etc/kubernetes/pki $BACKUP_DIR/
 
 # Backup Portainer data
-sudo cp -r ./volumes/portainer $BACKUP_DIR/
+sudo cp -r /volumes/portainer $BACKUP_DIR/
 ```
 
 ### Updates
