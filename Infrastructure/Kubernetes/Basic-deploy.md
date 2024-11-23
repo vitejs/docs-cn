@@ -150,89 +150,10 @@ sudo mkdir -p /volumes/portainer
 
 ### 2. Deploy Portainer
 
-Create a file named `portainer-deploy.yaml`:
-
-```yaml
-apiVersion: v1
-kind: Namespace
-metadata:
-  name: portainer
-
----
-apiVersion: v1
-kind: ServiceAccount
-metadata:
-  name: portainer-sa-clusteradmin
-  namespace: portainer
-
----
-apiVersion: rbac.authorization.k8s.io/v1
-kind: ClusterRoleBinding
-metadata:
-  name: portainer-crb-clusteradmin
-roleRef:
-  apiGroup: rbac.authorization.k8s.io
-  kind: ClusterRole
-  name: cluster-admin
-subjects:
-- kind: ServiceAccount
-  name: portainer-sa-clusteradmin
-  namespace: portainer
-
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: portainer
-  namespace: portainer
-spec:
-  type: NodePort
-  ports:
-  - port: 9000
-    targetPort: 9000
-    nodePort: ${PORTAINER_PORT}
-    protocol: TCP
-  selector:
-    app: portainer
-
----
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: portainer
-  namespace: portainer
-spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: portainer
-  template:
-    metadata:
-      labels:
-        app: portainer
-    spec:
-      serviceAccountName: portainer-sa-clusteradmin
-      containers:
-      - name: portainer
-        image: portainer/portainer-ce:${PORTAINER_VERSION}
-        imagePullPolicy: Always
-        ports:
-        - containerPort: 9000
-          protocol: TCP
-        volumeMounts:
-        - name: portainer-data
-          mountPath: /data
-      volumes:
-      - name: portainer-data
-        hostPath:
-          path: /volumes/portainer
-          type: Directory
-```
-
-Apply the configuration:
+Run:
 
 ```bash
-envsubst < portainer-deploy.yaml | kubectl apply -f -
+kubectl apply -n portainer -f https://downloads.portainer.io/ce2-16/portainer.yaml
 ```
 
 ## Verification
