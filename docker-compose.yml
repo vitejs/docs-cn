@@ -25,7 +25,6 @@ services:
       - no-new-privileges:true
     labels:
       - "com.centurylinklabs.watchtower.enable=true"
-      - "traefik.enable=true"
       - "autoheal=true"
 
   watchtower:
@@ -51,6 +50,24 @@ services:
     labels:
       - "com.centurylinklabs.watchtower.enable=false"
 
+  autoheal:
+    image: willfarrell/autoheal
+    container_name: autoheal
+    restart: unless-stopped
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    environment:
+      - AUTOHEAL_CONTAINER_LABEL=autoheal
+      - AUTOHEAL_INTERVAL=60
+      - AUTOHEAL_START_PERIOD=300
+    deploy:
+      resources:
+        limits:
+          memory: 64M
+          cpus: '0.1'
+    security_opt:
+      - no-new-privileges:true
+      
 volumes:
   vitepress_cache:
   vitepress_temp:
