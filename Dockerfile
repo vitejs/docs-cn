@@ -11,10 +11,10 @@ RUN apk update && \
 
 WORKDIR /app
 
-# Create and set permissions for temp directory
-RUN mkdir -p /app/.vitepress/cache && \
-    mkdir -p /app/.vitepress/temp && \
-    chown -R node:node /app
+# Create necessary directories with proper permissions
+RUN mkdir -p /app/.vitepress && \
+    chown -R node:node /app && \
+    chmod -R 755 /app
 
 # Copy only package files first to leverage cache
 COPY --chown=node:node package.json pnpm-lock.yaml* ./
@@ -28,14 +28,25 @@ RUN pnpm install --shamefully-hoist && \
 # Copy source after installing dependencies with correct permissions
 COPY --chown=node:node . .
 
+# Ensure .vitepress directory and its contents have correct permissions
+RUN ls -la /app/.vitepress && \
+    chmod -R 755 /app/.vitepress && \
+    chown -R node:node /app/.vitepress
+
 # Switch to node user before building
-# USER node
+USER node
+
+# Verify the config file exists and has correct permissions
+RUN if [ -f "/app/.vitepress/config.ts" ]; then \
+      echo "Config file exists and permissions are:" && \
+      ls -l /app/.vitepress/config.ts; \
+    else \
+      echo "Config file is missing!" && \
+      exit 1; \
+    fi
 
 # Build the application
 RUN pnpm run build
-
-# Ensure temp directories are writable
-VOLUME ["/app/.vitepress/cache", "/app/.vitepress/temp"]
 
 EXPOSE 5173
 
