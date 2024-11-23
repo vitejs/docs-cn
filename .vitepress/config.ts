@@ -279,6 +279,10 @@ export default withMermaid(
                         link: '/Infrastructure/Kubernetes/Install'
                       },
                       {
+                        text: 'Basic Deployment',
+                        link: '/Infrastructure/Kubernetes/Basic-deploy'
+                      },
+                      {
                         text: 'Configuration',
                         link: '/Infrastructure/Kubernetes/Configuration'
                       }
