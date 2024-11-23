@@ -1,6 +1,3 @@
-I'll help you create a comprehensive documentation for Authentik using VitePress format. I'll include the configuration details and explanations based on the provided docker-compose file.
-
-```markdown
 ---
 layout: doc
 title: Authentik - Identity Provider Setup Guide
