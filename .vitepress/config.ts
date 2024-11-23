@@ -266,7 +266,7 @@ export default withMermaid(
                 items: [
                   {
                     text: '📌 Docker',
-                    collapsed: false,
+                    collapsed: true,
                     items: [
                       {
                         text: 'Docker',
@@ -284,7 +284,7 @@ export default withMermaid(
                   },
                   {
                     text: '📌 Kubernetes',
-                    collapsed: false,
+                    collapsed: true,
                     items: [
                       {
                         text: 'Install',
@@ -298,7 +298,7 @@ export default withMermaid(
                   },
                   {
                     text: '📌 Terraform',
-                    collapsed: false,
+                    collapsed: true,
                     items: [
                       {
                         text: 'Install',
