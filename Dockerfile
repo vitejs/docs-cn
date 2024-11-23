@@ -1,5 +1,7 @@
 FROM node:18-alpine
 
+RUN apk update && apk upgrade && apk add --no-cache bash git 
+
 WORKDIR /app
 
 RUN npm install -g pnpm
@@ -18,4 +20,4 @@ RUN pnpm run build
 
 EXPOSE 5173
 
-CMD ["pnpm", "run", "dev"]
+CMD ["pnpm", "run", "serve"]
