@@ -240,19 +240,7 @@ export default withMermaid(
           activeMatch: '/Infrastructure/'
         },
         { text: 'CyberSec', link: '/CyberSec/', activeMatch: '/CyberSec/' },
-        {
-          text: 'Related Links',
-          items: [
-            {
-              items: [
-                {
-                  text: 'Bluesky',
-                  link: 'https://bsky.app/profile/vite.dev'
-                }
-              ]
-            }
-          ]
-        }
+        { text: 'Development', link: '/Development/', activeMatch: '/Development/' },
       ],
 
       sidebar: {
@@ -326,7 +314,7 @@ export default withMermaid(
                   }
                 ]
               },
-              
+
               {
                 text: 'Networking',
                 collapsed: false,
@@ -369,6 +357,28 @@ export default withMermaid(
                   {
                     text: 'LinuxHardening',
                     link: '/CyberSec/LinuxHardening'
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        '/Development/': [
+          {
+            text: 'Development',
+            items: [
+
+              {
+                text: 'Best Practices',
+                collapsed: false,
+                items: [
+                  {
+                    text: 'IDE Setup',
+                    link: '/Development/VScode-Optimizations'
+                  },
+                  {
+                    text: 'Version Control',
+                    link: '/Development/AutoVersionning'
                   }
                 ]
               }
