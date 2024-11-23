@@ -22,7 +22,7 @@ export default {
     })
   },
   enhanceApp({ app }) {
-    googleAnalytics({id:"G-W7BV29JNKS"})
+    googleAnalytics({ id:"GTM-P4PD4B4B"})
     app.component('SvgImage', SvgImage)
     app.component('ReleaseTag', ReleaseTag)
     app.use(TwoslashFloatingVue)
