@@ -41,36 +41,19 @@ const { data } = useSponsor()
     <!-- Title Section -->
     <img
       class="icon-heart"
-      src="/heart.svg"
-      alt="Vite is made possible by our contributors, partner companies, and sponsors"
+      src="/tech-stack.svg"
+      alt="Our Technology Stack"
       width="58"
       height="55"
     />
-    <h2>免费 &amp; 开源</h2>
+    <h2>Technology Stack</h2>
     <h4>
-      Vite 基于 MIT 许可发布，并将始终保持免费和开源。这一切都要感谢我们的贡献者和以下公司：
+      Our documentation covers various modern technologies that power our infrastructure and services:
     </h4>
 
-    <h4>由以下团队呈现</h4>
-    <div class="voidzero">
-      <a href="https://voidzero.dev" target="_blank">
-        <img src="./voidzero.svg" />
-      </a>
-    </div>
-
-    <!-- Sponsor Grid -->
+    <!-- Tech Stack Grid -->
     <div class="sponsor-grid">
       <VPSponsors v-if="data" :data="data" />
-    </div>
-
-    <!-- Sponsorship Actions -->
-    <div class="sponsor-actions">
-      <a
-        href="https://github.com/sponsors/vitejs"
-        target="_blank"
-        class="btn btn--outline btn--rounded"
-        >成为赞助商</a
-      >
     </div>
   </div>
 </template>
@@ -179,6 +162,7 @@ const { data } = useSponsor()
       border-radius: 12px;
       border: 1px solid rgba(38, 38, 38, 0.7);
       background: #161616;
+      padding: 24px;
 
       @media (min-width: 768px) {
         background: rgba(38, 38, 38, 0.25);
@@ -203,7 +187,10 @@ const { data } = useSponsor()
     }
 
     &:deep(.vp-sponsor-grid-item .vp-sponsor-grid-image) {
-      transition: transform 0.2s ease-in-out;
+      transition: transform 0.82s ease-in-out;
+      width: 180px;
+      height: auto;
+      max-width: 100%;
     }
 
     &:deep(.vp-sponsor-grid-item:hover .vp-sponsor-grid-image) {

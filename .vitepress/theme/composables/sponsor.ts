@@ -1,135 +1,95 @@
-import { onMounted, onUnmounted, ref } from 'vue'
+import { onMounted, ref } from 'vue'
 
-interface Sponsors {
-  special: Sponsor[]
-  platinum: Sponsor[]
-  platinum_china: Sponsor[]
-  gold: Sponsor[]
-  silver: Sponsor[]
-  bronze: Sponsor[]
+interface TechLogos {
+  infrastructure: TechLogo[]
+  containerization: TechLogo[]
+  security: TechLogo[]
 }
 
-interface Sponsor {
+interface TechLogo {
   name: string
   img: string
   url: string
-  /**
-   * Expects to also have an **inversed** image with `-dark` postfix.
-   */
   hasDark?: true
 }
 
-// shared data across instances so we load only once.
 const data = ref()
 
-const dataHost = 'https://sponsors.vuejs.org'
-const dataUrl = `${dataHost}/vite.json`
-
-const viteSponsors: Pick<Sponsors, 'special' | 'gold'> = {
-  special: [
-    // sponsors patak-dev
+const techStack: TechLogos = {
+  infrastructure: [
     {
-      name: 'StackBlitz',
-      url: 'https://stackblitz.com',
-      img: '/stackblitz.svg',
+      name: 'Docker',
+      url: 'https://www.docker.com',
+      img: '/images/docker.svg',
+      hasDark: true
     },
-    // sponsors antfu
     {
-      name: 'NuxtLabs',
-      url: 'https://nuxtlabs.com',
-      img: '/nuxtlabs.svg',
+      name: 'Kubernetes',
+      url: 'https://kubernetes.io',
+      img: '/images/kubernetes.svg',
+      hasDark: true
     },
-    // sponsors bluwy
     {
-      name: 'Astro',
-      url: 'https://astro.build',
-      img: '/astro.svg',
-    },
-  ],
-  gold: [
-    // now automated via sponsors.vuejs.org too
-  ],
-}
-
-function toggleDarkLogos() {
-  if (data.value) {
-    const isDark = document.documentElement.classList.contains('dark')
-    data.value.forEach(({ items }) => {
-      items.forEach((s: Sponsor) => {
-        if (s.hasDark) {
-          s.img = isDark
-            ? s.img.replace(/(\.\w+)$/, '-dark$1')
-            : s.img.replace(/-dark(\.\w+)$/, '$1')
-        }
-      })
-    })
-  }
-}
-
-export function useSponsor() {
-  onMounted(async () => {
-    const ob = new MutationObserver((list) => {
-      for (const m of list) {
-        if (m.attributeName === 'class') {
-          toggleDarkLogos()
-        }
-      }
-    })
-    ob.observe(document.documentElement, { attributes: true })
-    onUnmounted(() => {
-      ob.disconnect()
-    })
-
-    if (data.value) {
-      return
+      name: 'Terraform',
+      url: 'https://www.terraform.io',
+      img: '/images/terraform.svg',
+      hasDark: true
     }
-
-    const result = await fetch(dataUrl)
-    const json = await result.json()
-
-    data.value = mapSponsors(json)
-    toggleDarkLogos()
-  })
-
-  return {
-    data,
-  }
-}
-
-function mapSponsors(sponsors: Sponsors) {
-  return [
+  ],
+  containerization: [
     {
-      tier: '合作伙伴',
-      size: 'big',
-      items: viteSponsors['special'],
+      name: 'Traefik',
+      url: 'https://traefik.io',
+      img: '/images/traefik.svg',
+      hasDark: true
     },
     {
-      tier: '铂金赞助商',
-      size: 'big',
-      items: mapImgPath(sponsors['platinum']),
+      name: 'Portainer',
+      url: 'https://www.portainer.io',
+      img: '/images/portainer.svg',
+      hasDark: true
+    }
+  ],
+  security: [
+    {
+      name: 'CrowdSec',
+      url: 'https://www.crowdsec.net',
+      img: '/images/crowdsec.svg',
+      hasDark: true
     },
     {
-      tier: '黄金赞助商',
-      size: 'medium',
-      items: [...mapImgPath(sponsors['gold']), ...viteSponsors['gold']],
-    },
+      name: 'Vaultwarden',
+      url: 'https://github.com/dani-garcia/vaultwarden',
+      img: '/images/vaultwarden.svg',
+      hasDark: true
+    }
   ]
 }
 
-const viteSponsorNames = new Set(
-  Object.values(viteSponsors).flatMap((sponsors) =>
-    sponsors.map((s) => s.name),
-  ),
-)
+export function useSponsor() {
+  onMounted(() => {
+    if (data.value) return
 
-/**
- * Map Vue/Vite sponsors data to objects and filter out Vite-specific sponsors
- */
-function mapImgPath(sponsors: Sponsor[]) {
-  return sponsors
-    .filter((sponsor) => !viteSponsorNames.has(sponsor.name))
-    .map((sponsor) => ({
-      ...sponsor,
-      img: `${dataHost}/images/${sponsor.img}`,
-    }))
+    data.value = [
+      {
+        tier: 'Infrastructure',
+        size: 'big',
+        items: techStack.infrastructure
+      },
+      {
+        tier: 'Containerization',
+        size: 'medium',
+        items: techStack.containerization
+      },
+      {
+        tier: 'Security',
+        size: 'medium',
+        items: techStack.security
+      }
+    ]
+  })
+
+  return {
+    data
+  }
 }
