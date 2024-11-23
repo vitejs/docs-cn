@@ -1,9 +1,8 @@
-version: '3.8'
-
 services:
   docs:
     image: satcomx00/custom-doc-website:latest
     container_name: docs
+    user: "node"
     ports:
       - "0.0.0.0:5173:5173"
     restart: unless-stopped
@@ -67,7 +66,7 @@ services:
           cpus: '0.1'
     security_opt:
       - no-new-privileges:true
-      
+
 volumes:
   vitepress_cache:
   vitepress_temp:
