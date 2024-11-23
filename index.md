@@ -40,6 +40,6 @@ import FeatureCI from './.vitepress/theme/components/landing/2. feature-section/
   </FeatureSection>
   <FrameworksSection />
   <CommunitySection />
-  <SponsorSection />
+  <!-- <SponsorSection /> -->
   <GetStartedSection />
 </div>
