@@ -49,4 +49,4 @@ For any questions or concerns regarding these Terms of Service, please contact t
 
 Thank you for using AI-Ticket-Bot! We hope it enhances your Discord server experience.
 
-[Join Support Server](https://discord.gg/KCVNj6eayb)
+[Join Support Server](https://discord.gg/UsbqtKavZX)

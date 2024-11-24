@@ -53,4 +53,4 @@ This Privacy Policy may be updated periodically. We will notify users of signifi
 
 For questions or concerns regarding this Privacy Policy, please contact the developer through the Bot's support server.
 
-[Join Support Server](https://discord.gg/KCVNj6eayb)
+[Join Support Server](https://discord.gg/UsbqtKavZX)
