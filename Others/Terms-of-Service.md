@@ -48,3 +48,5 @@ These Terms of Service may be updated from time to time. We will notify users of
 For any questions or concerns regarding these Terms of Service, please contact the developer through the bot's support server.
 
 Thank you for using AI-Ticket-Bot! We hope it enhances your Discord server experience.
+
+[Join Support Server](https://discord.gg/KCVNj6eayb)

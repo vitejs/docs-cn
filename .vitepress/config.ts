@@ -404,11 +404,11 @@ export default withMermaid(
                 items: [
                   {
                     text: 'Bot Terms of Service',
-                    link: '/Development/Others/Terms-of-Service'
+                    link: '/Others/Terms-of-Service'
                   },
                   {
                     text: 'Bot Privacy Policy',
-                    link: '/Development/Others/Privacy-Policy'
+                    link: '/Others/Privacy-Policy'
                   }
                 ]
               }
