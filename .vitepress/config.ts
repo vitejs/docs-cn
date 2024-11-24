@@ -241,6 +241,7 @@ export default withMermaid(
         },
         { text: 'CyberSec', link: '/CyberSec/', activeMatch: '/CyberSec/' },
         { text: 'Development', link: '/Development/', activeMatch: '/Development/' },
+        { text: 'Others', link: '/Others/', activeMatch: '/Others/' },
       ],
 
       sidebar: {
@@ -387,6 +388,27 @@ export default withMermaid(
                   {
                     text: 'Version Control',
                     link: '/Development/AutoVersionning'
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        '/Others/': [
+          {
+            text: 'Others',
+            items: [
+              {
+                text: 'Miscellaneous',
+                collapsed: false,
+                items: [
+                  {
+                    text: 'Bot Terms of Service',
+                    link: '/Development/Others/Terms-of-Service'
+                  },
+                  {
+                    text: 'Bot Privacy Policy',
+                    link: '/Development/Others/Privacy-Policy'
                   }
                 ]
               }
