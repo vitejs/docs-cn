@@ -31,7 +31,6 @@
 		"commit-msg": "node scripts/verifyCommit.js"
 	},
 	"dependencies": {
-		"@datagouv/vitepress-plugin-matomo": "github:datagouv/vitepress-plugin-matomo",
 		"mermaid": "^11.4.0",
 		"vitepress-plugin-google-analytics": "^1.0.2",
 		"vitepress-plugin-mermaid": "^2.0.17"
