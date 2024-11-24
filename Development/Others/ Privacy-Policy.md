@@ -15,11 +15,14 @@ AI-Ticket-Bot is a Discord ticketing system developed by an independent DevSecOp
 
 ## Information Collection
 
+::: tip
+
 The Bot collects the following information to provide its services:
 
 - **User Data:** Discord User IDs of participants in ticket conversations.
 - **Server Data:** Discord Server IDs where the Bot is active.
 - **Ticket Data:** Full transcriptions of ticket conversations.
+:::
 
 ## Use of Information
 
@@ -38,7 +41,6 @@ We implement appropriate technical and organizational measures to protect your i
 You have the right to:
 
 - **Access:** Request a copy of the information the Bot holds about you.
-- **Rectification:** Request correction of any inaccurate information.
 - **Deletion:** Request deletion of your information, subject to legal obligations.
 
 To exercise these rights, please contact the developer through the Bot's support server.
