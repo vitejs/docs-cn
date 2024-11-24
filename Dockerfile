@@ -21,7 +21,7 @@ COPY --chown=node:node package.json pnpm-lock.yaml* ./
 
 # Combine install commands and clean up cache
 RUN pnpm install --shamefully-hoist && \
-    pnpm install vitepress-plugin-mermaid mermaid vitepress-plugin-group-icons vitepress-plugin-matomo -D && \
+    pnpm install vitepress-plugin-mermaid mermaid vitepress-plugin-group-icons https://github.com/datagouv/vitepress-plugin-matomo -D && \
     pnpm store prune && \
     rm -rf /root/.npm/* /root/.pnpm-store/* /root/.node-gyp/*
 
