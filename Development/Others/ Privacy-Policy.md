@@ -1,7 +1,7 @@
 ---
 layout: doc
-title: Terms of Service
-description: Terms of Service for AI-Ticket-Bot
+title: Privacy Policy
+description: Privacy Policy for AI-Ticket-Bot
 mermaidTheme: forest
 ---
 
