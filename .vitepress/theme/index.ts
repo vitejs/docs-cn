@@ -25,11 +25,6 @@ export default {
     app.component('SvgImage', SvgImage)
     app.component('ReleaseTag', ReleaseTag)
     app.use(TwoslashFloatingVue)
-    matomo({
-      router: app.router,
-      siteID: 2, // Replace with your site id
-      trackerUrl: "https://metrics.hash-trader.com" // Replace with your matomo url
-    })
   },
 } satisfies Theme
 
