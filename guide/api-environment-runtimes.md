@@ -189,6 +189,7 @@ export interface ModuleRunnerOptions {
     | 'prepareStackTrace'
     | InterceptorOptions
   /**
+<<<<<<< HEAD
    * 禁用 HMR 或配置 HMR 选项
    */
   hmr?:
@@ -199,6 +200,13 @@ export interface ModuleRunnerOptions {
          */
         logger?: false | HMRLogger
       }
+=======
+   * Disable HMR or configure HMR options.
+   *
+   * @default true
+   */
+  hmr?: boolean | ModuleRunnerHmr
+>>>>>>> b9557268cd2588d3930f540549d286bcbee26552
   /**
    * 自定义模块缓存。如果未提供，它将创建一个单独的模块缓存给
    * 每个模块运行器实例
@@ -356,6 +364,7 @@ export const runner = new ModuleRunner(
         return response.json()
       },
     },
+    hmr: false, // disable HMR as HMR requires transport.connect
   },
   new ESModulesEvaluator(),
 )
