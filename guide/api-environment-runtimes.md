@@ -118,7 +118,7 @@ function createWorkerdDevEnvironment(
 export class ModuleRunner {
   constructor(
     public options: ModuleRunnerOptions,
-    public evaluator: ModuleEvaluator,
+    public evaluator: ModuleEvaluator = new ESModulesEvaluator(),
     private debug?: ModuleRunnerDebugger,
   ) {}
   /**
@@ -165,8 +165,21 @@ await moduleRunner.import('/src/entry-point.js')
 
 ## `ModuleRunnerOptions`
 
-```ts
-export interface ModuleRunnerOptions {
+```ts twoslash
+import type {
+  InterceptorOptions as InterceptorOptionsRaw,
+  ModuleRunnerHmr as ModuleRunnerHmrRaw,
+  EvaluatedModules,
+} from 'vite/module-runner'
+import type { Debug } from '@type-challenges/utils'
+
+type InterceptorOptions = Debug<InterceptorOptionsRaw>
+type ModuleRunnerHmr = Debug<ModuleRunnerHmrRaw>
+/** see below */
+type ModuleRunnerTransport = unknown
+
+// ---cut---
+interface ModuleRunnerOptions {
   /**
    * 项目根目录
    */
@@ -206,7 +219,13 @@ export interface ModuleRunnerOptions {
 
 **类型签名：**
 
-```ts
+```ts twoslash
+import type { ModuleRunnerContext as ModuleRunnerContextRaw } from 'vite/module-runner'
+import type { Debug } from '@type-challenges/utils'
+
+type ModuleRunnerContext = Debug<ModuleRunnerContextRaw>
+
+// ---cut---
 export interface ModuleEvaluator {
   /**
    *  转换后代码中前缀行的数量。
@@ -237,7 +256,11 @@ Vite 默认导出了实现此接口的 `ESModulesEvaluator`。它使用 `new Asy
 
 **类型签名：**
 
-```ts
+```ts twoslash
+import type { ModuleRunnerTransportHandlers } from 'vite/module-runner'
+/** an object */
+type HotPayload = unknown
+// ---cut---
 interface ModuleRunnerTransport {
   connect?(handlers: ModuleRunnerTransportHandlers): Promise<void> | void
   disconnect?(): Promise<void> | void
