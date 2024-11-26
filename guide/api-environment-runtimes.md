@@ -190,15 +190,10 @@ export interface ModuleRunnerOptions {
     | InterceptorOptions
   /**
    * 禁用 HMR 或配置 HMR 选项
+   *
+   * @default true
    */
-  hmr?:
-    | false
-    | {
-        /**
-         * 配置 HMR 日志.
-         */
-        logger?: false | HMRLogger
-      }
+  hmr?: boolean | ModuleRunnerHmr
   /**
    * 自定义模块缓存。如果未提供，它将创建一个单独的模块缓存给
    * 每个模块运行器实例
@@ -356,6 +351,7 @@ export const runner = new ModuleRunner(
         return response.json()
       },
     },
+    hmr: false, // disable HMR as HMR requires transport.connect
   },
   new ESModulesEvaluator(),
 )
