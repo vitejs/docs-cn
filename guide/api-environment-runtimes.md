@@ -175,7 +175,7 @@ import type { Debug } from '@type-challenges/utils'
 
 type InterceptorOptions = Debug<InterceptorOptionsRaw>
 type ModuleRunnerHmr = Debug<ModuleRunnerHmrRaw>
-/** see below */
+/** 见下文 */
 type ModuleRunnerTransport = unknown
 
 // ---cut---
@@ -258,7 +258,7 @@ Vite 默认导出了实现此接口的 `ESModulesEvaluator`。它使用 `new Asy
 
 ```ts twoslash
 import type { ModuleRunnerTransportHandlers } from 'vite/module-runner'
-/** an object */
+/** 一个对象 */
 type HotPayload = unknown
 // ---cut---
 interface ModuleRunnerTransport {

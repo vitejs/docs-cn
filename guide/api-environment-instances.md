@@ -85,10 +85,7 @@ class DevEnvironment {
 }
 ```
 
-<<<<<<< HEAD
-其中 `TransformResult` 是：
-=======
-With `DevEnvironmentContext` being:
+其中 `DevEnvironmentContext`是：
 
 ```ts
 interface DevEnvironmentContext {
@@ -102,8 +99,7 @@ interface DevEnvironmentContext {
 }
 ```
 
-and with `TransformResult` being:
->>>>>>> db0517b83d2535549c9c929b32afa3ae005d20ed
+`TransformResult` 是：
 
 ```ts
 interface TransformResult {

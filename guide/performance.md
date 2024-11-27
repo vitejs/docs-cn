@@ -52,11 +52,7 @@ Vite 的内部和官方插件已经优化，以在提供与更广泛的生态系
 如果你是插件作者，请确保只在需要时调用 [`this.resolve`](https://rollupjs.org/plugin-development/#this-resolve) 以减少上述检查的次数。
 
 ::: tip TypeScript
-<<<<<<< HEAD
-如果你正在使用 TypeScript，启用 `tsconfig.json` 中的 `compilerOptions` 的 `"moduleResolution": "Bundler"` 和 `"allowImportingTsExtensions": true` 以直接在代码中使用 `.ts` 和 `.tsx` 扩展名。
-=======
-If you are using TypeScript, enable `"moduleResolution": "bundler"` and `"allowImportingTsExtensions": true` in your `tsconfig.json`'s `compilerOptions` to use `.ts` and `.tsx` extensions directly in your code.
->>>>>>> db0517b83d2535549c9c929b32afa3ae005d20ed
+如果你正在使用 TypeScript，启用 `tsconfig.json` 中的 `compilerOptions` 的 `"moduleResolution": "bundler"` 和 `"allowImportingTsExtensions": true` 以直接在代码中使用 `.ts` 和 `.tsx` 扩展名。
 :::
 
 ## 避免使用桶文件 {#avoid-barrel-files}
