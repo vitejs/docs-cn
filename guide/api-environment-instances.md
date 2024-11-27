@@ -63,13 +63,17 @@ class DevEnvironment {
    */
   config: ResolvedConfig & ResolvedDevEnvironmentOptions
 
-  constructor(name, config, { hot, options }: DevEnvironmentSetup)
+  constructor(
+    name: string,
+    config: ResolvedConfig,
+    context: DevEnvironmentContext,
+  )
 
   /**
    * 解析 URL 到一个 id，加载它，并使用插件管道
    * 处理代码。模块图也会被更新。
    */
-  async transformRequest(url: string): TransformResult
+  async transformRequest(url: string): Promise<TransformResult | null>
 
   /**
    * 注册一个低优先级处理的请求。这对于避免瀑布效应
@@ -77,11 +81,25 @@ class DevEnvironment {
    * 信息，因此它可以预热模块图，使得当模块被请求时
    * 已经处理完毕。
    */
-  async warmupRequest(url: string): void
+  async warmupRequest(url: string): Promise<void>
 }
 ```
 
-其中 `TransformResult` 是：
+其中 `DevEnvironmentContext`是：
+
+```ts
+interface DevEnvironmentContext {
+  hot: boolean
+  transport?: HotChannel | WebSocketServer
+  options?: EnvironmentOptions
+  remoteRunner?: {
+    inlineSourceMap?: boolean
+  }
+  depsOptimizer?: DepsOptimizer
+}
+```
+
+`TransformResult` 是：
 
 ```ts
 interface TransformResult {
@@ -155,9 +173,13 @@ export class EnvironmentModuleGraph {
     rawUrl: string,
   ): Promise<EnvironmentModuleNode | undefined>
 
+  getModuleById(id: string): EnvironmentModuleNode | undefined
+
   getModulesByFile(file: string): Set<EnvironmentModuleNode> | undefined
 
   onFileChange(file: string): void
+
+  onFileDelete(file: string): void
 
   invalidateModule(
     mod: EnvironmentModuleNode,

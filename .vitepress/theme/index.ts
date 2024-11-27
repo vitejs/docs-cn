@@ -10,6 +10,7 @@ import SvgImage from './components/SvgImage.vue'
 import WwAds from './components/WwAds.vue'
 import ReleaseTag from './components/ReleaseTag.vue'
 import './custom.css'
+import YouTubeVideo from './components/YouTubeVideo.vue'
 import 'virtual:group-icons.css'
 
 export default {
@@ -23,6 +24,7 @@ export default {
   enhanceApp({ app }) {
     app.component('SvgImage', SvgImage)
     app.component('ReleaseTag', ReleaseTag)
+    app.component('YouTubeVideo', YouTubeVideo)
     app.use(TwoslashFloatingVue)
   },
 } satisfies Theme
