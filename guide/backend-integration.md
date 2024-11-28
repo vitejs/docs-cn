@@ -95,10 +95,18 @@
    }
    ```
 
+<<<<<<< HEAD
    - 清单是一个 `Record<name, chunk>` 结构的对象。
    - 对于 入口 或动态入口 chunk，键是相对于项目根目录的资源路径。
    - 对于非入口 chunk，键是生成文件的名称并加上前缀 `_`。
    - Chunk 将信息包含在其静态和动态导入上（两者都是映射到清单中相应 chunk 的键），以及任何与之相关的 CSS 和资源文件。
+=======
+   - The manifest has a `Record<name, chunk>` structure
+   - For entry or dynamic entry chunks, the key is the relative src path from project root.
+   - For non entry chunks, the key is the base name of the generated file prefixed with `_`.
+   - For the CSS file generated when [`build.cssCodeSplit`](/config/build-options.md#build-csscodesplit) is `false`, the key is `style.css`.
+   - Chunks will contain information on its static and dynamic imports (both are keys that map to the corresponding chunk in the manifest), and also its corresponding CSS and asset files (if any).
+>>>>>>> 7828fe8315163c388e20de5d5f8ca976025ffa5d
 
 4. 你可以利用这个文件来渲染带有哈希文件名的链接或预加载指令。
 
