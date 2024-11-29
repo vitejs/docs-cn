@@ -285,6 +285,10 @@ export default defineConfig({
         text: '历史版本',
         items: [
           {
+            text: 'Vite v5 文档（英文）',
+            link: 'https://v5.vite.dev'
+          },
+          {
             text: 'Vite v4 文档（英文）',
             link: 'https://v4.vite.dev'
           },
