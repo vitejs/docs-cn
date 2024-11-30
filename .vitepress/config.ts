@@ -236,9 +236,9 @@ export default defineConfig({
       {
         text: '相关链接',
         items: [
-          { text: 'Team', link: '/team' },
-          { text: 'Blog', link: '/blog' },
-          { text: 'Releases', link: '/releases' },
+          { text: '团队成员', link: '/team' },
+          { text: '最新博客', link: '/blog' },
+          { text: '版本策略', link: '/releases' },
           {
             items: [
               {
