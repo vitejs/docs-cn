@@ -238,7 +238,7 @@ export default defineConfig({
         items: [
           { text: '团队成员', link: '/team' },
           { text: '最新博客', link: '/blog' },
-          { text: '版本策略', link: '/releases' },
+          { text: '发布策略', link: '/releases' },
           {
             items: [
               {
