@@ -1,14 +1,23 @@
 # 使用 `Environment` 实例 {#using-environment-instances}
 
+<<<<<<< HEAD
 :::warning 实验性
 这个 API 的初始版本在 Vite 5.1 中以 "Vite Runtime API" 的名字被引入。这份指南介绍了经过修订后的 API，被重新命名为环境 API（Environment API）。这个 API 将在 Vite 6 中作为实验性功能发布。你现在已经可以在最新的 `vite@6.0.0-beta.x` 版本中进行测试。
+=======
+:::warning Experimental
+Environment API is experimental. We'll keep the APIs stable during Vite 6 to let the ecosystem experiment and build on top of it. We're planning to stabilize these new APIs with potential breaking changes in Vite 7.
+>>>>>>> c962bd135b0ac583b72643c2746632bd5900805f
 
 资料：
 
 - [反馈讨论](https://github.com/vitejs/vite/discussions/16358) 我们在此处收集新 API 的反馈。
 - [环境 API PR](https://github.com/vitejs/vite/pull/16471) 新 API 在此处被实现并进行了审查。
 
+<<<<<<< HEAD
 在参与测试这个提议的过程中，请与我们分享您的反馈。
+=======
+Please share your feedback with us.
+>>>>>>> c962bd135b0ac583b72643c2746632bd5900805f
 :::
 
 ## 访问环境 {#accessing-the-environments}
