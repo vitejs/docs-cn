@@ -30,7 +30,7 @@ Vite 旨在为常见的 web 开发工作提供开箱即用的支持。在搜索�
 
 ### [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) {#vitejs-plugin-react-swc}
 
-- 在开发时会将 Babel 替换为 SWC。在构建时，若使用了插件则会使用 SWC+esbuild，若没有使用插件则仅会用到 esbuild。对不需要非标准 React 扩展的大型项目，冷启动和模块热替换（HMR）将会有显著提升。
+- 在开发时会将 Babel 替换为 SWC。在生产环境构建期间，若使用了插件则会使用 SWC+esbuild，若没有使用插件则仅会用到 esbuild。对不需要非标准 React 扩展的大型项目，冷启动和模块热替换（HMR）将会有显著提升。
 
 ### [@vitejs/plugin-legacy](https://github.com/vitejs/vite/tree/main/packages/plugin-legacy) {#vitejs-plugin-legacy}
 

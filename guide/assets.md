@@ -14,7 +14,7 @@ import imgUrl from './img.png'
 document.getElementById('hero-img').src = imgUrl
 ```
 
-例如，`imgUrl` 在开发时会是 `/img.png`，在生产构建后会是 `/assets/img.2d8efhg.png`。
+例如，`imgUrl` 在开发时会是 `/src/img.png`，在生产构建后会是 `/assets/img.2d8efhg.png`。
 
 行为类似于 Webpack 的 `file-loader`。区别在于导入既可以使用绝对公共路径（基于开发期间的项目根路径），也可以使用相对路径。
 
