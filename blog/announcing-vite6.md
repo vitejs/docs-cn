@@ -84,11 +84,19 @@ Vite 6 与 Vite 5 类似，支持 Node.js 18、20 和 22+。Node.js 21 的支持
 
 Vite 正在通过新的环境 API 变得更加灵活。这些新 API 将允许框架作者提供更接近生产环境的开发体验，并为生态系统共享新的构建模块。如果你正在构建一个 SPA，使用 Vite 的单一客户端环境，一切将如以往一样工作。即使对于自定义 SSR 应用，Vite 6 也向后兼容。环境 API 的主要目标受众是框架作者。
 
+<<<<<<< HEAD
 对于好奇的终端用户，Sapphi 撰写了一篇很棒的 [环境 API 介绍](https://green.sapphi.red/blog/increasing-vites-potential-with-the-environment-api) 指南。这是一个很好的起点，可以帮助你理解我们为何努力使 Vite 更加灵活。
+=======
+For end users who are curious, [Sapphi](https://github.com/sapphi-red) wrote a great [Introduction to Environment API](https://green.sapphi.red/blog/increasing-vites-potential-with-the-environment-api) guide. It is a great place to start and understand why we're trying to make Vite even more flexible.
+>>>>>>> afb15c5df66d13e9d06bbc51b7c4019f8242c20b
 
 如果你是框架作者或 Vite 插件维护者，并希望利用新 API，你可以在 [环境 API 指南](https://main.vite.dev/guide/api-environment) 中了解更多信息。
 
+<<<<<<< HEAD
 我们感谢所有参与定义和实现新 API 的人。Anthony Fu 和 Pooya Parsa 制作了 vite-node，与 Vite 结合以改进 [Nuxt 开发 SSR 的故事](https://antfu.me/posts/dev-ssr-on-nuxt)。Anthony 之后使用 vite-node 为 Vitest 提供支持，Vladimir Sheremet 不断改进它。2023 年初，Vladimir 开始将 vite-node 合并到 Vite Core 中，一年后我们将其作为 Vite 5.1 的运行时 API（Runtime API） 发布。来自生态系统合作伙伴（特别感谢 Cloudflare 团队）的反馈推动我们对 Vite 的环境进行更雄心勃勃的重构。你可以在 [Patak 的 ViteConf 24 演讲](https://www.youtube.com/watch?v=WImor3HDyqU?si=EZ-rFJn4pDW3tUvp) 中了解更多关于这个故事的信息。
+=======
+We want to thank everyone involved in defining and implementing the new APIs. The story begins with Vite 2 adopting the unbundled SSR dev scheme pioneered by [Rich Harris](https://github.com/Rich-Harris) and the [SvelteKit](https://svelte.dev/docs/kit) team. Vite's SSR transform then unlocked [Anthony Fu](https://github.com/antfu/) and [Pooya Parsa](https://github.com/pi0) to create vite-node and improve [Nuxt's Dev SSR story](https://antfu.me/posts/dev-ssr-on-nuxt). Anthony went to use vite-node to power [Vitest](https://vitest.dev), and [Vladimir Sheremet](https://github.com/sheremet-va) kept improving it as part of his work maintaining Vitest. At the beginning of 2023, Vladimir started working to upstream vite-node to Vite Core, and we released it as Runtime API in Vite 5.1 a year later. Feedback from ecosystem partners (special shout-out to the Cloudflare team) pushed us to do a more ambitious rework of Vite's environments. You can learn more about the story at [Patak's ViteConf 24 talk](https://www.youtube.com/watch?v=WImor3HDyqU?si=EZ-rFJn4pDW3tUvp).
+>>>>>>> afb15c5df66d13e9d06bbc51b7c4019f8242c20b
 
 Vite 团队的每个人都参与了新 API 的定义，该 API 是与生态系统中许多项目的反馈共同设计的。感谢所有参与者！如果你正在基于 Vite 构建框架、插件或工具，我们鼓励你参与进来。新 API 是实验性的。我们将与生态系统合作，审查新 API 的使用方式，并在下一个主要版本中稳定它们。如果你想提问或反馈意见，这里有一个 [开放的 GitHub 讨论](https://github.com/vitejs/vite/discussions/16358)。
 

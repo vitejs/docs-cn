@@ -24,7 +24,11 @@ Vite 6 正式引入了环境（Environments）的概念。在 Vite 5 之前，�
 - `client`: 在浏览器中运行应用程序。
 - `server`: 在 node（或其他服务器运行时）中运行应用程序，渲染页面后再发送到浏览器。
 
+<<<<<<< HEAD
 在开发过程中，Vite 会在与 Vite 开发服务器相同的 Node 进程中执行服务器代码，从而接近生产环境。不过，服务器也有可能在其他 JS 运行时中运行，如[Cloudflare 的 workerd](https://github.com/cloudflare/workerd)，它们有不同的限制。现代应用程序也可能在两个以上的环境中运行，例如浏览器、节点服务器和边缘服务器。Vite 5 无法正确表示这些环境。
+=======
+In dev, Vite executes the server code in the same Node process as the Vite dev server, giving a close approximation to the production environment. However, it is also possible for servers to run in other JS runtimes, like [Cloudflare's workerd](https://github.com/cloudflare/workerd) which have different constraints. Modern apps may also run in more than two environments, e.g. a browser, a node server, and an edge server. Vite 5 didn't allow to properly represent these environments.
+>>>>>>> afb15c5df66d13e9d06bbc51b7c4019f8242c20b
 
 Vite 6 允许用户在构建和开发过程中配置应用程序，以映射其所有环境。在开发期间，一个 Vite 开发服务器现在可用于在多个不同环境中同时运行代码。应用程序源代码仍由 Vite 开发服务器进行转换。在共享 HTTP 服务器、中间件、解析配置和插件管道的基础上，Vite 开发服务器现在拥有一组独立的开发环境。每个开发环境的配置都尽可能与生产环境相匹配，并连接到执行代码的开发运行时（对于 Workerd，服务器代码现在可以在本地 miniflare 中运行）。在客户端，浏览器导入并执行代码。在其他环境中，模块运行程序会获取并评估转换后的代码。
 
