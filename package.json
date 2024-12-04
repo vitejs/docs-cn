@@ -8,7 +8,7 @@
 	"private": true,
 	"license": "CC BY-NC-SA 4.0",
 	"devDependencies": {
-		"@shikijs/vitepress-twoslash": "^1.23.1",
+		"@shikijs/vitepress-twoslash": "^1.24.0",
 		"@types/express": "^4.17.21",
 		"feed": "^4.2.2",
 		"vitepress": "1.5.0",
