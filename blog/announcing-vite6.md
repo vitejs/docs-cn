@@ -31,25 +31,25 @@ _2024年11月26日_
 
 ![Vite 6 Announcement Cover Image](/og-image-announcing-vite6.png)
 
-今天，我们在 Vite 的发展历程中迈出了重要的一步。Vite [团队](/team)、[贡献者](https://github.com/vitejs/vite/graphs/contributors) 和生态系统合作伙伴很高兴地宣布， Vite 6 正式发布。
+今天，Vite 迎来了发展历程中的重要里程碑。我们很高兴地宣布，Vite 6 正式发布了！这一重大版本的发布离不开 Vite [团队](/team)、[贡献者](https://github.com/vitejs/vite/graphs/contributors) 以及整个生态系统合作伙伴的共同努力。
 
-过去一年中，Vite 的采用率持续增长，自 Vite 5 发布以来，npm 每周下载量从 750 万次跃升至 1700 万次。[Vitest](https://vitest.dev) 不仅越来越受用户欢迎，还开始形成自己的生态系统。例如，[Storybook](https://storybook.js.org) 引入了由 Vitest 提供支持的新测试功能。
+过去一年中，Vite 的采用率持续增长，自 Vite 5 发布以来，npm 每周下载量从 750 万次跃升至 1700 万次。[Vitest](https://vitest.dev) 不仅越来越受用户欢迎，还开始形成自己的生态系统。例如，[Storybook](https://storybook.js.org) 推出了由 Vitest 支持的全新测试功能。
 
-新的框架也加入了 Vite 生态系统，包括 [TanStack Start](https://tanstack.com/start)、[One](https://onestack.dev/)、[Ember](https://emberjs.com/) 等。Web 框架以越来越快的速度创新。你可以看看 [Astro](https://astro.build/)、[Nuxt](https://nuxt.com/)、[SvelteKit](https://kit.svelte.dev/)、[Solid Start](https://www.solidjs.com/blog/introducing-solidstart)、[Qwik City](https://qwik.builder.io/qwikcity/overview)、[RedwoodJS](https://redwoodjs.com/)、[React Router](https://reactrouter.com/) 等项目的改进。
+Vite 生态系统也迎来了一批新成员，包括 [TanStack Start](https://tanstack.com/start)、[One](https://onestack.dev/)、[Ember](https://emberjs.com/) 等框架。Web 开发领域的创新速度日益加快，[Astro](https://astro.build/)、[Nuxt](https://nuxt.com/)、[SvelteKit](https://kit.svelte.dev/)、[Solid Start](https://www.solidjs.com/blog/introducing-solidstart)、[Qwik City](https://qwik.builder.io/qwikcity/overview)、[RedwoodJS](https://redwoodjs.com/)、[React Router](https://reactrouter.com/) 等项目都在不断推陈出新。
 
-Vite 被 OpenAI、Google、Apple、Microsoft、NASA、Shopify、Cloudflare、GitLab、Reddit、Linear 等众多公司使用。两个月前，我们创建了一份 [使用 Vite 的公司列表](https://github.com/vitejs/companies-using-vite)。我们很高兴看到许多开发者提交 PR 将他们的公司添加到列表中。自 Vite 开始以来，我们共同建立的生态系统增长如此之快，令人难以置信。
+Vite 已被 OpenAI、Google、Apple、Microsoft、NASA、Shopify、Cloudflare、GitLab、Reddit 和 Linear 等众多知名公司采用。两个月前，我们创建了一份 [使用 Vite 的公司列表](https://github.com/vitejs/companies-using-vite)。令人欣喜的是，许多开发者提交 PR 将他们的公司添加到列表中。回首 Vite 诞生至今，我们共同打造的生态系统增长速度之快，实在令人难以置信。
 
 ![Vite weekly npm downloads](/vite6-npm-weekly-downloads.png)
 
 ### 加速 Vite 生态系统 {#speeding-up-the-vite-ecosystem}
 
-上个月，社区齐聚一堂，参加了由 [StackBlitz](https://stackblitz.com) 再次主办的第三届 [ViteConf](https://viteconf.org/24/replay)。这是最大规模的 Vite 会议，生态系统中的建设者们广泛参与。Evan You 官宣了 [VoidZero](https://staging.voidzero.dev/posts/announcing-voidzero-inc)，一家致力于为 JavaScript 生态系统构建开源、高性能和统一开发工具链的公司。VoidZero 推出了 [Rolldown](https://rolldown.rs) 和 [Oxc](https://oxc.rs)，他们的团队正在快速准备这些工具以供 Vite 采用。观看 Evan 的主题演讲以了解 Vite 使用 Rust 驱动未来的下一步计划。
+上个月，[StackBlitz](https://stackblitz.com) 再次主办了第三届 [ViteConf](https://viteconf.org/24/replay)，吸引了整个社区的广泛参与。这是迄今为止规模最大的 Vite 会议，生态系统中的各路开发者齐聚一堂。Evan You 正式宣布成立 [VoidZero](https://staging.voidzero.dev/posts/announcing-voidzero-inc)，这是一家致力于为 JavaScript 生态系统构建开源、高性能和统一开发工具链的公司。VoidZero 推出了 [Rolldown](https://rolldown.rs) 和 [Oxc](https://oxc.rs)，他们的团队正在加紧准备这些工具以供 Vite 采用。想了解 Vite 未来如何借助 Rust 实现更强大的性能，不妨观看 Evan 的主题演讲。
 
 <YouTubeVideo videoId="EKvvptbTx6k?si=EZ-rFJn4pDW3tUvp" />
 
 [Stackblitz](https://stackblitz.com) 推出了 [bolt.new](https://bolt.new)，这是一个结合了 Claude 和 WebContainers 的 Remix 应用，允许你使用提示语、编辑、运行和部署全栈应用。Nate Weiner 宣布了 [One](https://onestack.dev/)，一个新的 Vite 驱动的 Web 和原生 React 框架。Storybook 展示了他们最新由 Vitest 驱动的 [测试功能](https://youtu.be/8t5wxrFpCQY?si=PYZoWKf-45goQYDt)。还有更多精彩内容。我们建议你观看 [全部 43 场演讲](https://www.youtube.com/playlist?list=PLqGQbXn_GDmnObDzgjUF4Krsfl6OUKxtp)。演讲者们付出了巨大努力，分享了每个项目的最新进展。
 
-Vite 还更新了主页和域名。你应该更新你的 URL，以指向新的 [vite.dev](https://vite.dev) 域名。新设计和实现由 VoidZero 完成，正是他们制作了自己的网站。特别感谢 [Vicente Rodriguez](https://bento.me/rmoon) 和 [Simon Le Marchant](https://marchantweb.com/)。
+Vite 还更新了主页和域名。请记得将你的链接更新为新的 [vite.dev](https://vite.dev) 域名。新设计和实现由 VoidZero 完成，正是他们制作了自己的网站。特别感谢 [Vicente Rodriguez](https://bento.me/rmoon) 和 [Simon Le Marchant](https://marchantweb.com/) 的贡献。
 
 ### Vite 6 的到来 {#the-next-vite-major-is-here}
 
@@ -84,19 +84,11 @@ Vite 6 与 Vite 5 类似，支持 Node.js 18、20 和 22+。Node.js 21 的支持
 
 Vite 正在通过新的环境 API 变得更加灵活。这些新 API 将允许框架作者提供更接近生产环境的开发体验，并为生态系统共享新的构建模块。如果你正在构建一个 SPA，使用 Vite 的单一客户端环境，一切将如以往一样工作。即使对于自定义 SSR 应用，Vite 6 也向后兼容。环境 API 的主要目标受众是框架作者。
 
-<<<<<<< HEAD
-对于好奇的终端用户，Sapphi 撰写了一篇很棒的 [环境 API 介绍](https://green.sapphi.red/blog/increasing-vites-potential-with-the-environment-api) 指南。这是一个很好的起点，可以帮助你理解我们为何努力使 Vite 更加灵活。
-=======
-For end users who are curious, [Sapphi](https://github.com/sapphi-red) wrote a great [Introduction to Environment API](https://green.sapphi.red/blog/increasing-vites-potential-with-the-environment-api) guide. It is a great place to start and understand why we're trying to make Vite even more flexible.
->>>>>>> afb15c5df66d13e9d06bbc51b7c4019f8242c20b
+对于感兴趣的终端用户，[Sapphi](https://github.com/sapphi-red) 撰写了一篇很好的 [环境 API 介绍](https://green.sapphi.red/blog/increasing-vites-potential-with-the-environment-api) 指南。这是一个很好的起点，帮助你理解我们为何努力使 Vite 更加灵活。
 
 如果你是框架作者或 Vite 插件维护者，并希望利用新 API，你可以在 [环境 API 指南](https://main.vite.dev/guide/api-environment) 中了解更多信息。
 
-<<<<<<< HEAD
-我们感谢所有参与定义和实现新 API 的人。Anthony Fu 和 Pooya Parsa 制作了 vite-node，与 Vite 结合以改进 [Nuxt 开发 SSR 的故事](https://antfu.me/posts/dev-ssr-on-nuxt)。Anthony 之后使用 vite-node 为 Vitest 提供支持，Vladimir Sheremet 不断改进它。2023 年初，Vladimir 开始将 vite-node 合并到 Vite Core 中，一年后我们将其作为 Vite 5.1 的运行时 API（Runtime API） 发布。来自生态系统合作伙伴（特别感谢 Cloudflare 团队）的反馈推动我们对 Vite 的环境进行更雄心勃勃的重构。你可以在 [Patak 的 ViteConf 24 演讲](https://www.youtube.com/watch?v=WImor3HDyqU?si=EZ-rFJn4pDW3tUvp) 中了解更多关于这个故事的信息。
-=======
-We want to thank everyone involved in defining and implementing the new APIs. The story begins with Vite 2 adopting the unbundled SSR dev scheme pioneered by [Rich Harris](https://github.com/Rich-Harris) and the [SvelteKit](https://svelte.dev/docs/kit) team. Vite's SSR transform then unlocked [Anthony Fu](https://github.com/antfu/) and [Pooya Parsa](https://github.com/pi0) to create vite-node and improve [Nuxt's Dev SSR story](https://antfu.me/posts/dev-ssr-on-nuxt). Anthony went to use vite-node to power [Vitest](https://vitest.dev), and [Vladimir Sheremet](https://github.com/sheremet-va) kept improving it as part of his work maintaining Vitest. At the beginning of 2023, Vladimir started working to upstream vite-node to Vite Core, and we released it as Runtime API in Vite 5.1 a year later. Feedback from ecosystem partners (special shout-out to the Cloudflare team) pushed us to do a more ambitious rework of Vite's environments. You can learn more about the story at [Patak's ViteConf 24 talk](https://www.youtube.com/watch?v=WImor3HDyqU?si=EZ-rFJn4pDW3tUvp).
->>>>>>> afb15c5df66d13e9d06bbc51b7c4019f8242c20b
+我们要感谢所有参与定义和实现新 API 的伙伴。这个故事始于 Vite 2 采用了由 [Rich Harris](https://github.com/Rich-Harris) 和 [SvelteKit](https://svelte.dev/docs/kit) 团队开创的无打包 SSR 开发方案。Vite 的 SSR 转换随后启发了 [Anthony Fu](https://github.com/antfu/) 和 [Pooya Parsa](https://github.com/pi0) 创建 vite-node 并改进 [Nuxt 的开发 SSR 方案](https://antfu.me/posts/dev-ssr-on-nuxt)。Anthony 之后使用 vite-node 为 [Vitest](https://vitest.dev) 提供支持，而 [Vladimir Sheremet](https://github.com/sheremet-va) 在维护 Vitest 的过程中也在不断改进它。2023 年初，Vladimir 开始将 vite-node 上游合并到 Vite Core 中，一年后我们在 Vite 5.1 中将其作为 Runtime API 发布。来自生态系统合作伙伴（特别感谢 Cloudflare 团队）的反馈推动我们对 Vite 的环境进行更雄心勃勃的重构。你可以在 [Patak 的 ViteConf 24 演讲](https://www.youtube.com/watch?v=WImor3HDyqU?si=EZ-rFJn4pDW3tUvp) 中了解更多关于这个故事的信息。
 
 Vite 团队的每个人都参与了新 API 的定义，该 API 是与生态系统中许多项目的反馈共同设计的。感谢所有参与者！如果你正在基于 Vite 构建框架、插件或工具，我们鼓励你参与进来。新 API 是实验性的。我们将与生态系统合作，审查新 API 的使用方式，并在下一个主要版本中稳定它们。如果你想提问或反馈意见，这里有一个 [开放的 GitHub 讨论](https://github.com/vitejs/vite/discussions/16358)。
 
