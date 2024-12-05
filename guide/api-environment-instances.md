@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 # 使用 `Environment` 实例 {#using-environment-instances}
+=======
+# Using `Environment` Instances
+>>>>>>> a415a207d34a6fff31be339bd985dd280b253dde
 
 :::warning 实验性
 环境 API 是实验性的。在 Vite 6 期间，我们将保持这些 API 的稳定，以便生态系统可以在其基础上进行实验和构建。我们计划在 Vite 7 中稳定这些新 API，并可能进行一些重大更改。
@@ -11,8 +15,14 @@
 请与我们分享您的反馈。
 :::
 
+<<<<<<< HEAD
 ## 访问环境 {#accessing-the-environments}
 在开发阶段，可以使用 `server.environments` 来访问开发服务器中的可用环境：
+=======
+## Accessing the Environments
+
+During dev, the available environments in a dev server can be accessed using `server.environments`:
+>>>>>>> a415a207d34a6fff31be339bd985dd280b253dde
 
 ```js
 // 创建服务器，或通过 configureServer 钩子来获取
@@ -117,7 +127,11 @@ Vite 服务器中的环境实例允许你使用 `environment.transformRequest(ur
 在这个提议的当前版本中，我们使用 `transformRequest(url)` 和 `warmupRequest(url)`，这样对于习惯于 Vite 当前 API 的用户来说，会更容易讨论和理解。在发布之前，我们也可以借此机会审查这些命名。例如，可以命名为 `environment.processModule(url)` 或 `environment.loadModule(url)`，借鉴于 Rollup 的插件钩子中的 `context.load(id)`。目前，我们认为保留当前的名称并推迟这个讨论是更好的选择。
 :::
 
+<<<<<<< HEAD
 ## 独立的模块图 {#separate-module-graphs}
+=======
+## Separate Module Graphs
+>>>>>>> a415a207d34a6fff31be339bd985dd280b253dde
 
 每个环境都有一个独立的模块图。所有模块图都有相同的签名，因此可以实现通用算法来爬取或查询图，而无需依赖环境。`hotUpdate` 是一个很好的例子。当一个文件被修改时，将使用每个环境的模块图来发现受影响的模块，并为每个环境独立执行 HMR。
 

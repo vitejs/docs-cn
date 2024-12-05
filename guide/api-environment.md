@@ -15,11 +15,19 @@
 
 Vite 6 正式引入了环境（Environments）的概念。在 Vite 5 之前，有两个隐式环境（`client`，以及可选的 `ssr`）。新的环境 API 允许用户和框架作者根据他们的应用在生产环境中的工作方式创建尽可能多的环境。这些新的功能需要大规模的内部重构，而我们也已经在保持向后兼容性上做出了很大的努力。Vite 6 的初始目标是尽可能平滑地将整个生态系统迁移到新的主要版本，直到有足够的用户已经迁移，并且框架和插件作者已经验证了新的设计后，再采用这些新的实验性 API。
 
+<<<<<<< HEAD
 ## 缩小构建和开发模式间的差距 {#closing-the-gap-between-build-and-dev}
+=======
+## Closing the Gap Between Build and Dev
+>>>>>>> a415a207d34a6fff31be339bd985dd280b253dde
 
 对于简单的 SPA/MPA，配置中不会暴露任何与环境有关的新 API。在内部，Vite 会将选项应用于 `client` 环境，但在配置 Vite 时无需了解这一概念。Vite 5 中的配置和行为应能在此无缝运行。
 
+<<<<<<< HEAD
 当我们移动到一个典型的服务器端渲染（SSR）应用程序时，我们将有两个环境：
+=======
+When we move to a typical server-side rendered (SSR) app, we'll have two environments:
+>>>>>>> a415a207d34a6fff31be339bd985dd280b253dde
 
 - `client`: 在浏览器中运行应用程序。
 - `server`: 在 node（或其他服务器运行时）中运行应用程序，渲染页面后再发送到浏览器。
@@ -68,7 +76,11 @@ export default {
 }
 ```
 
+<<<<<<< HEAD
 如果没有明确说明，环境将继承已配置的顶级配置选项（例如，新的 `server` 和 `edge` 环境将继承 `build.sourcemap: false` 选项）。少数顶级选项（如 `optimizeDeps`）仅适用于 `client` 环境，因为它们在默认应用于服务器环境时效果不佳。也可以通过 `environments.client` 明确配置 `client` 环境，但我们建议使用顶级选项进行配置，以便在添加新环境时客户端配置保持不变。
+=======
+When not explicitly documented, environment inherits the configured top-level config options (for example, the new `server` and `edge` environments will inherit the `build.sourcemap: false` option). A small number of top-level options, like `optimizeDeps`, only apply to the `client` environment, as they don't work well when applied as a default to server environments. The `client` environment can also be configured explicitly through `environments.client`, but we recommend to do it with the top-level options so the client config remains unchanged when adding new environments.
+>>>>>>> a415a207d34a6fff31be339bd985dd280b253dde
 
 `EnvironmentOptions` 接口公开所有每个环境选项。有些环境选项适用于 `build` 和 `dev`，如 `resolve`。还有 `DevEnvironmentOptions` 和 `BuildEnvironmentOptions` 用于开发和构建特定选项（如 `dev.warmup` 或 `build.outDir`）。一些选项（例如`optimizeDeps`）仅适用于 dev，但为了向后兼容，它保留为顶层而不是嵌套在`dev`中。
 
@@ -83,7 +95,11 @@ interface EnvironmentOptions {
 }
 ```
 
+<<<<<<< HEAD
 `UserConfig` 接口从 `EnvironmentOptions` 接口扩展而来，允许通过 `environments` 选项配置客户端和其他环境的默认值。在开发过程中，名为 `ssr` 的 `client` 和服务器环境始终存在。这允许与 `server.ssrLoadModule(url)` 和 `server.moduleGraph` 向后兼容。在构建期间，`client` 环境始终存在，而 `ssr` 环境仅在明确配置时才存在（使用 `environments.ssr` 或为了向后兼容而使用 `build.ssr`）。应用程序不需要为其 SSR 环境使用 `ssr` 名称，例如，它可以将其命名为 `server`。
+=======
+The `UserConfig` interface extends from the `EnvironmentOptions` interface, allowing to configure the client and defaults for other environments, configured through the `environments` option. The `client` and a server environment named `ssr` are always present during dev. This allows backward compatibility with `server.ssrLoadModule(url)` and `server.moduleGraph`. During build, the `client` environment is always present, and the `ssr` environment is only present if it is explicitly configured (using `environments.ssr` or for backward compatibility `build.ssr`). An app doesn't need to use the `ssr` name for its SSR environment, it could name it `server` for example.
+>>>>>>> a415a207d34a6fff31be339bd985dd280b253dde
 
 ```ts
 interface UserConfig extends EnvironmentOptions {
@@ -94,7 +110,11 @@ interface UserConfig extends EnvironmentOptions {
 
 请注意，一旦环境 API 稳定， `ssr` 顶级属性将被废弃。该选项的作用与 `environments` 相同，但针对的是默认的 `ssr` 环境，而且只允许配置一小部分选项。
 
+<<<<<<< HEAD
 ## 自定义环境实例 {#custom-environment-instances}
+=======
+## Custom Environment Instances
+>>>>>>> a415a207d34a6fff31be339bd985dd280b253dde
 
 底层 API 配置已可用，因此可以支持为运行时提供环境。这些环境还可以生成其他进程或线程，以便在更接近生产环境的运行时间内运行开发模块。
 
@@ -129,7 +149,11 @@ export default {
 - [使用 `ModuleRunner` API 进行服务端渲染](/changes/ssr-using-modulerunner)
 - [构建过程中的共享插件](/changes/shared-plugins-during-build)
 
+<<<<<<< HEAD
 ## 目标用户 {#target-users}
+=======
+## Target Users
+>>>>>>> a415a207d34a6fff31be339bd985dd280b253dde
 
 本指南为终端用户提供了关于环境的基本概念。
 

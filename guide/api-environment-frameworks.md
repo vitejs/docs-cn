@@ -92,7 +92,11 @@ app.use('*', async (req, res, next) => {
 })
 ```
 
+<<<<<<< HEAD
 ## 运行时无关的 SSR {#runtime-agnostic-ssr}
+=======
+## Runtime Agnostic SSR
+>>>>>>> a415a207d34a6fff31be339bd985dd280b253dde
 
 由于 `RunnableDevEnvironment` 只能用于在与 Vite 服务器相同的运行时中运行代码，它需要一个可以运行 Vite 服务器的运行时（即与 Node.js 兼容的运行时）。这意味着您需要使用原始的 `DevEnvironment` 来使其对运行时无关。
 
@@ -264,7 +268,11 @@ export function createHandler(input) {
 }
 ```
 
+<<<<<<< HEAD
 ## 构建过程中的环境 {#environments-during-build}
+=======
+## Environments During Build
+>>>>>>> a415a207d34a6fff31be339bd985dd280b253dde
 
 在命令行界面，调用 `vite build` 和 `vite build --ssr` 仍将只构建客户端和仅 ssr 环境以保证向后兼容性。
 
@@ -283,6 +291,10 @@ export default {
 }
 ```
 
+<<<<<<< HEAD
 ## 环境无关的代码 {#environment-agnostic-code}
+=======
+## Environment Agnostic Code
+>>>>>>> a415a207d34a6fff31be339bd985dd280b253dde
 
 大部分情况，当前的 `environment` 实例会作为正在运行代码的上下文中的一部分，所以通过 `server.environments` 来访问它们的需求应该很少。例如，在插件钩子内部，环境是作为 `PluginContext` 的一部分暴露出来的，所以可以使用 `this.environment` 来访问它。参见 [用于插件的环境 API](./api-environment-plugins.md) 了解如何构建对环境敏感的插件。
