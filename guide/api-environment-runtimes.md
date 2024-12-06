@@ -11,11 +11,7 @@
 请与我们分享您的反馈。
 :::
 
-<<<<<<< HEAD
 ## 环境工厂 {#environment-factories}
-=======
-## Environment Factories
->>>>>>> a415a207d34a6fff31be339bd985dd280b253dde
 
 环境工厂（Environments factory）旨在由环境提供者（如 Cloudflare）实现，而不是由终端用户实现。环境工厂返回一个 `EnvironmentOptions`，用于在开发和构建环境中使用目标运行时的最常见情况。默认环境选项也可以设置，因此用户无需手动配置。
 
@@ -76,11 +72,7 @@ export default {
 const ssrEnvironment = server.environments.ssr
 ```
 
-<<<<<<< HEAD
 ## 创建新的环境工厂 {#creating-a-new-environment-factory}
-=======
-## Creating a New Environment Factory
->>>>>>> a415a207d34a6fff31be339bd985dd280b253dde
 
 Vite 开发服务器默认暴露两个环境：一个 `client` 环境和一个 `ssr` 环境。客户端环境默认是浏览器环境，模块运行器（module runner）通过将虚拟模块 `/@vite/client` 导入客户端应用来实现。SSR 环境默认在与 Vite 服务器相同的 Node 运行时中运行，允许应用服务器在开发期间使用完整的 HMR 支持来渲染请求。
 

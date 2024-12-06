@@ -11,11 +11,7 @@
 请与我们分享您的反馈。
 :::
 
-<<<<<<< HEAD
 ## 在钩子中访问当前环境 {#accessing-the-current-environment-in-hooks}
-=======
-## Accessing the Current Environment in Hooks
->>>>>>> a415a207d34a6fff31be339bd985dd280b253dde
 
 在 Vite 6之前，由于只有两个环境（`client` 和 `ssr`），一个 `ssr` 布尔值足以在 Vite API 中识别当前环境。插件钩子在最后的选项参数中接收一个 `ssr` 布尔值，多个 API 也期望通过一个可选的 `ssr` 参数来正确地将模块关联到对应的环境（例如 `server.moduleGraph.getModuleByUrl(url, { ssr })`）。
 
@@ -31,11 +27,7 @@ Vite 服务器有一个共享的插件管道，但在处理模块时，它总是
   }
 ```
 
-<<<<<<< HEAD
 ## 使用钩子注册新环境 {#registering-new-environments-using-hooks}
-=======
-## Registering New Environments Using Hooks
->>>>>>> a415a207d34a6fff31be339bd985dd280b253dde
 
 插件可以在 `config` 钩子中添加新环境（例如，为了有一个专门用于 [RSC](https://react.dev/blog/2023/03/22/react-labs-what-we-have-been-working-on-march-2023#react-server-components) 的模块图）：
 
@@ -47,11 +39,7 @@ Vite 服务器有一个共享的插件管道，但在处理模块时，它总是
 
 一个空对象就足以注册环境，默认值则来自于根级别的环境配置。
 
-<<<<<<< HEAD
 ## 使用钩子配置环境 {#configuring-environment-using-hooks}
-=======
-## Configuring Environment Using Hooks
->>>>>>> a415a207d34a6fff31be339bd985dd280b253dde
 
 当 `config` 钩子正在运行时，我们还不知道完整的环境列表，而且环境可以受到来自根级别环境配置的默认值或通过 `config.environments` 记录明确影响。
 插件应使用 `config` 钩子设置默认值。要配置每个环境，可以使用新的 `configEnvironment` 钩子。此钩子会为每个环境调用，并传入其部分解析的配置，包括最终默认值的解析。
@@ -62,11 +50,7 @@ Vite 服务器有一个共享的插件管道，但在处理模块时，它总是
       options.resolve.conditions = // ...
 ```
 
-<<<<<<< HEAD
 ## `hotUpdate` 钩子 {#the-hotupdate-hook}
-=======
-## The `hotUpdate` Hook
->>>>>>> a415a207d34a6fff31be339bd985dd280b253dde
 
 - **类型：** `(this: { environment: DevEnvironment }, options: HotUpdateOptions) => Array<EnvironmentModuleNode> | void | Promise<Array<EnvironmentModuleNode> | void>`
 - **查看：** [HMR API](./api-hmr)
@@ -151,13 +135,8 @@ const UnoCssPlugin = () => {
   // 共享的全局状态
   return {
     buildStart() {
-<<<<<<< HEAD
       // 使用 Wea​​kMap<Environment,Data> 初始化每个环境状态
       // 使用 this.environment
-=======
-      // init per-environment state with WeakMap<Environment,Data>
-      // using this.environment
->>>>>>> a415a207d34a6fff31be339bd985dd280b253dde
     },
     configureServer() {
       // 正常使用全局钩子
@@ -205,20 +184,12 @@ export default defineConfig({
 })
 ```
 
-<<<<<<< HEAD
 ## 构建钩子中的环境 {#environment-in-build-hooks}
-=======
-## Environment in Build Hooks
->>>>>>> a415a207d34a6fff31be339bd985dd280b253dde
 
 与开发期间一样，插件钩子在构建期间也接收环境实例，取代了 `ssr` 布尔值。
 这同样适用于 `renderChunk`、`generateBundle` 和其他仅在构建时使用的钩子。
 
-<<<<<<< HEAD
 ## 构建期间的共享插件 {#shared-plugins-during-build}
-=======
-## Shared Plugins During Build
->>>>>>> a415a207d34a6fff31be339bd985dd280b253dde
 
 在 Vite 6 之前，插件管道在开发和构建期间的工作方式不同：
 
@@ -233,11 +204,7 @@ export default defineConfig({
 
 在构建期间还会共享一个单一的 `ResolvedConfig` 实例，允许在整个应用构建过程中进行缓存，类似于我们在开发期间使用 `WeakMap<ResolvedConfig, CachedData>` 的方式。
 
-<<<<<<< HEAD
 对于 Vite 6，我们需要做一个较小的改动以保持向后兼容。生态系统插件当前使用 `config.build` 而不是 `environment.config.build` 来访问配置，因此我们需要默认为每个环境创建一个新的 `ResolvedConfig`。项目可以通过设置 `builder.sharedConfigBuild` 为 `true` 来选择共享完整的配置和插件管道。
-=======
-For Vite 6, we need to do a smaller step to keep backward compatibility. Ecosystem plugins are currently using `config.build` instead of `environment.config.build` to access configuration, so we need to create a new `ResolvedConfig` per-environment by default. A project can opt-in into sharing the full config and plugins pipeline setting `builder.sharedConfigBuild` to `true`.
->>>>>>> a415a207d34a6fff31be339bd985dd280b253dde
 
 此选项最初仅适用于一小部分项目，因此插件作者可以通过将 `sharedDuringBuild` 标志设置为 `true` 来选择特定插件在构建期间共享。这可以很容易地共享常规插件的状态：
 
