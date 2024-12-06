@@ -1,4 +1,4 @@
-# 命令行界面 {#command-line-interface}
+# 命令行接口 {#command-line-interface}
 
 ## 开发服务器 {#dev-server}
 
