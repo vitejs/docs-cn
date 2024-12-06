@@ -322,7 +322,7 @@ export default defineConfig({
               link: '/guide/features'
             },
             {
-              text: '命令行界面',
+              text: '命令行接口',
               link: '/guide/cli'
             },
             {
