@@ -41,7 +41,7 @@ import esmSvg from '../images/esm.svg?raw'
 
 Vite 同时利用 HTTP 头来加速整个页面的重新加载（再次让浏览器为我们做更多事情）：源码模块的请求会根据 `304 Not Modified` 进行协商缓存，而依赖模块请求则会通过 `Cache-Control: max-age=31536000,immutable` 进行强缓存，因此一旦被缓存它们将不需要再次请求。
 
-一旦你体验到 Vite 的神速，你是否愿意再忍受像曾经那样使用打包器开发就要打上一个大大的问号了。
+一旦你体验到 Vite 的神速，你可能再也不想回到曾经的打包开发方式了。
 
 ## 为什么生产环境仍需打包 {#why-bundle-for-production}
 
