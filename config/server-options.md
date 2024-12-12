@@ -241,7 +241,7 @@ Vite 服务器的文件监听器默认会监听 `root` 目录，同时会跳过 
 
 ## server.middlewareMode {#server-middlewaremode}
 
-- **类型：** `'ssr' | 'html'`
+- **类型：** `boolean`
 - **默认值：** `false`
 
 以中间件模式创建 Vite 服务器。
