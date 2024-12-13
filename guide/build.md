@@ -71,7 +71,11 @@ window.addEventListener('vite:preloadError', (event) => {
 
 当重新部署时，托管服务可能会删除之前部署的资源。因此，之前访问过您站点的用户可能会遇到导入错误。这种错误发生的原因是用户设备上运行的资源过时，并尝试导入相应的旧代码块，而这些代码块已经被删除。这个事件对于解决这种情况会很有帮助。
 
+<<<<<<< HEAD
 ## 文件变化时重新构建 {#rebuild-on-files-changes}
+=======
+## Rebuild on Files Changes
+>>>>>>> e05d59c292c4241c0187461bd370d1545fde9be3
 
 你可以使用 `vite build --watch` 来启用 rollup 的监听器。或者，你可以直接通过 `build.watch` 调整底层的 [`WatcherOptions`](https://rollupjs.org/configuration-options/#watch) 选项：
 
