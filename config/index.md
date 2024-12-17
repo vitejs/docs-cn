@@ -8,8 +8,7 @@ title: 配置 Vite
 
 最基础的配置文件是这样的：
 
-```js
-// vite.config.js
+```js [vite.config.js]
 export default {
   // 配置选项
 }
