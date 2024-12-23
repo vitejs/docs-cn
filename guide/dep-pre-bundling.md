@@ -6,7 +6,7 @@
 
 这就是 Vite 执行时所做的“依赖预构建”。这个过程有两个目的:
 
-1. **CommonJS 和 UMD 兼容性：**在开发阶段中，Vite 的开发服务器将所有代码视为原生 ES 模块。因此，Vite 必须先将以 CommonJS 或 UMD 形式提供的依赖项转换为 ES 模块。
+1. **CommonJS 和 UMD 兼容性：** 在开发阶段中，Vite 的开发服务器将所有代码视为原生 ES 模块。因此，Vite 必须先将以 CommonJS 或 UMD 形式提供的依赖项转换为 ES 模块。
 
    在转换 CommonJS 依赖项时，Vite 会进行智能导入分析，这样即使模块的导出是动态分配的（例如 React），具名导入（named imports）也能正常工作：
 
