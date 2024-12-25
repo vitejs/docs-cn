@@ -180,15 +180,7 @@ type ModuleRunnerTransport = unknown
 // ---cut---
 interface ModuleRunnerOptions {
   /**
-<<<<<<< HEAD
-   * 项目根目录
-   */
-  root: string
-  /**
    * 一组与服务器通信的方法
-=======
-   * A set of methods to communicate with the server.
->>>>>>> ac874fdf0731ae4036c42aff73e9f6e09413ce22
    */
   transport: ModuleRunnerTransport
   /**
