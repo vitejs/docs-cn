@@ -412,11 +412,7 @@ export default defineConfig({
               link: '/guide/api-environment',
             },
             {
-<<<<<<< HEAD
               text: '环境实例',
-=======
-              text: 'Environment Instances',
->>>>>>> a007c3851a212148b84db760bb8d255dd8cc71cf
               link: '/guide/api-environment-instances',
             },
             {
