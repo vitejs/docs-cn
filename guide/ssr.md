@@ -12,11 +12,15 @@ SSR 特别指支持在 Node.js 中运行相同应用程序的前端框架（例�
 目前，Vite 正在用 [环境 API](https://github.com/vitejs/vite/discussions/16358) 来改进 SSR API。查看链接了解更多详情。
 :::
 
+<<<<<<< HEAD
 :::tip 帮助
 如果你有疑问，可以到社区 [Discord 的 Vite #ssr 频道](https://discord.gg/PkbxgzPhJv)，这里会帮到你。
 :::
 
 ## 示例项目 {#example-projects}
+=======
+## Example Projects
+>>>>>>> 59444b4a800aa5cbd7cb8bf448cf67821a71c341
 
 Vite 为服务端渲染（SSR）提供了内建支持。[`create-vite-extra`](https://github.com/bluwy/create-vite-extra) 包含了一些你可以用作参考的SSR设置示例：
 
