@@ -136,14 +136,9 @@ export default defineConfig({
 
 ::: code-group
 
-<<<<<<< HEAD
-```js twoslash [vite.config.js (单入口)]
-import { resolve } from 'path'
-=======
 ```js twoslash [vite.config.js (single entry)]
 import { dirname, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
->>>>>>> 8288cb9f01d82efc54f8c314359f6ec957b32ef5
 import { defineConfig } from 'vite'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
@@ -172,14 +167,9 @@ export default defineConfig({
 })
 ```
 
-<<<<<<< HEAD
-```js twoslash [vite.config.js (多入口)]
-import { resolve } from 'path'
-=======
 ```js twoslash [vite.config.js (multiple entries)]
 import { dirname, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
->>>>>>> 8288cb9f01d82efc54f8c314359f6ec957b32ef5
 import { defineConfig } from 'vite'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
