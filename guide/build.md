@@ -106,8 +106,11 @@ export default defineConfig({
 在构建过程中，你只需指定多个 `.html` 文件作为入口点即可：
 
 ```js twoslash [vite.config.js]
-import { resolve } from 'path'
+import { dirname, resolve } from 'node:path'
+import { fileURLToPath } from 'node:url'
 import { defineConfig } from 'vite'
+
+const __dirname = dirname(fileURLToPath(import.meta.url))
 
 export default defineConfig({
   build: {
@@ -133,9 +136,12 @@ export default defineConfig({
 
 ::: code-group
 
-```js twoslash [vite.config.js (单入口)]
-import { resolve } from 'path'
+```js twoslash [vite.config.js (single entry)]
+import { dirname, resolve } from 'node:path'
+import { fileURLToPath } from 'node:url'
 import { defineConfig } from 'vite'
+
+const __dirname = dirname(fileURLToPath(import.meta.url))
 
 export default defineConfig({
   build: {
@@ -161,9 +167,12 @@ export default defineConfig({
 })
 ```
 
-```js twoslash [vite.config.js (多入口)]
-import { resolve } from 'path'
+```js twoslash [vite.config.js (multiple entries)]
+import { dirname, resolve } from 'node:path'
+import { fileURLToPath } from 'node:url'
 import { defineConfig } from 'vite'
+
+const __dirname = dirname(fileURLToPath(import.meta.url))
 
 export default defineConfig({
   build: {

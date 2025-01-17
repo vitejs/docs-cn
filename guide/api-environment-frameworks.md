@@ -46,7 +46,12 @@ if (isRunnableDevEnvironment(server.environments.ssr)) {
 假设我们有一个配置为中间件模式的 Vite 服务器，如 [SSR 设置指南](/guide/ssr#setting-up-the-dev-server) 所述，我们可以使用环境 API 来实现 SSR 中间件。省略了错误处理。
 
 ```js
+import fs from 'node:fs'
+import path from 'node:path'
+import { fileURLToPath } from 'node:url'
 import { createServer } from 'vite'
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url))
 
 const server = await createServer({
   server: { middlewareMode: true },
