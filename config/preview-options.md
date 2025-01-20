@@ -19,7 +19,20 @@
 
 :::
 
+<<<<<<< HEAD
 ## preview.port {#preview-port}
+=======
+## preview.allowedHosts
+
+- **Type:** `string | true`
+- **Default:** [`server.allowedHosts`](./server-options#server-allowedhosts)
+
+The hostnames that Vite is allowed to respond to.
+
+See [`server.allowedHosts`](./server-options#server-allowedhosts) for more details.
+
+## preview.port
+>>>>>>> a296ebaa35a08536b235d02fd8c055d0d8900a82
 
 - **类型：** `number`
 - **默认：** `4173`

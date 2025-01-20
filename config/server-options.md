@@ -42,7 +42,25 @@ export default defineConfig({
 
 :::
 
+<<<<<<< HEAD
 ## server.port {#server-port}
+=======
+## server.allowedHosts
+
+- **Type:** `string[] | true`
+- **Default:** `[]`
+
+The hostnames that Vite is allowed to respond to.
+`localhost` and domains under `.localhost` and all IP addresses are allowed by default.
+When using HTTPS, this check is skipped.
+
+If a string starts with `.`, it will allow that hostname without the `.` and all subdomains under the hostname. For example, `.example.com` will allow `example.com`, `foo.example.com`, and `foo.bar.example.com`.
+
+If set to `true`, the server is allowed to respond to requests for any hosts.
+This is not recommended as it will be vulnerable to DNS rebinding attacks.
+
+## server.port
+>>>>>>> a296ebaa35a08536b235d02fd8c055d0d8900a82
 
 - **类型：** `number`
 - **默认值：** `5173`
@@ -146,9 +164,22 @@ export default defineConfig({
 
 ## server.cors {#server-cors}
 
+<<<<<<< HEAD
 - **类型：** `boolean | CorsOptions`
 
 为开发服务器配置 CORS。默认启用并允许任何源，传递一个 [选项对象](https://github.com/expressjs/cors#configuration-options) 来调整行为或设为 `false` 表示禁用。
+=======
+- **Type:** `boolean | CorsOptions`
+- **Default:** `false`
+
+Configure CORS for the dev server. Pass an [options object](https://github.com/expressjs/cors#configuration-options) to fine tune the behavior or `true` to allow any origin.
+
+:::warning
+
+We recommend setting a specific value rather than `true` to avoid exposing the source code to untrusted origins.
+
+:::
+>>>>>>> a296ebaa35a08536b235d02fd8c055d0d8900a82
 
 ## server.headers {#server-headers}
 

@@ -12,6 +12,12 @@
    import { defineConfig } from 'vite'
    // ---cut---
    export default defineConfig({
+     server: {
+       cors: {
+         // the origin you will be accessing via browser
+         origin: 'http://my-backend.example.com',
+       },
+     },
      build: {
        // 在 outDir 中生成 .vite/manifest.json
        manifest: true,
