@@ -42,25 +42,21 @@ export default defineConfig({
 
 :::
 
-<<<<<<< HEAD
-## server.port {#server-port}
-=======
 ## server.allowedHosts
 
-- **Type:** `string[] | true`
-- **Default:** `[]`
+- **类型：** `string[] | true`
+- **默认：** `[]`
 
-The hostnames that Vite is allowed to respond to.
-`localhost` and domains under `.localhost` and all IP addresses are allowed by default.
-When using HTTPS, this check is skipped.
+Vite允许响应的主机名。
+默认情况下，允许 `localhost` 及其下的所有 `.localhost` 域名和所有 IP 地址。
+使用 HTTPS 时，将跳过此检查。
 
-If a string starts with `.`, it will allow that hostname without the `.` and all subdomains under the hostname. For example, `.example.com` will allow `example.com`, `foo.example.com`, and `foo.bar.example.com`.
+如果设置的字符串以 `.` 开头，则允许该主机名本身（不带 `.`）以及该主机名下的所有子域名。例如，`.example.com` 将允许 `example.com`、`foo.example.com` 和 `foo.bar.example.com`。
 
-If set to `true`, the server is allowed to respond to requests for any hosts.
-This is not recommended as it will be vulnerable to DNS rebinding attacks.
+如果设置为 `true`，服务器将被允许响应任何主机的请求。
+但不建议这样做，因为这会使服务器容易受到 DNS 重新绑定攻击（DNS rebinding）。
 
 ## server.port
->>>>>>> a296ebaa35a08536b235d02fd8c055d0d8900a82
 
 - **类型：** `number`
 - **默认值：** `5173`
@@ -164,22 +160,16 @@ export default defineConfig({
 
 ## server.cors {#server-cors}
 
-<<<<<<< HEAD
 - **类型：** `boolean | CorsOptions`
+- **默认：** `false`
 
-为开发服务器配置 CORS。默认启用并允许任何源，传递一个 [选项对象](https://github.com/expressjs/cors#configuration-options) 来调整行为或设为 `false` 表示禁用。
-=======
-- **Type:** `boolean | CorsOptions`
-- **Default:** `false`
-
-Configure CORS for the dev server. Pass an [options object](https://github.com/expressjs/cors#configuration-options) to fine tune the behavior or `true` to allow any origin.
+为开发服务器配置 CORS。传递一个 [选项对象](https://github.com/expressjs/cors#configuration-options) 来调整行为，或设置为 `true` 来允许任何源。
 
 :::warning
 
-We recommend setting a specific value rather than `true` to avoid exposing the source code to untrusted origins.
+我们建议设置一个具体的值，而不是 `true`，以避免将源代码暴露给不受信任的源。
 
 :::
->>>>>>> a296ebaa35a08536b235d02fd8c055d0d8900a82
 
 ## server.headers {#server-headers}
 

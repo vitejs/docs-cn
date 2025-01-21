@@ -14,7 +14,7 @@
    export default defineConfig({
      server: {
        cors: {
-         // the origin you will be accessing via browser
+         // 通过浏览器访问的源
          origin: 'http://my-backend.example.com',
        },
      },
