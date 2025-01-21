@@ -42,7 +42,21 @@ export default defineConfig({
 
 :::
 
-## server.port {#server-port}
+## server.allowedHosts
+
+- **类型：** `string[] | true`
+- **默认：** `[]`
+
+Vite允许响应的主机名。
+默认情况下，允许 `localhost` 及其下的所有 `.localhost` 域名和所有 IP 地址。
+使用 HTTPS 时，将跳过此检查。
+
+如果设置的字符串以 `.` 开头，则允许该主机名本身（不带 `.`）以及该主机名下的所有子域名。例如，`.example.com` 将允许 `example.com`、`foo.example.com` 和 `foo.bar.example.com`。
+
+如果设置为 `true`，服务器将被允许响应任何主机的请求。
+但不建议这样做，因为这会使服务器容易受到 DNS 重新绑定攻击（DNS rebinding）。
+
+## server.port
 
 - **类型：** `number`
 - **默认值：** `5173`
@@ -147,8 +161,15 @@ export default defineConfig({
 ## server.cors {#server-cors}
 
 - **类型：** `boolean | CorsOptions`
+- **默认：** `false`
 
-为开发服务器配置 CORS。默认启用并允许任何源，传递一个 [选项对象](https://github.com/expressjs/cors#configuration-options) 来调整行为或设为 `false` 表示禁用。
+为开发服务器配置 CORS。传递一个 [选项对象](https://github.com/expressjs/cors#configuration-options) 来调整行为，或设置为 `true` 来允许任何源。
+
+:::warning
+
+我们建议设置一个具体的值，而不是 `true`，以避免将源代码暴露给不受信任的源。
+
+:::
 
 ## server.headers {#server-headers}
 

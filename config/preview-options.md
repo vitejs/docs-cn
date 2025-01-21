@@ -19,6 +19,15 @@
 
 :::
 
+## preview.allowedHosts
+
+- **类型：** `string | true`
+- **默认：** [`server.allowedHosts`](./server-options#server-allowedhosts)
+
+Vite 允许响应的主机名。
+
+查看 [`server.allowedHosts`](./server-options#server-allowedhosts) 以获取更多详细信息。
+
 ## preview.port {#preview-port}
 
 - **类型：** `number`
