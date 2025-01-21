@@ -136,7 +136,7 @@ export default defineConfig({
 
 ::: code-group
 
-```js twoslash [vite.config.js (single entry)]
+```js twoslash [vite.config.js (单入口)]
 import { dirname, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { defineConfig } from 'vite'
@@ -167,7 +167,7 @@ export default defineConfig({
 })
 ```
 
-```js twoslash [vite.config.js (multiple entries)]
+```js twoslash [vite.config.js (多入口)]
 import { dirname, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { defineConfig } from 'vite'
