@@ -160,13 +160,8 @@ export default defineConfig({
 
 ## server.cors {#server-cors}
 
-<<<<<<< HEAD
-- **类型：** `boolean | CorsOptions`
-- **默认：** `false`
-=======
-- **Type:** `boolean | CorsOptions`
-- **Default:** `{ origin: /^https?:\/\/(?:(?:[^:]+\.)?localhost|127\.0\.0\.1|\[::1\])(?::\d+)?$/ }` (allows localhost, `127.0.0.1` and `::1`)
->>>>>>> 69b73954122c886bde47575fd433afaece158af9
+- **类型：:** `boolean | CorsOptions`
+- **默认：:** `{ origin: /^https?:\/\/(?:(?:[^:]+\.)?localhost|127\.0\.0\.1|\[::1\])(?::\d+)?$/ }` （允许 localhost、`127.0.0.1` 和 `::1`）
 
 为开发服务器配置 CORS。传递一个 [选项对象](https://github.com/expressjs/cors#configuration-options) 来调整行为，或设置为 `true` 来允许任何源。
 
