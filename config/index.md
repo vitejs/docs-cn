@@ -22,7 +22,15 @@ export default {
 vite --config my-config.js
 ```
 
+<<<<<<< HEAD
 ## 配置智能提示 {#config-intellisense}
+=======
+::: tip BUNDLING THE CONFIG
+By default, Vite uses `esbuild` to bundle the config into a temporary file. This can cause issues when importing TypeScript files in a monorepo. If you encounter any issues with this approach, you can specify `--configLoader=runner` to use the module runner instead - it will not create a temporary config and will transform any files on the fly. Note that module runner doesn't support CJS in config files, but external CJS packages should work as usual.
+:::
+
+## Config Intellisense
+>>>>>>> f52322171cff476479a2a1360fdc7b9034e8aede
 
 因为 Vite 本身附带 TypeScript 类型，所以你可以通过 IDE 和 jsdoc 的配合来实现智能提示：
 
