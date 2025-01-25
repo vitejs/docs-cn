@@ -16,10 +16,10 @@ import HeroDiagram from './HeroDiagram.vue'
       </a>
 
       <!-- Heading -->
-      <h1>The Build Tool<br />for the Web</h1>
+      <h1>卓越的 Web 开发<br />构建工具</h1>
       <!-- Tagline -->
       <h3>
-        Vite 是一个超快速的前端构建工具，推动着下一代网络应用的发展
+        Vite 是一个超快的前端构建工具 <br> 赋能下一代网络应用的发展
       </h3>
 
       <!-- CTA Buttons -->
