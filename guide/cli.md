@@ -26,6 +26,7 @@ vite [root]
 | `--base <path>`          | 公共基础路径（默认为：`/`）(`string`) |
 | `-l, --logLevel <level>` | info \| warn \| error \| silent (`string`) |
 | `--clearScreen`          | 允许或禁用打印日志时清除屏幕 (`boolean`) |
+| `--configLoader <loader>` | 使用 `bundle` 来采用 esbuild 打包配置，或是 `runner`（实验性）来在运行时处理，默认是 `bundle` |
 | `--profile`              | 启动内置的 Node.js 调试器（查看 [性能瓶颈](/guide/troubleshooting#performance-bottlenecks)）|
 | `-d, --debug [feat]`     | 显示调试日志 (`string \| boolean`) |
 | `-f, --filter <filter>`  | 过滤调试日志 (`string`) |
@@ -64,6 +65,7 @@ vite build [root]
 | `--base <path>`                | 公共基础路径（默认为：`/`）(`string`) |
 | `-l, --logLevel <level>`       | Info \| warn \| error \| silent (`string`) |
 | `--clearScreen`                | 允许或禁用打印日志时清除屏幕 (`boolean`) |
+| `--configLoader <loader>` | 使用 `bundle` 来采用 esbuild 打包配置，或是 `runner`（实验性）来在运行时处理，默认是 `bundle` |
 | `--profile`                    | 启动内置的 Node.js 调试器（查看 [性能瓶颈](/guide/troubleshooting#performance-bottlenecks)）|
 | `-d, --debug [feat]`           | 显示调试日志 (`string \| boolean`) |
 | `-f, --filter <filter>`        | 过滤调试日志 (`string`) |
@@ -92,6 +94,7 @@ vite optimize [root]
 | `--base <path>`          | 公共基础路径（默认为：`/`）(`string`) |
 | `-l, --logLevel <level>` | Info \| warn \| error \| silent (`string`) |
 | `--clearScreen`          | 允许或禁用打印日志时清除屏幕 (`boolean`) |
+| `--configLoader <loader>` | 使用 `bundle` 来采用 esbuild 打包配置，或是 `runner`（实验性）来在运行时处理，默认是 `bundle` |
 | `-d, --debug [feat]`     | 显示调试日志 (`string \| boolean`) |
 | `-f, --filter <filter>`  | 过滤调试日志 (`string`) |
 | `-m, --mode <mode>`      | 设置环境模式 (`string`) |
@@ -120,6 +123,7 @@ vite preview [root]
 | `--base <path>`          | 公共基础路径（默认为：`/`）(`string`) |
 | `-l, --logLevel <level>` | Info \| warn \| error \| silent (`string`) |
 | `--clearScreen`          | 允许或禁用打印日志时清除屏幕 (`boolean`) |
+| `--configLoader <loader>` | 使用 `bundle` 来采用 esbuild 打包配置，或是 `runner`（实验性）来在运行时处理，默认是 `bundle` |
 | `-d, --debug [feat]`     | 显示调试日志 (`string \| boolean`) |
 | `-f, --filter <filter>`  | 过滤调试日志 (`string`) |
 | `-m, --mode <mode>`      | 设置环境模式 (`string`) |

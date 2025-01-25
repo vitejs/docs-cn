@@ -4,14 +4,19 @@
 
 ## 浏览器兼容性 {#browser-compatibility}
 
-用于生产环境的构建包会假设目标浏览器支持现代 JavaScript 语法。默认情况下，Vite 的目标是能够 [支持原生 ESM script 标签](https://caniuse.com/es6-module)、[支持原生 ESM 动态导入](https://caniuse.com/es6-module-dynamic-import) 和 [`import.meta`](https://caniuse.com/mdn-javascript_operators_import_meta) 的浏览器：
+默认情况下，生产打包文件假设支持现代 JavaScript，包括原生 ES 模块[native ES Modules](https://caniuse.com/es6-module)、原生 ESM 动态导入[native ESM dynamic import](https://caniuse.com/es6-module-dynamic-import)，以及`import.meta`[`import.meta`](https://caniuse.com/mdn-javascript_operators_import_meta)。默认的浏览器支持范围是：
 
 - Chrome >=87
 - Firefox >=78
 - Safari >=14
 - Edge >=88
 
-你也可以通过 [`build.target` 配置项](/config/build-options.md#build-target) 指定构建目标，最低支持 `es2015`。
+你也可以通过 [`build.target` 配置项](/config/build-options.md#build-target) 指定构建目标，最低支持 `es2015`。如果设置较低的目标值，Vite 仍然需要这些最低的浏览器支持范围，因为它依赖于[原生的 ESM 动态导入](https://caniuse.com/es6-module-dynamic-import)和 [`import.meta`](https://caniuse.com/mdn-javascript_operators_import_meta)：
+
+- Chrome >=64
+- Firefox >=67
+- Safari >=11.1
+- Edge >=79
 
 请注意，默认情况下 Vite 只处理语法转译，且 **不包含任何 polyfill**。你可以访问 https://cdnjs.cloudflare.com/polyfill/ ，这个网站可以根据用户的浏览器 UserAgent 字符串自动生成 polyfill 包。
 

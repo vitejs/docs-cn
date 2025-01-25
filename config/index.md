@@ -22,6 +22,10 @@ export default {
 vite --config my-config.js
 ```
 
+::: tip 配置文件的打包
+默认情况下，Vite 使用 `esbuild` 将配置打包成临时文件。这在单库项目中导入 TypeScript 文件时可能会导致问题。如果你遇到此方法的问题，可以指定 `--configLoader=runner` 而使用模块运行器 - 它不会创建临时配置，并会实时转换任何文件。请注意，模块运行器不支持配置文件中的 CJS 语法，但外部的 CJS 包应该正常使用。
+:::
+
 ## 配置智能提示 {#config-intellisense}
 
 因为 Vite 本身附带 TypeScript 类型，所以你可以通过 IDE 和 jsdoc 的配合来实现智能提示：
@@ -104,7 +108,7 @@ import { defineConfig, loadEnv } from 'vite'
 
 export default defineConfig(({ mode }) => {
   // 根据当前工作目录中的 `mode` 加载 .env 文件
-  // 设置第三个参数为 '' 来加载所有环境变量，而不管是否有 
+  // 设置第三个参数为 '' 来加载所有环境变量，而不管是否有
   // `VITE_` 前缀。
   const env = loadEnv(mode, process.cwd(), '')
   return {
