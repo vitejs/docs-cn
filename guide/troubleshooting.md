@@ -130,7 +130,19 @@ security add-trusted-cert -d -r trustRoot -k ~/Library/Keychains/login.keychain-
 
 要避免这个问题，请尝试减小请求头大小。举个例子，如果 cookie 太长，请删除它。或者你可以使用 [`--max-http-header-size`](https://nodejs.org/api/cli.html#--max-http-header-sizesize) 来更改最大请求头大小。
 
+<<<<<<< HEAD
 ## HMR {#hmr}
+=======
+### Dev Containers / VS Code Port Forwarding
+
+If you are using a Dev Container or port forwarding feature in VS Code, you may need to set the [`server.host`](/config/server-options.md#server-host) option to `127.0.0.1` in the config to make it work.
+
+This is because [the port forwarding feature in VS Code does not support IPv6](https://github.com/microsoft/vscode-remote-release/issues/7029).
+
+See [#16522](https://github.com/vitejs/vite/issues/16522) for more details.
+
+## HMR
+>>>>>>> c458011f02fbfcabe2f3f20cc99d9b3b84b860ba
 
 ### Vite 检测到文件变化，但 HMR 不工作 {#vite-detects-a-file-change-but-the-hmr-is-not-working}
 
