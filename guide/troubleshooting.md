@@ -130,7 +130,15 @@ security add-trusted-cert -d -r trustRoot -k ~/Library/Keychains/login.keychain-
 
 要避免这个问题，请尝试减小请求头大小。举个例子，如果 cookie 太长，请删除它。或者你可以使用 [`--max-http-header-size`](https://nodejs.org/api/cli.html#--max-http-header-sizesize) 来更改最大请求头大小。
 
-## HMR {#hmr}
+### 开发容器 / VS Code 端口转发
+
+如果你正在使用开发容器或 VS Code 的端口转发功能，可能需要在配置中将 [`server.host`](/config/server-options.md#server-host) 选项设置为 `127.0.0.1` 才能使其正常工作。
+
+这是因为 [VS Code 的端口转发功能不支持 IPv6](https://github.com/microsoft/vscode-remote-release/issues/7029)。
+
+更多详情请参阅 [#16522](https://github.com/vitejs/vite/issues/16522)。
+
+## HMR
 
 ### Vite 检测到文件变化，但 HMR 不工作 {#vite-detects-a-file-change-but-the-hmr-is-not-working}
 
