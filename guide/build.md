@@ -4,7 +4,7 @@
 
 ## 浏览器兼容性 {#browser-compatibility}
 
-默认情况下，生产打包文件假设支持现代 JavaScript，包括原生 ES 模块[native ES Modules](https://caniuse.com/es6-module)、原生 ESM 动态导入[native ESM dynamic import](https://caniuse.com/es6-module-dynamic-import)，以及`import.meta`[`import.meta`](https://caniuse.com/mdn-javascript_operators_import_meta)、[nullish coalescing](https://caniuse.com/mdn-javascript_operators_nullish_coalescing), 和 [BigInt](https://caniuse.com/bigint)。默认的浏览器支持范围是：
+默认情况下，生产打包文件假设支持现代 JavaScript，包括原生 ES 模块[native ES Modules](https://caniuse.com/es6-module)、原生 ESM 动态导入[native ESM dynamic import](https://caniuse.com/es6-module-dynamic-import)，以及`import.meta`[`import.meta`](https://caniuse.com/mdn-javascript_operators_import_meta)、[nullish coalescing](https://caniuse.com/mdn-javascript_operators_nullish_coalescing) 和 [BigInt](https://caniuse.com/bigint)。默认的浏览器支持范围是：
 
 <!-- 查找 `ESBUILD_MODULES_TARGET` 常量以获取更多信息。 -->
 
