@@ -77,7 +77,28 @@ NEW_KEY3=test$KEY   # test123
 - 由于任何暴露给 Vite 源码的变量最终都将出现在客户端包中，`VITE_*` 变量应该不包含任何敏感信息。
   :::
 
+<<<<<<< HEAD
 ### TypeScript 的智能提示 {#intellisense}
+=======
+::: details Expanding variables in reverse order
+
+Vite supports expanding variables in reverse order.
+For example, the `.env` below will be evaluated as `VITE_FOO=foobar`, `VITE_BAR=bar`.
+
+```[.env]
+VITE_FOO=foo${VITE_BAR}
+VITE_BAR=bar
+```
+
+This does not work in shell scripts and other tools like `docker-compose`.
+That said, Vite supports this behavior as this has been supported by `dotenv-expand` for a long time and other tools in JavaScript ecosystem uses older versions that supports this behavior.
+
+To avoid interop issues, it is recommended to avoid relying on this behavior. Vite may start emitting warnings for this behavior in the future.
+
+:::
+
+### IntelliSense for TypeScript
+>>>>>>> eab2ef9acfeb8c6fd28b34cfa2e8f7bc9ec65c23
 
 默认情况下，Vite 在 [`vite/client.d.ts`](https://github.com/vitejs/vite/blob/main/packages/vite/client.d.ts) 中为 `import.meta.env` 提供了类型定义。随着在 `.env[mode]` 文件中自定义了越来越多的环境变量，你可能想要在代码中获取这些以 `VITE_` 为前缀的用户自定义环境变量的 TypeScript 智能提示。
 
