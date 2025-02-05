@@ -14,6 +14,7 @@ vite [root]
 
 #### 选项 {#options}
 
+<<<<<<< HEAD
 | 选项                     |                                                                                         |
 | ------------------------ | -------------------------------------------------------------------------------------- |
 | `--host [host]`          | 指定主机名称 (`string`) |
@@ -33,6 +34,27 @@ vite [root]
 | `-m, --mode <mode>`      | 设置环境模式 (`string`) |
 | `-h, --help`             | 显示可用的 CLI 选项 |
 | `-v, --version`          | 显示版本号 |
+=======
+| Options                   |                                                                                                                                                                                      |
+| ------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `--host [host]`           | Specify hostname (`string`)                                                                                                                                                          |
+| `--port <port>`           | Specify port (`number`)                                                                                                                                                              |
+| `--open [path]`           | Open browser on startup (`boolean \| string`)                                                                                                                                        |
+| `--cors`                  | Enable CORS (`boolean`)                                                                                                                                                              |
+| `--strictPort`            | Exit if specified port is already in use (`boolean`)                                                                                                                                 |
+| `--force`                 | Force the optimizer to ignore the cache and re-bundle (`boolean`)                                                                                                                    |
+| `-c, --config <file>`     | Use specified config file (`string`)                                                                                                                                                 |
+| `--base <path>`           | Public base path (default: `/`) (`string`)                                                                                                                                           |
+| `-l, --logLevel <level>`  | info \| warn \| error \| silent (`string`)                                                                                                                                           |
+| `--clearScreen`           | Allow/disable clear screen when logging (`boolean`)                                                                                                                                  |
+| `--configLoader <loader>` | Use `bundle` to bundle the config with esbuild, or `runner` (experimental) to process it on the fly, or `native` (experimental) to load using the native runtime (default: `bundle`) |
+| `--profile`               | Start built-in Node.js inspector (check [Performance bottlenecks](/guide/troubleshooting#performance-bottlenecks))                                                                   |
+| `-d, --debug [feat]`      | Show debug logs (`string \| boolean`)                                                                                                                                                |
+| `-f, --filter <filter>`   | Filter debug logs (`string`)                                                                                                                                                         |
+| `-m, --mode <mode>`       | Set env mode (`string`)                                                                                                                                                              |
+| `-h, --help`              | Display available CLI options                                                                                                                                                        |
+| `-v, --version`           | Display version number                                                                                                                                                               |
+>>>>>>> fa4292c1fb19571bfba2d1c8b2dc0782b1108490
 
 ## 构建 {#build}
 
@@ -79,7 +101,13 @@ vite build [root]
 
 预构建依赖。
 
+<<<<<<< HEAD
 #### 使用 {#usage-2}
+=======
+**Deprecated**: the pre-bundle process runs automatically and does not need to be called.
+
+#### Usage
+>>>>>>> fa4292c1fb19571bfba2d1c8b2dc0782b1108490
 
 ```bash
 vite optimize [root]
