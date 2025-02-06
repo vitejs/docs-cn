@@ -56,8 +56,8 @@ Vite允许响应的主机名。
 如果设置为 `true`，服务器将被允许响应任何主机的请求。
 但不建议这样做，因为这会使服务器容易受到 DNS 重新绑定攻击（DNS rebinding）。
 
-::: details Configure via environment variable
-You can set the environment variable `__VITE_ADDITIONAL_SERVER_ALLOWED_HOSTS` to add an additional allowed host.
+::: details 通过环境变量配置
+你可以设置环境变量 `__VITE_ADDITIONAL_SERVER_ALLOWED_HOSTS` 来添加额外允许的服务器端口。
 :::
 
 ## server.port
