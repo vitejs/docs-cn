@@ -61,7 +61,11 @@ export default {
 
 ## 情景配置 {#conditional-config}
 
+<<<<<<< HEAD
 如果配置文件需要基于（`dev`/`serve` 或 `build`）命令或者不同的 [模式](/guide/env-and-mode) 来决定选项，亦或者是一个 SSR 构建（`isSsrBuild`）、一个正在预览的构建产物（`isPreview`），则可以选择导出这样一个函数：
+=======
+If the config needs to conditionally determine options based on the command (`serve` or `build`), the [mode](/guide/env-and-mode#modes) being used, if it's an SSR build (`isSsrBuild`), or is previewing the build (`isPreview`), it can export a function instead:
+>>>>>>> 1a9850cd958a7df548bcce7f470477aad95b28db
 
 ```js twoslash
 import { defineConfig } from 'vite'

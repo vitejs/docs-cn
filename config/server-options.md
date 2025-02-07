@@ -51,10 +51,30 @@ Vite允许响应的主机名。
 默认情况下，允许 `localhost` 及其下的所有 `.localhost` 域名和所有 IP 地址。
 使用 HTTPS 时，将跳过此检查。
 
+<<<<<<< HEAD
 如果设置的字符串以 `.` 开头，则允许该主机名本身（不带 `.`）以及该主机名下的所有子域名。例如，`.example.com` 将允许 `example.com`、`foo.example.com` 和 `foo.bar.example.com`。
 
 如果设置为 `true`，服务器将被允许响应任何主机的请求。
 但不建议这样做，因为这会使服务器容易受到 DNS 重新绑定攻击（DNS rebinding）。
+=======
+If a string starts with `.`, it will allow that hostname without the `.` and all subdomains under the hostname. For example, `.example.com` will allow `example.com`, `foo.example.com`, and `foo.bar.example.com`. If set to `true`, the server is allowed to respond to requests for any hosts.
+
+::: details What hosts are safe to be added?
+
+Hosts that you have control over which IP addresses they resolve to are safe to add to the list of allowed hosts.
+
+For example, if you own a domain `vite.dev`, you can add `vite.dev` and `.vite.dev` to the list. If you don't own that domain and you cannot trust the owner of that domain, you should not add it.
+
+Especially, you should never add Top-Level Domains like `.com` to the list. This is because anyone can purchase a domain like `example.com` and control the IP address it resolves to.
+
+:::
+
+::: danger
+
+Setting `server.allowedHosts` to `true` allows any website to send requests to your dev server through DNS rebinding attacks, allowing them to download your source code and content. We recommend always using an explicit list of allowed hosts. See [GHSA-vg6x-rcgg-rjx6](https://github.com/vitejs/vite/security/advisories/GHSA-vg6x-rcgg-rjx6) for more details.
+
+:::
+>>>>>>> 1a9850cd958a7df548bcce7f470477aad95b28db
 
 ::: details 通过环境变量配置
 你可以设置环境变量 `__VITE_ADDITIONAL_SERVER_ALLOWED_HOSTS` 来添加额外允许的服务器端口。
@@ -169,9 +189,13 @@ export default defineConfig({
 
 为开发服务器配置 CORS。传递一个 [选项对象](https://github.com/expressjs/cors#configuration-options) 来调整行为，或设置为 `true` 来允许任何源。
 
-:::warning
+::: danger
 
+<<<<<<< HEAD
 我们建议设置一个具体的值，而不是 `true`，以避免将源代码暴露给不受信任的源。
+=======
+Setting `server.cors` to `true` allows any website to send requests to your dev server and download your source code and content. We recommend always using an explicit list of allowed origins.
+>>>>>>> 1a9850cd958a7df548bcce7f470477aad95b28db
 
 :::
 
