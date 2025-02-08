@@ -18,7 +18,7 @@ Vite 通过在一开始将应用中的模块区分为 **依赖** 和 **源码** 
 
 - **依赖** 大多为在开发时不会变动的纯 JavaScript。一些较大的依赖（例如有上百个模块的组件库）处理的代价也很高。依赖也通常会存在多种模块化格式（例如 ESM 或者 CommonJS）。
 
-  Vite 将会使用 [esbuild](https://esbuild.github.io/) [预构建依赖](./dep-pre-bundling)。esbuild 使用 Go 编写，并且比以 JavaScript 编写的打包器预构建依赖快 10-100 倍。
+  Vite 将会使用 [esbuild](https://esbuild.github.io/) [预构建依赖](./dep-pre-bundling.md)。esbuild 使用 Go 编写，并且比以 JavaScript 编写的打包器预构建依赖快 10-100 倍。
 
 - **源码** 通常包含一些并非直接是 JavaScript 的文件，需要转换（例如 JSX，CSS 或者 Vue/Svelte 组件），时常会被编辑。同时，并不是所有的源码都需要同时被加载（例如基于路由拆分的代码模块）。
 
@@ -47,7 +47,7 @@ Vite 同时利用 HTTP 头来加速整个页面的重新加载（再次让浏览
 
 尽管原生 ESM 现在得到了广泛支持，但由于嵌套导入会导致额外的网络往返，在生产环境中发布未打包的 ESM 仍然效率低下（即使使用 HTTP/2）。为了在生产环境中获得最佳的加载性能，最好还是将代码进行 tree-shaking、懒加载和 chunk 分割（以获得更好的缓存）。
 
-要确保开发服务器和生产环境构建之间的最优输出和行为一致并不容易。所以 Vite 附带了一套 [构建优化](./features#build-optimizations) 的 [构建命令](./build)，开箱即用。
+要确保开发服务器和生产环境构建之间的最优输出和行为一致并不容易。所以 Vite 附带了一套 [构建优化](./features.md#build-optimizations) 的 [构建命令](./build.md)，开箱即用。
 
 ### 为何不用 ESBuild 打包？ {#why-not-bundle-with-esbuild}
 
@@ -59,10 +59,4 @@ Rollup 已经开始着手改进性能，[在 v4 中将其解析器切换到 SWC]
 
 ## Vite 与 X 的区别是？ {#how-is-vite-different-from-x}
 
-你可以查看 [比较](./comparisons) 章节获取更多细节，了解 Vite 与同类工具的异同。
-
-<small class="cn-footnote">
-<br/>
-<strong class="title">译者注</strong>
-<a id="footnote-1"></a>[1] 暂以意译方式呈现。
-</small>
+你可以查看 [比较](./comparisons.md) 章节获取更多细节，了解 Vite 与同类工具的异同。
