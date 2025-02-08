@@ -18,7 +18,7 @@ Vite 通过在一开始将应用中的模块区分为 **依赖** 和 **源码** 
 
 - **依赖** 大多为在开发时不会变动的纯 JavaScript。一些较大的依赖（例如有上百个模块的组件库）处理的代价也很高。依赖也通常会存在多种模块化格式（例如 ESM 或者 CommonJS）。
 
-  Vite 将会使用 [esbuild](https://esbuild.github.io/) [预构建依赖](./dep-pre-bundling)。esbuild 使用 Go 编写，并且比以 JavaScript 编写的打包器预构建依赖快 10-100 倍。
+  Vite 将会使用 [esbuild](https://esbuild.github.io/) [预构建依赖](./dep-pre-bundling.md)。esbuild 使用 Go 编写，并且比以 JavaScript 编写的打包器预构建依赖快 10-100 倍。
 
 - **源码** 通常包含一些并非直接是 JavaScript 的文件，需要转换（例如 JSX，CSS 或者 Vue/Svelte 组件），时常会被编辑。同时，并不是所有的源码都需要同时被加载（例如基于路由拆分的代码模块）。
 
