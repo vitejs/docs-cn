@@ -1,16 +1,10 @@
 # 环境变量和模式 {#env-variables-and-modes}
 
-<<<<<<< HEAD
-## 环境变量 {#env-variables}
+Vite 在特殊的 `import.meta.env` 对象下暴露了一些常量。这些常量在开发阶段被定义为全局变量，并在构建阶段被静态替换，以使树摇（tree-shaking）更有效。
 
-Vite 在一个特殊的 **`import.meta.env`** 对象上暴露环境变量，这些变量在构建时会被静态地替换掉。这里有一些在所有情况下都可以使用的内建变量：
-=======
-Vite exposes certain constants under the special `import.meta.env` object. These constants are defined as global variables during dev and statically replaced at build time to make tree-shaking effective.
+## 内置常量 {#env-variables}
 
-## Built-in constants
-
-Some built-in constants are available in all cases:
->>>>>>> 1a9850cd958a7df548bcce7f470477aad95b28db
+一些内置常量在所有情况下都可用：
 
 - **`import.meta.env.MODE`**: {string} 应用运行的[模式](#modes)。
 
@@ -22,35 +16,31 @@ Some built-in constants are available in all cases:
 
 - **`import.meta.env.SSR`**: {boolean} 应用是否运行在 [server](./ssr.md#conditional-logic) 上。
 
-<<<<<<< HEAD
-## `.env` 文件 {#env-files}
-=======
-## Env Variables
+## 环境变量 {#env-variables}
 
-Vite exposes env variables under `import.meta.env` object as strings automatically.
+Vite 自动将环境变量暴露在 `import.meta.env` 对象下，作为字符串。
 
-To prevent accidentally leaking env variables to the client, only variables prefixed with `VITE_` are exposed to your Vite-processed code. e.g. for the following env variables:
+为了防止意外地将一些环境变量泄漏到客户端，只有以 `VITE_` 为前缀的变量才会暴露给经过 vite 处理的代码。例如下面这些环境变量：
 
 ```[.env]
 VITE_SOME_KEY=123
 DB_PASSWORD=foobar
 ```
 
-Only `VITE_SOME_KEY` will be exposed as `import.meta.env.VITE_SOME_KEY` to your client source code, but `DB_PASSWORD` will not.
+只有 `VITE_SOME_KEY` 会被暴露为 `import.meta.env.VITE_SOME_KEY` 提供给客户端源码，而 `DB_PASSWORD` 则不会。
 
 ```js
 console.log(import.meta.env.VITE_SOME_KEY) // "123"
 console.log(import.meta.env.DB_PASSWORD) // undefined
 ```
 
-If you want to customize the env variables prefix, see the [envPrefix](/config/shared-options.html#envprefix) option.
+如果你想要自定义环境变量的前缀，请参阅 [envPrefix](/config/shared-options.html#envprefix) 选项。
 
-:::tip Env parsing
-As shown above, `VITE_SOME_KEY` is a number but returns a string when parsed. The same would also happen for boolean env variables. Make sure to convert to the desired type when using it in your code.
+:::tip 环境变量解析
+如上所示，`VITE_SOME_KEY` 是一个数字，但在解析时会返回一个字符串。布尔类型的环境变量也会发生同样的情况。在代码中使用时，请确保转换为所需的类型。
 :::
 
 ### `.env` Files
->>>>>>> 1a9850cd958a7df548bcce7f470477aad95b28db
 
 Vite 使用 [dotenv](https://github.com/motdotla/dotenv) 从你的 [环境目录](/config/shared-options.md#envdir) 中的下列文件加载额外的环境变量：
 
@@ -69,33 +59,8 @@ Vite 总是会加载 `.env` 和 `.env.local` 文件，除此之外还会加载�
 
 另外，Vite 执行时已经存在的环境变量有最高的优先级，不会被 `.env` 类文件覆盖。例如当运行 `VITE_SOME_KEY=123 vite build` 的时候。
 
-<<<<<<< HEAD
 `.env` 类文件会在 Vite 启动一开始时被加载，而改动会在重启服务器后生效。
-:::
 
-加载的环境变量也会通过 `import.meta.env` 以字符串形式暴露给客户端源码。
-
-为了防止意外地将一些环境变量泄漏到客户端，只有以 `VITE_` 为前缀的变量才会暴露给经过 vite 处理的代码。例如下面这些环境变量：
-
-```[.env]
-VITE_SOME_KEY=123
-DB_PASSWORD=foobar
-```
-
-只有 `VITE_SOME_KEY` 会被暴露为 `import.meta.env.VITE_SOME_KEY` 提供给客户端源码，而 `DB_PASSWORD` 则不会。
-
-```js
-console.log(import.meta.env.VITE_SOME_KEY) // "123"
-console.log(import.meta.env.DB_PASSWORD) // undefined
-```
-
-:::tip 环境变量解析
-
-如上所示，`VITE_SOME_KEY` 是一个数字，但在解析时会返回一个字符串。布尔类型的环境变量也会发生同样的情况。在代码中使用时，请确保转换为所需的类型。
-=======
-`.env` files are loaded at the start of Vite. Restart the server after making changes.
-
->>>>>>> 1a9850cd958a7df548bcce7f470477aad95b28db
 :::
 
 此外，Vite 使用 [dotenv-expand](https://github.com/motdotla/dotenv-expand) 来扩展在 env 文件中编写的变量。想要了解更多相关语法，请查看 [它们的文档](https://github.com/motdotla/dotenv-expand#what-rules-does-the-expansion-engine-follow)。
@@ -109,24 +74,13 @@ NEW_KEY2=test\$foo  # test$foo
 NEW_KEY3=test$KEY   # test123
 ```
 
-<<<<<<< HEAD
-如果你想自定义 env 变量的前缀，请参阅 [envPrefix](/config/shared-options.html#envprefix)。
-
-  :::warning 安全注意事项
-=======
-:::warning SECURITY NOTES
->>>>>>> 1a9850cd958a7df548bcce7f470477aad95b28db
+:::warning 安全注意事项
 
 - `.env.*.local` 文件应是本地的，可以包含敏感变量。你应该将 `*.local` 添加到你的 `.gitignore` 中，以避免它们被 git 检入。
 
-<<<<<<< HEAD
 - 由于任何暴露给 Vite 源码的变量最终都将出现在客户端包中，`VITE_*` 变量应该不包含任何敏感信息。
-  :::
-=======
-- Since any variables exposed to your Vite source code will end up in your client bundle, `VITE_*` variables should _not_ contain any sensitive information.
 
 :::
->>>>>>> 1a9850cd958a7df548bcce7f470477aad95b28db
 
 ::: details 反向扩展变量
 
@@ -145,11 +99,7 @@ VITE_BAR=bar
 
 :::
 
-<<<<<<< HEAD
-### TypeScript 的智能提示 {#intellisense}
-=======
-## IntelliSense for TypeScript
->>>>>>> 1a9850cd958a7df548bcce7f470477aad95b28db
+## TypeScript 的智能提示 {#intellisense}
 
 默认情况下，Vite 在 [`vite/client.d.ts`](https://github.com/vitejs/vite/blob/main/packages/vite/client.d.ts) 中为 `import.meta.env` 提供了类型定义。随着在 `.env[mode]` 文件中自定义了越来越多的环境变量，你可能想要在代码中获取这些以 `VITE_` 为前缀的用户自定义环境变量的 TypeScript 智能提示。
 
@@ -178,22 +128,13 @@ interface ImportMeta {
 
 :::warning 导入语句会破坏类型增强
 
-<<<<<<< HEAD
 如果 `ImportMetaEnv` 增强不起作用，请确保在 `vite-env.d.ts` 中没有任何 `import` 语句。更多信息请参阅 [TypeScript 文档](https://www.typescriptlang.org/docs/handbook/2/modules.html#how-javascript-modules-are-defined)。
-:::
-
-## HTML 环境变量替换 {#html-env-replacement}
-
-Vite 还支持在 HTML 文件中替换环境变量。`import.meta.env` 中的任何属性都可以通过特殊的 `%ENV_NAME%` 语法在 HTML 文件中使用：
-=======
-If the `ImportMetaEnv` augmentation does not work, make sure you do not have any `import` statements in `vite-env.d.ts`. See the [TypeScript documentation](https://www.typescriptlang.org/docs/handbook/2/modules.html#how-javascript-modules-are-defined) for more information.
 
 :::
 
 ## HTML Constant Replacement
 
-Vite also supports replacing constants in HTML files. Any properties in `import.meta.env` can be used in HTML files with a special `%CONST_NAME%` syntax:
->>>>>>> 1a9850cd958a7df548bcce7f470477aad95b28db
+Vite 还支持在 HTML 文件中替换环境变量。`import.meta.env` 中的任何属性都可以通过特殊的 `%CONST_NAME%` 语法在 HTML 文件中使用：
 
 ```html
 <h1>Vite is running in %MODE%</h1>
@@ -234,11 +175,7 @@ VITE_APP_TITLE=My App (staging)
 NODE_ENV=development
 ```
 
-<<<<<<< HEAD
-## NODE_ENV 和 模式 {#node-env-and-modes}
-=======
-### NODE_ENV and Modes
->>>>>>> 1a9850cd958a7df548bcce7f470477aad95b28db
+### NODE_ENV 和 模式 {#node-env-and-modes}
 
 需要注意的是，`NODE_ENV`（`process.env.NODE_ENV`）和模式是两个不同的概念。以下是不同命令如何影响 `NODE_ENV` 和模式：
 

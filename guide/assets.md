@@ -46,11 +46,7 @@ document.getElementById('hero-img').style.background = `url("${imgUrl}")`
 
 ### 显式 URL 引入 {#explicit-url-imports}
 
-<<<<<<< HEAD
-未被包含在内部列表或 `assetsInclude` 中的资源，可以使用 `?url` 后缀显式导入为一个 URL。这十分有用，例如，要导入 [Houdini Paint Worklets](https://houdini.how/usage) 时：
-=======
-Assets that are not included in the internal list or in `assetsInclude`, can be explicitly imported as a URL using the `?url` suffix. This is useful, for example, to import [Houdini Paint Worklets](https://developer.mozilla.org/en-US/docs/Web/API/CSS/paintWorklet_static).
->>>>>>> 1a9850cd958a7df548bcce7f470477aad95b28db
+未被包含在内部列表或 `assetsInclude` 中的资源，可以使用 `?url` 后缀显式导入为一个 URL。这十分有用，例如，要导入 [Houdini Paint Worklets](https://developer.mozilla.org/en-US/docs/Web/API/CSS/paintWorklet_static) 时：
 
 ```js twoslash
 import 'vite/client'
