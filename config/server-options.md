@@ -51,30 +51,23 @@ Vite允许响应的主机名。
 默认情况下，允许 `localhost` 及其下的所有 `.localhost` 域名和所有 IP 地址。
 使用 HTTPS 时，将跳过此检查。
 
-<<<<<<< HEAD
-如果设置的字符串以 `.` 开头，则允许该主机名本身（不带 `.`）以及该主机名下的所有子域名。例如，`.example.com` 将允许 `example.com`、`foo.example.com` 和 `foo.bar.example.com`。
+如果设置的字符串以 `.` 开头，则允许该主机名本身（不带 `.`）以及该主机名下的所有子域名。例如，`.example.com` 将允许 `example.com`、`foo.example.com` 和 `foo.bar.example.com`。如果设置为 `true`，服务器将被允许响应任何主机的请求。
 
-如果设置为 `true`，服务器将被允许响应任何主机的请求。
-但不建议这样做，因为这会使服务器容易受到 DNS 重新绑定攻击（DNS rebinding）。
-=======
-If a string starts with `.`, it will allow that hostname without the `.` and all subdomains under the hostname. For example, `.example.com` will allow `example.com`, `foo.example.com`, and `foo.bar.example.com`. If set to `true`, the server is allowed to respond to requests for any hosts.
+::: 什么主机可以安全添加？
 
-::: details What hosts are safe to be added?
+你控制其解析 IP 地址的主机可以安全地添加到允许的主机列表中。
 
-Hosts that you have control over which IP addresses they resolve to are safe to add to the list of allowed hosts.
+例如，如果你拥有域名 `vite.dev`，你可以将 `vite.dev` 和 `.vite.dev` 添加到列表中。如果你不拥有该域名且无法信任该域名的所有者，则不应添加它。
 
-For example, if you own a domain `vite.dev`, you can add `vite.dev` and `.vite.dev` to the list. If you don't own that domain and you cannot trust the owner of that domain, you should not add it.
-
-Especially, you should never add Top-Level Domains like `.com` to the list. This is because anyone can purchase a domain like `example.com` and control the IP address it resolves to.
+特别是，你绝不能将顶级域名（如 `.com`）添加到列表中。这是因为任何人都可以购买域名 `example.com` 并控制其解析的 IP 地址。
 
 :::
 
 ::: danger
 
-Setting `server.allowedHosts` to `true` allows any website to send requests to your dev server through DNS rebinding attacks, allowing them to download your source code and content. We recommend always using an explicit list of allowed hosts. See [GHSA-vg6x-rcgg-rjx6](https://github.com/vitejs/vite/security/advisories/GHSA-vg6x-rcgg-rjx6) for more details.
+将 `server.allowedHosts` 设置为 `true` 允许任何网站通过 DNS 重绑定攻击向你的开发服务器发送请求，从而使它们能够下载你的源代码和内容。我们建议始终使用显式的允许主机列表。有关更多详细信息，请参阅 [GHSA-vg6x-rcgg-rjx6](https://github.com/vitejs/vite/security/advisories/GHSA-vg6x-rcgg-rjx6)。
 
 :::
->>>>>>> 1a9850cd958a7df548bcce7f470477aad95b28db
 
 ::: details 通过环境变量配置
 你可以设置环境变量 `__VITE_ADDITIONAL_SERVER_ALLOWED_HOSTS` 来添加额外允许的服务器端口。
@@ -191,11 +184,7 @@ export default defineConfig({
 
 ::: danger
 
-<<<<<<< HEAD
-我们建议设置一个具体的值，而不是 `true`，以避免将源代码暴露给不受信任的源。
-=======
-Setting `server.cors` to `true` allows any website to send requests to your dev server and download your source code and content. We recommend always using an explicit list of allowed origins.
->>>>>>> 1a9850cd958a7df548bcce7f470477aad95b28db
+将 `server.cors` 设置为 `true` 允许任何网站向你的开发服务器发送请求并下载你的源代码和内容。我们建议始终使用显式的允许来源列表。
 
 :::
 
