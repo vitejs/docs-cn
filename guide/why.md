@@ -59,4 +59,4 @@ Rollup 已经开始着手改进性能，[在 v4 中将其解析器切换到 SWC]
 
 ## Vite 与 X 的区别是？ {#how-is-vite-different-from-x}
 
-你可以查看 [比较](./comparisons) 章节获取更多细节，了解 Vite 与同类工具的异同。
+你可以查看 [比较](./comparisons.md) 章节获取更多细节，了解 Vite 与同类工具的异同。
