@@ -137,7 +137,7 @@ Vite 默认的类型定义是写给它的 Node.js API 的。要将其补充到�
 这将会提供以下类型定义补充：
 
 - 资源导入 (例如：导入一个 `.svg` 文件)
-- `import.meta.env` 上 Vite 注入的常量变量的类型定义
+- `import.meta.env` 上 Vite 注入的 [常量变量](./env-and-mode#env-variables) 的类型定义
 - `import.meta.hot` 上的 [HMR API](./api-hmr) 类型定义
 
 ::: tip

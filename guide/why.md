@@ -47,7 +47,7 @@ Vite 同时利用 HTTP 头来加速整个页面的重新加载（再次让浏览
 
 尽管原生 ESM 现在得到了广泛支持，但由于嵌套导入会导致额外的网络往返，在生产环境中发布未打包的 ESM 仍然效率低下（即使使用 HTTP/2）。为了在生产环境中获得最佳的加载性能，最好还是将代码进行 tree-shaking、懒加载和 chunk 分割（以获得更好的缓存）。
 
-要确保开发服务器和生产环境构建之间的最优输出和行为一致并不容易。所以 Vite 附带了一套 [构建优化](./features#build-optimizations) 的 [构建命令](./build.md)，开箱即用。
+要确保开发服务器和生产环境构建之间的最优输出和行为一致并不容易。所以 Vite 附带了一套 [构建优化](./features.md#build-optimizations) 的 [构建命令](./build.md)，开箱即用。
 
 ### 为何不用 ESBuild 打包？ {#why-not-bundle-with-esbuild}
 

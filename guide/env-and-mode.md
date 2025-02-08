@@ -16,7 +16,7 @@ Vite 在特殊的 `import.meta.env` 对象下暴露了一些常量。这些常�
 
 - **`import.meta.env.SSR`**: {boolean} 应用是否运行在 [server](./ssr.md#conditional-logic) 上。
 
-## 环境变量
+## 环境变量 {#env-variables}
 
 Vite 自动将环境变量暴露在 `import.meta.env` 对象下，作为字符串。
 
@@ -99,7 +99,7 @@ VITE_BAR=bar
 
 :::
 
-## TypeScript 的智能提示
+## TypeScript 的智能提示 {#intellisense}
 
 默认情况下，Vite 在 [`vite/client.d.ts`](https://github.com/vitejs/vite/blob/main/packages/vite/client.d.ts) 中为 `import.meta.env` 提供了类型定义。随着在 `.env[mode]` 文件中自定义了越来越多的环境变量，你可能想要在代码中获取这些以 `VITE_` 为前缀的用户自定义环境变量的 TypeScript 智能提示。
 
@@ -175,7 +175,7 @@ VITE_APP_TITLE=My App (staging)
 NODE_ENV=development
 ```
 
-### NODE_ENV 和 模式
+### NODE_ENV 和 模式 {#node-env-and-modes}
 
 需要注意的是，`NODE_ENV`（`process.env.NODE_ENV`）和模式是两个不同的概念。以下是不同命令如何影响 `NODE_ENV` 和模式：
 

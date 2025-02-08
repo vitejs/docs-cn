@@ -73,7 +73,7 @@ VITE_CJS_IGNORE_WARNING=true vite dev
 
 如果项目文件夹的路径中包含 `*`，则可能会发生上述错误，因为 esbuild 将其视为一个 glob 模式。你需要重命名你的目录以移除 `*`。
 
-## 开发服务器
+## 开发服务器 {#dev-server}
 
 ### 请求始终停滞 {#requests-are-stalled-forever}
 
