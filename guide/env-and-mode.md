@@ -132,7 +132,7 @@ interface ImportMeta {
 
 :::
 
-## HTML Constant Replacement
+## HTML 环境变量替换 {#html-env-replacement}
 
 Vite 还支持在 HTML 文件中替换环境变量。`import.meta.env` 中的任何属性都可以通过特殊的 `%CONST_NAME%` 语法在 HTML 文件中使用：
 
