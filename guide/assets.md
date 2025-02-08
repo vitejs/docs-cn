@@ -46,7 +46,7 @@ document.getElementById('hero-img').style.background = `url("${imgUrl}")`
 
 ### 显式 URL 引入 {#explicit-url-imports}
 
-未被包含在内部列表或 `assetsInclude` 中的资源，可以使用 `?url` 后缀显式导入为一个 URL。这十分有用，例如，要导入 [Houdini Paint Worklets](https://houdini.how/usage) 时：
+未被包含在内部列表或 `assetsInclude` 中的资源，可以使用 `?url` 后缀显式导入为一个 URL。这十分有用，例如，要导入 [Houdini Paint Worklets](https://developer.mozilla.org/en-US/docs/Web/API/CSS/paintWorklet_static) 时：
 
 ```js twoslash
 import 'vite/client'
