@@ -14,25 +14,25 @@ vite [root]
 
 #### 选项 {#options}
 
-| 选项                     |                                                                                         |
-| ------------------------ | -------------------------------------------------------------------------------------- |
-| `--host [host]`          | 指定主机名称 (`string`) |
-| `--port <port>`          | 指定端口 (`number`) |
-| `--open [path]`          | 启动时打开浏览器 (`boolean \| string`) |
-| `--cors`                 | 启用 CORS (`boolean`) |
-| `--strictPort`           | 如果指定的端口已在使用中，则退出 (`boolean`) |
-| `--force`                | 强制优化器忽略缓存并重新构建 (`boolean`) |
-| `-c, --config <file>`    | 使用指定的配置文件 (`string`) |
-| `--base <path>`          | 公共基础路径（默认为：`/`）(`string`) |
-| `-l, --logLevel <level>` | info \| warn \| error \| silent (`string`) |
-| `--clearScreen`          | 允许或禁用打印日志时清除屏幕 (`boolean`) |
+| 选项                      |                                                                                               |
+| ------------------------- | --------------------------------------------------------------------------------------------- |
+| `--host [host]`           | 指定主机名称 (`string`)                                                                       |
+| `--port <port>`           | 指定端口 (`number`)                                                                           |
+| `--open [path]`           | 启动时打开浏览器 (`boolean \| string`)                                                        |
+| `--cors`                  | 启用 CORS (`boolean`)                                                                         |
+| `--strictPort`            | 如果指定的端口已在使用中，则退出 (`boolean`)                                                  |
+| `--force`                 | 强制优化器忽略缓存并重新构建 (`boolean`)                                                      |
+| `-c, --config <file>`     | 使用指定的配置文件 (`string`)                                                                 |
+| `--base <path>`           | 公共基础路径（默认为：`/`）(`string`)                                                         |
+| `-l, --logLevel <level>`  | info \| warn \| error \| silent (`string`)                                                    |
+| `--clearScreen`           | 允许或禁用打印日志时清除屏幕 (`boolean`)                                                      |
 | `--configLoader <loader>` | 使用 `bundle` 来采用 esbuild 打包配置，或是 `runner`（实验性）来在运行时处理，默认是 `bundle` |
-| `--profile`              | 启动内置的 Node.js 调试器（查看 [性能瓶颈](/guide/troubleshooting#performance-bottlenecks)）|
-| `-d, --debug [feat]`     | 显示调试日志 (`string \| boolean`) |
-| `-f, --filter <filter>`  | 过滤调试日志 (`string`) |
-| `-m, --mode <mode>`      | 设置环境模式 (`string`) |
-| `-h, --help`             | 显示可用的 CLI 选项 |
-| `-v, --version`          | 显示版本号 |
+| `--profile`               | 启动内置的 Node.js 调试器（查看 [性能瓶颈](/guide/troubleshooting#performance-bottlenecks)）  |
+| `-d, --debug [feat]`      | 显示调试日志 (`string \| boolean`)                                                            |
+| `-f, --filter <filter>`   | 过滤调试日志 (`string`)                                                                       |
+| `-m, --mode <mode>`       | 设置环境模式 (`string`)                                                                       |
+| `-h, --help`              | 显示可用的 CLI 选项                                                                           |
+| `-v, --version`           | 显示版本号                                                                                    |
 
 ## 构建 {#build}
 
@@ -48,30 +48,30 @@ vite build [root]
 
 #### 选项 {#options-1}
 
-| 选项                           |                                                                                               |
-| ------------------------------ | -------------------------------------------------------------------------------------------- |
-| `--target <target>`            | 编译目标（默认为：`"modules"`）(`string`) |
-| `--outDir <dir>`               | 输出目录（默认为：`dist`）(`string`) |
-| `--assetsDir <dir>`            | 在输出目录下放置资源的目录（默认为：`"assets"`）(`string`) |
-| `--assetsInlineLimit <number>` | 静态资源内联为 base64 编码的阈值，以字节为单位（默认为：`4096`）(`number`) |
-| `--ssr [entry]`                | 为服务端渲染配置指定入口文件 (`string`) |
-| `--sourcemap [output]`         | 构建后输出 source map 文件（默认为：`false`）(`boolean \| "inline" \| "hidden"`) |
-| `--minify [minifier]`          | 允许或禁用最小化混淆，或指定使用哪种混淆器（默认为：`"esbuild"`）(`boolean \| "terser" \| "esbuild"`) |
-| `--manifest [name]`            | 构建后生成 manifest.json 文件 (`boolean \| string`) |
-| `--ssrManifest [name]`         | 构建后生成 SSR manifest.json 文件 (`boolean \| string`) |
-| `--emptyOutDir`                | 若输出目录在根目录外，强制清空输出目录 (`boolean`) |
-| `-w, --watch`                  | 在磁盘中模块发生变化时，重新构建 (`boolean`) |
-| `-c, --config <file>`          | 使用指定的配置文件 (`string`) |
-| `--base <path>`                | 公共基础路径（默认为：`/`）(`string`) |
-| `-l, --logLevel <level>`       | Info \| warn \| error \| silent (`string`) |
-| `--clearScreen`                | 允许或禁用打印日志时清除屏幕 (`boolean`) |
-| `--configLoader <loader>` | 使用 `bundle` 来采用 esbuild 打包配置，或是 `runner`（实验性）来在运行时处理，或者使用原生运行时加载 `native`（实验性），默认是 `bundle` |
-| `--profile`                    | 启动内置的 Node.js 调试器（查看 [性能瓶颈](/guide/troubleshooting#performance-bottlenecks)）|
-| `-d, --debug [feat]`           | 显示调试日志 (`string \| boolean`) |
-| `-f, --filter <filter>`        | 过滤调试日志 (`string`) |
-| `-m, --mode <mode>`            | 设置环境模式 (`string`) |
-| `-h, --help`                   | 显示可用的 CLI 选项 |
-| `--app`                        | 构建所有环境，这与 `builder: {}` 是一样的（`boolean`，实验性）|
+| 选项                           |                                                                                                                                          |
+| ------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------- |
+| `--target <target>`            | 编译目标（默认为：`"modules"`）(`string`)                                                                                                |
+| `--outDir <dir>`               | 输出目录（默认为：`dist`）(`string`)                                                                                                     |
+| `--assetsDir <dir>`            | 在输出目录下放置资源的目录（默认为：`"assets"`）(`string`)                                                                               |
+| `--assetsInlineLimit <number>` | 静态资源内联为 base64 编码的阈值，以字节为单位（默认为：`4096`）(`number`)                                                               |
+| `--ssr [entry]`                | 为服务端渲染配置指定入口文件 (`string`)                                                                                                  |
+| `--sourcemap [output]`         | 构建后输出 source map 文件（默认为：`false`）(`boolean \| "inline" \| "hidden"`)                                                         |
+| `--minify [minifier]`          | 允许或禁用最小化混淆，或指定使用哪种混淆器（默认为：`"esbuild"`）(`boolean \| "terser" \| "esbuild"`)                                    |
+| `--manifest [name]`            | 构建后生成 manifest.json 文件 (`boolean \| string`)                                                                                      |
+| `--ssrManifest [name]`         | 构建后生成 SSR manifest.json 文件 (`boolean \| string`)                                                                                  |
+| `--emptyOutDir`                | 若输出目录在根目录外，强制清空输出目录 (`boolean`)                                                                                       |
+| `-w, --watch`                  | 在磁盘中模块发生变化时，重新构建 (`boolean`)                                                                                             |
+| `-c, --config <file>`          | 使用指定的配置文件 (`string`)                                                                                                            |
+| `--base <path>`                | 公共基础路径（默认为：`/`）(`string`)                                                                                                    |
+| `-l, --logLevel <level>`       | Info \| warn \| error \| silent (`string`)                                                                                               |
+| `--clearScreen`                | 允许或禁用打印日志时清除屏幕 (`boolean`)                                                                                                 |
+| `--configLoader <loader>`      | 使用 `bundle` 来采用 esbuild 打包配置，或是 `runner`（实验性）来在运行时处理，或者使用原生运行时加载 `native`（实验性），默认是 `bundle` |
+| `--profile`                    | 启动内置的 Node.js 调试器（查看 [性能瓶颈](/guide/troubleshooting#performance-bottlenecks)）                                             |
+| `-d, --debug [feat]`           | 显示调试日志 (`string \| boolean`)                                                                                                       |
+| `-f, --filter <filter>`        | 过滤调试日志 (`string`)                                                                                                                  |
+| `-m, --mode <mode>`            | 设置环境模式 (`string`)                                                                                                                  |
+| `-h, --help`                   | 显示可用的 CLI 选项                                                                                                                      |
+| `--app`                        | 构建所有环境，这与 `builder: {}` 是一样的（`boolean`，实验性）                                                                           |
 
 ## 其他 {#others}
 
@@ -79,7 +79,7 @@ vite build [root]
 
 预构建依赖。
 
-**Deprecated**: 预捆绑过程自动运行，不需要调用。
+**Deprecated**: 预构建过程自动运行，不需要调用。
 
 #### 使用 {#usage-2}
 
@@ -89,18 +89,18 @@ vite optimize [root]
 
 #### 选项 {#options-2}
 
-| 选项                     |                                             |
-| ------------------------ | ------------------------------------------ |
-| `--force`                | 强制优化器忽略缓存并重新构建 (`boolean`) |
-| `-c, --config <file>`    | 使用指定的配置文件 (`string`) |
-| `--base <path>`          | 公共基础路径（默认为：`/`）(`string`) |
-| `-l, --logLevel <level>` | Info \| warn \| error \| silent (`string`) |
-| `--clearScreen`          | 允许或禁用打印日志时清除屏幕 (`boolean`) |
+| 选项                      |                                                                                               |
+| ------------------------- | --------------------------------------------------------------------------------------------- |
+| `--force`                 | 强制优化器忽略缓存并重新构建 (`boolean`)                                                      |
+| `-c, --config <file>`     | 使用指定的配置文件 (`string`)                                                                 |
+| `--base <path>`           | 公共基础路径（默认为：`/`）(`string`)                                                         |
+| `-l, --logLevel <level>`  | Info \| warn \| error \| silent (`string`)                                                    |
+| `--clearScreen`           | 允许或禁用打印日志时清除屏幕 (`boolean`)                                                      |
 | `--configLoader <loader>` | 使用 `bundle` 来采用 esbuild 打包配置，或是 `runner`（实验性）来在运行时处理，默认是 `bundle` |
-| `-d, --debug [feat]`     | 显示调试日志 (`string \| boolean`) |
-| `-f, --filter <filter>`  | 过滤调试日志 (`string`) |
-| `-m, --mode <mode>`      | 设置环境模式 (`string`) |
-| `-h, --help`             | 显示可用的 CLI 选项 |
+| `-d, --debug [feat]`      | 显示调试日志 (`string \| boolean`)                                                            |
+| `-f, --filter <filter>`   | 过滤调试日志 (`string`)                                                                       |
+| `-m, --mode <mode>`       | 设置环境模式 (`string`)                                                                       |
+| `-h, --help`              | 显示可用的 CLI 选项                                                                           |
 
 ### `vite preview` {#vite-preview}
 
@@ -114,19 +114,19 @@ vite preview [root]
 
 #### 选项 {#options-3}
 
-| 选项                     |                                             |
-| ------------------------ | ------------------------------------------ |
-| `--host [host]`          | 指定主机名称 (`string`) |
-| `--port <port>`          | 指定端口 (`number`) |
-| `--strictPort`           | 如果指定的端口已在使用中，则退出 (`boolean`) |
-| `--open [path]`          | 启动时打开浏览器 (`boolean \| string`) |
-| `--outDir <dir>`         | 输出目录（默认为：`dist`)(`string`) |
-| `-c, --config <file>`    | 使用指定的配置文件 (`string`) |
-| `--base <path>`          | 公共基础路径（默认为：`/`）(`string`) |
-| `-l, --logLevel <level>` | Info \| warn \| error \| silent (`string`) |
-| `--clearScreen`          | 允许或禁用打印日志时清除屏幕 (`boolean`) |
+| 选项                      |                                                                                               |
+| ------------------------- | --------------------------------------------------------------------------------------------- |
+| `--host [host]`           | 指定主机名称 (`string`)                                                                       |
+| `--port <port>`           | 指定端口 (`number`)                                                                           |
+| `--strictPort`            | 如果指定的端口已在使用中，则退出 (`boolean`)                                                  |
+| `--open [path]`           | 启动时打开浏览器 (`boolean \| string`)                                                        |
+| `--outDir <dir>`          | 输出目录（默认为：`dist`)(`string`)                                                           |
+| `-c, --config <file>`     | 使用指定的配置文件 (`string`)                                                                 |
+| `--base <path>`           | 公共基础路径（默认为：`/`）(`string`)                                                         |
+| `-l, --logLevel <level>`  | Info \| warn \| error \| silent (`string`)                                                    |
+| `--clearScreen`           | 允许或禁用打印日志时清除屏幕 (`boolean`)                                                      |
 | `--configLoader <loader>` | 使用 `bundle` 来采用 esbuild 打包配置，或是 `runner`（实验性）来在运行时处理，默认是 `bundle` |
-| `-d, --debug [feat]`     | 显示调试日志 (`string \| boolean`) |
-| `-f, --filter <filter>`  | 过滤调试日志 (`string`) |
-| `-m, --mode <mode>`      | 设置环境模式 (`string`) |
-| `-h, --help`             | 显示可用的 CLI 选项 |
+| `-d, --debug [feat]`      | 显示调试日志 (`string \| boolean`)                                                            |
+| `-f, --filter <filter>`   | 过滤调试日志 (`string`)                                                                       |
+| `-m, --mode <mode>`       | 设置环境模式 (`string`)                                                                       |
+| `-h, --help`              | 显示可用的 CLI 选项                                                                           |

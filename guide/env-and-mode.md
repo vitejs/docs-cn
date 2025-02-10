@@ -2,7 +2,7 @@
 
 Vite 在特殊的 `import.meta.env` 对象下暴露了一些常量。这些常量在开发阶段被定义为全局变量，并在构建阶段被静态替换，以使树摇（tree-shaking）更有效。
 
-## 内置常量 {#env-variables}
+## 内置常量 {#built-in-constants}
 
 一些内置常量在所有情况下都可用：
 
@@ -40,7 +40,7 @@ console.log(import.meta.env.DB_PASSWORD) // undefined
 如上所示，`VITE_SOME_KEY` 是一个数字，但在解析时会返回一个字符串。布尔类型的环境变量也会发生同样的情况。在代码中使用时，请确保转换为所需的类型。
 :::
 
-### `.env` Files
+### `.env` 文件 {#env-files}
 
 Vite 使用 [dotenv](https://github.com/motdotla/dotenv) 从你的 [环境目录](/config/shared-options.md#envdir) 中的下列文件加载额外的环境变量：
 
@@ -132,7 +132,7 @@ interface ImportMeta {
 
 :::
 
-## HTML 环境变量替换 {#html-env-replacement}
+## HTML 环境变量替换 {#html-constant-replacement}
 
 Vite 还支持在 HTML 文件中替换环境变量。`import.meta.env` 中的任何属性都可以通过特殊的 `%CONST_NAME%` 语法在 HTML 文件中使用：
 
