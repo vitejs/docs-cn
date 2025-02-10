@@ -276,7 +276,7 @@ dist/my-lib.umd.cjs 0.30 kB / gzip: 0.16 kB
 
 ### CSS 支持 {#css-support}
 
-如果您的库导入了 CSS，除了内置的 JS 文件外，它还将作为一个 CSS 文件捆绑在一起，例如 `dist/my-lib.css`。文件名默认为 `build.lib.fileName`，但也可以使用 [`build.lib.cssFileName`](/config/build-options.md#build-lib)进行更改。
+如果您的库导入了 CSS，除了内置的 JS 文件外，它还将作为一个 CSS 文件打包在一起，例如 `dist/my-lib.css`。文件名默认为 `build.lib.fileName`，但也可以使用 [`build.lib.cssFileName`](/config/build-options.md#build-lib)进行更改。
 
 您可以在 `package.json` 中导出 CSS 文件，以便用户导入：
 

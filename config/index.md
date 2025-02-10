@@ -22,10 +22,10 @@ export default {
 vite --config my-config.js
 ```
 
-::: tip 配置文件的打包
-默认情况下，Vite 使用 `esbuild` 将配置捆绑到临时文件中并加载它。这可能会在 monorepo 中导入 TypeScript 文件时导致问题。如果您在使用此方法时遇到任何问题，您可以指定 `--configLoader runner` 以改用 [module runner](/guide/api-environment-runtimes.html#modulerunner)，它不会创建临时配置并将动态转换任何文件。请注意，module runner 不支持配置文件中的 CJS，但外部 CJS 包应该可以正常工作。
+::: tip 加载配置文件
+默认情况下，Vite 使用 `esbuild` 将配置文件打包到临时文件中并加载它。这可能会在 monorepo 中导入 TypeScript 文件时引发问题。如果你遇到了这种方法问题，可以通过指定 `--configLoader runner` 以改用 [module runner](/guide/api-environment-runtimes.html#modulerunner)，它不会创建临时配置并将动态转换任何文件。请注意，module runner 不支持配置文件中的 CJS，但外部 CJS 包应该可以正常工作。
 
-或者，如果您使用支持 TypeScript 的环境（例如 `node --experimental-strip-types`），或者您只编写纯 JavaScript，您可以指定 `--configLoader native` 以使用环境的本机运行时加载配置文件。请注意，配置文件导入的模块的更新不会被检测到，因此不会自动重启 Vite 服务器。
+另外，如果你正在使用支持TypeScript的环境（例如 `node --experimental-strip-types`），或者只编写纯 JavaScript 代码，你可以指定 `--configLoader native` 以使用环境的本机运行时加载配置文件。请注意，配置文件导入的模块的更新不会被检测到，因此不会自动重启 Vite 服务器。
 :::
 
 ## 配置智能提示 {#config-intellisense}
