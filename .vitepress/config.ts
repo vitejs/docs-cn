@@ -307,6 +307,7 @@ export default defineConfig({
     sidebar: {
       '/guide/': [
         {
+<<<<<<< HEAD
           text: '指引',
           items: [
             {
@@ -320,6 +321,30 @@ export default defineConfig({
             {
               text: '功能',
               link: '/guide/features'
+=======
+          text: 'Introduction',
+          items: [
+            {
+              text: 'Getting Started',
+              link: '/guide/',
+            },
+            {
+              text: 'Philosophy',
+              link: '/guide/philosophy',
+            },
+            {
+              text: 'Why Vite',
+              link: '/guide/why',
+            },
+          ],
+        },
+        {
+          text: 'Guide',
+          items: [
+            {
+              text: 'Features',
+              link: '/guide/features',
+>>>>>>> a017d35fa7004b7d901ea603c32d6b7df88528cb
             },
             {
               text: '命令行接口',
@@ -358,24 +383,34 @@ export default defineConfig({
               link: '/guide/backend-integration'
             },
             {
+<<<<<<< HEAD
               text: '比较',
               link: '/guide/comparisons'
             },
             {
               text: '故障排除',
               link: '/guide/troubleshooting'
+=======
+              text: 'Troubleshooting',
+              link: '/guide/troubleshooting',
+>>>>>>> a017d35fa7004b7d901ea603c32d6b7df88528cb
             },
             {
               text: '性能',
               link: '/guide/performance',
             },
             {
+<<<<<<< HEAD
               text: '理念',
               link: '/guide/philosophy',
             },
             {
               text: '从 v5 迁移',
               link: '/guide/migration'
+=======
+              text: 'Migration from v5',
+              link: '/guide/migration',
+>>>>>>> a017d35fa7004b7d901ea603c32d6b7df88528cb
             },
             {
               text: '破坏性变更',

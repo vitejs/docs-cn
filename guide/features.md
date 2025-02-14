@@ -71,6 +71,7 @@ export type { T }
 
 - [TypeScript 文档](https://www.typescriptlang.org/tsconfig#useDefineForClassFields)
 
+<<<<<<< HEAD
 从 Vite v2.5.0 开始，如果 TypeScript 的 target 是 `ESNext` 或 `ES2022` 及更新版本，此选项默认值则为 `true`。这与 [`tsc` v4.3.2 及以后版本的行为](https://github.com/microsoft/TypeScript/pull/42663) 一致。这也是标准的 ECMAScript 的运行时行为。
 
 若设了其他 TypeScript target，则本项会默认为 `false`.
@@ -83,6 +84,15 @@ export type { T }
 大多数库都希望 `"useDefineForClassFields": true`，如 [MobX](https://mobx.js.org/installation.html#use-spec-compliant-transpilation-for-class-properties)。
 
 但是有几个库还没有兼容这个新的默认值，其中包括 [`lit-element`](https://github.com/lit/lit-element/issues/1030)。如果遇到这种情况，请将 `useDefineForClassFields` 设置为 `false`。
+=======
+The default value will be `true` if the TypeScript target is `ES2022` or newer including `ESNext`. It is consistent with the [behavior of TypeScript 4.3.2+](https://github.com/microsoft/TypeScript/pull/42663).
+Other TypeScript targets will default to `false`.
+
+`true` is the standard ECMAScript runtime behavior.
+
+If you are using a library that heavily relies on class fields, please be careful about the library's intended usage of it.
+While most libraries expect `"useDefineForClassFields": true`, you can explicitly set `useDefineForClassFields` to `false` if your library doesn't support it.
+>>>>>>> a017d35fa7004b7d901ea603c32d6b7df88528cb
 
 #### `target` {#target}
 
@@ -124,21 +134,39 @@ Vite 默认的类型定义是写给它的 Node.js API 的。要将其补充到�
 /// <reference types="vite/client" />
 ```
 
+<<<<<<< HEAD
 或者，你也可以将 `vite/client` 添加到 `tsconfig.json` 中的 `compilerOptions.types` 下：
+=======
+::: details Using `compilerOptions.types`
+
+Alternatively, you can add `vite/client` to `compilerOptions.types` inside `tsconfig.json`:
+>>>>>>> a017d35fa7004b7d901ea603c32d6b7df88528cb
 
 ```json [tsconfig.json]
 {
   "compilerOptions": {
-    "types": ["vite/client"]
+    "types": ["vite/client", "some-other-global-lib"]
   }
 }
 ```
 
+<<<<<<< HEAD
 这将会提供以下类型定义补充：
 
 - 资源导入 (例如：导入一个 `.svg` 文件)
 - `import.meta.env` 上 Vite 注入的 [常量变量](./env-and-mode#env-variables) 的类型定义
 - `import.meta.hot` 上的 [HMR API](./api-hmr) 类型定义
+=======
+Note that if [`compilerOptions.types`](https://www.typescriptlang.org/tsconfig#types) is specified, only these packages will be included in the global scope (instead of all visible ”@types” packages).
+
+:::
+
+`vite/client` provides the following type shims:
+
+- Asset imports (e.g. importing an `.svg` file)
+- Types for the Vite-injected [constants](./env-and-mode#env-variables) on `import.meta.env`
+- Types for the [HMR API](./api-hmr) on `import.meta.hot`
+>>>>>>> a017d35fa7004b7d901ea603c32d6b7df88528cb
 
 ::: tip
 要覆盖默认的类型定义，请添加一个包含你所定义类型的文件，请在三斜线注释 reference `vite/client` 前添加定义。
@@ -204,6 +232,7 @@ HTML 文件位于 Vite 项目的[最前端和中心](/guide/#index-html-and-proj
 
 要退出对某些元素的 HTML 处理，可以在元素上添加 `vite-ignore` 属性，这在引用外部 assets 或 CDN 时非常有用。
 
+<<<<<<< HEAD
 ## Vue {#vue}
 
 Vite 为 Vue 提供第一优先级支持：
@@ -212,14 +241,32 @@ Vite 为 Vue 提供第一优先级支持：
 - Vue 3 JSX 支持：[@vitejs/plugin-vue-jsx](https://github.com/vitejs/vite-plugin-vue/tree/main/packages/plugin-vue-jsx)
 - Vue 2.7 SFC 支持：[@vitejs/plugin-vue2](https://github.com/vitejs/vite-plugin-vue2)
 - Vue 2.7 JSX 支持：[@vitejs/plugin-vue2-jsx](https://github.com/vitejs/vite-plugin-vue2-jsx)
+=======
+## Frameworks
+
+All modern frameworks maintain integrations with Vite. Most framework plugins are maintained by each framework team, with the exception of the official Vue and React Vite plugins that are maintained in the vite org:
+
+- Vue support via [@vitejs/plugin-vue](https://github.com/vitejs/vite-plugin-vue/tree/main/packages/plugin-vue)
+- Vue JSX support via [@vitejs/plugin-vue-jsx](https://github.com/vitejs/vite-plugin-vue/tree/main/packages/plugin-vue-jsx)
+- React support via [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react)
+- React using SWC support via [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc)
+
+Check out the [Plugins Guide](https://vite.dev/plugins) for more information.
+>>>>>>> a017d35fa7004b7d901ea603c32d6b7df88528cb
 
 ## JSX {#jsx}
 
 `.jsx` 和 `.tsx` 文件同样开箱即用。JSX 的转译同样是通过 [esbuild](https://esbuild.github.io)。
 
+<<<<<<< HEAD
 Vue 用户应使用官方提供的 [@vitejs/plugin-vue-jsx](https://github.com/vitejs/vite-plugin-vue/tree/main/packages/plugin-vue-jsx) 插件，它提供了 Vue 3 特性的支持，包括 HMR，全局组件解析，指令和插槽。
 
 如果不是在 React 或 Vue 中使用 JSX，自定义的 `jsxFactory` 和 `jsxFragment` 可以使用 [`esbuild` 选项](/config/shared-options.md#esbuild) 进行配置。例如对 Preact：
+=======
+Your framework of choice will already configure JSX out of the box (for example, Vue users should use the official [@vitejs/plugin-vue-jsx](https://github.com/vitejs/vite-plugin-vue/tree/main/packages/plugin-vue-jsx) plugin, which provides Vue 3 specific features including HMR, global component resolving, directives and slots).
+
+If using JSX with your own framework, custom `jsxFactory` and `jsxFragment` can be configured using the [`esbuild` option](/config/shared-options.md#esbuild). For example, the Preact plugin would use:
+>>>>>>> a017d35fa7004b7d901ea603c32d6b7df88528cb
 
 ```js twoslash [vite.config.js]
 import { defineConfig } from 'vite'
