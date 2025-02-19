@@ -33,7 +33,11 @@ Vite（法语意思是 “快”，发音为 `/vit/`，类似 veet）是一种�
 
 想知道 Vite 有多快？看看这个[视频比较](https://twitter.com/amasad/status/1355379680275128321)， 在 Repl.it 上从零启动一个基于 Vite 的 React 应用，浏览器页面加载完毕的时候，基于 CRA（`create-react-app`）的应用甚至还没有安装完依赖。
 
+<<<<<<< HEAD
 如果你还没听说过 Vite 到底是什么，可以到 [这里](/guide/why) 了解一下项目的设计初衷。如果你想要了解 Vite 跟其它一些类似的工具有什么区别，可以参考这里的 [对比](/guide/comparisons)。
+=======
+If you've never heard of Vite before and would love to learn more about it, check out [the rationale behind the project](https://vite.dev/guide/why.html). If you are interested in how Vite differs from other similar tools, check out the [comparisons](https://v5.vite.dev/guide/comparisons.html).
+>>>>>>> ebd74c77072778dd0436838f2b46ccda4e5fed79
 
 ## 2.0 带来了什么 {#whats-new-in-2-0}
 

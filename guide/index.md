@@ -202,7 +202,35 @@ Vite 也支持多个 `.html` 作入口点的 [多页面应用模式](./build#mul
 
 ## 使用未发布的功能 {#using-unreleased-commits}
 
+<<<<<<< HEAD
 如果你迫不及待想要体验最新的功能，可以自行克隆 [vite 仓库](https://github.com/vitejs/vite) 到本地机器上然后自行将其链接（将需要 [pnpm](https://pnpm.io/)）：
+=======
+If you can't wait for a new release to test the latest features, you can install a specific commit of Vite with https://pkg.pr.new:
+
+::: code-group
+
+```bash [npm]
+$ npm install -D https://pkg.pr.new/vite@SHA
+```
+
+```bash [Yarn]
+$ yarn add -D https://pkg.pr.new/vite@SHA
+```
+
+```bash [pnpm]
+$ pnpm add -D https://pkg.pr.new/vite@SHA
+```
+
+```bash [Bun]
+$ bun add -D https://pkg.pr.new/vite@SHA
+```
+
+:::
+
+Replace `SHA` with any of [Vite's commit SHAs](https://github.com/vitejs/vite/commits/main/). Note that only commits within the last month will work, as older commit releases are purged.
+
+Alternatively, you can also clone the [vite repo](https://github.com/vitejs/vite) to your local machine and then build and link it yourself ([pnpm](https://pnpm.io/) is required):
+>>>>>>> ebd74c77072778dd0436838f2b46ccda4e5fed79
 
 ```bash
 git clone https://github.com/vitejs/vite.git
@@ -215,6 +243,14 @@ pnpm link --global # 在这一步中可使用你喜欢的包管理器
 
 然后，回到你的 Vite 项目并运行 `pnpm link --global vite`（或者使用你的其他包管理工具来全局链接 `vite`）。重新启动开发服务器来体验新功能吧！
 
+<<<<<<< HEAD
 ## 社区 {#community}
+=======
+::: tip Dependencies using Vite
+To replace the Vite version used by dependencies transitively, you should use [npm overrides](https://docs.npmjs.com/cli/v11/configuring-npm/package-json#overrides) or [pnpm overrides](https://pnpm.io/package_json#pnpmoverrides).
+:::
+
+## Community
+>>>>>>> ebd74c77072778dd0436838f2b46ccda4e5fed79
 
 如果你有疑问或者需要帮助，可以到 [Discord](https://chat.vite.dev) 和 [GitHub Discussions](https://github.com/vitejs/vite/discussions) 社区来寻求帮助。
