@@ -213,7 +213,7 @@ HTML 文件位于 Vite 项目的[最前端和中心](/guide/#index-html-and-proj
 - React 支持：[@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react)
 - React 使用 SWC 的支持：[@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc)
 
-查看 [插件指南](/plugins) 了解更多信息。
+查看 [插件指南](/plugins/) 了解更多信息。
 
 ## JSX {#jsx}
 
