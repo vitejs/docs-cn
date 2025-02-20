@@ -307,44 +307,28 @@ export default defineConfig({
     sidebar: {
       '/guide/': [
         {
-<<<<<<< HEAD
-          text: '指引',
+          text: '介绍',
           items: [
-            {
-              text: '为什么选 Vite',
-              link: '/guide/why'
-            },
             {
               text: '开始',
-              link: '/guide/'
-            },
-            {
-              text: '功能',
-              link: '/guide/features'
-=======
-          text: 'Introduction',
-          items: [
-            {
-              text: 'Getting Started',
               link: '/guide/',
             },
             {
-              text: 'Philosophy',
+              text: '理念',
               link: '/guide/philosophy',
             },
             {
-              text: 'Why Vite',
+              text: '为什么选 Vite',
               link: '/guide/why',
             },
           ],
         },
         {
-          text: 'Guide',
+          text: '指引',
           items: [
             {
-              text: 'Features',
+              text: '功能',
               link: '/guide/features',
->>>>>>> ebd74c77072778dd0436838f2b46ccda4e5fed79
             },
             {
               text: '命令行接口',
@@ -383,34 +367,16 @@ export default defineConfig({
               link: '/guide/backend-integration'
             },
             {
-<<<<<<< HEAD
-              text: '比较',
-              link: '/guide/comparisons'
-            },
-            {
               text: '故障排除',
-              link: '/guide/troubleshooting'
-=======
-              text: 'Troubleshooting',
               link: '/guide/troubleshooting',
->>>>>>> ebd74c77072778dd0436838f2b46ccda4e5fed79
             },
             {
               text: '性能',
               link: '/guide/performance',
             },
             {
-<<<<<<< HEAD
-              text: '理念',
-              link: '/guide/philosophy',
-            },
-            {
               text: '从 v5 迁移',
               link: '/guide/migration'
-=======
-              text: 'Migration from v5',
-              link: '/guide/migration',
->>>>>>> ebd74c77072778dd0436838f2b46ccda4e5fed79
             },
             {
               text: '破坏性变更',
