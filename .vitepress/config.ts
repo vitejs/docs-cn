@@ -307,19 +307,28 @@ export default defineConfig({
     sidebar: {
       '/guide/': [
         {
+          text: '介绍',
+          items: [
+            {
+              text: '开始',
+              link: '/guide/',
+            },
+            {
+              text: '理念',
+              link: '/guide/philosophy',
+            },
+            {
+              text: '为什么选 Vite',
+              link: '/guide/why',
+            },
+          ],
+        },
+        {
           text: '指引',
           items: [
             {
-              text: '为什么选 Vite',
-              link: '/guide/why'
-            },
-            {
-              text: '开始',
-              link: '/guide/'
-            },
-            {
               text: '功能',
-              link: '/guide/features'
+              link: '/guide/features',
             },
             {
               text: '命令行接口',
@@ -358,20 +367,12 @@ export default defineConfig({
               link: '/guide/backend-integration'
             },
             {
-              text: '比较',
-              link: '/guide/comparisons'
-            },
-            {
               text: '故障排除',
-              link: '/guide/troubleshooting'
+              link: '/guide/troubleshooting',
             },
             {
               text: '性能',
               link: '/guide/performance',
-            },
-            {
-              text: '理念',
-              link: '/guide/philosophy',
             },
             {
               text: '从 v5 迁移',

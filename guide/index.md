@@ -202,7 +202,31 @@ Vite 也支持多个 `.html` 作入口点的 [多页面应用模式](./build#mul
 
 ## 使用未发布的功能 {#using-unreleased-commits}
 
-如果你迫不及待想要体验最新的功能，可以自行克隆 [vite 仓库](https://github.com/vitejs/vite) 到本地机器上然后自行将其链接（将需要 [pnpm](https://pnpm.io/)）：
+如果你迫不及待想要体验最新的功能，可以使用 https://pkg.pr.new 安装特定的 Vite 提交：
+
+::: code-group
+
+```bash [npm]
+$ npm install -D https://pkg.pr.new/vite@SHA
+```
+
+```bash [Yarn]
+$ yarn add -D https://pkg.pr.new/vite@SHA
+```
+
+```bash [pnpm]
+$ pnpm add -D https://pkg.pr.new/vite@SHA
+```
+
+```bash [Bun]
+$ bun add -D https://pkg.pr.new/vite@SHA
+```
+
+:::
+
+将 `SHA` 替换为 [Vite 的提交 SHA](https://github.com/vitejs/vite/commits/main/)。请注意，仅最近一个月的提交有效，旧版本提交的构建产物会被清除。
+
+或者，你可以克隆 [Vite 代码仓库](https://github.com/vitejs/vite) 到本地，自行构建并建立软链接（需安装 [pnpm](https://pnpm.io/)）：
 
 ```bash
 git clone https://github.com/vitejs/vite.git
@@ -214,6 +238,10 @@ pnpm link --global # 在这一步中可使用你喜欢的包管理器
 ```
 
 然后，回到你的 Vite 项目并运行 `pnpm link --global vite`（或者使用你的其他包管理工具来全局链接 `vite`）。重新启动开发服务器来体验新功能吧！
+
+::: tip 处理依赖中的 Vite 版本
+若需替换依赖链中传递使用的 Vite 版本（Transitive Dependencies），应使用 [npm overrides](https://docs.npmjs.com/cli/v11/configuring-npm/package-json#overrides) 或 [pnpm overrides](https://pnpm.io/package_json#pnpmoverrides)。
+:::
 
 ## 社区 {#community}
 

@@ -57,6 +57,10 @@ Vite 目前的插件 API 与使用 `esbuild` 作为打包器并不兼容。尽�
 
 Rollup 已经开始着手改进性能，[在 v4 中将其解析器切换到 SWC](https://github.com/rollup/rollup/pull/5073)。同时还有一个正在进行中的工作，即构建一个名为 Rolldown 的 Rust 版本的 Rollup。一旦 Rolldown 准备就绪，它就可以在 Vite 中取代 Rollup 和 esbuild，显著提高构建性能，并消除开发和构建之间的不一致性。你可以观看 [Evan You 在 ViteConf 2023 的主题演讲](https://youtu.be/hrdwQHoAp0M) 了解更多细节。
 
-## Vite 与 X 的区别是？ {#how-is-vite-different-from-x}
+## Vite 与其他免打包构建工具的关系是什么？{##how-vite-relates-to-other-unbundled-build-tools}
 
-你可以查看 [比较](./comparisons.md) 章节获取更多细节，了解 Vite 与同类工具的异同。
+Preact 团队的 [WMR](https://github.com/preactjs/wmr) 旨在提供类似的功能集。Vite 用于开发和构建的通用 Rollup 插件 API 就是受其启发。WMR 已经不再维护。Preact 团队现在推荐使用 Vite 和 [@preactjs/preset-vite](https://github.com/preactjs/preset-vite)。
+
+[Snowpack](https://www.snowpack.dev/) 也是一个免打包的原生 ESM 开发服务器，与 Vite 的职责非常相似。Vite 的依赖预打包也受到了 Snowpack v1（现在是 [`esinstall`](https://github.com/snowpackjs/snowpack/tree/main/esinstall)）的启发。Snowpack 已经不再维护。Snowpack 团队现在正在研究由 Vite 驱动的静态网站构建器 [Astro](https://astro.build/)。
+
+[@web/dev-server](https://modern-web.dev/docs/dev-server/overview/)（以前是 `es-dev-server`）是一个伟大的项目，Vite 1.0 的基于 Koa 的服务器设置就是受其启发。`@web` 这个项目正在积极维护，并包含许多其他优秀的工具，这些工具也可能对 Vite 用户有所帮助。
