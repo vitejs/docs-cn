@@ -422,8 +422,8 @@ const modules = import.meta.glob('./dir/*.js')
 ```js
 // vite 生成的代码
 const modules = {
-  './dir/foo.js': () => import('./dir/foo.js'),
   './dir/bar.js': () => import('./dir/bar.js'),
+  './dir/foo.js': () => import('./dir/foo.js'),
 }
 ```
 
@@ -448,12 +448,18 @@ const modules = import.meta.glob('./dir/*.js', { eager: true })
 以上会被转译为下面的样子：
 
 ```js
+<<<<<<< HEAD
 // vite 生成的代码
 import * as __glob__0_0 from './dir/foo.js'
 import * as __glob__0_1 from './dir/bar.js'
+=======
+// code produced by vite
+import * as __vite_glob_0_0 from './dir/bar.js'
+import * as __vite_glob_0_1 from './dir/foo.js'
+>>>>>>> 0a98ce6b6a5ba3cba5854d0a96b97f8bdb011860
 const modules = {
-  './dir/foo.js': __glob__0_0,
-  './dir/bar.js': __glob__0_1,
+  './dir/bar.js': __vite_glob_0_0,
+  './dir/foo.js': __vite_glob_0_1,
 }
 ```
 
@@ -497,8 +503,8 @@ const modules = import.meta.glob('./dir/*.js', { import: 'setup' })
 ```ts
 // vite 生成的代码
 const modules = {
-  './dir/foo.js': () => import('./dir/foo.js').then((m) => m.setup),
   './dir/bar.js': () => import('./dir/bar.js').then((m) => m.setup),
+  './dir/foo.js': () => import('./dir/foo.js').then((m) => m.setup),
 }
 ```
 
@@ -514,12 +520,18 @@ const modules = import.meta.glob('./dir/*.js', {
 ```
 
 ```ts
+<<<<<<< HEAD
 // vite 生成的代码
 import { setup as __glob__0_0 } from './dir/foo.js'
 import { setup as __glob__0_1 } from './dir/bar.js'
+=======
+// code produced by vite:
+import { setup as __vite_glob_0_0 } from './dir/bar.js'
+import { setup as __vite_glob_0_1 } from './dir/foo.js'
+>>>>>>> 0a98ce6b6a5ba3cba5854d0a96b97f8bdb011860
 const modules = {
-  './dir/foo.js': __glob__0_0,
-  './dir/bar.js': __glob__0_1,
+  './dir/bar.js': __vite_glob_0_0,
+  './dir/foo.js': __vite_glob_0_1,
 }
 ```
 
@@ -535,12 +547,18 @@ const modules = import.meta.glob('./dir/*.js', {
 ```
 
 ```ts
+<<<<<<< HEAD
 // vite 生成的代码
 import __glob__0_0 from './dir/foo.js'
 import __glob__0_1 from './dir/bar.js'
+=======
+// code produced by vite:
+import { default as __vite_glob_0_0 } from './dir/bar.js'
+import { default as __vite_glob_0_1 } from './dir/foo.js'
+>>>>>>> 0a98ce6b6a5ba3cba5854d0a96b97f8bdb011860
 const modules = {
-  './dir/foo.js': __glob__0_0,
-  './dir/bar.js': __glob__0_1,
+  './dir/bar.js': __vite_glob_0_0,
+  './dir/foo.js': __vite_glob_0_1,
 }
 ```
 
@@ -564,12 +582,12 @@ const moduleUrls = import.meta.glob('./dir/*.svg', {
 ```ts
 // vite 生成的代码
 const moduleStrings = {
-  './dir/foo.svg': () => import('./dir/foo.js?raw').then((m) => m['default']),
-  './dir/bar.svg': () => import('./dir/bar.js?raw').then((m) => m['default']),
+  './dir/bar.svg': () => import('./dir/bar.svg?raw').then((m) => m['default']),
+  './dir/foo.svg': () => import('./dir/foo.svg?raw').then((m) => m['default']),
 }
 const moduleUrls = {
-  './dir/foo.svg': () => import('./dir/foo.js?url').then((m) => m['default']),
-  './dir/bar.svg': () => import('./dir/bar.js?url').then((m) => m['default']),
+  './dir/bar.svg': () => import('./dir/bar.svg?url').then((m) => m['default']),
+  './dir/foo.svg': () => import('./dir/foo.svg?url').then((m) => m['default']),
 }
 ```
 
