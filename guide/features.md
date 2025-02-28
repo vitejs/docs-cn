@@ -72,8 +72,9 @@ export type { T }
 - [TypeScript 文档](https://www.typescriptlang.org/tsconfig#useDefineForClassFields)
 
 如果 TypeScript 的 target 是 `ES2022` 或更高版本，包括 `ESNext`，那么默认值将为 `true`。这与 [TypeScript 4.3.2 及以后版本的行为](https://github.com/microsoft/TypeScript/pull/42663) 保持一致。
-
 若设了其他 TypeScript target，则本项会默认为 `false`.
+
+`true` 是标准的 ECMAScript 运行时行为。
 
 如果你正在使用一个严重依赖 class fields 的库，请注意该库对此选项的预期设置。
 虽然大多数库期望 `"useDefineForClassFields": true`，但如果你的库不支持它，你可以明确地将 `useDefineForClassFields` 设置为 `false`。
@@ -422,8 +423,8 @@ const modules = import.meta.glob('./dir/*.js')
 ```js
 // vite 生成的代码
 const modules = {
-  './dir/foo.js': () => import('./dir/foo.js'),
   './dir/bar.js': () => import('./dir/bar.js'),
+  './dir/foo.js': () => import('./dir/foo.js'),
 }
 ```
 
@@ -449,11 +450,11 @@ const modules = import.meta.glob('./dir/*.js', { eager: true })
 
 ```js
 // vite 生成的代码
-import * as __glob__0_0 from './dir/foo.js'
-import * as __glob__0_1 from './dir/bar.js'
+import * as __vite_glob_0_0 from './dir/bar.js'
+import * as __vite_glob_0_1 from './dir/foo.js'
 const modules = {
-  './dir/foo.js': __glob__0_0,
-  './dir/bar.js': __glob__0_1,
+  './dir/bar.js': __vite_glob_0_0,
+  './dir/foo.js': __vite_glob_0_1,
 }
 ```
 
@@ -497,8 +498,8 @@ const modules = import.meta.glob('./dir/*.js', { import: 'setup' })
 ```ts
 // vite 生成的代码
 const modules = {
-  './dir/foo.js': () => import('./dir/foo.js').then((m) => m.setup),
   './dir/bar.js': () => import('./dir/bar.js').then((m) => m.setup),
+  './dir/foo.js': () => import('./dir/foo.js').then((m) => m.setup),
 }
 ```
 
@@ -515,11 +516,11 @@ const modules = import.meta.glob('./dir/*.js', {
 
 ```ts
 // vite 生成的代码
-import { setup as __glob__0_0 } from './dir/foo.js'
-import { setup as __glob__0_1 } from './dir/bar.js'
+import { setup as __vite_glob_0_0 } from './dir/bar.js'
+import { setup as __vite_glob_0_1 } from './dir/foo.js'
 const modules = {
-  './dir/foo.js': __glob__0_0,
-  './dir/bar.js': __glob__0_1,
+  './dir/bar.js': __vite_glob_0_0,
+  './dir/foo.js': __vite_glob_0_1,
 }
 ```
 
@@ -536,11 +537,11 @@ const modules = import.meta.glob('./dir/*.js', {
 
 ```ts
 // vite 生成的代码
-import __glob__0_0 from './dir/foo.js'
-import __glob__0_1 from './dir/bar.js'
+import { default as __vite_glob_0_0 } from './dir/bar.js'
+import { default as __vite_glob_0_1 } from './dir/foo.js'
 const modules = {
-  './dir/foo.js': __glob__0_0,
-  './dir/bar.js': __glob__0_1,
+  './dir/bar.js': __vite_glob_0_0,
+  './dir/foo.js': __vite_glob_0_1,
 }
 ```
 
@@ -564,12 +565,12 @@ const moduleUrls = import.meta.glob('./dir/*.svg', {
 ```ts
 // vite 生成的代码
 const moduleStrings = {
-  './dir/foo.svg': () => import('./dir/foo.js?raw').then((m) => m['default']),
-  './dir/bar.svg': () => import('./dir/bar.js?raw').then((m) => m['default']),
+  './dir/bar.svg': () => import('./dir/bar.svg?raw').then((m) => m['default']),
+  './dir/foo.svg': () => import('./dir/foo.svg?raw').then((m) => m['default']),
 }
 const moduleUrls = {
-  './dir/foo.svg': () => import('./dir/foo.js?url').then((m) => m['default']),
-  './dir/bar.svg': () => import('./dir/bar.js?url').then((m) => m['default']),
+  './dir/bar.svg': () => import('./dir/bar.svg?url').then((m) => m['default']),
+  './dir/foo.svg': () => import('./dir/foo.svg?url').then((m) => m['default']),
 }
 ```
 
