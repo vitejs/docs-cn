@@ -191,7 +191,13 @@ export default defineConfig({
 - **默认：** `false`
 - **相关内容：** [后端集成](/guide/backend-integration)
 
+<<<<<<< HEAD
 当设置为 `true`，构建后将会生成 `.vite/manifest.json` 文件，包含了没有被 hash 过的资源文件名和 hash 后版本的映射。可以为一些服务器框架渲染时提供正确的资源引入链接。当该值为一个字符串时，它将作为 manifest 文件的名字。
+=======
+Whether to generate a manifest file that contains a mapping of non-hashed asset filenames to their hashed versions, which can then be used by a server framework to render the correct asset links.
+
+When the value is a string, it will be used as the manifest file path relative to `build.outDir`. When set to `true`, the path would be `.vite/manifest.json`.
+>>>>>>> 0d37521c3bba050a774f8f40e5fca6b1b4fe56a6
 
 ## build.ssrManifest {#build-ssrmanifest}
 
@@ -199,7 +205,13 @@ export default defineConfig({
 - **默认值：** `false`
 - **相关链接：** [服务端渲染](/guide/ssr)
 
+<<<<<<< HEAD
 当设置为 `true` 时，构建也将生成 SSR 的 manifest 文件，以确定生产中的样式链接与资产预加载指令。当该值为一个字符串时，它将作为 manifest 文件的名字。
+=======
+Whether to generate a SSR manifest file for determining style links and asset preload directives in production.
+
+When the value is a string, it will be used as the manifest file path relative to `build.outDir`. When set to `true`, the path would be `.vite/ssr-manifest.json`.
+>>>>>>> 0d37521c3bba050a774f8f40e5fca6b1b4fe56a6
 
 ## build.ssr {#build-ssr}
 
