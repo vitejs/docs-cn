@@ -191,7 +191,9 @@ export default defineConfig({
 - **默认：** `false`
 - **相关内容：** [后端集成](/guide/backend-integration)
 
-当设置为 `true`，构建后将会生成 `.vite/manifest.json` 文件，包含了没有被 hash 过的资源文件名和 hash 后版本的映射。可以为一些服务器框架渲染时提供正确的资源引入链接。当该值为一个字符串时，它将作为 manifest 文件的名字。
+是否生成一个 manifest 文件，包含了没有被 hash 过的资源文件名和 hash 后版本的映射，然后服务器框架可使用该映射来呈现正确的资源引入链接。
+
+当值为字符串时，将用作相对于 `build.outDir` 的 manifest 文件路径。设置为 `true` 时，路径将是 `.vite/manifest.json`。
 
 ## build.ssrManifest {#build-ssrmanifest}
 
@@ -199,7 +201,9 @@ export default defineConfig({
 - **默认值：** `false`
 - **相关链接：** [服务端渲染](/guide/ssr)
 
-当设置为 `true` 时，构建也将生成 SSR 的 manifest 文件，以确定生产中的样式链接与资产预加载指令。当该值为一个字符串时，它将作为 manifest 文件的名字。
+是否生成 SSR 的 manifest 文件，以确定生产中的样式链接与资源预加载指令。
+
+当值为字符串时，将用作相对于 `build.outDir` 的 manifest 文件路径。设置为 `true` 时，路径将是 `.vite/ssr-manifest.json`。
 
 ## build.ssr {#build-ssr}
 
