@@ -111,6 +111,9 @@ VITE_CJS_IGNORE_WARNING=true vite dev
 
 请注意，这些配置会持久作用，但需要 **重新启动**。
 
+或者，如果服务器在 VS Code devcontainer 中运行，请求可能会出现停滞。要修复此问题，请参阅
+[Dev Containers / VS Code Port Forwarding](#dev-containers-vs-code-port-forwarding)。
+
 ### 网络请求停止加载 {#network-requests-stop-loading}
 
 使用自签名SSL证书时，Chrome 会忽略所有缓存指令并重新加载内容。而 Vite 依赖于这些缓存指令。
