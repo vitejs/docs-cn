@@ -122,7 +122,7 @@ export default defineConfig(({ mode }) => {
 })
 ```
 
-## Debugging the Config File on VS Code
+## 在 VS Code 上调试配置文件 {#debugging-the-config-file-on-vs-code}
 
 在默认的 `--configLoader bundle` 行为下，Vite 会将生成的临时配置文件写入 `node_modules/.vite-temp` 文件夹，在 Vite 配置文件中设置断点调试时会出现文件未找到的错误。要修复该问题，请在 `.vscode/settings.json` 中添加以下配置：
 
