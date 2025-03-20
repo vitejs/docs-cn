@@ -60,9 +60,9 @@ export default defineConfig({
 - **类型：** `https.ServerOptions`
 - **默认：** [`server.https`](./server-options#server-https)
 
-启用 TLS + HTTP/2。注意，只有在与 [`server.proxy` 选项](./server-options#server-proxy) 同时使用时，才会降级为 TLS。
+启用 TLS + HTTP/2。
 
-该值也可以传递给 `https.createServer()` 的 [options 对象](https://nodejs.org/api/https.html#https_https_createserver_options_requestlistener)。
+有关更多详细信息，请参阅 [`server.https`](./server-options#server-https)。
 
 ## preview.open {#preview-open}
 
