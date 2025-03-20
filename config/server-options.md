@@ -90,15 +90,9 @@ Vite允许响应的主机名。
 
 - **类型：** `https.ServerOptions`
 
-<<<<<<< HEAD
-启用 TLS + HTTP/2。注意：当 [`server.proxy` 选项](#server-proxy) 也被使用时，将会仅使用 TLS。
+启用 TLS + HTTP/2。该值是传递给 `https.createServer()` 的 [options 对象](https://nodejs.org/api/https.html#https_https_createserver_options_requestlistener)。
 
-这个值也可以是一个传递给 `https.createServer()` 的 [选项对象](https://nodejs.org/api/https.html#https_https_createserver_options_requestlistener)。
-=======
-Enable TLS + HTTP/2. The value is an [options object](https://nodejs.org/api/https.html#https_https_createserver_options_requestlistener) passed to `https.createServer()`.
-
-Note that this downgrades to TLS only when the [`server.proxy` option](#server-proxy) is also used.
->>>>>>> c2de4078a5ac7fc014f5c5135f223e153799f0fe
+请注意，仅当同时使用 [`server.proxy` 选项](#server-proxy) 时，才会降级为 TLS。
 
 需要一个合法可用的证书。对基本使用的配置需求来说，你可以添加 [@vitejs/plugin-basic-ssl](https://github.com/vitejs/vite-plugin-basic-ssl) 到项目插件中，它会自动创建和缓存一个自签名的证书。但我们推荐你创建和使用你自己的证书。
 
