@@ -1,34 +1,34 @@
-# Rolldown Integration
+# Rolldown 集成 {#rolldown-integration}
 
-Vite is planning to integrate [Rolldown](https://rolldown.rs), a Rust-powered JavaScript bundler, to improve build performance and capabilities.
+Vite 计划将由 Rust 驱动的 JavaScript 打包工具 [Rolldown](https://rolldown.rs) 集成进来，以提升构建的性能和功能。
 
-## What is Rolldown?
+## Rolldown 是什么？ {#what-is-rolldown}
 
-Rolldown is a modern, high-performance JavaScript bundler written in Rust. It's designed as a drop-in replacement for Rollup, aiming to provide significant performance improvements while maintaining compatibility with the existing ecosystem.
+Rolldown 是一个现代化、高性能的 JavaScript 打包工具，由 Rust 编写。它被设计为 Rollup 的替代品，旨在保持与现有生态系统兼容的同时，显著提升性能。
 
-Rolldown focuses on three key principles:
+Rolldown 专注于三个主要原则：
 
-- **Speed**: Built with Rust for maximum performance
-- **Compatibility**: Works with existing Rollup plugins
-- **Developer Experience**: Familiar API for Rollup users
+- **速度**：利用 Rust 的高性能进行构建
+- **兼容性**：能够与现有的 Rollup 插件一起工作
+- **开发者体验**：为 Rollup 用户提供熟悉的 API
 
-## Why Vite is Migrating to Rolldown
+## 为什么 Vite 要迁移到 Rolldown {#why-vite-is-migrating-to-rolldown}
 
-1. **Unification**: Vite currently uses esbuild for dependency pre-bundling and Rollup for production builds. Rolldown aims to unify these into a single, high-performance bundler that can be used for both purposes, reducing complexity.
+1. **统一**：Vite 目前使用 esbuild 进行依赖预打包，使用 Rollup 进行生产构建。Rolldown 的目标是将这两个过程统一到一个高性能的打包工具中，以降低复杂性。
 
-2. **Performance**: Rolldown's Rust-based implementation offers significant performance improvements over JavaScript-based bundlers. While specific benchmarks may vary by project size and complexity, early tests show promising speed increases compared to Rollup.
+2. **性能**：Rolldown 的 Rust 实现在性能上比基于 JavaScript 的打包工具有显著的提升。虽然具体的基准测试可能会因项目大小和复杂性而有所不同，但早期的测试显示，与 Rollup 相比，Rolldown 的速度提升是有希望的。
 
-For additional insights on the motivations behind Rolldown, see the [reasons why Rolldown is being built](https://rolldown.rs/guide/#why-rolldown).
+关于 Rolldown 的动机有更多的见解，可以参见 [为什么要构建 Rolldown 的原因](https://rolldown.rs/guide/#why-rolldown)。
 
-## Benefits of Trying `rolldown-vite`
+## 尝试 `rolldown-vite` 的好处 {#benefits-of-trying-rolldown-vite}
 
-- Experience significantly faster build times, especially for larger projects
-- Provide valuable feedback to help shape the future of Vite's bundling experience
-- Prepare your projects for the eventual official Rolldown integration
+- 对于大型项目，可以显著提升构建速度
+- 提供有价值的反馈，帮助塑造 Vite 的打包体验的未来
+- 为最终的官方 Rolldown 集成做好准备
 
-## How to Try Rolldown
+## 如何尝试 Rolldown {#how-to-try-rolldown}
 
-The rolldown-powered version of Vite is currently available as a separate package called `rolldown-vite`. You can try it by adding package overrides to your `package.json`:
+目前，由 Rolldown 驱动的 Vite 版本已经作为一个名为 `rolldown-vite` 的独立包发布。你可以通过在你的 `package.json` 中添加 package overrides 来试用它：
 
 :::code-group
 
@@ -68,26 +68,26 @@ The rolldown-powered version of Vite is currently available as a separate packag
 
 :::
 
-After adding these overrides, reinstall your dependencies and start your development server or build your project as usual. No further configuration changes are required.
+在添加 overrides 之后，重新安装你的依赖并像往常一样启动你的开发服务器或构建你的项目即可，无需进一步的配置更改。
 
-## Known Limitations
+## 已知限制 {#known-limitations}
 
-While Rolldown aims to be a drop-in replacement for Rollup, there are features that are still being implemented and minor intentional behavior differences. For a comprehensive list, please refer to [this GitHub PR](https://github.com/vitejs/rolldown-vite/pull/84#issue-2903144667) which is regularly updated.
+虽然 Rolldown 的目标是成为 Rollup 的替代品，但还有一些特性正在实现中，以及一些小的有意的行为差异。需要查看完整的列表，请参考 [这个 GitHub PR](https://github.com/vitejs/rolldown-vite/pull/84#issue-2903144667)，它会定期更新。
 
-## Reporting Issues
+## 反馈问题 {#reporting-issues}
 
-Since this is an experimental integration, you may encounter issues. If you do, please report them in the [`vitejs/rolldown-vite`](https://github.com/vitejs/rolldown-vite) repository, **not the main Vite repository**.
+由于这是一个实验性的集成，你可能会遇到一些问题。如果你遇到问题，请在 [`vitejs/rolldown-vite`](https://github.com/vitejs/rolldown-vite) 仓库中反馈，**而不是主 Vite 仓库**。
 
-When [reporting issues](https://github.com/vitejs/rolldown-vite/issues/new), please follow the issue template and provide:
+在 [上报问题](https://github.com/vitejs/rolldown-vite/issues/new) 时，请按照问题模板提供：
 
-- A minimal reproduction of the issue
-- Your environment details (OS, Node version, package manager)
-- Any relevant error messages or logs
+- 问题的最小复现
+- 你的环境详细信息（操作系统，Node 版本，包管理器）
+- 任何相关的错误信息或日志
 
-For real-time discussions and troubleshooting, make sure to join the [Rolldown Discord](https://chat.rolldown.rs/).
+如果你想进行实时讨论和故障排除，请确保加入 [Rolldown Discord](https://chat.rolldown.rs/)。
 
-## Future Plans
+## 未来计划 {#future-plans}
 
-The `rolldown-vite` package is a temporary solution to gather feedback and stabilize the Rolldown integration. In the future, this functionality will be merged back into the main Vite repository.
+`rolldown-vite` 包是一个临时的解决方案，用于收集反馈和稳定 Rolldown 的集成。在未来，这个功能将被合并回主 Vite 仓库。
 
-We encourage you to try out `rolldown-vite` and contribute to its development through feedback and issue reports.
+我们鼓励你尝试 `rolldown-vite` 并通过反馈和问题报告来参与其开发工作。

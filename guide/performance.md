@@ -122,11 +122,6 @@ export default defineConfig({
 
 使用更原生化的工具链往往会带来更大的安装大小，因此在启动新的 Vite 项目时不是默认的。但对于较大的应用程序来说，这可能是值得的。
 
-<<<<<<< HEAD
+- 使用 [Rolldown 而不是 Rollup 和 esbuild](./rolldown) 以获得更快的构建速度和在开发和构建之间更一致的体验。
 - 尝试实验性的 [LightningCSS](https://github.com/vitejs/vite/discussions/13835)
 - 使用 [`@vitejs/plugin-react-swc`](https://github.com/vitejs/vite-plugin-react-swc) 代替 `@vitejs/plugin-react`。
-=======
-- Use [Rolldown instead of Rollup and esbuild](./rolldown) for faster builds and a more aligned experience between dev and build.
-- Try out the experimental support for [LightningCSS](https://github.com/vitejs/vite/discussions/13835)
-- Use [`@vitejs/plugin-react-swc`](https://github.com/vitejs/vite-plugin-react-swc) in place of `@vitejs/plugin-react`.
->>>>>>> 6bd16f3f508c893d858554433f439f34d2018353

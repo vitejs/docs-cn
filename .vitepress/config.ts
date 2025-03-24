@@ -375,17 +375,12 @@ export default defineConfig({
               link: '/guide/performance',
             },
             {
-<<<<<<< HEAD
-              text: '从 v5 迁移',
-              link: '/guide/migration'
-=======
               text: 'Rolldown',
               link: '/guide/rolldown',
             },
             {
-              text: 'Migration from v5',
+              text: '从 v5 迁移',
               link: '/guide/migration',
->>>>>>> 6bd16f3f508c893d858554433f439f34d2018353
             },
             {
               text: '破坏性变更',
