@@ -375,8 +375,12 @@ export default defineConfig({
               link: '/guide/performance',
             },
             {
+              text: 'Rolldown',
+              link: '/guide/rolldown',
+            },
+            {
               text: '从 v5 迁移',
-              link: '/guide/migration'
+              link: '/guide/migration',
             },
             {
               text: '破坏性变更',
