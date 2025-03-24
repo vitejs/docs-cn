@@ -64,20 +64,7 @@ VITE_CJS_IGNORE_WARNING=true vite dev
 - 在邻近的 `package.json` 中添加 `"type": "module"`
 - 将 `vite.config.js`/`vite.config.ts` 重命名为 `vite.config.mjs`/`vite.config.mts`
 
-<<<<<<< HEAD
-### `failed to load config from '/path/to/config*/vite.config.js'`
-
-> failed to load config from '/path/to/config\*/vite.config.js'
-> error when starting dev server:
-> Error: Build failed with 1 error:
-> error: Must use "outdir" when there are multiple input files
-
-如果项目文件夹的路径中包含 `*`，则可能会发生上述错误，因为 esbuild 将其视为一个 glob 模式。你需要重命名你的目录以移除 `*`。
-
 ## 开发服务器 {#dev-server}
-=======
-## Dev Server
->>>>>>> 6bd16f3f508c893d858554433f439f34d2018353
 
 ### 请求始终停滞 {#requests-are-stalled-forever}
 
