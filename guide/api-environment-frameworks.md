@@ -38,7 +38,52 @@ if (isRunnableDevEnvironment(server.environments.ssr)) {
 ```
 
 :::warning
+<<<<<<< HEAD
 首次访问 `runner` 时，它会被立即执行。请注意，当通过调用 `process.setSourceMapsEnabled` 或在不支持的情况下重写 `Error.prepareStackTrace` 创建 `runner` 时，Vite 会启用源映射支持。
+=======
+The `runner` is evaluated lazily only when it's accessed for the first time. Beware that Vite enables source map support when the `runner` is created by calling `process.setSourceMapsEnabled` or by overriding `Error.prepareStackTrace` if it's not available.
+:::
+
+Frameworks that communicate with their runtime via the [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Window/fetch) can utilize the `FetchableDevEnvironment` that provides a standardized way of handling requests via the `handleRequest` method:
+
+```ts
+import {
+  createServer,
+  createFetchableDevEnvironment,
+  isFetchableDevEnvironment,
+} from 'vite'
+
+const server = await createServer({
+  server: { middlewareMode: true },
+  appType: 'custom',
+  environments: {
+    custom: {
+      dev: {
+        createEnvironment(name, config) {
+          return createFetchableDevEnvironment(name, config, {
+            handleRequest(request: Request): Promise<Response> | Response {
+              // handle Request and return a Response
+            },
+          })
+        },
+      },
+    },
+  },
+})
+
+// Any consumer of the environment API can now call `dispatchFetch`
+if (isFetchableDevEnvironment(server.environments.custom)) {
+  const response: Response = await server.environments.custom.dispatchFetch(
+    new Request('/request-to-handle'),
+  )
+}
+```
+
+:::warning
+Vite validates the input and output of the `dispatchFetch` method: the request must be an instance of the global `Request` class and the response must be the instance of the global `Response` class. Vite will throw a `TypeError` if this is not the case.
+
+Note that although the `FetchableDevEnvironment` is implemented as a class, it is considered an implementation detail by the Vite team and might change at any moment.
+>>>>>>> b308a004096a6e5c421e50c2db23f988f05db15d
 :::
 
 ## 默认 `RunnableDevEnvironment` {#default-runnabledevenvironment}
