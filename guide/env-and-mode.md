@@ -109,8 +109,8 @@ VITE_BAR=bar
 /// <reference types="vite/client" />
 
 interface ViteTypeOptions {
-  // By adding this line, you can make the type of ImportMetaEnv strict
-  // to disallow unknown keys.
+  // 添加这行代码，你就可以将 ImportMetaEnv 的类型设为严格模式，
+  // 这样就不允许有未知的键值了。
   // strictImportMetaEnv: unknown
 }
 
