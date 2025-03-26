@@ -38,7 +38,48 @@ if (isRunnableDevEnvironment(server.environments.ssr)) {
 ```
 
 :::warning
-首次访问 `runner` 时，它会被立即执行。请注意，当通过调用 `process.setSourceMapsEnabled` 或在不支持的情况下重写 `Error.prepareStackTrace` 创建 `runner` 时，Vite 会启用源映射支持。
+只有在第一次使用时，`runner` 才会被加载。请注意，当通过调用 `process.setSourceMapsEnabled` 或在不支持的情况下重写 `Error.prepareStackTrace` 创建 `runner` 时，Vite 会启用源映射支持。
+:::
+
+那些通过 [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Window/fetch) 与它们的运行环境进行交互的框架可以使用 `FetchableDevEnvironment`，它提供了一种标准化的方式来通过 `handleRequest` 方法处理请求：
+
+```ts
+import {
+  createServer,
+  createFetchableDevEnvironment,
+  isFetchableDevEnvironment,
+} from 'vite'
+
+const server = await createServer({
+  server: { middlewareMode: true },
+  appType: 'custom',
+  environments: {
+    custom: {
+      dev: {
+        createEnvironment(name, config) {
+          return createFetchableDevEnvironment(name, config, {
+            handleRequest(request: Request): Promise<Response> | Response {
+              // 处理请求并返回响应
+            },
+          })
+        },
+      },
+    },
+  },
+})
+
+// 现在，任何使用环境 API 的人都可以调用 `dispatchFetch`
+if (isFetchableDevEnvironment(server.environments.custom)) {
+  const response: Response = await server.environments.custom.dispatchFetch(
+    new Request('/request-to-handle'),
+  )
+}
+```
+
+:::warning
+Vite 会检查 `dispatchFetch` 方法的输入和输出：请求必须是全局 `Request` 类的一个实例，而响应必须是全局 `Response` 类的一个实例。如果不满足这些条件，Vite 将会抛出一个 `TypeError`。
+
+尽管 `FetchableDevEnvironment` 是作为一个类来实现的，但请注意，Vite 团队可能会随时更改它，因为其被视为实现细节部分。
 :::
 
 ## 默认 `RunnableDevEnvironment` {#default-runnabledevenvironment}
