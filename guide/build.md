@@ -66,11 +66,7 @@ export default defineConfig({
 
 ## 产物分块策略 {#chunking-strategy}
 
-<<<<<<< HEAD
 你可以通过配置 `build.rollupOptions.output.manualChunks` 来自定义 chunk 分割策略（查看 [Rollup 相应文档](https://cn.rollupjs.org/configuration-options/#output-manualchunks)）。如果你使用的是一个框架，那么请参考他们的文档来了解如何配置分割 chunk。
-=======
-You can configure how chunks are split using `build.rollupOptions.output.manualChunks` (see [Rollup docs](https://rollupjs.org/configuration-options/#output-manualchunks)). If you use a framework, refer to their documentation for configuring how chunks are split.
->>>>>>> e8280eecb582cb6a8c188c42e8ef918bfffd13c1
 
 ## 处理加载报错 {#load-error-handling}
 
