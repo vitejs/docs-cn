@@ -4,7 +4,11 @@
 可以在 [环境 API 讨论](https://github.com/vitejs/vite/discussions/16358) 中向我们提供反馈
 :::
 
+<<<<<<< HEAD
 查看 [构建过程中的共享插件](/guide/api-environment.md#shared-plugins-during-build).
+=======
+See [Shared plugins during build](/guide/api-environment-plugins.md#shared-plugins-during-build).
+>>>>>>> e94edd5fdc7e04c408231075ae9da75bd465ae9d
 
 影响范围：`Vite 插件作者`
 
