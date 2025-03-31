@@ -348,10 +348,6 @@ npm add -D lightningcss
 
 默认情况下，Vite 使用 esbuild 来压缩 CSS。通过 [`build.cssMinify: 'lightningcss'`](../config/build-options.md#build-cssminify) 进行配置，也可以将 Lightning CSS 用作 CSS 最小化压缩。
 
-::: tip NOTE
-在使用 Lightning CSS 时，不支持 [CSS 预处理器](#css-pre-processors)。
-:::
-
 ## 静态资源处理 {#static-assets}
 
 导入一个静态资源会返回解析后的 URL：
