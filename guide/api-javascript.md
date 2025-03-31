@@ -76,8 +76,12 @@ parentServer.use(vite.middlewares)
 
 `InlineConfig` 接口扩展了 `UserConfig` 并添加了以下属性：
 
+<<<<<<< HEAD
 - `configFile`：指明要使用的配置文件。如果没有设置，Vite 将尝试从项目根目录自动解析。设置为 `false` 可以禁用自动解析功能。
 - `envFile`：设置为 `false` 时，则禁用 `.env` 文件。
+=======
+- `configFile`: specify config file to use. If not set, Vite will try to automatically resolve one from project root. Set to `false` to disable auto resolving.
+>>>>>>> 6b92db0edece6cf476eaa081852f6288ffe777d9
 
 ## `ResolvedConfig` {#resolvedconfig}
 
