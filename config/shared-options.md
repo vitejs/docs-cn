@@ -459,10 +459,17 @@ export default defineConfig({
 
 ## envDir {#envdir}
 
+<<<<<<< HEAD
 - **类型：** `string`
 - **默认：** `root`
 
 用于加载 `.env` 文件的目录。可以是一个绝对路径，也可以是相对于项目根的路径。
+=======
+- **Type:** `string | false`
+- **Default:** `root`
+
+The directory from which `.env` files are loaded. Can be an absolute path, or a path relative to the project root. `false` will disable the `.env` file loading.
+>>>>>>> 6b92db0edece6cf476eaa081852f6288ffe777d9
 
 关于环境文件的更多信息，请参见 [这里](/guide/env-and-mode#env-files)。
 
