@@ -16,14 +16,14 @@ Rolldown 专注于三个主要原则：
 
 1. **统一**：Vite 目前使用 esbuild 进行依赖预打包，使用 Rollup 进行生产构建。Rolldown 的目标是将这两个过程统一到一个高性能的打包工具中，以降低复杂性。
 
-2. **性能**：Rolldown 的 Rust 实现在性能上比基于 JavaScript 的打包工具有显著的提升。虽然具体的基准测试可能会因项目大小和复杂性而有所不同，但早期的测试显示，与 Rollup 相比，Rolldown 的速度提升是有希望的。
+2. **性能**：Rolldown 的 Rust 实现在性能上比基于 JavaScript 的打包工具有显著的提升。虽然具体的基准测试可能会因项目大小和复杂性而有所不同，但早期测试表明，与 Rollup 相比，Rolldown 的速度有望得到提高。
 
-关于 Rolldown 的动机有更多的见解，可以参见 [为什么要构建 Rolldown 的原因](https://rolldown.rs/guide/#why-rolldown)。
+欲深入了解 Rolldown 的设计动机，请参阅[构建 Rolldown 的原因](https://rolldown.rs/guide/#why-rolldown)。
 
 ## 尝试 `rolldown-vite` 的好处 {#benefits-of-trying-rolldown-vite}
 
 - 对于大型项目，可以显著提升构建速度
-- 提供有价值的反馈，帮助塑造 Vite 的打包体验的未来
+- 提供有价值的反馈，参与塑造 Vite 的未来打包体验
 - 为最终的官方 Rolldown 集成做好准备
 
 ## 如何尝试 Rolldown {#how-to-try-rolldown}
