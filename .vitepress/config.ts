@@ -527,6 +527,7 @@ export default defineConfig({
     return pageData
   },
   markdown: {
+    // @ts-ignore
     codeTransformers: [transformerTwoslash()],
     config(md) {
       md.use(groupIconMdPlugin)
@@ -534,6 +535,7 @@ export default defineConfig({
   },
   vite: {
     plugins: [
+      // @ts-ignore
       groupIconVitePlugin({
         customIcon: {
           firebase: 'vscode-icons:file-type-firebase',

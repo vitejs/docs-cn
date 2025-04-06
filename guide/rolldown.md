@@ -90,76 +90,73 @@ Rolldown 专注于三个主要原则：
 
 `rolldown-vite` 包是一个临时的解决方案，用于收集反馈和稳定 Rolldown 的集成。在未来，这个功能将被合并回主 Vite 仓库。
 
-<<<<<<< HEAD
 我们鼓励你尝试 `rolldown-vite` 并通过反馈和问题报告来参与其开发工作。
-=======
-We encourage you to try out `rolldown-vite` and contribute to its development through feedback and issue reports.
 
-## Plugin / Framework authors guide
+## 插件/框架作者指南 {#plugin-framework-authors-guide}
 
-### The list of big changes
+### 主要变化列表 {#list-of-major-changes}
 
-- Rolldown is used for build (Rollup was used before)
-- Rolldown is used for the optimizer (esbuild was used before)
-- CommonJS support is handled by Rolldown (@rollup/plugin-commonjs was used before)
-- Oxc is used for syntax lowering (esbuild was used before)
-- Lightning CSS is used for CSS minification by default (esbuild was used before)
-- Oxc minifier is used for JS minification by default (esbuild was used before)
-- Rolldown is used for bundling the config (esbuild was used before)
+- Rolldown 用于构建（之前使用 Rollup）
+- Rolldown 用于 optimizer（之前使用 esbuild）
+- Rolldown 处理 CommonJS 支持（之前使用 @rollup/plugin-commonjs）
+- Oxc 用于语法降级（之前使用 esbuild）
+- Lightning CSS 默认用于 CSS 压缩（之前使用 esbuild）
+- Oxc minifier 默认用于 JS 压缩（之前使用 esbuild）
+- Rolldown 用于打包配置（之前使用 esbuild）
 
-### Detecting rolldown-vite
+### 检测 rolldown-vite {#detecting-rolldown-vite}
 
-You can detect by either
+你可以通过以下方式检测：
 
-- checking the `this.meta.rolldownVersion` existence
+- 检查 `this.meta.rolldownVersion` 的存在
 
 ```js
 const plugin = {
   resolveId() {
     if (this.meta.rolldownVersion) {
-      // logic for rolldown-vite
+      // rolldown-vite 的逻辑
     } else {
-      // logic for rollup-vite
+      // rollup-vite 的逻辑
     }
   },
 }
 ```
 
-- checking the `rolldownVersion` export existence
+- 检查 `rolldownVersion` export 的存在
 
 ```js
 import * as vite from 'vite'
 
 if (vite.rolldownVersion) {
-  // logic for rolldown-vite
+  // rolldown-vite 的逻辑
 } else {
-  // logic for rollup-vite
+  // rollup-vite 的逻辑
 }
 ```
 
-If you have `vite` as a dependency (not a peer dependency), the `rolldownVersion` export is useful as it can be used from anywhere in your code.
+如果你将 `vite` 作为依赖项（dependency），而不是同等依赖（peer dependency），那么 `rolldownVersion` export 非常有用，因为它可以在你代码的任何地方使用。
 
-### Ignoring option validation in Rolldown
+### 在 Rolldown 中忽略选项验证 {#ignoring-option-validation-in-rolldown}
 
-Rolldown throws an error when unknown or invalid options are passed. Because some options available in Rollup are not supported by Rolldown, you may encounter errors. Below, you can find an an example of such an error message:
+Rolldown 在传递未知或无效选项时会抛出错误。由于 Rollup 中的某些选项在 Rolldown 中不受支持，你可能会遇到错误。以下是此类错误消息的示例：
 
 > Error: Failed validate input options.
 >
 > - For the "preserveEntrySignatures". Invalid key: Expected never but received "preserveEntrySignatures".
 
-This can be fixed by conditionally passing the option by checking whether it's running with `rolldown-vite` as shown above.
+这可以通过有条件地传递选项来修复，方法是检查是否正在使用上面所示的 `rolldown-vite` 运行。
 
-If you would like to suppress this error for now, you can set the `ROLLDOWN_OPTIONS_VALIDATION=loose` environment variable. However, keep in mind that you will eventually need to stop passing the options not supported by Rolldown.
+如果你想暂时抑制此错误，可以设置 `ROLLDOWN_OPTIONS_VALIDATION=loose` 环境变量。但请记住，你最终需要停止传递 Rolldown 不支持的选项。
 
-### `transformWithEsbuild` requires `esbuild` to be installed separately
+### `transformWithEsbuild` 需要单独安装 `esbuild` {#transformwithesbuild-requires-installing-esbuild-separately}
 
-A similar function called `transformWithOxc`, which uses Oxc instead of `esbuild`, is exported from `rolldown-vite`.
+一个类似的函数，名为 `transformWithOxc`，它使用 Oxc 而非 `esbuild`，从 `rolldown-vite` 中导出。
 
-### Compatibility layer for `esbuild` options
+### `esbuild` 选项的兼容层 {#compatibility-layer-for-esbuild-options}
 
-Rolldown-Vite has a compatibility layer to convert options for `esbuild` to the respective Oxc or `rolldown` ones. As tested in [the ecosystem-ci](https://github.com/vitejs/vite-ecosystem-ci/blob/rolldown-vite/README-temp.md), this works in many cases, including simple `esbuild` plugins.
-That said, **we'll be removing the `esbuild` options support in the future** and encourage you to try the corresponding Oxc or `rolldown` options.
-You can get the options set by the compatibility layer from the `configResolved` hook.
+Rolldown-Vite 有一个兼容层，用于将 `esbuild` 的选项转换为相应的 Oxc 或 `rolldown` 选项。正如 [生态系统 CI](https://github.com/vitejs/vite-ecosystem-ci/blob/rolldown-vite/README-temp.md) 中测试的那样，这在许多情况，包括简单的 `esbuild` 插件下都有效。
+虽说如此，但**我们将在未来移除对 `esbuild` 选项的支持**，并鼓励你尝试使用相应的 Oxc 或 `rolldown` 选项。
+你可以从 `configResolved` 钩子获取由兼容层设置的选项。
 
 ```js
 const plugin = {
@@ -170,14 +167,14 @@ const plugin = {
 },
 ```
 
-### Hook filter feature
+### 钩子过滤功能 {#hook-filter-feature}
 
-Rolldown introduced a [hook filter feature](https://rolldown.rs/guide/plugin-development#plugin-hook-filters) to reduce the communication overhead the between Rust and JavaScript runtimes. By using this feature you can make your plugin more performant.
-This is also supported by Rollup 4.38.0+ and Vite 6.3.0+. To make your plugin backward compatible with the older versions, make sure to also run the filter inside the hook handlers.
+Rolldown 引入了[钩子过滤功能](https://rolldown.rs/guide/plugin-development#plugin-hook-filters)，以减少 Rust 和 JavaScript 运行时之间的通信开销。通过使用此功能，你可以使你的插件性能更高。
+这也在 Rollup 4.38.0+ 和 Vite 6.3.0+ 被支持。为了使你的插件向后兼容较旧的版本，请确保也在钩子处理程序内运行过滤器。
 
-### Converting content to JavaScript in `load` or `transform` hooks
+### 在 `load` 或 `transform` 钩子中将内容转换为 JavaScript {#converting-content-to-javascript-in-load-or-transform-hooks}
 
-If you are converting the content to JavaScript from other types in `load` or `transform` hooks, you may need to add `moduleType: 'js'` to the returned value.
+如果你在 `load` 或 `transform` 钩子中将内容转换为 JavaScript，你可能需要添加 `moduleType: 'js'` 到返回值中。
 
 ```js
 const plugin = {
@@ -194,5 +191,4 @@ const plugin = {
 }
 ```
 
-This is because [Rolldown supports non-JavaScript modules](https://rolldown.rs/guide/in-depth/module-types) and infers the module type from extensions unless specified. Note that `rolldown-vite` does not support ModuleTypes in dev.
->>>>>>> c75c0f5c737e1a4870b2b35930a27ab2dec4dab7
+这是因为 [Rolldown 支持非 JavaScript 模块](https://rolldown.rs/guide/in-depth/module-types) 并且除非指定，否则从扩展名推断模块类型。注意 `rolldown-vite` 不支持开发中的 ModuleTypes。
