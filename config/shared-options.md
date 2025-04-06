@@ -459,10 +459,10 @@ export default defineConfig({
 
 ## envDir {#envdir}
 
-- **类型：** `string`
+- **类型：** `string | false`
 - **默认：** `root`
 
-用于加载 `.env` 文件的目录。可以是一个绝对路径，也可以是相对于项目根的路径。
+用于加载 `.env` 文件的目录。可以是一个绝对路径，也可以是相对于项目根的路径。设置为 `false` 将禁用 `.env` 文件的加载。
 
 关于环境文件的更多信息，请参见 [这里](/guide/env-and-mode#env-files)。
 
