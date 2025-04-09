@@ -140,15 +140,7 @@ declare const __APP_VERSION__: string
 
 请注意，如果符合要求，`import`，`require`，`default` 始终会被应用。
 
-<<<<<<< HEAD
-:::warning 解决子路径导出问题
-导出以“/”结尾的 key 已被 Node 弃用，可能无法正常工作。请联系包的作者改为使用 [`*` 子路径模式](https://nodejs.org/api/packages.html#package-entry-points)。
-:::
-
 ## resolve.mainFields {#resolve-mainfields}
-=======
-## resolve.mainFields
->>>>>>> 89f48b6b32a2ae6947bafb3b7ef0803daf6a4967
 
 - **类型：** `string[]`
 - **默认：** `['browser', 'module', 'jsnext:main', 'jsnext']` (`defaultClientMainFields`)
