@@ -8,15 +8,9 @@ Rolldown 是一个现代化、高性能的 JavaScript 打包工具，由 Rust �
 
 Rolldown 专注于三个主要原则：
 
-<<<<<<< HEAD
 - **速度**：利用 Rust 的高性能进行构建
 - **兼容性**：能够与现有的 Rollup 插件一起工作
-- **开发者体验**：为 Rollup 用户提供熟悉的 API
-=======
-- **Speed**: Built with Rust for maximum performance
-- **Compatibility**: Works with existing Rollup plugins
-- **Optimization**: Comes with features that go beyond what esbuild and Rollup implement
->>>>>>> a2858051be0ddfbafde6ec16b0e7549baee2c30e
+- **优化**：拥有比 esbuild 和 Rollup 更先进的特性
 
 ## 为什么 Vite 要迁移到 Rolldown {#why-vite-is-migrating-to-rolldown}
 
@@ -24,13 +18,9 @@ Rolldown 专注于三个主要原则：
 
 2. **性能**：Rolldown 的 Rust 实现在性能上比基于 JavaScript 的打包工具有显著的提升。虽然具体的基准测试可能会因项目大小和复杂性而有所不同，但早期测试表明，与 Rollup 相比，Rolldown 的速度有望得到提高。
 
-<<<<<<< HEAD
-欲深入了解 Rolldown 的设计动机，请参阅[构建 Rolldown 的原因](https://rolldown.rs/guide/#why-rolldown)。
-=======
-3. **Additional Features**: Rolldown introduces features that are not available in Rollup or esbuild, such as advanced chunk splitting control, built-in HMR, and Module Federation.
+1. **额外特性**：Rolldown 提供了 Rollup 或 esbuild 中没有的功能，例如高级的分块控制，内置的模块热替换（HMR），以及模块联邦（Module Federation）。
 
-For additional insights on the motivations behind Rolldown, see the [reasons why Rolldown is being built](https://rolldown.rs/guide/#why-rolldown).
->>>>>>> a2858051be0ddfbafde6ec16b0e7549baee2c30e
+欲深入了解 Rolldown 的设计动机，请参阅[构建 Rolldown 的原因](https://rolldown.rs/guide/#why-rolldown)。
 
 ## 尝试 `rolldown-vite` 的好处 {#benefits-of-trying-rolldown-vite}
 
@@ -86,35 +76,27 @@ For additional insights on the motivations behind Rolldown, see the [reasons why
 
 虽然 Rolldown 的目标是成为 Rollup 的替代品，但还有一些特性正在实现中，以及一些小的有意的行为差异。需要查看完整的列表，请参考 [这个 GitHub PR](https://github.com/vitejs/rolldown-vite/pull/84#issue-2903144667)，它会定期更新。
 
-<<<<<<< HEAD
-## 反馈问题 {#reporting-issues}
-=======
-### Option Validation Errors
+### 验证选项错误 {#option-validation-errors}
 
-Rolldown throws an error when unknown or invalid options are passed. Because some options available in Rollup are not supported by Rolldown, you may encounter errors based on the options you or the meta framework you use set. Below, you can find an an example of such an error message:
+当传入未知或无效选项时，Rolldown 会抛出错误。由于 Rolldown 不支持 Rollup 中的部分选项，根据您或所使用的元框架设置的选项，可能会遇到相关错误。下方展示了此类错误消息的示例：
 
 > Error: Failed validate input options.
 >
 > - For the "preserveEntrySignatures". Invalid key: Expected never but received "preserveEntrySignatures".
 
-If you don't pass the option in yourself, this must be fixed by the utilized framework. You can suppress this error in the meantime by setting the `ROLLDOWN_OPTIONS_VALIDATION=loose` environment variable.
+如果你自己没有传递这个选项，这个问题必须由使用的框架来解决。你可以通过设置 `ROLLDOWN_OPTIONS_VALIDATION=loose` 环境变量来暂时忽略这个错误。
 
-## Enabling Native Plugins
+## 启用原生插件 {#enabling-native-plugins}
 
-Thanks to Rolldown and Oxc, various internal Vite plugins, such as the alias or resolve plugin, have been converted to Rust. At the time of writing, using these plugins is not enabled by default, as their behavior may differ from the JavaScript versions.
+感谢 Rolldown 和 Oxc，各种内部的 Vite 插件，如别名或解析插件，已被转换为 Rust。在撰写本文时，这些插件默认并未启用，因为它们的行为可能与 JavaScript 版本不同。
 
-To test them, you can set the `experimental.enableNativePlugin` option to `true` in your Vite config.
+要测试它们，你可以在你的 Vite 配置中将 `experimental.enableNativePlugin` 选项设置为 `true`。
 
-## Reporting Issues
->>>>>>> a2858051be0ddfbafde6ec16b0e7549baee2c30e
+## 反馈问题 {#reporting-issues}
 
 由于这是一个实验性的集成，你可能会遇到一些问题。如果你遇到问题，请在 [`vitejs/rolldown-vite`](https://github.com/vitejs/rolldown-vite) 仓库中反馈，**而不是主 Vite 仓库**。
 
-<<<<<<< HEAD
-在 [上报问题](https://github.com/vitejs/rolldown-vite/issues/new) 时，请按照问题模板提供：
-=======
-When [reporting issues](https://github.com/vitejs/rolldown-vite/issues/new), please follow the appropriate issue template and provide what is requested there, commonly including:
->>>>>>> a2858051be0ddfbafde6ec16b0e7549baee2c30e
+在 [上报问题](https://github.com/vitejs/rolldown-vite/issues/new) 时，请根据相应的问题模板进行操作，并提供模板中所需的信息，这通常包括：
 
 - 问题的最小复现
 - 你的环境详细信息（操作系统，Node 版本，包管理器）
@@ -128,40 +110,34 @@ When [reporting issues](https://github.com/vitejs/rolldown-vite/issues/new), ple
 
 我们鼓励你尝试 `rolldown-vite` 并通过反馈和问题报告来参与其开发工作。
 
-<<<<<<< HEAD
+未来我们将为 Vite 引入全量打包模式（Full Bundle Mode），该模式将在生产环境 _和开发模式_ 下提供打包后的文件。
+
+### 为何引入全量打包模式？ {#why-introducing-full-bundle-mode}
+
+Vite 以其非打包开发服务器方案著称，这正是其早期凭借速度优势迅速流行的关键原因。这种方案最初是尝试探索在不进行传统打包的情况下，开发服务器性能能达到何种极限。
+
+但随着项目规模和复杂度的增长，两大挑战逐渐显现：
+
+1. **开发/生产环境不一致性**：开发环境提供的非打包 JavaScript 与生产环境打包构建产物存在运行时行为差异，可能导致仅在生产环境暴露的问题，增加调试难度。
+
+2. **开发阶段性能衰减**：非打包方案导致每个模块需单独请求，产生大量网络请求。虽然 _对生产环境无影响_，但会造成开发服务器启动和页面刷新时的显著开销。在大型应用中（需处理数百甚至数千独立请求）该问题尤为突出，若开发者使用网络代理，刷新延迟和开发体验下降将更加严重。
+
+通过 Rolldown 的整合，我们有机会在保持 Vite 标志性性能的同时统一开发与生产体验。全量打包模式将实现：
+
+- 大型应用仍保持快速启动
+- 开发与生产环境行为一致性
+- 降低页面刷新的网络开销
+- 在 ESM 输出基础上维持高效 HMR
+
+该模式初期将作为可选特性提供（类似 Rolldown 整合方案），我们计划在收集反馈并确保稳定性后将其设为默认模式。
+
 ## 插件/框架作者指南 {#plugin-framework-authors-guide}
 
-### 主要变化列表 {#list-of-major-changes}
-=======
-In the future, we will also introduce a "Full Bundle Mode" for Vite, which will serve bundled files in production _and development mode_.
-
-### Why introducing a Full Bundle Mode?
-
-Vite is known for its unbundled dev server approach, which is a main reason for Vite's speed and popularity when it was first introduced. This approach was initially an experiment to see just how far we could push the boundaries of development server performance without traditional bundling.
-
-However, as projects scale in size and complexity, two main challenges have emerged:
-
-1. **Development/Production inconsistency**: The unbundled JavaScript served in development versus the bundled production build creates different runtime behaviors. This can lead to issues that only manifest in production, making debugging more difficult.
-
-2. **Performance degradation during development**: The unbundled approach results in each module being fetched separately, which creates a large number of network requests. While this has _no impact in production_, it causes significant overhead during dev server startup and when refreshing the page in development. The impact is especially noticeable in large applications where hundreds or even thousands of separate requests must be processed. These bottlenecks become even more severe when developers use network proxy, resulting in slower refresh times and degraded developer experience.
-
-With the Rolldown integration, we have an opportunity to unify the development and production experiences while maintaining Vite's signature performance. A Full Bundle Mode would allow serving bundled files not only in production but also during development, combining the best of both worlds:
-
-- Fast startup times even for large applications
-- Consistent behavior between development and production
-- Reduced network overhead on page refreshes
-- Maintained efficient HMR on top of ESM output
-
-When the Full Bundle Mode is introduced, it will be an opt-in feature at first. Similar to the Rolldown integration, we are aiming to make it the default after gathering feedback and ensuring stability.
-
-## Plugin / Framework authors guide
-
 ::: tip
-This section is mostly relevant for plugin and framework authors. If you are a user, you can skip this section.
+这部分内容主要是针对插件和框架的开发者。如果你是一般用户，你可以忽略这部分内容。
 :::
 
-### Overview of Major Changes
->>>>>>> a2858051be0ddfbafde6ec16b0e7549baee2c30e
+### 主要变更概述 {#overview-of-major-changes}
 
 - Rolldown 用于构建（之前使用 Rollup）
 - Rolldown 用于 optimizer（之前使用 esbuild）
@@ -171,23 +147,15 @@ This section is mostly relevant for plugin and framework authors. If you are a u
 - Oxc minifier 默认用于 JS 压缩（之前使用 esbuild）
 - Rolldown 用于打包配置（之前使用 esbuild）
 
-<<<<<<< HEAD
-### 检测 rolldown-vite {#detecting-rolldown-vite}
-
-你可以通过以下方式检测：
-
-- 检查 `this.meta.rolldownVersion` 的存在
-=======
-### Detecting `rolldown-vite`
+### 检测 `rolldown-vite` {#detecting-rolldown-vite}
 
 ::: warning
-In most cases, you don't need to detect whether your plugin runs with `rolldown-vite` or `vite` and you should aim for consistent behavior across both, without conditional branching.
+在大多数情况下，你不需要检测你的插件是运行在 `rolldown-vite` 还是 `vite` 上，你应该在两者之间寻求一致的行为，而不是采用条件分支。
 :::
 
-In case you need different behavior with `rolldown-vite`, you have two ways to detect if `rolldown-vite` is used:
+如果你需要 `rolldown-vite` 有不同的行为，你有两种方法可以检测是否使用了 `rolldown-vite`：
 
-Checking the existence of `this.meta.rolldownVersion`:
->>>>>>> a2858051be0ddfbafde6ec16b0e7549baee2c30e
+检查 `this.meta.rolldownVersion` 的存在：
 
 ```js
 const plugin = {
@@ -201,13 +169,9 @@ const plugin = {
 }
 ```
 
-<<<<<<< HEAD
-- 检查 `rolldownVersion` export 的存在
-=======
 <br>
 
-Checking the existence of the `rolldownVersion` export:
->>>>>>> a2858051be0ddfbafde6ec16b0e7549baee2c30e
+检查 `rolldownVersion` export 的存在：
 
 ```js
 import * as vite from 'vite'
@@ -223,22 +187,12 @@ if (vite.rolldownVersion) {
 
 ### 在 Rolldown 中忽略选项验证 {#ignoring-option-validation-in-rolldown}
 
-<<<<<<< HEAD
-Rolldown 在传递未知或无效选项时会抛出错误。由于 Rollup 中的某些选项在 Rolldown 中不受支持，你可能会遇到错误。以下是此类错误消息的示例：
-=======
-As [mentioned above](#option-validation-errors), Rolldown throws an error when unknown or invalid options are passed.
->>>>>>> a2858051be0ddfbafde6ec16b0e7549baee2c30e
+如 [前文所述](#option-validation-errors)，当传入未知或无效选项时，Rolldown 会抛出错误。
 
-This can be fixed by conditionally passing the option by checking whether it's running with `rolldown-vite` as [shown above](#detecting-rolldown-vite).
+可通过条件式传递选项（通过 [如上所示](#detecting-rolldown-vite) 检测是否使用 `rolldown-vite`）来修复此问题。
 
-<<<<<<< HEAD
-这可以通过有条件地传递选项来修复，方法是检查是否正在使用上面所示的 `rolldown-vite` 运行。
-
-如果你想暂时抑制此错误，可以设置 `ROLLDOWN_OPTIONS_VALIDATION=loose` 环境变量。但请记住，你最终需要停止传递 Rolldown 不支持的选项。
-=======
-Suppressing the error by setting the `ROLLDOWN_OPTIONS_VALIDATION=loose` environment variable also works in this case.
-However, keep in mind that you will **eventually need to stop passing the options not supported by Rolldown**.
->>>>>>> a2858051be0ddfbafde6ec16b0e7549baee2c30e
+在此场景中，设置环境变量 `ROLLDOWN_OPTIONS_VALIDATION=loose` 亦可抑制错误。
+但需注意，**最终仍需停止传递 Rolldown 不支持的选项**。
 
 ### `transformWithEsbuild` 需要单独安装 `esbuild` {#transformwithesbuild-requires-installing-esbuild-separately}
 
@@ -247,7 +201,7 @@ However, keep in mind that you will **eventually need to stop passing the option
 ### `esbuild` 选项的兼容层 {#compatibility-layer-for-esbuild-options}
 
 Rolldown-Vite 有一个兼容层，用于将 `esbuild` 的选项转换为相应的 Oxc 或 `rolldown` 选项。正如 [生态系统 CI](https://github.com/vitejs/vite-ecosystem-ci/blob/rolldown-vite/README-temp.md) 中测试的那样，这在许多情况，包括简单的 `esbuild` 插件下都有效。
-虽说如此，但**我们将在未来移除对 `esbuild` 选项的支持**，并鼓励你尝试使用相应的 Oxc 或 `rolldown` 选项。
+虽说如此，但 **我们将在未来移除对 `esbuild` 选项的支持**，并鼓励你尝试使用相应的 Oxc 或 `rolldown` 选项。
 你可以从 `configResolved` 钩子获取由兼容层设置的选项。
 
 ```js
