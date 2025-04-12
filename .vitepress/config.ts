@@ -512,6 +512,7 @@ export default defineConfig({
           '.gitlab-ci.yml': 'vscode-icons:file-type-gitlab',
         },
       }),
+      // @ts-ignore
       llmstxt({
         ignoreFiles: ['blog/*', 'blog.md', 'index.md', 'team.md'],
         description: 'The Build Tool for the Web',
