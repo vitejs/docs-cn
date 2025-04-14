@@ -157,7 +157,7 @@ $ npm run preview
 2. 链接你的 GitHub/Gitee/Coding 账号或使用平台提供的模板，也可直接上传你的代码包。
 3. 指定项目名称、加速区域、生产分支、构建配置、环境变量等相关配置信息。
 4. 点击 **开始部署**。
-5. 部署完成后，应用默认在 `https://<PROJECTNAME>+随机字符串.edgeone.app/`（仅海外加速下）或 `https://<PROJECTNAME>+随机字符串.edgeone.site/`（含国内加速下）。
+5. 部署完成后，应用默认在 `https://<PROJECTNAME>-<随机字符串>.edgeone.app/`（仅海外加速下）或 `https://<PROJECTNAME>-<随机字符串>.edgeone.site/`（含国内加速下）。
 
 请注意，所有对指定的生产分支（默认是"main"）的commit都会自动触发新的部署。
 
