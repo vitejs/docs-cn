@@ -159,7 +159,7 @@ $ npm run preview
 4. 点击 **开始部署**。
 5. 部署完成后，应用默认在 `https://<PROJECTNAME>-<随机字符串>.edgeone.app/`（仅海外加速下）或 `https://<PROJECTNAME>-<随机字符串>.edgeone.site/`（含国内加速下）。
 
-请注意，所有对指定的生产分支（默认是"main"）的commit都会自动触发新的部署。
+请注意，所有对指定的生产分支（通常是"main"）的commit都会自动触发新的部署。
 
 你也可以为应用添加[自定义域名](https://edgeone.ai/zh/document/160427672892563456?srouce=github#909bc024-7344-40c0-8be1-cfa9b1fab5a5)。
 
