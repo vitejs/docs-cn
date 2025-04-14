@@ -149,6 +149,22 @@ $ npm run preview
        - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
    ```
 
+## EdgeOne Pages {#edgeone-pages}
+
+你可以在 [EdgeOne Pages](https://edgeone.ai/zh/products/pages) 快速部署你的Vite 应用。 只需：
+
+1. 创建一个 [EdgeOne 账号](https://edgeone.ai/zh/register?s_url=https%3A%2F%2Fconsole.tencentcloud.com%2Fedgeone%2Fpages)，进入 Pages [控制台](https://console.tencentcloud.com/edgeone/pages)页面。
+2. 链接你的 GitHub/Gitee/Coding 账号或使用平台提供的模板，也可直接上传你的代码包。
+3. 指定项目名称、加速区域、生产分支、构建配置、环境变量等相关配置信息。
+4. 点击 **开始部署**。
+5. 部署完成后，应用默认在 `https://<PROJECTNAME>+随机字符串.edgeone.app/`（仅海外加速下）或 `https://<PROJECTNAME>+随机字符串.edgeone.site/`（含国内加速下）。
+
+请注意，所有对指定的生产分支（默认是"main"）的commit都会自动触发新的部署。
+
+你也可以为应用添加[自定义域名](https://edgeone.ai/zh/document/160427672892563456?srouce=github#909bc024-7344-40c0-8be1-cfa9b1fab5a5)。
+
+查看 EdgeOne Pages 的 [Git集成](https://edgeone.ai/zh/document/171937194382536704?source=github) 了解更多细节。
+
 ## Netlify {#netlify}
 
 ### Netlify CLI {#netlify-cli}
