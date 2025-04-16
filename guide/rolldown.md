@@ -2,7 +2,13 @@
 
 Vite 计划将由 Rust 驱动的 JavaScript 打包工具 [Rolldown](https://rolldown.rs) 集成进来，以提升构建的性能和功能。
 
+<<<<<<< HEAD
 ## Rolldown 是什么？ {#what-is-rolldown}
+=======
+<YouTubeVideo videoId="RRjfm8cMveQ" />
+
+## What is Rolldown?
+>>>>>>> cf66cf54c76cae2d7e42c7c60a81516fe6eea0a8
 
 Rolldown 是一个现代化、高性能的 JavaScript 打包工具，由 Rust 编写。它被设计为 Rollup 的替代品，旨在保持与现有生态系统兼容的同时，显著提升性能。
 

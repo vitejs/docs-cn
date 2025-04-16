@@ -99,7 +99,7 @@ $ npm run preview
          - name: Set up Node
            uses: actions/setup-node@v4
            with:
-             node-version: 20
+             node-version: lts/*
              cache: 'npm'
          - name: Install dependencies
            run: npm ci
@@ -128,7 +128,7 @@ $ npm run preview
 2. 在项目根目录创建一个 `.gitlab-ci.yml` 文件，并包含以下内容。它将使得每次你更改内容时都重新构建与部署站点：
 
    ```yaml [.gitlab-ci.yml]
-   image: node:16.5.0
+   image: node:lts
    pages:
      stage: deploy
      cache:
