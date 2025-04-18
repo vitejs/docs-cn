@@ -34,7 +34,21 @@ Rolldown 专注于三个主要原则：
 
 ## 如何尝试 Rolldown {#how-to-try-rolldown}
 
+<<<<<<< HEAD
 目前，由 Rolldown 驱动的 Vite 版本已经作为一个名为 `rolldown-vite` 的独立包发布。你可以通过在你的 `package.json` 中添加 package overrides 来试用它：
+=======
+The rolldown-powered version of Vite is currently available as a separate package called `rolldown-vite`. If you have `vite` as a direct dependency, you can alias the `vite` package to `rolldown-vite` in your project, which should result in a drop-in replacement.
+
+```json
+{
+  "dependencies": {
+    "vite": "npm:rolldown-vite@latest"
+  }
+}
+```
+
+If you use a Vitepress or a meta framework that has Vite as peer dependency, you have to override the `vite` dependency in your package manager:
+>>>>>>> e0cf409d290429c874de109756ce3d2e57310cf3
 
 :::code-group
 
@@ -90,13 +104,48 @@ Rolldown 专注于三个主要原则：
 
 如果你自己没有传递这个选项，这个问题必须由使用的框架来解决。你可以通过设置 `ROLLDOWN_OPTIONS_VALIDATION=loose` 环境变量来暂时忽略这个错误。
 
+<<<<<<< HEAD
 ## 启用原生插件 {#enabling-native-plugins}
+=======
+## Performance
+
+`rolldown-vite` is focused on ensuring compatibility with the existing ecosystem, so defaults are geared towards a smooth transition. You can get further performance gains by switching over to faster Rust-based internal plugins and other customizations.
+
+### Enabling Native Plugins
+>>>>>>> e0cf409d290429c874de109756ce3d2e57310cf3
 
 感谢 Rolldown 和 Oxc，各种内部的 Vite 插件，如别名或解析插件，已被转换为 Rust。在撰写本文时，这些插件默认并未启用，因为它们的行为可能与 JavaScript 版本不同。
 
 要测试它们，你可以在你的 Vite 配置中将 `experimental.enableNativePlugin` 选项设置为 `true`。
 
+<<<<<<< HEAD
 ## 反馈问题 {#reporting-issues}
+=======
+### `withFilter` Wrapper
+
+Plugin authors have the option to use the [hook filter feature](#hook-filter-feature) to reduce the communication overhead between the Rust and JavaScript runtimes.
+But in case some of the used plugins are not using this feature (yet) but you still want to benefit from it, you can use the `withFilter` wrapper to wrap the plugin with a filter yourself.
+
+```js
+// In your vite.config.ts
+import { withFilter, defineConfig } from 'vite'
+import svgr from 'vite-plugin-svgr'
+
+export default defineConfig({
+  plugins: [
+    // Load the `svgr` plugin only for files which end in `.svg?react`
+    withFilter(
+      svgr({
+        /*...*/
+      }),
+      { load: { id: /\.svg?react$/ } },
+    ),
+  ],
+})
+```
+
+## Reporting Issues
+>>>>>>> e0cf409d290429c874de109756ce3d2e57310cf3
 
 由于这是一个实验性的集成，你可能会遇到一些问题。如果你遇到问题，请在 [`vitejs/rolldown-vite`](https://github.com/vitejs/rolldown-vite) 仓库中反馈，**而不是主 Vite 仓库**。
 
@@ -108,7 +157,17 @@ Rolldown 专注于三个主要原则：
 
 如果你想进行实时讨论和故障排除，请确保加入 [Rolldown Discord](https://chat.rolldown.rs/)。
 
+<<<<<<< HEAD
 ## 未来计划 {#future-plans}
+=======
+## Versioning Policy
+
+The versioning policy for `rolldown-vite` aligns its major and minor versions with those of the normal Vite package. This synchronization ensures that features present in a specific normal Vite minor release are also included in the corresponding `rolldown-vite` minor release. However, it's important to note that patch versions are not synchronized between the two projects. If you're wondering whether a specific change from normal Vite has been included in `rolldown-vite`, you can always check [`rolldown-vite`'s separate changelog](https://github.com/vitejs/rolldown-vite/blob/rolldown-vite/packages/vite/CHANGELOG.md) for confirmation.
+
+Furthermore, please be aware that `rolldown-vite` itself is considered experimental. Due to its experimental nature, breaking changes might be introduced even within its patch versions. Additionally, please note that `rolldown-vite` only receives updates for its most recent minor version. Even for important security or bug fixes, patches are not created for older major or minor versions.
+
+## Future Plans
+>>>>>>> e0cf409d290429c874de109756ce3d2e57310cf3
 
 `rolldown-vite` 包是一个临时的解决方案，用于收集反馈和稳定 Rolldown 的集成。在未来，这个功能将被合并回主 Vite 仓库。
 
