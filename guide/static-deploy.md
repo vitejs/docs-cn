@@ -63,59 +63,7 @@ $ npm run preview
 
 2. 进入仓库 settings 页面的 GitHub Pages 配置，选择部署来源为“GitHub Actions”，这将引导你创建一个构建和部署项目的工作流程，我们提供了一个安装依赖项和使用 npm 构建的工作流程样本：
 
-   ```yml
-   # 将静态内容部署到 GitHub Pages 的简易工作流程
-   name: Deploy static content to Pages
-
-   on:
-     # 仅在推送到默认分支时运行。
-     push:
-       branches: ['main']
-
-     # 这个选项可以使你手动在 Action tab 页面触发工作流
-     workflow_dispatch:
-
-   # 设置 GITHUB_TOKEN 的权限，以允许部署到 GitHub Pages。
-   permissions:
-     contents: read
-     pages: write
-     id-token: write
-
-   # 允许一个并发的部署
-   concurrency:
-     group: 'pages'
-     cancel-in-progress: true
-
-   jobs:
-     # 单次部署的工作描述
-     deploy:
-       environment:
-         name: github-pages
-         url: ${{ steps.deployment.outputs.page_url }}
-       runs-on: ubuntu-latest
-       steps:
-         - name: Checkout
-           uses: actions/checkout@v4
-         - name: Set up Node
-           uses: actions/setup-node@v4
-           with:
-             node-version: lts/*
-             cache: 'npm'
-         - name: Install dependencies
-           run: npm ci
-         - name: Build
-           run: npm run build
-         - name: Setup Pages
-           uses: actions/configure-pages@v4
-         - name: Upload artifact
-           uses: actions/upload-pages-artifact@v3
-           with:
-             # Upload dist folder
-             path: './dist'
-         - name: Deploy to GitHub Pages
-           id: deployment
-           uses: actions/deploy-pages@v4
-   ```
+   <<< ./static-deploy-github-pages.yaml#content
 
 ## GitLab Pages 配合 GitLab CI {#gitlab-pages-and-gitlab-ci}
 
