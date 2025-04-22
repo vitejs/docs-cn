@@ -32,17 +32,26 @@ Rolldown 专注于三个主要原则：
 
 ## 如何尝试 Rolldown {#how-to-try-rolldown}
 
+<<<<<<< HEAD
 基于 Rolldown 驱动的 Vite 目前以名为 `rolldown-vite` 的独立包提供。如果你的项目中直接依赖了 `vite`，你可以通过别名的方式将 `vite` 包指向 `rolldown-vite`，这样就可以实现无缝替换。
+=======
+The rolldown-powered version of Vite is currently available as a separate package called `rolldown-vite`. If you have `vite` as a direct dependency, you can alias the `vite` package to `rolldown-vite` in your project's `package.json`, which should result in a drop-in replacement.
+>>>>>>> 2d60135b9ba5d0a2292ee8c053aea03624de174f
 
 ```json
 {
   "dependencies": {
-    "vite": "npm:rolldown-vite@latest"
+    "vite": "^6.0.0" // [!code --]
+    "vite": "npm:rolldown-vite@latest" // [!code ++]
   }
 }
 ```
 
+<<<<<<< HEAD
 如果你使用了 Vitepress 或其他以 Vite 作为同等依赖（peer dependency）的元框架，你需要在你的包管理器中重写（override）`vite` 依赖：
+=======
+If you use a Vitepress or a meta framework that has Vite as peer dependency, you have to override the `vite` dependency in your `package.json`, which works slightly different depending on your package manager:
+>>>>>>> 2d60135b9ba5d0a2292ee8c053aea03624de174f
 
 :::code-group
 
