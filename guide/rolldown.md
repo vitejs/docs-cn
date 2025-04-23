@@ -43,7 +43,7 @@ Rolldown 专注于三个主要原则：
 }
 ```
 
-如果你使用了 VitePress 或其他将 Vite 作为对等依赖（peer dependency）的元框架，你需要在 `package.json` 文件中覆盖 `vite` 依赖，具体操作方式会因你使用的包管理器而略有不同。
+如果你使用了 Vitepress 或其他以 Vite 作为同等依赖（peer dependency）的元框架，你需要在 `package.json` 文件中覆盖 `vite` 依赖，具体操作方式会因你使用的包管理器而略有不同。
 
 :::code-group
 
