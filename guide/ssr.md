@@ -63,7 +63,11 @@ if (import.meta.env.SSR) {
 
 ## 设置开发服务器 {#setting-up-the-dev-server}
 
+<<<<<<< HEAD
 在构建 SSR 应用程序时，你可能希望完全控制主服务器，并将 Vite 与生产环境脱钩。因此，建议以中间件模式使用 Vite。下面是一个关于 [express](https://expressjs.com/) (v4) 的例子：
+=======
+When building an SSR app, you likely want to have full control over your main server and decouple Vite from the production environment. It is therefore recommended to use Vite in middleware mode. Here is an example with [express](https://expressjs.com/):
+>>>>>>> 47e88f5402396bf3ae637316f2ab1a0bc81e5549
 
 ```js{15-18} twoslash [server.js]
 import fs from 'node:fs'
@@ -93,8 +97,13 @@ async function createServer() {
   // 即使在重新启动后，以下内容仍然有效。
   app.use(vite.middlewares)
 
+<<<<<<< HEAD
   app.use('*', async (req, res) => {
     // 服务 index.html - 下面我们来处理这个问题
+=======
+  app.use('*all', async (req, res) => {
+    // serve index.html - we will tackle this next
+>>>>>>> 47e88f5402396bf3ae637316f2ab1a0bc81e5549
   })
 
   app.listen(5173)
@@ -119,7 +128,7 @@ var app
 var vite
 
 // ---cut---
-app.use('*', async (req, res, next) => {
+app.use('*all', async (req, res, next) => {
   const url = req.originalUrl
 
   try {
