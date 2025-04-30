@@ -2,7 +2,11 @@
 
 Vite 在特殊的 `import.meta.env` 对象下暴露了一些常量。这些常量在开发阶段被定义为全局变量，并在构建阶段被静态替换，以使树摇（tree-shaking）更有效。
 
+<<<<<<< HEAD
 ## 内置常量 {#built-in-constants}
+=======
+## Built-in Constants
+>>>>>>> 4f0ea491bb5fddc10b60b8a39398b2322cf6b30b
 
 一些内置常量在所有情况下都可用：
 

@@ -377,7 +377,17 @@ export default defineConfig({
 
 用于限制 Vite 开发服务器提供敏感文件的黑名单。这会比 [`server.fs.allow`](#server-fs-allow) 选项的优先级更高。同时还支持 [picomatch 模式](https://github.com/micromatch/picomatch#globbing-features)。
 
+<<<<<<< HEAD
 ## server.origin {#server-origin}
+=======
+::: tip NOTE
+
+This blocklist does not apply to [the public directory](/guide/assets.md#the-public-directory). All files in the public directory are served without any filtering, since they are copied directly to the output directory during build.
+
+:::
+
+## server.origin
+>>>>>>> 4f0ea491bb5fddc10b60b8a39398b2322cf6b30b
 
 - **类型：** `string`
 
