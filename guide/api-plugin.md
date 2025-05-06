@@ -2,7 +2,7 @@
 
 Vite 插件扩展了设计出色的 Rollup 接口，带有一些 Vite 独有的配置项。因此，你只需要编写一个 Vite 插件，就可以同时为开发环境和生产环境工作。
 
-**推荐在阅读下面的章节之前，首先阅读下 [Rollup 插件文档](https://rollupjs.org/plugin-development/)**
+**推荐在阅读下面的章节之前，首先阅读下 [Rollup 插件文档](https://cn.rollupjs.org/plugin-development/)**
 
 ## 致插件创作者 {#authoring-a-plugin}
 
@@ -17,7 +17,7 @@ Vite 努力秉承开箱即用的原则，因此在创作一款新插件前，请
 
 ## 约定 {#conventions}
 
-如果插件不使用 Vite 特有的钩子，可以作为 [兼容 Rollup 的插件](#rollup-plugin-compatibility) 来实现，推荐使用 [Rollup 插件名称约定](https://rollupjs.org/plugin-development/#conventions)。
+如果插件不使用 Vite 特有的钩子，可以作为 [兼容 Rollup 的插件](#rollup-plugin-compatibility) 来实现，推荐使用 [Rollup 插件名称约定](https://cn.rollupjs.org/plugin-development/#conventions)。
 
 - Rollup 插件应该有一个带 `rollup-plugin-` 前缀、语义清晰的名称。
 - 在 package.json 中包含 `rollup-plugin` 和 `vite-plugin` 关键字。
@@ -144,18 +144,18 @@ console.log(msg)
 
 ## 通用钩子 {#universal-hooks}
 
-在开发中，Vite 开发服务器会创建一个插件容器来调用 [Rollup 构建钩子](https://rollupjs.org/plugin-development/#build-hooks)，与 Rollup 如出一辙。
+在开发中，Vite 开发服务器会创建一个插件容器来调用 [Rollup 构建钩子](https://cn.rollupjs.org/plugin-development/#build-hooks)，与 Rollup 如出一辙。
 
 以下钩子在服务器启动时被调用：
 
-- [`options`](https://rollupjs.org/plugin-development/#options)
-- [`buildStart`](https://rollupjs.org/plugin-development/#buildstart)
+- [`options`](https://cn.rollupjs.org/plugin-development/#options)
+- [`buildStart`](https://cn.rollupjs.org/plugin-development/#buildstart)
 
 以下钩子会在每个传入模块请求时被调用：
 
-- [`resolveId`](https://rollupjs.org/plugin-development/#resolveid)
-- [`load`](https://rollupjs.org/plugin-development/#load)
-- [`transform`](https://rollupjs.org/plugin-development/#transform)
+- [`resolveId`](https://cn.rollupjs.org/plugin-development/#resolveid)
+- [`load`](https://cn.rollupjs.org/plugin-development/#load)
+- [`transform`](https://cn.rollupjs.org/plugin-development/#transform)
 
 它们还有一个扩展的 `options` 参数，包含其他特定于 Vite 的属性。你可以在 [SSR 文档](/guide/ssr#ssr-specific-plugin-logic) 中查阅更多内容。
 
@@ -163,12 +163,12 @@ console.log(msg)
 
 以下钩子在服务器关闭时被调用：
 
-- [`buildEnd`](https://rollupjs.org/plugin-development/#buildend)
-- [`closeBundle`](https://rollupjs.org/plugin-development/#closebundle)
+- [`buildEnd`](https://cn.rollupjs.org/plugin-development/#buildend)
+- [`closeBundle`](https://cn.rollupjs.org/plugin-development/#closebundle)
 
-请注意 [`moduleParsed`](https://rollupjs.org/plugin-development/#moduleparsed) 钩子在开发中是 **不会** 被调用的，因为 Vite 为了性能会避免完整的 AST 解析。
+请注意 [`moduleParsed`](https://cn.rollupjs.org/plugin-development/#moduleparsed) 钩子在开发中是 **不会** 被调用的，因为 Vite 为了性能会避免完整的 AST 解析。
 
-[Output Generation Hooks](https://rollupjs.org/plugin-development/#output-generation-hooks)（除了 `closeBundle`) 在开发中是 **不会** 被调用的。你可以认为 Vite 的开发服务器只调用了 `rollup.rollup()` 而没有调用 `bundle.generate()`。
+[Output Generation Hooks](https://cn.rollupjs.org/plugin-development/#output-generation-hooks)（除了 `closeBundle`) 在开发中是 **不会** 被调用的。你可以认为 Vite 的开发服务器只调用了 `rollup.rollup()` 而没有调用 `bundle.generate()`。
 
 ## Vite 独有钩子 {#vite-specific-hooks}
 
@@ -479,7 +479,7 @@ Vite 插件也可以提供钩子来服务于特定的 Vite 目标。这些钩子
 - 带有 `enforce: 'post'` 的用户插件
 - Vite 后置构建插件（最小化，manifest，报告）
 
-请注意，这与钩子的排序是分开的，钩子的顺序仍然会受到它们的 `order` 属性的影响，这一点 [和 Rollup 钩子的表现一样](https://rollupjs.org/plugin-development/#build-hooks)。
+请注意，这与钩子的排序是分开的，钩子的顺序仍然会受到它们的 `order` 属性的影响，这一点 [和 Rollup 钩子的表现一样](https://cn.rollupjs.org/plugin-development/#build-hooks)。
 
 ## 情景应用 {#conditional-application}
 
@@ -509,7 +509,7 @@ apply(config, { command }) {
 
 一般来说，只要 Rollup 插件符合以下标准，它就应该像 Vite 插件一样工作：
 
-- 没有使用 [`moduleParsed`](https://rollupjs.org/plugin-development/#moduleparsed) 钩子。
+- 没有使用 [`moduleParsed`](https://cn.rollupjs.org/plugin-development/#moduleparsed) 钩子。
 - 它在打包钩子和输出钩子之间没有很强的耦合。
 
 如果一个 Rollup 插件只在构建阶段有意义，则在 `build.rollupOptions.plugins` 下指定即可。它的工作原理与 Vite 插件的 `enforce: 'post'` 和 `apply: 'build'` 相同。
