@@ -49,7 +49,7 @@ Vite 的内部和官方插件已经优化，以在提供与更广泛的生态系
 
 因此，通常最好明确您的导入路径，例如 `import './Component.jsx'`。也可以缩小 `resolve.extensions` 的列表以减少一般的文件系统检查，但必须确保它也适用于 `node_modules` 中的文件。
 
-如果你是插件作者，请确保只在需要时调用 [`this.resolve`](https://rollupjs.org/plugin-development/#this-resolve) 以减少上述检查的次数。
+如果你是插件作者，请确保只在需要时调用 [`this.resolve`](https://cn.rollupjs.org/plugin-development/#this-resolve) 以减少上述检查的次数。
 
 ::: tip TypeScript
 如果你正在使用 TypeScript，启用 `tsconfig.json` 中的 `compilerOptions` 的 `"moduleResolution": "bundler"` 和 `"allowImportingTsExtensions": true` 以直接在代码中使用 `.ts` 和 `.tsx` 扩展名。

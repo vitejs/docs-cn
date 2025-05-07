@@ -50,13 +50,13 @@
 
 ## 自定义构建 {#customizing-the-build}
 
-构建过程可以通过多种 [构建配置选项](/config/#build-options) 来自定义构建。具体来说，你可以通过 `build.rollupOptions` 直接调整底层的 [Rollup 选项](https://rollupjs.org/configuration-options/)：
+构建过程可以通过多种 [构建配置选项](/config/#build-options) 来自定义构建。具体来说，你可以通过 `build.rollupOptions` 直接调整底层的 [Rollup 选项](https://cn.rollupjs.org/configuration-options/)：
 
 ```js [vite.config.js]
 export default defineConfig({
   build: {
     rollupOptions: {
-      // https://rollupjs.org/configuration-options/
+      // https://cn.rollupjs.org/configuration-options/
     },
   },
 })
@@ -82,13 +82,13 @@ window.addEventListener('vite:preloadError', (event) => {
 
 ## 文件变化时重新构建 {#rebuild-on-files-changes}
 
-你可以使用 `vite build --watch` 来启用 rollup 的监听器。或者，你可以直接通过 `build.watch` 调整底层的 [`WatcherOptions`](https://rollupjs.org/configuration-options/#watch) 选项：
+你可以使用 `vite build --watch` 来启用 rollup 的监听器。或者，你可以直接通过 `build.watch` 调整底层的 [`WatcherOptions`](https://cn.rollupjs.org/configuration-options/#watch) 选项：
 
 ```js [vite.config.js]
 export default defineConfig({
   build: {
     watch: {
-      // https://rollupjs.org/configuration-options/#watch
+      // https://cn.rollupjs.org/configuration-options/#watch
     },
   },
 })
@@ -306,7 +306,7 @@ dist/my-lib.umd.cjs 0.30 kB / gzip: 0.16 kB
 :::
 
 ::: warning 进阶用法
-库模式包括了一种简单而又有见地的配置，适用于面向浏览器和 JS 框架的库。如果你正在构建非面向浏览器的库，或需要高级构建流程，可以直接使用 [Rollup](https://rollupjs.org) 或 [esbuild](https://esbuild.github.io)。
+库模式包括了一种简单而又有见地的配置，适用于面向浏览器和 JS 框架的库。如果你正在构建非面向浏览器的库，或需要高级构建流程，可以直接使用 [Rollup](https://cn.rollupjs.org) 或 [esbuild](https://esbuild.github.io)。
 :::
 
 ## 进阶基础路径选项 {#advanced-base-options}
