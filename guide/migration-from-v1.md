@@ -120,10 +120,10 @@ Vite 2 使用了一套完全重定义的，扩展了 Rollup 插件的接口。�
 
 一些将 v1 插件迁移到 v2 的提示:
 
-- `resolvers` -> 使用 [`resolveId`](https://rollupjs.org/guide/en/#resolveid) 钩子
-- `transforms` -> 使用 [`transform`](https://rollupjs.org/guide/en/#transform) 钩子
+- `resolvers` -> 使用 [`resolveId`](https://cn.rollupjs.org/guide/en/#resolveid) 钩子
+- `transforms` -> 使用 [`transform`](https://cn.rollupjs.org/guide/en/#transform) 钩子
 - `indexHtmlTransforms` -> 使用 [`transformIndexHtml`](./api-plugin#transformindexhtml) 钩子
-- 虚拟文件支持 -> 使用 [`resolveId`](https://rollupjs.org/guide/en/#resolveid) + [`load`](https://rollupjs.org/guide/en/#load) 钩子
+- 虚拟文件支持 -> 使用 [`resolveId`](https://cn.rollupjs.org/guide/en/#resolveid) + [`load`](https://cn.rollupjs.org/guide/en/#load) 钩子
 - 添加 `alias`，`define` 或其他配置项 -> 使用 [`config`](./api-plugin#config) 钩子
 
 由于大多数逻辑应通过插件钩子实现，而无需使用中间件，因此对中间件的需求大大减少。内部服务器应用现在看起来像旧版的 [connect](https://github.com/senchalabs/connect) 实例，而不是 Koa。
