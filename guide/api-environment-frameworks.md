@@ -11,7 +11,11 @@
 请与我们分享您的反馈。
 :::
 
+<<<<<<< HEAD
 ## 环境和框架 {#environments-and-frameworks}
+=======
+## Environments and Frameworks
+>>>>>>> 1318b6fb802525823c7d70c164edde66fa3179d0
 
 隐式的 `ssr` 环境和其他非客户端环境在开发过程中默认使用 `RunnableDevEnvironment`。虽然这要求运行时与 Vite 服务器运行的环境相同，但这与 `ssrLoadModule` 类似，允许框架迁移并为其 SSR 开发方案启用模块热替换（HMR）。你可以使用 `isRunnableDevEnvironment` 函数来保护任何可运行的环境。
 

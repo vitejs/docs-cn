@@ -465,6 +465,7 @@ export default defineConfig({
               link: '/changes/hotupdate-hook',
             },
             {
+<<<<<<< HEAD
               text: '迁移到基于环境的API',
               link: '/changes/per-environment-apis',
             },
@@ -474,6 +475,17 @@ export default defineConfig({
             },
             {
               text: '构建过程中的共享插件',
+=======
+              text: 'Move to Per-environment APIs',
+              link: '/changes/per-environment-apis',
+            },
+            {
+              text: 'SSR Using ModuleRunner API',
+              link: '/changes/ssr-using-modulerunner',
+            },
+            {
+              text: 'Shared Plugins During Build',
+>>>>>>> 1318b6fb802525823c7d70c164edde66fa3179d0
               link: '/changes/shared-plugins-during-build',
             },
           ],

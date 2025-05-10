@@ -123,11 +123,19 @@ export default {
 
 我们不建议现在就切换到环境 API。我们的目标是在插件不需要维护两个版本之前，让大部分用户基础采用 Vite 6。查看未来破坏性更改部分以获取未来弃用和升级路径的信息：
 
+<<<<<<< HEAD
 - [钩子函数中的 `this.environment`](/changes/this-environment-in-hooks)
 - [HMR `hotUpdate` 插件钩子](/changes/hotupdate-hook)
 - [迁移到基于环境的API](/changes/per-environment-apis)
 - [使用 `ModuleRunner` API 进行服务端渲染](/changes/ssr-using-modulerunner)
 - [构建过程中的共享插件](/changes/shared-plugins-during-build)
+=======
+- [`this.environment` in Hooks](/changes/this-environment-in-hooks)
+- [HMR `hotUpdate` Plugin Hook](/changes/hotupdate-hook)
+- [Move to Per-environment APIs](/changes/per-environment-apis)
+- [SSR Using `ModuleRunner` API](/changes/ssr-using-modulerunner)
+- [Shared Plugins During Build](/changes/shared-plugins-during-build)
+>>>>>>> 1318b6fb802525823c7d70c164edde66fa3179d0
 
 ## 目标用户 {#target-users}
 

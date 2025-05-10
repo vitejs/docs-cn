@@ -33,7 +33,11 @@ _2023年11月16日_
 
 Vite 4 发布了将近一年，它为生态系统奠定了坚实的基础。每周的 npm 下载量从250万增加到了750万，因为项目不断在共享基础设施上构建。各种框架不断创新，除了 [Astro](https://astro.build/)、[Nuxt](https://nuxt.com/)、[SvelteKit](https://kit.svelte.dev/)、[Solid Start](https://www.solidjs.com/blog/introducing-solidstart)、[Qwik City](https://qwik.builder.io/qwikcity/overview/) 等等之外，我们看到新的框架加入并使生态系统变得更加强大。[RedwoodJS](https://redwoodjs.com/) 和 [Remix](https://remix.run/) 转向 Vite 为 React 生态系统的进一步采用铺平了道路。[Vitest](https://vitest.dev) 的增长速度甚至比 Vite 还要快。其团队一直在努力工作，并将很快 [发布 Vitest 1.0](https://github.com/vitest-dev/vitest/issues/3596)。当与其他工具一起使用时，如 [Storybook](https://storybook.js.org)、[Nx](https://nx.dev) 和 [Playwright](https://playwright.dev)，Vite 的故事不断改善，环境也是如此，Vite 的开发在 [Deno](https://deno.com) 和 [Bun](https://bun.sh) 中都可以工作。
 
+<<<<<<< HEAD
 一个月前，我们举办了第二届 [ViteConf](https://viteconf.org/23/replay)，由 [StackBlitz](https://stackblitz.com) 主办。像去年一样，生态系统中的大多数项目聚在一起分享想法，并保持连接以持续扩展共同体。我们也看到新的组件补充了元框架工具包，比如 [Volar](https://volarjs.dev/) 和 [Nitro](https://nitro.unjs.io/)。Rollup 团队在同一天发布了 [Rollup 4](https://cn.rollupjs.org)，这是去年 Lukas 开创的传统。
+=======
+We had the second edition of [ViteConf](https://viteconf.org/23/replay) a month ago, hosted by [StackBlitz](https://stackblitz.com). Like last year, most of the projects in the ecosystem got together to share ideas and connect to keep expanding the commons. We're also seeing new pieces complement the meta-framework tool belt like [Volar](https://volarjs.dev/) and [Nitro](https://nitro.build/). The Rollup team released [Rollup 4](https://rollupjs.org) that same day, a tradition Lukas started last year.
+>>>>>>> 1318b6fb802525823c7d70c164edde66fa3179d0
 
 六个月前，Vite 4.3 [发布了](./announcing-vite4.md)。这个版本显著改善了开发服务器的性能。但是，还有很大的改进空间。在 ViteConf 上，[Evan You 揭示了 Vite 的长期计划，即着手开发 Rolldown](https://www.youtube.com/watch?v=hrdwQHoAp0M)，这是 Rollup 的 Rust 版本，具有兼容的 API。一旦准备就绪，我们打算在 Vite Core 中使用它，以执行 Rollup 和 esbuild 的任务。这将意味着构建性能的提升（随着我们将 Vite 本身的性能敏感部分转移到 Rust，开发性能也将在以后提升），以及减少开发和构建之间的不一致性。Rolldown 目前处于早期阶段，团队正准备在年底之前开源代码库。敬请期待！
 
