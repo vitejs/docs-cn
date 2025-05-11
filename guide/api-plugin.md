@@ -38,11 +38,7 @@ Vite 努力秉承开箱即用的原则，因此在创作一款新插件前，请
 
 更多详情参见 [虚拟模块的相关内容](#virtual-modules-convention).
 
-<<<<<<< HEAD
 ## 插件配置 {#plugins-config}
-=======
-## Plugins Config
->>>>>>> 1318b6fb802525823c7d70c164edde66fa3179d0
 
 用户会将插件添加到项目的 `devDependencies` 中并使用数组形式的 `plugins` 选项配置它们。
 

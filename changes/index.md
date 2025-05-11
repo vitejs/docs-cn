@@ -14,19 +14,11 @@ Vite 中的破坏性变更列表，包括 API 废弃、移除和变更。在你�
 
 我们目前还不建议你切换到这些 API。我们将它们包含在 Vite 中是为了帮助我们收集反馈。请查看这些提案，并在每个提案相关联的 GitHub Discussions 中告诉我们它们在你的使用场景中的表现如何。
 
-<<<<<<< HEAD
 - [钩子函数中的 `this.environment`](/changes/this-environment-in-hooks)
 - [HMR `hotUpdate` 插件钩子](/changes/hotupdate-hook)
 - [迁移到基于环境的API](/changes/per-environment-apis)
 - [使用 `ModuleRunner` API 进行服务端渲染](/changes/ssr-using-modulerunner)
 - [构建过程中的共享插件](/changes/shared-plugins-during-build)
-=======
-- [`this.environment` in Hooks](/changes/this-environment-in-hooks)
-- [HMR `hotUpdate` Plugin Hook](/changes/hotupdate-hook)
-- [Move to Per-environment APIs](/changes/per-environment-apis)
-- [SSR Using `ModuleRunner` API](/changes/ssr-using-modulerunner)
-- [Shared Plugins During Build](/changes/shared-plugins-during-build)
->>>>>>> 1318b6fb802525823c7d70c164edde66fa3179d0
 
 ## 历史 {#past}
 

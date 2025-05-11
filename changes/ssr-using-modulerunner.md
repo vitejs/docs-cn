@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 # 使用 ModuleRunner API 进行服务端渲染 {#ssr-using-modulerunner-api}
-=======
-# SSR Using `ModuleRunner` API
->>>>>>> 1318b6fb802525823c7d70c164edde66fa3179d0
 
 ::: tip 反馈
 可以在 [环境 API 讨论](https://github.com/vitejs/vite/discussions/16358) 中向我们提供反馈
