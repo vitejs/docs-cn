@@ -18,11 +18,7 @@
 
 ## 迁移指南 {#migration-guide}
 
-<<<<<<< HEAD
-对于现有的插件，如果想要快速迁移，可以在 `resolveId`、`load` 和 `transform` 钩子中，将 `options.ssr` 参数替换为 `this.environment.name !== 'client'`：
-=======
-For the existing plugin to do a quick migration, replace the `options.ssr` argument with `this.environment.config.consumer === 'server'` in the `resolveId`, `load` and `transform` hooks:
->>>>>>> 8009317f5e727f09404152cc3a3679967e3de95a
+对于现有的插件，如果想要快速迁移，可以在 `resolveId`、`load` 和 `transform` 钩子中，将 `options.ssr` 参数替换为 `this.environment.config.consumer === 'server'`：
 
 ```ts
 import { Plugin } from 'vite'
