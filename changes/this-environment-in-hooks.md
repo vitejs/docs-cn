@@ -18,7 +18,7 @@
 
 ## 迁移指南 {#migration-guide}
 
-对于现有的插件，如果想要快速迁移，可以在 `resolveId`、`load` 和 `transform` 钩子中，将 `options.ssr` 参数替换为 `this.environment.name !== 'client'`：
+对于现有的插件，如果想要快速迁移，可以在 `resolveId`、`load` 和 `transform` 钩子中，将 `options.ssr` 参数替换为 `this.environment.config.consumer === 'server'`：
 
 ```ts
 import { Plugin } from 'vite'
@@ -28,7 +28,7 @@ export function myPlugin(): Plugin {
     name: 'my-plugin',
     resolveId(id, importer, options) {
       const isSSR = options.ssr // [!code --]
-      const isSSR = this.environment.name !== 'client' // [!code ++]
+      const isSSR = this.environment.config.consumer === 'server' // [!code ++]
 
       if (isSSR) {
         // SSR 特有逻辑
