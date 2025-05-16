@@ -227,11 +227,18 @@ declare const __APP_VERSION__: string
 指定传递给 CSS 预处理器的选项。文件扩展名用作选项的键。每个预处理器支持的选项可以在它们各自的文档中找到：
 
 - `sass`/`scss`:
+<<<<<<< HEAD
   - 选择要使用的 sass 应用程序接口 `api: "modern-compiler" | "modern" | "legacy"` (如果安装了`sass-embedded`，默认为`"modern-compiler"`，否则为 `"modern"`). 为获得最佳性能，建议使用 `api: "modern-compiler"` 和 `sass-embedded` 软件包。`"legacy"` API 已过时，将在 Vite 7 中移除。
   - [Options (modern)](https://sass-lang.com/documentation/js-api/interfaces/stringoptions/)
   - [Options (legacy)](https://sass-lang.com/documentation/js-api/interfaces/LegacyStringOptions).
 - `less`: [选项](https://lesscss.org/usage/#less-options).
 - `styl`/`stylus`: 仅支持 [`define`](https://stylus-lang.com/docs/js.html#define-name-node)，可以作为对象传递。
+=======
+  - Select the sass API to use with `api: "modern-compiler" | "modern"` (default `"modern-compiler"` if `sass-embedded` is installed, otherwise `"modern"`). For the best performance, it's recommended to use `api: "modern-compiler"` with the `sass-embedded` package.
+  - [Options](https://sass-lang.com/documentation/js-api/interfaces/stringoptions/)
+- `less`: [Options](https://lesscss.org/usage/#less-options).
+- `styl`/`stylus`: Only [`define`](https://stylus-lang.com/docs/js.html#define-name-node) is supported, which can be passed as an object.
+>>>>>>> c85353d9e1570517230edd6c9b7df4c07e0ad4d1
 
 **示例：**
 
@@ -248,7 +255,11 @@ export default defineConfig({
         },
       },
       scss: {
+<<<<<<< HEAD
         api: 'modern-compiler', // 或 "modern"，"legacy"
+=======
+        api: 'modern-compiler', // or "modern"
+>>>>>>> c85353d9e1570517230edd6c9b7df4c07e0ad4d1
         importers: [
           // ...
         ],
