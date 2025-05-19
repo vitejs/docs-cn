@@ -114,9 +114,15 @@ export default defineConfig({
 
 精简工作的例子：
 
+<<<<<<< HEAD
 - 使用 CSS 而不是 Sass/Less/Stylus（可以由 PostCSS 处理嵌套）
 - 不要使用 `@vitejs/plugin-react-refresh`，而是使用 React Fast Refresh 的原生支持。
 - 当使用 `@vitejs/plugin-react` 时，避免配置 Babel 选项，这样它就会在构建期间跳过转换（只使用 esbuild）。
+=======
+- Use CSS instead of Sass/Less/Stylus when possible (nesting can be handled by PostCSS)
+- Don't transform SVGs into UI framework components (React, Vue, etc.). Import them as strings or URLs instead.
+- When using `@vitejs/plugin-react`, avoid configuring the Babel options, so it skips the transformation during build (only esbuild will be used).
+>>>>>>> ceac5a8781c9bc2b404255ee568ffb718dffcd53
 
 使用更原生化工具链的例子：
 
