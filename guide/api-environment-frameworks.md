@@ -329,6 +329,8 @@ export default {
 }
 ```
 
+插件还可以定义一个 `buildApp` 钩子。顺序 `'pre'` 和 `null'` 在配置的 `builder.buildApp` 之前执行，顺序 `'post'` 钩子在其之后执行。`environment.isBuilt` 可用于检查环境是否已被构建。
+
 ## 环境无关的代码 {#environment-agnostic-code}
 
 大部分情况，当前的 `environment` 实例会作为正在运行代码的上下文中的一部分，所以通过 `server.environments` 来访问它们的需求应该很少。例如，在插件钩子内部，环境是作为 `PluginContext` 的一部分暴露出来的，所以可以使用 `this.environment` 来访问它。参见 [用于插件的环境 API](./api-environment-plugins.md) 了解如何构建对环境敏感的插件。
