@@ -329,7 +329,7 @@ export default {
 }
 ```
 
-插件还可以定义一个 `buildApp` 钩子。顺序 `'pre'` 和 `null'` 在配置的 `builder.buildApp` 之前执行，顺序 `'post'` 钩子在其之后执行。`environment.isBuilt` 可用于检查环境是否已被构建。
+插件还可以定义一个 `buildApp` 钩子。顺序 `'pre'` 和 `'null'` 在配置的 `builder.buildApp` 之前执行，顺序 `'post'` 钩子在其之后执行。`environment.isBuilt` 可用于检查环境是否已被构建。
 
 ## 环境无关的代码 {#environment-agnostic-code}
 
