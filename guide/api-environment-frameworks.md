@@ -329,11 +329,7 @@ export default {
 }
 ```
 
-<<<<<<< HEAD
-插件还可以定义一个 `buildApp` 钩子。顺序 `'pre'` 和 `null'` 在配置的 `builder.buildApp` 之前执行，顺序 `'post'` 钩子在其之后执行。`environment.isBuilt` 可用于检查环境是否已被构建。
-=======
-Plugins can also define a `buildApp` hook. Order `'pre'` and `null` are executed before the configured `builder.buildApp`, and order `'post'` hooks are executed after it. `environment.isBuilt` can be used to check if an environment has already being build.
->>>>>>> ceac5a8781c9bc2b404255ee568ffb718dffcd53
+插件还可以定义一个 `buildApp` 钩子。顺序 `'pre'` 和 `'null'` 在配置的 `builder.buildApp` 之前执行，顺序 `'post'` 钩子在其之后执行。`environment.isBuilt` 可用于检查环境是否已被构建。
 
 ## 环境无关的代码 {#environment-agnostic-code}
 
