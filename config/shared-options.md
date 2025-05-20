@@ -466,7 +466,7 @@ export default defineConfig({
 - **类型：** `string | string[]`
 - **默认：** `VITE_`
 
-以 `envPrefix` 开头的环境变量会通过 import.meta.env 暴露在你的客户端源码中。
+以 `envPrefix` 开头的环境变量会通过 `import.meta.env` 暴露在你的客户端源码中。
 
 :::warning 安全注意事项
 `envPrefix` 不应被设置为空字符串 `''`，这将暴露你所有的环境变量，导致敏感信息的意外泄漏。 检测到配置为 `''` 时 Vite 将会抛出错误.
