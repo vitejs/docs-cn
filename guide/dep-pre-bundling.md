@@ -83,6 +83,12 @@ Vite 将预构建的依赖项缓存到 `node_modules/.vite` 中。它会基于�
 
 已预构建的依赖请求使用 HTTP 头 `max-age=31536000, immutable` 进行强缓存，以提高开发期间页面重新加载的性能。一旦被缓存，这些请求将永远不会再次访问开发服务器。如果安装了不同版本的依赖项（这反映在包管理器的 lockfile 中），则会通过附加版本查询自动失效。如果你想通过本地编辑来调试依赖项，您可以：
 
+<<<<<<< HEAD
 1. 通过浏览器开发工具的 Network 选项卡暂时禁用缓存；
 2. 重启 Vite 开发服务器指定 `--force` 选项，来重新构建依赖项;
 3. 重新载入页面。
+=======
+1. Temporarily disable cache via the Network tab of your browser devtools.
+2. Restart Vite dev server with the `--force` flag to re-bundle the deps.
+3. Reload the page.
+>>>>>>> c051c833e3340a8ea5a343bc1416600fdcfed087

@@ -4,6 +4,7 @@
 
 如果这里的建议并未帮助到你，请将你的问题发送到 [GitHub 讨论区](https://github.com/vitejs/vite/discussions) 或 [Vite Land Discord](https://chat.vite.dev) 的 `#help` 频道。
 
+<<<<<<< HEAD
 ## CJS
 
 ### Vite CJS Node API deprecated {#vite-cjs-node-api-deprecated}
@@ -36,6 +37,9 @@ VITE_CJS_IGNORE_WARNING=true vite dev
 请注意，postcss 配置文件还不支持 ESM + TypeScript（`"type": "module"` 中的 `.mts` 或 `.ts`）。如果你有带 `.ts` 的 postcss 配置，并在 package.json 中添加了 `"type": "module"`，你还需要将 postcss 配置重命名为 `.cts`。
 
 ## CLI {#cli}
+=======
+## CLI
+>>>>>>> c051c833e3340a8ea5a343bc1416600fdcfed087
 
 ### `Error: Cannot find module 'C:\foo\bar&baz\vite\bin\vite.js'` {#error-cannot-find-module-cfoobarbazvitebinvitejs}
 
@@ -244,4 +248,23 @@ Vite 无法处理、也不支持仅可在非严格模式（sloppy mode）下运�
 - 通过 `subst` 命令将虚拟驱动器链接到一个文件夹
 - 通过 `mklink` 命令将符号链接/联接到另一个驱动器（例如 Yarn 全局缓存）
 
+<<<<<<< HEAD
 相关 issue：[#10802](https://github.com/vitejs/vite/issues/10802)
+=======
+Related issue: [#10802](https://github.com/vitejs/vite/issues/10802)
+
+<script setup lang="ts">
+// redirect old links with hash to old version docs
+if (typeof window !== "undefined") {
+  const hashForOldVersion = {
+    'vite-cjs-node-api-deprecated': 6
+  }
+
+  const version = hashForOldVersion[location.hash.slice(1)]
+  if (version) {
+    // update the scheme and the port as well so that it works in local preview (it is http and 4173 locally)
+    location.href = `https://v${version}.vite.dev` + location.pathname + location.search + location.hash
+  }
+}
+</script>
+>>>>>>> c051c833e3340a8ea5a343bc1416600fdcfed087
