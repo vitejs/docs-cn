@@ -176,7 +176,7 @@ HTML 文件位于 Vite 项目的[最前端和中心](/guide/#index-html-and-proj
 - `<audio src>`
 - `<embed src>`
 - `<img src>` 和 `<img srcset>`
-- `<image src>`
+- `<image href>` 和 `<image xlink:href>`
 - `<input src>`
 - `<link href>` 和 `<link imagesrcset>`
 - `<object data>`
