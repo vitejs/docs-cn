@@ -4,42 +4,7 @@
 
 如果这里的建议并未帮助到你，请将你的问题发送到 [GitHub 讨论区](https://github.com/vitejs/vite/discussions) 或 [Vite Land Discord](https://chat.vite.dev) 的 `#help` 频道。
 
-<<<<<<< HEAD
-## CJS
-
-### Vite CJS Node API deprecated {#vite-cjs-node-api-deprecated}
-
-Vite 的 CJS Node API 构建已经被废弃，并将在 Vite 6 中移除。查看 [GitHub 讨论区](https://github.com/vitejs/vite/discussions/13928) 了解更多背景信息。你应该更新你的文件或框架来导入 Vite 的 ESM 构建。
-
-在一个基础的 Vite 项目中，请确保：
-
-1. `vite.config.js` 配置文件的内容使用 ESM 语法。
-2. 最近的 `package.json` 文件中有 `"type": "module"`，或者使用 `.mjs`/`.mts` 扩展名，例如 `vite.config.mjs` 或者 `vite.config.mts`。
-
-对于其他项目，有几种常见的方法：
-
-- **配置 ESM 为默认，如果需要则选择 CJS：** 在项目 `package.json` 中添加 `"type": "module"`。所有 `*.js` 文件现在都被解释为 ESM，并且需要使用 ESM 语法。你可以将一个文件重命名为 `.cjs` 扩展名来继续使用 CJS。
-- **保持 CJS 为默认，如果需要则选择 ESM：** 如果项目 `package.json` 没有 `"type": "module"`，所有 `*.js` 文件都被解释为 CJS。你可以将一个文件重命名为 `.mjs` 扩展名来使用 ESM。
-- **动态导入 Vite：** 如果你需要继续使用 CJS，你可以使用 `import('vite')` 动态导入 Vite。这要求你的代码必须在一个 `async` 上下文中编写，但是由于 Vite 的 API 大多是异步的，所以应该还是可以管理的。
-
-如果你不确定警告来自哪里，你可以通过 `VITE_CJS_TRACE=true` 标志运行你的脚本来记录堆栈跟踪：
-
-```bash
-VITE_CJS_TRACE=true vite dev
-```
-
-如果你想暂时忽略警告，你可以通过 `VITE_CJS_IGNORE_WARNING=true` 标志运行你的脚本：
-
-```bash
-VITE_CJS_IGNORE_WARNING=true vite dev
-```
-
-请注意，postcss 配置文件还不支持 ESM + TypeScript（`"type": "module"` 中的 `.mts` 或 `.ts`）。如果你有带 `.ts` 的 postcss 配置，并在 package.json 中添加了 `"type": "module"`，你还需要将 postcss 配置重命名为 `.cts`。
-
-## CLI {#cli}
-=======
 ## CLI
->>>>>>> c051c833e3340a8ea5a343bc1416600fdcfed087
 
 ### `Error: Cannot find module 'C:\foo\bar&baz\vite\bin\vite.js'` {#error-cannot-find-module-cfoobarbazvitebinvitejs}
 
@@ -248,13 +213,10 @@ Vite 无法处理、也不支持仅可在非严格模式（sloppy mode）下运�
 - 通过 `subst` 命令将虚拟驱动器链接到一个文件夹
 - 通过 `mklink` 命令将符号链接/联接到另一个驱动器（例如 Yarn 全局缓存）
 
-<<<<<<< HEAD
 相关 issue：[#10802](https://github.com/vitejs/vite/issues/10802)
-=======
-Related issue: [#10802](https://github.com/vitejs/vite/issues/10802)
 
 <script setup lang="ts">
-// redirect old links with hash to old version docs
+// 使用哈希将旧链接重定向到旧版本文档
 if (typeof window !== "undefined") {
   const hashForOldVersion = {
     'vite-cjs-node-api-deprecated': 6
@@ -262,9 +224,8 @@ if (typeof window !== "undefined") {
 
   const version = hashForOldVersion[location.hash.slice(1)]
   if (version) {
-    // update the scheme and the port as well so that it works in local preview (it is http and 4173 locally)
+    // 更新 scheme 和端口，以便它在本地预览中工作（本地为 http 和 4173）
     location.href = `https://v${version}.vite.dev` + location.pathname + location.search + location.hash
   }
 }
 </script>
->>>>>>> c051c833e3340a8ea5a343bc1416600fdcfed087
