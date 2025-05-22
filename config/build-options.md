@@ -4,11 +4,19 @@
 
 ## build.target
 
+<<<<<<< HEAD
 - **类型：** `string | string[]`
 - **默认：** `'modules'`
 - **相关内容：** [浏览器兼容性](/guide/build#browser-compatibility)
 
 设置最终构建的浏览器兼容目标。默认值是一个 Vite 特有的值：`'modules'`，这是指 [支持原生 ES 模块](https://caniuse.com/es6-module)、[原生 ESM 动态导入](https://caniuse.com/es6-module-dynamic-import) 和 [`import.meta`](https://caniuse.com/mdn-javascript_operators_import_meta) 的浏览器。Vite 将替换 `modules` 为 `['es2020', 'edge88', 'firefox78', 'chrome87', 'safari14']`
+=======
+- **Type:** `string | string[]`
+- **Default:** `'baseline-widely-available'`
+- **Related:** [Browser Compatibility](/guide/build#browser-compatibility)
+
+Browser compatibility target for the final bundle. The default value is a Vite special value, `'baseline-widely-available'`, which targets browsers that are included in the [Baseline](https://web-platform-dx.github.io/web-features/) Widely Available on 2025-05-01. Specifically, it is `['chrome107', 'edge107', 'firefox104', 'safari16']`.
+>>>>>>> 0ab93080daaae773a38aec96e676a09b701d715f
 
 另一个特殊值是 `'esnext'` —— 即假设有原生动态导入支持，并只执行最低限度的转译。
 
