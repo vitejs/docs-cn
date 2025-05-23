@@ -4,14 +4,14 @@
 
 ## 浏览器兼容性 {#browser-compatibility}
 
-默认情况下，生产打包文件假设支持现代 JavaScript，包括原生 ES 模块[native ES Modules](https://caniuse.com/es6-module)、原生 ESM 动态导入 [native ESM dynamic import](https://caniuse.com/es6-module-dynamic-import)，以及 [`import.meta`](https://caniuse.com/mdn-javascript_operators_import_meta)、[nullish coalescing](https://caniuse.com/mdn-javascript_operators_nullish_coalescing) 和 [BigInt](https://caniuse.com/bigint)。默认的浏览器支持范围是：
+默认情况下，生产包假定使用包含在 [Baseline](https://web-platform-dx.github.io/web-features/) 广泛可用目标中的现代浏览器。默认的浏览器支持范围是：
 
 <!-- 查找 `ESBUILD_MODULES_TARGET` 常量以获取更多信息。 -->
 
-- Chrome >=87
-- Firefox >=78
-- Safari >=14
-- Edge >=88
+- Chrome >=107
+- Edge >=107
+- Firefox >=104
+- Safari >=16
 
 你也可以通过 [`build.target` 配置项](/config/build-options.md#build-target) 指定构建目标，最低支持 `es2015`。如果设置较低的目标值，Vite 仍然需要这些最低的浏览器支持范围，因为它依赖于[原生的 ESM 动态导入](https://caniuse.com/es6-module-dynamic-import)和 [`import.meta`](https://caniuse.com/mdn-javascript_operators_import_meta)：
 
