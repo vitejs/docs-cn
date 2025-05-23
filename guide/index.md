@@ -22,7 +22,7 @@ Vite 还提供了强大的扩展性，可通过其 [插件 API](./api-plugin) �
 
 在开发阶段，Vite 将 [`esnext` 作为转换目标](https://esbuild.github.io/api/#target)，因为我们假设使用的是现代浏览器，它支持所有最新的 JavaScript 和 CSS 特性。这样可以防止语法降级，让 Vite 尽可能地接近原始源代码。
 
-对于生产构建，默认情况下 Vite 的目标浏览器支持 [原生 ES 模块](https://caniuse.com/es6-module)、[原生 ESM 动态导入](https://caniuse.com/es6-module-dynamic-import)、[`import.meta`](https://caniuse.com/mdn-javascript_operators_import_meta)、[nullish coalescing](https://caniuse.com/mdn-javascript_operators_nullish_coalescing) 和 [BigInt](https://caniuse.com/bigint)。旧版浏览器可以通过官方的 [@vitejs/plugin-legacy](https://github.com/vitejs/vite/tree/main/packages/plugin-legacy)。查看 [构建生产环境](./build) 了解更多细节。
+对于生产环境构建，Vite 默认以 [Baseline](https://web-platform-dx.github.io/web-features/) 广泛可用的浏览器为目标平台。这些浏览器至少发布于两年半之前。您可以通过配置降低目标浏览器版本。此外，可以通过官方 [@vitejs/plugin-legacy](https://github.com/vitejs/vite/tree/main/packages/plugin-legacy) 支持旧版浏览器。更多详情，请参阅 [构建生产环境](./build) 部分。
 
 ## 在线试用 Vite {#trying-vite-online}
 
