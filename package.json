@@ -9,11 +9,11 @@
 	"license": "CC BY-NC-SA 4.0",
 	"devDependencies": {
 		"@shikijs/vitepress-twoslash": "^2.5.0",
-		"@types/express": "^5.0.1",
+		"@types/express": "^5.0.2",
 		"feed": "^5.0.1",
 		"vitepress": "^1.6.3",
-		"vitepress-plugin-group-icons": "^1.5.2",
-		"vue": "^3.5.13",
+		"vitepress-plugin-group-icons": "^1.5.5",
+		"vue": "^3.5.14",
 		"@types/node": "^20.9.2",
 		"@type-challenges/utils": "^0.1.1",
 		"chalk": "^4.1.2",
@@ -21,7 +21,7 @@
 		"lodash": "^4.17.21",
 		"vite": "^6.3.0-beta.0",
 		"yorkie": "^2.0.0",
-		"gsap": "^3.12.4"
+		"gsap": "^3.13.0"
 	},
 	"packageManager": "pnpm@9.6.0",
 	"scripts": {

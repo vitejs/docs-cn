@@ -313,7 +313,7 @@ npm add -D stylus
 
 如果使用的是单文件组件，可以通过 `<style lang="sass">`（或其他预处理器）自动开启。
 
-Vite 为 Sass 和 Less 改进了 `@import` 解析，以保证 Vite 别名也能被使用。另外，`url()` 中的相对路径引用的，与根文件不同目录中的 Sass/Less 文件会自动变基以保证正确性。
+Vite 为 Sass 和 Less 改进了 `@import` 解析，以保证 Vite 别名也能被使用。另外，`url()` 中的相对路径引用的，与根文件不同目录中的 Sass/Less 文件会自动变基以保证正确性。由于 API 限制，不支持重新设置以变量或插值开头的 `url()` 引用。
 
 由于 Stylus API 限制，`@import` 别名和 URL 变基不支持 Stylus。
 
@@ -364,7 +364,7 @@ document.getElementById('hero-img').src = imgUrl
 ```js twoslash
 import 'vite/client'
 // ---cut---
-// 显式加载资源为一个 URL
+// 显式加载资源为一个 URL（根据文件大小自动内联）
 import assetAsURL from './asset.js?url'
 ```
 
