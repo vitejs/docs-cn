@@ -17,13 +17,8 @@
 
 值得注意的是 `vite preview` 用作预览本地构建，而不应直接作为生产服务器。
 
-<<<<<<< HEAD
 ::: tip 注意
 本篇指南提供了部署 Vite 静态站点的说明。Vite 也对服务端渲染（SSR）有了实验性的支持。SSR 是指支持在 Node 中运行相应应用的前端框架，预渲染成 HTML，最后在客户端激活（hydrate）。查看 [SSR 指南](./ssr) 了解更多细节。另一方面，如果你在寻找与传统服务端框架集成的方式，那么请查看 [后端集成](./backend-integration) 章节。
-=======
-::: tip NOTE
-These guides provide instructions for performing a static deployment of your Vite site. Vite also supports Server-Side Rendering. SSR refers to front-end frameworks that support running the same application in Node.js, pre-rendering it to HTML, and finally hydrating it on the client. Check out the [SSR Guide](./ssr) to learn about this feature. On the other hand, if you are looking for integration with traditional server-side frameworks, check out the [Backend Integration guide](./backend-integration) instead.
->>>>>>> 0f3e9fa6eae7e0ebaa0ef555af5b731ef664cec9
 :::
 
 ## 构建应用 {#building-the-app}
