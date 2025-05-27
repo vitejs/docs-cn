@@ -227,7 +227,11 @@ declare const __APP_VERSION__: string
 指定传递给 CSS 预处理器的选项。文件扩展名用作选项的键。每个预处理器支持的选项可以在它们各自的文档中找到：
 
 - `sass`/`scss`:
+<<<<<<< HEAD
   - 选择要使用的 sass 应用程序接口 `api: "modern-compiler" | "modern"` (如果安装了`sass-embedded`，默认为`"modern-compiler"`，否则为 `"modern"`). 为获得最佳性能，建议使用 `api: "modern-compiler"` 和 `sass-embedded` 软件包。
+=======
+  - Uses `sass-embedded` if installed, otherwise uses `sass`. For the best performance, it's recommended to install the `sass-embedded` package.
+>>>>>>> 500feca4bcc262767800a5f63ec9eef88fd38fed
   - [Options](https://sass-lang.com/documentation/js-api/interfaces/stringoptions/)
 - `less`: [选项](https://lesscss.org/usage/#less-options).
 - `styl`/`stylus`: 仅支持 [`define`](https://stylus-lang.com/docs/js.html#define-name-node)，可以作为对象传递。
@@ -247,7 +251,10 @@ export default defineConfig({
         },
       },
       scss: {
+<<<<<<< HEAD
         api: 'modern-compiler', // 或 "modern"
+=======
+>>>>>>> 500feca4bcc262767800a5f63ec9eef88fd38fed
         importers: [
           // ...
         ],
