@@ -10,7 +10,11 @@
 
 默认情况下，Vite 会抓取你的 `index.html` 来检测需要预构建的依赖项（忽略了`node_modules`、`build.outDir`、`__tests__` 和 `coverage`）。如果指定了 `build.rollupOptions.input`，Vite 将转而去抓取这些入口点。
 
+<<<<<<< HEAD
 如果这两者都不合你意，则可以使用此选项指定自定义条目——该值需要遵循 [tinyglobby 模式](https://github.com/SuperchupuDev/tinyglobby) ，或者是相对于 Vite 项目根目录的匹配模式数组。当显式声明了 `optimizeDeps.entries` 时默认只有 `node_modules` 和 `build.outDir` 文件夹会被忽略。如果还需忽略其他文件夹，你可以在模式列表中使用以 `!` 为前缀的、用来匹配忽略项的模式。如果你不想忽略 `node_modules` 和 `build.outDir`，你可以选择直接使用字符串路径（不使用 tinyglobby 模式）。
+=======
+If neither of these fit your needs, you can specify custom entries using this option - the value should be a [`tinyglobby` pattern](https://github.com/SuperchupuDev/tinyglobby) or array of patterns that are relative from Vite project root. This will overwrite default entries inference. Only `node_modules` and `build.outDir` folders will be ignored by default when `optimizeDeps.entries` is explicitly defined. If other folders need to be ignored, you can use an ignore pattern as part of the entries list, marked with an initial `!`. `node_modules` will not be ignored for patterns that explicitly include the string `node_modules`.
+>>>>>>> 76e90fdf826839457a948b34079f1cbd9f967fba
 
 ## optimizeDeps.exclude {#optimizedeps-exclude}
 
@@ -77,6 +81,13 @@ export default defineConfig({
 - **类型：** `boolean`
 
 设置为 `true` 可以强制依赖预构建，而忽略之前已经缓存过的、已经优化过的依赖。
+
+## optimizeDeps.noDiscovery
+
+- **Type:** `boolean`
+- **Default:** `false`
+
+When set to `true`, automatic dependency discovery will be disabled and only dependencies listed in `optimizeDeps.include` will be optimized. CJS-only dependencies must be present in `optimizeDeps.include` during dev.
 
 ## optimizeDeps.holdUntilCrawlEnd
 
