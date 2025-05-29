@@ -278,20 +278,12 @@ export default defineConfig({
 
 ## css.preprocessorMaxWorkers
 
-<<<<<<< HEAD
-- **实验性：** [提供反馈](https://github.com/vitejs/vite/discussions/15835)
 - **类型：** `number | true`
-- **默认：** `0`（不会创建任何 worker 线程，而是在主线程中运行）
+- **默认：** `true`
 
-如果启用了这个选项，那么 CSS 预处理器会尽可能在 worker 线程中运行。`true` 表示 CPU 数量减 1。
-=======
-- **Type:** `number | true`
-- **Default:** `true`
+指定 CSS 预处理器可以使用的最大线程数。`true` 表示最多为 CPU 数量减 1。当设置为 `0` 时，Vite 将不会创建任何工作线程，而是在主线程中运行预处理器。
 
-Specifies the maximum number of threads CSS preprocessors can use. `true` means up to the number of CPUs minus 1. When set to `0`, Vite will not create any workers and will run the preprocessors in the main thread.
-
-Depending on the preprocessor options, Vite may run the preprocessors on the main thread even if this option is not set to `0`.
->>>>>>> 4198eacf0af26acca1d4379277819128defb1d52
+根据预处理器选项，即使此选项未设置为 `0`，Vite 也可能会在主线程上运行预处理器。
 
 ## css.devSourcemap {#css-devsourcemap}
 
