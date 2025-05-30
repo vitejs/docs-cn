@@ -60,10 +60,16 @@ if (import.meta.hot) {
 }
 ```
 
+<<<<<<< HEAD
 ## TypeScript 的智能提示 {#intellisense-for-typescript}
 Vite 在 [`vite/client.d.ts`](https://github.com/vitejs/vite/blob/main/packages/vite/client.d.ts) 中为 `import.meta.hot` 提供了类型定义。你可以在 `src` 目录中创建一个 `env.d.ts`，以便 TypeScript 获取类型定义：
+=======
+## IntelliSense for TypeScript
 
-```ts
+Vite provides type definitions for `import.meta.hot` in [`vite/client.d.ts`](https://github.com/vitejs/vite/blob/main/packages/vite/client.d.ts). You can create an `vite-env.d.ts` in the `src` directory so TypeScript picks up the type definitions:
+>>>>>>> 97183a3b1574e422c54866b856f5c1dbfcdad411
+
+```ts [vite-env.d.ts]
 /// <reference types="vite/client" />
 ```
 
