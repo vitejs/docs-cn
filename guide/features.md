@@ -153,7 +153,7 @@ Vite 默认的类型定义是写给它的 Node.js API 的。要将其补充到�
     export default content
   }
   ```
-- The file containing the reference to `vite/client`:
+- The file containing the reference to `vite/client` (normally `vite-env.d.ts`):
   ```ts
   /// <reference types="./vite-env-override.d.ts" />
   /// <reference types="vite/client" />
