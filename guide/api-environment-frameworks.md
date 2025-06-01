@@ -84,7 +84,7 @@ Vite 会检查 `dispatchFetch` 方法的输入和输出：请求必须是全局 
 
 ## 默认 `RunnableDevEnvironment` {#default-runnabledevenvironment}
 
-假设我们有一个配置为中间件模式的 Vite 服务器，如 [SSR 设置指南](/guide/ssr#setting-up-the-dev-server) 所述，我们可以使用环境 API 来实现 SSR 中间件。省略了错误处理。
+假设我们有一个配置为中间件模式的 Vite 服务器，如 [SSR 设置指南](/guide/ssr#setting-up-the-dev-server) 所述，我们可以使用环境 API 来实现 SSR 中间件。请记住，它不必命名为 `ssr`，因此在本例中我们将其命名为 `server`。错误处理部分已省略。
 
 ```js
 import fs from 'node:fs'
@@ -94,7 +94,7 @@ import { createServer } from 'vite'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 
-const server = await createServer({
+const viteServer = await createServer({
   server: { middlewareMode: true },
   appType: 'custom',
   environments: {
@@ -106,7 +106,7 @@ const server = await createServer({
 
 // 在 TypeScript 中，你可能需要将这个转换为 RunnableDevEnvironment，或者
 // 使用 "isRunnableDevEnvironment" 来保护对运行器的访问
-const environment = server.environments.node
+const serverEnvironment = viteServer.environments.server
 
 app.use('*', async (req, res, next) => {
   const url = req.originalUrl
@@ -118,12 +118,14 @@ app.use('*', async (req, res, next) => {
   // 2. 应用 Vite HTML 转换。这将注入 Vite HMR 客户端，
   //    并应用来自 Vite 插件的 HTML 转换，例如
   //    @vitejs/plugin-react 提供的全局前置代码
-  template = await server.transformIndexHtml(url, template)
+  template = await viteServer.transformIndexHtml(url, template)
 
   // 3. 加载服务器入口文件。import(url) 自动将
   //    ESM 源代码转换为 Node.js 可用的代码！
   //    不需要打包，并且提供全面的 HMR 支持。
-  const { render } = await environment.runner.import('/src/entry-server.js')
+  const { render } = await serverEnvironment.runner.import(
+    '/src/entry-server.js',
+  )
 
   // 4. 渲染应用的 HTML。将假设 entry-server.js 导出的
   //    `render` 函数调用了对应框架的 SSR API，
