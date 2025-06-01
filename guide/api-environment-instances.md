@@ -18,8 +18,8 @@
 // 创建服务器，或通过 configureServer 钩子来获取
 const server = await createServer(/* 选项 */)
 
-const environment = server.environments.client
-environment.transformRequest(url)
+const clientEnvironment = server.environments.client
+clientEnvironment.transformRequest(url)
 console.log(server.environments.ssr.moduleGraph)
 ```
 

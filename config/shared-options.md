@@ -54,7 +54,7 @@ export default defineConfig({
 ```
 
 ::: tip NOTE
-对于使用 TypeScript 的开发者来说，请确保在 `env.d.ts` 或 `vite-env.d.ts` 文件中添加类型声明，以获得类型检查以及代码提示。
+对于使用 TypeScript 的开发者来说，请确保在 `vite-env.d.ts` 文件中添加类型声明，以获得类型检查以及代码提示。
 
 示例：
 
