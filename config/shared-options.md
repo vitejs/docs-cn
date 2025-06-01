@@ -54,11 +54,7 @@ export default defineConfig({
 ```
 
 ::: tip NOTE
-<<<<<<< HEAD
-对于使用 TypeScript 的开发者来说，请确保在 `env.d.ts` 或 `vite-env.d.ts` 文件中添加类型声明，以获得类型检查以及代码提示。
-=======
-For TypeScript users, make sure to add the type declarations in the `vite-env.d.ts` file to get type checks and Intellisense.
->>>>>>> 97183a3b1574e422c54866b856f5c1dbfcdad411
+对于使用 TypeScript 的开发者来说，请确保在 `vite-env.d.ts` 文件中添加类型声明，以获得类型检查以及代码提示。
 
 示例：
 
