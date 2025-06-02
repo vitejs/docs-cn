@@ -1,7 +1,12 @@
 # 用于插件的环境 API {#environment-api-for-plugins}
 
+<<<<<<< HEAD
 :::warning 实验性
 环境 API 是实验性的。在 Vite 6 期间，我们将保持这些 API 的稳定，以便生态系统可以在其基础上进行实验和构建。我们计划在 Vite 7 中稳定这些新 API，并可能进行一些重大更改。
+=======
+:::warning Experimental
+Environment API is experimental. We'll still maintain stability in the APIs between major releases to allow the ecosystem to experiment and build upon them. We plan to stabilize these new APIs (with potential breaking changes) in a future major release once downstream projects have had time to experiment with the new features and validate them.
+>>>>>>> cba96cc74f083db8414e3b9d2f9c96f43a1c41a3
 
 资料：
 
@@ -198,7 +203,11 @@ export default defineConfig({
 
 这迫使框架通过写入文件系统的清单文件在 `client` 构建和 `ssr` 构建之间共享状态。在 Vite 6 中，我们现在在单个进程中构建所有环境，因此插件管道和环境间通信的方式可以与开发对齐。
 
+<<<<<<< HEAD
 在未来的主要版本（Vite 7 或 8）中，我们的目标是完全对齐：
+=======
+In a future major, we could have complete alignment:
+>>>>>>> cba96cc74f083db8414e3b9d2f9c96f43a1c41a3
 
 - **在开发和构建期间：** 插件是共享的，并可以 [根据环境进行过滤](#per-environment-plugins)
 

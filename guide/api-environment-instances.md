@@ -1,7 +1,12 @@
 # 使用 `Environment` 实例 {#using-environment-instances}
 
+<<<<<<< HEAD
 :::warning 实验性
 环境 API 是实验性的。在 Vite 6 期间，我们将保持这些 API 的稳定，以便生态系统可以在其基础上进行实验和构建。我们计划在 Vite 7 中稳定这些新 API，并可能进行一些重大更改。
+=======
+:::warning Experimental
+Environment API is experimental. We'll still maintain stability in the APIs between major releases to allow the ecosystem to experiment and build upon them. We plan to stabilize these new APIs (with potential breaking changes) in a future major release once downstream projects have had time to experiment with the new features and validate them.
+>>>>>>> cba96cc74f083db8414e3b9d2f9c96f43a1c41a3
 
 资料：
 

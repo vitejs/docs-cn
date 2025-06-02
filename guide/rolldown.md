@@ -91,7 +91,11 @@ Rolldown 专注于三个主要原则：
 
 ### 验证选项错误 {#option-validation-errors}
 
+<<<<<<< HEAD
 当传入未知或无效选项时，Rolldown 会抛出错误。由于 Rolldown 不支持 Rollup 中的部分选项，根据您或所使用的元框架设置的选项，可能会遇到相关错误。下方展示了此类错误消息的示例：
+=======
+Rolldown throws an error when unknown or invalid options are passed. Because some options available in Rollup are not supported by Rolldown, you may encounter errors based on the options you or the meta framework you use set. Below, you can find an example of such an error message:
+>>>>>>> cba96cc74f083db8414e3b9d2f9c96f43a1c41a3
 
 > Error: Failed validate input options.
 >
