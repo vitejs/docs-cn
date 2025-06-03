@@ -198,11 +198,7 @@ export default defineConfig({
 
 这迫使框架通过写入文件系统的清单文件在 `client` 构建和 `ssr` 构建之间共享状态。在 Vite 6 中，我们现在在单个进程中构建所有环境，因此插件管道和环境间通信的方式可以与开发对齐。
 
-<<<<<<< HEAD
-在未来的主要版本（Vite 7 或 8）中，我们的目标是完全对齐：
-=======
-In a future major, we could have complete alignment:
->>>>>>> cba96cc74f083db8414e3b9d2f9c96f43a1c41a3
+在未来的主要版本，我们可以实现完全一致：
 
 - **在开发和构建期间：** 插件是共享的，并可以 [根据环境进行过滤](#per-environment-plugins)
 
