@@ -1,12 +1,7 @@
 # 用于插件的环境 API {#environment-api-for-plugins}
 
-<<<<<<< HEAD
 :::warning 实验性
-环境 API 是实验性的。在 Vite 6 期间，我们将保持这些 API 的稳定，以便生态系统可以在其基础上进行实验和构建。我们计划在 Vite 7 中稳定这些新 API，并可能进行一些重大更改。
-=======
-:::warning Experimental
-Environment API is experimental. We'll still maintain stability in the APIs between major releases to allow the ecosystem to experiment and build upon them. We plan to stabilize these new APIs (with potential breaking changes) in a future major release once downstream projects have had time to experiment with the new features and validate them.
->>>>>>> cba96cc74f083db8414e3b9d2f9c96f43a1c41a3
+环境 API 仍处于实验阶段。我们仍将在主要版本之间保持 API 的稳定性，以便生态系统进行实验和构建。我们计划在下游项目有时间试验并验证新功能后，在未来的主要版本中稳定这些新 API（可能包含重大更改）。
 
 资料：
 
