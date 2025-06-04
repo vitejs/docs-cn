@@ -8,8 +8,13 @@
 
 影响范围：`Vite 插件作者`
 
+<<<<<<< HEAD
 ::: warning 即将废弃
 `环境`实例首次在 `v6.0` 中引入。计划在 `v7.0` 中废弃现在的 `server.moduleGraph` 和其他方法。我们不建议你现在就放弃 server 方法。要识别你的使用情况，请在你的 vite 配置中设置以下。
+=======
+::: warning Future Deprecation
+The `Environment` instance was first introduced at `v6.0`. The deprecation of `server.moduleGraph` and other methods that are now in environments is planned for a future major. We don't recommend moving away from server methods yet. To identify your usage, set these in your vite config.
+>>>>>>> b701a3722149e37d3c4a61d61124a63374fcaf0a
 
 ```ts
 future: {
