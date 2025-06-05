@@ -9,7 +9,7 @@
 影响范围：`Vite 插件作者`
 
 ::: warning 即将废弃
-`this.environment` 最初在 `v6.0` 版本中被引入。我们计划在 `v7.0` 版本中废弃 `options.ssr`。到那时，我们会开始建议你将你的插件迁移到新的 API。如果想识别你的使用情况，可以在你的 vite 配置文件中将 `future.removePluginHookSsrArgument` 设置为 `"warn"`。
+`this.environment` 最初在 `v6.0` 版本中被引入。我们计划在未来的 major 版本中废弃 `options.ssr`。到那时，我们会开始建议你将你的插件迁移到新的 API。如果想识别你的使用情况，可以在你的 vite 配置文件中将 `future.removePluginHookSsrArgument` 设置为 `"warn"`。
 :::
 
 ## 动机 {#motivation}
