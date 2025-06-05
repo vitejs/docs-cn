@@ -8,13 +8,8 @@
 
 影响范围：`Vite 插件作者`
 
-<<<<<<< HEAD
 ::: warning 即将废弃
-`hotUpdate` 钩子最初在 `v6.0` 版本中引入。我们计划在 `v7.0` 版本中废弃 `handleHotUpdate` 钩子。我们目前还不建议你停止使用 `handleHotUpdate`。如果你想尝试并向我们提供反馈，你可以在你的 vite 配置文件中将 `future.removePluginHookHandleHotUpdate` 设置为 `"warn"`。
-=======
-::: warning Future Deprecation
-`hotUpdate` was first introduced in `v6.0`. The deprecation of `handleHotUpdate` is planned for a future major. We don't yet recommend moving away from `handleHotUpdate` yet. If you want to experiment and give us feedback, you can use the `future.removePluginHookHandleHotUpdate` to `"warn"` in your vite config.
->>>>>>> b701a3722149e37d3c4a61d61124a63374fcaf0a
+`hotUpdate` 钩子最初在 `v6.0` 版本中引入。我们计划在未来的 major 版本中废弃 `handleHotUpdate` 钩子。我们目前还不建议你停止使用 `handleHotUpdate`。如果你想尝试并向我们提供反馈，你可以在你的 vite 配置文件中将 `future.removePluginHookHandleHotUpdate` 设置为 `"warn"`。
 :::
 
 ## 动机 {#motivation}
