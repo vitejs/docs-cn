@@ -184,7 +184,13 @@ export default defineConfig({
 })
 ```
 
+<<<<<<< HEAD
 ## 构建钩子中的环境 {#environment-in-build-hooks}
+=======
+The `applyToEnvironment` hook is called at config time, currently after `configResolved` due to projects in the ecosystem modifying the plugins in it. Environment plugins resolution may be moved before `configResolved` in the future.
+
+## Environment in Build Hooks
+>>>>>>> f0fe7a3504f0635d853b3e57e91b03316cec6a99
 
 与开发期间一样，插件钩子在构建期间也接收环境实例，取代了 `ssr` 布尔值。
 这同样适用于 `renderChunk`、`generateBundle` 和其他仅在构建时使用的钩子。
