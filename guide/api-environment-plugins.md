@@ -184,6 +184,8 @@ export default defineConfig({
 })
 ```
 
+`applyToEnvironment` 钩子在配置时调用，目前在 `configResolved` 之后调用，因为生态系统中的项目正在修改其中的插件。未来，环境插件解析可能会移至 `configResolved` 之前。
+
 ## 构建钩子中的环境 {#environment-in-build-hooks}
 
 与开发期间一样，插件钩子在构建期间也接收环境实例，取代了 `ssr` 布尔值。
