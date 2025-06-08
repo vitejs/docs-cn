@@ -99,7 +99,7 @@ Rolldown 专注于三个主要原则：
 
 如果你自己没有传递这个选项，这个问题必须由使用的框架来解决。你可以通过设置 `ROLLDOWN_OPTIONS_VALIDATION=loose` 环境变量来暂时忽略这个错误。
 
-### API差异 {#api-differences}
+### API 差异 {#api-differences}
 
 #### `manualChunks` 改为 `advancedChunks` {#manualchunks-changed-to-advancedchunks}
 
