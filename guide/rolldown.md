@@ -99,6 +99,42 @@ Rolldown 专注于三个主要原则：
 
 如果你自己没有传递这个选项，这个问题必须由使用的框架来解决。你可以通过设置 `ROLLDOWN_OPTIONS_VALIDATION=loose` 环境变量来暂时忽略这个错误。
 
+### API 差异 {#api-differences}
+
+#### `manualChunks` 改为 `advancedChunks` {#manualchunks-changed-to-advancedchunks}
+
+Rolldown 不再支持 Rollup 中可用的 `manualChunks` 选项。取而代之的是，它提供了一个更细粒度的设置：[`advancedChunks`](https://rolldown.rs/guide/in-depth/advanced-chunks#advanced-chunks)，其行为与 webpack 的 `splitChunk` 类似。
+
+```js
+// 旧配置 (Rollup)
+export default {
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks(id) {
+          if (/\/react(?:-dom)?/.test(id)) {
+            return 'vendor'
+          }
+        }
+      }
+    }
+  }
+}
+
+// 新配置 (Rolldown)
+export default {
+  build: {
+    rollupOptions: {
+      output: {
+        advancedChunks: {
+          groups: [{ name: 'vendor', test: /\/react(?:-dom)?// }]
+        }
+      }
+    }
+  }
+}
+```
+
 ## 性能 {#performance}
 
 `rolldown-vite` 主要致力于确保与现有生态系统的兼容性，因此其默认配置旨在实现平滑过渡。如果你切换到更快的基于 Rust 的内部插件或进行其他自定义配置，还可以获得进一步的性能提升。
@@ -108,6 +144,12 @@ Rolldown 专注于三个主要原则：
 感谢 Rolldown 和 Oxc，各种内部的 Vite 插件，如别名或解析插件，已被转换为 Rust。在撰写本文时，这些插件默认并未启用，因为它们的行为可能与 JavaScript 版本不同。
 
 要测试它们，你可以在你的 Vite 配置中将 `experimental.enableNativePlugin` 选项设置为 `true`。
+
+### `@vitejs/plugin-react-oxc` {#@vitejs/plugin-react-oxc}
+
+当使用 `@vitejs/plugin-react` 或 `@vitejs/plugin-react-swc` 时，你可以切换到 `@vitejs/plugin-react-oxc` 插件，它使用 Oxc 来实现 React 的快速刷新（Fast Refresh），取代原先的 Babel 或 SWC。该插件的设计目标是作为替代品无缝接入，同时提供更好的构建性能，并与 `rolldown-vite` 的底层架构保持一致。
+
+请注意，只有在未使用任何 Babel 或 SWC 插件（包括 React 编译器）且未修改 SWC 选项的情况下，你才可以切换到 `@vitejs/plugin-react-oxc`。
 
 ### `withFilter` 包装器 {#withfilter-wrapper}
 
