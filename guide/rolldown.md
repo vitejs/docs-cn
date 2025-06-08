@@ -99,17 +99,14 @@ Rolldown 专注于三个主要原则：
 
 如果你自己没有传递这个选项，这个问题必须由使用的框架来解决。你可以通过设置 `ROLLDOWN_OPTIONS_VALIDATION=loose` 环境变量来暂时忽略这个错误。
 
-<<<<<<< HEAD
-## 性能 {#performance}
-=======
-### API Differences
+### API差异 {#api-differences}
 
-#### `manualChunks` to `advancedChunks`
+#### `manualChunks` 改为 `advancedChunks` {#manualchunks-changed-to-advancedchunks}
 
-Rolldown does not support the `manualChunks` option that was available in Rollup. Instead, it offers a more fine-grained setting via the [`advancedChunks` option](https://rolldown.rs/guide/in-depth/advanced-chunks#advanced-chunks), which is more similar to webpack's `splitChunk`:
+Rolldown 不再支持 Rollup 中可用的 `manualChunks` 选项。取而代之的是，它提供了一个更细粒度的设置：[`advancedChunks`](https://rolldown.rs/guide/in-depth/advanced-chunks#advanced-chunks)，其行为与 webpack 的 `splitChunk` 类似。
 
 ```js
-// Old configuration (Rollup)
+// 旧配置 (Rollup)
 export default {
   build: {
     rollupOptions: {
@@ -124,7 +121,7 @@ export default {
   }
 }
 
-// New configuration (Rolldown)
+// 新配置 (Rolldown)
 export default {
   build: {
     rollupOptions: {
@@ -138,8 +135,7 @@ export default {
 }
 ```
 
-## Performance
->>>>>>> c08172f3011d097ccafa15470c703e41401bf2fb
+## 性能 {#performance}
 
 `rolldown-vite` 主要致力于确保与现有生态系统的兼容性，因此其默认配置旨在实现平滑过渡。如果你切换到更快的基于 Rust 的内部插件或进行其他自定义配置，还可以获得进一步的性能提升。
 
@@ -149,17 +145,13 @@ export default {
 
 要测试它们，你可以在你的 Vite 配置中将 `experimental.enableNativePlugin` 选项设置为 `true`。
 
-<<<<<<< HEAD
+### `@vitejs/plugin-react-oxc` {#@vitejs/plugin-react-oxc}
+
+当使用 `@vitejs/plugin-react` 或 `@vitejs/plugin-react-swc` 时，你可以切换到 `@vitejs/plugin-react-oxc` 插件，它使用 Oxc 来实现 React 的快速刷新（Fast Refresh），取代原先的 Babel 或 SWC。该插件的设计目标是作为替代品无缝接入，同时提供更好的构建性能，并与 `rolldown-vite` 的底层架构保持一致。
+
+请注意，只有在未使用任何 Babel 或 SWC 插件（包括 React 编译器）且未修改 SWC 选项的情况下，你才可以切换到 `@vitejs/plugin-react-oxc`。
+
 ### `withFilter` 包装器 {#withfilter-wrapper}
-=======
-### `@vitejs/plugin-react-oxc`
-
-When using `@vitejs/plugin-react` or `@vitejs/plugin-react-swc`, you can switch to the `@vitejs/plugin-react-oxc` plugin, which uses Oxc for React's fast-refresh instead of Babel or SWC. It is designed to be a drop-in replacement, providing better build performance and aligning with the underlying architecture of `rolldown-vite`.
-
-Be aware that you can only switch to `@vitejs/plugin-react-oxc` if you are not using any Babel or SWC plugins (including the React compiler), or mutate the SWC options.
-
-### `withFilter` Wrapper
->>>>>>> c08172f3011d097ccafa15470c703e41401bf2fb
 
 插件作者可以选择使用 [钩子过滤功能](#hook-filter-feature)，以减少 Rust 和 JavaScript 运行时之间的通信开销。
 但如果你使用的某些插件还未采用该功能，而你又希望受益于它，可以使用 `withFilter` 包装器自行为插件添加过滤条件。
