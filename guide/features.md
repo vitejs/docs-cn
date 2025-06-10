@@ -209,10 +209,17 @@ HTML 文件位于 Vite 项目的[最前端和中心](/guide/#index-html-and-proj
 
 所有现代框架都已和 Vite 集成。大多数框架插件由各自的框架团队维护，唯有官方的 Vue 和 React Vite 插件由 Vite 组织维护。
 
+<<<<<<< HEAD
 - Vue 支持：[@vitejs/plugin-vue](https://github.com/vitejs/vite-plugin-vue/tree/main/packages/plugin-vue)
 - Vue JSX 支持：[@vitejs/plugin-vue-jsx](https://github.com/vitejs/vite-plugin-vue/tree/main/packages/plugin-vue-jsx)
 - React 支持：[@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react)
 - React 使用 SWC 的支持：[@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc)
+=======
+- Vue support via [@vitejs/plugin-vue](https://github.com/vitejs/vite-plugin-vue/tree/main/packages/plugin-vue)
+- Vue JSX support via [@vitejs/plugin-vue-jsx](https://github.com/vitejs/vite-plugin-vue/tree/main/packages/plugin-vue-jsx)
+- React support via [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react)
+- React using SWC support via [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react-swc)
+>>>>>>> a2b3b512c79262b8813b861b5bfbeed0f3975044
 
 查看 [插件指南](/plugins/) 了解更多信息。
 
@@ -580,7 +587,37 @@ const modules = import.meta.glob('./dir/*.js', {
 })
 ```
 
+<<<<<<< HEAD
 ### Glob 导入注意事项 {#glob-import-caveats}
+=======
+#### Base Path
+
+You can also use the `base` option to provide base path for the imports:
+
+```ts twoslash
+import 'vite/client'
+// ---cut---
+const modulesWithBase = import.meta.glob('./**/*.js', {
+  base: './base',
+})
+```
+
+```ts
+// code produced by vite:
+const modulesWithBase = {
+  './dir/foo.js': () => import('./base/dir/foo.js'),
+  './dir/bar.js': () => import('./base/dir/bar.js'),
+}
+```
+
+The base option can only be a directory path relative to the importer file or absolute against the project root. Aliases and virtual modules aren't supported.
+
+Only the globs that are relative paths are interpreted as relative to the resolved base.
+
+All the resulting module keys are modified to be relative to the base if provided.
+
+### Glob Import Caveats
+>>>>>>> a2b3b512c79262b8813b861b5bfbeed0f3975044
 
 请注意：
 
