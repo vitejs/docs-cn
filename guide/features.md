@@ -209,17 +209,10 @@ HTML 文件位于 Vite 项目的[最前端和中心](/guide/#index-html-and-proj
 
 所有现代框架都已和 Vite 集成。大多数框架插件由各自的框架团队维护，唯有官方的 Vue 和 React Vite 插件由 Vite 组织维护。
 
-<<<<<<< HEAD
 - Vue 支持：[@vitejs/plugin-vue](https://github.com/vitejs/vite-plugin-vue/tree/main/packages/plugin-vue)
 - Vue JSX 支持：[@vitejs/plugin-vue-jsx](https://github.com/vitejs/vite-plugin-vue/tree/main/packages/plugin-vue-jsx)
 - React 支持：[@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react)
-- React 使用 SWC 的支持：[@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc)
-=======
-- Vue support via [@vitejs/plugin-vue](https://github.com/vitejs/vite-plugin-vue/tree/main/packages/plugin-vue)
-- Vue JSX support via [@vitejs/plugin-vue-jsx](https://github.com/vitejs/vite-plugin-vue/tree/main/packages/plugin-vue-jsx)
-- React support via [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react)
-- React using SWC support via [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react-swc)
->>>>>>> a2b3b512c79262b8813b861b5bfbeed0f3975044
+- React 使用 SWC 的支持：[@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react-swc)
 
 查看 [插件指南](/plugins/) 了解更多信息。
 
@@ -587,12 +580,9 @@ const modules = import.meta.glob('./dir/*.js', {
 })
 ```
 
-<<<<<<< HEAD
-### Glob 导入注意事项 {#glob-import-caveats}
-=======
-#### Base Path
+#### 基础路径 {#base-path}
 
-You can also use the `base` option to provide base path for the imports:
+你还可以使用 `base` 选项为导入提供基础路径:
 
 ```ts twoslash
 import 'vite/client'
@@ -610,14 +600,13 @@ const modulesWithBase = {
 }
 ```
 
-The base option can only be a directory path relative to the importer file or absolute against the project root. Aliases and virtual modules aren't supported.
+`base` 选项只能是相对于导入文件的目录路径，或者相对于项目根目录的绝对路径。不支持别名和虚拟模块。
 
-Only the globs that are relative paths are interpreted as relative to the resolved base.
+只有相对路径的 glob 模式会被解释为相对于解析后的基础路径。
 
-All the resulting module keys are modified to be relative to the base if provided.
+如果提供了基础路径，所有生成的模块键值都会被修改为相对于该基础路径。
 
-### Glob Import Caveats
->>>>>>> a2b3b512c79262b8813b861b5bfbeed0f3975044
+### Glob 导入注意事项 {#glob-import-caveats}
 
 请注意：
 
