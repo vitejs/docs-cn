@@ -40,4 +40,4 @@ export function myPlugin(): Plugin {
 }
 ```
 
-对于更稳定、长期的实现，插件钩子应该处理 [多个环境](/guide/api-environment.html#accessing-the-current-environment-in-hooks)，并使用细粒度的环境选项，而不是依赖于环境的名称。
+对于更稳定、长期的实现，插件钩子应该处理 [多个环境](/guide/api-environment-plugins.html#accessing-the-current-environment-in-hooks)，并使用细粒度的环境选项，而不是依赖于环境的名称。
