@@ -9,7 +9,7 @@
 	"license": "CC BY-NC-SA 4.0",
 	"devDependencies": {
 		"@shikijs/vitepress-twoslash": "^2.5.0",
-		"@types/express": "^5.0.2",
+		"@types/express": "^5.0.3",
 		"feed": "^5.1.0",
 		"vitepress": "^1.6.3",
 		"vitepress-plugin-group-icons": "^1.6.0",
