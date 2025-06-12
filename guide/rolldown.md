@@ -89,15 +89,25 @@ Rolldown 专注于三个主要原则：
 
 虽然 Rolldown 的目标是成为 Rollup 的替代品，但还有一些特性正在实现中，以及一些小的有意的行为差异。需要查看完整的列表，请参考 [这个 GitHub PR](https://github.com/vitejs/rolldown-vite/pull/84#issue-2903144667)，它会定期更新。
 
+<<<<<<< HEAD
 ### 验证选项错误 {#option-validation-errors}
 
 当传入未知或无效选项时，Rolldown 会抛出错误。由于 Rolldown 不支持 Rollup 中的部分选项，根据您或所使用的元框架设置的选项，可能会遇到相关错误。下方展示了此类错误消息的示例：
+=======
+### Option Validation Warnings
 
-> Error: Failed validate input options.
+Rolldown outputs an warning when unknown or invalid options are passed. Because some options available in Rollup are not supported by Rolldown, you may encounter warnings based on the options you or the meta framework you use set. Below, you can find an example of such an warning message:
+>>>>>>> 30bb5fa45fdb9dc780231f27244dce48a7346426
+
+> Warning validate output options.
 >
-> - For the "preserveEntrySignatures". Invalid key: Expected never but received "preserveEntrySignatures".
+> - For the "generatedCode". Invalid key: Expected never but received "generatedCode".
 
+<<<<<<< HEAD
 如果你自己没有传递这个选项，这个问题必须由使用的框架来解决。你可以通过设置 `ROLLDOWN_OPTIONS_VALIDATION=loose` 环境变量来暂时忽略这个错误。
+=======
+If you don't pass the option in yourself, this must be fixed by the utilized framework.
+>>>>>>> 30bb5fa45fdb9dc780231f27244dce48a7346426
 
 ### API 差异 {#api-differences}
 
@@ -257,6 +267,12 @@ const plugin = {
 }
 ```
 
+::: tip
+
+Since Vite 7.0.0, `this.meta` is available in all hooks. In previous versions, `this.meta` was not available in Vite-specific hooks, such as the `config` hook.
+
+:::
+
 <br>
 
 检查 `rolldownVersion` export 的存在：
@@ -275,16 +291,28 @@ if (vite.rolldownVersion) {
 
 ### 在 Rolldown 中忽略选项验证 {#ignoring-option-validation-in-rolldown}
 
+<<<<<<< HEAD
 如 [前文所述](#option-validation-errors)，当传入未知或无效选项时，Rolldown 会抛出错误。
+=======
+As [mentioned above](#option-validation-errors), Rolldown outputs a warning when unknown or invalid options are passed.
+>>>>>>> 30bb5fa45fdb9dc780231f27244dce48a7346426
 
 可通过条件式传递选项（通过 [如上所示](#detecting-rolldown-vite) 检测是否使用 `rolldown-vite`）来修复此问题。
 
+<<<<<<< HEAD
 在此场景中，设置环境变量 `ROLLDOWN_OPTIONS_VALIDATION=loose` 亦可抑制错误。
 但需注意，**最终仍需停止传递 Rolldown 不支持的选项**。
 
 ### `transformWithEsbuild` 需要单独安装 `esbuild` {#transformwithesbuild-requires-installing-esbuild-separately}
 
 一个类似的函数，名为 `transformWithOxc`，它使用 Oxc 而非 `esbuild`，从 `rolldown-vite` 中导出。
+=======
+### `transformWithEsbuild` requires `esbuild` to be installed separately
+
+Since Vite itself does not use `esbuild` any more, `esbuild` is now an optional peer dependency. If your plugin uses `transformWithEsbuild`, the plugin needs to add `esbuild` to its dependencies or the user needs to install it manually.
+
+The recommended migration is to use the newly exported `transformWithOxc` function, which utilizes Oxc instead of `esbuild`.
+>>>>>>> 30bb5fa45fdb9dc780231f27244dce48a7346426
 
 ### `esbuild` 选项的兼容层 {#compatibility-layer-for-esbuild-options}
 
@@ -306,7 +334,17 @@ const plugin = {
 Rolldown 引入了[钩子过滤功能](https://rolldown.rs/guide/plugin-development#plugin-hook-filters)，以减少 Rust 和 JavaScript 运行时之间的通信开销。通过使用此功能，你可以使你的插件性能更高。
 这也在 Rollup 4.38.0+ 和 Vite 6.3.0+ 被支持。为了使你的插件向后兼容较旧的版本，请确保也在钩子处理程序内运行过滤器。
 
+<<<<<<< HEAD
 ### 在 `load` 或 `transform` 钩子中将内容转换为 JavaScript {#converting-content-to-javascript-in-load-or-transform-hooks}
+=======
+::: tip
+
+[`@rolldown/pluginutils`](https://www.npmjs.com/package/@rolldown/pluginutils) exports some utilities for hook filters like `exactRegex` and `prefixRegex`.
+
+:::
+
+### Converting content to JavaScript in `load` or `transform` hooks
+>>>>>>> 30bb5fa45fdb9dc780231f27244dce48a7346426
 
 如果你在 `load` 或 `transform` 钩子中将内容转换为 JavaScript，你可能需要添加 `moduleType: 'js'` 到返回值中。
 
@@ -325,4 +363,8 @@ const plugin = {
 }
 ```
 
+<<<<<<< HEAD
 这是因为 [Rolldown 支持非 JavaScript 模块](https://rolldown.rs/guide/in-depth/module-types) 并且除非指定，否则从扩展名推断模块类型。注意 `rolldown-vite` 不支持开发中的 ModuleTypes。
+=======
+This is because [Rolldown supports non-JavaScript modules](https://rolldown.rs/guide/in-depth/module-types) and infers the module type from extensions unless specified.
+>>>>>>> 30bb5fa45fdb9dc780231f27244dce48a7346426
