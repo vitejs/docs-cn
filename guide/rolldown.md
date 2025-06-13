@@ -89,15 +89,15 @@ Rolldown 专注于三个主要原则：
 
 虽然 Rolldown 的目标是成为 Rollup 的替代品，但还有一些特性正在实现中，以及一些小的有意的行为差异。需要查看完整的列表，请参考 [这个 GitHub PR](https://github.com/vitejs/rolldown-vite/pull/84#issue-2903144667)，它会定期更新。
 
-### 验证选项错误 {#option-validation-errors}
+### 验证选项警告 {#option-validation-warnings}
 
-当传入未知或无效选项时，Rolldown 会抛出错误。由于 Rolldown 不支持 Rollup 中的部分选项，根据您或所使用的元框架设置的选项，可能会遇到相关错误。下方展示了此类错误消息的示例：
+当传入未知或无效选项时，Rolldown 会输出警告。由于 Rolldown 不支持 Rollup 中的部分选项，根据您或所使用的元框架设置的选项，可能会遇到相关警告。下方展示了此类警告消息的示例：
 
-> Error: Failed validate input options.
+> Warning validate output options.
 >
-> - For the "preserveEntrySignatures". Invalid key: Expected never but received "preserveEntrySignatures".
+> - For the "generatedCode". Invalid key: Expected never but received "generatedCode".
 
-如果你自己没有传递这个选项，这个问题必须由使用的框架来解决。你可以通过设置 `ROLLDOWN_OPTIONS_VALIDATION=loose` 环境变量来暂时忽略这个错误。
+如果你自己没有传递这个选项，这个问题必须由使用的框架来解决。
 
 ### API 差异 {#api-differences}
 
@@ -257,6 +257,12 @@ const plugin = {
 }
 ```
 
+::: tip
+
+自 Vite 7.0.0 起，`this.meta` 在所有钩子中都可用。在此版本之前，`this.meta` 在 Vite 特有的钩子（如 `config` 钩子）中不可用。
+
+:::
+
 <br>
 
 检查 `rolldownVersion` export 的存在：
@@ -275,16 +281,15 @@ if (vite.rolldownVersion) {
 
 ### 在 Rolldown 中忽略选项验证 {#ignoring-option-validation-in-rolldown}
 
-如 [前文所述](#option-validation-errors)，当传入未知或无效选项时，Rolldown 会抛出错误。
+如 [前文所述](#option-validation-errors)，当传入未知或无效选项时，Rolldown 会输出警告。
 
 可通过条件式传递选项（通过 [如上所示](#detecting-rolldown-vite) 检测是否使用 `rolldown-vite`）来修复此问题。
 
-在此场景中，设置环境变量 `ROLLDOWN_OPTIONS_VALIDATION=loose` 亦可抑制错误。
-但需注意，**最终仍需停止传递 Rolldown 不支持的选项**。
-
 ### `transformWithEsbuild` 需要单独安装 `esbuild` {#transformwithesbuild-requires-installing-esbuild-separately}
 
-一个类似的函数，名为 `transformWithOxc`，它使用 Oxc 而非 `esbuild`，从 `rolldown-vite` 中导出。
+由于 Vite 本身已不再使用 `esbuild`，`esbuild` 现在被作为可选的 peer dependency。如果你的插件使用了 `transformWithEsbuild`，则需要将 `esbuild` 添加到插件的依赖中，或者由用户手动安装。
+
+推荐的迁移方式是使用新导出的 `transformWithOxc` 函数，它采用 Oxc 而不是 `esbuild` 来完成相应任务。
 
 ### `esbuild` 选项的兼容层 {#compatibility-layer-for-esbuild-options}
 
@@ -306,6 +311,12 @@ const plugin = {
 Rolldown 引入了[钩子过滤功能](https://rolldown.rs/guide/plugin-development#plugin-hook-filters)，以减少 Rust 和 JavaScript 运行时之间的通信开销。通过使用此功能，你可以使你的插件性能更高。
 这也在 Rollup 4.38.0+ 和 Vite 6.3.0+ 被支持。为了使你的插件向后兼容较旧的版本，请确保也在钩子处理程序内运行过滤器。
 
+::: tip
+
+[`@rolldown/pluginutils`](https://www.npmjs.com/package/@rolldown/pluginutils) 导出了一些用于钩子过滤器的工具函数，例如 `exactRegex` 和 `prefixRegex`。
+
+:::
+
 ### 在 `load` 或 `transform` 钩子中将内容转换为 JavaScript {#converting-content-to-javascript-in-load-or-transform-hooks}
 
 如果你在 `load` 或 `transform` 钩子中将内容转换为 JavaScript，你可能需要添加 `moduleType: 'js'` 到返回值中。
@@ -325,4 +336,4 @@ const plugin = {
 }
 ```
 
-这是因为 [Rolldown 支持非 JavaScript 模块](https://rolldown.rs/guide/in-depth/module-types) 并且除非指定，否则从扩展名推断模块类型。注意 `rolldown-vite` 不支持开发中的 ModuleTypes。
+这是因为 [Rolldown 支持非 JavaScript 模块](https://rolldown.rs/guide/in-depth/module-types) 并且除非指定，否则从扩展名推断模块类型。
