@@ -54,7 +54,7 @@ SSR 服务器的构建目标。
 
 :::
 
-### ssr.resolve.mainFields
+## ssr.resolve.mainFields
 
 - **类型：** `string[]`
 - **默认：** `['module', 'jsnext:main', 'jsnext']`

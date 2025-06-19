@@ -348,7 +348,11 @@ export default defineConfig({
               link: '/guide/rolldown',
             },
             {
+<<<<<<< HEAD
               text: '从 v5 迁移',
+=======
+              text: 'Migration from v6',
+>>>>>>> d63725c8b820429543943d4f97810e4cb0299aa0
               link: '/guide/migration',
             },
             {

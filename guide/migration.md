@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # 从 v5 迁移 {#migration-from-v5}
 
 ## 环境 API {#environment-api}
@@ -9,9 +10,30 @@
 ## Vite Runtime API {#vite-runtime-api}
 
 实验性的 Vite Runtime API 已经演变为模块运行器 API（Module Runner API），这是作为新的实验性 [环境 API](/guide/api-environment) 的一部分，在 Vite 6 中发布。鉴于这个功能是实验性的，所以在 Vite 5.1 中引入的先前 API 的移除并不是一个破坏性的更改，但是用户在迁移到 Vite 6 的过程中，需要将他们的使用方式更新为与模块运行器相等的方式。
+=======
+# Migration from v6
+
+## Node.js Support
+
+Vite no longer supports Node.js 18, which reached its EOL. Node.js 20.19+ / 22.12+ is now required.
+
+## Default Browser Target change
+
+The default browser value of `build.target` is updated to a newer browser.
+
+- Chrome 87 → 107
+- Edge 88 → 107
+- Firefox 78 → 104
+- Safari 14.0 → 16.0
+
+These browser versions align with [Baseline](https://web-platform-dx.github.io/web-features/) Widely Available feature sets as of 2025-05-01. In other words, they were all released before 2022-11-01.
+
+In Vite 5, the default target was named `'modules'`, but this is no longer available. Instead, a new default target `'baseline-widely-available'` is introduced.
+>>>>>>> d63725c8b820429543943d4f97810e4cb0299aa0
 
 ## 总体变化 {#general-changes}
 
+<<<<<<< HEAD
 ### `resolve.conditions` 的默认值 {#default-value-for-resolve-conditions}
 
 此更改不会影响未配置 [`resolve.conditions`](/config/shared-options#resolve-conditions) / [`ssr.resolve.conditions`](/config/ssr-options#ssr-resolve-conditions) / [`ssr.resolve.externalConditions`](/config/ssr-options#ssr-resolve-externalconditions) 的用户。
@@ -76,11 +98,26 @@ Vite 6 扩展了对更多 HTML 元素的支持。完整列表请参见 [HTML 功
 ```
 
 如果你更喜欢像在 Vite 5 中那样使用 `style.css`，可以设置 `build.lib.cssFileName: 'style'`。
+=======
+### Removed Sass legacy API support
+
+As planned, support for the Sass legacy API is removed. Vite now only supports the modern API. You can remove the `css.preprocessorOptions.sass.api` / `css.preprocessorOptions.scss.api` option.
+
+## Removed deprecated features
+
+- `splitVendorChunkPlugin` (deprecated in v5.2.7)
+  - This plugin was originally provided to ease migration to Vite v2.9.
+  - The `build.rollupOptions.output.manualChunks` option can be used to control the chunking behavior if needed.
+- Hook-level `enforce` / `transform` for `transformIndexHtml` (deprecated in v4.0.0)
+  - It was changed to align the interface with [Rollup's object hooks](https://rollupjs.org/plugin-development/#build-hooks:~:text=Instead%20of%20a%20function%2C%20hooks%20can%20also%20be%20objects.).
+  - `order` should be used instead of `enforce`, and `handler` should be used instead of `transform`.
+>>>>>>> d63725c8b820429543943d4f97810e4cb0299aa0
 
 ## 进阶 {#advanced}
 
 还有其他一些只影响少数用户的破坏性更改。
 
+<<<<<<< HEAD
 - [[#17922] fix(css)!: remove default import in ssr dev](https://github.com/vitejs/vite/pull/17922)
   - 对 CSS 文件默认导入的支持在 Vite 4 中[已被弃用](https://v4.vite.dev/guide/migration.html#importing-css-as-a-string)，并在 Vite 5 中被移除，但在 SSR 开发模式中仍被无意支持。现在该支持已被移除。
 - [[#15637] fix!: default `build.cssMinify` to `'esbuild'` for SSR](https://github.com/vitejs/vite/pull/15637)
@@ -152,3 +189,25 @@ Vite 6 扩展了对更多 HTML 元素的支持。完整列表请参见 [HTML 功
 ## 从 v4 迁移 {#migration-from-v4}
 
 在 Vite v5 文档中查看 [从 v4 迁移指南](https://v5.vite.dev/guide/migration.html)（[中文版](/guide/migration-from-v4)），了解如何将你的应用迁移到 Vite v5，然后再处理本页中所提及的变化。
+=======
+- [[#19979] chore: declare version range for peer dependencies](https://github.com/vitejs/vite/pull/19979)
+  - Specified the peer dependencies version range for CSS preprocessors.
+- [[#20013] refactor: remove no-op `legacy.proxySsrExternalModules`](https://github.com/vitejs/vite/pull/20013)
+  - `legacy.proxySsrExternalModules` property had no effect since Vite 6. It is now removed.
+- [[#19985] refactor!: remove deprecated no-op type only properties](https://github.com/vitejs/vite/pull/19985)
+  - The following unused properties are now removed: `ModuleRunnerOptions.root`, `ViteDevServer._importGlobMap`, `ResolvePluginOptions.isFromTsImporter`, `ResolvePluginOptions.getDepsOptimizer`, `ResolvePluginOptions.shouldExternalize`, `ResolvePluginOptions.ssrConfig`
+- [[#19986] refactor: remove deprecated env api properties](https://github.com/vitejs/vite/pull/19986)
+  - These properties were deprecated from the beginning. It is now removed.
+- [[#19987] refactor!: remove deprecated `HotBroadcaster` related types](https://github.com/vitejs/vite/pull/19987)
+  - These types were introduced as part of the now-deprecated Runtime API. It is now removed: `HMRBroadcaster`, `HMRBroadcasterClient`, `ServerHMRChannel`, `HMRChannel`
+- [[#19996] fix(ssr)!: don't access `Object` variable in ssr transformed code](https://github.com/vitejs/vite/pull/19996)
+  - `__vite_ssr_exportName__` is now required for the module runner runtime context.
+- [[#20045] fix: treat all `optimizeDeps.entries` values as globs](https://github.com/vitejs/vite/pull/20045)
+  - `optimizeDeps.entries` now does not receive literal string paths. Instead, it always receives globs.
+- [[#20222] feat: apply some middlewares before `configureServer` hook](https://github.com/vitejs/vite/pull/20222), [[#20224] feat: apply some middlewares before `configurePreviewServer` hook](https://github.com/vitejs/vite/pull/20224)
+  - Some middlewares are now applied before the `configureServer` / `configurePreviewServer` hook. Note that if you don't expect a certain route to apply the [`server.cors`](../config/server-options.md#server-cors) / [`preview.cors`](../config/preview-options.md#preview-cors) option, make sure to remove the related headers from the response.
+
+## Migration from v5
+
+Check the [Migration from v5 Guide](https://v6.vite.dev/guide/migration.html) in the Vite v6 docs first to see the needed changes to port your app to Vite 6, and then proceed with the changes on this page.
+>>>>>>> d63725c8b820429543943d4f97810e4cb0299aa0
