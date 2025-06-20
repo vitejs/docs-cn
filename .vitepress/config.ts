@@ -160,7 +160,7 @@ export default defineConfig({
     ],
 
     search: {
-      provider: 'local', 
+      provider: 'local',
       options: {
         translations: {
           button: {
@@ -348,7 +348,7 @@ export default defineConfig({
               link: '/guide/rolldown',
             },
             {
-              text: '从 v5 迁移',
+              text: '从 v6 迁移',
               link: '/guide/migration',
             },
             {
