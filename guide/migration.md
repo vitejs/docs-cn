@@ -4,7 +4,7 @@
 
 Vite 不再支持已结束生命周期（EOL）的 Node.js 18。现在需要使用 Node.js 20.19+ 或 22.12+。
 
-## 默认浏览器目标变更 {#-default-browser-target-change}
+## 默认浏览器目标变更 {#default-browser-target-change}
 
 `build.target` 的默认浏览器目标已更新为更新的浏览器版本。
 
