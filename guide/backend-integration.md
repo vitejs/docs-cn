@@ -44,10 +44,16 @@
    <script type="module" src="http://localhost:5173/main.js"></script>
    ```
 
+<<<<<<< HEAD
    为了正确地提供资源，你有两种选项：
 
    - 确保服务器被配置过，将会拦截代理资源请求给到 Vite 服务器
    - 设置 [`server.origin`](/config/server-options.md#server-origin) 以求生成的资源链接将以服务器 URL 形式被解析而非一个相对路径
+=======
+   In order to properly serve assets, you have two options:
+   - Make sure the server is configured to proxy static assets requests to the Vite server
+   - Set [`server.origin`](/config/server-options.md#server-origin) so that generated asset URLs will be resolved using the back-end server URL instead of a relative path
+>>>>>>> e39c7d60403b5fc204879e7ff9a9c58c610b5493
 
    这对于图片等资源的正确加载是必需的。
 
@@ -100,12 +106,20 @@
      }
    }
    ```
+<<<<<<< HEAD
 
    - 清单是一个 `Record<name, chunk>` 结构的对象。
    - 对于 入口 或动态入口 chunk，键是相对于项目根目录的资源路径。
    - 对于非入口 chunk，键是生成文件的名称并加上前缀 `_`。
    - 当 [`build.cssCodeSplit`](/config/build-options.md#build-csscodesplit) 为 `false` 时生成的 CSS 文件，键为 `style.css`。
    - Chunk 将信息包含在其静态和动态导入上（两者都是映射到清单中相应 chunk 的键），以及任何与之相关的 CSS 和资源文件。
+=======
+   - The manifest has a `Record<name, chunk>` structure
+   - For entry or dynamic entry chunks, the key is the relative src path from project root.
+   - For non entry chunks, the key is the base name of the generated file prefixed with `_`.
+   - For the CSS file generated when [`build.cssCodeSplit`](/config/build-options.md#build-csscodesplit) is `false`, the key is `style.css`.
+   - Chunks will contain information on its static and dynamic imports (both are keys that map to the corresponding chunk in the manifest), and also its corresponding CSS and asset files (if any).
+>>>>>>> e39c7d60403b5fc204879e7ff9a9c58c610b5493
 
 4. 你可以利用这个文件来渲染带有哈希文件名的链接或预加载指令。
 
@@ -129,6 +143,7 @@
    <link rel="modulepreload" href="/{{ chunk.file }}" />
    ```
 
+<<<<<<< HEAD
    具体来说，一个生成 HTML 的后端在给定 manifest 文件和一个入口文件的情况下，
    应该包含以下标签：
 
@@ -139,6 +154,17 @@
      `<script type="module">`，对于 CSS 是 `<link rel="stylesheet">`）
    - 可选项，对于每个导入的 JavaScript chunk 的 `file` 键的 `<link rel="modulepreload">` 标签，
      同样从入口文件 chunk 开始递归追踪导入。
+=======
+   Specifically, a backend generating HTML should include the following tags given a manifest
+   file and an entry point:
+   - A `<link rel="stylesheet">` tag for each file in the entry point chunk's `css` list
+   - Recursively follow all chunks in the entry point's `imports` list and include a
+     `<link rel="stylesheet">` tag for each CSS file of each imported chunk.
+   - A tag for the `file` key of the entry point chunk (`<script type="module">` for JavaScript,
+     or `<link rel="stylesheet">` for CSS)
+   - Optionally, `<link rel="modulepreload">` tag for the `file` of each imported JavaScript
+     chunk, again recursively following the imports starting from the entry point chunk.
+>>>>>>> e39c7d60403b5fc204879e7ff9a9c58c610b5493
 
    按照上面的示例 manifest，对于入口文件 `views/foo.js`，在生产环境中应包含以下标签：
 

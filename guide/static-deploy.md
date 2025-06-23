@@ -264,10 +264,16 @@ $ npx wrangler pages deploy dist
 
 3. 链接你的 GitHub/GitLab 账号或使用一个公共仓库
 
+<<<<<<< HEAD
 4. 指定一个项目名称和所用分支
 
    - **构建命令**：`npm install && npm run build`
    - **发布目录**：`dist`
+=======
+4. Specify a project name and branch.
+   - **Build Command**: `npm install && npm run build`
+   - **Publish Directory**: `dist`
+>>>>>>> e39c7d60403b5fc204879e7ff9a9c58c610b5493
 
 5. 点击 **Create Static Site**
 
