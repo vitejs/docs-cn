@@ -336,18 +336,11 @@ Vite 插件也可以提供钩子来服务于特定的 Vite 目标。这些钩子
 
   转换 `index.html` 的专用钩子。钩子接收当前的 HTML 字符串和转换上下文。上下文在开发期间暴露[`ViteDevServer`](./api-javascript#vitedevserver)实例，在构建期间暴露 Rollup 输出的包。
 
-<<<<<<< HEAD
   这个钩子可以是异步的，并且可以返回以下其中之一:
 
   - 经过转换的 HTML 字符串
   - 注入到现有 HTML 中的标签描述符对象数组（`{ tag, attrs, children }`）。每个标签也可以指定它应该被注入到哪里（默认是在 `<head>` 之前）
   - 一个包含 `{ html, tags }` 的对象
-=======
-  The hook can be async and can return one of the following:
-  - Transformed HTML string
-  - An array of tag descriptor objects (`{ tag, attrs, children }`) to inject to the existing HTML. Each tag can also specify where it should be injected to (default is prepending to `<head>`)
-  - An object containing both as `{ html, tags }`
->>>>>>> e39c7d60403b5fc204879e7ff9a9c58c610b5493
 
   默认情况下 `order` 是 `undefined`，这个钩子会在 HTML 被转换后应用。为了注入一个应该通过 Vite 插件管道的脚本， `order: 'pre'` 指将在处理 HTML 之前应用。 `order: 'post'` 是在所有未定义的 `order` 的钩子函数被应用后才应用。
   
@@ -423,23 +416,14 @@ Vite 插件也可以提供钩子来服务于特定的 Vite 目标。这些钩子
     server: ViteDevServer
   }
   ```
-<<<<<<< HEAD
 
   - `modules` 是受更改文件影响的模块数组。它是一个数组，因为单个文件可能映射到多个服务模块（例如 Vue 单文件组件）。
-=======
-  - `modules` is an array of modules that are affected by the changed file. It's an array because a single file may map to multiple served modules (e.g. Vue SFCs).
->>>>>>> e39c7d60403b5fc204879e7ff9a9c58c610b5493
 
   - `read` 这是一个异步读函数，它返回文件的内容。之所以这样做，是因为在某些系统上，文件更改的回调函数可能会在编辑器完成文件更新之前过快地触发，并 `fs.readFile` 直接会返回空内容。传入的 `read` 函数规范了这种行为。
 
-<<<<<<< HEAD
   钩子可以选择:
 
   - 过滤和缩小受影响的模块列表，使 HMR 更准确。
-=======
-  The hook can choose to:
-  - Filter and narrow down the affected module list so that the HMR is more accurate.
->>>>>>> e39c7d60403b5fc204879e7ff9a9c58c610b5493
 
   - 返回一个空数组并进行全面刷新：
 
