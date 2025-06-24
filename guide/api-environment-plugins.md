@@ -126,12 +126,9 @@ interface HotUpdateOptions {
   }
   ```
 
-<<<<<<< HEAD
-## 基于环境的插件 {#per-environment-plugins}
-=======
-## Per-environment State in Plugins
+## 插件中的基于环境的状态 {#per-environment-state-in-plugins}
 
-Given that the same plugin instance is used for different environments, the plugin state needs to be keyed with `this.environment`. This is the same pattern the ecosystem has already been using to keep state about modules using the `ssr` boolean as key to avoid mixing client and ssr modules state. A `Map<Environment, State>` can be used to keep the state for each environment separately. Note that for backward compatibility, `buildStart` and `buildEnd` are only called for the client environment without the `perEnvironmentStartEndDuringDev: true` flag.
+鉴于相同的插件实例会被用于不同的环境，插件的状态需要以 `this.environment` 作为键来存储。这与生态系统中已使用的模式相同，即使用 `ssr` 布尔值作为键来避免混合客户端和 SSR 模块状态的方式。可以使用 `Map<Environment, State>` 来分别为每个环境保存其对应的状态。注意：为了保持向后兼容性，在未设置 `perEnvironmentStartEndDuringDev: true` 标志时，`buildStart` 和 `buildEnd` 仅会针对客户端环境被调用。
 
 ```js
 function PerEnvironmentCountTransformedModulesPlugin() {
@@ -152,8 +149,7 @@ function PerEnvironmentCountTransformedModulesPlugin() {
 }
 ```
 
-## Per-environment Plugins
->>>>>>> e39c7d60403b5fc204879e7ff9a9c58c610b5493
+## 基于环境的插件 {#per-environment-plugins}
 
 插件可以使用 `applyToEnvironment` 函数来定义它适用的环境。
 
