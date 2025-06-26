@@ -24,6 +24,9 @@
 		"gsap": "^3.13.0"
 	},
 	"packageManager": "pnpm@9.6.0",
+	"engines": {
+		"node": "^20.19.0 || >=22.12.0"
+	},
 	"scripts": {
 		"dev": "vitepress dev . --port 5174",
 		"build": "vitepress build .",
