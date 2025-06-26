@@ -470,7 +470,7 @@ onMounted(() => {
         <div class="vite-chip__edge" :class="{ 'edge--animated': isChromiumBrowser }"></div>
       </div>
       <div class="vite-chip__filter" />
-      <img src="/logo.svg" alt="Vite Logo" class="vite-chip__logo" />
+      <img src="/icons/android-chrome-192x192.png" alt="Logo" class="vite-chip__logo" />
     </div>
   </div>
 

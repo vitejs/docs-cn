@@ -1,6 +1,6 @@
 ---
-title: Vite
-titleTemplate: The Next Generation Frontend Tooling
+title: DevSecOps
+titleTemplate: The learning path to DevSecOps
 pageClass: landing dark
 
 layout: home

@@ -7,7 +7,7 @@ import HeroDiagram from './HeroDiagram.vue'
     <div class="container">
       <!-- ViteConf Replay Button -->
       <a href="https://doc.hash-trader.com/Infrastructure/docker.html" class="hero__pill" target="_blank">
-        <img src="/viteconf.svg" alt="Viteconf logo" width="20" height="20" />
+        <img src="/icons/android-chrome-192x192.png" alt="" width="20" height="20" />
         <span>Check me</span>
       </a>
 

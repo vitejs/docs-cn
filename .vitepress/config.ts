@@ -90,7 +90,7 @@ export default withMermaid(
     lang: 'en-EN',
 
     head: [
-      ['link', { rel: 'icon', type: 'image/svg+xml', href: '/logo.svg' }],
+      ['link', { rel: 'icon', type: 'image/png', href: '/icons/android-chrome-192x192.png' }],
       [
         'link',
         { rel: 'alternate', type: 'application/rss+xml', href: '/blog.rss' }
@@ -156,7 +156,7 @@ export default withMermaid(
     ],
 
     themeConfig: {
-      logo: '/logo.svg',
+      logo: '/icons/android-chrome-192x192.png',
 
       editLink: {
         pattern: 'https://github.com/vitejs/docs-cn/edit/main/:path',
