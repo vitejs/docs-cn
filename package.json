@@ -16,6 +16,7 @@
 		"gray-matter": "^4.0.3",
 		"gsap": "^3.12.4",
 		"lodash": "^4.17.21",
+		"typescript": "^5.3.3",
 		"vite": "^5.1.6",
 		"vitepress": "1.5.0",
 		"vitepress-plugin-group-icons": "^1.3.0",
