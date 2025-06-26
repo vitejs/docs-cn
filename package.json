@@ -19,11 +19,14 @@
 		"chalk": "^4.1.2",
 		"gray-matter": "^4.0.3",
 		"lodash": "^4.17.21",
-		"vite": "^6.3.0-beta.0",
+		"vite": "^7.0.0",
 		"yorkie": "^2.0.0",
 		"gsap": "^3.13.0"
 	},
 	"packageManager": "pnpm@9.6.0",
+	"engines": {
+		"node": "^20.19.0 || >=22.12.0"
+	},
 	"scripts": {
 		"dev": "vitepress dev . --port 5174",
 		"build": "vitepress build .",
