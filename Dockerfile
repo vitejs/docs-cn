@@ -6,17 +6,18 @@ ENV PATH="$PNPM_HOME:$PATH"
 
 RUN apk update && \
     apk upgrade && \
-    apk add --no-cache bash git wget && \
+    apk add --no-cache bash git && \
     npm install -g pnpm
 
 WORKDIR /app
 
 # Create necessary directories with proper permissions
 RUN mkdir -p /app/.vitepress && \
+    chown -R node:node /app && \
     chmod -R 755 /app
 
-# Copy only package files first to leverage cache
-COPY package.json pnpm-lock.yaml* ./
+# Copy only package files first to leverage cac
+COPY --chown=node:node package.json pnpm-lock.yaml* ./
 
 # Combine install commands and clean up cache
 RUN pnpm install --shamefully-hoist && \
@@ -24,14 +25,16 @@ RUN pnpm install --shamefully-hoist && \
     pnpm store prune && \
     rm -rf /root/.npm/* /root/.pnpm-store/* /root/.node-gyp/*
 
-# Copy source after installing dependencies
-COPY . .
+# Copy source after installing dependencies with correct permissions
+COPY --chown=node:node . .
 
-# Create .vite-temp directory with proper permissions
-RUN mkdir -p /app/node_modules/.vite-temp && \
-    chmod -R 777 /app/.vitepress && \
-    chmod -R 777 /app/node_modules && \
-    chmod -R 777 /app/node_modules/.vite-temp
+# Ensure .vitepress directory and its contents have correct permissions
+RUN ls -la /app/.vitepress && \
+    chmod -R 755 /app/.vitepress && \
+    chown -R node:node /app/.vitepress
+
+# Switch to node user before building
+# USER node
 
 # Verify the config file exists and has correct permissions
 RUN if [ -f "/app/.vitepress/config.ts" ]; then \
@@ -51,9 +54,4 @@ EXPOSE 5173
 HEALTHCHECK --interval=30s --timeout=30s --start-period=5s --retries=3 \
     CMD wget --no-verbose --tries=1 --spider http://localhost:5173 || exit 1
 
-# We'll run as root to avoid permission issues
-# Note: This is not best practice for production environments
-# but will help us diagnose/fix the immediate issue
-
-# Update the CMD to bind to all interfaces (0.0.0.0)
-CMD ["pnpm", "run", "serve", "--", "--host", "0.0.0.0", "--port", "5173"]
+CMD ["pnpm", "run", "serve"]
