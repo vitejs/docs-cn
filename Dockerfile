@@ -1,4 +1,4 @@
-FROM node:18-alpine
+FROM node:20-alpine
 
 # Combine RUN commands to reduce layers and set PNPM_HOME
 ENV PNPM_HOME="/pnpm"
