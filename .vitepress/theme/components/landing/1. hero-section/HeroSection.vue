@@ -12,7 +12,7 @@ import HeroDiagram from './HeroDiagram.vue'
       </a>
 
       <!-- Heading -->
-      <h1>Welcome :)<br />Searching something<br />to learn ?</h1>
+      <h1>Welcome :)<br />Searching to learn<br />about DevSecOps ?</h1>
       <!-- Tagline -->
       <h3>
         Here you learn about Cyber, CI/CD, Infrastructure and more !
