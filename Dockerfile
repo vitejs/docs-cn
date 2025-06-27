@@ -55,4 +55,5 @@ HEALTHCHECK --interval=30s --timeout=30s --start-period=5s --retries=3 \
 # Note: This is not best practice for production environments
 # but will help us diagnose/fix the immediate issue
 
-CMD ["pnpm", "run", "serve"]
+# Update the CMD to bind to all interfaces (0.0.0.0)
+CMD ["pnpm", "run", "serve", "--", "--host", "0.0.0.0", "--port", "5173"]
