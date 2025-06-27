@@ -6,7 +6,7 @@ ENV PATH="$PNPM_HOME:$PATH"
 
 RUN apk update && \
     apk upgrade && \
-    apk add --no-cache bash git && \
+    apk add --no-cache bash git wget && \
     npm install -g pnpm
 
 WORKDIR /app
@@ -27,9 +27,11 @@ RUN pnpm install --shamefully-hoist && \
 # Copy source after installing dependencies
 COPY . .
 
-# Ensure .vitepress directory and its contents have correct permissions
-RUN chmod -R 777 /app/.vitepress && \
-    chmod -R 777 /app/node_modules
+# Create .vite-temp directory with proper permissions
+RUN mkdir -p /app/node_modules/.vite-temp && \
+    chmod -R 777 /app/.vitepress && \
+    chmod -R 777 /app/node_modules && \
+    chmod -R 777 /app/node_modules/.vite-temp
 
 # Verify the config file exists and has correct permissions
 RUN if [ -f "/app/.vitepress/config.ts" ]; then \
@@ -49,7 +51,8 @@ EXPOSE 5173
 HEALTHCHECK --interval=30s --timeout=30s --start-period=5s --retries=3 \
     CMD wget --no-verbose --tries=1 --spider http://localhost:5173 || exit 1
 
-# Switch to non-root user for running the application
-USER node
+# We'll run as root to avoid permission issues
+# Note: This is not best practice for production environments
+# but will help us diagnose/fix the immediate issue
 
 CMD ["pnpm", "run", "serve"]
