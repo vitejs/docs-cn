@@ -13,11 +13,10 @@ WORKDIR /app
 
 # Create necessary directories with proper permissions
 RUN mkdir -p /app/.vitepress && \
-    chown -R node:node /app && \
     chmod -R 755 /app
 
 # Copy only package files first to leverage cache
-COPY --chown=node:node package.json pnpm-lock.yaml* ./
+COPY package.json pnpm-lock.yaml* ./
 
 # Combine install commands and clean up cache
 RUN pnpm install --shamefully-hoist && \
@@ -25,16 +24,12 @@ RUN pnpm install --shamefully-hoist && \
     pnpm store prune && \
     rm -rf /root/.npm/* /root/.pnpm-store/* /root/.node-gyp/*
 
-# Copy source after installing dependencies with correct permissions
-COPY --chown=node:node . .
+# Copy source after installing dependencies
+COPY . .
 
 # Ensure .vitepress directory and its contents have correct permissions
-RUN ls -la /app/.vitepress && \
-    chmod -R 755 /app/.vitepress && \
-    chown -R node:node /app/.vitepress
-
-# Switch to node user before building
-# USER node
+RUN chmod -R 777 /app/.vitepress && \
+    chmod -R 777 /app/node_modules
 
 # Verify the config file exists and has correct permissions
 RUN if [ -f "/app/.vitepress/config.ts" ]; then \
@@ -53,5 +48,8 @@ EXPOSE 5173
 # Add healthcheck
 HEALTHCHECK --interval=30s --timeout=30s --start-period=5s --retries=3 \
     CMD wget --no-verbose --tries=1 --spider http://localhost:5173 || exit 1
+
+# Switch to non-root user for running the application
+USER node
 
 CMD ["pnpm", "run", "serve"]
