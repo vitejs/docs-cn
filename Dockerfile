@@ -6,18 +6,18 @@ ENV PATH="$PNPM_HOME:$PATH"
 
 RUN apk update && \
     apk upgrade && \
-    apk add --no-cache bash git && \
+    apk add --no-cache bash git wget && \
     npm install -g pnpm
 
 WORKDIR /app
 
 # Create necessary directories with proper permissions
 RUN mkdir -p /app/.vitepress && \
-    chown -R node:node /app && \
-    chmod -R 755 /app
+    mkdir -p /app/node_modules/.vite-temp && \
+    chmod -R 777 /app
 
-# Copy only package files first to leverage cac
-COPY --chown=node:node package.json pnpm-lock.yaml* ./
+# Copy only package files first to leverage cache
+COPY package.json pnpm-lock.yaml* ./
 
 # Combine install commands and clean up cache
 RUN pnpm install --shamefully-hoist && \
@@ -25,16 +25,11 @@ RUN pnpm install --shamefully-hoist && \
     pnpm store prune && \
     rm -rf /root/.npm/* /root/.pnpm-store/* /root/.node-gyp/*
 
-# Copy source after installing dependencies with correct permissions
-COPY --chown=node:node . .
+# Copy source after installing dependencies
+COPY . .
 
-# Ensure .vitepress directory and its contents have correct permissions
-RUN ls -la /app/.vitepress && \
-    chmod -R 755 /app/.vitepress && \
-    chown -R node:node /app/.vitepress
-
-# Switch to node user before building
-# USER node
+# Ensure all directories have very permissive permissions for troubleshooting
+RUN chmod -R 777 /app
 
 # Verify the config file exists and has correct permissions
 RUN if [ -f "/app/.vitepress/config.ts" ]; then \
@@ -48,10 +43,11 @@ RUN if [ -f "/app/.vitepress/config.ts" ]; then \
 # Build the application
 RUN pnpm run build
 
-EXPOSE 5173
+EXPOSE 4173
 
 # Add healthcheck
 HEALTHCHECK --interval=30s --timeout=30s --start-period=5s --retries=3 \
-    CMD wget --no-verbose --tries=1 --spider http://localhost:5173 || exit 1
+    CMD wget --no-verbose --tries=1 --spider http://localhost:4173 || exit 1
 
-CMD ["pnpm", "run", "serve"]
+# Update the CMD to bind to all interfaces (0.0.0.0)
+CMD ["pnpm", "run", "serve", "--", "--host", "0.0.0.0"]
