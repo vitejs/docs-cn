@@ -50,4 +50,4 @@ HEALTHCHECK --interval=30s --timeout=30s --start-period=5s --retries=3 \
     CMD wget --no-verbose --tries=1 --spider http://localhost:4173 || exit 1
 
 # Update the CMD to bind to all interfaces (0.0.0.0)
-CMD ["pnpm", "run", "serve", "--", "--host", "0.0.0.0"]
+CMD ["pnpm", "serve"]

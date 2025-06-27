@@ -30,7 +30,7 @@
 	"scripts": {
 		"dev": "vitepress dev . --port 5174",
 		"build": "vitepress build .",
-		"serve": "vitepress serve ."
+		"serve": "vitepress serve --host 0.0.0.0 --port 5173"
 	},
 	"gitHooks": {
 		"commit-msg": "node scripts/verifyCommit.js"
