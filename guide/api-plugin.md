@@ -416,11 +416,6 @@ Vite 插件也可以提供钩子来服务于特定的 Vite 目标。这些钩子
     server: ViteDevServer
   }
   ```
-<<<<<<< HEAD
-=======
-
-  - `modules` is an array of modules that are affected by the changed file. It's an array because a single file may map to multiple served modules (e.g. Vue SFCs).
->>>>>>> 8d52c4bb2caf4de392249b001aa344eed4d1819e
 
   - `modules` 是受更改文件影响的模块数组。它是一个数组，因为单个文件可能映射到多个服务模块（例如 Vue 单文件组件）。
 

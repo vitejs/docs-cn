@@ -1,5 +1,4 @@
 {
-<<<<<<< HEAD
 	"name": "vite-docs-cn",
 	"version": "1.0.0",
 	"description": "Vite.js documentation Chinese translation.",
@@ -12,8 +11,8 @@
 		"@shikijs/vitepress-twoslash": "^3.7.0",
 		"@types/express": "^5.0.3",
 		"feed": "^5.1.0",
-		"vitepress": "^2.0.0-alpha.6",
-		"vitepress-plugin-group-icons": "^1.6.0",
+		"vitepress": "^2.0.0-alpha.7",
+		"vitepress-plugin-group-icons": "^1.6.1",
 		"vue": "^3.5.17",
 		"@types/node": "^20.9.2",
 		"@type-challenges/utils": "^0.1.1",
@@ -36,24 +35,4 @@
 	"gitHooks": {
 		"commit-msg": "node scripts/verifyCommit.js"
 	}
-=======
-  "name": "docs",
-  "private": true,
-  "type": "module",
-  "scripts": {
-    "docs": "vitepress dev",
-    "docs-build": "vitepress build",
-    "docs-serve": "vitepress serve"
-  },
-  "devDependencies": {
-    "@shikijs/vitepress-twoslash": "^3.7.0",
-    "@types/express": "^5.0.3",
-    "feed": "^5.1.0",
-    "gsap": "^3.13.0",
-    "vitepress": "^2.0.0-alpha.7",
-    "vitepress-plugin-group-icons": "^1.6.1",
-    "vitepress-plugin-llms": "^1.6.0",
-    "vue": "^3.5.17"
-  }
->>>>>>> 8d52c4bb2caf4de392249b001aa344eed4d1819e
 }
