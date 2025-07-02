@@ -6,7 +6,11 @@
 
 `ViteDevServer` 中与 module graph 和 modules transforms 相关的多个 API 已移至 `DevEnvironment` 实例。
 
+<<<<<<< HEAD
 影响范围：`Vite 插件作者`
+=======
+Affected scope: `Vite Plugin Authors`
+>>>>>>> 73ecdf61522ce311228eb8d8d02b88d7f0dc7e1b
 
 ::: warning 即将废弃
 `环境`实例首次在 `v6.0` 中引入。计划在未来的 major 版本中废弃现在的 `server.moduleGraph` 和其他方法。我们不建议你现在就放弃 server 方法。要识别你的使用情况，请在你的 vite 配置中设置以下。

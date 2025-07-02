@@ -6,10 +6,17 @@
 
 `server.ssrLoadModule` 已被从 [Module Runner](/guide/api-environment#modulerunner) 导入所取代。
 
+<<<<<<< HEAD
 影响范围：`Vite 插件作者`
 
 ::: warning 即将废弃
 `ModuleRunner` 最初在 `v6.0` 版本中被引入。我们计划在未来的主要版本中废弃 `server.ssrLoadModule`。如果想识别你的使用情况，可以在你的 vite 配置文件中将 `future.removeSsrLoadModule` 设置为 `"warn"`。
+=======
+Affected scope: `Vite Plugin Authors`
+
+::: warning Future Deprecation
+`ModuleRunner` was first introduced in `v6.0`. The deprecation of `server.ssrLoadModule` is planned for a future major. To identify your usage, set `future.removeSsrLoadModule` to `"warn"` in your vite config.
+>>>>>>> 73ecdf61522ce311228eb8d8d02b88d7f0dc7e1b
 :::
 
 ## 动机 {#motivation}
