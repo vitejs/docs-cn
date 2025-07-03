@@ -6,11 +6,7 @@
 
 在 Vite 6 版本之前，只有两个环境是可用的：`client` 和 `ssr`。在 `resolveId`、`load` 和 `transform` 中的 `options.ssr` 插件钩子参数，允许插件的作者在处理插件钩子中的模块时区分这两个环境。在 Vite 6 版本中，一个 Vite 应用可以根据需要定义任意数量的命名环境。我们在插件的上下文中引入了 `this.environment`，以便在钩子中与当前模块的环境进行交互。
 
-<<<<<<< HEAD
 影响范围：`Vite 插件作者`
-=======
-Affected scope: `Vite Plugin Authors`
->>>>>>> 73ecdf61522ce311228eb8d8d02b88d7f0dc7e1b
 
 ::: warning 即将废弃
 `this.environment` 最初在 `v6.0` 版本中被引入。我们计划在未来的 major 版本中废弃 `options.ssr`。到那时，我们会开始建议你将你的插件迁移到新的 API。如果想识别你的使用情况，可以在你的 vite 配置文件中将 `future.removePluginHookSsrArgument` 设置为 `"warn"`。

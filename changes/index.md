@@ -22,10 +22,6 @@ Vite 中的破坏性变更列表，包括 API 废弃、移除和变更。在你�
 
 ## 历史 {#past}
 
-<<<<<<< HEAD
 以下的变更已经被实施或者撤销。在当前的主要版本中，它们已经不再相关。
-=======
-The changes below have been done or reverted. They are no longer relevant in the current major version.
->>>>>>> 73ecdf61522ce311228eb8d8d02b88d7f0dc7e1b
 
 - _目前还没有历史的变更_

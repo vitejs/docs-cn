@@ -164,11 +164,7 @@ export const emeriti = [
     name: 'Niputi',
     title: 'Developer',
     org: 'Computershare Denmark',
-<<<<<<< HEAD
     desc: 'Web/Javascript 爱好者',
-=======
-    desc: 'weeb/JavaScript lover.',
->>>>>>> 73ecdf61522ce311228eb8d8d02b88d7f0dc7e1b
     links: [
       { icon: 'github', link: 'https://github.com/Niputi' },
       { icon: 'x', link: 'https://x.com/Niputi_' },

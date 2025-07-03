@@ -6,17 +6,10 @@
 
 查看 [构建过程中的共享插件](/guide/api-environment-plugins.md#shared-plugins-during-build).
 
-<<<<<<< HEAD
 影响范围：`Vite 插件作者`
 
 ::: warning 未来默认值更改
 `builder.sharedConfigBuild` 最初在 `v6.0` 版本中被引入。你可以将它设置为 `true`，以此来检查你的插件与共享配置是如何配合工作的。一旦插件生态系统准备就绪，我们希望能得到关于在未来的主要版本中改变默认设置的反馈。
-=======
-Affected scope: `Vite Plugin Authors`
-
-::: warning Future Default Change
-`builder.sharedConfigBuild` was first introduced in `v6.0`. You can set it true to check how your plugins work with a shared config. We're looking for feedback about changing the default in a future major once the plugin ecosystem is ready.
->>>>>>> 73ecdf61522ce311228eb8d8d02b88d7f0dc7e1b
 :::
 
 ## 动机 {#motivation}

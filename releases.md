@@ -12,11 +12,7 @@ Vite 没有固定的发布周期。
 - **次要版本** 总是包含新功能，并根据需要发布。且总会有一个 beta 预发布阶段（通常每两个月）。
 - **主要版本** 通常与 [Node.js 生命周期终止计划](https://endoflife.date/nodejs) 保持一致，并会提前宣布。这些版本会经过与生态系统的长期讨论，并有 alpha 和 beta 预发布阶段（通常每年）。
 
-<<<<<<< HEAD
 Vite 团队支持的 Vite 版本范围是这样确定的：
-=======
-The Vite version ranges that are supported by the Vite team are automatically determined by:
->>>>>>> 73ecdf61522ce311228eb8d8d02b88d7f0dc7e1b
 
 - **当前次要版本** 会定期提供修复。
 - **上一个主要版本** （仅限其最新的次要版本）和 **上一个次要版本** 会接收重要修复和安全补丁。
