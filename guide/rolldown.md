@@ -37,7 +37,7 @@ Rolldown 专注于三个主要原则：
 ```json
 {
   "dependencies": {
-    "vite": "^6.0.0" // [!code --]
+    "vite": "^7.0.0" // [!code --]
     "vite": "npm:rolldown-vite@latest" // [!code ++]
   }
 }
@@ -103,7 +103,11 @@ Rolldown 专注于三个主要原则：
 
 #### `manualChunks` 改为 `advancedChunks` {#manualchunks-changed-to-advancedchunks}
 
+<<<<<<< HEAD
 Rolldown 不再支持 Rollup 中可用的 `manualChunks` 选项。取而代之的是，它提供了一个更细粒度的设置：[`advancedChunks`](https://rolldown.rs/guide/in-depth/advanced-chunks#advanced-chunks)，其行为与 webpack 的 `splitChunk` 类似。
+=======
+While Rolldown has support for the `manualChunks` option that is also exposed by Rollup, it is marked deprecated. Instead of it, Rolldown offers a more fine-grained setting via the [`advancedChunks` option](https://rolldown.rs/guide/in-depth/advanced-chunks#advanced-chunks), which is more similar to webpack's `splitChunk`:
+>>>>>>> e3930bf08cc81753cbcdb29baaf8185c8c6a9d3f
 
 ```js
 // 旧配置 (Rollup)
