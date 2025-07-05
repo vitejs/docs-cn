@@ -1,14 +1,9 @@
 # 环境 API {#environment-api}
 
-<<<<<<< HEAD
-:::warning 实验性
-环境 API 仍处于实验阶段。我们仍将在主要版本之间保持 API 的稳定性，以便生态系统进行实验和构建。我们计划在下游项目有时间试验并验证新功能后，在未来的主要版本中稳定这些新 API（可能包含重大更改）。
-=======
-:::info Release Candidate
-The Environment API is generally in the release candidate phase. We'll maintain stability in the APIs between major releases to allow the ecosystem to experiment and build upon them. However, note that [some specific APIs](/changes/#considering) are still considered experimental.
+:::info 发布候选版本
+环境 API 目前处于发布候选阶段。我们将在主要版本发布之间保持 API 的稳定性，以便生态系统能够进行实验并在此基础上进行开发。然而，请注意，[某些特定的 API](/changes/#considering) 仍被视为实验性 API。
 
-We plan to stabilize these new APIs (with potential breaking changes) in a future major release once downstream projects have had time to experiment with the new features and validate them.
->>>>>>> e3930bf08cc81753cbcdb29baaf8185c8c6a9d3f
+我们计划在未来主要版本发布时，待下游项目有足够时间对新功能进行实验并验证后，对这些新 API（可能包含兼容性变更）进行稳定化处理。
 
 资料：
 
@@ -20,11 +15,7 @@ We plan to stabilize these new APIs (with potential breaking changes) in a futur
 
 ## 引入环境概念 {#formalizing-environments} 
 
-<<<<<<< HEAD
-Vite 6 正式引入了环境（Environments）的概念。在 Vite 5 之前，有两个隐式环境（`client`，以及可选的 `ssr`）。新的环境 API 允许用户和框架作者根据他们的应用在生产环境中的工作方式创建尽可能多的环境。这些新的功能需要大规模的内部重构，而我们也已经在保持向后兼容性上做出了很大的努力。Vite 6 的初始目标是尽可能平滑地将整个生态系统迁移到新的主要版本，直到有足够的用户已经迁移，并且框架和插件作者已经验证了新的设计后，再采用这些新的实验性 API。
-=======
-Vite 6 formalizes the concept of Environments. Until Vite 5, there were two implicit Environments (`client`, and optionally `ssr`). The new Environment API allows users and framework authors to create as many environments as needed to map the way their apps work in production. This new capability required a big internal refactoring, but a lot of effort has been placed on backward compatibility. The initial goal of Vite 6 is to move the ecosystem to the new major as smoothly as possible, delaying the adoption of the APIs until enough users have migrated and frameworks and plugin authors have validated the new design.
->>>>>>> e3930bf08cc81753cbcdb29baaf8185c8c6a9d3f
+Vite 6 正式引入了“环境”的概念。在 Vite 5 之前，系统中存在两个隐式环境（`client` 和可选的 `ssr`）。新的环境 API 允许用户和框架作者根据应用在生产环境中的运行方式，创建任意数量的环境。这一新功能需要进行大规模的内部重构，但我们已投入大量精力确保向后兼容性。Vite 6 的初始目标是尽可能平滑地将生态系统迁移到新版本，推迟 API 的采用，直到足够多的用户完成迁移，且框架和插件作者已验证新设计。
 
 ## 缩小构建和开发模式间的差距 {#closing-the-gap-between-build-and-dev}
 
@@ -128,11 +119,7 @@ export default {
 
 ## 向后兼容性 {#backward-compatibility}
 
-<<<<<<< HEAD
-当前的 Vite 服务器 API 尚未被弃用，并且与 Vite 5 向后兼容。新的环境 API 是实验性的。
-=======
-The current Vite server API is not yet deprecated and is backward compatible with Vite 5.
->>>>>>> e3930bf08cc81753cbcdb29baaf8185c8c6a9d3f
+当前的 Vite 服务器 API 尚未被弃用，并且与 Vite 5 向后兼容。
 
 `server.moduleGraph` 返回客户端和服务器端渲染（ssr）模块图的混合视图。所有其方法都将返回向后兼容的混合模块节点。对于传递给 `handleHotUpdate` 的模块节点，也使用相同的方案。
 

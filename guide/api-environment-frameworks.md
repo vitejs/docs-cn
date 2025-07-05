@@ -1,14 +1,9 @@
 # 用于框架的环境 API {#environment-api-for-frameworks}
 
-<<<<<<< HEAD
-:::warning 实验性
-环境 API 仍处于实验阶段。我们仍将在主要版本之间保持 API 的稳定性，以便生态系统进行实验和构建。我们计划在下游项目有时间试验并验证新功能后，在未来的主要版本中稳定这些新 API（可能包含重大更改）。
-=======
-:::info Release Candidate
-The Environment API is generally in the release candidate phase. We'll maintain stability in the APIs between major releases to allow the ecosystem to experiment and build upon them. However, note that [some specific APIs](/changes/#considering) are still considered experimental.
+:::info 发布候选版本
+环境 API 目前处于发布候选阶段。我们将在主要版本发布之间保持 API 的稳定性，以便生态系统能够进行实验并在此基础上进行开发。然而，请注意，[某些特定的 API](/changes/#considering) 仍被视为实验性 API。
 
-We plan to stabilize these new APIs (with potential breaking changes) in a future major release once downstream projects have had time to experiment with the new features and validate them.
->>>>>>> e3930bf08cc81753cbcdb29baaf8185c8c6a9d3f
+我们计划在未来主要版本发布时，待下游项目有足够时间对新功能进行实验并验证后，对这些新 API（可能包含兼容性变更）进行稳定化处理。
 
 资料：
 
