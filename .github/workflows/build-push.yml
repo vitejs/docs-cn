@@ -196,6 +196,15 @@ jobs:
           draft: false
           prerelease: false
 
+      # Update Docker Stack via Portainer Webhook
+      - name: Update Docker Stack
+        if: steps.version.outputs.should_build == 'true'
+        run: |
+          curl -X POST ${{ secrets.PORTAINER_STACK_WEBHOOK }} \
+            -H "Content-Type: application/json" \
+            -d '{"tag": "${{ steps.version.outputs.tag }}", "commit": "${{ steps.commit.outputs.sha }}"}'
+        continue-on-error: true
+
       # Move cache
       - name: Move cache
         if: steps.version.outputs.should_build == 'true'

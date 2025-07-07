@@ -134,7 +134,7 @@ export default withMermaid(
       ['meta', { property: 'og:url', content: ogUrl }],
       ['meta', { property: 'og:description', content: ogDescription }],
       ['meta', { property: 'og:site_name', content: 'DevSecForge' }],
-      ['meta', { name: 'twitter:card', content: 'summary_large_image' }],
+      ['meta', { name: 'twitter:card', content: 'summary' }],
       ['meta', { name: 'twitter:site', content: '@devsecforge' }],
       ['meta', { name: 'twitter:title', content: ogTitle }],
       ['meta', { name: 'twitter:description', content: ogDescription }],
@@ -251,6 +251,7 @@ export default withMermaid(
           activeMatch: '/Infrastructure/'
         },
         { text: 'CyberSec', link: '/CyberSec/', activeMatch: '/CyberSec/' },
+        { text: 'CI/CD', link: '/CICD/', activeMatch: '/CICD/' },
         { text: 'Development', link: '/Development/', activeMatch: '/Development/' },
         { text: 'Others', link: '/Others/', activeMatch: '/Others/' },
       ],
@@ -380,6 +381,55 @@ export default withMermaid(
                   }
                 ]
               }
+            ]
+          }
+        ],
+        '/CICD/': [
+          {
+            text: 'CI/CD',
+            items: [
+              {
+                text: 'Continuous Integration',
+                collapsed: false,
+                items: [
+                  {
+                    text: 'GitHub Actions',
+                    link: '/CICD/Github-CI'
+                  }
+                  // {
+                  //   text: 'GitLab CI',
+                  //   link: '/CICD/GitLab-CI'
+                  // }
+                ]
+              },
+              {
+                text: 'Pipeline Templates',
+                collapsed: false,
+                items: [
+                  {
+                    text: 'GitHub Actions Templates',
+                    link: '/CICD/Github-Templates'
+                  },
+                  {
+                    text: 'GitLab CI Templates',
+                    link: '/CICD/GitLab-Templates'
+                  }
+                ]
+              }
+              // {
+              //   text: 'Continuous Deployment',
+              //   collapsed: false,
+              //   items: [
+              //     {
+              //       text: 'Docker Registry',
+              //       link: '/CICD/Docker-Registry'
+              //     },
+              //     {
+              //       text: 'Automated Deployment',
+              //       link: '/CICD/Automated-Deployment'
+              //     }
+              //   ]
+              // }
             ]
           }
         ],
