@@ -85,7 +85,7 @@ export default withMermaid(
         }
       }
     },
-    title: 'Satcom - Docs',
+    title: 'DevSecOps - Documentation',
     description: 'DevSecOps Documentation',
     lang: 'en-EN',
 

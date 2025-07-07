@@ -11,15 +11,15 @@
 		"@shikijs/vitepress-twoslash": "^3.7.0",
 		"@type-challenges/utils": "^0.1.1",
 		"@types/express": "^5.0.3",
-		"@types/node": "^20.9.2",
-		"chalk": "^4.1.2",
+		"@types/node": "^24.0.10",
+		"chalk": "^5.4.1",
 		"feed": "^5.1.0",
 		"gray-matter": "^4.0.3",
 		"gsap": "^3.13.0",
 		"lodash": "^4.17.21",
-		"vite": "^7.0.0",
-		"vitepress": "^2.0.0-alpha.6",
-		"vitepress-plugin-group-icons": "^1.6.0",
+		"vite": "^7.0.2",
+		"vitepress": "2.0.0-alpha.7",
+		"vitepress-plugin-group-icons": "^1.6.1",
 		"vue": "^3.5.17",
 		"yorkie": "^2.0.0"
 	},
@@ -28,7 +28,7 @@
 		"node": "^20.19.0 || >=22.12.0"
 	},
 	"scripts": {
-		"dev": "vitepress dev . --port 5174",
+		"dev": "vitepress dev . --host 0.0.0.0 --port 5174",
 		"build": "vitepress build .",
 		"serve": "vitepress serve --host 0.0.0.0 --port 5173"
 	},
