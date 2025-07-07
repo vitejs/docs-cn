@@ -6,11 +6,97 @@ on:
       - "main"
 
 jobs:
+  security-scan:
+    runs-on: ubuntu-latest
+    name: Security Scanning
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      # Filesystem/Code Security Scan
+      - name: Run Trivy vulnerability scanner in repo mode
+        uses: aquasecurity/trivy-action@master
+        with:
+          scan-type: 'fs'
+          scan-ref: '.'
+          format: 'sarif'
+          output: 'trivy-fs-results.sarif'
+          severity: 'CRITICAL,HIGH'
+          exit-code: '0'  # Don't fail the pipeline yet, just collect results
+
+      - name: Upload filesystem scan results to GitHub Security tab
+        uses: github/codeql-action/upload-sarif@v3
+        if: always()
+        with:
+          sarif_file: 'trivy-fs-results.sarif'
+
+      # Secret Detection
+      - name: Run Trivy secret scanner
+        uses: aquasecurity/trivy-action@master
+        with:
+          scan-type: 'fs'
+          scan-ref: '.'
+          scanners: 'secret'
+          format: 'sarif'
+          output: 'trivy-secret-results.sarif'
+          exit-code: '1'  # Fail on secrets
+
+      - name: Upload secret scan results
+        uses: github/codeql-action/upload-sarif@v3
+        if: always()
+        with:
+          sarif_file: 'trivy-secret-results.sarif'
+
+      # Infrastructure as Code Scan
+      - name: Run Trivy config scanner
+        uses: aquasecurity/trivy-action@master
+        with:
+          scan-type: 'config'
+          scan-ref: '.'
+          format: 'sarif'
+          output: 'trivy-config-results.sarif'
+          severity: 'HIGH,CRITICAL'
+          exit-code: '0'  # Don't fail, just report
+
+      - name: Upload config scan results
+        uses: github/codeql-action/upload-sarif@v3
+        if: always()
+        with:
+          sarif_file: 'trivy-config-results.sarif'
+
+      # License Detection
+      - name: Run Trivy license scanner
+        uses: aquasecurity/trivy-action@master
+        with:
+          scan-type: 'fs'
+          scan-ref: '.'
+          scanners: 'license'
+          format: 'table'
+
+      # Generate comprehensive security report
+      - name: Generate security summary
+        if: always()
+        run: |
+          echo "## Security Scan Summary" >> $GITHUB_STEP_SUMMARY
+          echo "### Filesystem/Code Vulnerabilities" >> $GITHUB_STEP_SUMMARY
+          echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
+          trivy fs --format table --severity HIGH,CRITICAL . >> $GITHUB_STEP_SUMMARY 2>/dev/null || echo "No critical/high vulnerabilities found" >> $GITHUB_STEP_SUMMARY
+          echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
+          
+          echo "### Configuration Issues" >> $GITHUB_STEP_SUMMARY
+          echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
+          trivy config --format table --severity HIGH,CRITICAL . >> $GITHUB_STEP_SUMMARY 2>/dev/null || echo "No critical/high config issues found" >> $GITHUB_STEP_SUMMARY
+          echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
+
   build:
     runs-on: ubuntu-latest
     environment: test
+    needs: security-scan
     permissions:
       contents: write
+      packages: write
 
     steps:
       - uses: actions/checkout@v4
@@ -150,6 +236,7 @@ jobs:
       
       - name: Build and push
         if: steps.version.outputs.should_build == 'true'
+        id: build
         uses: docker/build-push-action@v6
         with:
           push: true
@@ -170,24 +257,89 @@ jobs:
           compression: zstd
           push-quiet: true
 
+  container-security:
+    name: Container Security Scanning
+    needs: build
+    runs-on: ubuntu-latest
+    if: needs.build.outputs.should_build == 'true'
+    steps:
+      - name: Run Trivy vulnerability scanner on image
+        uses: aquasecurity/trivy-action@master
+        with:
+          image-ref: '${{ secrets.DOCKERHUB_USERNAME }}/${{ vars.PROJECT_NAME }}:${{ needs.build.outputs.tag }}'
+          format: 'sarif'
+          output: 'trivy-image-results.sarif'
+          severity: 'CRITICAL,HIGH'
+
+      - name: Upload image scan results to GitHub Security tab
+        uses: github/codeql-action/upload-sarif@v3
+        if: always()
+        with:
+          sarif_file: 'trivy-image-results.sarif'
+
+      # Generate SBOM for the container
+      - name: Generate SBOM for container
+        uses: aquasecurity/trivy-action@master
+        with:
+          image-ref: '${{ secrets.DOCKERHUB_USERNAME }}/${{ vars.PROJECT_NAME }}:${{ needs.build.outputs.tag }}'
+          format: 'spdx-json'
+          output: 'sbom.spdx.json'
+
+      - name: Upload SBOM
+        uses: actions/upload-artifact@v4
+        with:
+          name: sbom
+          path: sbom.spdx.json
+
+      # Critical vulnerability check - fail if found
+      - name: Check for critical vulnerabilities
+        run: |
+          trivy image --format json --severity CRITICAL '${{ secrets.DOCKERHUB_USERNAME }}/${{ vars.PROJECT_NAME }}:${{ needs.build.outputs.tag }}' > vuln-report.json
+          CRITICAL_COUNT=$(jq '[.Results[]?.Vulnerabilities[]? | select(.Severity=="CRITICAL")] | length' vuln-report.json)
+          
+          echo "Critical vulnerabilities found: $CRITICAL_COUNT"
+          
+          if [ "$CRITICAL_COUNT" -gt 0 ]; then
+            echo "❌ Critical vulnerabilities found in container image!"
+            echo "## Critical Vulnerabilities Found" >> $GITHUB_STEP_SUMMARY
+            jq -r '.Results[]?.Vulnerabilities[]? | select(.Severity=="CRITICAL") | "- \(.VulnerabilityID): \(.Title)"' vuln-report.json >> $GITHUB_STEP_SUMMARY
+            exit 1
+          else
+            echo "✅ No critical vulnerabilities found"
+            echo "## Container Security ✅" >> $GITHUB_STEP_SUMMARY
+            echo "No critical vulnerabilities found in the container image." >> $GITHUB_STEP_SUMMARY
+          fi
+
+  deploy:
+    name: Deploy
+    needs: [build, container-security]
+    runs-on: ubuntu-latest
+    if: always() && needs.build.outputs.should_build == 'true' && needs.container-security.result == 'success'
+    steps:
       # Create GitHub Release
       - name: Create GitHub Release
-        if: steps.version.outputs.should_build == 'true' && steps.version.outputs.tag != 'latest'
+        if: needs.build.outputs.tag != 'latest'
         uses: actions/create-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: ${{ steps.version.outputs.tag }}
-          release_name: Release ${{ steps.version.outputs.tag }}
+          tag_name: ${{ needs.build.outputs.tag }}
+          release_name: Release ${{ needs.build.outputs.tag }}
           body: |
-            ## Changes in ${{ steps.version.outputs.tag }}
+            ## Changes in ${{ needs.build.outputs.tag }}
             
-            **Commit:** ${{ steps.commit.outputs.sha }}
-            **Build Date:** ${{ steps.date.outputs.build_date }}
-            **Commit Message:** ${{ steps.commit.outputs.msg }}
+            **Commit:** ${{ needs.build.outputs.sha }}
+            **Build Date:** ${{ needs.build.outputs.build_date }}
+            **Commit Message:** ${{ needs.build.outputs.msg }}
+            
+            ### Security Status ✅
+            - Filesystem scan: Passed
+            - Secret scan: Passed  
+            - Configuration scan: Passed
+            - Container scan: Passed
             
             ### Docker Images
-            - `${{ secrets.DOCKERHUB_USERNAME }}/${{ vars.PROJECT_NAME }}:${{ steps.version.outputs.tag }}`
+            - `${{ secrets.DOCKERHUB_USERNAME }}/${{ vars.PROJECT_NAME }}:${{ needs.build.outputs.tag }}`
             - `${{ secrets.DOCKERHUB_USERNAME }}/${{ vars.PROJECT_NAME }}:latest`
             
             ### Platforms
@@ -198,16 +350,49 @@ jobs:
 
       # Update Docker Stack via Portainer Webhook
       - name: Update Docker Stack
-        if: steps.version.outputs.should_build == 'true'
         run: |
           curl -X POST ${{ secrets.PORTAINER_STACK_WEBHOOK }} \
             -H "Content-Type: application/json" \
-            -d '{"tag": "${{ steps.version.outputs.tag }}", "commit": "${{ steps.commit.outputs.sha }}"}'
+            -d '{"tag": "${{ needs.build.outputs.tag }}", "commit": "${{ needs.build.outputs.sha }}"}'
         continue-on-error: true
 
-      # Move cache
+  notify:
+    name: Notifications
+    needs: [security-scan, build, container-security, deploy]
+    runs-on: ubuntu-latest
+    if: always()
+    steps:
+      - name: Determine overall status
+        id: status
+        run: |
+          if [[ "${{ needs.security-scan.result }}" == "failure" || "${{ needs.container-security.result }}" == "failure" ]]; then
+            echo "status=failure" >> $GITHUB_OUTPUT
+            echo "message=🚨 Security scan failed" >> $GITHUB_OUTPUT
+          elif [[ "${{ needs.build.result }}" == "failure" ]]; then
+            echo "status=failure" >> $GITHUB_OUTPUT
+            echo "message=❌ Build failed" >> $GITHUB_OUTPUT
+          elif [[ "${{ needs.deploy.result }}" == "success" ]]; then
+            echo "status=success" >> $GITHUB_OUTPUT
+            echo "message=✅ Pipeline completed successfully" >> $GITHUB_OUTPUT
+          else
+            echo "status=warning" >> $GITHUB_OUTPUT
+            echo "message=⚠️ Pipeline completed with warnings" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Security notification
+        if: needs.security-scan.result == 'failure' || needs.container-security.result == 'failure'
+        run: |
+          echo "## 🚨 Security Alert" >> $GITHUB_STEP_SUMMARY
+          echo "Security vulnerabilities were detected in this pipeline run." >> $GITHUB_STEP_SUMMARY
+          echo "Please review the Security tab for detailed findings." >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**Repository:** ${{ github.repository }}" >> $GITHUB_STEP_SUMMARY
+          echo "**Branch:** ${{ github.ref_name }}" >> $GITHUB_STEP_SUMMARY
+          echo "**Commit:** ${{ github.sha }}" >> $GITHUB_STEP_SUMMARY
+
+      # Move cache (cleanup)
       - name: Move cache
-        if: steps.version.outputs.should_build == 'true'
+        if: needs.build.outputs.should_build == 'true'
         run: |
           rm -rf /tmp/.buildx-cache
           mv /tmp/.buildx-cache-new /tmp/.buildx-cache

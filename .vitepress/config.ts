@@ -395,11 +395,25 @@ export default withMermaid(
                   {
                     text: 'GitHub Actions',
                     link: '/CICD/Github-CI'
+                  },
+                  {
+                    text: 'GitLab CI',
+                    link: '/CICD/GitLab-CI'
                   }
-                  // {
-                  //   text: 'GitLab CI',
-                  //   link: '/CICD/GitLab-CI'
-                  // }
+                ]
+              },
+              {
+                text: 'Security Scanning',
+                collapsed: false,
+                items: [
+                  {
+                    text: 'Trivy Security Scanner',
+                    link: '/CICD/Trivy'
+                  },
+                  {
+                    text: 'Complete Security Scanning Tutorial',
+                    link: '/CICD/Pipline-Templates'
+                  }
                 ]
               },
               {
