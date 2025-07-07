@@ -170,6 +170,32 @@ jobs:
           compression: zstd
           push-quiet: true
 
+      # Create GitHub Release
+      - name: Create GitHub Release
+        if: steps.version.outputs.should_build == 'true' && steps.version.outputs.tag != 'latest'
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ steps.version.outputs.tag }}
+          release_name: Release ${{ steps.version.outputs.tag }}
+          body: |
+            ## Changes in ${{ steps.version.outputs.tag }}
+            
+            **Commit:** ${{ steps.commit.outputs.sha }}
+            **Build Date:** ${{ steps.date.outputs.build_date }}
+            **Commit Message:** ${{ steps.commit.outputs.msg }}
+            
+            ### Docker Images
+            - `${{ secrets.DOCKERHUB_USERNAME }}/${{ vars.PROJECT_NAME }}:${{ steps.version.outputs.tag }}`
+            - `${{ secrets.DOCKERHUB_USERNAME }}/${{ vars.PROJECT_NAME }}:latest`
+            
+            ### Platforms
+            - linux/amd64
+            - linux/arm64
+          draft: false
+          prerelease: false
+
       # Move cache
       - name: Move cache
         if: steps.version.outputs.should_build == 'true'
