@@ -8,23 +8,48 @@ import HeroDiagram from './HeroDiagram.vue'
       <!-- ViteConf Replay Button -->
       <a href="https://doc.hash-trader.com/Infrastructure/docker.html" class="hero__pill" target="_blank">
         <img src="/icons/android-chrome-192x192.png" alt="" width="20" height="20" />
-        <span>Check me</span>
+        <span>📖 Explore Documentation</span>
       </a>
 
       <!-- Heading -->
-      <h1>Welcome :)<br />Searching to learn<br />about DevSecOps ?</h1>
+      <h1>DevSecOps<br /><span class="gradient-text">Documentation</span><br />Learn. Build. Secure.</h1>
       <!-- Tagline -->
       <h3>
-        Here you learn about Cyber, CI/CD, Infrastructure and more !
+        🔐 Cybersecurity, CI/CD, and infrastructure guides<br />
+        <span class="highlight">Resources for developers and security pros</span> 📚
       </h3>
+
+      <!-- Technology Badges -->
+      <div class="tech-badges">
+        <div class="badge-item">
+          <img class="badge-icon" src="https://cdn.jsdelivr.net/gh/selfhst/icons/svg/docker.svg" alt="Docker" />
+          <span>Docker</span>
+        </div>
+        <div class="badge-item">
+          <img class="badge-icon" src="https://cdn.jsdelivr.net/gh/selfhst/icons/svg/kubernetes.svg" alt="Kubernetes" />
+          <span>Kubernetes</span>
+        </div>
+        <div class="badge-item">
+          <img class="badge-icon" src="https://cdn.jsdelivr.net/gh/selfhst/icons/svg/hashicorp-terraform.svg" alt="Terraform" />
+          <span>Terraform</span>
+        </div>
+        <div class="badge-item">
+          <img class="badge-icon" src="https://cdn.jsdelivr.net/gh/selfhst/icons/svg/grafana.svg" alt="Grafana" />
+          <span>Monitoring</span>
+        </div>
+        <div class="badge-item">
+          <img class="badge-icon" src="https://cdn.jsdelivr.net/gh/selfhst/icons/svg/gitlab.svg" alt="GitLab" />
+          <span>CI/CD</span>
+        </div>
+        <div class="badge-item">
+          <img class="badge-icon" src="https://cdn.jsdelivr.net/gh/selfhst/icons/svg/ansible.svg" alt="Ansible" />
+          <span>Automation</span>
+        </div>
+      </div>
 
       <!-- CTA Buttons -->
       <div class="hero__actions">
-        <a href="/Infrastructure/" class="btn btn--primary">Get Started</a>
-        <a href="https://github.com/Satcomx00-x00" target="_blank" class="btn btn--outline">
-          <img src="/github.svg" alt="GitHub logo" width="20" height="20" />
-          GitHub
-        </a>
+        <a href="/Infrastructure/" class="btn btn--primary">📚 Browse Guides</a>
       </div>
     </div>
 
@@ -57,6 +82,56 @@ import HeroDiagram from './HeroDiagram.vue'
   @media (min-width: 768px) {
     margin: 95px auto 0;
   }
+}
+
+.gradient-text {
+  background: linear-gradient(120deg, #bd34fe 30%, #41d1ff 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.highlight {
+  color: #ffd700;
+  font-weight: 600;
+}
+
+.tech-badges {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin: 30px 0;
+  max-width: 700px;
+  width: 100%;
+}
+
+.badge-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+  font-size: 14px;
+  font-weight: 500;
+  color: #ffffff;
+  white-space: nowrap;
+}
+
+.badge-item:hover {
+  transform: translateY(-2px);
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.badge-icon {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
 }
 
 .hero__pill {

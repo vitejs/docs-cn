@@ -26,20 +26,19 @@ import FeatureCI from './.vitepress/theme/components/landing/2. feature-section/
 
 <div class="VPHome">
   <Hero/>
-  <FeatureSection title="Reinterpreting the Developer Experience" description="Simple, clear, helpfull" type="blue">
+  <FeatureSection title="🎯 DevSecOps fundamentals" description="Learn core concepts through practical examples" type="blue">
     <FeatureInstantServerStart />
     <FeatureHMR />
     <FeatureRichFeatures />
     <FeatureOptimizedBuild />
   </FeatureSection>
-  <FeatureSection title="The Solid Foundation of Joint Construction" type="pink" class="feature-section--flip">
+  <FeatureSection title="🏗️ Advanced implementation" description="Security patterns, monitoring, and automation" type="pink" class="feature-section--flip">
     <FeatureFlexiblePlugins />
     <FeatureTypedAPI />
     <FeatureSSRSupport />
     <FeatureCI />
   </FeatureSection>
   <FrameworksSection />
-  <CommunitySection />
   <!-- <SponsorSection /> -->
   <GetStartedSection />
 </div>

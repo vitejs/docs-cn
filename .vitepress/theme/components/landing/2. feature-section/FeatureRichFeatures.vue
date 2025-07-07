@@ -126,9 +126,10 @@ const { isCardActive, startAnimation } = useCardAnimation(
       <div class="center-glow" />
     </div>
     <div class="feature__meta meta--center">
-      <div class="meta__title">Rich featurefeature</div>
+      <div class="meta__title">🛠️ Complete toolchain</div>
       <div class="meta__description">
-        Support the boxes of TypeScript, JSX, CSS, etc.
+        Documentation for <strong>essential DevSecOps tools</strong>: Docker, Kubernetes, Terraform, 
+        Ansible, ELK Stack, WAF and IDS. Examples and best practices.
       </div>
     </div>
   </div>

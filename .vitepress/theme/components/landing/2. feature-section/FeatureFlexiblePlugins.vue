@@ -172,9 +172,10 @@ const { isCardActive, startAnimation } = useCardAnimation(
       </div>
     </div>
     <div class="feature__meta">
-      <div class="meta__title">Flexible plug -in system</div>
+      <div class="meta__title">🔌 Integration patterns</div>
       <div class="meta__description">
-        X
+        Integrate tools: <strong>Terraform for IaC</strong>, Ansible for automation, 
+        and connect components in your DevSecOps workflow. Flexible patterns.
       </div>
     </div>
   </div>

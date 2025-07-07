@@ -274,14 +274,7 @@ const { startAnimation, isCardActive } = useCardAnimation(
             glow-color="#13B351"
           />
           <SvgNode
-            path="M1 107.817L169.982 67.8308C184.008 65.2668 193.467 58.0743 193.467 49.9735V20.323V9.78387C193.467 4.93267 197.4 1 202.251 1"
-            :position="glowPosition"
-            :visible="glowVisible"
-            :dot-color="false"
-            glow-color="#13B351"
-          />
-          <SvgNode
-            path="M306.924 1V20.323V55.7423C306.924 60.7337 303.306 65.5207 296.865 69.0509L62.8139 197.336C52.968 202.733 46.8471 213.068 46.8471 224.296V240.342"
+            path="M1 107.817L169.982 67.8308C184.008 65.2668 193.467 58.0743 193.467 49.9735V20.323V9.78387C193.467 4.93267 197.4 1 202.251 1H221.832M221.832 1H250.195M250.195 1H278.558M278.558 1H306.924M306.924 1V20.323V55.7423C306.924 60.7337 303.306 65.5207 296.865 69.0509L62.8139 197.336C52.968 202.733 46.8471 213.068 46.8471 224.296V240.342M306.924 1H335.286M335.286 1V20.323V59.0919C335.286 62.0155 334.043 64.8989 331.656 67.5136L213.175 197.282C208.003 202.947 205.136 210.34 205.136 218.011V240.342M335.286 1H363.65M363.65 1V20.323L363.428 206.088V240.342M363.65 1H392.015M392.015 1V20.323V59.1056C392.015 62.0204 393.25 64.8954 395.624 67.5041L513.712 197.291C518.862 202.951 521.716 210.328 521.716 217.981V240.342M392.015 1H420.377M420.377 1V20.323V55.7518C420.377 60.7376 423.987 65.5197 430.415 69.0489L664.058 197.332C673.893 202.732 680.005 213.061 680.005 224.28V240.342M420.377 1H448.743M448.743 1H477.106M477.106 1H505.469"
             :position="1 - glowPosition"
             :visible="glowVisible"
             :dot-color="false"
@@ -319,8 +312,10 @@ const { startAnimation, isCardActive } = useCardAnimation(
       </div>
     </div>
     <div class="feature__meta meta--center">
-      <div class="meta__title">Continuous ecosystem integration</div>
+      <div class="meta__title">🔄 Security testing</div>
       <div class="meta__description">
+        Implement security testing with <strong>SAST, DAST and SCA</strong>. 
+        Analyze code for vulnerabilities and secure deployment practices.
       </div>
     </div>
   </div>

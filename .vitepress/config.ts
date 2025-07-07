@@ -85,7 +85,7 @@ export default withMermaid(
         }
       }
     },
-    title: 'DevSecOps - Documentation',
+    title: 'DevSecOps',
     description: 'DevSecOps Documentation',
     lang: 'en-EN',
 

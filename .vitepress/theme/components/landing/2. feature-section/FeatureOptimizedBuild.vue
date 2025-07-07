@@ -436,9 +436,10 @@ const { startAnimation } = useCardAnimation(
       </svg>
     </div>
     <div class="feature__meta meta--center">
-      <div class="meta__title">Optimized construction</div>
+      <div class="meta__title">⚡ CI/CD pipelines</div>
       <div class="meta__description">
-        Optional "multi -page applications" or "library" mode pre -set ROLLUP construction
+        Build <strong>secure pipelines</strong> with GitLab CI, GitHub Actions and Jenkins. 
+        Security testing and vulnerability scanning tutorials.
       </div>
     </div>
   </div>

@@ -182,9 +182,10 @@ onUnmounted(() => {
       <div class="connection-line" :class="{ active: commandTriggered }" />
     </div>
     <div class="feature__meta">
-      <div class="meta__title">Speed ​​service startup</div>
+      <div class="meta__title">🚀 Quick setup</div>
       <div class="meta__description">
-        Use the native ESM file without packing
+        Fast setup for DevSecOps environments with Docker and Kubernetes. 
+        <strong>Clear docs</strong> to get started quickly.
       </div>
     </div>
   </div>

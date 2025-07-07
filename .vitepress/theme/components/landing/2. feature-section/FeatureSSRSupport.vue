@@ -417,9 +417,11 @@ const { isCardActive, startAnimation } = useCardAnimation(
       </svg>
     </div>
     <div class="feature__meta">
-      <div class="meta__title">First -class SSR support</div>
+      <div class="meta__title">🔒 Security architecture</div>
       <div class="meta__description">
-        X
+        Implement <strong>defense-in-depth security</strong>: 
+        encryption, authentication, authorization, monitoring. 
+        Security from application to infrastructure.
       </div>
     </div>
   </div>

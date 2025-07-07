@@ -247,9 +247,10 @@ const { startAnimation } = useCardAnimation(
       </div>
     </div>
     <div class="feature__meta meta--center">
-      <div class="meta__title">Lightweight and fast module heat replacement</div>
+      <div class="meta__title">🔄 Real-time monitoring</div>
       <div class="meta__description">
-        Regardless of the size of the application, the module thermal replacement (HMR) is always performed at a very fast speed (HMR)
+        Monitor applications and infrastructure continuously. 
+        <strong>Guides</strong> for ELK Stack, Prometheus, and Grafana.
       </div>
     </div>
   </div>
