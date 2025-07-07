@@ -70,10 +70,17 @@ export default defineConfig({
 
 Vite 将预构建的依赖项缓存到 `node_modules/.vite` 中。它会基于以下几个来源来决定是否需要重新运行预构建步骤：
 
+<<<<<<< HEAD
 - 包管理器的锁文件内容，例如 `package-lock.json`，`yarn.lock`，`pnpm-lock.yaml`，或者 `bun.lockb`；
 - 补丁文件夹的修改时间；
 - `vite.config.js` 中的相关字段；
 - `NODE_ENV` 的值。
+=======
+- Package manager lockfile content, e.g. `package-lock.json`, `yarn.lock`, `pnpm-lock.yaml` or `bun.lock`.
+- Patches folder modification time.
+- Relevant fields in your `vite.config.js`, if present.
+- `NODE_ENV` value.
+>>>>>>> 8490f1d17348c103e90c4a71a6ad3fec21730c18
 
 只有在上述其中一项发生更改时，才需要重新运行预构建。
 
