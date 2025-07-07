@@ -403,6 +403,32 @@ export default withMermaid(
                 ]
               },
               {
+                text: 'Static Code Analysis',
+                collapsed: false,
+                items: [
+                  {
+                    text: 'Semgrep',
+                    link: '/CICD/Static-Analysis/Semgrep'
+                  },
+                  {
+                    text: 'SonarQube',
+                    link: '/CICD/Static-Analysis/SonarQube'
+                  },
+                  {
+                    text: 'CodeQL',
+                    link: '/CICD/Static-Analysis/CodeQL'
+                  },
+                  {
+                    text: 'Bandit',
+                    link: '/CICD/Static-Analysis/Bandit'
+                  },
+                  {
+                    text: 'gosec',
+                    link: '/CICD/Static-Analysis/gosec'
+                  }
+                ]
+              },
+              {
                 text: 'Security Scanning',
                 collapsed: false,
                 items: [
