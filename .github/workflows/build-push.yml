@@ -31,6 +31,7 @@ jobs:
         if: always()
         with:
           sarif_file: 'trivy-fs-results.sarif'
+          category: 'trivy-filesystem'
 
       # Secret Detection
       - name: Run Trivy secret scanner
@@ -48,6 +49,7 @@ jobs:
         if: always()
         with:
           sarif_file: 'trivy-secret-results.sarif'
+          category: 'trivy-secrets'
 
       # Infrastructure as Code Scan
       - name: Run Trivy config scanner
@@ -59,12 +61,14 @@ jobs:
           output: 'trivy-config-results.sarif'
           severity: 'HIGH,CRITICAL'
           exit-code: '0'  # Don't fail, just report
+        continue-on-error: true  # Don't fail if no config files found
 
       - name: Upload config scan results
         uses: github/codeql-action/upload-sarif@v3
-        if: always()
+        if: always() && hashFiles('trivy-config-results.sarif') != ''
         with:
           sarif_file: 'trivy-config-results.sarif'
+          category: 'trivy-config'
 
       # License Detection
       - name: Run Trivy license scanner
@@ -74,6 +78,7 @@ jobs:
           scan-ref: '.'
           scanners: 'license'
           format: 'table'
+        continue-on-error: true
 
       # Generate comprehensive security report
       - name: Generate security summary
@@ -97,6 +102,12 @@ jobs:
     permissions:
       contents: write
       packages: write
+    outputs:
+      should_build: ${{ steps.version.outputs.should_build }}
+      tag: ${{ steps.version.outputs.tag }}
+      sha: ${{ steps.commit.outputs.sha }}
+      msg: ${{ steps.commit.outputs.msg }}
+      build_date: ${{ steps.date.outputs.build_date }}
 
     steps:
       - uses: actions/checkout@v4
@@ -276,6 +287,7 @@ jobs:
         if: always()
         with:
           sarif_file: 'trivy-image-results.sarif'
+          category: 'trivy-container'
 
       # Generate SBOM for the container
       - name: Generate SBOM for container
