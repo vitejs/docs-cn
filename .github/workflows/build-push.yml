@@ -442,4 +442,8 @@ jobs:
         if: needs.build.outputs.should_build == 'true'
         run: |
           rm -rf /tmp/.buildx-cache
-          mv /tmp/.buildx-cache-new /tmp/.buildx-cache
+          if [ -d "/tmp/.buildx-cache-new" ]; then
+            mv /tmp/.buildx-cache-new /tmp/.buildx-cache
+          else
+            echo "No new cache directory found, skipping cache move"
+          fi
