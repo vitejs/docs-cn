@@ -4,19 +4,31 @@ import { Feed } from 'feed'
 import type { SiteConfig } from 'vitepress'
 import { createContentLoader } from 'vitepress'
 
-const siteUrl = 'https://vite.dev'
+const siteUrl = 'https://devsecforge.io'
 const blogUrl = `${siteUrl}/blog`
 
 export const buildEnd = async (config: SiteConfig): Promise<void> => {
   const feed = new Feed({
-    title: 'Vite',
-    description: 'Next Generation Frontend Tooling',
+    title: 'DevSecOps Documentation',
+    description:
+      'Learn DevSecOps through practical guides and examples - Docker, Kubernetes, Security, CI/CD',
     id: blogUrl,
     link: blogUrl,
     language: 'en',
-    image: 'https://vite.dev/og-image.png',
-    favicon: 'https://vite.dev/logo.svg',
-    copyright: 'Copyright © 2019-present VoidZero Inc. & Vite Contributors',
+    image: `${siteUrl}/icons/android-chrome-512x512.png`,
+    favicon: `${siteUrl}/icons/favicon.ico`,
+    copyright: 'Copyright © 2024-Now - Satcom',
+    generator: 'VitePress with DevSecOps Documentation',
+    feedLinks: {
+      rss: `${siteUrl}/blog.rss`,
+      atom: `${siteUrl}/blog.atom`,
+      json: `${siteUrl}/blog.json`,
+    },
+    author: {
+      name: 'DevSecForge Team',
+      email: 'contact@devsecforge.io',
+      link: siteUrl,
+    },
   })
 
   const posts = await createContentLoader('blog/*.md', {
@@ -47,4 +59,6 @@ export const buildEnd = async (config: SiteConfig): Promise<void> => {
   }
 
   writeFileSync(path.join(config.outDir, 'blog.rss'), feed.rss2())
+  writeFileSync(path.join(config.outDir, 'blog.atom'), feed.atom1())
+  writeFileSync(path.join(config.outDir, 'blog.json'), feed.json1())
 }

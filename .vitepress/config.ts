@@ -8,10 +8,10 @@ import {
 import { buildEnd } from './buildEnd.config'
 import { withMermaid } from 'vitepress-plugin-mermaid'
 
-const ogDescription = 'Next Generation Frontend Tooling'
-const ogImage = 'https://vite.dev/og-image.jpg'
-const ogTitle = 'Vite'
-const ogUrl = 'https://vite.dev'
+const ogDescription = 'Learn DevSecOps through practical guides and examples'
+const ogImage = 'https://devsecforge.io/icons/android-chrome-512x512.png'
+const ogTitle = 'DevSecOps Documentation'
+const ogUrl = 'https://devsecforge.io'
 
 // netlify envs
 const deployURL = process.env.DEPLOY_PRIME_URL || ''
@@ -93,7 +93,15 @@ export default withMermaid(
       ['link', { rel: 'icon', type: 'image/png', href: '/icons/android-chrome-192x192.png' }],
       [
         'link',
-        { rel: 'alternate', type: 'application/rss+xml', href: '/blog.rss' }
+        { rel: 'alternate', type: 'application/rss+xml', title: 'DevSecOps RSS Feed', href: '/blog.rss' }
+      ],
+      [
+        'link',
+        { rel: 'alternate', type: 'application/atom+xml', title: 'DevSecOps Atom Feed', href: '/blog.atom' }
+      ],
+      [
+        'link',
+        { rel: 'alternate', type: 'application/json', title: 'DevSecOps JSON Feed', href: '/blog.json' }
       ],
       ['link', { rel: 'preconnect', href: 'https://fonts.googleapis.com' }],
       [
@@ -125,10 +133,13 @@ export default withMermaid(
       ['meta', { property: 'og:image', content: ogImage }],
       ['meta', { property: 'og:url', content: ogUrl }],
       ['meta', { property: 'og:description', content: ogDescription }],
-      ['meta', { property: 'og:site_name', content: 'vitejs' }],
+      ['meta', { property: 'og:site_name', content: 'DevSecForge' }],
       ['meta', { name: 'twitter:card', content: 'summary_large_image' }],
-      ['meta', { name: 'twitter:site', content: '@vite_js' }],
-      ['meta', { name: 'theme-color', content: '#646cff' }],
+      ['meta', { name: 'twitter:site', content: '@devsecforge' }],
+      ['meta', { name: 'twitter:title', content: ogTitle }],
+      ['meta', { name: 'twitter:description', content: ogDescription }],
+      ['meta', { name: 'twitter:image', content: ogImage }],
+      ['meta', { name: 'theme-color', content: '#bd34fe' }],
       [
         'script',
         {
@@ -159,7 +170,7 @@ export default withMermaid(
       logo: '/icons/android-chrome-192x192.png',
 
       editLink: {
-        pattern: 'https://github.com/vitejs/docs-cn/edit/main/:path',
+        pattern: 'https://github.com/devsecforge/docs/edit/main/:path',
         text: 'Suggest changes to this page'
       },
 
@@ -227,7 +238,7 @@ export default withMermaid(
 
       footer: {
         message: `Released under the MIT License. (${commitRef})`,
-        copyright: 'Copyright © 2024-Now - Satcom'
+        copyright: 'Copyright © 2024-Now - DevSecForge'
       },
 
       nav: [

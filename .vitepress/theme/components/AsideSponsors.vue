@@ -20,7 +20,7 @@ const sponsors = computed(() => {
 <template>
   <a
     class="viteconf"
-    href="https://doc.hash-trader.com/"
+    href="https://devsecforge.io/"
     target="_blank"
   >
     <img width="22" height="22" src="/viteconf.svg" alt="ViteConf Logo" />

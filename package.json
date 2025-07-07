@@ -1,10 +1,10 @@
 {
-	"name": "vite-docs-cn",
+	"name": "devsecforge-docs",
 	"version": "1.0.0",
-	"description": "Vite.js documentation Chinese translation.",
-	"repository": "https://github.com/vitejs/docs-cn",
+	"description": "DevSecForge documentation - Learn DevSecOps through practical guides and examples.",
+	"repository": "https://github.com/Satcomx00-x00/docs-cn",
 	"type": "module",
-	"author": "Evan You",
+	"author": "DevSecForge Team",
 	"private": true,
 	"license": "CC BY-NC-SA 4.0",
 	"devDependencies": {
