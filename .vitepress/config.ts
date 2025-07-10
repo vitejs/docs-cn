@@ -40,6 +40,20 @@ const additionalTitle = ((): string => {
 
 export default withMermaid(
   defineConfig({
+    // Enable sitemap generation
+    sitemap: {
+      hostname: 'https://devsecforge.io', // Explicitly set the full URL
+      lastmodDateOnly: false,
+      transformItems: (items) => {
+        // Filter out Terms of Service and Privacy Policy pages from sitemap
+        return items.filter(item => !item.url.includes('/others/terms-of-service') && 
+                                    !item.url.includes('/others/privacy-policy'));
+      }
+    },
+    
+    // Enable lastUpdated for <lastmod> tags in sitemap
+    lastUpdated: true,
+    
     mermaid: {
       // Theme configuration
       theme: {
