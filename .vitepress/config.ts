@@ -157,15 +157,6 @@ export default withMermaid(
       [
         'script',
         {
-          src: 'https://cdn.usefathom.com/script.js',
-          'data-site': 'TPLGJZGR',
-          'data-spa': 'auto',
-          defer: ''
-        }
-      ],
-      [
-        'script',
-        {
           async: '',
           src: 'https://www.googletagmanager.com/gtag/js?id=GTM-NPBF76F8'
         }

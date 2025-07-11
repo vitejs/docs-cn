@@ -11,6 +11,9 @@ RUN apk update && \
 
 WORKDIR /app
 
+# Create non-root user and group
+RUN addgroup -S appgroup && adduser -S appuser -G appgroup
+
 # Create necessary directories with proper permissions
 RUN mkdir -p /app/.vitepress && \
     mkdir -p /app/node_modules/.vite-temp && \
@@ -40,8 +43,14 @@ RUN if [ -f "/app/.vitepress/config.ts" ]; then \
       exit 1; \
     fi
 
+# Change ownership to non-root user
+RUN chown -R appuser:appgroup /app /pnpm
+
 # Build the application
 RUN pnpm run build
+
+# Switch to non-root user
+USER appuser
 
 EXPOSE 4173
 
