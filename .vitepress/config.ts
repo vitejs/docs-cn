@@ -167,7 +167,7 @@ export default withMermaid(
         'script',
         {
           async: '',
-          src: 'https://www.googletagmanager.com/gtag/js?id=GTM-P4PD4B4B'
+          src: 'https://www.googletagmanager.com/gtag/js?id=GTM-NPBF76F8'
         }
       ],
       [
@@ -176,7 +176,7 @@ export default withMermaid(
         `window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-      gtag('config', 'GTM-P4PD4B4B');`
+      gtag('config', 'GTM-NPBF76F8');`
       ]
     ],
 
