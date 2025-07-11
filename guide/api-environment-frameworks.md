@@ -13,9 +13,19 @@
 请与我们分享您的反馈。
 :::
 
+<<<<<<< HEAD
 ## 环境和框架 {#environments-and-frameworks}
 
 隐式的 `ssr` 环境和其他非客户端环境在开发过程中默认使用 `RunnableDevEnvironment`。虽然这要求运行时与 Vite 服务器运行的环境相同，但这与 `ssrLoadModule` 类似，允许框架迁移并为其 SSR 开发方案启用模块热替换（HMR）。你可以使用 `isRunnableDevEnvironment` 函数来保护任何可运行的环境。
+=======
+## DevEnvironment Communication Levels
+
+Since environments may run in different runtimes, communication against the environment may have constraints depending on the runtime. To allow frameworks to write runtime agnostic code easily, the Environment API provides three kinds of communication levels.
+
+### `RunnableDevEnvironment`
+
+`RunnableDevEnvironment` is an environment that can communicate arbitrary values. The implicit `ssr` environment and other non-client environments use a `RunnableDevEnvironment` by default during dev. While this requires the runtime to be the same with the one the Vite server is running in, this works similarly with `ssrLoadModule` and allows frameworks to migrate and enable HMR for their SSR dev story. You can guard any runnable environment with an `isRunnableDevEnvironment` function.
+>>>>>>> 55d2c4e66962b48725ec13b1b87d3073deaea349
 
 ```ts
 export class RunnableDevEnvironment extends DevEnvironment {
@@ -43,6 +53,7 @@ if (isRunnableDevEnvironment(server.environments.ssr)) {
 只有在第一次使用时，`runner` 才会被加载。请注意，当通过调用 `process.setSourceMapsEnabled` 或在不支持的情况下重写 `Error.prepareStackTrace` 创建 `runner` 时，Vite 会启用源映射支持。
 :::
 
+<<<<<<< HEAD
 那些通过 [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Window/fetch) 与它们的运行环境进行交互的框架可以使用 `FetchableDevEnvironment`，它提供了一种标准化的方式来通过 `handleRequest` 方法处理请求：
 
 ```ts
@@ -87,6 +98,9 @@ Vite 会检查 `dispatchFetch` 方法的输入和输出：请求必须是全局 
 ## 默认 `RunnableDevEnvironment` {#default-runnabledevenvironment}
 
 假设我们有一个配置为中间件模式的 Vite 服务器，如 [SSR 设置指南](/guide/ssr#setting-up-the-dev-server) 所述，我们可以使用环境 API 来实现 SSR 中间件。请记住，它不必命名为 `ssr`，因此在本例中我们将其命名为 `server`。错误处理部分已省略。
+=======
+Given a Vite server configured in middleware mode as described by the [SSR setup guide](/guide/ssr#setting-up-the-dev-server), let's implement the SSR middleware using the environment API. Remember that it doesn't have to be called `ssr`, so we'll name it `server` in this example. Error handling is omitted.
+>>>>>>> 55d2c4e66962b48725ec13b1b87d3073deaea349
 
 ```js
 import fs from 'node:fs'
@@ -142,6 +156,7 @@ app.use('*', async (req, res, next) => {
 })
 ```
 
+<<<<<<< HEAD
 ## 运行时无关的 SSR {#runtime-agnostic-ssr}
 
 由于 `RunnableDevEnvironment` 只能用于在与 Vite 服务器相同的运行时中运行代码，它需要一个可以运行 Vite 服务器的运行时（即与 Node.js 兼容的运行时）。这意味着您需要使用原始的 `DevEnvironment` 来使其对运行时无关。
@@ -159,25 +174,68 @@ app.use('*', async (req, res, next) => {
 ```ts
 // 使用 Vite API 的代码
 import { createServer } from 'vite'
+=======
+### `FetchableDevEnvironment`
 
-const server = createServer()
-const ssrEnvironment = server.environment.ssr
-const input = {}
+:::info
 
-const { createHandler } = await ssrEnvironment.runner.import('./entrypoint.js')
-const handler = createHandler(input)
-const response = handler(new Request('/'))
+We are looking for feedback on [the `FetchableDevEnvironment` proposal](https://github.com/vitejs/vite/discussions/18191).
 
-// -------------------------------------
-// ./entrypoint.js
-export function createHandler(input) {
-  return function handler(req) {
-    return new Response('hello')
-  }
+:::
+
+`FetchableDevEnvironment` is an environment that can communicate with its runtime via the [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Window/fetch) interface. Since the `RunnableDevEnvironment` is only possible to implement in a limited set of runtimes, we recommend to use the `FetchableDevEnvironment` instead of the `RunnableDevEnvironment`.
+
+This environment provides a standardized way of handling requests via the `handleRequest` method:
+
+```ts
+import {
+  createServer,
+  createFetchableDevEnvironment,
+  isFetchableDevEnvironment,
+} from 'vite'
+>>>>>>> 55d2c4e66962b48725ec13b1b87d3073deaea349
+
+const server = await createServer({
+  server: { middlewareMode: true },
+  appType: 'custom',
+  environments: {
+    custom: {
+      dev: {
+        createEnvironment(name, config) {
+          return createFetchableDevEnvironment(name, config, {
+            handleRequest(request: Request): Promise<Response> | Response {
+              // handle Request and return a Response
+            },
+          })
+        },
+      },
+    },
+  },
+})
+
+// Any consumer of the environment API can now call `dispatchFetch`
+if (isFetchableDevEnvironment(server.environments.custom)) {
+  const response: Response = await server.environments.custom.dispatchFetch(
+    new Request('/request-to-handle'),
+  )
 }
 ```
 
+<<<<<<< HEAD
 如果你的代码可以在与用户模块相同的运行时中运行（即，它不依赖于 Node.js 特定的 API），你可以使用虚拟模块。这种方法避免了从使用 Vite API 的代码中获取值的需求。
+=======
+:::warning
+Vite validates the input and output of the `dispatchFetch` method: the request must be an instance of the global `Request` class and the response must be the instance of the global `Response` class. Vite will throw a `TypeError` if this is not the case.
+
+Note that although the `FetchableDevEnvironment` is implemented as a class, it is considered an implementation detail by the Vite team and might change at any moment.
+:::
+
+### raw `DevEnvironment`
+
+If the environment does not implement the `RunnableDevEnvironment` or `FetchableDevEnvironment` interfaces, you need to set up the communication manually.
+
+If your code can run in the same runtime as the user modules (i.e., it does not rely on Node.js-specific APIs), you can use a virtual module. This approach eliminates the need to access the value from the code using Vite's APIs.
+>>>>>>> 55d2c4e66962b48725ec13b1b87d3073deaea349
 
 ```ts
 // 使用 Vite API 的代码
@@ -195,11 +253,17 @@ const server = createServer({
 const ssrEnvironment = server.environment.ssr
 const input = {}
 
+<<<<<<< HEAD
 // 使用每个环境工厂暴露的函数来运行代码
 // 检查每个环境工厂提供了什么
 if (ssrEnvironment instanceof RunnableDevEnvironment) {
   ssrEnvironment.runner.import('virtual:entrypoint')
 } else if (ssrEnvironment instanceof CustomDevEnvironment) {
+=======
+// use exposed functions by each environment factories that runs the code
+// check for each environment factories what they provide
+if (ssrEnvironment instanceof CustomDevEnvironment) {
+>>>>>>> 55d2c4e66962b48725ec13b1b87d3073deaea349
   ssrEnvironment.runEntrypoint('virtual:entrypoint')
 } else {
   throw new Error(`Unsupported runtime for ${ssrEnvironment.name}`)

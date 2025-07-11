@@ -110,6 +110,8 @@ function createWorkerdDevEnvironment(
 }
 ```
 
+There are [multiple communication levels for the `DevEnvironment`](/guide/api-environment-frameworks#devenvironment-communication-levels). To make it easier for frameworks to write runtime agnostic code, we recommend to implement the most flexible communication level possible.
+
 ## `ModuleRunner`
 
 一个模块运行器在目标运行时中实例化。下一节中的所有 API 都从 `vite/module-runner` 导入，除非另有说明。这个导出入口文件尽可能保持轻量，仅导出创建模块运行器所需的最小部分。
