@@ -7,6 +7,7 @@ import {
 } from 'vitepress-plugin-group-icons'
 import { buildEnd } from './buildEnd.config'
 import { withMermaid } from 'vitepress-plugin-mermaid'
+import { joinURL, withoutTrailingSlash } from 'ufo'
 
 const ogDescription = 'Learn DevSecOps through practical guides and examples'
 const ogImage = 'https://devsecforge.io/icons/android-chrome-512x512.png'
@@ -53,6 +54,9 @@ export default withMermaid(
     
     // Enable lastUpdated for <lastmod> tags in sitemap
     lastUpdated: true,
+    
+    // Enable clean URLs for better SEO (removes .html extension)
+    cleanUrls: true,
     
     mermaid: {
       // Theme configuration
@@ -524,14 +528,60 @@ export default withMermaid(
       }
     },
     transformPageData(pageData) {
-      const canonicalUrl = `${ogUrl}/${pageData.relativePath}`
-        .replace(/\/index\.md$/, '/')
-        .replace(/\.md$/, '/')
+      // Initialize head array if it doesn't exist
       pageData.frontmatter.head ??= []
-      pageData.frontmatter.head.unshift(
-        ['link', { rel: 'canonical', href: canonicalUrl }],
-        ['meta', { property: 'og:title', content: pageData.title }]
+      
+      // Create canonical URL without .html extension for better SEO
+      const canonicalUrl = joinURL(
+        ogUrl,
+        withoutTrailingSlash(pageData.relativePath.replace(/(index)?\.md$/, ''))
       )
+      
+      // Add dynamic metadata for better SEO and social sharing
+      pageData.frontmatter.head.push(
+        // Canonical URL
+        ['link', { rel: 'canonical', href: canonicalUrl }],
+        
+        // OpenGraph title
+        ['meta', { 
+          property: 'og:title', 
+          content: pageData.frontmatter.title || pageData.title || ogTitle 
+        }],
+        
+        // Twitter title
+        ['meta', { 
+          name: 'twitter:title', 
+          content: pageData.frontmatter.title || pageData.title || ogTitle 
+        }],
+        
+        // OpenGraph description
+        ['meta', { 
+          property: 'og:description', 
+          content: pageData.frontmatter.description || pageData.description || ogDescription 
+        }],
+        
+        // Twitter description
+        ['meta', { 
+          name: 'twitter:description', 
+          content: pageData.frontmatter.description || pageData.description || ogDescription 
+        }],
+        
+        // OpenGraph URL for the current page
+        ['meta', { property: 'og:url', content: canonicalUrl }]
+      )
+      
+      // Add OpenGraph image if specified in frontmatter, otherwise use default
+      if (pageData.frontmatter.image) {
+        const imageUrl = pageData.frontmatter.image.startsWith('http') 
+          ? pageData.frontmatter.image 
+          : joinURL(ogUrl, pageData.frontmatter.image)
+        
+        pageData.frontmatter.head.push(
+          ['meta', { property: 'og:image', content: imageUrl }],
+          ['meta', { name: 'twitter:image', content: imageUrl }]
+        )
+      }
+      
       return pageData
     },
     markdown: {

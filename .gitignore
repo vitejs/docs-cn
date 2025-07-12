@@ -11,3 +11,4 @@ yarn.lock
 .vitepress/cache
 scripts/verifyCommit.js
 pnpm-lock.yaml
+.pnpm-store

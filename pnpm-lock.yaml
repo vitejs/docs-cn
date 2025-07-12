@@ -39,6 +39,9 @@ importers:
       lodash:
         specifier: ^4.17.21
         version: 4.17.21
+      ufo:
+        specifier: ^1.6.1
+        version: 1.6.1
       vite:
         specifier: ^7.0.2
         version: 7.0.2(@types/node@24.0.10)
