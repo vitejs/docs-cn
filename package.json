@@ -13,7 +13,7 @@
 		"feed": "^5.1.0",
 		"vitepress": "^2.0.0-alpha.7",
 		"vitepress-plugin-group-icons": "^1.6.1",
-		"vue": "^3.5.17",
+		"vue": "3.6.0-alpha.1",
 		"@types/node": "^20.9.2",
 		"@type-challenges/utils": "^0.1.1",
 		"chalk": "^4.1.2",
