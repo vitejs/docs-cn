@@ -103,7 +103,7 @@ app.use('*', async (req, res, next) => {
 })
 ```
 
-When using environments that support HMR (such as `RunnableDevEnvironment`), you should add `import.meta.hot.accept()` in your server entry file for optimal behavior. Without this, server file changes will invalidate the entire server module graph:
+在使用支持 HMR（如 `RunnableDevEnvironment`）的环境时，您应在服务器入口文件中添加 `import.meta.hot.accept()` 以获得最佳性能。若未添加此代码，服务器文件的更改将导致整个服务器模块图失效：
 
 ```js
 // src/entry-server.js

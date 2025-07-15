@@ -113,11 +113,7 @@ Vite 启动模板默认情况下会设置 `"skipLibCheck": "true"`，以避免�
 
 ### 客户端类型 {#client-types}
 
-<<<<<<< HEAD
 Vite 默认的类型定义是写给它的 Node.js API 的。要将其补充到一个 Vite 应用的客户端代码环境中，请添加一个 `d.ts` 声明文件：
-=======
-Vite's default types are for its Node.js API. To shim the environment of client-side code in a Vite application, add a `d.ts` declaration file:
->>>>>>> 2075f317a396ad11714f57d2c754477c26a9d3f9
 
 ```typescript
 /// <reference types="vite/client" />
