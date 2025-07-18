@@ -486,7 +486,40 @@ export default withMermaid(
           {
             text: 'Development',
             items: [
-
+              {
+                text: 'Languages',
+                collapsed: false,
+                items: [
+                  {
+                    text: '📌 Go',
+                    collapsed: true,
+                    items: [
+                      {
+                        text: 'Go Basics',
+                        link: '/Development/Languages/Go/Go-Basics'
+                      },
+                      {
+                        text: 'Installing Go',
+                        link: '/Development/Languages/Go/Go-Install'
+                      }
+                    ]
+                  },
+                  {
+                    text: '📌 Rust',
+                    collapsed: true,
+                    items: [
+                      {
+                        text: 'Rust Basics',
+                        link: '/Development/Languages/Rust/Rust-Basics'
+                      },
+                      {
+                        text: 'Installing Rust',
+                        link: '/Development/Languages/Rust/Rust-Install'
+                      }
+                    ]
+                  }
+                ]
+              },
               {
                 text: 'Best Practices',
                 collapsed: false,

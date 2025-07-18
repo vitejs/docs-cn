@@ -708,3 +708,21 @@ myproject/
 ::: tip
 This structure follows the standard Go project layout recommendations.
 :::
+
+## Go Concurrency Model {#concurrency-model}
+
+Go's concurrency model is one of its most powerful features, allowing developers to write efficient concurrent code.
+
+```mermaid
+graph TD
+    A[Go Program] --> B[Main Goroutine]
+    B --> C[Goroutine 1]
+    B --> D[Goroutine 2]
+    B --> E[Goroutine 3]
+    C --> F[Channel]
+    D --> F
+    E --> F
+    F --> B
+```
+
+This diagram illustrates how goroutines can communicate through channels, which is Go's approach to safe concurrent data access.
