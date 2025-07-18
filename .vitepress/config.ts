@@ -1,5 +1,5 @@
 import type { DefaultTheme } from 'vitepress'
-import { defineConfig } from 'vitepress'
+import { defineConfig, createContentLoader } from 'vitepress'
 import { transformerTwoslash } from '@shikijs/vitepress-twoslash'
 import {
   groupIconMdPlugin,
@@ -8,6 +8,9 @@ import {
 import { buildEnd } from './buildEnd.config'
 import { withMermaid } from 'vitepress-plugin-mermaid'
 import { joinURL, withoutTrailingSlash } from 'ufo'
+import { SitemapStream } from 'sitemap'
+import { createWriteStream } from 'node:fs'
+import { resolve } from 'node:path'
 
 const ogDescription = 'Learn DevSecOps through practical guides and examples'
 const ogImage = 'https://devsecforge.io/icons/android-chrome-512x512.png'
@@ -41,16 +44,7 @@ const additionalTitle = ((): string => {
 
 export default withMermaid(
   defineConfig({
-    // Enable sitemap generation
-    sitemap: {
-      hostname: 'https://devsecforge.io', // Explicitly set the full URL
-      lastmodDateOnly: false,
-      transformItems: (items) => {
-        // Filter out Terms of Service and Privacy Policy pages from sitemap
-        return items.filter(item => !item.url.includes('/others/terms-of-service') && 
-                                    !item.url.includes('/others/privacy-policy'));
-      }
-    },
+    // Remove the existing sitemap configuration as we're using buildEnd for it
     
     // Enable lastUpdated for <lastmod> tags in sitemap
     lastUpdated: true,
@@ -641,6 +635,48 @@ export default withMermaid(
         ]
       }
     },
-    buildEnd
+    buildEnd: async (siteConfig) => {
+      // Run the existing buildEnd function if it exists
+      if (typeof buildEnd === 'function') {
+        await buildEnd(siteConfig);
+      }
+      
+      // Generate sitemap
+      const { outDir } = siteConfig;
+      const hostname = 'https://devsecforge.io';
+      const sitemap = new SitemapStream({ hostname });
+      const pages = await createContentLoader('**/*.md').load();
+      const writeStream = createWriteStream(resolve(outDir, 'sitemap.xml'));
+      
+      sitemap.pipe(writeStream);
+      
+      // Process each page
+      pages.forEach((page) => {
+        // Skip Terms of Service and Privacy Policy pages
+        if (page.url.includes('/others/terms-of-service') || 
+            page.url.includes('/others/privacy-policy')) {
+          return;
+        }
+        
+        // Write the URL to the sitemap
+        sitemap.write({
+          url: page.url
+            // Strip `index.html` from URL
+            .replace(/index\.html$/g, '')
+            // Ensure URL starts with a slash
+            .replace(/^\/?/, '/'),
+          lastmod: page.frontmatter?.lastUpdated 
+            ? new Date(page.frontmatter.lastUpdated).toISOString()
+            : undefined
+        });
+      });
+      
+      sitemap.end();
+      
+      // Wait for the stream to finish
+      await new Promise((resolve) => writeStream.on('finish', resolve));
+      
+      console.log('Sitemap generated successfully');
+    },
   })
 )

@@ -17,6 +17,7 @@
 		"gray-matter": "^4.0.3",
 		"gsap": "^3.13.0",
 		"lodash": "^4.17.21",
+		"sitemap": "^8.0.0",
 		"ufo": "^1.6.1",
 		"vite": "^7.0.5",
 		"vitepress": "2.0.0-alpha.7",
