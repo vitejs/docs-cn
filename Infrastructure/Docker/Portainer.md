@@ -6,6 +6,15 @@ mermaidTheme: forest
 
 # Deploying Portainer on Docker Swarm
 
+<DifficultyIndicator 
+  :difficulty="3" 
+  label="Portainer on Swarm" 
+  time="2-3 hours" 
+  :prerequisites="['Docker', 'Docker Swarm basics', 'Network configuration knowledge']"
+>
+  Setting up Portainer on Docker Swarm with high availability requires understanding of container orchestration, networking, and service configuration. The complexity increases when implementing security measures and load balancing.
+</DifficultyIndicator>
+
 ## Overview
 
 Portainer is a powerful and lightweight management UI for Docker, designed to simplify the process of managing containers, images, networks, and volumes. When deploying Portainer in a **Docker Swarm** environment with high availability, it’s essential to configure services to ensure reliability, scalability, and fault tolerance. This guide outlines the complete setup, including the necessary files, deployment steps, and best practices for maintaining and scaling Portainer.

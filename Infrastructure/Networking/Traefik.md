@@ -6,6 +6,15 @@ mermaidTheme: forest
 
 # Advanced Traefik v3 Technical Guide {#advanced-traefik}
 
+<DifficultyIndicator 
+  :difficulty="4" 
+  label="Traefik v3 Setup" 
+  time="4-8 hours" 
+  :prerequisites="['Docker', 'Networking fundamentals', 'Load balancing concepts', 'TLS/SSL knowledge']"
+>
+  Configuring Traefik v3 requires understanding of reverse proxy concepts, middleware chains, and service discovery. The complexity increases when implementing advanced security features, custom middlewares, and high availability setups.
+</DifficultyIndicator>
+
 ## Understanding Reverse Proxy Architecture {#reverse-proxy}
 
 ### Core Concepts {#core-concepts}

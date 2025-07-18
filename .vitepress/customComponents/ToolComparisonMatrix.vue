@@ -25,11 +25,21 @@
               <div v-else-if="column.key === 'features'" class="feature-list">
                 <template v-if="Array.isArray(tool.features)">
                   <div v-for="(feature, index) in tool.features" :key="index" class="feature-item">
-                    {{ feature }}
+                    • {{ feature }}
                   </div>
                 </template>
                 <template v-else>
                   {{ tool.features }}
+                </template>
+              </div>
+              <div v-else-if="column.key === 'bestFor'" class="feature-list">
+                <template v-if="Array.isArray(tool.bestFor)">
+                  <div v-for="(item, index) in tool.bestFor" :key="index" class="feature-item">
+                    • {{ item }}
+                  </div>
+                </template>
+                <template v-else>
+                  {{ tool.bestFor }}
                 </template>
               </div>
               <div v-else-if="column.key === 'languages'" class="language-list">
@@ -72,16 +82,19 @@ const props = defineProps({
 .comparison-matrix {
   margin: 20px 0;
   font-size: 0.9rem;
+  width: 100%;
 }
 
 .matrix-table-container {
   overflow-x: auto;
+  max-width: 100%; /* Ensure it adapts to the wider content area */
 }
 
 .matrix-table {
   width: 100%;
   border-collapse: collapse;
   border: 1px solid var(--vp-c-divider);
+  table-layout: fixed; /* For better control of column widths */
 }
 
 .matrix-table th,
@@ -90,6 +103,7 @@ const props = defineProps({
   border: 1px solid var(--vp-c-divider);
   text-align: left;
   vertical-align: top;
+  word-break: break-word; /* Better handling of long text */
 }
 
 .matrix-table th {
@@ -128,6 +142,7 @@ const props = defineProps({
 
 .feature-item {
   display: block;
+  padding-left: 5px;
 }
 
 .boolean-value {

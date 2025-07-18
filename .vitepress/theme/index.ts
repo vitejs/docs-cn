@@ -15,6 +15,7 @@ import 'virtual:group-icons.css'
 import YouTubePlayer from '../customComponents/youtube-player.vue'
 import DifficultyIndicator from '../customComponents/DifficultyIndicator.vue'
 import ToolComparisonMatrix from '../customComponents/ToolComparisonMatrix.vue'
+import './styles/custom-layout.css' // Import the new custom layout CSS
 
 export default {
   extends: DefaultTheme,

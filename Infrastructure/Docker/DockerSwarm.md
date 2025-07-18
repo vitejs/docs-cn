@@ -6,6 +6,15 @@ mermaidTheme: forest
 
 # Docker Swarm: Advanced Container Orchestration
 
+<DifficultyIndicator 
+  :difficulty="4" 
+  label="Docker Swarm Implementation" 
+  time="4-8 hours" 
+  :prerequisites="['Docker fundamentals', 'Networking concepts', 'Linux administration']"
+>
+  Setting up and managing a Docker Swarm cluster involves multiple components and considerations. While simpler than Kubernetes, it requires understanding of container orchestration concepts, network overlay systems, and distributed system management.
+</DifficultyIndicator>
+
 ## Docker Swarm Overview
 
 Docker Swarm is a **container orchestration platform** built into Docker. It allows you to create a cluster of Docker nodes (machines running Docker) and manage them as a single, virtual server. By using Swarm, you can deploy, manage, and scale applications with ease while taking advantage of features like service discovery, load balancing, and scaling.

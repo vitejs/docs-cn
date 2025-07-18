@@ -1,0 +1,33 @@
+/* Custom styles to increase content width */
+.VPDoc .container {
+  max-width: var(--vp-content-width) !important;
+}
+
+.VPDoc:not(.has-sidebar) .container {
+  max-width: var(--vp-content-width) !important;
+}
+
+/* Adjust content layout when sidebar is present */
+.VPContent.has-sidebar {
+  margin-left: var(--vp-sidebar-width);
+}
+
+/* Center the content better on large screens */
+.VPDoc .content-container {
+  max-width: 100% !important;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* Add responsive adjustments for the wider content */
+@media (max-width: 1280px) {
+  :root {
+    --vp-content-width: 1000px;
+  }
+}
+
+@media (max-width: 960px) {
+  :root {
+    --vp-content-width: 90vw;
+  }
+}

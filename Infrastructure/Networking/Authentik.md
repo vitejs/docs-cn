@@ -7,6 +7,15 @@ mermaidTheme: forest
 
 # Authentik Identity Provider Setup Guide
 
+<DifficultyIndicator 
+  :difficulty="3" 
+  label="Authentik Identity Provider" 
+  time="3-6 hours" 
+  :prerequisites="['Docker Compose', 'Identity management concepts', 'Database basics', 'Networking knowledge']"
+>
+  Setting up Authentik involves database configuration, identity provider concepts, and integration with various authentication protocols. The complexity increases when implementing custom flows, advanced security features, and high availability setups.
+</DifficultyIndicator>
+
 ## Introduction
 
 Authentik is a modern Identity Provider focused on flexibility and versatility. This guide covers setting up Authentik using Docker Compose with proper security configurations and monitoring.

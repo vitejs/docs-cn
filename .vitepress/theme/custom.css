@@ -10,6 +10,7 @@
 
 .content img {
   border-radius: 10px;
+  max-width: 100%;
 }
 
 .nav-dropdown-link-item .icon {
@@ -19,6 +20,34 @@
 :root {
   --c-brand: #646cff;
   --c-brand-light: #747bff;
+  /* Customize sidebar width */
+  --vp-sidebar-width: 240px;  /* Reduced from default 272px */
+}
+
+/* Adjust layout for larger content area */
+.VPContent.has-sidebar {
+  padding-left: var(--vp-sidebar-width);
+}
+
+.VPSidebar {
+  width: var(--vp-sidebar-width);
+}
+
+/* Ensure content containers don't overflow */
+.container {
+  /* max-width: var(--vp-content-width) !important; */
+  /* margin: 0 auto; */
+}
+
+/* Media query for tablet/mobile to ensure responsiveness */
+@media (min-width: 960px) {
+  .VPContent.has-sidebar {
+    padding-left: var(--vp-sidebar-width);
+  }
+  
+  .VPSidebar {
+    width: var(--vp-sidebar-width);
+  }
 }
 
 .custom-block.tip {
@@ -73,6 +102,15 @@
 
 .page .container .content {
   clear: none !important;
+}
+
+/* Additional customization for sidebar items to fit in narrower sidebar */
+.VPSidebarItem .text {
+  font-size: 0.95rem;
+}
+
+.VPSidebarItem .items {
+  padding-left: 12px; /* Reduced nesting indentation */
 }
 
 @media (min-width: 1368px) {

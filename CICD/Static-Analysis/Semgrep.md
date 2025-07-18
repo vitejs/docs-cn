@@ -91,13 +91,10 @@ const staticAnalysisTools = [
 
 const columns = [
   { key: "name", name: "Tool" },
-  { key: "description", name: "Description" },
   { key: "languages", name: "Languages" },
-  { key: "pricing", name: "Pricing" },
   { key: "features", name: "Features" },
   { key: "openSource", name: "Open Source", type: "boolean" },
   { key: "setupComplexity", name: "Setup Complexity", highlight: true },
-  { key: "bestFor", name: "Best For" }
 ];
 </script>
 

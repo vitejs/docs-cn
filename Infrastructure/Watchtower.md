@@ -5,6 +5,17 @@ description: Setting up a configurable and automated DevSecOps environment with 
 mermaidTheme: forest
 ---
 
+# Watchtower - Automated Container Updates
+
+<DifficultyIndicator 
+  :difficulty="2" 
+  label="Watchtower Setup" 
+  time="30-60 minutes" 
+  :prerequisites="['Docker', 'Docker Compose', 'Basic YAML knowledge']"
+>
+  Setting up Watchtower for automated container updates is relatively straightforward. The main complexity comes from configuring notifications, setting up the update schedule, and ensuring proper container labeling.
+</DifficultyIndicator>
+
 ## Introduction
 
 This DevSecOps training aims to set up a containerized and configurable environment using Docker. We will use a `docker-compose.yml` file to orchestrate the various services required for our project. All configuration parameters will be stored in a `.env` file to make them easily modifiable.

@@ -1,0 +1,43 @@
+/* 
+ * Custom styles to apply wider content container
+ * This ensures the markdown content area takes up more horizontal space
+ */
+
+/* Increase the main content container width */
+.VPDoc .container {
+  max-width: var(--vp-content-width) !important;
+}
+
+/* Apply to layout without sidebar as well */
+.VPDoc:not(.has-sidebar) .container {
+  max-width: var(--vp-content-width) !important;
+}
+
+/* Ensure the content area inside container is full-width */
+.VPDoc .content-container {
+  max-width: 100% !important;
+}
+
+/* Make sure the main content area is centered */
+.VPContent.has-sidebar .container {
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+/* Adjust code blocks to fit well in the wider container */
+.vp-doc div[class*='language-'] {
+  width: 100%;
+  max-width: var(--vp-content-width);
+}
+
+/* Add better readability for the wider content */
+.vp-doc p, .vp-doc li {
+  max-width: 90ch;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .VPContent.has-sidebar .container {
+    padding: 0 16px;
+  }
+}

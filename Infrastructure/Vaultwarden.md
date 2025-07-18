@@ -4,6 +4,15 @@ title: Vaultwarden - Self-Hosted Password Management
 
 # Vaultwarden - Self-Hosted Password Management {#vaultwarden}
 
+<DifficultyIndicator 
+  :difficulty="3" 
+  label="Vaultwarden Setup" 
+  time="2-4 hours" 
+  :prerequisites="['Docker', 'Reverse proxy knowledge', 'SSL/TLS basics']"
+>
+  Setting up Vaultwarden involves container configuration, database setup, and proper security implementation. The complexity increases when configuring backup strategies, email integration, and implementing high availability.
+</DifficultyIndicator>
+
 ## Introduction to Password Security {#password-security}
 
 Password security is fundamental to digital safety. In an era where the average person has over 100 online accounts, proper password management is crucial. Common password security issues include:

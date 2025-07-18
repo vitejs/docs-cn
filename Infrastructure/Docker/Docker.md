@@ -6,6 +6,15 @@ description: Learn Docker basics and essential concepts
 
 # Docker Documentation {#docker-documentation}
 
+<DifficultyIndicator 
+  :difficulty="2" 
+  label="Docker Basics" 
+  time="1-2 hours" 
+  :prerequisites="['Command line familiarity', 'Basic OS knowledge']"
+>
+  Learning Docker fundamentals is relatively straightforward for those with basic technical background. The learning curve steepens when dealing with multi-container applications, networking, and volume management.
+</DifficultyIndicator>
+
 Docker is a platform for developing, shipping, and running applications in containers. This documentation covers Docker basics and essential concepts.
 
 ## Introduction {#introduction}

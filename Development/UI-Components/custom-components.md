@@ -59,6 +59,15 @@ The Difficulty Indicator component visually represents the complexity of impleme
 </DifficultyIndicator>
 ```
 
+### Best Practices for Using Difficulty Indicators
+
+- Place the indicator near the beginning of the document to set reader expectations
+- Be realistic about difficulty ratings - don't underestimate complexity
+- Include specific prerequisites that are truly required, not just helpful
+- Provide time estimates as ranges when appropriate (e.g., "2-4 hours")
+- Use the component for implementation guides, tool setups, and configuration tutorials
+- Add detailed notes explaining why something might be difficult for specific use cases
+
 ## Tool Comparison Matrix
 
 The Tool Comparison Matrix component allows comparing different tools across multiple dimensions.

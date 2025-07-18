@@ -10,6 +10,13 @@
   --vp-c-brand-dark: #535bf2;
   --vp-c-brand-darker: #454ce1;
   --vp-c-brand-dimm: rgba(100, 108, 255, 0.08);
+  
+  /* Define sidebar width variable for consistency */
+  --vp-sidebar-width: 240px;
+  /* Increase max layout width */
+  --vp-layout-max-width: 1850px;
+  /* Increase content width variable */
+  --vp-content-width: 1800px;
 }
 
 /**

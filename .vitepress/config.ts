@@ -301,6 +301,10 @@ export default withMermaid(
                       {
                         text: 'Configuration',
                         link: '/Infrastructure/Kubernetes/Configuration'
+                      },
+                      {
+                        text: 'Cluster Setup',
+                        link: '/Infrastructure/Kubernetes/Cluster-Setup'
                       }
                     ]
                   },
@@ -383,6 +387,16 @@ export default withMermaid(
                     link: '/CyberSec/LinuxHardening'
                   }
                 ]
+              },
+              {
+                text: 'Container Security',
+                collapsed: false,
+                items: [
+                  {
+                    text: 'Docker Hardening',
+                    link: '/CyberSec/Container-Security/Docker-Hardening'
+                  }
+                ]
               }
             ]
           }
@@ -402,6 +416,10 @@ export default withMermaid(
                   {
                     text: 'GitLab CI',
                     link: '/CICD/GitLab-CI'
+                  },
+                  {
+                    text: 'GitHub Actions Pipelines',
+                    link: '/CICD/GitHub-Actions-Pipeline'
                   }
                 ]
               },

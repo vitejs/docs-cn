@@ -7,6 +7,15 @@ mermaidTheme: forest
 
 # WireGuard UI with AdGuard - Learning Guide
 
+<DifficultyIndicator 
+  :difficulty="3" 
+  label="WireGuard Implementation" 
+  time="3-5 hours" 
+  :prerequisites="['Linux server administration', 'Networking concepts', 'Firewall configuration', 'Docker basics']"
+>
+  Setting up WireGuard with a UI and AdGuard integration involves VPN configuration, container networking, and DNS management. The setup complexity increases when implementing advanced security features and performance tuning.
+</DifficultyIndicator>
+
 ## Introduction
 
 This guide explains how to set up a WireGuard VPN server with a web UI and AdGuard DNS integration using Docker. It's designed as a learning resource to understand container networking and VPN configuration.
