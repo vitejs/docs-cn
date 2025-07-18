@@ -12,6 +12,9 @@ import WwAds from './components/WwAds.vue'
 import ReleaseTag from './components/ReleaseTag.vue'
 import './custom.css'
 import 'virtual:group-icons.css'
+import YouTubePlayer from '../customComponents/youtube-player.vue'
+import DifficultyIndicator from '../customComponents/DifficultyIndicator.vue'
+import ToolComparisonMatrix from '../customComponents/ToolComparisonMatrix.vue'
 
 export default {
   extends: DefaultTheme,
@@ -24,6 +27,9 @@ export default {
   enhanceApp({ app }) {
     app.component('SvgImage', SvgImage)
     app.component('ReleaseTag', ReleaseTag)
+    app.component('YouTubePlayer', YouTubePlayer)
+    app.component('DifficultyIndicator', DifficultyIndicator)
+    app.component('ToolComparisonMatrix', ToolComparisonMatrix)
     app.use(TwoslashFloatingVue)
   },
 } satisfies Theme

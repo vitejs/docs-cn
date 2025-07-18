@@ -18,6 +18,8 @@ Go (or Golang) is an open-source programming language developed by Google. It's 
 - Garbage collection
 - Cross-platform compatibility
 
+<YouTubePlayer videoId="446E-r0rXHI" />
+
 ## Setting Up Your Development Environment {#development-environment}
 
 Before diving into Go programming, ensure you have:
@@ -400,6 +402,8 @@ PrintShapeInfo(circ)
 ## Concurrency {#concurrency}
 
 Go's built-in concurrency is one of its strongest features.
+
+<YouTubePlayer videoId="f6kdp27TYZs" />
 
 ### Goroutines {#goroutines}
 

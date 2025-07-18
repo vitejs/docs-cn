@@ -7,6 +7,113 @@ layout: doc
 
 # Semgrep - Static Code Analysis
 
+<script setup>
+const staticAnalysisTools = [
+  {
+    name: "Semgrep",
+    url: "https://semgrep.dev/",
+    category: "SAST",
+    description: "Fast, open-source static analysis with pattern-based rules",
+    pricing: "Free tier + paid",
+    languages: ["Python", "JavaScript", "Java", "Go", "C/C++", "Ruby", "PHP"],
+    features: ["Custom rules", "CI/CD integration", "Rule editor", "Auto-fixing"],
+    rating: 5,
+    openSource: true,
+    setupComplexity: "Easy",
+    bestFor: "Custom rule creation and multi-language support"
+  },
+  {
+    name: "SonarQube",
+    url: "https://www.sonarqube.org/",
+    category: "SAST",
+    description: "Continuous code quality and security platform",
+    pricing: "Community + paid",
+    languages: ["Java", "JavaScript", "Python", "C#", "C/C++", "Go", "PHP"],
+    features: ["Code quality", "Security scanning", "CI/CD integration", "Developer feedback"],
+    rating: 4,
+    openSource: true,
+    setupComplexity: "Moderate",
+    bestFor: "Comprehensive code quality analysis"
+  },
+  {
+    name: "CodeQL",
+    url: "https://codeql.github.com/",
+    category: "SAST",
+    description: "Semantic code analysis engine by GitHub",
+    pricing: "Free for open source + paid",
+    languages: ["Java", "JavaScript", "Python", "C#", "C/C++", "Go", "Ruby"],
+    features: ["Query language", "Deep analysis", "GitHub integration", "Variant analysis"],
+    rating: 5,
+    openSource: false,
+    setupComplexity: "Complex",
+    bestFor: "Advanced vulnerability detection and variant analysis"
+  },
+  {
+    name: "Bandit",
+    url: "https://github.com/PyCQA/bandit",
+    category: "SAST",
+    description: "Security linter for Python code",
+    pricing: "Free, Open Source",
+    languages: ["Python"],
+    features: ["Python-specific", "Easy integration", "Fast scanning"],
+    rating: 3,
+    openSource: true,
+    setupComplexity: "Easy",
+    bestFor: "Python-specific security scanning"
+  },
+  {
+    name: "gosec",
+    url: "https://github.com/securego/gosec",
+    category: "SAST",
+    description: "Golang security checker",
+    pricing: "Free, Open Source",
+    languages: ["Go"],
+    features: ["Go-specific", "Fast", "Simple integration"],
+    rating: 3,
+    openSource: true,
+    setupComplexity: "Easy",
+    bestFor: "Go-specific security scanning"
+  },
+  {
+    name: "ESLint",
+    url: "https://eslint.org/",
+    category: "SAST",
+    description: "Pluggable linting utility for JavaScript and TypeScript",
+    pricing: "Free, Open Source",
+    languages: ["JavaScript", "TypeScript"],
+    features: ["Customizable rules", "Auto-fixing", "IDE integration"],
+    rating: 4,
+    openSource: true,
+    setupComplexity: "Easy",
+    bestFor: "JavaScript/TypeScript code quality and security"
+  }
+];
+
+const columns = [
+  { key: "name", name: "Tool" },
+  { key: "description", name: "Description" },
+  { key: "languages", name: "Languages" },
+  { key: "pricing", name: "Pricing" },
+  { key: "features", name: "Features" },
+  { key: "openSource", name: "Open Source", type: "boolean" },
+  { key: "setupComplexity", name: "Setup Complexity", highlight: true },
+  { key: "bestFor", name: "Best For" }
+];
+</script>
+
+
+<DifficultyIndicator :difficulty="2" label="Static Analysis Implementation" time="1-3 hours" :prerequisites="['CI/CD pipeline', 'Version control system']">
+  Setting up static code analysis tools like Semgrep in your CI/CD pipeline is relatively straightforward. Most tools provide ready-to-use configurations and CI integration examples.
+</DifficultyIndicator>
+
+## Static Analysis Tool Comparison
+
+Before diving into Semgrep specifically, let's compare the different static analysis tools available for your DevSecOps pipeline:
+
+
+
+<ToolComparisonMatrix :tools="staticAnalysisTools" :columns="columns" />
+
 ## Introduction
 
 Semgrep is a fast, open-source static analysis tool that finds bugs, detects vulnerabilities, and enforces code standards. It uses pattern-based analysis with a simple syntax that allows you to write custom rules for your specific needs.
