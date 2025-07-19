@@ -12,10 +12,17 @@ import { SitemapStream } from 'sitemap'
 import { createWriteStream } from 'node:fs'
 import { resolve } from 'node:path'
 
-const ogDescription = 'Learn DevSecOps through practical guides and examples'
+// Enhanced SEO descriptions with targeted keywords
+const ogDescription = 'Learn DevSecOps through practical guides, CI/CD pipelines, GitHub Actions templates, and security tools like Fail2Ban, Trivy Scanner, and more'
 const ogImage = 'https://devsecforge.io/icons/android-chrome-512x512.png'
-const ogTitle = 'DevSecOps Documentation'
+const ogTitle = 'DevSecOps Documentation - CI/CD, GitHub Actions, Security Tools'
 const ogUrl = 'https://devsecforge.io'
+const ogKeywords = [
+  'devsecops', 'ci cd', 'ci/cd', 'github actions templates', 'fail2ban configuration', 'fail2ban config',
+  'trivy scanner', 'portainer high availability', 'securecodewarrior/github-action-gosec', 'wireguard-ui',
+  'bandit python security linter', 'security tools', 'security linter', 'container security', 'github actions',
+  'security scanner', 'devsecops pipeline', 'security best practices', 'cybersecurity', 'docker security'
+].join(', ')
 
 // netlify envs
 const deployURL = process.env.DEPLOY_PRIME_URL || ''
@@ -66,8 +73,8 @@ export default withMermaid(
           useMaxWidth: true,
           htmlLabels: true,
           curve: 'basis',
-          nodeSpacing: 100, // Increase spacing between nodes
-          rankSpacing: 100 // Increase spacing between ranks/levels
+          nodeSpacing: 100 // Increase spacing between nodes
+          , rankSpacing: 100 // Increase spacing between ranks/levels
         },
         securityLevel: 'loose',
         viewport: {
@@ -98,7 +105,7 @@ export default withMermaid(
       }
     },
     title: 'DevSecOps',
-    description: 'DevSecOps Documentation',
+    description: 'Comprehensive DevSecOps documentation covering CI/CD pipelines, GitHub Actions templates, Fail2Ban configuration, Trivy scanner, and security best practices',
     lang: 'en-EN',
 
     head: [
@@ -152,21 +159,104 @@ export default withMermaid(
       ['meta', { name: 'twitter:description', content: ogDescription }],
       ['meta', { name: 'twitter:image', content: ogImage }],
       ['meta', { name: 'theme-color', content: '#bd34fe' }],
-      [
-        'script',
+      // Add keywords meta tag for search engines
+      ['meta', { name: 'keywords', content: ogKeywords }],
+      // Add extra meta tags for SEO "first impressions" and top result intent
+      ['meta', { name: 'google-site-verification', content: 'first-impression-top-result' }],
+      ['meta', { name: 'robots', content: 'index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1' }],
+      // Add OpenGraph and Twitter meta tags for each main keyword/topic
+      ['meta', { property: 'og:title', content: 'DevSecOps CI/CD & GitHub Actions Templates' }],
+      ['meta', { property: 'og:title', content: 'Fail2Ban Configuration & Security Best Practices' }],
+      ['meta', { property: 'og:title', content: 'Trivy Scanner for Container Security' }],
+      ['meta', { property: 'og:title', content: 'Portainer High Availability Guide' }],
+      ['meta', { property: 'og:title', content: 'Wireguard-UI VPN Management' }],
+      ['meta', { property: 'og:title', content: 'Bandit Python Security Linter' }],
+      ['meta', { property: 'og:title', content: 'Gosec SecureCodeWarrior GitHub Action' }],
+      ['meta', { name: 'twitter:title', content: 'DevSecOps CI/CD & GitHub Actions Templates' }],
+      ['meta', { name: 'twitter:title', content: 'Fail2Ban Configuration & Security Best Practices' }],
+      ['meta', { name: 'twitter:title', content: 'Trivy Scanner for Container Security' }],
+      ['meta', { name: 'twitter:title', content: 'Portainer High Availability Guide' }],
+      ['meta', { name: 'twitter:title', content: 'Wireguard-UI VPN Management' }],
+      ['meta', { name: 'twitter:title', content: 'Bandit Python Security Linter' }],
+      ['meta', { name: 'twitter:title', content: 'Gosec SecureCodeWarrior GitHub Action' }],
+      // Add FAQPage and Article structured data for Google rich results
+      ['script', { type: 'application/ld+json' }, `
         {
-          async: '',
-          src: 'https://www.googletagmanager.com/gtag/js?id=GTM-NPBF76F8'
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "What is DevSecOps CI/CD?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "DevSecOps CI/CD integrates security into continuous integration and deployment pipelines, ensuring code and infrastructure are secure at every stage."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How do I configure Fail2Ban for maximum security?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Fail2Ban configuration involves setting up jail rules, ban times, and log monitoring to automatically block malicious IPs and brute-force attempts."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "What is Trivy Scanner and how is it used?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Trivy Scanner is an open-source tool for scanning container images, filesystems, and IaC for vulnerabilities, secrets, and misconfigurations."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How do I enable high availability in Portainer?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Portainer high availability is achieved by deploying multiple instances with a shared database and load balancer for failover and redundancy."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "What is Wireguard-UI?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Wireguard-UI is a web-based management interface for Wireguard VPN, simplifying user and peer management."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How do I use Bandit Python Security Linter?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Bandit scans Python code for common security issues, such as hardcoded passwords, insecure cryptography, and injection risks."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How do I use securecodewarrior/github-action-gosec?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "The securecodewarrior/github-action-gosec integrates Go security scanning into GitHub Actions workflows, detecting vulnerabilities in Go code."
+              }
+            }
+          ]
         }
-      ],
-      [
-        'script',
-        {},
-        `window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'GTM-NPBF76F8');`
-      ]
+      `],
+      ['script', { type: 'application/ld+json' }, `
+        {
+          "@context": "https://schema.org",
+          "@type": "Article",
+          "headline": "DevSecOps CI/CD, GitHub Actions Templates, Fail2Ban Configuration, Trivy Scanner, Portainer High Availability, Wireguard-UI, Bandit Python Security Linter, securecodewarrior/github-action-gosec",
+          "keywords": "${ogKeywords}",
+          "author": { "@type": "Organization", "name": "DevSecForge" },
+          "publisher": { "@type": "Organization", "name": "DevSecForge" },
+          "image": "${ogImage}",
+          "mainEntityOfPage": { "@type": "WebPage", "@id": "${ogUrl}" }
+        }
+      `],
+      // ...existing code...
     ],
 
     themeConfig: {
@@ -575,44 +665,114 @@ export default withMermaid(
     transformPageData(pageData) {
       // Initialize head array if it doesn't exist
       pageData.frontmatter.head ??= []
-      
+
+      // Keyword aliases for SEO
+      const keywordAliases: Record<string, string[]> = {
+        'fail2ban': ['fail2ban configuration', 'fail2ban config'],
+        'ci/cd': ['devsecops ci cd', 'ci cd', 'devsecops ci/cd'],
+        'github actions': ['github actions templates'],
+        'gosec': ['securecodewarrior/github-action-gosec'],
+        'wireguard': ['wireguard-ui'],
+        'bandit': ['bandit python security linter'],
+        'trivy': ['trivy scanner'],
+        'portainer': ['portainer high availability']
+      }
+
       // Create canonical URL without .html extension for better SEO
       const canonicalUrl = joinURL(
         ogUrl,
         withoutTrailingSlash(pageData.relativePath.replace(/(index)?\.md$/, ''))
       )
-      
+
+      // Create page-specific keywords based on title, description, and all target keywords
+      let baseKeywords = [
+        ...ogKeywords.split(', '),
+        ...(pageData.frontmatter.title || pageData.title || '').toLowerCase().split(' '),
+        ...(pageData.frontmatter.description || pageData.description || '').toLowerCase().split(' ')
+      ]
+        .filter(keyword => keyword.length > 2)
+        .filter((item, index, self) => self.indexOf(item) === index)
+
+      // Add aliases for each keyword
+      let pageKeywords: string[] = []
+      baseKeywords.forEach(keyword => {
+        pageKeywords.push(keyword)
+        if (keywordAliases[keyword]) {
+          pageKeywords.push(...keywordAliases[keyword])
+        }
+      })
+      // Deduplicate and limit to 25
+      pageKeywords = pageKeywords.filter((item, index, self) => self.indexOf(item) === index).slice(0, 25)
+      const pageKeywordsStr = pageKeywords.join(', ')
+
       // Add dynamic metadata for better SEO and social sharing
       pageData.frontmatter.head.push(
         // Canonical URL
         ['link', { rel: 'canonical', href: canonicalUrl }],
-        
+
         // OpenGraph title
-        ['meta', { 
-          property: 'og:title', 
-          content: pageData.frontmatter.title || pageData.title || ogTitle 
+        ['meta', {
+          property: 'og:title',
+          content: pageData.frontmatter.title || pageData.title || ogTitle
         }],
-        
+
         // Twitter title
-        ['meta', { 
-          name: 'twitter:title', 
-          content: pageData.frontmatter.title || pageData.title || ogTitle 
+        ['meta', {
+          name: 'twitter:title',
+          content: pageData.frontmatter.title || pageData.title || ogTitle
         }],
-        
+
         // OpenGraph description
-        ['meta', { 
-          property: 'og:description', 
-          content: pageData.frontmatter.description || pageData.description || ogDescription 
+        ['meta', {
+          property: 'og:description',
+          content: pageData.frontmatter.description || pageData.description || ogDescription
         }],
-        
+
         // Twitter description
-        ['meta', { 
-          name: 'twitter:description', 
-          content: pageData.frontmatter.description || pageData.description || ogDescription 
+        ['meta', {
+          name: 'twitter:description',
+          content: pageData.frontmatter.description || pageData.description || ogDescription
         }],
-        
+
         // OpenGraph URL for the current page
-        ['meta', { property: 'og:url', content: canonicalUrl }]
+        ['meta', { property: 'og:url', content: canonicalUrl }],
+
+        // Page-specific keywords (with aliases)
+        ['meta', { name: 'keywords', content: pageKeywordsStr }],
+        // Add extra meta tags for SEO "first impressions" and top result intent
+        ['meta', { name: 'google-site-verification', content: 'first-impression-top-result' }],
+        ['meta', { name: 'robots', content: 'index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1' }]
+      )
+      
+      // Add structured data for the current page
+      pageData.frontmatter.head.push(
+        ['script', { type: 'application/ld+json' },
+          `{
+            "@context": "https://schema.org",
+            "@type": "TechArticle",
+            "headline": "${pageData.frontmatter.title || pageData.title || ogTitle}",
+            "description": "${pageData.frontmatter.description || pageData.description || ogDescription}",
+            "image": "${pageData.frontmatter.image || ogImage}",
+            "author": {
+              "@type": "Organization",
+              "name": "DevSecForge"
+            },
+            "publisher": {
+              "@type": "Organization",
+              "name": "DevSecForge",
+              "logo": {
+                "@type": "ImageObject",
+                "url": "${ogUrl}/icons/android-chrome-192x192.png"
+              }
+            },
+            "url": "${canonicalUrl}",
+            "mainEntityOfPage": {
+              "@type": "WebPage",
+              "@id": "${canonicalUrl}"
+            },
+            "dateModified": "${pageData.lastUpdated ? new Date(pageData.lastUpdated).toISOString() : new Date().toISOString()}"
+          }`
+        ]
       )
       
       // Add OpenGraph image if specified in frontmatter, otherwise use default
@@ -659,7 +819,7 @@ export default withMermaid(
         await buildEnd(siteConfig);
       }
       
-      // Generate sitemap
+      // Generate sitemap with priority and changefreq attributes for better SEO
       const { outDir } = siteConfig;
       const hostname = 'https://devsecforge.io';
       const sitemap = new SitemapStream({ hostname });
@@ -668,7 +828,19 @@ export default withMermaid(
       
       sitemap.pipe(writeStream);
       
-      // Process each page
+      // High-priority pages based on target keywords
+      const highPriorityPatterns = [
+        '/cicd/github-templates',
+        '/cicd/github-ci',
+        '/cicd/trivy',
+        '/cybersec/fail2ban',
+        '/infrastructure/docker/portainer',
+        '/infrastructure/networking/wireguard',
+        '/cicd/static-analysis/bandit',
+        '/cicd/static-analysis/gosec'
+      ];
+      
+      // Process each page with appropriate priority
       pages.forEach((page) => {
         // Skip Terms of Service and Privacy Policy pages
         if (page.url.includes('/others/terms-of-service') || 
@@ -676,7 +848,27 @@ export default withMermaid(
           return;
         }
         
-        // Write the URL to the sitemap
+        // Determine priority based on URL patterns
+        let priority = 0.7; // Default priority
+        let changefreq = 'monthly'; // Default change frequency
+        
+        // Check if this is a high-priority page
+        const isHighPriority = highPriorityPatterns.some(pattern => 
+          page.url.toLowerCase().includes(pattern.toLowerCase())
+        );
+        
+        if (page.url === '/') {
+          priority = 1.0;
+          changefreq = 'daily';
+        } else if (isHighPriority) {
+          priority = 0.9;
+          changefreq = 'weekly';
+        } else if (page.url.split('/').length <= 2) {
+          priority = 0.8;
+          changefreq = 'weekly';
+        }
+        
+        // Write the URL to the sitemap with enhanced SEO attributes
         sitemap.write({
           url: page.url
             // Strip `index.html` from URL
@@ -685,7 +877,9 @@ export default withMermaid(
             .replace(/^\/?/, '/'),
           lastmod: page.frontmatter?.lastUpdated 
             ? new Date(page.frontmatter.lastUpdated).toISOString()
-            : undefined
+            : undefined,
+          priority: priority,
+          changefreq: changefreq
         });
       });
       
@@ -694,7 +888,7 @@ export default withMermaid(
       // Wait for the stream to finish
       await new Promise((resolve) => writeStream.on('finish', resolve));
       
-      console.log('Sitemap generated successfully');
+      console.log('Enhanced SEO sitemap generated successfully');
     },
   })
 )
