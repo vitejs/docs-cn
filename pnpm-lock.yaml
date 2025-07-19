@@ -11,6 +11,9 @@ importers:
       pnpm:
         specifier: ^10.13.1
         version: 10.13.1
+      vitepress-plugin-google-analytics:
+        specifier: ^1.0.2
+        version: 1.0.2
       vitepress-plugin-mermaid:
         specifier: ^2.0.17
         version: 2.0.17(mermaid@11.9.0)(vitepress@2.0.0-alpha.7(@algolia/client-search@5.34.0)(@types/node@24.0.14)(postcss@8.5.6)(search-insights@2.17.3)(typescript@5.8.3))
@@ -1688,6 +1691,9 @@ packages:
         optional: true
       yaml:
         optional: true
+
+  vitepress-plugin-google-analytics@1.0.2:
+    resolution: {integrity: sha512-ri8bFUAmt3c/DtPrALauGBIUr2gIJ11c1qNRhwd3/+aiuYZBfQpOosSxcO1AswgwRxP9FwBS6Z7jgdDVyXb2hA==}
 
   vitepress-plugin-group-icons@1.6.1:
     resolution: {integrity: sha512-eoFlFAhAy/yTZDbaIgA/nMbjVYXkf8pz8rr75MN2VCw7yH60I3cw6bW5EuwddAeafZtBqbo8OsEGU7TIWFiAjg==}
@@ -3580,6 +3586,8 @@ snapshots:
     optionalDependencies:
       '@types/node': 24.0.14
       fsevents: 2.3.3
+
+  vitepress-plugin-google-analytics@1.0.2: {}
 
   vitepress-plugin-group-icons@1.6.1(markdown-it@14.1.0)(vite@7.0.5(@types/node@24.0.14)):
     dependencies:

@@ -16,6 +16,8 @@ import YouTubePlayer from '../customComponents/youtube-player.vue'
 import DifficultyIndicator from '../customComponents/DifficultyIndicator.vue'
 import ToolComparisonMatrix from '../customComponents/ToolComparisonMatrix.vue'
 import './styles/custom-layout.css' // Import the new custom layout CSS
+import googleAnalytics from 'vitepress-plugin-google-analytics'
+
 
 export default {
   extends: DefaultTheme,
@@ -26,6 +28,9 @@ export default {
     })
   },
   enhanceApp({ app }) {
+    googleAnalytics({
+      id: 'GTM-NPBF76F8', // Replace with your GoogleAnalytics ID, which should start with the 'G-'
+    })
     app.component('SvgImage', SvgImage)
     app.component('ReleaseTag', ReleaseTag)
     app.component('YouTubePlayer', YouTubePlayer)

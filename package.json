@@ -39,6 +39,7 @@
 	},
 	"dependencies": {
 		"pnpm": "^10.13.1",
+		"vitepress-plugin-google-analytics": "^1.0.2",
 		"vitepress-plugin-mermaid": "^2.0.17"
 	}
 }
