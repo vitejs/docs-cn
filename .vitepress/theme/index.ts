@@ -29,7 +29,7 @@ export default {
   },
   enhanceApp({ app }) {
     googleAnalytics({
-      id: 'GTM-NPBF76F8', // Replace with your GoogleAnalytics ID, which should start with the 'G-'
+      id: 'G-F1N4D1JTS8', // Replace with your GoogleAnalytics ID, which should start with the 'G-'
     })
     app.component('SvgImage', SvgImage)
     app.component('ReleaseTag', ReleaseTag)
