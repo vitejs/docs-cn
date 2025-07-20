@@ -603,6 +603,46 @@ export default withMermaid(
                       {
                         text: 'Installing Go',
                         link: '/Development/Languages/Go/Go-Install'
+                      },
+                      {
+                        text: 'Data Types',
+                        link: '/Development/Languages/Go/Data-Types'
+                      },
+                      {
+                        text: 'Flow Control',
+                        link: '/Development/Languages/Go/Flow-Control'
+                      },
+                      {
+                        text: 'Functions',
+                        link: '/Development/Languages/Go/Functions'
+                      },
+                      {
+                        text: 'Structs & Maps',
+                        link: '/Development/Languages/Go/Structs-Maps'
+                      },
+                      {
+                        text: 'Packages',
+                        link: '/Development/Languages/Go/Packages'
+                      },
+                      {
+                        text: 'Concurrency',
+                        link: '/Development/Languages/Go/Concurrency'
+                      },
+                      {
+                        text: 'Error Handling',
+                        link: '/Development/Languages/Go/Error-Handling'
+                      },
+                      {
+                        text: 'Methods & Interfaces',
+                        link: '/Development/Languages/Go/Methods-Interfaces'
+                      },
+                      {
+                        text: 'Testing',
+                        link: '/Development/Languages/Go/Testing'
+                      },
+                      {
+                        text: 'Web Development',
+                        link: '/Development/Languages/Go/Web-Development'
                       }
                     ]
                   },
@@ -617,6 +657,30 @@ export default withMermaid(
                       {
                         text: 'Installing Rust',
                         link: '/Development/Languages/Rust/Rust-Install'
+                      },
+                      {
+                        text: 'Data Types',
+                        link: '/Development/Languages/Rust/Rust-Types'
+                      },
+                      {
+                        text: 'Strings',
+                        link: '/Development/Languages/Rust/Rust-Strings'
+                      },
+                      {
+                        text: 'Operators',
+                        link: '/Development/Languages/Rust/Rust-Operators'
+                      },
+                      {
+                        text: 'Flow Control',
+                        link: '/Development/Languages/Rust/Rust-FlowControl'
+                      },
+                      {
+                        text: 'Functions',
+                        link: '/Development/Languages/Rust/Rust-Functions'
+                      },
+                      {
+                        text: 'Miscellaneous',
+                        link: '/Development/Languages/Rust/Rust-Misc'
                       }
                     ]
                   }
