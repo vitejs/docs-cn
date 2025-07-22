@@ -7,6 +7,30 @@ layout: doc
 
 # GitLab CI/CD
 
+## CI/CD Pipeline Overview
+
+Below is a visual representation of a typical CI/CD pipeline using GitLab CI/CD:
+
+```mermaid
+graph TD
+    A[Code Commit / Merge Request] --> B[Trigger Pipeline]
+    B --> C[Checkout Code]
+    C --> D[Install Dependencies]
+    D --> E[Run Tests]
+    E --> F[Build Artifacts]
+    F --> G{Tests Passed?}
+    G -- Yes --> H[Upload Artifacts]
+    H --> I[Deploy to Staging]
+    I --> J{Staging Approval}
+    J -- Approved --> K[Deploy to Production]
+    G -- No --> L[Fail Pipeline]
+    J -- Rejected --> L
+```
+
+::: tip
+This diagram shows the main stages: code commit, pipeline trigger, testing, building, artifact handling, and deployment with approval gates.
+:::
+
 ## Introduction
 
 GitLab CI/CD is a powerful, integrated continuous integration and continuous deployment platform built into GitLab. It allows you to automate your software development lifecycle with pipelines defined as code, providing seamless integration with your GitLab repositories.

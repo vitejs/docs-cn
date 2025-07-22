@@ -7,6 +7,23 @@ description: Control flow structures in Rust
 
 Control flow is how you control the execution path of your program. Rust provides several constructs for branching, looping, and pattern matching.
 
+```mermaid
+flowchart TD
+    A[Start] --> B{Condition?}
+    B -- true --> C[If Block]
+    B -- false --> D[Else Block]
+    C --> E{Loop?}
+    D --> E
+    E -- yes --> F[Loop Block]
+    F --> E
+    E -- no --> G[Match Expression]
+    G --> H[End]
+```
+
+::: tip
+This diagram summarizes how Rust uses conditional statements, loops, and match expressions to control program flow.
+:::
+
 ## Conditional Statements
 
 ### If Expression

@@ -7,6 +7,31 @@ layout: doc
 
 # Trivy Security Scanner
 
+## CI/CD Pipeline Overview
+
+Below is a visual representation of a typical CI/CD pipeline integrating Trivy:
+
+```mermaid
+graph TD
+    A[Code Commit / PR] --> B[Trigger Workflow]
+    B --> C[Checkout Code]
+    C --> D[Install Dependencies]
+    D --> E[Run Tests]
+    E --> F[Build Artifacts]
+    F --> G{Tests Passed?}
+    G -- Yes --> H[Run Trivy Security Scan]
+    H --> I[Upload Scan Results]
+    I --> J[Deploy to Staging]
+    J --> K{Staging Approval}
+    K -- Approved --> L[Deploy to Production]
+    G -- No --> M[Fail Pipeline]
+    K -- Rejected --> M
+```
+
+::: tip
+This diagram shows how Trivy fits into the CI/CD pipeline, scanning artifacts before deployment.
+:::
+
 ## Introduction
 
 Trivy is an open-source, all-in-one security scanner for containers, filesystems, and Infrastructure as Code (IaC). It is widely used in DevSecOps pipelines to detect vulnerabilities, misconfigurations, secrets, and license issues. Trivy supports multiple output formats, making it easy to integrate with CI/CD pipelines and security dashboards.

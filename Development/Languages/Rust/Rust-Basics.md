@@ -94,6 +94,18 @@ fn main() {
 
 The `main` function is the entry point of every Rust program.
 
+```mermaid
+graph TD
+    A[Start] --> B[fn main()]
+    B --> C[Your Code]
+    C --> D[println!("Hello, Rust!")]
+    D --> E[End]
+```
+
+::: tip
+This diagram shows the flow of a basic Rust program: execution starts at `main`, runs your code, and ends.
+:::
+
 ## Data Types Overview
 
 Rust is a statically typed language, which means that it must know the types of all variables at compile time.

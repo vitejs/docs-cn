@@ -7,6 +7,31 @@ layout: doc
 
 # Complete Security Scanning Tutorial
 
+## CI/CD Pipeline Overview
+
+Below is a visual representation of a typical CI/CD pipeline with security scanning:
+
+```mermaid
+graph TD
+    A[Code Commit / PR] --> B[Trigger Workflow]
+    B --> C[Checkout Code]
+    C --> D[Install Dependencies]
+    D --> E[Run Tests]
+    E --> F[Build Artifacts]
+    F --> G{Tests Passed?}
+    G -- Yes --> H[Security Scanning]
+    H --> I[Upload Artifacts]
+    I --> J[Deploy to Staging]
+    J --> K{Staging Approval}
+    K -- Approved --> L[Deploy to Production]
+    G -- No --> M[Fail Pipeline]
+    K -- Rejected --> M
+```
+
+::: tip
+This diagram shows how security scanning is integrated into the CI/CD pipeline before deployment.
+:::
+
 ## Introduction
 
 This comprehensive tutorial covers implementing security scanning across all layers of your DevSecOps pipeline. We'll explore scanning Docker images, source code, and Infrastructure as Code (IaC) using industry-standard tools integrated into CI/CD pipelines.

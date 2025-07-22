@@ -5,7 +5,30 @@ description: Comparison of popular security tools for DevSecOps pipelines with i
 
 # DevSecOps Security Tools Comparison
 
-This guide helps you select the right security tools for your DevSecOps pipeline by comparing popular options and providing implementation difficulty ratings.
+## CI/CD Pipeline Overview
+
+Below is a visual representation of a typical CI/CD pipeline in DevSecOps:
+
+```mermaid
+graph TD
+    A[Code Commit / PR] --> B[Trigger Workflow]
+    B --> C[Checkout Code]
+    C --> D[Install Dependencies]
+    D --> E[Run Tests]
+    E --> F[Build Artifacts]
+    F --> G{Tests Passed?}
+    G -- Yes --> H[Security Scanning]
+    H --> I[Upload Artifacts]
+    I --> J[Deploy to Staging]
+    J --> K{Staging Approval}
+    K -- Approved --> L[Deploy to Production]
+    G -- No --> M[Fail Pipeline]
+    K -- Rejected --> M
+```
+
+::: tip
+This diagram shows where security scanning fits into the CI/CD pipeline, before deployment.
+:::
 
 ## Container Security Scanners
 

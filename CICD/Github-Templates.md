@@ -7,6 +7,30 @@ layout: doc
 
 # GitHub Actions Templates
 
+## CI/CD Pipeline Overview
+
+Below is a visual representation of a typical CI/CD pipeline using GitHub Actions:
+
+```mermaid
+graph TD
+    A[Code Commit / PR] --> B[Trigger Workflow]
+    B --> C[Checkout Code]
+    C --> D[Install Dependencies]
+    D --> E[Run Tests]
+    E --> F[Build Artifacts]
+    F --> G{Tests Passed?}
+    G -- Yes --> H[Upload Artifacts]
+    H --> I[Deploy to Staging]
+    I --> J{Staging Approval}
+    J -- Approved --> K[Deploy to Production]
+    G -- No --> L[Fail Pipeline]
+    J -- Rejected --> L
+```
+
+::: tip
+This diagram shows the main stages: code commit, workflow trigger, testing, building, artifact handling, and deployment with approval gates.
+:::
+
 ## Introduction
 
 This collection provides ready-to-use GitHub Actions workflow templates for various development scenarios in a DevSecOps environment. These templates incorporate security scanning, testing, and deployment best practices.
