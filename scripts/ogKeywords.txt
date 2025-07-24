@@ -1,3 +1,13 @@
+devsecops ci cd
+github actions templates	
+devsecops ci/cd
+fail2ban configuration
+trivy scanner
+fail2ban config
+portainer high availability
+securecodewarrior/github-action-gosec
+wireguard-ui
+bandit python security linter
 devsecops  
 ci/cd  
 github actions templates  
