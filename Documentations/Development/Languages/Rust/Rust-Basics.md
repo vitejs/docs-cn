@@ -133,5 +133,5 @@ Continue your Rust learning journey with these topics:
 - [Rust Types](/Development/Languages/Rust/Rust-Types)
 - [Rust Strings](/Development/Languages/Rust/Rust-Strings)
 - [Rust Operators](/Development/Languages/Rust/Rust-Operators)
-- [Rust Flow Control](/Development/Languages/Rust/Rust-FlowControl)
+- [Rust Flow Control](/Documentations/Development/Languages/Rust/Rust-FlowControl)
 - [Rust Functions](/Development/Languages/Rust/Rust-Functions)

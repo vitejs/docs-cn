@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { data as posts } from '../../../_data/blog.data'
-
 function getDateTime(time: number) {
   return new Date(time).toISOString()
 }
@@ -42,5 +40,7 @@ function getDateTime(time: number) {
 .title a {
   font-weight: 600;
   text-decoration: none;
+}
+</style>
 }
 </style>

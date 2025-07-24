@@ -150,5 +150,5 @@ let slice: &str = owned.as_str();
 
 Continue learning about Rust with these topics:
 - [Rust Operators](/Development/Languages/Rust/Rust-Operators)
-- [Rust Flow Control](/Development/Languages/Rust/Rust-FlowControl)
+- [Rust Flow Control](/Documentations/Development/Languages/Rust/Rust-FlowControl)
 - [Rust Functions](/Development/Languages/Rust/Rust-Functions)

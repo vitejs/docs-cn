@@ -162,4 +162,4 @@ let type_casted: i64 = original as i64;
 Learn more about Rust's capabilities with these topics:
 - [Rust Strings](/Development/Languages/Rust/Rust-Strings)
 - [Rust Operators](/Development/Languages/Rust/Rust-Operators)
-- [Rust Flow Control](/Development/Languages/Rust/Rust-FlowControl)
+- [Rust Flow Control](/Documentations/Development/Languages/Rust/Rust-FlowControl)

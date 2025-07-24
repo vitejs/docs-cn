@@ -364,15 +364,15 @@ export default withMermaid(
                     items: [
                       {
                         text: 'Docker',
-                        link: '/Infrastructure/Docker/Docker'
+                        link: '/Documentations/Infrastructure/Docker/Docker'
                       },
                       {
                         text: 'Docker Swarm',
-                        link: '/Infrastructure/Docker/DockerSwarm'
+                        link: '/Documentations/Infrastructure/Docker/DockerSwarm'
                       },
                       {
                         text: 'Portainer',
-                        link: '/Infrastructure/Docker/Portainer'
+                        link: '/Documentations/Infrastructure/Docker/Portainer'
                       }
                     ]
                   },
@@ -382,19 +382,19 @@ export default withMermaid(
                     items: [
                       {
                         text: 'Install',
-                        link: '/Infrastructure/Kubernetes/Install'
+                        link: '/Documentations/Infrastructure/Kubernetes/Install'
                       },
                       {
                         text: 'Basic Deployment',
-                        link: '/Infrastructure/Kubernetes/Basic-deploy'
+                        link: '/Documentations/Infrastructure/Kubernetes/Basic-deploy'
                       },
                       {
                         text: 'Configuration',
-                        link: '/Infrastructure/Kubernetes/Configuration'
+                        link: '/Documentations/Infrastructure/Kubernetes/Configuration'
                       },
                       {
                         text: 'Cluster Setup',
-                        link: '/Infrastructure/Kubernetes/Cluster-Setup'
+                        link: '/Documentations/Infrastructure/Kubernetes/Cluster-Setup'
                       }
                     ]
                   },
@@ -404,11 +404,11 @@ export default withMermaid(
                     items: [
                       {
                         text: 'Install',
-                        link: '/Infrastructure/Terraform/Install'
+                        link: '/Documentations/Infrastructure/Terraform/Install'
                       },
                       {
                         text: 'Configuration',
-                        link: '/Infrastructure/Terraform/Configuration'
+                        link: '/Documentations/Infrastructure/Terraform/Configuration'
                       }
                     ]
                   }
@@ -420,11 +420,11 @@ export default withMermaid(
                 items: [
                   {
                     text: 'Vaultwarden',
-                    link: '/Infrastructure/Vaultwarden'
+                    link: '/Documentations/Infrastructure/Vaultwarden'
                   },
                   {
                     text: 'Watchtower',
-                    link: '/Infrastructure/Watchtower'
+                    link: '/Documentations/Infrastructure/Watchtower'
                   }
                 ]
               },
@@ -435,15 +435,15 @@ export default withMermaid(
                 items: [
                   {
                     text: 'Wireguard',
-                    link: '/Infrastructure/Networking/Wireguard'
+                    link: '/Documentations/Infrastructure/Networking/Wireguard'
                   },
                   {
                     text: 'Traefik',
-                    link: '/Infrastructure/Networking/Traefik'
+                    link: '/Documentations/Infrastructure/Networking/Traefik'
                   },
                   {
                     text: 'Authentik',
-                    link: '/Infrastructure/Networking/Authentik'
+                    link: '/Documentations/Infrastructure/Networking/Authentik'
                   }
                 ]
               }
@@ -460,11 +460,11 @@ export default withMermaid(
                 items: [
                   {
                     text: 'CrowdSec',
-                    link: '/CyberSec/CrowdSec'
+                    link: '/Documentations/CyberSec/CrowdSec'
                   },
                   {
                     text: 'Fail2Ban',
-                    link: '/CyberSec/Fail2Ban'
+                    link: '/Documentations/CyberSec/Fail2Ban'
                   }
                 ]
               },
@@ -474,7 +474,7 @@ export default withMermaid(
                 items: [
                   {
                     text: 'LinuxHardening',
-                    link: '/CyberSec/LinuxHardening'
+                    link: '/Documentations/CyberSec/LinuxHardening'
                   }
                 ]
               },
@@ -484,7 +484,7 @@ export default withMermaid(
                 items: [
                   {
                     text: 'Docker Hardening',
-                    link: '/CyberSec/Container-Security/Docker-Hardening'
+                    link: '/Documentations/CyberSec/Container-Security/Docker-Hardening'
                   }
                 ]
               }
@@ -501,15 +501,15 @@ export default withMermaid(
                 items: [
                   {
                     text: 'GitHub Actions',
-                    link: '/CICD/Github-CI'
+                        link: '/Documentations/CICD/Github-CI'
                   },
                   {
                     text: 'GitLab CI',
-                    link: '/CICD/GitLab-CI'
+                        link: '/Documentations/CICD/GitLab-CI'
                   },
                   {
                     text: 'GitHub Actions Pipelines',
-                    link: '/CICD/GitHub-Actions-Pipeline'
+                        link: '/Documentations/CICD/GitHub-Actions-Pipeline'
                   }
                 ]
               },
@@ -519,23 +519,23 @@ export default withMermaid(
                 items: [
                   {
                     text: 'Semgrep',
-                    link: '/CICD/Static-Analysis/Semgrep'
+                        link: '/Documentations/CICD/Static-Analysis/Semgrep'
                   },
                   {
                     text: 'SonarQube',
-                    link: '/CICD/Static-Analysis/SonarQube'
+                        link: '/Documentations/CICD/Static-Analysis/SonarQube'
                   },
                   {
                     text: 'CodeQL',
-                    link: '/CICD/Static-Analysis/CodeQL'
+                        link: '/Documentations/CICD/Static-Analysis/CodeQL'
                   },
                   {
                     text: 'Bandit',
-                    link: '/CICD/Static-Analysis/Bandit'
+                        link: '/Documentations/CICD/Static-Analysis/Bandit'
                   },
                   {
                     text: 'gosec',
-                    link: '/CICD/Static-Analysis/gosec'
+                        link: '/Documentations/CICD/Static-Analysis/gosec'
                   }
                 ]
               },
@@ -545,11 +545,11 @@ export default withMermaid(
                 items: [
                   {
                     text: 'Trivy Security Scanner',
-                    link: '/CICD/Trivy'
+                        link: '/Documentations/CICD/Trivy'
                   },
                   {
                     text: 'Complete Security Scanning Tutorial',
-                    link: '/CICD/Pipline-Templates'
+                        link: '/Documentations/CICD/Pipline-Templates'
                   }
                 ]
               },
@@ -559,11 +559,11 @@ export default withMermaid(
                 items: [
                   {
                     text: 'GitHub Actions Templates',
-                    link: '/CICD/Github-Templates'
+                        link: '/Documentations/CICD/Github-Templates'
                   },
                   {
                     text: 'GitLab CI Templates',
-                    link: '/CICD/GitLab-Templates'
+                        link: '/Documentations/CICD/GitLab-Templates'
                   }
                 ]
               }
@@ -573,11 +573,11 @@ export default withMermaid(
               //   items: [
               //     {
               //       text: 'Docker Registry',
-              //       link: '/CICD/Docker-Registry'
+              //       link: '/Documentations/CICD/Docker-Registry'
               //     },
               //     {
               //       text: 'Automated Deployment',
-              //       link: '/CICD/Automated-Deployment'
+              //       link: '/Documentations/CICD/Automated-Deployment'
               //     }
               //   ]
               // }
@@ -598,51 +598,51 @@ export default withMermaid(
                     items: [
                       {
                         text: 'Go Basics',
-                        link: '/Development/Languages/Go/Go-Basics'
+                        link: '/Documentations/Development/Languages/Go/Go-Basics'
                       },
                       {
                         text: 'Installing Go',
-                        link: '/Development/Languages/Go/Go-Install'
+                        link: '/Documentations/Development/Languages/Go/Go-Install'
                       },
                       {
                         text: 'Data Types',
-                        link: '/Development/Languages/Go/Data-Types'
+                        link: '/Documentations/Development/Languages/Go/Data-Types'
                       },
                       {
                         text: 'Flow Control',
-                        link: '/Development/Languages/Go/Flow-Control'
+                        link: '/Documentations/Development/Languages/Go/Flow-Control'
                       },
                       {
                         text: 'Functions',
-                        link: '/Development/Languages/Go/Functions'
+                        link: '/Documentations/Development/Languages/Go/Functions'
                       },
                       {
                         text: 'Structs & Maps',
-                        link: '/Development/Languages/Go/Structs-Maps'
+                        link: '/Documentations/Development/Languages/Go/Structs-Maps'
                       },
                       {
                         text: 'Packages',
-                        link: '/Development/Languages/Go/Packages'
+                        link: '/Documentations/Development/Languages/Go/Packages'
                       },
                       {
                         text: 'Concurrency',
-                        link: '/Development/Languages/Go/Concurrency'
+                        link: '/Documentations/Development/Languages/Go/Concurrency'
                       },
                       {
                         text: 'Error Handling',
-                        link: '/Development/Languages/Go/Error-Handling'
+                        link: '/Documentations/Development/Languages/Go/Error-Handling'
                       },
                       {
                         text: 'Methods & Interfaces',
-                        link: '/Development/Languages/Go/Methods-Interfaces'
+                        link: '/Documentations/Development/Languages/Go/Methods-Interfaces'
                       },
                       {
                         text: 'Testing',
-                        link: '/Development/Languages/Go/Testing'
+                        link: '/Documentations/Development/Languages/Go/Testing'
                       },
                       {
                         text: 'Web Development',
-                        link: '/Development/Languages/Go/Web-Development'
+                        link: '/Documentations/Development/Languages/Go/Web-Development'
                       }
                     ]
                   },
@@ -652,35 +652,35 @@ export default withMermaid(
                     items: [
                       {
                         text: 'Rust Basics',
-                        link: '/Development/Languages/Rust/Rust-Basics'
+                        link: '/Documentations/Development/Languages/Rust/Rust-Basics'
                       },
                       {
                         text: 'Installing Rust',
-                        link: '/Development/Languages/Rust/Rust-Install'
+                        link: '/Documentations/Development/Languages/Rust/Rust-Install'
                       },
                       {
                         text: 'Data Types',
-                        link: '/Development/Languages/Rust/Rust-Types'
+                        link: '/Documentations/Development/Languages/Rust/Rust-Types'
                       },
                       {
                         text: 'Strings',
-                        link: '/Development/Languages/Rust/Rust-Strings'
+                        link: '/Documentations/Development/Languages/Rust/Rust-Strings'
                       },
                       {
                         text: 'Operators',
-                        link: '/Development/Languages/Rust/Rust-Operators'
+                        link: '/Documentations/Development/Languages/Rust/Rust-Operators'
                       },
                       {
                         text: 'Flow Control',
-                        link: '/Development/Languages/Rust/Rust-FlowControl'
+                        link: '/Documentations/Development/Languages/Rust/Rust-FlowControl'
                       },
                       {
                         text: 'Functions',
-                        link: '/Development/Languages/Rust/Rust-Functions'
+                        link: '/Documentations/Development/Languages/Rust/Rust-Functions'
                       },
                       {
                         text: 'Miscellaneous',
-                        link: '/Development/Languages/Rust/Rust-Misc'
+                        link: '/Documentations/Development/Languages/Rust/Rust-Misc'
                       }
                     ]
                   }
@@ -692,11 +692,11 @@ export default withMermaid(
                 items: [
                   {
                     text: 'IDE Setup',
-                    link: '/Development/VScode-Optimizations'
+                    link: '/Documentations/Development/VScode-Optimizations'
                   },
                   {
                     text: 'Version Control',
-                    link: '/Development/AutoVersionning'
+                    link: '/Documentations/Development/AutoVersionning'
                   }
                 ]
               }
@@ -713,11 +713,11 @@ export default withMermaid(
                 items: [
                   {
                     text: 'Bot Terms of Service',
-                    link: '/Others/Terms-of-Service'
+                    link: '/Documentations/Others/Terms-of-Service'
                   },
                   {
                     text: 'Bot Privacy Policy',
-                    link: '/Others/Privacy-Policy'
+                    link: '/Documentations/Others/Privacy-Policy'
                   }
                 ]
               }
