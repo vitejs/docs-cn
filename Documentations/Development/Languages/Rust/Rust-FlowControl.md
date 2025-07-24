@@ -260,5 +260,5 @@ You can label loops to break or continue outer loops:
 ## Next Steps
 
 Continue your Rust journey with these topics:
-- [Rust Functions](/Development/Languages/Rust/Rust-Functions)
-- [Rust Miscellaneous](/Development/Languages/Rust/Rust-Misc)
+- [Rust Functions](/Documentations/Development/Languages/Rust/Rust-Functions)
+- [Rust Miscellaneous](/Documentations/Development/Languages/Rust/Rust-Misc)

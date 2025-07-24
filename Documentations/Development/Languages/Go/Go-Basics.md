@@ -24,7 +24,7 @@ Go (or Golang) is an open-source programming language developed by Google. It's 
 
 Before diving into Go programming, ensure you have:
 
-1. [Go installed](/Development/Languages/Go/Go-Install) on your system
+1. [Go installed](/Documentations/Development/Languages/Go/Go-Install) on your system
 2. A code editor or IDE with Go support (VSCode with Go extension, GoLand, etc.)
 3. Your GOPATH and workspace properly configured
 

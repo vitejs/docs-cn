@@ -113,4 +113,4 @@ For an optimal Rust development experience, consider using:
 
 ## Next Steps
 
-Now that you have Rust installed, proceed to [Rust Programming Basics](/Development/Languages/Rust/Rust-Basics) to start learning the language.
+Now that you have Rust installed, proceed to [Rust Programming Basics](/Documentations/Development/Languages/Rust/Rust-Basics) to start learning the language.

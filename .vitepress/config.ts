@@ -340,17 +340,17 @@ export default withMermaid(
         },
         {
           text: 'Infrastructure',
-          link: '/Infrastructure/',
-          activeMatch: '/Infrastructure/'
+          link: '/Documentations/Infrastructure/',
+          activeMatch: '/Documentations/Infrastructure/'
         },
-        { text: 'CyberSec', link: '/CyberSec/', activeMatch: '/CyberSec/' },
-        { text: 'CI/CD', link: '/CICD/', activeMatch: '/CICD/' },
-        { text: 'Development', link: '/Development/', activeMatch: '/Development/' },
-        { text: 'Others', link: '/Others/', activeMatch: '/Others/' },
+        { text: 'CyberSec', link: '/Documentations/CyberSec/', activeMatch: '/Documentations/CyberSec/' },
+        { text: 'CI/CD', link: '/Documentations/CICD/', activeMatch: '/Documentations/CICD/' },
+        { text: 'Development', link: '/Documentations/Development/', activeMatch: '/Documentations/Development/' },
+        { text: 'Others', link: '/Documentations/Others/', activeMatch: '/Documentations/Others/' },
       ],
 
       sidebar: {
-        '/Infrastructure/': [
+        '/Documentations/Infrastructure/': [
           {
             text: 'Infrastructure',
             items: [
@@ -450,7 +450,7 @@ export default withMermaid(
             ]
           }
         ],
-        '/CyberSec/': [
+        '/Documentations/CyberSec/': [
           {
             text: 'CyberSec',
             items: [
@@ -491,7 +491,7 @@ export default withMermaid(
             ]
           }
         ],
-        '/CICD/': [
+        '/Documentations/CICD/': [
           {
             text: 'CI/CD',
             items: [
@@ -501,15 +501,15 @@ export default withMermaid(
                 items: [
                   {
                     text: 'GitHub Actions',
-                        link: '/Documentations/CICD/Github-CI'
+                    link: '/Documentations/CICD/Github-CI'
                   },
                   {
                     text: 'GitLab CI',
-                        link: '/Documentations/CICD/GitLab-CI'
+                    link: '/Documentations/CICD/GitLab-CI'
                   },
                   {
                     text: 'GitHub Actions Pipelines',
-                        link: '/Documentations/CICD/GitHub-Actions-Pipeline'
+                    link: '/Documentations/CICD/GitHub-Actions-Pipeline'
                   }
                 ]
               },
@@ -519,23 +519,23 @@ export default withMermaid(
                 items: [
                   {
                     text: 'Semgrep',
-                        link: '/Documentations/CICD/Static-Analysis/Semgrep'
+                    link: '/Documentations/CICD/Static-Analysis/Semgrep'
                   },
                   {
                     text: 'SonarQube',
-                        link: '/Documentations/CICD/Static-Analysis/SonarQube'
+                    link: '/Documentations/CICD/Static-Analysis/SonarQube'
                   },
                   {
                     text: 'CodeQL',
-                        link: '/Documentations/CICD/Static-Analysis/CodeQL'
+                    link: '/Documentations/CICD/Static-Analysis/CodeQL'
                   },
                   {
                     text: 'Bandit',
-                        link: '/Documentations/CICD/Static-Analysis/Bandit'
+                    link: '/Documentations/CICD/Static-Analysis/Bandit'
                   },
                   {
                     text: 'gosec',
-                        link: '/Documentations/CICD/Static-Analysis/gosec'
+                    link: '/Documentations/CICD/Static-Analysis/gosec'
                   }
                 ]
               },
@@ -545,11 +545,11 @@ export default withMermaid(
                 items: [
                   {
                     text: 'Trivy Security Scanner',
-                        link: '/Documentations/CICD/Trivy'
+                    link: '/Documentations/CICD/Trivy'
                   },
                   {
                     text: 'Complete Security Scanning Tutorial',
-                        link: '/Documentations/CICD/Pipline-Templates'
+                    link: '/Documentations/CICD/Pipline-Templates'
                   }
                 ]
               },
@@ -559,11 +559,11 @@ export default withMermaid(
                 items: [
                   {
                     text: 'GitHub Actions Templates',
-                        link: '/Documentations/CICD/Github-Templates'
+                    link: '/Documentations/CICD/Github-Templates'
                   },
                   {
                     text: 'GitLab CI Templates',
-                        link: '/Documentations/CICD/GitLab-Templates'
+                    link: '/Documentations/CICD/GitLab-Templates'
                   }
                 ]
               }
@@ -584,7 +584,7 @@ export default withMermaid(
             ]
           }
         ],
-        '/Development/': [
+        '/Documentations/Development/': [
           {
             text: 'Development',
             items: [
@@ -703,7 +703,7 @@ export default withMermaid(
             ]
           }
         ],
-        '/Others/': [
+        '/Documentations/Others/': [
           {
             text: 'Others',
             items: [
@@ -894,21 +894,21 @@ export default withMermaid(
       
       // High-priority pages based on target keywords
       const highPriorityPatterns = [
-        '/cicd/github-templates',
-        '/cicd/github-ci',
-        '/cicd/trivy',
-        '/cybersec/fail2ban',
-        '/infrastructure/docker/portainer',
-        '/infrastructure/networking/wireguard',
-        '/cicd/static-analysis/bandit',
-        '/cicd/static-analysis/gosec'
+        '/documentations/cicd/github-templates',
+        '/documentations/cicd/github-ci',
+        '/documentations/cicd/trivy',
+        '/documentations/cybersec/fail2ban',
+        '/documentations/infrastructure/docker/portainer',
+        '/documentations/infrastructure/networking/wireguard',
+        '/documentations/cicd/static-analysis/bandit',
+        '/documentations/cicd/static-analysis/gosec'
       ];
       
       // Process each page with appropriate priority
       pages.forEach((page) => {
         // Skip Terms of Service and Privacy Policy pages
-        if (page.url.includes('/others/terms-of-service') || 
-            page.url.includes('/others/privacy-policy')) {
+        if (page.url.includes('/documentations/others/terms-of-service') || 
+            page.url.includes('/documentations/others/privacy-policy')) {
           return;
         }
         

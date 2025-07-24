@@ -33,7 +33,8 @@
 	"scripts": {
 		"dev": "vitepress dev . --host 0.0.0.0 --port 5174",
 		"build": "vitepress build .",
-		"serve": "vitepress serve --host 0.0.0.0 --port 5173"
+		"serve": "vitepress serve --host 0.0.0.0 --port 5173",
+		"fix-links": "bun run scripts/fix-deadlinks.ts"
 	},
 	"gitHooks": {
 		"commit-msg": "node scripts/verifyCommit.js"

@@ -124,14 +124,14 @@ Rust is a statically typed language, which means that it must know the types of 
 - **Vectors**: Dynamically sized arrays
 - **Strings**: Text as UTF-8 encoded data
 
-For more details on types, see [Rust Types](/Development/Languages/Rust/Rust-Types).
+For more details on types, see [Rust Types](/Documentations/Development/Languages/Rust/Rust-Types).
 
 ## Next Steps
 
 Continue your Rust learning journey with these topics:
 
-- [Rust Types](/Development/Languages/Rust/Rust-Types)
-- [Rust Strings](/Development/Languages/Rust/Rust-Strings)
-- [Rust Operators](/Development/Languages/Rust/Rust-Operators)
+- [Rust Types](/Documentations/Development/Languages/Rust/Rust-Types)
+- [Rust Strings](/Documentations/Development/Languages/Rust/Rust-Strings)
+- [Rust Operators](/Documentations/Development/Languages/Rust/Rust-Operators)
 - [Rust Flow Control](/Documentations/Development/Languages/Rust/Rust-FlowControl)
-- [Rust Functions](/Development/Languages/Rust/Rust-Functions)
+- [Rust Functions](/Documentations/Development/Languages/Rust/Rust-Functions)

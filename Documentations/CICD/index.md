@@ -14,8 +14,8 @@ Continuous Integration (CI) and Continuous Deployment (CD) are essential DevSecO
 
 ### Continuous Integration
 
-- **[GitHub Actions](/CICD/Github-CI)** - GitHub's native CI/CD platform with event-driven workflows
-- **[GitLab CI](/CICD/GitLab-CI)** - GitLab's integrated CI/CD solution with pipelines as code
+- **[GitHub Actions](/Documentations/CICD/Github-CI)** - GitHub's native CI/CD platform with event-driven workflows
+- **[GitLab CI](/Documentations/CICD/GitLab-CI)** - GitLab's integrated CI/CD solution with pipelines as code
 
 ### Continuous Deployment
 

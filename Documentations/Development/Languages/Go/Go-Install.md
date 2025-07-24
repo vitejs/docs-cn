@@ -234,4 +234,4 @@ docker run -it --name go-dev -v $(pwd):/app -w /app golang:latest bash
 
 ## Next Steps {#next-steps}
 
-Now that Go is installed, you're ready to start learning and developing with Go. Check out our [Go Basics](/Development/Languages/Go/Go-Basics) guide to begin your journey with Go programming.
+Now that Go is installed, you're ready to start learning and developing with Go. Check out our [Go Basics](/Documentations/Development/Languages/Go/Go-Basics) guide to begin your journey with Go programming.

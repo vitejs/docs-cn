@@ -164,5 +164,5 @@ let ascii_value = character as u8;   // => 65
 
 Continue exploring Rust with these topics:
 - [Rust Flow Control](/Documentations/Development/Languages/Rust/Rust-FlowControl)
-- [Rust Functions](/Development/Languages/Rust/Rust-Functions)
-- [Rust Miscellaneous](/Development/Languages/Rust/Rust-Misc)
+- [Rust Functions](/Documentations/Development/Languages/Rust/Rust-Functions)
+- [Rust Miscellaneous](/Documentations/Development/Languages/Rust/Rust-Misc)

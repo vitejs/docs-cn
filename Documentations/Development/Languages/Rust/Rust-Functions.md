@@ -236,4 +236,4 @@ fn main() {
 ## Next Steps
 
 Continue your Rust learning journey with:
-- [Rust Miscellaneous](/Development/Languages/Rust/Rust-Misc)
+- [Rust Miscellaneous](/Documentations/Development/Languages/Rust/Rust-Misc)
