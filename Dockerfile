@@ -3,7 +3,8 @@ FROM node:20-alpine
 # Install required tools and bun
 RUN apk add --no-cache curl bash && \
     curl -fsSL https://bun.sh/install | bash && \
-    ln -s ~/.bun/bin/bun /usr/local/bin/bun
+    cp ~/.bun/bin/bun /usr/local/bin/bun && \
+    chmod +x /usr/local/bin/bun
 
 WORKDIR /app
 
@@ -18,7 +19,8 @@ RUN mkdir -p /app/.vitepress /app/node_modules/.vite-temp && \
 COPY package.json bun.lockb* ./
 
 # Install dependencies
-RUN bun install --frozen-lockfile && \
+RUN bun --version && \
+    bun install --frozen-lockfile && \
     bun add -d vitepress-plugin-mermaid mermaid vitepress-plugin-group-icons && \
     rm -rf ~/.npm/* ~/.bun/* ~/.node-gyp/*
 
