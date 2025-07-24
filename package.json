@@ -26,21 +26,21 @@
 		"vue": "^3.5.18",
 		"yorkie": "^2.0.0"
 	},
-	"packageManager": "pnpm@10.13.1",
+	"packageManager": "bun@1.1.38",
 	"engines": {
 		"node": "^20.19.0 || >=22.12.0"
 	},
 	"scripts": {
 		"dev": "vitepress dev . --host 0.0.0.0 --port 5174",
-		"build": "vitepress build .",
+		"build": "bun scripts/generate-keywords.ts && vitepress build .",
 		"serve": "vitepress serve --host 0.0.0.0 --port 5173",
-		"fix-links": "bun run scripts/fix-deadlinks.ts"
+		"fix-links": "bun run scripts/fix-deadlinks.ts",
+		"generate-keywords": "bun scripts/generate-keywords.ts"
 	},
 	"gitHooks": {
 		"commit-msg": "node scripts/verifyCommit.js"
 	},
 	"dependencies": {
-		"pnpm": "^10.13.1",
 		"vitepress-plugin-google-analytics": "^1.0.2",
 		"vitepress-plugin-mermaid": "^2.0.17"
 	}

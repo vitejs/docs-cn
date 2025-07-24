@@ -11,18 +11,13 @@ import { joinURL, withoutTrailingSlash } from 'ufo'
 import { SitemapStream } from 'sitemap'
 import { createWriteStream } from 'node:fs'
 import { resolve } from 'node:path'
+import { ogKeywords } from '../scripts/ogKeywords.generated'
 
 // Enhanced SEO descriptions with targeted keywords
 const ogDescription = 'Learn DevSecOps through practical guides, CI/CD pipelines, GitHub Actions templates, and security tools like Fail2Ban, Trivy Scanner, and more'
 const ogImage = 'https://devsecforge.io/icons/android-chrome-512x512.png'
 const ogTitle = 'DevSecOps Documentation - CI/CD, GitHub Actions, Security Tools'
 const ogUrl = 'https://devsecforge.io'
-const ogKeywords = [
-  'devsecops', 'ci cd', 'ci/cd', 'github actions templates', 'fail2ban configuration', 'fail2ban config',
-  'trivy scanner', 'portainer high availability', 'securecodewarrior/github-action-gosec', 'wireguard-ui',
-  'bandit python security linter', 'security tools', 'security linter', 'container security', 'github actions',
-  'security scanner', 'devsecops pipeline', 'security best practices', 'cybersecurity', 'docker security'
-].join(', ')
 
 // netlify envs
 const deployURL = process.env.DEPLOY_PRIME_URL || ''
@@ -160,7 +155,7 @@ export default withMermaid(
       ['meta', { name: 'twitter:image', content: ogImage }],
       ['meta', { name: 'theme-color', content: '#bd34fe' }],
       // Add keywords meta tag for search engines
-      ['meta', { name: 'keywords', content: ogKeywords }],
+      ['meta', { name: 'keywords', content: ogKeywords.join(', ') }],
       // Add extra meta tags for SEO "first impressions" and top result intent
       ['meta', { name: 'google-site-verification', content: 'first-impression-top-result' }],
       ['meta', { name: 'robots', content: 'index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1' }],
@@ -249,7 +244,7 @@ export default withMermaid(
           "@context": "https://schema.org",
           "@type": "Article",
           "headline": "DevSecOps CI/CD, GitHub Actions Templates, Fail2Ban Configuration, Trivy Scanner, Portainer High Availability, Wireguard-UI, Bandit Python Security Linter, securecodewarrior/github-action-gosec",
-          "keywords": "${ogKeywords}",
+          "keywords": "${ogKeywords.join(', ')}",
           "author": { "@type": "Organization", "name": "DevSecForge" },
           "publisher": { "@type": "Organization", "name": "DevSecForge" },
           "image": "${ogImage}",
@@ -750,7 +745,7 @@ export default withMermaid(
 
       // Create page-specific keywords based on title, description, and all target keywords
       let baseKeywords = [
-        ...ogKeywords.split(', '),
+        ...ogKeywords,
         ...(pageData.frontmatter.title || pageData.title || '').toLowerCase().split(' '),
         ...(pageData.frontmatter.description || pageData.description || '').toLowerCase().split(' ')
       ]
@@ -956,3 +951,5 @@ export default withMermaid(
     },
   })
 )
+      
+      console.log('Enhanced SEO sitemap generated successfully');
