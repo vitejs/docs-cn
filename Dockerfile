@@ -1,45 +1,35 @@
 FROM node:20-alpine
 
-# Install bun package manager
-RUN curl -fsSL https://bun.sh/install | bash
+# Install required tools and bun
+RUN apk add --no-cache curl bash && \
+    curl -fsSL https://bun.sh/install | bash && \
+    ln -s ~/.bun/bin/bun /usr/local/bin/bun
 
 WORKDIR /app
 
-# Create non-root user and group
+# Create non-root user
 RUN addgroup -S appgroup && adduser -S appuser -G appgroup
 
-# Create necessary directories with proper permissions
-RUN mkdir -p /app/.vitepress && \
-    mkdir -p /app/node_modules/.vite-temp && \
+# Create directories with permissions
+RUN mkdir -p /app/.vitepress /app/node_modules/.vite-temp && \
     chmod -R 777 /app
 
-# Copy only package files first to leverage cache
+# Copy package files
 COPY package.json bun.lockb* ./
 
-# Install dependencies using bun and clean up cache
+# Install dependencies
 RUN bun install --frozen-lockfile && \
     bun add -d vitepress-plugin-mermaid mermaid vitepress-plugin-group-icons && \
-    rm -rf /root/.npm/* /root/.bun/* /root/.node-gyp/*
+    rm -rf ~/.npm/* ~/.bun/* ~/.node-gyp/*
 
-# Copy source after installing dependencies
+# Copy source
 COPY . .
 
-# Ensure all directories have very permissive permissions for troubleshooting
-RUN chmod -R 777 /app
+# Set permissions
+RUN chmod -R 777 /app && \
+    chown -R appuser:appgroup /app
 
-# Verify the config file exists and has correct permissions
-RUN if [ -f "/app/.vitepress/config.ts" ]; then \
-      echo "Config file exists and permissions are:" && \
-      ls -l /app/.vitepress/config.ts; \
-    else \
-      echo "Config file is missing!" && \
-      exit 1; \
-    fi
-
-# Change ownership to non-root user
-RUN chown -R appuser:appgroup /app /bun
-
-# Build the application
+# Build
 RUN bun run build
 
 # Switch to non-root user
@@ -47,9 +37,7 @@ USER appuser
 
 EXPOSE 4173
 
-# Add healthcheck
 HEALTHCHECK --interval=30s --timeout=30s --start-period=5s --retries=3 \
     CMD wget --no-verbose --tries=1 --spider http://localhost:4173 || exit 1
 
-# Update the CMD to bind to all interfaces (0.0.0.0)
 CMD ["bun", "run", "serve"]
