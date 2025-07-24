@@ -1,7 +1,7 @@
 FROM node:20-alpine
 
 # Install required tools and bun
-RUN apk add --no-cache curl bash && \
+RUN apk add --no-cache curl bash git && \
     curl -fsSL https://bun.sh/install | bash && \
     cp ~/.bun/bin/bun /usr/local/bin/bun && \
     chmod +x /usr/local/bin/bun
