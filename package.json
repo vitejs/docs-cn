@@ -11,7 +11,7 @@
 		"@shikijs/vitepress-twoslash": "^3.8.1",
 		"@type-challenges/utils": "^0.1.1",
 		"@types/express": "^5.0.3",
-		"@types/node": "^24.0.14",
+		"@types/node": "^24.1.0",
 		"chalk": "^5.4.1",
 		"feed": "^5.1.0",
 		"gray-matter": "^4.0.3",
@@ -20,13 +20,13 @@
 		"lodash": "^4.17.21",
 		"sitemap": "^8.0.0",
 		"ufo": "^1.6.1",
-		"vite": "^7.0.5",
+		"vite": "^7.0.6",
 		"vitepress": "2.0.0-alpha.7",
 		"vitepress-plugin-group-icons": "^1.6.1",
-		"vue": "^3.5.17",
+		"vue": "^3.5.18",
 		"yorkie": "^2.0.0"
 	},
-	"packageManager": "pnpm@9.6.0",
+	"packageManager": "pnpm@10.13.1",
 	"engines": {
 		"node": "^20.19.0 || >=22.12.0"
 	},

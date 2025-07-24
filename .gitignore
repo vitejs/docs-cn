@@ -12,3 +12,5 @@ yarn.lock
 scripts/verifyCommit.js
 pnpm-lock.yaml
 .pnpm-store
+bun.lockb
+.bun

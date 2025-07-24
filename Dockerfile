@@ -1,13 +1,14 @@
 FROM node:20-alpine
 
-# Combine RUN commands to reduce layers and set PNPM_HOME
-ENV PNPM_HOME="/pnpm"
-ENV PATH="$PNPM_HOME:$PATH"
+# Combine RUN commands to reduce layers and set BUN_INSTALL
+ENV BUN_INSTALL="/bun"
+ENV PATH="$BUN_INSTALL/bin:$PATH"
 
 RUN apk update && \
     apk upgrade && \
     apk add --no-cache bash git wget && \
-    npm install -g pnpm
+    npm install -g pnpm && \
+    pnpm self-update
 
 WORKDIR /app
 
@@ -59,4 +60,4 @@ HEALTHCHECK --interval=30s --timeout=30s --start-period=5s --retries=3 \
     CMD wget --no-verbose --tries=1 --spider http://localhost:4173 || exit 1
 
 # Update the CMD to bind to all interfaces (0.0.0.0)
-CMD ["pnpm", "serve"]
+CMD ["bun", "run", "serve"]
