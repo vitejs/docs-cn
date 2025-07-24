@@ -1,19 +1,139 @@
-devsecops
-ci/cd
-github actions templates
-fail2ban configuration
-fail2ban config
-trivy scanner
-portainer high availability
-securecodewarrior/github-action-gosec
-wireguard-ui
-bandit python security linter
-security tools
-security linter
-container security
-github actions
-security scanner
-devsecops pipeline
-security best practices
-cybersecurity
-docker security
+devsecops  
+ci/cd  
+github actions templates  
+fail2ban configuration  
+fail2ban config  
+trivy scanner  
+portainer high availability  
+securecodewarrior/github-action-gosec  
+wireguard-ui  
+bandit python security linter  
+security tools  
+security linter  
+container security  
+github actions  
+security scanner  
+devsecops pipeline  
+security best practices  
+cybersecurity  
+docker security  
+docker compose security  
+kubernetes security  
+snyk scanner  
+semgrep rules  
+semgrep ci  
+codeql github actions  
+static application security testing  
+sast tools  
+dast tools  
+open source security tools  
+zero trust  
+shift left security  
+sbom generation  
+cyclonedx  
+dependency track  
+container image scanning  
+vulnerability scanner  
+infrastructure security  
+iac security  
+cloud security posture management  
+cspm tools  
+docker hardening  
+github security audit  
+pip audit  
+npm audit  
+mend security  
+linux hardening  
+ssh security  
+ufw firewall  
+crowdsec  
+auditd monitoring  
+rkhunter  
+clamav  
+log monitoring  
+fail2ban jail config  
+prometheus security  
+grafana security  
+zabbix hardening  
+devsecops tutorial  
+devsecops training  
+devsecops best practices  
+secure docker images  
+dockerfile best practices  
+github actions security  
+supply chain security  
+ci cd security checks  
+secrets scanning github  
+gitleaks  
+talisman  
+git-secrets  
+passwordless authentication  
+mfa enforcement  
+api security  
+jwt validation  
+rate limiting  
+reverse proxy security  
+traefik middleware  
+secure headers  
+csp headers  
+hsts headers  
+open redirect protection  
+xss prevention  
+sql injection  
+burp suite automation  
+zap proxy github action  
+pentest automation  
+ctf practice labs  
+mitre attack  
+threat modeling  
+risk assessment  
+security documentation  
+cyber hygiene  
+vuln management  
+patch management  
+devsecops engineer  
+cybersecurity analyst  
+devsecforge
+DevSecForge CI/CD
+DevSecForge GitHub Actions templates
+DevSecForge GitLab CI templates
+Node.js DevSecOps pipeline
+Python DevSecOps pipeline
+Go DevSecOps pipeline
+Terraform DevSecOps pipeline
+blue-green deployment github actions
+trivy vulnerability scanner
+aquasecurity trivy-action
+bandit security linter
+safety python security
+gosec security scanner
+securecodewarrior gosec action
+checkov terraform scanning
+semgrep static analysis
+SonarQube security scanning
+CodeQL security analysis
+github codeql action
+docker build-push-action
+docker/setup-buildx-action
+docker/login-action
+docker metadata-action
+docker-image security scan
+container security scan trivy
+oss supply chain security
+static code analysis tools
+security scanning tutorials
+DevSecOps pipeline templates
+static application security testing
+sast and dast pipeline
+infrastructure as code security
+terraform security scanning
+pipelines for Django security
+CI/CD for security
+microservice security Go
+github actions security best practices
+security linting Python Bandit
+security pipeline Node.js YAML
+github actions docker deployment
+terraform environment automation
+pipeline blue-green deployment strategy
+github slack notification deployment

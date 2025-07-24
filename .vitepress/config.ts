@@ -398,6 +398,10 @@ export default withMermaid(
                     collapsed: true,
                     items: [
                       {
+                        text: 'Course Outline',
+                        link: '/Documentations/Infrastructure/Terraform/CourseOutline'
+                      },
+                      {
                         text: 'Install',
                         link: '/Documentations/Infrastructure/Terraform/Install'
                       },
