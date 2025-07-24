@@ -1,6 +1,5 @@
 node_modules
 .git
 .old
-.pnpm-store
 .bun
 bun.lockb

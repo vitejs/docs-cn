@@ -358,7 +358,6 @@ function searchForWorkspaceRoot(
 - `package.json` 中包含 `workspaces` 字段
 - 包含以下文件之一：
   - `lerna.json`
-  - `pnpm-workspace.yaml`
 
 ## `loadEnv`
 

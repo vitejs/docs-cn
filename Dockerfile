@@ -1,14 +1,7 @@
 FROM node:20-alpine
 
-# Combine RUN commands to reduce layers and set BUN_INSTALL
-ENV BUN_INSTALL="/bun"
-ENV PATH="$BUN_INSTALL/bin:$PATH"
-
-RUN apk update && \
-    apk upgrade && \
-    apk add --no-cache bash git wget && \
-    npm install -g pnpm && \
-    pnpm self-update
+# Install bun package manager
+RUN curl -fsSL https://bun.sh/install | bash
 
 WORKDIR /app
 
@@ -21,13 +14,12 @@ RUN mkdir -p /app/.vitepress && \
     chmod -R 777 /app
 
 # Copy only package files first to leverage cache
-COPY package.json pnpm-lock.yaml* ./
+COPY package.json bun.lockb* ./
 
-# Combine install commands and clean up cache
-RUN pnpm install --shamefully-hoist && \
-    pnpm install vitepress-plugin-mermaid mermaid vitepress-plugin-group-icons -D && \
-    pnpm store prune && \
-    rm -rf /root/.npm/* /root/.pnpm-store/* /root/.node-gyp/*
+# Install dependencies using bun and clean up cache
+RUN bun install --frozen-lockfile && \
+    bun add -d vitepress-plugin-mermaid mermaid vitepress-plugin-group-icons && \
+    rm -rf /root/.npm/* /root/.bun/* /root/.node-gyp/*
 
 # Copy source after installing dependencies
 COPY . .
@@ -45,10 +37,10 @@ RUN if [ -f "/app/.vitepress/config.ts" ]; then \
     fi
 
 # Change ownership to non-root user
-RUN chown -R appuser:appgroup /app /pnpm
+RUN chown -R appuser:appgroup /app /bun
 
 # Build the application
-RUN pnpm run build
+RUN bun run build
 
 # Switch to non-root user
 USER appuser
