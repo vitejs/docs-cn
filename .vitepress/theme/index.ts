@@ -12,6 +12,7 @@ import ReleaseTag from './components/ReleaseTag.vue'
 import './custom.css'
 import YouTubeVideo from './components/YouTubeVideo.vue'
 import SponsorBanner from './components/SponsorBanner.vue'
+import NonInheritBadge from './components/NonInheritBadge.vue'
 import 'virtual:group-icons.css'
 
 export default {
@@ -27,6 +28,7 @@ export default {
     app.component('SvgImage', SvgImage)
     app.component('ReleaseTag', ReleaseTag)
     app.component('YouTubeVideo', YouTubeVideo)
+    app.component('NonInheritBadge', NonInheritBadge)
     app.use(TwoslashFloatingVue)
   },
 } satisfies Theme

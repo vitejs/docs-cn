@@ -70,7 +70,11 @@ export default {
 }
 ```
 
+<<<<<<< HEAD
 如果没有明确说明，环境将继承已配置的顶级配置选项（例如，新的 `server` 和 `edge` 环境将继承 `build.sourcemap: false` 选项）。少数顶级选项（如 `optimizeDeps`）仅适用于 `client` 环境，因为它们在默认应用于服务器环境时效果不佳。也可以通过 `environments.client` 明确配置 `client` 环境，但我们建议使用顶级选项进行配置，以便在添加新环境时客户端配置保持不变。
+=======
+When not explicitly documented, environment inherits the configured top-level config options (for example, the new `server` and `edge` environments will inherit the `build.sourcemap: false` option). A small number of top-level options, like `optimizeDeps`, only apply to the `client` environment, as they don't work well when applied as a default to server environments. Those options have <NonInheritBadge /> badge in [the reference](/config/). The `client` environment can also be configured explicitly through `environments.client`, but we recommend to do it with the top-level options so the client config remains unchanged when adding new environments.
+>>>>>>> 4e86b4da5ae0e07dc033a7c4352a9a2fb70acafe
 
 `EnvironmentOptions` 接口公开所有每个环境选项。有些环境选项适用于 `build` 和 `dev`，如 `resolve`。还有 `DevEnvironmentOptions` 和 `BuildEnvironmentOptions` 用于开发和构建特定选项（如 `dev.warmup` 或 `build.outDir`）。一些选项（例如`optimizeDeps`）仅适用于 dev，但为了向后兼容，它保留为顶层而不是嵌套在`dev`中。
 

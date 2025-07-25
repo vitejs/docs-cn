@@ -7,6 +7,12 @@ import {
   groupIconMdPlugin,
   groupIconVitePlugin,
 } from 'vitepress-plugin-group-icons'
+<<<<<<< HEAD
+=======
+import llmstxt from 'vitepress-plugin-llms'
+import type { PluginOption } from 'vite'
+import { markdownItImageSize } from 'markdown-it-image-size'
+>>>>>>> 4e86b4da5ae0e07dc033a7c4352a9a2fb70acafe
 import { buildEnd } from './buildEnd.config'
 
 const ogDescription = 'Next Generation Frontend Tooling'
@@ -523,6 +529,9 @@ export default defineConfig({
     codeTransformers: [transformerTwoslash()],
     config(md) {
       md.use(groupIconMdPlugin)
+      md.use(markdownItImageSize, {
+        publicDir: path.resolve(import.meta.dirname, '../public'),
+      })
     },
   },
   vite: {

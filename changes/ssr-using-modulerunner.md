@@ -18,4 +18,10 @@
 
 ## 迁移指南 {#migration-guide}
 
+<<<<<<< HEAD
 请查看 [用于框架的环境 API 指南](../guide/api-environment-frameworks.md)。
+=======
+Check out the [Environment API for Frameworks Guide](../guide/api-environment-frameworks.md).
+
+`server.ssrFixStacktrace` and `server.ssrRewriteStacktrace` does not have to be called when using the Module Runner APIs. The stack traces will be updated unless `sourcemapInterceptor` is set to `false`.
+>>>>>>> 4e86b4da5ae0e07dc033a7c4352a9a2fb70acafe

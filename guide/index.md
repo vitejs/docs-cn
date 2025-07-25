@@ -6,7 +6,11 @@
 
 ## 总览 {#overview}
 
+<<<<<<< HEAD
 Vite（法语意为 "快速的"，发音 `/vit/`<button id="play-vite-audio" onclick="document.getElementById('vite-audio').play();" style="border: none; padding: 3px; border-radius: 4px; vertical-align: bottom;"><svg style="height:2em;width:2em"><use href="/voice.svg?no-inline#voice" /></svg></button>，发音同 "veet"）是一种新型前端构建工具，能够显著提升前端开发体验。它主要由两部分组成：
+=======
+Vite (French word for "quick", pronounced `/vit/`<button style="border:none;padding:3px;border-radius:4px;vertical-align:bottom" id="play-vite-audio" aria-label="pronounce" onclick="document.getElementById('vite-audio').play();"><svg style="height:2em;width:2em"><use href="/voice.svg?no-inline#voice" /></svg></button>, like "veet") is a build tool that aims to provide a faster and leaner development experience for modern web projects. It consists of two major parts:
+>>>>>>> 4e86b4da5ae0e07dc033a7c4352a9a2fb70acafe
 
 - 一个开发服务器，它基于 [原生 ES 模块](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules) 提供了 [丰富的内建功能](./features)，如速度快到惊人的 [模块热替换（HMR）](./features#hot-module-replacement)。
 
@@ -255,8 +259,13 @@ pnpm link --global # 在这一步中可使用你喜欢的包管理器
 
 然后，回到你的 Vite 项目并运行 `pnpm link --global vite`（或者使用你的其他包管理工具来全局链接 `vite`）。重新启动开发服务器来体验新功能吧！
 
+<<<<<<< HEAD
 ::: tip 处理依赖中的 Vite 版本
 若需替换依赖链中传递使用的 Vite 版本（Transitive Dependencies），应使用 [npm overrides](https://docs.npmjs.com/cli/v11/configuring-npm/package-json#overrides) 或 [pnpm overrides](https://pnpm.io/package_json#pnpmoverrides)。
+=======
+::: tip Dependencies using Vite
+To replace the Vite version used by dependencies transitively, you should use [npm overrides](https://docs.npmjs.com/cli/v11/configuring-npm/package-json#overrides) or [pnpm overrides](https://pnpm.io/9.x/package_json#pnpmoverrides).
+>>>>>>> 4e86b4da5ae0e07dc033a7c4352a9a2fb70acafe
 :::
 
 ## 社区 {#community}
