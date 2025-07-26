@@ -256,7 +256,7 @@ pnpm link --global # 在这一步中可使用你喜欢的包管理器
 然后，回到你的 Vite 项目并运行 `pnpm link --global vite`（或者使用你的其他包管理工具来全局链接 `vite`）。重新启动开发服务器来体验新功能吧！
 
 ::: tip 处理依赖中的 Vite 版本
-若需替换依赖链中传递使用的 Vite 版本（Transitive Dependencies），应使用 [npm overrides](https://docs.npmjs.com/cli/v11/configuring-npm/package-json#overrides) 或 [pnpm overrides](https://pnpm.io/package_json#pnpmoverrides)。
+若需替换依赖链中传递使用的 Vite 版本（Transitive Dependencies），应使用 [npm overrides](https://docs.npmjs.com/cli/v11/configuring-npm/package-json#overrides) 或 [pnpm overrides](https://pnpm.io/9.x/package_json#pnpmoverrides)。
 :::
 
 ## 社区 {#community}

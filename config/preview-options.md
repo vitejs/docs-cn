@@ -80,7 +80,7 @@ export default defineConfig({
 
 为开发服务器配置自定义代理规则。其值的结构为 `{ key: options }` 的对象。如果 key 以 `^` 开头，它将被识别为 `RegExp`，其中 `configure` 选项可用于访问代理实例。
 
-基于 [`http-proxy`](https://github.com/http-party/node-http-proxy) 实现，完整的参数列表参见 [此链接](https://github.com/http-party/node-http-proxy#options)。
+基于 [`http-proxy-3`](https://github.com/sagemathinc/http-proxy-3) 实现，完整的参数列表参见 [此链接](https://github.com/sagemathinc/http-proxy-3#options)。
 
 ## preview.cors {#preview-cors}
 
