@@ -114,7 +114,7 @@ declare const __APP_VERSION__: string
 对于服务端渲染构建，配置项 `build.rollupOptions.output` 为 ESM 构建输出时去重过程将不工作。一个替代方案是先使用 CJS 构建输出，直到 ESM 在插件中有了更好的模块加载支持。
 :::
 
-## resolve.conditions {#resolve-conditions}
+## resolve.conditions <NonInheritBadge /> {#resolve-conditions}
 
 - **类型：** `string[]`
 - **默认：** `['module', 'browser', 'development|production']` (`defaultClientConditions`)
@@ -140,7 +140,7 @@ declare const __APP_VERSION__: string
 
 请注意，如果符合要求，`import`，`require`，`default` 始终会被应用。
 
-## resolve.mainFields {#resolve-mainfields}
+## resolve.mainFields <NonInheritBadge /> {#resolve-mainfields}
 
 - **类型：** `string[]`
 - **默认：** `['browser', 'module', 'jsnext:main', 'jsnext']` (`defaultClientMainFields`)

@@ -14,7 +14,11 @@
 ```ts
 future: {
   removeServerModuleGraph: 'warn',
+  removeServerReloadModule: 'warn',
+  removeServerPluginContainer: 'warn',
+  removeServerHot: 'warn',
   removeServerTransformRequest: 'warn',
+  removeServerWarmupRequest: 'warn',
 }
 ```
 
@@ -29,5 +33,8 @@ future: {
 ## 迁移指南 {#migration-guide}
 
 - `server.moduleGraph` -> [`environment.moduleGraph`](/guide/api-environment-instances#separate-module-graphs)
+- `server.reloadModule(module)` -> `environment.reloadModule(module)`
+- `server.pluginContainer` -> `environment.pluginContainer`
 - `server.transformRequest(url, ssr)` -> `environment.transformRequest(url)`
 - `server.warmupRequest(url, ssr)` -> `environment.warmupRequest(url)`
+- `server.hot` -> `server.client.environment.hot`
