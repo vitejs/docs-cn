@@ -11,13 +11,8 @@ Vite 努力秉承开箱即用的原则，因此在创作一款新插件前，请
 当创作插件时，你可以在 `vite.config.js` 中直接使用它。没必要直接为它创建一个新的 package。当你发现某个插件在你项目中很有用时，可以考虑 [在社区中](https://chat.vite.dev) 将其与他人分享。
 
 ::: tip
-<<<<<<< HEAD
 在学习、调试或创作插件时，我们建议在你的项目中引入 [vite-plugin-inspect](https://github.com/antfu/vite-plugin-inspect)。 它可以帮助你检查 Vite 插件的中间状态。安装后，你可以访问 `localhost:5173/__inspect/` 来检查你项目的模块和栈信息。请查阅 [vite-plugin-inspect 文档](https://github.com/antfu/vite-plugin-inspect) 中的安装说明。
-![vite-plugin-inspect](/images/vite-plugin-inspect.png)
-=======
-When learning, debugging, or authoring plugins, we suggest including [vite-plugin-inspect](https://github.com/antfu/vite-plugin-inspect) in your project. It allows you to inspect the intermediate state of Vite plugins. After installing, you can visit `localhost:5173/__inspect/` to inspect the modules and transformation stack of your project. Check out install instructions in the [vite-plugin-inspect docs](https://github.com/antfu/vite-plugin-inspect).
 ![vite-plugin-inspect](../images/vite-plugin-inspect.png)
->>>>>>> 4e86b4da5ae0e07dc033a7c4352a9a2fb70acafe
 :::
 
 ## 约定 {#conventions}

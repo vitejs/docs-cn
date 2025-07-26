@@ -12,11 +12,7 @@
 
 如果这两者都不合你意，则可以使用此选项指定自定义条目——该值需要遵循 [tinyglobby 模式](https://github.com/SuperchupuDev/tinyglobby) ，或者是相对于 Vite 项目根目录的匹配模式数组。当显式声明了 `optimizeDeps.entries` 时默认只有 `node_modules` 和 `build.outDir` 文件夹会被忽略。如果还需忽略其他文件夹，你可以在模式列表中使用以 `!` 为前缀的、用来匹配忽略项的模式。对于明确包含字符串 `node_modules` 的模式，不会忽略 `node_modules`。
 
-<<<<<<< HEAD
-## optimizeDeps.exclude {#optimizedeps-exclude}
-=======
-## optimizeDeps.exclude <NonInheritBadge />
->>>>>>> 4e86b4da5ae0e07dc033a7c4352a9a2fb70acafe
+## optimizeDeps.exclude <NonInheritBadge /> {#optimizedeps-exclude}
 
 - **类型：** `string[]`
 
@@ -37,11 +33,7 @@ export default defineConfig({
 
 :::
 
-<<<<<<< HEAD
-## optimizeDeps.include {#optimizedeps-include}
-=======
-## optimizeDeps.include <NonInheritBadge />
->>>>>>> 4e86b4da5ae0e07dc033a7c4352a9a2fb70acafe
+## optimizeDeps.include <NonInheritBadge /> {#optimizedeps-include}
 
 - **类型：** `string[]`
 
@@ -59,11 +51,7 @@ export default defineConfig({
 })
 ```
 
-<<<<<<< HEAD
-## optimizeDeps.esbuildOptions {#optimizedeps-esbuild-options}
-=======
-## optimizeDeps.esbuildOptions <NonInheritBadge />
->>>>>>> 4e86b4da5ae0e07dc033a7c4352a9a2fb70acafe
+## optimizeDeps.esbuildOptions <NonInheritBadge /> {#optimizedeps-esbuild-options}
 
 - **类型：** [`Omit`](https://www.typescriptlang.org/docs/handbook/utility-types.html#omittype-keys)`<`[`EsbuildBuildOptions`](https://esbuild.github.io/api/#general-options)`,
 | 'bundle'
@@ -84,21 +72,13 @@ export default defineConfig({
 - 忽略了 `external` 选项，请使用 Vite 的 `optimizeDeps.exclude` 选项
 - `plugins` 与 Vite 的 dep 插件合并
 
-<<<<<<< HEAD
-## optimizeDeps.force {#optimizedeps-force}
-=======
-## optimizeDeps.force <NonInheritBadge />
->>>>>>> 4e86b4da5ae0e07dc033a7c4352a9a2fb70acafe
+## optimizeDeps.force <NonInheritBadge /> {#optimizedeps-force}
 
 - **类型：** `boolean`
 
 设置为 `true` 可以强制依赖预构建，而忽略之前已经缓存过的、已经优化过的依赖。
 
-<<<<<<< HEAD
-## optimizeDeps.noDiscovery {#optimizedeps-no-discovery}
-=======
-## optimizeDeps.noDiscovery <NonInheritBadge />
->>>>>>> 4e86b4da5ae0e07dc033a7c4352a9a2fb70acafe
+## optimizeDeps.noDiscovery <NonInheritBadge /> {#optimizedeps-no-discovery}
 
 - **类型：** `boolean`
 - **默认：** `false`
@@ -113,11 +93,7 @@ export default defineConfig({
 
 当该功能被启用时，系统会在冷启动时保持第一个优化的依赖结果，直到所有的静态导入都被检索完毕。这样可以避免因为发现新的依赖项而触发新的公共 chunk 生成，从而需要刷新整个页面。如果通过扫描和在 `include` 中明确定义的方式能找到所有的依赖项，那么最好关闭这个功能，这样浏览器可以并行处理更多的请求。
 
-<<<<<<< HEAD
-## optimizeDeps.disabled {#optimizedeps-disabled}
-=======
-## optimizeDeps.disabled <NonInheritBadge />
->>>>>>> 4e86b4da5ae0e07dc033a7c4352a9a2fb70acafe
+## optimizeDeps.disabled <NonInheritBadge /> {#optimizedeps-disabled}
 
 - **已废弃**
 - **实验性：** [提供反馈](https://github.com/vitejs/vite/discussions/13839)
