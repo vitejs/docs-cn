@@ -153,12 +153,17 @@ export class ModuleRunner {
 **使用示例：**
 
 ```js
-import { ModuleRunner, ESModulesEvaluator } from 'vite/module-runner'
+import {
+  ModuleRunner,
+  ESModulesEvaluator,
+  createNodeImportMeta,
+} from 'vite/module-runner'
 import { transport } from './rpc-implementation.js'
 
 const moduleRunner = new ModuleRunner(
   {
     transport,
+    createImportMeta: createNodeImportMeta, // if the module runner runs in Node.js
   },
   new ESModulesEvaluator(),
 )
@@ -278,7 +283,11 @@ interface ModuleRunnerTransport {
 ```js [worker.js]
 import { parentPort } from 'node:worker_threads'
 import { fileURLToPath } from 'node:url'
-import { ESModulesEvaluator, ModuleRunner } from 'vite/module-runner'
+import {
+  ESModulesEvaluator,
+  ModuleRunner,
+  createNodeImportMeta,
+} from 'vite/module-runner'
 
 /** @type {import('vite/module-runner').ModuleRunnerTransport} */
 const transport = {
@@ -294,6 +303,7 @@ const transport = {
 const runner = new ModuleRunner(
   {
     transport,
+    createImportMeta: createNodeImportMeta,
   },
   new ESModulesEvaluator(),
 )
