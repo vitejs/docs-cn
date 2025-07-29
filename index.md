@@ -1,12 +1,8 @@
 ---
 title: Vite
-<<<<<<< HEAD
 titleTemplate: 下一代的前端工具链
-=======
-titleTemplate: Next Generation Frontend Tooling
 # add `dark` here to apply dark mode on initial load,
 # since `onMounted` doesn't run during SSR
->>>>>>> 2aba939ccab7b24a19986cfea9efd9b9e92d9119
 pageClass: landing dark
 
 layout: home
