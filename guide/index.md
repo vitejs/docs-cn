@@ -43,10 +43,13 @@ Vite 还提供了强大的扩展性，可通过其 [插件 API](./api-plugin) �
 
 ## 搭建第一个 Vite 项目 {#scaffolding-your-first-vite-project}
 
+<<<<<<< HEAD
 ::: tip 兼容性注意
 Vite 需要 [Node.js](https://nodejs.org/en/) 版本 20.19+, 22.12+。然而，有些模板需要依赖更高的 Node 版本才能正常运行，当你的包管理器发出警告时，请注意升级你的 Node 版本。
 :::
 
+=======
+>>>>>>> 511a82c9c383067486f002eb55de373c569bbcde
 ::: code-group
 
 ```bash [npm]
@@ -73,7 +76,17 @@ $ deno init --npm vite
 
 然后按照提示操作即可！
 
+<<<<<<< HEAD
 你还可以通过附加的命令行选项直接指定项目名称和你想要使用的模板。例如，要构建一个 Vite + Vue 项目，运行:
+=======
+::: tip Compatibility Note
+Vite requires [Node.js](https://nodejs.org/en/) version 20.19+, 22.12+. However, some templates require a higher Node.js version to work, please upgrade if your package manager warns about it.
+:::
+
+:::: details Using create vite with command line options
+
+You can also directly specify the project name and the template you want to use via additional command line options. For example, to scaffold a Vite + Vue project, run:
+>>>>>>> 511a82c9c383067486f002eb55de373c569bbcde
 
 ::: code-group
 
@@ -104,7 +117,13 @@ $ deno init --npm vite my-vue-app --template vue
 
 你可以使用 `.` 作为项目名称，在当前目录中创建项目脚手架。
 
+<<<<<<< HEAD
 ## 社区模板 {#community-templates}
+=======
+::::
+
+## Community Templates
+>>>>>>> 511a82c9c383067486f002eb55de373c569bbcde
 
 create-vite 是一个快速生成主流框架基础模板的工具。查看 Awesome Vite 仓库的 [社区维护模板](https://github.com/vitejs/awesome-vite#templates)，里面包含各种工具和不同框架的模板。
 
