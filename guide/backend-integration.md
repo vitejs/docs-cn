@@ -76,6 +76,10 @@
        "file": "assets/shared-ChJ_j-JJ.css",
        "src": "_shared-ChJ_j-JJ.css"
      },
+     "logo.svg": {
+       "file": "assets/logo-BuPIv-2h.svg",
+       "src": "logo.svg"
+     },
      "baz.js": {
        "file": "assets/baz-B2H3sXNv.js",
        "name": "baz",
@@ -101,11 +105,39 @@
    }
    ```
 
+<<<<<<< HEAD
    - 清单是一个 `Record<name, chunk>` 结构的对象。
    - 对于 入口 或动态入口 chunk，键是相对于项目根目录的资源路径。
    - 对于非入口 chunk，键是生成文件的名称并加上前缀 `_`。
    - 当 [`build.cssCodeSplit`](/config/build-options.md#build-csscodesplit) 为 `false` 时生成的 CSS 文件，键为 `style.css`。
    - Chunk 将信息包含在其静态和动态导入上（两者都是映射到清单中相应 chunk 的键），以及任何与之相关的 CSS 和资源文件。
+=======
+   The manifest has a `Record<name, chunk>` structure where each chunk follows the `ManifestChunk` interface:
+
+   ```ts
+   interface ManifestChunk {
+     src?: string
+     file: string
+     css?: string[]
+     assets?: string[]
+     isEntry?: boolean
+     name?: string
+     names?: string[]
+     isDynamicEntry?: boolean
+     imports?: string[]
+     dynamicImports?: string[]
+   }
+   ```
+
+   Each entry in the manifest represents one of the following:
+   - **Entry chunks**: Generated from files specified in [`build.rollupOptions.input`](https://rollupjs.org/configuration-options/#input). These chunks have `isEntry: true` and their key is the relative src path from project root.
+   - **Dynamic entry chunks**: Generated from dynamic imports. These chunks have `isDynamicEntry: true` and their key is the relative src path from project root.
+   - **Non-entry chunks**: Their key is the base name of the generated file prefixed with `_`.
+   - **Asset chunks**: Generated from imported assets like images, fonts. Their key is the relative src path from project root.
+   - **CSS files**: When [`build.cssCodeSplit`](/config/build-options.md#build-csscodesplit) is `false`, a single CSS file is generated with the key `style.css`. When `build.cssCodeSplit` is not `false`, the key is generated similar to JS chunks (i.e. entry chunks will not have `_` prefix and non-entry chunks will have `_` prefix).
+
+   Chunks will contain information on their static and dynamic imports (both are keys that map to the corresponding chunk in the manifest), and also their corresponding CSS and asset files (if any).
+>>>>>>> 3308bf113500b48ae576b212370fe5e6016e6164
 
 4. 你可以利用这个文件来渲染带有哈希文件名的链接或预加载指令。
 
@@ -129,8 +161,19 @@
    <link rel="modulepreload" href="/{{ chunk.file }}" />
    ```
 
+<<<<<<< HEAD
    具体来说，一个生成 HTML 的后端在给定 manifest 文件和一个入口文件的情况下，
    应该包含以下标签：
+=======
+   Specifically, a backend generating HTML should include the following tags given a manifest
+   file and an entry point. Note that following this order is recommended for optimal performance:
+   1. A `<link rel="stylesheet">` tag for each file in the entry point chunk's `css` list (if it exists)
+   2. Recursively follow all chunks in the entry point's `imports` list and include a
+      `<link rel="stylesheet">` tag for each CSS file of each imported chunk's `css` list (if it exists).
+   3. A tag for the `file` key of the entry point chunk. This can be `<script type="module">` for JavaScript, `<link rel="stylesheet">` for CSS.
+   4. Optionally, `<link rel="modulepreload">` tag for the `file` of each imported JavaScript
+      chunk, again recursively following the imports starting from the entry point chunk.
+>>>>>>> 3308bf113500b48ae576b212370fe5e6016e6164
 
    - 对于入口文件 chunk 的 `css` 列表中的每个文件，都应包含一个 `<link rel="stylesheet">` 标签。
    - 递归追踪入口文件的 `imports` 列表中的所有 chunk，并为每个导入的 chunk 的每个 CSS 文件

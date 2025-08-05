@@ -146,7 +146,15 @@ import './Foo.js' // 应该为 './foo.js'
 
 你需要通过 `http` 协议访问该文件。最简单的办法就是使用 `npx vite preview`。
 
+<<<<<<< HEAD
 ## 优化依赖 {#optimize-dependencies}
+=======
+### No such file or directory error due to case sensitivity
+
+If you encounter errors like `ENOENT: no such file or directory` or `Module not found`, this often occurs when your project was developed on a case-insensitive filesystem (Windows / macOS) but built on a case-sensitive one (Linux). Please make sure that the imports have the correct casing.
+
+## Optimized Dependencies
+>>>>>>> 3308bf113500b48ae576b212370fe5e6016e6164
 
 ### 链接本地包时过期预构建依赖项 {#outdated-pre-bundled-deps-when-linking-to-a-local-package}
 
