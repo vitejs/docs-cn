@@ -76,6 +76,10 @@
        "file": "assets/shared-ChJ_j-JJ.css",
        "src": "_shared-ChJ_j-JJ.css"
      },
+     "logo.svg": {
+       "file": "assets/logo-BuPIv-2h.svg",
+       "src": "logo.svg"
+     },
      "baz.js": {
        "file": "assets/baz-B2H3sXNv.js",
        "name": "baz",
@@ -101,11 +105,31 @@
    }
    ```
 
-   - 清单是一个 `Record<name, chunk>` 结构的对象。
-   - 对于 入口 或动态入口 chunk，键是相对于项目根目录的资源路径。
-   - 对于非入口 chunk，键是生成文件的名称并加上前缀 `_`。
-   - 当 [`build.cssCodeSplit`](/config/build-options.md#build-csscodesplit) 为 `false` 时生成的 CSS 文件，键为 `style.css`。
-   - Chunk 将信息包含在其静态和动态导入上（两者都是映射到清单中相应 chunk 的键），以及任何与之相关的 CSS 和资源文件。
+   manifest 具有 `Record<name, chunk>` 结构，其中每个块遵循 `ManifestChunk` 接口：
+
+   ```ts
+   interface ManifestChunk {
+     src?: string
+     file: string
+     css?: string[]
+     assets?: string[]
+     isEntry?: boolean
+     name?: string
+     names?: string[]
+     isDynamicEntry?: boolean
+     imports?: string[]
+     dynamicImports?: string[]
+   }
+   ```
+
+清单中的每个条目代表以下之一：
+- **Entry chunks**：由 [`build.rollupOptions.input`](https://rollupjs.org/configuration-options/#input) 中指定的文件生成。这些块的 isEntry 属性设置为 true，其键值是项目根目录的相对 src 路径。
+- **Dynamic entry chunks**：由动态导入生成。这些块的 isDynamicEntry 属性设置为 true，其键值是项目根目录的相对 src 路径。
+- **Non-entry chunks**：其键值是生成文件的基本名称加上前缀 `_`。
+- **Asset chunks**：由导入的资源（例如图片、字体）生成。其键值是项目根目录的相对 src 路径。
+- **CSS 文件**：当 [`build.cssCodeSplit`](/config/build-options.md#build-csscodesplit) 为 `false` 时，将生成一个带有 `style.css` 键的 CSS 文件。当 `build.cssCodeSplit` 不为 `false` 时，键的生成方式与 JS 代码块类似（即，入口代码块不带 `_` 前缀，非入口代码块带 `_` 前缀）。
+
+代码块将包含其静态和动态导入的信息（两者都是映射到清单中相应代码块的键），以及它们对应的 CSS 和资源文件（如果有）。
 
 4. 你可以利用这个文件来渲染带有哈希文件名的链接或预加载指令。
 
@@ -129,16 +153,12 @@
    <link rel="modulepreload" href="/{{ chunk.file }}" />
    ```
 
-   具体来说，一个生成 HTML 的后端在给定 manifest 文件和一个入口文件的情况下，
-   应该包含以下标签：
-
-   - 对于入口文件 chunk 的 `css` 列表中的每个文件，都应包含一个 `<link rel="stylesheet">` 标签。
-   - 递归追踪入口文件的 `imports` 列表中的所有 chunk，并为每个导入的 chunk 的每个 CSS 文件
-     包含一个 `<link rel="stylesheet">` 标签。
-   - 对于入口文件 chunk 的 `file` 键的标签（对于 JavaScript 是
-     `<script type="module">`，对于 CSS 是 `<link rel="stylesheet">`）
-   - 可选项，对于每个导入的 JavaScript chunk 的 `file` 键的 `<link rel="modulepreload">` 标签，
-     同样从入口文件 chunk 开始递归追踪导入。
+   具体来说，后端生成 HTML 时，若给定一个清单文件（manifest file）和一个入口点（entry point），应包含以下标签。
+   注意，为获得最佳性能，建议遵循以下顺序：
+   1. 为入口点代码块的 `css` 列表中的每个文件添加 `<link rel="stylesheet">` 标签（如果存在）。
+   2. 递归跟踪入口点 `imports` 列表中的所有代码块，并为每个导入代码块的 `css` 列表（如果存在）中的每个 CSS 文件添加 `<link rel="stylesheet">` 标签。
+   3. 为入口点代码块的 `file` 键添加一个标签。对于 JavaScript，可以是 `<script type="module">`；对于 CSS，可以是 `<link rel="stylesheet">`。
+   4. （可选）为每个导入的 JavaScript 代码块的 `file` 添加 `<link rel="modulepreload">` 标签，同样从入口点代码块开始递归跟踪导入。
 
    按照上面的示例 manifest，对于入口文件 `views/foo.js`，在生产环境中应包含以下标签：
 
