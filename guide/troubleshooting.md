@@ -146,7 +146,7 @@ import './Foo.js' // 应该为 './foo.js'
 
 你需要通过 `http` 协议访问该文件。最简单的办法就是使用 `npx vite preview`。
 
-### 由于区分大小写，没有这样的文件或目录错误
+### 由于区分大小写，没有这样的文件或目录错误 {#no-such-file-or-directory-error-due-to-case-sensitivity}
 
 如果您遇到类似 `ENOENT: no such file or directory` 或者 `Module not found` 之类的错误，这通常是因为您的项目是在不区分大小写的文件系统（Windows / macOS）上开发的，但在区分大小写的文件系统（Linux）上构建时发生的。请确保导入的大小写正确。
 
