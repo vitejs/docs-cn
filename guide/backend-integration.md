@@ -153,8 +153,8 @@
    <link rel="modulepreload" href="/{{ chunk.file }}" />
    ```
 
-   具体来说，一个生成 HTML 的后端在给定 manifest 文件和一个入口文件的情况下，
-   文件和入口点。请注意，为了获得最佳性能，建议遵循以下顺序：
+   具体来说，后端生成 HTML 时，若给定一个清单文件（manifest file）和一个入口点（entry point），应包含以下标签。
+   注意，为获得最佳性能，建议遵循以下顺序：
    1. 为入口点代码块的 `css` 列表中的每个文件添加 `<link rel="stylesheet">` 标签（如果存在）。
    2. 递归跟踪入口点 `imports` 列表中的所有代码块，并为每个导入代码块的 `css` 列表（如果存在）中的每个 CSS 文件添加 `<link rel="stylesheet">` 标签。
    3. 为入口点代码块的 `file` 键添加一个标签。对于 JavaScript，可以是 `<script type="module">`；对于 CSS，可以是 `<link rel="stylesheet">`。
