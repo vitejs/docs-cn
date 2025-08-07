@@ -1,12 +1,25 @@
 <template>
   <div class="roadmap-container">
-    <!-- Simplified Control Panel -->
+    <!-- Milestone Progress Header -->
     <div class="roadmap-controls">
-      <div class="control-section">
-        <label>🎯 Learning Path Progress</label>
-        <div class="progress-info">
-          <span class="node-count">{{ nodes.length }} Learning Modules</span>
-          <span class="category-count">{{ categories.length }} Categories</span>
+      <div class="milestone-progress">
+        <div class="progress-header">
+          <h3>🎯 Kubernetes Learning Roadmap</h3>
+          <p>Master Kubernetes through structured milestones and learning units</p>
+        </div>
+        <div class="progress-stats">
+          <div class="stat-item">
+            <span class="stat-number">{{ milestoneCount }}</span>
+            <span class="stat-label">Milestones</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">{{ unitCount }}</span>
+            <span class="stat-label">Learning Units</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">{{ totalSubjects }}</span>
+            <span class="stat-label">Total Subjects</span>
+          </div>
         </div>
       </div>
       
@@ -17,10 +30,13 @@
         <button @click="fitToScreen" class="btn btn-fit">
           📐 Fit to Screen
         </button>
+        <button @click="toggleOrientation" class="btn btn-orientation">
+          {{ isVertical ? '↔️ Horizontal' : '↕️ Vertical' }}
+        </button>
       </div>
     </div>
 
-    <!-- ArgoCD-style Viewport -->
+    <!-- Learning Roadmap Viewport -->
     <div class="roadmap-viewport">
       <div 
         ref="cytoscapeEl" 
@@ -35,32 +51,26 @@
       </div>
     </div>
 
-    <!-- ArgoCD-style Node Details Panel -->
+    <!-- Enhanced Learning Unit Details Panel -->
     <transition name="slide-in">
-      <div v-if="activeNode" class="node-details-panel">
+      <div v-if="activeNode" class="unit-details-panel">
         <div class="panel-header">
-          <div class="node-status">
-            <div class="status-indicator" :class="getNodeStatus(activeNode)"></div>
+          <div class="unit-info">
+            <div class="unit-type" :class="getUnitType(activeNode)">
+              {{ getUnitTypeLabel(activeNode) }}
+            </div>
             <h3>{{ activeNode.data.label }}</h3>
+            <div class="unit-meta">
+              <span class="difficulty-badge" :class="getDifficultyClass(activeNode.data.difficulty)">
+                {{ getDifficultyLabel(activeNode.data.difficulty) }}
+              </span>
+              <span class="time-estimate">{{ activeNode.data.estimatedTime }}</span>
+            </div>
           </div>
           <button @click="closeDetails" class="close-btn">✕</button>
         </div>
         
         <div class="panel-content">
-          <!-- Category Section -->
-          <div class="detail-section">
-            <div class="section-header">
-              <span class="section-icon">📂</span>
-              <span class="section-title">Category</span>
-            </div>
-            <span 
-              class="category-badge"
-              :style="{ backgroundColor: getCategoryColor(activeNode.data.category) }"
-            >
-              {{ activeNode.data.category }}
-            </span>
-          </div>
-
           <!-- Description Section -->
           <div v-if="activeNode.data.description" class="detail-section">
             <div class="section-header">
@@ -70,34 +80,31 @@
             <p class="description-text">{{ activeNode.data.description }}</p>
           </div>
 
-          <!-- Metrics Section -->
-          <div class="detail-section">
+          <!-- Learning Progress -->
+          <div v-if="!isMilestone(activeNode)" class="detail-section">
             <div class="section-header">
               <span class="section-icon">📊</span>
-              <span class="section-title">Learning Metrics</span>
+              <span class="section-title">Learning Progress</span>
             </div>
-            <div class="metrics-grid">
-              <div v-if="activeNode.data.difficulty" class="metric-item">
-                <span class="metric-label">Difficulty</span>
-                <div class="difficulty-indicator">
-                  <div 
-                    class="difficulty-bar"
-                    :style="{ 
-                      width: `${(activeNode.data.difficulty / 5) * 100}%`,
-                      backgroundColor: getDifficultyColor(activeNode.data.difficulty)
-                    }"
-                  ></div>
-                  <span class="difficulty-text">{{ activeNode.data.difficulty }}/5</span>
+            <div class="progress-metrics">
+              <div class="progress-item">
+                <label>Subjects Completed</label>
+                <div class="progress-bar">
+                  <div class="progress-fill" :style="{ width: '0%' }"></div>
+                  <span class="progress-text">0 / {{ getSubjectCount(activeNode) }}</span>
                 </div>
               </div>
-              <div v-if="activeNode.data.estimatedTime" class="metric-item">
-                <span class="metric-label">Duration</span>
-                <span class="metric-value">{{ activeNode.data.estimatedTime }}</span>
+              <div class="progress-item">
+                <label>Tasks Completed</label>
+                <div class="progress-bar">
+                  <div class="progress-fill" :style="{ width: '0%' }"></div>
+                  <span class="progress-text">0 / {{ getTaskCount(activeNode) }}</span>
+                </div>
               </div>
             </div>
           </div>
 
-          <!-- Prerequisites Section -->
+          <!-- Prerequisites -->
           <div v-if="activeNode.data.prerequisites?.length" class="detail-section">
             <div class="section-header">
               <span class="section-icon">🔗</span>
@@ -109,12 +116,31 @@
                 :key="prereq"
                 class="prereq-item"
               >
+                <span class="prereq-status">✓</span>
                 {{ prereq }}
               </div>
             </div>
           </div>
 
-          <!-- Actions Section -->
+          <!-- Learning Path -->
+          <div class="detail-section">
+            <div class="section-header">
+              <span class="section-icon">🛤️</span>
+              <span class="section-title">Learning Path</span>
+            </div>
+            <div class="learning-path">
+              <div class="path-item current">
+                <span class="path-status">📍</span>
+                <span class="path-label">{{ activeNode.data.label }}</span>
+              </div>
+              <div v-for="next in getNextUnits(activeNode)" :key="next" class="path-item next">
+                <span class="path-status">→</span>
+                <span class="path-label">{{ next }}</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Actions -->
           <div class="detail-section">
             <div class="section-header">
               <span class="section-icon">🚀</span>
@@ -130,10 +156,17 @@
                 📖 Start Learning
               </a>
               <button 
-                @click="showConnections" 
+                @click="showLearningPath" 
                 class="action-btn secondary"
               >
-                🔗 Show Dependencies
+                🗺️ Show Path
+              </button>
+              <button 
+                v-if="!isMilestone(activeNode)"
+                @click="markComplete" 
+                class="action-btn success"
+              >
+                ✅ Mark Complete
               </button>
             </div>
           </div>
@@ -151,9 +184,6 @@ import dagre from 'cytoscape-dagre'
 // Register Cytoscape extensions
 cytoscape.use(dagre)
 
-/**
- * Props definition - simplified for ArgoCD-style usage
- */
 const props = defineProps({
   nodes: {
     type: Array,
@@ -167,7 +197,7 @@ const props = defineProps({
   },
   height: {
     type: String,
-    default: '700px'
+    default: '800px'
   },
   theme: {
     type: String,
@@ -176,8 +206,8 @@ const props = defineProps({
   colorScheme: {
     type: Object,
     default: () => ({
-      primary: '#1976d2',
-      secondary: '#424242',
+      primary: '#326ce5',
+      secondary: '#51a3f5',
       success: '#4caf50',
       warning: '#ff9800',
       error: '#f44336',
@@ -194,209 +224,297 @@ const cyInstance = ref(null)
 const isLoading = ref(true)
 const activeNode = ref(null)
 const containerHeight = ref(props.height)
+const isVertical = ref(true)
 
 /**
- * ArgoCD-inspired color palette
+ * Milestone and Unit specific color scheme
  */
-const argoCDColors = {
-  'Foundation': '#2196f3',      // Blue
-  'Core': '#4caf50',            // Green  
-  'Configuration': '#ff9800',   // Orange
-  'Security': '#f44336',        // Red
-  'Operations': '#9c27b0',      // Purple
-  'Advanced': '#607d8b',        // Blue Grey
-  'DevOps': '#795548',          // Brown
-  'Enterprise': '#e91e63',      // Pink
-  'Prerequisites': '#00bcd4',   // Cyan
-  'Development': '#8bc34a',     // Light Green
-  'Cloud Managed': '#3f51b5',   // Indigo
-  'Self-Managed': '#ff5722'     // Deep Orange
+const roadmapColors = {
+  'Milestone': '#ffd54f',        // Yellow for milestones
+  'Unit 01': '#81c784',          // Light Green for Unit 01
+  'Unit 02': '#64b5f6',          // Light Blue for Unit 02  
+  'Unit 03': '#ffb74d',          // Light Orange for Unit 03
+  'Unit 04': '#f06292',          // Light Pink for Unit 04
+  'Prerequisites': '#90a4ae',    // Blue Grey for prerequisites
+  'Foundation': '#a5d6a7',       // Pale Green
+  'Core': '#90caf9',            // Pale Blue
+  'Security': '#ffcdd2',        // Pale Red
+  'Operations': '#d1c4e9',      // Pale Purple
+  'Advanced': '#ffecb3'         // Pale Amber
 }
 
 /**
- * Computed categories
+ * Computed properties for roadmap statistics
  */
-const categories = computed(() => {
-  const categoryMap = new Map()
-  
-  props.nodes.forEach(node => {
-    const category = node.data?.category || 'Uncategorized'
-    if (!categoryMap.has(category)) {
-      categoryMap.set(category, {
-        id: category,
-        name: category,
-        color: argoCDColors[category] || '#757575'
-      })
+const milestoneCount = computed(() => {
+  return props.nodes.filter(node => node.data?.category === 'Milestone').length
+})
+
+const unitCount = computed(() => {
+  return props.nodes.filter(node => 
+    node.data?.category && node.data.category.startsWith('Unit')
+  ).length
+})
+
+const totalSubjects = computed(() => {
+  return props.nodes.reduce((total, node) => {
+    if (node.data?.subjects) {
+      return total + node.data.subjects
     }
-  })
-  
-  return Array.from(categoryMap.values())
+    return total + (node.data?.category?.startsWith('Unit') ? 4 : 0)
+  }, 0)
 })
 
 /**
- * ArgoCD-style Cytoscape configuration
+ * Enhanced Cytoscape styling for educational roadmap
  */
-const getArgoCDStyles = () => [
-  // Base node styling - ArgoCD card style
+const getRoadmapStyles = () => [
+  // Milestone nodes - Large yellow rectangles
   {
-    selector: 'node',
+    selector: 'node[category="Milestone"]',
+    style: {
+      'background-color': '#fff59d',
+      'border-color': '#fbc02d',
+      'border-width': '4px',
+      'color': '#f57f17',
+      'font-family': 'Inter, sans-serif',
+      'font-size': '16px',
+      'font-weight': '700',
+      'label': 'data(label)',
+      'text-wrap': 'wrap',
+      'text-max-width': '200px',
+      'text-valign': 'center',
+      'text-halign': 'center',
+      'width': '280px',
+      'height': '100px',
+      'shape': 'round-rectangle',
+      'shadow-blur': '12px',
+      'shadow-color': 'rgba(251, 192, 45, 0.3)',
+      'shadow-offset-x': '0px',
+      'shadow-offset-y': '4px'
+    }
+  },
+
+  // Unit nodes - Medium colored rectangles
+  {
+    selector: 'node[category^="Unit"]',
+    style: {
+      'background-color': 'data(unitColor)',
+      'border-color': 'data(unitBorderColor)',
+      'border-width': '3px',
+      'color': '#2c3e50',
+      'font-family': 'Inter, sans-serif',
+      'font-size': '14px',
+      'font-weight': '600',
+      'label': 'data(label)',
+      'text-wrap': 'wrap',
+      'text-max-width': '180px',
+      'text-valign': 'center',
+      'text-halign': 'center',
+      'width': '220px',
+      'height': '80px',
+      'shape': 'round-rectangle',
+      'shadow-blur': '8px',
+      'shadow-color': 'rgba(0,0,0,0.15)',
+      'shadow-offset-x': '0px',
+      'shadow-offset-y': '3px'
+    }
+  },
+
+  // Regular nodes - Smaller rectangles
+  {
+    selector: 'node:not([category="Milestone"]):not([category^="Unit"])',
     style: {
       'background-color': '#ffffff',
       'border-color': 'data(borderColor)',
       'border-width': '2px',
-      'color': '#424242',
-      'font-family': 'Roboto, sans-serif',
+      'color': '#2c3e50',
+      'font-family': 'Inter, sans-serif',
       'font-size': '12px',
       'font-weight': '500',
       'label': 'data(label)',
       'text-wrap': 'wrap',
-      'text-max-width': '120px',
+      'text-max-width': '140px',
       'text-valign': 'center',
       'text-halign': 'center',
-      'width': '140px',
+      'width': '160px',
       'height': '60px',
-      'shape': 'roundrectangle',
-      'overlay-opacity': 0,
-      'box-shadow-blur': '4px',
-      'box-shadow-color': 'rgba(0,0,0,0.1)',
-      'box-shadow-offset-x': '0px',
-      'box-shadow-offset-y': '2px',
-      'transition-property': 'border-color, box-shadow-color',
-      'transition-duration': '200ms'
+      'shape': 'round-rectangle',
+      'shadow-blur': '6px',
+      'shadow-color': 'rgba(0,0,0,0.1)',
+      'shadow-offset-x': '0px',
+      'shadow-offset-y': '2px'
     }
   },
-  
-  // Node hover - ArgoCD hover effect
+
+  // Hover effects
   {
     selector: 'node:hover',
     style: {
-      'border-width': '3px',
+      'border-width': '5px',
       'cursor': 'pointer',
-      'box-shadow-color': 'rgba(0,0,0,0.2)',
-      'box-shadow-blur': '8px'
+      'shadow-blur': '16px',
+      'shadow-color': 'rgba(0,0,0,0.25)',
+      'z-index': 10
     }
   },
-  
-  // Selected node - ArgoCD selected state
+
+  // Selected state
   {
     selector: 'node:selected',
     style: {
-      'border-width': '3px',
+      'border-width': '6px',
       'border-color': props.colorScheme.primary,
-      'box-shadow-color': 'rgba(25,118,210,0.3)',
-      'box-shadow-blur': '12px'
+      'shadow-blur': '20px',
+      'shadow-color': 'rgba(50, 108, 229, 0.4)',
+      'z-index': 15
     }
   },
-  
-  // Edges - ArgoCD flow style
+
+  // Taxi-style edges for clean orthogonal connections
   {
     selector: 'edge',
     style: {
-      'width': '2px',
+      'width': '4px',
       'line-color': '#bdbdbd',
-      'target-arrow-color': '#bdbdbd',
+      'target-arrow-color': '#757575',
       'target-arrow-shape': 'triangle',
-      'target-arrow-size': '10px',
-      'curve-style': 'bezier',
+      'target-arrow-size': '12px',
+      'curve-style': 'taxi',
+      'taxi-direction': isVertical.value ? 'downward' : 'rightward',
+      'taxi-turn': '50%',
+      'taxi-turn-min-distance': '20px',
       'source-endpoint': 'outside-to-node',
       'target-endpoint': 'outside-to-node',
+      'edge-distances': 'node-position',
       'transition-property': 'line-color, target-arrow-color, width',
       'transition-duration': '200ms'
     }
   },
-  
-  // Highlighted edges - ArgoCD dependency highlight
+
+  // Highlighted path edges
   {
     selector: 'edge.highlighted',
     style: {
-      'width': '4px',
+      'width': '6px',
       'line-color': props.colorScheme.primary,
       'target-arrow-color': props.colorScheme.primary,
-      'z-index': 10
+      'z-index': 20
     }
   },
-  
-  // Node status classes
+
+  // Milestone connection edges - Special styling
   {
-    selector: '.completed',
+    selector: 'edge[source$="milestone"]',
     style: {
-      'border-color': '#4caf50',
-      'background-color': '#e8f5e8'
-    }
-  },
-  {
-    selector: '.in-progress',
-    style: {
-      'border-color': '#ff9800',
-      'background-color': '#fff3e0'
-    }
-  },
-  {
-    selector: '.not-started',
-    style: {
-      'border-color': '#9e9e9e',
-      'background-color': '#fafafa'
+      'width': '6px',
+      'line-color': '#fbc02d',
+      'target-arrow-color': '#f57f17',
+      'target-arrow-size': '16px'
     }
   }
 ]
 
 /**
- * Dagre layout configuration - ArgoCD style
+ * Dagre layout optimized for educational roadmap
  */
-const getDagreLayout = () => ({
+const getRoadmapLayout = () => ({
   name: 'dagre',
-  rankDir: 'TB',
+  rankDir: isVertical.value ? 'TB' : 'LR',
   align: 'UL',
-  nodeSep: 60,
-  rankSep: 100,
+  nodeSep: isVertical.value ? 100 : 120,
+  rankSep: isVertical.value ? 150 : 180,
   edgeSep: 30,
-  marginX: 40,
-  marginY: 40,
+  marginX: 60,
+  marginY: 60,
   animate: true,
-  animationDuration: 300,
+  animationDuration: 600,
   fit: true,
-  padding: 30
+  padding: 40
 })
 
 /**
- * Process nodes with ArgoCD styling
+ * Process nodes with roadmap-specific styling
  */
 const processNodes = () => {
   return props.nodes.map(node => {
-    const category = node.data?.category || 'Uncategorized'
-    const categoryColor = getCategoryColor(category)
+    const category = node.data?.category || 'Default'
+    const baseColor = roadmapColors[category] || '#e0e0e0'
+    const borderColor = darkenColor(baseColor, 0.3)
     
     return {
       ...node,
       data: {
         ...node.data,
-        borderColor: categoryColor,
-        categoryColor: categoryColor
+        borderColor: borderColor,
+        unitColor: baseColor,
+        unitBorderColor: borderColor,
+        category: category
       }
     }
   })
 }
 
 /**
- * Helper functions
+ * Utility functions
  */
-const getCategoryColor = (categoryName) => {
-  return argoCDColors[categoryName] || '#757575'
+const darkenColor = (color, percent) => {
+  const num = parseInt(color.replace('#', ''), 16)
+  const amt = Math.round(2.55 * percent * 100)
+  const R = Math.max(0, (num >> 16) - amt)
+  const G = Math.max(0, (num >> 8 & 0x00FF) - amt)
+  const B = Math.max(0, (num & 0x0000FF) - amt)
+  return `#${(0x1000000 + R * 0x10000 + G * 0x100 + B).toString(16).slice(1)}`
 }
 
-const getNodeStatus = (node) => {
-  // Default status logic - can be customized
-  return 'not-started'
+const isMilestone = (node) => {
+  return node?.data?.category === 'Milestone'
 }
 
-const getDifficultyColor = (difficulty) => {
-  if (difficulty <= 2) return '#4caf50'  // Easy - Green
-  if (difficulty <= 3) return '#ff9800'  // Medium - Orange  
-  return '#f44336'                       // Hard - Red
+const getUnitType = (node) => {
+  const category = node?.data?.category
+  if (category === 'Milestone') return 'milestone'
+  if (category?.startsWith('Unit')) return 'unit'
+  return 'topic'
+}
+
+const getUnitTypeLabel = (node) => {
+  const category = node?.data?.category
+  if (category === 'Milestone') return 'MILESTONE'
+  if (category?.startsWith('Unit')) return category.toUpperCase()
+  return 'TOPIC'
+}
+
+const getDifficultyClass = (difficulty) => {
+  if (difficulty <= 2) return 'easy'
+  if (difficulty <= 3) return 'medium'
+  return 'hard'
+}
+
+const getDifficultyLabel = (difficulty) => {
+  if (difficulty <= 2) return 'Beginner'
+  if (difficulty <= 3) return 'Intermediate'
+  return 'Advanced'
+}
+
+const getSubjectCount = (node) => {
+  return node?.data?.subjects || 4
+}
+
+const getTaskCount = (node) => {
+  return node?.data?.tasks || 7
+}
+
+const getNextUnits = (node) => {
+  // Find connected nodes that come after this one
+  if (!cyInstance.value) return []
+  
+  const connectedEdges = cyInstance.value.$(`#${node.data.id}`).outgoers('edge')
+  return connectedEdges.targets().map(target => target.data('label')).slice(0, 2)
 }
 
 /**
- * Initialize Cytoscape with ArgoCD styling
+ * Initialize Cytoscape with roadmap layout
  */
 const initializeCytoscape = () => {
   if (!cytoscapeEl.value) return
@@ -412,10 +530,9 @@ const initializeCytoscape = () => {
         nodes: processedNodes,
         edges: props.edges
       },
-      style: getArgoCDStyles(),
-      layout: getDagreLayout(),
+      style: getRoadmapStyles(),
+      layout: getRoadmapLayout(),
       
-      // Interaction settings
       zoomingEnabled: true,
       userZoomingEnabled: true,
       panningEnabled: true,
@@ -429,11 +546,10 @@ const initializeCytoscape = () => {
 
     setupEventHandlers()
     
-    // Initial view setup
     setTimeout(() => {
       cyInstance.value?.fit()
       isLoading.value = false
-    }, 100)
+    }, 300)
     
   } catch (error) {
     console.error('Failed to initialize Cytoscape:', error)
@@ -447,14 +563,12 @@ const initializeCytoscape = () => {
 const setupEventHandlers = () => {
   if (!cyInstance.value) return
 
-  // Node selection
   cyInstance.value.on('tap', 'node', (event) => {
     const node = event.target
     activeNode.value = node
-    highlightConnections(node)
+    highlightLearningPath(node)
   })
 
-  // Background click to deselect
   cyInstance.value.on('tap', (event) => {
     if (event.target === cyInstance.value) {
       activeNode.value = null
@@ -463,19 +577,18 @@ const setupEventHandlers = () => {
   })
 }
 
-/**
- * Highlight node connections
- */
-const highlightConnections = (node) => {
+const highlightLearningPath = (node) => {
   clearHighlights()
   
+  // Highlight the learning path from this node
   const connectedEdges = node.connectedEdges()
   connectedEdges.addClass('highlighted')
+  
+  // Also highlight prerequisite path
+  const predecessors = node.predecessors()
+  predecessors.edges().addClass('highlighted')
 }
 
-/**
- * Clear highlights
- */
 const clearHighlights = () => {
   if (!cyInstance.value) return
   cyInstance.value.elements().removeClass('highlighted')
@@ -486,7 +599,6 @@ const clearHighlights = () => {
  */
 const resetView = () => {
   if (!cyInstance.value) return
-  
   cyInstance.value.fit()
   cyInstance.value.center()
 }
@@ -496,14 +608,27 @@ const fitToScreen = () => {
   cyInstance.value.fit()
 }
 
+const toggleOrientation = () => {
+  isVertical.value = !isVertical.value
+  if (cyInstance.value) {
+    cyInstance.value.layout(getRoadmapLayout()).run()
+  }
+}
+
 const closeDetails = () => {
   activeNode.value = null
   clearHighlights()
 }
 
-const showConnections = () => {
+const showLearningPath = () => {
   if (!activeNode.value) return
-  highlightConnections(activeNode.value)
+  highlightLearningPath(activeNode.value)
+}
+
+const markComplete = () => {
+  if (!activeNode.value) return
+  // Add completion logic here
+  console.log('Marking complete:', activeNode.value.data.label)
 }
 
 /**
@@ -521,61 +646,79 @@ onUnmounted(() => {
   }
 })
 
-/**
- * Watchers
- */
 watch(() => [props.nodes, props.edges], () => {
   if (cyInstance.value) {
     const processedNodes = processNodes()
     cyInstance.value.elements().remove()
     cyInstance.value.add({ nodes: processedNodes, edges: props.edges })
-    cyInstance.value.layout(getDagreLayout()).run()
+    cyInstance.value.layout(getRoadmapLayout()).run()
   }
 }, { deep: true })
 </script>
 
 <style scoped>
-/* ArgoCD-inspired styling */
+/* Enhanced roadmap styling */
 .roadmap-container {
-  background: #fafafa;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
   border: 1px solid #e0e0e0;
-  border-radius: 8px;
+  border-radius: 12px;
   overflow: hidden;
   margin: 24px 0;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Inter', sans-serif;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.1);
 }
 
-/* Control Panel - ArgoCD header style */
+/* Milestone Progress Header */
 .roadmap-controls {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 16px 24px;
-  background: #ffffff;
-  border-bottom: 1px solid #e0e0e0;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  padding: 24px 32px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
 }
 
-.control-section label {
+.milestone-progress {
+  flex: 1;
+}
+
+.progress-header h3 {
+  margin: 0 0 8px 0;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: white;
+}
+
+.progress-header p {
+  margin: 0;
   font-size: 1rem;
-  font-weight: 600;
-  color: #424242;
-  margin-bottom: 4px;
-  display: block;
+  opacity: 0.9;
+  color: white;
 }
 
-.progress-info {
+.progress-stats {
   display: flex;
-  gap: 16px;
-  font-size: 0.875rem;
-  color: #757575;
+  gap: 32px;
+  margin-top: 16px;
 }
 
-.node-count,
-.category-count {
+.stat-item {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 4px;
+}
+
+.stat-number {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #ffd54f;
+  line-height: 1;
+}
+
+.stat-label {
+  font-size: 0.875rem;
+  opacity: 0.9;
+  margin-top: 4px;
 }
 
 .control-actions {
@@ -583,43 +726,34 @@ watch(() => [props.nodes, props.edges], () => {
   gap: 12px;
 }
 
-/* ArgoCD-style buttons */
 .btn {
-  padding: 8px 16px;
-  border: 1px solid #e0e0e0;
-  border-radius: 4px;
+  padding: 10px 16px;
+  border: 2px solid rgba(255,255,255,0.3);
+  border-radius: 8px;
   font-size: 0.875rem;
-  font-weight: 500;
+  font-weight: 600;
   cursor: pointer;
-  transition: all 0.2s ease;
-  background: #ffffff;
-  color: #424242;
+  transition: all 0.3s ease;
+  background: rgba(255,255,255,0.1);
+  color: white;
+  backdrop-filter: blur(10px);
 }
 
 .btn:hover {
-  background: #f5f5f5;
-  border-color: #bdbdbd;
-}
-
-.btn-reset {
-  color: #1976d2;
-  border-color: #1976d2;
-}
-
-.btn-fit {
-  color: #388e3c;
-  border-color: #388e3c;
+  background: rgba(255,255,255,0.2);
+  border-color: rgba(255,255,255,0.5);
+  transform: translateY(-2px);
 }
 
 /* Viewport */
 .roadmap-viewport {
   position: relative;
-  background: #ffffff;
+  background: linear-gradient(to bottom, #ffffff 0%, #f8f9fa 100%);
 }
 
 .cytoscape-canvas {
   width: 100%;
-  background: #ffffff;
+  background: transparent;
 }
 
 /* Loading overlay */
@@ -652,227 +786,217 @@ watch(() => [props.nodes, props.edges], () => {
   100% { transform: rotate(360deg); }
 }
 
-/* ArgoCD-style Node Details Panel */
-.node-details-panel {
+/* Enhanced Unit Details Panel */
+.unit-details-panel {
   position: absolute;
-  top: 16px;
-  right: 16px;
-  width: 360px;
-  max-height: calc(100% - 32px);
-  background: #ffffff;
-  border: 1px solid #e0e0e0;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  top: 24px;
+  right: 24px;
+  width: 400px;
+  max-height: calc(100% - 48px);
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.15);
   overflow: hidden;
   z-index: 1000;
+  border: 1px solid #e0e0e0;
 }
 
 .panel-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 16px 20px;
-  background: #f8f9fa;
-  border-bottom: 1px solid #e0e0e0;
+  padding: 24px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
 }
 
-.node-status {
+.unit-info h3 {
+  margin: 8px 0 12px 0;
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.unit-type {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 8px;
+}
+
+.unit-type.milestone {
+  background: #ffd54f;
+  color: #f57f17;
+}
+
+.unit-type.unit {
+  background: rgba(255,255,255,0.2);
+  color: white;
+}
+
+.unit-type.topic {
+  background: rgba(255,255,255,0.15);
+  color: white;
+}
+
+.unit-meta {
   display: flex;
-  align-items: center;
   gap: 12px;
+  align-items: center;
 }
 
-.status-indicator {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background: #9e9e9e;
-}
-
-.status-indicator.completed {
-  background: #4caf50;
-}
-
-.status-indicator.in-progress {
-  background: #ff9800;
-}
-
-.panel-header h3 {
-  margin: 0;
-  font-size: 1.125rem;
+.difficulty-badge {
+  padding: 4px 8px;
+  border-radius: 8px;
+  font-size: 0.75rem;
   font-weight: 600;
-  color: #424242;
+}
+
+.difficulty-badge.easy {
+  background: #4caf50;
+  color: white;
+}
+
+.difficulty-badge.medium {
+  background: #ff9800;
+  color: white;
+}
+
+.difficulty-badge.hard {
+  background: #f44336;
+  color: white;
+}
+
+.time-estimate {
+  font-size: 0.875rem;
+  opacity: 0.9;
 }
 
 .close-btn {
-  background: none;
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: rgba(255,255,255,0.2);
   border: none;
-  font-size: 1.25rem;
-  cursor: pointer;
-  color: #757575;
+  color: white;
   width: 32px;
   height: 32px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 4px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1.125rem;
   transition: all 0.2s ease;
 }
 
 .close-btn:hover {
-  background: #f0f0f0;
-  color: #424242;
+  background: rgba(255,255,255,0.3);
 }
 
 .panel-content {
-  padding: 20px;
+  padding: 24px;
   max-height: 400px;
   overflow-y: auto;
 }
 
-/* Detail sections */
-.detail-section {
-  margin-bottom: 20px;
-}
-
-.section-header {
+/* Progress metrics */
+.progress-metrics {
   display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-bottom: 12px;
-}
-
-.section-icon {
-  font-size: 1rem;
-}
-
-.section-title {
-  font-weight: 600;
-  color: #424242;
-  font-size: 0.875rem;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-
-.category-badge {
-  display: inline-block;
-  padding: 6px 12px;
-  border-radius: 16px;
-  color: white;
-  font-size: 0.75rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-
-.description-text {
-  margin: 0;
-  color: #616161;
-  line-height: 1.5;
-  font-size: 0.875rem;
-}
-
-/* Metrics grid */
-.metrics-grid {
-  display: grid;
+  flex-direction: column;
   gap: 16px;
 }
 
-.metric-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.metric-label {
-  font-weight: 500;
-  color: #757575;
+.progress-item label {
+  display: block;
   font-size: 0.875rem;
-}
-
-.metric-value {
   font-weight: 600;
   color: #424242;
-  font-size: 0.875rem;
+  margin-bottom: 8px;
 }
 
-.difficulty-indicator {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  flex: 1;
-  max-width: 120px;
-}
-
-.difficulty-bar {
-  height: 4px;
-  border-radius: 2px;
-  background: #e0e0e0;
+.progress-bar {
   position: relative;
-  flex: 1;
+  height: 8px;
+  background: #e0e0e0;
+  border-radius: 4px;
+  overflow: hidden;
 }
 
-.difficulty-text {
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #4caf50, #81c784);
+  border-radius: 4px;
+  transition: width 0.3s ease;
+}
+
+.progress-text {
+  position: absolute;
+  right: 8px;
+  top: 12px;
   font-size: 0.75rem;
-  font-weight: 600;
-  color: #424242;
+  color: #757575;
 }
 
-/* Prerequisites */
-.prereq-list {
+/* Learning path */
+.learning-path {
   display: flex;
   flex-direction: column;
   gap: 8px;
 }
 
-.prereq-item {
-  padding: 8px 12px;
-  background: #f5f5f5;
-  border-radius: 4px;
-  font-size: 0.875rem;
-  color: #616161;
-  border-left: 3px solid #e0e0e0;
-}
-
-/* Action buttons */
-.action-buttons {
+.path-item {
   display: flex;
-  gap: 8px;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  transition: all 0.2s ease;
 }
 
-.action-btn {
-  padding: 10px 16px;
-  border: none;
-  border-radius: 4px;
+.path-item.current {
+  background: #e3f2fd;
+  border-left: 3px solid #2196f3;
+}
+
+.path-item.next {
+  background: #f5f5f5;
+  opacity: 0.7;
+}
+
+.path-status {
+  font-size: 1rem;
+}
+
+.path-label {
   font-size: 0.875rem;
   font-weight: 500;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  text-decoration: none;
-  display: inline-flex;
+}
+
+/* Enhanced prerequisite styling */
+.prereq-item {
+  display: flex;
   align-items: center;
-  gap: 6px;
-  flex: 1;
-  justify-content: center;
+  gap: 8px;
+  padding: 8px 12px;
+  background: #e8f5e8;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  color: #2e7d32;
+  border-left: 3px solid #4caf50;
 }
 
-.action-btn.primary {
-  background: #1976d2;
+.prereq-status {
+  color: #4caf50;
+  font-weight: 600;
+}
+
+/* Action buttons with enhanced styling */
+.action-btn.success {
+  background: #4caf50;
   color: white;
+  border: none;
 }
 
-.action-btn.primary:hover {
-  background: #1565c0;
-}
-
-.action-btn.secondary {
-  background: #ffffff;
-  color: #424242;
-  border: 1px solid #e0e0e0;
-}
-
-.action-btn.secondary:hover {
-  background: #f5f5f5;
+.action-btn.success:hover {
+  background: #43a047;
 }
 
 /* Animations */
@@ -891,23 +1015,49 @@ watch(() => [props.nodes, props.edges], () => {
   opacity: 0;
 }
 
-/* Responsive */
+/* Enhanced control panel */
+.layout-section {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.layout-section label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #424242;
+}
+
+.layout-selector {
+  padding: 8px 12px;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  background: #ffffff;
+  color: #424242;
+  font-size: 0.875rem;
+  min-width: 160px;
+}
+
+.layout-selector:focus {
+  outline: none;
+  border-color: #1976d2;
+  box-shadow: 0 0 0 2px rgba(25, 118, 210, 0.2);
+}
+
+/* Enhanced responsive design */
 @media (max-width: 768px) {
   .roadmap-controls {
     flex-direction: column;
-    gap: 16px;
+    gap: 20px;
     align-items: stretch;
   }
   
-  .progress-info {
+  .progress-stats {
     justify-content: center;
+    gap: 24px;
   }
   
-  .control-actions {
-    justify-content: center;
-  }
-  
-  .node-details-panel {
+  .unit-details-panel {
     position: fixed;
     top: 0;
     right: 0;
