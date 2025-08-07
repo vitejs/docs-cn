@@ -8,22 +8,13 @@
 
 影响范围：`Vite 插件作者`
 
-<<<<<<< HEAD
 ::: warning 即将废弃
 `hotUpdate` 钩子最初在 `v6.0` 版本中引入。我们计划在未来的 major 版本中废弃 `handleHotUpdate` 钩子。我们目前还不建议你停止使用 `handleHotUpdate`。如果你想尝试并向我们提供反馈，你可以在你的 vite 配置文件中将 `future.removePluginHookHandleHotUpdate` 设置为 `"warn"`。
-=======
-::: warning Future Deprecation
-`hotUpdate` was first introduced in `v6.0`. The deprecation of `handleHotUpdate` is planned for a future major. We don't recommend moving away from `handleHotUpdate` yet. If you want to experiment and give us feedback, you can use the `future.removePluginHookHandleHotUpdate` to `"warn"` in your vite config.
->>>>>>> 8ee5a92b70635ac27c0e43672e6467d3c3b2a2de
 :::
 
 ## 动机 {#motivation}
 
-<<<<<<< HEAD
 [`handleHotUpdate` 钩子](/guide/api-plugin.md#handlehotupdate) 可以让你执行自定义的模块热替换（HMR）更新处理。在 `HmrContext` 中，可以传入一个需要更新的模块列表。
-=======
-The [`handleHotUpdate` hook](/guide/api-plugin.md#handlehotupdate) allows to perform custom HMR update handling. A list of modules to be updated is passed in the `HmrContext`.
->>>>>>> 8ee5a92b70635ac27c0e43672e6467d3c3b2a2de
 
 ```ts
 interface HmrContext {
