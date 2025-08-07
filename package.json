@@ -8,15 +8,16 @@
 	"private": true,
 	"license": "CC BY-NC-SA 4.0",
 	"devDependencies": {
-		"@shikijs/vitepress-twoslash": "^3.8.1",
+		"@shikijs/vitepress-twoslash": "^3.9.2",
 		"@type-challenges/utils": "^0.1.1",
+		"@types/cytoscape": "^3.21.9",
 		"@types/express": "^5.0.3",
-		"@types/node": "^24.1.0",
-		"chalk": "^5.4.1",
+		"@types/node": "^24.2.0",
+		"chalk": "^5.5.0",
 		"feed": "^5.1.0",
 		"gray-matter": "^4.0.3",
 		"gsap": "^3.13.0",
-		"lighthouse": "^12.8.0",
+		"lighthouse": "^12.8.1",
 		"lodash": "^4.17.21",
 		"sitemap": "^8.0.0",
 		"ufo": "^1.6.1",
@@ -41,6 +42,12 @@
 		"commit-msg": "node scripts/verifyCommit.js"
 	},
 	"dependencies": {
+		"cytoscape": "^3.33.0",
+		"cytoscape-cola": "^2.5.1",
+		"cytoscape-cose-bilkent": "^4.1.0",
+		"cytoscape-dagre": "^2.5.0",
+		"cytoscape-euler": "^1.2.3",
+		"cytoscape-klay": "^3.1.4",
 		"vitepress-plugin-google-analytics": "^1.0.2",
 		"vitepress-plugin-mermaid": "^2.0.17"
 	}

@@ -1,6 +1,16 @@
 // Auto-generated file - do not edit manually
 // Generated from: ogKeywords.txt
 export const ogKeywords = [
+  "devsecops ci cd",
+  "github actions templates",
+  "devsecops ci/cd",
+  "fail2ban configuration",
+  "trivy scanner",
+  "fail2ban config",
+  "portainer high availability",
+  "securecodewarrior/github-action-gosec",
+  "wireguard-ui",
+  "bandit python security linter",
   "devsecops",
   "ci/cd",
   "github actions templates",
@@ -131,7 +141,7 @@ export const ogKeywords = [
   "infrastructure as code security",
   "terraform security scanning",
   "pipelines for Django security",
-  "CI/CD for Flask security",
+  "CI/CD for security",
   "microservice security Go",
   "github actions security best practices",
   "security linting Python Bandit",

@@ -376,6 +376,10 @@ export default withMermaid(
                     collapsed: true,
                     items: [
                       {
+                        text: 'Learning Roadmap',
+                        link: '/Documentations/Infrastructure/Kubernetes/Roadmap'
+                      },
+                      {
                         text: 'Install',
                         link: '/Documentations/Infrastructure/Kubernetes/Install'
                       },
