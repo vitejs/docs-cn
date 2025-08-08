@@ -145,7 +145,7 @@ export default {
 
 要测试它们，你可以在你的 Vite 配置中将 `experimental.enableNativePlugin` 选项设置为 `true`。
 
-### 利用 Oxc 的 React 刷新转换 {#Utilizing-Oxc's-React-refresh-transform}
+### 利用 Oxc 的 React 刷新转换 {#utilizing-oxc-s-react-refresh-transform}
 
 `@vitejs/plugin-react` v5.0.0+ 版本使用 Oxc 的 React 刷新转换功能。如果你没有使用任何 Babel 插件（包括 React 编译器），现在整个转换过程将由 Oxc 完成，除了更新 `@vitejs/plugin-react` 外无需任何其他更改，就能提升构建性能。
 
