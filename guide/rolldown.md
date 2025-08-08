@@ -145,25 +145,17 @@ export default {
 
 要测试它们，你可以在你的 Vite 配置中将 `experimental.enableNativePlugin` 选项设置为 `true`。
 
-<<<<<<< HEAD
-### `@vitejs/plugin-react-oxc` {#@vitejs/plugin-react-oxc}
+### 利用 Oxc 的 React 刷新转换 {#Utilizing-Oxc's-React-refresh-transform}
 
-当使用 `@vitejs/plugin-react` 或 `@vitejs/plugin-react-swc` 时，你可以切换到 `@vitejs/plugin-react-oxc` 插件，它使用 Oxc 来实现 React 的快速刷新（Fast Refresh），取代原先的 Babel 或 SWC。该插件的设计目标是作为替代品无缝接入，同时提供更好的构建性能，并与 `rolldown-vite` 的底层架构保持一致。
+`@vitejs/plugin-react` v5.0.0+ 版本使用 Oxc 的 React 刷新转换功能。如果你没有使用任何 Babel 插件（包括 React 编译器），现在整个转换过程将由 Oxc 完成，除了更新 `@vitejs/plugin-react` 外无需任何其他更改，就能提升构建性能。
 
-请注意，只有在未使用任何 Babel 或 SWC 插件（包括 React 编译器）且未修改 SWC 选项的情况下，你才可以切换到 `@vitejs/plugin-react-oxc`。
-=======
-### Utilizing Oxc's React refresh transform
+如果你在使用 `@vitejs/plugin-react-swc` 时没有使用 SWC 插件和自定义 SWC 选项，你可以切换到 `@vitejs/plugin-react` 插件来利用 Oxc。
 
-`@vitejs/plugin-react` v5.0.0+ uses Oxc's React refresh transform. If you are not using any Babel plugins (including the React compiler), the full transform would now be done by Oxc and will improve the build performance without any changes other than updating `@vitejs/plugin-react`.
+::: details `@vitejs/plugin-react-oxc` 插件已被弃用
 
-If you are using `@vitejs/plugin-react-swc` without SWC plugins and custom SWC options, you can switch to the `@vitejs/plugin-react` plugin to utilize Oxc.
-
-::: details `@vitejs/plugin-react-oxc` plugin is deprecated
-
-Previously, we recommended using `@vitejs/plugin-react-oxc` to utilize Oxc's React refresh transform. However, we have merged the implementation into `@vitejs/plugin-react` so that it is easier to switch to `rolldown-vite`. `@vitejs/plugin-react-oxc` is now deprecated and will no longer be updated.
+此前，我们建议使用 `@vitejs/plugin-react-oxc` 来利用 Oxc 的 React 刷新转换功能。但是，我们已经将该实现合并到了 `@vitejs/plugin-react` 中，这样可以更轻松地切换到 `rolldown-vite`。`@vitejs/plugin-react-oxc` 现在已被弃用，将不再更新。
 
 :::
->>>>>>> b26cf69f855c6537a3d361789db88f2ebc3003a6
 
 ### `withFilter` 包装器 {#withfilter-wrapper}
 
