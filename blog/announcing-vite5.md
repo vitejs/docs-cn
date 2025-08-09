@@ -13,7 +13,7 @@ head:
       content: Announcing Vite 5
   - - meta
     - property: og:image
-      content: https://vite.dev/og-image-announcing-vite5.png
+      content: https://vite.dev/og-image-announcing-vite5.webp
   - - meta
     - property: og:url
       content: https://vite.dev/blog/announcing-vite5
@@ -29,7 +29,11 @@ head:
 
 _2023年11月16日_
 
+<<<<<<< HEAD
 ![Vite 5公告封面图片](/og-image-announcing-vite5.png)
+=======
+![Vite 5 Announcement Cover Image](/og-image-announcing-vite5.webp)
+>>>>>>> 9983af5aab150d438b751c56fb21680f93fd2dda
 
 Vite 4 发布了将近一年，它为生态系统奠定了坚实的基础。每周的 npm 下载量从250万增加到了750万，因为项目不断在共享基础设施上构建。各种框架不断创新，除了 [Astro](https://astro.build/)、[Nuxt](https://nuxt.com/)、[SvelteKit](https://kit.svelte.dev/)、[Solid Start](https://www.solidjs.com/blog/introducing-solidstart)、[Qwik City](https://qwik.builder.io/qwikcity/overview/) 等等之外，我们看到新的框架加入并使生态系统变得更加强大。[RedwoodJS](https://redwoodjs.com/) 和 [Remix](https://remix.run/) 转向 Vite 为 React 生态系统的进一步采用铺平了道路。[Vitest](https://vitest.dev) 的增长速度甚至比 Vite 还要快。其团队一直在努力工作，并将很快 [发布 Vitest 1.0](https://github.com/vitest-dev/vitest/issues/3596)。当与其他工具一起使用时，如 [Storybook](https://storybook.js.org)、[Nx](https://nx.dev) 和 [Playwright](https://playwright.dev)，Vite 的故事不断改善，环境也是如此，Vite 的开发在 [Deno](https://deno.com) 和 [Bun](https://bun.sh) 中都可以工作。
 

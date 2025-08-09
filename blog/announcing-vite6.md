@@ -13,7 +13,7 @@ head:
       content: Announcing Vite 6
   - - meta
     - property: og:image
-      content: https://vite.dev/og-image-announcing-vite6.png
+      content: https://vite.dev/og-image-announcing-vite6.webp
   - - meta
     - property: og:url
       content: https://vite.dev/blog/announcing-vite6
@@ -29,7 +29,7 @@ head:
 
 _2024年11月26日_
 
-![Vite 6 Announcement Cover Image](/og-image-announcing-vite6.png)
+![Vite 6 Announcement Cover Image](/og-image-announcing-vite6.webp)
 
 今天，Vite 迎来了发展历程中的重要里程碑。我们很高兴地宣布，Vite 6 正式发布了！这一重大版本的发布离不开 Vite [团队](/team)、[贡献者](https://github.com/vitejs/vite/graphs/contributors) 以及整个生态系统合作伙伴的共同努力。
 
@@ -39,7 +39,7 @@ Vite 生态系统也迎来了一批新成员，包括 [TanStack Start](https://t
 
 Vite 已被 OpenAI、Google、Apple、Microsoft、NASA、Shopify、Cloudflare、GitLab、Reddit 和 Linear 等众多知名公司采用。两个月前，我们创建了一份 [使用 Vite 的公司列表](https://github.com/vitejs/companies-using-vite)。令人欣喜的是，许多开发者提交 PR 将他们的公司添加到列表中。回首 Vite 诞生至今，我们共同打造的生态系统增长速度之快，实在令人难以置信。
 
-![Vite weekly npm downloads](/vite6-npm-weekly-downloads.png)
+![Vite weekly npm downloads](../images/vite6-npm-weekly-downloads.webp)
 
 ### 加速 Vite 生态系统 {#speeding-up-the-vite-ecosystem}
 
