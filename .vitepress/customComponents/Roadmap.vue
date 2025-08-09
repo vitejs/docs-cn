@@ -1,5 +1,10 @@
 <template>
   <div class="roadmap-container">
+    <!-- Roadmap Controls -->
+    <div class="roadmap-actions">
+      <button class="action-btn" @click="resetView">🔄 Reset View</button>
+      <button class="action-btn" @click="fitToScreen">📐 Fit to Screen</button>
+    </div>
     <!-- Learning Roadmap Viewport -->
     <div class="roadmap-viewport">
       <div 
@@ -26,7 +31,17 @@
             <div class="unit-type" :class="getUnitType(activeNode)">
               {{ getUnitTypeLabel(activeNode) }}
             </div>
-            <h3>{{ activeNode.data.label }}</h3>
+            <!-- Animated link for node label -->
+            <h3>
+              <a
+                v-if="activeNode.data.url"
+                :href="activeNode.data.url"
+                class="animated-link"
+                target="_blank"
+                rel="noopener noreferrer"
+              >{{ activeNode.data.label }}</a>
+              <span v-else>{{ activeNode.data.label }}</span>
+            </h3>
             <div class="unit-meta">
               <span class="difficulty-badge" :class="getDifficultyClass(activeNode.data.difficulty)">
                 {{ getDifficultyLabel(activeNode.data.difficulty) }}
@@ -487,10 +502,10 @@ const initializeCytoscape = () => {
   if (!cytoscapeEl.value) return
 
   isLoading.value = true
-  
+
   try {
     const processedNodes = processNodes()
-    
+
     cyInstance.value = cytoscape({
       container: cytoscapeEl.value,
       elements: {
@@ -499,25 +514,25 @@ const initializeCytoscape = () => {
       },
       style: getRoadmapStyles(),
       layout: getRoadmapLayout(),
-      
+
       zoomingEnabled: true,
       userZoomingEnabled: true,
       panningEnabled: true,
       userPanningEnabled: true,
       boxSelectionEnabled: false,
       selectionType: 'single',
-      wheelSensitivity: 0.1,
+      wheelSensitivity: 0.3, // Increased zoom sensitivity (default is 0.1)
       minZoom: 0.3,
       maxZoom: 2
     })
 
     setupEventHandlers()
-    
+
     setTimeout(() => {
       cyInstance.value?.fit()
       isLoading.value = false
     }, 300)
-    
+
   } catch (error) {
     console.error('Failed to initialize Cytoscape:', error)
     isLoading.value = false
@@ -626,7 +641,7 @@ watch(() => [props.nodes, props.edges], () => {
 <style scoped>
 /* Enhanced roadmap styling */
 .roadmap-container {
-  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  background: #1b1b1f;
   border: 1px solid #e0e0e0;
   border-radius: 12px;
   overflow: hidden;
@@ -638,7 +653,7 @@ watch(() => [props.nodes, props.edges], () => {
 /* Viewport */
 .roadmap-viewport {
   position: relative;
-  background: linear-gradient(to bottom, #ffffff 0%, #f8f9fa 100%);
+  background: #1b1b1f;
 }
 
 .cytoscape-canvas {
@@ -887,6 +902,59 @@ watch(() => [props.nodes, props.edges], () => {
 
 .action-btn.success:hover {
   background: #43a047;
+}
+
+/* Roadmap Controls */
+.roadmap-actions {
+  display: flex;
+  gap: 12px;
+  padding: 16px 24px 0 24px;
+  background: transparent;
+  justify-content: flex-end;
+}
+
+.action-btn {
+  padding: 8px 16px;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  background: #f5f7fa;
+  color: #326ce5;
+  transition: background 0.2s, border-color 0.2s, color 0.2s, transform 0.2s;
+  outline: none;
+}
+.action-btn:hover {
+  background: #e3f2fd;
+  border-color: #326ce5;
+  color: #1a3c7c;
+  transform: translateY(-2px) scale(1.04);
+}
+
+/* Animated link for node label */
+.animated-link {
+  color: #326ce5;
+  text-decoration: none;
+  font-weight: 700;
+  position: relative;
+  transition: color 0.2s;
+  background: linear-gradient(90deg, #51a3f5, #326ce5 60%);
+  background-size: 200% 100%;
+  background-position: 100% 0;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: animated-link-bg 2s linear infinite alternate;
+}
+.animated-link:hover {
+  color: #1a3c7c;
+  background-position: 0 0;
+  text-decoration: underline;
+  animation-play-state: paused;
+}
+@keyframes animated-link-bg {
+  0% { background-position: 100% 0; }
+  100% { background-position: 0 0; }
 }
 
 /* Animations */
