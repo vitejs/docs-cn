@@ -4,6 +4,7 @@
     <div class="roadmap-actions">
       <button class="action-btn" @click="resetView">🔄 Reset View</button>
       <button class="action-btn" @click="fitToScreen">📐 Fit to Screen</button>
+      <button class="action-btn" @click="resetChart">🧹 Reset Chart</button>
     </div>
     <!-- Learning Roadmap Viewport -->
     <div class="roadmap-viewport">
@@ -611,6 +612,18 @@ const markComplete = () => {
   if (!activeNode.value) return
   // Add completion logic here
   console.log('Marking complete:', activeNode.value.data.label)
+}
+
+const resetChart = () => {
+  if (!cyInstance.value) return
+  cyInstance.value.elements().remove()
+  const processedNodes = processNodes()
+  cyInstance.value.add({ nodes: processedNodes, edges: props.edges })
+  cyInstance.value.layout(getRoadmapLayout()).run()
+  cyInstance.value.fit()
+  cyInstance.value.center()
+  activeNode.value = null
+  clearHighlights()
 }
 
 /**
