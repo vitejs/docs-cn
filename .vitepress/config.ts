@@ -606,46 +606,6 @@ export default withMermaid(
                       {
                         text: 'Installing Go',
                         link: '/Documentations/Development/Languages/Go/Go-Install'
-                      },
-                      {
-                        text: 'Data Types',
-                        link: '/Documentations/Development/Languages/Go/Data-Types'
-                      },
-                      {
-                        text: 'Flow Control',
-                        link: '/Documentations/Development/Languages/Go/Flow-Control'
-                      },
-                      {
-                        text: 'Functions',
-                        link: '/Documentations/Development/Languages/Go/Functions'
-                      },
-                      {
-                        text: 'Structs & Maps',
-                        link: '/Documentations/Development/Languages/Go/Structs-Maps'
-                      },
-                      {
-                        text: 'Packages',
-                        link: '/Documentations/Development/Languages/Go/Packages'
-                      },
-                      {
-                        text: 'Concurrency',
-                        link: '/Documentations/Development/Languages/Go/Concurrency'
-                      },
-                      {
-                        text: 'Error Handling',
-                        link: '/Documentations/Development/Languages/Go/Error-Handling'
-                      },
-                      {
-                        text: 'Methods & Interfaces',
-                        link: '/Documentations/Development/Languages/Go/Methods-Interfaces'
-                      },
-                      {
-                        text: 'Testing',
-                        link: '/Documentations/Development/Languages/Go/Testing'
-                      },
-                      {
-                        text: 'Web Development',
-                        link: '/Documentations/Development/Languages/Go/Web-Development'
                       }
                     ]
                   },
