@@ -1,41 +1,5 @@
 <template>
   <div class="roadmap-container">
-    <!-- Milestone Progress Header -->
-    <div class="roadmap-controls">
-      <div class="milestone-progress">
-        <div class="progress-header">
-          <h3>🎯 Kubernetes Learning Roadmap</h3>
-          <p>Master Kubernetes through structured milestones and learning units</p>
-        </div>
-        <div class="progress-stats">
-          <div class="stat-item">
-            <span class="stat-number">{{ milestoneCount }}</span>
-            <span class="stat-label">Milestones</span>
-          </div>
-          <div class="stat-item">
-            <span class="stat-number">{{ unitCount }}</span>
-            <span class="stat-label">Learning Units</span>
-          </div>
-          <div class="stat-item">
-            <span class="stat-number">{{ totalSubjects }}</span>
-            <span class="stat-label">Total Subjects</span>
-          </div>
-        </div>
-      </div>
-      
-      <div class="control-actions">
-        <button @click="resetView" class="btn btn-reset">
-          🔄 Reset View
-        </button>
-        <button @click="fitToScreen" class="btn btn-fit">
-          📐 Fit to Screen
-        </button>
-        <button @click="toggleOrientation" class="btn btn-orientation">
-          {{ isVertical ? '↔️ Horizontal' : '↕️ Vertical' }}
-        </button>
-      </div>
-    </div>
-
     <!-- Learning Roadmap Viewport -->
     <div class="roadmap-viewport">
       <div 
@@ -53,7 +17,10 @@
 
     <!-- Enhanced Learning Unit Details Panel -->
     <transition name="slide-in">
-      <div v-if="activeNode" class="unit-details-panel">
+      <div
+        v-if="activeNode && (getUnitType(activeNode) === 'milestone' || getUnitType(activeNode) === 'unit')"
+        class="unit-details-panel"
+      >
         <div class="panel-header">
           <div class="unit-info">
             <div class="unit-type" :class="getUnitType(activeNode)">
@@ -668,83 +635,6 @@ watch(() => [props.nodes, props.edges], () => {
   box-shadow: 0 8px 32px rgba(0,0,0,0.1);
 }
 
-/* Milestone Progress Header */
-.roadmap-controls {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 24px 32px;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
-}
-
-.milestone-progress {
-  flex: 1;
-}
-
-.progress-header h3 {
-  margin: 0 0 8px 0;
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: white;
-}
-
-.progress-header p {
-  margin: 0;
-  font-size: 1rem;
-  opacity: 0.9;
-  color: white;
-}
-
-.progress-stats {
-  display: flex;
-  gap: 32px;
-  margin-top: 16px;
-}
-
-.stat-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.stat-number {
-  font-size: 2rem;
-  font-weight: 800;
-  color: #ffd54f;
-  line-height: 1;
-}
-
-.stat-label {
-  font-size: 0.875rem;
-  opacity: 0.9;
-  margin-top: 4px;
-}
-
-.control-actions {
-  display: flex;
-  gap: 12px;
-}
-
-.btn {
-  padding: 10px 16px;
-  border: 2px solid rgba(255,255,255,0.3);
-  border-radius: 8px;
-  font-size: 0.875rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  background: rgba(255,255,255,0.1);
-  color: white;
-  backdrop-filter: blur(10px);
-}
-
-.btn:hover {
-  background: rgba(255,255,255,0.2);
-  border-color: rgba(255,255,255,0.5);
-  transform: translateY(-2px);
-}
-
 /* Viewport */
 .roadmap-viewport {
   position: relative;
@@ -1013,35 +903,6 @@ watch(() => [props.nodes, props.edges], () => {
 .slide-in-leave-to {
   transform: translateX(100%);
   opacity: 0;
-}
-
-/* Enhanced control panel */
-.layout-section {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
-.layout-section label {
-  font-size: 0.875rem;
-  font-weight: 600;
-  color: #424242;
-}
-
-.layout-selector {
-  padding: 8px 12px;
-  border: 1px solid #e0e0e0;
-  border-radius: 6px;
-  background: #ffffff;
-  color: #424242;
-  font-size: 0.875rem;
-  min-width: 160px;
-}
-
-.layout-selector:focus {
-  outline: none;
-  border-color: #1976d2;
-  box-shadow: 0 0 0 2px rgba(25, 118, 210, 0.2);
 }
 
 /* Enhanced responsive design */
