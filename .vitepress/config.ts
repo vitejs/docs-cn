@@ -695,7 +695,11 @@ export default withMermaid(
                 items: [
                   {
                     text: 'IDE Setup',
-                    link: '/Documentations/Development/VScode-Optimizations'
+                    link: '/Documentations/Development/VScode/VScode-SSH'
+                  },
+                  {
+                    text: 'Code Formatting',
+                    link: '/Documentations/Development/VScode/VScode-Python-Lint-Format'
                   },
                   {
                     text: 'Version Control',
