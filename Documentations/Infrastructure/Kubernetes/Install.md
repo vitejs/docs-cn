@@ -192,7 +192,6 @@ const kubernetesNodes = [
     }
   }
 ];
-
 const kubernetesEdges = [
   // Prerequisites flow
   { data: { source: 'linux-basics', target: 'docker-knowledge' } },
@@ -261,7 +260,6 @@ minikube start --driver=docker --cpus=2 --memory=4096
 # Verify installation
 kubectl get nodes
 ```
-
 ```bash [macOS]
 # Install via Homebrew
 brew install minikube
@@ -273,7 +271,6 @@ sudo install minikube /usr/local/bin/
 # Start cluster
 minikube start --driver=docker --cpus=2 --memory=4096
 ```
-
 ```powershell [Windows]
 # Download and install
 Invoke-WebRequest -Uri "https://storage.googleapis.com/minikube/releases/latest/minikube-windows-amd64.exe" -OutFile "minikube.exe"
@@ -318,7 +315,6 @@ k3d cluster create dev-cluster \
 # Get kubeconfig
 k3d kubeconfig merge dev-cluster --kubeconfig-switch-context
 ```
-
 ```powershell [Windows]
 # Install via Chocolatey
 choco install k3d
@@ -367,7 +363,6 @@ nodes:
 - role: worker
 EOF
 ```
-
 ```bash [macOS]
 # Install via Homebrew
 brew install kind
@@ -377,7 +372,6 @@ curl -Lo ./kind https://kind.sigs.k8s.io/dl/v0.20.0/kind-darwin-amd64
 chmod +x ./kind
 sudo mv ./kind /usr/local/bin/kind
 ```
-
 ```powershell [Windows]
 # Download and install
 Invoke-WebRequest -Uri "https://kind.sigs.k8s.io/dl/v0.20.0/kind-windows-amd64" -OutFile "kind.exe"
@@ -417,7 +411,6 @@ sudo apt update
 sudo apt install -y kubelet kubeadm kubectl
 sudo apt-mark hold kubelet kubeadm kubectl
 ```
-
 ```bash [RHEL/CentOS/Fedora]
 # Update system
 sudo dnf update -y
@@ -491,7 +484,6 @@ sudo cat /var/lib/rancher/k3s/server/node-token
 sudo cp /etc/rancher/k3s/k3s.yaml ~/.kube/config
 sudo chown $(id -u):$(id -g) ~/.kube/config
 ```
-
 ```bash [Agent Node]
 # Install k3s agent
 curl -sfL https://get.k3s.io | K3S_URL=https://<SERVER_IP>:6443 \
@@ -756,11 +748,11 @@ kubectl get svc -A
 
 After successfully installing Kubernetes, consider:
 
-1. **[Configure Ingress Controllers](/Infrastructure/Kubernetes/ingress)** - Route external traffic
-2. **[Set up Persistent Storage](/Infrastructure/Kubernetes/storage)** - Configure storage classes
-3. **[Implement GitOps](/Infrastructure/Kubernetes/gitops)** - Automated deployments
-4. **[Security Hardening](/Infrastructure/Kubernetes/security)** - Advanced security measures
-5. **[Monitoring & Observability](/Infrastructure/Kubernetes/monitoring)** - Complete observability stack
+1. **[Configure Ingress Controllers](/Documentations/Infrastructure/Kubernetes/Configuration#ingress-controllers)** - Route external traffic
+2. **[Set up Persistent Storage](/Documentations/Infrastructure/Kubernetes/Configuration#persistent-storage)** - Configure storage classes
+3. **[Implement GitOps](/Documentations/Infrastructure/Kubernetes/Configuration#gitops)** - Automated deployments
+<!-- 4. **[Security Hardening](/Documentations/Infrastructure/Kubernetes/Security)** - Advanced security measures
+5. **[Monitoring & Observability](/Documentations/Infrastructure/Kubernetes/Monitoring)** - Complete observability stack -->
 
 ## Recommended Development Environment
 
