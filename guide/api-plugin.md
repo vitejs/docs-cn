@@ -12,7 +12,7 @@ Vite 努力秉承开箱即用的原则，因此在创作一款新插件前，请
 
 ::: tip
 在学习、调试或创作插件时，我们建议在你的项目中引入 [vite-plugin-inspect](https://github.com/antfu/vite-plugin-inspect)。 它可以帮助你检查 Vite 插件的中间状态。安装后，你可以访问 `localhost:5173/__inspect/` 来检查你项目的模块和栈信息。请查阅 [vite-plugin-inspect 文档](https://github.com/antfu/vite-plugin-inspect) 中的安装说明。
-![vite-plugin-inspect](../images/vite-plugin-inspect.png)
+![vite-plugin-inspect](../images/vite-plugin-inspect.webp)
 :::
 
 ## 约定 {#conventions}
