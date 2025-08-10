@@ -13,7 +13,7 @@ head:
       content: Announcing Vite 7
   - - meta
     - property: og:image
-      content: https://vite.dev/og-image-announcing-vite7.png
+      content: https://vite.dev/og-image-announcing-vite7.webp
   - - meta
     - property: og:url
       content: https://vite.dev/blog/announcing-vite7
@@ -29,7 +29,7 @@ head:
 
 _2025年6月24日_
 
-![Vite 7 Announcement Cover Image](/og-image-announcing-vite7.png)
+![Vite 7 Announcement Cover Image](/og-image-announcing-vite7.webp)
 
 我们很高兴与大家分享 Vite 7 的发布！从 Evan You 向 Vite 仓库提交第一次 commit 至今已经过去 5 年了，当时没有人能预料到前端生态会发生如此巨大的变化。如今，大多数现代前端框架和工具正在协同工作，构建在 Vite 共享的基础设施之上。通过更高层次的共享，它们能够以更快的速度进行创新。Vite 现在每周被下载 3100 万次，在上次重大版本发布后的七个月内增长了 1400 万次下载量。
 
