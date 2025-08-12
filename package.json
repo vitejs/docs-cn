@@ -22,7 +22,8 @@
 		"vitepress": "^2.0.0-alpha.7",
 		"vitepress-plugin-group-icons": "^1.6.1",
 		"vitepress-plugin-llms": "^1.7.1",
-		"vue": "3.6.0-alpha.1",
+		"vue": "^3.5.18",
+		"vue-tsc": "^3.0.5",
 		"yorkie": "^2.0.0"
 	},
 	"packageManager": "pnpm@9.6.0",
@@ -32,6 +33,7 @@
 	"scripts": {
 		"dev": "vitepress dev . --port 5174",
 		"build": "vitepress build .",
+		"typecheck": "vue-tsc",
 		"serve": "vitepress serve ."
 	},
 	"gitHooks": {
