@@ -141,9 +141,15 @@ export default {
 
 ## 启用原生插件 {#enabling-native-plugins}
 
+<<<<<<< HEAD
 感谢 Rolldown 和 Oxc，各种内部的 Vite 插件，如别名或解析插件，已被转换为 Rust。在撰写本文时，这些插件默认并未启用，因为它们的行为可能与 JavaScript 版本不同。
 
 要测试它们，你可以在你的 Vite 配置中将 `experimental.enableNativePlugin` 选项设置为 `true`。
+=======
+Thanks to Rolldown and Oxc, various internal Vite plugins, such as the alias or resolve plugin, have been converted to Rust. Native plugins are now enabled by default, with the default value set to `'v1'`.
+
+If you encounter any issues, you can change the `experimental.enableNativePlugin` option in your Vite config to `'resolver'` or `false` as a workaround. Note that this option will be removed in the future.
+>>>>>>> 4319257ca1aa0204a1583f05eae108bef9d51bee
 
 ### 利用 Oxc 的 React 刷新转换 {#utilizing-oxc-s-react-refresh-transform}
 
