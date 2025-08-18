@@ -150,7 +150,50 @@ import './Foo.js' // 应该为 './foo.js'
 
 如果您遇到类似 `ENOENT: no such file or directory` 或者 `Module not found` 之类的错误，这通常是因为您的项目是在不区分大小写的文件系统（Windows / macOS）上开发的，但在区分大小写的文件系统（Linux）上构建时发生的。请确保导入的大小写正确。
 
+<<<<<<< HEAD
 ## 优化依赖 {#optimize-dependencies}
+=======
+### `Failed to fetch dynamically imported module` error
+
+> TypeError: Failed to fetch dynamically imported module
+
+This error occurs in several cases:
+
+- Version skew
+- Poor network conditions
+- Browser extensions blocking requests
+
+#### Version skew
+
+When you deploy a new version of your application, the HTML file and the JS files still reference old chunk names that were deleted in the new deployment. This happens when:
+
+1. Users have an old version of your app cached in their browser
+2. You deploy a new version with different chunk names (due to code changes)
+3. The cached HTML tries to load chunks that no longer exist
+
+If you are using a framework, refer to their documentation first as it may have a built-in solution for this problem.
+
+To resolve this, you can:
+
+- **Keep old chunks temporarily**: Consider keeping the previous deployment's chunks for a period to allow cached users to transition smoothly.
+- **Use a service worker**: Implement a service worker that will prefetch all the assets and cache them.
+- **Prefetch the dynamic chunks**: Note that this does not help if your HTML file is cached by the browser due to `Cache-Control` headers.
+- **Implement a graceful fallback**: Implement error handling for dynamic imports to reload the page when chunks are missing. See [Load Error Handling](./build.md#load-error-handling) for more details.
+
+#### Poor network conditions
+
+This error may occur in unstable network environments. For example, when the request fails due to network errors or server downtime.
+
+Note that you cannot retry the dynamic import due to browser limitations ([whatwg/html#6768](https://github.com/whatwg/html/issues/6768)).
+
+#### Browser extensions blocking requests
+
+The error may also occur if the browser extensions (like ad-blockers) are blocking that request.
+
+It might be possible to work around by selecting a different chunk name by [`build.rollupOptions.output.chunkFileNames`](../config/build-options.md#build-rollupoptions), as these extensions often block requests based on file names (e.g. names containing `ad`, `track`).
+
+## Optimized Dependencies
+>>>>>>> 3d842494f403f9594488febd49d87b6a9f2b0868
 
 ### 链接本地包时过期预构建依赖项 {#outdated-pre-bundled-deps-when-linking-to-a-local-package}
 
@@ -206,7 +249,15 @@ Vite 无法处理、也不支持仅可在非严格模式（sloppy mode）下运�
 
 ### 浏览器扩展程序 {#browser-extensions}
 
+<<<<<<< HEAD
 一些浏览器扩展程序（例如 ad-blockers 广告拦截器），可能会阻止 Vite 客户端向 Vite 开发服务器发送请求。在这种情况下，你可能会看到一个空白屏且没有错误日志。如果遇到这类问题，请尝试禁用扩展程序。
+=======
+Some browser extensions (like ad-blockers) may prevent the Vite client from sending requests to the Vite dev server. You may see a white screen without logged errors in this case. You may also see the following error:
+
+> TypeError: Failed to fetch dynamically imported module
+
+Try disabling extensions if you have this issue.
+>>>>>>> 3d842494f403f9594488febd49d87b6a9f2b0868
 
 ### Windows 上的跨驱动器链接 {#cross-drive-links-on-windows}
 

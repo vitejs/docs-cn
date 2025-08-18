@@ -63,7 +63,11 @@
    </script>
    ```
 
+<<<<<<< HEAD
 3. 在生产环境中：在运行 `vite build` 之后，一个 `.vite/manifest.json` 文件将与静态资源文件一同生成。一个示例清单文件会像下面这样：
+=======
+3. For production, after running `vite build`, a `.vite/manifest.json` file will be generated alongside other asset files. An example manifest file looks like this:
+>>>>>>> 3d842494f403f9594488febd49d87b6a9f2b0868
 
    ```json [.vite/manifest.json]
    {

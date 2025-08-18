@@ -78,7 +78,11 @@ window.addEventListener('vite:preloadError', (event) => {
 })
 ```
 
+<<<<<<< HEAD
 当重新部署时，托管服务可能会删除之前部署的资源。因此，之前访问过您站点的用户可能会遇到导入错误。这种错误发生的原因是用户设备上运行的资源过时，并尝试导入相应的旧代码块，而这些代码块已经被删除。这个事件对于解决这种情况会很有帮助。
+=======
+When a new deployment occurs, the hosting service may delete the assets from previous deployments. As a result, a user who visited your site before the new deployment might encounter an import error. This error happens because the assets running on that user's device are outdated and it tries to import the corresponding old chunk, which is deleted. This event is useful for addressing this situation. In this case, make sure to set `Cache-Control: no-cache` on the HTML file, otherwise the old assets will be still referenced.
+>>>>>>> 3d842494f403f9594488febd49d87b6a9f2b0868
 
 ## 文件变化时重新构建 {#rebuild-on-files-changes}
 
