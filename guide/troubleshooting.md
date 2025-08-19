@@ -150,50 +150,46 @@ import './Foo.js' // 应该为 './foo.js'
 
 如果您遇到类似 `ENOENT: no such file or directory` 或者 `Module not found` 之类的错误，这通常是因为您的项目是在不区分大小写的文件系统（Windows / macOS）上开发的，但在区分大小写的文件系统（Linux）上构建时发生的。请确保导入的大小写正确。
 
-<<<<<<< HEAD
-## 优化依赖 {#optimize-dependencies}
-=======
-### `Failed to fetch dynamically imported module` error
+### `Failed to fetch dynamically imported module` 错误 {#failed-to-fetch-dynamically-imported-module-error}
 
 > TypeError: Failed to fetch dynamically imported module
 
-This error occurs in several cases:
+此错误在以下几种情况下发生：
 
-- Version skew
-- Poor network conditions
-- Browser extensions blocking requests
+- 版本偏差
+- 网络状况不佳
+- 浏览器扩展程序阻止请求
 
-#### Version skew
+#### 版本偏差 {#version-skew}
 
-When you deploy a new version of your application, the HTML file and the JS files still reference old chunk names that were deleted in the new deployment. This happens when:
+当你部署应用程序的新版本时，HTML 文件和 JS 文件仍然引用在新部署中已删除的旧代码块名称。这种情况发生在：
 
-1. Users have an old version of your app cached in their browser
-2. You deploy a new version with different chunk names (due to code changes)
-3. The cached HTML tries to load chunks that no longer exist
+1. 用户浏览器中缓存了旧版本的应用
+2. 由于代码变更，您部署了具有不同代码块名称的新版本
+3. 缓存的 HTML 会尝试加载不再存在的代码块
 
-If you are using a framework, refer to their documentation first as it may have a built-in solution for this problem.
+如果您正在使用框架，请首先参考其文档，因为它可能有针对此问题的内置解决方案。
 
-To resolve this, you can:
+要解决此问题，你可以：
 
-- **Keep old chunks temporarily**: Consider keeping the previous deployment's chunks for a period to allow cached users to transition smoothly.
-- **Use a service worker**: Implement a service worker that will prefetch all the assets and cache them.
-- **Prefetch the dynamic chunks**: Note that this does not help if your HTML file is cached by the browser due to `Cache-Control` headers.
-- **Implement a graceful fallback**: Implement error handling for dynamic imports to reload the page when chunks are missing. See [Load Error Handling](./build.md#load-error-handling) for more details.
+- **暂时保留旧的 chunks**: 考虑保留以前部署的块一段时间，以允许缓存的用户顺利过渡。
+- **使用 service worker**: 实现一个 service worker, 它将预获取所有静态资源并缓存它们。
+- **Prefetch 动态 chunks**: 请注意，如果您的 HTML 文件由于 `Cache-Control` 标头而被浏览器缓存，则这无济于事
+- **实现优雅的回退**: 实现优雅的回退实现动态导入的错误处理，以便在缺少块时重新加载页面。请参阅[加载错误处理](./build.md#load-error-handling)以了解更多详细信息。
 
-#### Poor network conditions
+#### 网络状况不佳 {#poor-network-conditions}
 
-This error may occur in unstable network environments. For example, when the request fails due to network errors or server downtime.
+此错误可能发生在网络不稳定的环境中。例如，由于网络错误或服务器停机导致请求失败。
 
-Note that you cannot retry the dynamic import due to browser limitations ([whatwg/html#6768](https://github.com/whatwg/html/issues/6768)).
+请注意，由于浏览器限制，您无法重新尝试动态导入。 ([whatwg/html#6768](https://github.com/whatwg/html/issues/6768)).
 
-#### Browser extensions blocking requests
+#### 浏览器扩展阻止请求 {#browser-extensions-blocking-requests}
 
-The error may also occur if the browser extensions (like ad-blockers) are blocking that request.
+该错误也可能由浏览器扩展程序（如广告拦截器）阻止该请求导致。
 
-It might be possible to work around by selecting a different chunk name by [`build.rollupOptions.output.chunkFileNames`](../config/build-options.md#build-rollupoptions), as these extensions often block requests based on file names (e.g. names containing `ad`, `track`).
+可以通过修改 [`build.rollupOptions.output.chunkFileNames`](../config/build-options.md#build-rollupoptions) 中的块文件名来绕过此问题，因为这些扩展程序通常会根据文件名（例如包含 `ad` 或 `track` 的文件名）来阻止请求。
 
-## Optimized Dependencies
->>>>>>> 3d842494f403f9594488febd49d87b6a9f2b0868
+## 优化依赖 {#optimize-dependencies}
 
 ### 链接本地包时过期预构建依赖项 {#outdated-pre-bundled-deps-when-linking-to-a-local-package}
 
@@ -249,15 +245,11 @@ Vite 无法处理、也不支持仅可在非严格模式（sloppy mode）下运�
 
 ### 浏览器扩展程序 {#browser-extensions}
 
-<<<<<<< HEAD
-一些浏览器扩展程序（例如 ad-blockers 广告拦截器），可能会阻止 Vite 客户端向 Vite 开发服务器发送请求。在这种情况下，你可能会看到一个空白屏且没有错误日志。如果遇到这类问题，请尝试禁用扩展程序。
-=======
-Some browser extensions (like ad-blockers) may prevent the Vite client from sending requests to the Vite dev server. You may see a white screen without logged errors in this case. You may also see the following error:
+某些浏览器扩展程序（例如广告拦截器）可能会阻止 Vite 客户端向 Vite 开发服务器发送请求。在这种情况下，您可能会看到白屏，且没有任何错误记录。您还可能会看到以下错误：
 
 > TypeError: Failed to fetch dynamically imported module
 
-Try disabling extensions if you have this issue.
->>>>>>> 3d842494f403f9594488febd49d87b6a9f2b0868
+如果您遇到此问题，请尝试禁用扩展。
 
 ### Windows 上的跨驱动器链接 {#cross-drive-links-on-windows}
 
