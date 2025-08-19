@@ -63,7 +63,7 @@
    </script>
    ```
 
-3. 在生产环境中：在运行 `vite build` 之后，一个 `.vite/manifest.json` 文件将与静态资源文件一同生成。一个示例清单文件会像下面这样：
+3. 在生产环境中, 在运行 `vite build` 之后，一个 `.vite/manifest.json` 文件将与静态资源文件一同生成。一个示例清单文件会像下面这样：
 
    ```json [.vite/manifest.json]
    {
