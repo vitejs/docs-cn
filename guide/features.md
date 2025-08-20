@@ -214,7 +214,11 @@ HTML 文件位于 Vite 项目的[最前端和中心](/guide/#index-html-and-proj
 - React 支持：[@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react)
 - React 使用 SWC 的支持：[@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react-swc)
 
+<<<<<<< HEAD
 查看 [插件指南](/plugins/) 了解更多信息。
+=======
+Check out the [Plugins Guide](/plugins/) for more information.
+>>>>>>> adc95705ba38043a230c6f9eafaf9ee80b618dc1
 
 ## JSX {#jsx}
 
@@ -543,7 +547,11 @@ const modules = {
 
 #### 自定义查询 {#custom-queries}
 
+<<<<<<< HEAD
 你也可以使用 `query` 选项来提供对导入的自定义查询，比如，可以将资源 [作为字符串引入](/guide/assets#importing-asset-as-string) 或者 [作为 URL 引入](/guide/assets#importing-asset-as-url) ：
+=======
+You can also use the `query` option to provide queries to imports, for example, to import assets [as a string](/guide/assets.html#importing-asset-as-string) or [as a url](/guide/assets.html#importing-asset-as-url):
+>>>>>>> adc95705ba38043a230c6f9eafaf9ee80b618dc1
 
 ```ts twoslash
 import 'vite/client'

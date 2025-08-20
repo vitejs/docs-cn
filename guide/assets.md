@@ -46,7 +46,11 @@ document.getElementById('hero-img').style.background = `url("${imgUrl}")`
 
 ### 显式 URL 引入 {#explicit-url-imports}
 
+<<<<<<< HEAD
 未被包含在内部列表或 `assetsInclude` 中的资源，可以使用 `?url` 后缀显式导入为一个 URL。这十分有用，例如，要导入 [Houdini Paint Worklets](https://developer.mozilla.org/en-US/docs/Web/API/CSS/paintWorklet_static) 时：
+=======
+Assets that are not included in the internal list or in `assetsInclude` can be explicitly imported as a URL using the `?url` suffix. This is useful, for example, to import [Houdini Paint Worklets](https://developer.mozilla.org/en-US/docs/Web/API/CSS/paintWorklet_static).
+>>>>>>> adc95705ba38043a230c6f9eafaf9ee80b618dc1
 
 ```js twoslash
 import 'vite/client'
@@ -166,6 +170,11 @@ function getImageUrl(name) {
 
 :::
 
+<<<<<<< HEAD
 ::: warning 注意：无法在 SSR 中使用
 如果你正在以服务端渲染模式使用 Vite 则此模式不支持，因为 `import.meta.url` 在浏览器和 Node.js 中有不同的语义。服务端的产物也无法预先确定客户端主机 URL。
+=======
+::: warning Does not work with SSR
+This pattern does not work if you are using Vite for Server-Side Rendering, because `import.meta.url` has different semantics in browsers vs. Node.js. The server bundle also cannot determine the client host URL ahead of time.
+>>>>>>> adc95705ba38043a230c6f9eafaf9ee80b618dc1
 :::
