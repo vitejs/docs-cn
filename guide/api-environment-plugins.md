@@ -31,11 +31,23 @@ Vite 服务器有一个共享的插件管道，但在处理模块时，它总是
 
 ## 使用钩子注册新环境 {#registering-new-environments-using-hooks}
 
+<<<<<<< HEAD
 插件可以在 `config` 钩子中添加新环境（例如，为了有一个专门用于 [RSC](https://react.dev/blog/2023/03/22/react-labs-what-we-have-been-working-on-march-2023#react-server-components) 的模块图）：
+=======
+Plugins can add new environments in the `config` hook. For example, [RSC support](/plugins/#vitejs-plugin-rsc) uses an additional environment to have a separate module graph with the `react-server` condition:
+>>>>>>> 8490926e60fb617566b0ffa4fbf9fe90c7f47e22
 
 ```ts
   config(config: UserConfig) {
-    config.environments.rsc ??= {}
+    return {
+      environments: {
+        rsc: {
+          resolve: {
+            conditions: ['react-server', ...defaultServerConditions],
+          },
+        },
+      },
+    }
   }
 ```
 
@@ -48,8 +60,15 @@ Vite 服务器有一个共享的插件管道，但在处理模块时，它总是
 
 ```ts
   configEnvironment(name: string, options: EnvironmentOptions) {
+    // add "workerd" condition to the rsc environment
     if (name === 'rsc') {
-      options.resolve.conditions = // ...
+      return {
+        resolve: {
+          conditions: ['workerd'],
+        },
+      }
+    }
+  }
 ```
 
 ## `hotUpdate` 钩子 {#the-hotupdate-hook}

@@ -101,9 +101,17 @@ export default defineConfig(async ({ command, mode }) => {
 
 ## 在配置中使用环境变量 {#using-environment-variables-in-config}
 
+<<<<<<< HEAD
 环境变量通常可以从 `process.env` 获得。
 
 注意 Vite 默认是不加载 `.env` 文件的，因为这些文件需要在执行完 Vite 配置后才能确定加载哪一个，举个例子，`root` 和 `envDir` 选项会影响加载行为。不过当你的确需要时，你可以使用 Vite 导出的 `loadEnv` 函数来加载指定的 `.env` 文件。
+=======
+Environment variables available while the config itself is being evaluated are only those that already exist in the current process environment (`process.env`). Vite deliberately defers loading any `.env*` files until _after_ the user config has been resolved because the set of files to load depends on config options like [`root`](/guide/#index-html-and-project-root) and [`envDir`](/config/shared-options.md#envdir), and also on the final `mode`.
+
+This means: variables defined in `.env`, `.env.local`, `.env.[mode]`, or `.env.[mode].local` are **not** automatically injected into `process.env` while your `vite.config.*` is running. They _are_ automatically loaded later and exposed to application code via `import.meta.env` (with the default `VITE_` prefix filter) exactly as documented in [Env Variables and Modes](/guide/env-and-mode.html). So if you only need to pass values from `.env*` files to the app, you don't need to call anything in the config.
+
+If, however, values from `.env*` files must influence the config itself (for example to set `server.port`, conditionally enable plugins, or compute `define` replacements), you can load them manually using the exported [`loadEnv`](/guide/api-javascript.html#loadenv) helper.
+>>>>>>> 8490926e60fb617566b0ffa4fbf9fe90c7f47e22
 
 ```js twoslash
 import { defineConfig, loadEnv } from 'vite'
@@ -114,9 +122,17 @@ export default defineConfig(({ mode }) => {
   // `VITE_` 前缀。
   const env = loadEnv(mode, process.cwd(), '')
   return {
+<<<<<<< HEAD
     // vite 配置
+=======
+>>>>>>> 8490926e60fb617566b0ffa4fbf9fe90c7f47e22
     define: {
+      // Provide an explicit app-level constant derived from an env var.
       __APP_ENV__: JSON.stringify(env.APP_ENV),
+    },
+    // Example: use an env var to set the dev server port conditionally.
+    server: {
+      port: env.APP_PORT ? Number(env.APP_PORT) : 5173,
     },
   }
 })
