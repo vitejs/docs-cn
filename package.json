@@ -8,7 +8,7 @@
 	"private": true,
 	"license": "CC BY-NC-SA 4.0",
 	"devDependencies": {
-		"@shikijs/vitepress-twoslash": "^3.7.0",
+		"@shikijs/vitepress-twoslash": "^3.11.0",
 		"@type-challenges/utils": "^0.1.1",
 		"@types/express": "^5.0.3",
 		"@types/node": "^20.9.2",
@@ -22,7 +22,7 @@
 		"vitepress": "^2.0.0-alpha.7",
 		"vitepress-plugin-group-icons": "^1.6.1",
 		"vitepress-plugin-llms": "^1.7.1",
-		"vue": "^3.5.18",
+		"vue": "^3.5.19",
 		"vue-tsc": "^3.0.5",
 		"yorkie": "^2.0.0"
 	},

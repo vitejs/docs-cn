@@ -101,9 +101,11 @@ export default defineConfig(async ({ command, mode }) => {
 
 ## 在配置中使用环境变量 {#using-environment-variables-in-config}
 
-环境变量通常可以从 `process.env` 获得。
+在评估配置文件本身时，可用的环境变量仅限于当前进程环境中已经存在的变量（`process.env`）。Vite 有意推迟加载任何 `.env*` 文件，直到用户配置解析完成之后，因为要加载的文件集合依赖于配置选项如 [`root`](/guide/#index-html-and-project-root) 和 [`envDir`](/config/shared-options.md#envdir)，以及最终的 `mode`。
 
-注意 Vite 默认是不加载 `.env` 文件的，因为这些文件需要在执行完 Vite 配置后才能确定加载哪一个，举个例子，`root` 和 `envDir` 选项会影响加载行为。不过当你的确需要时，你可以使用 Vite 导出的 `loadEnv` 函数来加载指定的 `.env` 文件。
+这意味着：在你的 `vite.config.*` 运行时，定义在 `.env`、`.env.local`、`.env.[mode]` 或 `.env.[mode].local` 中的变量不会自动注入到 `process.env` 中。它们会在稍后自动加载，并通过 `import.meta.env` 暴露给应用程序代码（使用默认的 `VITE_` 前缀过滤器），正如[环境变量和模式](/guide/env-and-mode.html)中所记录的那样。因此，如果你只需要将 `.env*` 文件中的值传递给应用程序，则无需在配置中调用任何内容。
+
+但是，如果 `.env*` 文件中的值必须影响配置本身（例如设置 `server.port`、条件性启用插件或计算 `define` 替换），你可以使用导出的 [`loadEnv`](/guide/api-javascript.html#loadenv) 辅助函数手动加载它们。
 
 ```js twoslash
 import { defineConfig, loadEnv } from 'vite'
@@ -114,9 +116,13 @@ export default defineConfig(({ mode }) => {
   // `VITE_` 前缀。
   const env = loadEnv(mode, process.cwd(), '')
   return {
-    // vite 配置
     define: {
+      // Provide an explicit app-level constant derived from an env var.
       __APP_ENV__: JSON.stringify(env.APP_ENV),
+    },
+    // Example: use an env var to set the dev server port conditionally.
+    server: {
+      port: env.APP_PORT ? Number(env.APP_PORT) : 5173,
     },
   }
 })
