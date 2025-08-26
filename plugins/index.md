@@ -24,21 +24,17 @@ Vite 旨在为常见的 web 开发工作提供开箱即用的支持。在搜索�
 
 在开发时会将 Babel 替换为 SWC。在生产环境构建期间，若使用了插件则会使用 SWC+esbuild，若没有使用插件则仅会用到 esbuild。对不需要非标准 React 扩展的大型项目，冷启动和模块热替换（HMR）将会有显著提升。
 
-<<<<<<< HEAD
-### [@vitejs/plugin-legacy](https://github.com/vitejs/vite/tree/main/packages/plugin-legacy) {#vitejs-plugin-legacy}
-=======
 ### [@vitejs/plugin-rsc](https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-rsc)
 
-Vite supports [React Server Components (RSC)](https://react.dev/reference/rsc/server-components) through the plugin. It utilizes the [Environment API](/guide/api-environment) to provide low-level primitives that React frameworks can use to integrate RSC features. You can try a minimal standalone RSC application with:
+Vite 通过该插件支持 [React Server Components (RSC)](https://react.dev/reference/rsc/server-components)。它利用 [Environment API](/guide/api-environment) 提供底层原语，React 框架可以使用这些原语来集成 RSC 功能。你可以通过以下方式尝试一个最小的独立 RSC 应用程序：
 
 ```bash
 npm create vite@latest -- --template rsc
 ```
 
-Read the [plugin documentation](https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-rsc) to learn more.
+阅读[插件文档](https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-rsc)了解更多详情。
 
 ### [@vitejs/plugin-legacy](https://github.com/vitejs/vite/tree/main/packages/plugin-legacy)
->>>>>>> 8490926e60fb617566b0ffa4fbf9fe90c7f47e22
 
 为打包后的文件提供传统浏览器兼容性支持。
 
