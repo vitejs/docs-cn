@@ -21,8 +21,13 @@
 
 ## preview.allowedHosts
 
+<<<<<<< HEAD
 - **类型：** `string | true`
 - **默认：** [`server.allowedHosts`](./server-options#server-allowedhosts)
+=======
+- **Type:** `string[] | true`
+- **Default:** [`server.allowedHosts`](./server-options#server-allowedhosts)
+>>>>>>> e98ffcb8165576e642e360934067a8e6dfcee758
 
 Vite 允许响应的主机名。
 
