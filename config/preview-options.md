@@ -21,7 +21,7 @@
 
 ## preview.allowedHosts
 
-- **类型：** `string | true`
+- **类型：** `string[] | true`
 - **默认：** [`server.allowedHosts`](./server-options#server-allowedhosts)
 
 Vite 允许响应的主机名。
