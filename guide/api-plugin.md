@@ -402,14 +402,9 @@ Vite 插件也可以提供钩子来服务于特定的 Vite 目标。这些钩子
 
 ### `handleHotUpdate` {#handlehotupdate}
 
-<<<<<<< HEAD
 - **类型：** `(ctx: HmrContext) => Array<ModuleNode> | void | Promise<Array<ModuleNode> | void>`
+- **种类:** `async`, `sequential`
 - **参见：** [HMR API](./api-hmr)
-=======
-- **Type:** `(ctx: HmrContext) => Array<ModuleNode> | void | Promise<Array<ModuleNode> | void>`
-- **Kind:** `async`, `sequential`
-- **See also:** [HMR API](./api-hmr)
->>>>>>> 8baa21eb51bf58d9d209bdab7243e5fa49ebaf4e
 
   执行自定义 HMR 更新处理。钩子接收一个带有以下签名的上下文对象：
 
