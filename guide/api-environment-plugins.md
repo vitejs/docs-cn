@@ -70,6 +70,7 @@ Vite 服务器有一个共享的插件管道，但在处理模块时，它总是
 ## `hotUpdate` 钩子 {#the-hotupdate-hook}
 
 - **类型：** `(this: { environment: DevEnvironment }, options: HotUpdateOptions) => Array<EnvironmentModuleNode> | void | Promise<Array<EnvironmentModuleNode> | void>`
+- **种类:** `async`, `sequential`
 - **查看：** [HMR API](./api-hmr)
 
 `hotUpdate` 钩子允许插件为特定环境执行自定义的 HMR 更新处理。当一个文件发生变化时，会按照 `server.environments` 中的顺序为每个环境依次运行 HMR 算法，因此 `hotUpdate` 钩子会被多次调用。这个钩子会接收一个带有以下签名的上下文对象：
