@@ -301,4 +301,16 @@ $ npx wrangler pages deploy dist
 
 ## xmit 静态站点托管 {#xmit-static-site-hosting}
 
+<<<<<<< HEAD
 根据 [说明](https://xmit.dev/posts/vite-quickstart/)，使用 [xmit](https://xmit.co) 来部署你的静态站点。
+=======
+Deploy your static site using [xmit](https://xmit.co) by following this [guide](https://xmit.dev/posts/vite-quickstart/).
+
+## Zephyr Cloud
+
+[Zephyr Cloud](https://zephyr-cloud.io) is a deployment platform that integrates directly into your build process and provides global edge distribution for module federation and other kind of applications.
+
+Zephyr follows a different approach than other cloud providers. It integrates directly with Vite build process, so every time you build or run the dev server for your application, it will be automatically deployed with Zephyr Cloud.
+
+Follow the steps in [the Vite deployment guide](https://docs.zephyr-cloud.io/recipes/react-vite) to get started.
+>>>>>>> d7d84be63f7d878f0622ba4bb267fbac7b72c147
