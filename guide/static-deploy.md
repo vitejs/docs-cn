@@ -303,7 +303,7 @@ $ npx wrangler pages deploy dist
 
 根据 [说明](https://xmit.dev/posts/vite-quickstart/)，使用 [xmit](https://xmit.co) 来部署你的静态站点。
 
-## Zephyr Cloud 静态站点托管 {#zephyr-cloud-static-site-hosting}
+## Zephyr Cloud {#zephyr-cloud}
 
 [Zephyr Cloud](https://zephyr-cloud.io) 是一个部署平台，它直接集成到您的构建过程中，并为模块联邦和其他类型的应用程序提供全球边缘分发。
 
