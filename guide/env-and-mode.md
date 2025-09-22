@@ -2,7 +2,22 @@
 
 Vite 在特殊的 `import.meta.env` 对象下暴露了一些常量。这些常量在开发阶段被定义为全局变量，并在构建阶段被静态替换，以使树摇（tree-shaking）更有效。
 
+<<<<<<< HEAD
 ## 内置常量 {#built-in-constants}
+=======
+:::details Example
+
+```js
+if (import.meta.env.DEV) {
+  // code inside here will be tree-shaken in production builds
+  console.log('Dev mode')
+}
+```
+
+:::
+
+## Built-in Constants
+>>>>>>> 8885216737ac0478e1ca5271dd1a259d9fdadde3
 
 一些内置常量在所有情况下都可用：
 
@@ -106,8 +121,6 @@ VITE_BAR=bar
 要想做到这一点，你可以在 `src` 目录下创建一个 `vite-env.d.ts` 文件，接着按下面这样增加 `ImportMetaEnv` 的定义：
 
 ```typescript [vite-env.d.ts]
-/// <reference types="vite/client" />
-
 interface ViteTypeOptions {
   // 添加这行代码，你就可以将 ImportMetaEnv 的类型设为严格模式，
   // 这样就不允许有未知的键值了。
