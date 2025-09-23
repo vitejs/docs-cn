@@ -61,10 +61,14 @@ if (import.meta.hot) {
 ```
 
 ## TypeScript 的智能提示 {#intellisense-for-typescript}
-Vite 在 [`vite/client.d.ts`](https://github.com/vitejs/vite/blob/main/packages/vite/client.d.ts) 中为 `import.meta.hot` 提供了类型定义。你可以在 `src` 目录中创建一个 `vite-env.d.ts`，以便 TypeScript 获取类型定义：
+Vite 在 [`vite/client.d.ts`](https://github.com/vitejs/vite/blob/main/packages/vite/client.d.ts) 中为 `import.meta.hot` 提供了类型定义。你可以在 `tsconfig.json` 中添加 "vite/client"，以便 TypeScript 获取这些类型定义：
 
-```ts [vite-env.d.ts]
-/// <reference types="vite/client" />
+```json [tsconfig.json]
+{
+  "compilerOptions": {
+    "types": ["vite/client"]
+  }
+}
 ```
 
 ## `hot.accept(cb)` {#hot-accept-cb}

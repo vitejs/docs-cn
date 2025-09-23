@@ -85,6 +85,8 @@ Rolldown 专注于三个主要原则：
 
 在添加 overrides 之后，重新安装你的依赖并像往常一样启动你的开发服务器或构建你的项目即可，无需进一步的配置更改。
 
+如果你正在启动一个新项目，你也可以像平常一样使用 `create-vite` 来创建 rolldown-vite 项目。最新版本会询问你是否要使用 `rolldown-vite`。
+
 ## 已知限制 {#known-limitations}
 
 虽然 Rolldown 的目标是成为 Rollup 的替代品，但还有一些特性正在实现中，以及一些小的有意的行为差异。需要查看完整的列表，请参考 [这个 GitHub PR](https://github.com/vitejs/rolldown-vite/pull/84#issue-2903144667)，它会定期更新。
