@@ -113,15 +113,7 @@ Vite 启动模板默认情况下会设置 `"skipLibCheck": "true"`，以避免�
 
 ### 客户端类型 {#client-types}
 
-Vite 默认的类型定义是写给它的 Node.js API 的。要将其补充到一个 Vite 应用的客户端代码环境中，请添加一个 `d.ts` 声明文件：
-
-```typescript
-/// <reference types="vite/client" />
-```
-
-::: details 使用 `compilerOptions.types`
-
-或者，你也可以将 `vite/client` 添加到 `tsconfig.json` 中的 `compilerOptions.types` 下：
+Vite 默认的类型定义是写给它的 Node.js API 的。要将其补充到一个 Vite 应用的客户端代码环境中，你可以在 `tsconfig.json` 中的 `compilerOptions.types` 添加 `vite/client`：
 
 ```json [tsconfig.json]
 {
@@ -131,7 +123,15 @@ Vite 默认的类型定义是写给它的 Node.js API 的。要将其补充到�
 }
 ```
 
-需要注意的是，如果指定了 [`compilerOptions.types`](https://www.typescriptlang.org/tsconfig#types)，则只有这些包会被包含在全局作用域内（而不是所有的“@types”包）。
+需要注意的是，如果指定了 [`compilerOptions.types`](https://www.typescriptlang.org/tsconfig#types)，则只有这些包会被包含在全局作用域内（而不是所有的“@types”包）。这是自 TypeScript 5.9 以来推荐的做法。
+
+::: details Using triple-slash directive
+
+或者，你可以添加一个 `d.ts` 声明文件：
+
+```typescript [vite-env.d.ts]
+/// <reference types="vite/client" />
+```
 
 :::
 
@@ -153,7 +153,13 @@ Vite 默认的类型定义是写给它的 Node.js API 的。要将其补充到�
     export default content
   }
   ```
-- The file containing the reference to `vite/client` (normally `vite-env.d.ts`):
+- 如果你正在使用 `compilerOptions.types`，请确保该文件已包含在 `tsconfig.json` 中：
+  ```json [tsconfig.json]
+  {
+    "include": ["src", "./vite-env-override.d.ts"]
+  }
+  ```
+- 如果你正在使用三斜线指令，请更新包含对 `vite/client` 引用的文件（通常是 `vite-env.d.ts`）：
   ```ts
   /// <reference types="./vite-env-override.d.ts" />
   /// <reference types="vite/client" />
