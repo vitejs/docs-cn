@@ -153,13 +153,13 @@ Vite 默认的类型定义是写给它的 Node.js API 的。要将其补充到�
     export default content
   }
   ```
-- If you are using `compilerOptions.types`, ensure the file is included in `tsconfig.json`:
+- 如果你正在使用 `compilerOptions.types`，请确保该文件已包含在 `tsconfig.json` 中：
   ```json [tsconfig.json]
   {
     "include": ["src", "./vite-env-override.d.ts"]
   }
   ```
-- If you are using triple-slash directives, update the file containing the reference to `vite/client` (normally `vite-env.d.ts`):
+- 如果你正在使用三斜线指令，请更新包含对 `vite/client` 引用的文件（通常是 `vite-env.d.ts`）：
   ```ts
   /// <reference types="./vite-env-override.d.ts" />
   /// <reference types="vite/client" />
