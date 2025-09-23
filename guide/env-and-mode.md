@@ -2,22 +2,18 @@
 
 Vite 在特殊的 `import.meta.env` 对象下暴露了一些常量。这些常量在开发阶段被定义为全局变量，并在构建阶段被静态替换，以使树摇（tree-shaking）更有效。
 
-<<<<<<< HEAD
-## 内置常量 {#built-in-constants}
-=======
 :::details Example
 
 ```js
 if (import.meta.env.DEV) {
-  // code inside here will be tree-shaken in production builds
+  // 这里的代码在生产构建中会被 tree-shaking 优化掉
   console.log('Dev mode')
 }
 ```
 
 :::
 
-## Built-in Constants
->>>>>>> 8885216737ac0478e1ca5271dd1a259d9fdadde3
+## 内置常量 {#built-in-constants}
 
 一些内置常量在所有情况下都可用：
 

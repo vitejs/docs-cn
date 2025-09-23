@@ -113,19 +113,7 @@ Vite 启动模板默认情况下会设置 `"skipLibCheck": "true"`，以避免�
 
 ### 客户端类型 {#client-types}
 
-<<<<<<< HEAD
-Vite 默认的类型定义是写给它的 Node.js API 的。要将其补充到一个 Vite 应用的客户端代码环境中，请添加一个 `d.ts` 声明文件：
-
-```typescript
-/// <reference types="vite/client" />
-```
-
-::: details 使用 `compilerOptions.types`
-
-或者，你也可以将 `vite/client` 添加到 `tsconfig.json` 中的 `compilerOptions.types` 下：
-=======
-Vite's default types are for its Node.js API. To shim the environment of client-side code in a Vite application, you can add `vite/client` to `compilerOptions.types` inside `tsconfig.json`:
->>>>>>> 8885216737ac0478e1ca5271dd1a259d9fdadde3
+Vite 默认的类型定义是写给它的 Node.js API 的。要将其补充到一个 Vite 应用的客户端代码环境中，你可以在 `tsconfig.json` 中的 `compilerOptions.types` 添加 `vite/client`：
 
 ```json [tsconfig.json]
 {
@@ -135,19 +123,15 @@ Vite's default types are for its Node.js API. To shim the environment of client-
 }
 ```
 
-<<<<<<< HEAD
-需要注意的是，如果指定了 [`compilerOptions.types`](https://www.typescriptlang.org/tsconfig#types)，则只有这些包会被包含在全局作用域内（而不是所有的“@types”包）。
-=======
-Note that if [`compilerOptions.types`](https://www.typescriptlang.org/tsconfig#types) is specified, only these packages will be included in the global scope (instead of all visible ”@types” packages). This is recommended since TS 5.9.
+需要注意的是，如果指定了 [`compilerOptions.types`](https://www.typescriptlang.org/tsconfig#types)，则只有这些包会被包含在全局作用域内（而不是所有的“@types”包）。这是自 TypeScript 5.9 以来推荐的做法。
 
 ::: details Using triple-slash directive
 
-Alternatively, you can add a `d.ts` declaration file:
+或者，你可以添加一个 `d.ts` 声明文件：
 
 ```typescript [vite-env.d.ts]
 /// <reference types="vite/client" />
 ```
->>>>>>> 8885216737ac0478e1ca5271dd1a259d9fdadde3
 
 :::
 
