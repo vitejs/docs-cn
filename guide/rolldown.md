@@ -43,6 +43,12 @@ Rolldown 专注于三个主要原则：
 }
 ```
 
+::: tip 请固定版本!
+
+虽然这些示例使用了 `@latest`，但我们建议使用特定的版本号，以避免意外的重大更改，因为 [`rolldown-vite` 被认为是实验性的](#versioning-policy)。
+
+:::
+
 如果你使用了 Vitepress 或其他以 Vite 作为同等依赖（peer dependency）的元框架，你需要在 `package.json` 文件中覆盖 `vite` 依赖，具体操作方式会因你使用的包管理器而略有不同。
 
 :::code-group
