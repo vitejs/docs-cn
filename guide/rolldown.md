@@ -43,17 +43,13 @@ Rolldown 专注于三个主要原则：
 }
 ```
 
-<<<<<<< HEAD
-如果你使用了 Vitepress 或其他以 Vite 作为同等依赖（peer dependency）的元框架，你需要在 `package.json` 文件中覆盖 `vite` 依赖，具体操作方式会因你使用的包管理器而略有不同。
-=======
-::: tip Please pin the version!
+::: tip 请固定版本!
 
-While these examples use `@latest`, we recommend using a specific version number to avoid unexpected breaking changes as [`rolldown-vite` is considered experimental](#versioning-policy).
+虽然这些示例使用了 `@latest`，但我们建议使用特定的版本号，以避免意外的重大更改，因为 [`rolldown-vite` 被认为是实验性的](#versioning-policy)。
 
 :::
 
-If you use a Vitepress or a meta framework that has Vite as peer dependency, you have to override the `vite` dependency in your `package.json`, which works slightly different depending on your package manager:
->>>>>>> ee5a4985b0f4ffc5480f7e77e17226ab080d5cac
+如果你使用了 Vitepress 或其他以 Vite 作为同等依赖（peer dependency）的元框架，你需要在 `package.json` 文件中覆盖 `vite` 依赖，具体操作方式会因你使用的包管理器而略有不同。
 
 :::code-group
 
