@@ -322,6 +322,7 @@ const plugin = {
 
 ### 钩子过滤功能 {#hook-filter-feature}
 
+<<<<<<< HEAD
 Rolldown 引入了[钩子过滤功能](https://rolldown.rs/plugins/hook-filters)，以减少 Rust 和 JavaScript 运行时之间的通信开销。通过使用此功能，你可以使你的插件性能更高。
 这也在 Rollup 4.38.0+ 和 Vite 6.3.0+ 被支持。为了使你的插件向后兼容较旧的版本，请确保也在钩子处理程序内运行过滤器。
 
@@ -330,6 +331,11 @@ Rolldown 引入了[钩子过滤功能](https://rolldown.rs/plugins/hook-filters)
 [`@rolldown/pluginutils`](https://www.npmjs.com/package/@rolldown/pluginutils) 导出了一些用于钩子过滤器的工具函数，例如 `exactRegex` 和 `prefixRegex`。
 
 :::
+=======
+Rolldown introduced a [hook filter feature](https://rolldown.rs/plugins/hook-filters) to reduce the communication overhead between the Rust and JavaScript runtimes. This feature allows plugins to specify patterns that determine when hooks should be called, improving performance by avoiding unnecessary hook invocations.
+
+See the [Hook Filters guide](/guide/api-plugin#hook-filters) for more information.
+>>>>>>> 6b341298890821746ce4bd826b1b870617d5682f
 
 ### 在 `load` 或 `transform` 钩子中将内容转换为 JavaScript {#converting-content-to-javascript-in-load-or-transform-hooks}
 
