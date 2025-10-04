@@ -549,6 +549,41 @@ normalizePath('foo/bar') // 'foo/bar'
 
 Vite 暴露了 [`@rollup/pluginutils` 的 `createFilter`](https://github.com/rollup/plugins/tree/master/packages/pluginutils#createfilter) 函数，以支持 Vite 独有插件和集成使用标准的 include/exclude 过滤模式，Vite 核心自身也正在使用它。
 
+### 钩子过滤功能 {#hook-filters}
+
+Rolldown 引入了[钩子过滤器功能](https://rolldown.rs/plugins/hook-filters) ，以减少 Rust 和 JavaScript 运行时之间的通信开销。此功能允许插件指定确定何时调用钩子的模式，从而通过避免不必要的钩子调用来提高性能。
+
+Rollup 4.38.0+ 和 Vite 6.3.0+ 也支持此功能。为了使你的插件向后兼容旧版本，请确保在钩子处理程序中也运行该过滤器。
+
+```js
+export default function myPlugin() {
+  const jsFileRegex = /\.js$/
+
+  return {
+    name: 'my-plugin',
+    // Example: only call transform for .js files
+    transform: {
+      filter: {
+        id: jsFileRegex,
+      },
+      handler(code, id) {
+        // Additional check for backward compatibility
+        if (!jsFileRegex.test(id)) return null
+
+        return {
+          code: transformCode(code),
+          map: null,
+        }
+      },
+    },
+  }
+}
+```
+
+::: tip
+[`@rolldown/pluginutils`](https://www.npmjs.com/package/@rolldown/pluginutils)导出一些用于钩子过滤器的实用程序，如 `exactRegex` 和 `prefixRegex`。
+:::
+
 ## 客户端与服务端间通信 {#client-server-communication}
 
 从 Vite 2.9 开始，我们为插件提供了一些实用工具，以帮助处理与客户端的通信。
