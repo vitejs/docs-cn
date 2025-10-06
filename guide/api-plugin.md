@@ -286,11 +286,7 @@ Vite 插件也可以提供钩子来服务于特定的 Vite 目标。这些钩子
 
   **存储服务器访问**
 
-<<<<<<< HEAD
-  在某些情况下，其他插件钩子可能需要访问开发服务器实例（例如访问 websocket 服务器、文件系统监视程序或模块图）。这个钩子也可以用来存储服务器实例以供其他钩子访问:
-=======
-  In some cases, other plugin hooks may need access to the dev server instance (e.g. accessing the WebSocket server, the file system watcher, or the module graph). This hook can also be used to store the server instance for access in other hooks:
->>>>>>> 364cc86ff54abac78edeb843a7800e493586823a
+  在某些情况下，其他插件钩子可能需要访问开发服务器实例（例如访问 WebSocket 服务器、文件系统监视程序或模块图）。这个钩子也可以用来存储服务器实例以供其他钩子访问:
 
   ```js
   const myPlugin = () => {
