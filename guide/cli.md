@@ -106,13 +106,9 @@ vite optimize [root]
 
 本地预览构建产物。不要将其用作生产服务器，因为它不是为此而设计的。
 
-<<<<<<< HEAD
-#### 使用 {#usage-3}
-=======
-This command starts a server in the build directory (by default `dist`). Run `vite build` beforehand to ensure that the build directory is up-to-date. Depending on the project's configured [`appType`](/config/shared-options.html#apptype), it makes use of certain middleware.
+此命令在构建目录（默认为 `dist`）中启动服务器。请提前运行 `vite build` 以确保构建目录是最新的。根据项目配置的 [`appType`](/config/shared-options.html#apptype)，它会使用某些中间件。
 
-#### Usage
->>>>>>> 43f06995143e60c47222c26ccf5d2ae387153409
+#### 使用 {#usage-3}
 
 ```bash
 vite preview [root]
