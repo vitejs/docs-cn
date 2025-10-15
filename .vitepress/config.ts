@@ -230,7 +230,7 @@ export default defineConfig({
           { text: '最新博客', link: '/blog' },
           { text: '发布策略', link: '/releases' },
           {
-            text: 'The Documentary',
+            text: '纪录片',
             link: 'https://www.youtube.com/watch?v=bmWQqAKLgT4',
           },
           {

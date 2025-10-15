@@ -22,11 +22,7 @@ Rolldown 专注于三个主要原则：
 
 1. **额外特性**：Rolldown 提供了 Rollup 或 esbuild 中没有的功能，例如高级的分块控制，内置的模块热替换（HMR），以及模块联邦（Module Federation）。
 
-<<<<<<< HEAD
-欲深入了解 Rolldown 的设计动机，请参阅[构建 Rolldown 的原因](https://rolldown.rs/guide/#why-rolldown)。
-=======
-For additional insights on the motivations behind Rolldown, see the [reasons why Rolldown is being built](https://rolldown.rs/guide/introduction#why-rolldown).
->>>>>>> 7671f62fad968c7e2e8d5ec45798f4bd31f7ae45
+欲深入了解 Rolldown 的设计动机，请参阅[构建 Rolldown 的原因](https://rolldown.rs/guide/introduction#why-rolldown)。
 
 ## 尝试 `rolldown-vite` 的好处 {#benefits-of-trying-rolldown-vite}
 
@@ -171,7 +167,7 @@ export default {
 
 ### `withFilter` 包装器 {#withfilter-wrapper}
 
-插件作者可以选择使用 [钩子过滤功能](#hook-filter-feature)，以减少 Rust 和 JavaScript 运行时之间的通信开销。
+插件作者可以选择使用 [钩子过滤功能](https://rolldown.rs/apis/plugin-hook-filters)，以减少 Rust 和 JavaScript 运行时之间的通信开销。
 但如果你使用的某些插件还未采用该功能，而你又希望受益于它，可以使用 `withFilter` 包装器自行为插件添加过滤条件。
 
 ```js
@@ -326,11 +322,7 @@ const plugin = {
 
 ### 钩子过滤功能 {#hook-filter-feature}
 
-<<<<<<< HEAD
-Rolldown 引入了[钩子过滤功能](https://rolldown.rs/plugins/hook-filters)，以减少 Rust 和 JavaScript 运行时之间的通信开销。此功能允许插件指定确定何时调用钩子的模式，从而通过避免不必要的钩子调用来提高性能。
-=======
-Rolldown introduced a [hook filter feature](https://rolldown.rs/apis/plugin-hook-filters) to reduce the communication overhead between the Rust and JavaScript runtimes. This feature allows plugins to specify patterns that determine when hooks should be called, improving performance by avoiding unnecessary hook invocations.
->>>>>>> 7671f62fad968c7e2e8d5ec45798f4bd31f7ae45
+Rolldown 引入了[钩子过滤功能](https://rolldown.rs/apis/plugin-hook-filters)，以减少 Rust 和 JavaScript 运行时之间的通信开销。此功能允许插件指定确定何时调用钩子的模式，从而通过避免不必要的钩子调用来提高性能。
 
 请参阅 [Hook Filters 指南](/guide/api-plugin#hook-filters) 了解更多信息。
 
