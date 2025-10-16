@@ -74,7 +74,17 @@ Vite 总是会加载 `.env` 和 `.env.local` 文件，除此之外还会加载�
 
 :::
 
+<<<<<<< HEAD
 此外，Vite 使用 [dotenv-expand](https://github.com/motdotla/dotenv-expand) 来扩展在 env 文件中编写的变量。想要了解更多相关语法，请查看 [它们的文档](https://github.com/motdotla/dotenv-expand#what-rules-does-the-expansion-engine-follow)。
+=======
+:::warning Bun users
+
+When using [Bun](https://bun.sh), be aware that Bun automatically loads `.env` files before your script runs. This built-in behavior loads environment variables directly into `process.env` and can interfere with Vite's feature, as it respects existing `process.env` values. See [oven-sh/bun#5515](https://github.com/oven-sh/bun/issues/5515) for workarounds.
+
+:::
+
+Also, Vite uses [dotenv-expand](https://github.com/motdotla/dotenv-expand) to expand variables written in env files out of the box. To learn more about the syntax, check out [their docs](https://github.com/motdotla/dotenv-expand#what-rules-does-the-expansion-engine-follow).
+>>>>>>> 85047c894b5294bdfee2e73e0734bd11f0fabd36
 
 请注意，如果想要在环境变量中使用 `$` 符号，则必须使用 `\` 对其进行转义。
 
