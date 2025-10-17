@@ -74,6 +74,12 @@ Vite 总是会加载 `.env` 和 `.env.local` 文件，除此之外还会加载�
 
 :::
 
+:::warning Bun 用户
+
+使用 [Bun](https://bun.sh) 时，请注意 Bun 会在脚本运行前自动加载 `.env` 文件。此内置行为会将环境变量直接加载到 `process.env` 中，并且可能会干扰 Vite 的功能，因为它会遵循现有的 `process.env` 值。有关解决方法，请参阅 [oven-sh/bun#5515](https://github.com/oven-sh/bun/issues/5515)。
+
+:::
+
 此外，Vite 使用 [dotenv-expand](https://github.com/motdotla/dotenv-expand) 来扩展在 env 文件中编写的变量。想要了解更多相关语法，请查看 [它们的文档](https://github.com/motdotla/dotenv-expand#what-rules-does-the-expansion-engine-follow)。
 
 请注意，如果想要在环境变量中使用 `$` 符号，则必须使用 `\` 对其进行转义。
