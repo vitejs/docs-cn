@@ -20,7 +20,7 @@
 		"markdown-it-image-size": "^15.0.1",
 		"vite": "^7.0.4",
 		"vitepress": "^2.0.0-alpha.7",
-		"vitepress-plugin-group-icons": "^1.6.1",
+		"vitepress-plugin-group-icons": "^1.6.4",
 		"vitepress-plugin-llms": "^1.8.0",
 		"vue": "^3.5.22",
 		"vue-tsc": "^3.1.1",
