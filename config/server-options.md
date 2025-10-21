@@ -233,7 +233,11 @@ Direct websocket connection fallback. Check out https://vite.dev/config/server-o
 
 提前转换和缓存文件以进行预热。可以在服务器启动时提高初始页面加载速度，并防止转换瀑布。
 
+<<<<<<< HEAD
 `clientFiles` 是仅在客户端使用的文件，而 `ssrFiles` 是仅在服务端渲染中使用的文件。它们接受相对于 `root` 的文件路径数组或 [`tinyglobby`](https://github.com/SuperchupuDev/tinyglobby) 模式。
+=======
+`clientFiles` are files that are used in the client only, while `ssrFiles` are files that are used in SSR only. They accept an array of file paths or [`tinyglobby` patterns](https://superchupu.dev/tinyglobby/comparison) relative to the `root`.
+>>>>>>> 5faecbf431dc99ecf53e9196a1b41e40f23e4c7d
 
 请确保只添加经常使用的文件，以免在启动时过载 Vite 开发服务器。
 
