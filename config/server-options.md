@@ -92,9 +92,13 @@ Vite允许响应的主机名。
 
 启用 TLS + HTTP/2。该值是传递给 `https.createServer()` 的 [options 对象](https://nodejs.org/api/https.html#https_https_createserver_options_requestlistener)。
 
+<<<<<<< HEAD
 请注意，仅当同时使用 [`server.proxy` 选项](#server-proxy) 时，才会降级为 TLS。
 
 需要一个合法可用的证书。对基本使用的配置需求来说，你可以添加 [@vitejs/plugin-basic-ssl](https://github.com/vitejs/vite-plugin-basic-ssl) 到项目插件中，它会自动创建和缓存一个自签名的证书。但我们推荐你创建和使用你自己的证书。
+=======
+A valid certificate is needed. For a basic setup, you can add [@vitejs/plugin-basic-ssl](https://github.com/vitejs/vite-plugin-basic-ssl) to the project plugins, which will automatically create and cache a self-signed certificate. But we recommend creating your own certificates.
+>>>>>>> f90ef5f6e1c48b03dfee6f0c20a04cac7a64e9c0
 
 ## server.open {#server-open}
 
@@ -233,7 +237,11 @@ Direct websocket connection fallback. Check out https://vite.dev/config/server-o
 
 提前转换和缓存文件以进行预热。可以在服务器启动时提高初始页面加载速度，并防止转换瀑布。
 
+<<<<<<< HEAD
 `clientFiles` 是仅在客户端使用的文件，而 `ssrFiles` 是仅在服务端渲染中使用的文件。它们接受相对于 `root` 的文件路径数组或 [`tinyglobby`](https://github.com/SuperchupuDev/tinyglobby) 模式。
+=======
+`clientFiles` are files that are used in the client only, while `ssrFiles` are files that are used in SSR only. They accept an array of file paths or [`tinyglobby` patterns](https://superchupu.dev/tinyglobby/comparison) relative to the `root`.
+>>>>>>> f90ef5f6e1c48b03dfee6f0c20a04cac7a64e9c0
 
 请确保只添加经常使用的文件，以免在启动时过载 Vite 开发服务器。
 
