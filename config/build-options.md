@@ -195,7 +195,7 @@ export default defineConfig({
 ```md
 # Licenses
 
-应用程序打包了包含以下许可证的依赖项：
+The app bundles dependencies which contain the following licenses:
 
 ## dep-1 - 1.2.3 (CC0-1.0)
 
