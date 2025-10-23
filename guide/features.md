@@ -196,7 +196,7 @@ HTML 文件位于 Vite 项目的[最前端和中心](/guide/#index-html-and-proj
   - 或仅当 `property` 属性匹配以下值时：`og:image`，`og:image:url`，`og:image:secure_url`，`og:audio`，`og:audio:secure_url`，`og:video`，或 `og:video:secure_url`
 
 ```html {4-5,8-9}
-<!doctype html>
+<!DOCTYPE html>
 <html>
   <head>
     <link rel="icon" href="/favicon.ico" />
@@ -237,8 +237,8 @@ import { defineConfig } from 'vite'
 export default defineConfig({
   esbuild: {
     jsxFactory: 'h',
-    jsxFragment: 'Fragment',
-  },
+    jsxFragment: 'Fragment'
+  }
 })
 ```
 
@@ -251,8 +251,8 @@ import { defineConfig } from 'vite'
 
 export default defineConfig({
   esbuild: {
-    jsxInject: `import React from 'react'`,
-  },
+    jsxInject: `import React from 'react'`
+  }
 })
 ```
 
@@ -427,7 +427,7 @@ const modules = import.meta.glob('./dir/*.js')
 // vite 生成的代码
 const modules = {
   './dir/bar.js': () => import('./dir/bar.js'),
-  './dir/foo.js': () => import('./dir/foo.js'),
+  './dir/foo.js': () => import('./dir/foo.js')
 }
 ```
 
@@ -457,7 +457,7 @@ import * as __vite_glob_0_0 from './dir/bar.js'
 import * as __vite_glob_0_1 from './dir/foo.js'
 const modules = {
   './dir/bar.js': __vite_glob_0_0,
-  './dir/foo.js': __vite_glob_0_1,
+  './dir/foo.js': __vite_glob_0_1
 }
 ```
 
@@ -484,7 +484,7 @@ const modules = import.meta.glob(['./dir/*.js', '!**/bar.js'])
 ```js
 // vite 生成的代码
 const modules = {
-  './dir/foo.js': () => import('./dir/foo.js'),
+  './dir/foo.js': () => import('./dir/foo.js')
 }
 ```
 
@@ -502,7 +502,7 @@ const modules = import.meta.glob('./dir/*.js', { import: 'setup' })
 // vite 生成的代码
 const modules = {
   './dir/bar.js': () => import('./dir/bar.js').then((m) => m.setup),
-  './dir/foo.js': () => import('./dir/foo.js').then((m) => m.setup),
+  './dir/foo.js': () => import('./dir/foo.js').then((m) => m.setup)
 }
 ```
 
@@ -513,7 +513,7 @@ import 'vite/client'
 // ---cut---
 const modules = import.meta.glob('./dir/*.js', {
   import: 'setup',
-  eager: true,
+  eager: true
 })
 ```
 
@@ -523,7 +523,7 @@ import { setup as __vite_glob_0_0 } from './dir/bar.js'
 import { setup as __vite_glob_0_1 } from './dir/foo.js'
 const modules = {
   './dir/bar.js': __vite_glob_0_0,
-  './dir/foo.js': __vite_glob_0_1,
+  './dir/foo.js': __vite_glob_0_1
 }
 ```
 
@@ -534,7 +534,7 @@ import 'vite/client'
 // ---cut---
 const modules = import.meta.glob('./dir/*.js', {
   import: 'default',
-  eager: true,
+  eager: true
 })
 ```
 
@@ -544,7 +544,7 @@ import { default as __vite_glob_0_0 } from './dir/bar.js'
 import { default as __vite_glob_0_1 } from './dir/foo.js'
 const modules = {
   './dir/bar.js': __vite_glob_0_0,
-  './dir/foo.js': __vite_glob_0_1,
+  './dir/foo.js': __vite_glob_0_1
 }
 ```
 
@@ -557,11 +557,11 @@ import 'vite/client'
 // ---cut---
 const moduleStrings = import.meta.glob('./dir/*.svg', {
   query: '?raw',
-  import: 'default',
+  import: 'default'
 })
 const moduleUrls = import.meta.glob('./dir/*.svg', {
   query: '?url',
-  import: 'default',
+  import: 'default'
 })
 ```
 
@@ -569,11 +569,11 @@ const moduleUrls = import.meta.glob('./dir/*.svg', {
 // vite 生成的代码
 const moduleStrings = {
   './dir/bar.svg': () => import('./dir/bar.svg?raw').then((m) => m['default']),
-  './dir/foo.svg': () => import('./dir/foo.svg?raw').then((m) => m['default']),
+  './dir/foo.svg': () => import('./dir/foo.svg?raw').then((m) => m['default'])
 }
 const moduleUrls = {
   './dir/bar.svg': () => import('./dir/bar.svg?url').then((m) => m['default']),
-  './dir/foo.svg': () => import('./dir/foo.svg?url').then((m) => m['default']),
+  './dir/foo.svg': () => import('./dir/foo.svg?url').then((m) => m['default'])
 }
 ```
 
@@ -583,7 +583,7 @@ const moduleUrls = {
 import 'vite/client'
 // ---cut---
 const modules = import.meta.glob('./dir/*.js', {
-  query: { foo: 'bar', bar: true },
+  query: { foo: 'bar', bar: true }
 })
 ```
 
@@ -595,7 +595,7 @@ const modules = import.meta.glob('./dir/*.js', {
 import 'vite/client'
 // ---cut---
 const modulesWithBase = import.meta.glob('./**/*.js', {
-  base: './base',
+  base: './base'
 })
 ```
 
@@ -603,7 +603,7 @@ const modulesWithBase = import.meta.glob('./**/*.js', {
 // code produced by vite:
 const modulesWithBase = {
   './dir/foo.js': () => import('./base/dir/foo.js'),
-  './dir/bar.js': () => import('./base/dir/bar.js'),
+  './dir/bar.js': () => import('./base/dir/bar.js')
 }
 ```
 
@@ -617,17 +617,10 @@ const modulesWithBase = {
 
 请注意：
 
-<<<<<<< HEAD
 - 这只是一个 Vite 独有的功能而不是一个 Web 或 ES 标准
 - 该 Glob 模式会被当成导入标识符：必须是相对路径（以 `./` 开头）或绝对路径（以 `/` 开头，相对于项目根目录解析）或一个别名路径（请看 [`resolve.alias` 选项](/config/shared-options.md#resolve-alias))。
-- Glob 匹配是使用 [`tinyglobby`](https://github.com/SuperchupuDev/tinyglobby) 来实现的 —— 阅读它的文档来查阅 [支持的 Glob 模式](https://github.com/mrmlnc/fast-glob#pattern-syntax)。
+- Glob 匹配是使用 [`tinyglobby`](https://github.com/SuperchupuDev/tinyglobby) 来实现的 —— 阅读它的文档来查阅 [支持的 Glob 模式](https://superchupu.dev/tinyglobby/comparison)。
 - 你还需注意，所有 `import.meta.glob` 的参数都必须以字面量传入。你 **不** 可以在其中使用变量或表达式。
-=======
-- This is a Vite-only feature and is not a web or ES standard.
-- The glob patterns are treated like import specifiers: they must be either relative (start with `./`) or absolute (start with `/`, resolved relative to project root) or an alias path (see [`resolve.alias` option](/config/shared-options.md#resolve-alias)).
-- The glob matching is done via [`tinyglobby`](https://github.com/SuperchupuDev/tinyglobby) - check out its documentation for [supported glob patterns](https://superchupu.dev/tinyglobby/comparison).
-- You should also be aware that all the arguments in the `import.meta.glob` must be **passed as literals**. You can NOT use variables or expressions in them.
->>>>>>> f90ef5f6e1c48b03dfee6f0c20a04cac7a64e9c0
 
 ## 动态导入 {#dynamic-import}
 
@@ -664,8 +657,8 @@ init({
   imports: {
     someFunc: () => {
       /* ... */
-    },
-  },
+    }
+  }
 }).then(() => {
   /* ... */
 })
@@ -689,8 +682,9 @@ import wasmUrl from 'foo.wasm?url'
 
 const main = async () => {
   const responsePromise = fetch(wasmUrl)
-  const { module, instance } =
-    await WebAssembly.instantiateStreaming(responsePromise)
+  const { module, instance } = await WebAssembly.instantiateStreaming(
+    responsePromise
+  )
   /* ... */
 }
 
@@ -736,7 +730,7 @@ worker 构造函数会接受可以用来创建 “模块” worker 的选项：
 
 ```ts
 const worker = new Worker(new URL('./worker.js', import.meta.url), {
-  type: 'module',
+  type: 'module'
 })
 ```
 

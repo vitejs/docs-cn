@@ -185,35 +185,32 @@ export default defineConfig({
 })
 ```
 
-<<<<<<< HEAD
-## build.manifest {#build-manifest}
-=======
-## build.license
+## build.license {#build-license}
 
 - **Type:** `boolean | { fileName?: string }`
 - **Default:** `false`
 
-When set to `true`, the build will generate a `.vite/license.md` file that includes all bundled dependencies' licenses. It can be hosted to display and acknowledge the dependencies used by the app. When `fileName` is passed, it will be used as the license file name relative to the `outDir`. An example output may look like this:
+当设置为 `true` 时，构建过程将生成一个 `.vite/license.md` 文件，其中包含所有打包依赖项的许可证信息。该文件可以被托管，用于展示和确认应用程序所使用的依赖项。当传入 `fileName` 参数时，它将被用作相对于 `outDir` 的许可证文件名。示例输出可能如下所示：
 
 ```md
-# Licenses
+# Licenses {#licenses}
 
-The app bundles dependencies which contain the following licenses:
+应用程序打包了包含以下许可证的依赖项：
 
-## dep-1 - 1.2.3 (CC0-1.0)
+## dep-1 - 1.2.3 (CC0-1.0) {#dep-1-1-2-3-cc0-1-0}
 
 CC0 1.0 Universal
 
 ...
 
-## dep-2 - 4.5.6 (MIT)
+## dep-2 - 4.5.6 (MIT) {#dep-2-4-5-6-mit}
 
 MIT License
 
 ...
 ```
 
-If the `fileName` ends with `.json`, the raw JSON metadata will be generated instead and can be used for further processing. For example:
+如果 `fileName` 以 `.json` 结尾，则会生成原始的 JSON 元数据，可用于进一步处理。例如：
 
 ```json
 [
@@ -233,7 +230,7 @@ If the `fileName` ends with `.json`, the raw JSON metadata will be generated ins
 ```
 
 ::: tip
-If you'd like to reference the license file in the built code, you can use `build.rollupOptions.output.banner` to inject a comment at the top of the files. For example:
+如果你希望在构建后的代码中引用许可证文件，可以使用 `build.rollupOptions.output.banner` 在文件顶部注入注释。例如：
 
 ```js twoslash [vite.config.js]
 import { defineConfig } from 'vite'
@@ -253,8 +250,7 @@ export default defineConfig({
 
 :::
 
-## build.manifest
->>>>>>> f90ef5f6e1c48b03dfee6f0c20a04cac7a64e9c0
+## build.manifest {#build-manifest}
 
 - **类型：** `boolean | string`
 - **默认：** `false`
