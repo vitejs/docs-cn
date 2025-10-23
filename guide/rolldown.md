@@ -345,4 +345,8 @@ const plugin = {
 }
 ```
 
+<<<<<<< HEAD
 这是因为 [Rolldown 支持非 JavaScript 模块](https://rolldown.rs/guide/in-depth/module-types) 并且除非指定，否则从扩展名推断模块类型。
+=======
+This is because [Rolldown supports non-JavaScript modules](https://rolldown.rs/in-depth/module-types) and infers the module type from extensions unless specified.
+>>>>>>> a4d9e4f3fd639e07828651de2315aa5dcdeb6fa4
