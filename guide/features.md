@@ -617,17 +617,10 @@ const modulesWithBase = {
 
 请注意：
 
-<<<<<<< HEAD
 - 这只是一个 Vite 独有的功能而不是一个 Web 或 ES 标准
 - 该 Glob 模式会被当成导入标识符：必须是相对路径（以 `./` 开头）或绝对路径（以 `/` 开头，相对于项目根目录解析）或一个别名路径（请看 [`resolve.alias` 选项](/config/shared-options.md#resolve-alias))。
-- Glob 匹配是使用 [`tinyglobby`](https://github.com/SuperchupuDev/tinyglobby) 来实现的 —— 阅读它的文档来查阅 [支持的 Glob 模式](https://github.com/mrmlnc/fast-glob#pattern-syntax)。
+- Glob 匹配是使用 [`tinyglobby`](https://github.com/SuperchupuDev/tinyglobby) 来实现的 —— 阅读它的文档来查阅 [支持的 Glob 模式](https://github.com/mrmlnc/fast-glob#pattern-syntax)。- 查看其文档了解 [支持的 glob 模式](https://superchupu.dev/tinyglobby/comparison)。
 - 你还需注意，所有 `import.meta.glob` 的参数都必须以字面量传入。你 **不** 可以在其中使用变量或表达式。
-=======
-- This is a Vite-only feature and is not a web or ES standard.
-- The glob patterns are treated like import specifiers: they must be either relative (start with `./`) or absolute (start with `/`, resolved relative to project root) or an alias path (see [`resolve.alias` option](/config/shared-options.md#resolve-alias)).
-- The glob matching is done via [`tinyglobby`](https://github.com/SuperchupuDev/tinyglobby) - check out its documentation for [supported glob patterns](https://superchupu.dev/tinyglobby/comparison).
-- You should also be aware that all the arguments in the `import.meta.glob` must be **passed as literals**. You can NOT use variables or expressions in them.
->>>>>>> f90ef5f6e1c48b03dfee6f0c20a04cac7a64e9c0
 
 ## 动态导入 {#dynamic-import}
 
