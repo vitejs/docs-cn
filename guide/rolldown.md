@@ -345,4 +345,4 @@ const plugin = {
 }
 ```
 
-这是因为 [Rolldown 支持非 JavaScript 模块](https://rolldown.rs/guide/in-depth/module-types) 并且除非指定，否则从扩展名推断模块类型。
+这是因为 [Rolldown 支持非 JavaScript 模块](https://rolldown.rs/in-depth/module-types) 并且除非指定，否则从扩展名推断模块类型。
