@@ -146,11 +146,7 @@ interface HotUpdateOptions {
 
 ## 插件中的基于环境的状态 {#per-environment-state-in-plugins}
 
-<<<<<<< HEAD
-鉴于相同的插件实例会被用于不同的环境，插件的状态需要以 `this.environment` 作为键来存储。这与生态系统中已使用的模式相同，即使用 `ssr` 布尔值作为键来避免混合客户端和 SSR 模块状态的方式。可以使用 `Map<Environment, State>` 来分别为每个环境保存其对应的状态。注意：为了保持向后兼容性，在未设置 `perEnvironmentStartEndDuringDev: true` 标志时，`buildStart` 和 `buildEnd` 仅会针对客户端环境被调用。
-=======
-Given that the same plugin instance is used for different environments, the plugin state needs to be keyed with `this.environment`. This is the same pattern the ecosystem has already been using to keep state about modules using the `ssr` boolean as key to avoid mixing client and ssr modules state. A `Map<Environment, State>` can be used to keep the state for each environment separately. Note that for backward compatibility, `buildStart` and `buildEnd` are only called for the client environment without the `perEnvironmentStartEndDuringDev: true` flag. Same for `watchChange` and the `perEnvironmentWatchChangeDuringDev: true` flag.
->>>>>>> 4932528a1ee790ca17435b194b04cf43e5f10fa8
+鉴于相同的插件实例会被用于不同的环境，插件的状态需要以 `this.environment` 作为键来存储。这与生态系统中已使用的模式相同，即使用 `ssr` 布尔值作为键来避免混合客户端和 SSR 模块状态的方式。可以使用 `Map<Environment, State>` 来分别为每个环境保存其对应的状态。注意：为了保持向后兼容性，在未设置 `perEnvironmentStartEndDuringDev: true` 标志时，`buildStart` 和 `buildEnd` 仅会针对客户端环境被调用。同样的规则也适用于 `watchChange` 和 `perEnvironmentWatchChangeDuringDev: true` 标志。
 
 ```js
 function PerEnvironmentCountTransformedModulesPlugin() {
@@ -231,48 +227,44 @@ export default defineConfig({
 
 `applyToEnvironment` 钩子在配置时调用，目前在 `configResolved` 之后调用，因为生态系统中的项目正在修改其中的插件。未来，环境插件解析可能会移至 `configResolved` 之前。
 
-<<<<<<< HEAD
-## 构建钩子中的环境 {#environment-in-build-hooks}
-=======
-## Application-Plugin Communication
+## 应用程序-插件通信 {#application-plugin-communication}
 
-`environment.hot` allows plugins to communicate with the code on the application side for a given environment. This is the equivalent of [the Client-server Communication feature](/guide/api-plugin#client-server-communication), but supports environments other than the client environment.
+`environment.hot` 允许插件与给定环境的应用程序端代码进行通信。这相当于[客户端-服务器通信功能](/guide/api-plugin#client-server-communication)，但支持除客户端环境以外的其他环境。
 
 :::warning Note
 
-Note that this feature is only available for environments that supports HMR.
+请注意，此功能仅适用于支持 HMR 的环境。
 
 :::
 
-### Managing the Application Instances
+### 管理应用程序实例 {#managing-the-application-instances}
 
-Be aware that there might be multiple application instances running in the same environment. For example, if you multiple tabs open in the browser, each tab is a separate application instance and have a separate connection to the server.
+需要注意的是，在同一环境中可能有多个应用程序实例在运行。例如，如果你在浏览器中打开了多个标签页，每个标签页都是一个独立的应用程序实例，并且与服务器有独立的连接。
 
-When a new connection is established, a `vite:client:connect` event is emitted on the environment's `hot` instance. When the connection is closed, a `vite:client:disconnect` event is emitted.
+当建立新连接时，会在环境的 `hot` 实例上触发 `vite:client:connect` 事件。当连接关闭时，会触发 `vite:client:disconnect` 事件。
 
-Each event handler receives the `NormalizedHotChannelClient` as the second argument. The client is an object with a `send` method that can be used to send messages to that specific application instance. The client reference is always the same for the same connection, so you can keep it to track the connection.
+每个事件处理程序都会接收到 `NormalizedHotChannelClient` 作为第二个参数。客户端是一个具有 `send` 方法的对象，可用于向该特定应用程序实例发送消息。对于同一连接，客户端引用始终相同，因此你可以保留它来跟踪连接。
 
-### Example Usage
+### 使用示例 {#example-usage}
 
-The plugin side:
+插件端：
 
 ```js
 configureServer(server) {
   server.environments.ssr.hot.on('my:greetings', (data, client) => {
-    // do something with the data,
-    // and optionally send a response to that application instance
+    // 处理数据，
+    // 并可选择向该应用程序实例发送响应
     client.send('my:foo:reply', `Hello from server! You said: ${data}`)
   })
 
-  // broadcast a message to all application instances
+  // 向所有应用程序实例广播消息
   server.environments.ssr.hot.send('my:foo', 'Hello from server!')
 }
 ```
 
-The application side is same with the Client-server Communication feature. You can use the `import.meta.hot` object to send messages to the plugin.
+应用程序端与客户端-服务器通信功能相同。您可以使用 `import.meta.hot` 对象向插件发送消息。
 
-## Environment in Build Hooks
->>>>>>> 4932528a1ee790ca17435b194b04cf43e5f10fa8
+## 构建钩子中的环境 {#environment-in-build-hooks}
 
 与开发期间一样，插件钩子在构建期间也接收环境实例，取代了 `ssr` 布尔值。
 这同样适用于 `renderChunk`、`generateBundle` 和其他仅在构建时使用的钩子。

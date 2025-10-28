@@ -381,13 +381,9 @@ await createServer({
 
 :::
 
-<<<<<<< HEAD
-使用 HTTP 请求在运行程序和服务器之间进行通信的另一个示例：
-=======
-Make sure to implement the `vite:client:connect` / `vite:client:disconnect` events in the `on` / `off` methods when those methods exist. `vite:client:connect` event should be emitted when the connection is established, and `vite:client:disconnect` event should be emitted when the connection is closed. The `HotChannelClient` object passed to the event handler must have the same reference for the same connection.
+请确保在 `on` / `off` 方法存在时实现 `vite:client:connect` / `vite:client:disconnect` 事件。当连接建立时应触发 `vite:client:connect` 事件，当连接关闭时应触发 `vite:client:disconnect` 事件。传递给事件处理程序的 `HotChannelClient` 对象对于同一连接必须具有相同的引用。
 
-A different example using an HTTP request to communicate between the runner and the server:
->>>>>>> 4932528a1ee790ca17435b194b04cf43e5f10fa8
+使用 HTTP 请求在运行程序和服务器之间进行通信的另一个示例：
 
 ```ts
 import { ESModulesEvaluator, ModuleRunner } from 'vite/module-runner'
