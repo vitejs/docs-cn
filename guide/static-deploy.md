@@ -63,7 +63,7 @@ $ npm run preview
 
 2. 进入仓库 settings 页面的 GitHub Pages 配置，选择部署来源为“GitHub Actions”，这将引导你创建一个构建和部署项目的工作流程，我们提供了一个安装依赖项和使用 npm 构建的工作流程样本：
 
-   <<< ./static-deploy-github-pages.yaml#content
+   <<< ./static-deploy-github-pages.yaml#content [.github/workflows/deploy.yml]
 
 ## GitLab Pages 配合 GitLab CI {#gitlab-pages-and-gitlab-ci}
 

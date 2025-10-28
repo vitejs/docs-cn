@@ -146,7 +146,7 @@ interface HotUpdateOptions {
 
 ## 插件中的基于环境的状态 {#per-environment-state-in-plugins}
 
-鉴于相同的插件实例会被用于不同的环境，插件的状态需要以 `this.environment` 作为键来存储。这与生态系统中已使用的模式相同，即使用 `ssr` 布尔值作为键来避免混合客户端和 SSR 模块状态的方式。可以使用 `Map<Environment, State>` 来分别为每个环境保存其对应的状态。注意：为了保持向后兼容性，在未设置 `perEnvironmentStartEndDuringDev: true` 标志时，`buildStart` 和 `buildEnd` 仅会针对客户端环境被调用。
+鉴于相同的插件实例会被用于不同的环境，插件的状态需要以 `this.environment` 作为键来存储。这与生态系统中已使用的模式相同，即使用 `ssr` 布尔值作为键来避免混合客户端和 SSR 模块状态的方式。可以使用 `Map<Environment, State>` 来分别为每个环境保存其对应的状态。注意：为了保持向后兼容性，在未设置 `perEnvironmentStartEndDuringDev: true` 标志时，`buildStart` 和 `buildEnd` 仅会针对客户端环境被调用。同样的规则也适用于 `watchChange` 和 `perEnvironmentWatchChangeDuringDev: true` 标志。
 
 ```js
 function PerEnvironmentCountTransformedModulesPlugin() {
@@ -226,6 +226,43 @@ export default defineConfig({
 ```
 
 `applyToEnvironment` 钩子在配置时调用，目前在 `configResolved` 之后调用，因为生态系统中的项目正在修改其中的插件。未来，环境插件解析可能会移至 `configResolved` 之前。
+
+## 应用程序-插件通信 {#application-plugin-communication}
+
+`environment.hot` 允许插件与给定环境的应用程序端代码进行通信。这相当于[客户端-服务器通信功能](/guide/api-plugin#client-server-communication)，但支持除客户端环境以外的其他环境。
+
+:::warning Note
+
+请注意，此功能仅适用于支持 HMR 的环境。
+
+:::
+
+### 管理应用程序实例 {#managing-the-application-instances}
+
+需要注意的是，在同一环境中可能有多个应用程序实例在运行。例如，如果你在浏览器中打开了多个标签页，每个标签页都是一个独立的应用程序实例，并且与服务器有独立的连接。
+
+当建立新连接时，会在环境的 `hot` 实例上触发 `vite:client:connect` 事件。当连接关闭时，会触发 `vite:client:disconnect` 事件。
+
+每个事件处理程序都会接收到 `NormalizedHotChannelClient` 作为第二个参数。客户端是一个具有 `send` 方法的对象，可用于向该特定应用程序实例发送消息。对于同一连接，客户端引用始终相同，因此你可以保留它来跟踪连接。
+
+### 使用示例 {#example-usage}
+
+插件端：
+
+```js
+configureServer(server) {
+  server.environments.ssr.hot.on('my:greetings', (data, client) => {
+    // 处理数据，
+    // 并可选择向该应用程序实例发送响应
+    client.send('my:foo:reply', `Hello from server! You said: ${data}`)
+  })
+
+  // 向所有应用程序实例广播消息
+  server.environments.ssr.hot.send('my:foo', 'Hello from server!')
+}
+```
+
+应用程序端与客户端-服务器通信功能相同。您可以使用 `import.meta.hot` 对象向插件发送消息。
 
 ## 构建钩子中的环境 {#environment-in-build-hooks}
 
