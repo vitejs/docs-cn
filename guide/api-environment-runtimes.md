@@ -316,19 +316,28 @@ import { createServer, RemoteEnvironmentTransport, DevEnvironment } from 'vite'
 function createWorkerEnvironment(name, config, context) {
   const worker = new Worker('./worker.js')
   const handlerToWorkerListener = new WeakMap()
+  const client = {
+    send(payload: HotPayload) {
+      worker.postMessage(payload)
+    },
+  }
 
   const workerHotChannel = {
     send: (data) => worker.postMessage(data),
     on: (event, handler) => {
-      if (event === 'connection') return
+      // client is already connected
+      if (event === 'vite:client:connect') return
+      if (event === 'vite:client:disconnect') {
+        const listener = () => {
+          handler(undefined, client)
+        }
+        handlerToWorkerListener.set(handler, listener)
+        worker.on('exit', listener)
+        return
+      }
 
       const listener = (value) => {
         if (value.type === 'custom' && value.event === event) {
-          const client = {
-            send(payload) {
-              worker.postMessage(payload)
-            },
-          }
           handler(value.data, client)
         }
       }
@@ -336,7 +345,16 @@ function createWorkerEnvironment(name, config, context) {
       worker.on('message', listener)
     },
     off: (event, handler) => {
-      if (event === 'connection') return
+      if (event === 'vite:client:connect') return
+      if (event === 'vite:client:disconnect') {
+        const listener = handlerToWorkerListener.get(handler)
+        if (listener) {
+          worker.off('exit', listener)
+          handlerToWorkerListener.delete(handler)
+        }
+        return
+      }
+
       const listener = handlerToWorkerListener.get(handler)
       if (listener) {
         worker.off('message', listener)
@@ -362,6 +380,8 @@ await createServer({
 ```
 
 :::
+
+请确保在 `on` / `off` 方法存在时实现 `vite:client:connect` / `vite:client:disconnect` 事件。当连接建立时应触发 `vite:client:connect` 事件，当连接关闭时应触发 `vite:client:disconnect` 事件。传递给事件处理程序的 `HotChannelClient` 对象对于同一连接必须具有相同的引用。
 
 使用 HTTP 请求在运行程序和服务器之间进行通信的另一个示例：
 
