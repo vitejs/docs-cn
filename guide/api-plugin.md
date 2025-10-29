@@ -387,14 +387,10 @@ Vite 插件也可以提供钩子来服务于特定的 Vite 目标。这些钩子
 
   interface HtmlTagDescriptor {
     tag: string
-<<<<<<< HEAD
-    attrs?: Record<string, string>
-=======
     /**
-     * attribute values will be escaped automatically if needed
+     * 如果需要，属性值将自动转义。
      */
     attrs?: Record<string, string | boolean>
->>>>>>> 08e5e0f1575a8a42c162908124153429332f390f
     children?: string | HtmlTagDescriptor[]
     /**
      * 默认： 'head-prepend'
