@@ -56,7 +56,7 @@ Vite 服务器有一个共享的插件管道，但在处理模块时，它总是
 
 ```ts
   configEnvironment(name: string, options: EnvironmentOptions) {
-    // add "workerd" condition to the rsc environment
+    // 将 "workerd" 条件增加到 rsc 环境
     if (name === 'rsc') {
       return {
         resolve: {
