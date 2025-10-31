@@ -325,7 +325,7 @@ function createWorkerEnvironment(name, config, context) {
   const workerHotChannel = {
     send: (data) => worker.postMessage(data),
     on: (event, handler) => {
-      // 客户端已链接
+      // 客户端已连接
       if (event === 'vite:client:connect') return
       if (event === 'vite:client:disconnect') {
         const listener = () => {
