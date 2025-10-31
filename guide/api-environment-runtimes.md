@@ -163,7 +163,7 @@ import { transport } from './rpc-implementation.js'
 const moduleRunner = new ModuleRunner(
   {
     transport,
-    createImportMeta: createNodeImportMeta, // if the module runner runs in Node.js
+    createImportMeta: createNodeImportMeta, // 如果模块运行程序在 Node.js 中运行
   },
   new ESModulesEvaluator(),
 )
@@ -325,7 +325,7 @@ function createWorkerEnvironment(name, config, context) {
   const workerHotChannel = {
     send: (data) => worker.postMessage(data),
     on: (event, handler) => {
-      // client is already connected
+      // 客户端已链接
       if (event === 'vite:client:connect') return
       if (event === 'vite:client:disconnect') {
         const listener = () => {
@@ -399,7 +399,7 @@ export const runner = new ModuleRunner(
         return response.json()
       },
     },
-    hmr: false, // disable HMR as HMR requires transport.connect
+    hmr: false, // 禁用 HMR，因为 HMR 需要 transport.connect
   },
   new ESModulesEvaluator(),
 )
