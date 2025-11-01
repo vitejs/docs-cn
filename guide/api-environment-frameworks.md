@@ -142,7 +142,7 @@ const server = await createServer({
         createEnvironment(name, config) {
           return createFetchableDevEnvironment(name, config, {
             handleRequest(request: Request): Promise<Response> | Response {
-              // handle Request and return a Response
+              // 处理请求和返回响应 
             },
           })
         },
@@ -151,7 +151,7 @@ const server = await createServer({
   },
 })
 
-// Any consumer of the environment API can now call `dispatchFetch`
+// 环境 API 的任何使用者现在都可以调用 `dispatchFetch`
 if (isFetchableDevEnvironment(server.environments.custom)) {
   const response: Response = await server.environments.custom.dispatchFetch(
     new Request('/request-to-handle'),
