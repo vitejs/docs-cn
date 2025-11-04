@@ -111,11 +111,7 @@ Rolldown 专注于三个主要原则：
 
 #### `manualChunks` 改为 `advancedChunks` {#manualchunks-changed-to-advancedchunks}
 
-<<<<<<< HEAD
-虽然 Rolldown 支持与 Rollup 相同的 `manualChunks` 选项，但该选项已被标记为过时。作为替代，Rolldown 通过 [`advancedChunks` 选项](https://rolldown.rs/guide/in-depth/advanced-chunks#advanced-chunks) 提供更精细的设置，该选项与 webpack 的 `splitChunk` 功能更为相似：
-=======
-While Rolldown has support for the `manualChunks` option that is also exposed by Rollup, it is marked deprecated. Instead of it, Rolldown offers a more fine-grained setting via the [`advancedChunks` option](https://rolldown.rs/in-depth/advanced-chunks), which is more similar to webpack's `splitChunk`:
->>>>>>> 6b275cfe6833b410d3f59b4e6ba77fee5a26f245
+虽然 Rolldown 支持与 Rollup 相同的 `manualChunks` 选项，但该选项已被标记为过时。作为替代，Rolldown 通过 [`advancedChunks` 选项](https://rolldown.rs/in-depth/advanced-chunks) 提供更精细的设置，该选项与 webpack 的 `splitChunk` 功能更为相似：
 
 ```js
 // 旧配置 (Rollup)
