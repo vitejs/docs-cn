@@ -184,7 +184,7 @@ import.meta.hot.data = { someValue: 'hello' }
 
 目前是一个空操作并暂留用于向后兼容。若有新的用途设计可能在未来会发生变更。要指明某模块是不可热更新的，请使用 `hot.invalidate()`。
 
-## `hot.invalidate(message?: string)` {#hot-invalidate}
+## `hot.invalidate(message?: string)` {#hot-invalidate-message-string}
 
 一个接收自身的模块可以在运行时意识到它不能处理 HMR 更新，因此需要将更新强制传递给导入者。通过调用 `import.meta.hot.invalidate()`，HMR 服务将使调用方的导入失效，就像调用方不是接收自身的一样。这会同时在浏览器控制台和命令行中打印出一条信息，你可以传入这条信息，对发生失效的原因给予一些上下文。
 
@@ -201,7 +201,7 @@ import.meta.hot.accept((module) => {
 })
 ```
 
-## `hot.on(event, cb)` {#hot-onevent-cb}
+## `hot.on(event, cb)` {#hot-on-event-cb}
 
 监听自定义 HMR 事件。
 
@@ -218,7 +218,7 @@ import.meta.hot.accept((module) => {
 
 自定义 HMR 事件可以由插件发送。更多细节详见 [handleHotUpdate](./api-plugin#handleHotUpdate)。
 
-## `hot.off(event, cb)` {#hot-offevent-cb}
+## `hot.off(event, cb)` {#hot-off-event-cb}
 
 从事件监听器中移除回调函数。
 
