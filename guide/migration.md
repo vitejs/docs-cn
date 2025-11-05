@@ -8,10 +8,10 @@ Vite 不再支持已结束生命周期（EOL）的 Node.js 18。现在需要使�
 
 `build.target` 的默认浏览器值已更新为较新的浏览器版本。
 
-- Chrome 87 → 107  
-- Edge 88 → 107  
-- Firefox 78 → 104  
-- Safari 14.0 → 16.0  
+- Chrome 87 → 107
+- Edge 88 → 107
+- Firefox 78 → 104
+- Safari 14.0 → 16.0
 
 这些浏览器版本符合 [Baseline](https://web-platform-dx.github.io/web-features/) 在 2025-05-01 时定义的“广泛可用”功能集标准。换句话说，它们的发布日期都在 2022-11-01 之前。
 
@@ -19,17 +19,17 @@ Vite 不再支持已结束生命周期（EOL）的 Node.js 18。现在需要使�
 
 ## 总体变化 {#general-changes}
 
-### 移除了 Sass 旧版 API 支持 {#removed-sass-old-api-support}
+### 移除了 Sass 旧版 API 支持 {#removed-sass-legacy-api-support}
 
 如计划所述，Sass 旧版 API 的支持已被移除。Vite 现在仅支持现代 API。你可以移除 `css.preprocessorOptions.sass.api` 和 `css.preprocessorOptions.scss.api` 配置选项。
 
 ## 移除了已弃用的功能 {#removed-deprecated-features}
 
-- `splitVendorChunkPlugin`（在 v5.2.7 中弃用）  
-  - 该插件最初是为了方便迁移到 Vite v2.9 而提供的。  
+- `splitVendorChunkPlugin`（在 v5.2.7 中弃用）
+  - 该插件最初是为了方便迁移到 Vite v2.9 而提供的。
   - 如有需要，可以使用 `build.rollupOptions.output.manualChunks` 选项来控制分块行为。
-- `transformIndexHtml` 的 hook 级别 `enforce` / `transform`（在 v4.0.0 中弃用）  
-  - 此更改是为了与 [Rollup 的对象型 hooks](https://rollupjs.org/plugin-development/#build-hooks:~:text=Instead%20of%20a%20function%2C%20hooks%20can%20also%20be%20objects.) 接口保持一致。  
+- `transformIndexHtml` 的 hook 级别 `enforce` / `transform`（在 v4.0.0 中弃用）
+  - 此更改是为了与 [Rollup 的对象型 hooks](https://rollupjs.org/plugin-development/#build-hooks:~:text=Instead%20of%20a%20function%2C%20hooks%20can%20also%20be%20objects.) 接口保持一致。
   - 应使用 `order` 替代 `enforce`，使用 `handler` 替代 `transform`。
 
 ## 进阶 {#advanced}

@@ -57,7 +57,7 @@ Vite 目前的插件 API 与使用 `esbuild` 作为打包器并不兼容。尽�
 
 Rollup 已经开始着手改进性能，[在 v4 中将其解析器切换到 SWC](https://github.com/rollup/rollup/pull/5073)。同时还有一个正在进行中的工作，即构建一个名为 Rolldown 的 Rust 版本的 Rollup。一旦 Rolldown 准备就绪，它就可以在 Vite 中取代 Rollup 和 esbuild，显著提高构建性能，并消除开发和构建之间的不一致性。你可以观看 [Evan You 在 ViteConf 2023 的主题演讲](https://youtu.be/hrdwQHoAp0M) 了解更多细节。
 
-## Vite 与其他免打包构建工具的关系是什么？{##how-vite-relates-to-other-unbundled-build-tools}
+## Vite 与其他免打包构建工具的关系是什么？{#how-vite-relates-to-other-unbundled-build-tools}
 
 Preact 团队的 [WMR](https://github.com/preactjs/wmr) 旨在提供类似的功能集。Vite 用于开发和构建的通用 Rollup 插件 API 就是受其启发。WMR 已经不再维护。Preact 团队现在推荐使用 Vite 和 [@preactjs/preset-vite](https://github.com/preactjs/preset-vite)。
 

@@ -109,7 +109,7 @@ Rolldown 专注于三个主要原则：
 
 ### API 差异 {#api-differences}
 
-#### `manualChunks` 改为 `advancedChunks` {#manualchunks-changed-to-advancedchunks}
+#### `manualChunks` 改为 `advancedChunks` {#manualchunks-to-advancedchunks}
 
 虽然 Rolldown 支持与 Rollup 相同的 `manualChunks` 选项，但该选项已被标记为过时。作为替代，Rolldown 通过 [`advancedChunks` 选项](https://rolldown.rs/in-depth/advanced-chunks) 提供更精细的设置，该选项与 webpack 的 `splitChunk` 功能更为相似：
 
@@ -214,7 +214,7 @@ export default defineConfig({
 
 未来我们将为 Vite 引入全量打包模式（Full Bundle Mode），该模式将在生产环境 _和开发模式_ 下提供打包后的文件。
 
-### 为何引入全量打包模式？ {#why-introducing-full-bundle-mode}
+### 为何引入全量打包模式？ {#why-introducing-a-full-bundle-mode}
 
 Vite 以其非打包开发服务器方案著称，这正是其早期凭借速度优势迅速流行的关键原因。这种方案最初是尝试探索在不进行传统打包的情况下，开发服务器性能能达到何种极限。
 
@@ -299,7 +299,7 @@ if (vite.rolldownVersion) {
 
 可通过条件式传递选项（通过 [如上所示](#detecting-rolldown-vite) 检测是否使用 `rolldown-vite`）来修复此问题。
 
-### `transformWithEsbuild` 需要单独安装 `esbuild` {#transformwithesbuild-requires-installing-esbuild-separately}
+### `transformWithEsbuild` 需要单独安装 `esbuild` {#transformwithesbuild-requires-esbuild-to-be-installed-separately}
 
 由于 Vite 本身已不再使用 `esbuild`，`esbuild` 现在被作为可选的 peer dependency。如果你的插件使用了 `transformWithEsbuild`，则需要将 `esbuild` 添加到插件的依赖中，或者由用户手动安装。
 
