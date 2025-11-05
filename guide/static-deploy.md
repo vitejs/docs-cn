@@ -297,7 +297,7 @@ $ npx wrangler pages deploy dist
 
 ## Kinsta 静态站点托管 {#kinsta-static-site-hosting}
 
-根据 [说明](https://kinsta.com/docs/react-vite-example/)，使用 [Kinsta](https://kinsta.com/static-site-hosting/) 来部署你的静态站点。
+根据 [说明](https://kinsta.com/docs/react-vite-example/)，使用 [Kinsta](https://kinsta.com/docs/static-site-hosting/static-site-quick-start/react-static-site-examples/#react-with-vite) 来部署你的静态站点。
 
 ## xmit 静态站点托管 {#xmit-static-site-hosting}
 
@@ -309,4 +309,4 @@ $ npx wrangler pages deploy dist
 
 Zephyr 与其他云提供商采用不同的方法。它直接与 Vite 构建流程集成，因此每次你构建或运行应用程序的开发服务器时，它都会自动部署到 Zephyr Cloud。
 
-请按照 [Vite 部署指南](https://docs.zephyr-cloud.io/recipes/react-vite) 中的步骤开始使用。
+请按照 [Vite 部署指南](https://docs.zephyr-cloud.io/bundlers/vite) 中的步骤开始使用。
