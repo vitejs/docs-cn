@@ -6,7 +6,7 @@
 
 ## CLI {#cli}
 
-### `Error: Cannot find module 'C:\foo\bar&baz\vite\bin\vite.js'` {#error-cannot-find-module-cfoobarbazvitebinvitejs}
+### `Error: Cannot find module 'C:\foo\bar&baz\vite\bin\vite.js'` {#error-cannot-find-module-c-foo-bar-baz-vite-bin-vite-js}
 
 你的项目文件夹路径中可能包含了符号 `&`，这在 Windows 上无法与 `npm` 配合正常工作 ([npm/cmd-shim#45](https://github.com/npm/cmd-shim/issues/45))。
 
@@ -102,7 +102,7 @@ security add-trusted-cert -d -r trustRoot -k ~/Library/Keychains/login.keychain-
 
 要避免这个问题，请尝试减小请求头大小。举个例子，如果 cookie 太长，请删除它。或者你可以使用 [`--max-http-header-size`](https://nodejs.org/api/cli.html#--max-http-header-sizesize) 来更改最大请求头大小。
 
-### 开发容器 / VS Code 端口转发
+### 开发容器 / VS Code 端口转发 {#dev-containers-vs-code-port-forwarding}
 
 如果你正在使用开发容器或 VS Code 的端口转发功能，可能需要在配置中将 [`server.host`](/config/server-options.md#server-host) 选项设置为 `127.0.0.1` 才能使其正常工作。
 
@@ -189,7 +189,7 @@ import './Foo.js' // 应该为 './foo.js'
 
 可以通过修改 [`build.rollupOptions.output.chunkFileNames`](../config/build-options.md#build-rollupoptions) 中的块文件名来绕过此问题，因为这些扩展程序通常会根据文件名（例如包含 `ad` 或 `track` 的文件名）来阻止请求。
 
-## 优化依赖 {#optimize-dependencies}
+## 优化依赖 {#optimized-dependencies}
 
 ### 链接本地包时过期预构建依赖项 {#outdated-pre-bundled-deps-when-linking-to-a-local-package}
 

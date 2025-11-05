@@ -1,4 +1,4 @@
-# 服务端渲染 (SSR) {#server-side-rendering}
+# 服务端渲染 (SSR) {#server-side-rendering-ssr}
 
 :::tip 注意
 SSR 特别指支持在 Node.js 中运行相同应用程序的前端框架（例如 React、Preact、Vue 和 Svelte），将其预渲染成 HTML，最后在客户端进行水合处理。如果你正在寻找与传统服务器端框架的集成，请查看 [后端集成指南](./backend-integration)。
@@ -221,7 +221,7 @@ const html = await vueServerRenderer.renderToString(app, ctx)
 
 我们现在需要在 `server.js` 的生产环境分支下读取该清单，并将其传递到 `src/entry-server.js` 导出的 `render` 函数中。这将为我们提供足够的信息，来为异步路由相应的文件渲染预加载指令！查看 [示例代码](https://github.com/vitejs/vite-plugin-vue/blob/main/playground/ssr-vue/src/entry-server.js) 获取完整示例。你还可以利用 [103 Early Hints](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/103) 所提供的信息。
 
-## 预渲染 / SSG {#pre-rendering--ssg}
+## 预渲染 / SSG {#pre-rendering-ssg}
 
 如果预先知道某些路由所需的路由和数据，我们可以使用与生产环境 SSR 相同的逻辑将这些路由预先渲染到静态 HTML 中。这也被视为一种静态站点生成（SSG）的形式。查看 [示例渲染代码](https://github.com/vitejs/vite-plugin-vue/blob/main/playground/ssr-vue/prerender.js) 获取有效示例。
 

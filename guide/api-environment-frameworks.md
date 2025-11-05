@@ -13,7 +13,7 @@
 请与我们分享您的反馈。
 :::
 
-## 开发环境通信级别
+## 开发环境通信级别 {#devenvironment-communication-levels}
 
 由于环境可能在不同的运行时环境中运行，与环境的通信可能会受到运行时环境的限制。为了使框架能够轻松编写与运行时环境无关的代码，环境 API 提供了三种通信级别。
 
@@ -142,7 +142,7 @@ const server = await createServer({
         createEnvironment(name, config) {
           return createFetchableDevEnvironment(name, config, {
             handleRequest(request: Request): Promise<Response> | Response {
-              // 处理请求和返回响应 
+              // 处理请求和返回响应
             },
           })
         },

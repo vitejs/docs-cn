@@ -343,7 +343,7 @@ Vite 插件也可以提供钩子来服务于特定的 Vite 目标。这些钩子
   - 一个包含 `{ html, tags }` 的对象
 
   默认情况下 `order` 是 `undefined`，这个钩子会在 HTML 被转换后应用。为了注入一个应该通过 Vite 插件管道的脚本， `order: 'pre'` 指将在处理 HTML 之前应用。 `order: 'post'` 是在所有未定义的 `order` 的钩子函数被应用后才应用。
-  
+
   **基础示例：**
 
   ```js
@@ -657,7 +657,7 @@ export default defineConfig({
 })
 ```
 
-### 自定义事件的 TypeScript 类型定义指南 {#typeScript-for-custom-events}
+### 自定义事件的 TypeScript 类型定义指南 {#typescript-for-custom-events}
 
 Vite 会在内部从 `CustomEventMap` 这个接口推断出 payload 的类型，可以通过扩展这个接口来为自定义事件进行类型定义：
 

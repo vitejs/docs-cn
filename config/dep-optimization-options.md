@@ -51,7 +51,7 @@ export default defineConfig({
 })
 ```
 
-## optimizeDeps.esbuildOptions <NonInheritBadge /> {#optimizedeps-esbuild-options}
+## optimizeDeps.esbuildOptions <NonInheritBadge /> {#optimizedeps-esbuildoptions}
 
 - **类型：** [`Omit`](https://www.typescriptlang.org/docs/handbook/utility-types.html#omittype-keys)`<`[`EsbuildBuildOptions`](https://esbuild.github.io/api/#general-options)`,
 | 'bundle'
@@ -78,7 +78,7 @@ export default defineConfig({
 
 设置为 `true` 可以强制依赖预构建，而忽略之前已经缓存过的、已经优化过的依赖。
 
-## optimizeDeps.noDiscovery <NonInheritBadge /> {#optimizedeps-no-discovery}
+## optimizeDeps.noDiscovery <NonInheritBadge /> {#optimizedeps-nodiscovery}
 
 - **类型：** `boolean`
 - **默认：** `false`
