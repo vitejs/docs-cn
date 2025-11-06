@@ -187,6 +187,7 @@ export default defineConfig({
 
 ## build.license {#build-license}
 
+<<<<<<< HEAD
 - **类型：** `boolean | { fileName?: string }`
 - **默认：** `false`
 
@@ -211,6 +212,15 @@ MIT License
 ```
 
 如果 `fileName` 以 `.json` 结尾，则会生成原始的 JSON 元数据，可用于进一步处理。例如：
+=======
+- **Type:** `boolean | { fileName?: string }`
+- **Default:** `false`
+- **Related:** [License](/guide/features#license)
+
+When set to `true`, the build will generate a `.vite/license.md` file that includes all bundled dependencies' licenses.
+
+If `fileName` is passed, it will be used as the license file name relative to the `outDir`. If it ends with `.json`, the raw JSON metadata will be generated instead and can be used for further processing. For example:
+>>>>>>> d57f75d7b4fb78922453020d2d51c9b1343ebad1
 
 ```json
 [

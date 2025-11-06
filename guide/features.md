@@ -790,7 +790,47 @@ import MyWorker from './worker?worker&url'
 不要为 [`script-src`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/script-src) 允许 `data:`。这将会允许注入任何脚本。
 :::
 
+<<<<<<< HEAD
 ## 构建优化 {#build-optimizations}
+=======
+## License
+
+Vite can generate a file of all the dependencies' licenses used in the build with the [`build.license`](/config/build-options.md#build-license) option. It can be hosted to display and acknowledge the dependencies used by the app.
+
+```js twoslash [vite.config.js]
+import { defineConfig } from 'vite'
+
+export default defineConfig({
+  build: {
+    license: true,
+  },
+})
+```
+
+This will generate a `.vite/license.md` file with an output that may look like this:
+
+```md
+# Licenses
+
+The app bundles dependencies which contain the following licenses:
+
+## dep-1 - 1.2.3 (CC0-1.0)
+
+CC0 1.0 Universal
+
+...
+
+## dep-2 - 4.5.6 (MIT)
+
+MIT License
+
+...
+```
+
+To serve the file at a different path, you can pass `{ fileName: 'license.md' }` for example, so that it's served at `https://example.com/license.md`. See the [`build.license`](/config/build-options.md#build-license) docs for more information.
+
+## Build Optimizations
+>>>>>>> d57f75d7b4fb78922453020d2d51c9b1343ebad1
 
 > 下面所罗列的功能会自动应用为构建过程的一部分，除非你想禁用它们，否则没有必要显式配置。
 
