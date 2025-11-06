@@ -8,9 +8,11 @@ import {
   groupIconVitePlugin
 } from 'vitepress-plugin-group-icons'
 import { markdownItImageSize } from 'markdown-it-image-size'
+import packageJson from '../package.json' with { type: 'json' }
 import { buildEnd } from './buildEnd.config'
 
-const viteMajorVersion = 7
+const viteVersion = packageJson.version
+const viteMajorVersion = +viteVersion.split('.')[0]
 
 const ogDescription = 'Next Generation Frontend Tooling'
 const ogImage = 'https://vite.dev/og-image.jpg'
@@ -218,7 +220,7 @@ export default defineConfig({
         ]
       },
       {
-        text: `v${viteMajorVersion}`,
+        text: `v${viteVersion}`,
         items: [
           {
             text: '更新日志',
@@ -491,7 +493,7 @@ export default defineConfig({
       ]
     },
     define: {
-      __VITE_VERSION__: JSON.stringify(viteMajorVersion)
+      __VITE_VERSION__: JSON.stringify(viteVersion)
     }
   },
   buildEnd
