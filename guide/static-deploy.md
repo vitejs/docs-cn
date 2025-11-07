@@ -73,7 +73,7 @@ $ npm run preview
 
    在你的仓库中创建一个新文件 `.github/workflows/deploy.yml`。你也可以从上一步点击 **"create your own"**，这将为你生成一个起始工作流程文件。
 
-  这里有一个示例工作流程，它使用 npm 安装依赖项，构建网站，并在你向 `main` 分支推送更改时部署它：
+   这里有一个示例工作流程，它使用 npm 安装依赖项，构建网站，并在你向 `main` 分支推送更改时部署它：
 
    <<< ./static-deploy-github-pages.yaml#content [.github/workflows/deploy.yml]
 
