@@ -48,15 +48,10 @@ function inlineScript(file: string): HeadConfig {
 }
 
 export default defineConfig({
-<<<<<<< HEAD
   title: 'Vite 官方中文文档',
   description: '下一代前端工具链',
   lang: 'zh-CN',
-=======
-  title: `Vite${additionalTitle}`,
-  description: 'Next Generation Frontend Tooling',
   cleanUrls: true,
->>>>>>> d57f75d7b4fb78922453020d2d51c9b1343ebad1
 
   head: [
     ['link', { rel: 'icon', type: 'image/svg+xml', href: '/logo.svg' }],

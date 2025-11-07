@@ -24,11 +24,7 @@ Vite 没有固定的发布周期。
 
 <br>
 
-<<<<<<< HEAD
 支持的版本范围由以下因素确定：
-=======
-The supported version ranges are automatically determined by:
->>>>>>> d57f75d7b4fb78922453020d2d51c9b1343ebad1
 
 - **当前次要版本** 会定期提供修复。
 - **上一个主要版本** （仅限其最新的次要版本）和 **上一个次要版本** 会接收重要修复和安全补丁。
