@@ -36,7 +36,7 @@ Rolldown 专注于三个主要原则：
 
 ```json
 {
-  "dependencies": {
+  "devDependencies": {
     "vite": "^7.0.0" // [!code --]
     "vite": "npm:rolldown-vite@latest" // [!code ++]
   }
