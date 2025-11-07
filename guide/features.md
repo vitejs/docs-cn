@@ -790,6 +790,42 @@ import MyWorker from './worker?worker&url'
 不要为 [`script-src`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/script-src) 允许 `data:`。这将会允许注入任何脚本。
 :::
 
+## License
+
+Vite 可以通过 [`build.license`](/config/build-options.md#build-license) 选项生成一个包含构建中使用的所有依赖项许可证的文件。该文件可以被托管，用于显示和确认应用程序所使用的依赖项。
+
+```js twoslash [vite.config.js]
+import { defineConfig } from 'vite'
+
+export default defineConfig({
+  build: {
+    license: true,
+  },
+})
+```
+
+这将生成一个 `.vite/license.md` 文件，其输出内容可能如下所示：
+
+```md
+# Licenses
+
+The app bundles dependencies which contain the following licenses:
+
+## dep-1 - 1.2.3 (CC0-1.0)
+
+CC0 1.0 Universal
+
+...
+
+## dep-2 - 4.5.6 (MIT)
+
+MIT License
+
+...
+```
+
+要将文件服务于不同的路径，你可以传递 `{ fileName: 'license.md' }` 作为示例，这样它就会在 `https://example.com/license.md` 路径下提供服务。有关更多信息，请参见 [`build.license`](/config/build-options.md#build-license) 文档。
+
 ## 构建优化 {#build-optimizations}
 
 > 下面所罗列的功能会自动应用为构建过程的一部分，除非你想禁用它们，否则没有必要显式配置。
