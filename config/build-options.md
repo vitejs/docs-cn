@@ -189,28 +189,11 @@ export default defineConfig({
 
 - **类型：** `boolean | { fileName?: string }`
 - **默认：** `false`
+- **相关：** [许可证](/guide/features#license)
 
-当设置为 `true` 时，构建过程将生成一个 `.vite/license.md` 文件，其中包含所有打包依赖项的许可证信息。该文件可以被托管，用于展示和确认应用程序所使用的依赖项。当传入 `fileName` 参数时，它将被用作相对于 `outDir` 的许可证文件名。示例输出可能如下所示：
+当设置为 `true` 时，构建过程将生成一个 `.vite/license.md` 文件，其中包含所有打包依赖项的许可证信息。
 
-```md
-# Licenses
-
-The app bundles dependencies which contain the following licenses:
-
-## dep-1 - 1.2.3 (CC0-1.0)
-
-CC0 1.0 Universal
-
-...
-
-## dep-2 - 4.5.6 (MIT)
-
-MIT License
-
-...
-```
-
-如果 `fileName` 以 `.json` 结尾，则会生成原始的 JSON 元数据，可用于进一步处理。例如：
+如果传入了 `fileName` 参数，它将被用作相对于 `outDir` 的许可证文件名。如果文件名以 `.json` 结尾，则会生成原始的 JSON 元数据，并可以用于进一步处理。例如：
 
 ```json
 [
