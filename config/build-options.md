@@ -188,7 +188,7 @@ export default defineConfig({
 ## build.license {#build-license}
 
 - **类型：** `boolean | { fileName?: string }`
-- **默认：** `false`,
+- **默认：** `false`
 - **相关：** [许可证](/guide/features#license)
 
 当设置为 `true` 时，构建过程将生成一个 `.vite/license.md` 文件，其中包含所有打包依赖项的许可证信息。
