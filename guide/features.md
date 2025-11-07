@@ -790,7 +790,7 @@ import MyWorker from './worker?worker&url'
 不要为 [`script-src`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/script-src) 允许 `data:`。这将会允许注入任何脚本。
 :::
 
-## 许可证信息 {#license}
+## license
 
 Vite 可以通过 [`build.license`](/config/build-options.md#build-license) 选项生成一个包含构建中使用的所有依赖项许可证的文件。该文件可以被托管，用于显示和确认应用程序所使用的依赖项。
 
