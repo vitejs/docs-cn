@@ -233,4 +233,27 @@ export const cnTranslator = [
       { icon: 'twitter', link: 'https://twitter.com/ShenQingchuan' }
     ],
   },
+  {
+    avatar: 'https://www.github.com/thinkasany.png',
+    name: 'thinkasany',
+    title: '前端开发者',
+    org: '',
+    orgLink: '',
+    desc: 'Vite 团队中文翻译维护者 & Antd 成员',
+    links: [
+      { icon: 'github', link: 'https://github.com/thinkasany' },
+      { icon: 'twitter', link: 'https://twitter.com/thinkasany' }
+    ],
+  },
+  {
+    avatar: 'https://www.github.com/waynzh.png',
+    name: 'Wayne Zhang',
+    title: '前端开发者',
+    org: '',
+    orgLink: '',
+    desc: 'Vite 团队中文翻译维护者',
+    links: [
+      { icon: 'github', link: 'https://github.com/waynzh' },
+    ],
+  },
 ]
