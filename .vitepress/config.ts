@@ -7,10 +7,6 @@ import {
   groupIconMdPlugin,
   groupIconVitePlugin
 } from 'vitepress-plugin-group-icons'
-<<<<<<< HEAD
-=======
-import llmstxt from 'vitepress-plugin-llms'
->>>>>>> 3d8415e27620bd50b02856fc2c869a694a8dcd49
 import { markdownItImageSize } from 'markdown-it-image-size'
 import packageJson from '../package.json' with { type: 'json' }
 import { buildEnd } from './buildEnd.config'
@@ -63,33 +59,6 @@ export default defineConfig({
       'link',
       { rel: 'alternate', type: 'application/rss+xml', href: '/blog.rss' }
     ],
-<<<<<<< HEAD
-    ['link', { rel: 'preconnect', href: 'https://fonts.googleapis.com' }],
-    [
-      'link',
-      {
-        rel: 'preconnect',
-        href: 'https://fonts.gstatic.com',
-        crossorigin: 'true'
-      }
-    ],
-    [
-      'link',
-      {
-        rel: 'preload',
-        href: 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Manrope:wght@600&family=IBM+Plex+Mono:wght@400&display=swap',
-        as: 'style'
-      }
-    ],
-    [
-      'link',
-      {
-        rel: 'stylesheet',
-        href: 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Manrope:wght@600&family=IBM+Plex+Mono:wght@400&display=swap'
-      }
-    ],
-=======
->>>>>>> 3d8415e27620bd50b02856fc2c869a694a8dcd49
     inlineScript('banner.js'),
     ['link', { rel: 'me', href: 'https://m.webtoo.ls/@vite' }],
     ['meta', { property: 'og:type', content: 'website' }],
@@ -456,18 +425,6 @@ export default defineConfig({
       ]
     }
   },
-<<<<<<< HEAD
-  transformPageData(pageData) {
-    const canonicalUrl = `${ogUrl}/${pageData.relativePath}`
-      .replace(/\/index\.md$/, '/')
-      .replace(/\.md$/, '')
-    pageData.frontmatter.head ??= []
-    pageData.frontmatter.head.unshift(
-      ['link', { rel: 'canonical', href: canonicalUrl }],
-      ['meta', { property: 'og:title', content: pageData.title }]
-    )
-    return pageData
-=======
   transformHead(ctx) {
     const path = ctx.page.replace(/(^|\/)index\.md$/, '$1').replace(/\.md$/, '')
 
@@ -496,7 +453,6 @@ export default defineConfig({
       }
       ctx.head.unshift(...googleFontLinks)
     }
->>>>>>> 3d8415e27620bd50b02856fc2c869a694a8dcd49
   },
   markdown: {
     // languages used for twoslash and jsdocs in twoslash
@@ -519,34 +475,9 @@ export default defineConfig({
       groupIconVitePlugin({
         customIcon: {
           firebase: 'vscode-icons:file-type-firebase',
-<<<<<<< HEAD
           '.gitlab-ci.yml': 'vscode-icons:file-type-gitlab'
         }
       })
-=======
-          '.gitlab-ci.yml': 'vscode-icons:file-type-gitlab',
-        },
-      }),
-      llmstxt({
-        ignoreFiles: ['blog/*', 'blog.md', 'index.md', 'team.md'],
-        description: 'The Build Tool for the Web',
-        details: `\
-- 💡 Instant Server Start
-- ⚡️ Lightning Fast HMR
-- 🛠️ Rich Features
-- 📦 Optimized Build
-- 🔩 Universal Plugin Interface
-- 🔑 Fully Typed APIs
-
-Vite is a new breed of frontend build tooling that significantly improves the frontend development experience. It consists of two major parts:
-
-- A dev server that serves your source files over [native ES modules](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules), with [rich built-in features](https://vite.dev/guide/features.md) and astonishingly fast [Hot Module Replacement (HMR)](https://vite.dev/guide/features.md#hot-module-replacement).
-
-- A [build command](https://vite.dev/guide/build.md) that bundles your code with [Rollup](https://rollupjs.org), pre-configured to output highly optimized static assets for production.
-
-In addition, Vite is highly extensible via its [Plugin API](https://vite.dev/guide/api-plugin.md) and [JavaScript API](https://vite.dev/guide/api-javascript.md) with full typing support.`,
-      }),
->>>>>>> 3d8415e27620bd50b02856fc2c869a694a8dcd49
     ],
     optimizeDeps: {
       include: [
