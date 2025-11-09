@@ -212,11 +212,15 @@ export default defineConfig({
 ]
 ```
 
+<<<<<<< HEAD
 ## build.manifest {#build-manifest}
 
 - **类型：** `boolean | string`
 - **默认：** `false`
 - **相关内容：** [后端集成](/guide/backend-integration)
+=======
+## build.manifest
+>>>>>>> 39c73b0823bc5e2c31218de9192d36dd49a51f0e
 
 是否生成一个 manifest 文件，包含了没有被 hash 过的资源文件名和 hash 后版本的映射，然后服务器框架可使用该映射来呈现正确的资源引入链接。
 
