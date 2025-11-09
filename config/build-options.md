@@ -212,8 +212,6 @@ export default defineConfig({
 ]
 ```
 
-:::
-
 ## build.manifest {#build-manifest}
 
 - **类型：** `boolean | string`
