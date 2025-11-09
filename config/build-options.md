@@ -212,28 +212,6 @@ export default defineConfig({
 ]
 ```
 
-<<<<<<< HEAD
-::: tip
-如果你希望在构建后的代码中引用许可证文件，可以使用 `build.rollupOptions.output.banner` 在文件顶部注入注释。例如：
-
-```js twoslash [vite.config.js]
-import { defineConfig } from 'vite'
-
-export default defineConfig({
-  build: {
-    license: true,
-    rollupOptions: {
-      output: {
-        banner:
-          '/* See licenses of bundled dependencies at https://example.com/license.md */',
-      },
-    },
-  },
-})
-```
-
-=======
->>>>>>> 2eb9da240c5723856164136a3fbbfd3e548c438a
 :::
 
 ## build.manifest {#build-manifest}
