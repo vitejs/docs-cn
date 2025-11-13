@@ -53,7 +53,7 @@ export default defineConfig({
   lang: 'zh-CN',
   cleanUrls: true,
   sitemap: {
-    hostname: 'https://vite.dev',
+    hostname: 'https://cn.vite.dev',
   },
   head: [
     ['link', { rel: 'icon', type: 'image/svg+xml', href: '/logo.svg' }],
@@ -115,7 +115,6 @@ export default defineConfig({
       { icon: 'github', link: 'https://github.com/vitejs/vite' }
     ],
 
-<<<<<<< HEAD
     search: {
       provider: 'local',
       options: {
@@ -133,16 +132,6 @@ export default defineConfig({
           }
         }
       }
-=======
-    algolia: {
-      appId: '7H67QR5P0A',
-      apiKey: '208bb9c14574939326032b937431014b',
-      indexName: 'vitejs',
-      searchParameters: {
-        facetFilters: ['tags:en'],
-      },
-      insights: true,
->>>>>>> a1e12403d11db4eb4d07ba1e114f346c8a865cad
     },
 
     docFooter: {
