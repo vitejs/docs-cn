@@ -52,7 +52,9 @@ export default defineConfig({
   description: '下一代前端工具链',
   lang: 'zh-CN',
   cleanUrls: true,
-
+  sitemap: {
+    hostname: 'https://cn.vite.dev',
+  },
   head: [
     ['link', { rel: 'icon', type: 'image/svg+xml', href: '/logo.svg' }],
     [
