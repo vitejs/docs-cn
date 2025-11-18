@@ -19,10 +19,10 @@
 		"lodash": "^4.17.21",
 		"markdown-it-image-size": "^15.0.1",
 		"vite": "^7.0.4",
-		"vitepress": "^2.0.0-alpha.7",
+		"vitepress": "^2.0.0-alpha.13",
 		"vitepress-plugin-group-icons": "^1.6.5",
 		"vue": "^3.5.24",
-		"vue-tsc": "^3.1.2",
+		"vue-tsc": "^3.1.4",
 		"yorkie": "^2.0.0"
 	},
 	"packageManager": "pnpm@9.6.0",
