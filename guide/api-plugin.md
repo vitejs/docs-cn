@@ -564,13 +564,13 @@ export default function myPlugin() {
 
   return {
     name: 'my-plugin',
-    // Example: only call transform for .js files
+    // 例如：仅调用 .js 的文件的 transform
     transform: {
       filter: {
         id: jsFileRegex,
       },
       handler(code, id) {
-        // Additional check for backward compatibility
+        // 额外的向后兼容性检查
         if (!jsFileRegex.test(id)) return null
 
         return {
