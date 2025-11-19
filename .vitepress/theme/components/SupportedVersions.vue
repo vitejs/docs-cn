@@ -6,11 +6,11 @@ declare const __VITE_VERSION__: string
 // Constants
 const supportedVersionMessage = {
   color: 'var(--vp-c-brand-1)',
-  text: 'supported',
+  text: '支持',
 }
 const notSupportedVersionMessage = {
   color: 'var(--vp-c-danger-1)',
-  text: 'not supported',
+  text: '不支持',
 }
 const previousMajorLatestMinors: Record<string, string> = {
   '2': '2.9',
@@ -90,7 +90,7 @@ function versionsToText(versions: string[]) {
   if (versions.length === 0) return ''
   if (versions.length === 1) return versions[0]
   return (
-    versions.slice(0, -1).join(', ') + ' and ' + versions[versions.length - 1]
+    versions.slice(0, -1).join(', ') + ' 和 ' + versions[versions.length - 1]
   )
 }
 
@@ -106,34 +106,33 @@ function isValidViteVersion(version: string) {
   <div>
     <ul>
       <li v-if="supportInfo.regularPatches.length">
-        Regular patches are released for
-        <span v-html="versionsToText(supportInfo.regularPatches)"></span>.
+        定期发布补丁
+        <span v-html="versionsToText(supportInfo.regularPatches)"></span>。
       </li>
       <li v-if="supportInfo.importantFixes.length">
-        Important fixes and security patches are backported to
-        <span v-html="versionsToText(supportInfo.importantFixes)"></span>.
+        重要的修复和安全补丁向后移植到
+        <span v-html="versionsToText(supportInfo.importantFixes)"></span>。
       </li>
       <li v-if="supportInfo.securityPatches.length">
-        Security patches are also backported to
-        <span v-html="versionsToText(supportInfo.securityPatches)"></span>.
+        安全补丁也被向后移植到
+        <span v-html="versionsToText(supportInfo.securityPatches)"></span>。
       </li>
       <li>
-        All versions before these are no longer supported. Users should upgrade
-        to receive updates.
+       之前的所有版本都不再支持。用户应升级，以获得更新。
       </li>
     </ul>
     <p>
-      If you're using Vite
+      如果你使用的是 Vite
       <input
         class="checked-input"
         type="text"
         v-model="checkedVersion"
         placeholder="0.0.0"
-      />, it is
+      />, 它是
       <strong :style="{ color: checkedResult.color }">{{
         checkedResult.text
       }}</strong
-      >.
+      >。
     </p>
   </div>
 </template>
