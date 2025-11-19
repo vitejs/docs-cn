@@ -189,7 +189,7 @@ declare const __APP_VERSION__: string
       | ((name: string, filename: string, css: string) => string)
     hashPrefix?: string
     /**
-     * default: undefined
+     * 默认：undefined
      */
     localsConvention?:
       | 'camelCase'
