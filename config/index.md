@@ -117,10 +117,10 @@ export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), '')
   return {
     define: {
-      // Provide an explicit app-level constant derived from an env var.
+      // 提供从 env var 派生的显式应用程序级常量。
       __APP_ENV__: JSON.stringify(env.APP_ENV),
     },
-    // Example: use an env var to set the dev server port conditionally.
+    // 例如：使用 env var 有条件地设置开发服务器端口。
     server: {
       port: env.APP_PORT ? Number(env.APP_PORT) : 5173,
     },
