@@ -146,7 +146,7 @@ Vite 默认的类型定义是写给它的 Node.js API 的。要将其补充到�
 
 例如，要为 React 组件中的 `*.svg` 文件定义类型：
 
-- `vite-env-override.d.ts` (the file that contains your typings):
+- `vite-env-override.d.ts` （包含您输入内容的文件）：
   ```ts
   declare module '*.svg' {
     const content: React.FC<React.SVGProps<SVGElement>>
@@ -600,7 +600,7 @@ const modulesWithBase = import.meta.glob('./**/*.js', {
 ```
 
 ```ts
-// code produced by vite:
+// vite 生成的代码：
 const modulesWithBase = {
   './dir/foo.js': () => import('./base/dir/foo.js'),
   './dir/bar.js': () => import('./base/dir/bar.js')
