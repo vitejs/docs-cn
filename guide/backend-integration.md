@@ -65,7 +65,7 @@
 
 3. 在生产环境中, 在运行 `vite build` 之后，一个 `.vite/manifest.json` 文件将与静态资源文件一同生成。一个示例清单文件会像下面这样：
 
-   ```json [.vite/manifest.json]
+   ```json [.vite/manifest.json] style:max-height:400px
    {
      "_shared-B7PI925R.js": {
        "file": "assets/shared-B7PI925R.js",
@@ -107,17 +107,53 @@
 
    manifest 具有 `Record<name, chunk>` 结构，其中每个块遵循 `ManifestChunk` 接口：
 
-   ```ts
+   ```ts style:max-height:400px
    interface ManifestChunk {
+     /**
+      * The input file name of this chunk / asset if known
+      */
      src?: string
+     /**
+      * The output file name of this chunk / asset
+      */
      file: string
+     /**
+      * The list of CSS files imported by this chunk
+      *
+      * This field is only present in JS chunks.
+      */
      css?: string[]
+     /**
+      * The list of asset files imported by this chunk, excluding CSS files
+      *
+      * This field is only present in JS chunks.
+      */
      assets?: string[]
+     /**
+      * Whether this chunk or asset is an entry point
+      */
      isEntry?: boolean
+     /**
+      * The name of this chunk / asset if known
+      */
      name?: string
-     names?: string[]
+     /**
+      * Whether this chunk is a dynamic entry point
+      *
+      * This field is only present in JS chunks.
+      */
      isDynamicEntry?: boolean
+     /**
+      * The list of statically imported chunks by this chunk
+      *
+      * The values are the keys of the manifest. This field is only present in JS chunks.
+      */
      imports?: string[]
+     /**
+      * The list of dynamically imported chunks by this chunk
+      *
+      * The values are the keys of the manifest. This field is only present in JS chunks.
+      */
      dynamicImports?: string[]
    }
    ```
@@ -129,7 +165,11 @@
 - **Asset chunks**：由导入的资源（例如图片、字体）生成。其键值是项目根目录的相对 src 路径。
 - **CSS 文件**：当 [`build.cssCodeSplit`](/config/build-options.md#build-csscodesplit) 为 `false` 时，将生成一个带有 `style.css` 键的 CSS 文件。当 `build.cssCodeSplit` 不为 `false` 时，键的生成方式与 JS 代码块类似（即，入口代码块不带 `_` 前缀，非入口代码块带 `_` 前缀）。
 
+<<<<<<< HEAD
 代码块将包含其静态和动态导入的信息（两者都是映射到清单中相应代码块的键），以及它们对应的 CSS 和资源文件（如果有）。
+=======
+   JS chunks (chunks other than assets or CSS) will contain information on their static and dynamic imports (both are keys that map to the corresponding chunk in the manifest), and also their corresponding CSS and asset files (if any).
+>>>>>>> 703b960365c4ff3c57ac5b07a741875d095a6371
 
 4. 你可以利用这个文件来渲染带有哈希文件名的链接或预加载指令。
 
