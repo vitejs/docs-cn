@@ -165,7 +165,7 @@
 - **Asset chunks**：由导入的资源（例如图片、字体）生成。其键值是项目根目录的相对 src 路径。
 - **CSS 文件**：当 [`build.cssCodeSplit`](/config/build-options.md#build-csscodesplit) 为 `false` 时，将生成一个带有 `style.css` 键的 CSS 文件。当 `build.cssCodeSplit` 不为 `false` 时，键的生成方式与 JS 代码块类似（即，入口代码块不带 `_` 前缀，非入口代码块带 `_` 前缀）。
 
-JS 代码块（chunks other than assets or CSS）将包含其静态和动态导入的信息（两者都是映射到清单中相应代码块的键），以及它们对应的 CSS 和资源文件（如果有）。
+JS 代码块（除了资源或 CSS 之外的代码块）将包含其静态和动态导入的信息（两者都是映射到清单中相应代码块的键），以及它们对应的 CSS 和资源文件（如果有）。
 
 4. 你可以利用这个文件来渲染带有哈希文件名的链接或预加载指令。
 
