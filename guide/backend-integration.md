@@ -110,7 +110,7 @@
    ```ts style:max-height:400px
    interface ManifestChunk {
      /**
-      * 如果知道的话，这个代码块/资源的输入文件名
+      * 此块/资源的输入文件名（若已知）
       */
      src?: string
      /**
