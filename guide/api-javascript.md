@@ -387,6 +387,21 @@ function normalizePath(id: string): string
 
 规范化路径，以便在 Vite 插件之间互操作。
 
+## `transformWithOxc`
+
+**Type Signature:**
+
+```ts
+async function transformWithOxc(
+  code: string,
+  filename: string,
+  options?: OxcTransformOptions,
+  inMap?: object,
+): Promise<Omit<OxcTransformResult, 'errors'> & { warnings: string[] }>
+```
+
+Transform JavaScript or TypeScript with [Oxc Transformer](https://oxc.rs/docs/guide/usage/transformer). Useful for plugins that prefer matching Vite's internal Oxc Transformer transform.
+
 ## `transformWithEsbuild`
 
 **类型签名：**
@@ -400,7 +415,13 @@ async function transformWithEsbuild(
 ): Promise<ESBuildTransformResult>
 ```
 
+<<<<<<< HEAD
 通过 esbuild 转换 JavaScript 或 TypeScript 文件。对于更想要匹配 Vite 内部 esbuild 转换的插件很有用。
+=======
+**Deprecated:** Use `transformWithOxc` instead.
+
+Transform JavaScript or TypeScript with esbuild. Useful for plugins that prefer matching Vite's internal esbuild transform.
+>>>>>>> 9d1e98c998121f033ff1f30dbc9a68b8b6603763
 
 ## `loadConfigFromFile`
 

@@ -18,11 +18,19 @@ Vite 旨在为常见的 web 开发工作提供开箱即用的支持。在搜索�
 
 ### [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react) {#vitejs-plugin-react}
 
+<<<<<<< HEAD
 使用 esbuild 和 Babel，以较小的软件包占用空间和使用 Babel 转换管道的灵活性实现快速 HMR。如果没有额外的 Babel 插件，在构建过程中只能使用 esbuild。
 
 ### [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react-swc)
 
 在开发时会将 Babel 替换为 SWC。在生产环境构建期间，若使用了插件则会使用 SWC+esbuild，若没有使用插件则仅会用到 esbuild。对不需要非标准 React 扩展的大型项目，冷启动和模块热替换（HMR）将会有显著提升。
+=======
+Uses [Oxc Transformer](https://oxc.rs/docs/guide/usage/transformer) and [Babel](https://babeljs.io/), achieving fast HMR with a small package footprint and the flexibility of being able to use the Babel transform pipeline. Without additional Babel plugins, only Oxc Transformer is used.
+
+### [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react-swc)
+
+Replaces Babel with [SWC](https://swc.rs/) during development. During production builds, SWC+Oxc Transformer are used when using plugins, and Oxc Transformer only otherwise. For big projects that requires custom plugins, cold start and Hot Module Replacement (HMR) can be significantly faster, if the plugin is also available for SWC.
+>>>>>>> 9d1e98c998121f033ff1f30dbc9a68b8b6603763
 
 ### [@vitejs/plugin-rsc](https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-rsc)
 
@@ -42,6 +50,16 @@ npm create vite@latest -- --template rsc
 
 查看 [awesome-vite](https://github.com/vitejs/awesome-vite#plugins) - 你也可以通过 PR 的方式将你的插件添加到此列表中。
 
+<<<<<<< HEAD
 ## Rollup 插件 {#rollup-plugins}
+=======
+## Rolldown Builtin Plugins
+
+Vite uses [Rolldown](https://rolldown.rs/) under the hood and it provides a few builtin plugins for common use cases.
+
+Read the [Rolldown Builtin Plugins section](https://rolldown.rs/builtin-plugins/) for more information.
+
+## Rollup Plugins
+>>>>>>> 9d1e98c998121f033ff1f30dbc9a68b8b6603763
 
 [Vite 插件](../guide/api-plugin) 是 Rollup 插件接口的一种扩展。查看 [Rollup 插件兼容性章节](../guide/api-plugin#rollup-plugin-compatibility) 获取更多信息。

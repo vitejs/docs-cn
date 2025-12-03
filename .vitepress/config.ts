@@ -287,10 +287,13 @@ export default defineConfig({
               link: '/guide/performance'
             },
             {
+<<<<<<< HEAD
               text: 'Rolldown',
               link: '/guide/rolldown'
             },
             {
+=======
+>>>>>>> 9d1e98c998121f033ff1f30dbc9a68b8b6603763
               text: `Migration from v${viteMajorVersion - 1}`,
               link: '/guide/migration'
             },

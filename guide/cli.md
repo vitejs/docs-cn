@@ -14,6 +14,7 @@ vite [root]
 
 #### 选项 {#options}
 
+<<<<<<< HEAD
 | 选项                      |                                                                                               |
 | ------------------------- | --------------------------------------------------------------------------------------------- |
 | `--host [host]`           | 指定主机名称 (`string`)                                                                       |
@@ -33,6 +34,27 @@ vite [root]
 | `-m, --mode <mode>`       | 设置环境模式 (`string`)                                                                       |
 | `-h, --help`              | 显示可用的 CLI 选项                                                                           |
 | `-v, --version`           | 显示版本号                                                                                    |
+=======
+| Options                   |                                                                                                                                                                                       |
+| ------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `--host [host]`           | Specify hostname (`string`)                                                                                                                                                           |
+| `--port <port>`           | Specify port (`number`)                                                                                                                                                               |
+| `--open [path]`           | Open browser on startup (`boolean \| string`)                                                                                                                                         |
+| `--cors`                  | Enable CORS (`boolean`)                                                                                                                                                               |
+| `--strictPort`            | Exit if specified port is already in use (`boolean`)                                                                                                                                  |
+| `--force`                 | Force the optimizer to ignore the cache and re-bundle (`boolean`)                                                                                                                     |
+| `-c, --config <file>`     | Use specified config file (`string`)                                                                                                                                                  |
+| `--base <path>`           | Public base path (default: `/`) (`string`)                                                                                                                                            |
+| `-l, --logLevel <level>`  | info \| warn \| error \| silent (`string`)                                                                                                                                            |
+| `--clearScreen`           | Allow/disable clear screen when logging (`boolean`)                                                                                                                                   |
+| `--configLoader <loader>` | Use `bundle` to bundle the config with Rolldown, or `runner` (experimental) to process it on the fly, or `native` (experimental) to load using the native runtime (default: `bundle`) |
+| `--profile`               | Start built-in Node.js inspector (check [Performance bottlenecks](/guide/troubleshooting#performance-bottlenecks))                                                                    |
+| `-d, --debug [feat]`      | Show debug logs (`string \| boolean`)                                                                                                                                                 |
+| `-f, --filter <filter>`   | Filter debug logs (`string`)                                                                                                                                                          |
+| `-m, --mode <mode>`       | Set env mode (`string`)                                                                                                                                                               |
+| `-h, --help`              | Display available CLI options                                                                                                                                                         |
+| `-v, --version`           | Display version number                                                                                                                                                                |
+>>>>>>> 9d1e98c998121f033ff1f30dbc9a68b8b6603763
 
 ## 构建 {#build}
 
@@ -48,6 +70,7 @@ vite build [root]
 
 #### 选项 {#options-1}
 
+<<<<<<< HEAD
 | 选项                           |                                                                                                                                          |
 | ------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------- |
 | `--target <target>`            | 编译目标（默认为：`"modules"`）(`string`)                                                                                                |
@@ -72,6 +95,32 @@ vite build [root]
 | `-m, --mode <mode>`            | 设置环境模式 (`string`)                                                                                                                  |
 | `-h, --help`                   | 显示可用的 CLI 选项                                                                                                                      |
 | `--app`                        | 构建所有环境，这与 `builder: {}` 是一样的（`boolean`，实验性）                                                                           |
+=======
+| Options                        |                                                                                                                         |
+| ------------------------------ | ----------------------------------------------------------------------------------------------------------------------- |
+| `--target <target>`            | Transpile target (default: `"modules"`) (`string`)                                                                      |
+| `--outDir <dir>`               | Output directory (default: `dist`) (`string`)                                                                           |
+| `--assetsDir <dir>`            | Directory under outDir to place assets in (default: `"assets"`) (`string`)                                              |
+| `--assetsInlineLimit <number>` | Static asset base64 inline threshold in bytes (default: `4096`) (`number`)                                              |
+| `--ssr [entry]`                | Build specified entry for server-side rendering (`string`)                                                              |
+| `--sourcemap [output]`         | Output source maps for build (default: `false`) (`boolean \| "inline" \| "hidden"`)                                     |
+| `--minify [minifier]`          | Enable/disable minification, or specify minifier to use (default: `"esbuild"`) (`boolean \| "terser" \| "esbuild"`)     |
+| `--manifest [name]`            | Emit build manifest json (`boolean \| string`)                                                                          |
+| `--ssrManifest [name]`         | Emit ssr manifest json (`boolean \| string`)                                                                            |
+| `--emptyOutDir`                | Force empty outDir when it's outside of root (`boolean`)                                                                |
+| `-w, --watch`                  | Rebuilds when modules have changed on disk (`boolean`)                                                                  |
+| `-c, --config <file>`          | Use specified config file (`string`)                                                                                    |
+| `--base <path>`                | Public base path (default: `/`) (`string`)                                                                              |
+| `-l, --logLevel <level>`       | Info \| warn \| error \| silent (`string`)                                                                              |
+| `--clearScreen`                | Allow/disable clear screen when logging (`boolean`)                                                                     |
+| `--configLoader <loader>`      | Use `bundle` to bundle the config with Rolldown or `runner` (experimental) to process it on the fly (default: `bundle`) |
+| `--profile`                    | Start built-in Node.js inspector (check [Performance bottlenecks](/guide/troubleshooting#performance-bottlenecks))      |
+| `-d, --debug [feat]`           | Show debug logs (`string \| boolean`)                                                                                   |
+| `-f, --filter <filter>`        | Filter debug logs (`string`)                                                                                            |
+| `-m, --mode <mode>`            | Set env mode (`string`)                                                                                                 |
+| `-h, --help`                   | Display available CLI options                                                                                           |
+| `--app`                        | Build all environments, same as `builder: {}` (`boolean`, experimental)                                                 |
+>>>>>>> 9d1e98c998121f033ff1f30dbc9a68b8b6603763
 
 ## 其他 {#others}
 
@@ -89,6 +138,7 @@ vite optimize [root]
 
 #### 选项 {#options-2}
 
+<<<<<<< HEAD
 | 选项                      |                                                                                               |
 | ------------------------- | --------------------------------------------------------------------------------------------- |
 | `--force`                 | 强制优化器忽略缓存并重新构建 (`boolean`)                                                      |
@@ -101,6 +151,20 @@ vite optimize [root]
 | `-f, --filter <filter>`   | 过滤调试日志 (`string`)                                                                       |
 | `-m, --mode <mode>`       | 设置环境模式 (`string`)                                                                       |
 | `-h, --help`              | 显示可用的 CLI 选项                                                                           |
+=======
+| Options                   |                                                                                                                         |
+| ------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
+| `--force`                 | Force the optimizer to ignore the cache and re-bundle (`boolean`)                                                       |
+| `-c, --config <file>`     | Use specified config file (`string`)                                                                                    |
+| `--base <path>`           | Public base path (default: `/`) (`string`)                                                                              |
+| `-l, --logLevel <level>`  | Info \| warn \| error \| silent (`string`)                                                                              |
+| `--clearScreen`           | Allow/disable clear screen when logging (`boolean`)                                                                     |
+| `--configLoader <loader>` | Use `bundle` to bundle the config with Rolldown or `runner` (experimental) to process it on the fly (default: `bundle`) |
+| `-d, --debug [feat]`      | Show debug logs (`string \| boolean`)                                                                                   |
+| `-f, --filter <filter>`   | Filter debug logs (`string`)                                                                                            |
+| `-m, --mode <mode>`       | Set env mode (`string`)                                                                                                 |
+| `-h, --help`              | Display available CLI options                                                                                           |
+>>>>>>> 9d1e98c998121f033ff1f30dbc9a68b8b6603763
 
 ### `vite preview` {#vite-preview}
 
@@ -116,6 +180,7 @@ vite preview [root]
 
 #### 选项 {#options-3}
 
+<<<<<<< HEAD
 | 选项                      |                                                                                               |
 | ------------------------- | --------------------------------------------------------------------------------------------- |
 | `--host [host]`           | 指定主机名称 (`string`)                                                                       |
@@ -132,3 +197,21 @@ vite preview [root]
 | `-f, --filter <filter>`   | 过滤调试日志 (`string`)                                                                       |
 | `-m, --mode <mode>`       | 设置环境模式 (`string`)                                                                       |
 | `-h, --help`              | 显示可用的 CLI 选项                                                                           |
+=======
+| Options                   |                                                                                                                         |
+| ------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
+| `--host [host]`           | Specify hostname (`string`)                                                                                             |
+| `--port <port>`           | Specify port (`number`)                                                                                                 |
+| `--strictPort`            | Exit if specified port is already in use (`boolean`)                                                                    |
+| `--open [path]`           | Open browser on startup (`boolean \| string`)                                                                           |
+| `--outDir <dir>`          | Output directory (default: `dist`)(`string`)                                                                            |
+| `-c, --config <file>`     | Use specified config file (`string`)                                                                                    |
+| `--base <path>`           | Public base path (default: `/`) (`string`)                                                                              |
+| `-l, --logLevel <level>`  | Info \| warn \| error \| silent (`string`)                                                                              |
+| `--clearScreen`           | Allow/disable clear screen when logging (`boolean`)                                                                     |
+| `--configLoader <loader>` | Use `bundle` to bundle the config with Rolldown or `runner` (experimental) to process it on the fly (default: `bundle`) |
+| `-d, --debug [feat]`      | Show debug logs (`string \| boolean`)                                                                                   |
+| `-f, --filter <filter>`   | Filter debug logs (`string`)                                                                                            |
+| `-m, --mode <mode>`       | Set env mode (`string`)                                                                                                 |
+| `-h, --help`              | Display available CLI options                                                                                           |
+>>>>>>> 9d1e98c998121f033ff1f30dbc9a68b8b6603763

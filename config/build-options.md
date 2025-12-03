@@ -8,13 +8,23 @@
 - **默认：** `'baseline-widely-available'`
 - **相关内容：** [浏览器兼容性](/guide/build#browser-compatibility)
 
+<<<<<<< HEAD
 最终软件包的浏览器兼容性目标。默认值是 Vite 的一个特殊值 `'baseline-widely-available'`，该值针对的是包含在 2025 年 5 月 1 日广泛可用的 [Baseline](https://web-platform-dx.github.io/web-features/) 中的浏览器。具体来说，它是 `['chrome107', 'edge107', 'firefox104', 'safari16']`。
+=======
+Browser compatibility target for the final bundle. The default value is a Vite special value, `'baseline-widely-available'`, which targets browsers that are included in the [Baseline](https://web-platform-dx.github.io/web-features/) Widely Available on 2026-01-01. Specifically, it is `['chrome111', 'edge111', 'firefox114', 'safari16.4']`.
+>>>>>>> 9d1e98c998121f033ff1f30dbc9a68b8b6603763
 
 另一个特殊值是 `'esnext'` —— 即假设有原生动态导入支持，并只执行最低限度的转译。
 
+<<<<<<< HEAD
 转换过程将会由 esbuild 执行，并且此值应该是一个合法的 [esbuild 目标选项](https://esbuild.github.io/api/#target)。自定义目标也可以是一个 ES 版本（例如：`es2015`）、一个浏览器版本（例如：`chrome58`）或是多个目标组成的一个数组。
 
 注意：如果代码包含不能被 `esbuild` 安全地编译的特性，那么构建将会失败。查看 [esbuild 文档](https://esbuild.github.io/content-types/#javascript) 获取更多细节。
+=======
+The transform is performed with Oxc Transformer and the value should be a valid [Oxc Transformer target option](https://oxc.rs/docs/guide/usage/transformer/lowering#target). Custom targets can either be an ES version (e.g. `es2015`), a browser with version (e.g. `chrome58`), or an array of multiple target strings.
+
+Note the build will output a warning if the code contains features that cannot be safely transpiled by Oxc. See [Oxc docs](https://oxc.rs/docs/guide/usage/transformer/lowering#warnings) for more details.
+>>>>>>> 9d1e98c998121f033ff1f30dbc9a68b8b6603763
 
 ## build.modulePreload {#build-modulepreload}
 
@@ -129,10 +139,23 @@ Git LFS 占位符会自动排除在内联之外，因为它们不包含其所表
 
 ## build.cssMinify {#build-cssminify}
 
+<<<<<<< HEAD
 - **类型：** `boolean | 'esbuild' | 'lightningcss'`
 - **默认：** 对于客户端，与 [`build.minify`](#build-minify) 相同；对于 SSR，为 `'esbuild'`
 
 此选项允许用户覆盖 CSS 最小化压缩的配置，而不是使用默认的 `build.minify`，这样你就可以单独配置 JS 和 CSS 的最小化压缩方式。Vite 默认使用 `esbuild` 来最小化 CSS。将此选项设置为 `'lightningcss'` 可以改用 [Lightning CSS](https://lightningcss.dev/minification.html) 进行压缩。设置为该项，便可以使用 [`css.lightningcss`](./shared-options.md#css-lightningcss) 选项来进行配置。
+=======
+- **Type:** `boolean | 'lightningcss' | 'esbuild'`
+- **Default:** the same as [`build.minify`](#build-minify) for client, `'lightningcss'` for SSR
+
+This option allows users to override CSS minification specifically instead of defaulting to `build.minify`, so you can configure minification for JS and CSS separately. Vite uses [Lightning CSS](https://lightningcss.dev/minification.html) by default to minify CSS. It can be configured using [`css.lightningcss`](./shared-options.md#css-lightningcss). Set the option to `'esbuild'` to use esbuild instead.
+
+esbuild must be installed when it is set to `'esbuild'`.
+
+```sh
+npm add -D esbuild
+```
+>>>>>>> 9d1e98c998121f033ff1f30dbc9a68b8b6603763
 
 ## build.sourcemap {#build-sourcemap}
 
@@ -141,6 +164,7 @@ Git LFS 占位符会自动排除在内联之外，因为它们不包含其所表
 
 构建后是否生成 source map 文件。如果为 `true`，将会创建一个独立的 source map 文件。如果为 `'inline'`，source map 将作为一个 data URI 附加在输出文件中。`'hidden'` 的工作原理与 `true` 相似，只是 bundle 文件中相应的注释将不被保留。
 
+<<<<<<< HEAD
 ## build.rollupOptions {#build-rollupoptions}
 
 - **类型：** [`RollupOptions`](https://cn.rollupjs.org/configuration-options/)
@@ -152,6 +176,22 @@ Git LFS 占位符会自动排除在内联之外，因为它们不包含其所表
 - **类型：** [`RollupCommonJSOptions`](https://github.com/rollup/plugins/tree/master/packages/commonjs#options)
 
 传递给 [@rollup/plugin-commonjs](https://github.com/rollup/plugins/tree/master/packages/commonjs) 插件的选项。
+=======
+## build.rolldownOptions
+
+- **Type:** [`RolldownOptions`](https://rollupjs.org/configuration-options/)
+
+<!-- TODO: update the link above and below to Rolldown's documentation -->
+
+Directly customize the underlying Rolldown bundle. This is the same as options that can be exported from a Rolldown config file and will be merged with Vite's internal Rolldown options. See [Rolldown options docs](https://rollupjs.org/configuration-options/) for more details.
+
+## build.rollupOptions
+
+- **Type:** `RolldownOptions`
+- **Deprecated**
+
+This option is an alias of `build.rolldownOptions` option. Use `build.rolldownOptions` option instead.
+>>>>>>> 9d1e98c998121f033ff1f30dbc9a68b8b6603763
 
 ## build.dynamicImportVarsOptions {#build-dynamicimportvarsoptions}
 
@@ -160,7 +200,13 @@ Git LFS 占位符会自动排除在内联之外，因为它们不包含其所表
 
 传递给 [@rollup/plugin-dynamic-import-vars](https://github.com/rollup/plugins/tree/master/packages/dynamic-import-vars) 的选项。
 
+<<<<<<< HEAD
 ## build.lib {#build-lib}
+=======
+<!-- TODO: we need to have a more detailed explanation here as we no longer use @rollup/plugin-dynamic-import-vars. we should say it's compatible with it though -->
+
+## build.lib
+>>>>>>> 9d1e98c998121f033ff1f30dbc9a68b8b6603763
 
 - **类型：** `{ entry: string | string[] | { [entryAlias: string]: string }, name?: string, formats?: ('es' | 'cjs' | 'umd' | 'iife')[], fileName?: string | ((format: ModuleFormat, entryName: string) => string), cssFileName?: string }`
 - **相关内容：** [库模式](/guide/build#library-mode)
@@ -256,16 +302,30 @@ export default defineConfig({
 
 ## build.minify {#build-minify}
 
+<<<<<<< HEAD
 - **类型：** `boolean | 'terser' | 'esbuild'`
 - **默认：** 客户端构建默认为`'esbuild'`，SSR构建默认为 `false`
 
 设置为 `false` 可以禁用最小化混淆，或是用来指定使用哪种混淆器。默认为 [Esbuild](https://github.com/evanw/esbuild)，它比 terser 快 20-40 倍，压缩率只差 1%-2%。[Benchmarks](https://github.com/privatenumber/minification-benchmarks)
+=======
+- **Type:** `boolean | 'oxc' | 'terser' | 'esbuild'`
+- **Default:** `'oxc'` for client build, `false` for SSR build
+
+Set to `false` to disable minification, or specify the minifier to use. The default is [Oxc Minifier](https://oxc.rs/docs/guide/usage/minifier) which is 30 ~ 90x faster than terser and only 0.5 ~ 2% worse compression. [Benchmarks](https://github.com/privatenumber/minification-benchmarks)
+
+`build.minify: 'esbuild'` is deprecated and will be removed in the future.
+>>>>>>> 9d1e98c998121f033ff1f30dbc9a68b8b6603763
 
 注意，在 lib 模式下使用 `'es'` 时，`build.minify` 选项不会缩减空格，因为会移除掉 pure 标注，导致破坏 tree-shaking。
 
+<<<<<<< HEAD
 当设置为 `'terser'` 时必须先安装 Terser。
+=======
+esbuild or Terser must be installed when it is set to `'esbuild'` or `'terser'` respectively.
+>>>>>>> 9d1e98c998121f033ff1f30dbc9a68b8b6603763
 
 ```sh
+npm add -D esbuild
 npm add -D terser
 ```
 
@@ -314,8 +374,15 @@ npm add -D terser
 
 ## build.watch {#build-watch}
 
+<<<<<<< HEAD
 - **类型：** [`WatcherOptions`](https://cn.rollupjs.org/configuration-options/#watch)`| null`
 - **默认：** `null`
+=======
+<!-- TODO: update the link below to Rolldown's documentation -->
+
+- **Type:** [`WatcherOptions`](https://rollupjs.org/configuration-options/#watch)`| null`
+- **Default:** `null`
+>>>>>>> 9d1e98c998121f033ff1f30dbc9a68b8b6603763
 
 设置为 `{}` 则会启用 rollup 的监听器。对于只在构建阶段或者集成流程使用的插件很常用。
 

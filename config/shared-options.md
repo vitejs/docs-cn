@@ -40,7 +40,11 @@
 
 定义全局常量替换方式。其中每项在开发环境下会被定义在全局，而在构建时被静态替换。
 
+<<<<<<< HEAD
 Vite 使用 [esbuild define](https://esbuild.github.io/api/#define) 来进行替换，因此值的表达式必须是一个包含 JSON 可序列化值（null、boolean、number、string、array 或 object）或单一标识符的字符串。对于非字符串值，Vite 将自动使用 `JSON.stringify` 将其转换为字符串。
+=======
+Vite uses [Oxc's define feature](https://oxc.rs/docs/guide/usage/transformer/global-variable-replacement#define) to perform replacements, so value expressions must be a string that contains a JSON-serializable value (null, boolean, number, string, array, or object) or a single identifier. For non-string values, Vite will automatically convert it to a string with `JSON.stringify`.
+>>>>>>> 9d1e98c998121f033ff1f30dbc9a68b8b6603763
 
 **示例：**
 
@@ -96,7 +100,13 @@ declare const __APP_VERSION__: string
 
 将会被传递到 `@rollup/plugin-alias` 作为 [entries 的选项](https://github.com/rollup/plugins/tree/master/packages/alias#entries)。也可以是一个对象，或一个 `{ find, replacement, customResolver }` 的数组。
 
+<<<<<<< HEAD
 当使用文件系统路径的别名时，请始终使用绝对路径。相对路径的别名值会原封不动地被使用，因此无法被正常解析。
+=======
+<!-- TODO: we need to have a more detailed explanation here as we no longer use @rollup/plugin-alias. we should say it's compatible with it though -->
+
+When aliasing to file system paths, always use absolute paths. Relative alias values will be used as-is and will not be resolved into file system paths.
+>>>>>>> 9d1e98c998121f033ff1f30dbc9a68b8b6603763
 
 更高级的自定义解析方法可以通过 [插件](/guide/api-plugin) 实现。
 
@@ -163,6 +173,13 @@ declare const __APP_VERSION__: string
 
 - **相关：** [esbuild#preserve-symlinks](https://esbuild.github.io/api/#preserve-symlinks)，[webpack#resolve.symlinks
   ](https://webpack.js.org/configuration/resolve/#resolvesymlinks)
+
+## resolve.tsconfigPaths
+
+- **Type:** `boolean`
+- **Default:** `false`
+
+Enables the tsconfig paths resolution feature. `paths` option in `tsconfig.json` will be used to resolve imports. See [Features](/guide/features.md#paths) for more details.
 
 ## html.cspNonce
 
@@ -353,36 +370,64 @@ import type {
 
 如果设置为 `'auto'`，只有当 [数据大于 10kB 时](https://v8.dev/blog/cost-of-javascript-2019#json:~:text=A%20good%20rule%20of%20thumb%20is%20to%20apply%20this%20technique%20for%20objects%20of%2010%20kB%20or%20larger)，才会对数据进行字符串化处理。
 
+<<<<<<< HEAD
 ## esbuild {#esbuild}
 
 - **类型：** `ESBuildOptions | false`
 
 `ESBuildOptions` 继承自 [esbuild 转换选项](https://esbuild.github.io/api/#transform)。最常见的用例是自定义 JSX：
+=======
+## oxc
+
+- **Type:** `OxcOptions | false`
+
+`OxcOptions` extends [Oxc Transformer's options](https://oxc.rs/docs/guide/usage/transformer). The most common use case is customizing JSX:
+>>>>>>> 9d1e98c998121f033ff1f30dbc9a68b8b6603763
 
 ```js
 export default defineConfig({
-  esbuild: {
-    jsxFactory: 'h',
-    jsxFragment: 'Fragment',
+  oxc: {
+    jsx: {
+      runtime: 'classic',
+      pragma: 'h',
+      pragmaFrag: 'Fragment',
+    },
   },
 })
 ```
 
+<<<<<<< HEAD
 默认情况下，esbuild 会被应用在 `ts`、`jsx`、`tsx` 文件。你可以通过 `esbuild.include` 和 `esbuild.exclude` 对要处理的文件类型进行配置，这两个配置的值可以是一个正则表达式、一个 [picomatch](https://github.com/micromatch/picomatch#globbing-features) 模式，或是一个值为这两种类型的数组。
 
 此外，你还可以通过 `esbuild.jsxInject` 来自动为每一个被 esbuild 转换的文件注入 JSX helper。
+=======
+By default, transformation by Oxc is applied to `ts`, `jsx` and `tsx` files. You can customize this with `oxc.include` and `oxc.exclude`, which can be a regex, a [picomatch](https://github.com/micromatch/picomatch#globbing-features) pattern, or an array of either.
+
+In addition, you can also use `oxc.jsxInject` to automatically inject JSX helper imports for every file transformed by Oxc:
+>>>>>>> 9d1e98c998121f033ff1f30dbc9a68b8b6603763
 
 ```js
 export default defineConfig({
-  esbuild: {
+  oxc: {
     jsxInject: `import React from 'react'`,
   },
 })
 ```
 
+<<<<<<< HEAD
 当 [`build.minify`](./build-options.md#build-minify) 为 `true` 时，所有最小化的优化过程都会被默认应用，要禁用它的 [某些特定方面](https://esbuild.github.io/api/#minify)，请设置 `esbuild.minifyIdentifiers`、`esbuild.minifySyntax` 或 `esbuild.minifyWhitespace` 三种选项其中任意一种为 `false`。注意 `esbuild.minify` 选项无法用于覆盖 `build.minify`。
 
 设置为 `false` 来禁用 esbuild 转换。
+=======
+Set to `false` to disable transformation by Oxc.
+
+## esbuild
+
+- **Type:** `ESBuildOptions | false`
+- **Deprecated**
+
+This option is converted to `oxc` option internally. Use `oxc` option instead.
+>>>>>>> 9d1e98c998121f033ff1f30dbc9a68b8b6603763
 
 ## assetsInclude {#assetsinclude}
 
