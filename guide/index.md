@@ -106,6 +106,8 @@ $ deno init --npm vite my-vue-app --template vue
 
 你可以使用 `.` 作为项目名称，在当前目录中创建项目脚手架。
 
+要创建一个没有交互式提示的项目，你可以使用 `--no-interactive` 标志。
+
 ::::
 
 ## 社区模板 {#community-templates}
