@@ -53,15 +53,11 @@ export type { T }
 
 ### TypeScript 编译器选项 {#typescript-compiler-options}
 
-<<<<<<< HEAD
+Vite 会参考 `tsconfig.json` 中的一些配置项，并设置相应的 esbuild 选项。对于每个文件，Vite 会使用距离最近的父级目录中的 `tsconfig.json`。如果该 `tsconfig.json` 包含 [`references`](https://www.typescriptlang.org/tsconfig/#references) 字段，Vite 将使用满足 [`include`](https://www.typescriptlang.org/tsconfig/#include) 和 [`exclude`](https://www.typescriptlang.org/tsconfig/#exclude) 字段的被引用配置文件。
+
+当选项同时在 Vite 配置和 `tsconfig.json` 中设置时，Vite 配置中的值优先。
+
 `tsconfig.json` 中 `compilerOptions` 下的一些配置项需要特别注意。
-=======
-Vite respects some of the options in `tsconfig.json` and sets the corresponding esbuild options. For each file, Vite uses the `tsconfig.json` in the closest parent directory. If that `tsconfig.json` contains a [`references`](https://www.typescriptlang.org/tsconfig/#references) field, Vite will use the referenced config file that satisfies the [`include`](https://www.typescriptlang.org/tsconfig/#include) and [`exclude`](https://www.typescriptlang.org/tsconfig/#exclude) fields.
-
-When the options are set in both the Vite config and the `tsconfig.json`, the value in the Vite config takes precedence.
-
-Some configuration fields under `compilerOptions` in `tsconfig.json` require special attention.
->>>>>>> 169714b3bf5bd95ee1a8e54f95169594a02b4b48
 
 #### `isolatedModules`
 
