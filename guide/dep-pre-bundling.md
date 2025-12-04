@@ -21,22 +21,13 @@
 
    通过将 `lodash-es` 预构建成单个模块，现在我们只需要一个HTTP请求！
 
-<<<<<<< HEAD
 ::: tip 注意
-依赖预构建仅适用于开发模式，并使用 `esbuild` 将依赖项转换为 ES 模块。在生产构建中，将使用 `@rollup/plugin-commonjs`。
-=======
-::: tip NOTE
-Dependency pre-bundling only applies in development mode.
->>>>>>> 9d1e98c998121f033ff1f30dbc9a68b8b6603763
+依赖预构建仅适用于开发模式。
 :::
 
 ## 自动依赖搜寻 {#automatic-dependency-discovery}
 
-<<<<<<< HEAD
-如果没有找到现有的缓存，Vite 会扫描您的源代码，并自动寻找引入的依赖项（即 "bare import"，表示期望从 `node_modules` 中解析），并将这些依赖项作为预构建的入口点。预打包使用 `esbuild` 执行，因此通常速度非常快。
-=======
-If an existing cache is not found, Vite will crawl your source code and automatically discover dependency imports (i.e. "bare imports" that expect to be resolved from `node_modules`) and use these found imports as entry points for the pre-bundle. The pre-bundling is performed with [Rolldown](https://rolldown.rs/) so it's typically very fast.
->>>>>>> 9d1e98c998121f033ff1f30dbc9a68b8b6603763
+如果没有找到现有的缓存，Vite 会扫描您的源代码，并自动寻找引入的依赖项（即 "bare import"，表示期望从 `node_modules` 中解析），并将这些依赖项作为预构建的入口点。预打包使用 [Rolldown](https://rolldown.rs/) 执行，因此通常速度非常快。
 
 在服务器已经启动后，如果遇到尚未在缓存中的新依赖项导入，则 Vite 将重新运行依赖项构建过程，并在需要时重新加载页面。
 
@@ -44,11 +35,7 @@ If an existing cache is not found, Vite will crawl your source code and automati
 
 在一个 monorepo 启动中，该仓库中的某个包可能会成为另一个包的依赖。Vite 会自动侦测没有从 `node_modules` 解析的依赖项，并将链接的依赖视为源码。它不会尝试打包被链接的依赖，而是会分析被链接依赖的依赖列表。
 
-<<<<<<< HEAD
-然而，这需要被链接的依赖被导出为 ESM 格式。如果不是，那么你可以在配置里将此依赖添加到 [`optimizeDeps.include`](/config/dep-optimization-options.md#optimizedeps-include) 和 [`build.commonjsOptions.include`](/config/build-options.md#build-commonjsoptions) 这两项中。
-=======
-However, this requires the linked dep to be exported as ESM. If not, you can add the dependency to [`optimizeDeps.include`](/config/dep-optimization-options.md#optimizedeps-include) in your config.
->>>>>>> 9d1e98c998121f033ff1f30dbc9a68b8b6603763
+然而，这需要被链接的依赖被导出为 ESM 格式。如果不是，那么你可以在配置里将此依赖添加到 [`optimizeDeps.include`](/config/dep-optimization-options.md#optimizedeps-include) 中。
 
 ```js twoslash [vite.config.js]
 import { defineConfig } from 'vite'
@@ -70,13 +57,9 @@ export default defineConfig({
 
 `include` 和 `exclude` 都可以用来处理这个问题。如果依赖项很大（包含很多内部模块）或者是 CommonJS，那么你应该包含它；如果依赖项很小，并且已经是有效的 ESM，则可以排除它，让浏览器直接加载它。
 
-<<<<<<< HEAD
 你可以通过 [`optimizeDeps.esbuildOptions` 选项](/config/dep-optimization-options.md#optimizedeps-esbuildoptions) 进一步自定义 esbuild。例如，添加一个 esbuild 插件来处理依赖项中的特殊文件，或者更改 [build `target`](https://esbuild.github.io/api/#target)。
-=======
-You can further customize esbuild too with the [`optimizeDeps.rolldownOptions` option](/config/dep-optimization-options.md#optimizedeps-rolldownoptions). For example, adding an Rolldown plugin to handle special files in dependencies or changing the [build `target`](https://esbuild.github.io/api/#target).
 
 <!-- TODO: update the link above to Rolldown's documentation -->
->>>>>>> 9d1e98c998121f033ff1f30dbc9a68b8b6603763
 
 ## 缓存 {#caching}
 

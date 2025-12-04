@@ -43,15 +43,7 @@ Vite 没有固定的发布周期。
 - 偶尔我们可能需要采用仅在更新版本的 TypeScript 中可用的功能，这会提高最低要求的 TypeScript 版本。
 - 如果你使用 TypeScript，可以使用一个锁定当前次要版本的 semver 范围，并在 Vite 发布新次要版本时手动升级。
 
-<<<<<<< HEAD
-### esbuild
-
-[esbuild](https://esbuild.github.io/) 目前是 pre-1.0.0，有时它会有主要版本更新，我们可能需要包含这些变化以使用新的功能和性能改进，并可能会在 Vite 次要版本中提升 esbuild 的版本。
-
 ### Node.js 非 LTS 版本 {#node-js-non-lts-versions}
-=======
-### Node.js non-LTS versions
->>>>>>> 9d1e98c998121f033ff1f30dbc9a68b8b6603763
 
 非 LTS 的 Node.js 版本（奇数版本）不在 Vite 的 CI 测试范围内，但在其 [生命周期终止](https://endoflife.date/nodejs) 之前应该仍然可以工作。
 

@@ -18,21 +18,15 @@ worker 打包时的输出类型。
 
 ## worker.rollupOptions
 
-<<<<<<< HEAD
-- **类型：** [`RollupOptions`](https://cn.rollupjs.org/configuration-options/)
-
-用于打包 worker 的 Rollup 配置项。
-=======
 <!-- TODO: update the link below to Rolldown's documentation -->
 
-- **Type:** [`RolldownOptions`](https://rollupjs.org/configuration-options/)
+- **类型：** [`RolldownOptions`](https://rollupjs.org/configuration-options/)
 
-Rollup options to build worker bundle.
+用于打包 worker 的 Rollup 配置项。
 
 ## worker.rollupOptions
 
-- **Type:** `RolldownOptions`
-- **Deprecated**
+- **类型：** `RolldownOptions`
+- **已弃用**
 
-This option is an alias of `worker.rolldownOptions` option. Use `build.rolldownOptions` option instead.
->>>>>>> 9d1e98c998121f033ff1f30dbc9a68b8b6603763
+此选项是 `worker.rolldownOptions` 选项的别名。请使用 `build.rolldownOptions` 选项代替。

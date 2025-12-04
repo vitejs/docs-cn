@@ -51,12 +51,9 @@ export default defineConfig({
 })
 ```
 
-<<<<<<< HEAD
-## optimizeDeps.esbuildOptions <NonInheritBadge /> {#optimizedeps-esbuildoptions}
-=======
-## optimizeDeps.rolldownOptions <NonInheritBadge />
+## optimizeDeps.rolldownOptions <NonInheritBadge /> {#optimizedeps-rolldownoptions}
 
-- **Type:** [`Omit`](https://www.typescriptlang.org/docs/handbook/utility-types.html#omittype-keys)`<``RolldownOptions`, `'input' | 'logLevel' | 'output'> & {
+- **类型：** [`Omit`](https://www.typescriptlang.org/docs/handbook/utility-types.html#omittype-keys)`<``RolldownOptions`, `'input' | 'logLevel' | 'output'> & {
   output?: [`Omit`](https://www.typescriptlang.org/docs/handbook/utility-types.html#omittype-keys)`<`
     `RolldownOutputOptions`,
     `'format' | 'sourcemap' | 'dir' | 'banner'>`
@@ -65,14 +62,13 @@ export default defineConfig({
 <!-- TODO: add link to RolldownOptions -->
 <!-- TODO: add link to RolldownOutputOptions -->
 
-Options to pass to Rolldown during the dep scanning and optimization.
+在依赖扫描和优化过程中传递给 Rolldown 的选项。
 
-Certain options are omitted since changing them would not be compatible with Vite's dep optimization.
+某些选项进行了省略，因为修改它们与 Vite 的优化方案并不兼容。
 
-- `plugins` are merged with Vite's dep plugin
+- `plugins` 与 Vite 的 dep 插件合并
 
-## optimizeDeps.esbuildOptions <NonInheritBadge />
->>>>>>> 9d1e98c998121f033ff1f30dbc9a68b8b6603763
+## optimizeDeps.esbuildOptions <NonInheritBadge /> {#optimizedeps-esbuildoptions}
 
 - **类型：** [`Omit`](https://www.typescriptlang.org/docs/handbook/utility-types.html#omittype-keys)`<`[`EsbuildBuildOptions`](https://esbuild.github.io/api/#general-options)`,
 | 'bundle'
@@ -85,18 +81,9 @@ Certain options are omitted since changing them would not be compatible with Vit
 | 'outbase'
 | 'outExtension'
 | 'metafile'>`
-- **Deprecated**
+- **已弃用**
 
-<<<<<<< HEAD
-在依赖扫描和优化过程中传递给 esbuild 的选项。
-
-某些选项进行了省略，因为修改它们与 Vite 的优化方案并不兼容。
-
-- 忽略了 `external` 选项，请使用 Vite 的 `optimizeDeps.exclude` 选项
-- `plugins` 与 Vite 的 dep 插件合并
-=======
-This option is converted to `optimizeDeps.rolldownOptions` internally. Use `optimizeDeps.rolldownOptions` instead.
->>>>>>> 9d1e98c998121f033ff1f30dbc9a68b8b6603763
+此选项在内部被转换为 `optimizeDeps.rolldownOptions`。请使用 `optimizeDeps.rolldownOptions` 代替。
 
 ## optimizeDeps.force <NonInheritBadge /> {#optimizedeps-force}
 
