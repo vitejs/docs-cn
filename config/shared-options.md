@@ -168,10 +168,10 @@ declare const __APP_VERSION__: string
 
 ## resolve.tsconfigPaths
 
-- **Type:** `boolean`
-- **Default:** `false`
+- **类型：** `boolean`
+- **默认：** `false`
 
-Enables the tsconfig paths resolution feature. `paths` option in `tsconfig.json` will be used to resolve imports. See [Features](/guide/features.md#paths) for more details.
+启用 tsconfig 路径解析功能。[tsconfig.json](file:///Users/liuxin/Project/开源/vite-docs-cn/tsconfig.json) 中的 `paths` 选项将用于解析导入。更多详情请参见[功能](/guide/features.md#paths)。
 
 ## html.cspNonce
 
