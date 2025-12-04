@@ -16,11 +16,7 @@ Vite 提供了一系列推动编写现代代码的特定功能。例如：
 
 ## 旨在高性能的实用解决方案 {#a-pragmatic-approach-to-performance}
 
-<<<<<<< HEAD
-Vite 自其诞生之初（详见：[为什么选 Vite](./why.md)）就一直致力于性能优化。其开发服务器架构设计确保了随着项目规模扩大，模块热替换（HMR）仍能保持高速运行。Vite 采用类似 [esbuild](https://esbuild.github.io/) 和 [SWC](https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react-swc) 这样的原生工具处理复杂的任务，同时将其他部分代码保留在 JavaScript 中，以实现速度与灵活性之间的平衡。在需要时，框架插件会利用 [Babel](https://babeljs.io/) 来编译用户代码。构建阶段，Vite 当前使用的是 [Rollup](https://cn.rollupjs.org/) ，此时包体积大小以及能够接入广泛生态系统的插件比原始速度更重要。Vite 将持续内部改进和发展，在新库出现时适时采用以提升开发者体验（DX），同时保持 API 的稳定性。
-=======
-Vite has been focused on performance since its [origins](./why.md). Its dev server architecture allows HMR that stays fast as projects scale. Vite is based on native tools that includes [Oxc toolchain](https://oxc.rs/) and [Rolldown](https://rolldown.rs/) to implement intensive tasks but keeps the rest of the code in JS to balance speed with flexibility. When needed, framework plugins will tap into [Babel](https://babeljs.io/) to compile user code. Thanks to Rolldown's Rollup plugin compatibility, Vite has access to a wide ecosystem of plugins.
->>>>>>> 9d1e98c998121f033ff1f30dbc9a68b8b6603763
+Vite 自其诞生之初（详见：[为什么选 Vite](./why.md)）就一直致力于性能优化。其开发服务器架构设计确保了随着项目规模扩大，模块热替换（HMR）仍能保持高速运行。Vite 基于 [Oxc toolchain](https://oxc.rs/) 和 [Rolldown](https://rolldown.rs/) 这样的原生工具处理复杂的任务，同时将其他部分代码保留在 JavaScript 中，以实现速度与灵活性之间的平衡。在需要时，框架插件会利用 [Babel](https://babeljs.io/) 来编译用户代码。得益于 Rolldown 对 Rollup 插件的兼容性，Vite 能够访问广泛的插件生态系统。
 
 ## 基于 Vite 构建框架 {#building-frameworks-on-top-of-vite}
 

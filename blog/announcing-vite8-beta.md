@@ -25,71 +25,71 @@ head:
       content: summary_large_image
 ---
 
-# Vite 8 Beta: The Rolldown-powered Vite
+# Vite 8 Beta：由 Rolldown 驱动的 Vite {#vite-8-beta}
 
-_December 3, 2025_
+_2025年12月3日_
 
 ![Vite 8 Beta Announcement Cover Image](/og-image-announcing-vite8-beta.webp)
 
-TL;DR: The first beta of Vite 8, powered by [Rolldown](https://rolldown.rs/), is now available. Vite 8 ships significantly faster production builds and unlocks future improvement possibilities. You can try the new release by upgrading `vite` to version `8.0.0-beta.0` and reading the [migration guide](/guide/migration).
+摘要：由 [Rolldown](https://rolldown.rs/) 驱动的 Vite 8 首个测试版现已发布。Vite 8 提供了显著更快的生产构建速度，并开启了未来的改进可能性。你可以通过将 `vite` 升级到 `8.0.0-beta.0` 版本并阅读[迁移指南](/guide/migration)来试用这个新版本。
 
 ---
 
-We're excited to release the first beta of Vite 8. This release unifies the underlying toolchain and brings better consistent behaviors, alongside significant build performance improvements. Vite now uses [Rolldown](https://rolldown.rs/) as its bundler, replacing the previous combination of esbuild and Rollup.
+我们很高兴发布 Vite 8 的首个测试版。这个版本统一了底层工具链，带来了更好的一致性行为，以及显著的构建性能提升。Vite 现在使用 [Rolldown](https://rolldown.rs/) 作为其打包器，取代了之前 esbuild 和 Rollup 的组合。
 
-## A new bundler for the web
+## 面向 Web 的全新打包器 {#a-new-bundler-for-the-web}
 
-Vite previously relied on two bundlers to meet differing requirements for development and production builds:
+Vite 之前依赖两个打包器来满足开发和生产构建的不同需求：
 
-1. esbuild for fast compilation during development
-2. Rollup for bundling, chunking, and optimizing production builds
+1. 开发期间使用 esbuild 进行快速编译
+2. 生产构建使用 Rollup 进行打包、分块和优化
 
-This approach lets Vite focus on developer experience and orchestration instead of reinventing parsing and bundling. However, maintaining two separate bundling pipelines introduced inconsistencies: separate transformation pipelines, different plugin systems and a growing amount of glue code to keep bundling behavior aligned between development and production.
+这种方法让 Vite 能够专注于开发者体验和协调，而无需重新发明解析和打包功能。然而，维护两个独立的打包流水线引入了不一致性：独立的转换流水线、不同的插件系统，以及越来越多的粘合代码来保持开发和生产之间打包行为的一致性。
 
-To solve this, [VoidZero team](https://voidzero.dev) has built **Rolldown**, the next-generation bundler with the goal to be used in Vite. It is designed for:
+为了解决这个问题，[VoidZero 团队](https://voidzero.dev) 构建了 **Rolldown**，这是一个下一代打包器，目标是在 Vite 中使用。它的设计特点包括：
 
-- **Performance**: Rolldown is written in Rust and operates at native speed. It matches esbuild’s performance level and is [**10–30× faster than Rollup**](https://github.com/rolldown/benchmarks).
-- **Compatibility**: Rolldown supports the same plugin API as Rollup and Vite. Most Vite plugins work out of the box with Vite 8.
-- **More Features**: Rolldown unlocks more advanced features for Vite, including full bundle mode, more flexible chunk split control, module-level persistent cache, Module Federation, and more.
+- **性能**：Rolldown 使用 Rust 编写，以原生速度运行。它的性能水平与 esbuild 相匹配，并且比 Rollup [快 10-30 倍](https://github.com/rolldown/benchmarks)。
+- **兼容性**：Rolldown 支持与 Rollup 和 Vite 相同的插件 API。大多数 Vite 插件在 Vite 8 中可以开箱即用。
+- **更多功能**：Rolldown 为 Vite 解锁了更多高级功能，包括完整打包模式、更灵活的分块控制、模块级持久缓存、模块联邦等。
 
-## Unifying the toolchain
+## 统一工具链 {#unifying-the-toolchain}
 
-The impact of Vite’s bundler swap goes beyond performance. Bundlers leverage parsers, resolvers, transformers, and minifiers. Rolldown uses Oxc, another project led by VoidZero, for these purposes.
+Vite 打包器更换的影响超越了性能范畴。打包器利用解析器、解析器、转换器和压缩器。Rolldown 为此目的使用了由 VoidZero 团队主导的另一个项目 Oxc。
 
-**That makes Vite the entry point to an end-to-end toolchain maintained by the same team: The build tool (Vite), the bundler (Rolldown) and the compiler (Oxc).**
+**这使得 Vite 成为由同一团队维护的端到端工具链的入口：构建工具（Vite）、打包器（Rolldown）和编译器（Oxc）。**
 
-This alignment ensures behavior consistency across the stack, and allows us to rapidly adopt and align with new language specifications as JavaScript continues to evolve. It also unlocks a wide range of improvements that previously couldn’t be done by Vite alone. For example, we can leverage Oxc’s semantic analysis to perform better tree-shaking in Rolldown.
+这种一致性确保了整个堆栈中的行为一致性，并且随着 JavaScript 的不断发展，使我们能够快速采用并与新的语言规范保持一致。这也解锁了以前仅凭 Vite 无法实现的广泛改进。例如，我们可以利用 Oxc 的语义分析在 Rolldown 中实现更好的 tree-shaking。
 
-## How Vite migrated to Rolldown
+## Vite 如何迁移到 Rolldown {#how-vite-migrated-to-rolldown}
 
-The migration to a Rolldown-powered Vite is a foundational change. Therefore, our team took deliberate steps to implement it without sacrificing stability or ecosystem compatibility.
+迁移到由 Rolldown 驱动的 Vite 是一项基础性变革。因此，我们的团队采取了深思熟虑的步骤来实施这一变革，同时不牺牲稳定性和生态系统兼容性。
 
-First, a separate `rolldown-vite` package was [released as a technical preview](https://voidzero.dev/posts/announcing-rolldown-vite). This allowed us to work with early adopters without affecting the stable version of Vite. Early adopters benefited from Rolldown’s performance gains while providing valuable feedback. Highlights:
+首先，我们发布了独立的 `rolldown-vite` 包作为[技术预览版](https://voidzero.dev/posts/announcing-rolldown-vite)。这让我们能够在不影响 Vite 稳定版本的情况下与早期采用者合作。早期采用者从 Rolldown 的性能提升中受益，同时提供了宝贵的反馈。亮点包括：
 
-- Linear's production build times were reduced from 46s to 6s
-- Mercedes-Benz.io cut their build time down by up to 38%
-- Beehiiv reduced their build time by 64%
+- Linear 的生产构建时间从 46 秒减少到 6 秒
+- Mercedes-Benz.io 将构建时间减少了高达 38%
+- Beehiiv 将构建时间减少了 64%
 
-Next, we set up a test suite for validating key Vite plugins against `rolldown-vite`. This CI job helped us catch regressions and compatibility issues early, especially for frameworks and meta-frameworks such as SvelteKit, react-router and Storybook.
+接下来，我们建立了一套测试套件，用于验证关键的 Vite 插件与 `rolldown-vite` 的兼容性。这项 CI 任务帮助我们及早发现回归问题和兼容性问题，特别是对于 SvelteKit、react-router 和 Storybook 等框架和元框架。
 
-Lastly, we built a compatibility layer to help migrate developers from Rollup and esbuild options to the corresponding Rolldown options.
+最后，我们构建了一个兼容层，帮助开发者从 Rollup 和 esbuild 选项迁移到相应的 Rolldown 选项。
 
-As a result, there is a smooth migration path to Vite 8 for everyone.
+因此，每个人都能顺利迁移到 Vite 8。
 
-## Migrating to Vite 8 Beta
+## 迁移到 Vite 8 Beta {#migrating-to-vite-8-beta}
 
-Since Vite 8 touches the core build behavior, we focused on keeping the configuration API and plugin hooks unchanged. We created a [migration guide](/guide/migration) to help you upgrade.
+由于 Vite 8 涉及核心构建行为，我们专注于保持配置 API 和插件钩子不变。我们创建了[迁移指南](/guide/migration)来帮助您升级。
 
-There are two available upgrade paths:
+有两种可用的升级路径：
 
-1. **Direct Upgrade:** Update `vite` in `package.json` and run the usual dev and build commands.
-2. **Gradual Migration:** Migrate from Vite 7 to the `rolldown-vite` package, and then to Vite 8. This allows you to identify incompatibilities or issues isolated to Rolldown without other changes to Vite. (Recommended for larger or complex projects)
+1. **直接升级**：更新 `package.json` 并运行常规的开发和构建命令。
+2. **渐进式迁移**：从 Vite 7 迁移到 `rolldown-vite` 包，然后再到 Vite 8。这样您可以识别出与 Rolldown 相关的不兼容性或问题，而不会对 Vite 造成其他更改。（推荐用于较大或复杂的项目）
 
 > [!IMPORTANT]
-> If you are relying on specific Rollup or esbuild options, you might need to make some adjustments to your Vite config. Please refer to the [migration guide](/guide/migration) for detailed instructions and examples.
-> As with all non-stable, major releases, thorough testing is recommended after upgrading to ensure everything works as expected. Please make sure to report any [issues](https://github.com/vitejs/rolldown-vite/issues).
+> 如果你依赖特定的 Rollup 或 esbuild 选项，你可能需要对 Vite 配置进行一些调整。请参考[迁移指南](/guide/migration)获取详细的说明和示例。
+> 与所有非稳定的主版本一样，升级后建议进行全面测试以确保一切按预期工作。请务必报告任何[问题](https://github.com/vitejs/rolldown-vite/issues)。
 
-If you use a framework or tool that uses Vite as dependency, for example Astro, Nuxt, or Vitest, you have to override the `vite` dependency in your `package.json`, which works slightly different depending on your package manager:
+如果你使用的框架或工具将 Vite 作为依赖项，例如 Astro、Nuxt 或 Vitest，你必须在 `package.json` 中覆盖 `vite` 依赖项，这根据你使用的包管理器略有不同：
 
 :::code-group
 
@@ -129,35 +129,35 @@ If you use a framework or tool that uses Vite as dependency, for example Astro, 
 
 :::
 
-After adding these overrides, reinstall your dependencies and start your development server or build your project as usual.
+添加这些覆盖后，重新安装你的依赖项，然后像往常一样启动开发服务器或构建你的项目。
 
-## Additional Features in Vite 8
+## Vite 8 的附加功能 {#additional-features-in-vite-8}
 
-In addition to shipping with Rolldown, Vite 8 comes with:
+除了搭载 Rolldown 之外，Vite 8 还带来了以下功能：
 
-- **Built-in tsconfig `paths` support:** Developers can enable it by setting [`resolve.tsconfigPaths`](/config/shared-options.md#resolve-tsconfigpaths) to `true`. This feature has a small performance cost and is not enabled by default.
-- **`emitDecoratorMetadata` support:** Vite 8 now has built-in automatic support for TypeScript's [`emitDecoratorMetadata` option](https://www.typescriptlang.org/tsconfig/#emitDecoratorMetadata). See the [Features](/guide/features.md#emitdecoratormetadata) page for more details.
+- **内置 tsconfig `paths` 支持**：开发者可以通过将 [`resolve.tsconfigPaths`](/config/shared-options.md#resolve-tsconfigpaths) 设置为 `true` 来启用此功能。此功能会带来轻微的性能成本，默认情况下未启用。
+- **`emitDecoratorMetadata` 支持**：Vite 8 现在内置了对 TypeScript [`emitDecoratorMetadata` 选项](https://www.typescriptlang.org/tsconfig/#emitDecoratorMetadata)的自动支持。更多详情请参见[功能](/guide/features.md#emitdecoratormetadata)页面。
 
-## Looking Ahead
+## 展望未来 {#looking-ahead}
 
-Speed has always been a defining feature for Vite. The integration with Rolldown and, by extension, Oxc means JavaScript developers benefit from Rust’s speed. Upgrading to Vite 8 should result in performance gains simply from using Rust.
+速度一直是 Vite 的标志性特性。与 Rolldown 的集成，以及延伸至 Oxc，意味着 JavaScript 开发者可以从 Rust 的速度中获益。升级到 Vite 8 应该会仅仅因为使用 Rust 而带来性能提升。
 
-We are also excited to ship Vite’s Full Bundle Mode soon, which drastically improves Vite’s dev server speed for large projects. Preliminary results show 3× faster dev server startup, 40% faster full reloads, and 10× fewer network requests.
+我们也即将推出 Vite 的完整打包模式，这将大幅提高大型项目的开发服务器速度。初步结果显示，开发服务器启动速度快了 3 倍，完全重新加载快了 40%，网络请求减少了 10 倍。
 
-Another defining Vite feature is the plugin ecosystem. We want JavaScript developers to continue extending and customizing Vite in JavaScript, the language they’re familiar with, while benefiting from Rust’s performance gains. Our team is collaborating with VoidZero team to accelerate JavaScript plugin usage in these Rust-based systems.
+另一个标志性的 Vite 特性是插件生态系统。我们希望 JavaScript 开发者能够继续使用他们熟悉的 JavaScript 语言来扩展和定制 Vite，同时从 Rust 的性能提升中受益。我们的团队正在与 VoidZero 团队合作，以加速这些基于 Rust 系统中的 JavaScript 插件使用。
 
-Upcoming optimizations that are currently experimental:
+目前正在试验的即将到来的优化包括：
 
-- [**Raw AST transfer**](https://github.com/oxc-project/oxc/issues/2409). Allow JavaScript plugins to access the Rust-produced AST with minimal overhead.
-- [**Native MagicString transforms**](https://rolldown.rs/in-depth/native-magic-string#native-magicstring). Simple custom transforms with logic in JavaScript but computation in Rust.
+- [**原始 AST 传输**](https://github.com/oxc-project/oxc/issues/2409)。允许 JavaScript 插件以最小的开销访问 Rust 生成的 AST。
+- [**原生 MagicString 转换**](https://rolldown.rs/in-depth/native-magic-string#native-magicstring)。简单的自定义转换，逻辑在 JavaScript 中但计算在 Rust 中进行。
 
-## **Connect with us**
+## **联系我们** {#connect-with-us}
 
-If you've tried Vite 8 beta, then we'd love to hear your feedback! Please report any issues or share your experience:
+如果你已经尝试过 Vite 8 测试版，我们很希望听到你的反馈！请报告任何问题或分享你的使用体验：
 
-- **Discord**: Join our [community server](https://chat.vite.dev/) for real-time discussions
-- **GitHub**: Share feedback on [GitHub discussions](https://github.com/vitejs/vite/discussions)
-- **Issues**: Report issues on the [rolldown-vite repository](https://github.com/vitejs/rolldown-vite/issues) for bugs and regressions
-- **Wins**: Share your improved build times in the [rolldown-vite-perf-wins repository](https://github.com/vitejs/rolldown-vite-perf-wins)
+- **Discord**：加入我们的[社区服务器](https://chat.vite.dev/)进行实时讨论
+- **GitHub**：在 [GitHub 讨论区](https://github.com/vitejs/vite/discussions)分享反馈
+- **问题报告**：在 [rolldown-vite 仓库](https://github.com/vitejs/rolldown-vite/issues)报告 bug 和回归问题
+- **成果分享**：在 [rolldown-vite-perf-wins 仓库](https://github.com/vitejs/rolldown-vite-perf-wins)分享你改善的构建时间
 
-We appreciate all reports and reproduction cases. They help guide us towards the release of a stable 8.0.0.
+我们感谢所有的报告和复现案例。它们帮助我们朝着发布稳定版 8.0.0 的目标前进。

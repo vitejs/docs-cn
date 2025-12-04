@@ -98,25 +98,21 @@ Vite 忽略 `tsconfig.json` 中的 `target` 值，遵循与 `esbuild` 相同的�
 因此，建议将 `target` 设置为 `ESNext` 或 `ES2022` 或更新版本，或者在配置 `tsconfig.json` 时将 `useDefineForClassFields` 显式设置为 `true`。
 :::
 
-<<<<<<< HEAD
+#### `emitDecoratorMetadata` {#emitDecoratorMetadata}
+
+- [TypeScript 文档](https://www.typescriptlang.org/tsconfig#emitDecoratorMetadata)
+
+此选项仅被部分支持。完全支持需要 TypeScript 编译器进行类型推断，而这是不受支持的。详情请参见 [Oxc Transformer 的文档](https://oxc.rs/docs/guide/usage/transformer/typescript#decorators)。
+
+#### `paths` {#paths}
+
+- [TypeScript 文档](https://www.typescriptlang.org/tsconfig/#paths)
+
+可以指定 `resolve.tsconfigPaths: true` 来告诉 Vite 使用 [tsconfig.json](file:///Users/liuxin/Project/开源/vite-docs-cn/tsconfig.json) 中的 `paths` 选项来解析导入。
+
+需要注意的是，这个功能会有性能损耗，并且 [TypeScript 团队不建议使用这个选项来改变外部工具的行为](https://www.typescriptlang.org/tsconfig/#paths:~:text=Note%20that%20this%20feature%20does%20not%20change%20how%20import%20paths%20are%20emitted%20by%20tsc%2C%20so%20paths%20should%20only%20be%20used%20to%20inform%20TypeScript%20that%20another%20tool%20has%20this%20mapping%20and%20will%20use%20it%20at%20runtime%20or%20when%20bundling.)。
+
 #### 影响构建结果的其他编译器选项 {#other-compiler-options-affecting-the-build-result}
-=======
-#### `emitDecoratorMetadata`
-
-- [TypeScript documentation](https://www.typescriptlang.org/tsconfig#emitDecoratorMetadata)
-
-This option is only partially supported. Full support requires type inference by the TypeScript compiler, which is not supported. See [Oxc Transformer's documentation](https://oxc.rs/docs/guide/usage/transformer/typescript#decorators) for details.
-
-#### `paths`
-
-- [TypeScript documentation](https://www.typescriptlang.org/tsconfig/#paths)
-
-`resolve.tsconfigPaths: true` can be specified to tell Vite to use the `paths` option in `tsconfig.json` to resolve imports.
-
-Note that this feature has a performance cost and is [discouraged by the TypeScript team to use this option to change the behavior of the external tools](https://www.typescriptlang.org/tsconfig/#paths:~:text=Note%20that%20this%20feature%20does%20not%20change%20how%20import%20paths%20are%20emitted%20by%20tsc%2C%20so%20paths%20should%20only%20be%20used%20to%20inform%20TypeScript%20that%20another%20tool%20has%20this%20mapping%20and%20will%20use%20it%20at%20runtime%20or%20when%20bundling.).
-
-#### Other Compiler Options Affecting the Build Result
->>>>>>> 9d1e98c998121f033ff1f30dbc9a68b8b6603763
 
 - [`extends`](https://www.typescriptlang.org/tsconfig#extends)
 - [`importsNotUsedAsValues`](https://www.typescriptlang.org/tsconfig#importsNotUsedAsValues)

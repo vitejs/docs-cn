@@ -50,42 +50,25 @@
 
 ## 自定义构建 {#customizing-the-build}
 
-<<<<<<< HEAD
-构建过程可以通过多种 [构建配置选项](/config/#build-options) 来自定义构建。具体来说，你可以通过 `build.rollupOptions` 直接调整底层的 [Rollup 选项](https://cn.rollupjs.org/configuration-options/)：
-=======
-The build can be customized via various [build config options](/config/build-options.md). Specifically, you can directly adjust the underlying [Rolldown options](https://rollupjs.org/configuration-options/) via `build.rolldownOptions`:
+构建过程可以通过多种 [构建配置选项](/config/#build-options) 来自定义构建。具体来说，你可以通过 `build.rolldownOptions` 直接调整底层的 [Rolldown 选项](https://cn.rollupjs.org/configuration-options/)：
 
 <!-- TODO: update the link above and below to Rolldown's documentation -->
->>>>>>> 9d1e98c998121f033ff1f30dbc9a68b8b6603763
 
 ```js [vite.config.js]
 export default defineConfig({
   build: {
-<<<<<<< HEAD
-    rollupOptions: {
-      // https://cn.rollupjs.org/configuration-options/
-=======
     rolldownOptions: {
       // https://rollupjs.org/configuration-options/
->>>>>>> 9d1e98c998121f033ff1f30dbc9a68b8b6603763
     },
   },
 })
 ```
 
-<<<<<<< HEAD
-例如，你可以使用仅在构建期间应用的插件来指定多个 Rollup 输出。
-=======
-For example, you can specify multiple Rolldown outputs with plugins that are only applied during build.
->>>>>>> 9d1e98c998121f033ff1f30dbc9a68b8b6603763
+例如，你可以使用仅在构建期间应用的插件来指定多个 Rolldown 输出。
 
 ## 产物分块策略 {#chunking-strategy}
 
-<<<<<<< HEAD
-你可以通过配置 `build.rollupOptions.output.manualChunks` 来自定义 chunk 分割策略（查看 [Rollup 相应文档](https://cn.rollupjs.org/configuration-options/#output-manualchunks)）。如果你使用的是一个框架，那么请参考他们的文档来了解如何配置分割 chunk。
-=======
-You can configure how chunks are split using `build.rolldownOptions.output.advancedChunks` (see [Rolldown docs](https://rolldown.rs/in-depth/advanced-chunks)). If you use a framework, refer to their documentation for configuring how chunks are split.
->>>>>>> 9d1e98c998121f033ff1f30dbc9a68b8b6603763
+你可以通过配置 `build.rolldownOptions.output.advancedChunks` 来自定义 chunk 分割策略（查看 [Rolldown 相应文档](https://rolldown.rs/in-depth/advanced-chunks)）。如果你使用的是一个框架，那么请参考他们的文档来了解如何配置分割 chunk。
 
 ## 处理加载报错 {#load-error-handling}
 
@@ -156,11 +139,7 @@ export default defineConfig({
 
 如果你指定了另一个根目录，请记住，在解析输入路径时，`__dirname` 的值将仍然是 vite.config.js 文件所在的目录。因此，你需要把对应入口文件的 `root` 的路径添加到 `resolve` 的参数中。
 
-<<<<<<< HEAD
-请注意，在 HTML 文件中，Vite 忽略了 `rollupOptions.input` 对象中给定的入口名称，而是在生成 dist 文件夹中的 HTML 资源文件时，使用了文件已解析的路径 ID。这确保了与开发服务器的工作方式保持一致的结构。
-=======
-Note that for HTML files, Vite ignores the name given to the entry in the `rolldownOptions.input` object and instead respects the resolved id of the file when generating the HTML asset in the dist folder. This ensures a consistent structure with the way the dev server works.
->>>>>>> 9d1e98c998121f033ff1f30dbc9a68b8b6603763
+请注意，在 HTML 文件中，Vite 忽略了 `rolldownOptions.input` 对象中给定的入口名称，而是在生成 dist 文件夹中的 HTML 资源文件时，使用了文件已解析的路径 ID。这确保了与开发服务器的工作方式保持一致的结构。
 
 ## 库模式 {#library-mode}
 
@@ -185,15 +164,9 @@ export default defineConfig({
       // 将添加适当的扩展名后缀
       fileName: 'my-lib',
     },
-<<<<<<< HEAD
-    rollupOptions: {
+    rolldownOptions: {
       // 确保外部化处理那些
       // 你不想打包进库的依赖
-=======
-    rolldownOptions: {
-      // make sure to externalize deps that shouldn't be bundled
-      // into your library
->>>>>>> 9d1e98c998121f033ff1f30dbc9a68b8b6603763
       external: ['vue'],
       output: {
         // 在 UMD 构建模式下为这些外部化的依赖
@@ -336,13 +309,8 @@ dist/my-lib.umd.cjs 0.30 kB / gzip: 0.16 kB
 在库模式中，所有 [`import.meta.env.*`](./env-and-mode.md) 的使用都会在构建生产版本时被静态替换。但是，`process.env.*` 的使用不会，这样你的库的使用者就可以动态地改变它。如果这是不可取的，你可以使用 `define: { 'process.env.NODE_ENV': '"production"' }` 来静态替换它们，或者使用 [`esm-env`](https://github.com/benmccann/esm-env) 来更好地兼容打包工具和运行时。
 :::
 
-<<<<<<< HEAD
 ::: warning 进阶用法
-库模式包括了一种简单而又有见地的配置，适用于面向浏览器和 JS 框架的库。如果你正在构建非面向浏览器的库，或需要高级构建流程，可以直接使用 [Rollup](https://cn.rollupjs.org) 或 [esbuild](https://esbuild.github.io)。
-=======
-::: warning Advanced Usage
-Library mode includes a simple and opinionated configuration for browser-oriented and JS framework libraries. If you are building non-browser libraries, or require advanced build flows, you can use [tsdown](https://tsdown.dev/) or [Rolldown](https://rolldown.rs/) directly.
->>>>>>> 9d1e98c998121f033ff1f30dbc9a68b8b6603763
+库模式包括了一种简单而又有见地的配置，适用于面向浏览器和 JS 框架的库。如果你正在构建非面向浏览器的库，或需要高级构建流程，可以直接使用 [tsdown](https://tsdown.dev/) 或 [Rolldown](https://rolldown.rs/)。
 :::
 
 ## 进阶基础路径选项 {#advanced-base-options}
