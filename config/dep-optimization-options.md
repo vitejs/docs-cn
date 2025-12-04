@@ -51,6 +51,23 @@ export default defineConfig({
 })
 ```
 
+## optimizeDeps.rolldownOptions <NonInheritBadge /> {#optimizedeps-rolldownoptions}
+
+- **类型：** [`Omit`](https://www.typescriptlang.org/docs/handbook/utility-types.html#omittype-keys)`<``RolldownOptions`, `'input' | 'logLevel' | 'output'> & {
+  output?: [`Omit`](https://www.typescriptlang.org/docs/handbook/utility-types.html#omittype-keys)`<`
+    `RolldownOutputOptions`,
+    `'format' | 'sourcemap' | 'dir' | 'banner'>`
+`}`
+
+<!-- TODO: add link to RolldownOptions -->
+<!-- TODO: add link to RolldownOutputOptions -->
+
+在依赖扫描和优化过程中传递给 Rolldown 的选项。
+
+某些选项进行了省略，因为修改它们与 Vite 的优化方案并不兼容。
+
+- `plugins` 与 Vite 的 dep 插件合并
+
 ## optimizeDeps.esbuildOptions <NonInheritBadge /> {#optimizedeps-esbuildoptions}
 
 - **类型：** [`Omit`](https://www.typescriptlang.org/docs/handbook/utility-types.html#omittype-keys)`<`[`EsbuildBuildOptions`](https://esbuild.github.io/api/#general-options)`,
@@ -64,13 +81,9 @@ export default defineConfig({
 | 'outbase'
 | 'outExtension'
 | 'metafile'>`
+- **已弃用**
 
-在依赖扫描和优化过程中传递给 esbuild 的选项。
-
-某些选项进行了省略，因为修改它们与 Vite 的优化方案并不兼容。
-
-- 忽略了 `external` 选项，请使用 Vite 的 `optimizeDeps.exclude` 选项
-- `plugins` 与 Vite 的 dep 插件合并
+此选项在内部被转换为 `optimizeDeps.rolldownOptions`。请使用 `optimizeDeps.rolldownOptions` 代替。
 
 ## optimizeDeps.force <NonInheritBadge /> {#optimizedeps-force}
 

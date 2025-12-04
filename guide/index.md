@@ -20,7 +20,7 @@ Vite 还提供了强大的扩展性，可通过其 [插件 API](./api-plugin) �
 
 ## 浏览器支持 {#browser-support}
 
-在开发过程中，Vite 假设使用的是现代浏览器。这意味着该浏览器支持大多数最新的 JavaScript 和 CSS 功能。因此，Vite 将 [`esnext` 设置为转换目标](https://esbuild.github.io/api/#target)。这可以防止语法降低，使 Vite 能够尽可能接近原始源代码提供模块。Vite 会注入一些运行时代码以使开发服务器正常工作。这些代码使用了 [Baseline](https://web-platform-dx.github.io/web-features/) 中包含的功能，该功能在每个主要版本发布时（此主要版本为 2025-05-01）新增。
+在开发过程中，Vite 假设使用的是现代浏览器。这意味着该浏览器支持大多数最新的 JavaScript 和 CSS 功能。因此，Vite 将 [`esnext` 设置为转换目标](https://esbuild.github.io/api/#target)。这可以防止语法降低，使 Vite 能够尽可能接近原始源代码提供模块。Vite 会注入一些运行时代码以使开发服务器正常工作。这些代码使用了 [Baseline](https://web-platform-dx.github.io/web-features/) 中包含的功能，该功能在每个主要版本发布时（此主要版本为 2026-01-01）新增。
 
 对于生产环境构建，Vite 默认以 [Baseline](https://web-platform-dx.github.io/web-features/) 广泛可用的浏览器为目标平台。这些浏览器至少发布于两年半之前。您可以通过配置降低目标浏览器版本。此外，可以通过官方 [@vitejs/plugin-legacy](https://github.com/vitejs/vite/tree/main/packages/plugin-legacy) 支持旧版浏览器。更多详情，请参阅 [构建生产环境](./build) 部分。
 

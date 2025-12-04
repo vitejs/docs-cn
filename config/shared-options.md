@@ -40,7 +40,7 @@
 
 定义全局常量替换方式。其中每项在开发环境下会被定义在全局，而在构建时被静态替换。
 
-Vite 使用 [esbuild define](https://esbuild.github.io/api/#define) 来进行替换，因此值的表达式必须是一个包含 JSON 可序列化值（null、boolean、number、string、array 或 object）或单一标识符的字符串。对于非字符串值，Vite 将自动使用 `JSON.stringify` 将其转换为字符串。
+Vite 使用 [Oxc's define feature](https://oxc.rs/docs/guide/usage/transformer/global-variable-replacement#define) 来进行替换，因此值的表达式必须是一个包含 JSON 可序列化值（null、boolean、number、string、array 或 object）或单一标识符的字符串。对于非字符串值，Vite 将自动使用 `JSON.stringify` 将其转换为字符串。
 
 **示例：**
 
@@ -95,6 +95,8 @@ declare const __APP_VERSION__: string
   `Record<string, string> | Array<{ find: string | RegExp, replacement: string, customResolver?: ResolverFunction | ResolverObject }>`
 
 将会被传递到 `@rollup/plugin-alias` 作为 [entries 的选项](https://github.com/rollup/plugins/tree/master/packages/alias#entries)。也可以是一个对象，或一个 `{ find, replacement, customResolver }` 的数组。
+
+<!-- TODO: we need to have a more detailed explanation here as we no longer use @rollup/plugin-alias. we should say it's compatible with it though -->
 
 当使用文件系统路径的别名时，请始终使用绝对路径。相对路径的别名值会原封不动地被使用，因此无法被正常解析。
 
@@ -163,6 +165,13 @@ declare const __APP_VERSION__: string
 
 - **相关：** [esbuild#preserve-symlinks](https://esbuild.github.io/api/#preserve-symlinks)，[webpack#resolve.symlinks
   ](https://webpack.js.org/configuration/resolve/#resolvesymlinks)
+
+## resolve.tsconfigPaths
+
+- **类型：** `boolean`
+- **默认：** `false`
+
+启用 tsconfig 路径解析功能。[tsconfig.json](file:///Users/liuxin/Project/开源/vite-docs-cn/tsconfig.json) 中的 `paths` 选项将用于解析导入。更多详情请参见[功能](/guide/features.md#paths)。
 
 ## html.cspNonce
 
@@ -353,36 +362,44 @@ import type {
 
 如果设置为 `'auto'`，只有当 [数据大于 10kB 时](https://v8.dev/blog/cost-of-javascript-2019#json:~:text=A%20good%20rule%20of%20thumb%20is%20to%20apply%20this%20technique%20for%20objects%20of%2010%20kB%20or%20larger)，才会对数据进行字符串化处理。
 
-## esbuild {#esbuild}
+## oxc {#oxc}
 
-- **类型：** `ESBuildOptions | false`
+- **类型：** `OxcOptions | false`
 
-`ESBuildOptions` 继承自 [esbuild 转换选项](https://esbuild.github.io/api/#transform)。最常见的用例是自定义 JSX：
+`OxcOptions` 继承自 [Oxc 转换选项](https://oxc.rs/docs/guide/usage/transformer)。最常见的用例是自定义 JSX：
 
 ```js
 export default defineConfig({
-  esbuild: {
-    jsxFactory: 'h',
-    jsxFragment: 'Fragment',
+  oxc: {
+    jsx: {
+      runtime: 'classic',
+      pragma: 'h',
+      pragmaFrag: 'Fragment',
+    },
   },
 })
 ```
 
-默认情况下，esbuild 会被应用在 `ts`、`jsx`、`tsx` 文件。你可以通过 `esbuild.include` 和 `esbuild.exclude` 对要处理的文件类型进行配置，这两个配置的值可以是一个正则表达式、一个 [picomatch](https://github.com/micromatch/picomatch#globbing-features) 模式，或是一个值为这两种类型的数组。
+默认情况下，Oxc转换 会被应用在 `ts`、`jsx`、`tsx` 文件。你可以通过 `oxc.include` 和 `oxc.exclude` 对要处理的文件类型进行配置，这两个配置的值可以是一个正则表达式、一个 [picomatch](https://github.com/micromatch/picomatch#globbing-features) 模式，或是一个值为这两种类型的数组。
 
-此外，你还可以通过 `esbuild.jsxInject` 来自动为每一个被 esbuild 转换的文件注入 JSX helper。
+此外，你还可以通过 `oxc.jsxInject` 来自动为每一个被 Oxc 转换的文件注入 JSX helper。
 
 ```js
 export default defineConfig({
-  esbuild: {
+  oxc: {
     jsxInject: `import React from 'react'`,
   },
 })
 ```
 
-当 [`build.minify`](./build-options.md#build-minify) 为 `true` 时，所有最小化的优化过程都会被默认应用，要禁用它的 [某些特定方面](https://esbuild.github.io/api/#minify)，请设置 `esbuild.minifyIdentifiers`、`esbuild.minifySyntax` 或 `esbuild.minifyWhitespace` 三种选项其中任意一种为 `false`。注意 `esbuild.minify` 选项无法用于覆盖 `build.minify`。
+设置为 `false` 来禁用 Oxc 转换。
 
-设置为 `false` 来禁用 esbuild 转换。
+## esbuild {#esbuild}
+
+- **类型：** `ESBuildOptions | false`
+- **已弃用**
+
+此选项在内部被转换为 `oxc` 选项。请使用 `oxc` 选项代替。
 
 ## assetsInclude {#assetsinclude}
 
