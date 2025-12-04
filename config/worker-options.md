@@ -18,6 +18,15 @@ worker 打包时的输出类型。
 
 ## worker.rollupOptions
 
-- **类型：** [`RollupOptions`](https://cn.rollupjs.org/configuration-options/)
+<!-- TODO: update the link below to Rolldown's documentation -->
+
+- **类型：** [`RolldownOptions`](https://rollupjs.org/configuration-options/)
 
 用于打包 worker 的 Rollup 配置项。
+
+## worker.rollupOptions
+
+- **类型：** `RolldownOptions`
+- **已弃用**
+
+此选项是 `worker.rolldownOptions` 选项的别名。请使用 `build.rolldownOptions` 选项代替。

@@ -187,7 +187,7 @@ import './Foo.js' // 应该为 './foo.js'
 
 该错误也可能由浏览器扩展程序（如广告拦截器）阻止该请求导致。
 
-可以通过修改 [`build.rollupOptions.output.chunkFileNames`](../config/build-options.md#build-rollupoptions) 中的块文件名来绕过此问题，因为这些扩展程序通常会根据文件名（例如包含 `ad` 或 `track` 的文件名）来阻止请求。
+可以通过修改 [`build.rolldownOptions.output.chunkFileNames`](../config/build-options.md#build-rolldownoptions) 中的块文件名来绕过此问题，因为这些扩展程序通常会根据文件名（例如包含 `ad` 或 `track` 的文件名）来阻止请求。
 
 ## 优化依赖 {#optimized-dependencies}
 
