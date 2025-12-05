@@ -62,7 +62,7 @@ Vite 的打包工具替换带来的影响远不止性能提升。打包工具利
 
 ## Vite 如何迁移到 Rolldown {#how-vite-migrated-to-rolldown}
 
-迁移到由 Rolldown 驱动的 Vite 是一项根本性de变革。因此，我们的团队采取了周密的措施来实现这一目标，同时确保稳定性和生态系统兼容性。
+迁移到由 Rolldown 驱动的 Vite 是一项根本性的变革。因此，我们的团队采取了周密的措施来实现这一目标，同时确保稳定性和生态系统兼容性。
 
 首先，我们发布了独立的 `rolldown-vite` 包作为[技术预览版](https://voidzero.dev/posts/announcing-rolldown-vite)。这让我们能够在不影响 Vite 稳定版本的情况下与早期用户进行合作。早期用户不仅受益于 Rolldown 带来的性能提升，还提供了宝贵的反馈意见。亮点包括：
 
