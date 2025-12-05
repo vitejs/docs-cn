@@ -66,9 +66,16 @@ Vite 打包器更换的影响超越了性能范畴。打包器利用解析器、
 
 首先，我们发布了独立的 `rolldown-vite` 包作为[技术预览版](https://voidzero.dev/posts/announcing-rolldown-vite)。这让我们能够在不影响 Vite 稳定版本的情况下与早期采用者合作。早期采用者从 Rolldown 的性能提升中受益，同时提供了宝贵的反馈。亮点包括：
 
+<<<<<<< HEAD
 - Linear 的生产构建时间从 46 秒减少到 6 秒
 - Mercedes-Benz.io 将构建时间减少了高达 38%
 - Beehiiv 将构建时间减少了 64%
+=======
+- Linear's production build times were reduced from 46s to 6s
+- Ramp reduced their build time by 57%
+- Mercedes-Benz.io cut their build time down by up to 38%
+- Beehiiv reduced their build time by 64%
+>>>>>>> 7f6f216b107832e7f5756511553bb1b7723b2bfa
 
 接下来，我们建立了一套测试套件，用于验证关键的 Vite 插件与 `rolldown-vite` 的兼容性。这项 CI 任务帮助我们及早发现回归问题和兼容性问题，特别是对于 SvelteKit、react-router 和 Storybook 等框架和元框架。
 

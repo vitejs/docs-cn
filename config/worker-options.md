@@ -16,7 +16,7 @@ worker 打包时的输出类型。
 应用于 worker 打包的 Vite 插件。注意 [config.plugins](./shared-options#plugins) 仅会在开发（dev）阶段应用于 worker，若要配置在构建（build）阶段应用于 worker 的插件则应该在本选项这里配置。
 该函数应返回新的插件实例，因为它们在并行的 rollup worker 构建中使用。因此，在 `config` 钩子中修改 `config.worker` 选项将被忽略。
 
-## worker.rollupOptions
+## worker.rolldownOptions
 
 <!-- TODO: update the link below to Rolldown's documentation -->
 
@@ -29,4 +29,8 @@ worker 打包时的输出类型。
 - **类型：** `RolldownOptions`
 - **已弃用**
 
+<<<<<<< HEAD
 此选项是 `worker.rolldownOptions` 选项的别名。请使用 `build.rolldownOptions` 选项代替。
+=======
+This option is an alias of `worker.rolldownOptions` option. Use `worker.rolldownOptions` option instead.
+>>>>>>> 7f6f216b107832e7f5756511553bb1b7723b2bfa
