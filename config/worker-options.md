@@ -29,8 +29,4 @@ worker 打包时的输出类型。
 - **类型：** `RolldownOptions`
 - **已弃用**
 
-<<<<<<< HEAD
-此选项是 `worker.rolldownOptions` 选项的别名。请使用 `build.rolldownOptions` 选项代替。
-=======
-This option is an alias of `worker.rolldownOptions` option. Use `worker.rolldownOptions` option instead.
->>>>>>> 7f6f216b107832e7f5756511553bb1b7723b2bfa
+此选项是 `worker.rolldownOptions` 选项的别名。请使用 `worker.rolldownOptions` 选项代替。
