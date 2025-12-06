@@ -287,7 +287,7 @@ export default defineConfig({
               link: '/guide/performance'
             },
             {
-              text: `Migration from v${viteMajorVersion - 1}`,
+              text: `从 v${viteMajorVersion - 1} 迁移`,
               link: '/guide/migration'
             },
             {
@@ -456,7 +456,7 @@ export default defineConfig({
     // languages used for twoslash and jsdocs in twoslash
     languages: ['ts', 'js', 'json'],
     codeTransformers: [
-      transformerTwoslash(),
+      transformerTwoslash() as any,
       // add `style:*` support
       {
         root(hast) {
