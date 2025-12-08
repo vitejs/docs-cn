@@ -322,3 +322,19 @@ $ npx wrangler pages deploy dist
 Zephyr 与其他云提供商采用不同的方法。它直接与 Vite 构建流程集成，因此每次你构建或运行应用程序的开发服务器时，它都会自动部署到 Zephyr Cloud。
 
 请按照 [Vite 部署指南](https://docs.zephyr-cloud.io/bundlers/vite) 中的步骤开始使用。
+
+## EdgeOne Pages
+
+您可以快速将 Vite 应用部署为 [EdgeOne Pages](https://edgeone.ai/products/pages) 上的静态网站。 具体步骤如下:
+
+1. 创建 [EdgeOne 账户](https://edgeone.ai/register?s_url=https%3A%2F%2Fconsole.tencentcloud.com%2Fedgeone%2Fpages), 登录 EdgeOne [控制台](https://console.tencentcloud.com/edgeone/pages).
+2. 连接您的 GitHub/Gitee/Coding 帐户，选择您的项目，也可以使用官方模板，或直接上传您的代码 ZIP 文件进行部署。
+3. 部署时，需要配置产品名称、加速区域、生产分支、构建设置、环境变量等信息。
+4. 点击 **开始部署**.
+5. 部署成功后，可以通过预览链接访问您的项目。
+
+注意：对指定生产分支（默认为“main”）的所有提交都会自动触发部署更新。
+
+您还可以为项目添加 [自定义域名](https://edgeone.ai/document/160427672892563456?srouce=github#909bc024-7344-40c0-8be1-cfa9b1fab5a5)。
+
+了解更多关于EdgeOne Pages的[使用方式](https://edgeone.ai/document/171937194382536704?source=github)。
