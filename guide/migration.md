@@ -23,7 +23,7 @@ Vite 8 使用基于 Rolldown 和 Oxc 的工具，而不是 esbuild 和 Rollup。
 
 ```json
 {
-  "dependencies": {
+  "devDependencies": {
     "vite": "npm:rolldown-vite@7.2.2" // [!code --]
     "vite": "^8.0.0" // [!code ++]
   }
@@ -216,7 +216,7 @@ export default defineConfig({
 
 ### 使用 Oxc 进行 JavaScript 压缩 {#javascript-minification-by-oxc}
 
-现在使用 Oxc 压缩器进行 JavaScript 压缩，而不是 esbuild。你可以使用已弃用的 [`build.minify: 'esbuild'`](/config/build-options#minify) 选项切换回 esbuild。这个配置选项将来会被移除，你需要将 `esbuild` 安装为 `devDependency`，因为 Vite 不再直接依赖 esbuild。
+现在使用 Oxc 压缩器进行 JavaScript 压缩，而不是 esbuild。你可以使用已弃用的 [`build.minify: 'esbuild'`](/config/build-options#build-minify) 选项切换回 esbuild。这个配置选项将来会被移除，你需要将 `esbuild` 安装为 `devDependency`，因为 Vite 不再直接依赖 esbuild。
 
 如果你之前使用 `esbuild.minify*` 选项来控制压缩行为，现在可以改用 `build.rolldownOptions.output.minify`。如果你之前使用 `esbuild.drop` 选项，现在可以改用 [`build.rolldownOptions.output.minify.compress.drop*` 选项](https://oxc.rs/docs/guide/usage/minifier/dead-code-elimination)。
 
@@ -231,7 +231,7 @@ esbuild 和 Oxc 压缩器对源代码做出了略微不同的假设。如果你�
 
 ### 使用 Lightning CSS 进行 CSS 压缩 {#css-minification-by-lightning-css}
 
-现在默认使用 [Lightning CSS](https://lightningcss.dev/) 进行 CSS 压缩。你可以使用 [`build.cssMinify: 'esbuild'`](/config/build-options#cssminify) 选项切换回 esbuild。请注意，你需要将 `esbuild` 安装为 `devDependency`。
+现在默认使用 [Lightning CSS](https://lightningcss.dev/) 进行 CSS 压缩。你可以使用 [`build.cssMinify: 'esbuild'`](/config/build-options#build-minify) 选项切换回 esbuild。请注意，你需要将 `esbuild` 安装为 `devDependency`。
 
 Lightning CSS 支持更好的语法降级，你的 CSS 包大小可能会略有增加。
 
