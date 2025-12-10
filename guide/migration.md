@@ -1,12 +1,8 @@
 # 从 v7 迁移 {#migration-from-v7}
 
-<<<<<<< HEAD
-## 浏览器兼容性目标变更 {#default-browser-target-change}
-=======
-If you are migrating from `rolldown-vite`, the technical preview release for Rolldown integrated Vite for v6 & v7, only the sections with <Badge text="NRV" type="warning" /> in the title are applicable.
+如果正在从 `rolldown-vite` 进行迁移，那么只有标题中包含 <Badge text="NRV" type="warning" /> 的部分适用。
 
-## Default Browser Target change [<Badge text="NRV" type="warning" />](#migration-from-v7)
->>>>>>> 4c9ce45210a7a61c942ba3a5bb1944f8643b0874
+## 浏览器兼容性目标变更 [<Badge text="NRV" type="warning" />](#migration-from-v7) {#default-browser-target-change}
 
 `build.target` 和 `'baseline-widely-available'` 的默认浏览器值已更新为较新的浏览器版本：
 
@@ -340,15 +336,9 @@ const plugin = {
 - `worker.rollupOptions`：重命名为 `worker.rolldownOptions`
 - `build.commonjsOptions`：现在无操作效果
 
-<<<<<<< HEAD
-## 总体变化 {#general-changes}
+## 总体变化 [<Badge text="NRV" type="warning" />](#migration-from-v7) {#general-changes}
 
-## 移除了已弃用的功能 {#removed-deprecated-features}
-=======
-## General Changes [<Badge text="NRV" type="warning" />](#migration-from-v7)
-
-## Removed deprecated features [<Badge text="NRV" type="warning" />](#migration-from-v7)
->>>>>>> 4c9ce45210a7a61c942ba3a5bb1944f8643b0874
+## 移除了已弃用的功能 [<Badge text="NRV" type="warning" />](#migration-from-v7) {#removed-deprecated-features}
 
 **_TODO：此更改尚未实现，但将在稳定版发布前实现。_**
 
