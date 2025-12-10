@@ -54,7 +54,7 @@ Vite 之前依赖两个打包工具来满足开发和生产构建的不同需求
 
 ## 统一工具链 {#unifying-the-toolchain}
 
-Vite 的打包工具替换带来的影响远不止性能提升。打包工具利用解析器、解析器、转换器和压缩器。Rolldown 为此目的使用了由 VoidZero 团队主导的另一个项目 Oxc。
+Vite 的打包工具替换带来的影响远不止性能提升。打包工具利用语法解析器（parsers）、依赖解析器（resolvers）、转换器（transformers）和压缩器（minifiers）。Rolldown 为此目的使用了由 VoidZero 团队主导的另一个项目 Oxc。
 
 **这使得 Vite 成为由同一团队维护的端到端工具链的入口：构建工具（Vite）、打包工具（Rolldown）和编译器（Oxc）。**
 
