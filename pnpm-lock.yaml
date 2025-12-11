@@ -30,8 +30,8 @@ importers:
         specifier: ^4.0.3
         version: 4.0.3
       gsap:
-        specifier: ^3.13.0
-        version: 3.13.0
+        specifier: ^3.14.1
+        version: 3.14.1
       lodash:
         specifier: ^4.17.21
         version: 4.17.21
@@ -51,8 +51,8 @@ importers:
         specifier: ^3.5.25
         version: 3.5.25(typescript@5.4.5)
       vue-tsc:
-        specifier: ^3.1.6
-        version: 3.1.6(typescript@5.4.5)
+        specifier: ^3.1.8
+        version: 3.1.8(typescript@5.4.5)
       yorkie:
         specifier: ^2.0.0
         version: 2.0.0
@@ -570,8 +570,8 @@ packages:
       typescript:
         optional: true
 
-  '@vue/language-core@3.1.6':
-    resolution: {integrity: sha512-F3BIvDVyyj+6Sgl9Ev9zsb/DJ48rrH2EiI5NnIEpJKo7Yk8v0n2QjfG7/RYyFhYSMOJcsf6aAt5hx4JaNbhKbg==}
+  '@vue/language-core@3.1.8':
+    resolution: {integrity: sha512-PfwAW7BLopqaJbneChNL6cUOTL3GL+0l8paYP5shhgY5toBNidWnMXWM+qDwL7MC9+zDtzCF2enT8r6VPu64iw==}
     peerDependencies:
       typescript: '*'
     peerDependenciesMeta:
@@ -818,8 +818,8 @@ packages:
     resolution: {integrity: sha512-5v6yZd4JK3eMI3FqqCouswVqwugaA9r4dNZB1wwcmrD02QkV5H0y7XBQW8QwQqEaZY1pM9aqORSORhJRdNK44Q==}
     engines: {node: '>=6.0'}
 
-  gsap@3.13.0:
-    resolution: {integrity: sha512-QL7MJ2WMjm1PHWsoFrAQH/J8wUeqZvMtHO58qdekHpCfhvhSL4gSiz6vJf5EeMP0LOn3ZCprL2ki/gjED8ghVw==}
+  gsap@3.14.1:
+    resolution: {integrity: sha512-nOFRJpVu+U0IPgKzfC5MEdZrJ1iVidGaOuxK0+Un+7vMOHa5rw/SKOaMaRRyHZiJKaeAEALTBwnj6R3gifyGBw==}
 
   hast-util-to-html@9.0.5:
     resolution: {integrity: sha512-OguPdidb+fbHQSU4Q4ZiLKnzWo8Wwsf5bZfbvu7//a9oTYoqD/fWpe96NuHkoS9h0ccGOTe0C4NGXdtS0iObOw==}
@@ -1388,8 +1388,8 @@ packages:
     peerDependencies:
       vue: ^3.0.0
 
-  vue-tsc@3.1.6:
-    resolution: {integrity: sha512-h5mMNGIDI+WMZxTeuYcpfSeDtBIiHXAg3qsrt65H4vcFTYmuM1THNHMzlnDvD8kX0fwLuf6auxWP340bH/zcpw==}
+  vue-tsc@3.1.8:
+    resolution: {integrity: sha512-deKgwx6exIHeZwF601P1ktZKNF0bepaSN4jBU3AsbldPx9gylUc1JDxYppl82yxgkAgaz0Y0LCLOi+cXe9HMYA==}
     hasBin: true
     peerDependencies:
       typescript: '>=5.0.0'
@@ -1918,7 +1918,7 @@ snapshots:
     optionalDependencies:
       typescript: 5.4.5
 
-  '@vue/language-core@3.1.6(typescript@5.4.5)':
+  '@vue/language-core@3.1.8(typescript@5.4.5)':
     dependencies:
       '@volar/language-core': 2.4.26
       '@vue/compiler-dom': 3.5.25
@@ -2138,7 +2138,7 @@ snapshots:
       section-matter: 1.0.0
       strip-bom-string: 1.0.0
 
-  gsap@3.13.0: {}
+  gsap@3.14.1: {}
 
   hast-util-to-html@9.0.5:
     dependencies:
@@ -2863,10 +2863,10 @@ snapshots:
     dependencies:
       vue: 3.5.25(typescript@5.4.5)
 
-  vue-tsc@3.1.6(typescript@5.4.5):
+  vue-tsc@3.1.8(typescript@5.4.5):
     dependencies:
       '@volar/typescript': 2.4.26
-      '@vue/language-core': 3.1.6(typescript@5.4.5)
+      '@vue/language-core': 3.1.8(typescript@5.4.5)
       typescript: 5.4.5
 
   vue@3.5.25(typescript@5.4.5):
