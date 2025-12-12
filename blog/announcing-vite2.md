@@ -81,4 +81,8 @@ Vite 默认只支持原生支持 ESM 的现代浏览器，但可以通过官方�
 npm init @vitejs/app
 ```
 
+<<<<<<< HEAD
 然后，你可以阅读 [指引文档](/guide/) 了解 Vite 提供了哪些开箱即用的功能，也可以在 [GitHub](https://github.com/vitejs/vite) 上查看源码，关注我们的 [Twitter](https://twitter.com/vite_js) 以了解最新的进展，或与其他 Vite 用户在 [Discord](http://chat.vite.dev/) 上一起讨论。
+=======
+Then, check out [the guide](https://vite.dev/guide/) to see what Vite provides out of the box. You can also check out the source code on [GitHub](https://github.com/vitejs/vite), follow updates on [Twitter](https://twitter.com/vite_js), or join discussions with other Vite users on our [Discord chat server](https://chat.vite.dev).
+>>>>>>> e09887836a807b2d2561880ffc816228552d6c7f

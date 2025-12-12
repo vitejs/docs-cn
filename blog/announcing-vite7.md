@@ -49,7 +49,11 @@ _2025年6月24日_
 
 使用 [vite.new](https://vite.new) 在线体验 Vite 7，或者通过运行 `pnpm create vite` 在本地使用你偏好的框架搭建 Vite 项目。更多信息请查看[入门指南](/guide/)。
 
+<<<<<<< HEAD
 我们诚邀你加入我们，帮助我们改进 Vite（加入超过 [1.1K 位 Vite Core 贡献者](https://github.com/vitejs/vite/graphs/contributors)）、我们的依赖项、插件以及生态系统中的项目。了解更多信息，请参阅我们的[贡献指南](https://github.com/vitejs/vite/blob/main/CONTRIBUTING.md)。
+=======
+We invite you to help us improve Vite (joining the more than [1.1K contributors to Vite Core](https://github.com/vitejs/vite/graphs/contributors)), our dependencies, or plugins and projects in the ecosystem. Learn more at our [Contributing Guide](https://github.com/vitejs/vite/blob/main/CONTRIBUTING.md). A good way to get started is by [triaging issues](https://github.com/vitejs/vite/issues), [reviewing PRs](https://github.com/vitejs/vite/pulls), sending tests PRs based on open issues, and supporting others in [Discussions](https://github.com/vitejs/vite/discussions) or Vite Land's [help forum](https://discord.com/channels/804011606160703521/1019670660856942652). If you have questions, join our [Discord community](https://chat.vite.dev) and talk to us in the [#contributing channel](https://discord.com/channels/804011606160703521/804439875226173480).
+>>>>>>> e09887836a807b2d2561880ffc816228552d6c7f
 
 一个好的入门方法包括：[整理问题](https://github.com/vitejs/vite/issues)、[审阅 PR](https://github.com/vitejs/vite/pulls)、基于未解决问题提交测试 PR，或在 [讨论区](https://github.com/vitejs/vite/discussions) 以及 Vite Land 的 [帮助论坛](https://discord.com/channels/804011606160703521/1019670660856942652) 中为他人提供帮助。如有任何疑问，欢迎加入我们的 [Discord 社区](http://chat.vite.dev/)，并在 [#contributing 频道](https://discord.com/channels/804011606160703521/804439875226173480) 中与我们交流。
 
