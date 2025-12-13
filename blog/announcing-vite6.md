@@ -66,11 +66,7 @@ Vite 6 是自 Vite 2 以来最重要的主要版本发布。我们渴望与生�
 
 我们要感谢超过 [1000 位 Vite Core 贡献者](https://github.com/vitejs/vite/graphs/contributors) 以及 Vite 插件、集成、工具和翻译的维护者和贡献者，他们帮助我们打造了这个新的主要版本。我们也邀请你参与进来，帮助我们改进整个生态系统的 Vite。了解更多信息，请参阅我们的 [贡献指南](https://github.com/vitejs/vite/blob/main/CONTRIBUTING.md)。
 
-<<<<<<< HEAD
-如果准备开始的话，我们建议可以帮助 [分类问题](https://github.com/vitejs/vite/issues)、[审查 PR](https://github.com/vitejs/vite/pulls)、根据开放问题发送失败的测试 PR，并在[讨论](https://github.com/vitejs/vite/discussions) 和 Vite Land 的 [帮助论坛](https://discord.com/channels/804011606160703521/1019670660856942652) 中帮助他人。如果你想与我们交流，请加入我们的 [Discord 社区](http://chat.vite.dev/) 并在 [#贡献频道](https://discord.com/channels/804011606160703521/804439875226173480) 中打个招呼。
-=======
-To get started, we suggest helping [triage issues](https://github.com/vitejs/vite/issues), [review PRs](https://github.com/vitejs/vite/pulls), send failing tests PRs based on open issues, and support others in [Discussions](https://github.com/vitejs/vite/discussions) and Vite Land's [help forum](https://discord.com/channels/804011606160703521/1019670660856942652). If you'd like to talk to us, join our [Discord community](https://chat.vite.dev) and say hi on the [#contributing channel](https://discord.com/channels/804011606160703521/804439875226173480).
->>>>>>> e09887836a807b2d2561880ffc816228552d6c7f
+如果准备开始的话，我们建议可以帮助 [分类问题](https://github.com/vitejs/vite/issues)、[审查 PR](https://github.com/vitejs/vite/pulls)、根据开放问题发送失败的测试 PR，并在[讨论](https://github.com/vitejs/vite/discussions) 和 Vite Land 的 [帮助论坛](https://discord.com/channels/804011606160703521/1019670660856942652) 中帮助他人。如果你想与我们交流，请加入我们的 [Discord 社区](https://chat.vite.dev/) 并在 [#贡献频道](https://discord.com/channels/804011606160703521/804439875226173480) 中打个招呼。
 
 有关 Vite 生态系统和 Vite Core 的最新消息，请关注我们的 [Bluesky](https://bsky.app/profile/vite.dev)、[X](https://twitter.com/vite_js) 或 [Mastodon](https://webtoo.ls/@vite)。
 
