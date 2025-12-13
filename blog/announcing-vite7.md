@@ -51,9 +51,7 @@ _2025年6月24日_
 
 我们诚邀你加入我们，帮助我们改进 Vite（加入超过 [1.1K 位 Vite Core 贡献者](https://github.com/vitejs/vite/graphs/contributors)）、我们的依赖项、插件以及生态系统中的项目。了解更多信息，请参阅我们的[贡献指南](https://github.com/vitejs/vite/blob/main/CONTRIBUTING.md)。
 
-一个好的入门方法包括：[整理问题](https://github.com/vitejs/vite/issues)、[审阅 PR](https://github.com/vitejs/vite/pulls)、基于未解决问题提交测试 PR，或在 [讨论区](https://github.com/vitejs/vite/discussions) 以及 Vite Land 的 [帮助论坛](https://discord.com/channels/804011606160703521/1019670660856942652) 中为他人提供帮助。如有任何疑问，欢迎加入我们的 [Discord 社区](http://chat.vite.dev/)，并在 [#contributing 频道](https://discord.com/channels/804011606160703521/804439875226173480) 中与我们交流。
-
-一个好的入门方法包括：[整理问题](https://github.com/vitejs/vite/issues)、[审阅 PR](https://github.com/vitejs/vite/pulls)、基于未解决问题提交测试 PR，或在 [讨论区](https://github.com/vitejs/vite/discussions) 以及 Vite Land 的 [帮助论坛](https://discord.com/channels/804011606160703521/1019670660856942652) 中为他人提供帮助。如有任何疑问，欢迎加入我们的 [Discord 社区](http://chat.vite.dev/)，并在 [#contributing 频道](https://discord.com/channels/804011606160703521/804439875226173480) 中与我们交流。
+一个好的入门方法包括：[整理问题](https://github.com/vitejs/vite/issues)、[审阅 PR](https://github.com/vitejs/vite/pulls)、基于未解决问题提交测试 PR，或在 [讨论区](https://github.com/vitejs/vite/discussions) 以及 Vite Land 的 [帮助论坛](https://discord.com/channels/804011606160703521/1019670660856942652) 中为他人提供帮助。如有任何疑问，欢迎加入我们的 [Discord 社区](https://chat.vite.dev)，并在 [#contributing 频道](https://discord.com/channels/804011606160703521/804439875226173480) 中与我们交流。
 
 通过关注我们在 [Bluesky](https://bsky.app/profile/vite.dev)、[X（原 Twitter）](https://twitter.com/vite_js) 或 [Mastodon](https://webtoo.ls/@vite)，保持更新并与更多基于 Vite 构建的开发者建立联系。
 
