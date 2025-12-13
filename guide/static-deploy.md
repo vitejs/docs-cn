@@ -250,11 +250,7 @@ $ npx wrangler pages deploy dist
 
 3. 运行 `surge dist` 命令部署到 surge。
 
-<<<<<<< HEAD
-你也可以通过添加 `surge dist yourdomain.com` 部署到一个 [自定义域名](http://surge.sh/help/adding-a-custom-domain)。
-=======
-You can also deploy to a [custom domain](https://surge.sh/help/adding-a-custom-domain) by adding `surge dist yourdomain.com`.
->>>>>>> e09887836a807b2d2561880ffc816228552d6c7f
+你也可以通过添加 `surge dist yourdomain.com` 部署到一个 [自定义域名](https://surge.sh/help/adding-a-custom-domain)。
 
 ## Azure 的静态网站应用 {#azure-static-web-apps}
 
@@ -325,12 +321,8 @@ You can also deploy to a [custom domain](https://surge.sh/help/adding-a-custom-d
 
 Zephyr 与其他云提供商采用不同的方法。它直接与 Vite 构建流程集成，因此每次你构建或运行应用程序的开发服务器时，它都会自动部署到 Zephyr Cloud。
 
-<<<<<<< HEAD
 请按照 [Vite 部署指南](https://docs.zephyr-cloud.io/bundlers/vite) 中的步骤开始使用。
-=======
-Follow the steps in [the Vite deployment guide](https://docs.zephyr-cloud.io/bundlers/vite) to get started.
 
-## EdgeOne Pages
+## EdgeOne Pages {#edgeone-pages}
 
-Deploy your static site using [EdgeOne Pages](https://edgeone.ai/products/pages) by following these [instructions](https://pages.edgeone.ai/document/vite).
->>>>>>> e09887836a807b2d2561880ffc816228552d6c7f
+通过遵循这些[说明](https://pages.edgeone.ai/document/vite)，使用 [EdgeOne Pages](https://edgeone.ai/products/pages) 部署你的静态站点。
