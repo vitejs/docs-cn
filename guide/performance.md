@@ -114,13 +114,12 @@ export default defineConfig({
 
 精简工作的例子：
 
-- 使用 CSS 而不是 Sass/Less/Stylus（可以由 PostCSS 处理嵌套）
+- 使用 CSS 而不是 Sass/Less/Stylus（可以由 PostCSS / Lightning CSS 处理嵌套）
 - 不要将 SVG 转换为 UI 框架组件（例如 React、Vue 等）。请将其作为字符串或 URL 导入。
-- 当使用 `@vitejs/plugin-react` 时，避免配置 Babel 选项，这样它就会在构建期间跳过转换（只使用 esbuild）。
+- 当使用 `@vitejs/plugin-react` 时，避免配置 Babel 选项，这样它就会在构建期间跳过转换（只使用 Oxc）。
 
 使用更原生化工具链的例子：
 
-使用更原生化的工具链往往会带来更大的安装大小，因此在启动新的 Vite 项目时不是默认的。但对于较大的应用程序来说，这可能是值得的。
+尽管 Vite 核心基于原生工具，但某些功能仍默认使用非原生工具，以提供更好的兼容性和功能集。但对于较大的应用程序来说，这可能是值得的。
 
 - 尝试实验性的 [LightningCSS](https://github.com/vitejs/vite/discussions/13835)
-- 使用 [`@vitejs/plugin-react-swc`](https://github.com/vitejs/vite-plugin-react-swc) 代替 `@vitejs/plugin-react`。
