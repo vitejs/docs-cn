@@ -116,11 +116,7 @@ create-vite 是一个快速生成主流框架基础模板的工具。查看 Awes
 
 对于一个 `https://github.com/user/project` 中的模板，可以尝试使用 `https://github.stackblitz.com/user/project`（即在项目 URL 的 `github` 后添加 `.stackblitz`）。
 
-<<<<<<< HEAD
-你也可以用如 [degit](https://github.com/Rich-Harris/degit) 之类的工具，使用社区模版来搭建项目。假设项目在 GitHub 上并使用 `main` 作为默认分支，可以使用以下命令创建本地副本：
-=======
-You can also use a tool like [tiged](https://github.com/tiged/tiged) to scaffold your project with one of the templates. Assuming the project is on GitHub and uses `main` as the default branch, you can create a local copy using:
->>>>>>> a6a5c9d25c4142c49981c46aaac6919007432db9
+你也可以用如 [tiged](https://github.com/tiged/tiged) 之类的工具，使用社区模版来搭建项目。假设项目在 GitHub 上并使用 `main` 作为默认分支，可以使用以下命令创建本地副本：
 
 ```bash
 npx tiged user/project my-project

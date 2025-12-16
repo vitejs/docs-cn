@@ -114,25 +114,12 @@ export default defineConfig({
 
 精简工作的例子：
 
-<<<<<<< HEAD
-- 使用 CSS 而不是 Sass/Less/Stylus（可以由 PostCSS 处理嵌套）
+- 使用 CSS 而不是 Sass/Less/Stylus（可以由 PostCSS / Lightning CSS 处理嵌套）
 - 不要将 SVG 转换为 UI 框架组件（例如 React、Vue 等）。请将其作为字符串或 URL 导入。
-- 当使用 `@vitejs/plugin-react` 时，避免配置 Babel 选项，这样它就会在构建期间跳过转换（只使用 esbuild）。
-=======
-- Use CSS instead of Sass/Less/Stylus when possible (nesting can be handled by PostCSS / Lightning CSS)
-- Don't transform SVGs into UI framework components (React, Vue, etc.). Import them as strings or URLs instead.
-- When using `@vitejs/plugin-react`, avoid configuring the Babel options, so it skips the transformation during build (only Oxc will be used).
->>>>>>> a6a5c9d25c4142c49981c46aaac6919007432db9
+- 当使用 `@vitejs/plugin-react` 时，避免配置 Babel 选项，这样它就会在构建期间跳过转换（只使用 Oxc）。
 
 使用更原生化工具链的例子：
 
-<<<<<<< HEAD
-使用更原生化的工具链往往会带来更大的安装大小，因此在启动新的 Vite 项目时不是默认的。但对于较大的应用程序来说，这可能是值得的。
+尽管 Vite 核心基于原生工具，但某些功能仍默认使用非原生工具，以提供更好的兼容性和功能集。但对于较大的应用程序来说，这可能是值得的。
 
 - 尝试实验性的 [LightningCSS](https://github.com/vitejs/vite/discussions/13835)
-- 使用 [`@vitejs/plugin-react-swc`](https://github.com/vitejs/vite-plugin-react-swc) 代替 `@vitejs/plugin-react`。
-=======
-While Vite core is based on native tooling, some features still use non-native tooling by default to provide better compatibility and feature set. But it may be worth the cost for larger applications.
-
-- Try out the experimental support for [LightningCSS](https://github.com/vitejs/vite/discussions/13835)
->>>>>>> a6a5c9d25c4142c49981c46aaac6919007432db9
