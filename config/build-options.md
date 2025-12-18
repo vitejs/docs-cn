@@ -223,7 +223,35 @@ export default defineConfig({
 ]
 ```
 
+<<<<<<< HEAD
 ## build.manifest {#build-manifest}
+=======
+::: tip
+
+If you'd like to reference the license file in the built code, you can use `build.rolldownOptions.output.postBanner` to inject a comment at the top of the files. For example:
+
+<!-- TODO: add a link for output.postBanner above to Rolldown's documentation -->
+
+```js twoslash [vite.config.js]
+import { defineConfig } from 'vite'
+
+export default defineConfig({
+  build: {
+    license: true,
+    rolldownOptions: {
+      output: {
+        postBanner:
+          '/* See licenses of bundled dependencies at https://example.com/license.md */',
+      },
+    },
+  },
+})
+```
+
+:::
+
+## build.manifest
+>>>>>>> f87391961649d638491342dece2746f80fe2d29d
 
 - **类型：** `boolean | string`
 - **默认：** `false`
