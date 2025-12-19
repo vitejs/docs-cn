@@ -223,12 +223,9 @@ export default defineConfig({
 ]
 ```
 
-<<<<<<< HEAD
-## build.manifest {#build-manifest}
-=======
 ::: tip
 
-If you'd like to reference the license file in the built code, you can use `build.rolldownOptions.output.postBanner` to inject a comment at the top of the files. For example:
+如果你想在构建后的代码中引用许可文件，可以使用 `build.rolldownOptions.output.postBanner` 在文件顶部注入注释。例如：
 
 <!-- TODO: add a link for output.postBanner above to Rolldown's documentation -->
 
@@ -250,8 +247,7 @@ export default defineConfig({
 
 :::
 
-## build.manifest
->>>>>>> f87391961649d638491342dece2746f80fe2d29d
+## build.manifest {#build-manifest}
 
 - **类型：** `boolean | string`
 - **默认：** `false`
