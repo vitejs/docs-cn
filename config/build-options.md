@@ -223,6 +223,30 @@ export default defineConfig({
 ]
 ```
 
+::: tip
+
+如果你想在构建后的代码中引用许可文件，可以使用 `build.rolldownOptions.output.postBanner` 在文件顶部注入注释。例如：
+
+<!-- TODO: add a link for output.postBanner above to Rolldown's documentation -->
+
+```js twoslash [vite.config.js]
+import { defineConfig } from 'vite'
+
+export default defineConfig({
+  build: {
+    license: true,
+    rolldownOptions: {
+      output: {
+        postBanner:
+          '/* See licenses of bundled dependencies at https://example.com/license.md */',
+      },
+    },
+  },
+})
+```
+
+:::
+
 ## build.manifest {#build-manifest}
 
 - **类型：** `boolean | string`
