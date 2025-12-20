@@ -101,7 +101,7 @@ Vite 忽略 `tsconfig.json` 中的 `target` 值，遵循与 `esbuild` 相同的�
 
 - [TypeScript 文档](https://www.typescriptlang.org/tsconfig/#paths)
 
-可以指定 `resolve.tsconfigPaths: true` 来告诉 Vite 使用 [tsconfig.json](file:///Users/liuxin/Project/开源/vite-docs-cn/tsconfig.json) 中的 `paths` 选项来解析导入。
+可以指定 `resolve.tsconfigPaths: true` 来告诉 Vite 使用 `tsconfig.json` 中的 `paths` 选项来解析导入。
 
 需要注意的是，这个功能会有性能损耗，并且 [TypeScript 团队不建议使用这个选项来改变外部工具的行为](https://www.typescriptlang.org/tsconfig/#paths:~:text=Note%20that%20this%20feature%20does%20not%20change%20how%20import%20paths%20are%20emitted%20by%20tsc%2C%20so%20paths%20should%20only%20be%20used%20to%20inform%20TypeScript%20that%20another%20tool%20has%20this%20mapping%20and%20will%20use%20it%20at%20runtime%20or%20when%20bundling.)。
 
