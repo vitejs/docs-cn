@@ -171,7 +171,7 @@ declare const __APP_VERSION__: string
 - **类型：** `boolean`
 - **默认：** `false`
 
-启用 tsconfig 路径解析功能。[tsconfig.json](file:///Users/liuxin/Project/开源/vite-docs-cn/tsconfig.json) 中的 `paths` 选项将用于解析导入。更多详情请参见[功能](/guide/features.md#paths)。
+启用 tsconfig 路径解析功能。`tsconfig.json` 中的 `paths` 选项将用于解析导入。更多详情请参见[功能](/guide/features.md#paths)。
 
 ## html.cspNonce
 
