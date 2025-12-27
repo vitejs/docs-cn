@@ -367,21 +367,12 @@ const plugin = {
 - Rolldown 缺少支持：以下功能不受 Rolldown 支持，Vite 也不再支持这些功能。
   - `build.rollupOptions.output.format: 'system'` ([rolldown#2387](https://github.com/rolldown/rolldown/issues/2387))
   - `build.rollupOptions.output.format: 'amd'` ([rolldown#2387](https://github.com/rolldown/rolldown/issues/2528))
-<<<<<<< HEAD
   - 完整的 TypeScript 遗留命名空间支持 ([oxc-project/oxc#14227](https://github.com/oxc-project/oxc/issues/14227))
   - `shouldTransformCachedModule` 钩子 ([rolldown#4389](https://github.com/rolldown/rolldown/issues/4389))
   - `resolveImportMeta` 钩子 ([rolldown#1010](https://github.com/rolldown/rolldown/issues/1010))
   - `renderDynamicImport` 钩子 ([rolldown#4532](https://github.com/rolldown/rolldown/issues/4532))
   - `resolveFileUrl` 钩子
-- `parseAst` / `parseAstAsync` 函数现在已被弃用，推荐使用功能更多的 `parse` / `parseAsync` 函数。
-=======
-  - Complete support for TypeScript legacy namespace ([oxc-project/oxc#14227](https://github.com/oxc-project/oxc/issues/14227))
-  - `shouldTransformCachedModule` hook ([rolldown#4389](https://github.com/rolldown/rolldown/issues/4389))
-  - `resolveImportMeta` hook ([rolldown#1010](https://github.com/rolldown/rolldown/issues/1010))
-  - `renderDynamicImport` hook ([rolldown#4532](https://github.com/rolldown/rolldown/issues/4532))
-  - `resolveFileUrl` hook
-- `parseAst` / `parseAstAsync` functions are now deprecated in favor of `parseSync` / `parse` functions which has more features.
->>>>>>> 7a245e3bbb9aebe4242f334c3c23f05daf8a0c49
+- `parseAst` / `parseAstAsync` 函数现在已被弃用，推荐使用功能更多的 `parseSync` / `parse` 函数。
 
 ## 从 v6 迁移 {#migration-from-v6}
 
