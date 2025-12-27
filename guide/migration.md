@@ -372,7 +372,7 @@ const plugin = {
   - `resolveImportMeta` 钩子 ([rolldown#1010](https://github.com/rolldown/rolldown/issues/1010))
   - `renderDynamicImport` 钩子 ([rolldown#4532](https://github.com/rolldown/rolldown/issues/4532))
   - `resolveFileUrl` 钩子
-- `parseAst` / `parseAstAsync` 函数现在已被弃用，推荐使用功能更多的 `parse` / `parseAsync` 函数。
+- `parseAst` / `parseAstAsync` 函数现在已被弃用，推荐使用功能更多的 `parseSync` / `parse` 函数。
 
 ## 从 v6 迁移 {#migration-from-v6}
 
