@@ -86,7 +86,7 @@ Vite 的打包工具替换带来的影响远不止性能提升。打包工具利
 1. **直接升级**：更新 `package.json` 并运行常规的开发和构建命令。
 2. **渐进式迁移**：先从 Vite 7 迁移到 `rolldown-vite` 包，然后再到 Vite 8。这样你可以识别出与 Rolldown 相关的不兼容性或问题，而无需对 Vite 进行其他更改。（推荐用于较大或复杂的项目）
 
-> [!重要的]
+> [!IMPORTANT]
 > 如果你依赖特定的 Rollup 或 esbuild 选项，你可能需要对 Vite 配置进行一些调整。请参考[迁移指南](/guide/migration)获取详细的说明和示例。
 > 与所有非稳定的主版本一样，升级后建议进行全面测试以确保一切运行正常。如有任何[问题](https://github.com/vitejs/rolldown-vite/issues)，请务必报告。
 
