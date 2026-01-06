@@ -22,7 +22,11 @@ Vite 旨在为常见的 web 开发工作提供开箱即用的支持。在搜索�
 
 ### [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react-swc)
 
+<<<<<<< HEAD
 在开发时会将 Babel 替换为 [SWC](https://swc.rs/)。在生产环境构建期间，若使用了插件则会使用 SWC+Oxc 转换器，若没有使用插件则仅会用到 Oxc 转换器。对于需要自定义插件的大型项目，如果该插件在 SWC 中也可用，冷启动和模块热替换（HMR）将会有显著提升。
+=======
+Replaces Babel with [SWC](https://swc.rs/) during development. During production builds, SWC+Oxc Transformer are used when using plugins, and Oxc Transformer only otherwise. For big projects that require custom plugins, cold start and Hot Module Replacement (HMR) can be significantly faster, if the plugin is also available for SWC.
+>>>>>>> 58bfde73af61e06ff72c2b1657d7f08490454450
 
 ### [@vitejs/plugin-rsc](https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-rsc)
 

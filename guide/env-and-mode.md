@@ -109,8 +109,13 @@ VITE_FOO=foo${VITE_BAR}
 VITE_BAR=bar
 ```
 
+<<<<<<< HEAD
 这在 shell 脚本和其他工具（如 `docker compose`）中不起作用。
 不过，Vite 支持这种行为，因为 `dotenv-expand` 已经支持这种行为很长时间了，JavaScript 生态系统中的其他工具也使用支持这种行为的旧版本。
+=======
+This does not work in shell scripts and other tools like `docker compose`.
+That said, Vite supports this behavior as this has been supported by `dotenv-expand` for a long time and other tools in JavaScript ecosystem use older versions that support this behavior.
+>>>>>>> 58bfde73af61e06ff72c2b1657d7f08490454450
 
 为避免出现互操作问题，建议避免依赖这种行为。今后，Vite 可能会对这种行为发出警告。
 
