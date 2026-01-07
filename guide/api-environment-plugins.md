@@ -7,13 +7,8 @@
 
 资料：
 
-<<<<<<< HEAD
 - [反馈讨论](https://github.com/vitejs/vite/discussions/16358) 我们在此处收集新 API 的反馈。
 - [环境 API PR](https://github.com/vitejs/vite/pull/16471) 新 API 在此处被实现并进行了审查。
-=======
-- [Feedback discussion](https://github.com/vitejs/vite/discussions/16358) where we are gathering feedback about the new APIs.
-- [Environment API PR](https://github.com/vitejs/vite/pull/16471) where the new APIs were implemented and reviewed.
->>>>>>> 58bfde73af61e06ff72c2b1657d7f08490454450
 
 请与我们分享您的反馈。
 :::
@@ -52,11 +47,7 @@ Vite 服务器有一个共享的插件管道，但在处理模块时，它总是
   }
 ```
 
-<<<<<<< HEAD
 一个空对象就足以注册环境，默认值则来自于根级别的环境配置。
-=======
-An empty object is enough to register the environment, using default values from the root level environment config.
->>>>>>> 58bfde73af61e06ff72c2b1657d7f08490454450
 
 ## 使用钩子配置环境 {#configuring-environment-using-hooks}
 
@@ -242,21 +233,13 @@ export default defineConfig({
 
 :::warning Note
 
-<<<<<<< HEAD
 请注意，此功能仅适用于支持 HMR 的环境。
-=======
-Note that this feature is only available for environments that support HMR.
->>>>>>> 58bfde73af61e06ff72c2b1657d7f08490454450
 
 :::
 
 ### 管理应用程序实例 {#managing-the-application-instances}
 
-<<<<<<< HEAD
 需要注意的是，在同一环境中可能有多个应用程序实例在运行。例如，如果你在浏览器中打开了多个标签页，每个标签页都是一个独立的应用程序实例，并且与服务器有独立的连接。
-=======
-Be aware that there might be multiple application instances running in the same environment. For example, if you have multiple tabs open in the browser, each tab is a separate application instance and has a separate connection to the server.
->>>>>>> 58bfde73af61e06ff72c2b1657d7f08490454450
 
 当建立新连接时，会在环境的 `hot` 实例上触发 `vite:client:connect` 事件。当连接关闭时，会触发 `vite:client:disconnect` 事件。
 

@@ -7,13 +7,8 @@
 
 资料：
 
-<<<<<<< HEAD
 - [反馈讨论](https://github.com/vitejs/vite/discussions/16358) 我们在此处收集新 API 的反馈。
 - [环境 API PR](https://github.com/vitejs/vite/pull/16471) 新 API 在此处被实现并进行了审查。
-=======
-- [Feedback discussion](https://github.com/vitejs/vite/discussions/16358) where we are gathering feedback about the new APIs.
-- [Environment API PR](https://github.com/vitejs/vite/pull/16471) where the new APIs were implemented and reviewed.
->>>>>>> 58bfde73af61e06ff72c2b1657d7f08490454450
 
 请与我们分享您的反馈。
 :::

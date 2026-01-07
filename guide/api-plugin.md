@@ -8,11 +8,7 @@ Vite 插件扩展了设计出色的 Rollup 接口，带有一些 Vite 独有的�
 
 ## 致插件创作者 {#authoring-a-plugin}
 
-<<<<<<< HEAD
 Vite 努力秉承开箱即用的原则，因此在创作一款新插件前，请确保已经阅读过 [Vite 的功能指南](/guide/features)，避免重复劳作。同时还应查看社区是否存在可用插件，包括 [兼容 Rollup 的插件](https://github.com/rollup/awesome) 以及 [Vite 的专属插件](https://github.com/vitejs/awesome-vite#plugins)。
-=======
-Vite strives to offer established patterns out of the box, so before creating a new plugin make sure that you check the [Features guide](/guide/features) to see if your need is covered. Also review available community plugins, both in the form of a [compatible Rollup plugin](https://github.com/rollup/awesome) and [Vite Specific plugins](https://github.com/vitejs/awesome-vite#plugins).
->>>>>>> 58bfde73af61e06ff72c2b1657d7f08490454450
 
 当创作插件时，你可以在 `vite.config.js` 中直接使用它。没必要直接为它创建一个新的 package。当你发现某个插件在你项目中很有用时，可以考虑 [在社区中](https://chat.vite.dev) 将其与他人分享。
 
@@ -28,11 +24,7 @@ Vite strives to offer established patterns out of the box, so before creating a 
 - Rollup 插件应该有一个带 `rollup-plugin-` 前缀、语义清晰的名称。
 - 在 package.json 中包含 `rollup-plugin` 和 `vite-plugin` 关键字。
 
-<<<<<<< HEAD
 这样，插件也可以用于纯 Rollup 或基于 WMR 的项目。
-=======
-This exposes the plugin to be also used in pure Rollup or WMR based projects.
->>>>>>> 58bfde73af61e06ff72c2b1657d7f08490454450
 
 对于 Vite 专属的插件：
 
@@ -40,11 +32,7 @@ This exposes the plugin to be also used in pure Rollup or WMR based projects.
 - 在 package.json 中包含 `vite-plugin` 关键字。
 - 在插件文档增加一部分关于为什么本插件是一个 Vite 专属插件的详细说明（如，本插件使用了 Vite 特有的插件钩子）。
 
-<<<<<<< HEAD
 如果你的插件只适用于特定的框架，它的名字应该遵循以下前缀格式：
-=======
-If your plugin is only going to work for a particular framework, its name should be included as part of the prefix.
->>>>>>> 58bfde73af61e06ff72c2b1657d7f08490454450
 
 - `vite-plugin-vue-` 前缀作为 Vue 插件
 - `vite-plugin-react-` 前缀作为 React 插件

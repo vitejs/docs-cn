@@ -19,11 +19,7 @@
 
 ### 该包仅支持 ESM {#this-package-is-esm-only}
 
-<<<<<<< HEAD
 当使用 `require` 导入一个仅支持 ESM 的包时，会出现以下错误。
-=======
-When importing an ESM only package by `require`, the following error happens.
->>>>>>> 58bfde73af61e06ff72c2b1657d7f08490454450
 
 > Failed to resolve "foo". This package is ESM only but it was tried to load by `require`.
 
