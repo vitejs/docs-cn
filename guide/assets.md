@@ -140,11 +140,7 @@ function getImageUrl(name) {
 }
 ```
 
-<<<<<<< HEAD
 在生产构建时，Vite 才会进行必要的转换保证 URL 在打包和资源哈希后仍指向正确的地址。然而，这个 URL 字符串必须是静态的，这样才好分析。否则代码将被原样保留、因而在 `build.target` 不支持 `import.meta.url` 时会导致运行时错误。
-=======
-During the production build, Vite will perform necessary transforms so that the URLs still point to the correct location even after bundling and asset hashing. However, the URL string must be static so it can be analyzed, otherwise the code will be left as is, which can cause runtime errors if `build.target` does not support `import.meta.url`.
->>>>>>> 58bfde73af61e06ff72c2b1657d7f08490454450
 
 ```js
 // Vite 不会转换这个

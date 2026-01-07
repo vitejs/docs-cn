@@ -20,8 +20,4 @@
 
 请查看 [用于框架的环境 API 指南](../guide/api-environment-frameworks.md)。
 
-<<<<<<< HEAD
 当使用 Module Runner API 时，不再需要调用 `server.ssrFixStacktrace` 和 `server.ssrRewriteStacktrace`。除非 `sourcemapInterceptor` 被设置为 `false`，否则堆栈追踪信息将会自动更新。
-=======
-`server.ssrFixStacktrace` and `server.ssrRewriteStacktrace` do not have to be called when using the Module Runner APIs. The stack traces will be updated unless `sourcemapInterceptor` is set to `false`.
->>>>>>> 58bfde73af61e06ff72c2b1657d7f08490454450
