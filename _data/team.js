@@ -256,4 +256,15 @@ export const cnTranslator = [
       { icon: 'github', link: 'https://github.com/waynzh' },
     ],
   },
+  {
+    avatar: 'https://www.github.com/lxKylin.png',
+    name: 'Kylin',
+    title: '前端开发者',
+    org: '',
+    orgLink: '',
+    desc: 'Vite 团队中文翻译维护者',
+    links: [
+      { icon: 'github', link: 'https://github.com/lxKylin' },
+    ],
+  },
 ]
