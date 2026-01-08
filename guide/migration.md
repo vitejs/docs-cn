@@ -2,7 +2,11 @@
 
 如果正在从 `rolldown-vite` 进行迁移，那么只有标题中包含 <Badge text="NRV" type="warning" /> 的部分适用。
 
+<<<<<<< HEAD
 ## 浏览器兼容性目标变更 [<Badge text="NRV" type="warning" />](#migration-from-v7) {#default-browser-target-change}
+=======
+## Default Browser Target Change [<Badge text="NRV" type="warning" />](#migration-from-v7)
+>>>>>>> d2208e7223406bb114ca27b017c7a2b1155b11a5
 
 `build.target` 和 `'baseline-widely-available'` 的默认浏览器值已更新为较新的浏览器版本：
 
@@ -32,7 +36,11 @@ Vite 8 使用基于 Rolldown 和 Oxc 的工具，而不是 esbuild 和 Rollup。
 }
 ```
 
+<<<<<<< HEAD
 ### 依赖优化器现在使用 Rolldown {#dependency-optimizer-now-uses-rolldown}
+=======
+### Dependency Optimizer Now Uses Rolldown
+>>>>>>> d2208e7223406bb114ca27b017c7a2b1155b11a5
 
 现在依赖优化使用 Rolldown 而不是 esbuild。Vite 仍然通过自动将 [`optimizeDeps.esbuildOptions`](/config/dep-optimization-options#optimizedeps-esbuildoptions) 转换为 [`optimizeDeps.rolldownOptions`](/config/dep-optimization-options#optimizedeps-rolldownoptions) 来支持向后兼容。`optimizeDeps.esbuildOptions` 现在已被弃用，将来会被移除，我们鼓励您迁移到 `optimizeDeps.rolldownOptions`。
 
@@ -338,7 +346,11 @@ const plugin = {
 
 ## 总体变化 [<Badge text="NRV" type="warning" />](#migration-from-v7) {#general-changes}
 
+<<<<<<< HEAD
 ## 移除了已弃用的功能 [<Badge text="NRV" type="warning" />](#migration-from-v7) {#removed-deprecated-features}
+=======
+## Removed Deprecated Features [<Badge text="NRV" type="warning" />](#migration-from-v7)
+>>>>>>> d2208e7223406bb114ca27b017c7a2b1155b11a5
 
 **_TODO：此更改尚未实现，但将在稳定版发布前实现。_**
 
@@ -346,6 +358,7 @@ const plugin = {
 
 还有其他一些只影响少数用户的破坏性更改。
 
+<<<<<<< HEAD
 - **[TODO: 这将在稳定版发布前修复]** https://github.com/rolldown/rolldown/issues/5726 (affects nuxt, qwik)
 - **[TODO: 这将在稳定版发布前修复]** https://github.com/rolldown/rolldown/issues/3403 (affects sveltekit)
 - **[TODO: 这将在稳定版发布前修复]** 由于缺少预构建块输出功能([rolldown#4304](https://github.com/rolldown/rolldown/issues/4034))，旧版块现在作为资源文件而不是块文件输出。这意味着块相关选项不适用于旧版块，清单文件也不会将旧版块包含为块文件。
@@ -365,6 +378,22 @@ const plugin = {
 - 使用 plugin-legacy 转换到低于 ES5 的版本不受支持 ([rolldown-vite#452](https://github.com/vitejs/rolldown-vite/issues/452))
 - 向 `build.target` 选项传递同一浏览器的多个版本现在会报错：esbuild 会选择最新的版本，这可能不是你的本意。
 - Rolldown 缺少支持：以下功能不受 Rolldown 支持，Vite 也不再支持这些功能。
+=======
+- **[TODO: this will be fixed before stable release]** https://github.com/rolldown/rolldown/issues/5726 (affects nuxt, qwik)
+- **[TODO: this will be fixed before stable release]** Legacy chunks are emitted as an asset file instead of a chunk file due to the lack of prebuilt chunk emit feature ([rolldown#4304](https://github.com/rolldown/rolldown/issues/4034)). This means the chunk related options does not apply to legacy chunks and the manifest file will not include legacy chunks as a chunk file.
+- **[TODO: this will be fixed before stable release]** `@vite-ignore` comment edge case ([rolldown-vite#426](https://github.com/vitejs/rolldown-vite/issues/426))
+- [Extglobs](https://github.com/micromatch/picomatch/blob/master/README.md#extglobs) are not supported yet ([rolldown-vite#365](https://github.com/vitejs/rolldown-vite/issues/365))
+- `define` does not share reference for objects: When you pass an object as a value to `define`, each variable will have a separate copy of the object. See [Oxc Transformer document](https://oxc.rs/docs/guide/usage/transformer/global-variable-replacement#define) for more details.
+- `bundle` object changes (`bundle` is an object passed in `generateBundle` / `writeBundle` hooks, returned by `build` function):
+  - Assigning to `bundle[foo]` is not supported. This is discouraged by Rollup as well. Please use `this.emitFile()` instead.
+  - the reference is not shared across the hooks ([rolldown-vite#410](https://github.com/vitejs/rolldown-vite/issues/410))
+  - `structuredClone(bundle)` errors with `DataCloneError: #<Object> could not be cloned`. This is not supported anymore. Please clone it with `structuredClone({ ...bundle })`. ([rolldown-vite#128](https://github.com/vitejs/rolldown-vite/issues/128))
+- All parallel hooks in Rollup works as sequential hooks. See [Rolldown's documentation](https://rolldown.rs/apis/plugin-api#sequential-hook-execution) for more details.
+- `"use strict";` is not injected sometimes. See [Rolldown's documentation](https://rolldown.rs/in-depth/directives) for more details.
+- Transforming to lower than ES5 with plugin-legacy is not supported ([rolldown-vite#452](https://github.com/vitejs/rolldown-vite/issues/452))
+- Passing the same browser with multiple versions of it to `build.target` option now errors: esbuild selects the latest version of it, which was probably not what you intended.
+- Missing support by Rolldown: The following features are not supported by Rolldown and is no longer supported by Vite.
+>>>>>>> d2208e7223406bb114ca27b017c7a2b1155b11a5
   - `build.rollupOptions.output.format: 'system'` ([rolldown#2387](https://github.com/rolldown/rolldown/issues/2387))
   - `build.rollupOptions.output.format: 'amd'` ([rolldown#2387](https://github.com/rolldown/rolldown/issues/2528))
   - 完整的 TypeScript 遗留命名空间支持 ([oxc-project/oxc#14227](https://github.com/oxc-project/oxc/issues/14227))
