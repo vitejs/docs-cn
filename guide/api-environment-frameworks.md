@@ -308,10 +308,12 @@ export function createHandler(input) {
 
 在命令行接口中，调用 `vite build` 和 `vite build --ssr` 仍将只构建客户端和仅 ssr 环境以保证向后兼容性。
 
-当 `builder` 为 `undefined` 时（或者调用 `vite build --app`）时，`vite build` 将选择构建整个应用。这将在未来的主要版本中成为默认设置。将创建一个 `ViteBuilder` 实例（构建时等同于 `ViteDevServer`），用于为生产环境构建所有配置的环境。默认情况下，环境的构建按照 `environments` 记录的顺序依次运行。框架或用户可以进一步配置环境的构建方式，使用：
+当 `builder` 选项 为 `undefined` 时（或者调用 `vite build --app`）时，`vite build` 将选择构建整个应用。这将在未来的主要版本中成为默认设置。将创建一个 `ViteBuilder` 实例（构建时等同于 `ViteDevServer`），用于为生产环境构建所有配置的环境。默认情况下，环境的构建按照 `environments` 记录的顺序依次运行。框架或用户可以进一步使用 `builder.buildApp` 选项配置环境的构建方式：
 
-```js
-export default {
+```js [vite.config.js]
+import { defineConfig } from 'vite'
+
+export default defineConfig({
   builder: {
     buildApp: async (builder) => {
       const environments = Object.values(builder.environments)
@@ -320,7 +322,7 @@ export default {
       )
     },
   },
-}
+})
 ```
 
 插件还可以定义一个 `buildApp` 钩子。顺序 `'pre'` 和 `'null'` 在配置的 `builder.buildApp` 之前执行，顺序 `'post'` 钩子在其之后执行。`environment.isBuilt` 可用于检查环境是否已被构建。

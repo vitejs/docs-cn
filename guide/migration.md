@@ -347,13 +347,8 @@ const plugin = {
 还有其他一些只影响少数用户的破坏性更改。
 
 - **[TODO: 这将在稳定版发布前修复]** https://github.com/rolldown/rolldown/issues/5726 (affects nuxt, qwik)
-- **[TODO: 这将在稳定版发布前修复]** https://github.com/rolldown/rolldown/issues/3403 (affects sveltekit)
 - **[TODO: 这将在稳定版发布前修复]** 由于缺少预构建块输出功能([rolldown#4304](https://github.com/rolldown/rolldown/issues/4034))，旧版块现在作为资源文件而不是块文件输出。这意味着块相关选项不适用于旧版块，清单文件也不会将旧版块包含为块文件。
-- **[TODO: 这将在稳定版发布前修复]** 解析器缓存在 Vitest 中破坏了一些边缘情况 ([rolldown-vite#466](https://github.com/vitejs/rolldown-vite/issues/466), [vitest#8754](https://github.com/vitest-dev/vitest/issues/8754#issuecomment-3441115032))
-- **[TODO: 这将在稳定版发布前修复]** 解析器无法与 yarn pnp 配合使用 ([rolldown-vite#324](https://github.com/vitejs/rolldown-vite/issues/324), [rolldown-vite#392](https://github.com/vitejs/rolldown-vite/issues/392))
-- **[TODO: 这将在稳定版发布前修复]** 原生插件排序问题 ([rolldown-vite#373](https://github.com/vitejs/rolldown-vite/issues/373))
 - **[TODO: 这将在稳定版发布前修复]** `@vite-ignore` 注释边缘情况 ([rolldown-vite#426](https://github.com/vitejs/rolldown-vite/issues/426))
-- **[TODO: 这将在稳定版发布前修复]** https://github.com/rolldown/rolldown/issues/3403
 - [Extglobs](https://github.com/micromatch/picomatch/blob/master/README.md#extglobs) 尚未得到支持 ([rolldown-vite#365](https://github.com/vitejs/rolldown-vite/issues/365))
 - `define` 不共享对象引用：当你传递一个对象作为 `define` 的值时，每个变量都会有一个单独的对象副本。详见 [Oxc 转换器文档](https://oxc.rs/docs/guide/usage/transformer/global-variable-replacement#define)。
 - `bundle` 对象变更（`bundle` 是在 `generateBundle` / `writeBundle` 钩子中传递的对象，由 `build` 函数返回）：
