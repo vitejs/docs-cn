@@ -1,4 +1,8 @@
 import { onMounted, onUnmounted, ref } from 'vue'
+import type {
+  Sponsor,
+  SponsorTier,
+} from '@voidzero-dev/vitepress-theme/src/types/sponsors'
 import voidZeroSvg from './images/voidzero.svg'
 import boltSvg from './images/bolt.svg'
 import nuxtLabsSvg from './images/nuxtlabs.svg'
@@ -12,18 +16,8 @@ interface Sponsors {
   bronze: Sponsor[]
 }
 
-interface Sponsor {
-  name: string
-  img: string
-  url: string
-  /**
-   * Expects to also have an **inversed** image with `-dark` postfix.
-   */
-  hasDark?: true
-}
-
 // shared data across instances so we load only once.
-const data = ref<{ tier: string; size: string; items: Sponsor[] }[]>()
+const data = ref<SponsorTier[]>()
 
 const dataHost = 'https://sponsors.vuejs.org'
 const dataUrl = `${dataHost}/vite.json`
@@ -99,9 +93,10 @@ export function useSponsor() {
   }
 }
 
-function mapSponsors(sponsors: Sponsors) {
+function mapSponsors(sponsors: Sponsors): SponsorTier[] {
   return [
     {
+<<<<<<< HEAD
       tier: '合作伙伴',
       size: 'big',
       items: viteSponsors['special'],
@@ -114,6 +109,20 @@ function mapSponsors(sponsors: Sponsors) {
     {
       tier: '黄金赞助商',
       size: 'medium',
+=======
+      tier: 'in partnership with',
+      size: 'big' as const,
+      items: viteSponsors['special'],
+    },
+    {
+      tier: 'Platinum Sponsors',
+      size: 'big' as const,
+      items: mapImgPath(sponsors['platinum']),
+    },
+    {
+      tier: 'Gold Sponsors',
+      size: 'medium' as const,
+>>>>>>> 7f01a8e976d17c5107c79e80c3c6847f589ab7fa
       items: [...mapImgPath(sponsors['gold']), ...viteSponsors['gold']],
     },
   ]
