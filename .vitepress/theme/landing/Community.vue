@@ -95,10 +95,9 @@ const testimonials: Testimonial[] = [
       class="flex flex-col sm:flex-row justify-between items-center gap-8 sm:gap-20 text-center sm:text-left"
     >
       <div class="flex flex-col gap-3">
-        <h3 class="text-white max-w-xl text-balance">Loved by the community</h3>
+        <h3 class="text-white max-w-xl text-balance">深受社区喜爱</h3>
         <p class="max-w-md text-white/70 text-balance">
-          Don't take our word for it - listen to what Vite community members
-          have to say.
+          不要只听我们说 —— 来听听 Vite 社区成员的声音
         </p>
       </div>
       <div
@@ -116,7 +115,7 @@ const testimonials: Testimonial[] = [
         <!-- NPM Downloads -->
         <div class="flex flex-col gap-3">
           <h2 class="text-white">40m+</h2>
-          <p class="text-grey">Weekly NPM downloads</p>
+          <p class="text-grey">每周 NPM 下载量</p>
         </div>
       </div>
     </div>
