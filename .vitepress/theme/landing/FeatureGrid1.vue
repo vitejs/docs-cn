@@ -13,7 +13,7 @@ import viteAnimation from '@assets/vite/animations/563_x_420_rich_features.riv'
           极速的服务启动
         </h5>
         <p class="sm:max-w-[28rem] text-pretty">
-          通过原生 ESM 提供按需源文件服务，并具有极快的依赖项预打包速度。
+          通过原生 ESM 提供源文件按需加载，并具有极快的依赖项预打包速度。
         </p>
       </div>
       <div class="relative p-10 sm:p-15 flex justify-center bg-[#370a7f]">
