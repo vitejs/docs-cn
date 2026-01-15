@@ -74,7 +74,7 @@ import viteAnimation from '@assets/vite/animations/563_x_420_rich_features.riv'
 
     <div class="flex flex-col gap-3 justify-between border-r-0 border-b-0">
       <div class="p-5 sm:p-10 flex flex-col gap-3">
-        <h5 class="text-white">优化构建</h5>
+        <h5 class="text-white">构建优化</h5>
         <p class="max-w-[25rem] text-pretty">
           由 Rolldown 提供支持的 tree-shaking、内置压缩、精细分块控制。
         </p>
