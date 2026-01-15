@@ -340,6 +340,8 @@ const plugin = {
 
 ## 移除了已弃用的功能 [<Badge text="NRV" type="warning" />](#migration-from-v7) {#removed-deprecated-features}
 
+- 不再支持向 `import.meta.hot.accept` 传递 URL。请改为传递一个 id。([#21382](https://github.com/vitejs/vite/pull/21382))
+
 **_TODO：此更改尚未实现，但将在稳定版发布前实现。_**
 
 ## 进阶 {#advanced}
