@@ -40,7 +40,7 @@ import viteAnimation from '@assets/vite/animations/563_x_420_rich_features.riv'
       <div class="p-5 sm:p-10 flex flex-col gap-3">
         <h5 class="text-white">闪电般快速的 HMR</h5>
         <p class="max-w-[26rem] text-pretty">
-          无论你的应用有多大，保存时都能立即反映更改。
+          无论你的应用有多大，保存时都能立即响应更改。
         </p>
       </div>
       <div class="flex justify-end">
