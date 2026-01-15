@@ -149,11 +149,17 @@ npm add -D esbuild
 
 ## build.rolldownOptions {#build-rolldownoptions}
 
+<<<<<<< HEAD
 - **类型：** [`RolldownOptions`](https://rollupjs.org/configuration-options/)
 
 <!-- TODO: update the link above and below to Rolldown's documentation -->
 
 自定义底层的 Rolldown 打包配置。这与从 Rolldown 配置文件导出的选项相同，并将与 Vite 的内部 Rolldown 选项合并。查看 [Rolldown 选项文档](https://cn.rollupjs.org/configuration-options/) 获取更多细节。
+=======
+- **Type:** [`RolldownOptions`](https://rolldown.rs/reference/)
+
+Directly customize the underlying Rolldown bundle. This is the same as options that can be exported from a Rolldown config file and will be merged with Vite's internal Rolldown options. See [Rolldown options docs](https://rolldown.rs/reference/) for more details.
+>>>>>>> 8ec4edfe5c8a4a8b7d43746b734fc7bca86115a8
 
 ## build.rollupOptions {#build-rollupoptions}
 
@@ -352,10 +358,15 @@ npm add -D terser
 
 ## build.watch {#build-watch}
 
+<<<<<<< HEAD
 <!-- TODO: update the link below to Rolldown's documentation -->
 
 - **类型：** [`WatcherOptions`](https://rollupjs.org/configuration-options/#watch)`| null`
 - **默认：** `null`
+=======
+- **Type:** [`WatcherOptions`](https://rolldown.rs/reference/InputOptions.watch)`| null`
+- **Default:** `null`
+>>>>>>> 8ec4edfe5c8a4a8b7d43746b734fc7bca86115a8
 
 设置为 `{}` 则会启用 rollup 的监听器。对于只在构建阶段或者集成流程使用的插件很常用。
 
