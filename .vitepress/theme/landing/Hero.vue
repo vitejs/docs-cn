@@ -47,15 +47,14 @@ const installTabs = [
           />
         </a>
         <h1 class="text-white text-pretty max-w-[25rem]">
-          The Build Tool for the Web
+          面向 Web 的 <br /> 构建工具
         </h1>
         <p class="text-white/70 md:text-lg max-w-[27rem] text-pretty">
-          Vite is a blazing fast frontend build tool powering the next
-          generation of web applications.
+          Vite 是一款速度极快的前端构建工具 <br /> 为下一代 Web 应用程序提供支持
         </p>
         <div class="flex items-center gap-5 mt-8">
           <a href="/guide/" class="button button--primary inline-block w-fit">
-            Get Started
+            开始
           </a>
           <a
             href="https://github.com/vitejs/vite"
@@ -63,7 +62,7 @@ const installTabs = [
             rel="noopener noreferrer"
             class="button inline-block w-fit"
           >
-            View on GitHub
+            在 GitHub 上查看
           </a>
         </div>
       </div>

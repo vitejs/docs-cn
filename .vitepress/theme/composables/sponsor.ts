@@ -96,33 +96,18 @@ export function useSponsor() {
 function mapSponsors(sponsors: Sponsors): SponsorTier[] {
   return [
     {
-<<<<<<< HEAD
       tier: '合作伙伴',
-      size: 'big',
+      size: 'big' as const,
       items: viteSponsors['special'],
     },
     {
       tier: '铂金赞助商',
-      size: 'big',
+      size: 'big' as const,
       items: mapImgPath(sponsors['platinum']),
     },
     {
       tier: '黄金赞助商',
-      size: 'medium',
-=======
-      tier: 'in partnership with',
-      size: 'big' as const,
-      items: viteSponsors['special'],
-    },
-    {
-      tier: 'Platinum Sponsors',
-      size: 'big' as const,
-      items: mapImgPath(sponsors['platinum']),
-    },
-    {
-      tier: 'Gold Sponsors',
       size: 'medium' as const,
->>>>>>> 7f01a8e976d17c5107c79e80c3c6847f589ab7fa
       items: [...mapImgPath(sponsors['gold']), ...viteSponsors['gold']],
     },
   ]

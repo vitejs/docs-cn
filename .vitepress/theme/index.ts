@@ -15,15 +15,8 @@ import AsideSponsors from './components/AsideSponsors.vue'
 
 export default {
   Layout() {
-<<<<<<< HEAD
-    return h(DefaultTheme.Layout, null, {
-      'aside-outline-after': () => h(WwAds),
-      'layout-top': () => h(SponsorBanner),
-      'aside-ads-before': () => h(AsideSponsors)
-=======
     return h((Theme as any).Layout, null, {
       'aside-ads-before': () => h(AsideSponsors),
->>>>>>> 7f01a8e976d17c5107c79e80c3c6847f589ab7fa
     })
   },
   enhanceApp(ctx: any) {
@@ -33,12 +26,7 @@ export default {
     app.component('YouTubeVideo', YouTubeVideo)
     app.component('NonInheritBadge', NonInheritBadge)
     app.use(TwoslashFloatingVue)
-<<<<<<< HEAD
-  }
-} satisfies Theme
-=======
 
     Theme.enhanceApp(ctx)
   },
 }
->>>>>>> 7f01a8e976d17c5107c79e80c3c6847f589ab7fa
