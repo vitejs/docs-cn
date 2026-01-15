@@ -25,26 +25,6 @@ const ogUrl = 'https://vite.dev'
 // netlify envs
 const commitRef = process.env.COMMIT_REF?.slice(0, 8) || 'dev'
 
-// const deployType = (() => {
-//   switch (deployURL) {
-//     case 'https://main--vite-docs-main.netlify.app':
-//       return 'main'
-//     case '':
-//       return 'local'
-//     default:
-//       return 'release'
-//   }
-// })()
-// const additionalTitle = ((): string => {
-//   switch (deployType) {
-//     case 'main':
-//       return ' (main branch)'
-//     case 'local':
-//       return ' (local)'
-//     case 'release':
-//       return ''
-//   }
-// })()
 const versionLinks = (() => {
   const links: FooterLink[] = []
 
