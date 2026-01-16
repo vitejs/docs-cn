@@ -285,8 +285,8 @@ export default defineConfig({
 })
 ```
 
-::: tip Importing files
-Since the same code is prepended to files in different directories, relative paths won't resolve correctly. Use absolute paths or [aliases](#resolve-alias) instead.
+::: tip 导入文件
+同一代码段被添加到不同目录的文件头部时，相对路径解析会出错。建议使用绝对路径或[aliases](#resolve-alias)。
 :::
 
 ## css.preprocessorMaxWorkers
