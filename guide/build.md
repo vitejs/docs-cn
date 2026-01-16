@@ -50,7 +50,7 @@
 
 ## 自定义构建 {#customizing-the-build}
 
-构建过程可以通过多种 [构建配置选项](/config/#build-options) 来自定义构建。具体来说，你可以通过 `build.rolldownOptions` 直接调整底层的 [Rolldown 选项](https://cn.rollupjs.org/configuration-options/)：
+构建过程可以通过多种 [构建配置选项](/config/#build-options) 来自定义构建。具体来说，你可以通过 `build.rolldownOptions` 直接调整底层的 [Rolldown 选项](https://rolldown.rs/reference/)：
 
 <!-- TODO: update the link above and below to Rolldown's documentation -->
 
@@ -58,7 +58,7 @@
 export default defineConfig({
   build: {
     rolldownOptions: {
-      // https://rollupjs.org/configuration-options/
+      // https://rolldown.rs/reference/
     },
   },
 })
@@ -84,7 +84,7 @@ window.addEventListener('vite:preloadError', (event) => {
 
 ## 文件变化时重新构建 {#rebuild-on-files-changes}
 
-你可以使用 `vite build --watch` 来启用 rollup 的监听器。或者，你可以直接通过 `build.watch` 调整底层的 [`WatcherOptions`](https://cn.rollupjs.org/configuration-options/#watch) 选项：
+你可以使用 `vite build --watch` 来启用 rollup 的监听器。或者，你可以直接通过 `build.watch` 调整底层的 [`WatcherOptions`](https://rolldown.rs/reference/InputOptions.watch) 选项：
 
 <!-- TODO: update the link above to Rolldown's documentation -->
 
@@ -92,7 +92,7 @@ window.addEventListener('vite:preloadError', (event) => {
 export default defineConfig({
   build: {
     watch: {
-      // https://cn.rollupjs.org/configuration-options/#watch
+      // https://rolldown.rs/reference/InputOptions.watch
     },
   },
 })

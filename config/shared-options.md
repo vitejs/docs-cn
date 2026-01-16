@@ -285,6 +285,10 @@ export default defineConfig({
 })
 ```
 
+::: tip 导入文件
+同一代码段被添加到不同目录的文件头部时，相对路径解析会出错。建议使用绝对路径或[aliases](#resolve-alias)。
+:::
+
 ## css.preprocessorMaxWorkers
 
 - **类型：** `number | true`
