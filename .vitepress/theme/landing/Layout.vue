@@ -30,7 +30,11 @@ const { data: sponsors } = useSponsor()
   <HeadingSection heading="支持你喜爱的框架和工具" />
   <ViteFrameworks />
   <ViteCommunity />
-  <Sponsors :sponsors="sponsors" />
+  <Sponsors
+    heading="免费 & 开源"
+    sponsor-link-text="成为赞助商"
+    description="Vite 采用 MIT 许可协议，将始终保持免费开源。这得益于我们的贡献者及以下企业的支持："
+   :sponsors="sponsors" />
   <Spacer />
   <Footer
     heading="使用 Vite 开始构建"
