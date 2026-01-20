@@ -256,10 +256,17 @@ cd vite
 pnpm install
 cd packages/vite
 pnpm run build
+<<<<<<< HEAD
 pnpm link --global # 在这一步中可使用你喜欢的包管理器
 ```
 
 然后，回到你的 Vite 项目并运行 `pnpm link --global vite`（或者使用你的其他包管理工具来全局链接 `vite`）。重新启动开发服务器来体验新功能吧！
+=======
+pnpm link # use your preferred package manager for this step
+```
+
+Then go to your Vite based project and run `pnpm link vite` (or the package manager that you used to link `vite` globally). Now restart the development server to ride on the bleeding edge!
+>>>>>>> 754ea3fb2d73066bd63256f6fbb601230f3af6cc
 
 想了解更多关于 Vite 如何以及何时发布的信息，请查看 [发布](../releases.md) 文档。
 
