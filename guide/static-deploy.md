@@ -113,6 +113,7 @@ $ npm run preview
 
 ### Netlify CLI {#netlify-cli}
 
+<<<<<<< HEAD
 1. 安装 [Netlify CLI](https://cli.netlify.com/)。
 2. 使用 `ntl init` 创建一个新站点。
 3. 使用 `ntl deploy` 来部署。
@@ -134,6 +135,13 @@ Netlify CLI 会给你分享一个预览的 URL 来检查部署结果。当你准
 # 部署站点到生产环境
 $ ntl deploy --prod
 ```
+=======
+1. Install the [Netlify CLI](https://docs.netlify.com/api-and-cli-guides/cli-guides/get-started-with-cli/) via `npm install -g netlify-cli`.
+2. Create a new site using `netlify init`.
+3. Deploy using `netlify deploy`.
+
+The Netlify CLI will share with you a preview URL to inspect. When you are ready to go into production, use the `prod` flag: `netlify deploy --prod`.
+>>>>>>> 527f6942ddc4966098914ebd6b507b7392b03ae8
 
 ### Netlify with Git {#netlify-with-git}
 
@@ -149,6 +157,7 @@ $ ntl deploy --prod
 
 ### Vercel CLI {#vercel-cli}
 
+<<<<<<< HEAD
 1. 安装 [Vercel CLI](https://vercel.com/cli) 并运行 `vercel` 来部署。
 2. Vercel 会检测到你正在使用 Vite，并会为你开启相应的正确配置。
 3. 你的应用被部署好了！（示例：[vite-vue-template.vercel.app](https://vite-vue-template.vercel.app/)）
@@ -162,6 +171,13 @@ Vercel CLI
 ```
 
 ### Vercel for Git {#vercel-for-git}
+=======
+1. Install the [Vercel CLI](https://vercel.com/cli) via `npm i -g vercel` and run `vercel` to deploy.
+2. Vercel will detect that you are using Vite and will enable the correct settings for your deployment.
+3. Your application is deployed! (e.g. [vite-vue-template.vercel.app](https://vite-vue-template.vercel.app/))
+
+### Vercel with Git
+>>>>>>> 527f6942ddc4966098914ebd6b507b7392b03ae8
 
 1. 将你的代码推送到远程仓库（GitHub，GitLab，Bitbucket）
 2. [导入你的 Vite 仓库](https://vercel.com/new) 到 Vercel
@@ -213,9 +229,17 @@ $ npx wrangler pages deploy dist
 
 ## Google Firebase {#google-firebase}
 
+<<<<<<< HEAD
 1. 确保已经安装 [firebase-tools](https://www.npmjs.com/package/firebase-tools)。
 
 2. 在项目根目录创建 `firebase.json` 和 `.firebaserc` 两个文件，包含以下内容：
+=======
+1. Install [firebase-tools](https://www.npmjs.com/package/firebase-tools) via `npm i -g firebase-tools`.
+
+2. Create the following files at the root of your project:
+
+   ::: code-group
+>>>>>>> 527f6942ddc4966098914ebd6b507b7392b03ae8
 
    ```json [firebase.json]
    {
@@ -240,15 +264,27 @@ $ npx wrangler pages deploy dist
    }
    ```
 
+<<<<<<< HEAD
 3. 运行 `npm run build` 后，通过 `firebase deploy` 命令部署。
+=======
+   :::
+
+3. After running `npm run build`, deploy using the command `firebase deploy`.
+>>>>>>> 527f6942ddc4966098914ebd6b507b7392b03ae8
 
 ## Surge {#surge}
 
+<<<<<<< HEAD
 1. 首先确保已经安装 [surge](https://www.npmjs.com/package/surge)。
 
 2. 运行 `npm run build`。
 
 3. 运行 `surge dist` 命令部署到 surge。
+=======
+1. Install [surge](https://www.npmjs.com/package/surge) via `npm i -g surge`.
+2. Run `npm run build`.
+3. Deploy to surge by typing `surge dist`.
+>>>>>>> 527f6942ddc4966098914ebd6b507b7392b03ae8
 
 你也可以通过添加 `surge dist yourdomain.com` 部署到一个 [自定义域名](https://surge.sh/help/adding-a-custom-domain)。
 
@@ -278,10 +314,14 @@ $ npx wrangler pages deploy dist
 
 4. 指定一个项目名称和所用分支
 
+<<<<<<< HEAD
    - **构建命令**：`npm install && npm run build`
    - **发布目录**：`dist`
 
 5. 点击 **Create Static Site**
+=======
+5. Click **Create Static Site**. Your app should be deployed at `https://<PROJECTNAME>.onrender.com/`.
+>>>>>>> 527f6942ddc4966098914ebd6b507b7392b03ae8
 
    你的应用将会被部署在 `https://<PROJECTNAME>.onrender.com/`。
 
