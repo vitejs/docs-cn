@@ -113,35 +113,11 @@ $ npm run preview
 
 ### Netlify CLI {#netlify-cli}
 
-<<<<<<< HEAD
-1. 安装 [Netlify CLI](https://cli.netlify.com/)。
-2. 使用 `ntl init` 创建一个新站点。
-3. 使用 `ntl deploy` 来部署。
+1. 通过 `npm install -g netlify-cli` 安装 [Netlify CLI](https://docs.netlify.com/api-and-cli-guides/cli-guides/get-started-with-cli/) 。
+2. 使用 `netlify init` 创建一个新站点。
+3. 使用 `netlify deploy` 来部署。
 
-```bash
-# 安装 Netlify CLI
-$ npm install -g netlify-cli
-
-# 在 Netlify 中创建一个新站点
-$ ntl init
-
-# 部署一个独一无二的预览 URL
-$ ntl deploy
-```
-
-Netlify CLI 会给你分享一个预览的 URL 来检查部署结果。当你准备好了发布生产版本时，请使用 `prod` 标志：
-
-```bash
-# 部署站点到生产环境
-$ ntl deploy --prod
-```
-=======
-1. Install the [Netlify CLI](https://docs.netlify.com/api-and-cli-guides/cli-guides/get-started-with-cli/) via `npm install -g netlify-cli`.
-2. Create a new site using `netlify init`.
-3. Deploy using `netlify deploy`.
-
-The Netlify CLI will share with you a preview URL to inspect. When you are ready to go into production, use the `prod` flag: `netlify deploy --prod`.
->>>>>>> 527f6942ddc4966098914ebd6b507b7392b03ae8
+Netlify 命令行工具（CLI）会为你提供一个预览链接，供你查看效果。当你准备发布到生产环境时，可使用 `prod` 参数执行命令：`netlify deploy --prod`。
 
 ### Netlify with Git {#netlify-with-git}
 
@@ -157,27 +133,11 @@ The Netlify CLI will share with you a preview URL to inspect. When you are ready
 
 ### Vercel CLI {#vercel-cli}
 
-<<<<<<< HEAD
-1. 安装 [Vercel CLI](https://vercel.com/cli) 并运行 `vercel` 来部署。
+1. 通过 `npm i -g vercel` 命令安装 [Vercel CLI](https://vercel.com/cli)，然后运行 vercel 命令完成部署。
 2. Vercel 会检测到你正在使用 Vite，并会为你开启相应的正确配置。
 3. 你的应用被部署好了！（示例：[vite-vue-template.vercel.app](https://vite-vue-template.vercel.app/)）
 
-```bash
-$ npm i -g vercel
-$ vercel init vite
-Vercel CLI
-> Success! Initialized "vite" example in ~/your-folder.
-- To deploy, `cd vite` and run `vercel`.
-```
-
 ### Vercel for Git {#vercel-for-git}
-=======
-1. Install the [Vercel CLI](https://vercel.com/cli) via `npm i -g vercel` and run `vercel` to deploy.
-2. Vercel will detect that you are using Vite and will enable the correct settings for your deployment.
-3. Your application is deployed! (e.g. [vite-vue-template.vercel.app](https://vite-vue-template.vercel.app/))
-
-### Vercel with Git
->>>>>>> 527f6942ddc4966098914ebd6b507b7392b03ae8
 
 1. 将你的代码推送到远程仓库（GitHub，GitLab，Bitbucket）
 2. [导入你的 Vite 仓库](https://vercel.com/new) 到 Vercel
@@ -229,17 +189,11 @@ $ npx wrangler pages deploy dist
 
 ## Google Firebase {#google-firebase}
 
-<<<<<<< HEAD
-1. 确保已经安装 [firebase-tools](https://www.npmjs.com/package/firebase-tools)。
+1. 通过 `npm i -g firebase-tools` 命令安装 [firebase-tools](https://www.npmjs.com/package/firebase-tools) 工具。
 
-2. 在项目根目录创建 `firebase.json` 和 `.firebaserc` 两个文件，包含以下内容：
-=======
-1. Install [firebase-tools](https://www.npmjs.com/package/firebase-tools) via `npm i -g firebase-tools`.
+2. 在你的项目根目录下创建以下文件：
 
-2. Create the following files at the root of your project:
-
-   ::: code-group
->>>>>>> 527f6942ddc4966098914ebd6b507b7392b03ae8
+ ::: code-group
 
    ```json [firebase.json]
    {
@@ -264,27 +218,15 @@ $ npx wrangler pages deploy dist
    }
    ```
 
-<<<<<<< HEAD
-3. 运行 `npm run build` 后，通过 `firebase deploy` 命令部署。
-=======
    :::
 
-3. After running `npm run build`, deploy using the command `firebase deploy`.
->>>>>>> 527f6942ddc4966098914ebd6b507b7392b03ae8
+3. 运行 `npm run build` 后，通过 `firebase deploy` 命令部署。
 
 ## Surge {#surge}
 
-<<<<<<< HEAD
-1. 首先确保已经安装 [surge](https://www.npmjs.com/package/surge)。
-
+1. 通过 `npm i -g surge` 命令安装 [surge](https://www.npmjs.com/package/surge)。
 2. 运行 `npm run build`。
-
 3. 运行 `surge dist` 命令部署到 surge。
-=======
-1. Install [surge](https://www.npmjs.com/package/surge) via `npm i -g surge`.
-2. Run `npm run build`.
-3. Deploy to surge by typing `surge dist`.
->>>>>>> 527f6942ddc4966098914ebd6b507b7392b03ae8
 
 你也可以通过添加 `surge dist yourdomain.com` 部署到一个 [自定义域名](https://surge.sh/help/adding-a-custom-domain)。
 
@@ -314,16 +256,10 @@ $ npx wrangler pages deploy dist
 
 4. 指定一个项目名称和所用分支
 
-<<<<<<< HEAD
    - **构建命令**：`npm install && npm run build`
    - **发布目录**：`dist`
 
-5. 点击 **Create Static Site**
-=======
-5. Click **Create Static Site**. Your app should be deployed at `https://<PROJECTNAME>.onrender.com/`.
->>>>>>> 527f6942ddc4966098914ebd6b507b7392b03ae8
-
-   你的应用将会被部署在 `https://<PROJECTNAME>.onrender.com/`。
+5. 点击 **Create Static Site**， 你的应用将会被部署在 `https://<PROJECTNAME>.onrender.com/`。
 
 默认情况下，推送到该指定分支的任何新的 commit 都会自动触发一个新的部署。[Auto-Deploy](https://render.com/docs/deploys#toggling-auto-deploy-for-a-service) 可以在项目设置中部署。
 
