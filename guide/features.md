@@ -642,7 +642,19 @@ const module = await import(`./dir/${file}.js`)
 
 注意变量仅代表一层深的文件名。如果 `file` 是 `foo/bar`，导入将会失败。对于更进阶的使用详情，你可以使用 [glob 导入](#glob-import) 功能。
 
+<<<<<<< HEAD
 ## WebAssembly {#webassembly}
+=======
+Also note that the dynamic import must match the following rules to be bundled:
+
+- Imports must start with `./` or `../`: ``import(`./dir/${foo}.js`)`` is valid, but ``import(`${foo}.js`)`` is not.
+- Imports must end with a file extension: ``import(`./dir/${foo}.js`)`` is valid, but ``import(`./dir/${foo}`)`` is not.
+- Imports to the own directory must specify a file name pattern: ``import(`./prefix-${foo}.js`)`` is valid, but ``import(`./${foo}.js`)`` is not.
+
+These rules are enforced to prevent accidentally importing files that are not intended to be bundled. For example, without these rules, `import(foo)` would bundle everything in the file system.
+
+## WebAssembly
+>>>>>>> 93e15e7a5a93aa71fed90adb8e640a3668ce694c
 
 预编译的 `.wasm` 文件可以通过 `?init` 来导入。
 默认导出一个初始化函数，返回值为所导出 [`WebAssembly.Instance`](https://developer.mozilla.org/en-US/docs/WebAssembly/JavaScript_interface/Instance) 实例对象的 Promise：

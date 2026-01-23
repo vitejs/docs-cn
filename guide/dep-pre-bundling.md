@@ -57,9 +57,13 @@ export default defineConfig({
 
 `include` 和 `exclude` 都可以用来处理这个问题。如果依赖项很大（包含很多内部模块）或者是 CommonJS，那么你应该包含它；如果依赖项很小，并且已经是有效的 ESM，则可以排除它，让浏览器直接加载它。
 
+<<<<<<< HEAD
 你可以通过 [`optimizeDeps.esbuildOptions` 选项](/config/dep-optimization-options.md#optimizedeps-esbuildoptions) 进一步自定义 esbuild。例如，添加一个 esbuild 插件来处理依赖项中的特殊文件，或者更改 [build `target`](https://esbuild.github.io/api/#target)。
 
 <!-- TODO: update the link above to Rolldown's documentation -->
+=======
+You can further customize Rolldown too with the [`optimizeDeps.rolldownOptions` option](/config/dep-optimization-options.md#optimizedeps-rolldownoptions). For example, adding a Rolldown plugin to handle special files in dependencies or changing the [build `target`](https://rolldown.rs/reference/InputOptions.transform#target).
+>>>>>>> 93e15e7a5a93aa71fed90adb8e640a3668ce694c
 
 ## 缓存 {#caching}
 

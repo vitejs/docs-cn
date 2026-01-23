@@ -162,12 +162,19 @@ npm add -D esbuild
 
 ## build.dynamicImportVarsOptions {#build-dynamicimportvarsoptions}
 
+<<<<<<< HEAD
 - **类型：** [`RollupDynamicImportVarsOptions`](https://github.com/rollup/plugins/tree/master/packages/dynamic-import-vars#options)
 - **相关内容：** [动态导入](/guide/features#dynamic-import)
 
 传递给 [@rollup/plugin-dynamic-import-vars](https://github.com/rollup/plugins/tree/master/packages/dynamic-import-vars) 的选项。
 
 <!-- TODO: we need to have a more detailed explanation here as we no longer use @rollup/plugin-dynamic-import-vars. we should say it's compatible with it though -->
+=======
+- **Type:** `{ include?: string | RegExp | (string | RegExp)[], exclude?: string | RegExp | (string | RegExp)[] }`
+- **Related:** [Dynamic Import](/guide/features#dynamic-import)
+
+Whether to transform dynamic imports with variables.
+>>>>>>> 93e15e7a5a93aa71fed90adb8e640a3668ce694c
 
 ## build.lib {#build-lib}
 
@@ -223,9 +230,13 @@ export default defineConfig({
 
 ::: tip
 
+<<<<<<< HEAD
 如果你想在构建后的代码中引用许可文件，可以使用 `build.rolldownOptions.output.postBanner` 在文件顶部注入注释。例如：
 
 <!-- TODO: add a link for output.postBanner above to Rolldown's documentation -->
+=======
+If you'd like to reference the license file in the built code, you can use [`build.rolldownOptions.output.postBanner`](https://rolldown.rs/reference/OutputOptions.postBanner#postbanner) to inject a comment at the top of the files. For example:
+>>>>>>> 93e15e7a5a93aa71fed90adb8e640a3668ce694c
 
 ```js twoslash [vite.config.js]
 import { defineConfig } from 'vite'

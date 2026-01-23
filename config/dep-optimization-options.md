@@ -53,16 +53,24 @@ export default defineConfig({
 
 ## optimizeDeps.rolldownOptions <NonInheritBadge /> {#optimizedeps-rolldownoptions}
 
+<<<<<<< HEAD
 - **类型：** [`Omit`](https://www.typescriptlang.org/docs/handbook/utility-types.html#omittype-keys)`<``RolldownOptions`, `'input' | 'logLevel' | 'output'> & {
+=======
+- **Type:** [`Omit`](https://www.typescriptlang.org/docs/handbook/utility-types.html#omittype-keys)`<`[`RolldownOptions`](https://rolldown.rs/reference/), `'input' | 'logLevel' | 'output'> & {
+>>>>>>> 93e15e7a5a93aa71fed90adb8e640a3668ce694c
   output?: [`Omit`](https://www.typescriptlang.org/docs/handbook/utility-types.html#omittype-keys)`<`
-    `RolldownOutputOptions`,
+    [`RolldownOutputOptions`](https://rolldown.rs/reference/),
     `'format' | 'sourcemap' | 'dir' | 'banner'>`
 `}`
 
+<<<<<<< HEAD
 <!-- TODO: add link to RolldownOptions -->
 <!-- TODO: add link to RolldownOutputOptions -->
 
 在依赖扫描和优化过程中传递给 Rolldown 的选项。
+=======
+Options to pass to Rolldown during the dep scanning and optimization.
+>>>>>>> 93e15e7a5a93aa71fed90adb8e640a3668ce694c
 
 某些选项进行了省略，因为修改它们与 Vite 的优化方案并不兼容。
 

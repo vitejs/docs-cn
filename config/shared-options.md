@@ -94,9 +94,13 @@ declare const __APP_VERSION__: string
 - **类型：**
   `Record<string, string> | Array<{ find: string | RegExp, replacement: string, customResolver?: ResolverFunction | ResolverObject }>`
 
+<<<<<<< HEAD
 将会被传递到 `@rollup/plugin-alias` 作为 [entries 的选项](https://github.com/rollup/plugins/tree/master/packages/alias#entries)。也可以是一个对象，或一个 `{ find, replacement, customResolver }` 的数组。
+=======
+Defines aliases used to replace values in `import` or `require` statements. This works similar to [`@rollup/plugin-alias`](https://github.com/rollup/plugins/tree/master/packages/alias).
+>>>>>>> 93e15e7a5a93aa71fed90adb8e640a3668ce694c
 
-<!-- TODO: we need to have a more detailed explanation here as we no longer use @rollup/plugin-alias. we should say it's compatible with it though -->
+The order of the entries is important, in that the first defined rules are applied first.
 
 当使用文件系统路径的别名时，请始终使用绝对路径。相对路径的别名值会原封不动地被使用，因此无法被正常解析。
 
@@ -106,7 +110,45 @@ declare const __APP_VERSION__: string
 如果你已经为 [SSR 外部化的依赖](/guide/ssr.md#ssr-externals) 配置了别名，你可能想要为真实的 `node_modules` 包配别名。[Yarn](https://classic.yarnpkg.com/en/docs/cli/add/#toc-yarn-add-alias) 和 [pnpm](https://pnpm.io/aliases/) 都支持通过 `npm:` 前缀配置别名。
 :::
 
+<<<<<<< HEAD
 ## resolve.dedupe {#resolve-dedupe}
+=======
+### Object Format (`Record<string, string>`)
+
+The Object format allows specifying aliases as a key, and the corresponding value as the actual import value. For example:
+
+```js
+resolve: {
+  alias: {
+    utils: '../../../utils',
+    'batman-1.0.0': './joker-1.5.0'
+  }
+}
+```
+
+### Array Format (`Array<{ find: string | RegExp, replacement: string, customResolver?: ResolverFunction | ResolverObject }>`)
+
+The Array format allows specifying aliases as objects, which can be useful for complex key/value pairs.
+
+```js
+resolve: {
+  alias: [
+    { find: 'utils', replacement: '../../../utils' },
+    { find: 'batman-1.0.0', replacement: './joker-1.5.0' },
+  ]
+}
+```
+
+When `find` is a regular expression, the `replacement` can use [replacement patterns](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/replace#specifying_a_string_as_the_replacement), such as `$1`. For example, to remove extensions with another, a pattern like the following might be used:
+
+```js
+{ find:/^(.*)\.js$/, replacement: '$1.alias' }
+```
+
+`customResolver` option can be used to provide separate module resolution for an individual alias.
+
+## resolve.dedupe
+>>>>>>> 93e15e7a5a93aa71fed90adb8e640a3668ce694c
 
 - **类型：** `string[]`
 
