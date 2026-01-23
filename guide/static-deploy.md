@@ -113,27 +113,11 @@ $ npm run preview
 
 ### Netlify CLI {#netlify-cli}
 
-1. 安装 [Netlify CLI](https://cli.netlify.com/)。
-2. 使用 `ntl init` 创建一个新站点。
-3. 使用 `ntl deploy` 来部署。
+1. 通过 `npm install -g netlify-cli` 安装 [Netlify CLI](https://docs.netlify.com/api-and-cli-guides/cli-guides/get-started-with-cli/) 。
+2. 使用 `netlify init` 创建一个新站点。
+3. 使用 `netlify deploy` 来部署。
 
-```bash
-# 安装 Netlify CLI
-$ npm install -g netlify-cli
-
-# 在 Netlify 中创建一个新站点
-$ ntl init
-
-# 部署一个独一无二的预览 URL
-$ ntl deploy
-```
-
-Netlify CLI 会给你分享一个预览的 URL 来检查部署结果。当你准备好了发布生产版本时，请使用 `prod` 标志：
-
-```bash
-# 部署站点到生产环境
-$ ntl deploy --prod
-```
+Netlify 命令行工具（CLI）会为你提供一个预览链接，供你查看效果。当你准备发布到生产环境时，可使用 `prod` 参数执行命令：`netlify deploy --prod`。
 
 ### Netlify with Git {#netlify-with-git}
 
@@ -149,17 +133,9 @@ $ ntl deploy --prod
 
 ### Vercel CLI {#vercel-cli}
 
-1. 安装 [Vercel CLI](https://vercel.com/cli) 并运行 `vercel` 来部署。
+1. 通过 `npm i -g vercel` 命令安装 [Vercel CLI](https://vercel.com/cli)，然后运行 vercel 命令完成部署。
 2. Vercel 会检测到你正在使用 Vite，并会为你开启相应的正确配置。
 3. 你的应用被部署好了！（示例：[vite-vue-template.vercel.app](https://vite-vue-template.vercel.app/)）
-
-```bash
-$ npm i -g vercel
-$ vercel init vite
-Vercel CLI
-> Success! Initialized "vite" example in ~/your-folder.
-- To deploy, `cd vite` and run `vercel`.
-```
 
 ### Vercel for Git {#vercel-for-git}
 
@@ -213,9 +189,11 @@ $ npx wrangler pages deploy dist
 
 ## Google Firebase {#google-firebase}
 
-1. 确保已经安装 [firebase-tools](https://www.npmjs.com/package/firebase-tools)。
+1. 通过 `npm i -g firebase-tools` 命令安装 [firebase-tools](https://www.npmjs.com/package/firebase-tools) 工具。
 
-2. 在项目根目录创建 `firebase.json` 和 `.firebaserc` 两个文件，包含以下内容：
+2. 在你的项目根目录下创建以下文件：
+
+ ::: code-group
 
    ```json [firebase.json]
    {
@@ -240,14 +218,14 @@ $ npx wrangler pages deploy dist
    }
    ```
 
+   :::
+
 3. 运行 `npm run build` 后，通过 `firebase deploy` 命令部署。
 
 ## Surge {#surge}
 
-1. 首先确保已经安装 [surge](https://www.npmjs.com/package/surge)。
-
+1. 通过 `npm i -g surge` 命令安装 [surge](https://www.npmjs.com/package/surge)。
 2. 运行 `npm run build`。
-
 3. 运行 `surge dist` 命令部署到 surge。
 
 你也可以通过添加 `surge dist yourdomain.com` 部署到一个 [自定义域名](https://surge.sh/help/adding-a-custom-domain)。
@@ -281,9 +259,7 @@ $ npx wrangler pages deploy dist
    - **构建命令**：`npm install && npm run build`
    - **发布目录**：`dist`
 
-5. 点击 **Create Static Site**
-
-   你的应用将会被部署在 `https://<PROJECTNAME>.onrender.com/`。
+5. 点击 **Create Static Site**， 你的应用将会被部署在 `https://<PROJECTNAME>.onrender.com/`。
 
 默认情况下，推送到该指定分支的任何新的 commit 都会自动触发一个新的部署。[Auto-Deploy](https://render.com/docs/deploys#toggling-auto-deploy-for-a-service) 可以在项目设置中部署。
 
