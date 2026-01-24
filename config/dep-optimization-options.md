@@ -53,14 +53,11 @@ export default defineConfig({
 
 ## optimizeDeps.rolldownOptions <NonInheritBadge /> {#optimizedeps-rolldownoptions}
 
-- **类型：** [`Omit`](https://www.typescriptlang.org/docs/handbook/utility-types.html#omittype-keys)`<``RolldownOptions`, `'input' | 'logLevel' | 'output'> & {
+- **类型：** [`Omit`](https://www.typescriptlang.org/docs/handbook/utility-types.html#omittype-keys)`<`[`RolldownOptions`](https://rolldown.rs/reference/), `'input' | 'logLevel' | 'output'> & {
   output?: [`Omit`](https://www.typescriptlang.org/docs/handbook/utility-types.html#omittype-keys)`<`
-    `RolldownOutputOptions`,
+    [`RolldownOutputOptions`](https://rolldown.rs/reference/),
     `'format' | 'sourcemap' | 'dir' | 'banner'>`
 `}`
-
-<!-- TODO: add link to RolldownOptions -->
-<!-- TODO: add link to RolldownOutputOptions -->
 
 在依赖扫描和优化过程中传递给 Rolldown 的选项。
 

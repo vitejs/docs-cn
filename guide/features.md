@@ -642,6 +642,14 @@ const module = await import(`./dir/${file}.js`)
 
 注意变量仅代表一层深的文件名。如果 `file` 是 `foo/bar`，导入将会失败。对于更进阶的使用详情，你可以使用 [glob 导入](#glob-import) 功能。
 
+另请注意，动态导入必须符合以下规则才能被打包：
+
+- 导入语句必须以 `./` 或 `../` 开头：``import(`./dir/${foo}.js`)`` 有效，但 ``import(`${foo}.js`)`` 无效。
+- 导入语句必须以文件扩展名结尾：``import(`./dir/${foo}.js`)`` 有效，但 ``import(`./dir/${foo}`)`` 无效。
+- 导入到自身目录时，必须指定文件名模式：``import(`./prefix-${foo}.js`)`` 有效，但 ``import(`./${foo}.js`)`` 无效。
+
+这些规则旨在防止意外导入不应打包的文件。例如，如果没有这些规则，`import(foo)` 会将文件系统中的所有内容都打包。
+
 ## WebAssembly {#webassembly}
 
 预编译的 `.wasm` 文件可以通过 `?init` 来导入。

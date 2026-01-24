@@ -162,12 +162,10 @@ npm add -D esbuild
 
 ## build.dynamicImportVarsOptions {#build-dynamicimportvarsoptions}
 
-- **类型：** [`RollupDynamicImportVarsOptions`](https://github.com/rollup/plugins/tree/master/packages/dynamic-import-vars#options)
-- **相关内容：** [动态导入](/guide/features#dynamic-import)
+- **类型：** `{ include?: string | RegExp | (string | RegExp)[], exclude?: string | RegExp | (string | RegExp)[] }`
+- **相关内容：** [Dynamic Import](/guide/features#dynamic-import)
 
-传递给 [@rollup/plugin-dynamic-import-vars](https://github.com/rollup/plugins/tree/master/packages/dynamic-import-vars) 的选项。
-
-<!-- TODO: we need to have a more detailed explanation here as we no longer use @rollup/plugin-dynamic-import-vars. we should say it's compatible with it though -->
+是否转换带有变量的动态导入。
 
 ## build.lib {#build-lib}
 
@@ -223,9 +221,7 @@ export default defineConfig({
 
 ::: tip
 
-如果你想在构建后的代码中引用许可文件，可以使用 `build.rolldownOptions.output.postBanner` 在文件顶部注入注释。例如：
-
-<!-- TODO: add a link for output.postBanner above to Rolldown's documentation -->
+如果您想在构建的代码中引用许可证文件，可以使用 [`build.rolldownOptions.output.postBanner`](https://rolldown.rs/reference/OutputOptions.postBanner#postbanner) 在文件顶部插入注释。例如：
 
 ```js twoslash [vite.config.js]
 import { defineConfig } from 'vite'
