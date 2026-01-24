@@ -66,7 +66,11 @@ export default defineConfig({
 
 ## 产物分块策略 {#chunking-strategy}
 
+<<<<<<< HEAD
 你可以通过配置 `build.rolldownOptions.output.advancedChunks` 来自定义 chunk 分割策略（查看 [Rolldown 相应文档](https://rolldown.rs/in-depth/advanced-chunks)）。如果你使用的是一个框架，那么请参考他们的文档来了解如何配置分割 chunk。
+=======
+You can configure how chunks are split using [`build.rolldownOptions.output.codeSplitting`](https://rolldown.rs/reference/OutputOptions.codeSplitting) (see [Rolldown docs](https://rolldown.rs/in-depth/manual-code-splitting)). If you use a framework, refer to their documentation for configuring how chunks are split.
+>>>>>>> c4022fc42d3834fc23a6830ffdb18e5f209df965
 
 ## 处理加载报错 {#load-error-handling}
 
