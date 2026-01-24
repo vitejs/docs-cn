@@ -1,16 +1,8 @@
 # 插件 API {#plugin-api}
 
-<<<<<<< HEAD
-Vite 插件扩展了设计出色的 Rollup 接口，带有一些 Vite 独有的配置项。因此，你只需要编写一个 Vite 插件，就可以同时为开发环境和生产环境工作。
+Vite 插件扩展了 Rolldown 的插件接口，添加了一些 Vite 特有的选项。因此，您只需编写一次 Vite 插件，即可使其同时适用于开发环境和构建环境。
 
-**推荐在阅读下面的章节之前，首先阅读下 [Rollup 插件文档](https://cn.rollupjs.org/plugin-development/)**
-
-<!-- TODO: update the link above to Rolldown's documentation -->
-=======
-Vite plugins extends Rolldown's plugin interface with a few extra Vite-specific options. As a result, you can write a Vite plugin once and have it work for both dev and build.
-
-**It is recommended to go through [Rolldown's plugin documentation](https://rolldown.rs/apis/plugin-api) first before reading the sections below.**
->>>>>>> 93e15e7a5a93aa71fed90adb8e640a3668ce694c
+**建议先阅读 [Rolldown 的插件文档](https://rolldown.rs/apis/plugin-api)，然后再阅读以下章节。**
 
 ## 致插件创作者 {#authoring-a-plugin}
 
@@ -25,33 +17,18 @@ Vite 努力秉承开箱即用的原则，因此在创作一款新插件前，请
 
 ## 约定 {#conventions}
 
-<<<<<<< HEAD
-如果插件不使用 Vite 特有的钩子，可以作为 [兼容 Rollup 的插件](#rollup-plugin-compatibility) 来实现，推荐使用 [Rollup 插件名称约定](https://cn.rollupjs.org/plugin-development/#conventions)。
+如果插件不使用 Vite 特定的钩子，并且可以作为 [兼容的 Rolldown 插件](#rolldown-plugin-compatibility) 实现，则建议使用 [Rolldown 插件命名约定](https://rolldown.rs/apis/plugin-api#conventions)。
 
-- Rollup 插件应该有一个带 `rollup-plugin-` 前缀、语义清晰的名称。
-- 在 package.json 中包含 `rollup-plugin` 和 `vite-plugin` 关键字。
+- Rolldown 插件应该有一个带 `rolldown-plugin-` 前缀、语义清晰的名称。
+- 在 package.json 的 `keywords` 字段中包含 `rolldown-plugin` 和 `vite-plugin` 关键字。
 
-这样，插件也可以用于纯 Rollup 或基于 WMR 的项目。
-=======
-If the plugin doesn't use Vite specific hooks and can be implemented as a [Compatible Rolldown Plugin](#rolldown-plugin-compatibility), then it is recommended to use the [Rolldown Plugin naming conventions](https://rolldown.rs/apis/plugin-api#conventions).
-
-- Rolldown Plugins should have a clear name with `rolldown-plugin-` prefix.
-- Include `rolldown-plugin` and `vite-plugin` keywords in package.json `keywords` field.
-
-This exposes the plugin to be also used in pure Rolldown or Rollup based projects.
->>>>>>> 93e15e7a5a93aa71fed90adb8e640a3668ce694c
+这样，插件也可以用于纯 Rollup 或基于 Rollup 的项目。
 
 对于 Vite 专属的插件：
 
-<<<<<<< HEAD
 - Vite 插件应该有一个带 `vite-plugin-` 前缀、语义清晰的名称。
 - 在 package.json 中包含 `vite-plugin` 关键字。
 - 在插件文档增加一部分关于为什么本插件是一个 Vite 专属插件的详细说明（如，本插件使用了 Vite 特有的插件钩子）。
-=======
-- Vite Plugins should have a clear name with `vite-plugin-` prefix.
-- Include `vite-plugin` keyword in package.json `keywords` field.
-- Include a section in the plugin docs detailing why it is a Vite only plugin (for example, it uses Vite specific plugin hooks).
->>>>>>> 93e15e7a5a93aa71fed90adb8e640a3668ce694c
 
 如果你的插件只适用于特定的框架，它的名字应该遵循以下前缀格式：
 
@@ -100,11 +77,7 @@ export default defineConfig({
 ## 简单示例 {#simple-examples}
 
 :::tip
-<<<<<<< HEAD
-通常的惯例是创建一个 Vite/Rollup 插件作为一个返回实际插件对象的工厂函数。该函数可以接受允许用户自定义插件行为的选项。
-=======
-It is common convention to author a Vite/Rolldown/Rollup plugin as a factory function that returns the actual plugin object. The function can accept options which allows users to customize the behavior of the plugin.
->>>>>>> 93e15e7a5a93aa71fed90adb8e640a3668ce694c
+通常的惯例是创建一个 Vite/Rolldown/Rollup 插件作为一个返回实际插件对象的工厂函数。该函数可以接受允许用户自定义插件行为的选项。
 :::
 
 ### 转换自定义文件类型 {#transforming-custom-file-types}
@@ -165,43 +138,24 @@ import { msg } from 'virtual:my-module'
 console.log(msg)
 ```
 
-<<<<<<< HEAD
-虚拟模块在 Vite（以及 Rollup）中都以 `virtual:` 为前缀，作为面向用户路径的一种约定。如果可能的话，插件名应该被用作命名空间，以避免与生态系统中的其他插件发生冲突。举个例子，`vite-plugin-posts` 可以要求用户导入一个 `virtual:posts` 或者 `virtual:posts/helpers` 虚拟模块来获得编译时信息。在内部，使用了虚拟模块的插件在解析时应该将模块 ID 加上前缀 `\0`，这一约定来自 rollup 生态。这避免了其他插件尝试处理这个 ID（比如 node 解析），而例如 sourcemap 这些核心功能可以利用这一信息来区别虚拟模块和正常文件。`\0` 在导入 URL 中不是一个被允许的字符，因此我们需要在导入分析时替换掉它们。一个虚拟 ID 为 `\0{id}` 在浏览器中开发时，最终会被编码为 `/@id/__x00__{id}`。这个 id 会被解码回进入插件处理管线前的样子，因此这对插件钩子的代码是不可见的。
-=======
-Virtual modules in Vite (and Rolldown / Rollup) are prefixed with `virtual:` for the user-facing path by convention. If possible the plugin name should be used as a namespace to avoid collisions with other plugins in the ecosystem. For example, a `vite-plugin-posts` could ask users to import a `virtual:posts` or `virtual:posts/helpers` virtual modules to get build time information. Internally, plugins that use virtual modules should prefix the module ID with `\0` while resolving the id, a convention from the rollup ecosystem. This prevents other plugins from trying to process the id (like node resolution), and core features like sourcemaps can use this info to differentiate between virtual modules and regular files. `\0` is not a permitted char in import URLs so we have to replace them during import analysis. A `\0{id}` virtual id ends up encoded as `/@id/__x00__{id}` during dev in the browser. The id will be decoded back before entering the plugins pipeline, so this is not seen by plugins hooks code.
->>>>>>> 93e15e7a5a93aa71fed90adb8e640a3668ce694c
+虚拟模块在 Vite（以及 Rolldown/ Rollup）中都以 `virtual:` 为前缀，作为面向用户路径的一种约定。如果可能的话，插件名应该被用作命名空间，以避免与生态系统中的其他插件发生冲突。举个例子，`vite-plugin-posts` 可以要求用户导入一个 `virtual:posts` 或者 `virtual:posts/helpers` 虚拟模块来获得编译时信息。在内部，使用了虚拟模块的插件在解析时应该将模块 ID 加上前缀 `\0`，这一约定来自 rollup 生态。这避免了其他插件尝试处理这个 ID（比如 node 解析），而例如 sourcemap 这些核心功能可以利用这一信息来区别虚拟模块和正常文件。`\0` 在导入 URL 中不是一个被允许的字符，因此我们需要在导入分析时替换掉它们。一个虚拟 ID 为 `\0{id}` 在浏览器中开发时，最终会被编码为 `/@id/__x00__{id}`。这个 id 会被解码回进入插件处理管线前的样子，因此这对插件钩子的代码是不可见的。
 
 请注意，直接从真实文件派生出来的模块，就像单文件组件中的脚本模块（如.vue 或 .svelte SFC）不需要遵循这个约定。SFC 通常在处理时生成一组子模块，但这些模块中的代码可以映射回文件系统。对这些子模块使用 `\0` 会使 sourcemap 无法正常工作。
 
 ## 通用钩子 {#universal-hooks}
 
-<<<<<<< HEAD
-在开发中，Vite 开发服务器会创建一个插件容器来调用 [Rollup 构建钩子](https://cn.rollupjs.org/plugin-development/#build-hooks)，与 Rollup 如出一辙。
-=======
-During dev, the Vite dev server creates a plugin container that invokes [Rolldown Build Hooks](https://rolldown.rs/apis/plugin-api#build-hooks) the same way Rolldown does it.
->>>>>>> 93e15e7a5a93aa71fed90adb8e640a3668ce694c
+在开发中，Vite 开发服务器会创建一个插件容器来调用 [Rolldown 构建钩子](https://rolldown.rs/apis/plugin-api#build-hooks)，与 Rolldown 如出一辙。
 
 以下钩子在服务器启动时被调用：
 
-<<<<<<< HEAD
-- [`options`](https://cn.rollupjs.org/plugin-development/#options)
-- [`buildStart`](https://cn.rollupjs.org/plugin-development/#buildstart)
-=======
 - [`options`](https://rolldown.rs/reference/interface.plugin#options)
 - [`buildStart`](https://rolldown.rs/reference/Interface.Plugin#buildstart)
->>>>>>> 93e15e7a5a93aa71fed90adb8e640a3668ce694c
 
 以下钩子会在每个传入模块请求时被调用：
 
-<<<<<<< HEAD
-- [`resolveId`](https://cn.rollupjs.org/plugin-development/#resolveid)
-- [`load`](https://cn.rollupjs.org/plugin-development/#load)
-- [`transform`](https://cn.rollupjs.org/plugin-development/#transform)
-=======
 - [`resolveId`](https://rolldown.rs/reference/Interface.Plugin#resolveid)
 - [`load`](https://rolldown.rs/reference/Interface.Plugin#load)
 - [`transform`](https://rolldown.rs/reference/Interface.Plugin#transform)
->>>>>>> 93e15e7a5a93aa71fed90adb8e640a3668ce694c
 
 它们还有一个扩展的 `options` 参数，包含其他特定于 Vite 的属性。你可以在 [SSR 文档](/guide/ssr#ssr-specific-plugin-logic) 中查阅更多内容。
 
@@ -209,21 +163,12 @@ During dev, the Vite dev server creates a plugin container that invokes [Rolldow
 
 以下钩子在服务器关闭时被调用：
 
-<<<<<<< HEAD
-- [`buildEnd`](https://cn.rollupjs.org/plugin-development/#buildend)
-- [`closeBundle`](https://cn.rollupjs.org/plugin-development/#closebundle)
-
-请注意 [`moduleParsed`](https://cn.rollupjs.org/plugin-development/#moduleparsed) 钩子在开发中是 **不会** 被调用的，因为 Vite 为了性能会避免完整的 AST 解析。
-
-[Output Generation Hooks](https://cn.rollupjs.org/plugin-development/#output-generation-hooks)（除了 `closeBundle`) 在开发中是 **不会** 被调用的。你可以认为 Vite 的开发服务器只调用了 `rollup.rollup()` 而没有调用 `bundle.generate()`。
-=======
 - [`buildEnd`](https://rolldown.rs/reference/Interface.Plugin#buildend)
 - [`closeBundle`](https://rolldown.rs/reference/Interface.Plugin#closebundle)
 
-Note that the [`moduleParsed`](https://rolldown.rs/reference/Interface.Plugin#moduleparsed) hook is **not** called during dev, because Vite avoids full AST parses for better performance.
+请注意 [`moduleParsed`](https://rolldown.rs/reference/Interface.Plugin#moduleparsed) 钩子在开发中是 **不会** 被调用的，因为 Vite 为了性能会避免完整的 AST 解析。
 
-[Output Generation Hooks](https://rolldown.rs/apis/plugin-api#output-generation-hooks) (except `closeBundle`) are **not** called during dev.
->>>>>>> 93e15e7a5a93aa71fed90adb8e640a3668ce694c
+[Output Generation Hooks](https://rolldown.rs/apis/plugin-api#output-generation-hooks) （`closeBundle` 除外）在开发期间**不会**被调用。
 
 ## Vite 独有钩子 {#vite-specific-hooks}
 
@@ -538,12 +483,7 @@ Vite 插件也可以提供钩子来服务于特定的 Vite 目标。这些钩子
 - 带有 `enforce: 'post'` 的用户插件
 - Vite 后置构建插件（最小化，manifest，报告）
 
-<<<<<<< HEAD
-请注意，这与钩子的排序是分开的，钩子的顺序仍然会受到它们的 `order` 属性的影响，这一点 [和 Rollup 钩子的表现一样](https://cn.rollupjs.org/plugin-development/#build-hooks)。
-=======
-Note that this is separate from hooks ordering, those are still separately subject to their [`order` attribute](https://rolldown.rs/reference/TypeAlias.ObjectHook#order) as usual for Rolldown hooks.
->>>>>>> 93e15e7a5a93aa71fed90adb8e640a3668ce694c
-
+请注意，这与钩子排序是分开的，钩子仍然像往常一样单独受其 [`order` 属性](https://rolldown.rs/reference/TypeAlias.ObjectHook#order) 的约束。
 ## 情景应用 {#conditional-application}
 
 默认情况下插件在开发（serve）和构建（build）模式中都会调用。如果插件只需要在预览或构建期间有条件地应用，请使用 `apply` 属性指明它们仅在 `'build'` 或 `'serve'` 模式时调用：
@@ -566,34 +506,19 @@ apply(config, { command }) {
 }
 ```
 
-<<<<<<< HEAD
-## Rollup 插件兼容性 {#rollup-plugin-compatibility}
+## Rolldown 插件兼容性 {#rolldown-plugin-compatibility}
 
-相当数量的 Rollup 插件将直接作为 Vite 插件工作（例如：`@rollup/plugin-alias` 或 `@rollup/plugin-json`），但并不是所有的，因为有些插件钩子在非构建式的开发服务器上下文中没有意义。
+相当数量的 Rolldown / Rollup 插件将直接作为 Vite 插件工作（例如：`@rollup/plugin-alias` 或 `@rollup/plugin-json`），但并不是所有的，因为有些插件钩子在非构建式的开发服务器上下文中没有意义。
 
-一般来说，只要 Rollup 插件符合以下标准，它就应该像 Vite 插件一样工作：
+一般来说，只要 Rolldown / Rollup 插件符合以下标准，它就应该像 Vite 插件一样工作：
 
-- 没有使用 [`moduleParsed`](https://cn.rollupjs.org/plugin-development/#moduleparsed) 钩子。
+- 它不使用 `moduleParsed` 钩子。
+- 它不依赖 Rolldown 特有的选项，例如 `transform.inject`。
 - 它在打包钩子和输出钩子之间没有很强的耦合。
 
-如果一个 Rollup 插件只在构建阶段有意义，则在 `build.rollupOptions.plugins` 下指定即可。它的工作原理与 Vite 插件的 `enforce: 'post'` 和 `apply: 'build'` 相同。
+如果一个 Rolldown / Rollup 插件只在构建阶段有意义，则在 `build.rolldownOptions.plugins` 下指定即可。它的工作原理与 Vite 插件的 `enforce: 'post'` 和 `apply: 'build'` 相同。
 
-你也可以用 Vite 独有的属性来扩展现有的 Rollup 插件:
-=======
-## Rolldown Plugin Compatibility
-
-A fair number of Rolldown / Rollup plugins will work directly as a Vite plugin (e.g. `@rollup/plugin-alias` or `@rollup/plugin-json`), but not all of them, since some plugin hooks do not make sense in an unbundled dev server context.
-
-In general, as long as a Rolldown / Rollup plugin fits the following criteria then it should just work as a Vite plugin:
-
-- It doesn't use the [`moduleParsed`](https://rolldown.rs/reference/Interface.Plugin#moduleparsed) hook.
-- It doesn't rely on the Rolldown specific options like [`transform.inject`](https://rolldown.rs/reference/InputOptions.transform#inject)
-- It doesn't have strong coupling between bundle-phase hooks and output-phase hooks.
-
-If a Rolldown / Rollup plugin only makes sense for the build phase, then it can be specified under `build.rolldownOptions.plugins` instead. It will work the same as a Vite plugin with `enforce: 'post'` and `apply: 'build'`.
-
-You can also augment an existing Rolldown / Rollup plugin with Vite-only properties:
->>>>>>> 93e15e7a5a93aa71fed90adb8e640a3668ce694c
+你也可以用 Vite 独有的属性来扩展现有的 Rolldown / Rollup 插件:
 
 ```js [vite.config.js]
 import example from 'rolldown-plugin-example'
@@ -629,11 +554,7 @@ Vite 暴露了 [`@rollup/pluginutils` 的 `createFilter`](https://github.com/rol
 
 ### 钩子过滤功能 {#hook-filters}
 
-<<<<<<< HEAD
-Rolldown 引入了[钩子过滤器功能](https://rolldown.rs/plugins/hook-filters) ，以减少 Rust 和 JavaScript 运行时之间的通信开销。此功能允许插件指定确定何时调用钩子的模式，从而通过避免不必要的钩子调用来提高性能。
-=======
-Rolldown introduced a [hook filter feature](https://rolldown.rs/apis/plugin-api/hook-filters) to reduce the communication overhead between the Rust and JavaScript runtimes. This feature allows plugins to specify patterns that determine when hooks should be called, improving performance by avoiding unnecessary hook invocations.
->>>>>>> 93e15e7a5a93aa71fed90adb8e640a3668ce694c
+Rolldown 引入了[钩子过滤器功能](https://rolldown.rs/apis/plugin-api/hook-filters) ，以减少 Rust 和 JavaScript 运行时之间的通信开销。此功能允许插件指定确定何时调用钩子的模式，从而通过避免不必要的钩子调用来提高性能。
 
 Rollup 4.38.0+ 和 Vite 6.3.0+ 也支持此功能。为了使你的插件向后兼容旧版本，请确保在钩子处理程序中也运行该过滤器。
 
