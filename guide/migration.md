@@ -38,19 +38,17 @@ Vite 8 使用基于 Rolldown 和 Oxc 的工具，而不是 esbuild 和 Rollup。
 
 以下选项会自动转换：
 
-- [`esbuildOptions.minify`](https://esbuild.github.io/api/#minify) -> `rolldownOptions.output.minify`
-- [`esbuildOptions.treeShaking`](https://esbuild.github.io/api/#tree-shaking) -> `rolldownOptions.treeshake`
-- [`esbuildOptions.define`](https://esbuild.github.io/api/#define) -> `rolldownOptions.transform.define`
-- [`esbuildOptions.loader`](https://esbuild.github.io/api/#loader) -> `rolldownOptions.moduleTypes`
-- [`esbuildOptions.preserveSymlinks`](https://esbuild.github.io/api/#preserve-symlinks) -> `!rolldownOptions.resolve.symlinks`
-- [`esbuildOptions.resolveExtensions`](https://esbuild.github.io/api/#resolve-extensions) -> `rolldownOptions.resolve.extensions`
-- [`esbuildOptions.mainFields`](https://esbuild.github.io/api/#main-fields) -> `rolldownOptions.resolve.mainFields`
-- [`esbuildOptions.conditions`](https://esbuild.github.io/api/#conditions) -> `rolldownOptions.resolve.conditionNames`
-- [`esbuildOptions.keepNames`](https://esbuild.github.io/api/#keep-names) -> `rolldownOptions.output.keepNames`
-- [`esbuildOptions.platform`](https://esbuild.github.io/api/#platform) -> `rolldownOptions.platform`
-- [`esbuildOptions.plugins`](https://esbuild.github.io/plugins/) -> `rolldownOptions.plugins` (partial support)
-
-<!-- TODO: add link to rolldownOptions.* -->
+- [`esbuildOptions.minify`](https://esbuild.github.io/api/#minify) -> [`rolldownOptions.output.minify`](https://rolldown.rs/reference/OutputOptions.minify)
+- [`esbuildOptions.treeShaking`](https://esbuild.github.io/api/#tree-shaking) -> [`rolldownOptions.treeshake`](https://rolldown.rs/reference/InputOptions.treeshake)
+- [`esbuildOptions.define`](https://esbuild.github.io/api/#define) -> [`rolldownOptions.transform.define`](https://rolldown.rs/reference/InputOptions.transform#define)
+- [`esbuildOptions.loader`](https://esbuild.github.io/api/#loader) -> [`rolldownOptions.moduleTypes`](https://rolldown.rs/reference/InputOptions.moduleTypes)
+- [`esbuildOptions.preserveSymlinks`](https://esbuild.github.io/api/#preserve-symlinks) -> [`!rolldownOptions.resolve.symlinks`](https://rolldown.rs/reference/InputOptions.resolve#symlinks)
+- [`esbuildOptions.resolveExtensions`](https://esbuild.github.io/api/#resolve-extensions) -> [`rolldownOptions.resolve.extensions`](https://rolldown.rs/reference/InputOptions.resolve#extensions)
+- [`esbuildOptions.mainFields`](https://esbuild.github.io/api/#main-fields) -> [`rolldownOptions.resolve.mainFields`](https://rolldown.rs/reference/InputOptions.resolve#mainfields)
+- [`esbuildOptions.conditions`](https://esbuild.github.io/api/#conditions) -> [`rolldownOptions.resolve.conditionNames`](https://rolldown.rs/reference/InputOptions.resolve#conditionnames)
+- [`esbuildOptions.keepNames`](https://esbuild.github.io/api/#keep-names) -> [`rolldownOptions.output.keepNames`](https://rolldown.rs/reference/OutputOptions.keepNames)
+- [`esbuildOptions.platform`](https://esbuild.github.io/api/#platform) -> [`rolldownOptions.platform`](https://rolldown.rs/reference/InputOptions.platform)
+- [`esbuildOptions.plugins`](https://esbuild.github.io/plugins/) -> [`rolldownOptions.plugins`](https://rolldown.rs/reference/InputOptions.plugins) (partial support)
 
 你可以从 `configResolved` 钩子中获取由兼容层设置的选项：
 
@@ -97,8 +95,6 @@ const plugin = {
   },
 },
 ```
-
-<!-- TODO: add link to rolldownOptions.output.minify -->
 
 目前，Oxc 转换器不支持降低原生装饰器，因为我们正在等待规范的进展，参见 ([oxc-project/oxc#9170](https://github.com/oxc-project/oxc/issues/9170))。
 
@@ -293,19 +289,15 @@ export default defineConfig({
 
 ### `import.meta.url` in UMD / IIFE {#import-meta-url-in-umd-iife}
 
-在 UMD / IIFE 输出格式中不再对 `import.meta.url` 进行 polyfill。默认情况下它将被替换为 `undefined`。如果你更喜欢之前的行为，可以使用 `define` 选项配合 `build.rolldownOptions.output.intro` 选项。有关更多详细信息，请参阅 Rolldown 的文档：[知名的 `import.meta` 属性 - 非 ESM 输出格式 | Rolldown](https://rolldown.rs/in-depth/non-esm-output-formats#well-known-import-meta-properties)。
+在 UMD / IIFE 输出格式中不再对 `import.meta.url` 进行 polyfill。默认情况下它将被替换为 `undefined`。如果你更喜欢之前的行为，可以使用 [`define`](/config/shared-options#define) 选项配合 [`build.rolldownOptions.output.intro`](https://rolldown.rs/reference/OutputOptions.intro) 选项。有关更多详细信息，请参阅 Rolldown 的文档：[知名的 `import.meta` 属性 - 非 ESM 输出格式 | Rolldown](https://rolldown.rs/in-depth/non-esm-output-formats#well-known-import-meta-properties)。
 
 ### 移除了 `build.rollupOptions.watch.chokidar` 选项 {#removed-build-rollupoptions-watch-chokidar-option}
 
-`build.rollupOptions.watch.chokidar` 选项已被移除。请迁移到 `build.rolldownOptions.watch.notify` 选项。
-
-<!-- TODO: add link to rolldownOptions.watch.notify -->
+`build.rollupOptions.watch.chokidar` 选项已被移除。请迁移到 [`build.rolldownOptions.watch.notify`](https://rolldown.rs/reference/InputOptions.watch#notify) 选项。
 
 ### 弃用 `build.rollupOptions.output.manualChunks` {#deprecate-build-rollupoptions-output-manualchunks}
 
-`output.manualChunks` 选项已被弃用。Rolldown 提供了更灵活的 `advancedChunks` 选项。有关 `advancedChunks` 的更多详情，请参阅 Rolldown 的文档：[高级分块 - Rolldown](https://rolldown.rs/in-depth/advanced-chunks)。
-
-<!-- TODO: add link to rolldownOptions.output.advancedChunks -->
+`output.manualChunks` 选项已弃用。Rolldown 提供了更灵活的 `advancedChunks` 选项（https://rolldown.rs/reference/OutputOptions.advancedChunks）。有关 `advancedChunks` 的更多详细信息，请参阅 Rolldown 的文档：[Advanced Chunks - Rolldown](https://rolldown.rs/in-depth/advanced-chunks)。
 
 ### 模块类型支持和自动检测 {#module-type-support-and-auto-detection}
 
@@ -335,6 +327,7 @@ const plugin = {
 - `build.rollupOptions`：重命名为 `build.rolldownOptions`
 - `worker.rollupOptions`：重命名为 `worker.rolldownOptions`
 - `build.commonjsOptions`：现在无操作效果
+- `build.dynamicImportVarsOptions.warnOnError`: 现在无操作效果
 
 ## 总体变化 [<Badge text="NRV" type="warning" />](#migration-from-v7) {#general-changes}
 

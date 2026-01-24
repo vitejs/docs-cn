@@ -94,9 +94,9 @@ declare const __APP_VERSION__: string
 - **类型：**
   `Record<string, string> | Array<{ find: string | RegExp, replacement: string, customResolver?: ResolverFunction | ResolverObject }>`
 
-将会被传递到 `@rollup/plugin-alias` 作为 [entries 的选项](https://github.com/rollup/plugins/tree/master/packages/alias#entries)。也可以是一个对象，或一个 `{ find, replacement, customResolver }` 的数组。
+定义用于替换 `import` 或 `require` 语句中值的别名。其工作方式类似于 [`@rollup/plugin-alias`](https://github.com/rollup/plugins/tree/master/packages/alias)。
 
-<!-- TODO: we need to have a more detailed explanation here as we no longer use @rollup/plugin-alias. we should say it's compatible with it though -->
+条目的顺序很重要，因为最先定义的规则会首先应用。
 
 当使用文件系统路径的别名时，请始终使用绝对路径。相对路径的别名值会原封不动地被使用，因此无法被正常解析。
 
@@ -105,6 +105,40 @@ declare const __APP_VERSION__: string
 ::: warning 在 SSR 中使用
 如果你已经为 [SSR 外部化的依赖](/guide/ssr.md#ssr-externals) 配置了别名，你可能想要为真实的 `node_modules` 包配别名。[Yarn](https://classic.yarnpkg.com/en/docs/cli/add/#toc-yarn-add-alias) 和 [pnpm](https://pnpm.io/aliases/) 都支持通过 `npm:` 前缀配置别名。
 :::
+
+### Object Format (`Record<string, string>`)
+
+对象格式允许将别名指定为键，并将对应的值指定为实际的导入值。例如：
+
+```js
+resolve: {
+  alias: {
+    utils: '../../../utils',
+    'batman-1.0.0': './joker-1.5.0'
+  }
+}
+```
+
+### Array Format (`Array<{ find: string | RegExp, replacement: string, customResolver?: ResolverFunction | ResolverObject }>`)
+
+数组格式允许将别名指定为对象，这对于复杂的键/值对非常有用。
+
+```js
+resolve: {
+  alias: [
+    { find: 'utils', replacement: '../../../utils' },
+    { find: 'batman-1.0.0', replacement: './joker-1.5.0' },
+  ]
+}
+```
+
+当 `find` 是一个正则表达式时，`replacement` 可以使用[替换模式](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/replace#specifying_a_string_as_the_replacement)，例如 `$1`。例如，要删除带有扩展名的字符串，可以使用如下模式：
+
+```js
+{ find:/^(.*)\.js$/, replacement: '$1.alias' }
+```
+
+`customResolver` 选项可用于为单个别名提供单独的模块解析。
 
 ## resolve.dedupe {#resolve-dedupe}
 
