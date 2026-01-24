@@ -96,13 +96,7 @@ const plugin = {
 },
 ```
 
-<<<<<<< HEAD
-<!-- TODO: add link to rolldownOptions.output.minify -->
-
 目前，Oxc 转换器不支持降低原生装饰器，因为我们正在等待规范的进展，参见 ([oxc-project/oxc#9170](https://github.com/oxc-project/oxc/issues/9170))。
-=======
-Currently, the Oxc transformer does not support lowering native decorators as we are waiting for the specification to progress, see ([oxc-project/oxc#9170](https://github.com/oxc-project/oxc/issues/9170)).
->>>>>>> 93e15e7a5a93aa71fed90adb8e640a3668ce694c
 
 :::: details 降低原生装饰器的解决方法
 
@@ -295,31 +289,15 @@ export default defineConfig({
 
 ### `import.meta.url` in UMD / IIFE {#import-meta-url-in-umd-iife}
 
-<<<<<<< HEAD
-在 UMD / IIFE 输出格式中不再对 `import.meta.url` 进行 polyfill。默认情况下它将被替换为 `undefined`。如果你更喜欢之前的行为，可以使用 `define` 选项配合 `build.rolldownOptions.output.intro` 选项。有关更多详细信息，请参阅 Rolldown 的文档：[知名的 `import.meta` 属性 - 非 ESM 输出格式 | Rolldown](https://rolldown.rs/in-depth/non-esm-output-formats#well-known-import-meta-properties)。
-=======
-`import.meta.url` is no longer polyfilled in UMD / IIFE output formats. It will be replaced with `undefined` by default. If you prefer the previous behavior, you can use the [`define`](/config/shared-options#define) option with [`build.rolldownOptions.output.intro`](https://rolldown.rs/reference/OutputOptions.intro) option. See Rolldown's docs for more details: [Well-known `import.meta` properties - Non ESM Output Formats | Rolldown](https://rolldown.rs/in-depth/non-esm-output-formats#well-known-import-meta-properties).
->>>>>>> 93e15e7a5a93aa71fed90adb8e640a3668ce694c
+在 UMD / IIFE 输出格式中不再对 `import.meta.url` 进行 polyfill。默认情况下它将被替换为 `undefined`。如果你更喜欢之前的行为，可以使用 [`define`](/config/shared-options#define) 选项配合 [`build.rolldownOptions.output.intro`](https://rolldown.rs/reference/OutputOptions.intro) 选项。有关更多详细信息，请参阅 Rolldown 的文档：[知名的 `import.meta` 属性 - 非 ESM 输出格式 | Rolldown](https://rolldown.rs/in-depth/non-esm-output-formats#well-known-import-meta-properties)。
 
 ### 移除了 `build.rollupOptions.watch.chokidar` 选项 {#removed-build-rollupoptions-watch-chokidar-option}
 
-<<<<<<< HEAD
-`build.rollupOptions.watch.chokidar` 选项已被移除。请迁移到 `build.rolldownOptions.watch.notify` 选项。
-
-<!-- TODO: add link to rolldownOptions.watch.notify -->
-=======
-The `build.rollupOptions.watch.chokidar` option was removed. Please migrate to the [`build.rolldownOptions.watch.notify`](https://rolldown.rs/reference/InputOptions.watch#notify) option.
->>>>>>> 93e15e7a5a93aa71fed90adb8e640a3668ce694c
+`build.rollupOptions.watch.chokidar` 选项已被移除。请迁移到 [`build.rolldownOptions.watch.notify`](https://rolldown.rs/reference/InputOptions.watch#notify) 选项。
 
 ### 弃用 `build.rollupOptions.output.manualChunks` {#deprecate-build-rollupoptions-output-manualchunks}
 
-<<<<<<< HEAD
-`output.manualChunks` 选项已被弃用。Rolldown 提供了更灵活的 `advancedChunks` 选项。有关 `advancedChunks` 的更多详情，请参阅 Rolldown 的文档：[高级分块 - Rolldown](https://rolldown.rs/in-depth/advanced-chunks)。
-
-<!-- TODO: add link to rolldownOptions.output.advancedChunks -->
-=======
-The `output.manualChunks` option is deprecated. Rolldown has the more flexible [`advancedChunks`](https://rolldown.rs/reference/OutputOptions.advancedChunks) option. See Rolldown's docs for more details about `advancedChunks`: [Advanced Chunks - Rolldown](https://rolldown.rs/in-depth/advanced-chunks).
->>>>>>> 93e15e7a5a93aa71fed90adb8e640a3668ce694c
+`output.manualChunks` 选项已弃用。Rolldown 提供了更灵活的 `advancedChunks` 选项（https://rolldown.rs/reference/OutputOptions.advancedChunks）。有关 `advancedChunks` 的更多详细信息，请参阅 Rolldown 的文档：[Advanced Chunks - Rolldown](https://rolldown.rs/in-depth/advanced-chunks)。
 
 ### 模块类型支持和自动检测 {#module-type-support-and-auto-detection}
 
@@ -346,16 +324,10 @@ const plugin = {
 
 以下选项已被弃用，将在未来被移除：
 
-<<<<<<< HEAD
 - `build.rollupOptions`：重命名为 `build.rolldownOptions`
 - `worker.rollupOptions`：重命名为 `worker.rolldownOptions`
 - `build.commonjsOptions`：现在无操作效果
-=======
-- `build.rollupOptions`: renamed to `build.rolldownOptions`
-- `worker.rollupOptions`: renamed to `worker.rolldownOptions`
-- `build.commonjsOptions`: it is now no-op
-- `build.dynamicImportVarsOptions.warnOnError`: it is now no-op
->>>>>>> 93e15e7a5a93aa71fed90adb8e640a3668ce694c
+- `build.dynamicImportVarsOptions.warnOnError`: 现在无操作效果
 
 ## 总体变化 [<Badge text="NRV" type="warning" />](#migration-from-v7) {#general-changes}
 
