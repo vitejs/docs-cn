@@ -297,11 +297,7 @@ export default defineConfig({
 
 ### 弃用 `build.rollupOptions.output.manualChunks` {#deprecate-build-rollupoptions-output-manualchunks}
 
-<<<<<<< HEAD
-`output.manualChunks` 选项已弃用。Rolldown 提供了更灵活的 `advancedChunks` 选项（https://rolldown.rs/reference/OutputOptions.advancedChunks）。有关 `advancedChunks` 的更多详细信息，请参阅 Rolldown 的文档：[Advanced Chunks - Rolldown](https://rolldown.rs/in-depth/advanced-chunks)。
-=======
-The `output.manualChunks` option is deprecated. Rolldown has the more flexible [`codeSplitting`](https://rolldown.rs/reference/OutputOptions.codeSplitting) option. See Rolldown's docs for more details about `codeSplitting`: [Manual Code Splitting - Rolldown](https://rolldown.rs/in-depth/manual-code-splitting).
->>>>>>> c4022fc42d3834fc23a6830ffdb18e5f209df965
+`output.manualChunks` 选项已弃用。Rolldown 提供了更灵活的 [`codeSplitting`](https://rolldown.rs/reference/OutputOptions.codeSplitting) 选项。有关 `codeSplitting` 的更多详细信息，请参阅 Rolldown 的文档：[手动代码分割 - Rolldown](https://rolldown.rs/in-depth/advanced-chunks)。
 
 ### 模块类型支持和自动检测 {#module-type-support-and-auto-detection}
 
