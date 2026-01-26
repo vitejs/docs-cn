@@ -2,7 +2,13 @@
 
 当需要将应用部署到生产环境时，只需运行 `vite build` 命令。默认情况下，它使用 `<root>/index.html` 作为其构建入口点，并生成能够静态部署的应用程序包。请查阅 [部署静态站点](./static-deploy) 获取常见服务的部署指引。
 
+<<<<<<< HEAD
 ## 浏览器兼容性 {#browser-compatibility}
+=======
+<ScrimbaLink href="https://scrimba.com/intro-to-vite-c03p6pbbdq/~037q?via=vite" title="Building for Production">Watch an interactive lesson on Scrimba</ScrimbaLink>
+
+## Browser Compatibility
+>>>>>>> 6b70465087c357cc9028402e2ca9f92720e2c352
 
 默认情况下，生产包假定使用包含在 [Baseline](https://web-platform-dx.github.io/web-features/) 广泛可用目标中的现代浏览器。默认的浏览器支持范围是：
 

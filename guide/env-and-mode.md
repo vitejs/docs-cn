@@ -13,7 +13,13 @@ if (import.meta.env.DEV) {
 
 :::
 
+<<<<<<< HEAD
 ## 内置常量 {#built-in-constants}
+=======
+<ScrimbaLink href="https://scrimba.com/intro-to-vite-c03p6pbbdq/~05an?via=vite" title="Env Variables in Vite">Watch an interactive lesson on Scrimba</ScrimbaLink>
+
+## Built-in Constants
+>>>>>>> 6b70465087c357cc9028402e2ca9f92720e2c352
 
 一些内置常量在所有情况下都可用：
 

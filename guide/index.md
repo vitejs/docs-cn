@@ -18,7 +18,13 @@ Vite 还提供了强大的扩展性，可通过其 [插件 API](./api-plugin) �
 
 你可以在 [为什么选 Vite](./why) 部分深入了解该项目的设计理念。
 
+<<<<<<< HEAD
 ## 浏览器支持 {#browser-support}
+=======
+<ScrimbaLink href="https://scrimba.com/intro-to-vite-c03p6pbbdq?via=vite" title="Free Vite Course on Scrimba">Learn Vite through interactive tutorials on Scrimba</ScrimbaLink>
+
+## Browser Support
+>>>>>>> 6b70465087c357cc9028402e2ca9f92720e2c352
 
 在开发过程中，Vite 假设使用的是现代浏览器。这意味着该浏览器支持大多数最新的 JavaScript 和 CSS 功能。因此，Vite 将 [`esnext` 设置为转换目标](https://esbuild.github.io/api/#target)。这可以防止语法降低，使 Vite 能够尽可能接近原始源代码提供模块。Vite 会注入一些运行时代码以使开发服务器正常工作。这些代码使用了 [Baseline](https://web-platform-dx.github.io/web-features/) 中包含的功能，该功能在每个主要版本发布时（此主要版本为 2026-01-01）新增。
 
@@ -69,8 +75,15 @@ $ deno init --npm vite
 
 然后按照提示操作即可！
 
+<<<<<<< HEAD
 ::: tip 兼容性注意
 Vite 需要 [Node.js](https://nodejs.org/en/) 版本 20.19+, 22.12+。然而，有些模板需要依赖更高的 Node 版本才能正常运行，当你的包管理器发出警告时，请注意升级你的 Node 版本。
+=======
+<ScrimbaLink href="https://scrimba.com/intro-to-vite-c03p6pbbdq/~0yhj?via=vite" title="Scaffolding Your First Vite Project">Watch an interactive lesson on Scrimba</ScrimbaLink>
+
+::: tip Compatibility Note
+Vite requires [Node.js](https://nodejs.org/en/) version 20.19+, 22.12+. However, some templates require a higher Node.js version to work, please upgrade if your package manager warns about it.
+>>>>>>> 6b70465087c357cc9028402e2ca9f92720e2c352
 :::
 
 :::: details 使用命令行选项创建 vite
