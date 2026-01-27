@@ -2,7 +2,7 @@
 
 Vite 在特殊的 `import.meta.env` 对象下暴露了一些常量。这些常量在开发阶段被定义为全局变量，并在构建阶段被静态替换，以使树摇（tree-shaking）更有效。
 
-:::details Example
+:::details 示例
 
 ```js
 if (import.meta.env.DEV) {
@@ -12,6 +12,8 @@ if (import.meta.env.DEV) {
 ```
 
 :::
+
+<ScrimbaLink href="https://scrimba.com/intro-to-vite-c03p6pbbdq/~05an?via=vite" title="Env Variables in Vite">在 Scrimba 上观看互动课程</ScrimbaLink>
 
 ## 内置常量 {#built-in-constants}
 

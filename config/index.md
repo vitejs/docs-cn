@@ -22,6 +22,8 @@ export default {
 vite --config my-config.js
 ```
 
+<ScrimbaLink href="https://scrimba.com/intro-to-vite-c03p6pbbdq/~05jg?via=vite" title="Configuring Vite">在 Scrimba 上观看互动课程</ScrimbaLink>
+
 ::: tip 加载配置文件
 默认情况下，Vite 使用 [Rolldown](https://rolldown.rs/) 将配置文件打包到临时文件中并加载它。这可能会在 monorepo 中导入 TypeScript 文件时引发问题。如果你遇到了这种方法问题，可以通过指定 `--configLoader runner` 以改用 [module runner](/guide/api-environment-runtimes.html#modulerunner)，它不会创建临时配置并将动态转换任何文件。请注意，module runner 不支持配置文件中的 CJS，但外部 CJS 包应该可以正常工作。
 

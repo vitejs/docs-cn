@@ -12,6 +12,7 @@ import './custom.css'
 import YouTubeVideo from './components/YouTubeVideo.vue'
 import NonInheritBadge from './components/NonInheritBadge.vue'
 import AsideSponsors from './components/AsideSponsors.vue'
+import ScrimbaLink from './components/ScrimbaLink.vue'
 
 export default {
   Layout() {
@@ -25,6 +26,7 @@ export default {
     app.component('SvgImage', SvgImage)
     app.component('YouTubeVideo', YouTubeVideo)
     app.component('NonInheritBadge', NonInheritBadge)
+    app.component('ScrimbaLink', ScrimbaLink)
     app.use(TwoslashFloatingVue)
 
     Theme.enhanceApp(ctx)
