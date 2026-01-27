@@ -140,7 +140,7 @@ function getImageUrl(name) {
 }
 ```
 
-在生产构建时，Vite 才会进行必要的转换保证 URL 在打包和资源哈希后仍指向正确的地址。然而，这个 URL 字符串必须是静态的，这样才好分析。否则代码将被原样保留、因而在 `build.target` 不支持 `import.meta.url` 时会导致运行时错误。
+在生产构建时，Vite 才会进行必要的转换保证 URL 在打包和资源哈希后仍指向正确的地址。不过，这个 URL 字符串必须是静态的，这样才能被分析。否则代码将被原样保留，进而在 `build.target` 不支持 `import.meta.url` 时导致运行时错误。
 
 ```js
 // Vite 不会转换这个
