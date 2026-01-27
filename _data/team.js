@@ -247,7 +247,7 @@ export const cnTranslator = [
   },
   {
     avatar: 'https://www.github.com/waynzh.png',
-    name: 'Wayne Zhang',
+    name: 'waynzh',
     title: '前端开发者',
     org: '',
     orgLink: '',
