@@ -22,15 +22,10 @@ export default {
 vite --config my-config.js
 ```
 
-<<<<<<< HEAD
+<ScrimbaLink href="https://scrimba.com/intro-to-vite-c03p6pbbdq/~05jg?via=vite" title="Configuring Vite">在 Scrimba 上观看互动课程</ScrimbaLink>
+
 ::: tip 加载配置文件
 默认情况下，Vite 使用 [Rolldown](https://rolldown.rs/) 将配置文件打包到临时文件中并加载它。这可能会在 monorepo 中导入 TypeScript 文件时引发问题。如果你遇到了这种方法问题，可以通过指定 `--configLoader runner` 以改用 [module runner](/guide/api-environment-runtimes.html#modulerunner)，它不会创建临时配置并将动态转换任何文件。请注意，module runner 不支持配置文件中的 CJS，但外部 CJS 包应该可以正常工作。
-=======
-<ScrimbaLink href="https://scrimba.com/intro-to-vite-c03p6pbbdq/~05jg?via=vite" title="Configuring Vite">Watch an interactive lesson on Scrimba</ScrimbaLink>
-
-::: tip CONFIG LOADING
-By default, Vite uses [Rolldown](https://rolldown.rs/) to bundle the config into a temporary file and load it. This may cause issues when importing TypeScript files in a monorepo. If you encounter any issues with this approach, you can specify `--configLoader runner` to use the [module runner](/guide/api-environment-runtimes.html#modulerunner) instead, which will not create a temporary config and will transform any files on the fly. Note that module runner doesn't support CJS in config files, but external CJS packages should work as usual.
->>>>>>> 6b70465087c357cc9028402e2ca9f92720e2c352
 
 另外，如果你正在使用支持TypeScript的环境（例如 `node --experimental-strip-types`），或者只编写纯 JavaScript 代码，你可以指定 `--configLoader native` 以使用环境的本机运行时加载配置文件。请注意，配置文件导入的模块的更新不会被检测到，因此不会自动重启 Vite 服务器。
 :::

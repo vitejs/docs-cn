@@ -367,13 +367,9 @@ npm add -D lightningcss
 
 ## 静态资源处理 {#static-assets}
 
-<<<<<<< HEAD
-导入一个静态资源会返回解析后的 URL：
-=======
-<ScrimbaLink href="https://scrimba.com/intro-to-vite-c03p6pbbdq/~05pq?via=vite" title="Static Assets in Vite">Watch an interactive lesson on Scrimba</ScrimbaLink>
+<ScrimbaLink href="https://scrimba.com/intro-to-vite-c03p6pbbdq/~05pq?via=vite" title="Static Assets in Vite">在 Scrimba 上观看互动课程</ScrimbaLink>
 
-Importing a static asset will return the resolved public URL when it is served:
->>>>>>> 6b70465087c357cc9028402e2ca9f92720e2c352
+导入一个静态资源会返回解析后的 URL：
 
 ```js twoslash
 import 'vite/client'
