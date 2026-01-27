@@ -227,7 +227,7 @@ const html = await vueServerRenderer.renderToString(app, ctx)
 
 ## SSR 外部化 {#ssr-externals}
 
-当运行 SSR 时，默认下，依赖项会从 Vite 的 SSR 转换模块系统中被“外部化”。这会让开发和构建速度都更快。
+默认情况下，当运行 SSR 时，依赖项会从 Vite 的 SSR 转换模块系统中被“外部化”。这会让开发和构建速度都更快。
 
 如果依赖需要被 Vite 的管道转换，例如因为其中使用了未经过转译的 Vite 特性，那么它们可以被添加到 [`ssr.noExternal`](../config/ssr-options.md#ssr-noexternal) 中。
 
