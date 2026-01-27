@@ -7,7 +7,7 @@ SSR 特别指支持在 Node.js 中运行相同应用程序的前端框架（例�
 :::
 
 :::warning 底层 API
-这是一个底层 API，是为库和框架作者准备的。如果你的目标是构建一个应用程序，请确保优先查看 [Vite SSR 章节](https://github.com/vitejs/awesome-vite#ssr) 中更上层的 SSR 插件和工具。也就是说，大部分应用都是基于 Vite 的底层 API 之上构建的。
+这是一个底层 API，是为库和框架作者准备的。如果你的目标是构建一个应用程序，请确保优先查看 [Awesome Vite SSR 章节](https://github.com/vitejs/awesome-vite#ssr) 中更上层的 SSR 插件和工具。也就是说，大部分应用都是基于 Vite 的底层 API 之上构建的。
 
 目前，Vite 正在用 [环境 API](https://github.com/vitejs/vite/discussions/16358) 来改进 SSR API。查看链接了解更多详情。
 :::
@@ -227,7 +227,7 @@ const html = await vueServerRenderer.renderToString(app, ctx)
 
 ## SSR 外部化 {#ssr-externals}
 
-当运行 SSR 时依赖会由 Vite 的 SSR 转换模块系统作外部化。这会同时提速开发与构建。
+当运行 SSR 时，默认下，依赖项会从 Vite 的 SSR 转换模块系统中被“外部化”。这会让开发和构建速度都更快。
 
 如果依赖需要被 Vite 的管道转换，例如因为其中使用了未经过转译的 Vite 特性，那么它们可以被添加到 [`ssr.noExternal`](../config/ssr-options.md#ssr-noexternal) 中。
 
