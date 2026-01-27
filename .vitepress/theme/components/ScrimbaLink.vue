@@ -11,7 +11,7 @@ defineProps<{
       <span class="play-icon"></span>
     </span>
     <a :href="href" target="_blank" rel="sponsored noopener" :title="title">
-      <slot>Watch an interactive lesson on Scrimba</slot>
+      <slot>在 Scrimba 上观看互动课程</slot>
     </a>
   </div>
 </template>
