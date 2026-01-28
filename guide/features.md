@@ -10,7 +10,11 @@
 import { someMethod } from 'my-dep'
 ```
 
+<<<<<<< HEAD
 上面的代码会在浏览器中抛出一个错误。Vite 将会检测到所有被加载的源文件中的此类裸模块导入，并执行以下操作:
+=======
+The above import will throw an error in the browser. Vite will detect such bare module imports in all served source files and perform the following:
+>>>>>>> eeb6b351d7a8841d850dd1bb56dcf6635c9ed6ee
 
 1. [预构建](./dep-pre-bundling) 它们可以提高页面加载速度，并将 CommonJS / UMD 转换为 ESM 格式。预构建这一步由 [esbuild](https://esbuild.github.io/) 执行，这使得 Vite 的冷启动时间比任何基于 JavaScript 的打包器都要快得多。
 

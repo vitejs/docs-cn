@@ -148,6 +148,7 @@ Netlify 命令行工具（CLI）会为你提供一个预览链接，供你查看
 
 查看 Vercel 的 [Git 集成](https://vercel.com/docs/concepts/git) 了解更多细节。
 
+<<<<<<< HEAD
 ## Cloudflare Pages {#cloudflare-pages}
 
 ### Cloudflare Pages via Wrangler {#cloudflare-pages-via-wrangler}
@@ -184,6 +185,54 @@ $ npx wrangler pages deploy dist
 7. 然后你的应用就部署完成了！（例如： `https://<PROJECTNAME>.pages.dev/`）
 
 在你的项目被导入和部署后，所有对该分支的后续推送都会生成一个 [预览部署](https://developers.cloudflare.com/pages/platform/preview-deployments/)，除非你特意在 [控制分支构建](https://developers.cloudflare.com/pages/platform/branch-build-controls/) 的选项中写明不触发。所有对 **生产分支**（通常是 "main"）的更改都会生成一个 **生产构建**。
+=======
+## Cloudflare
+
+### Cloudflare Workers
+
+The [Cloudflare Vite plugin](https://developers.cloudflare.com/workers/vite-plugin/) provides integration with Cloudflare Workers and uses Vite's Environment API to run your server-side code in the Cloudflare Workers runtime during development.
+
+To add Cloudflare Workers to an existing Vite project, install the plugin and add it to your config:
+
+```bash
+$ npm install --save-dev @cloudflare/vite-plugin
+```
+
+```js [vite.config.js]
+import { defineConfig } from 'vite'
+import { cloudflare } from '@cloudflare/vite-plugin'
+
+export default defineConfig({
+  plugins: [cloudflare()],
+})
+```
+
+```jsonc [wrangler.jsonc]
+{
+  "name": "my-vite-app",
+}
+```
+
+After running `npm run build`, your application can now be deployed with `npx wrangler deploy`.
+
+You can also easily add backend APIs to your Vite application to securely communicate with Cloudflare resources. This runs in the Workers runtime during development and deploys alongside your frontend. See the [Cloudflare Vite plugin tutorial](https://developers.cloudflare.com/workers/vite-plugin/tutorial/) for a complete walkthrough.
+
+### Cloudflare Pages
+
+#### Cloudflare Pages with Git
+
+Cloudflare Pages gives you a way to deploy directly to Cloudflare without having to manage a Wrangler file.
+
+1. Push your code to your git repository (GitHub, GitLab).
+2. Log in to the Cloudflare dashboard and select your account in **Account Home** > **Workers & Pages**.
+3. Select **Create a new Project** and the **Pages** option, then select Git.
+4. Select the git project you want to deploy and click **Begin setup**
+5. Select the corresponding framework preset in the build setting depending on the Vite framework you have selected. Otherwise enter your build commands for your project and your expected output directory.
+6. Then save and deploy!
+7. Your application is deployed! (e.g `https://<PROJECTNAME>.pages.dev/`)
+
+After your project has been imported and deployed, all subsequent pushes to branches will generate [Preview Deployments](https://developers.cloudflare.com/pages/platform/preview-deployments/) unless specified not to in your [branch build controls](https://developers.cloudflare.com/pages/platform/branch-build-controls/). All changes to the Production Branch (commonly "main") will result in a Production Deployment.
+>>>>>>> eeb6b351d7a8841d850dd1bb56dcf6635c9ed6ee
 
 你也可以添加自定义域名，并自定义各个页面的构建设置。查看 [Cloudflare 页面与 Git 集成](https://developers.cloudflare.com/pages/get-started/#manage-your-site) 了解更多详情。
 
