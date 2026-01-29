@@ -135,7 +135,7 @@ export default defineConfig({
 })
 ```
 
-如果你指定了另一个根目录，请记住，在解析输入路径时，`__dirname` 的值将仍然是 vite.config.js 文件所在的目录。因此，你需要把对应入口文件的 `root` 的路径添加到 `resolve` 的参数中。
+如果你指定了另一个根目录，请记住，在解析输入路径时，`__dirname` 的值将仍然是 `vite.config.js` 文件所在的目录。因此，你需要把对应入口文件的 `root` 的路径添加到 `resolve` 的参数中。
 
 请注意，在 HTML 文件中，Vite 忽略了 `rolldownOptions.input` 对象中给定的入口名称，而是在生成 dist 文件夹中的 HTML 资源文件时，使用了文件已解析的路径 ID。这确保了与开发服务器的工作方式保持一致的结构。
 

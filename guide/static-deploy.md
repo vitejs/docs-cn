@@ -148,42 +148,52 @@ Netlify 命令行工具（CLI）会为你提供一个预览链接，供你查看
 
 查看 Vercel 的 [Git 集成](https://vercel.com/docs/concepts/git) 了解更多细节。
 
-## Cloudflare Pages {#cloudflare-pages}
+## Cloudflare {#cloudflare}
 
-### Cloudflare Pages via Wrangler {#cloudflare-pages-via-wrangler}
+### Cloudflare Workers {#cloudflare-workers}
 
-1. 安装 [Wrangler CLI](https://developers.cloudflare.com/workers/wrangler/get-started/).
-2. 使用 `wrangler login`、通过你的 Cloudflare 账号完成 Wrangler 身份校验。
-3. 运行你的构建命令
-4. 使用 `npx wrangler pages deploy dist` 部署。
+[Cloudflare Vite 插件](https://developers.cloudflare.com/workers/vite-plugin/) 集成了 Cloudflare Workers，通过 Vite 的 Environment API，让你的服务端代码在开发时运行于 Cloudflare Workers 运行时环境中。
+
+要在现有 Vite 项目中添加 Cloudflare Workers，请安装插件并将其添加到配置中：
 
 ```bash
-# 安装 Wrangler CLI
-$ npm install -g wrangler
-
-# 使用 CLI 工具登录 Cloudflare 账号
-$ wrangler login
-
-# 运行构建命令
-$ npm run build
-
-# 创建一个新的部署
-$ npx wrangler pages deploy dist
+$ npm install --save-dev @cloudflare/vite-plugin
 ```
 
-在你的资产上传后，Wrangler 会给你一个预览 URL 来检查你的网站。当你登录到 Cloudflare Pages 仪表板时，你会看到你的新项目。
+```js [vite.config.js]
+import { defineConfig } from 'vite'
+import { cloudflare } from '@cloudflare/vite-plugin'
 
-### Cloudflare Pages with Git {#cloudflare-pages-with-git}
+export default defineConfig({
+  plugins: [cloudflare()],
+})
+```
 
-1. 将你的代码推送到你的 Git 仓库（GitHub, GitLab）
-2. 登录 Cloudflare 控制台，在 **Account Home** > **Pages** 下选择你的账号
-3. 选择 **Create a new Project** 以及 **Connect Git** 选项
-4. 选择你想要部署的 Git 项目，然后点击 **Begin setup**
-5. 根据你所选择的 Vite 框架，在构建设置中选择相应的框架预设
-6. 记得保存！然后部署吧！
-7. 然后你的应用就部署完成了！（例如： `https://<PROJECTNAME>.pages.dev/`）
+```jsonc [wrangler.jsonc]
+{
+  "name": "my-vite-app",
+}
+```
 
-在你的项目被导入和部署后，所有对该分支的后续推送都会生成一个 [预览部署](https://developers.cloudflare.com/pages/platform/preview-deployments/)，除非你特意在 [控制分支构建](https://developers.cloudflare.com/pages/platform/branch-build-controls/) 的选项中写明不触发。所有对 **生产分支**（通常是 "main"）的更改都会生成一个 **生产构建**。
+运行 `npm run build` 后，你的应用就可以通过 `npx wrangler deploy` 进行部署。
+
+你还可以轻松地为 Vite 应用添加后端 API，用于与 Cloudflare 资源进行安全通信。开发时，这些 API 运行在 Workers 运行时环境中，部署时会随前端代码一同发布。详细步骤请查看 [Cloudflare Vite 插件教程](https://developers.cloudflare.com/workers/vite-plugin/tutorial/)。
+
+### Cloudflare Pages {#cloudflare-pages}
+
+#### Cloudflare Pages 与 Git {#cloudflare-pages-with-git}
+
+Cloudflare Pages 提供了一种直接部署到 Cloudflare 的方式，而无需管理 Wrangler 文件。
+
+1. 将你的代码推送到你的 Git 仓库（GitHub, GitLab）。
+2. 登录 Cloudflare 控制台，在 **Account Home** > **Workers & Pages** 下选择你的账号。
+3. 选择 **Create a new Project** 和 **Pages** 选项，然后选择 Git。
+4. 选择你想要部署的 Git 项目，然后点击 **Begin setup**。
+5. 根据你所选择的 Vite 框架，在构建设置中选择相应的框架预设。否则为你的项目输入构建命令和预期的输出目录。
+6. 然后保存并部署！
+7. 你的应用就部署完成了！（例如：`https://<PROJECTNAME>.pages.dev/`）
+
+在你的项目被导入和部署后，所有对分支的后续推送都会生成 [预览部署](https://developers.cloudflare.com/pages/platform/preview-deployments/)，除非你特意在 [分支构建控制](https://developers.cloudflare.com/pages/platform/branch-build-controls/) 中写明不触发。所有对 **生产分支**（通常是 "main"）的更改都会生成一个 **生产部署**。
 
 你也可以添加自定义域名，并自定义各个页面的构建设置。查看 [Cloudflare 页面与 Git 集成](https://developers.cloudflare.com/pages/get-started/#manage-your-site) 了解更多详情。
 
