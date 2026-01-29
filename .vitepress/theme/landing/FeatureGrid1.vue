@@ -59,12 +59,7 @@ import viteAnimation from '@assets/vite/animations/563_x_420_rich_features.riv'
     <div class="p-5 sm:p-10 pb-0 sm:pb-0 flex flex-col gap-3 lg:border-b-0">
       <h5 class="text-white">丰富的开箱即用功能</h5>
       <p class="sm:max-w-[28rem] text-pretty">
-<<<<<<< HEAD
-        TypeScript, JSX, CSS, Workers, Web Assembly... 只需一个插件即可使用
-=======
-        TypeScript, JSX, CSS, Workers, WebAssembly... and more just a plugin
-        away.
->>>>>>> eeb6b351d7a8841d850dd1bb56dcf6635c9ed6ee
+        TypeScript, JSX, CSS, Workers, WebAssembly... 只需一个插件即可使用
       </p>
       <RiveAnimation
         :desktop-src="viteAnimation"
