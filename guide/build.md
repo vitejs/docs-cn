@@ -118,24 +118,25 @@ export default defineConfig({
 
 ```js twoslash [vite.config.js]
 import { dirname, resolve } from 'node:path'
-import { fileURLToPath } from 'node:url'
 import { defineConfig } from 'vite'
-
-const __dirname = dirname(fileURLToPath(import.meta.url))
 
 export default defineConfig({
   build: {
     rolldownOptions: {
       input: {
-        main: resolve(__dirname, 'index.html'),
-        nested: resolve(__dirname, 'nested/index.html'),
+        main: resolve(import.meta.dirname, 'index.html'),
+        nested: resolve(import.meta.dirname, 'nested/index.html'),
       },
     },
   },
 })
 ```
 
+<<<<<<< HEAD
 如果你指定了另一个根目录，请记住，在解析输入路径时，`__dirname` 的值将仍然是 `vite.config.js` 文件所在的目录。因此，你需要把对应入口文件的 `root` 的路径添加到 `resolve` 的参数中。
+=======
+If you specify a different root, remember that `import.meta.dirname` will still be the folder of your `vite.config.js` file when resolving the input paths. Therefore, you will need to add your `root` entry to the arguments for `resolve`.
+>>>>>>> 5e46e13e5e13fce657bc6a9f819e03f18745a00c
 
 请注意，在 HTML 文件中，Vite 忽略了 `rolldownOptions.input` 对象中给定的入口名称，而是在生成 dist 文件夹中的 HTML 资源文件时，使用了文件已解析的路径 ID。这确保了与开发服务器的工作方式保持一致的结构。
 
@@ -149,15 +150,12 @@ export default defineConfig({
 
 ```js twoslash [vite.config.js (单入口)]
 import { dirname, resolve } from 'node:path'
-import { fileURLToPath } from 'node:url'
 import { defineConfig } from 'vite'
-
-const __dirname = dirname(fileURLToPath(import.meta.url))
 
 export default defineConfig({
   build: {
     lib: {
-      entry: resolve(__dirname, 'lib/main.js'),
+      entry: resolve(import.meta.dirname, 'lib/main.js'),
       name: 'MyLib',
       // 将添加适当的扩展名后缀
       fileName: 'my-lib',
@@ -180,17 +178,14 @@ export default defineConfig({
 
 ```js twoslash [vite.config.js (多入口)]
 import { dirname, resolve } from 'node:path'
-import { fileURLToPath } from 'node:url'
 import { defineConfig } from 'vite'
-
-const __dirname = dirname(fileURLToPath(import.meta.url))
 
 export default defineConfig({
   build: {
     lib: {
       entry: {
-        'my-lib': resolve(__dirname, 'lib/main.js'),
-        secondary: resolve(__dirname, 'lib/secondary.js'),
+        'my-lib': resolve(import.meta.dirname, 'lib/main.js'),
+        secondary: resolve(import.meta.dirname, 'lib/secondary.js'),
       },
       name: 'MyLib',
     },
