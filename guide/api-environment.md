@@ -100,6 +100,8 @@ interface UserConfig extends EnvironmentOptions {
 
 底层 API 配置已可用，因此可以支持为运行时提供环境。这些环境还可以生成其他进程或线程，以便在更接近生产环境的运行时间内运行开发模块。
 
+例如，[Cloudflare Vite 插件](https://developers.cloudflare.com/workers/vite-plugin/) 使用环境 API 在开发过程中在 Cloudflare Workers 运行时 (`workerd`) 中运行代码。
+
 ```js
 import { customEnvironment } from 'vite-environment-provider'
 
