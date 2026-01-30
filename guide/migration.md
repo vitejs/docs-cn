@@ -341,9 +341,7 @@ const plugin = {
 
 还有其他一些只影响少数用户的破坏性更改。
 
-<<<<<<< HEAD
 - **[TODO: 这将在稳定版发布前修复]** https://github.com/rolldown/rolldown/issues/5726 (affects nuxt, qwik)
-- **[TODO: 这将在稳定版发布前修复]** 由于缺少预构建块输出功能([rolldown#4304](https://github.com/rolldown/rolldown/issues/4034))，旧版块现在作为资源文件而不是块文件输出。这意味着块相关选项不适用于旧版块，清单文件也不会将旧版块包含为块文件。
 - **[TODO: 这将在稳定版发布前修复]** `@vite-ignore` 注释边缘情况 ([rolldown-vite#426](https://github.com/vitejs/rolldown-vite/issues/426))
 - [Extglobs](https://github.com/micromatch/picomatch/blob/master/README.md#extglobs) 尚未得到支持 ([rolldown-vite#365](https://github.com/vitejs/rolldown-vite/issues/365))
 - `define` 不共享对象引用：当你传递一个对象作为 `define` 的值时，每个变量都会有一个单独的对象副本。详见 [Oxc 转换器文档](https://oxc.rs/docs/guide/usage/transformer/global-variable-replacement#define)。
@@ -356,21 +354,6 @@ const plugin = {
 - 使用 plugin-legacy 转换到低于 ES5 的版本不受支持 ([rolldown-vite#452](https://github.com/vitejs/rolldown-vite/issues/452))
 - 向 `build.target` 选项传递同一浏览器的多个版本现在会报错：esbuild 会选择最新的版本，这可能不是你的本意。
 - Rolldown 缺少支持：以下功能不受 Rolldown 支持，Vite 也不再支持这些功能。
-=======
-- **[TODO: this will be fixed before stable release]** https://github.com/rolldown/rolldown/issues/5726 (affects nuxt, qwik)
-- **[TODO: this will be fixed before stable release]** `@vite-ignore` comment edge case ([rolldown-vite#426](https://github.com/vitejs/rolldown-vite/issues/426))
-- [Extglobs](https://github.com/micromatch/picomatch/blob/master/README.md#extglobs) are not supported yet ([rolldown-vite#365](https://github.com/vitejs/rolldown-vite/issues/365))
-- `define` does not share reference for objects: When you pass an object as a value to `define`, each variable will have a separate copy of the object. See [Oxc Transformer document](https://oxc.rs/docs/guide/usage/transformer/global-variable-replacement#define) for more details.
-- `bundle` object changes (`bundle` is an object passed in `generateBundle` / `writeBundle` hooks, returned by `build` function):
-  - Assigning to `bundle[foo]` is not supported. This is discouraged by Rollup as well. Please use `this.emitFile()` instead.
-  - the reference is not shared across the hooks ([rolldown-vite#410](https://github.com/vitejs/rolldown-vite/issues/410))
-  - `structuredClone(bundle)` errors with `DataCloneError: #<Object> could not be cloned`. This is not supported anymore. Please clone it with `structuredClone({ ...bundle })`. ([rolldown-vite#128](https://github.com/vitejs/rolldown-vite/issues/128))
-- All parallel hooks in Rollup works as sequential hooks. See [Rolldown's documentation](https://rolldown.rs/apis/plugin-api#sequential-hook-execution) for more details.
-- `"use strict";` is not injected sometimes. See [Rolldown's documentation](https://rolldown.rs/in-depth/directives) for more details.
-- Transforming to lower than ES5 with plugin-legacy is not supported ([rolldown-vite#452](https://github.com/vitejs/rolldown-vite/issues/452))
-- Passing the same browser with multiple versions of it to `build.target` option now errors: esbuild selects the latest version of it, which was probably not what you intended.
-- Missing support by Rolldown: The following features are not supported by Rolldown and is no longer supported by Vite.
->>>>>>> 5e46e13e5e13fce657bc6a9f819e03f18745a00c
   - `build.rollupOptions.output.format: 'system'` ([rolldown#2387](https://github.com/rolldown/rolldown/issues/2387))
   - `build.rollupOptions.output.format: 'amd'` ([rolldown#2387](https://github.com/rolldown/rolldown/issues/2528))
   - 完整的 TypeScript 遗留命名空间支持 ([oxc-project/oxc#14227](https://github.com/oxc-project/oxc/issues/14227))

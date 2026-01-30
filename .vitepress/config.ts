@@ -43,15 +43,9 @@ function inlineScript(file: string): HeadConfig {
     'script',
     {},
     fs.readFileSync(
-<<<<<<< HEAD
-      path.resolve(__dirname, `./inlined-scripts/${file}`),
-      'utf-8'
-    )
-=======
       path.resolve(import.meta.dirname, `./inlined-scripts/${file}`),
       'utf-8',
     ),
->>>>>>> 5e46e13e5e13fce657bc6a9f819e03f18745a00c
   ]
 }
 

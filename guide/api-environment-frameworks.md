@@ -71,13 +71,8 @@ const serverEnvironment = viteServer.environments.server
 app.use('*', async (req, res, next) => {
   const url = req.originalUrl
 
-<<<<<<< HEAD
   // 1. 读取 index.html
-  const indexHtmlPath = path.resolve(__dirname, 'index.html')
-=======
-  // 1. Read index.html
   const indexHtmlPath = path.resolve(import.meta.dirname, 'index.html')
->>>>>>> 5e46e13e5e13fce657bc6a9f819e03f18745a00c
   let template = fs.readFileSync(indexHtmlPath, 'utf-8')
 
   // 2. 应用 Vite HTML 转换。这将注入 Vite HMR 客户端，
