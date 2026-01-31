@@ -262,11 +262,7 @@ Lightning CSS 支持更好的语法降级，你的 CSS 包大小可能会略有�
 
 有关此问题的更多详细信息，请参阅 Rolldown 的文档：[CJS 模块中不明确的 `default` 导入 - 打包 CJS | Rolldown](https://rolldown.rs/in-depth/bundling-cjs#ambiguous-default-import-from-cjs-modules)。
 
-<<<<<<< HEAD
 此更改可能会破坏一些现有的导入 CJS 模块的代码。你可以使用已弃用的 `legacy.inconsistentCjsInterop: true` 选项临时恢复之前的行为。如果你发现某个包受此更改影响，请向包作者报告或发送拉取请求。请确保链接上面的 Rolldown 文档，以便作者能够理解上下文。
-=======
-This change may break some existing code importing CJS modules. You can use the deprecated `legacy.inconsistentCjsInterop: true` option to temporarily restore the previous behavior. If you find a package that is affected by this change, please report it to the package author or send them a pull request. Make sure to link to the Rolldown documentation above so that the author can understand the context.
->>>>>>> f0a682dcde36edf820dc8ee258f7162cfb927b91
 
 ### 使用格式嗅探移除模块解析 {#removed-module-resolution-using-format-sniffing}
 
@@ -299,15 +295,9 @@ export default defineConfig({
 
 `build.rollupOptions.watch.chokidar` 选项已被移除。请迁移到 [`build.rolldownOptions.watch.notify`](https://rolldown.rs/reference/InputOptions.watch#notify) 选项。
 
-<<<<<<< HEAD
-### 弃用 `build.rollupOptions.output.manualChunks` {#deprecate-build-rollupoptions-output-manualchunks}
+### 从 `build.rollupOptions.output.manualChunks` 中移除对象形式，并弃用函数形式{#remove-object-form-build-rollupoptions-output-manualchunks-and-deprecate-function-form}
 
-`output.manualChunks` 选项已弃用。Rolldown 提供了更灵活的 [`codeSplitting`](https://rolldown.rs/reference/OutputOptions.codeSplitting) 选项。有关 `codeSplitting` 的更多详细信息，请参阅 Rolldown 的文档：[手动代码分割 - Rolldown](https://rolldown.rs/in-depth/advanced-chunks)。
-=======
-### Removed object form `build.rollupOptions.output.manualChunks` and deprecate function form one
-
-The object form `output.manualChunks` option is not supported anymore. The function form `output.manualChunks` is deprecated. Rolldown has the more flexible [`codeSplitting`](https://rolldown.rs/reference/OutputOptions.codeSplitting) option. See Rolldown's docs for more details about `codeSplitting`: [Manual Code Splitting - Rolldown](https://rolldown.rs/in-depth/manual-code-splitting).
->>>>>>> f0a682dcde36edf820dc8ee258f7162cfb927b91
+`output.manualChunks` 选项的对象形式不再支持。`output.manualChunks` 的函数形式已弃用。Rolldown 提供了更灵活的 [`codeSplitting`](https://rolldown.rs/reference/OutputOptions.codeSplitting) 选项。有关 `codeSplitting` 的更多详细信息，请参阅 Rolldown 的文档：[手动代码分割 - Rolldown](https://rolldown.rs/in-depth/advanced-chunks)。
 
 ### 模块类型支持和自动检测 {#module-type-support-and-auto-detection}
 
@@ -345,21 +335,15 @@ const plugin = {
 
 - 不再支持向 `import.meta.hot.accept` 传递 URL。请改为传递一个 id。([#21382](https://github.com/vitejs/vite/pull/21382))
 
-<<<<<<< HEAD
-**_TODO：此更改尚未实现，但将在稳定版发布前实现。_**
-
 ## 进阶 {#advanced}
-=======
-## Advanced
->>>>>>> f0a682dcde36edf820dc8ee258f7162cfb927b91
 
 还有其他一些只影响少数用户的破坏性更改。
 
-<<<<<<< HEAD
 - **[TODO: 这将在稳定版发布前修复]** https://github.com/rolldown/rolldown/issues/5726 (affects nuxt, qwik)
 - **[TODO: 这将在稳定版发布前修复]** `@vite-ignore` 注释边缘情况 ([rolldown-vite#426](https://github.com/vitejs/rolldown-vite/issues/426))
 - [Extglobs](https://github.com/micromatch/picomatch/blob/master/README.md#extglobs) 尚未得到支持 ([rolldown-vite#365](https://github.com/vitejs/rolldown-vite/issues/365))
-- `define` 不共享对象引用：当你传递一个对象作为 `define` 的值时，每个变量都会有一个单独的对象副本。详见 [Oxc 转换器文档](https://oxc.rs/docs/guide/usage/transformer/global-variable-replacement#define)。
+- **TypeScript 旧版命名空间仅部分支持**：TypeScript 的旧版命名空间功能现在只得到部分支持。更多详情请参阅 [Oxc 转换器的相关文档](https://oxc.rs/docs/guide/usage/transformer/typescript.html#partial-namespace-support)。
+- `define` 不共享对象引用：当你传递一个对象作为 `define` 的值时，每个变量都会有一个单独的对象副本。详见 [Oxc 转换器的相关文档](https://oxc.rs/docs/guide/usage/transformer/global-variable-replacement#define)。
 - `bundle` 对象变更（`bundle` 是在 `generateBundle` / `writeBundle` 钩子中传递的对象，由 `build` 函数返回）：
   - 不支持赋值给 `bundle[foo]`。Rollup 也不鼓励这样做。请使用 `this.emitFile()` 代替。
   - 引用在钩子之间不共享 ([rolldown-vite#410](https://github.com/vitejs/rolldown-vite/issues/410))
@@ -371,35 +355,11 @@ const plugin = {
 - Rolldown 缺少支持：以下功能不受 Rolldown 支持，Vite 也不再支持这些功能。
   - `build.rollupOptions.output.format: 'system'` ([rolldown#2387](https://github.com/rolldown/rolldown/issues/2387))
   - `build.rollupOptions.output.format: 'amd'` ([rolldown#2387](https://github.com/rolldown/rolldown/issues/2528))
-  - 完整的 TypeScript 遗留命名空间支持 ([oxc-project/oxc#14227](https://github.com/oxc-project/oxc/issues/14227))
   - `shouldTransformCachedModule` 钩子 ([rolldown#4389](https://github.com/rolldown/rolldown/issues/4389))
   - `resolveImportMeta` 钩子 ([rolldown#1010](https://github.com/rolldown/rolldown/issues/1010))
   - `renderDynamicImport` 钩子 ([rolldown#4532](https://github.com/rolldown/rolldown/issues/4532))
   - `resolveFileUrl` 钩子
 - `parseAst` / `parseAstAsync` 函数现在已被弃用，推荐使用功能更多的 `parseSync` / `parse` 函数。
-=======
-- **[TODO: this will be fixed before stable release]** https://github.com/rolldown/rolldown/issues/5726 (affects nuxt, qwik)
-- **[TODO: this will be fixed before stable release]** `@vite-ignore` comment edge case ([rolldown-vite#426](https://github.com/vitejs/rolldown-vite/issues/426))
-- [Extglobs](https://github.com/micromatch/picomatch/blob/master/README.md#extglobs) are not supported yet ([rolldown-vite#365](https://github.com/vitejs/rolldown-vite/issues/365))
-- TypeScript legacy namespace is only supported partially. See [Oxc Transformer's related documentation](https://oxc.rs/docs/guide/usage/transformer/typescript.html#partial-namespace-support) for more details.
-- `define` does not share reference for objects: When you pass an object as a value to `define`, each variable will have a separate copy of the object. See [Oxc Transformer's related documentation](https://oxc.rs/docs/guide/usage/transformer/global-variable-replacement#define) for more details.
-- `bundle` object changes (`bundle` is an object passed in `generateBundle` / `writeBundle` hooks, returned by `build` function):
-  - Assigning to `bundle[foo]` is not supported. This is discouraged by Rollup as well. Please use `this.emitFile()` instead.
-  - the reference is not shared across the hooks ([rolldown-vite#410](https://github.com/vitejs/rolldown-vite/issues/410))
-  - `structuredClone(bundle)` errors with `DataCloneError: #<Object> could not be cloned`. This is not supported anymore. Please clone it with `structuredClone({ ...bundle })`. ([rolldown-vite#128](https://github.com/vitejs/rolldown-vite/issues/128))
-- All parallel hooks in Rollup works as sequential hooks. See [Rolldown's documentation](https://rolldown.rs/apis/plugin-api#sequential-hook-execution) for more details.
-- `"use strict";` is not injected sometimes. See [Rolldown's documentation](https://rolldown.rs/in-depth/directives) for more details.
-- Transforming to lower than ES5 with plugin-legacy is not supported ([rolldown-vite#452](https://github.com/vitejs/rolldown-vite/issues/452))
-- Passing the same browser with multiple versions of it to `build.target` option now errors: esbuild selects the latest version of it, which was probably not what you intended.
-- Missing support by Rolldown: The following features are not supported by Rolldown and is no longer supported by Vite.
-  - `build.rollupOptions.output.format: 'system'` ([rolldown#2387](https://github.com/rolldown/rolldown/issues/2387))
-  - `build.rollupOptions.output.format: 'amd'` ([rolldown#2387](https://github.com/rolldown/rolldown/issues/2528))
-  - `shouldTransformCachedModule` hook ([rolldown#4389](https://github.com/rolldown/rolldown/issues/4389))
-  - `resolveImportMeta` hook ([rolldown#1010](https://github.com/rolldown/rolldown/issues/1010))
-  - `renderDynamicImport` hook ([rolldown#4532](https://github.com/rolldown/rolldown/issues/4532))
-  - `resolveFileUrl` hook
-- `parseAst` / `parseAstAsync` functions are now deprecated in favor of `parseSync` / `parse` functions which have more features.
->>>>>>> f0a682dcde36edf820dc8ee258f7162cfb927b91
 
 ## 从 v6 迁移 {#migration-from-v6}
 
