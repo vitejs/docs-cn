@@ -295,9 +295,9 @@ export default defineConfig({
 
 `build.rollupOptions.watch.chokidar` 选项已被移除。请迁移到 [`build.rolldownOptions.watch.notify`](https://rolldown.rs/reference/InputOptions.watch#notify) 选项。
 
-### 弃用 `build.rollupOptions.output.manualChunks` {#deprecate-build-rollupoptions-output-manualchunks}
+### 从 `build.rollupOptions.output.manualChunks` 中移除对象形式，并弃用函数形式  {#remove-object-form-build-rollupoptions-output-manualchunks-and-deprecate-function-form-one}
 
-`output.manualChunks` 选项已弃用。Rolldown 提供了更灵活的 [`codeSplitting`](https://rolldown.rs/reference/OutputOptions.codeSplitting) 选项。有关 `codeSplitting` 的更多详细信息，请参阅 Rolldown 的文档：[手动代码分割 - Rolldown](https://rolldown.rs/in-depth/advanced-chunks)。
+`output.manualChunks` 选项的对象形式不再支持。`output.manualChunks` 的函数形式已弃用。Rolldown 提供了更灵活的 [`codeSplitting`](https://rolldown.rs/reference/OutputOptions.codeSplitting) 选项。有关 `codeSplitting` 的更多详细信息，请参阅 Rolldown 的文档：[手动代码分割 - Rolldown](https://rolldown.rs/in-depth/advanced-chunks)。
 
 ### 模块类型支持和自动检测 {#module-type-support-and-auto-detection}
 
@@ -335,8 +335,6 @@ const plugin = {
 
 - 不再支持向 `import.meta.hot.accept` 传递 URL。请改为传递一个 id。([#21382](https://github.com/vitejs/vite/pull/21382))
 
-**_TODO：此更改尚未实现，但将在稳定版发布前实现。_**
-
 ## 进阶 {#advanced}
 
 还有其他一些只影响少数用户的破坏性更改。
@@ -344,7 +342,8 @@ const plugin = {
 - **[TODO: 这将在稳定版发布前修复]** https://github.com/rolldown/rolldown/issues/5726 (affects nuxt, qwik)
 - **[TODO: 这将在稳定版发布前修复]** `@vite-ignore` 注释边缘情况 ([rolldown-vite#426](https://github.com/vitejs/rolldown-vite/issues/426))
 - [Extglobs](https://github.com/micromatch/picomatch/blob/master/README.md#extglobs) 尚未得到支持 ([rolldown-vite#365](https://github.com/vitejs/rolldown-vite/issues/365))
-- `define` 不共享对象引用：当你传递一个对象作为 `define` 的值时，每个变量都会有一个单独的对象副本。详见 [Oxc 转换器文档](https://oxc.rs/docs/guide/usage/transformer/global-variable-replacement#define)。
+- **TypeScript 旧版命名空间仅部分支持**：TypeScript 的旧版命名空间功能现在只得到部分支持。更多详情请参阅 [Oxc 转换器的相关文档](https://oxc.rs/docs/guide/usage/transformer/typescript.html#partial-namespace-support)。
+- `define` 不共享对象引用：当你传递一个对象作为 `define` 的值时，每个变量都会有一个单独的对象副本。详见 [Oxc 转换器的相关文档](https://oxc.rs/docs/guide/usage/transformer/global-variable-replacement#define)。
 - `bundle` 对象变更（`bundle` 是在 `generateBundle` / `writeBundle` 钩子中传递的对象，由 `build` 函数返回）：
   - 不支持赋值给 `bundle[foo]`。Rollup 也不鼓励这样做。请使用 `this.emitFile()` 代替。
   - 引用在钩子之间不共享 ([rolldown-vite#410](https://github.com/vitejs/rolldown-vite/issues/410))
@@ -356,7 +355,6 @@ const plugin = {
 - Rolldown 缺少支持：以下功能不受 Rolldown 支持，Vite 也不再支持这些功能。
   - `build.rollupOptions.output.format: 'system'` ([rolldown#2387](https://github.com/rolldown/rolldown/issues/2387))
   - `build.rollupOptions.output.format: 'amd'` ([rolldown#2387](https://github.com/rolldown/rolldown/issues/2528))
-  - 完整的 TypeScript 遗留命名空间支持 ([oxc-project/oxc#14227](https://github.com/oxc-project/oxc/issues/14227))
   - `shouldTransformCachedModule` 钩子 ([rolldown#4389](https://github.com/rolldown/rolldown/issues/4389))
   - `resolveImportMeta` 钩子 ([rolldown#1010](https://github.com/rolldown/rolldown/issues/1010))
   - `renderDynamicImport` 钩子 ([rolldown#4532](https://github.com/rolldown/rolldown/issues/4532))
