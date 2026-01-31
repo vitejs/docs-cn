@@ -295,7 +295,7 @@ export default defineConfig({
 
 `build.rollupOptions.watch.chokidar` 选项已被移除。请迁移到 [`build.rolldownOptions.watch.notify`](https://rolldown.rs/reference/InputOptions.watch#notify) 选项。
 
-### 从 `build.rollupOptions.output.manualChunks` 中移除对象形式，并弃用函数形式{#remove-object-form-build-rollupoptions-output-manualchunks-and-deprecate-function-form}
+### 从 `build.rollupOptions.output.manualChunks` 中移除对象形式，并弃用函数形式  {#remove-object-form-build-rollupoptions-output-manualchunks-and-deprecate-function-form-one}
 
 `output.manualChunks` 选项的对象形式不再支持。`output.manualChunks` 的函数形式已弃用。Rolldown 提供了更灵活的 [`codeSplitting`](https://rolldown.rs/reference/OutputOptions.codeSplitting) 选项。有关 `codeSplitting` 的更多详细信息，请参阅 Rolldown 的文档：[手动代码分割 - Rolldown](https://rolldown.rs/in-depth/advanced-chunks)。
 
