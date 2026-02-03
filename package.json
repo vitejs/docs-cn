@@ -1,5 +1,4 @@
 {
-<<<<<<< HEAD
 	"name": "vite-docs-cn",
 	"version": "8.0.0-beta.10",
 	"description": "Vite.js documentation Chinese translation.",
@@ -9,11 +8,11 @@
 	"private": true,
 	"license": "CC BY-NC-SA 4.0",
 	"devDependencies": {
-		"@shikijs/vitepress-twoslash": "^3.21.0",
+		"@shikijs/vitepress-twoslash": "^3.22.0",
 		"@type-challenges/utils": "^0.1.1",
 		"@types/express": "^5.0.6",
 		"@types/node": "^25.0.10",
-		"@voidzero-dev/vitepress-theme": "^4.3.0",
+		"@voidzero-dev/vitepress-theme": "^4.4.1",
 		"chalk": "^5.6.2",
 		"feed": "^5.2.0",
 		"gray-matter": "^4.0.3",
@@ -40,27 +39,4 @@
 	"gitHooks": {
 		"commit-msg": "node scripts/verifyCommit.js"
 	}
-=======
-  "name": "@vitejs/monorepo-docs",
-  "private": true,
-  "type": "module",
-  "scripts": {
-    "docs": "vitepress dev",
-    "docs-build": "vitepress build",
-    "docs-serve": "vitepress serve"
-  },
-  "devDependencies": {
-    "@shikijs/vitepress-twoslash": "^3.22.0",
-    "@types/express": "^5.0.6",
-    "@voidzero-dev/vitepress-theme": "^4.4.1",
-    "feed": "^5.2.0",
-    "markdown-it-image-size": "^15.0.1",
-    "oxc-minify": "^0.111.0",
-    "vitepress": "^2.0.0-alpha.15",
-    "vitepress-plugin-group-icons": "^1.7.1",
-    "vitepress-plugin-llms": "^1.10.0",
-    "vue": "^3.5.27",
-    "vue-tsc": "^3.2.4"
-  }
->>>>>>> 607f9c329152ac033a2d878f17c04cbf7d903acd
 }
