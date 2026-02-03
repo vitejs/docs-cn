@@ -45,7 +45,6 @@
    ```
 
    为了正确地提供资源，你有两种选项：
-
    - 确保服务器被配置过，将会拦截代理资源请求给到 Vite 服务器
    - 设置 [`server.origin`](/config/server-options.md#server-origin) 以求生成的资源链接将以服务器 URL 形式被解析而非一个相对路径
 
@@ -119,14 +118,10 @@
      file: string
      /**
       * 该代码块导入的 CSS 文件列表
-      *
-      * 此字段仅在 JS 代码块中存在。
       */
      css?: string[]
      /**
       * 该代码块导入的资源文件列表，不包括 CSS 文件
-      *
-      * 此字段仅在 JS 代码块中存在。
       */
      assets?: string[]
      /**
@@ -158,14 +153,14 @@
    }
    ```
 
-清单中的每个条目代表以下之一：
-- **Entry chunks**：由 [`build.rollupOptions.input`](https://rollupjs.org/configuration-options/#input) 中指定的文件生成。这些块的 isEntry 属性设置为 true，其键值是项目根目录的相对 src 路径。
-- **Dynamic entry chunks**：由动态导入生成。这些块的 isDynamicEntry 属性设置为 true，其键值是项目根目录的相对 src 路径。
-- **Non-entry chunks**：其键值是生成文件的基本名称加上前缀 `_`。
-- **Asset chunks**：由导入的资源（例如图片、字体）生成。其键值是项目根目录的相对 src 路径。
-- **CSS 文件**：当 [`build.cssCodeSplit`](/config/build-options.md#build-csscodesplit) 为 `false` 时，将生成一个带有 `style.css` 键的 CSS 文件。当 `build.cssCodeSplit` 不为 `false` 时，键的生成方式与 JS 代码块类似（即，入口代码块不带 `_` 前缀，非入口代码块带 `_` 前缀）。
+   清单中的每个条目代表以下之一：
+   - **Entry chunks**：由 [`build.rollupOptions.input`](https://rollupjs.org/configuration-options/#input) 中指定的文件生成。这些块的 isEntry 属性设置为 true，其键值是项目根目录的相对 src 路径。
+   - **Dynamic entry chunks**：由动态导入生成。这些块的 isDynamicEntry 属性设置为 true，其键值是项目根目录的相对 src 路径。
+   - **Non-entry chunks**：其键值是生成文件的基本名称加上前缀 `_`。
+   - **Asset chunks**：由导入的资源（例如图片、字体）生成。其键值是项目根目录的相对 src 路径。
+   - **CSS 文件**：当 [`build.cssCodeSplit`](/config/build-options.md#build-csscodesplit) 为 `false` 时，将生成一个带有 `style.css` 键的 CSS 文件。当 `build.cssCodeSplit` 不为 `false` 时，键的生成方式与 JS 代码块类似（即，入口代码块不带 `_` 前缀，非入口代码块带 `_` 前缀）。
 
-JS 代码块（除了资源或 CSS 之外的代码块）将包含其静态和动态导入的信息（两者都是映射到清单中相应代码块的键），以及它们对应的 CSS 和资源文件（如果有）。
+   JS 代码块（除了资源或 CSS 之外的代码块）会包含其静态和动态导入的信息（两者都是映射到清单中相应代码块的键）。代码块还会列出其对应的 CSS 和资源文件（如果有的话）。
 
 4. 你可以利用这个文件来渲染带有哈希文件名的链接或预加载指令。
 
@@ -192,9 +187,11 @@ JS 代码块（除了资源或 CSS 之外的代码块）将包含其静态和动
    具体来说，后端生成 HTML 时，若给定一个清单文件（manifest file）和一个入口点（entry point），应包含以下标签。
    注意，为获得最佳性能，建议遵循以下顺序：
    1. 为入口点代码块的 `css` 列表中的每个文件添加 `<link rel="stylesheet">` 标签（如果存在）。
-   2. 递归跟踪入口点 `imports` 列表中的所有代码块，并为每个导入代码块的 `css` 列表（如果存在）中的每个 CSS 文件添加 `<link rel="stylesheet">` 标签。
+   2. 递归跟踪入口点 `imports` 列表中的所有代码块，并为每个导入代码块的 `css` 列表（如果存在）中的
+      每个 CSS 文件添加 `<link rel="stylesheet">` 标签。
    3. 为入口点代码块的 `file` 键添加一个标签。对于 JavaScript，可以是 `<script type="module">`；对于 CSS，可以是 `<link rel="stylesheet">`。
-   4. （可选）为每个导入的 JavaScript 代码块的 `file` 添加 `<link rel="modulepreload">` 标签，同样从入口点代码块开始递归跟踪导入。
+   4. （可选）为每个导入的 JavaScript 代码块的 `file` 添加 `<link rel="modulepreload">` 标签，同样从入口点代码块
+      开始递归跟踪导入。
 
    按照上面的示例 manifest，对于入口文件 `views/foo.js`，在生产环境中应包含以下标签：
 
