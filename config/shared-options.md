@@ -549,6 +549,17 @@ define: {
 
 要了解更多，请查看 Vite 的 [SSR 指引](/guide/ssr#vite-cli)。相关内容：[`server.middlewareMode`](./server-options#server-middlewaremode)。
 
+## devtools
+
+- **Experimental:** [Give Feedback](https://github.com/vitejs/devtools/discussions)
+- **Type:** `boolean` | `DevToolsConfig`
+- **Default:** `false`
+
+Enable devtools integration for visualizing the internal state and build analysis.
+Ensure that `@vitejs/devtools` is installed as a dependency. This feature is currently supported only in build mode.
+
+See [Vite DevTools](https://github.com/vitejs/devtools) for more details.
+
 ## future
 
 - **类型：** `Record<string, 'warn' | undefined>`
