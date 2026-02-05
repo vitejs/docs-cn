@@ -35,13 +35,7 @@ Falsy 虚值的插件将被忽略，可以用来轻松地启用或停用插件�
 Vite 旨在为常见的 Web 开发范式提供开箱即用的支持。在寻找一个 Vite 或兼容的 Rollup 插件之前，请先查看 [功能指引](../guide/features.md)。大量在 Rollup 项目中需要使用插件的用例在 Vite 中已经覆盖到了。
 :::
 
-<<<<<<< HEAD
-查看 [Plugins 章节](../plugins/) 获取官方插件信息。社区插件列表请参见 [awesome-vite](https://github.com/vitejs/awesome-vite#plugins)。
-
-你也可以使用此 [npm Vite 插件搜索链接](https://www.npmjs.com/search?q=vite-plugin&ranking=popularity) 来找到一些遵循了 [推荐约定](./api-plugin.md#conventions) 的 Vite 插件，或者通过 [npm Rollup 插件搜索链接](https://www.npmjs.com/search?q=rollup-plugin&ranking=popularity) 获取 Rollup 插件。
-=======
-Check out the [Plugins section](../plugins/) for information about official plugins. Community plugins that are published to npm are listed in [Vite Plugin Registry](https://registry.vite.dev/plugins).
->>>>>>> 01530fe744d94fe3f372c6ce2d799335a74d047b
+查看 [Plugins 章节](../plugins/) 获取官方插件信息。发布到 npm 的社区插件列在 [Vite 插件注册表](https://registry.vite.dev/plugins) 中。
 
 ## 强制插件排序 {#enforcing-plugin-ordering}
 

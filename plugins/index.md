@@ -40,11 +40,7 @@ npm create vite@latest -- --template rsc
 
 ## 社区插件 {#community-plugins}
 
-<<<<<<< HEAD
-查看 [awesome-vite](https://github.com/vitejs/awesome-vite#plugins) - 你也可以通过 PR 的方式将你的插件添加到此列表中。
-=======
-Check out [Vite Plugin Registry](https://registry.vite.dev/plugins) for the list of plugins published to npm.
->>>>>>> 01530fe744d94fe3f372c6ce2d799335a74d047b
+查看 [Vite 插件注册表](https://registry.vite.dev/plugins) 获取发布到 npm 的插件列表。
 
 ## Rolldown Builtin Plugins {#rolldown-builtin-plugins}
 
@@ -52,12 +48,6 @@ Vite 在底层使用 [Rolldown](https://rolldown.rs/)，它为常见用例提供
 
 阅读 [Rolldown 内置插件章节](https://rolldown.rs/builtin-plugins/) 了解更多信息。
 
-<<<<<<< HEAD
-## Rollup 插件 {#rollup-plugins}
+## Rolldown / Rollup 插件 {#rolldown-rollup-plugins}
 
-[Vite 插件](../guide/api-plugin) 是 Rollup 插件接口的一种扩展。查看 [Rollup 插件兼容性章节](../guide/api-plugin#rollup-plugin-compatibility) 获取更多信息。
-=======
-## Rolldown / Rollup Plugins
-
-[Vite plugins](../guide/api-plugin) are an extension of Rollup's plugin interface. Check out the [Rollup Plugin Compatibility section](../guide/api-plugin#rolldown-plugin-compatibility) for more information.
->>>>>>> 01530fe744d94fe3f372c6ce2d799335a74d047b
+[Vite 插件](../guide/api-plugin) 是 Rollup 插件接口的一种扩展。查看 [Rollup 插件兼容性章节](../guide/api-plugin#rolldown-plugin-compatibility) 获取更多信息。
