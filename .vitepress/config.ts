@@ -200,9 +200,16 @@ const config = defineConfig({
       {
         text: '相关链接',
         items: [
+<<<<<<< HEAD
           { text: '团队成员', link: '/team' },
           { text: '最新博客', link: '/blog' },
           { text: '发布策略', link: '/releases' },
+=======
+          { text: 'Team', link: '/team' },
+          { text: 'Blog', link: '/blog' },
+          { text: 'Releases', link: '/releases' },
+          { text: 'Acknowledgements', link: '/acknowledgements' },
+>>>>>>> be38765f6a643fe45bcb68df1164270d57ad8a79
           {
             text: '纪录片',
             link: 'https://www.youtube.com/watch?v=bmWQqAKLgT4'
