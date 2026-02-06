@@ -324,19 +324,12 @@ const plugin = {
 
 以下选项已被弃用，将在未来被移除：
 
-<<<<<<< HEAD
 - `build.rollupOptions`：重命名为 `build.rolldownOptions`
 - `worker.rollupOptions`：重命名为 `worker.rolldownOptions`
 - `build.commonjsOptions`：现在无操作效果
 - `build.dynamicImportVarsOptions.warnOnError`: 现在无操作效果
-=======
-- `build.rollupOptions`: renamed to `build.rolldownOptions`
-- `worker.rollupOptions`: renamed to `worker.rolldownOptions`
-- `build.commonjsOptions`: it is now no-op
-- `build.dynamicImportVarsOptions.warnOnError`: it is now no-op
-- `resolve.alias[].customResolver`: Use a custom plugin with `resolveId` hook instead
->>>>>>> be38765f6a643fe45bcb68df1164270d57ad8a79
-
+- `resolve.alias[].customResolver`: 请改用带有 `resolveId` 钩子的自定义插件。
+- 
 ## 总体变化 [<Badge text="NRV" type="warning" />](#migration-from-v7) {#general-changes}
 
 ## 移除了已弃用的功能 [<Badge text="NRV" type="warning" />](#migration-from-v7) {#removed-deprecated-features}

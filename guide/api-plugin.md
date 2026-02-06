@@ -584,11 +584,7 @@ export default function myPlugin() {
 ```
 
 ::: tip
-<<<<<<< HEAD
-[`@rolldown/pluginutils`](https://www.npmjs.com/package/@rolldown/pluginutils)导出一些用于钩子过滤器的实用程序，如 `exactRegex` 和 `prefixRegex`。
-=======
-[`@rolldown/pluginutils`](https://www.npmjs.com/package/@rolldown/pluginutils) exports some utilities for hook filters like `exactRegex` and `prefixRegex`. These are also re-exported from `rolldown/filter` for convenience.
->>>>>>> be38765f6a643fe45bcb68df1164270d57ad8a79
+[`@rolldown/pluginutils`](https://www.npmjs.com/package/@rolldown/pluginutils)导出一些用于钩子过滤器的实用程序，如 `exactRegex` 和 `prefixRegex`。为了方便起见，这些内容也会从 `rolldown/filter` 重新导出。
 :::
 
 ## 客户端与服务端间通信 {#client-server-communication}
