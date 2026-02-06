@@ -328,6 +328,7 @@ const plugin = {
 - `worker.rollupOptions`：重命名为 `worker.rolldownOptions`
 - `build.commonjsOptions`：现在无操作效果
 - `build.dynamicImportVarsOptions.warnOnError`: 现在无操作效果
+- `resolve.alias[].customResolver`: 请改用带有 `resolveId` 钩子的自定义插件。
 
 ## 总体变化 [<Badge text="NRV" type="warning" />](#migration-from-v7) {#general-changes}
 

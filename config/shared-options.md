@@ -92,7 +92,7 @@ declare const __APP_VERSION__: string
 ## resolve.alias {#resolve-alias}
 
 - **类型：**
-  `Record<string, string> | Array<{ find: string | RegExp, replacement: string, customResolver?: ResolverFunction | ResolverObject }>`
+  `Record<string, string> | Array<{ find: string | RegExp, replacement: string }>`
 
 定义用于替换 `import` 或 `require` 语句中值的别名。其工作方式类似于 [`@rollup/plugin-alias`](https://github.com/rollup/plugins/tree/master/packages/alias)。
 
@@ -119,7 +119,7 @@ resolve: {
 }
 ```
 
-### Array Format (`Array<{ find: string | RegExp, replacement: string, customResolver?: ResolverFunction | ResolverObject }>`)
+### Array Format (`Array<{ find: string | RegExp, replacement: string }>`)
 
 数组格式允许将别名指定为对象，这对于复杂的键/值对非常有用。
 
@@ -137,8 +137,6 @@ resolve: {
 ```js
 { find:/^(.*)\.js$/, replacement: '$1.alias' }
 ```
-
-`customResolver` 选项可用于为单个别名提供单独的模块解析。
 
 ## resolve.dedupe {#resolve-dedupe}
 
