@@ -203,7 +203,7 @@ const config = defineConfig({
           { text: '团队成员', link: '/team' },
           { text: '最新博客', link: '/blog' },
           { text: '发布策略', link: '/releases' },
-          { text: 'Acknowledgements', link: '/acknowledgements' },
+          // { text: 'Acknowledgements', link: '/acknowledgements' }, todo: 这里需要修复
           {
             text: '纪录片',
             link: 'https://www.youtube.com/watch?v=bmWQqAKLgT4'

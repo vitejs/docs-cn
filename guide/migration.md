@@ -329,7 +329,7 @@ const plugin = {
 - `build.commonjsOptions`：现在无操作效果
 - `build.dynamicImportVarsOptions.warnOnError`: 现在无操作效果
 - `resolve.alias[].customResolver`: 请改用带有 `resolveId` 钩子的自定义插件。
-- 
+
 ## 总体变化 [<Badge text="NRV" type="warning" />](#migration-from-v7) {#general-changes}
 
 ## 移除了已弃用的功能 [<Badge text="NRV" type="warning" />](#migration-from-v7) {#removed-deprecated-features}
