@@ -4,8 +4,7 @@ import fs from 'node:fs'
 import process from 'node:process'
 import chalk from 'chalk'
 
-const msgPath = process.env.GIT_PARAMS
-console.log('[]', msgPath)
+const msgPath = process.env.GIT_PARAMS || '.git/COMMIT_EDITMSG'
 const msg = fs.readFileSync(msgPath, 'utf-8').trim()
 
 const releaseRE = /^v\d/
