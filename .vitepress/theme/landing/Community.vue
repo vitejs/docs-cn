@@ -95,7 +95,9 @@ const testimonials: Testimonial[] = [
       class="flex flex-col sm:flex-row justify-between items-center gap-8 sm:gap-20 text-center sm:text-left"
     >
       <div class="flex flex-col gap-3">
-        <h3 class="text-white max-w-xl text-balance">深受社区喜爱</h3>
+        <h3 class="text-white max-w-xl text-balance">
+          深受社区喜爱
+        </h3>
         <p class="max-w-md text-white/70 text-balance">
           不要只听我们说 —— 来听听 Vite 社区成员的声音
         </p>
@@ -105,17 +107,23 @@ const testimonials: Testimonial[] = [
       >
         <!-- GitHub Stars -->
         <div class="flex flex-col gap-3">
-          <h2 class="text-white">75k+</h2>
+          <h2 class="text-white">
+            75k+
+          </h2>
           <p class="text-grey flex items-center gap-2">
-            <img :src="githubIcon" alt="" class="size-6" />
+            <img :src="githubIcon" alt="" class="size-6">
             Github Stars
           </p>
         </div>
 
         <!-- NPM Downloads -->
         <div class="flex flex-col gap-3">
-          <h2 class="text-white">40m+</h2>
-          <p class="text-grey">每周 NPM 下载量</p>
+          <h2 class="text-white">
+            40m+
+          </h2>
+          <p class="text-grey">
+            每周 NPM 下载量
+          </p>
         </div>
       </div>
     </div>
@@ -151,7 +159,7 @@ const testimonials: Testimonial[] = [
                 :alt="testimonial.name"
                 class="w-12 h-12 rounded-sm object-cover flex-shrink-0"
                 loading="lazy"
-              />
+              >
 
               <!-- Author info -->
               <div class="flex flex-col">

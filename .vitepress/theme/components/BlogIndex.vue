@@ -8,7 +8,7 @@ function getDateTime(time: number) {
 
 <template>
   <ul class="blog-list">
-    <li class="blog-entry" v-for="post of posts">
+    <li v-for="post of posts" :key="JSON.stringify(post)" class="blog-entry">
       <article>
         <time :datetime="getDateTime(post.date.time)">{{
           post.date.string

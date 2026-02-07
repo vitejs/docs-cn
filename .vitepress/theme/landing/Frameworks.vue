@@ -5,12 +5,12 @@
       alt="Frameworks powered by Vite"
       loading="lazy"
       class="w-full block sm:hidden"
-    />
+    >
     <img
       src="@assets/vite/vite-frameworks.png"
       alt="Frameworks powered by Vite"
       loading="lazy"
       class="w-full hidden sm:block"
-    />
+    >
   </section>
 </template>

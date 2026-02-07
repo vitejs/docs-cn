@@ -7,5 +7,6 @@
   }
 
   window.__VITE_BANNER_ID__ = 'viteplusannouncement'
+  // eslint-disable-next-line no-undef
   restore(`vite-docs-banner-${__VITE_BANNER_ID__}`, 'banner-dismissed')
 })()

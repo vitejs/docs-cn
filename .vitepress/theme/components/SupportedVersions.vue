@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, computed } from 'vue'
+import { computed, ref } from 'vue'
 
 declare const __VITE_VERSION__: string
 
@@ -13,11 +13,11 @@ const notSupportedVersionMessage = {
   text: '不支持',
 }
 const previousMajorLatestMinors: Record<string, string> = {
-  '2': '2.9',
-  '3': '3.2',
-  '4': '4.5',
-  '5': '5.4',
-  '6': '6.4',
+  2: '2.9',
+  3: '3.2',
+  4: '4.5',
+  5: '5.4',
+  6: '6.4',
 }
 
 // Current latest Vite version and support info
@@ -28,23 +28,25 @@ const supportInfo = computeSupportInfo(parsedViteVersion)
 const checkedVersion = ref(`${Math.max(parsedViteVersion.major - 3, 2)}.0.0`)
 const checkedResult = computed(() => {
   const version = checkedVersion.value
-  if (!isValidViteVersion(version)) return notSupportedVersionMessage
+  if (!isValidViteVersion(version))
+    return notSupportedVersionMessage
 
   const parsedVersion = parseVersion(checkedVersion.value)
-  if (!parsedVersion) return notSupportedVersionMessage
+  if (!parsedVersion)
+    return notSupportedVersionMessage
 
   const satisfies = (targetVersion: string) => {
     const compared = parseVersion(targetVersion)!
     return (
-      parsedVersion.major === compared.major &&
-      parsedVersion.minor >= compared.minor
+      parsedVersion.major === compared.major
+      && parsedVersion.minor >= compared.minor
     )
   }
-  const satisfiesOneSupportedVersion =
-    parsedVersion.major >= parsedViteVersion.major || // Treat future major versions as supported
-    supportInfo.regularPatches.some(satisfies) ||
-    supportInfo.importantFixes.some(satisfies) ||
-    supportInfo.securityPatches.some(satisfies)
+  const satisfiesOneSupportedVersion
+    = parsedVersion.major >= parsedViteVersion.major // Treat future major versions as supported
+      || supportInfo.regularPatches.some(satisfies)
+      || supportInfo.importantFixes.some(satisfies)
+      || supportInfo.securityPatches.some(satisfies)
 
   return satisfiesOneSupportedVersion
     ? supportedVersionMessage
@@ -54,9 +56,10 @@ const checkedResult = computed(() => {
 function parseVersion(version: string) {
   let [major, minor, patch] = version.split('.').map((v) => {
     const num = /^\d+$/.exec(v)?.[0]
-    return num ? parseInt(num) : null
+    return num ? Number.parseInt(num) : null
   })
-  if (!major) return null
+  if (!major)
+    return null
   minor ??= 0
   patch ??= 0
 
@@ -69,11 +72,13 @@ function computeSupportInfo(
   const { major, minor } = version
   const f = (versions: string[]) => {
     return versions
-      .map((v) => previousMajorLatestMinors[v] ?? v)
+      .map(v => previousMajorLatestMinors[v] ?? v)
       .filter((version) => {
-        if (!isValidViteVersion(version)) return false
+        if (!isValidViteVersion(version))
+          return false
         // Negative versions are invalid
-        if (/-\d/.test(version)) return false
+        if (/-\d/.test(version))
+          return false
         return true
       })
   }
@@ -86,18 +91,22 @@ function computeSupportInfo(
 }
 
 function versionsToText(versions: string[]) {
-  versions = versions.map((v) => `<code>vite@${v}</code>`)
-  if (versions.length === 0) return ''
-  if (versions.length === 1) return versions[0]
+  versions = versions.map(v => `<code>vite@${v}</code>`)
+  if (versions.length === 0)
+    return ''
+  if (versions.length === 1)
+    return versions[0]
   return (
-    versions.slice(0, -1).join(', ') + ' 和 ' + versions[versions.length - 1]
+    `${versions.slice(0, -1).join(', ')} 和 ${versions[versions.length - 1]}`
   )
 }
 
 function isValidViteVersion(version: string) {
-  if (version.length === 1) version += '.'
+  if (version.length === 1)
+    version += '.'
   // Vite 0.x shouldn't be mentioned, and Vite 1.x was never released
-  if (version.startsWith('0.') || version.startsWith('1.')) return false
+  if (version.startsWith('0.') || version.startsWith('1.'))
+    return false
   return true
 }
 </script>
@@ -107,32 +116,31 @@ function isValidViteVersion(version: string) {
     <ul>
       <li v-if="supportInfo.regularPatches.length">
         定期发布补丁
-        <span v-html="versionsToText(supportInfo.regularPatches)"></span>。
+        <span v-html="versionsToText(supportInfo.regularPatches)" />。
       </li>
       <li v-if="supportInfo.importantFixes.length">
         重要的修复和安全补丁向后移植到
-        <span v-html="versionsToText(supportInfo.importantFixes)"></span>。
+        <span v-html="versionsToText(supportInfo.importantFixes)" />。
       </li>
       <li v-if="supportInfo.securityPatches.length">
         安全补丁也被向后移植到
-        <span v-html="versionsToText(supportInfo.securityPatches)"></span>。
+        <span v-html="versionsToText(supportInfo.securityPatches)" />。
       </li>
       <li>
-       之前的所有版本都不再支持。用户应升级，以获得更新。
+        之前的所有版本都不再支持。用户应升级，以获得更新。
       </li>
     </ul>
     <p>
       如果你使用的是 Vite
       <input
+        v-model="checkedVersion"
         class="checked-input"
         type="text"
-        v-model="checkedVersion"
         placeholder="0.0.0"
-      />, 它是
+      >, 它是
       <strong :style="{ color: checkedResult.color }">{{
         checkedResult.text
-      }}</strong
-      >。
+      }}</strong>。
     </p>
   </div>
 </template>

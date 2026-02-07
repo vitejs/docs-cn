@@ -1,13 +1,13 @@
-import path from 'node:path'
-import { writeFileSync } from 'node:fs'
-import { Feed } from 'feed'
 import type { SiteConfig } from 'vitepress'
+import { writeFileSync } from 'node:fs'
+import path from 'node:path'
+import { Feed } from 'feed'
 import { createContentLoader } from 'vitepress'
 
 const siteUrl = 'https://vite.dev'
 const blogUrl = `${siteUrl}/blog`
 
-export const buildEnd = async (config: SiteConfig): Promise<void> => {
+export async function buildEnd(config: SiteConfig): Promise<void> {
   const feed = new Feed({
     title: 'Vite',
     description: 'Next Generation Frontend Tooling',
@@ -26,8 +26,8 @@ export const buildEnd = async (config: SiteConfig): Promise<void> => {
 
   posts.sort(
     (a, b) =>
-      +new Date(b.frontmatter.date as string) -
-      +new Date(a.frontmatter.date as string),
+      +new Date(b.frontmatter.date as string)
+      - +new Date(a.frontmatter.date as string),
   )
 
   for (const { url, excerpt, frontmatter, html } of posts) {

@@ -8,7 +8,7 @@ defineProps<{
 <template>
   <div class="scrimba">
     <span class="play-button">
-      <span class="play-icon"></span>
+      <span class="play-icon" />
     </span>
     <a :href="href" target="_blank" rel="sponsored noopener" :title="title">
       <slot>在 Scrimba 上观看互动课程</slot>

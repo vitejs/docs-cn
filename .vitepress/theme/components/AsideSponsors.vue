@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { computed } from 'vue'
 import { VPDocAsideSponsors } from '@voidzero-dev/vitepress-theme'
+import { computed } from 'vue'
 import { useSponsor, voidZero } from '../composables/sponsor'
 
 const { data } = useSponsor()
@@ -29,7 +29,7 @@ const sponsors = computed(() => {
       height="22"
       src="../../../images/viteconf.svg"
       alt="ViteConf Logo"
-    />
+    >
     <span>
       <p class="extra-info">Building Together</p>
       <p class="heading">ViteConf 2025</p>

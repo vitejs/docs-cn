@@ -21,7 +21,7 @@ defineProps({
         picture-in-picture;
       "
       allowfullscreen
-    ></iframe>
+    />
   </div>
 </template>
 

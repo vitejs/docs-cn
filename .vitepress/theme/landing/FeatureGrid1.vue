@@ -1,6 +1,6 @@
 <script setup>
-import RiveAnimation from '@components/shared/RiveAnimation.vue'
 import viteAnimation from '@assets/vite/animations/563_x_420_rich_features.riv'
+import RiveAnimation from '@components/shared/RiveAnimation.vue'
 </script>
 
 <template>
@@ -23,7 +23,7 @@ import viteAnimation from '@assets/vite/animations/563_x_420_rich_features.riv'
           alt=""
           inert
           loading="lazy"
-        />
+        >
         <img
           class="z-1"
           src="@assets/vite/vite-featurepanel-1-terminal.svg"
@@ -32,13 +32,15 @@ import viteAnimation from '@assets/vite/animations/563_x_420_rich_features.riv'
           alt="Terminal"
           inert
           loading="lazy"
-        />
+        >
       </div>
     </div>
 
     <div class="flex flex-col gap-3 justify-between border-r-0">
       <div class="p-5 sm:p-10 flex flex-col gap-3">
-        <h5 class="text-white">闪电般快速的 HMR</h5>
+        <h5 class="text-white">
+          闪电般快速的 HMR
+        </h5>
         <p class="max-w-[26rem] text-pretty">
           无论你的应用有多大，保存时都能立即响应更改。
         </p>
@@ -52,12 +54,14 @@ import viteAnimation from '@assets/vite/animations/563_x_420_rich_features.riv'
           inert
           loading="lazy"
           alt="lightning fast hot module replacement"
-        />
+        >
       </div>
     </div>
 
     <div class="p-5 sm:p-10 pb-0 sm:pb-0 flex flex-col gap-3 lg:border-b-0">
-      <h5 class="text-white">丰富的开箱即用功能</h5>
+      <h5 class="text-white">
+        丰富的开箱即用功能
+      </h5>
       <p class="sm:max-w-[28rem] text-pretty">
         TypeScript, JSX, CSS, Workers, WebAssembly... 只需一个插件即可使用
       </p>
@@ -74,7 +78,9 @@ import viteAnimation from '@assets/vite/animations/563_x_420_rich_features.riv'
 
     <div class="flex flex-col gap-3 justify-between border-r-0 border-b-0">
       <div class="p-5 sm:p-10 flex flex-col gap-3">
-        <h5 class="text-white">构建优化</h5>
+        <h5 class="text-white">
+          构建优化
+        </h5>
         <p class="max-w-[25rem] text-pretty">
           由 Rolldown 提供支持的 tree-shaking、内置压缩、精细分块控制。
         </p>
@@ -86,7 +92,7 @@ import viteAnimation from '@assets/vite/animations/563_x_420_rich_features.riv'
           alt=""
           inert
           loading="lazy"
-        />
+        >
         <img
           class="z-1"
           src="@assets/vite/vite-featurepanel-4-terminal.svg"
@@ -95,7 +101,7 @@ import viteAnimation from '@assets/vite/animations/563_x_420_rich_features.riv'
           inert
           loading="lazy"
           alt="optimized build"
-        />
+        >
       </div>
     </div>
   </section>

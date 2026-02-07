@@ -1,6 +1,6 @@
 <script setup>
-import RiveAnimation from '@components/shared/RiveAnimation.vue'
 import flexiblePluginAnimation from '@assets/vite/animations/640_x_300_flexible_plugin.riv'
+import RiveAnimation from '@components/shared/RiveAnimation.vue'
 </script>
 
 <template>
@@ -24,8 +24,12 @@ import flexiblePluginAnimation from '@assets/vite/animations/640_x_300_flexible_
 
     <div class="flex flex-col gap-3 border-r-0 justify-between">
       <div class="p-5 sm:p-10 flex flex-col gap-3">
-        <h5 class="text-white">完全类型化的 API</h5>
-        <p class="max-w-[26rem] text-pretty">专为在上层构建而设计</p>
+        <h5 class="text-white">
+          完全类型化的 API
+        </h5>
+        <p class="max-w-[26rem] text-pretty">
+          专为在上层构建而设计
+        </p>
       </div>
       <div class="relative p-5 sm:p-10 flex justify-center bg-[#370a7f]">
         <img
@@ -34,7 +38,7 @@ import flexiblePluginAnimation from '@assets/vite/animations/640_x_300_flexible_
           alt=""
           inert
           loading="lazy"
-        />
+        >
         <img
           class="z-1"
           src="@assets/vite/vite-typed-api.svg"
@@ -43,12 +47,14 @@ import flexiblePluginAnimation from '@assets/vite/animations/640_x_300_flexible_
           inert
           loading="lazy"
           alt="typed api"
-        />
+        >
       </div>
     </div>
 
     <div class="p-5 sm:p-10 flex flex-col gap-3 lg:border-b-0">
-      <h5 class="text-white">一流的 SSR 支持</h5>
+      <h5 class="text-white">
+        一流的 SSR 支持
+      </h5>
       <p class="sm:max-w-[28rem] text-pretty mb-12 sm:mb-16">
         设置自定义 SSR（服务端渲染）或构建自己的 SSR 框架从未如此简单
       </p>
@@ -59,15 +65,17 @@ import flexiblePluginAnimation from '@assets/vite/animations/640_x_300_flexible_
         alt="SSR Support"
         loading="lazy"
         class="w-full px-5"
-      />
+      >
     </div>
 
     <div class="flex flex-col gap-3 justify-between">
       <div class="p-5 sm:p-10 flex flex-col gap-3">
-        <h5 class="text-white">持续的生态系统集成</h5>
+        <h5 class="text-white">
+          持续的生态系统集成
+        </h5>
         <p class="max-w-[25rem] text-pretty">
           我们的持续集成（CI）系统在不断针对下游项目测试 Vite 的更改，
-        使我们能够在确保稳定性的同时，自信地改进 Vite
+          使我们能够在确保稳定性的同时，自信地改进 Vite
         </p>
       </div>
       <div class="px-5 sm:px-10 flex justify-center">
@@ -78,7 +86,7 @@ import flexiblePluginAnimation from '@assets/vite/animations/640_x_300_flexible_
           inert
           loading="lazy"
           alt="continuous ecosystem integration"
-        />
+        >
       </div>
     </div>
   </section>

@@ -60,12 +60,12 @@ interface PackageJson {
   name: string
   version: string
   description?: string
-  author?: string | { name: string; email?: string; url?: string }
-  repository?: string | { type?: string; url?: string }
+  author?: string | { name: string, email?: string, url?: string }
+  repository?: string | { type?: string, url?: string }
   funding?:
     | string
-    | { url: string; type?: string }
-    | Array<string | { url: string; type?: string }>
+    | { url: string, type?: string }
+    | Array<string | { url: string, type?: string }>
   dependencies?: Record<string, string>
   devDependencies?: Record<string, string>
   optionalDependencies?: Record<string, string>
@@ -115,12 +115,13 @@ function parseBundledDependenciesFromLicense(licensePath: string): string[] {
 
   // Find the "# Bundled dependencies:" section and parse package names from ## headers
   const bundledSection = content.split('# Bundled dependencies:\n')[1]
-  if (!bundledSection) return []
+  if (!bundledSection)
+    return []
 
   // Match all ## headers which contain package names (comma-separated for grouped packages)
-  const deps = [...bundledSection.matchAll(/^## (.+)$/gm)].flatMap((m) =>
+  const deps = [...bundledSection.matchAll(/^## (.+)$/gm)].flatMap(m =>
     // Package names can be comma-separated (e.g., "## pkg1, pkg2, pkg3")
-    m[1].split(',').map((n) => n.trim()),
+    m[1].split(',').map(n => n.trim()),
   )
   return [...new Set(deps)]
 }
@@ -128,14 +129,17 @@ function parseBundledDependenciesFromLicense(licensePath: string): string[] {
 function normalizeRepository(
   repo: PackageJson['repository'],
 ): string | undefined {
-  if (!repo) return undefined
+  if (!repo)
+    return undefined
 
   let url: string
   if (typeof repo === 'string') {
     url = repo
-  } else if (repo.url) {
+  }
+  else if (repo.url) {
     url = repo.url
-  } else {
+  }
+  else {
     return undefined
   }
   url = url
@@ -147,23 +151,30 @@ function normalizeRepository(
     .replace(/^ssh:\/\//, 'https://')
   if (url.startsWith('github:')) {
     return `https://github.com/${url.slice(7)}`
-  } else if (url.startsWith('gitlab:')) {
+  }
+  else if (url.startsWith('gitlab:')) {
     return `https://gitlab.com/${url.slice(7)}`
-  } else if (url.startsWith('bitbucket:')) {
+  }
+  else if (url.startsWith('bitbucket:')) {
     return `https://bitbucket.org/${url.slice(10)}`
-  } else if (!url.includes(':') && url.split('/').length === 2) {
+  }
+  else if (!url.includes(':') && url.split('/').length === 2) {
     return `https://github.com/${url}`
-  } else {
+  }
+  else {
     return url.includes('://') ? url : `https://${url}`
   }
 }
 
 function normalizeFunding(funding: PackageJson['funding']): string | undefined {
-  if (!funding) return undefined
-  if (typeof funding === 'string') return funding
+  if (!funding)
+    return undefined
+  if (typeof funding === 'string')
+    return funding
   if (Array.isArray(funding)) {
     const first = funding[0]
-    if (typeof first === 'string') return first
+    if (typeof first === 'string')
+      return first
     return first?.url
   }
   return funding.url
@@ -173,7 +184,8 @@ function parseAuthor(author: PackageJson['author']): {
   name?: string
   url?: string
 } {
-  if (!author) return {}
+  if (!author)
+    return {}
   if (typeof author === 'object') {
     return { name: author.name, url: author.url }
   }
@@ -212,7 +224,8 @@ function readPackageInfo(
       repository: normalizeRepository(pkg.repository),
       funding: normalizeFunding(pkg.funding),
     }
-  } catch {
+  }
+  catch {
     // Package might not exist in node_modules (optional peer dep, etc.)
     return null
   }
@@ -221,7 +234,7 @@ function readPackageInfo(
 function groupByAuthor(dependencies: Dependency[]): Author[] {
   const authorMap = new Map<
     string,
-    { url?: string; packages: AuthorPackage[] }
+    { url?: string, packages: AuthorPackage[] }
   >()
 
   for (const dep of dependencies) {
@@ -232,7 +245,8 @@ function groupByAuthor(dependencies: Dependency[]): Author[] {
         if (!existing.url && dep.authorUrl) {
           existing.url = dep.authorUrl
         }
-      } else {
+      }
+      else {
         authorMap.set(dep.author, {
           url: dep.authorUrl,
           packages: [{ name: dep.name, funding: dep.funding }],
@@ -247,16 +261,16 @@ function groupByAuthor(dependencies: Dependency[]): Author[] {
         a.name.localeCompare(b.name),
       )
       const fundingUrls = new Set(
-        sortedPackages.map((p) => p.funding).filter(Boolean),
+        sortedPackages.map(p => p.funding).filter(Boolean),
       )
-      const sharedFunding =
-        fundingUrls.size === 1 ? [...fundingUrls][0] : undefined
+      const sharedFunding
+        = fundingUrls.size === 1 ? [...fundingUrls][0] : undefined
       return {
         name,
         url: info.url,
         funding: sharedFunding,
         packages: sharedFunding
-          ? sortedPackages.map((p) => ({ name: p.name }))
+          ? sortedPackages.map(p => ({ name: p.name }))
           : sortedPackages,
       }
     })
@@ -274,28 +288,28 @@ function loadData(): AcknowledgementsData {
   const bundledDepNames = parseBundledDependenciesFromLicense(licensePath)
   const bundledDependencies = bundledDepNames
     .map(
-      (name) =>
-        readPackageInfo(name, nodeModulesDir) ||
-        readPackageInfo(name, rootNodeModulesDir),
+      name =>
+        readPackageInfo(name, nodeModulesDir)
+        || readPackageInfo(name, rootNodeModulesDir),
     )
-    .filter((dep) => dep != null)
+    .filter(dep => dep != null)
     .sort((a, b) => a.name.localeCompare(b.name))
 
   const devTools = devToolNames
-    .map((name) => readPackageInfo(name, rootNodeModulesDir))
-    .filter((dep) => dep != null)
+    .map(name => readPackageInfo(name, rootNodeModulesDir))
+    .filter(dep => dep != null)
     .sort((a, b) => a.name.localeCompare(b.name))
 
   const notableDeps = notableDependencies
     .map(
-      (name) =>
-        readPackageInfo(name, nodeModulesDir) ||
-        readPackageInfo(name, rootNodeModulesDir),
+      name =>
+        readPackageInfo(name, nodeModulesDir)
+        || readPackageInfo(name, rootNodeModulesDir),
     )
-    .filter((dep) => dep != null)
+    .filter(dep => dep != null)
 
   const nonNotableDeps = bundledDependencies.filter(
-    (d) => !notableDependencies.includes(d.name),
+    d => !notableDependencies.includes(d.name),
   )
 
   return {

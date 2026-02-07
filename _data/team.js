@@ -175,7 +175,7 @@ export const emeriti = [
     avatar: 'https://github.com/underfin.png',
     name: 'underfin',
     title: '开发者',
-    links: [{ icon: 'github', link: 'https://github.com/underfin' }]
+    links: [{ icon: 'github', link: 'https://github.com/underfin' }],
   },
   {
     avatar: 'https://github.com/GrygrFlzr.png',
@@ -190,7 +190,7 @@ export const emeriti = [
     avatar: 'https://github.com/nihalgonsalves.png',
     name: 'Nihal Gonsalves',
     title: '高级软件工程师',
-    links: [{ icon: 'github', link: 'https://github.com/nihalgonsalves' }]
+    links: [{ icon: 'github', link: 'https://github.com/nihalgonsalves' }],
   },
   {
     avatar: 'https://github.com/Shinigami92.png',
@@ -230,7 +230,7 @@ export const cnTranslator = [
     desc: 'Vite 团队中文翻译维护者',
     links: [
       { icon: 'github', link: 'https://github.com/ShenQingchuan' },
-      { icon: 'twitter', link: 'https://twitter.com/ShenQingchuan' }
+      { icon: 'twitter', link: 'https://twitter.com/ShenQingchuan' },
     ],
   },
   {
@@ -242,7 +242,7 @@ export const cnTranslator = [
     desc: 'Vite 团队中文翻译维护者 & Antd 成员',
     links: [
       { icon: 'github', link: 'https://github.com/thinkasany' },
-      { icon: 'twitter', link: 'https://twitter.com/thinkasany' }
+      { icon: 'twitter', link: 'https://twitter.com/thinkasany' },
     ],
   },
   {

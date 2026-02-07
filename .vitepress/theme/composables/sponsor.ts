@@ -1,11 +1,11 @@
-import { onMounted, onUnmounted, ref } from 'vue'
 import type {
   Sponsor,
   SponsorTier,
 } from '@voidzero-dev/vitepress-theme/src/types/sponsors'
-import voidZeroSvg from './images/voidzero.svg'
+import { onMounted, onUnmounted, ref } from 'vue'
 import boltSvg from './images/bolt.svg'
 import nuxtLabsSvg from './images/nuxtlabs.svg'
+import voidZeroSvg from './images/voidzero.svg'
 
 interface Sponsors {
   special: Sponsor[]
@@ -98,24 +98,24 @@ function mapSponsors(sponsors: Sponsors): SponsorTier[] {
     {
       tier: '合作伙伴',
       size: 'big' as const,
-      items: viteSponsors['special'],
+      items: viteSponsors.special,
     },
     {
       tier: '铂金赞助商',
       size: 'big' as const,
-      items: mapImgPath(sponsors['platinum']),
+      items: mapImgPath(sponsors.platinum),
     },
     {
       tier: '黄金赞助商',
       size: 'medium' as const,
-      items: [...mapImgPath(sponsors['gold']), ...viteSponsors['gold']],
+      items: [...mapImgPath(sponsors.gold), ...viteSponsors.gold],
     },
   ]
 }
 
 const viteSponsorNames = new Set(
-  Object.values(viteSponsors).flatMap((sponsors) =>
-    sponsors.map((s) => s.name),
+  Object.values(viteSponsors).flatMap(sponsors =>
+    sponsors.map(s => s.name),
   ),
 )
 
@@ -124,8 +124,8 @@ const viteSponsorNames = new Set(
  */
 function mapImgPath(sponsors: Sponsor[]) {
   return sponsors
-    .filter((sponsor) => !viteSponsorNames.has(sponsor.name))
-    .map((sponsor) => ({
+    .filter(sponsor => !viteSponsorNames.has(sponsor.name))
+    .map(sponsor => ({
       ...sponsor,
       img: `${dataHost}/images/${sponsor.img}`,
     }))

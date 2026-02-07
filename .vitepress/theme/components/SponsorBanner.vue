@@ -20,7 +20,7 @@ function dismiss() {
 </script>
 
 <template>
-  <div class="banner" v-if="open">
+  <div v-if="open" class="banner">
     <svg
       xmlns="http://www.w3.org/2000/svg"
       height="12"
@@ -449,7 +449,9 @@ function dismiss() {
       </defs>
     </svg>
     <div class="vt-banner-text">
-      <p style="display: inline-block">The Unified Toolchain for the Web</p>
+      <p style="display: inline-block">
+        The Unified Toolchain for the Web
+      </p>
       <a
         target="_blank"
         class="vt-primary-action"
@@ -471,8 +473,8 @@ function dismiss() {
         />
       </svg>
     </button>
-    <div class="glow glow--purple"></div>
-    <div class="glow glow--blue"></div>
+    <div class="glow glow--purple" />
+    <div class="glow glow--blue" />
   </div>
 </template>
 

@@ -1,8 +1,8 @@
 <script setup>
-import RiveAnimation from '@components/shared/RiveAnimation.vue'
+import viteAnimation from '@assets/vite/animations/641_x_629_vite_masthead.riv'
 import CodeGroup from '@components/shared/CodeGroup.vue'
 
-import viteAnimation from '@assets/vite/animations/641_x_629_vite_masthead.riv'
+import RiveAnimation from '@components/shared/RiveAnimation.vue'
 
 if (typeof document !== 'undefined') {
   const preloadLink = document.createElement('link')
@@ -37,20 +37,18 @@ const installTabs = [
           href="https://voidzero.dev"
           target="_blank"
         >
-          <span class="text-grey text-xs font-mono uppercase tracking-wide"
-            >By</span
-          >
+          <span class="text-grey text-xs font-mono uppercase tracking-wide">By</span>
           <img
             src="@assets/logos/voidzero-light.svg"
             alt="VoidZero"
             class="h-2.5"
-          />
+          >
         </a>
         <h1 class="text-white text-pretty max-w-[25rem]">
-          面向 Web 的 <br /> 构建工具
+          面向 Web 的 <br> 构建工具
         </h1>
         <p class="text-white/70 md:text-lg max-w-[27rem] text-pretty">
-          Vite 是一款速度极快的前端构建工具 <br /> 为下一代 Web 应用程序提供支持
+          Vite 是一款速度极快的前端构建工具 <br> 为下一代 Web 应用程序提供支持
         </p>
         <div class="flex items-center gap-5 mt-8">
           <a href="/guide/" class="button button--primary inline-block w-fit">

@@ -6,10 +6,9 @@ import _ from 'lodash'
 // no need to specify that in package.json
 
 class FrontMatterService {
-  constructor() {}
-
   /** @param {Record<string, any>} obj */
   __print(obj) {
+    // eslint-disable-next-line no-console
     console.log(JSON.stringify(obj, null, 2))
   }
 
@@ -31,17 +30,15 @@ class FrontMatterService {
     return this
   }
 
-  /** @param {string} string */
-  show(key) {
-    let output = flag ? this.matter[key] : this.matter
-    this.__print(output)
+  show() {
+    this.__print(this.matter)
     return this
   }
 
   /**
    * @param {string} key
    * @param {string} value
-   * */
+   */
   set(key, value) {
     this.matter.data[key] = value
     return this
@@ -54,11 +51,10 @@ class FrontMatterService {
   }
 
   save() {
-    let matterStringifyData = this.matter.stringify()
+    const matterStringifyData = this.matter.stringify()
     fs.writeFile(this.filePath, matterStringifyData, (err) => {
       if (err) {
         console.warn(`${this.filePath} -- Saving file with matter failed !!`)
-        return
       }
     })
   }

@@ -11,7 +11,7 @@ onMounted(() => {
 
 <template>
   <div class="wwads-container">
-    <div class="wwads-cn wwads-vertical" data-id="111"></div>
+    <div class="wwads-cn wwads-vertical" data-id="111" />
   </div>
 </template>
 
