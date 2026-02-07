@@ -32,6 +32,9 @@ importers:
       eslint:
         specifier: ^9.39.2
         version: 9.39.2(jiti@2.6.1)
+      eslint-factory:
+        specifier: ^0.1.2
+        version: 0.1.2(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3)
       eslint-plugin-format:
         specifier: ^1.4.0
         version: 1.4.0(eslint@9.39.2(jiti@2.6.1))
@@ -1351,6 +1354,11 @@ packages:
     resolution: {integrity: sha512-cJzNJ7L+psWp5mXM7jBX+fjHtBvvh06RBlcweMhKD8jWqQw0G78hOW5tpVALGHGFPsBV+ot2H+pdDGJy6CV8pA==}
     peerDependencies:
       eslint: ^9.5.0
+
+  eslint-factory@0.1.2:
+    resolution: {integrity: sha512-0APUA89aVVxJ0BnP84Wbg1dx9co9ZixotdKjO0S0jz6uq51ev2JBNXpeu5do9oasEc9dn+v7wywUA2WBbmB/RA==}
+    peerDependencies:
+      eslint: ^9.0.0
 
   eslint-flat-config-utils@3.0.1:
     resolution: {integrity: sha512-VMA3u86bLzNAwD/7DkLtQ9lolgIOx2Sj0kTMMnBvrvEz7w0rQj4aGCR+lqsqtld63gKiLyT4BnQZ3gmGDXtvjg==}
@@ -3982,6 +3990,14 @@ snapshots:
     dependencies:
       '@eslint/compat': 1.4.1(eslint@9.39.2(jiti@2.6.1))
       eslint: 9.39.2(jiti@2.6.1)
+
+  eslint-factory@0.1.2(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3):
+    dependencies:
+      '@typescript-eslint/utils': 8.54.0(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3)
+      eslint: 9.39.2(jiti@2.6.1)
+    transitivePeerDependencies:
+      - supports-color
+      - typescript
 
   eslint-flat-config-utils@3.0.1:
     dependencies:
