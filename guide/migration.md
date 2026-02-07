@@ -15,11 +15,7 @@
 
 ## Rolldown {#rolldown}
 
-<<<<<<< HEAD
-Vite 8 使用基于 Rolldown 和 Oxc 的工具，而不是 esbuild 和 Rollup。
-=======
-Vite 8 uses [Rolldown](https://rolldown.rs/) and [Oxc](https://oxc.rs/) based tools instead of [esbuild](https://esbuild.github.io/) and [Rollup](https://rollupjs.org/).
->>>>>>> 6ce4bbe050d312d3d14ae467088db79890a02c34
+Vite 8 使用基于 [Rolldown](https://rolldown.rs/) 和 [Oxc](https://oxc.rs/) 的工具，而不是 [esbuild](https://esbuild.github.io/) 和 [Rollup](https://rollupjs.org/)。
 
 ### 渐进式迁移 {#gradual-migration}
 
@@ -274,11 +270,7 @@ Lightning CSS 支持更好的语法降级，你的 CSS 包大小可能会略有�
 
 ### 外部化模块的 Require 调用 {#require-calls-for-externalized-modules}
 
-<<<<<<< HEAD
-现在外部化模块的 `require` 调用会被保留为 `require` 调用，而不会被转换为 `import` 语句。这是为了保持 `require` 调用的语义。如果你想将它们转换为 `import` 语句，可以使用 Rolldown 内置的 `esmExternalRequirePlugin`，该插件由 `vite` 重新导出。
-=======
-`require` calls for externalized modules are now preserved as `require` calls and not converted to `import` statements. This is to preserve the semantics of `require` calls. If you want to convert them to `import` statements, you can use [Rolldown's built-in `esmExternalRequirePlugin`](https://rolldown.rs/builtin-plugins/esm-external-require), which is re-exported from `vite`.
->>>>>>> 6ce4bbe050d312d3d14ae467088db79890a02c34
+现在外部化模块的 `require` 调用会被保留为 `require` 调用，而不会被转换为 `import` 语句。这是为了保持 `require` 调用的语义。如果你想将它们转换为 `import` 语句，可以使用 [Rolldown 内置的 `esmExternalRequirePlugin`](https://rolldown.rs/builtin-plugins/esm-external-require)，该插件由 `vite` 重新导出。
 
 ```js
 import { defineConfig, esmExternalRequirePlugin } from 'vite'
@@ -332,21 +324,11 @@ const plugin = {
 
 以下选项已被弃用，将在未来被移除：
 
-<<<<<<< HEAD
 - `build.rollupOptions`：重命名为 `build.rolldownOptions`
 - `worker.rollupOptions`：重命名为 `worker.rolldownOptions`
 - `build.commonjsOptions`：现在无操作效果
 - `build.dynamicImportVarsOptions.warnOnError`: 现在无操作效果
-- `resolve.alias[].customResolver`: 请改用带有 `resolveId` 钩子的自定义插件。
-
-## 总体变化 [<Badge text="NRV" type="warning" />](#migration-from-v7) {#general-changes}
-=======
-- `build.rollupOptions`: renamed to `build.rolldownOptions`
-- `worker.rollupOptions`: renamed to `worker.rolldownOptions`
-- `build.commonjsOptions`: it is now no-op
-- `build.dynamicImportVarsOptions.warnOnError`: it is now no-op
-- `resolve.alias[].customResolver`: Use a custom plugin with `resolveId` hook and `enforce: 'pre'` instead
->>>>>>> 6ce4bbe050d312d3d14ae467088db79890a02c34
+- `resolve.alias[].customResolver`：请改用带有 `resolveId` 钩子和 `enforce: 'pre'` 的自定义插件。
 
 ## 移除了已弃用的功能 [<Badge text="NRV" type="warning" />](#migration-from-v7) {#removed-deprecated-features}
 
@@ -356,9 +338,6 @@ const plugin = {
 
 还有其他一些只影响少数用户的破坏性更改。
 
-<<<<<<< HEAD
-- **[TODO: 这将在稳定版发布前修复]** https://github.com/rolldown/rolldown/issues/5726 (affects nuxt, qwik)
-- **[TODO: 这将在稳定版发布前修复]** `@vite-ignore` 注释边缘情况 ([rolldown-vite#426](https://github.com/vitejs/rolldown-vite/issues/426))
 - [Extglobs](https://github.com/micromatch/picomatch/blob/master/README.md#extglobs) 尚未得到支持 ([rolldown-vite#365](https://github.com/vitejs/rolldown-vite/issues/365))
 - **TypeScript 旧版命名空间仅部分支持**：TypeScript 的旧版命名空间功能现在只得到部分支持。更多详情请参阅 [Oxc 转换器的相关文档](https://oxc.rs/docs/guide/usage/transformer/typescript.html#partial-namespace-support)。
 - `define` 不共享对象引用：当你传递一个对象作为 `define` 的值时，每个变量都会有一个单独的对象副本。详见 [Oxc 转换器的相关文档](https://oxc.rs/docs/guide/usage/transformer/global-variable-replacement#define)。
@@ -378,28 +357,7 @@ const plugin = {
   - `renderDynamicImport` 钩子 ([rolldown#4532](https://github.com/rolldown/rolldown/issues/4532))
   - `resolveFileUrl` 钩子
 - `parseAst` / `parseAstAsync` 函数现在已被弃用，推荐使用功能更多的 `parseSync` / `parse` 函数。
-=======
-- [Extglobs](https://github.com/micromatch/picomatch/blob/master/README.md#extglobs) are not supported yet ([rolldown-vite#365](https://github.com/vitejs/rolldown-vite/issues/365))
-- TypeScript legacy namespace is only supported partially. See [Oxc Transformer's related documentation](https://oxc.rs/docs/guide/usage/transformer/typescript.html#partial-namespace-support) for more details.
-- `define` does not share reference for objects: When you pass an object as a value to `define`, each variable will have a separate copy of the object. See [Oxc Transformer's related documentation](https://oxc.rs/docs/guide/usage/transformer/global-variable-replacement#define) for more details.
-- `bundle` object changes (`bundle` is an object passed in `generateBundle` / `writeBundle` hooks, returned by `build` function):
-  - Assigning to `bundle[foo]` is not supported. This is discouraged by Rollup as well. Please use `this.emitFile()` instead.
-  - the reference is not shared across the hooks ([rolldown-vite#410](https://github.com/vitejs/rolldown-vite/issues/410))
-  - `structuredClone(bundle)` errors with `DataCloneError: #<Object> could not be cloned`. This is not supported anymore. Please clone it with `structuredClone({ ...bundle })`. ([rolldown-vite#128](https://github.com/vitejs/rolldown-vite/issues/128))
-- All parallel hooks in Rollup works as sequential hooks. See [Rolldown's documentation](https://rolldown.rs/apis/plugin-api#sequential-hook-execution) for more details.
-- `"use strict";` is not injected sometimes. See [Rolldown's documentation](https://rolldown.rs/in-depth/directives) for more details.
-- Transforming to lower than ES5 with plugin-legacy is not supported ([rolldown-vite#452](https://github.com/vitejs/rolldown-vite/issues/452))
-- Passing the same browser with multiple versions of it to `build.target` option now errors: esbuild selects the latest version of it, which was probably not what you intended.
-- Missing support by Rolldown: The following features are not supported by Rolldown and is no longer supported by Vite.
-  - `build.rollupOptions.output.format: 'system'` ([rolldown#2387](https://github.com/rolldown/rolldown/issues/2387))
-  - `build.rollupOptions.output.format: 'amd'` ([rolldown#2387](https://github.com/rolldown/rolldown/issues/2528))
-  - `shouldTransformCachedModule` hook ([rolldown#4389](https://github.com/rolldown/rolldown/issues/4389))
-  - `resolveImportMeta` hook ([rolldown#1010](https://github.com/rolldown/rolldown/issues/1010))
-  - `renderDynamicImport` hook ([rolldown#4532](https://github.com/rolldown/rolldown/issues/4532))
-  - `resolveFileUrl` hook
-- `parseAst` / `parseAstAsync` functions are now deprecated in favor of `parseSync` / `parse` functions which have more features.
-- (bug) `@vite-ignore` comment edge case ([rolldown-vite#426](https://github.com/vitejs/rolldown-vite/issues/426))
->>>>>>> 6ce4bbe050d312d3d14ae467088db79890a02c34
+- （bug）`@vite-ignore` 注释的边界情况 ([rolldown-vite#426](https://github.com/vitejs/rolldown-vite/issues/426))
 
 ## 从 v6 迁移 {#migration-from-v6}
 
