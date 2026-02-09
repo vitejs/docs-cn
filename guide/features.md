@@ -691,7 +691,17 @@ init({
 请使用 [`vite-plugin-wasm`](https://github.com/Menci/vite-plugin-wasm) 或其他社区上的插件来处理。
 :::
 
+<<<<<<< HEAD
 ### 访问 WebAssembly 模块 {#accessing-the-webassembly-module}
+=======
+::: warning For SSR build, Node.js compatible runtimes are only supported
+
+Due to the lack of a universal way to load a file, the internal implementation for `.wasm?init` relies on `node:fs` module. This means that this feature will only work in Node.js compatible runtimes for SSR builds.
+
+:::
+
+### Accessing the WebAssembly Module
+>>>>>>> cc1c808f7cb9afc2211e3827a0c7a29e5369bedd
 
 如果需要访问 `Module` 对象，例如将它多次实例化，可以使用 [显式 URL 引入](./assets#explicit-url-imports) 来解析资源，然后执行实例化：
 
@@ -711,6 +721,7 @@ const main = async () => {
 main()
 ```
 
+<<<<<<< HEAD
 ### 在 Node.js 中获取模块 {#fetching-the-module-in-node-js}
 
 在 SSR 中，作为 `?init` 导入的 `fetch()` 可能会失败，导致 `TypeError: Invalid URL` 报错。
@@ -737,6 +748,9 @@ main()
 ```
 
 ## Web Workers {#web-workers}
+=======
+## Web Workers
+>>>>>>> cc1c808f7cb9afc2211e3827a0c7a29e5369bedd
 
 ### 通过构造器导入 {#import-with-constructors}
 

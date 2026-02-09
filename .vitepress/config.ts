@@ -129,6 +129,7 @@ const config = defineConfig({
     ],
 
     search: {
+<<<<<<< HEAD
       provider: 'local',
       options: {
         translations: {
@@ -145,6 +146,18 @@ const config = defineConfig({
           }
         }
       }
+=======
+      provider: 'algolia',
+      options: {
+        appId: '7H67QR5P0A',
+        apiKey: '208bb9c14574939326032b937431014b',
+        indexName: 'vitejs',
+        searchParameters: {
+          facetFilters: ['tags:en'],
+        },
+        insights: true,
+      },
+>>>>>>> cc1c808f7cb9afc2211e3827a0c7a29e5369bedd
     },
 
     docFooter: {
