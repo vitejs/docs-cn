@@ -717,7 +717,7 @@ const main = async () => {
 main()
 ```
 
-## Web Workers
+## Web Workers {#web-workers}
 
 ### 通过构造器导入 {#import-with-constructors}
 
