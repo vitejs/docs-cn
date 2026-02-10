@@ -174,7 +174,13 @@ resolve: {
 
 请注意，如果符合要求，`import`，`require`，`default` 始终会被应用。
 
+<<<<<<< HEAD
 ## resolve.mainFields <NonInheritBadge /> {#resolve-mainfields}
+=======
+In addition, the `style` condition is applied when resolving style imports, e.g. `@import 'my-library'`. For some CSS pre-processors, their corresponding conditions are also applied, i.e. `sass` for Sass and `less` for Less.
+
+## resolve.mainFields <NonInheritBadge />
+>>>>>>> 7ebf0fab67127b2d1b6903a1844932b71d8e7889
 
 - **类型：** `string[]`
 - **默认：** `['browser', 'module', 'jsnext:main', 'jsnext']` (`defaultClientMainFields`)

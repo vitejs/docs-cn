@@ -127,7 +127,11 @@ Netlify 命令行工具（CLI）会为你提供一个预览链接，供你查看
 4. 点击 **部署**
 5. 你的 Vite 应用就部署完成了！
 
+<<<<<<< HEAD
 在你的项目被导入和部署后，所有对生产分支以外的其他分支（可能来自合并请求）的后续推送都会生成 [预览部署](https://docs.netlify.com/site-deploys/deploy-previews/)，所有对生产分支（通常是 "main"）的更改都会生成一个 [生产部署](https://docs.netlify.com/site-deploys/overview/#definitions)。
+=======
+After your project has been imported and deployed, all subsequent pushes to branches other than the production branch along with pull requests will generate [Preview Deployments](https://docs.netlify.com/deploy/deploy-types/deploy-previews/), and all changes made to the Production Branch (commonly “main”) will result in a [Production Deployment](https://docs.netlify.com/deploy/deploy-overview/#definitions).
+>>>>>>> 7ebf0fab67127b2d1b6903a1844932b71d8e7889
 
 ## Vercel {#vercel}
 
