@@ -319,7 +319,8 @@ Vite 插件也可以提供钩子来服务于特定的 Vite 目标。这些钩子
   const myPlugin = () => ({
     name: 'configure-preview-server',
     configurePreviewServer(server) {
-      // 返回一个钩子，会在其他中间件安装完成后调用
+      // 返回一个钩子，会在其他中间件安装
+      // 完成后调用
       return () => {
         server.middlewares.use((req, res, next) => {
           // 自定义处理请求 ...
@@ -337,7 +338,6 @@ Vite 插件也可以提供钩子来服务于特定的 Vite 目标。这些钩子
   转换 `index.html` 的专用钩子。钩子接收当前的 HTML 字符串和转换上下文。上下文在开发期间暴露[`ViteDevServer`](./api-javascript#vitedevserver)实例，在构建期间暴露 Rollup 输出的包。
 
   这个钩子可以是异步的，并且可以返回以下其中之一:
-
   - 经过转换的 HTML 字符串
   - 注入到现有 HTML 中的标签描述符对象数组（`{ tag, attrs, children }`）。每个标签也可以指定它应该被注入到哪里（默认是在 `<head>` 之前）
   - 一个包含 `{ html, tags }` 的对象
@@ -426,7 +426,6 @@ Vite 插件也可以提供钩子来服务于特定的 Vite 目标。这些钩子
   - `read` 这是一个异步读函数，它返回文件的内容。之所以这样做，是因为在某些系统上，文件更改的回调函数可能会在编辑器完成文件更新之前过快地触发，并 `fs.readFile` 直接会返回空内容。传入的 `read` 函数规范了这种行为。
 
   钩子可以选择:
-
   - 过滤和缩小受影响的模块列表，使 HMR 更准确。
 
   - 返回一个空数组并进行全面刷新：
@@ -484,7 +483,8 @@ Vite 插件也可以提供钩子来服务于特定的 Vite 目标。这些钩子
 - Vite 后置构建插件（最小化，manifest，报告）
 
 请注意，这与钩子排序是分开的，钩子仍然像往常一样单独受其 [`order` 属性](https://rolldown.rs/reference/TypeAlias.ObjectHook#order) 的约束。
-## 情景应用 {#conditional-application}
+
+## 按需应用 {#conditional-application}
 
 默认情况下插件在开发（serve）和构建（build）模式中都会调用。如果插件只需要在预览或构建期间有条件地应用，请使用 `apply` 属性指明它们仅在 `'build'` 或 `'serve'` 模式时调用：
 

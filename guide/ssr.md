@@ -47,9 +47,9 @@ Vite 为服务端渲染（SSR）提供了内建支持。[`create-vite-extra`](ht
 
 你可以使用任何你喜欢的占位标记来替代 `<!--ssr-outlet-->`，只要它能够被正确替换。
 
-## 情景逻辑 {#conditional-logic}
+## 条件逻辑 {#conditional-logic}
 
-如果需要执行 SSR 和客户端间情景逻辑，可以使用：
+如果需要执行 SSR 和客户端间条件逻辑，可以使用：
 
 ```js twoslash
 import 'vite/client'
@@ -235,7 +235,7 @@ const html = await vueServerRenderer.renderToString(app, ctx)
 
 ## SSR 专有插件逻辑 {#ssr-specific-plugin-logic}
 
-一些框架，如 Vue 或 Svelte，会根据客户端渲染和服务端渲染的区别，将组件编译成不同的格式。可以向以下的插件钩子中，给 Vite 传递额外的 `options` 对象，对象中包含 `ssr` 属性来支持根据情景转换：
+一些框架，如 Vue 或 Svelte，会根据客户端渲染和服务端渲染的区别，将组件编译成不同的格式。可以向以下的插件钩子中，给 Vite 传递额外的 `options` 对象，对象中包含 `ssr` 属性来支持根据条件转换：
 
 - `resolveId`
 - `load`

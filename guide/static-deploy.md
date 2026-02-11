@@ -127,7 +127,7 @@ Netlify 命令行工具（CLI）会为你提供一个预览链接，供你查看
 4. 点击 **部署**
 5. 你的 Vite 应用就部署完成了！
 
-在你的项目被导入和部署后，所有对生产分支以外的其他分支（可能来自合并请求）的后续推送都会生成 [预览部署](https://docs.netlify.com/site-deploys/deploy-previews/)，所有对生产分支（通常是 "main"）的更改都会生成一个 [生产部署](https://docs.netlify.com/site-deploys/overview/#definitions)。
+在你的项目被导入和部署后，所有对生产分支以外的其他分支（可能来自合并请求）的后续推送都会生成 [预览部署](https://docs.netlify.com/deploy/deploy-types/deploy-previews/)，所有对生产分支（通常是 "main"）的更改都会生成一个 [生产部署](https://docs.netlify.com/deploy/deploy-overview/#definitions)。
 
 ## Vercel {#vercel}
 
