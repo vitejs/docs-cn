@@ -5,7 +5,7 @@ description: Vite is built upon the shoulders of giants. Thank you to all the pr
 
 <script setup>
 import { computed } from 'vue'
-import { data } from './_data/acknowledgements.data'
+// import { data } from './_data/acknowledgements.data'
 import { useSponsor, voidZero } from './.vitepress/theme/composables/sponsor'
 import VPSponsors from '@components/vitepress-default/VPSponsors.vue'
 
@@ -28,29 +28,30 @@ function npmUrl(name) {
 }
 </script>
 
-# Acknowledgements
+# 致谢 {#acknowledgements}
 
-Vite is built upon the shoulders of giants. We would like to express our gratitude to all the projects, contributors, and sponsors that make Vite possible.
+Vite 的成长离不开众多优秀项目和社区的支持。感谢所有为 Vite 做出贡献的项目、开发者和赞助商！
 
-## Contributors
+## 贡献者 {#contributors}
 
-Vite is developed by an international team of contributors. See the [Team page](/team) to meet the core team members.
+Vite 是由来自世界各地的开发者共同打造的。想了解核心团队成员，请访问 [团队页面](/team)。
 
-We also thank all the [contributors on GitHub](https://github.com/vitejs/vite/graphs/contributors) who have helped improve Vite through code contributions, bug reports, documentation, and documentation translation.
+特别感谢所有 [GitHub 上的贡献者](https://github.com/vitejs/vite/graphs/contributors)，他们通过提交代码、报告问题、编写文档、翻译内容等各种方式帮助 Vite 不断完善。
 
-## Sponsors
+## 赞助商 {#sponsors}
 
-Vite's development is supported by generous sponsors. You can support Vite through [GitHub Sponsors](https://github.com/sponsors/vitejs) or [Open Collective](https://opencollective.com/vite).
+Vite 的持续发展离不开众多赞助商的大力支持。如果你也想支持 Vite，可以通过 [GitHub Sponsors](https://github.com/sponsors/vitejs) 或 [Open Collective](https://opencollective.com/vite) 来贡献一份力量。
 
 <div class="sponsors-container">
   <VPSponsors :data="allSponsors" />
 </div>
 
-## Dependencies
+<!--
+## 依赖项 {#dependencies}
 
-Vite depends on these amazing open source projects:
+Vite 依赖于以下众多优秀的开源项目：
 
-### Notable Dependencies
+### 主要依赖项 {#main-dependencies}
 
 <div class="deps-list notable">
   <div v-for="dep in data.notableDependencies" :key="dep.name" class="dep-item">
@@ -68,13 +69,13 @@ Vite depends on these amazing open source projects:
   </div>
 </div>
 
-### Bundled Dependency Authors
+### 集成依赖项作者 {#bundled-dependency-authors}
 
 <table class="authors-table">
   <thead>
     <tr>
-      <th>Author</th>
-      <th>Packages</th>
+      <th>作者</th>
+      <th>包名</th>
     </tr>
   </thead>
   <tbody>
@@ -93,13 +94,13 @@ Vite depends on these amazing open source projects:
   </tbody>
 </table>
 
-::: tip For package authors
-This section is automatically generated from the `author` and `funding` fields in each package's `package.json`. If you'd like to update how your package appears here, you can update these fields in your package.
+::: tip 给包作者的提示
+本部分是根据每个包 `package.json` 中的 `author` 和 `funding` 字段自动生成的。如果你想更新你的包在此处的显示方式，可以在你的包中更新这些字段。
 :::
 
-## Development Tools
+## 开发工具 {#development-tools}
 
-Vite's development workflow is powered by these tools:
+Vite 的开发工作流程离不开以下这些工具的支持：
 
 <div class="deps-list notable">
   <div v-for="dep in data.devTools" :key="dep.name" class="dep-item">
@@ -117,26 +118,27 @@ Vite's development workflow is powered by these tools:
   </div>
 </div>
 
-## Past Notable Dependencies
+## 历史依赖项 {#past-dependencies}
 
-We also thank the maintainers of these projects that Vite used in previous versions:
+我们也要感谢那些在 Vite 早期版本中使用过的项目的维护者：
 
 <table>
   <thead>
     <tr>
-      <th>Package</th>
-      <th>Description</th>
-      <th>Links</th>
+      <th>包名</th>
+      <th>描述</th>
+      <th>链接</th>
     </tr>
   </thead>
   <tbody>
     <tr v-for="dep in data.pastNotableDependencies" :key="dep.name">
       <td><a :href="npmUrl(dep.name)" target="_blank" rel="noopener"><code>{{ dep.name }}</code></a></td>
       <td>{{ dep.description }}</td>
-      <td><a :href="dep.repository" target="_blank" rel="noopener">Repo</a></td>
+      <td><a :href="dep.repository" target="_blank" rel="noopener">仓库</a></td>
     </tr>
   </tbody>
 </table>
+-->
 
 <style scoped>
 .deps-list {
