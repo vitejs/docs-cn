@@ -153,9 +153,9 @@ resolve: {
 - **类型：** `string[]`
 - **默认：** `['module', 'browser', 'development|production']` (`defaultClientConditions`)
 
-解决程序包中 [情景导出](https://nodejs.org/api/packages.html#packages_conditional_exports) 时的其他允许条件。
+在解析 npm 包的 [条件导出](https://nodejs.org/api/packages.html#packages_conditional_exports) 时，可以指定额外允许的条件。
 
-一个带有情景导出的包可能在它的 `package.json` 中有以下 `exports` 字段：
+一个支持条件导出的 npm 包，其 `package.json` 中的 `exports` 字段可能如下所示：
 
 ```json
 {
@@ -168,20 +168,20 @@ resolve: {
 }
 ```
 
-在这里，`import` 和 `require` 被称为“情景”。情景可以嵌套，并且应该从最特定的到最不特定的指定。
+在这里，`import` 和 `require` 被称为"条件"。条件可以嵌套，并且应该按照从最具体到最不具体的顺序指定。
 
 `development|production` 是一个特殊值，根据 `process.env.NODE_ENV` 的值替换为 `production` 或  `development` 。如果 `process.env.NODE_ENV === 'production'`，则替换为 `production`，否则替换为 `development`。
 
-请注意，如果符合要求，`import`，`require`，`default` 始终会被应用。
+请注意，如果符合要求，`import`，`require`，`default` 条件始终会被应用。
 
-此外，在解析样式导入时会应用 `style` 条件，例如 `@import 'my-library'`。对于某些 CSS 预处理器，也会应用其对应的条件，即 Sass 使用 `sass` 条件，Less 使用 `less` 条件。
+此外，在解析样式导入时会应用 `style` 条件，例如 `@import 'my-library'`。对于某些 CSS 预处理器，也会应用其对应的条件，即 Sass 使用 `sass`，Less 使用 `less`。
 
 ## resolve.mainFields <NonInheritBadge /> {#resolve-mainfields}
 
 - **类型：** `string[]`
 - **默认：** `['browser', 'module', 'jsnext:main', 'jsnext']` (`defaultClientMainFields`)
 
-`package.json` 中，在解析包的入口点时尝试的字段列表。注意：这比从 `exports` 字段解析的情景导出优先级低：如果一个入口起点从 `exports` 成功解析，`resolve.mainFields` 将被忽略。
+`package.json` 中，在解析包的入口点时尝试的字段列表。注意：这比从 `exports` 字段解析的条件导出优先级低：如果一个入口起点从 `exports` 成功解析，`resolve.mainFields` 将被忽略。
 
 ## resolve.extensions {#resolve-extensions}
 
