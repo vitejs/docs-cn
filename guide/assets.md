@@ -119,9 +119,9 @@ import InlineWorker from './shader.js?worker&inline'
 
 请注意，应该始终使用根绝对路径来引入 `public` 中的资源 —— 举个例子，`public/icon.png` 应该在源码中被引用为 `/icon.png`。
 
-::: tip Choosing between imports and the `public` directory
+::: tip 在导入目录和 `public` 目录之间进行选择
 
-In general, prefer **importing assets** unless you specifically need the guarantees provided by the `public` directory.
+一般来说，除非您特别需要 `public` 目录提供的保证，否则最好**导入 assets**。
 
 :::
 

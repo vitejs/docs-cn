@@ -31,26 +31,16 @@ if (import.meta.env.DEV) {
 
 ## 环境变量 {#env-variables}
 
-<<<<<<< HEAD
 Vite 自动将环境变量暴露在 `import.meta.env` 对象下，作为字符串。
 
-为了防止意外地将一些环境变量泄漏到客户端，只有以 `VITE_` 为前缀的变量才会暴露给经过 vite 处理的代码。例如下面这些环境变量：
-=======
-Vite exposes env variables under the `import.meta.env` object as strings automatically.
-
-Variables prefixed with `VITE_` will be exposed in client-side source code after Vite bundling. To prevent accidentally leaking env variables to the client, avoid using this prefix. As an example, consider the following:
->>>>>>> 1f0da7861b50c37341507d5718220b102f981069
+以 `VITE_` 为前缀的变量在 Vite 打包后会暴露在客户端源代码中。为防止意外地将环境变量泄露给客户端，请避免使用此前缀。例如：
 
 ```[.env]
 VITE_SOME_KEY=123
 DB_PASSWORD=foobar
 ```
 
-<<<<<<< HEAD
-只有 `VITE_SOME_KEY` 会被暴露为 `import.meta.env.VITE_SOME_KEY` 提供给客户端源码，而 `DB_PASSWORD` 则不会。
-=======
-The parsed value of `VITE_SOME_KEY` – `"123"` – will be exposed on the client, but the value of `DB_PASSWORD` will not. You can test this by adding the following to your code:
->>>>>>> 1f0da7861b50c37341507d5718220b102f981069
+解析后的 `VITE_SOME_KEY` 值（即 `"123"`）将会暴露在客户端，但 `DB_PASSWORD` 的值则不会。您可以通过在代码中添加以下内容来验证这一点：
 
 ```js
 console.log(import.meta.env.VITE_SOME_KEY) // "123"
@@ -63,17 +53,13 @@ console.log(import.meta.env.DB_PASSWORD) // undefined
 如上所示，`VITE_SOME_KEY` 是一个数字，但在解析时会返回一个字符串。布尔类型的环境变量也会发生同样的情况。在代码中使用时，请确保转换为所需的类型。
 :::
 
-<<<<<<< HEAD
-### `.env` 文件 {#env-files}
-=======
-:::warning Protecting secrets
+:::warning 密钥保护
 
-`VITE_*` variables should _not_ contain sensitive information such as API keys. The values of these variables are bundled into your source code at build time. For production deployments, consider a backend server or serverless/edge functions to properly secure secrets.
+`VITE_*` 变量不应包含 API 密钥等敏感信息。这些变量的值会在构建时打包到源代码中。对于生产环境部署，请考虑使用后端服务器或无服务器/边缘函数来妥善保护密钥。
 
 :::
 
-### `.env` Files
->>>>>>> 1f0da7861b50c37341507d5718220b102f981069
+### `.env` 文件 {#env-files}
 
 Vite 使用 [dotenv](https://github.com/motdotla/dotenv) 从你的 [环境目录](/config/shared-options.md#envdir) 中的下列文件加载额外的环境变量：
 
@@ -113,19 +99,7 @@ NEW_KEY2=test\$foo  # test$foo
 NEW_KEY3=test$KEY   # test123
 ```
 
-<<<<<<< HEAD
-:::warning 安全注意事项
-
-- `.env.*.local` 文件应是本地的，可以包含敏感变量。你应该将 `*.local` 添加到你的 `.gitignore` 中，以避免它们被 git 检入。
-
-- 由于任何暴露给 Vite 源码的变量最终都将出现在客户端包中，`VITE_*` 变量应该不包含任何敏感信息。
-
-:::
-
 ::: details 反向扩展变量
-=======
-::: details Expanding variables in reverse order
->>>>>>> 1f0da7861b50c37341507d5718220b102f981069
 
 Vite 支持以相反的顺序扩展变量。
 例如，下面的 `.env` 将被评估为 `VITE_FOO=foobar`, `VITE_BAR=bar`。
@@ -142,17 +116,13 @@ VITE_BAR=bar
 
 :::
 
-<<<<<<< HEAD
-## TypeScript 的智能提示 {#intellisense-for-typescript}
-=======
-:::warning Ignoring local `.env` files
+:::warning 忽略本地 `.env` 文件
 
-`.env.*.local` files are local-only and can contain sensitive variables. You should add `*.local` to your `.gitignore` to avoid them being checked into git.
+`.env.*.local` 文件仅供本地使用，可能包含敏感变量。您应该将 `*.local` 添加到 `.gitignore` 文件中，以避免它们被提交到 Git 仓库。
 
 :::
 
-## IntelliSense for TypeScript
->>>>>>> 1f0da7861b50c37341507d5718220b102f981069
+## TypeScript 的智能提示 {#intellisense-for-typescript}
 
 默认情况下，Vite 在 [`vite/client.d.ts`](https://github.com/vitejs/vite/blob/main/packages/vite/client.d.ts) 中为 `import.meta.env` 提供了类型定义。随着在 `.env[mode]` 文件中自定义了越来越多的环境变量，你可能想要在代码中获取这些以 `VITE_` 为前缀的用户自定义环境变量的 TypeScript 智能提示。
 
