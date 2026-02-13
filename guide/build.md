@@ -96,7 +96,7 @@ export default defineConfig({
 })
 ```
 
-当启用 `--watch` 标志时，对 `vite.config.js` 的改动，以及任何要打包的文件，都将触发重新构建。
+启用 `--watch` 标志后，对要打包的文件所做的更改将触发重新构建。请注意，对配置及其依赖项的更改需要重新启动构建命令。
 
 ## 多页面应用模式 {#multi-page-app}
 
