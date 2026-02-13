@@ -119,6 +119,12 @@ import InlineWorker from './shader.js?worker&inline'
 
 请注意，应该始终使用根绝对路径来引入 `public` 中的资源 —— 举个例子，`public/icon.png` 应该在源码中被引用为 `/icon.png`。
 
+::: tip 在导入目录和 `public` 目录之间进行选择
+
+一般来说，除非您特别需要 `public` 目录提供的保证，否则最好**导入 assets**。
+
+:::
+
 ## new URL(url, import.meta.url)
 
 [import.meta.url](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import.meta) 是一个 ESM 的原生功能，会暴露当前模块的 URL。将它与原生的 [URL 构造器](https://developer.mozilla.org/en-US/docs/Web/API/URL) 组合使用，在一个 JavaScript 模块中，通过相对路径我们就能得到一个被完整解析的静态资源 URL：
