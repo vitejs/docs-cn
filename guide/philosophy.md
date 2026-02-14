@@ -20,7 +20,7 @@ Vite 自其诞生之初（详见：[为什么选 Vite](./why.md)）就一直致�
 
 ## 基于 Vite 构建框架 {#building-frameworks-on-top-of-vite}
 
-尽管 Vite 可以直接供用户使用，但它尤其适合作为创建框架的工具。Vite 核心本身不特定于任何框架，但针对每个 UI 框架都提供了完善的插件支持。其 [JS API](./api-javascript.md) 允许应用框架作者利用 Vite 特性为他们的用户提供定制化的体验。Vite 包含了对 [SSR 基础功能](./ssr.md) 的支持，这些功能通常在更高级别的工具中出现，但对于构建现代 Web 框架至关重要。Vite 插件通过提供一种跨框架共享的方式，使整体方案更为完备。此外，当与诸如 [Ruby](https://vite-ruby.netlify.app/) 和 [Laravel](https://laravel.com/docs/10.x/vite) 等 [后端框架](./backend-integration.md) 结合使用时，Vite 也是一个绝佳选择。
+尽管 Vite 可以直接供用户使用，但它尤其适合作为创建框架的工具。Vite 核心本身不特定于任何框架，但针对每个 UI 框架都提供了完善的插件支持。其 [JS API](./api-javascript.md) 允许应用框架作者利用 Vite 特性为他们的用户提供定制化的体验。Vite 包含了对 [SSR 基础功能](./ssr.md) 的支持，这些功能通常在更高级别的工具中出现，但对于构建现代 Web 框架至关重要。Vite 插件通过提供一种跨框架共享的方式，使整体方案更为完备。此外，当与诸如 [Ruby](https://vite-ruby.netlify.app/) 和 [Laravel](https://laravel.com/docs/vite) 等 [后端框架](./backend-integration.md) 结合使用时，Vite 也是一个绝佳选择。
 
 ## 活跃的生态系统 {#an-active-ecosystem}
 
