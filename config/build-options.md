@@ -251,7 +251,13 @@ export default defineConfig({
 
 当值为字符串时，将用作相对于 `build.outDir` 的 manifest 文件路径。设置为 `true` 时，路径将是 `.vite/manifest.json`。
 
+<<<<<<< HEAD
 ## build.ssrManifest {#build-ssrmanifest}
+=======
+If you are writing a plugin and need to inspect each output chunk or asset's related CSS and static assets during the build, you can also use [`viteMetadata` output bundle metadata API](/guide/api-plugin#output-bundle-metadata).
+
+## build.ssrManifest
+>>>>>>> bcd4136efdc98fd45cc22968c91383d8f5024f12
 
 - **类型：** `boolean | string`
 - **默认值：** `false`
