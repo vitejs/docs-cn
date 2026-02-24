@@ -470,26 +470,24 @@ Vite 插件也可以提供钩子来服务于特定的 Vite 目标。这些钩子
     }
     ```
 
-<<<<<<< HEAD
-## 插件顺序 {#plugin-ordering}
-=======
-## Output Bundle Metadata
+## Output Bundle Metadata {#output-bundle-metadata}
 
-During build, Vite augments Rolldown's build output objects with a Vite-specific `viteMetadata` field.
+在构建过程中，Vite 会向 Rolldown 的构建输出对象添加一个 Vite 特有的 `viteMetadata` 字段。
 
-This is available through:
+可通过以下方式访问：
 
-- `RenderedChunk` (for example in `renderChunk` and `augmentChunkHash`)
-- `OutputChunk` and `OutputAsset` (for example in `generateBundle` and `writeBundle`)
+- `RenderedChunk`（例如在 `renderChunk` 和 `augmentChunkHash` 中）
 
-`viteMetadata` provides:
+- `OutputChunk` 和 `OutputAsset`（例如在 `generateBundle` 和 `writeBundle` 中）
+
+`viteMetadata` 提供:
 
 - `viteMetadata.importedCss: Set<string>`
 - `viteMetadata.importedAssets: Set<string>`
 
-This is useful when writing plugins that need to inspect emitted CSS and static assets without relying on [`build.manifest`](/config/build-options#build-manifest).
+这在编写需要检查生成的 CSS 和静态资源而不依赖于[`build.manifest`](/config/build-options#build-manifest)的插件时非常有用。
 
-Example:
+例子:
 
 ```ts [vite.config.ts]
 function outputMetadataPlugin(): Plugin {
@@ -511,8 +509,7 @@ function outputMetadataPlugin(): Plugin {
 }
 ```
 
-## Plugin Ordering
->>>>>>> bcd4136efdc98fd45cc22968c91383d8f5024f12
+## 插件顺序 {#plugin-ordering}
 
 一个 Vite 插件可以额外指定一个 `enforce` 属性（类似于 webpack 加载器）来调整它的应用顺序。`enforce` 的值可以是`pre` 或 `post`。解析后的插件将按照以下顺序排列：
 
