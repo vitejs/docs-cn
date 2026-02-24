@@ -470,6 +470,45 @@ Vite 插件也可以提供钩子来服务于特定的 Vite 目标。这些钩子
     }
     ```
 
+## Output Bundle Metadata {#output-bundle-metadata}
+
+在构建过程中，Vite 会向 Rolldown 的构建输出对象添加一个 Vite 特有的 `viteMetadata` 字段。
+
+可通过以下方式访问：
+
+- `RenderedChunk`（例如在 `renderChunk` 和 `augmentChunkHash` 中）
+
+- `OutputChunk` 和 `OutputAsset`（例如在 `generateBundle` 和 `writeBundle` 中）
+
+`viteMetadata` 提供:
+
+- `viteMetadata.importedCss: Set<string>`
+- `viteMetadata.importedAssets: Set<string>`
+
+这在编写需要检查生成的 CSS 和静态资源而不依赖于[`build.manifest`](/config/build-options#build-manifest)的插件时非常有用。
+
+例子:
+
+```ts [vite.config.ts]
+function outputMetadataPlugin(): Plugin {
+  return {
+    name: 'output-metadata-plugin',
+    generateBundle(_, bundle) {
+      for (const output of Object.values(bundle)) {
+        const css = output.viteMetadata?.importedCss
+        const assets = output.viteMetadata?.importedAssets
+        if (!css?.size && !assets?.size) continue
+
+        console.log(output.fileName, {
+          css: css ? [...css] : [],
+          assets: assets ? [...assets] : [],
+        })
+      }
+    },
+  }
+}
+```
+
 ## 插件顺序 {#plugin-ordering}
 
 一个 Vite 插件可以额外指定一个 `enforce` 属性（类似于 webpack 加载器）来调整它的应用顺序。`enforce` 的值可以是`pre` 或 `post`。解析后的插件将按照以下顺序排列：
