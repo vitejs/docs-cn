@@ -458,4 +458,32 @@ interface PreprocessCSSResult {
 
 使用哪个预处理器是根据 `filename` 的扩展名来推断的。如果 `filename` 以 `.module.{ext}` 结尾，那么它就会被推断为 [CSS module](https://github.com/css-modules/css-modules)，返回的结果会包含一个 `modules` 对象，这个对象将原始的类名映射到转换后的类名。
 
+<<<<<<< HEAD
 需要注意的是，预处理不会解析 `url()` 或 `image-set()` 中的 URL。
+=======
+Note that pre-processing will not resolve URLs in `url()` or `image-set()`.
+
+## `version`
+
+**Type:** `string`
+
+The current version of Vite as a string (e.g. `"8.0.0"`).
+
+## `rolldownVersion`
+
+**Type:** `string`
+
+The version of Rolldown used by Vite as a string (e.g. `"1.0.0"`). A re-export of [`VERSION`](https://rolldown.rs/reference/Variable.VERSION) from `rolldown`.
+
+## `esbuildVersion`
+
+**Type:** `string`
+
+Only kept for backward compatibility.
+
+## `rollupVersion`
+
+**Type:** `string`
+
+Only kept for backward compatibility.
+>>>>>>> 3274db06edbbe16ff450b5092c1a808c62756031

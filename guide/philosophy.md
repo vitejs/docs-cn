@@ -2,7 +2,11 @@
 
 ## 精简且可扩展的核心 {#lean-extendable-core}
 
+<<<<<<< HEAD
 Vite 的目标不在于满足所有用户的每一个使用场景。Vite 旨在开箱即用地支持构建 Web 应用的最常见的模式，但 [Vite 核心包](https://github.com/vitejs/vite) 必须保持精简并拥有较小的 API 接口，以保证项目长期维护的可行性。这一目标之所以可能实现，得益于 [Vite 基于 Rollup 的插件系统](./api-plugin.md) 。可以作为外部插件实现的功能通常不会添加到 Vite 核心中。 [vite-plugin-pwa](https://vite-pwa-org.netlify.app/) 是一个很好的示例，展示了 Vite 核心之外能实现的强大功能，并且有许多 [维护良好的插件](https://github.com/vitejs/awesome-vite#plugins) 来满足您的需求。Vite 与 Rollup 项目紧密合作，确保插件在尽可能多的情况下既可用于纯 Rollup 项目，也可用于 Vite 项目，并努力将必要的扩展推送到上游 Plugin API 中。
+=======
+Vite aims to support the most common patterns to build Web apps out-of-the-box, while keeping [Vite core](https://github.com/vitejs/vite) lean and maintainable long-term. We believe the best way to support diverse use cases is to provide strong primitives and APIs that plugins can build on, and we actively expand the core to make Vite more extensible. [Vite's plugin system](./api-plugin.md) is based on a superset of Rollup's plugin API, and it enables plugins like [vite-plugin-pwa](https://vite-pwa-org.netlify.app/) and the many [well maintained plugins](https://registry.vite.dev/plugins) available to cover your needs. Vite's bundler, [Rolldown](https://rolldown.rs/), maintains compatibility with Rollup's plugin interface, so plugins can often be used across both Vite and plain Rollup projects.
+>>>>>>> 3274db06edbbe16ff450b5092c1a808c62756031
 
 ## 推动现代 Web 开发 {#pushing-the-modern-web}
 
@@ -16,7 +20,11 @@ Vite 提供了一系列推动编写现代代码的特定功能。例如：
 
 ## 旨在高性能的实用解决方案 {#a-pragmatic-approach-to-performance}
 
+<<<<<<< HEAD
 Vite 自其诞生之初（详见：[为什么选 Vite](./why.md)）就一直致力于性能优化。其开发服务器架构设计确保了随着项目规模扩大，模块热替换（HMR）仍能保持高速运行。Vite 基于 [Oxc toolchain](https://oxc.rs/) 和 [Rolldown](https://rolldown.rs/) 这样的原生工具处理复杂的任务，同时将其他部分代码保留在 JavaScript 中，以实现速度与灵活性之间的平衡。在需要时，框架插件会利用 [Babel](https://babeljs.io/) 来编译用户代码。得益于 Rolldown 对 Rollup 插件的兼容性，Vite 能够访问广泛的插件生态系统。
+=======
+Vite has been focused on performance since its [origins](./why.md). Its dev server architecture allows HMR that stays fast as projects scale. Vite is based on native tools that include the [Oxc toolchain](https://oxc.rs/) and [Rolldown](https://rolldown.rs/) to implement intensive tasks but keeps the rest of the code in JS to balance speed with flexibility. When needed, framework plugins will tap into [Babel](https://babeljs.io/) to compile user code. Thanks to Rolldown's Rollup plugin compatibility, Vite has access to a wide ecosystem of plugins.
+>>>>>>> 3274db06edbbe16ff450b5092c1a808c62756031
 
 ## 基于 Vite 构建框架 {#building-frameworks-on-top-of-vite}
 

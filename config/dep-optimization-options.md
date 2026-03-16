@@ -53,11 +53,15 @@ export default defineConfig({
 
 ## optimizeDeps.rolldownOptions <NonInheritBadge /> {#optimizedeps-rolldownoptions}
 
+<<<<<<< HEAD
 - **类型：** [`Omit`](https://www.typescriptlang.org/docs/handbook/utility-types.html#omittype-keys)`<`[`RolldownOptions`](https://rolldown.rs/reference/), `'input' | 'logLevel' | 'output'> & {
   output?: [`Omit`](https://www.typescriptlang.org/docs/handbook/utility-types.html#omittype-keys)`<`
     [`RolldownOutputOptions`](https://rolldown.rs/reference/),
     `'format' | 'sourcemap' | 'dir' | 'banner'>`
 `}`
+=======
+- **Type:** <code>Omit<<a href="https://rolldown.rs/reference/Interface.RolldownOptions">RolldownOptions</a>, 'input' | 'logLevel' | 'output'> & { output?: Omit<<a href="https://rolldown.rs/reference/#:~:text=Output%20Options">RolldownOutputOptions</a>, 'format' | 'sourcemap' | 'dir' | 'banner'> }</code>
+>>>>>>> 3274db06edbbe16ff450b5092c1a808c62756031
 
 在依赖扫描和优化过程中传递给 Rolldown 的选项。
 
@@ -67,6 +71,7 @@ export default defineConfig({
 
 ## optimizeDeps.esbuildOptions <NonInheritBadge /> {#optimizedeps-esbuildoptions}
 
+<<<<<<< HEAD
 - **类型：** [`Omit`](https://www.typescriptlang.org/docs/handbook/utility-types.html#omittype-keys)`<`[`EsbuildBuildOptions`](https://esbuild.github.io/api/#general-options)`,
 | 'bundle'
 | 'entryPoints'
@@ -79,6 +84,10 @@ export default defineConfig({
 | 'outExtension'
 | 'metafile'>`
 - **已弃用**
+=======
+- **Type:** <code>Omit<<a href="https://esbuild.github.io/api/#general-options">EsbuildBuildOptions</a>, 'bundle' | 'entryPoints' | 'external' | 'write' | 'watch' | 'outdir' | 'outfile' | 'outbase' | 'outExtension' | 'metafile'></code>
+- **Deprecated**
+>>>>>>> 3274db06edbbe16ff450b5092c1a808c62756031
 
 此选项在内部被转换为 `optimizeDeps.rolldownOptions`。请使用 `optimizeDeps.rolldownOptions` 代替。
 
