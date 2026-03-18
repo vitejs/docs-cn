@@ -74,7 +74,36 @@
 或者，如果服务器在 VS Code devcontainer 中运行，请求可能会出现停滞。要修复此问题，请参阅
 [Dev Containers / VS Code Port Forwarding](#dev-containers-vs-code-port-forwarding)。
 
+<<<<<<< HEAD
 ### 网络请求停止加载 {#network-requests-stop-loading}
+=======
+### Vite crashes with ENOSPC error
+
+If you see an error like this on Linux:
+
+> Error: ENOSPC: System limit for number of file watchers reached
+
+This happens when you have too many files in your project directory (e.g., many images or assets) and exceed the system's file watcher limit. Linux has a default limit of around 8,192-10,000 file watchers.
+
+To solve this, you can:
+
+- Increase the system file watcher limit:
+
+  ```shell
+  # Check current limit
+  $ cat /proc/sys/fs/inotify/max_user_watches
+  # Increase limit (temporary)
+  $ sudo sysctl fs.inotify.max_user_watches=524288
+  # Make it permanent - add to /etc/sysctl.conf (or edit if it already exists)
+  $ echo "fs.inotify.max_user_watches=524288" | sudo tee -a /etc/sysctl.conf
+  $ sudo sysctl -p
+  ```
+
+- Exclude directories with many files from file watching using [`server.watch.ignored`](/config/server-options#server-watch)
+- Use polling instead of file system events with [`server.watch.usePolling`](/config/server-options#server-watch). Note that polling uses more CPU resources
+
+### Network requests stop loading
+>>>>>>> 763bff5894cd6e88fbaf1ae30e8c4f645b316d23
 
 使用自签名SSL证书时，Chrome 会忽略所有缓存指令并重新加载内容。而 Vite 依赖于这些缓存指令。
 

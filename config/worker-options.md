@@ -20,7 +20,11 @@ worker 打包时的输出类型。
 
 - **类型：** [`RolldownOptions`](https://rolldown.rs/reference/)
 
+<<<<<<< HEAD
 用于打包 worker 的 Rollup 配置项。
+=======
+Rolldown options to build worker bundle.
+>>>>>>> 763bff5894cd6e88fbaf1ae30e8c4f645b316d23
 
 ## worker.rollupOptions
 
