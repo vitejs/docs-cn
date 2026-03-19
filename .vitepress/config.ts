@@ -7,6 +7,11 @@ import {
   groupIconMdPlugin,
   groupIconVitePlugin,
 } from 'vitepress-plugin-group-icons'
+<<<<<<< HEAD
+=======
+import { graphvizMarkdownPlugin } from 'vitepress-plugin-graphviz'
+import llmstxt from 'vitepress-plugin-llms'
+>>>>>>> 1a2a56e4f607c9df1523041c046ca39c39516baa
 import { markdownItImageSize } from 'markdown-it-image-size'
 import { extendConfig } from '@voidzero-dev/vitepress-theme/config'
 import type { FooterLink } from '@voidzero-dev/vitepress-theme'
@@ -105,9 +110,9 @@ const config = defineConfig({
     logo: '/logo.svg',
 
     banner: {
-      id: 'vite+',
-      text: 'Announcing Vite+ | The Unified Toolchain for the Web',
-      url: 'https://voidzero.dev/posts/announcing-vite-plus?utm_source=vite&utm_content=top_banner',
+      id: 'viteplus-alpha',
+      text: 'Announcing Vite+ Alpha: Open source. Unified. Next-gen.',
+      url: 'https://voidzero.dev/posts/announcing-vite-plus-alpha?utm_source=vite&utm_content=top_banner',
     },
 
     editLink: {
@@ -205,8 +210,17 @@ const config = defineConfig({
           { text: '发布策略', link: '/releases' },
           { text: '致谢', link: '/acknowledgements' },
           {
+<<<<<<< HEAD
             text: '纪录片',
             link: 'https://www.youtube.com/watch?v=bmWQqAKLgT4'
+=======
+            text: 'Plugin Registry',
+            link: 'https://registry.vite.dev/plugins',
+          },
+          {
+            text: 'The Documentary',
+            link: 'https://www.youtube.com/watch?v=bmWQqAKLgT4',
+>>>>>>> 1a2a56e4f607c9df1523041c046ca39c39516baa
           },
           {
             items: [
@@ -520,7 +534,7 @@ const config = defineConfig({
         },
       },
     ],
-    config(md) {
+    async config(md) {
       md.use(groupIconMdPlugin, {
         titleBar: {
           includeSnippet: true
@@ -529,7 +543,12 @@ const config = defineConfig({
       md.use(markdownItImageSize, {
         publicDir: path.resolve(import.meta.dirname, '../public')
       })
+<<<<<<< HEAD
     }
+=======
+      await graphvizMarkdownPlugin(md)
+    },
+>>>>>>> 1a2a56e4f607c9df1523041c046ca39c39516baa
   },
   vite: {
     plugins: [

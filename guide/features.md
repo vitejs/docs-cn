@@ -69,7 +69,11 @@ Vite 会参考 `tsconfig.json` 中的一些配置项，并设置相应的 esbuil
 
 你必须在 `tsconfig.json` 中的 `compilerOptions` 下设置 `"isolatedModules": true`。如此做，TS 会警告你不要使用隔离（isolated）转译的功能。
 
+<<<<<<< HEAD
 如果一个依赖项和 `"isolatedModules": true` 不兼容的话，你可以在上游仓库修复好之前暂时使用 `"skipLibCheck": true` 来缓解这个错误。
+=======
+If a dependency doesn't work well with `"isolatedModules": true`, you can use `"skipLibCheck": true` to temporarily suppress the errors until it is fixed upstream.
+>>>>>>> 1a2a56e4f607c9df1523041c046ca39c39516baa
 
 #### `useDefineForClassFields`
 
