@@ -69,7 +69,11 @@ Vite 会参考 `tsconfig.json` 中的一些配置项，并设置相应的 esbuil
 
 你必须在 `tsconfig.json` 中的 `compilerOptions` 下设置 `"isolatedModules": true`。如此做，TS 会警告你不要使用隔离（isolated）转译的功能。
 
+<<<<<<< HEAD
 如果一个依赖项和 `"isolatedModules": true` 不兼容的话，你可以在上游仓库修复好之前暂时使用 `"skipLibCheck": true` 来缓解这个错误。
+=======
+If a dependency doesn't work well with `"isolatedModules": true`, you can use `"skipLibCheck": true` to temporarily suppress the errors until it is fixed upstream.
+>>>>>>> 68671e35e504eda64caa7f43b4016d5d7879f070
 
 #### `useDefineForClassFields`
 
@@ -353,17 +357,23 @@ import otherStyles from './bar.css?inline' // 样式不会注入页面
 
 ### Lightning CSS
 
+<<<<<<< HEAD
 从 Vite 4.4 开始，已经实验性地支持 [Lightning CSS](https://lightningcss.dev/)。可以通过在配置文件中添加 [`css.transformer: 'lightningcss'`](../config/shared-options.md#css-transformer) 并安装可选的 [`lightningcss`](https://www.npmjs.com/package/lightningcss) 依赖项来选择使用它：
+=======
+Vite uses [Lightning CSS](https://lightningcss.dev/) to minify CSS in production builds by default. However, PostCSS is still used for other CSS processing.
+>>>>>>> 68671e35e504eda64caa7f43b4016d5d7879f070
 
-```bash
-npm add -D lightningcss
-```
+There is experimental support for using Lightning CSS for CSS processing entirely. You can opt into it by adding [`css.transformer: 'lightningcss'`](../config/shared-options.md#css-transformer).
 
+<<<<<<< HEAD
 如果启用，CSS 文件将由 Lightning CSS 处理，而不是 PostCSS。可以将 Lightning CSS 的选项传递给 [`css.lightningcss`](../config/shared-options.md#css-lightningcss) 选项来配置。
 
 要配置 CSS Modules，需要使用 [`css.lightningcss.cssModules`](https://lightningcss.dev/css-modules.html) 而不是 [`css.modules`](../config/shared-options.md#css-modules)（后者是用于配置 PostCSS 处理 CSS Modules 的方式）。
 
 默认情况下，Vite 使用 esbuild 来压缩 CSS。通过 [`build.cssMinify: 'lightningcss'`](../config/build-options.md#build-cssminify) 进行配置，也可以将 Lightning CSS 用作 CSS 最小化压缩。
+=======
+To configure it, you can pass Lightning CSS options to the [`css.lightningcss`](../config/shared-options.md#css-lightningcss) config option. To configure CSS Modules, you should use [`css.lightningcss.cssModules`](https://lightningcss.dev/css-modules.html) instead of [`css.modules`](../config/shared-options.md#css-modules) (which configures the way PostCSS handles CSS modules).
+>>>>>>> 68671e35e504eda64caa7f43b4016d5d7879f070
 
 ## 静态资源处理 {#static-assets}
 

@@ -82,7 +82,57 @@ Vite 开发服务器默认暴露两个环境：一个 `client` 环境和一个 `
 
 Vite 模块运行器允许首先使用 Vite 插件处理代码来运行任何代码。它不同于 `server.ssrLoadModule`，因为运行器实现与服务器解耦。这允许库和框架作者实现 Vite 服务器与运行器之间的通信层。浏览器通过服务器 WebSocket 和 HTTP 请求与其对应的环境通信。Node 模块运行器可以直接通过函数调用处理模块，因为它在同一进程中运行。其他环境可以通过连接到 JS 运行时（如 workerd）或 Worker 线程（如 Vitest）来运行模块。
 
+<<<<<<< HEAD
 此功能的目标之一是提供一个可定制的 API 来处理和运行代码。用户可以使用暴露的基础组件创建新的环境工厂。
+=======
+```dot
+digraph module_runner {
+  rankdir=LR
+  node [shape=box style="rounded,filled" fontname="Arial" fontsize=11 margin="0.2,0.1" fontcolor="${#3c3c43|#ffffff}" color="${#c2c2c4|#3c3f44}"]
+  edge [color="${#67676c|#98989f}" fontname="Arial" fontsize=10 fontcolor="${#67676c|#98989f}"]
+  bgcolor="transparent"
+  compound=true
+
+  subgraph cluster_server {
+    label="Vite Dev Server (Node.js)" labeljust=l fontname="Arial" fontsize=12
+    style="rounded,filled" fillcolor="${#f6f6f7|#1a1a1f}" color="${#c2c2c4|#3c3f44}"
+    fontcolor="${#3c3c43|#ffffff}"
+
+    subgraph cluster_env {
+      label="DevEnvironment" labeljust=l fontname="Arial" fontsize=11
+      style="rounded,filled" fillcolor="${#f2ecfc|#2c273e}" color="${#c2c2c4|#3c3f44}"
+      fontcolor="${#3c3c43|#ffffff}"
+
+      plugins [label="Plugin\nPipeline" fillcolor="${#e9eaff|#222541}"]
+      mg [label="Module\nGraph" fillcolor="${#e9eaff|#222541}"]
+      hot [label="HotChannel" fillcolor="${#fcf4dc|#38301a}"]
+
+      plugins -> mg [dir=both]
+      mg -> hot [style=invis]
+    }
+  }
+
+  subgraph cluster_runtime {
+    label="Target Runtime" labeljust=l fontname="Arial" fontsize=12
+    style="rounded,filled" fillcolor="${#f0fdf4|#131b15}" color="${#c2c2c4|#3c3f44}"
+    fontcolor="${#3c3c43|#ffffff}"
+
+    subgraph cluster_runner {
+      label="ModuleRunner" labeljust=l fontname="Arial" fontsize=11
+      style="rounded,filled" fillcolor="${#def5ed|#15312d}" color="${#c2c2c4|#3c3f44}"
+      fontcolor="${#3c3c43|#ffffff}"
+
+      evaluator [label="Module\nEvaluator" fillcolor="${#def5ed|#15312d}"]
+      transport [label="Transport" fillcolor="${#fcf4dc|#38301a}"]
+    }
+  }
+
+  hot -> transport [label="HMR / Module\nfetch & invoke" dir=both style=bold color="${#6f42c1|#c8abfa}"]
+}
+```
+
+One of the goals of this feature is to provide a customizable API to process and run code. Users can create new environment factories using the exposed primitives.
+>>>>>>> 68671e35e504eda64caa7f43b4016d5d7879f070
 
 ```ts
 import { DevEnvironment, HotChannel } from 'vite'

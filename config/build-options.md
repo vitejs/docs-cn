@@ -129,8 +129,13 @@ Git LFS 占位符会自动排除在内联之外，因为它们不包含其所表
 
 ## build.cssMinify {#build-cssminify}
 
+<<<<<<< HEAD
 - **类型：** `boolean | 'lightningcss' | 'esbuild'`
 - **默认：** 对于客户端，与 [`build.minify`](#build-minify) 相同；对于 SSR，为 `'lightningcss'`
+=======
+- **Type:** `boolean | 'lightningcss' | 'esbuild'`
+- **Default:** `'lightningcss'`, but `false` if [`build.minify`](#build-minify) is disabled for client build
+>>>>>>> 68671e35e504eda64caa7f43b4016d5d7879f070
 
 此选项允许用户覆盖 CSS 最小化压缩的配置，而不是使用默认的 `build.minify`，这样你就可以单独配置 JS 和 CSS 的最小压缩方式。Vite 默认使用 [Lightning CSS](https://lightningcss.dev/minification.html) 来压缩 CSS。可以通过 [`css.lightningcss`](./shared-options.md#css-lightningcss) 进行配置。将此选项设置为 `'esbuild'` 可以改用 esbuild 进行压缩。
 

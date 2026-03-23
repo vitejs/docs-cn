@@ -1,5 +1,6 @@
 # 为什么选 Vite {#why-vite}
 
+<<<<<<< HEAD
 ## 现实问题 {#the-problems}
 
 在浏览器支持 ES 模块之前，JavaScript 并没有提供原生机制让开发者以模块化的方式进行开发。这也正是我们对 “打包” 这个概念熟悉的原因：使用工具抓取、处理并将我们的源码模块串联成可以在浏览器中运行的文件。
@@ -23,14 +24,36 @@ Vite 通过在一开始将应用中的模块区分为 **依赖** 和 **源码** 
 - **源码** 通常包含一些并非直接是 JavaScript 的文件，需要转换（例如 JSX，CSS 或者 Vue/Svelte 组件），时常会被编辑。同时，并不是所有的源码都需要同时被加载（例如基于路由拆分的代码模块）。
 
   Vite 以 [原生 ESM](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules) 方式提供源码。这实际上是让浏览器接管了打包程序的部分工作：Vite 只需要在浏览器请求源码时进行转换并按需提供源码。根据条件动态导入代码，即只在当前屏幕上实际使用时才会被处理。
+=======
+As web applications have grown in size and complexity, the tools used to build them have struggled to keep up. Developers working on large projects have experienced painfully slow dev server startups, sluggish hot updates, and long production build times. Each generation of build tooling has improved on the last, but these problems have persisted.
+
+Vite was created to address this. Rather than incrementally improving existing approaches, it rethought how code should be served during development. Since then, Vite has evolved through multiple major versions, each time adapting to new capabilities in the ecosystem: from leveraging native ES modules in the browser, to adopting a fully Rust-powered toolchain.
+
+Today, Vite powers many frameworks and tools. Its architecture is designed to evolve with the web platform rather than lock into any single approach, making it a foundation you can build on for the long term.
+
+## The Origins
+
+When Vite was first created, browsers had just gained wide support for [ES modules](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules) (ESM), a way to load JavaScript files directly, without needing a tool to bundle them into a single file first. Traditional build tools (often called _bundlers_) would process your entire application upfront before anything could be shown in the browser. The larger the app, the longer you waited.
+
+Vite took a different approach. It split the work into two parts:
+
+- **Dependencies** (libraries that rarely change) are [pre-bundled](./dep-pre-bundling.md) once using fast native tooling, so they're ready instantly.
+- **Source code** (your application code that changes frequently) is served on-demand over native ESM. The browser loads only what it needs for the current page, and Vite transforms each file as it's requested.
+
+This meant dev server startup was nearly instant, regardless of application size. When you edited a file, Vite used [Hot Module Replacement](./features.md#hot-module-replacement) (HMR) over native ESM to update just that module in the browser, without a full page reload or waiting for a rebuild.
+>>>>>>> 68671e35e504eda64caa7f43b4016d5d7879f070
 
 <script setup>
 import bundlerSvg from '../images/bundler.svg?raw'
 import esmSvg from '../images/esm.svg?raw'
 </script>
 <svg-image :svg="bundlerSvg" />
+
+_In a bundle-based dev server, the entire application is bundled before it can be served._
+
 <svg-image :svg="esmSvg" />
 
+<<<<<<< HEAD
 ### 缓慢的更新 {#slow-updates}
 
 基于打包启动时，当源文件被修改后，重新构建整个包是低效的，原因显而易见：更新速度会随着应用体积的增加而线性下降。
@@ -64,3 +87,36 @@ Preact 团队的 [WMR](https://github.com/preactjs/wmr) 旨在提供类似的功
 [Snowpack](https://www.snowpack.dev/) 也是一个免打包的原生 ESM 开发服务器，与 Vite 的职责非常相似。Vite 的依赖预打包也受到了 Snowpack v1（现在是 [`esinstall`](https://github.com/snowpackjs/snowpack/tree/main/esinstall)）的启发。Snowpack 已经不再维护。Snowpack 团队现在正在研究由 Vite 驱动的静态网站构建器 [Astro](https://astro.build/)。
 
 [@web/dev-server](https://modern-web.dev/docs/dev-server/overview/)（以前是 `es-dev-server`）是一个伟大的项目，Vite 1.0 的基于 Koa 的服务器设置就是受其启发。`@web` 这个项目正在积极维护，并包含许多其他优秀的工具，这些工具也可能对 Vite 用户有所帮助。
+=======
+_In an ESM-based dev server, modules are served on-demand as the browser requests them._
+
+Vite was not the first tool to explore this approach. [Snowpack](https://www.snowpack.dev/) pioneered unbundled development and inspired Vite's dependency pre-bundling. [WMR](https://github.com/preactjs/wmr) by the Preact team inspired the universal plugin API that works in both dev and build. [@web/dev-server](https://modern-web.dev/docs/dev-server/overview/) influenced Vite 1.0's server architecture. Vite built on these ideas and carried them forward.
+
+Even though unbundled ESM works well during development, shipping it in production is still inefficient due to additional network round trips from nested imports. That's [why bundling is still necessary](https://rolldown.rs/in-depth/why-bundlers) for optimized production builds.
+
+## Growing with the Ecosystem
+
+As Vite matured, frameworks began adopting it as their build layer. Its [plugin API](./api-plugin.md), based on Rollup's conventions, made integration natural without requiring frameworks to work around Vite's internals. [Nuxt](https://nuxt.com/), [SvelteKit](https://svelte.dev/docs/kit), [Astro](https://astro.build/), [React Router](https://reactrouter.com/), [Analog](https://analogjs.org/), [SolidStart](https://start.solidjs.com/), and others chose Vite as their foundation. Tools like [Vitest](https://vitest.dev/) and [Storybook](https://storybook.js.org/) built on it too, extending Vite's reach beyond app bundling. Backend frameworks like [Laravel](https://laravel.com/docs/vite) and [Ruby on Rails](https://vite-ruby.netlify.app/) integrated Vite for their frontend asset pipelines.
+
+This growth was not one-directional. The ecosystem shaped Vite as much as Vite shaped the ecosystem. The Vite team runs [vite-ecosystem-ci](https://github.com/vitejs/vite-ecosystem-ci), which tests major ecosystem projects against every Vite change. Ecosystem health is not an afterthought. It is part of the release process.
+
+## A Unified Toolchain
+
+Vite originally relied on two separate tools under the hood: [esbuild](https://esbuild.github.io/) for fast compilation during development, and [Rollup](https://rollupjs.org/) for thorough optimization in production builds. This worked, but maintaining two pipelines introduced inconsistencies: different transformation behaviors, separate plugin systems, and growing glue code to keep them aligned.
+
+[Rolldown](https://rolldown.rs/) was built to unify both into a single bundler: written in Rust for native speed, and compatible with the same plugin API the ecosystem already relied on. It uses [Oxc](https://oxc.rs/) for parsing, transforming, and minifying. This gives Vite an end-to-end toolchain where the build tool, bundler, and compiler are maintained together and evolve as a unit.
+
+The result is one consistent pipeline from development to [production](./build.md). The migration was done carefully: a [technical preview](https://voidzero.dev/posts/announcing-rolldown-vite) shipped first so early adopters could validate the change, ecosystem CI caught compatibility issues early, and a compatibility layer preserved existing configurations.
+
+## Where Vite is Heading
+
+Vite's architecture continues to evolve. Several efforts are shaping its future:
+
+- **Full bundle mode**: Unbundled ESM was the right tradeoff when Vite was created because no tool was both fast enough and had the HMR and plugin capabilities needed to bundle during dev. Rolldown changes that. Since exceptionally large codebases can experience slow page loads due to the high number of unbundled network requests, the team is exploring a mode where the dev server bundles code similarly to production, reducing network overhead.
+
+- **Environment API**: Instead of treating "client" and "SSR" as the only two build targets, the [Environment API](./api-environment-instances.md) lets frameworks define custom environments (edge runtimes, service workers, and other deployment targets), each with their own module resolution and execution rules. As where and how code runs continues to diversify, Vite's model expands with it.
+
+- **Evolving with JavaScript**: With Oxc and Rolldown closely collaborating with Vite, new language features and standards can be adopted quickly across the entire toolchain, without waiting on upstream dependencies.
+
+Vite's goal is not to be the final tool, but to be one that keeps evolving with the web platform, and with the developers building on it.
+>>>>>>> 68671e35e504eda64caa7f43b4016d5d7879f070
