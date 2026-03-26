@@ -114,9 +114,14 @@ export default defineConfig({
 
 精简工作的例子：
 
+<<<<<<< HEAD
 - 使用 CSS 而不是 Sass/Less/Stylus（可以由 PostCSS / Lightning CSS 处理嵌套）
 - 不要将 SVG 转换为 UI 框架组件（例如 React、Vue 等）。请将其作为字符串或 URL 导入。
 - 当使用 `@vitejs/plugin-react` 时，避免配置 Babel 选项，这样它就会在构建期间跳过转换（只使用 Oxc）。
+=======
+- Use CSS instead of Sass/Less/Stylus when possible (nesting can be handled by PostCSS / Lightning CSS)
+- Don't transform SVGs into UI framework components (React, Vue, etc.). Import them as strings or URLs instead.
+>>>>>>> 9fa3be92938ceef543cd488d6659c387db8ca6b4
 
 使用更原生化工具链的例子：
 

@@ -185,9 +185,15 @@ export default defineConfig({
       },
       name: 'MyLib',
     },
+<<<<<<< HEAD
     rollupOptions: {
       // 确保外部化处理那些
       // 你不想打包进库的依赖
+=======
+    rolldownOptions: {
+      // make sure to externalize deps that shouldn't be bundled
+      // into your library
+>>>>>>> 9fa3be92938ceef543cd488d6659c387db8ca6b4
       external: ['vue'],
       output: {
         // 在 UMD 构建模式下为这些外部化的依赖
