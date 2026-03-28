@@ -7,12 +7,8 @@ import {
   groupIconMdPlugin,
   groupIconVitePlugin,
 } from 'vitepress-plugin-group-icons'
-<<<<<<< HEAD
 // import llmstxt from 'vitepress-plugin-llms'
-=======
 import { graphvizMarkdownPlugin } from 'vitepress-plugin-graphviz'
-import llmstxt from 'vitepress-plugin-llms'
->>>>>>> 9fa3be92938ceef543cd488d6659c387db8ca6b4
 import { markdownItImageSize } from 'markdown-it-image-size'
 import { extendConfig } from '@voidzero-dev/vitepress-theme/config'
 import type { FooterLink } from '@voidzero-dev/vitepress-theme'
@@ -211,17 +207,12 @@ const config = defineConfig({
           { text: '发布策略', link: '/releases' },
           { text: '致谢', link: '/acknowledgements' },
           {
-<<<<<<< HEAD
-            text: '纪录片',
-            link: 'https://www.youtube.com/watch?v=bmWQqAKLgT4'
-=======
-            text: 'Plugin Registry',
+            text: '插件注册',
             link: 'https://registry.vite.dev/plugins',
           },
           {
-            text: 'The Documentary',
+            text: '纪录片',
             link: 'https://www.youtube.com/watch?v=bmWQqAKLgT4',
->>>>>>> 9fa3be92938ceef543cd488d6659c387db8ca6b4
           },
           {
             items: [
@@ -544,12 +535,8 @@ const config = defineConfig({
       md.use(markdownItImageSize, {
         publicDir: path.resolve(import.meta.dirname, '../public')
       })
-<<<<<<< HEAD
-    }
-=======
       await graphvizMarkdownPlugin(md)
     },
->>>>>>> 9fa3be92938ceef543cd488d6659c387db8ca6b4
   },
   vite: {
     plugins: [
