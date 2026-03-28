@@ -12,11 +12,7 @@ import { someMethod } from 'my-dep'
 
 上面的代码会在浏览器中抛出一个错误。Vite 将会检测到所有被加载的源文件中的此类裸模块导入，并执行以下操作:
 
-<<<<<<< HEAD
-1. [预构建](./dep-pre-bundling) 它们可以提高页面加载速度，并将 CommonJS / UMD 转换为 ESM 格式。预构建这一步由 [esbuild](https://esbuild.github.io/) 执行，这使得 Vite 的冷启动时间比任何基于 JavaScript 的打包器都要快得多。
-=======
-1. [Pre-bundle](./dep-pre-bundling) them to improve page loading speed and convert CommonJS / UMD modules to ESM. The pre-bundling step is performed with [Rolldown](https://rolldown.rs/) and makes Vite's cold start time significantly faster than any JavaScript-based bundler.
->>>>>>> 9fa3be92938ceef543cd488d6659c387db8ca6b4
+1. 对依赖进行[预打包](./dep-pre-bundling)，以提升页面加载速度，并将 CommonJS / UMD 模块转换为 ESM。这一预打包步骤由 [Rolldown](https://rolldown.rs/) 执行，使得 Vite 的冷启动速度显著快于任何基于 JavaScript 的打包工具。
 
 2. 重写导入为合法的 URL，例如 `/node_modules/.vite/deps/my-dep.js?v=f3sf2ebd` 以便浏览器能够正确导入它们。
 
@@ -46,11 +42,7 @@ Vite 的工作是尽可能快地将源模块转化为可以在浏览器中运行
 
 - 在开发时，如果你需要更多的 IDE 提示，我们建议在一个单独的进程中运行 `tsc --noEmit --watch`，或者如果你喜欢在浏览器中直接看到上报的类型错误，可以使用 [vite-plugin-checker](https://github.com/fi3ework/vite-plugin-checker)。
 
-<<<<<<< HEAD
-Vite 使用 [esbuild](https://github.com/evanw/esbuild) 将 TypeScript 转译到 JavaScript，约是 `tsc` 速度的 20~30 倍，同时 HMR 更新反映到浏览器的时间小于 50ms。
-=======
-Vite uses [Oxc Transformer](https://oxc.rs/docs/guide/usage/transformer.html) to transpile TypeScript into JavaScript which is faster than vanilla `tsc`, and HMR updates can reflect in the browser in under 50ms.
->>>>>>> 9fa3be92938ceef543cd488d6659c387db8ca6b4
+Vite 使用 [Oxc Transformer](https://oxc.rs/docs/guide/usage/transformer.html) 将 TypeScript 转译为 JavaScript，其速度快于原生的 `tsc`，且 HMR 更新可在 50 毫秒内反映至浏览器。
 
 使用 [仅含类型的导入和导出](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-3-8.html#type-only-imports-and-export) 形式的语法可以避免潜在的 “仅含类型的导入被不正确打包” 的问题，写法示例如下：
 
@@ -61,11 +53,7 @@ export type { T }
 
 ### TypeScript 编译器选项 {#typescript-compiler-options}
 
-<<<<<<< HEAD
-Vite 会参考 `tsconfig.json` 中的一些配置项，并设置相应的 esbuild 选项。对于每个文件，Vite 会使用距离最近的父级目录中的 `tsconfig.json`。如果该 `tsconfig.json` 包含 [`references`](https://www.typescriptlang.org/tsconfig/#references) 字段，Vite 将使用满足 [`include`](https://www.typescriptlang.org/tsconfig/#include) 和 [`exclude`](https://www.typescriptlang.org/tsconfig/#exclude) 字段的被引用配置文件。
-=======
-Vite respects some of the options in `tsconfig.json` and sets the corresponding Oxc Transformer options. For each file, Vite uses the `tsconfig.json` in the closest parent directory. If that `tsconfig.json` contains a [`references`](https://www.typescriptlang.org/tsconfig/#references) field, Vite will use the referenced config file that satisfies the [`include`](https://www.typescriptlang.org/tsconfig/#include) and [`exclude`](https://www.typescriptlang.org/tsconfig/#exclude) fields.
->>>>>>> 9fa3be92938ceef543cd488d6659c387db8ca6b4
+Vite 会读取 `tsconfig.json` 中的部分配置项，并据此设置相应的 Oxc Transformer 选项。对于每一个文件，Vite 都会使用其所在最近父目录下的 `tsconfig.json` 文件。如果该 `tsconfig.json` 包含 [`references`](https://www.typescriptlang.org/tsconfig/#references) 字段，Vite 将会使用其中满足 [`include`](https://www.typescriptlang.org/tsconfig/#include) 和 [`exclude`](https://www.typescriptlang.org/tsconfig/#exclude) 字段条件的被​​引用配置文件。
 
 当选项同时在 Vite 配置和 `tsconfig.json` 中设置时，Vite 配置中的值优先。
 
@@ -77,19 +65,11 @@ Vite respects some of the options in `tsconfig.json` and sets the corresponding 
 
 应该设置为 `true`。
 
-<<<<<<< HEAD
-这是因为 `esbuild` 只执行没有类型信息的转译，它并不支持某些特性，如 `const enum` 和隐式类型导入。
-=======
-It is because Oxc transformer only performs transpilation without type information, it doesn't support certain features like const enum and implicit type-only imports.
->>>>>>> 9fa3be92938ceef543cd488d6659c387db8ca6b4
+正是因为 Oxc 转换器仅执行不含类型信息的转译，因此它不支持诸如 `const enum` 和隐式仅类型导入等特定特性。
 
 你必须在 `tsconfig.json` 中的 `compilerOptions` 下设置 `"isolatedModules": true`。如此做，TS 会警告你不要使用隔离（isolated）转译的功能。
 
-<<<<<<< HEAD
 如果一个依赖项和 `"isolatedModules": true` 不兼容的话，你可以在上游仓库修复好之前暂时使用 `"skipLibCheck": true` 来缓解这个错误。
-=======
-If a dependency doesn't work well with `"isolatedModules": true`, you can use `"skipLibCheck": true` to temporarily suppress the errors until it is fixed upstream.
->>>>>>> 9fa3be92938ceef543cd488d6659c387db8ca6b4
 
 #### `useDefineForClassFields`
 
@@ -107,15 +87,9 @@ If a dependency doesn't work well with `"isolatedModules": true`, you can use `"
 
 - [TypeScript 文档](https://www.typescriptlang.org/tsconfig#target)
 
-<<<<<<< HEAD
-Vite 忽略 `tsconfig.json` 中的 `target` 值，遵循与 `esbuild` 相同的行为。
+Vite 忽略 `tsconfig.json` 中的 `target` 值，其行为与 [esbuild](https://esbuild.github.io/) 一致。
 
-要在开发中指定目标，可使用 [`esbuild.target`](/config/shared-options.html#esbuild) 选项，默认值为 `esnext`，以实现最小的转译。在构建中，[`build.target`](/config/build-options.html#build-target) 选项优先于 `esbuild.target`，如有需要也可以进行设置。
-=======
-Vite ignores the `target` value in the `tsconfig.json`, following the same behavior as [esbuild](https://esbuild.github.io/).
-
-To specify the target in dev, the [`oxc.target`](/config/shared-options.html#oxc) option can be used, which defaults to `esnext` for minimal transpilation. In builds, the [`build.target`](/config/build-options.html#build-target) option takes higher priority over `oxc.target` and can also be set if needed.
->>>>>>> 9fa3be92938ceef543cd488d6659c387db8ca6b4
+若要在开发模式下指定目标环境，可以使用 [`oxc.target`](/config/shared-options.html#oxc) 选项；该选项默认为 `esnext`，以实现最小化的转译。在构建阶段，[`build.target`](/config/build-options.html#build-target) 选项的优先级高于 `oxc.target`，如有需要，也可对其进行设置。
 
 #### `emitDecoratorMetadata` {#emitDecoratorMetadata}
 
@@ -261,25 +235,16 @@ HTML 文件位于 Vite 项目的[最前端和中心](/guide/#index-html-and-proj
 
 ## JSX {#jsx}
 
-<<<<<<< HEAD
-`.jsx` 和 `.tsx` 文件同样开箱即用。JSX 的转译同样是通过 [esbuild](https://esbuild.github.io)。
-=======
-`.jsx` and `.tsx` files are also supported out of the box. JSX transpilation is also handled via [Oxc Transformer](https://oxc.rs/docs/guide/usage/transformer/).
->>>>>>> 9fa3be92938ceef543cd488d6659c387db8ca6b4
+`.jsx` 和 `.tsx` 文件也提供开箱即用的支持。JSX 转译工作则通过 [Oxc Transformer](https://oxc.rs/docs/guide/usage/transformer/) 来处理。
 
 你选择的框架已经可以开箱即用地配置 JSX（例如，Vue 用户应使用官方的 [@vitejs/plugin-vue-jsx](https://github.com/vitejs/vite-plugin-vue/tree/main/packages/plugin-vue-jsx) 插件，它提供了 Vue 3 特定的功能，包括 HMR，全局组件解析，指令和插槽）。
 
-<<<<<<< HEAD
-如果你使用自己的框架运行 JSX，可以使用 [`esbuild` 选项](/config/shared-options.md#esbuild) 来配置自定义的 `jsxFactory` 和 `jsxFragment`。例如，Preact 插件会使用：
-=======
-If using JSX with your own framework, custom `jsxFactory` and `jsxFragment` can be configured using the [`oxc` option](/config/shared-options.md#oxc). For example, the Preact plugin would use:
->>>>>>> 9fa3be92938ceef543cd488d6659c387db8ca6b4
+如果您在自己的框架中使用 JSX，可以通过 [`oxc` 选项](/config/shared-options.md#oxc) 来配置自定义的 `jsxFactory` 和 `jsxFragment`。例如，Preact 插件会采用如下配置：
 
 ```js twoslash [vite.config.js]
 import { defineConfig } from 'vite'
 
 export default defineConfig({
-<<<<<<< HEAD
   esbuild: {
     jsxFactory: 'h',
     jsxFragment: 'Fragment'
@@ -287,18 +252,7 @@ export default defineConfig({
 })
 ```
 
-更多细节详见 [esbuild 文档](https://esbuild.github.io/content-types/#jsx).
-=======
-  oxc: {
-    jsx: {
-      importSource: 'preact',
-    },
-  },
-})
-```
-
-More details in [Oxc Transformer docs](https://oxc.rs/docs/guide/usage/transformer/jsx.html).
->>>>>>> 9fa3be92938ceef543cd488d6659c387db8ca6b4
+更多细节详见 [Oxc Transformer 文档](https://esbuild.github.io/content-types/#jsx).
 
 你可以使用 `jsxInject`（这是一个仅在 Vite 中使用的选项）为 JSX 注入 helper，以避免手动导入：
 
@@ -306,15 +260,9 @@ More details in [Oxc Transformer docs](https://oxc.rs/docs/guide/usage/transform
 import { defineConfig } from 'vite'
 
 export default defineConfig({
-<<<<<<< HEAD
-  esbuild: {
-    jsxInject: `import React from 'react'`
-  }
-=======
   oxc: {
     jsxInject: `import React from 'react'`,
   },
->>>>>>> 9fa3be92938ceef543cd488d6659c387db8ca6b4
 })
 ```
 
@@ -405,23 +353,11 @@ import otherStyles from './bar.css?inline' // 样式不会注入页面
 
 ### Lightning CSS
 
-<<<<<<< HEAD
-从 Vite 4.4 开始，已经实验性地支持 [Lightning CSS](https://lightningcss.dev/)。可以通过在配置文件中添加 [`css.transformer: 'lightningcss'`](../config/shared-options.md#css-transformer) 并安装可选的 [`lightningcss`](https://www.npmjs.com/package/lightningcss) 依赖项来选择使用它：
-=======
-Vite uses [Lightning CSS](https://lightningcss.dev/) to minify CSS in production builds by default. However, PostCSS is still used for other CSS processing.
->>>>>>> 9fa3be92938ceef543cd488d6659c387db8ca6b4
+Vite 默认在生产构建中使用 [Lightning CSS](https://lightningcss.dev/) 来压缩 CSS。不过，PostCSS 仍用于其他的 CSS 处理。
 
-There is experimental support for using Lightning CSS for CSS processing entirely. You can opt into it by adding [`css.transformer: 'lightningcss'`](../config/shared-options.md#css-transformer).
+目前已提供实验性支持，允许完全使用 Lightning CSS 进行 CSS 处理。您可以通过添加 [`css.transformer: 'lightningcss'`](../config/shared-options.md#css-transformer) 来启用此功能。
 
-<<<<<<< HEAD
-如果启用，CSS 文件将由 Lightning CSS 处理，而不是 PostCSS。可以将 Lightning CSS 的选项传递给 [`css.lightningcss`](../config/shared-options.md#css-lightningcss) 选项来配置。
-
-要配置 CSS Modules，需要使用 [`css.lightningcss.cssModules`](https://lightningcss.dev/css-modules.html) 而不是 [`css.modules`](../config/shared-options.md#css-modules)（后者是用于配置 PostCSS 处理 CSS Modules 的方式）。
-
-默认情况下，Vite 使用 esbuild 来压缩 CSS。通过 [`build.cssMinify: 'lightningcss'`](../config/build-options.md#build-cssminify) 进行配置，也可以将 Lightning CSS 用作 CSS 最小化压缩。
-=======
-To configure it, you can pass Lightning CSS options to the [`css.lightningcss`](../config/shared-options.md#css-lightningcss) config option. To configure CSS Modules, you should use [`css.lightningcss.cssModules`](https://lightningcss.dev/css-modules.html) instead of [`css.modules`](../config/shared-options.md#css-modules) (which configures the way PostCSS handles CSS modules).
->>>>>>> 9fa3be92938ceef543cd488d6659c387db8ca6b4
+若要进行配置，您可以将 Lightning CSS 的选项传递给 [`css.lightningcss`](../config/shared-options.md#css-lightningcss) 配置项。若要配置 CSS Modules，您应当使用 [`css.lightningcss.cssModules`](https://lightningcss.dev/css-modules.html)，而非 [`css.modules`](../config/shared-options.md#css-modules)（后者用于配置 PostCSS 处理 CSS Modules 的方式）。
 
 ## 静态资源处理 {#static-assets}
 

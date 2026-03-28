@@ -8,6 +8,7 @@
 	"private": true,
 	"license": "CC BY-NC-SA 4.0",
 	"devDependencies": {
+		"@iconify/vue": "^5.0.0",
 		"@shikijs/vitepress-twoslash": "^3.22.0",
 		"@type-challenges/utils": "^0.1.1",
 		"@types/express": "^5.0.6",
