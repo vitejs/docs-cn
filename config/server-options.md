@@ -16,6 +16,7 @@
 
 在某些情况下，可能响应的是其他服务器而不是 Vite。
 
+<<<<<<< HEAD
 第一种情况是 `localhost` 被使用了。Node.js 在 v17 以下版本中默认会对 DNS 解析地址的结果进行重新排序。当访问 `localhost` 时，浏览器使用 DNS 来解析地址，这个地址可能与 Vite 正在监听的地址不同。当地址不一致时，Vite 会打印出来。
 
 你可以设置 [`dns.setDefaultResultOrder('verbatim')`](https://nodejs.org/api/dns.html#dns_dns_setdefaultresultorder_order) 来禁用这个重新排序的行为。Vite 会将地址打印为 `localhost`。
@@ -30,6 +31,9 @@ export default defineConfig({
   // omit
 })
 ```
+=======
+The first case is when `localhost` is used. Node.js's [`dns.setDefaultResultOrder`](https://nodejs.org/docs/latest-v24.x/api/dns.html#dnssetdefaultresultorderorder) changes how DNS-resolved addresses are ordered, and browsers may use a different resolved address than the one Vite is listening to. Vite prints the resolved address when it differs.
+>>>>>>> c3c345eb7cf3e7ea4df9de79e6f4a102b7d7e2d2
 
 第二种情况是使用了通配主机地址（例如 `0.0.0.0`）。这是因为侦听非通配符主机的服务器优先于侦听通配符主机的服务器。
 
@@ -419,7 +423,17 @@ export default defineConfig({
 
 :::
 
+<<<<<<< HEAD
 ## server.origin {#server-origin}
+=======
+::: tip NOTE
+
+The deny filter is applied against the module id and the id with query parameters stripped. Since a plugin can read files from any files in its load hook (including resolving symlinks to denied paths), Vite cannot guarantee that a denied file is inaccessible through an alternative path. If you have an alternative path, include it in the deny list as well.
+
+:::
+
+## server.origin
+>>>>>>> c3c345eb7cf3e7ea4df9de79e6f4a102b7d7e2d2
 
 - **类型：** `string`
 
