@@ -310,7 +310,7 @@ function mergeConfig(
 
 深度合并两份配置。`isRoot` 代表着 Vite 配置被合并的层级。举个例子，如果你是要合并两个 `build` 选项请设为 `false`。
 
-Note that `null` and `undefined` values in `overrides` are skipped and not merged. If you need to explicitly clear a value from `defaults`, modify the result of `mergeConfig` directly.
+请注意，`overrides` 中值为 `null` 和 `undefined` 的属性会被跳过，不参与合并。如果你需要显式清除 `defaults` 中的某个值，请直接修改 `mergeConfig` 的返回结果。
 
 ::: tip NOTE
 `mergeConfig` 只接受对象形式的配置。如果有一个回调形式的配置，应该在将其传递给 `mergeConfig` 之前先调用该回调函数，将其转换成对象形式。
