@@ -433,7 +433,11 @@ export default defineConfig({
 
 是否忽略服务器 sourcemap 中的源文件，用于填充 [`x_google_ignoreList` source map 扩展](https://developer.chrome.com/articles/x-google-ignore-list/)。
 
+<<<<<<< HEAD
 对开发服务器来说 `server.sourcemapIgnoreList` 等价于 [`build.rollupOptions.output.sourcemapIgnoreList`](https://cn.rollupjs.org/configuration-options/#output-sourcemapignorelist)。两个配置选项之间的区别在于，rollup 函数使用相对路径调用 `sourcePath`，而 `server.sourcemapIgnoreList` 使用绝对路径调用。在开发过程中，大多数模块的映射和源文件位于同一个文件夹中，因此 `sourcePath` 的相对路径就是文件名本身。在这些情况下，使用绝对路径更加方便。
+=======
+`server.sourcemapIgnoreList` is the equivalent of [`build.rolldownOptions.output.sourcemapIgnoreList`](https://rollupjs.org/configuration-options/#output-sourcemapignorelist) for the dev server. A difference between the two config options is that the rollup function is called with a relative path for `sourcePath` while `server.sourcemapIgnoreList` is called with an absolute path. During dev, most modules have the map and the source in the same folder, so the relative path for `sourcePath` is the file name itself. In these cases, absolute paths makes it convenient to be used instead.
+>>>>>>> e8dba8285fa9c222c70e8547284f4491216032c8
 
 默认情况下，它会排除所有包含 `node_modules` 的路径。你可以传递 `false` 来禁用此行为，或者为了获得完全的控制，可以传递一个函数，该函数接受源路径和 sourcemap 的路径，并返回是否忽略源路径。
 
@@ -449,6 +453,11 @@ export default defineConfig({
 })
 ```
 
+<<<<<<< HEAD
 ::: tip 注意
 需要单独设置 [`server.sourcemapIgnoreList`](#server-sourcemapignorelist) 和 [`build.rollupOptions.output.sourcemapIgnoreList`](https://cn.rollupjs.org/configuration-options/#output-sourcemapignorelist)。`server.sourcemapIgnoreList` 是一个仅适用于服务端的配置，并不从定义好的 rollup 选项中获得其默认值。
+=======
+::: tip Note
+[`server.sourcemapIgnoreList`](#server-sourcemapignorelist) and [`build.rolldownOptions.output.sourcemapIgnoreList`](https://rollupjs.org/configuration-options/#output-sourcemapignorelist) need to be set independently. `server.sourcemapIgnoreList` is a server only config and doesn't get its default value from the defined rollup options.
+>>>>>>> e8dba8285fa9c222c70e8547284f4491216032c8
 :::
