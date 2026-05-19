@@ -21,19 +21,11 @@
      build: {
        // 在 outDir 中生成 .vite/manifest.json
        manifest: true,
-<<<<<<< HEAD
-       rollupOptions: {
+       rolldownOptions: {
          // 覆盖默认的 .html 入口
          input: '/path/to/main.js'
        }
      }
-=======
-       rolldownOptions: {
-         // overwrite default .html entry
-         input: '/path/to/main.js',
-       },
-     },
->>>>>>> 1fe51964e4854375606845b2e18fac4c8f2a6260
    })
    ```
 
@@ -186,21 +178,12 @@
    }
    ```
 
-<<<<<<< HEAD
    清单中的每个条目代表以下之一：
-   - **Entry chunks**：由 [`build.rollupOptions.input`](https://rollupjs.org/configuration-options/#input) 中指定的文件生成。这些块的 isEntry 属性设置为 true，其键值是项目根目录的相对 src 路径。
+   - **Entry chunks**：由 [`build.rolldownOptions.input`](https://rollupjs.org/configuration-options/#input) 中指定的文件生成。这些块的 isEntry 属性设置为 true，其键值是项目根目录的相对 src 路径。
    - **Dynamic entry chunks**：由动态导入生成。这些块的 isDynamicEntry 属性设置为 true，其键值是项目根目录的相对 src 路径。
    - **Non-entry chunks**：其键值是生成文件的基本名称加上前缀 `_`。
    - **Asset chunks**：由导入的资源（例如图片、字体）生成。其键值是项目根目录的相对 src 路径。
    - **CSS 文件**：当 [`build.cssCodeSplit`](/config/build-options.md#build-csscodesplit) 为 `false` 时，将生成一个带有 `style.css` 键的 CSS 文件。当 `build.cssCodeSplit` 不为 `false` 时，键的生成方式与 JS 代码块类似（即，入口代码块不带 `_` 前缀，非入口代码块带 `_` 前缀）。
-=======
-   Each entry in the manifest represents one of the following:
-   - **Entry chunks**: Generated from files specified in [`build.rolldownOptions.input`](https://rollupjs.org/configuration-options/#input). These chunks have `isEntry: true` and their key is the relative src path from project root.
-   - **Dynamic entry chunks**: Generated from dynamic imports. These chunks have `isDynamicEntry: true` and their key is the relative src path from project root.
-   - **Non-entry chunks**: Their key is the base name of the generated file prefixed with `_`.
-   - **Asset chunks**: Generated from imported assets like images, fonts. Their key is the relative src path from project root.
-   - **CSS files**: When [`build.cssCodeSplit`](/config/build-options.md#build-csscodesplit) is `false`, a single CSS file is generated with the key `style.css`. When `build.cssCodeSplit` is not `false`, the key is generated similar to JS chunks (i.e. entry chunks will not have `_` prefix and non-entry chunks will have `_` prefix).
->>>>>>> 1fe51964e4854375606845b2e18fac4c8f2a6260
 
    JS 代码块（除了资源或 CSS 之外的代码块）会包含其静态和动态导入的信息（两者都是映射到清单中相应代码块的键）。代码块还会列出其对应的 CSS 和资源文件（如果有的话）。
 
