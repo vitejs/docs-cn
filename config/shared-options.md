@@ -145,7 +145,11 @@ resolve: {
 如果你在你的应用程序中有相同依赖的副本（比如 monorepos），请使用此选项强制 Vite 始终将列出的依赖项解析为同一副本（从项目根目录）。
 
 :::warning SSR + ESM
+<<<<<<< HEAD
 对于服务端渲染构建，配置项 `build.rollupOptions.output` 为 ESM 构建输出时去重过程将不工作。一个替代方案是先使用 CJS 构建输出，直到 ESM 在插件中有了更好的模块加载支持。
+=======
+For SSR builds, deduplication does not work for ESM build outputs configured from `build.rolldownOptions.output`. A workaround is to use CJS build outputs until ESM has better plugin support for module loading.
+>>>>>>> 1fe51964e4854375606845b2e18fac4c8f2a6260
 :::
 
 ## resolve.conditions <NonInheritBadge /> {#resolve-conditions}
