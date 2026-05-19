@@ -21,7 +21,7 @@
      build: {
        // 在 outDir 中生成 .vite/manifest.json
        manifest: true,
-       rollupOptions: {
+       rolldownOptions: {
          // 覆盖默认的 .html 入口
          input: '/path/to/main.js'
        }
@@ -179,7 +179,7 @@
    ```
 
    清单中的每个条目代表以下之一：
-   - **Entry chunks**：由 [`build.rollupOptions.input`](https://rollupjs.org/configuration-options/#input) 中指定的文件生成。这些块的 isEntry 属性设置为 true，其键值是项目根目录的相对 src 路径。
+   - **Entry chunks**：由 [`build.rolldownOptions.input`](https://rollupjs.org/configuration-options/#input) 中指定的文件生成。这些块的 isEntry 属性设置为 true，其键值是项目根目录的相对 src 路径。
    - **Dynamic entry chunks**：由动态导入生成。这些块的 isDynamicEntry 属性设置为 true，其键值是项目根目录的相对 src 路径。
    - **Non-entry chunks**：其键值是生成文件的基本名称加上前缀 `_`。
    - **Asset chunks**：由导入的资源（例如图片、字体）生成。其键值是项目根目录的相对 src 路径。
