@@ -207,6 +207,10 @@ const config = defineConfig({
           { text: '发布策略', link: '/releases' },
           { text: '致谢', link: '/acknowledgements' },
           {
+            text: '行为守则',
+            link: 'https://github.com/vitejs/.github/blob/main/CODE_OF_CONDUCT.md',
+          },
+          {
             text: '插件注册',
             link: 'https://registry.vite.dev/plugins',
           },
