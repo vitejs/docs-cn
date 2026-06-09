@@ -106,7 +106,7 @@ export default function myPlugin() {
 
 ### 引入一个虚拟文件 {#importing-a-virtual-file}
 
-请在 [下一小节中](#virtual-modules-convention) 中查看示例：
+请在 [下一小节](#virtual-modules-convention) 中查看示例：
 
 ## 虚拟模块相关说明 {#virtual-modules-convention}
 
