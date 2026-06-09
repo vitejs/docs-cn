@@ -36,7 +36,7 @@ Vite 努力秉承开箱即用的原则，因此在创作一款新插件前，请
 - `vite-plugin-react-` 前缀作为 React 插件
 - `vite-plugin-svelte-` 前缀作为 Svelte 插件
 
-更多详情参见 [虚拟模块的相关内容](#virtual-modules-convention).
+更多详情参见 [虚拟模块的相关内容](#virtual-modules-convention)。
 
 ## 插件配置 {#plugins-config}
 
@@ -61,7 +61,7 @@ import frameworkRefresh from 'vite-plugin-framework-refresh'
 import frameworkDevtools from 'vite-plugin-framework-devtools'
 
 export default function framework(config) {
-  return [frameworkRefresh(config), frameworkDevTools(config)]
+  return [frameworkRefresh(config), frameworkDevtools(config)]
 }
 ```
 
@@ -106,7 +106,7 @@ export default function myPlugin() {
 
 ### 引入一个虚拟文件 {#importing-a-virtual-file}
 
-请在 [下一小节中](#virtual-modules-convention) 中查看示例：
+请在 [下一小节](#virtual-modules-convention) 中查看示例：
 
 ## 虚拟模块相关说明 {#virtual-modules-convention}
 
