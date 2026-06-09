@@ -95,7 +95,11 @@ Vite 忽略 `tsconfig.json` 中的 `target` 值，遵循与 [esbuild](https://es
 
 - [TypeScript 文档](https://www.typescriptlang.org/tsconfig#emitDecoratorMetadata)
 
+<<<<<<< HEAD
 此选项仅被部分支持。完全支持需要 TypeScript 编译器进行类型推断，而这是不受支持的。详情请参见 [Oxc Transformer 的文档](https://oxc.rs/docs/guide/usage/transformer/typescript#decorators)。
+=======
+This option is only partially supported. Full support requires type inference by the TypeScript compiler, which is not supported. See [Oxc Transformer's documentation](https://oxc.rs/docs/guide/usage/transformer/typescript.html#decorators) for details.
+>>>>>>> 9849cddcba840e67e4adac1896bce031e0c36b5d
 
 #### `paths` {#paths}
 
@@ -235,7 +239,11 @@ HTML 文件位于 Vite 项目的[最前端和中心](/guide/#index-html-and-proj
 
 ## JSX {#jsx}
 
+<<<<<<< HEAD
 `.jsx` 和 `.tsx` 文件同样开箱即用。JSX 的转译同样是通过 [Oxc 转换器](https://oxc.rs/docs/guide/usage/transformer/) 处理的。
+=======
+`.jsx` and `.tsx` files are also supported out of the box. JSX transpilation is also handled via [Oxc Transformer](https://oxc.rs/docs/guide/usage/transformer.html).
+>>>>>>> 9849cddcba840e67e4adac1896bce031e0c36b5d
 
 你选择的框架已经可以开箱即用地配置 JSX（例如，Vue 用户应使用官方的 [@vitejs/plugin-vue-jsx](https://github.com/vitejs/vite-plugin-vue/tree/main/packages/plugin-vue-jsx) 插件，它提供了 Vue 3 特定的功能，包括 HMR，全局组件解析，指令和插槽）。
 
