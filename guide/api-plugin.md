@@ -36,7 +36,7 @@ Vite 努力秉承开箱即用的原则，因此在创作一款新插件前，请
 - `vite-plugin-react-` 前缀作为 React 插件
 - `vite-plugin-svelte-` 前缀作为 Svelte 插件
 
-更多详情参见 [虚拟模块的相关内容](#virtual-modules-convention).
+更多详情参见 [虚拟模块的相关内容](#virtual-modules-convention)。
 
 ## 插件配置 {#plugins-config}
 
