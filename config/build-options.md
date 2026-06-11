@@ -8,7 +8,11 @@
 - **默认：** `'baseline-widely-available'`
 - **相关内容：** [浏览器兼容性](/guide/build#browser-compatibility)
 
+<<<<<<< HEAD
 最终软件包的浏览器兼容性目标。默认值是 Vite 的一个特殊值 `'baseline-widely-available'`，该值针对的是包含在 2026 年 1 月 1 日广泛可用的 [Baseline](https://web-platform-dx.github.io/web-features/) 中的浏览器。具体来说，它是 `['chrome111', 'edge111', 'firefox114', 'safari16.4']`。
+=======
+Browser compatibility target for the final bundle. The default value is a Vite special value, `'baseline-widely-available'`, which targets browsers that are included in the [Baseline](https://web-platform-dx.github.io/web-features/) Widely Available on 2026-01-01. Specifically, it is `['chrome111', 'edge111', 'firefox114', 'safari16.4', 'ios16.4']`.
+>>>>>>> dc22819e7c275f1c34afae9115e8ad29a53aafbe
 
 另一个特殊值是 `'esnext'` —— 即假设有原生动态导入支持，并只执行最低限度的转译。
 
