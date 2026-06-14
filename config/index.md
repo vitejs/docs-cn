@@ -16,7 +16,7 @@ export default {
 
 注意：即使项目没有在 `package.json` 中开启 `"type": "module"`，Vite 也支持在配置文件中使用 ESM 语法。这种情况下，配置文件会在被加载前自动进行预处理。
 
-你可以显式地通过 `--config` 命令行选项指定一个配置文件（相对于 `cwd` 路径进行解析）
+你可以显式地通过 `--config` 命令行选项指定一个配置文件（相对于 `cwd` 路径进行解析）。
 
 ```bash
 vite --config my-config.js
@@ -27,7 +27,7 @@ vite --config my-config.js
 ::: tip 加载配置文件
 默认情况下，Vite 使用 [Rolldown](https://rolldown.rs/) 将配置文件打包到临时文件中并加载它。这可能会在 monorepo 中导入 TypeScript 文件时引发问题。如果你遇到了这种方法问题，可以通过指定 `--configLoader runner` 以改用 [module runner](/guide/api-environment-runtimes.html#modulerunner)，它不会创建临时配置并将动态转换任何文件。请注意，module runner 不支持配置文件中的 CJS，但外部 CJS 包应该可以正常工作。
 
-另外，如果你正在使用支持TypeScript的环境（例如 `node --experimental-strip-types`），或者只编写纯 JavaScript 代码，你可以指定 `--configLoader native` 以使用环境的本机运行时加载配置文件。请注意，配置文件导入的模块的更新不会被检测到，因此不会自动重启 Vite 服务器。
+另外，如果你正在使用支持 TypeScript 的环境（例如 `node --experimental-strip-types`），或者只编写纯 JavaScript 代码，你可以指定 `--configLoader native` 以使用环境的本机运行时加载配置文件。请注意，配置文件导入的模块的更新不会被检测到，因此不会自动重启 Vite 服务器。
 :::
 
 ## 配置智能提示 {#config-intellisense}
@@ -63,7 +63,7 @@ export default {
 
 ## 条件配置 {#conditional-config}
 
-如果配置文件需要基于（`serve` 或 `build`）命令或者不同的 [模式](/guide/env-and-mode#modes) 来决定选项，亦或者是一个 SSR 构建（`isSsrBuild`）、一个正在预览的构建产物（`isPreview`），则可以选择导出这样一个函数：
+如果配置文件需要基于命令（`serve` 或 `build`）或者不同的 [模式](/guide/env-and-mode#modes) 来决定选项，亦或者是一个 SSR 构建（`isSsrBuild`）、一个正在预览的构建产物（`isPreview`），则可以选择导出这样一个函数：
 
 ```js twoslash
 import { defineConfig } from 'vite'
@@ -82,7 +82,7 @@ export default defineConfig(({ command, mode, isSsrBuild, isPreview }) => {
 })
 ```
 
-需要注意的是，在 Vite 的 API 中，在开发环境下 `command` 的值为 `serve`（在 CLI 中， `vite dev` 和 `vite serve` 是 [`vite`](/guide/cli#vite) 的别名），而在生产环境下为 `build`（[`vite build`](/guide/cli#vite-build)）。
+需要注意的是，在 Vite 的 API 中，在开发环境下 `command` 的值为 `serve`（在 CLI 中，`vite dev` 和 `vite serve` 是 [`vite`](/guide/cli#vite) 的别名），而在生产环境下为 `build`（[`vite build`](/guide/cli#vite-build)）。
 
 `isSsrBuild` 和 `isPreview` 是额外的可选标志，用于区分 `build` 和 `serve` 命令的类型。一些加载 Vite 配置的工具可能不支持这些标志，而会传递 `undefined`。因此，建议使用 `true` 和 `false` 的显式比较。
 
@@ -105,7 +105,7 @@ export default defineConfig(async ({ command, mode }) => {
 
 在评估配置文件本身时，可用的环境变量仅限于当前进程环境中已经存在的变量（`process.env`）。Vite 有意推迟加载任何 `.env*` 文件，直到用户配置解析完成之后，因为要加载的文件集合依赖于配置选项如 [`root`](/guide/#index-html-and-project-root) 和 [`envDir`](/config/shared-options.md#envdir)，以及最终的 `mode`。
 
-这意味着：在你的 `vite.config.*` 运行时，定义在 `.env`、`.env.local`、`.env.[mode]` 或 `.env.[mode].local` 中的变量不会自动注入到 `process.env` 中。它们会在稍后自动加载，并通过 `import.meta.env` 暴露给应用程序代码（使用默认的 `VITE_` 前缀过滤器），正如[环境变量和模式](/guide/env-and-mode.html)中所记录的那样。因此，如果你只需要将 `.env*` 文件中的值传递给应用程序，则无需在配置中调用任何内容。
+这意味着：在你的 `vite.config.*` 运行时，定义在 `.env`、`.env.local`、`.env.[mode]` 或 `.env.[mode].local` 中的变量不会自动注入到 `process.env` 中。它们会在稍后自动加载，并通过 `import.meta.env` 暴露给应用程序代码（使用默认的 `VITE_` 前缀过滤器），正如 [环境变量和模式](/guide/env-and-mode.html) 中所记录的那样。因此，如果你只需要将 `.env*` 文件中的值传递给应用程序，则无需在配置中调用任何内容。
 
 但是，如果 `.env*` 文件中的值必须影响配置本身（例如设置 `server.port`、条件性启用插件或计算 `define` 替换），你可以使用导出的 [`loadEnv`](/guide/api-javascript.html#loadenv) 辅助函数手动加载它们。
 
