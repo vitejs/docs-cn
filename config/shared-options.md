@@ -20,7 +20,7 @@
 开发或生产环境服务的公共基础路径。合法的值包括以下几种：
 
 - 绝对 URL 路径名，例如 `/foo/`
-- 完整的 URL，例如 `https://bar.com/foo/ `（域名部分在开发环境中不会被使用，因此该值与 `/foo/` 相同）
+- 完整的 URL，例如 `https://bar.com/foo/`（域名部分在开发环境中不会被使用，因此该值与 `/foo/` 相同）
 - 空字符串或 `./`（用于嵌入形式的开发）
 
 更多信息详见 [公共基础路径](/guide/build#public-base-path)。
@@ -170,7 +170,7 @@ resolve: {
 
 在这里，`import` 和 `require` 被称为"条件"。条件可以嵌套，并且应该按照从最具体到最不具体的顺序指定。
 
-`development|production` 是一个特殊值，根据 `process.env.NODE_ENV` 的值替换为 `production` 或  `development` 。如果 `process.env.NODE_ENV === 'production'`，则替换为 `production`，否则替换为 `development`。
+`development|production` 是一个特殊值，根据 `process.env.NODE_ENV` 的值替换为 `production` 或 `development`。如果 `process.env.NODE_ENV === 'production'`，则替换为 `production`，否则替换为 `development`。
 
 请注意，如果符合要求，`import`，`require`，`default` 条件始终会被应用。
 
@@ -270,9 +270,9 @@ resolve: {
 指定传递给 CSS 预处理器的选项。文件扩展名用作选项的键。每个预处理器支持的选项可以在它们各自的文档中找到：
 
 - `sass`/`scss`:
-- 如果已安装，则使用 `sass-embedded`，否则使用 `sass`。为了获得最佳性能，建议安装 `sass-embedded` 包。
+  - 如果已安装，则使用 `sass-embedded`，否则使用 `sass`。为了获得最佳性能，建议安装 `sass-embedded` 包。
   - [Options](https://sass-lang.com/documentation/js-api/interfaces/stringoptions/)
-- `less`: [选项](https://lesscss.org/usage/#less-options).
+- `less`: [选项](https://lesscss.org/usage/#less-options)。
 - `styl`/`stylus`: 仅支持 [`define`](https://stylus-lang.com/docs/js.html#define-name-node)，可以作为对象传递。
 
 **示例：**
@@ -418,7 +418,7 @@ export default defineConfig({
 })
 ```
 
-默认情况下，Oxc转换 会被应用在 `ts`、`jsx`、`tsx` 文件。你可以通过 `oxc.include` 和 `oxc.exclude` 对要处理的文件类型进行配置，这两个配置的值可以是一个正则表达式、一个 [picomatch](https://github.com/micromatch/picomatch#globbing-features) 模式，或是一个值为这两种类型的数组。
+默认情况下，Oxc 转换会被应用在 `ts`、`jsx`、`tsx` 文件。你可以通过 `oxc.include` 和 `oxc.exclude` 对要处理的文件类型进行配置，这两个配置的值可以是一个正则表达式、一个 [picomatch](https://github.com/micromatch/picomatch#globbing-features) 模式，或是一个值为这两种类型的数组。
 
 此外，你还可以通过 `oxc.jsxInject` 来自动为每一个被 Oxc 转换的文件注入 JSX helper。
 
@@ -524,7 +524,7 @@ export default defineConfig({
 以 `envPrefix` 开头的环境变量会通过 `import.meta.env` 暴露在你的客户端源码中。
 
 :::warning 安全注意事项
-`envPrefix` 不应被设置为空字符串 `''`，这将暴露你所有的环境变量，导致敏感信息的意外泄漏。 检测到配置为 `''` 时 Vite 将会抛出错误.
+`envPrefix` 不应被设置为空字符串 `''`，这将暴露你所有的环境变量，导致敏感信息的意外泄漏。检测到配置为 `''` 时 Vite 将会抛出错误。
 
 如果你想暴露一个不含前缀的变量，可以使用 [define](#define) 选项：
 
