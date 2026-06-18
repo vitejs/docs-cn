@@ -94,7 +94,7 @@ interface UserConfig extends EnvironmentOptions {
 }
 ```
 
-请注意，一旦环境 API 稳定， `ssr` 顶级属性将被废弃。该选项的作用与 `environments` 相同，但针对的是默认的 `ssr` 环境，而且只允许配置一小部分选项。
+请注意，一旦环境 API 稳定，`ssr` 顶级属性将被废弃。该选项的作用与 `environments` 相同，但针对的是默认的 `ssr` 环境，而且只允许配置一小部分选项。
 
 ## 自定义环境实例 {#custom-environment-instances}
 
