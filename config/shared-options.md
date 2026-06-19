@@ -214,6 +214,48 @@ resolve: {
 
 一个在生成脚本或样式标签时会用到的 nonce 值占位符。设置此值还会生成一个带有 nonce 值的 meta 标签。
 
+## html.additionalAssetSources
+
+- **Type:** `Record<string, HtmlAssetSource>`
+
+```ts
+interface HtmlAssetSource {
+  srcAttributes?: string[]
+  srcsetAttributes?: string[]
+  filter?: (data: {
+    key: string
+    value: string
+    attributes: Record<string, string>
+  }) => boolean
+}
+```
+
+Define additional HTML elements and attributes to be treated as asset sources. This extends the built-in list that includes standard elements like `<img src>`, `<video src>`, `<link href>`, etc.
+
+This is useful when using custom web components or non-standard attributes (like `data-*`) that reference assets.
+
+**Example:**
+
+```js
+export default defineConfig({
+  html: {
+    additionalAssetSources: {
+      // Custom web component
+      'html-import': { srcAttributes: ['src'] },
+      // Add data-* attributes to existing element
+      img: { srcAttributes: ['data-src-dark', 'data-src-light'] },
+      // With srcset format
+      'my-picture': { srcsetAttributes: ['data-srcset'] },
+      // With filter function
+      'my-component': {
+        srcAttributes: ['asset'],
+        filter: ({ attributes }) => attributes.type === 'image',
+      },
+    },
+  },
+})
+```
+
 ## css.modules
 
 - **类型：**
