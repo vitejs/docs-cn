@@ -115,7 +115,7 @@ if (import.meta.hot) {
 
 :::info
 
-我们正在征集对[`FetchableDevEnvironment`提案](https://github.com/vitejs/vite/discussions/18191)的反馈意见。
+我们正在征集对 [`FetchableDevEnvironment` 提案](https://github.com/vitejs/vite/discussions/18191) 的反馈意见。
 
 :::
 
