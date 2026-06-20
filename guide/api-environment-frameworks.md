@@ -121,7 +121,7 @@ if (import.meta.hot) {
 
 `FetchableDevEnvironment` 是一种可以通过 [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Window/fetch) 接口与运行时进行通信的环境。由于 `RunnableDevEnvironment` 仅能在有限的运行时环境中实现，我们建议使用 `FetchableDevEnvironment` 替代 `RunnableDevEnvironment`。
 
-该环境通过`handleRequest`方法提供了一种标准化的请求处理方式：
+该环境通过 `handleRequest` 方法提供了一种标准化的请求处理方式：
 
 ```ts
 import {
