@@ -95,7 +95,11 @@ Vite 忽略 `tsconfig.json` 中的 `target` 值，遵循与 [esbuild](https://es
 
 - [TypeScript 文档](https://www.typescriptlang.org/tsconfig#emitDecoratorMetadata)
 
+<<<<<<< HEAD
 此选项仅被部分支持。完全支持需要 TypeScript 编译器进行类型推断，而这是不受支持的。详情请参见 [Oxc Transformer 的文档](https://oxc.rs/docs/guide/usage/transformer/typescript#decorators)。
+=======
+This option is only partially supported. Full support requires type inference by the TypeScript compiler, which is not supported. See [Oxc Transformer's documentation](https://oxc.rs/docs/guide/usage/transformer/typescript.html#decorators) for details.
+>>>>>>> d972efe0f681ff328dd56ef0655c66d3e64128ba
 
 #### `paths` {#paths}
 
@@ -235,7 +239,11 @@ HTML 文件位于 Vite 项目的[最前端和中心](/guide/#index-html-and-proj
 
 ## JSX {#jsx}
 
+<<<<<<< HEAD
 `.jsx` 和 `.tsx` 文件同样开箱即用。JSX 的转译同样是通过 [Oxc 转换器](https://oxc.rs/docs/guide/usage/transformer/) 处理的。
+=======
+`.jsx` and `.tsx` files are also supported out of the box. JSX transpilation is also handled via [Oxc Transformer](https://oxc.rs/docs/guide/usage/transformer.html).
+>>>>>>> d972efe0f681ff328dd56ef0655c66d3e64128ba
 
 你选择的框架已经可以开箱即用地配置 JSX（例如，Vue 用户应使用官方的 [@vitejs/plugin-vue-jsx](https://github.com/vitejs/vite-plugin-vue/tree/main/packages/plugin-vue-jsx) 插件，它提供了 Vue 3 特定的功能，包括 HMR，全局组件解析，指令和插槽）。
 
@@ -620,7 +628,25 @@ const modulesWithBase = {
 
 如果提供了基础路径，所有生成的模块键值都会被修改为相对于该基础路径。
 
+<<<<<<< HEAD
 ### Glob 导入注意事项 {#glob-import-caveats}
+=======
+#### Case Sensitive Matching
+
+By default, glob pattern matching is case-sensitive. You can use the `caseSensitive` option to change this behavior:
+
+```ts twoslash
+import 'vite/client'
+// ---cut---
+const modules = import.meta.glob('./dir/module*.js', {
+  caseSensitive: false,
+})
+```
+
+With `caseSensitive: false`, the glob will match files regardless of case (e.g., `Module.js`, `module.js`, `MODULE.js` will all be matched by `module*.js`).
+
+### Glob Import Caveats
+>>>>>>> d972efe0f681ff328dd56ef0655c66d3e64128ba
 
 请注意：
 
@@ -649,8 +675,30 @@ const module = await import(`./dir/${file}.js`)
 
 ## WebAssembly {#webassembly}
 
+<<<<<<< HEAD
 预编译的 `.wasm` 文件可以通过 `?init` 来导入。
 默认导出一个初始化函数，返回值为所导出 [`WebAssembly.Instance`](https://developer.mozilla.org/en-US/docs/WebAssembly/JavaScript_interface/Instance) 实例对象的 Promise：
+=======
+Vite supports importing pre-compiled `.wasm` files in two ways: directly as an [ES module](#esm-integration) when you only need the module's exports, or with [`?init`](#manual-initialization) when you need explicit control over instantiation.
+
+### ESM Integration
+
+A `.wasm` file can be imported directly. Vite reads the module's imports and exports from the binary, instantiates it, and re-exposes its exports as named ES module exports:
+
+```js
+import { add } from './add.wasm'
+
+console.log(add(1, 2)) // 3
+```
+
+If the WebAssembly module declares imports of its own, Vite resolves them from JavaScript modules. Each import's module name is treated as an import specifier (resolved relative to the `.wasm` file) and the requested members are wired into the instance automatically.
+
+This follows the [WebAssembly/ES Module Integration proposal](https://github.com/WebAssembly/esm-integration). Because a WebAssembly module is instantiated asynchronously, a directly imported `.wasm` file behaves as an async module and requires top-level `await` support.
+
+### Manual Initialization
+
+When you need control over when and how the module is instantiated, import it with `?init`. The default export will be an initialization function that returns a Promise of the [`WebAssembly.Instance`](https://developer.mozilla.org/en-US/docs/WebAssembly/JavaScript_interface/Instance):
+>>>>>>> d972efe0f681ff328dd56ef0655c66d3e64128ba
 
 ```js twoslash
 import 'vite/client'
@@ -681,6 +729,7 @@ init({
 
 在生产构建当中，体积小于 `assetInlineLimit` 的 `.wasm` 文件将会被内联为 base64 字符串。否则，它们将被视为 [静态资源](./assets) ，并按需获取。
 
+<<<<<<< HEAD
 ::: tip 注意
 [对 WebAssembly 的 ES 模块集成提案](https://github.com/WebAssembly/esm-integration) 尚未支持。
 请使用 [`vite-plugin-wasm`](https://github.com/Menci/vite-plugin-wasm) 或其他社区上的插件来处理。
@@ -689,6 +738,11 @@ init({
 ::: warning 对于 SSR 构建，仅支持与 Node.js 兼容的运行时。
 
 由于缺乏通用的文件加载方式，`.wasm?init` 的内部实现依赖于 `node:fs` 模块。这意味着此功能仅适用于 Node.js 兼容的 SSR 构建运行时环境。
+=======
+::: warning For SSR build, Node.js compatible runtimes are only supported
+
+Due to the lack of a universal way to load a file, the internal implementation for both direct `.wasm` imports and `.wasm?init` relies on the `node:fs` module. This means that these features will only work in Node.js compatible runtimes for SSR builds.
+>>>>>>> d972efe0f681ff328dd56ef0655c66d3e64128ba
 
 :::
 
@@ -824,7 +878,11 @@ MIT License
 
 ## 构建优化 {#build-optimizations}
 
+<<<<<<< HEAD
 > 下面所罗列的功能会自动应用为构建过程的一部分，除非你想禁用它们，否则没有必要显式配置。
+=======
+> Features listed below are automatically applied (except for the exprimental chunk importmap feature) as part of the build process and there is no need for explicit configuration unless you want to disable them.
+>>>>>>> d972efe0f681ff328dd56ef0655c66d3e64128ba
 
 ### CSS 代码分割 {#css-code-splitting}
 
@@ -857,4 +915,26 @@ Vite 将使用一个预加载步骤自动重写代码，来分割动态导入调
 Entry ---> (A + C)
 ```
 
+<<<<<<< HEAD
 `C` 也可能有更深的导入，在未优化的场景中，这会导致更多的网络往返。Vite 的优化会跟踪所有的直接导入，无论导入的深度如何，都能够完全消除不必要的往返。
+=======
+It is possible for `C` to have further imports, which will result in even more roundtrips in the un-optimized scenario. Vite's optimization will trace all the direct imports to completely eliminate the roundtrips regardless of import depth.
+
+### Chunk Import Map Optimization
+
+To improve the cache hit rate of chunks, Vite can create an import map for chunks. This prevents the cascading cache invalidation issue, which is a problem with ES Modules.
+
+For example, consider the following scenario:
+
+```
+Entry --> A ---> C
+```
+
+If `C` is updated, the only chunk that inherently needs to be invalidated is `C`. However, if `A` references `C` via a normal URL in a static import (i.e. the hash of `C` is included in the URL), the content of `A` is changed, thus `A` would also need to be invalidated. The same applies to `Entry`.
+
+By utilizing the import maps feature, this issue can be avoided. When this optimization is enabled, Vite will create an import map that maps each chunk's ID to its URL and uses the chunk ID in the import statements instead of the URL. This way, when a chunk is updated, only the updated chunk needs to be invalidated, while the chunks that reference it will not be invalidated.
+
+Note that this optimization currently does not apply to CSS and assets. If you update an asset, the chunks that reference it will be invalidated. That said, the invalidation would not cascade and the chunk importing the invalidated chunk would not be invalidated.
+
+To enable this feature, set [`build.chunkImportMap`](/config/build-options.md#build-chunkimportmap) to `true`.
+>>>>>>> d972efe0f681ff328dd56ef0655c66d3e64128ba

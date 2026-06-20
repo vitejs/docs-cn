@@ -661,7 +661,49 @@ export default function myPlugin() {
 [`@rolldown/pluginutils`](https://www.npmjs.com/package/@rolldown/pluginutils)导出一些用于钩子过滤器的实用程序，如 `exactRegex` 和 `prefixRegex`。为了方便起见，这些内容也会从 `rolldown/filter` 重新导出。
 :::
 
+<<<<<<< HEAD
 ## 客户端与服务端间通信 {#client-server-communication}
+=======
+## Chunk Import Map Information
+
+:::info Experimental
+
+This feature is experimental and may change in the future.
+
+:::
+
+When [`build.chunkImportMap`](/config/build-options#build-chunkimportmap) option is enabled, the import statements in the generated chunks will use a unique ID for each chunk instead of the file path.
+
+To get the mapping from the chunk ID to the file path, you can access the import map emitted to the bundle in the `generateBundle` hook or the `writeBundle` hook. The import map has the name specified by [`build.rolldownOptions.experimental.chunkImportMap.fileName`](https://rolldown.rs/reference/InputOptions.experimental#chunkimportmap) (defaults to `importmap.json`).
+
+```ts
+function accessImportMap() {
+  let config: ResolvedConfig
+  return {
+    name: 'access-import-map',
+    configResolved(resolvedConfig) {
+      config = resolvedConfig
+    },
+    generateBundle(options, bundle) {
+      const chunkImportMap =
+        config.build.rolldownOptions.experimental?.chunkImportMap
+      if (chunkImportMap) {
+        const importMapFilename =
+          typeof chunkImportMap === 'object' && chunkImportMap.fileName
+            ? chunkImportMap.fileName
+            : 'importmap.json'
+        const importMap = bundle[importMapFilename]! as OutputAsset
+        const mapping = JSON.parse(importMap.source).imports
+        console.log(mapping)
+        // { "./entry.hash1.js": "./entry.hash2.js" }
+      }
+    },
+  }
+}
+```
+
+## Client-server Communication
+>>>>>>> d972efe0f681ff328dd56ef0655c66d3e64128ba
 
 从 Vite 2.9 开始，我们为插件提供了一些实用工具，以帮助处理与客户端的通信。
 

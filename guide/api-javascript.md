@@ -369,7 +369,11 @@ function loadEnv(
 
 **相关内容：** [`.env` 文件](./env-and-mode.md#env-files)
 
+<<<<<<< HEAD
 加载 `envDir` 中的 `.env` 文件。默认情况下只有前缀为 `VITE_` 会被加载，除非更改了 `prefixes` 配置。
+=======
+Load `.env` files within the `envDir` and merge them with the matching variables already present in `process.env`. By default, only env variables prefixed with `VITE_` are loaded, unless `prefixes` is changed.
+>>>>>>> d972efe0f681ff328dd56ef0655c66d3e64128ba
 
 ## `normalizePath`
 

@@ -215,8 +215,13 @@ Oxc 不支持属性混淆及其相关选项（[`mangleProps`、`reserveProps`、
 
 esbuild 和 Oxc 压缩器对源代码做出了略微不同的假设。如果你怀疑压缩器导致了代码损坏，可以在此处比较这些假设：
 
+<<<<<<< HEAD
 - [esbuild 压缩假设](https://esbuild.github.io/api/#minify-considerations)
 - [Oxc 压缩器假设](https://oxc.rs/docs/guide/usage/minifier.html#assumptions)
+=======
+- [esbuild minify assumptions](https://esbuild.github.io/api/#minify-considerations)
+- [Oxc Minifier assumptions](https://github.com/oxc-project/oxc/blob/main/crates/oxc_minifier/docs/ASSUMPTIONS.md)
+>>>>>>> d972efe0f681ff328dd56ef0655c66d3e64128ba
 
 请报告你在 JavaScript 应用程序中发现的任何与压缩相关的问题。
 
