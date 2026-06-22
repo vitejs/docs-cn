@@ -27,7 +27,7 @@ Vite 努力秉承开箱即用的原则，因此在创作一款新插件前，请
 对于 Vite 专属的插件：
 
 - Vite 插件应该有一个带 `vite-plugin-` 前缀、语义清晰的名称。
-- 在 package.json 中包含 `vite-plugin` 关键字。
+- 在 package.json 的 `keywords` 字段中添加 `vite-plugin` 关键字。
 - 在插件文档增加一部分关于为什么本插件是一个 Vite 专属插件的详细说明（如，本插件使用了 Vite 特有的插件钩子）。
 
 如果你的插件只适用于特定的框架，它的名字应该遵循以下前缀格式：

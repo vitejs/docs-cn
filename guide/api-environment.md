@@ -94,11 +94,11 @@ interface UserConfig extends EnvironmentOptions {
 }
 ```
 
-请注意，一旦环境 API 稳定， `ssr` 顶级属性将被废弃。该选项的作用与 `environments` 相同，但针对的是默认的 `ssr` 环境，而且只允许配置一小部分选项。
+请注意，一旦环境 API 稳定，`ssr` 顶级属性将被废弃。该选项的作用与 `environments` 相同，但针对的是默认的 `ssr` 环境，而且只允许配置一小部分选项。
 
 ## 自定义环境实例 {#custom-environment-instances}
 
-底层 API 配置已可用，因此可以支持为运行时提供环境。这些环境还可以生成其他进程或线程，以便在更接近生产环境的运行时间内运行开发模块。
+底层 API 配置已可用，因此可以支持为运行时提供环境。这些环境还可以生成其他进程或线程，以便在更接近生产环境的运行时内运行开发模块。
 
 例如，[Cloudflare Vite 插件](https://developers.cloudflare.com/workers/vite-plugin/) 使用环境 API 在开发过程中在 Cloudflare Workers 运行时 (`workerd`) 中运行代码。
 
@@ -123,13 +123,13 @@ export default {
 
 当前的 Vite 服务器 API 尚未被弃用，并且与 Vite 5 向后兼容。
 
-`server.moduleGraph` 返回客户端和服务器端渲染（ssr）模块图的混合视图。所有其方法都将返回向后兼容的混合模块节点。对于传递给 `handleHotUpdate` 的模块节点，也使用相同的方案。
+`server.moduleGraph` 返回客户端和服务器端渲染（ssr）模块图的混合视图。其所有方法都将返回向后兼容的混合模块节点。对于传递给 `handleHotUpdate` 的模块节点，也使用相同的方案。
 
 我们不建议现在就切换到环境 API。我们的目标是在插件不需要维护两个版本之前，让大部分用户基础采用 Vite 6。查看未来破坏性更改部分以获取未来弃用和升级路径的信息：
 
 - [钩子函数中的 `this.environment`](/changes/this-environment-in-hooks)
 - [HMR `hotUpdate` 插件钩子](/changes/hotupdate-hook)
-- [迁移到基于环境的API](/changes/per-environment-apis)
+- [迁移到基于环境的 API](/changes/per-environment-apis)
 - [使用 `ModuleRunner` API 进行服务端渲染](/changes/ssr-using-modulerunner)
 - [构建过程中的共享插件](/changes/shared-plugins-during-build)
 
