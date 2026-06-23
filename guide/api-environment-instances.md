@@ -99,7 +99,7 @@ class DevEnvironment {
 }
 ```
 
-其中 `DevEnvironmentContext`是：
+其中 `DevEnvironmentContext` 是：
 
 ```ts
 interface DevEnvironmentContext {
