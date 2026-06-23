@@ -15,7 +15,7 @@
 
 ## 在钩子中访问当前环境 {#accessing-the-current-environment-in-hooks}
 
-在 Vite 6之前，由于只有两个环境（`client` 和 `ssr`），一个 `ssr` 布尔值足以在 Vite API 中识别当前环境。插件钩子在最后的选项参数中接收一个 `ssr` 布尔值，多个 API 也期望通过一个可选的 `ssr` 参数来正确地将模块关联到对应的环境（例如 `server.moduleGraph.getModuleByUrl(url, { ssr })`）。
+在 Vite 6 之前，由于只有两个环境（`client` 和 `ssr`），一个 `ssr` 布尔值足以在 Vite API 中识别当前环境。插件钩子在最后的选项参数中接收一个 `ssr` 布尔值，多个 API 也期望通过一个可选的 `ssr` 参数来正确地将模块关联到对应的环境（例如 `server.moduleGraph.getModuleByUrl(url, { ssr })`）。
 
 随着可配置的环境出现，我们现在有了一种统一的方法来在插件中访问它们的选项和实例。插件钩子现在在其上下文中暴露 `this.environment`，以前期望 `ssr` 布尔值的 API 现在被限定到正确的环境（例如 `environment.moduleGraph.getModuleByUrl(url)`）。
 
