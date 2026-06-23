@@ -211,7 +211,7 @@ import { transport } from './rpc-implementation.js'
 const moduleRunner = new ModuleRunner(
   {
     transport,
-    createImportMeta: createNodeImportMeta, // 如果模块运行程序在 Node.js 中运行
+    createImportMeta: createNodeImportMeta, // 如果模块运行器在 Node.js 中运行
   },
   new ESModulesEvaluator(),
 )
@@ -324,7 +324,7 @@ interface ModuleRunnerTransport {
 
 通过 RPC 或直接调用函数与环境通信的传输对象。如果未执行 `invoke` 方法，则必须执行 `send` 方法和 `connect` 方法。Vite 将在内部构建 `invoke` 方法。
 
-你需要将它与服务器上的 `HotChannel` 实例结合起来，就像本例中在工作线程中创建模块运行程序一样：
+你需要将它与服务器上的 `HotChannel` 实例结合起来，就像本例中在工作线程中创建模块运行器一样：
 
 ::: code-group
 
