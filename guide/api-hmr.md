@@ -235,7 +235,7 @@ import.meta.hot.accept((module) => {
 - `'vite:ws:disconnect'` 当 WebSocket 连接丢失时
 - `'vite:ws:connect'` 当 WebSocket 重新建立连接时
 
-自定义 HMR 事件可以由插件发送。更多细节详见 [handleHotUpdate](./api-plugin#handleHotUpdate)。
+自定义 HMR 事件可以由插件发送。更多细节详见 [handleHotUpdate](./api-plugin#handlehotupdate)。
 
 ## `hot.off(event, cb)` {#hot-off-event-cb}
 
