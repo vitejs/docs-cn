@@ -93,7 +93,7 @@ interface ViteDevServer {
   /**
    * 一个 connect 应用实例
    * - 可以用于将自定义中间件附加到开发服务器。
-   * - 还可以用作自定义http服务器的处理函数。
+   * - 还可以用作自定义 http 服务器的处理函数。
       或作为中间件用于任何 connect 风格的 Node.js 框架。
    *
    * https://github.com/senchalabs/connect#use-middleware
