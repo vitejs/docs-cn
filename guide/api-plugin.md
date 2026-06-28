@@ -11,7 +11,7 @@ Vite 努力秉承开箱即用的原则，因此在创作一款新插件前，请
 当创作插件时，你可以在 `vite.config.js` 中直接使用它。没必要直接为它创建一个新的 package。当你发现某个插件在你项目中很有用时，可以考虑 [在社区中](https://chat.vite.dev) 将其与他人分享。
 
 ::: tip
-在学习、调试或创作插件时，我们建议在你的项目中引入 [vite-plugin-inspect](https://github.com/antfu/vite-plugin-inspect)。 它可以帮助你检查 Vite 插件的中间状态。安装后，你可以访问 `localhost:5173/__inspect/` 来检查你项目的模块和栈信息。请查阅 [vite-plugin-inspect 文档](https://github.com/antfu/vite-plugin-inspect) 中的安装说明。
+在学习、调试或创作插件时，我们建议在你的项目中引入 [vite-plugin-inspect](https://github.com/antfu/vite-plugin-inspect)。它可以帮助你检查 Vite 插件的中间状态。安装后，你可以访问 `localhost:5173/__inspect/` 来检查你项目的模块和栈信息。请查阅 [vite-plugin-inspect 文档](https://github.com/antfu/vite-plugin-inspect) 中的安装说明。
 ![vite-plugin-inspect](../images/vite-plugin-inspect.webp)
 :::
 
@@ -145,9 +145,9 @@ import { msg } from 'virtual:my-module'
 console.log(msg)
 ```
 
-虚拟模块在 Vite（以及 Rolldown/ Rollup）中都以 `virtual:` 为前缀，作为面向用户路径的一种约定。如果可能的话，插件名应该被用作命名空间，以避免与生态系统中的其他插件发生冲突。举个例子，`vite-plugin-posts` 可以要求用户导入一个 `virtual:posts` 或者 `virtual:posts/helpers` 虚拟模块来获得编译时信息。在内部，使用了虚拟模块的插件在解析时应该将模块 ID 加上前缀 `\0`，这一约定来自 rollup 生态。这避免了其他插件尝试处理这个 ID（比如 node 解析），而例如 sourcemap 这些核心功能可以利用这一信息来区别虚拟模块和正常文件。`\0` 在导入 URL 中不是一个被允许的字符，因此我们需要在导入分析时替换掉它们。一个虚拟 ID 为 `\0{id}` 在浏览器中开发时，最终会被编码为 `/@id/__x00__{id}`。这个 id 会被解码回进入插件处理管线前的样子，因此这对插件钩子的代码是不可见的。
+虚拟模块在 Vite（以及 Rolldown / Rollup）中都以 `virtual:` 为前缀，作为面向用户路径的一种约定。如果可能的话，插件名应该被用作命名空间，以避免与生态系统中的其他插件发生冲突。举个例子，`vite-plugin-posts` 可以要求用户导入一个 `virtual:posts` 或者 `virtual:posts/helpers` 虚拟模块来获得编译时信息。在内部，使用了虚拟模块的插件在解析时应该将模块 ID 加上前缀 `\0`，这一约定来自 rollup 生态。这避免了其他插件尝试处理这个 ID（比如 node 解析），而例如 sourcemap 这些核心功能可以利用这一信息来区别虚拟模块和正常文件。`\0` 在导入 URL 中不是一个被允许的字符，因此我们需要在导入分析时替换掉它们。一个虚拟 ID 为 `\0{id}` 在浏览器中开发时，最终会被编码为 `/@id/__x00__{id}`。这个 id 会被解码回进入插件处理管线前的样子，因此这对插件钩子的代码是不可见的。
 
-请注意，直接从真实文件派生出来的模块，就像单文件组件中的脚本模块（如.vue 或 .svelte SFC）不需要遵循这个约定。SFC 通常在处理时生成一组子模块，但这些模块中的代码可以映射回文件系统。对这些子模块使用 `\0` 会使 sourcemap 无法正常工作。
+请注意，直接从真实文件派生出来的模块，就像单文件组件中的脚本模块（如 .vue 或 .svelte SFC）不需要遵循这个约定。SFC 通常在处理时生成一组子模块，但这些模块中的代码可以映射回文件系统。对这些子模块使用 `\0` 会使 sourcemap 无法正常工作。
 
 ## 通用钩子 {#universal-hooks}
 
@@ -318,7 +318,7 @@ Vite 插件也可以提供钩子来服务于特定的 Vite 目标。这些钩子
 
 - **类型：** `(server: PreviewServer) => (() => void) | void | Promise<(() => void) | void>`
 - **种类：** `async`，`sequential`
-- **参见：** [PreviewServerForHook](./api-javascript#previewserverforhook)
+- **参见：** [PreviewServer](./api-javascript#previewserver)
 
   与 [`configureServer`](/guide/api-plugin.html#configureserver) 相同，但用于预览服务器。`configurePreviewServer` 这个钩子与 `configureServer` 类似，也是在其他中间件安装前被调用。如果你想要在其他中间件 **之后** 安装一个插件，你可以从 `configurePreviewServer` 返回一个函数，它将会在内部中间件被安装之后再调用：
 
@@ -454,7 +454,7 @@ Vite 插件也可以提供钩子来服务于特定的 Vite 目标。这些钩子
     }
     ```
 
-  - 返回一个空数组，并通过向客户端发送自定义事件，来进行完全自定义的 HMR处理：
+  - 返回一个空数组，并通过向客户端发送自定义事件，来进行完全自定义的 HMR 处理：
 
     ```js
     handleHotUpdate({ server }) {
