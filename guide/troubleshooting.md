@@ -206,7 +206,7 @@ import './Foo.js' // 应该为 './foo.js'
 
 此错误可能发生在网络不稳定的环境中。例如，由于网络错误或服务器停机导致请求失败。
 
-请注意，由于浏览器限制，您无法重新尝试动态导入。 ([whatwg/html#6768](https://github.com/whatwg/html/issues/6768)).
+请注意，由于浏览器限制，您无法重新尝试动态导入（[whatwg/html#6768](https://github.com/whatwg/html/issues/6768)）。
 
 #### 浏览器扩展阻止请求 {#browser-extensions-blocking-requests}
 
