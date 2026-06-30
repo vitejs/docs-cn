@@ -200,13 +200,13 @@ import './Foo.js' // 应该为 './foo.js'
 - **暂时保留旧的 chunks**: 考虑保留以前部署的块一段时间，以允许缓存的用户顺利过渡。
 - **使用 service worker**: 实现一个 service worker, 它将预获取所有静态资源并缓存它们。
 - **Prefetch 动态 chunks**: 请注意，如果您的 HTML 文件由于 `Cache-Control` 标头而被浏览器缓存，则这无济于事
-- **实现优雅的回退**: 实现优雅的回退实现动态导入的错误处理，以便在缺少块时重新加载页面。请参阅[加载错误处理](./build.md#load-error-handling)以了解更多详细信息。
+- **实现优雅的回退**: 实现优雅的回退实现动态导入的错误处理，以便在缺少块时重新加载页面。请参阅 [加载错误处理](./build.md#load-error-handling) 以了解更多详细信息。
 
 #### 网络状况不佳 {#poor-network-conditions}
 
 此错误可能发生在网络不稳定的环境中。例如，由于网络错误或服务器停机导致请求失败。
 
-请注意，由于浏览器限制，您无法重新尝试动态导入。 ([whatwg/html#6768](https://github.com/whatwg/html/issues/6768)).
+请注意，由于浏览器限制，您无法重新尝试动态导入（[whatwg/html#6768](https://github.com/whatwg/html/issues/6768)）。
 
 #### 浏览器扩展阻止请求 {#browser-extensions-blocking-requests}
 
