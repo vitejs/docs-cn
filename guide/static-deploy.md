@@ -131,7 +131,7 @@ $ npm run preview
 
 ### Netlify CLI {#netlify-cli}
 
-1. 通过 `npm install -g netlify-cli` 安装 [Netlify CLI](https://docs.netlify.com/api-and-cli-guides/cli-guides/get-started-with-cli/) 。
+1. 通过 `npm install -g netlify-cli` 安装 [Netlify CLI](https://docs.netlify.com/api-and-cli-guides/cli-guides/get-started-with-cli/)。
 2. 使用 `netlify init` 创建一个新站点。
 3. 使用 `netlify deploy` 来部署。
 
@@ -287,7 +287,7 @@ Cloudflare Pages 提供了一种直接部署到 Cloudflare 的方式，而无需
    - **构建命令**：`npm install && npm run build`
    - **发布目录**：`dist`
 
-5. 点击 **Create Static Site**， 你的应用将会被部署在 `https://<PROJECTNAME>.onrender.com/`。
+5. 点击 **Create Static Site**，你的应用将会被部署在 `https://<PROJECTNAME>.onrender.com/`。
 
 默认情况下，推送到该指定分支的任何新的 commit 都会自动触发一个新的部署。[Auto-Deploy](https://render.com/docs/deploys#toggling-auto-deploy-for-a-service) 可以在项目设置中部署。
 
