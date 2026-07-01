@@ -105,7 +105,11 @@
 
 要解决此问题，请使用受信任的SSL证书。
 
+<<<<<<< HEAD
 请查看：[缓存问题](https://helpx.adobe.com/mt/experience-manager/kb/cache-problems-on-chrome-with-SSL-certificate-errors.html) 和相关的 [Chrome issue](https://bugs.chromium.org/p/chromium/issues/detail?id=110649#c8)
+=======
+See: [Chrome issue](https://bugs.chromium.org/p/chromium/issues/detail?id=110649#c8)
+>>>>>>> 72679918273e579ba5cdc82fd8a86b48fa7d0e34
 
 #### macOS
 

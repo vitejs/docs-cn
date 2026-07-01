@@ -207,12 +207,66 @@ resolve: {
 
 启用 tsconfig 路径解析功能。`tsconfig.json` 中的 `paths` 选项将用于解析导入。更多详情请参见[功能](/guide/features.md#paths)。
 
+`paths` only applies to a file matched by a `tsconfig.json` through its `files` or `include`. Non-JS extension files should be explicitly listed in them, since a bare `"src"` or `"**/*"` `include` only matches TS/JS extensions, aligning with TypeScript's behavior. For example, to use a `paths` alias inside a CSS file (such as `@import '@/foo.css'`), list those files in `files`, or add an explicit extension to `include`:
+
+```json [tsconfig.json]
+{
+  "include": ["src", "src/**/*.css", "src/**/*.scss"]
+}
+```
+
+::: warning Less is not supported
+`resolve.tsconfigPaths` does not apply inside `.less` files. Less only gives Vite the importing file's directory, not the file itself, so Vite cannot find the `tsconfig.json` that matches it. Use a relative path or [`resolve.alias`](#resolve-alias) for `@import` in Less.
+:::
+
 ## html.cspNonce
 
 - **类型：** `string`
 - **相关：** [内容安全策略（CSP）](/guide/features#content-security-policy-csp)
 
 一个在生成脚本或样式标签时会用到的 nonce 值占位符。设置此值还会生成一个带有 nonce 值的 meta 标签。
+
+## html.additionalAssetSources
+
+- **Type:** `Record<string, HtmlAssetSource>`
+
+```ts
+interface HtmlAssetSource {
+  srcAttributes?: string[]
+  srcsetAttributes?: string[]
+  filter?: (data: {
+    key: string
+    value: string
+    attributes: Record<string, string>
+  }) => boolean
+}
+```
+
+Define additional HTML elements and attributes to be treated as asset sources. This extends the built-in list that includes standard elements like `<img src>`, `<video src>`, `<link href>`, etc.
+
+This is useful when using custom web components or non-standard attributes (like `data-*`) that reference assets.
+
+**Example:**
+
+```js
+export default defineConfig({
+  html: {
+    additionalAssetSources: {
+      // Custom web component
+      'html-import': { srcAttributes: ['src'] },
+      // Add data-* attributes to existing element
+      img: { srcAttributes: ['data-src-dark', 'data-src-light'] },
+      // With srcset format
+      'my-picture': { srcsetAttributes: ['data-srcset'] },
+      // With filter function
+      'my-component': {
+        srcAttributes: ['asset'],
+        filter: ({ attributes }) => attributes.type === 'image',
+      },
+    },
+  },
+})
+```
 
 ## css.modules
 

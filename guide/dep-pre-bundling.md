@@ -17,7 +17,11 @@
 
 2. **性能：** 为了提高后续页面的加载性能，Vite 将那些具有许多内部模块的 ESM 依赖项转换为单个模块。
 
+<<<<<<< HEAD
    有些包将它们的 ES 模块构建为许多单独的文件，彼此导入。例如，[`lodash-es` 有超过 600 个内置模块](https://unpkg.com/browse/lodash-es/)！当我们执行 `import { debounce } from 'lodash-es'` 时，浏览器同时发出 600 多个 HTTP 请求！即使服务器能够轻松处理它们，但大量请求会导致浏览器端的网络拥塞，使页面加载变得明显缓慢。
+=======
+   Some packages ship their ES modules builds as many separate files importing one another. For example, [`lodash-es` has over 600 internal modules](https://unpkg.com/browse/lodash-es/)! When we do `import { debounce } from 'lodash-es'`, the browser fires off 600+ HTTP requests at the same time! Even though the server has no problem handling them, the large number of requests creates network congestion on the browser side, causing the page to load noticeably slower.
+>>>>>>> 72679918273e579ba5cdc82fd8a86b48fa7d0e34
 
    通过将 `lodash-es` 预构建成单个模块，现在我们只需要一个HTTP请求！
 
@@ -27,7 +31,11 @@
 
 ## 自动依赖搜寻 {#automatic-dependency-discovery}
 
+<<<<<<< HEAD
 如果没有找到现有的缓存，Vite 会扫描您的源代码，并自动寻找引入的依赖项（即 "bare import"，表示期望从 `node_modules` 中解析），并将这些依赖项作为预构建的入口点。预打包使用 [Rolldown](https://rolldown.rs/) 执行，因此通常速度非常快。
+=======
+If an existing cache is not found, Vite will crawl your source code and automatically discover dependency imports (i.e. "bare imports" that expect to be resolved from `node_modules`) and use these found imports as entry points for the pre-bundle. The pre-bundling is performed with [Rolldown](https://rolldown.rs/), so it's typically very fast.
+>>>>>>> 72679918273e579ba5cdc82fd8a86b48fa7d0e34
 
 在服务器已经启动后，如果遇到尚未在缓存中的新依赖项导入，则 Vite 将重新运行依赖项构建过程，并在需要时重新加载页面。
 

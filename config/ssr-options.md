@@ -41,8 +41,13 @@ SSR 服务器的构建目标。
 
 ## ssr.resolve.externalConditions {#ssr-resolve-externalconditions}
 
+<<<<<<< HEAD
 - **类型：** `string[]`
 - **默认：** `['node']`
+=======
+- **Type:** `string[]`
+- **Default:** `['node', 'module-sync']`
+>>>>>>> 72679918273e579ba5cdc82fd8a86b48fa7d0e34
 
 在对外部化的直接依赖项（由 Vite 导入的外部依赖项）进行 SSR 导入（包括 `ssrLoadModule`）期间所使用的条件。
 
