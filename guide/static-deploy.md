@@ -131,7 +131,7 @@ $ npm run preview
 
 ### Netlify CLI {#netlify-cli}
 
-1. 通过 `npm install -g netlify-cli` 安装 [Netlify CLI](https://docs.netlify.com/api-and-cli-guides/cli-guides/get-started-with-cli/) 。
+1. 通过 `npm install -g netlify-cli` 安装 [Netlify CLI](https://docs.netlify.com/api-and-cli-guides/cli-guides/get-started-with-cli/)。
 2. 使用 `netlify init` 创建一个新站点。
 3. 使用 `netlify deploy` 来部署。
 
