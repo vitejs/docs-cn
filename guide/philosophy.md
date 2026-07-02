@@ -12,7 +12,7 @@ Vite 提供了一系列推动编写现代代码的特定功能。例如：
 - 建议使用 [`new Worker` 语法](./features#web-workers) 来编写 Web Workers，以遵循现代标准。
 - 在浏览器环境下，不能直接使用 Node.js 模块。
 
-在新增特性时，会遵循这些模式来构建一个具备前瞻性的 API，但请注意，这样的API可能并不总是与其它构建工具兼容。
+在新增特性时，会遵循这些模式来构建一个具备前瞻性的 API，但请注意，这样的 API 可能并不总是与其它构建工具兼容。
 
 ## 旨在高性能的实用解决方案 {#a-pragmatic-approach-to-performance}
 
