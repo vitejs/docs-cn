@@ -101,9 +101,9 @@
 
 ### 网络请求停止加载 {#network-requests-stop-loading}
 
-使用自签名SSL证书时，Chrome 会忽略所有缓存指令并重新加载内容。而 Vite 依赖于这些缓存指令。
+使用自签名 SSL 证书时，Chrome 会忽略所有缓存指令并重新加载内容。而 Vite 依赖于这些缓存指令。
 
-要解决此问题，请使用受信任的SSL证书。
+要解决此问题，请使用受信任的 SSL 证书。
 
 请查看：[缓存问题](https://helpx.adobe.com/mt/experience-manager/kb/cache-problems-on-chrome-with-SSL-certificate-errors.html) 和相关的 [Chrome issue](https://bugs.chromium.org/p/chromium/issues/detail?id=110649#c8)
 
@@ -197,10 +197,10 @@ import './Foo.js' // 应该为 './foo.js'
 
 要解决此问题，你可以：
 
-- **暂时保留旧的 chunks**: 考虑保留以前部署的块一段时间，以允许缓存的用户顺利过渡。
-- **使用 service worker**: 实现一个 service worker, 它将预获取所有静态资源并缓存它们。
-- **Prefetch 动态 chunks**: 请注意，如果您的 HTML 文件由于 `Cache-Control` 标头而被浏览器缓存，则这无济于事
-- **实现优雅的回退**: 实现优雅的回退实现动态导入的错误处理，以便在缺少块时重新加载页面。请参阅 [加载错误处理](./build.md#load-error-handling) 以了解更多详细信息。
+- **暂时保留旧的 chunks**：考虑保留以前部署的块一段时间，以允许缓存的用户顺利过渡。
+- **使用 service worker**：实现一个 service worker，它将预获取所有静态资源并缓存它们。
+- **Prefetch 动态 chunks**：请注意，如果您的 HTML 文件由于 `Cache-Control` 标头而被浏览器缓存，则这无济于事。
+- **实现优雅的回退**：实现优雅的回退实现动态导入的错误处理，以便在缺少块时重新加载页面。请参阅 [加载错误处理](./build.md#load-error-handling) 以了解更多详细信息。
 
 #### 网络状况不佳 {#poor-network-conditions}
 
