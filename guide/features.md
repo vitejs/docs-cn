@@ -53,7 +53,11 @@ export type { T }
 
 ### TypeScript 编译器选项 {#typescript-compiler-options}
 
+<<<<<<< HEAD
 Vite 会参考 `tsconfig.json` 中的一些配置项，并设置相应的 Oxc 转换器选项。对于每个文件，Vite 会使用距离最近的父级目录中的 `tsconfig.json`。如果该 `tsconfig.json` 包含 [`references`](https://www.typescriptlang.org/tsconfig/#references) 字段，Vite 将使用满足 [`include`](https://www.typescriptlang.org/tsconfig/#include) 和 [`exclude`](https://www.typescriptlang.org/tsconfig/#exclude) 字段的被引用配置文件。
+=======
+Vite respects some of the options in `tsconfig.json` and sets the corresponding Oxc Transformer options. For each file, Vite uses the closest parent `tsconfig.json` that matches the file, or a config referenced by its [`references`](https://www.typescriptlang.org/tsconfig/#references) field that matches the file. Vite treats a config as matching the file when the file satisfies the config's [`files`](https://www.typescriptlang.org/tsconfig/#files), [`include`](https://www.typescriptlang.org/tsconfig/#include), and [`exclude`](https://www.typescriptlang.org/tsconfig/#exclude) fields.
+>>>>>>> bfd02d29054381a800575f35786d72c34ca6cc7d
 
 当选项同时在 Vite 配置和 `tsconfig.json` 中设置时，Vite 配置中的值优先。
 
@@ -95,13 +99,21 @@ Vite 忽略 `tsconfig.json` 中的 `target` 值，遵循与 [esbuild](https://es
 
 - [TypeScript 文档](https://www.typescriptlang.org/tsconfig#emitDecoratorMetadata)
 
+<<<<<<< HEAD
 此选项仅被部分支持。完全支持需要 TypeScript 编译器进行类型推断，而这是不受支持的。详情请参见 [Oxc Transformer 的文档](https://oxc.rs/docs/guide/usage/transformer/typescript#decorators)。
+=======
+This option is only partially supported. Full support requires type inference by the TypeScript compiler, which is not supported. See [Oxc Transformer's documentation](https://oxc.rs/docs/guide/usage/transformer/typescript.html#decorators) for details.
+>>>>>>> bfd02d29054381a800575f35786d72c34ca6cc7d
 
 #### `paths` {#paths}
 
 - [TypeScript 文档](https://www.typescriptlang.org/tsconfig/#paths)
 
+<<<<<<< HEAD
 可以指定 `resolve.tsconfigPaths: true` 来告诉 Vite 使用 `tsconfig.json` 中的 `paths` 选项来解析导入。
+=======
+[`resolve.tsconfigPaths: true`](/config/shared-options.md#resolve-tsconfigpaths) can be specified to tell Vite to use the `paths` option in `tsconfig.json` to resolve imports.
+>>>>>>> bfd02d29054381a800575f35786d72c34ca6cc7d
 
 需要注意的是，这个功能会有性能损耗，并且 [TypeScript 团队不建议使用这个选项来改变外部工具的行为](https://www.typescriptlang.org/tsconfig/#paths:~:text=Note%20that%20this%20feature%20does%20not%20change%20how%20import%20paths%20are%20emitted%20by%20tsc%2C%20so%20paths%20should%20only%20be%20used%20to%20inform%20TypeScript%20that%20another%20tool%20has%20this%20mapping%20and%20will%20use%20it%20at%20runtime%20or%20when%20bundling.)。
 
@@ -118,7 +130,11 @@ Vite 忽略 `tsconfig.json` 中的 `target` 值，遵循与 [esbuild](https://es
 - [`experimentalDecorators`](https://www.typescriptlang.org/tsconfig#experimentalDecorators)
 
 ::: tip `skipLibCheck`
+<<<<<<< HEAD
 Vite 启动模板默认情况下会设置 `"skipLibCheck": "true"`，以避免对依赖项进行类型检查，因为它们可能只支持特定版本和配置的 TypeScript。你可以在 [vuejs/vue-cli#5688](https://github.com/vuejs/vue-cli/pull/5688) 了解更多信息。
+=======
+Vite starter templates have `"skipLibCheck": true` by default to avoid typechecking dependencies, as they may choose to only support specific versions and configurations of TypeScript. You can learn more at [vuejs/vue-cli#5688](https://github.com/vuejs/vue-cli/pull/5688).
+>>>>>>> bfd02d29054381a800575f35786d72c34ca6cc7d
 :::
 
 ### 客户端类型 {#client-types}
@@ -235,7 +251,11 @@ HTML 文件位于 Vite 项目的[最前端和中心](/guide/#index-html-and-proj
 
 ## JSX {#jsx}
 
+<<<<<<< HEAD
 `.jsx` 和 `.tsx` 文件同样开箱即用。JSX 的转译同样是通过 [Oxc 转换器](https://oxc.rs/docs/guide/usage/transformer/) 处理的。
+=======
+`.jsx` and `.tsx` files are also supported out of the box. JSX transpilation is also handled via [Oxc Transformer](https://oxc.rs/docs/guide/usage/transformer.html).
+>>>>>>> bfd02d29054381a800575f35786d72c34ca6cc7d
 
 你选择的框架已经可以开箱即用地配置 JSX（例如，Vue 用户应使用官方的 [@vitejs/plugin-vue-jsx](https://github.com/vitejs/vite-plugin-vue/tree/main/packages/plugin-vue-jsx) 插件，它提供了 Vue 3 特定的功能，包括 HMR，全局组件解析，指令和插槽）。
 
@@ -620,7 +640,25 @@ const modulesWithBase = {
 
 如果提供了基础路径，所有生成的模块键值都会被修改为相对于该基础路径。
 
+<<<<<<< HEAD
 ### Glob 导入注意事项 {#glob-import-caveats}
+=======
+#### Case Sensitive Matching
+
+By default, glob pattern matching is case-sensitive. You can use the `caseSensitive` option to change this behavior:
+
+```ts twoslash
+import 'vite/client'
+// ---cut---
+const modules = import.meta.glob('./dir/module*.js', {
+  caseSensitive: false,
+})
+```
+
+With `caseSensitive: false`, the glob will match files regardless of case (e.g., `Module.js`, `module.js`, `MODULE.js` will all be matched by `module*.js`).
+
+### Glob Import Caveats
+>>>>>>> bfd02d29054381a800575f35786d72c34ca6cc7d
 
 请注意：
 
@@ -649,8 +687,40 @@ const module = await import(`./dir/${file}.js`)
 
 ## WebAssembly {#webassembly}
 
+<<<<<<< HEAD
 预编译的 `.wasm` 文件可以通过 `?init` 来导入。
 默认导出一个初始化函数，返回值为所导出 [`WebAssembly.Instance`](https://developer.mozilla.org/en-US/docs/WebAssembly/JavaScript_interface/Instance) 实例对象的 Promise：
+=======
+Vite supports importing pre-compiled `.wasm` files in two ways: directly as an [ES module](#esm-integration) when you only need the module's exports, or with [`?init`](#manual-initialization) when you need explicit control over instantiation.
+
+### ESM Integration
+
+A `.wasm` file can be imported directly. Vite reads the module's imports and exports from the binary, instantiates it, and re-exposes its exports as named ES module exports:
+
+```js
+import { add } from './add.wasm'
+
+console.log(add(1, 2)) // 3
+```
+
+If the WebAssembly module declares imports of its own, Vite resolves them from JavaScript modules. Each import's module name is treated as an import specifier (resolved relative to the `.wasm` file) and the requested members are wired into the instance automatically.
+
+This follows the [WebAssembly/ES Module Integration proposal](https://github.com/WebAssembly/esm-integration). Because a WebAssembly module is instantiated asynchronously, a directly imported `.wasm` file behaves as an async module and requires top-level `await` support.
+
+::: tip TypeScript support
+
+Since the types of `.wasm` files are unknown, TypeScript will report errors like `Module '"*.wasm"' has no exported member 'add'`. To fix this, enable [`allowArbitraryExtensions`](https://www.typescriptlang.org/tsconfig/#allowArbitraryExtensions) in your `tsconfig.json` and create a declaration file next to your `.wasm` file. With `allowArbitraryExtensions` enabled, TypeScript will look for a declaration file named `{filename}.d.wasm.ts` when resolving a `.wasm` import. For example, for `add.wasm`, create `add.d.wasm.ts`:
+
+```ts [add.d.wasm.ts]
+export function add(a: number, b: number): number
+```
+
+:::
+
+### Manual Initialization
+
+When you need control over when and how the module is instantiated, import it with `?init`. The default export will be an initialization function that returns a Promise of the [`WebAssembly.Instance`](https://developer.mozilla.org/en-US/docs/WebAssembly/JavaScript_interface/Instance):
+>>>>>>> bfd02d29054381a800575f35786d72c34ca6cc7d
 
 ```js twoslash
 import 'vite/client'
@@ -681,6 +751,7 @@ init({
 
 在生产构建当中，体积小于 `assetInlineLimit` 的 `.wasm` 文件将会被内联为 base64 字符串。否则，它们将被视为 [静态资源](./assets) ，并按需获取。
 
+<<<<<<< HEAD
 ::: tip 注意
 [对 WebAssembly 的 ES 模块集成提案](https://github.com/WebAssembly/esm-integration) 尚未支持。
 请使用 [`vite-plugin-wasm`](https://github.com/Menci/vite-plugin-wasm) 或其他社区上的插件来处理。
@@ -689,6 +760,11 @@ init({
 ::: warning 对于 SSR 构建，仅支持与 Node.js 兼容的运行时。
 
 由于缺乏通用的文件加载方式，`.wasm?init` 的内部实现依赖于 `node:fs` 模块。这意味着此功能仅适用于 Node.js 兼容的 SSR 构建运行时环境。
+=======
+::: warning For SSR build, Node.js compatible runtimes are only supported
+
+Due to the lack of a universal way to load a file, the internal implementation for both direct `.wasm` imports and `.wasm?init` relies on the `node:fs` module. This means that these features will only work in Node.js compatible runtimes for SSR builds.
+>>>>>>> bfd02d29054381a800575f35786d72c34ca6cc7d
 
 :::
 
@@ -730,7 +806,11 @@ const worker = new Worker(new URL('./worker.js', import.meta.url), {
 })
 ```
 
+<<<<<<< HEAD
 只有在 `new Worker()` 声明中直接使用 `new URL()` 构造函数时，work 线程的检测才会生效。此外，所有选项参数必须是静态值（即字符串字面量）。
+=======
+The worker detection will only work if the `new URL()` constructor is used directly inside the `new Worker()` declaration. Otherwise it is handled as a [static asset URL](./assets#new-url-url-import-meta-url) instead. Additionally, all options parameters must be static values (i.e. string literals).
+>>>>>>> bfd02d29054381a800575f35786d72c34ca6cc7d
 
 ### 带有查询后缀的导入 {#import-with-query-suffixes}
 
@@ -824,7 +904,11 @@ MIT License
 
 ## 构建优化 {#build-optimizations}
 
+<<<<<<< HEAD
 > 下面所罗列的功能会自动应用为构建过程的一部分，除非你想禁用它们，否则没有必要显式配置。
+=======
+> Features listed below are automatically applied (except for the exprimental chunk importmap feature) as part of the build process and there is no need for explicit configuration unless you want to disable them.
+>>>>>>> bfd02d29054381a800575f35786d72c34ca6cc7d
 
 ### CSS 代码分割 {#css-code-splitting}
 
@@ -857,4 +941,26 @@ Vite 将使用一个预加载步骤自动重写代码，来分割动态导入调
 Entry ---> (A + C)
 ```
 
+<<<<<<< HEAD
 `C` 也可能有更深的导入，在未优化的场景中，这会导致更多的网络往返。Vite 的优化会跟踪所有的直接导入，无论导入的深度如何，都能够完全消除不必要的往返。
+=======
+It is possible for `C` to have further imports, which will result in even more roundtrips in the un-optimized scenario. Vite's optimization will trace all the direct imports to completely eliminate the roundtrips regardless of import depth.
+
+### Chunk Import Map Optimization
+
+To improve the cache hit rate of chunks, Vite can create an import map for chunks. This prevents the cascading cache invalidation issue, which is a problem with ES Modules.
+
+For example, consider the following scenario:
+
+```
+Entry --> A ---> C
+```
+
+If `C` is updated, the only chunk that inherently needs to be invalidated is `C`. However, if `A` references `C` via a normal URL in a static import (i.e. the hash of `C` is included in the URL), the content of `A` is changed, thus `A` would also need to be invalidated. The same applies to `Entry`.
+
+By utilizing the import maps feature, this issue can be avoided. When this optimization is enabled, Vite will create an import map that maps each chunk's ID to its URL and uses the chunk ID in the import statements instead of the URL. This way, when a chunk is updated, only the updated chunk needs to be invalidated, while the chunks that reference it will not be invalidated.
+
+Note that this optimization currently does not apply to CSS and assets. If you update an asset, the chunks that reference it will be invalidated. That said, the invalidation would not cascade and the chunk importing the invalidated chunk would not be invalidated.
+
+To enable this feature, set [`build.chunkImportMap`](/config/build-options.md#build-chunkimportmap) to `true`.
+>>>>>>> bfd02d29054381a800575f35786d72c34ca6cc7d

@@ -178,12 +178,21 @@
    }
    ```
 
+<<<<<<< HEAD
    清单中的每个条目代表以下之一：
    - **Entry chunks**：由 [`build.rolldownOptions.input`](https://rollupjs.org/configuration-options/#input) 中指定的文件生成。这些块的 isEntry 属性设置为 true，其键值是项目根目录的相对 src 路径。
    - **Dynamic entry chunks**：由动态导入生成。这些块的 isDynamicEntry 属性设置为 true，其键值是项目根目录的相对 src 路径。
    - **Non-entry chunks**：其键值是生成文件的基本名称加上前缀 `_`。
    - **Asset chunks**：由导入的资源（例如图片、字体）生成。其键值是项目根目录的相对 src 路径。
    - **CSS 文件**：当 [`build.cssCodeSplit`](/config/build-options.md#build-csscodesplit) 为 `false` 时，将生成一个带有 `style.css` 键的 CSS 文件。当 `build.cssCodeSplit` 不为 `false` 时，键的生成方式与 JS 代码块类似（即，入口代码块不带 `_` 前缀，非入口代码块带 `_` 前缀）。
+=======
+   Each entry in the manifest represents one of the following:
+   - **Entry chunks**: Generated from files specified in [`build.rolldownOptions.input`](https://rolldown.rs/reference/InputOptions.input#input). These chunks have `isEntry: true` and their key is the relative src path from project root.
+   - **Dynamic entry chunks**: Generated from dynamic imports. These chunks have `isDynamicEntry: true` and their key is the relative src path from project root.
+   - **Non-entry chunks**: Their key is the base name of the generated file prefixed with `_`.
+   - **Asset chunks**: Generated from imported assets like images, fonts. Their key is the relative src path from project root.
+   - **CSS files**: When [`build.cssCodeSplit`](/config/build-options.md#build-csscodesplit) is `false`, a single CSS file is generated with the key `style.css`. When `build.cssCodeSplit` is not `false`, the key is generated similar to JS chunks (i.e. entry chunks will not have `_` prefix and non-entry chunks will have `_` prefix).
+>>>>>>> bfd02d29054381a800575f35786d72c34ca6cc7d
 
    JS 代码块（除了资源或 CSS 之外的代码块）会包含其静态和动态导入的信息（两者都是映射到清单中相应代码块的键）。代码块还会列出其对应的 CSS 和资源文件（如果有的话）。
 
@@ -270,4 +279,11 @@
    }
    ```
 
+   :::
+
+   :::info Chunk Import Maps Support (Experimental)
+
+   If you are using the experimental [`build.chunkImportMap`](/config/build-options#build-chunkimportmap) option, you also need to inject the import map into the HTML.
+
+   The import map is output to `importmap.json` in the output directory. Make sure to inject the `<script type="importmap">` tag before any `<script type="module">` tags or `<link rel="modulepreload">` tags.
    :::

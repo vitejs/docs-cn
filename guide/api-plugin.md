@@ -155,7 +155,7 @@ console.log(msg)
 
 以下钩子在服务器启动时被调用：
 
-- [`options`](https://rolldown.rs/reference/interface.plugin#options)
+- [`options`](https://rolldown.rs/reference/Interface.Plugin#options)
 - [`buildStart`](https://rolldown.rs/reference/Interface.Plugin#buildstart)
 
 以下钩子会在每个传入模块请求时被调用：
@@ -183,8 +183,13 @@ Vite 插件也可以提供钩子来服务于特定的 Vite 目标。这些钩子
 
 ### `config` {#config}
 
+<<<<<<< HEAD
 - **类型：** `(config: UserConfig, env: { mode: string, command: string }) => UserConfig | null | void`
 - **种类：** `async`，`sequential`
+=======
+- **Type:** `(config: UserConfig, env: { mode: 'build' | 'serve', command: string, isSsrBuild?: boolean, isPreview?: boolean }) => UserConfig | null | void`
+- **Kind:** `async`, `sequential`
+>>>>>>> bfd02d29054381a800575f35786d72c34ca6cc7d
 
   在解析 Vite 配置前调用。钩子接收原始用户配置（命令行选项指定的会与配置文件合并）和一个描述配置环境的变量，包含正在使用的 `mode` 和 `command`。它可以返回一个将被深度合并到现有配置中的部分配置对象，或者直接改变配置（如果默认的合并不能达到预期的结果）。
 
@@ -376,8 +381,9 @@ Vite 插件也可以提供钩子来服务于特定的 Vite 目标。这些钩子
       path: string
       filename: string
       server?: ViteDevServer
-      bundle?: import('rollup').OutputBundle
-      chunk?: import('rollup').OutputChunk
+      bundle?: import('rolldown').OutputBundle
+      chunk?: import('rolldown').OutputChunk
+      originalUrl?: string
     },
   ) =>
     | IndexHtmlTransformResult
@@ -661,7 +667,49 @@ export default function myPlugin() {
 [`@rolldown/pluginutils`](https://www.npmjs.com/package/@rolldown/pluginutils)导出一些用于钩子过滤器的实用程序，如 `exactRegex` 和 `prefixRegex`。为了方便起见，这些内容也会从 `rolldown/filter` 重新导出。
 :::
 
+<<<<<<< HEAD
 ## 客户端与服务端间通信 {#client-server-communication}
+=======
+## Chunk Import Map Information
+
+:::info Experimental
+
+This feature is experimental and may change in the future.
+
+:::
+
+When [`build.chunkImportMap`](/config/build-options#build-chunkimportmap) option is enabled, the import statements in the generated chunks will use a unique ID for each chunk instead of the file path.
+
+To get the mapping from the chunk ID to the file path, you can access the import map emitted to the bundle in the `generateBundle` hook or the `writeBundle` hook. The import map has the name specified by [`build.rolldownOptions.experimental.chunkImportMap.fileName`](https://rolldown.rs/reference/InputOptions.experimental#chunkimportmap) (defaults to `importmap.json`).
+
+```ts
+function accessImportMap() {
+  let config: ResolvedConfig
+  return {
+    name: 'access-import-map',
+    configResolved(resolvedConfig) {
+      config = resolvedConfig
+    },
+    generateBundle(options, bundle) {
+      const chunkImportMap =
+        config.build.rolldownOptions.experimental?.chunkImportMap
+      if (chunkImportMap) {
+        const importMapFilename =
+          typeof chunkImportMap === 'object' && chunkImportMap.fileName
+            ? chunkImportMap.fileName
+            : 'importmap.json'
+        const importMap = bundle[importMapFilename]! as OutputAsset
+        const mapping = JSON.parse(importMap.source).imports
+        console.log(mapping)
+        // { "./entry.hash1.js": "./entry.hash2.js" }
+      }
+    },
+  }
+}
+```
+
+## Client-server Communication
+>>>>>>> bfd02d29054381a800575f35786d72c34ca6cc7d
 
 从 Vite 2.9 开始，我们为插件提供了一些实用工具，以帮助处理与客户端的通信。
 
@@ -703,7 +751,11 @@ if (import.meta.hot) {
 
 ### 客户端到服务端 {#client-to-server}
 
+<<<<<<< HEAD
 为了从客户端向服务端发送事件，我们可以使用 [`hot.send`](/guide/api-hmr.html#hot-send-event-payload)：
+=======
+To send events from the client to the server, we can use [`hot.send`](/guide/api-hmr.html#hot-send-event-data):
+>>>>>>> bfd02d29054381a800575f35786d72c34ca6cc7d
 
 ```ts
 // 客户端
