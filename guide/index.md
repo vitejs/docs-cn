@@ -164,7 +164,7 @@ $ deno add -D npm:vite
 <p>Hello Vite!</p>
 ```
 
-然后在终端上运行相应的命令:
+然后在终端上运行相应的命令：
 
 ::: code-group
 
