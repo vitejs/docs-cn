@@ -19,7 +19,7 @@
 
    有些包将它们的 ES 模块构建为许多单独的文件，彼此导入。例如，[`lodash-es` 有超过 600 个内置模块](https://unpkg.com/browse/lodash-es/)！当我们执行 `import { debounce } from 'lodash-es'` 时，浏览器同时发出 600 多个 HTTP 请求！即使服务器能够轻松处理它们，但大量请求会导致浏览器端的网络拥塞，使页面加载变得明显缓慢。
 
-   通过将 `lodash-es` 预构建成单个模块，现在我们只需要一个HTTP请求！
+   通过将 `lodash-es` 预构建成单个模块，现在我们只需要一个 HTTP 请求！
 
 ::: tip 注意
 依赖预构建仅适用于开发模式。
