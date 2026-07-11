@@ -47,7 +47,7 @@ if (isRunnableDevEnvironment(server.environments.ssr)) {
 只有在第一次使用时，`runner` 才会被加载。请注意，当通过调用 `process.setSourceMapsEnabled` 或在不支持的情况下重写 `Error.prepareStackTrace` 创建 `runner` 时，Vite 会启用源映射支持。
 :::
 
-假设已按照[SSR 设置指南](/guide/ssr#setting-up-the-dev-server)中描述的方式配置了 Vite 服务器的中间件模式，现在我们使用环境 API 实现 SSR 中间件。请注意，它不必命名为 `ssr`，因此在本示例中我们将它命名为 `server`。错误处理已省略。
+假设已按照 [SSR 设置指南](/guide/ssr#setting-up-the-dev-server) 中描述的方式配置了 Vite 服务器的中间件模式，现在我们使用环境 API 实现 SSR 中间件。请注意，它不必命名为 `ssr`，因此在本示例中我们将它命名为 `server`。错误处理已省略。
 
 ```js
 import fs from 'node:fs'
