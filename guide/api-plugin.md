@@ -349,7 +349,7 @@ Vite 插件也可以提供钩子来服务于特定的 Vite 目标。这些钩子
   - 注入到现有 HTML 中的标签描述符对象数组（`{ tag, attrs, children }`）。每个标签也可以指定它应该被注入到哪里（默认是在 `<head>` 之前）
   - 一个包含 `{ html, tags }` 的对象
 
-  默认情况下 `order` 是 `undefined`，这个钩子会在 HTML 被转换后应用。为了注入一个应该通过 Vite 插件管道的脚本， `order: 'pre'` 指将在处理 HTML 之前应用。 `order: 'post'` 是在所有未定义的 `order` 的钩子函数被应用后才应用。
+  默认情况下 `order` 是 `undefined`，这个钩子会在 HTML 被转换后应用。为了注入一个应该通过 Vite 插件管道的脚本，`order: 'pre'` 指将在处理 HTML 之前应用。`order: 'post'` 是在所有未定义的 `order` 的钩子函数被应用后才应用。
 
   **基础示例：**
 
@@ -628,7 +628,7 @@ Vite 暴露了 [`@rollup/pluginutils` 的 `createFilter`](https://github.com/rol
 
 ### 钩子过滤功能 {#hook-filters}
 
-Rolldown 引入了[钩子过滤器功能](https://rolldown.rs/apis/plugin-api/hook-filters) ，以减少 Rust 和 JavaScript 运行时之间的通信开销。此功能允许插件指定确定何时调用钩子的模式，从而通过避免不必要的钩子调用来提高性能。
+Rolldown 引入了 [钩子过滤器功能](https://rolldown.rs/apis/plugin-api/hook-filters)，以减少 Rust 和 JavaScript 运行时之间的通信开销。此功能允许插件指定确定何时调用钩子的模式，从而通过避免不必要的钩子调用来提高性能。
 
 Rollup 4.38.0+ 和 Vite 6.3.0+ 也支持此功能。为了使你的插件向后兼容旧版本，请确保在钩子处理程序中也运行该过滤器。
 
