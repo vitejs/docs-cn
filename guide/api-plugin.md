@@ -259,7 +259,7 @@ Vite 插件也可以提供钩子来服务于特定的 Vite 目标。这些钩子
 - **种类：** `async`，`sequential`
 - **此外请看** [ViteDevServer](./api-javascript#vitedevserver)
 
-  是用于配置开发服务器的钩子。最常见的用例是在内部 [connect](https://github.com/senchalabs/connect) 应用程序中添加自定义中间件:
+  是用于配置开发服务器的钩子。最常见的用例是在内部 [connect](https://github.com/senchalabs/connect) 应用程序中添加自定义中间件：
 
   ```js
   const myPlugin = () => ({
@@ -274,7 +274,7 @@ Vite 插件也可以提供钩子来服务于特定的 Vite 目标。这些钩子
 
   **注入后置中间件**
 
-  `configureServer` 钩子将在内部中间件被安装前调用，所以自定义的中间件将会默认会比内部中间件早运行。如果你想注入一个在内部中间件 **之后** 运行的中间件，你可以从 `configureServer` 返回一个函数，将会在内部中间件安装后被调用：
+  `configureServer` 钩子将在内部中间件被安装前调用，所以自定义的中间件默认会比内部中间件早运行。如果你想注入一个在内部中间件 **之后** 运行的中间件，你可以从 `configureServer` 返回一个函数，将会在内部中间件安装后被调用：
 
   ```js
   const myPlugin = () => ({
@@ -293,7 +293,7 @@ Vite 插件也可以提供钩子来服务于特定的 Vite 目标。这些钩子
 
   **存储服务器访问**
 
-  在某些情况下，其他插件钩子可能需要访问开发服务器实例（例如访问 WebSocket 服务器、文件系统监视程序或模块图）。这个钩子也可以用来存储服务器实例以供其他钩子访问:
+  在某些情况下，其他插件钩子可能需要访问开发服务器实例（例如访问 WebSocket 服务器、文件系统监视程序或模块图）。这个钩子也可以用来存储服务器实例以供其他钩子访问：
 
   ```js
   const myPlugin = () => {
@@ -342,14 +342,14 @@ Vite 插件也可以提供钩子来服务于特定的 Vite 目标。这些钩子
 - **类型：** `IndexHtmlTransformHook | { order?: 'pre' | 'post', handler: IndexHtmlTransformHook }`
 - **种类：** `async`，`sequential`
 
-  转换 `index.html` 的专用钩子。钩子接收当前的 HTML 字符串和转换上下文。上下文在开发期间暴露[`ViteDevServer`](./api-javascript#vitedevserver)实例，在构建期间暴露 Rollup 输出的包。
+  转换 `index.html` 的专用钩子。钩子接收当前的 HTML 字符串和转换上下文。上下文在开发期间暴露 [`ViteDevServer`](./api-javascript#vitedevserver) 实例，在构建期间暴露 Rollup 输出的包。
 
-  这个钩子可以是异步的，并且可以返回以下其中之一:
+  这个钩子可以是异步的，并且可以返回以下其中之一：
   - 经过转换的 HTML 字符串
   - 注入到现有 HTML 中的标签描述符对象数组（`{ tag, attrs, children }`）。每个标签也可以指定它应该被注入到哪里（默认是在 `<head>` 之前）
   - 一个包含 `{ html, tags }` 的对象
 
-  默认情况下 `order` 是 `undefined`，这个钩子会在 HTML 被转换后应用。为了注入一个应该通过 Vite 插件管道的脚本， `order: 'pre'` 指将在处理 HTML 之前应用。 `order: 'post'` 是在所有未定义的 `order` 的钩子函数被应用后才应用。
+  默认情况下 `order` 是 `undefined`，这个钩子会在 HTML 被转换后应用。为了注入一个应该通过 Vite 插件管道的脚本，`order: 'pre'` 指将在处理 HTML 之前应用。`order: 'post'` 是在所有未定义的 `order` 的钩子函数被应用后才应用。
 
   **基础示例：**
 
@@ -628,7 +628,7 @@ Vite 暴露了 [`@rollup/pluginutils` 的 `createFilter`](https://github.com/rol
 
 ### 钩子过滤功能 {#hook-filters}
 
-Rolldown 引入了[钩子过滤器功能](https://rolldown.rs/apis/plugin-api/hook-filters) ，以减少 Rust 和 JavaScript 运行时之间的通信开销。此功能允许插件指定确定何时调用钩子的模式，从而通过避免不必要的钩子调用来提高性能。
+Rolldown 引入了 [钩子过滤器功能](https://rolldown.rs/apis/plugin-api/hook-filters)，以减少 Rust 和 JavaScript 运行时之间的通信开销。此功能允许插件指定确定何时调用钩子的模式，从而通过避免不必要的钩子调用来提高性能。
 
 Rollup 4.38.0+ 和 Vite 6.3.0+ 也支持此功能。为了使你的插件向后兼容旧版本，请确保在钩子处理程序中也运行该过滤器。
 
