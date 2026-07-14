@@ -259,7 +259,7 @@ Vite 插件也可以提供钩子来服务于特定的 Vite 目标。这些钩子
 - **种类：** `async`，`sequential`
 - **此外请看** [ViteDevServer](./api-javascript#vitedevserver)
 
-  是用于配置开发服务器的钩子。最常见的用例是在内部 [connect](https://github.com/senchalabs/connect) 应用程序中添加自定义中间件:
+  是用于配置开发服务器的钩子。最常见的用例是在内部 [connect](https://github.com/senchalabs/connect) 应用程序中添加自定义中间件：
 
   ```js
   const myPlugin = () => ({
@@ -293,7 +293,7 @@ Vite 插件也可以提供钩子来服务于特定的 Vite 目标。这些钩子
 
   **存储服务器访问**
 
-  在某些情况下，其他插件钩子可能需要访问开发服务器实例（例如访问 WebSocket 服务器、文件系统监视程序或模块图）。这个钩子也可以用来存储服务器实例以供其他钩子访问:
+  在某些情况下，其他插件钩子可能需要访问开发服务器实例（例如访问 WebSocket 服务器、文件系统监视程序或模块图）。这个钩子也可以用来存储服务器实例以供其他钩子访问：
 
   ```js
   const myPlugin = () => {
@@ -344,7 +344,7 @@ Vite 插件也可以提供钩子来服务于特定的 Vite 目标。这些钩子
 
   转换 `index.html` 的专用钩子。钩子接收当前的 HTML 字符串和转换上下文。上下文在开发期间暴露[`ViteDevServer`](./api-javascript#vitedevserver)实例，在构建期间暴露 Rollup 输出的包。
 
-  这个钩子可以是异步的，并且可以返回以下其中之一:
+  这个钩子可以是异步的，并且可以返回以下其中之一：
   - 经过转换的 HTML 字符串
   - 注入到现有 HTML 中的标签描述符对象数组（`{ tag, attrs, children }`）。每个标签也可以指定它应该被注入到哪里（默认是在 `<head>` 之前）
   - 一个包含 `{ html, tags }` 的对象
