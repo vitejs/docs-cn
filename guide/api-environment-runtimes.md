@@ -371,7 +371,7 @@ function createWorkerEnvironment(name, config, context) {
   }
 
   const workerHotChannel = {
-    // Worker threads post messages are not exposed over the network, skip server.fs checks
+    // Worker 线程发送的消息不会暴露到网络，因此跳过 server.fs 检查
     skipFsCheck: true,
     send: (data) => worker.postMessage(data),
     on: (event, handler) => {
