@@ -57,7 +57,7 @@ CSS.paintWorklet.addModule(workletURL)
 
 ### 显式内联处理 {#explicit-inline-handling}
 
-可以分别使用`?inline`或`?no-inline`后缀，明确导入带内联或不带内联的静态资源。
+可以分别使用 `?inline` 或 `?no-inline` 后缀，明确导入带内联或不带内联的静态资源。
 
 ```js twoslash
 import 'vite/client'
