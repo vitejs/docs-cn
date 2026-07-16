@@ -59,7 +59,7 @@ export default defineConfig({
 })
 ```
 
-查看 [插件 API](./api-plugin.md#plugin-ordering) 获取细节信息
+查看 [插件 API](./api-plugin.md#plugin-ordering) 获取细节信息。
 
 ## 按需应用 {#conditional-application}
 
