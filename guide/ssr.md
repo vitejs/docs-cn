@@ -266,7 +266,7 @@ Vite 2.7 之前的版本，会提示你 `ssr` 参数的位置不应该是 `optio
 
 ## SSR 构建目标 {#ssr-target}
 
-SSR 构建的默认目标为 node 环境，但你也可以让服务运行在 Web Worker 上。每个平台的打包条目解析是不同的。你可以将`ssr.target` 设置为 `webworker`，以将目标配置为 Web Worker。
+SSR 构建的默认目标为 node 环境，但你也可以让服务运行在 Web Worker 上。每个平台的打包条目解析是不同的。你可以将 `ssr.target` 设置为 `webworker`，以将目标配置为 Web Worker。
 
 ## SSR 构建产物 {#ssr-bundle}
 
