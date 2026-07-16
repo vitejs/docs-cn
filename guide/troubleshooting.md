@@ -119,7 +119,7 @@ security add-trusted-cert -d -r trustRoot -k ~/Library/Keychains/login.keychain-
 
 ### 431 Request Header Fields Too Large {#_431-request-header-fields-too-large}
 
-当服务器或 WebSocket 服务收到一个较大的 HTTP 头，该请求可能会被遗落并且会显示下面这样的警告。
+当服务器或 WebSocket 服务收到一个较大的 HTTP 头，该请求可能会被丢弃，并且会显示下面这样的警告。
 
 > Server responded with status code 431. See https://vite.dev/guide/troubleshooting.html#_431-request-header-fields-too-large.
 
