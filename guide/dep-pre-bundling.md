@@ -4,7 +4,7 @@
 
 ## 原因 {#the-why}
 
-这就是 Vite 执行时所做的“依赖预构建”。这个过程有两个目的:
+这就是 Vite 执行时所做的“依赖预构建”。这个过程有两个目的：
 
 1. **CommonJS 和 UMD 兼容性：** 在开发阶段中，Vite 的开发服务器将所有代码视为原生 ES 模块。因此，Vite 必须先将以 CommonJS 或 UMD 形式提供的依赖项转换为 ES 模块。
 
@@ -33,7 +33,7 @@
 
 ## Monorepo 和链接依赖 {#monorepos-and-linked-dependencies}
 
-在一个 monorepo 启动中，该仓库中的某个包可能会成为另一个包的依赖。Vite 会自动侦测没有从 `node_modules` 解析的依赖项，并将链接的依赖视为源码。它不会尝试打包被链接的依赖，而是会分析被链接依赖的依赖列表。
+在一个 monorepo 项目中，该仓库中的某个包可能会成为另一个包的依赖。Vite 会自动侦测没有从 `node_modules` 解析的依赖项，并将链接的依赖视为源码。它不会尝试打包被链接的依赖，而是会分析被链接依赖的依赖列表。
 
 然而，这需要被链接的依赖被导出为 ESM 格式。如果不是，那么你可以在配置里将此依赖添加到 [`optimizeDeps.include`](/config/dep-optimization-options.md#optimizedeps-include) 中。
 

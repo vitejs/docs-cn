@@ -19,9 +19,9 @@ if (import.meta.env.DEV) {
 
 一些内置常量在所有情况下都可用：
 
-- **`import.meta.env.MODE`**: {string} 应用运行的[模式](#modes)。
+- **`import.meta.env.MODE`**: {string} 应用运行的 [模式](#modes)。
 
-- **`import.meta.env.BASE_URL`**: {string} 部署应用时的基本 URL。他由[`base` 配置项](/config/shared-options.md#base)决定。
+- **`import.meta.env.BASE_URL`**: {string} 部署应用时的基本 URL。该值由 [`base` 配置项](/config/shared-options.md#base) 决定。
 
 - **`import.meta.env.PROD`**: {boolean} 应用是否运行在生产环境（使用 `NODE_ENV='production'` 运行开发服务器或构建应用时使用 `NODE_ENV='production'` ）。
 
@@ -102,7 +102,7 @@ NEW_KEY3=test$KEY   # test123
 ::: details 反向扩展变量
 
 Vite 支持以相反的顺序扩展变量。
-例如，下面的 `.env` 将被评估为 `VITE_FOO=foobar`, `VITE_BAR=bar`。
+例如，下面的 `.env` 将被评估为 `VITE_FOO=foobar`、`VITE_BAR=bar`。
 
 ```[.env]
 VITE_FOO=foo${VITE_BAR}
@@ -168,7 +168,7 @@ Vite 还支持在 HTML 文件中替换环境变量。`import.meta.env` 中的任
 <p>Using data from %VITE_API_URL%</p>
 ```
 
-如果环境变量在 `import.meta.env` 中不存在，比如不存在的 `%NON_EXISTENT%`，则会将被忽略而不被替换，这与 JS 中的 `import.meta.env.NON_EXISTENT` 不同，JS 中会被替换为 `undefined`。
+如果环境变量在 `import.meta.env` 中不存在，比如不存在的 `%NON_EXISTENT%`，则会被忽略而不被替换，这与 JS 中的 `import.meta.env.NON_EXISTENT` 不同，JS 中会被替换为 `undefined`。
 
 正因为 Vite 被许多框架使用，它在复杂的替换（如条件替换）上故意不持任何意见。Vite 可以使用 [现有的用户插件](https://github.com/vitejs/awesome-vite#transformers) 或者一个实现了 [`transformIndexHtml` 钩子](./api-plugin#transformindexhtml) 的自定义插件来扩展。
 
