@@ -266,7 +266,7 @@ Vite 2.7 之前的版本，会提示你 `ssr` 参数的位置不应该是 `optio
 
 ## SSR 构建目标 {#ssr-target}
 
-SSR 构建的默认目标为 node 环境，但你也可以让服务运行在 Web Worker 上。每个平台的打包条目解析是不同的。你可以将`ssr.target` 设置为 `webworker`，以将目标配置为 Web Worker。
+SSR 构建的默认目标为 node 环境，但你也可以让服务运行在 Web Worker 上。每个平台的打包条目解析是不同的。你可以将 `ssr.target` 设置为 `webworker`，以将目标配置为 Web Worker。
 
 ## SSR 构建产物 {#ssr-bundle}
 
@@ -275,7 +275,7 @@ SSR 构建的默认目标为 node 环境，但你也可以让服务运行在 Web
 - 将所有依赖视为 `noExternal`（非外部化）
 - 若任何 Node.js 内置内容被引入，将抛出一个错误
 
-## SSR Resolve Conditions
+## SSR 解析条件 {#ssr-resolve-conditions}
 
 默认情况下包的入口解析将会使用 [`resolve.conditions`](../config/shared-options.md#resolve-conditions) 中设置的条件来进行 SSR 构建。你可以使用 [`ssr.resolve.conditions`](../config/ssr-options.md#ssr-resolve-conditions) 和 [`ssr.resolve.externalConditions`](../config/ssr-options.md#ssr-resolve-externalconditions) 来自定义这个行为。
 

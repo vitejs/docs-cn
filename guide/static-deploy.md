@@ -85,7 +85,7 @@ $ npm run preview
 
    在你的仓库中，进入 **Settings → Pages**。在 **Build and deployment** 下，打开 **Source** 下拉菜单，然后选择 **GitHub Actions**。
 
-   GitHub 现在将使用 GitHub Actions [工作流](https://docs.github.com/en/actions/concepts/workflows-and-actions/workflows)来部署你的网站，这是必要的，因为 Vite 需要构建步骤来进行部署。
+   GitHub 现在将使用 GitHub Actions [工作流](https://docs.github.com/en/actions/concepts/workflows-and-actions/workflows) 来部署你的网站，这是必要的，因为 Vite 需要构建步骤来进行部署。
 
 3. **创建工作流**
 

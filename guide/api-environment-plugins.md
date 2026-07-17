@@ -229,7 +229,7 @@ export default defineConfig({
 
 ## 应用程序-插件通信 {#application-plugin-communication}
 
-`environment.hot` 允许插件与给定环境的应用程序端代码进行通信。这相当于[客户端-服务器通信功能](/guide/api-plugin#client-server-communication)，但支持除客户端环境以外的其他环境。
+`environment.hot` 允许插件与给定环境的应用程序端代码进行通信。这相当于 [客户端-服务器通信功能](/guide/api-plugin#client-server-communication)，但支持除客户端环境以外的其他环境。
 
 :::warning Note
 

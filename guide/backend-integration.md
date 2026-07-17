@@ -1,7 +1,7 @@
 # 后端集成 {#backend-integration}
 
 :::tip Note
-如果你想使用传统的后端（如 Rails, Laravel）来服务 HTML，但使用 Vite 来服务其他资源，可以查看在 [Awesome Vite](https://github.com/vitejs/awesome-vite#integrations-with-backends) 上的已有的后端集成列表。
+如果你想使用传统的后端（如 Rails、Laravel）来服务 HTML，但使用 Vite 来服务其他资源，可以查看在 [Awesome Vite](https://github.com/vitejs/awesome-vite#integrations-with-backends) 上的已有的后端集成列表。
 
 如果你需要自定义集成，你可以按照本指南的步骤配置它：
 :::
@@ -62,7 +62,7 @@
    </script>
    ```
 
-3. 在生产环境中, 在运行 `vite build` 之后，一个 `.vite/manifest.json` 文件将与静态资源文件一同生成。一个示例清单文件会像下面这样：
+3. 在生产环境中，在运行 `vite build` 之后，一个 `.vite/manifest.json` 文件将与静态资源文件一同生成。一个示例清单文件会像下面这样：
 
    ```json [.vite/manifest.json] style:max-height:400px
    {
