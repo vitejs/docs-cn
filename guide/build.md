@@ -15,7 +15,7 @@
 - Firefox >=114
 - Safari >=16.4
 
-你也可以通过 [`build.target` 配置项](/config/build-options.md#build-target) 指定构建目标，最低支持 `es2015`。如果设置较低的目标值，Vite 仍然需要这些最低的浏览器支持范围，因为它依赖于[原生的 ESM 动态导入](https://caniuse.com/es6-module-dynamic-import)和 [`import.meta`](https://caniuse.com/mdn-javascript_operators_import_meta)：
+你也可以通过 [`build.target` 配置项](/config/build-options.md#build-target) 指定构建目标，最低支持 `es2015`。如果设置较低的目标值，Vite 仍然需要这些最低的浏览器支持范围，因为它依赖于 [原生的 ESM 动态导入](https://caniuse.com/es6-module-dynamic-import) 和 [`import.meta`](https://caniuse.com/mdn-javascript_operators_import_meta)：
 
 <!-- 查找 `defaultEsbuildSupported` 常量以获取更多信息。 -->
 
@@ -24,7 +24,7 @@
 - Safari >=11.1
 - Edge >=79
 
-请注意，默认情况下 Vite 只处理语法转译，且 **不包含任何 polyfill**。你可以访问 https://cdnjs.cloudflare.com/polyfill/ ，这个网站可以根据用户的浏览器 UserAgent 字符串自动生成 polyfill 包。
+请注意，默认情况下 Vite 只处理语法转译，且 **不包含任何 polyfill**。你可以访问 <https://cdnjs.cloudflare.com/polyfill/>，这个网站可以根据用户的浏览器 UserAgent 字符串自动生成 polyfill 包。
 
 传统浏览器可以通过插件 [@vitejs/plugin-legacy](https://github.com/vitejs/vite/tree/main/packages/plugin-legacy) 来支持，它将自动生成传统版本的 chunk 及与其相对应 ES 语言特性方面的 polyfill。兼容版的 chunk 只会在不支持原生 ESM 的浏览器中进行按需加载。
 
@@ -269,7 +269,7 @@ dist/my-lib.umd.cjs 0.30 kB / gzip: 0.16 kB
 
 ### CSS 支持 {#css-support}
 
-如果您的库导入了 CSS，除了内置的 JS 文件外，它还将作为一个 CSS 文件打包在一起，例如 `dist/my-lib.css`。文件名默认为 `build.lib.fileName`，但也可以使用 [`build.lib.cssFileName`](/config/build-options.md#build-lib)进行更改。
+如果您的库导入了 CSS，除了内置的 JS 文件外，它还将作为一个 CSS 文件打包在一起，例如 `dist/my-lib.css`。文件名默认为 `build.lib.fileName`，但也可以使用 [`build.lib.cssFileName`](/config/build-options.md#build-lib) 进行更改。
 
 您可以在 `package.json` 中导出 CSS 文件，以便用户导入：
 
@@ -291,7 +291,7 @@ dist/my-lib.umd.cjs 0.30 kB / gzip: 0.16 kB
 ```
 
 ::: tip 文件扩展名
-如果 `package.json` 不包含 `"type": "module"`，Vite 会生成不同的文件后缀名以兼容 Node.js。`.js` 会变为 `.mjs` 而 `.cjs` 会变为 `.js` 。
+如果 `package.json` 不包含 `"type": "module"`，Vite 会生成不同的文件后缀名以兼容 Node.js。`.js` 会变为 `.mjs` 而 `.cjs` 会变为 `.js`。
 :::
 
 ::: tip 环境变量
