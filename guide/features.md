@@ -10,7 +10,7 @@
 import { someMethod } from 'my-dep'
 ```
 
-上面的代码会在浏览器中抛出一个错误。Vite 将会检测到所有被加载的源文件中的此类裸模块导入，并执行以下操作:
+上面的代码会在浏览器中抛出一个错误。Vite 将会检测到所有被加载的源文件中的此类裸模块导入，并执行以下操作：
 
 1. [预构建](./dep-pre-bundling) 它们可以提高页面加载速度，并将 CommonJS / UMD 转换为 ESM 格式。预构建这一步由 [Rolldown](https://rolldown.rs/) 执行，这使得 Vite 的冷启动时间比任何基于 JavaScript 的打包器都要快得多。
 
@@ -22,7 +22,7 @@ Vite 通过 HTTP 头来缓存请求得到的依赖，所以如果你想要编辑
 
 ## 模块热替换 {#hot-module-replacement}
 
-Vite 提供了一套原生 ESM 的 [HMR API](./api-hmr)。 具有 HMR 功能的框架可以利用该 API 提供即时、准确的更新，而无需重新加载页面或清除应用程序状态。Vite 内置了 HMR 到 [Vue 单文件组件（SFC）](https://github.com/vitejs/vite-plugin-vue/tree/main/packages/plugin-vue) 和 [React Fast Refresh](https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react) 中。也通过 [@prefresh/vite](https://github.com/JoviDeCroock/prefresh/tree/main/packages/vite) 对 Preact 实现了官方集成。
+Vite 提供了一套原生 ESM 的 [HMR API](./api-hmr)。具有 HMR 功能的框架可以利用该 API 提供即时、准确的更新，而无需重新加载页面或清除应用程序状态。Vite 内置了 HMR 到 [Vue 单文件组件（SFC）](https://github.com/vitejs/vite-plugin-vue/tree/main/packages/plugin-vue) 和 [React Fast Refresh](https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react) 中。也通过 [@prefresh/vite](https://github.com/JoviDeCroock/prefresh/tree/main/packages/vite) 对 Preact 实现了官方集成。
 
 注意，你不需要手动设置这些 —— 当你通过 [`create-vite`](./) 创建应用程序时，所选模板已经为你预先配置了这些。
 
@@ -279,7 +279,7 @@ Sass 和 Less 文件也支持 `@import` 别名和 URL 变基（具体请参阅 [
 
 ### PostCSS {#postcss}
 
-如果项目包含有效的 PostCSS 配置 (任何受 [postcss-load-config](https://github.com/postcss/postcss-load-config) 支持的格式，例如 `postcss.config.js`)，它将会自动应用于所有已导入的 CSS。
+如果项目包含有效的 PostCSS 配置（任何受 [postcss-load-config](https://github.com/postcss/postcss-load-config) 支持的格式，例如 `postcss.config.js`），它将会自动应用于所有已导入的 CSS。
 
 请注意，CSS 最小化压缩将在 PostCSS 之后运行，并会使用 [`build.cssTarget`](/config/build-options.md#build-csstarget) 选项。
 
