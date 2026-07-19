@@ -1,6 +1,6 @@
 # 性能 {#performance}
 
-虽然 Vite 默认运行速度很快，但随着项目需求的增长，性能问题可能会悄然出现。本指南旨在帮助您识别并修复常见的性能问题，例如：
+虽然 Vite 默认运行速度很快，但随着项目需求的增长，性能问题可能会悄然出现。本指南旨在帮助你识别并修复常见的性能问题，例如：
 
 - 服务器启动慢
 - 页面加载慢
@@ -36,7 +36,7 @@ Vite 的内部和官方插件已经优化，以在提供与更广泛的生态系
 
 当经常遇到最糟糕的情况时，解析导入路径可能是一项昂贵的操作。例如，Vite 支持通过 [`resolve.extensions`](/config/shared-options.md#resolve-extensions) 选项“猜测”导入路径，该选项默认为 `['.mjs', '.js', '.mts', '.ts', '.jsx', '.tsx', '.json']`。
 
-当您尝试使用 `import './Component'` 导入 `./Component.jsx` 时，Vite 将运行以下步骤来解析它：
+当你尝试使用 `import './Component'` 导入 `./Component.jsx` 时，Vite 将运行以下步骤来解析它：
 
 1. 检查 `./Component` 是否存在，不存在。
 2. 检查 `./Component.mjs` 是否存在，不存在。
@@ -45,9 +45,9 @@ Vite 的内部和官方插件已经优化，以在提供与更广泛的生态系
 5. 检查 `./Component.ts` 是否存在，不存在。
 6. 检查 `./Component.jsx` 是否存在，存在！
 
-如上所示，解析一个导入路径需要进行 6 次文件系统检查。您的隐式导入越多，解析路径所需的时间就越多。
+如上所示，解析一个导入路径需要进行 6 次文件系统检查。你的隐式导入越多，解析路径所需的时间就越多。
 
-因此，通常最好明确您的导入路径，例如 `import './Component.jsx'`。也可以缩小 `resolve.extensions` 的列表以减少一般的文件系统检查，但必须确保它也适用于 `node_modules` 中的文件。
+因此，通常最好明确你的导入路径，例如 `import './Component.jsx'`。也可以缩小 `resolve.extensions` 的列表以减少一般的文件系统检查，但必须确保它也适用于 `node_modules` 中的文件。
 
 如果你是插件作者，请确保只在需要时调用 [`this.resolve`](https://cn.rollupjs.org/plugin-development/#this-resolve) 以减少上述检查的次数。
 
