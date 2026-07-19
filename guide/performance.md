@@ -18,7 +18,7 @@ Vite 的内部和官方插件已经优化，以在提供与更广泛的生态系
 
 然而，社区插件的性能是 Vite 无法控制的，这可能会影响开发者的体验。在使用额外的 Vite 插件时，有一些事情需要注意：
 
-1. 仅在特定场景下使用的大型依赖项应动态导入，以减少 Node.js 的启动时间。重构示例：[vite-plugin-react#212](https://github.com/vitejs/vite-plugin-react/pull/212) 和 [vite-plugin-pwa#224](https://github.com/vite-pwa/vite-plugin-pwa/pull/244)。
+1. 仅在特定场景下使用的大型依赖项应动态导入，以减少 Node.js 的启动时间。重构示例：[vite-plugin-react#212](https://github.com/vitejs/vite-plugin-react/pull/212) 和 [vite-plugin-pwa#244](https://github.com/vite-pwa/vite-plugin-pwa/pull/244)。
 
 2. `buildStart`，`config`，和 `configResolved` 钩子不应运行过长的时间和进行大量的操作。这些钩子会在开发服务器启动期间等待，这会延迟可以在浏览器中访问站点的时间。
 
