@@ -155,7 +155,7 @@ console.log(msg)
 
 以下钩子在服务器启动时被调用：
 
-- [`options`](https://rolldown.rs/reference/interface.plugin#options)
+- [`options`](https://rolldown.rs/reference/Interface.Plugin#options)
 - [`buildStart`](https://rolldown.rs/reference/Interface.Plugin#buildstart)
 
 以下钩子会在每个传入模块请求时被调用：

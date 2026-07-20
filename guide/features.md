@@ -235,7 +235,7 @@ HTML 文件位于 Vite 项目的 [最前端和中心](/guide/#index-html-and-pro
 
 ## JSX {#jsx}
 
-`.jsx` 和 `.tsx` 文件同样开箱即用。JSX 的转译同样是通过 [Oxc 转换器](https://oxc.rs/docs/guide/usage/transformer/) 处理的。
+`.jsx` 和 `.tsx` 文件同样开箱即用。JSX 的转译同样是通过 [Oxc 转换器](https://oxc.rs/docs/guide/usage/transformer.html) 处理的。
 
 你选择的框架已经可以开箱即用地配置 JSX（例如，Vue 用户应使用官方的 [@vitejs/plugin-vue-jsx](https://github.com/vitejs/vite-plugin-vue/tree/main/packages/plugin-vue-jsx) 插件，它提供了 Vue 3 特定的功能，包括 HMR、全局组件解析、指令和插槽）。
 

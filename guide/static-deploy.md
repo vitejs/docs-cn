@@ -162,7 +162,7 @@ Netlify 命令行工具（CLI）会为你提供一个预览链接，供你查看
 3. Vercel 会检测到你正在使用 Vite，并会为你的部署开启相应的正确配置。
 4. 你的应用被部署好了！（示例：[vite-vue-template.vercel.app](https://vite-vue-template.vercel.app/)）
 
-在你的项目被导入和部署后，所有对分支的后续推送都会生成 [预览部署](https://vercel.com/docs/concepts/deployments/environments#preview)，而所有对生产分支（通常是"main"）的更改都会生成一个 [生产构建](https://vercel.com/docs/concepts/deployments/environments#production)
+在你的项目被导入和部署后，所有对分支的后续推送都会生成 [预览部署](https://vercel.com/docs/deployments/environments#preview-environment-pre-production)，而所有对生产分支（通常是"main"）的更改都会生成一个 [生产构建](https://vercel.com/docs/deployments/environments#production-environment)
 
 查看 Vercel 的 [Git 集成](https://vercel.com/docs/concepts/git) 了解更多细节。
 
@@ -213,7 +213,7 @@ Cloudflare Pages 提供了一种直接部署到 Cloudflare 的方式，而无需
 
 在你的项目被导入和部署后，所有对分支的后续推送都会生成 [预览部署](https://developers.cloudflare.com/pages/platform/preview-deployments/)，除非你特意在 [分支构建控制](https://developers.cloudflare.com/pages/platform/branch-build-controls/) 中写明不触发。所有对 **生产分支**（通常是 "main"）的更改都会生成一个 **生产部署**。
 
-你也可以添加自定义域名，并自定义各个页面的构建设置。查看 [Cloudflare 页面与 Git 集成](https://developers.cloudflare.com/pages/get-started/#manage-your-site) 了解更多详情。
+你也可以添加自定义域名，并自定义各个页面的构建设置。查看 [Cloudflare 页面与 Git 集成](https://developers.cloudflare.com/pages/get-started/git-integration/) 了解更多详情。
 
 ## Google Firebase {#google-firebase}
 
@@ -289,7 +289,7 @@ Cloudflare Pages 提供了一种直接部署到 Cloudflare 的方式，而无需
 
 5. 点击 **Create Static Site**，你的应用将会被部署在 `https://<PROJECTNAME>.onrender.com/`。
 
-默认情况下，推送到该指定分支的任何新的 commit 都会自动触发一个新的部署。[Auto-Deploy](https://render.com/docs/deploys#toggling-auto-deploy-for-a-service) 可以在项目设置中部署。
+默认情况下，推送到该指定分支的任何新的 commit 都会自动触发一个新的部署。[Auto-Deploy](https://render.com/docs/deploys#configuring-auto-deploys) 可以在项目设置中部署。
 
 还可以为项目添加一个 [自定义域名](https://render.com/docs/custom-domains)。
 
@@ -303,7 +303,7 @@ Cloudflare Pages 提供了一种直接部署到 Cloudflare 的方式，而无需
 
 ## xmit 静态站点托管 {#xmit-static-site-hosting}
 
-根据 [说明](https://xmit.dev/posts/vite-quickstart/)，使用 [xmit](https://xmit.co) 来部署你的静态站点。
+根据 [说明](https://xmit.dev/guides/vite-quickstart/)，使用 [xmit](https://xmit.co) 来部署你的静态站点。
 
 ## Zephyr Cloud {#zephyr-cloud}
 
