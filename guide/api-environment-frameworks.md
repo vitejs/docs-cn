@@ -10,7 +10,7 @@
 - [反馈讨论](https://github.com/vitejs/vite/discussions/16358) 我们在此处收集新 API 的反馈。
 - [环境 API PR](https://github.com/vitejs/vite/pull/16471) 新 API 在此处被实现并进行了审查。
 
-请与我们分享您的反馈。
+请与我们分享你的反馈。
 :::
 
 ## 开发环境通信级别 {#devenvironment-communication-levels}
@@ -19,7 +19,7 @@
 
 ### `RunnableDevEnvironment`
 
-`RunnableDevEnvironment` 是一种能够传递任意值的环境。隐式 `ssr` 环境及其他非客户端环境在开发阶段默认使用 `RunnableDevEnvironment`。虽然这要求运行时与 Vite 服务器运行的环境一致，但其工作原理与 `ssrLoadModule` 类似，并允许框架迁移并为其 SSR 开发流程启用 HMR。您可以通过 `isRunnableDevEnvironment` 函数对任何可运行环境进行保护。
+`RunnableDevEnvironment` 是一种能够传递任意值的环境。隐式 `ssr` 环境及其他非客户端环境在开发阶段默认使用 `RunnableDevEnvironment`。虽然这要求运行时与 Vite 服务器运行的环境一致，但其工作原理与 `ssrLoadModule` 类似，并允许框架迁移并为其 SSR 开发流程启用 HMR。你可以通过 `isRunnableDevEnvironment` 函数对任何可运行环境进行保护。
 
 ```ts
 export class RunnableDevEnvironment extends DevEnvironment {
@@ -100,7 +100,7 @@ app.use('*', async (req, res, next) => {
 })
 ```
 
-在使用支持 HMR（如 `RunnableDevEnvironment`）的环境时，您应在服务器入口文件中添加 `import.meta.hot.accept()` 以获得最佳性能。若未添加此代码，服务器文件的更改将导致整个服务器模块图失效：
+在使用支持 HMR（如 `RunnableDevEnvironment`）的环境时，你应在服务器入口文件中添加 `import.meta.hot.accept()` 以获得最佳性能。若未添加此代码，服务器文件的更改将导致整个服务器模块图失效：
 
 ```js
 // src/entry-server.js
@@ -164,9 +164,9 @@ Vite 验证 `dispatchFetch` 方法的输入和输出：请求必须是全局 `Re
 
 ### raw `DevEnvironment`
 
-如果环境未实现 `RunnableDevEnvironment` 或 `FetchableDevEnvironment` 接口，您需要手动设置通信。
+如果环境未实现 `RunnableDevEnvironment` 或 `FetchableDevEnvironment` 接口，你需要手动设置通信。
 
-如果您的代码可以在与用户模块相同的运行时环境中运行（即不依赖于 Node.js 特定的 API），您可以使用虚拟模块。这种方法消除了通过 Vite 的 API 从代码中访问值的必要性。
+如果你的代码可以在与用户模块相同的运行时环境中运行（即不依赖于 Node.js 特定的 API），你可以使用虚拟模块。这种方法消除了通过 Vite 的 API 从代码中访问值的必要性。
 
 ```ts
 // 使用 Vite API 的代码

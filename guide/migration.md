@@ -34,7 +34,7 @@ Vite 8 使用基于 [Rolldown](https://rolldown.rs/) 和 [Oxc](https://oxc.rs/) 
 
 ### 依赖优化器现在使用 Rolldown {#dependency-optimizer-now-uses-rolldown}
 
-现在依赖优化使用 Rolldown 而不是 esbuild。Vite 仍然通过自动将 [`optimizeDeps.esbuildOptions`](/config/dep-optimization-options#optimizedeps-esbuildoptions) 转换为 [`optimizeDeps.rolldownOptions`](/config/dep-optimization-options#optimizedeps-rolldownoptions) 来支持向后兼容。`optimizeDeps.esbuildOptions` 现在已被弃用，将来会被移除，我们鼓励您迁移到 `optimizeDeps.rolldownOptions`。
+现在依赖优化使用 Rolldown 而不是 esbuild。Vite 仍然通过自动将 [`optimizeDeps.esbuildOptions`](/config/dep-optimization-options#optimizedeps-esbuildoptions) 转换为 [`optimizeDeps.rolldownOptions`](/config/dep-optimization-options#optimizedeps-rolldownoptions) 来支持向后兼容。`optimizeDeps.esbuildOptions` 现在已被弃用，将来会被移除，我们鼓励你迁移到 `optimizeDeps.rolldownOptions`。
 
 以下选项会自动转换：
 
@@ -63,7 +63,7 @@ const plugin = {
 
 ### 使用 Oxc 转换 JavaScript  {#javascript-transforms-by-oxc}
 
-现在使用 Oxc 进行 JavaScript 转换，而不是 esbuild。Vite 仍然通过自动将 [`esbuild`](/config/shared-options#esbuild) 选项转换为 [`oxc`](/config/shared-options#oxc) 来支持向后兼容。`esbuild` 现在已被弃用，将来会被移除，我们鼓励您迁移到 `oxc`。
+现在使用 Oxc 进行 JavaScript 转换，而不是 esbuild。Vite 仍然通过自动将 [`esbuild`](/config/shared-options#esbuild) 选项转换为 [`oxc`](/config/shared-options#oxc) 来支持向后兼容。`esbuild` 现在已被弃用，将来会被移除，我们鼓励你迁移到 `oxc`。
 
 以下选项会自动转换：
 
