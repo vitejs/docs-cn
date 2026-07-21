@@ -121,7 +121,7 @@ import InlineWorker from './shader.js?worker&inline'
 
 ::: tip 在导入目录和 `public` 目录之间进行选择
 
-一般来说，除非您特别需要 `public` 目录提供的保证，否则最好**导入 assets**。
+一般来说，除非你特别需要 `public` 目录提供的保证，否则最好**导入 assets**。
 
 :::
 

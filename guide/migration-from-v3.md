@@ -57,9 +57,9 @@ Vite 现在使用 `dotenv` 16 和 `dotenv-expand` 9（之前是 `dotenv` 14 和 
 此外，还有其他一些只影响少数用户的破坏性变化。
 
 - [[#11101] feat(ssr)!: remove dedupe and mode support for CJS](https://github.com/vitejs/vite/pull/11101)
-  - 您应该迁移到 SSR 的默认 ESM 模式，CJS SSR 支持可能会在下一个 Vite 主要版本删除。
+  - 你应该迁移到 SSR 的默认 ESM 模式，CJS SSR 支持可能会在下一个 Vite 主要版本删除。
 - [[#10475] feat: handle static assets in case-sensitive manner](https://github.com/vitejs/vite/pull/10475)
-  - 您的项目不应该依赖于会被不同操作系统忽略大小写的文件名。
+  - 你的项目不应该依赖于会被不同操作系统忽略大小写的文件名。
 - [[#10996] fix!: make `NODE_ENV` more predictable](https://github.com/vitejs/vite/pull/10996)
   - 有关此更改的解释，请参阅 PR。
 - [[#10903] refactor(types)!: remove facade type files](https://github.com/vitejs/vite/pull/10903)

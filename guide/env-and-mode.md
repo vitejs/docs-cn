@@ -40,7 +40,7 @@ VITE_SOME_KEY=123
 DB_PASSWORD=foobar
 ```
 
-解析后的 `VITE_SOME_KEY` 值（即 `"123"`）将会暴露在客户端，但 `DB_PASSWORD` 的值则不会。您可以通过在代码中添加以下内容来验证这一点：
+解析后的 `VITE_SOME_KEY` 值（即 `"123"`）将会暴露在客户端，但 `DB_PASSWORD` 的值则不会。你可以通过在代码中添加以下内容来验证这一点：
 
 ```js
 console.log(import.meta.env.VITE_SOME_KEY) // "123"
@@ -118,7 +118,7 @@ VITE_BAR=bar
 
 :::warning 忽略本地 `.env` 文件
 
-`.env.*.local` 文件仅供本地使用，可能包含敏感变量。您应该将 `*.local` 添加到 `.gitignore` 文件中，以避免它们被提交到 Git 仓库。
+`.env.*.local` 文件仅供本地使用，可能包含敏感变量。你应该将 `*.local` 添加到 `.gitignore` 文件中，以避免它们被提交到 Git 仓库。
 
 :::
 

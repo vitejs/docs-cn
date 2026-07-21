@@ -10,7 +10,7 @@
 - [反馈讨论](https://github.com/vitejs/vite/discussions/16358) 我们在此处收集新 API 的反馈。
 - [环境 API PR](https://github.com/vitejs/vite/pull/16471) 新 API 在此处被实现并进行了审查。
 
-请与我们分享您的反馈。
+请与我们分享你的反馈。
 :::
 
 ## 访问环境 {#accessing-the-environments}

@@ -80,7 +80,7 @@ window.addEventListener('vite:preloadError', (event) => {
 })
 ```
 
-当发生新的部署时，托管服务可能会删除先前部署中的资源。因此，在新部署之前访问过您网站的用户可能会遇到导入错误。发生此错误的原因是，该用户设备上运行的资源已过期，并且系统尝试导入相应的旧数据块，而该数据块已被删除。此事件对于解决这种情况很有用。在这种情况下，请确保对 HTML 文件设置 `Cache-Control: no-cache`，否则旧资源仍会被引用。
+当发生新的部署时，托管服务可能会删除先前部署中的资源。因此，在新部署之前访问过你网站的用户可能会遇到导入错误。发生此错误的原因是，该用户设备上运行的资源已过期，并且系统尝试导入相应的旧数据块，而该数据块已被删除。此事件对于解决这种情况很有用。在这种情况下，请确保对 HTML 文件设置 `Cache-Control: no-cache`，否则旧资源仍会被引用。
 
 ## 文件变化时重新构建 {#rebuild-on-files-changes}
 
@@ -203,7 +203,7 @@ export default defineConfig({
 
 :::
 
-入口文件将包含可以被您的包的用户导入的导出内容：
+入口文件将包含可以被你的包的用户导入的导出内容：
 
 ```js [lib/main.js]
 import Foo from './Foo.vue'
@@ -269,9 +269,9 @@ dist/my-lib.umd.cjs 0.30 kB / gzip: 0.16 kB
 
 ### CSS 支持 {#css-support}
 
-如果您的库导入了 CSS，除了内置的 JS 文件外，它还将作为一个 CSS 文件打包在一起，例如 `dist/my-lib.css`。文件名默认为 `build.lib.fileName`，但也可以使用 [`build.lib.cssFileName`](/config/build-options.md#build-lib) 进行更改。
+如果你的库导入了 CSS，除了内置的 JS 文件外，它还将作为一个 CSS 文件打包在一起，例如 `dist/my-lib.css`。文件名默认为 `build.lib.fileName`，但也可以使用 [`build.lib.cssFileName`](/config/build-options.md#build-lib) 进行更改。
 
-您可以在 `package.json` 中导出 CSS 文件，以便用户导入：
+你可以在 `package.json` 中导出 CSS 文件，以便用户导入：
 
 ```json {12}
 {
