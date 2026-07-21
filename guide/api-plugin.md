@@ -1,6 +1,6 @@
 # 插件 API {#plugin-api}
 
-Vite 插件扩展了 Rolldown 的插件接口，添加了一些 Vite 特有的选项。因此，您只需编写一次 Vite 插件，即可使其同时适用于开发环境和构建环境。
+Vite 插件扩展了 Rolldown 的插件接口，添加了一些 Vite 特有的选项。因此，你只需编写一次 Vite 插件，即可使其同时适用于开发环境和构建环境。
 
 **建议先阅读 [Rolldown 的插件文档](https://rolldown.rs/apis/plugin-api)，然后再阅读以下章节。**
 

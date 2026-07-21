@@ -1,6 +1,6 @@
 # 性能 {#performance}
 
-虽然 Vite 默认运行速度很快，但随着项目需求的增长，性能问题可能会悄然出现。本指南旨在帮助您识别并修复常见的性能问题，例如：
+虽然 Vite 默认运行速度很快，但随着项目需求的增长，性能问题可能会悄然出现。本指南旨在帮助你识别并修复常见的性能问题，例如：
 
 - 服务器启动慢
 - 页面加载慢
@@ -16,27 +16,27 @@ Vite 开发服务器对预打包的依赖项进行了强缓存，同时对源代
 
 Vite 的内部和官方插件已经优化，以在提供与更广泛的生态系统兼容性的同时做尽可能少的工作。例如，代码转换在开发中使用正则表达式，但在构建中进行完整解析以确保正确性。
 
-然而，社区插件的性能是 Vite 无法控制的，这可能会影响开发者的体验。在使用额外的 Vite 插件时，有一些事情可以注意：
+然而，社区插件的性能是 Vite 无法控制的，这可能会影响开发者的体验。在使用额外的 Vite 插件时，有一些事情需要注意：
 
-1. 只在特定情况下，大型依赖项应动态导入，以减少 Node.js 的启动时间。重构示例：[vite-plugin-react#212](https://github.com/vitejs/vite-plugin-react/pull/212) 和 [vite-plugin-pwa#224](https://github.com/vite-pwa/vite-plugin-pwa/pull/244)。
+1. 仅在特定场景下使用的大型依赖项应动态导入，以减少 Node.js 的启动时间。重构示例：[vite-plugin-react#212](https://github.com/vitejs/vite-plugin-react/pull/212) 和 [vite-plugin-pwa#244](https://github.com/vite-pwa/vite-plugin-pwa/pull/244)。
 
-2. `buildStart`，`config`，和 `configResolved` 钩子不应运行过长的时间和进行大量的操作。这些钩子会在开发服务器启动期间等待，这会延迟可以在浏览器中访问站点的时间。
+2. `buildStart`、`config` 和 `configResolved` 钩子不应运行过长的时间和进行大量的操作。这些钩子会在开发服务器启动期间等待，这会延迟可以在浏览器中访问站点的时间。
 
-3. `resolveId`，`load`，和 `transform` 钩子可能会导致一些文件加载速度比其他文件慢。虽然有时无法避免，但仍值得检查可能的优化区域。例如，检查 `code` 是否包含特定关键字，或 `id` 是否匹配特定扩展名，然后再进行完整的转换。
+3. `resolveId`、`load` 和 `transform` 钩子可能会导致一些文件加载速度比其他文件慢。虽然有时无法避免，但仍值得检查可能的优化区域。例如，检查 `code` 是否包含特定关键字，或 `id` 是否匹配特定扩展名，然后再进行完整的转换。
 
    转换文件所需的时间越长，加载站点时在浏览器中的请求瀑布图就会越明显。
 
    你可以使用 `vite --debug plugin-transform` 或 [vite-plugin-inspect](https://github.com/antfu/vite-plugin-inspect) 检查转换文件所需的时间。请注意，由于异步操作往往提供不准确的时间，应将这些数字视为粗略的估计，但它仍应揭示消耗很大的操作。
 
 ::: tip 性能分析
-可以运行 `vite --profile`，访问站点，并在终端中按 `p + enter` 来记录一个 `.cpuprofile`。然后可以使用像 [speedscope](https://www.speedscope.app) 这样的工具来检查配置文件并识别瓶颈。也可以 [分享配置文件](https://chat.vite.dev) 给 Vite 团队，帮助我们识别性能问题。
+可以运行 `vite --profile`，访问站点，并在终端中按 `p + Enter` 来记录一个 `.cpuprofile`。然后可以使用像 [speedscope](https://www.speedscope.app) 这样的工具来检查配置文件并识别瓶颈。也可以 [分享配置文件](https://chat.vite.dev) 给 Vite 团队，帮助我们识别性能问题。
 :::
 
 ## 减少解析操作 {#reduce-resolve-operations}
 
 当经常遇到最糟糕的情况时，解析导入路径可能是一项昂贵的操作。例如，Vite 支持通过 [`resolve.extensions`](/config/shared-options.md#resolve-extensions) 选项“猜测”导入路径，该选项默认为 `['.mjs', '.js', '.mts', '.ts', '.jsx', '.tsx', '.json']`。
 
-当您尝试使用 `import './Component'` 导入 `./Component.jsx` 时，Vite 将运行以下步骤来解析它：
+当你尝试使用 `import './Component'` 导入 `./Component.jsx` 时，Vite 将运行以下步骤来解析它：
 
 1. 检查 `./Component` 是否存在，不存在。
 2. 检查 `./Component.mjs` 是否存在，不存在。
@@ -45,9 +45,9 @@ Vite 的内部和官方插件已经优化，以在提供与更广泛的生态系
 5. 检查 `./Component.ts` 是否存在，不存在。
 6. 检查 `./Component.jsx` 是否存在，存在！
 
-如上所示，解析一个导入路径需要进行 6 次文件系统检查。您的隐式导入越多，解析路径所需的时间就越多。
+如上所示，解析一个导入路径需要进行 6 次文件系统检查。你的隐式导入越多，解析路径所需的时间就越多。
 
-因此，通常最好明确您的导入路径，例如 `import './Component.jsx'`。也可以缩小 `resolve.extensions` 的列表以减少一般的文件系统检查，但必须确保它也适用于 `node_modules` 中的文件。
+因此，通常最好明确你的导入路径，例如 `import './Component.jsx'`。也可以缩小 `resolve.extensions` 的列表以减少一般的文件系统检查，但必须确保它也适用于 `node_modules` 中的文件。
 
 如果你是插件作者，请确保只在需要时调用 [`this.resolve`](https://cn.rollupjs.org/plugin-development/#this-resolve) 以减少上述检查的次数。
 
@@ -71,7 +71,7 @@ export * from './slash.js'
 
 ## 预热常用文件 {#warm-up-frequently-used-files}
 
-Vite 开发服务器只转换浏览器请求的文件，这使得它能够快速启动，并且只对使用的文件执行转换。如果预计某些文件将被短时间内请求，也可以预先转换。然而，如果某些文件的转换时间比其他文件长，仍然可能发生请求瀑布。例如：
+Vite 开发服务器只转换浏览器请求的文件，这使得它能够快速启动，并且只对使用的文件执行转换。如果预计某些文件将在短时间内被请求，也可以预先转换。然而，如果某些文件的转换时间比其他文件长，仍然可能发生请求瀑布。例如：
 
 给定一个导入图，左边的文件导入右边的文件：
 
@@ -81,7 +81,7 @@ main.js -> BigComponent.vue -> big-utils.js -> large-data.json
 
 导入关系只有在文件转换后才能知道。如果 `BigComponent.vue` 需要一些时间来转换，`big-utils.js` 就必须等待它的轮次，依此类推。即使内置了预先转换，这也会导致内部瀑布。
 
-Vite 允许预热你确定频繁使用的文件，例如 `big-utils.js`，可以使用 [`server.warmup`](/config/server-options.md#server-warmup) 选项。这样，当请求时，`big-utils.js` 将准备好并被缓存，以便立即提供服务。
+Vite 允许你使用 [`server.warmup`](/config/server-options.md#server-warmup) 选项预热确定会频繁使用的文件，例如 `big-utils.js`。这样，当请求时，`big-utils.js` 将准备好并被缓存，以便立即提供服务。
 
 你可以通过运行 `vite --debug transform` 并检查日志来找到频繁使用的文件：
 
