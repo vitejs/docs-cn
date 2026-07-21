@@ -99,7 +99,7 @@ Rolldown 专注于三个主要原则：
 
 ### 验证选项警告 {#option-validation-warnings}
 
-当传入未知或无效选项时，Rolldown 会输出警告。由于 Rolldown 不支持 Rollup 中的部分选项，根据您或所使用的元框架设置的选项，可能会遇到相关警告。下方展示了此类警告消息的示例：
+当传入未知或无效选项时，Rolldown 会输出警告。由于 Rolldown 不支持 Rollup 中的部分选项，根据你或所使用的元框架设置的选项，可能会遇到相关警告。下方展示了此类警告消息的示例：
 
 > Warning validate output options.
 >
@@ -151,7 +151,7 @@ export default {
 
 得益于 Rolldown 和 Oxc 的支持，各种 Vite 内部插件（例如 alias 或 resolve 插件）已转换为 Rust 语言。原生插件现在默认启用，默认值设置为 `'v1'`。
 
-如果您遇到任何问题，可以将 Vite 配置中的 `experimental.enableNativePlugin` 选项更改为 `'resolver'` 或 `false` 以解决问题。请注意，此选项将来会被移除。
+如果你遇到任何问题，可以将 Vite 配置中的 `experimental.enableNativePlugin` 选项更改为 `'resolver'` 或 `false` 以解决问题。请注意，此选项将来会被移除。
 
 ### 利用 Oxc 的 React 刷新转换 {#utilizing-oxc-s-react-refresh-transform}
 

@@ -307,7 +307,7 @@ Cloudflare Pages 提供了一种直接部署到 Cloudflare 的方式，而无需
 
 ## Zephyr Cloud {#zephyr-cloud}
 
-[Zephyr Cloud](https://zephyr-cloud.io) 是一个部署平台，它直接集成到您的构建过程中，并为模块联邦和其他类型的应用程序提供全球边缘分发。
+[Zephyr Cloud](https://zephyr-cloud.io) 是一个部署平台，它直接集成到你的构建过程中，并为模块联邦和其他类型的应用程序提供全球边缘分发。
 
 Zephyr 与其他云提供商采用不同的方法。它直接与 Vite 构建流程集成，因此每次你构建或运行应用程序的开发服务器时，它都会自动部署到 Zephyr Cloud。
 

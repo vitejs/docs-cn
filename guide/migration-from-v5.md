@@ -63,7 +63,7 @@ Vite 6 扩展了对更多 HTML 元素的支持。完整列表请参见 [HTML 功
 
 从 Vite 6 开始，默认文件名将使用 `package.json` 中的 `"name"`，与 JS 输出文件类似。如果 [`build.lib.fileName`](/config/build-options.md#build-lib) 设置为字符串，该值也将用于 CSS 输出文件名。要明确设置不同的 CSS 文件名，可以使用新的 [`build.lib.cssFileName`](/config/build-options.md#build-lib) 进行配置。
 
-迁移时，如果您依赖于 `style.css` 文件名，则应根据软件包名称将对该文件的引用更新为新名称。例如:
+迁移时，如果你依赖于 `style.css` 文件名，则应根据软件包名称将对该文件的引用更新为新名称。例如:
 
 ```json [package.json]
 {
@@ -96,7 +96,7 @@ Vite 6 扩展了对更多 HTML 元素的支持。完整列表请参见 [HTML 功
 - [[#18243] chore(deps)!: migrate `fast-glob` to `tinyglobby`](https://github.com/vitejs/vite/pull/18243)
   - globs 中不再支持范围大括号 (`{01..03}` ⇒ `['01', '02', '03']`) 和递增大括号 (`{2..8..2}` ⇒ `['2', '4', '6', '8']`) 。
 - [[#18395] feat(resolve)!: allow removing conditions](https://github.com/vitejs/vite/pull/18395)
-  - 此 PR 不仅引入了上文提到的 " `resolve.conditions` 的默认值" 这一破坏性变更，还使得在 SSR 中，`resolve.mainFields` 不能用于无外部化依赖关系。如果您正在使用 `resolve.mainFields`，并希望将其应用于 SSR 中的无外部化依赖关系，您可以使用 [`ssr.resolve.mainFields`](/config/ssr-options#ssr-resolve-mainfields)。
+  - 此 PR 不仅引入了上文提到的 " `resolve.conditions` 的默认值" 这一破坏性变更，还使得在 SSR 中，`resolve.mainFields` 不能用于无外部化依赖关系。如果你正在使用 `resolve.mainFields`，并希望将其应用于 SSR 中的无外部化依赖关系，你可以使用 [`ssr.resolve.mainFields`](/config/ssr-options#ssr-resolve-mainfields)。
 - [[#18493] refactor!: remove fs.cachedChecks option](https://github.com/vitejs/vite/pull/18493)
   - 由于在缓存文件夹中写入文件并立即导入时会出现边缘情况，因此删除了这一选择优化。
 - ~~[[#18697] fix(deps)!: update dependency dotenv-expand to v12](https://github.com/vitejs/vite/pull/18697)~~

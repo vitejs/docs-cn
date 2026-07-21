@@ -10,7 +10,7 @@
 - [反馈讨论](https://github.com/vitejs/vite/discussions/16358) 我们在此处收集新 API 的反馈。
 - [环境 API PR](https://github.com/vitejs/vite/pull/16471) 新 API 在此处被实现并进行了审查。
 
-请与我们分享您的反馈。
+请与我们分享你的反馈。
 :::
 
 ## 在钩子中访问当前环境 {#accessing-the-current-environment-in-hooks}
@@ -262,7 +262,7 @@ configureServer(server) {
 }
 ```
 
-应用程序端与客户端-服务器通信功能相同。您可以使用 `import.meta.hot` 对象向插件发送消息。
+应用程序端与客户端-服务器通信功能相同。你可以使用 `import.meta.hot` 对象向插件发送消息。
 
 ## 构建钩子中的环境 {#environment-in-build-hooks}
 
