@@ -13,9 +13,11 @@
 请与我们分享你的反馈。
 :::
 
+本页面面向运行时提供者，即将 JavaScript 运行时与 Vite 集成的开发者。这里的运行时是指执行转换后代码的 JavaScript 引擎，例如 Node.js、浏览器、Cloudflare 的 workerd 或 Worker 线程。运行时提供者会将某个运行时的集成封装起来，使框架作者和终端用户（构建应用的开发者）无需自行设置。
+
 ## 环境工厂 {#environment-factories}
 
-环境工厂（Environments factory）旨在由环境提供者（如 Cloudflare）实现，而不是由终端用户实现。环境工厂返回一个 `EnvironmentOptions`，用于在开发和构建环境中使用目标运行时的最常见情况。默认环境选项也可以设置，因此用户无需手动配置。
+环境工厂（Environment factory）旨在由运行时提供者（如 Cloudflare）实现，而不是由终端用户实现。环境工厂返回一个 `EnvironmentOptions`，用于在开发和构建环境中使用目标运行时的最常见情况。还可以设置默认环境选项，使用户无需手动配置。
 
 ```ts
 function createWorkerdEnvironment(
@@ -475,4 +477,13 @@ server.onRequest((request: Request) => {
 
 但请注意，要支持 HMR，必须使用 `send` 和 `connect` 方法。`send` 方法通常在触发自定义事件时调用（如 `import.meta.hot.send("my-event")`）。
 
-Vite 从主入口导出 `createServerHotChannel`，以支持 Vite SSR 期间的 HMR。
+对于与 Vite 服务器运行在同一 Node.js 进程中的 SSR 环境，Vite 导出了可直接使用的 `HotChannel`：`createServerHotChannel`。
+
+```js
+import { createServerHotChannel, DevEnvironment } from 'vite'
+
+new DevEnvironment(name, config, {
+  hot: true,
+  transport: createServerHotChannel(),
+})
+```

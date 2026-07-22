@@ -43,7 +43,7 @@ Vite 已被 OpenAI、Google、Apple、Microsoft、NASA、Shopify、Cloudflare、
 
 ### 加速 Vite 生态系统 {#speeding-up-the-vite-ecosystem}
 
-上个月，[StackBlitz](https://stackblitz.com) 再次主办了第三届 [ViteConf](https://viteconf.org/24/replay)，吸引了整个社区的广泛参与。这是迄今为止规模最大的 Vite 会议，生态系统中的各路开发者齐聚一堂。Evan You 正式宣布成立 [VoidZero](https://staging.voidzero.dev/posts/announcing-voidzero-inc)，这是一家致力于为 JavaScript 生态系统构建开源、高性能和统一开发工具链的公司。VoidZero 推出了 [Rolldown](https://rolldown.rs) 和 [Oxc](https://oxc.rs)，他们的团队正在加紧准备这些工具以供 Vite 采用。想了解 Vite 未来如何借助 Rust 实现更强大的性能，不妨观看 Evan 的主题演讲。
+上个月，[StackBlitz](https://stackblitz.com) 再次主办了第三届 [ViteConf](https://viteconf.org/24/replay)，吸引了整个社区的广泛参与。这是迄今为止规模最大的 Vite 会议，生态系统中的各路开发者齐聚一堂。Evan You 正式宣布成立 [VoidZero](https://voidzero.dev/posts/announcing-voidzero-inc)，这是一家致力于为 JavaScript 生态系统构建开源、高性能和统一开发工具链的公司。VoidZero 推出了 [Rolldown](https://rolldown.rs) 和 [Oxc](https://oxc.rs)，他们的团队正在加紧准备这些工具以供 Vite 采用。想了解 Vite 未来如何借助 Rust 实现更强大的性能，不妨观看 Evan 的主题演讲。
 
 <YouTubeVideo videoId="EKvvptbTx6k?si=EZ-rFJn4pDW3tUvp" />
 

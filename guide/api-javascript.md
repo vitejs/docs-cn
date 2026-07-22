@@ -198,7 +198,7 @@ interface ViteDevServer {
 ```ts
 async function build(
   inlineConfig?: InlineConfig,
-): Promise<RollupOutput | RollupOutput[]>
+): Promise<RolldownOutput | RolldownOutput[] | RolldownWatcher>
 ```
 
 **使用示例：**
@@ -369,7 +369,7 @@ function loadEnv(
 
 **相关内容：** [`.env` 文件](./env-and-mode.md#env-files)
 
-加载 `envDir` 中的 `.env` 文件。默认情况下只有前缀为 `VITE_` 会被加载，除非更改了 `prefixes` 配置。
+加载 `envDir` 中的 `.env` 文件，并将其与 `process.env` 中已有的同名变量合并。默认情况下，只有前缀为 `VITE_` 的环境变量会被加载，除非更改了 `prefixes` 配置。
 
 ## `normalizePath`
 
@@ -433,7 +433,7 @@ async function loadConfigFromFile(
 } | null>
 ```
 
-手动通过 esbuild 加载一份 Vite 配置。
+手动通过 Rolldown 加载一份 Vite 配置。
 
 ## `preprocessCSS`
 

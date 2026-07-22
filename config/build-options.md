@@ -8,7 +8,7 @@
 - **默认：** `'baseline-widely-available'`
 - **相关内容：** [浏览器兼容性](/guide/build#browser-compatibility)
 
-最终软件包的浏览器兼容性目标。默认值是 Vite 的一个特殊值 `'baseline-widely-available'`，该值针对的是包含在 2026 年 1 月 1 日广泛可用的 [Baseline](https://web-platform-dx.github.io/web-features/) 中的浏览器。具体来说，它是 `['chrome111', 'edge111', 'firefox114', 'safari16.4']`。
+最终软件包的浏览器兼容性目标。默认值是 Vite 的一个特殊值 `'baseline-widely-available'`，该值针对的是包含在 2026 年 1 月 1 日广泛可用的 [Baseline](https://web-platform-dx.github.io/web-features/) 中的浏览器。具体来说，它是 `['chrome111', 'edge111', 'firefox114', 'safari16.4', 'ios16.4']`。
 
 另一个特殊值是 `'esnext'` —— 即假设有原生动态导入支持，并只执行最低限度的转译。
 
@@ -146,6 +146,17 @@ npm add -D esbuild
 - **默认：** `false`
 
 构建后是否生成 source map 文件。如果为 `true`，将会创建一个独立的 source map 文件。如果为 `'inline'`，source map 将作为一个 data URI 附加在输出文件中。`'hidden'` 的工作原理与 `true` 相似，只是 bundle 文件中相应的注释将不被保留。
+
+## build.chunkImportMap {#build-chunkimportmap}
+
+- **类型：** `boolean`
+- **默认值：** `false`
+- **实验性**
+- **相关内容：** [代码块导入映射优化](/guide/features#chunk-import-map-optimization)
+
+是否使用导入映射功能优化代码块的缓存效率。
+
+请注意，此选项要求浏览器 [支持 `import.meta.resolve`](https://caniuse.com/mdn-javascript_operators_import_meta_resolve)。如需支持较旧的浏览器，请参阅 [`@vitejs/plugin-legacy`](https://github.com/vitejs/vite/tree/main/packages/plugin-legacy)。
 
 ## build.rolldownOptions {#build-rolldownoptions}
 

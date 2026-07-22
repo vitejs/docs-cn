@@ -205,7 +205,19 @@ resolve: {
 - **类型：** `boolean`
 - **默认：** `false`
 
-启用 tsconfig 路径解析功能。`tsconfig.json` 中的 `paths` 选项将用于解析导入。更多详情请参见[功能](/guide/features.md#paths)。
+启用 tsconfig 路径解析功能。`tsconfig.json` 中的 `paths` 选项将用于解析导入。更多详情请参见 [功能](/guide/features.md#paths)。
+
+`paths` 仅适用于通过 `files` 或 `include` 与 `tsconfig.json` 匹配的文件。非 JS 扩展名的文件应在其中明确列出，因为与 TypeScript 的行为一致，仅使用 `"src"` 或 `"**/*"` 的 `include` 只会匹配 TS/JS 扩展名。例如，要在 CSS 文件中使用 `paths` 别名（如 `@import '@/foo.css'`），请在 `files` 中列出这些文件，或在 `include` 中明确添加扩展名：
+
+```json [tsconfig.json]
+{
+  "include": ["src", "src/**/*.css", "src/**/*.scss"]
+}
+```
+
+::: warning 不支持 Less
+`resolve.tsconfigPaths` 不适用于 `.less` 文件。Less 只会向 Vite 提供导入文件所在的目录，而不会提供文件本身，因此 Vite 无法找到与之匹配的 `tsconfig.json`。在 Less 中使用 `@import` 时，请使用相对路径或 [`resolve.alias`](#resolve-alias)。
+:::
 
 ## html.cspNonce
 
@@ -213,6 +225,48 @@ resolve: {
 - **相关：** [内容安全策略（CSP）](/guide/features#content-security-policy-csp)
 
 一个在生成脚本或样式标签时会用到的 nonce 值占位符。设置此值还会生成一个带有 nonce 值的 meta 标签。
+
+## html.additionalAssetSources {#html-additionalassetsources}
+
+- **类型：** `Record<string, HtmlAssetSource>`
+
+```ts
+interface HtmlAssetSource {
+  srcAttributes?: string[]
+  srcsetAttributes?: string[]
+  filter?: (data: {
+    key: string
+    value: string
+    attributes: Record<string, string>
+  }) => boolean
+}
+```
+
+定义要作为资源来源处理的其他 HTML 元素和属性。这会扩展内置列表，该列表包含 `<img src>`、`<video src>`、`<link href>` 等标准元素。
+
+当自定义 Web 组件或非标准属性（如 `data-*`）引用资源时，此选项非常有用。
+
+**示例：**
+
+```js
+export default defineConfig({
+  html: {
+    additionalAssetSources: {
+      // 自定义 Web 组件
+      'html-import': { srcAttributes: ['src'] },
+      // 为现有元素添加 data-* 属性
+      img: { srcAttributes: ['data-src-dark', 'data-src-light'] },
+      // 使用 srcset 格式
+      'my-picture': { srcsetAttributes: ['data-srcset'] },
+      // 使用过滤函数
+      'my-component': {
+        srcAttributes: ['asset'],
+        filter: ({ attributes }) => attributes.type === 'image',
+      },
+    },
+  },
+})
+```
 
 ## css.modules
 

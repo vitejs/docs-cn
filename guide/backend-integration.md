@@ -179,10 +179,10 @@
    ```
 
    清单中的每个条目代表以下之一：
-   - **Entry chunks**：由 [`build.rolldownOptions.input`](https://rollupjs.org/configuration-options/#input) 中指定的文件生成。这些块的 isEntry 属性设置为 true，其键值是项目根目录的相对 src 路径。
-   - **Dynamic entry chunks**：由动态导入生成。这些块的 isDynamicEntry 属性设置为 true，其键值是项目根目录的相对 src 路径。
+   - **Entry chunks**：由 [`build.rolldownOptions.input`](https://rolldown.rs/reference/InputOptions.input#input) 中指定的文件生成。这些代码块的 `isEntry` 属性设置为 `true`，其键值是相对于项目根目录的 src 路径。
+   - **Dynamic entry chunks**：由动态导入生成。这些代码块的 `isDynamicEntry` 属性设置为 `true`，其键值是相对于项目根目录的 src 路径。
    - **Non-entry chunks**：其键值是生成文件的基本名称加上前缀 `_`。
-   - **Asset chunks**：由导入的资源（例如图片、字体）生成。其键值是项目根目录的相对 src 路径。
+   - **Asset chunks**：由导入的资源（例如图片、字体）生成。其键值是相对于项目根目录的 src 路径。
    - **CSS 文件**：当 [`build.cssCodeSplit`](/config/build-options.md#build-csscodesplit) 为 `false` 时，将生成一个带有 `style.css` 键的 CSS 文件。当 `build.cssCodeSplit` 不为 `false` 时，键的生成方式与 JS 代码块类似（即，入口代码块不带 `_` 前缀，非入口代码块带 `_` 前缀）。
 
    JS 代码块（除了资源或 CSS 之外的代码块）会包含其静态和动态导入的信息（两者都是映射到清单中相应代码块的键）。代码块还会列出其对应的 CSS 和资源文件（如果有的话）。
@@ -270,4 +270,11 @@
    }
    ```
 
+   :::
+
+   ::: info 代码块导入映射支持（实验性）
+
+   如果你正在使用实验性的 [`build.chunkImportMap`](/config/build-options#build-chunkimportmap) 选项，还需要将导入映射注入 HTML。
+
+   导入映射会输出到输出目录中的 `importmap.json`。请确保在所有 `<script type="module">` 标签或 `<link rel="modulepreload">` 标签之前注入 `<script type="importmap">` 标签。
    :::
