@@ -1,6 +1,6 @@
 {
 	"name": "vite-docs-cn",
-	"version": "8.0.0",
+	"version": "8.1.0",
 	"description": "Vite.js documentation Chinese translation.",
 	"repository": "https://github.com/vitejs/docs-cn",
 	"type": "module",
@@ -20,7 +20,7 @@
 		"gsap": "^3.14.2",
 		"lodash": "^4.17.23",
 		"markdown-it-image-size": "^15.0.1",
-		"vite": "^8.0.13",
+		"vite": "^8.1.0",
 		"vitepress": "2.0.0-alpha.17",
 		"vitepress-plugin-graphviz": "^0.1.0",
 		"vitepress-plugin-group-icons": "^1.7.5",
