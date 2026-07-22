@@ -53,7 +53,7 @@ export type { T }
 
 ### TypeScript 编译器选项 {#typescript-compiler-options}
 
-Vite 会参考 `tsconfig.json` 中的一些配置项，并设置相应的 Oxc 转换器选项。对于每个文件，Vite 会使用距离最近的父级目录中的 `tsconfig.json`。如果该 `tsconfig.json` 包含 [`references`](https://www.typescriptlang.org/tsconfig/#references) 字段，Vite 将使用满足 [`include`](https://www.typescriptlang.org/tsconfig/#include) 和 [`exclude`](https://www.typescriptlang.org/tsconfig/#exclude) 字段的被引用配置文件。
+Vite 会参考 `tsconfig.json` 中的一些配置项，并设置相应的 Oxc 转换器选项。对于每个文件，Vite 会使用与该文件匹配且距离最近的父级 `tsconfig.json`，或者使用其 [`references`](https://www.typescriptlang.org/tsconfig/#references) 字段中引用且与该文件匹配的配置。当文件满足配置中的 [`files`](https://www.typescriptlang.org/tsconfig/#files)、[`include`](https://www.typescriptlang.org/tsconfig/#include) 和 [`exclude`](https://www.typescriptlang.org/tsconfig/#exclude) 字段时，Vite 会认为该配置与文件匹配。
 
 当选项同时在 Vite 配置和 `tsconfig.json` 中设置时，Vite 配置中的值优先。
 
@@ -95,13 +95,13 @@ Vite 忽略 `tsconfig.json` 中的 `target` 值，遵循与 [esbuild](https://es
 
 - [TypeScript 文档](https://www.typescriptlang.org/tsconfig#emitDecoratorMetadata)
 
-此选项仅被部分支持。完全支持需要 TypeScript 编译器进行类型推断，而这是不受支持的。详情请参见 [Oxc Transformer 的文档](https://oxc.rs/docs/guide/usage/transformer/typescript#decorators)。
+此选项仅被部分支持。完全支持需要 TypeScript 编译器进行类型推断，而这是不受支持的。详情请参见 [Oxc Transformer 的文档](https://oxc.rs/docs/guide/usage/transformer/typescript.html#decorators)。
 
 #### `paths` {#paths}
 
 - [TypeScript 文档](https://www.typescriptlang.org/tsconfig/#paths)
 
-可以指定 `resolve.tsconfigPaths: true` 来告诉 Vite 使用 `tsconfig.json` 中的 `paths` 选项来解析导入。
+可以指定 [`resolve.tsconfigPaths: true`](/config/shared-options.md#resolve-tsconfigpaths)，让 Vite 使用 `tsconfig.json` 中的 `paths` 选项来解析导入。
 
 需要注意的是，这个功能会有性能损耗，并且 [TypeScript 团队不建议使用这个选项来改变外部工具的行为](https://www.typescriptlang.org/tsconfig/#paths:~:text=Note%20that%20this%20feature%20does%20not%20change%20how%20import%20paths%20are%20emitted%20by%20tsc%2C%20so%20paths%20should%20only%20be%20used%20to%20inform%20TypeScript%20that%20another%20tool%20has%20this%20mapping%20and%20will%20use%20it%20at%20runtime%20or%20when%20bundling.)。
 
@@ -235,7 +235,7 @@ HTML 文件位于 Vite 项目的 [最前端和中心](/guide/#index-html-and-pro
 
 ## JSX {#jsx}
 
-`.jsx` 和 `.tsx` 文件同样开箱即用。JSX 的转译同样是通过 [Oxc 转换器](https://oxc.rs/docs/guide/usage/transformer/) 处理的。
+`.jsx` 和 `.tsx` 文件同样开箱即用。JSX 的转译同样通过 [Oxc 转换器](https://oxc.rs/docs/guide/usage/transformer.html) 处理。
 
 你选择的框架已经可以开箱即用地配置 JSX（例如，Vue 用户应使用官方的 [@vitejs/plugin-vue-jsx](https://github.com/vitejs/vite-plugin-vue/tree/main/packages/plugin-vue-jsx) 插件，它提供了 Vue 3 特定的功能，包括 HMR、全局组件解析、指令和插槽）。
 
@@ -620,6 +620,20 @@ const modulesWithBase = {
 
 如果提供了基础路径，所有生成的模块键值都会被修改为相对于该基础路径。
 
+#### 区分大小写匹配 {#case-sensitive-matching}
+
+默认情况下，glob 模式匹配区分大小写。你可以使用 `caseSensitive` 选项更改此行为：
+
+```ts twoslash
+import 'vite/client'
+// ---cut---
+const modules = import.meta.glob('./dir/module*.js', {
+  caseSensitive: false,
+})
+```
+
+设置 `caseSensitive: false` 后，glob 将忽略大小写匹配文件（例如 `Module.js`、`module.js` 和 `MODULE.js` 都会被 `module*.js` 匹配）。
+
 ### Glob 导入注意事项 {#glob-import-caveats}
 
 请注意：
@@ -649,8 +663,35 @@ const module = await import(`./dir/${file}.js`)
 
 ## WebAssembly {#webassembly}
 
-预编译的 `.wasm` 文件可以通过 `?init` 来导入。
-默认导出一个初始化函数，返回值为所导出 [`WebAssembly.Instance`](https://developer.mozilla.org/en-US/docs/WebAssembly/JavaScript_interface/Instance) 实例对象的 Promise：
+Vite 支持以两种方式导入预编译的 `.wasm` 文件：只需要模块导出时，可以直接将其作为 [ES 模块](#esm-integration) 导入；需要显式控制实例化过程时，可以使用 [`?init`](#manual-initialization)。
+
+### ESM 集成 {#esm-integration}
+
+可以直接导入 `.wasm` 文件。Vite 会从二进制文件中读取模块的导入与导出、将其实例化，并将其导出重新暴露为具名 ES 模块导出：
+
+```js
+import { add } from './add.wasm'
+
+console.log(add(1, 2)) // 3
+```
+
+如果 WebAssembly 模块声明了自己的导入，Vite 会从 JavaScript 模块中解析它们。每个导入的模块名称都会被视为导入说明符（相对于 `.wasm` 文件解析），所请求的成员会自动连接到实例中。
+
+此行为遵循 [WebAssembly/ES 模块集成提案](https://github.com/WebAssembly/esm-integration)。由于 WebAssembly 模块是异步实例化的，直接导入的 `.wasm` 文件会作为异步模块运行，并要求支持顶层 `await`。
+
+::: tip TypeScript 支持
+
+由于 `.wasm` 文件的类型未知，TypeScript 会报告类似 `Module '"*.wasm"' has no exported member 'add'` 的错误。要解决此问题，请在 `tsconfig.json` 中启用 [`allowArbitraryExtensions`](https://www.typescriptlang.org/tsconfig/#allowArbitraryExtensions)，并在 `.wasm` 文件旁创建声明文件。启用 `allowArbitraryExtensions` 后，TypeScript 在解析 `.wasm` 导入时会查找名为 `{filename}.d.wasm.ts` 的声明文件。例如，对于 `add.wasm`，请创建 `add.d.wasm.ts`：
+
+```ts [add.d.wasm.ts]
+export function add(a: number, b: number): number
+```
+
+:::
+
+### 手动初始化 {#manual-initialization}
+
+当你需要控制模块实例化的时机和方式时，请使用 `?init` 导入。默认导出是一个初始化函数，它返回 [`WebAssembly.Instance`](https://developer.mozilla.org/en-US/docs/WebAssembly/JavaScript_interface/Instance) 实例对象的 Promise：
 
 ```js twoslash
 import 'vite/client'
@@ -681,14 +722,9 @@ init({
 
 在生产构建当中，体积小于 `assetInlineLimit` 的 `.wasm` 文件将会被内联为 base64 字符串。否则，它们将被视为 [静态资源](./assets) ，并按需获取。
 
-::: tip 注意
-[对 WebAssembly 的 ES 模块集成提案](https://github.com/WebAssembly/esm-integration) 尚未支持。
-请使用 [`vite-plugin-wasm`](https://github.com/Menci/vite-plugin-wasm) 或其他社区上的插件来处理。
-:::
+::: warning SSR 构建仅支持与 Node.js 兼容的运行时
 
-::: warning 对于 SSR 构建，仅支持与 Node.js 兼容的运行时。
-
-由于缺乏通用的文件加载方式，`.wasm?init` 的内部实现依赖于 `node:fs` 模块。这意味着此功能仅适用于 Node.js 兼容的 SSR 构建运行时环境。
+由于缺少通用的文件加载方式，直接导入 `.wasm` 和使用 `.wasm?init` 的内部实现都依赖 `node:fs` 模块。这意味着在 SSR 构建中，这些功能仅适用于与 Node.js 兼容的运行时。
 
 :::
 
@@ -730,7 +766,7 @@ const worker = new Worker(new URL('./worker.js', import.meta.url), {
 })
 ```
 
-只有在 `new Worker()` 声明中直接使用 `new URL()` 构造函数时，worker 线程的检测才会生效。此外，所有选项参数必须是静态值（即字符串字面量）。
+只有在 `new Worker()` 声明中直接使用 `new URL()` 构造函数时，worker 线程检测才会生效。否则，它会被作为 [静态资源 URL](./assets#new-url-url-import-meta-url) 处理。此外，所有选项参数都必须是静态值（即字符串字面量）。
 
 ### 带有查询后缀的导入 {#import-with-query-suffixes}
 
@@ -824,7 +860,7 @@ MIT License
 
 ## 构建优化 {#build-optimizations}
 
-> 下面所罗列的功能会自动应用为构建过程的一部分，除非你想禁用它们，否则没有必要显式配置。
+> 除实验性的代码块导入映射功能外，下面所列的功能都会自动应用为构建过程的一部分。除非你想禁用它们，否则无需显式配置。
 
 ### CSS 代码分割 {#css-code-splitting}
 
@@ -858,3 +894,21 @@ Entry ---> (A + C)
 ```
 
 `C` 也可能有更深的导入，在未优化的场景中，这会导致更多的网络往返。Vite 的优化会跟踪所有的直接导入，无论导入的深度如何，都能够完全消除不必要的往返。
+
+### 代码块导入映射优化 {#chunk-import-map-optimization}
+
+为了提高代码块的缓存命中率，Vite 可以为代码块创建导入映射，从而避免 ES 模块中缓存级联失效的问题。
+
+例如，考虑以下场景：
+
+```
+Entry --> A ---> C
+```
+
+如果更新了 `C`，本质上只有代码块 `C` 的缓存需要失效。但是，如果 `A` 在静态导入中通过普通 URL 引用 `C`（即 URL 中包含 `C` 的哈希），`A` 的内容也会发生变化，因此 `A` 的缓存同样需要失效。`Entry` 也是如此。
+
+使用导入映射功能可以避免此问题。启用此优化后，Vite 会创建一个将每个代码块 ID 映射到其 URL 的导入映射，并在导入语句中使用代码块 ID 而不是 URL。这样，当某个代码块更新时，只需使该代码块的缓存失效，引用它的代码块不会失效。
+
+请注意，此优化目前不适用于 CSS 和资源。更新资源时，引用它的代码块缓存会失效。不过，失效不会继续级联，导入该失效代码块的其他代码块不会失效。
+
+要启用此功能，请将 [`build.chunkImportMap`](/config/build-options.md#build-chunkimportmap) 设置为 `true`。

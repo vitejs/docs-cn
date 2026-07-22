@@ -19,7 +19,13 @@
 
 ### `RunnableDevEnvironment`
 
-`RunnableDevEnvironment` 是一种能够传递任意值的环境。隐式 `ssr` 环境及其他非客户端环境在开发阶段默认使用 `RunnableDevEnvironment`。虽然这要求运行时与 Vite 服务器运行的环境一致，但其工作原理与 `ssrLoadModule` 类似，并允许框架迁移并为其 SSR 开发流程启用 HMR。你可以通过 `isRunnableDevEnvironment` 函数对任何可运行环境进行保护。
+`RunnableDevEnvironment` 是一种能够在环境与应用代码之间传递任意 JavaScript 值的环境。导入模块时，它会返回真实且可直接使用的导出值（函数、类实例及其他任何值），因此框架可以直接运行服务端入口。隐式 `ssr` 环境及其他非客户端环境在开发阶段默认使用 `RunnableDevEnvironment`。你可以使用 `isRunnableDevEnvironment` 函数来保护对 runner 的访问。
+
+它的 `runner` 是一个 `ModuleRunner`。你可以通过 `runner.import(url)` 导入模块：该方法会从 Vite 模块图中获取、转换并执行模块（`url` 可以是文件路径、服务器路径或相对于根目录的 id），然后返回支持完整 HMR 的实例化模块。它是 `server.ssrLoadModule` 的现代替代方案，框架可以迁移到此 API，为 SSR 开发流程启用 HMR。
+
+::: info 为何它能够传递任意值
+`RunnableDevEnvironment` 与 Vite 服务器在同一运行时中执行模块，因此值可以在进程内跨越边界，而无需序列化。这正是它与 [`FetchableDevEnvironment`](#fetchabledevenvironment) 的区别，后者只能通过 Fetch API 传递序列化后的 `Request`/`Response` 对象。因此，使用 `RunnableDevEnvironment` 时，runner 的运行时必须与 Vite 服务器所在的运行时相同。
+:::
 
 ```ts
 export class RunnableDevEnvironment extends DevEnvironment {
@@ -120,6 +126,8 @@ if (import.meta.hot) {
 :::
 
 `FetchableDevEnvironment` 是一种可以通过 [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Window/fetch) 接口与运行时进行通信的环境。由于 `RunnableDevEnvironment` 仅能在有限的运行时环境中实现，我们建议使用 `FetchableDevEnvironment` 替代 `RunnableDevEnvironment`。
+
+一个常见用例是框架需要支持无法直接运行 Vite 的运行时（例如 Cloudflare Workers）。这种场景无法使用 `RunnableDevEnvironment`，因为它要求 runner 与 Vite 服务器共享同一运行时，以便值在进程内跨越边界。基于 Fetch API 的标准化方案使框架可以在所有目标运行时中复用同一套请求处理流程：开发中间件将每个浏览器请求作为 `Request` 转发，再将返回的 `Response` 发送回浏览器，从而与生产环境中的应用请求处理方式保持一致。
 
 该环境通过 `handleRequest` 方法提供了一种标准化的请求处理方式：
 
@@ -305,7 +313,11 @@ export function createHandler(input) {
 
 在命令行接口中，调用 `vite build` 和 `vite build --ssr` 仍将只构建客户端和仅 ssr 环境以保证向后兼容性。
 
-当 `builder` 选项不为 `undefined` 时（或者调用 `vite build --app`）时，`vite build` 将选择构建整个应用。这将在未来的主要版本中成为默认设置。将创建一个 `ViteBuilder` 实例（构建时等同于 `ViteDevServer`），用于为生产环境构建所有配置的环境。默认情况下，环境的构建按照 `environments` 记录的顺序依次运行。框架或用户可以进一步使用 `builder.buildApp` 选项配置环境的构建方式：
+设置 `builder` 选项后（即使设为空对象 `{}`，`vite build --app` 也正是这样做的），`vite build` 将选择构建整个应用。这将在未来的主要版本中成为默认行为。在此模式下，Vite 会创建一个 `ViteBuilder` 实例（构建时等同于 `ViteDevServer`），并用它为生产环境构建所有已配置的环境。默认情况下，各环境会按照 `environments` 记录中的顺序依次构建。
+
+### 使用 `builder.buildApp` 配置应用构建 {#configuring-the-app-build-with-builder-buildapp}
+
+框架或用户可以通过 `builder.buildApp` 选项控制各环境的构建方式。该选项接收 `ViteBuilder` 实例（下例中名为 `builder`），并负责构建各个环境。例如，可以并行构建其中一些环境：
 
 ```js [vite.config.js]
 import { defineConfig } from 'vite'
@@ -322,7 +334,22 @@ export default defineConfig({
 })
 ```
 
-插件还可以定义一个 `buildApp` 钩子。顺序 `'pre'` 和 `null` 在配置的 `builder.buildApp` 之前执行，顺序 `'post'` 钩子在其之后执行。`environment.isBuilt` 可用于检查环境是否已被构建。
+### `buildApp` 插件钩子 {#the-buildapp-plugin-hook}
+
+除 `builder.buildApp` 配置选项外，插件也可以定义 `buildApp` 钩子来参与应用构建。配置选项与插件钩子按固定顺序运行：顺序为 `'pre'` 或 `null` 的钩子最先运行，随后运行已配置的 `builder.buildApp`，最后运行顺序为 `'post'` 的钩子。在钩子中，可以通过 `environment.isBuilt` 判断某个环境是否已经构建，从而避免重复构建。
+
+### 使用 `createBuilder` 以编程方式构建 {#building-programmatically-with-createbuilder}
+
+要从自己的代码中触发应用构建，请使用 `createBuilder`，而不是独立的 `build` 函数。`createBuilder` 在构建阶段相当于 `createServer`：它会解析配置并返回一个 `ViteBuilder`，其 `buildApp` 方法可构建所有已配置的环境。也可以使用 `builder.build(environment)` 单独构建某个环境。
+
+```js [build.js]
+import { createBuilder } from 'vite'
+
+const builder = await createBuilder()
+await builder.buildApp()
+```
+
+对于环境感知的构建，`createBuilder` 取代了独立的 `build` 函数。`build` 仍可作为上述旧版仅客户端构建和仅 SSR 构建的简单入口，但无法构建任意环境。运行 `builder.buildApp()` 等同于以编程方式执行 `vite build --app`。
 
 ## 环境无关的代码 {#environment-agnostic-code}
 
