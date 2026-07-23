@@ -617,7 +617,7 @@ define: {
 ## future {#future}
 
 - **类型：** `Record<string, 'warn' | undefined>`
-- **默认：** [破坏性变更](/changes/)
+- **相关：** [破坏性变更](/changes/)
 
 启用未来的重大变更，为顺利迁移到 Vite 的下一个主要版本做好准备。随着新功能的开发，这个列表可能会随时进行更新、添加或移除。
 
