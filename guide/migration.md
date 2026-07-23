@@ -314,7 +314,7 @@ try {
 
 _此更改仅影响插件作者。_
 
-Rolldown 对 [模块类型](https://rolldown.rs/guide/notable-features#module-types) 提供了实验性支持，类似于 [esbuild 的 `loader` 选项](https://esbuild.github.io/api/#loader)。因此，Rolldown 会根据解析后 `id` 的扩展名自动设置模块类型。如果你在 `load` 或 `transform` 钩子中将其他模块类型的内容转换为 JavaScript，你可能需要在返回值中添加 `moduleType: 'js'`：
+Rolldown 对 [模块类型](https://rolldown.rs/guide/notable-features#module-types) 提供了实验性支持，类似于 [esbuild 的 `loader` 选项](https://esbuild.github.io/api/#loader)。因此，Rolldown 会根据解析后的 `id` 扩展名自动设置模块类型。如果你在 `load` 或 `transform` 钩子中将其他模块类型的内容转换为 JavaScript，你可能需要在返回值中添加 `moduleType: 'js'`：
 
 ```js
 const plugin = {
