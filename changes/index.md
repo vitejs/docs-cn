@@ -1,6 +1,6 @@
 # 破坏性变更 {#breaking-changes}
 
-Vite 中的破坏性变更列表，包括 API 废弃、移除和变更。在你的 Vite 配置中，大多数下面的变更可以使用 [`future` 选项](/config/shared-options.html#future) 进行选择。
+Vite 中的破坏性变更列表，包括 API 废弃、移除和变更。在你的 Vite 配置中，大多数下面的变更可以使用 [`future` 选项](/config/shared-options.html#future) 进行选择性启用。
 
 ## 计划中 {#planned}
 
@@ -16,11 +16,11 @@ Vite 中的破坏性变更列表，包括 API 废弃、移除和变更。在你�
 
 我们目前还不建议你切换到这些 API。我们将它们包含在 Vite 中是为了帮助我们收集反馈。请查看这些提案，并在每个提案相关联的 GitHub Discussions 中告诉我们它们在你的使用场景中的表现如何。
 
-- [迁移到基于环境的API](/changes/per-environment-apis)
+- [迁移到基于环境的 API](/changes/per-environment-apis)
 - [构建过程中的共享插件](/changes/shared-plugins-during-build)
 
 ## 历史 {#past}
 
 以下的变更已经被实施或者撤销。在当前的主要版本中，它们已经不再相关。
 
-- _目前还没有历史的变更_
+- _暂无历史变更_
