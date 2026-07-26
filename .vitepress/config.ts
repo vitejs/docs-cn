@@ -541,6 +541,10 @@ const config = defineConfig({
           import.meta.dirname,
           'theme/components/TopBanner.vue',
         ),
+        '@components/oss/TrustedBy.vue': path.resolve(
+          import.meta.dirname,
+          'theme/components/TrustedBy.vue',
+        ),
       },
     },
     plugins: [
