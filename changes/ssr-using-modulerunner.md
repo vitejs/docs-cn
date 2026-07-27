@@ -9,12 +9,12 @@
 影响范围：`Vite 插件作者`
 
 ::: warning 即将废弃
-`ModuleRunner` 最初在 `v6.0` 版本中被引入。我们计划在未来的主要版本中废弃 `server.ssrLoadModule`。如果想识别你的使用情况，可以在你的 vite 配置文件中将 `future.removeSsrLoadModule` 设置为 `"warn"`。
+`ModuleRunner` 最初在 `v6.0` 版本中被引入。我们计划在未来的主要版本中废弃 `server.ssrLoadModule`。如果想识别你的使用情况，可以在你的 Vite 配置文件中将 `future.removeSsrLoadModule` 设置为 `"warn"`。
 :::
 
 ## 动机 {#motivation}
 
-`server.ssrLoadModule(url)` 仅允许在 `ssr` 环境中导入模块，并且只能在与 Vite 开发服务器相同的进程中执行这些模块。对于具有自定义环境的应用程序，每个环境都关联一个 `ModuleRunner`，该模块可能在单独的线程或进程中运行。为了导入模块，我们现在使用 `moduleRunner.import(url)`。
+`server.ssrLoadModule(url)` 仅允许在 `ssr` 环境中导入模块，并且只能在与 Vite 开发服务器相同的进程中执行这些模块。对于具有自定义环境的应用程序，每个环境都关联一个可能在单独的线程或进程中运行的 `ModuleRunner`。为了导入模块，我们现在使用 `moduleRunner.import(url)`。
 
 ## 迁移指南 {#migration-guide}
 

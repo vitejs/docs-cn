@@ -25,17 +25,17 @@ export function useSponsor() {
         items: sponsors.main,
       },
       {
-        tier: 'In partnership with',
+        tier: '特别赞助商',
         size: 'big',
         items: sponsors.partnership,
       },
       {
-        tier: 'Platinum Sponsors',
+        tier: '铂金赞助商',
         size: 'big',
         items: sponsors.platinum,
       },
       {
-        tier: 'Gold Sponsors',
+        tier: '金牌赞助商',
         size: 'medium',
         items: sponsors.gold,
       },
