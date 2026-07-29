@@ -90,6 +90,8 @@ const config = defineConfig({
   },
 
   themeConfig: {
+    lightModeSwitchTitle: '切换到浅色模式',
+    darkModeSwitchTitle: '切换到深色模式',
     variant: 'vite',
     banner: {
       id: 'cloudflare-supports-vite',
@@ -124,6 +126,9 @@ const config = defineConfig({
             buttonAriaLabel: '搜索'
           },
           modal: {
+            displayDetails: '显示详细列表',
+            resetButtonTitle: '重置搜索',
+            noResultsText: '没有结果',
             footer: {
               selectText: '选择',
               navigateText: '切换',
