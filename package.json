@@ -28,7 +28,7 @@
 		"vue-tsc": "^3.3.8",
 		"yorkie": "^2.0.0"
 	},
-	"packageManager": "pnpm@9.6.0",
+	"packageManager": "pnpm@10.34.5",
 	"engines": {
 		"node": "^20.19.0 || >=22.12.0"
 	},
