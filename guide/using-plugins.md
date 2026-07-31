@@ -8,7 +8,7 @@ Vite 可以使用插件进行扩展，这得益于 Rollup 优秀的插件接口�
 
 若要使用一个插件，需要将它添加到项目的 `devDependencies` 并在 `vite.config.js` 配置文件中的 `plugins` 数组中引入它。例如，要想为传统浏览器提供支持，可以按下面这样使用官方插件 [@vitejs/plugin-legacy](https://github.com/vitejs/vite/tree/main/packages/plugin-legacy)：
 
-```
+```bash
 $ npm add -D @vitejs/plugin-legacy
 ```
 

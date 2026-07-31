@@ -13,6 +13,14 @@
 请与我们分享你的反馈。
 :::
 
+## 环境钩子与全局钩子 {#per-environment-hooks-and-global-hooks}
+
+插件在共享管道中运行，但它们的钩子分为两类，取决于它们是针对整个服务器运行一次，还是针对每个环境运行一次。
+
+全局钩子只调用一次，与配置了多少个环境无关。它们处理解析配置、设置开发和预览服务器等应用级事务，因此 `this.environment` 与这些钩子无关。与配置解析和服务器相关的钩子都属于全局钩子。
+
+环境钩子会为每个环境各调用一次，并在其上下文中通过 `this.environment` 暴露当前环境。所有 [Rolldown 钩子](/guide/api-plugin#universal-hooks) 都是环境钩子，其他处理模块的 Vite 专有钩子也是如此。但请注意，除非设置 [`perEnvironmentStartEndDuringDev: true`](#per-environment-state-in-plugins) 标志，否则 `buildStart` 和 `buildEnd` 只会为客户端环境调用。
+
 ## 在钩子中访问当前环境 {#accessing-the-current-environment-in-hooks}
 
 在 Vite 6 之前，由于只有两个环境（`client` 和 `ssr`），一个 `ssr` 布尔值足以在 Vite API 中识别当前环境。插件钩子在最后的选项参数中接收一个 `ssr` 布尔值，多个 API 也期望通过一个可选的 `ssr` 参数来正确地将模块关联到对应的环境（例如 `server.moduleGraph.getModuleByUrl(url, { ssr })`）。
@@ -49,7 +57,13 @@ Vite 服务器有一个共享的插件管道，但在处理模块时，它总是
 
 一个空对象就足以注册环境，默认值则来自于根级别的环境配置。
 
-## 使用钩子配置环境 {#configuring-environment-using-hooks}
+<a id="configuring-environment-using-hooks"></a>
+
+## 使用 `configEnvironment` 钩子配置环境 {#configuring-environment-using-the-configenvironment-hook}
+
+- **类型：** `(name: string, config: EnvironmentOptions, env: { mode: string, command: 'build' | 'serve', isSsrBuild?: boolean, isPreview?: boolean, isSsrTargetWebworker?: boolean }) => EnvironmentOptions | null | void`
+- **种类：** `async`、`sequential`
+- **作用域：** [环境](#per-environment-hooks-and-global-hooks)
 
 当 `config` 钩子正在运行时，我们还不知道完整的环境列表，而且环境可以受到来自根级别环境配置的默认值或通过 `config.environments` 记录明确影响。
 插件应使用 `config` 钩子设置默认值。要配置每个环境，可以使用新的 `configEnvironment` 钩子。此钩子会为每个环境调用，并传入其部分解析的配置，包括最终默认值的解析。
@@ -70,7 +84,8 @@ Vite 服务器有一个共享的插件管道，但在处理模块时，它总是
 ## `hotUpdate` 钩子 {#the-hotupdate-hook}
 
 - **类型：** `(this: { environment: DevEnvironment }, options: HotUpdateOptions) => Array<EnvironmentModuleNode> | void | Promise<Array<EnvironmentModuleNode> | void>`
-- **种类:** `async`, `sequential`
+- **种类：** `async`、`sequential`
+- **作用域：** [环境](#per-environment-hooks-and-global-hooks)
 - **查看：** [HMR API](./api-hmr)
 
 `hotUpdate` 钩子允许插件为特定环境执行自定义的 HMR 更新处理。当一个文件发生变化时，会按照 `server.environments` 中的顺序为每个环境依次运行 HMR 算法，因此 `hotUpdate` 钩子会被多次调用。这个钩子会接收一个带有以下签名的上下文对象：
@@ -167,7 +182,13 @@ function PerEnvironmentCountTransformedModulesPlugin() {
 }
 ```
 
-## 基于环境的插件 {#per-environment-plugins}
+<a id="per-environment-plugins"></a>
+
+## 使用 `applyToEnvironment` 钩子的环境插件 {#per-environment-plugins-using-the-applytoenvironment-hook}
+
+- **类型：** `(environment: PartialEnvironment) => boolean | PluginOption | Promise<boolean>`
+- **种类：** `async`、`sequential`
+- **作用域：** [环境](#per-environment-hooks-and-global-hooks)
 
 插件可以使用 `applyToEnvironment` 函数来定义它适用的环境。
 
@@ -280,7 +301,7 @@ configureServer(server) {
 
 在未来的主要版本，我们可以实现完全一致：
 
-- **在开发和构建期间：** 插件是共享的，并可以 [根据环境进行过滤](#per-environment-plugins)
+- **在开发和构建期间：** 插件是共享的，并可以 [根据环境进行过滤](#per-environment-plugins-using-the-applytoenvironment-hook)
 
 在构建期间还会共享一个单一的 `ResolvedConfig` 实例，允许在整个应用构建过程中进行缓存，类似于我们在开发期间使用 `WeakMap<ResolvedConfig, CachedData>` 的方式。
 

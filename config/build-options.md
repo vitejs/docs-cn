@@ -164,6 +164,8 @@ npm add -D esbuild
 
 直接自定义底层 Rolldown 包。这与从 Rolldown 配置文件导出的选项相同，并将与 Vite 的内部 Rolldown 选项合并。更多详情请参阅 [Rolldown 选项文档](https://rolldown.rs/reference/)。
 
+建议设置顶层 [`input`](/config/shared-options#input) 选项，而不是 `build.rolldownOptions.input`，因为顶层选项也会在开发期间使用。如果设置了 `build.rolldownOptions.input`，它将只在构建期间覆盖顶层 `input` 选项。
+
 ## build.rollupOptions {#build-rollupoptions}
 
 - **类型：** `RolldownOptions`
@@ -180,10 +182,10 @@ npm add -D esbuild
 
 ## build.lib {#build-lib}
 
-- **类型：** `{ entry: string | string[] | { [entryAlias: string]: string }, name?: string, formats?: ('es' | 'cjs' | 'umd' | 'iife')[], fileName?: string | ((format: ModuleFormat, entryName: string) => string), cssFileName?: string }`
+- **类型：** `{ entry?: string | string[] | { [entryAlias: string]: string }, name?: string, formats?: ('es' | 'cjs' | 'umd' | 'iife')[], fileName?: string | ((format: ModuleFormat, entryName: string) => string), cssFileName?: string }`
 - **相关内容：** [库模式](/guide/build#library-mode)
 
-以库的形式构建。`entry` 是必需的，因为库不能使用 HTML 作为入口。`name` 是暴露的全局变量，当 `formats` 包括 `'umd'` 或 `'iife'` 时必须使用。默认的 `formats` 为 `['es'、'umd']`，如果使用多个入口，则为 `['es'、'cjs']`。
+以库的形式构建。`entry` 默认为顶层 [`input`](/config/shared-options#input) 选项的值。由于库不能使用 HTML 作为入口，因此必须设置其中一个选项。`name` 是暴露的全局变量，当 `formats` 包括 `'umd'` 或 `'iife'` 时必须设置。默认的 `formats` 为 `['es', 'umd']`；如果使用多个入口，则为 `['es', 'cjs']`。
 
 `fileName` 是软件包输出文件的名称，默认为 `package.json` 中的 `"name"`。它也可以定义为以 `format` 和 `entryName` 为参数的函数，并返回文件名。
 
@@ -280,7 +282,7 @@ export default defineConfig({
 - **默认值：** `false`
 - **相关链接：** [服务端渲染](/guide/ssr)
 
-生成面向 SSR 的构建。此选项的值可以是字符串，用于直接定义 SSR 的入口，也可以为 `true`，但这需要通过设置 `rolldownOptions.input` 来指定 SSR 的入口。
+生成面向 SSR 的构建。此选项的值可以是字符串，用于直接指定 SSR 入口；也可以为 `true`，但这需要通过 [`input`](/config/shared-options#input) 或 `build.rolldownOptions.input` 指定 SSR 入口。
 
 ## build.emitAssets
 

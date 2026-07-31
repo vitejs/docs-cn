@@ -720,7 +720,7 @@ init({
 })
 ```
 
-在生产构建当中，体积小于 `assetInlineLimit` 的 `.wasm` 文件将会被内联为 base64 字符串。否则，它们将被视为 [静态资源](./assets) ，并按需获取。
+在生产构建中，体积小于 `assetsInlineLimit` 的 `.wasm` 文件将被内联为 base64 字符串。否则，它们将被视为 [静态资源](./assets)，并按需获取。
 
 ::: warning SSR 构建仅支持与 Node.js 兼容的运行时
 

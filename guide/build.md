@@ -117,17 +117,13 @@ export default defineConfig({
 在构建过程中，你只需指定多个 `.html` 文件作为入口点即可：
 
 ```js twoslash [vite.config.js]
-import { dirname, resolve } from 'node:path'
+import { resolve } from 'node:path'
 import { defineConfig } from 'vite'
 
 export default defineConfig({
-  build: {
-    rolldownOptions: {
-      input: {
-        main: resolve(import.meta.dirname, 'index.html'),
-        nested: resolve(import.meta.dirname, 'nested/index.html'),
-      },
-    },
+  input: {
+    main: resolve(import.meta.dirname, 'index.html'),
+    nested: resolve(import.meta.dirname, 'nested/index.html'),
   },
 })
 ```
@@ -145,7 +141,7 @@ export default defineConfig({
 ::: code-group
 
 ```js twoslash [vite.config.js (单入口)]
-import { dirname, resolve } from 'node:path'
+import { resolve } from 'node:path'
 import { defineConfig } from 'vite'
 
 export default defineConfig({
@@ -173,7 +169,7 @@ export default defineConfig({
 ```
 
 ```js twoslash [vite.config.js (多入口)]
-import { dirname, resolve } from 'node:path'
+import { resolve } from 'node:path'
 import { defineConfig } from 'vite'
 
 export default defineConfig({

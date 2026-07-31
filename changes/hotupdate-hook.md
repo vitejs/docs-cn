@@ -4,7 +4,7 @@
 可以在 [环境 API 讨论](https://github.com/vitejs/vite/discussions/16358) 中向我们提供反馈
 :::
 
-我们计划废弃 `handleHotUpdate` 插件钩子，转而使用能够感知 [环境 API](/guide/api-environment.md) 的 [`hotUpdate` 钩子](/guide/api-environment#the-hotupdate-hook)，并通过 `create` 和 `delete` 来处理额外的监听事件。
+我们计划废弃 `handleHotUpdate` 插件钩子，转而使用能够感知 [环境 API](/guide/api-environment.md) 的 [`hotUpdate` 钩子](/guide/api-environment-plugins#the-hotupdate-hook)，并通过 `create` 和 `delete` 来处理额外的监听事件。
 
 影响范围：`Vite 插件作者`
 

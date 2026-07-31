@@ -34,6 +34,22 @@
 
 查看 [环境变量与模式](/guide/env-and-mode) 章节获取更多细节。
 
+## input <NonInheritBadge /> {#input}
+
+- **类型：** `string | string[] | { [entryAlias: string]: string }`
+
+应用的入口点，相对于项目根目录解析。如果没有显式设置相应选项，它将用作 [`build.rolldownOptions.input`](/config/build-options#build-rolldownoptions)、[`build.lib.entry`](/config/build-options#build-lib)、[`build.ssr`](/config/build-options#build-ssr)（值为 `true` 时）以及 [`optimizeDeps.entries`](/config/dep-optimization-options#optimizedeps-entries) 的默认值。
+
+当应用不使用 `index.html` 作为入口时，此选项非常有用。你只需在此声明一次入口，而不必在上述各个选项中重复配置。
+
+```js twoslash [vite.config.js]
+import { defineConfig } from 'vite'
+
+export default defineConfig({
+  input: 'src/main.ts',
+})
+```
+
 ## define {#define}
 
 - **类型：** `Record<string, any>`
@@ -282,8 +298,7 @@ export default defineConfig({
     globalModulePaths?: RegExp[]
     exportGlobals?: boolean
     generateScopedName?:
-      | string
-      | ((name: string, filename: string, css: string) => string)
+      string | ((name: string, filename: string, css: string) => string)
     hashPrefix?: string
     /**
      * 默认：undefined
