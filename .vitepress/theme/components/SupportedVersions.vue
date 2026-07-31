@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue'
+import VersionsList from './VersionsList.vue'
 
 declare const __VITE_VERSION__: string
 
@@ -86,15 +87,6 @@ function computeSupportInfo(
   }
 }
 
-function versionsToText(versions: string[]) {
-  versions = versions.map((v) => `<code>vite@${v}</code>`)
-  if (versions.length === 0) return ''
-  if (versions.length === 1) return versions[0]
-  return (
-    versions.slice(0, -1).join(', ') + ' 和 ' + versions[versions.length - 1]
-  )
-}
-
 function isValidViteVersion(version: string) {
   if (version.length === 1) version += '.'
   // Vite 0.x shouldn't be mentioned, and Vite 1.x was never released
@@ -108,15 +100,15 @@ function isValidViteVersion(version: string) {
     <ul>
       <li v-if="supportInfo.regularPatches.length">
         定期发布补丁
-        <span v-html="versionsToText(supportInfo.regularPatches)"></span>。
+        <VersionsList :versions="supportInfo.regularPatches" />。
       </li>
       <li v-if="supportInfo.importantFixes.length">
         重要的修复和安全补丁向后移植到
-        <span v-html="versionsToText(supportInfo.importantFixes)"></span>。
+        <VersionsList :versions="supportInfo.importantFixes" />。
       </li>
       <li v-if="supportInfo.securityPatches.length">
         安全补丁也被向后移植到
-        <span v-html="versionsToText(supportInfo.securityPatches)"></span>。
+        <VersionsList :versions="supportInfo.securityPatches" />。
       </li>
       <li>
        之前的所有版本都不再支持。用户应升级，以获得更新。
