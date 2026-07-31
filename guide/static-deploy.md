@@ -162,7 +162,7 @@ Netlify 命令行工具（CLI）会为你提供一个预览链接，供你查看
 3. Vercel 会检测到你正在使用 Vite，并会为你的部署开启相应的正确配置。
 4. 你的应用被部署好了！（示例：[vite-vue-template.vercel.app](https://vite-vue-template.vercel.app/)）
 
-在你的项目被导入和部署后，所有对分支的后续推送都会生成 [预览部署](https://vercel.com/docs/deployments/environments#preview-environment-pre-production)，而所有对生产分支（通常是“main”）的更改都会生成一次 [生产部署](https://vercel.com/docs/deployments/environments#production-environment)。
+在你的项目被导入和部署后，所有对分支的后续推送都会生成 [预览部署](https://vercel.com/docs/deployments/environments#preview-environment-pre-production)，而所有对生产分支（通常是 "main"）的更改都会生成一次 [生产部署](https://vercel.com/docs/deployments/environments#production-environment)。
 
 查看 Vercel 的 [Git 集成](https://vercel.com/docs/concepts/git) 了解更多细节。
 
