@@ -40,7 +40,7 @@ function CountTransformedModulesPlugin() {
 
 如果我们想要计算每个环境中已转换模块的数量，我们需要维护一个映射表。
 
-```js
+```ts
 function PerEnvironmentCountTransformedModulesPlugin() {
   const state = new Map<Environment, { count: number }>()
   return {
@@ -48,20 +48,20 @@ function PerEnvironmentCountTransformedModulesPlugin() {
     perEnvironmentStartEndDuringDev: true,
     buildStart() {
       state.set(this.environment, { count: 0 })
-    }
+    },
     transform(id) {
       state.get(this.environment).count++
     },
     buildEnd() {
       console.log(this.environment.name, state.get(this.environment).count)
-    }
+    },
   }
 }
 ```
 
 为了简化这种模式，Vite 导出了一个 `perEnvironmentState` 助手：
 
-```js
+```ts
 function PerEnvironmentCountTransformedModulesPlugin() {
   const state = perEnvironmentState<{ count: number }>(() => ({ count: 0 }))
   return {
@@ -69,13 +69,13 @@ function PerEnvironmentCountTransformedModulesPlugin() {
     perEnvironmentStartEndDuringDev: true,
     buildStart() {
       state(this).count = 0
-    }
+    },
     transform(id) {
       state(this).count++
     },
     buildEnd() {
       console.log(this.environment.name, state(this).count)
-    }
+    },
   }
 }
 ```

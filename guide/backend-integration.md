@@ -12,6 +12,8 @@
    import { defineConfig } from 'vite'
    // ---cut---
    export default defineConfig({
+     // 覆盖默认的 .html 入口
+     input: '/path/to/main.js',
      server: {
        cors: {
          // 通过浏览器访问的源
@@ -21,11 +23,7 @@
      build: {
        // 在 outDir 中生成 .vite/manifest.json
        manifest: true,
-       rolldownOptions: {
-         // 覆盖默认的 .html 入口
-         input: '/path/to/main.js'
-       }
-     }
+     },
    })
    ```
 

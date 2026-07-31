@@ -122,7 +122,7 @@ vite preview [root]
 | `--port <port>`           | 指定端口 (`number`)                                                                                                                        |
 | `--strictPort`            | 如果指定的端口已在使用中，则退出 (`boolean`)                                                                                               |
 | `--open [path]`           | 启动时打开浏览器 (`boolean \| string`)                                                                                                     |
-| `--outDir <dir>`          | 输出目录（默认为：`dist`)(`string`)                                                                                                        |
+| `--outDir <dir>`          | 输出目录（默认为：`dist`） (`string`)                                                                                                        |
 | `-c, --config <file>`     | 使用指定的配置文件 (`string`)                                                                                                              |
 | `--base <path>`           | 公共基础路径（默认为：`/`）(`string`)                                                                                                      |
 | `-l, --logLevel <level>`  | Info \| warn \| error \| silent (`string`)                                                                                                 |

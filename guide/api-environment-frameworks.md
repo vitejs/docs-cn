@@ -336,6 +336,10 @@ export default defineConfig({
 
 ### `buildApp` 插件钩子 {#the-buildapp-plugin-hook}
 
+- **类型：** `(this: MinimalPluginContextWithoutEnvironment, builder: ViteBuilder) => Promise<void>`
+- **种类：** `async`、`sequential`
+- **作用域：** [全局](/guide/api-environment-plugins#per-environment-hooks-and-global-hooks)
+
 除 `builder.buildApp` 配置选项外，插件也可以定义 `buildApp` 钩子来参与应用构建。配置选项与插件钩子按固定顺序运行：顺序为 `'pre'` 或 `null` 的钩子最先运行，随后运行已配置的 `builder.buildApp`，最后运行顺序为 `'post'` 的钩子。在钩子中，可以通过 `environment.isBuilt` 判断某个环境是否已经构建，从而避免重复构建。
 
 ### 使用 `createBuilder` 以编程方式构建 {#building-programmatically-with-createbuilder}

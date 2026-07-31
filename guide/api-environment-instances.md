@@ -49,7 +49,7 @@ class DevEnvironment {
    */
   moduleGraph: EnvironmentModuleGraph
   /**
-   * 为此环境解析的插件，包括使用按环境的
+   * 为此环境解析的插件，包括使用环境的
    * `create` 钩子创建的插件。
    */
   plugins: Plugin[]
