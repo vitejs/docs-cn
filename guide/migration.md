@@ -4,11 +4,7 @@
 
 ## 浏览器兼容性目标变更 [<Badge text="NRV" type="warning" />](#migration-from-v7) {#default-browser-target-change}
 
-<<<<<<< HEAD
 `build.target` 和 `'baseline-widely-available'` 的默认浏览器值已更新为较新的浏览器版本：
-=======
-The default browser values of `build.target` and `'baseline-widely-available'` are updated to newer browser versions:
->>>>>>> f20ccf26c18fd25a494324afdb696d2740bd9720
 
 - Chrome 107 → 111
 - Edge 107 → 111
@@ -236,39 +232,22 @@ Lightning CSS 能更好地进行语法降级，但 CSS 构建产物的体积可�
 
 如果符合以下条件之一，则 `default` 导入是被导入的 CJS 模块的 `module.exports` 值。否则，`default` 导入是被导入的 CJS 模块的 `module.exports.default` 值：
 
-<<<<<<< HEAD
 - 导入者是 `.mjs` 或 `.mts` 文件。
 - 导入者最近的 `package.json` 文件中 `type` 字段设置为 `module`。
 - 被导入的 CJS 模块的 `module.exports.__esModule` 值未设置为 `true`。
-=======
-- The importer is `.mjs` or `.mts`.
-- The closest `package.json` for the importer has a `type` field set to `module`.
-- The `module.exports.__esModule` value of the importee CJS module is not set to `true`.
->>>>>>> f20ccf26c18fd25a494324afdb696d2740bd9720
 
 ::: details 之前的行为
 
 在开发环境中，如果符合以下条件之一，则 `default` 导入是被导入的 CJS 模块的 `module.exports` 值。否则，`default` 导入是被导入的 CJS 模块的 `module.exports.default` 值：
 
-<<<<<<< HEAD
 - _导入者包含在依赖优化中_ 且为 `.mjs` 或 `.mts` 文件。
 - _导入者包含在依赖优化中_ 且导入者最近的 `package.json` 文件中 `type` 字段设置为 `module`。
 - 被导入的 CJS 模块的 `module.exports.__esModule` 值未设置为 `true`。
-=======
-- _The importer is included in the dependency optimization_ and `.mjs` or `.mts`.
-- _The importer is included in the dependency optimization_ and the closest `package.json` for the importer has a `type` field set to `module`.
-- The `module.exports.__esModule` value of the importee CJS module is not set to `true`.
->>>>>>> f20ccf26c18fd25a494324afdb696d2740bd9720
 
 在构建时，条件为：
 
-<<<<<<< HEAD
 - 被导入的 CJS 模块的 `module.exports.__esModule` 值未设置为 `true`。
 - _`module.exports` 的 `default` 属性不存在_。
-=======
-- The `module.exports.__esModule` value of the importee CJS module is not set to `true`.
-- _`default` property of `module.exports` does not exist_.
->>>>>>> f20ccf26c18fd25a494324afdb696d2740bd9720
 
 （假设 [`build.commonjsOptions.defaultIsModuleExports`](https://github.com/rollup/plugins/tree/master/packages/commonjs#defaultismoduleexports) 保持为默认值 `'auto'`。）
 
@@ -384,7 +363,6 @@ const plugin = {
 - Rolldown 尚未支持以下功能，因此 Vite 也不再支持这些功能：
   - `build.rollupOptions.output.format: 'system'` ([rolldown#2387](https://github.com/rolldown/rolldown/issues/2387))
   - `build.rollupOptions.output.format: 'amd'` ([rolldown#2528](https://github.com/rolldown/rolldown/issues/2528))
-<<<<<<< HEAD
   - `shouldTransformCachedModule` 钩子 ([rolldown#4389](https://github.com/rolldown/rolldown/issues/4389))
   - `resolveImportMeta` 钩子 ([rolldown#1010](https://github.com/rolldown/rolldown/issues/1010))
   - `renderDynamicImport` 钩子 ([rolldown#4532](https://github.com/rolldown/rolldown/issues/4532))
@@ -392,15 +370,6 @@ const plugin = {
 - `parseAst` / `parseAstAsync` 函数现在已被弃用，推荐使用功能更多的 `parseSync` / `parse` 函数。
 - 注释会在 `renderChunk` 钩子之前被移除，而不是之后。
 - [此处](https://rolldown.rs/reference/OutputOptions.comments) 列出之外的注释都会被移除，而 Rollup 只会在相邻代码被移除时才删除注释。
-=======
-  - `shouldTransformCachedModule` hook ([rolldown#4389](https://github.com/rolldown/rolldown/issues/4389))
-  - `resolveImportMeta` hook ([rolldown#1010](https://github.com/rolldown/rolldown/issues/1010))
-  - `renderDynamicImport` hook ([rolldown#4532](https://github.com/rolldown/rolldown/issues/4532))
-  - `resolveFileUrl` hook
-- `parseAst` / `parseAstAsync` functions are now deprecated in favor of `parseSync` / `parse` functions which have more features.
-- comments are removed before the `renderChunk` hook instead of after the `renderChunk` hook
-- comments other than the ones listed [here](https://rolldown.rs/reference/OutputOptions.comments) are moved, while Rollup only removes comments if the adjacent code is removed
->>>>>>> f20ccf26c18fd25a494324afdb696d2740bd9720
 
 ## 从 v6 迁移 {#migration-from-v6}
 

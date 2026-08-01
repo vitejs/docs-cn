@@ -13,19 +13,7 @@
 请与我们分享你的反馈。
 :::
 
-<<<<<<< HEAD
 ## 环境钩子与全局钩子 {#per-environment-hooks-and-global-hooks}
-=======
-## Per-environment Hooks and Global Hooks
-
-Plugins run on a shared pipeline, but their hooks fall into two categories depending on whether they run once for the whole server or once for each environment.
-
-Global hooks are called a single time, independent of the configured environments. They handle app-wide concerns such as resolving the config or setting up the dev and preview servers, so `this.environment` is not relevant to them. Config resolution related hooks and server related hooks are global hooks.
-
-Per-environment hooks are called once for each environment, and expose the current environment through `this.environment` in their context. All [universal hooks](/guide/api-plugin#universal-hooks) are per-environment, as are other Vite-specific hooks that handle modules. However, note that `buildStart` and `buildEnd` are only called for the client environment without [the `perEnvironmentStartEndDuringDev: true` flag](##per-environment-state-in-plugins).
-
-## Accessing the Current Environment in Hooks
->>>>>>> f20ccf26c18fd25a494324afdb696d2740bd9720
 
 插件在共享管道中运行，但它们的钩子分为两类，取决于它们是针对整个服务器运行一次，还是针对每个环境运行一次。
 
@@ -69,15 +57,7 @@ Vite 服务器有一个共享的插件管道，但在处理模块时，它总是
 
 一个空对象就足以注册环境，默认值则来自于根级别的环境配置。
 
-<<<<<<< HEAD
 <a id="configuring-environment-using-hooks"></a>
-=======
-## Configuring Environment Using the `configEnvironment` Hook
-
-- **Type:** `(name: string, config: EnvironmentOptions, env: { mode: string, command: 'build' | 'serve', isSsrBuild?: boolean, isPreview?: boolean, isSsrTargetWebworker?: boolean }) => EnvironmentOptions | null | void`
-- **Kind:** `async`, `sequential`
-- **Scope:** [Per-environment](#per-environment-hooks-and-global-hooks)
->>>>>>> f20ccf26c18fd25a494324afdb696d2740bd9720
 
 ## 使用 `configEnvironment` 钩子配置环境 {#configuring-environment-using-the-configenvironment-hook}
 
@@ -103,17 +83,10 @@ Vite 服务器有一个共享的插件管道，但在处理模块时，它总是
 
 ## `hotUpdate` 钩子 {#the-hotupdate-hook}
 
-<<<<<<< HEAD
 - **类型：** `(this: { environment: DevEnvironment }, options: HotUpdateOptions) => Array<EnvironmentModuleNode> | void | Promise<Array<EnvironmentModuleNode> | void>`
 - **种类：** `async`、`sequential`
 - **作用域：** [环境](#per-environment-hooks-and-global-hooks)
 - **查看：** [HMR API](./api-hmr)
-=======
-- **Type:** `(this: { environment: DevEnvironment }, options: HotUpdateOptions) => Array<EnvironmentModuleNode> | void | Promise<Array<EnvironmentModuleNode> | void>`
-- **Kind:** `async`, `sequential`
-- **Scope:** [Per-environment](#per-environment-hooks-and-global-hooks)
-- **See also:** [HMR API](./api-hmr)
->>>>>>> f20ccf26c18fd25a494324afdb696d2740bd9720
 
 `hotUpdate` 钩子允许插件为特定环境执行自定义的 HMR 更新处理。当一个文件发生变化时，会按照 `server.environments` 中的顺序为每个环境依次运行 HMR 算法，因此 `hotUpdate` 钩子会被多次调用。这个钩子会接收一个带有以下签名的上下文对象：
 
@@ -209,15 +182,7 @@ function PerEnvironmentCountTransformedModulesPlugin() {
 }
 ```
 
-<<<<<<< HEAD
 <a id="per-environment-plugins"></a>
-=======
-## Per-environment Plugins Using the `applyToEnvironment` Hook
-
-- **Type:** `(environment: PartialEnvironment) => boolean | PluginOption | Promise<boolean>`
-- **Kind:** `async`, `sequential`
-- **Scope:** [Per-environment](#per-environment-hooks-and-global-hooks)
->>>>>>> f20ccf26c18fd25a494324afdb696d2740bd9720
 
 ## 使用 `applyToEnvironment` 钩子的环境插件 {#per-environment-plugins-using-the-applytoenvironment-hook}
 
@@ -336,11 +301,7 @@ configureServer(server) {
 
 在未来的主要版本，我们可以实现完全一致：
 
-<<<<<<< HEAD
 - **在开发和构建期间：** 插件是共享的，并可以 [根据环境进行过滤](#per-environment-plugins-using-the-applytoenvironment-hook)
-=======
-- **During both dev and build:** plugins are shared, with [per-environment filtering](#per-environment-plugins-using-the-applytoenvironment-hook)
->>>>>>> f20ccf26c18fd25a494324afdb696d2740bd9720
 
 在构建期间还会共享一个单一的 `ResolvedConfig` 实例，允许在整个应用构建过程中进行缓存，类似于我们在开发期间使用 `WeakMap<ResolvedConfig, CachedData>` 的方式。
 

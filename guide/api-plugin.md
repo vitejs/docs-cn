@@ -36,11 +36,7 @@ Vite 努力秉承开箱即用的原则，因此在创作一款新插件前，请
 - `vite-plugin-react-` 前缀作为 React 插件
 - `vite-plugin-svelte-` 前缀作为 Svelte 插件
 
-<<<<<<< HEAD
 另请参阅 [虚拟模块约定](https://rolldown.rs/apis/plugin-api#virtual-modules)。
-=======
-See also [Virtual Modules Convention](https://rolldown.rs/apis/plugin-api#virtual-modules).
->>>>>>> f20ccf26c18fd25a494324afdb696d2740bd9720
 
 ## 插件配置 {#plugins-config}
 
@@ -110,11 +106,7 @@ export default function myPlugin() {
 
 ### 引入一个虚拟文件 {#importing-a-virtual-file}
 
-<<<<<<< HEAD
 虚拟模块让你可以使用常规 ESM 导入语法，将构建时信息传给源文件。完整约定请参阅 [虚拟模块约定](https://rolldown.rs/apis/plugin-api#virtual-modules)。
-=======
-Virtual modules allow you to pass build time information to the source files using normal ESM import syntax. See [Virtual Modules Convention](https://rolldown.rs/apis/plugin-api#virtual-modules) for the full convention.
->>>>>>> f20ccf26c18fd25a494324afdb696d2740bd9720
 
 ```js
 import { exactRegex } from '@rolldown/pluginutils'
@@ -149,29 +141,17 @@ import { msg } from 'virtual:my-module'
 console.log(msg)
 ```
 
-<<<<<<< HEAD
 在 Vite 中，由于导入 URL 不允许使用 `\0` 字符，因此在浏览器开发环境中，`\0{id}` 形式的虚拟 ID 最终会被编码为 `/@id/__x00__{id}`。该 ID 会在进入插件管道前解码，因此插件钩子代码不会看到编码后的形式。
 
 <a id="universal-hooks"></a>
 
 ## Rolldown 钩子 {#rolldown-hooks}
-=======
-In Vite, since `\0` is not a permitted char in import URLs, a `\0{id}` virtual id ends up encoded as `/@id/__x00__{id}` during dev in the browser. The id is decoded back before entering the plugins pipeline, so this is not seen by plugin hooks code.
-
-## Rolldown Hooks
->>>>>>> f20ccf26c18fd25a494324afdb696d2740bd9720
 
 在开发中，Vite 开发服务器会创建一个插件容器来调用 [Rolldown 构建钩子](https://rolldown.rs/apis/plugin-api#build-hooks)，与 Rolldown 如出一辙。
 
-<<<<<<< HEAD
 所有 Rolldown 钩子都是 [环境钩子](/guide/api-environment-plugins#per-environment-hooks-and-global-hooks)。
 
 以下钩子在服务器启动时被调用：
-=======
-All rolldown hooks are [per-environment hooks](/guide/api-environment-plugins#per-environment-hooks-and-global-hooks).
-
-The following hooks are called once on server start:
->>>>>>> f20ccf26c18fd25a494324afdb696d2740bd9720
 
 - [`options`](https://rolldown.rs/reference/Interface.Plugin#options)
 - [`buildStart`](https://rolldown.rs/reference/Interface.Plugin#buildstart)
@@ -201,15 +181,9 @@ Vite 插件也可以提供钩子来服务于特定的 Vite 目标。这些钩子
 
 ### `config` {#config}
 
-<<<<<<< HEAD
 - **类型：** `(config: UserConfig, env: { mode: 'build' | 'serve', command: string, isSsrBuild?: boolean, isPreview?: boolean }) => UserConfig | null | void`
 - **种类：** `async`，`sequential`
 - **作用域：** [全局](/guide/api-environment-plugins#per-environment-hooks-and-global-hooks)
-=======
-- **Type:** `(config: UserConfig, env: { mode: 'build' | 'serve', command: string, isSsrBuild?: boolean, isPreview?: boolean }) => UserConfig | null | void`
-- **Kind:** `async`, `sequential`
-- **Scope:** [Global](/guide/api-environment-plugins#per-environment-hooks-and-global-hooks)
->>>>>>> f20ccf26c18fd25a494324afdb696d2740bd9720
 
   在解析 Vite 配置前调用。钩子接收原始用户配置（命令行选项指定的会与配置文件合并）和一个描述配置环境的变量，包含正在使用的 `mode` 和 `command`。它可以返回一个将被深度合并到现有配置中的部分配置对象，或者直接改变配置（如果默认的合并不能达到预期的结果）。
 
@@ -245,15 +219,9 @@ Vite 插件也可以提供钩子来服务于特定的 Vite 目标。这些钩子
 
 ### `configResolved` {#configresolved}
 
-<<<<<<< HEAD
 - **类型：** `(config: ResolvedConfig) => void | Promise<void>`
 - **种类：** `async`，`parallel`
 - **作用域：** [全局](/guide/api-environment-plugins#per-environment-hooks-and-global-hooks)
-=======
-- **Type:** `(config: ResolvedConfig) => void | Promise<void>`
-- **Kind:** `async`, `parallel`
-- **Scope:** [Global](/guide/api-environment-plugins#per-environment-hooks-and-global-hooks)
->>>>>>> f20ccf26c18fd25a494324afdb696d2740bd9720
 
   在解析 Vite 配置后调用。使用这个钩子读取和存储最终解析的配置。当插件需要根据运行的命令做一些不同的事情时，它也很有用。
 
@@ -287,17 +255,10 @@ Vite 插件也可以提供钩子来服务于特定的 Vite 目标。这些钩子
 
 ### `configureServer` {#configureserver}
 
-<<<<<<< HEAD
 - **类型：** `(server: ViteDevServer) => (() => void) | void | Promise<(() => void) | void>`
 - **种类：** `async`，`sequential`
 - **此外请看** [ViteDevServer](./api-javascript#vitedevserver)
 - **作用域：** [全局](/guide/api-environment-plugins#per-environment-hooks-and-global-hooks)
-=======
-- **Type:** `(server: ViteDevServer) => (() => void) | void | Promise<(() => void) | void>`
-- **Kind:** `async`, `sequential`
-- **See also:** [ViteDevServer](./api-javascript#vitedevserver)
-- **Scope:** [Global](/guide/api-environment-plugins#per-environment-hooks-and-global-hooks)
->>>>>>> f20ccf26c18fd25a494324afdb696d2740bd9720
 
   是用于配置开发服务器的钩子。最常见的用例是在内部 [connect](https://github.com/senchalabs/connect) 应用程序中添加自定义中间件：
 
@@ -356,17 +317,10 @@ Vite 插件也可以提供钩子来服务于特定的 Vite 目标。这些钩子
 
 ### `configurePreviewServer` {#configurepreviewserver}
 
-<<<<<<< HEAD
 - **类型：** `(server: PreviewServer) => (() => void) | void | Promise<(() => void) | void>`
 - **种类：** `async`，`sequential`
 - **参见：** [PreviewServer](./api-javascript#previewserver)
 - **作用域：** [全局](/guide/api-environment-plugins#per-environment-hooks-and-global-hooks)
-=======
-- **Type:** `(server: PreviewServer) => (() => void) | void | Promise<(() => void) | void>`
-- **Kind:** `async`, `sequential`
-- **See also:** [PreviewServer](./api-javascript#previewserver)
-- **Scope:** [Global](/guide/api-environment-plugins#per-environment-hooks-and-global-hooks)
->>>>>>> f20ccf26c18fd25a494324afdb696d2740bd9720
 
   与 [`configureServer`](/guide/api-plugin.html#configureserver) 相同，但用于预览服务器。`configurePreviewServer` 这个钩子与 `configureServer` 类似，也是在其他中间件安装前被调用。如果你想要在其他中间件 **之后** 安装一个插件，你可以从 `configurePreviewServer` 返回一个函数，它将会在内部中间件被安装之后再调用：
 
@@ -387,15 +341,9 @@ Vite 插件也可以提供钩子来服务于特定的 Vite 目标。这些钩子
 
 ### `transformIndexHtml` {#transformindexhtml}
 
-<<<<<<< HEAD
 - **类型：** `IndexHtmlTransformHook | { order?: 'pre' | 'post', handler: IndexHtmlTransformHook }`
 - **种类：** `async`，`sequential`
 - **作用域：** [环境](/guide/api-environment-plugins#per-environment-hooks-and-global-hooks)
-=======
-- **Type:** `IndexHtmlTransformHook | { order?: 'pre' | 'post', handler: IndexHtmlTransformHook }`
-- **Kind:** `async`, `sequential`
-- **Scope:** [Per-environment](/guide/api-environment-plugins#per-environment-hooks-and-global-hooks)
->>>>>>> f20ccf26c18fd25a494324afdb696d2740bd9720
 
   转换 `index.html` 的专用钩子。钩子接收当前的 HTML 字符串和转换上下文。上下文在开发期间暴露 [`ViteDevServer`](./api-javascript#vitedevserver) 实例，在构建期间暴露 Rollup 输出的包。
 
@@ -466,17 +414,10 @@ Vite 插件也可以提供钩子来服务于特定的 Vite 目标。这些钩子
 
 ### `handleHotUpdate` {#handlehotupdate}
 
-<<<<<<< HEAD
 - **类型：** `(ctx: HmrContext) => Array<ModuleNode> | void | Promise<Array<ModuleNode> | void>`
 - **种类：** `async`、`sequential`
 - **参见：** [HMR API](./api-hmr)
 - **作用域：** [环境](/guide/api-environment-plugins#per-environment-hooks-and-global-hooks)
-=======
-- **Type:** `(ctx: HmrContext) => Array<ModuleNode> | void | Promise<Array<ModuleNode> | void>`
-- **Kind:** `async`, `sequential`
-- **See also:** [HMR API](./api-hmr)
-- **Scope:** [Per-environment](/guide/api-environment-plugins#per-environment-hooks-and-global-hooks)
->>>>>>> f20ccf26c18fd25a494324afdb696d2740bd9720
 
   执行自定义 HMR 更新处理。钩子接收一个带有以下签名的上下文对象：
 

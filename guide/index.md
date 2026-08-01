@@ -106,11 +106,7 @@ $ deno init --npm vite my-vue-app --template vue
 
 :::
 
-<<<<<<< HEAD
 查看 [create-vite](https://github.com/vitejs/vite/tree/main/packages/create-vite) 以获取每个模板的更多细节：`vanilla`、`vanilla-ts`、`vue`、`vue-ts`、`react`、`react-compiler`、`react-ts`、`react-compiler-ts`、`preact`、`preact-ts`、`lit`、`lit-ts`、`svelte`、`svelte-ts`、`solid`、`solid-ts`、`qwik`、`qwik-ts`。
-=======
-See [create-vite](https://github.com/vitejs/vite/tree/main/packages/create-vite) for more details on each supported template: `vanilla`, `vanilla-ts`, `vue`, `vue-ts`, `react`, `react-compiler`, `react-ts`, `react-compiler-ts`, `preact`, `preact-ts`, `lit`, `lit-ts`, `svelte`, `svelte-ts`, `solid`, `solid-ts`, `qwik`, `qwik-ts`.
->>>>>>> f20ccf26c18fd25a494324afdb696d2740bd9720
 
 你可以使用 `.` 作为项目名称，在当前目录中创建项目脚手架。
 
@@ -228,11 +224,7 @@ Vite 也支持多个 `.html` 作入口点的 [多页面应用模式](./build#mul
 
 可以指定额外的命令行选项，如 `--port` 或 `--open`。运行 `npx vite --help` 获得完整的命令行选项列表。
 
-<<<<<<< HEAD
 查看 [命令行接口](./cli.md) 了解更多细节。
-=======
-Learn more about the [Command Line Interface](./cli.md).
->>>>>>> f20ccf26c18fd25a494324afdb696d2740bd9720
 
 ## 使用未发布的功能 {#using-unreleased-commits}
 

@@ -65,14 +65,7 @@ export default defineConfig({
 
 ### 文件系统缓存 {#file-system-cache}
 
-<<<<<<< HEAD
 Vite 将预构建的依赖项缓存到 `node_modules/.vite` 中。它会基于以下几个来源来决定是否需要重新运行预构建步骤：
-=======
-- Package manager lockfile content, e.g. `package-lock.json`, `yarn.lock`, `pnpm-lock.yaml`, `bun.lock`, `aube-lock.yaml` or `nub.lock`.
-- Patches folder modification time.
-- Relevant fields in your `vite.config.js`, if present.
-- `NODE_ENV` value.
->>>>>>> f20ccf26c18fd25a494324afdb696d2740bd9720
 
 - 包管理器的锁文件内容，例如 `package-lock.json`、`yarn.lock`、`pnpm-lock.yaml`、`bun.lock`、`aube-lock.yaml` 或 `nub.lock`；
 - 补丁文件夹的修改时间；

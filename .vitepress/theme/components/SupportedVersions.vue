@@ -99,7 +99,6 @@ function isValidViteVersion(version: string) {
   <div>
     <ul>
       <li v-if="supportInfo.regularPatches.length">
-<<<<<<< HEAD
         定期发布补丁
         <VersionsList :versions="supportInfo.regularPatches" />。
       </li>
@@ -110,18 +109,6 @@ function isValidViteVersion(version: string) {
       <li v-if="supportInfo.securityPatches.length">
         安全补丁也被向后移植到
         <VersionsList :versions="supportInfo.securityPatches" />。
-=======
-        Regular patches are released for
-        <VersionsList :versions="supportInfo.regularPatches" />.
-      </li>
-      <li v-if="supportInfo.importantFixes.length">
-        Important fixes and security patches are backported to
-        <VersionsList :versions="supportInfo.importantFixes" />.
-      </li>
-      <li v-if="supportInfo.securityPatches.length">
-        Security patches are also backported to
-        <VersionsList :versions="supportInfo.securityPatches" />.
->>>>>>> f20ccf26c18fd25a494324afdb696d2740bd9720
       </li>
       <li>
        之前的所有版本都不再支持。用户应升级，以获得更新。

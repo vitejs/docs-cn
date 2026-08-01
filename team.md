@@ -11,11 +11,7 @@ import {
   VPTeamPageSection,
   VPTeamMembers
 } from '@voidzero-dev/vitepress-theme'
-<<<<<<< HEAD
 import { core, advisors, emeriti, cnTranslator } from './_data/team'
-=======
-import { core, advisors, emeriti } from './_data/team'
->>>>>>> f20ccf26c18fd25a494324afdb696d2740bd9720
 </script>
 
 <VPTeamPage>
@@ -28,21 +24,7 @@ import { core, advisors, emeriti } from './_data/team'
   </VPTeamPageTitle>
   <VPTeamMembers :members="core" />
   <VPTeamPageSection>
-<<<<<<< HEAD
     <template #title>顾问</template>
-=======
-    <template #title>Advisors</template>
-    <template #lead>
-      Advisors help guide Vite from the ecosystem side, sharing their
-      experience to shape the Environment API and the design of future APIs.
-    </template>
-    <template #members>
-      <VPTeamMembers size="small" :members="advisors" />
-    </template>
-  </VPTeamPageSection>
-  <VPTeamPageSection>
-    <template #title>Team Emeriti</template>
->>>>>>> f20ccf26c18fd25a494324afdb696d2740bd9720
     <template #lead>
       顾问从生态系统角度帮助指引 Vite，分享他们的经验，<br>
       以共同塑造环境 API 和未来 API 的设计。

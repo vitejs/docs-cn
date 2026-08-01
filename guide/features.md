@@ -187,11 +187,7 @@ HTML 文件位于 Vite 项目的 [最前端和中心](/guide/#index-html-and-pro
 - `<root>/about.html` -> `http://localhost:5173/about.html`
 - `<root>/blog/index.html` -> `http://localhost:5173/blog/index.html`
 
-<<<<<<< HEAD
 由 HTML 元素引用的资源，例如 `<script type="module" src>` 和 `<link href>`，会作为应用的一部分进行处理和打包。支持的完整元素列表如下：
-=======
-Assets referenced by HTML elements such as `<script type="module" src>` and `<link href>` are processed and bundled as part of the app. The full list of supported elements is as below:
->>>>>>> f20ccf26c18fd25a494324afdb696d2740bd9720
 
 - `<audio src>`
 - `<embed src>`
@@ -335,11 +331,7 @@ npm add -D stylus
 
 如果使用的是单文件组件，可以通过 `<style lang="sass">`（或其他预处理器）自动开启。
 
-<<<<<<< HEAD
 Vite 为 Sass 和 Less 改进了 `@import` 解析，以保证 Vite 别名也能被使用。另外，`url()` 中的相对路径引用的，与根文件不同目录中的 Sass/Less 文件会自动变基以保证正确性。由于 API 限制，不支持重新设置以变量或插值开头的 `url()` 引用。
-=======
-Vite improves `@import` resolving for Sass and Less so that Vite aliases are also respected. In addition, relative `url()` references inside imported Sass/Less files that are in different directories from the root file are also automatically rebased to ensure correctness. Rebasing `url()` references that start with a variable or an interpolation is not supported due to its API constraints.
->>>>>>> f20ccf26c18fd25a494324afdb696d2740bd9720
 
 由于 Stylus API 限制，`@import` 别名和 URL 变基不支持 Stylus。
 
@@ -728,11 +720,7 @@ init({
 })
 ```
 
-<<<<<<< HEAD
 在生产构建中，体积小于 `assetsInlineLimit` 的 `.wasm` 文件将被内联为 base64 字符串。否则，它们将被视为 [静态资源](./assets)，并按需获取。
-=======
-In the production build, `.wasm` files smaller than `assetsInlineLimit` will be inlined as base64 strings. Otherwise, they will be treated as a [static asset](./assets) and fetched on-demand.
->>>>>>> f20ccf26c18fd25a494324afdb696d2740bd9720
 
 ::: warning SSR 构建仅支持与 Node.js 兼容的运行时
 
@@ -872,11 +860,7 @@ MIT License
 
 ## 构建优化 {#build-optimizations}
 
-<<<<<<< HEAD
 > 除实验性的代码块导入映射功能外，下面所列的功能都会自动应用为构建过程的一部分。除非你想禁用它们，否则无需显式配置。
-=======
-> Features listed below are automatically applied (except for the experimental chunk import map feature) as part of the build process and there is no need for explicit configuration unless you want to disable them.
->>>>>>> f20ccf26c18fd25a494324afdb696d2740bd9720
 
 ### CSS 代码分割 {#css-code-splitting}
 

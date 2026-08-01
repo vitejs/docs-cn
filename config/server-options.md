@@ -142,13 +142,8 @@ export default defineConfig({
         target: 'http://jsonplaceholder.typicode.com',
         changeOrigin: true,
         configure: (proxy, options) => {
-<<<<<<< HEAD
           // proxy 是 'http-proxy-3' 的实例
         }
-=======
-          // proxy will be an instance of 'http-proxy-3'
-        },
->>>>>>> f20ccf26c18fd25a494324afdb696d2740bd9720
       },
       // 代理 websockets 或 socket.io 写法：
       // ws://localhost:5173/socket.io 

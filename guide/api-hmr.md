@@ -185,13 +185,7 @@ if (import.meta.hot) {
 
 ## `hot.data` {#hot-data}
 
-<<<<<<< HEAD
 Vite 会为每个模块路径创建一个 `import.meta.hot.data` 对象。在 HMR 期间，该对象会在同一模块连续产生的实例之间持久化。在模块执行期间对它的修改，或通过传给 `hot.dispose` 的 `data` 参数所做的修改，都能被该模块的下一个实例看到。
-=======
-Vite creates one `import.meta.hot.data` object for each module path. The object is persisted across successive instances of the same module during HMR. Mutations made during module execution or through the `data` argument passed to `hot.dispose` are visible to the next instance of the module.
-
-When a module is pruned, its `hot.dispose` and `hot.prune` callbacks receive the current data object. Vite clears the data after those callbacks complete. If the module is imported again later, it receives a new empty data object.
->>>>>>> f20ccf26c18fd25a494324afdb696d2740bd9720
 
 当模块从模块图中被剔除时，其 `hot.dispose` 和 `hot.prune` 回调会收到当前的数据对象。Vite 会在这些回调执行完毕后清除该数据。如果之后再次导入该模块，它将获得一个新的空数据对象。
 

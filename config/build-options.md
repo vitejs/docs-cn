@@ -164,13 +164,7 @@ npm add -D esbuild
 
 直接自定义底层 Rolldown 包。这与从 Rolldown 配置文件导出的选项相同，并将与 Vite 的内部 Rolldown 选项合并。更多详情请参阅 [Rolldown 选项文档](https://rolldown.rs/reference/)。
 
-<<<<<<< HEAD
 建议设置顶层 [`input`](/config/shared-options#input) 选项，而不是 `build.rolldownOptions.input`，因为顶层选项也会在开发期间使用。如果设置了 `build.rolldownOptions.input`，它将只在构建期间覆盖顶层 `input` 选项。
-=======
-Instead of `build.rolldownOptions.input`, it is recommended to set the top-level [`input`](/config/shared-options#input) option, because it will be used in dev as well. If `build.rolldownOptions.input` is set, it overrides the top-level `input` option for build only.
-
-## build.rollupOptions
->>>>>>> f20ccf26c18fd25a494324afdb696d2740bd9720
 
 ## build.rollupOptions {#build-rollupoptions}
 
@@ -186,17 +180,10 @@ Instead of `build.rolldownOptions.input`, it is recommended to set the top-level
 
 是否转换带有变量的动态导入。
 
-<<<<<<< HEAD
 ## build.lib {#build-lib}
 
 - **类型：** `{ entry?: string | string[] | { [entryAlias: string]: string }, name?: string, formats?: ('es' | 'cjs' | 'umd' | 'iife')[], fileName?: string | ((format: ModuleFormat, entryName: string) => string), cssFileName?: string }`
 - **相关内容：** [库模式](/guide/build#library-mode)
-=======
-- **Type:** `{ entry?: string | string[] | { [entryAlias: string]: string }, name?: string, formats?: ('es' | 'cjs' | 'umd' | 'iife')[], fileName?: string | ((format: ModuleFormat, entryName: string) => string), cssFileName?: string }`
-- **Related:** [Library Mode](/guide/build#library-mode)
-
-Build as a library. `entry` defaults to the top-level [`input`](/config/shared-options#input) option, and one of them is required since the library cannot use HTML as entry. `name` is the exposed global variable and is required when `formats` includes `'umd'` or `'iife'`. Default `formats` are `['es', 'umd']`, or `['es', 'cjs']`, if multiple entries are used.
->>>>>>> f20ccf26c18fd25a494324afdb696d2740bd9720
 
 以库的形式构建。`entry` 默认为顶层 [`input`](/config/shared-options#input) 选项的值。由于库不能使用 HTML 作为入口，因此必须设置其中一个选项。`name` 是暴露的全局变量，当 `formats` 包括 `'umd'` 或 `'iife'` 时必须设置。默认的 `formats` 为 `['es', 'umd']`；如果使用多个入口，则为 `['es', 'cjs']`。
 
@@ -295,11 +282,7 @@ export default defineConfig({
 - **默认值：** `false`
 - **相关链接：** [服务端渲染](/guide/ssr)
 
-<<<<<<< HEAD
 生成面向 SSR 的构建。此选项的值可以是字符串，用于直接指定 SSR 入口；也可以为 `true`，但这需要通过 [`input`](/config/shared-options#input) 或 `build.rolldownOptions.input` 指定 SSR 入口。
-=======
-Produce SSR-oriented build. The value can be a string to directly specify the SSR entry, or `true`, which requires specifying the SSR entry via [`input`](/config/shared-options#input) or `build.rolldownOptions.input`.
->>>>>>> f20ccf26c18fd25a494324afdb696d2740bd9720
 
 ## build.emitAssets
 
