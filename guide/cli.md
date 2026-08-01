@@ -116,6 +116,7 @@ vite preview [root]
 
 #### 选项 {#options-3}
 
+<<<<<<< HEAD
 | 选项                      |                                                                                                                                            |
 | ------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
 | `--host [host]`           | 指定主机名称 (`string`)                                                                                                                    |
@@ -132,3 +133,21 @@ vite preview [root]
 | `-f, --filter <filter>`   | 过滤调试日志 (`string`)                                                                                                                    |
 | `-m, --mode <mode>`       | 设置环境模式 (`string`)                                                                                                                    |
 | `-h, --help`              | 显示可用的 CLI 选项                                                                                                                        |
+=======
+| Options                   |                                                                                                                                                                                       |
+| ------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `--host [host]`           | Specify hostname (`string`)                                                                                                                                                           |
+| `--port <port>`           | Specify port (`number`)                                                                                                                                                               |
+| `--strictPort`            | Exit if specified port is already in use (`boolean`)                                                                                                                                  |
+| `--open [path]`           | Open browser on startup (`boolean \| string`)                                                                                                                                         |
+| `--outDir <dir>`          | Output directory (default: `dist`) (`string`)                                                                                                                                         |
+| `-c, --config <file>`     | Use specified config file (`string`)                                                                                                                                                  |
+| `--base <path>`           | Public base path (default: `/`) (`string`)                                                                                                                                            |
+| `-l, --logLevel <level>`  | Info \| warn \| error \| silent (`string`)                                                                                                                                            |
+| `--clearScreen`           | Allow/disable clear screen when logging (`boolean`)                                                                                                                                   |
+| `--configLoader <loader>` | Use `bundle` to bundle the config with Rolldown, or `runner` (experimental) to process it on the fly, or `native` (experimental) to load using the native runtime (default: `bundle`) |
+| `-d, --debug [feat]`      | Show debug logs (`string \| boolean`)                                                                                                                                                 |
+| `-f, --filter <filter>`   | Filter debug logs (`string`)                                                                                                                                                          |
+| `-m, --mode <mode>`       | Set env mode (`string`)                                                                                                                                                               |
+| `-h, --help`              | Display available CLI options                                                                                                                                                         |
+>>>>>>> f20ccf26c18fd25a494324afdb696d2740bd9720

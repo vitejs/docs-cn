@@ -336,9 +336,17 @@ export default defineConfig({
 
 ### `buildApp` 插件钩子 {#the-buildapp-plugin-hook}
 
+<<<<<<< HEAD
 - **类型：** `(this: MinimalPluginContextWithoutEnvironment, builder: ViteBuilder) => Promise<void>`
 - **种类：** `async`、`sequential`
 - **作用域：** [全局](/guide/api-environment-plugins#per-environment-hooks-and-global-hooks)
+=======
+- **Type:** `(this: MinimalPluginContextWithoutEnvironment, builder: ViteBuilder) => Promise<void>`
+- **Kind:** `async`, `sequential`
+- **Scope:** [Global](/guide/api-environment-plugins#per-environment-hooks-and-global-hooks)
+
+Besides the `builder.buildApp` config option, plugins can define a `buildApp` hook to participate in the app build. The config option and the plugin hooks run in a defined order: hooks with order `'pre'` or `null` run first, then the configured `builder.buildApp`, then hooks with order `'post'`. Within a hook, `environment.isBuilt` tells you whether an environment has already been built, which lets a plugin avoid building it twice.
+>>>>>>> f20ccf26c18fd25a494324afdb696d2740bd9720
 
 除 `builder.buildApp` 配置选项外，插件也可以定义 `buildApp` 钩子来参与应用构建。配置选项与插件钩子按固定顺序运行：顺序为 `'pre'` 或 `null` 的钩子最先运行，随后运行已配置的 `builder.buildApp`，最后运行顺序为 `'post'` 的钩子。在钩子中，可以通过 `environment.isBuilt` 判断某个环境是否已经构建，从而避免重复构建。
 

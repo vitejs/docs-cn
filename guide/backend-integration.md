@@ -12,7 +12,11 @@
    import { defineConfig } from 'vite'
    // ---cut---
    export default defineConfig({
+<<<<<<< HEAD
      // 覆盖默认的 .html 入口
+=======
+     // overwrite default .html entry
+>>>>>>> f20ccf26c18fd25a494324afdb696d2740bd9720
      input: '/path/to/main.js',
      server: {
        cors: {

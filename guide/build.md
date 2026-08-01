@@ -140,7 +140,11 @@ export default defineConfig({
 
 ::: code-group
 
+<<<<<<< HEAD
 ```js twoslash [vite.config.js (单入口)]
+=======
+```js twoslash [vite.config.js (single entry)]
+>>>>>>> f20ccf26c18fd25a494324afdb696d2740bd9720
 import { resolve } from 'node:path'
 import { defineConfig } from 'vite'
 
@@ -168,7 +172,11 @@ export default defineConfig({
 })
 ```
 
+<<<<<<< HEAD
 ```js twoslash [vite.config.js (多入口)]
+=======
+```js twoslash [vite.config.js (multiple entries)]
+>>>>>>> f20ccf26c18fd25a494324afdb696d2740bd9720
 import { resolve } from 'node:path'
 import { defineConfig } from 'vite'
 

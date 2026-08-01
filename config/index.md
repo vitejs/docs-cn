@@ -14,7 +14,11 @@ export default {
 }
 ```
 
+<<<<<<< HEAD
 注意：要在配置文件中使用 ES 模块语法，该文件应能被 Node.js 识别为 ESM，例如使用 `.mjs` 扩展名，或使用 `.js` 扩展名且最近的 `package.json` 中包含 `"type": "module"`。
+=======
+Note that to use ES modules syntax in the config file, it should be in a file detected as ESM by Node.js, e.g. `.mjs` or `.js` with `"type": "module"` in closest `package.json`.
+>>>>>>> f20ccf26c18fd25a494324afdb696d2740bd9720
 
 你可以显式地通过 `--config` 命令行选项指定一个配置文件（相对于 `cwd` 路径进行解析）。
 
@@ -24,8 +28,13 @@ vite --config my-config.js
 
 <ScrimbaLink href="https://scrimba.com/intro-to-vite-c03p6pbbdq/~05jg?via=vite" title="Configuring Vite">在 Scrimba 上观看互动课程</ScrimbaLink>
 
+<<<<<<< HEAD
 ::: tip 加载配置文件
 默认情况下，Vite 使用 [Rolldown](https://rolldown.rs/) 将配置文件打包到临时文件中并加载。如果你使用的环境支持 TypeScript（例如 Node.js 22.18 及以上版本），或者只编写纯 JavaScript，可以指定 `--configLoader native`，使用环境的原生运行时加载配置文件。计划在未来的主要版本中将 `configLoader: 'native'` 设为默认值。
+=======
+::: tip CONFIG LOADING
+By default, Vite uses [Rolldown](https://rolldown.rs/) to bundle the config into a temporary file and load it. If you're using an environment that supports TypeScript (e.g. Node 22.18+), or if you're only writing plain JavaScript, you can specify `--configLoader native` to use the environment's native runtime to load the config file. `configLoader: 'native'` is planned to become the default in a future major version.
+>>>>>>> f20ccf26c18fd25a494324afdb696d2740bd9720
 :::
 
 ## 配置智能提示 {#config-intellisense}
@@ -128,19 +137,31 @@ export default defineConfig(({ mode }) => {
 })
 ```
 
+<<<<<<< HEAD
 <a id="debugging-the-config-file-on-vs-code"></a>
 
 ## 在 VS Code 中调试配置文件 {#debugging-the-config-file-in-vs-code}
 
 为了获得最可靠的调试体验，请使用原生配置加载器启动 Vite：
+=======
+## Debugging the Config File in VS Code
+
+For the most reliable debugging experience, use the native config loader when starting Vite:
+>>>>>>> f20ccf26c18fd25a494324afdb696d2740bd9720
 
 ```bash
 vite --configLoader native
 ```
 
+<<<<<<< HEAD
 原生加载器会直接执行原始配置文件，因此配置文件以及 `transform` 等插件钩子中的断点都能映射到原始源代码。运行时必须支持配置文件使用的语法，例如，TypeScript 配置文件需要 Node.js 22.18 及以上版本。
 
 使用 `--configLoader bundle` 时（这是当前的默认值，不过计划在未来的主要版本中改用 `native`），Vite 会生成内联 source map，并在加载前将打包后的配置写入 `node_modules/.vite-temp`。如果必须使用打包加载器，请在 `.vscode/settings.json` 中为 JavaScript 调试终端添加该临时目录：
+=======
+The native loader executes the original config file directly, so breakpoints in the config file and in plugin hooks such as `transform` map to the original source. It requires a runtime that supports the syntax used by your config file, such as Node.js 22.18+ for TypeScript files.
+
+When using `--configLoader bundle` (the current default, though `native` is planned to become the default in a future major version), Vite generates an inline source map and writes the bundled config to `node_modules/.vite-temp` before loading it. If you need to use the bundle loader, add the temporary directory for the JavaScript Debug Terminal in `.vscode/settings.json`:
+>>>>>>> f20ccf26c18fd25a494324afdb696d2740bd9720
 
 ```json
 {
@@ -154,7 +175,11 @@ vite --configLoader native
 }
 ```
 
+<<<<<<< HEAD
 此设置仅适用于 JavaScript 调试终端，不会影响从“运行和调试”视图启动的配置。要支持“运行和调试”视图，请在 `.vscode/launch.json` 中添加该临时目录：
+=======
+This setting only applies to the JavaScript Debug Terminal, it does not affect launch configurations started from the Run and Debug view. To support this for the Run and Debug view, add the temporary directory in `.vscode/launch.json`:
+>>>>>>> f20ccf26c18fd25a494324afdb696d2740bd9720
 
 ```json
 {

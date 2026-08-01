@@ -8,7 +8,11 @@
 
 - **类型：** `string | string[]`
 
+<<<<<<< HEAD
 默认情况下，Vite 会抓取所有 `.html` 文件，以检测需要预构建的依赖项（忽略 `node_modules`、`build.outDir`、`__tests__` 和 `coverage`）。如果指定了顶层 [`input`](/config/shared-options#input) 或 `build.rolldownOptions.input`，Vite 将转而抓取这些入口点。
+=======
+By default, Vite will crawl all your `.html` files to detect dependencies that need to be pre-bundled (ignoring `node_modules`, `build.outDir`, `__tests__` and `coverage`). If the top-level [`input`](/config/shared-options#input) or `build.rolldownOptions.input` is specified, Vite will crawl those entry points instead.
+>>>>>>> f20ccf26c18fd25a494324afdb696d2740bd9720
 
 如果这两者都不合你意，则可以使用此选项指定自定义条目——该值需要遵循 [tinyglobby 模式](https://superchupu.dev/tinyglobby/comparison) ，或者是相对于 Vite 项目根目录的匹配模式数组。当显式声明了 `optimizeDeps.entries` 时默认只有 `node_modules` 和 `build.outDir` 文件夹会被忽略。如果还需忽略其他文件夹，你可以在模式列表中使用以 `!` 为前缀的、用来匹配忽略项的模式。对于明确包含字符串 `node_modules` 的模式，不会忽略 `node_modules`。
 

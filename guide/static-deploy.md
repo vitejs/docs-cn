@@ -162,7 +162,11 @@ Netlify 命令行工具（CLI）会为你提供一个预览链接，供你查看
 3. Vercel 会检测到你正在使用 Vite，并会为你的部署开启相应的正确配置。
 4. 你的应用被部署好了！（示例：[vite-vue-template.vercel.app](https://vite-vue-template.vercel.app/)）
 
+<<<<<<< HEAD
 在你的项目被导入和部署后，所有对分支的后续推送都会生成 [预览部署](https://vercel.com/docs/deployments/environments#preview-environment-pre-production)，而所有对生产分支（通常是 "main"）的更改都会生成一次 [生产部署](https://vercel.com/docs/deployments/environments#production-environment)。
+=======
+After your project has been imported and deployed, all subsequent pushes to branches will generate [Preview Deployments](https://vercel.com/docs/deployments/environments#preview-environment-pre-production), and all changes made to the Production Branch (commonly “main”) will result in a [Production Deployment](https://vercel.com/docs/deployments/environments#production-environment).
+>>>>>>> f20ccf26c18fd25a494324afdb696d2740bd9720
 
 查看 Vercel 的 [Git 集成](https://vercel.com/docs/concepts/git) 了解更多细节。
 
@@ -213,7 +217,11 @@ Cloudflare Pages 提供了一种直接部署到 Cloudflare 的方式，而无需
 
 在你的项目被导入和部署后，所有对分支的后续推送都会生成 [预览部署](https://developers.cloudflare.com/pages/platform/preview-deployments/)，除非你特意在 [分支构建控制](https://developers.cloudflare.com/pages/platform/branch-build-controls/) 中写明不触发。所有对 **生产分支**（通常是 "main"）的更改都会生成一个 **生产部署**。
 
+<<<<<<< HEAD
 你也可以添加自定义域名，并自定义各个页面的构建设置。查看 [Cloudflare Pages Git 集成](https://developers.cloudflare.com/pages/configuration/git-integration/) 了解更多详情。
+=======
+You can also add custom domains and handle custom build settings on Pages. Learn more about [Cloudflare Pages Git Integration](https://developers.cloudflare.com/pages/configuration/git-integration/).
+>>>>>>> f20ccf26c18fd25a494324afdb696d2740bd9720
 
 ## Google Firebase {#google-firebase}
 
@@ -287,7 +295,11 @@ Cloudflare Pages 提供了一种直接部署到 Cloudflare 的方式，而无需
    - **构建命令**：`npm install && npm run build`
    - **发布目录**：`dist`
 
+<<<<<<< HEAD
 5. 点击 **Create Static Site**，你的应用将会被部署在 `https://<PROJECTNAME>.onrender.com/`。
+=======
+By default, any new commit pushed to the specified branch will automatically trigger a new deployment. [Auto-Deploy](https://render.com/docs/deploys#configuring-auto-deploys) can be configured in the project settings.
+>>>>>>> f20ccf26c18fd25a494324afdb696d2740bd9720
 
 默认情况下，推送到该指定分支的任何新提交都会自动触发新的部署。可以在项目设置中配置 [自动部署](https://render.com/docs/deploys#configuring-auto-deploys)。
 
@@ -303,7 +315,11 @@ Cloudflare Pages 提供了一种直接部署到 Cloudflare 的方式，而无需
 
 ## xmit 静态站点托管 {#xmit-static-site-hosting}
 
+<<<<<<< HEAD
 根据 [指南](https://xmit.dev/guides/vite-quickstart/)，使用 [xmit](https://xmit.co) 部署你的静态站点。
+=======
+Deploy your static site using [xmit](https://xmit.co) by following this [guide](https://xmit.dev/guides/vite-quickstart/).
+>>>>>>> f20ccf26c18fd25a494324afdb696d2740bd9720
 
 ## Zephyr Cloud {#zephyr-cloud}
 
