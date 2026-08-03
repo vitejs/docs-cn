@@ -9,74 +9,32 @@ import llmstxt from 'vitepress-plugin-llms'
 import type { PluginOption } from 'vite'
 import { buildEnd } from './buildEnd.config'
 
-const ogDescription = 'Next Generation Frontend Tooling'
-const ogImage = 'https://vite.dev/og-image.jpg'
+const siteUrl = 'https://v6.cn.vite.dev'
+const ogDescription = 'Vite 6 历史版本官方中文文档'
+const ogImage = `${siteUrl}/og-image.jpg`
 const ogTitle = 'Vite'
-const ogUrl = 'https://vite.dev'
+const ogUrl = siteUrl
 
-// netlify envs
-const deployURL = process.env.DEPLOY_PRIME_URL || ''
 const commitRef = process.env.COMMIT_REF?.slice(0, 8) || 'dev'
 
-const deployType = (() => {
-  switch (deployURL) {
-    case 'https://main--vite-docs-main.netlify.app':
-      return 'main'
-    case '':
-      return 'local'
-    default:
-      return 'release'
-  }
-})()
-const additionalTitle = ((): string => {
-  switch (deployType) {
-    case 'main':
-      return ' (main branch)'
-    case 'local':
-      return ' (local)'
-    case 'release':
-      return ''
-  }
-})()
-const versionLinks = ((): DefaultTheme.NavItemWithLink[] => {
-  const oldVersions: DefaultTheme.NavItemWithLink[] = [
-    {
-      text: 'Vite 5 Docs',
-      link: 'https://v5.vite.dev',
-    },
-    {
-      text: 'Vite 4 Docs',
-      link: 'https://v4.vite.dev',
-    },
-    {
-      text: 'Vite 3 Docs',
-      link: 'https://v3.vite.dev',
-    },
-    {
-      text: 'Vite 2 Docs',
-      link: 'https://v2.vite.dev',
-    },
-  ]
-
-  switch (deployType) {
-    case 'main':
-    case 'local':
-      return [
-        {
-          text: 'Vite 6 Docs (release)',
-          link: 'https://vite.dev',
-        },
-        ...oldVersions,
-      ]
-    case 'release':
-      return oldVersions
-  }
-})()
+const versionLinks: DefaultTheme.NavItemWithLink[] = [
+  { text: '中文最新版', link: 'https://cn.vite.dev' },
+  { text: 'Vite 6 文档（英文）', link: 'https://v6.vite.dev' },
+  { text: 'Vite 5 文档（英文）', link: 'https://v5.vite.dev' },
+  { text: 'Vite 4 文档（英文）', link: 'https://v4.vite.dev' },
+  { text: 'Vite 3 文档（英文）', link: 'https://v3.vite.dev' },
+  { text: 'Vite 2 文档（英文）', link: 'https://v2.vite.dev' },
+]
 
 export default defineConfig({
-  title: 'Vite 官方中文文档',
-  description: '下一代前端工具链',
+  title: 'Vite 6 官方中文文档',
+  description: 'Vite 6 历史版本官方中文文档',
   lang: 'zh-CN',
+  cleanUrls: true,
+  srcExclude: ['README.md'],
+  sitemap: {
+    hostname: siteUrl,
+  },
 
   head: [
     ['link', { rel: 'icon', type: 'image/svg+xml', href: '/logo.svg' }],
@@ -131,7 +89,7 @@ export default defineConfig({
 
   locales: {
     root: { label: '简体中文' },
-    en: { label: 'English', link: 'https://vite.dev' },
+    en: { label: 'English', link: 'https://v6.vite.dev' },
     ja: { label: '日本語', link: 'https://ja.vite.dev' },
     es: { label: 'Español', link: 'https://es.vite.dev' },
     pt: { label: 'Português', link: 'https://pt.vite.dev' },
@@ -144,7 +102,7 @@ export default defineConfig({
     logo: '/logo.svg',
 
     editLink: {
-      pattern: 'https://github.com/vitejs/docs-cn/edit/main/:path',
+      pattern: 'https://github.com/vitejs/docs-cn/edit/6.x-stable/:path',
       text: '为此页提供修改建议',
     },
 
@@ -162,22 +120,24 @@ export default defineConfig({
     ],
 
     search: {
-      provider: 'local', 
+      provider: 'local',
       options: {
         translations: {
           button: {
-            buttonText: '搜索',
-            buttonAriaLabel: '搜索'
+            buttonText: '搜索文档',
+            buttonAriaLabel: '搜索文档',
           },
           modal: {
+            noResultsText: '没有找到相关结果',
+            resetButtonTitle: '重置搜索',
             footer: {
               selectText: '选择',
-              navigateText: '切换',
+              navigateText: '导航',
               closeText: '关闭',
             },
-          }
+          },
         },
-      }
+      },
     },
 
     docFooter: {
@@ -192,15 +152,12 @@ export default defineConfig({
     // },
 
     footer: {
-      message: `Released under the MIT License. (${commitRef})`,
+      message: `Vite 6.4.3 历史版本文档（${commitRef}）`,
       copyright:
-        'Copyright © 2019-present VoidZero Inc. & Vite Contributors'
+        '本中文文档内容版权为 Vite 官方中文翻译团队所有，保留所有权利。'
     },
 
     nav: [
-      {
-        component: 'ReleaseTag'
-      },
       { text: '指引', link: '/guide/', activeMatch: '/guide/' },
       { text: '配置', link: '/config/', activeMatch: '/config/' },
       { text: '插件', link: '/plugins/', activeMatch: '/plugins/' },
@@ -242,36 +199,19 @@ export default defineConfig({
               },
               {
                 text: '更新日志',
-                link: 'https://github.com/vitejs/vite/blob/main/packages/vite/CHANGELOG.md',
+                link: 'https://github.com/vitejs/vite/blob/v6/packages/vite/CHANGELOG.md',
               },
               {
                 text: '贡献指南',
-                link: 'https://github.com/vitejs/vite/blob/main/CONTRIBUTING.md',
+                link: 'https://github.com/vitejs/vite/blob/v6/CONTRIBUTING.md',
               },
             ],
           },
         ]
       },
       {
-        text: '历史版本',
-        items: [
-          {
-            text: 'Vite v5 文档（英文）',
-            link: 'https://v5.vite.dev'
-          },
-          {
-            text: 'Vite v4 文档（英文）',
-            link: 'https://v4.vite.dev'
-          },
-          {
-            text: 'Vite v3 文档（英文）',
-            link: 'https://v3.vite.dev'
-          },
-          {
-            text: 'Vite v2 文档（英文）',
-            link: 'https://v2.vite.dev'
-          },
-        ]
+        text: 'v6.4.3',
+        items: versionLinks,
       }
     ],
 
@@ -494,6 +434,7 @@ export default defineConfig({
     pageData.frontmatter.head.unshift(
       ['link', { rel: 'canonical', href: canonicalUrl }],
       ['meta', { property: 'og:title', content: pageData.title }],
+      ['meta', { property: 'og:url', content: canonicalUrl }],
     )
     return pageData
   },
@@ -516,22 +457,22 @@ export default defineConfig({
       // @ts-ignore
       llmstxt({
         ignoreFiles: ['blog/*', 'blog.md', 'index.md', 'team.md'],
-        description: 'The Build Tool for the Web',
+        description: '面向 Web 的构建工具',
         details: `\
-- 💡 Instant Server Start
-- ⚡️ Lightning Fast HMR
-- 🛠️ Rich Features
-- 📦 Optimized Build
-- 🔩 Universal Plugin Interface
-- 🔑 Fully Typed APIs
+- 💡 极速的开发服务器启动
+- ⚡️ 轻量快速的模块热替换（HMR）
+- 🛠️ 丰富的功能
+- 📦 自带优化的构建
+- 🔩 通用的插件接口
+- 🔑 完全类型化的 API
 
-Vite is a new breed of frontend build tooling that significantly improves the frontend development experience. It consists of two major parts:
+Vite 是一种新型前端构建工具，能够显著改善前端开发体验。它主要由两部分组成：
 
-- A dev server that serves your source files over [native ES modules](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules), with [rich built-in features](https://vite.dev/guide/features.md) and astonishingly fast [Hot Module Replacement (HMR)](https://vite.dev/guide/features.md#hot-module-replacement).
+- 一个基于[原生 ES 模块](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Modules)提供源文件的开发服务器，具有[丰富的内建功能](${siteUrl}/guide/features)和快速的[模块热替换（HMR）](${siteUrl}/guide/features#hot-module-replacement)。
 
-- A [build command](https://vite.dev/guide/build.md) that bundles your code with [Rollup](https://cn.rollupjs.org), pre-configured to output highly optimized static assets for production.
+- 一套使用 [Rollup](https://cn.rollupjs.org) 打包代码的[构建命令](${siteUrl}/guide/build)，预先配置为生成高度优化的生产资源。
 
-In addition, Vite is highly extensible via its [Plugin API](https://vite.dev/guide/api-plugin.md) and [JavaScript API](https://vite.dev/guide/api-javascript.md) with full typing support.`,
+此外，Vite 还可以通过完整类型支持的[插件 API](${siteUrl}/guide/api-plugin)和 [JavaScript API](${siteUrl}/guide/api-javascript)进行扩展。`,
       }) as PluginOption,
     ],
     optimizeDeps: {

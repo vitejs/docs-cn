@@ -4,18 +4,18 @@ import { Feed } from 'feed'
 import type { SiteConfig } from 'vitepress'
 import { createContentLoader } from 'vitepress'
 
-const siteUrl = 'https://vite.dev'
+const siteUrl = 'https://v6.cn.vite.dev'
 const blogUrl = `${siteUrl}/blog`
 
 export const buildEnd = async (config: SiteConfig): Promise<void> => {
   const feed = new Feed({
-    title: 'Vite',
-    description: 'Next Generation Frontend Tooling',
+    title: 'Vite 6 官方中文文档',
+    description: 'Vite 6 历史版本官方中文文档',
     id: blogUrl,
     link: blogUrl,
-    language: 'en',
-    image: 'https://vite.dev/og-image.png',
-    favicon: 'https://vite.dev/logo.svg',
+    language: 'zh-CN',
+    image: `${siteUrl}/og-image.jpg`,
+    favicon: `${siteUrl}/logo.svg`,
     copyright: 'Copyright © 2019-present VoidZero Inc. & Vite Contributors',
   })
 

@@ -1,5 +1,5 @@
-# temporary, we'll flip this around some day
-https://cn.vitejs.dev/* https://cn.vite.dev/:splat 301!
+# Vite 6 Chinese documentation moved to the vite.dev domain.
+https://v6.cn.vitejs.dev/* https://v6.cn.vite.dev/:splat 301!
 
 /guide/api-vite-runtime /guide/api-environment 301
 /guide/api-vite-runtime.html /guide/api-environment 301

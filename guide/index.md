@@ -22,7 +22,7 @@ Vite 还提供了强大的扩展性，可通过其 [插件 API](./api-plugin) �
 
 在开发阶段，Vite 将 [`esnext` 作为转换目标](https://esbuild.github.io/api/#target)，因为我们假设使用的是现代浏览器，它支持所有最新的 JavaScript 和 CSS 特性。这样可以防止语法降级，让 Vite 尽可能地接近原始源代码。
 
-对于生产构建，默认情况下 Vite 的目标浏览器支持 [原生 ES 模块](https://caniuse.com/es6-module)、[原生 ESM 动态导入](https://caniuse.com/es6-module-dynamic-import)、[`import.meta`](https://caniuse.com/mdn-javascript_operators_import_meta)、[nullish coalescing](https://caniuse.com/mdn-javascript_operators_nullish_coalescing) 和 [BigInt](https://caniuse.com/bigint)。旧版浏览器可以通过官方的 [@vitejs/plugin-legacy](https://github.com/vitejs/vite/tree/main/packages/plugin-legacy)。查看 [构建生产环境](./build) 了解更多细节。
+对于生产构建，默认情况下 Vite 的目标浏览器支持 [原生 ES 模块](https://caniuse.com/es6-module)、[原生 ESM 动态导入](https://caniuse.com/es6-module-dynamic-import)、[`import.meta`](https://caniuse.com/mdn-javascript_operators_import_meta)、[nullish coalescing](https://caniuse.com/mdn-javascript_operators_nullish_coalescing) 和 [BigInt](https://caniuse.com/bigint)。旧版浏览器可以通过官方的 [@vitejs/plugin-legacy](https://github.com/vitejs/vite/tree/v6/packages/plugin-legacy)。查看 [构建生产环境](./build) 了解更多细节。
 
 ## 在线试用 Vite {#trying-vite-online}
 
@@ -100,7 +100,7 @@ $ deno init --npm vite my-vue-app --template vue
 
 :::
 
-查看 [create-vite](https://github.com/vitejs/vite/tree/main/packages/create-vite) 以获取每个模板的更多细节：`vanilla`，`vanilla-ts`，`vue`，`vue-ts`，`react`，`react-ts`，`react-swc`，`react-swc-ts`，`preact`，`preact-ts`，`lit`，`lit-ts`，`svelte`，`svelte-ts`，`solid`，`solid-ts`，`qwik`，`qwik-ts`。
+查看 [create-vite](https://github.com/vitejs/vite/tree/v6/packages/create-vite) 以获取每个模板的更多细节：`vanilla`，`vanilla-ts`，`vue`，`vue-ts`，`react`，`react-ts`，`react-swc`，`react-swc-ts`，`preact`，`preact-ts`，`lit`，`lit-ts`，`svelte`，`svelte-ts`，`solid`，`solid-ts`，`qwik`，`qwik-ts`。
 
 你可以使用 `.` 作为项目名称，在当前目录中创建项目脚手架。
 
@@ -240,7 +240,7 @@ $ bun add -D https://pkg.pr.new/vite@SHA
 
 :::
 
-将 `SHA` 替换为 [Vite 的提交 SHA](https://github.com/vitejs/vite/commits/main/)。请注意，仅最近一个月的提交有效，旧版本提交的构建产物会被清除。
+将 `SHA` 替换为 [Vite 6 分支的提交 SHA](https://github.com/vitejs/vite/commits/v6/)。请注意，仅最近一个月的提交有效，旧版本提交的构建产物会被清除。
 
 或者，你可以克隆 [Vite 代码仓库](https://github.com/vitejs/vite) 到本地，自行构建并建立软链接（需安装 [pnpm](https://pnpm.io/)）：
 

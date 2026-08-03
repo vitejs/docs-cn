@@ -1,7 +1,7 @@
 ---
-title: Vite 6.0 is out!
+title: Vite 6.0 正式发布！
 author:
-  name: The Vite Team
+  name: Vite 团队
 date: 2024-11-26
 sidebar: false
 head:
@@ -10,16 +10,16 @@ head:
       content: website
   - - meta
     - property: og:title
-      content: Announcing Vite 6
+      content: Vite 6 正式发布
   - - meta
     - property: og:image
-      content: https://vite.dev/og-image-announcing-vite6.png
+      content: https://v6.cn.vite.dev/og-image-announcing-vite6.png
   - - meta
     - property: og:url
-      content: https://vite.dev/blog/announcing-vite6
+      content: https://v6.cn.vite.dev/blog/announcing-vite6
   - - meta
     - property: og:description
-      content: Vite 6 Release Announcement
+      content: Vite 6 发布公告
   - - meta
     - name: twitter:card
       content: summary_large_image
@@ -29,7 +29,7 @@ head:
 
 _2024年11月26日_
 
-![Vite 6 Announcement Cover Image](/og-image-announcing-vite6.png)
+![Vite 6 发布封面图](/og-image-announcing-vite6.png)
 
 今天，Vite 迎来了发展历程中的重要里程碑。我们很高兴地宣布，Vite 6 正式发布了！这一重大版本的发布离不开 Vite [团队](/team)、[贡献者](https://github.com/vitejs/vite/graphs/contributors) 以及整个生态系统合作伙伴的共同努力。
 
@@ -39,7 +39,7 @@ Vite 生态系统也迎来了一批新成员，包括 [TanStack Start](https://t
 
 Vite 已被 OpenAI、Google、Apple、Microsoft、NASA、Shopify、Cloudflare、GitLab、Reddit 和 Linear 等众多知名公司采用。两个月前，我们创建了一份 [使用 Vite 的公司列表](https://github.com/vitejs/companies-using-vite)。令人欣喜的是，许多开发者提交 PR 将他们的公司添加到列表中。回首 Vite 诞生至今，我们共同打造的生态系统增长速度之快，实在令人难以置信。
 
-![Vite weekly npm downloads](/vite6-npm-weekly-downloads.png)
+![Vite 每周 npm 下载量](/vite6-npm-weekly-downloads.png)
 
 ### 加速 Vite 生态系统 {#speeding-up-the-vite-ecosystem}
 
@@ -49,7 +49,7 @@ Vite 已被 OpenAI、Google、Apple、Microsoft、NASA、Shopify、Cloudflare、
 
 [Stackblitz](https://stackblitz.com) 推出了 [bolt.new](https://bolt.new)，这是一个结合了 Claude 和 WebContainers 的 Remix 应用，允许你使用提示语、编辑、运行和部署全栈应用。Nate Weiner 宣布了 [One](https://onestack.dev/)，一个新的 Vite 驱动的 Web 和原生 React 框架。Storybook 展示了他们最新由 Vitest 驱动的 [测试功能](https://youtu.be/8t5wxrFpCQY?si=PYZoWKf-45goQYDt)。还有更多精彩内容。我们建议你观看 [全部 43 场演讲](https://www.youtube.com/playlist?list=PLqGQbXn_GDmnObDzgjUF4Krsfl6OUKxtp)。演讲者们付出了巨大努力，分享了每个项目的最新进展。
 
-Vite 还更新了主页和域名。请记得将你的链接更新为新的 [vite.dev](https://vite.dev) 域名。新设计和实现由 VoidZero 完成，正是他们制作了自己的网站。特别感谢 [Vicente Rodriguez](https://bento.me/rmoon) 和 [Simon Le Marchant](https://marchantweb.com/) 的贡献。
+Vite 还更新了主页和域名。请记得将你的链接更新为新的 [vite.dev](https://v6.vite.dev) 域名。新设计和实现由 VoidZero 完成，正是他们制作了自己的网站。特别感谢 [Vicente Rodriguez](https://bento.me/rmoon) 和 [Simon Le Marchant](https://marchantweb.com/) 的贡献。
 
 ### Vite 6 的到来 {#the-next-vite-major-is-here}
 
@@ -57,14 +57,14 @@ Vite 6 是自 Vite 2 以来最重要的主要版本发布。我们渴望与生�
 
 快速链接：
 
-- [英文文档](https://vite.dev)
+- [英文文档](https://v6.vite.dev)
 - 翻译版本：[简体中文](/)、[日本語](https://ja.vite.dev/)、[Español](https://es.vite.dev/)、[Português](https://pt.vite.dev/)、[한국어](https://ko.vite.dev/)、[Deutsch](https://de.vite.dev/)
 - [迁移指南](/guide/migration)
-- [GitHub 更新日志](https://github.com/vitejs/vite/blob/main/packages/vite/CHANGELOG.md#600-2024-11-26)
+- [GitHub 更新日志](https://github.com/vitejs/vite/blob/v6/packages/vite/CHANGELOG.md#600-2024-11-26)
 
 如果你是 Vite 的新用户，我们建议首先阅读 [入门指南](/guide/) 和 [功能介绍](/guide/features) 部分。
 
-我们要感谢超过 [1000 位 Vite Core 贡献者](https://github.com/vitejs/vite/graphs/contributors) 以及 Vite 插件、集成、工具和翻译的维护者和贡献者，他们帮助我们打造了这个新的主要版本。我们也邀请你参与进来，帮助我们改进整个生态系统的 Vite。了解更多信息，请参阅我们的 [贡献指南](https://github.com/vitejs/vite/blob/main/CONTRIBUTING.md)。
+我们要感谢超过 [1000 位 Vite Core 贡献者](https://github.com/vitejs/vite/graphs/contributors) 以及 Vite 插件、集成、工具和翻译的维护者和贡献者，他们帮助我们打造了这个新的主要版本。我们也邀请你参与进来，帮助我们改进整个生态系统的 Vite。了解更多信息，请参阅我们的 [贡献指南](https://github.com/vitejs/vite/blob/v6/CONTRIBUTING.md)。
 
 如果准备开始的话，我们建议可以帮助 [分类问题](https://github.com/vitejs/vite/issues)、[审查 PR](https://github.com/vitejs/vite/pulls)、根据开放问题发送失败的测试 PR，并在[讨论](https://github.com/vitejs/vite/discussions) 和 Vite Land 的 [帮助论坛](https://discord.com/channels/804011606160703521/1019670660856942652) 中帮助他人。如果你想与我们交流，请加入我们的 [Discord 社区](http://chat.vite.dev/) 并在 [#贡献频道](https://discord.com/channels/804011606160703521/804439875226173480) 中打个招呼。
 
@@ -86,7 +86,7 @@ Vite 正在通过新的环境 API 变得更加灵活。这些新 API 将允许�
 
 对于感兴趣的终端用户，[Sapphi](https://github.com/sapphi-red) 撰写了一篇很好的 [环境 API 介绍](https://green.sapphi.red/blog/increasing-vites-potential-with-the-environment-api) 指南。这是一个很好的起点，帮助你理解我们为何努力使 Vite 更加灵活。
 
-如果你是框架作者或 Vite 插件维护者，并希望利用新 API，你可以在 [环境 API 指南](https://main.vite.dev/guide/api-environment) 中了解更多信息。
+如果你是框架作者或 Vite 插件维护者，并希望利用新 API，可以在[环境 API 指南](/guide/api-environment)中了解更多信息。
 
 我们要感谢所有参与定义和实现新 API 的伙伴。这个故事始于 Vite 2 采用了由 [Rich Harris](https://github.com/Rich-Harris) 和 [SvelteKit](https://svelte.dev/docs/kit) 团队开创的无打包 SSR 开发方案。Vite 的 SSR 转换随后启发了 [Anthony Fu](https://github.com/antfu/) 和 [Pooya Parsa](https://github.com/pi0) 创建 vite-node 并改进 [Nuxt 的开发 SSR 方案](https://antfu.me/posts/dev-ssr-on-nuxt)。Anthony 之后使用 vite-node 为 [Vitest](https://vitest.dev) 提供支持，而 [Vladimir Sheremet](https://github.com/sheremet-va) 在维护 Vitest 的过程中也在不断改进它。2023 年初，Vladimir 开始将 vite-node 上游合并到 Vite Core 中，一年后我们在 Vite 5.1 中将其作为 Runtime API 发布。来自生态系统合作伙伴（特别感谢 Cloudflare 团队）的反馈推动我们对 Vite 的环境进行更雄心勃勃的重构。你可以在 [Patak 的 ViteConf 24 演讲](https://www.youtube.com/watch?v=WImor3HDyqU?si=EZ-rFJn4pDW3tUvp) 中了解更多关于这个故事的信息。
 
@@ -108,7 +108,7 @@ Vite 团队的每个人都参与了新 API 的定义，该 API 是与生态系�
 
 对于大多数项目，升级到 Vite 6 应该是很直接的，但我们建议在升级前查看 [详细的迁移指南](/guide/migration)。
 
-完整的更改列表请参见 [Vite 6 更新日志](https://github.com/vitejs/vite/blob/main/packages/vite/CHANGELOG.md#500-2024-11-26)。
+完整的更改列表请参见 [Vite 6 更新日志](https://github.com/vitejs/vite/blob/v6/packages/vite/CHANGELOG.md#600-2024-11-26)。
 
 ## 致谢 {#acknowledgments}
 

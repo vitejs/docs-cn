@@ -13,7 +13,7 @@ Vite 不再支持 Node 12 / 13 / 15，因为上述版本已经进入了 EOL 阶�
 - Safari >=13
 - Edge >=88
 
-一小部分用户需要 [@vitejs/plugin-legacy](https://github.com/vitejs/vite/tree/main/packages/plugin-legacy)，它会自动生成兼容性 chunk 以及相应的 ES 语言功能的 polyfill。
+一小部分用户需要 [@vitejs/plugin-legacy](https://github.com/vitejs/vite/tree/v6/packages/plugin-legacy)，它会自动生成兼容性 chunk 以及相应的 ES 语言功能的 polyfill。
 
 ## 配置选项变化 {#config-options-changes}
 
@@ -24,7 +24,7 @@ Vite 不再支持 Node 12 / 13 / 15，因为上述版本已经进入了 EOL 阶�
   - `build.base`（改为了 [`base`](../config/shared-options.md#base)）
   - `build.brotliSize`（改为了 [`build.reportCompressedSize`](../config/build-options.md#build-reportcompressedsize)）
   - `build.cleanCssOptions`（Vite 现在使用 esbuild 来做 CSS 最小化压缩）
-  - `build.polyfillDynamicImport`（在没有支持动态导入的浏览器中，使用 [`@vitejs/plugin-legacy`](https://github.com/vitejs/vite/tree/main/packages/plugin-legacy)）
+  - `build.polyfillDynamicImport`（在没有支持动态导入的浏览器中，使用 [`@vitejs/plugin-legacy`](https://github.com/vitejs/vite/tree/v6/packages/plugin-legacy)）
   - `optimizeDeps.keepNames`（改为了 [`optimizeDeps.esbuildOptions.keepNames`](../config/dep-optimization-options.md#optimizedeps-esbuildoptions)）
 
 ## 架构变更和兼容选项 {#achitecture-changes-and-legacy-options}
@@ -91,7 +91,7 @@ Vite v3 默认在 SSR 构建时使用 ESM 格式。当使用 ESM 时，[SSR 外�
 ### 自动生成 https 证书 {#automatic-https-certificate-generation}
 
 当使用 `https` 时需要一个合法可用的证书。在 Vite v2 中，如果没有配置证书，Vite 会自动生成和缓存一个自签名的证书。
-从 Vite v3 开始，我们推荐手动创建你自己的证书。如果你仍想要使用 v2 中的自动生成，该功能可以通过添加 [@vitejs/plugin-basic-ssl](https://github.com/vitejs/vite-plugin-basic-ssl) 到项目插件中来实现。
+从 Vite v3 开始，我们推荐手动创建你自己的证书。如果你仍想要使用 v2 中的自动生成，该功能可以通过添加 [@vitejs/plugin-basic-ssl](https://github.com/vitejs/vite-plugin-basic-ssl/tree/2b6120a3ac6dfc430d7c40eef929941656456f83) 到项目插件中来实现。
 
 ```js
 import basicSsl from '@vitejs/plugin-basic-ssl'

@@ -22,7 +22,7 @@ Vite 通过 HTTP 头来缓存请求得到的依赖，所以如果你想要编辑
 
 ## 模块热替换 {#hot-module-replacement}
 
-Vite 提供了一套原生 ESM 的 [HMR API](./api-hmr)。 具有 HMR 功能的框架可以利用该 API 提供即时、准确的更新，而无需重新加载页面或清除应用程序状态。Vite 内置了 HMR 到 [Vue 单文件组件（SFC）](https://github.com/vitejs/vite-plugin-vue/tree/main/packages/plugin-vue) 和 [React Fast Refresh](https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react) 中。也通过 [@prefresh/vite](https://github.com/JoviDeCroock/prefresh/tree/main/packages/vite) 对 Preact 实现了官方集成。
+Vite 提供了一套原生 ESM 的 [HMR API](./api-hmr)。 具有 HMR 功能的框架可以利用该 API 提供即时、准确的更新，而无需重新加载页面或清除应用程序状态。Vite 内置了 HMR 到 [Vue 单文件组件（SFC）](https://github.com/vitejs/vite-plugin-vue/tree/6027d40b76dfe069ef8d5355af5a828508209a06/packages/plugin-vue) 和 [React Fast Refresh](https://github.com/vitejs/vite-plugin-react/tree/476e705375ef618458918580beb63f43799d12e4/packages/plugin-react) 中。也通过 [@prefresh/vite](https://github.com/JoviDeCroock/prefresh/tree/215026bb6eb9324aa76105a4ada4df7cf45bd6bc/packages/vite) 对 Preact 实现了官方集成。
 
 注意，你不需要手动设置这些 —— 当你通过 [`create-vite`](./) 创建应用程序时，所选模板已经为你预先配置了这些。
 
@@ -209,10 +209,10 @@ HTML 文件位于 Vite 项目的[最前端和中心](/guide/#index-html-and-proj
 
 所有现代框架都已和 Vite 集成。大多数框架插件由各自的框架团队维护，唯有官方的 Vue 和 React Vite 插件由 Vite 组织维护。
 
-- Vue 支持：[@vitejs/plugin-vue](https://github.com/vitejs/vite-plugin-vue/tree/main/packages/plugin-vue)
-- Vue JSX 支持：[@vitejs/plugin-vue-jsx](https://github.com/vitejs/vite-plugin-vue/tree/main/packages/plugin-vue-jsx)
-- React 支持：[@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react)
-- React 使用 SWC 的支持：[@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc)
+- Vue 支持：[@vitejs/plugin-vue](https://github.com/vitejs/vite-plugin-vue/tree/6027d40b76dfe069ef8d5355af5a828508209a06/packages/plugin-vue)
+- Vue JSX 支持：[@vitejs/plugin-vue-jsx](https://github.com/vitejs/vite-plugin-vue/tree/bfc52115519ca7021441c72a8f0af5333e8293d9/packages/plugin-vue-jsx)
+- React 支持：[@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/tree/476e705375ef618458918580beb63f43799d12e4/packages/plugin-react)
+- React 使用 SWC 的支持：[@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc/tree/8651113f680d9191302eb63af63c3cc582319549)
 
 查看 [插件指南](/plugins/) 了解更多信息。
 
@@ -220,7 +220,7 @@ HTML 文件位于 Vite 项目的[最前端和中心](/guide/#index-html-and-proj
 
 `.jsx` 和 `.tsx` 文件同样开箱即用。JSX 的转译同样是通过 [esbuild](https://esbuild.github.io)。
 
-你选择的框架已经可以开箱即用地配置 JSX（例如，Vue 用户应使用官方的 [@vitejs/plugin-vue-jsx](https://github.com/vitejs/vite-plugin-vue/tree/main/packages/plugin-vue-jsx) 插件，它提供了 Vue 3 特定的功能，包括 HMR，全局组件解析，指令和插槽）。
+你选择的框架已经可以开箱即用地配置 JSX（例如，Vue 用户应使用官方的 [@vitejs/plugin-vue-jsx](https://github.com/vitejs/vite-plugin-vue/tree/bfc52115519ca7021441c72a8f0af5333e8293d9/packages/plugin-vue-jsx) 插件，它提供了 Vue 3 特定的功能，包括 HMR，全局组件解析，指令和插槽）。
 
 如果你使用自己的框架运行 JSX，可以使用 [`esbuild` 选项](/config/shared-options.md#esbuild) 来配置自定义的 `jsxFactory` 和 `jsxFragment`。例如，Preact 插件会使用：
 

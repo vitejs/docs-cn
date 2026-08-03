@@ -48,7 +48,7 @@
 
 ## Vue Support {#vue-support}
 
-Vite 2.0 核心已经是框架无关的了。对 Vue 的支持目前详见 [`@vitejs/plugin-vue`](https://github.com/vitejs/vite/tree/main/packages/plugin-vue)。安装它并添加到 Vite 配置十分简单:
+Vite 2.0 核心已经是框架无关的了。对 Vue 的支持目前详见 [`@vitejs/plugin-vue`](https://github.com/vitejs/vite/tree/v6/packages/plugin-vue)。安装它并添加到 Vite 配置十分简单:
 
 ```js
 import vue from '@vitejs/plugin-vue'
@@ -87,7 +87,7 @@ export default defineConfig({
 
 ## React 支持 {#react-support}
 
-现已支持 React Fast Refresh，详见 [`@vitejs/plugin-react`](https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react)。
+现已支持 React Fast Refresh，详见 [`@vitejs/plugin-react`](https://github.com/vitejs/vite-plugin-react/tree/476e705375ef618458918580beb63f43799d12e4/packages/plugin-react)。
 
 ## HMR API 变化 {#hmr-api-change}
 

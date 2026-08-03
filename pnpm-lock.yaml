@@ -9,49 +9,49 @@ importers:
   .:
     devDependencies:
       '@shikijs/vitepress-twoslash':
-        specifier: ^2.5.0
+        specifier: 2.5.0
         version: 2.5.0(typescript@5.4.5)
       '@type-challenges/utils':
-        specifier: ^0.1.1
+        specifier: 0.1.1
         version: 0.1.1
       '@types/express':
-        specifier: ^5.0.1
+        specifier: 5.0.1
         version: 5.0.1
       '@types/node':
-        specifier: ^20.9.2
+        specifier: 20.12.12
         version: 20.12.12
       chalk:
-        specifier: ^4.1.2
+        specifier: 4.1.2
         version: 4.1.2
       feed:
-        specifier: ^5.0.1
+        specifier: 5.0.1
         version: 5.0.1
       gray-matter:
-        specifier: ^4.0.3
+        specifier: 4.0.3
         version: 4.0.3
       gsap:
-        specifier: ^3.12.4
+        specifier: 3.12.7
         version: 3.12.7
       lodash:
-        specifier: ^4.17.21
+        specifier: 4.17.21
         version: 4.17.21
       vite:
-        specifier: ^6.3.0-beta.0
-        version: 6.3.0-beta.0(@types/node@20.12.12)
+        specifier: 6.4.3
+        version: 6.4.3(@types/node@20.12.12)
       vitepress:
-        specifier: ^1.6.3
+        specifier: 1.6.3
         version: 1.6.3(@algolia/client-search@5.20.0)(@types/node@20.12.12)(postcss@8.5.3)(search-insights@2.13.0)(typescript@5.4.5)
       vitepress-plugin-group-icons:
-        specifier: ^1.5.2
+        specifier: 1.5.2
         version: 1.5.2
       vitepress-plugin-llms:
-        specifier: ^1.1.4
+        specifier: 1.1.4
         version: 1.1.4
       vue:
-        specifier: ^3.5.13
+        specifier: 3.5.13
         version: 3.5.13(typescript@5.4.5)
       yorkie:
-        specifier: ^2.0.0
+        specifier: 2.0.0
         version: 2.0.0
 
 packages:
@@ -1092,6 +1092,14 @@ packages:
       picomatch:
         optional: true
 
+  fdir@6.4.4:
+    resolution: {integrity: sha512-1NZP+GK4GfuAv3PqKvxQRDMjdSRZjnkq7KfhlNrCNNlZ0ygQFpebfrnfnq/W7fpUnAv9aGWmY1zKx7FYL3gwhg==}
+    peerDependencies:
+      picomatch: ^3 || ^4
+    peerDependenciesMeta:
+      picomatch:
+        optional: true
+
   feed@5.0.1:
     resolution: {integrity: sha512-kOveKLHucVZ6RI91bdWAts9O0L1N2mGzRGVCDQPRnHh4HmgqLdN66Cp/5dMeJZGn/qnBslWliwX37FEBq8DCIA==}
     engines: {node: '>=20', pnpm: '>=10'}
@@ -1540,6 +1548,10 @@ packages:
     resolution: {integrity: sha512-qkf4trmKSIiMTs/E63cxH+ojC2unam7rJ0WrauAzpT3ECNTxGRMlaXxVbfxMUC/w0LaYk6jQ4y/nGR9uBO3tww==}
     engines: {node: '>=12.0.0'}
 
+  tinyglobby@0.2.13:
+    resolution: {integrity: sha512-mEwzpUgrLySlveBwEVDMKk5B57bhLPYovRfPAXD5gA/98Opn0rCDj3GtLwFvCvH5RK9uPCExUROW5NjDwvqkxw==}
+    engines: {node: '>=12.0.0'}
+
   to-fast-properties@2.0.0:
     resolution: {integrity: sha512-/OaKK0xYrs3DmxRYqL/yDc+FxFUVYhDlXMhRmv3z915w2HF1tnN1omB354j8VUGO/hbRzyD6Y3sA7v7GS/ceog==}
     engines: {node: '>=4'}
@@ -1635,8 +1647,8 @@ packages:
       terser:
         optional: true
 
-  vite@6.3.0-beta.0:
-    resolution: {integrity: sha512-Fswllyx4/INXEPu6KoKElPvWJfiuLWCGiIuaYauBVLmvvZqqrpu46B+/nBQ48tAQVRthOLo1lyhfTyLbSCSXTg==}
+  vite@6.4.3:
+    resolution: {integrity: sha512-NTKlcQjlAK7MlQoyb6LgaqHc8sso/pVyUJYWMws3jg21uTJw/LddqIFPcPqP6PzpgbIcZyKI85sFE4HBrQDA8A==}
     engines: {node: ^18.0.0 || ^20.0.0 || >=22.0.0}
     hasBin: true
     peerDependencies:
@@ -2707,6 +2719,10 @@ snapshots:
     optionalDependencies:
       picomatch: 4.0.2
 
+  fdir@6.4.4(picomatch@4.0.2):
+    optionalDependencies:
+      picomatch: 4.0.2
+
   feed@5.0.1:
     dependencies:
       xml-js: 1.6.11
@@ -3345,6 +3361,11 @@ snapshots:
       fdir: 6.4.3(picomatch@4.0.2)
       picomatch: 4.0.2
 
+  tinyglobby@0.2.13:
+    dependencies:
+      fdir: 6.4.4(picomatch@4.0.2)
+      picomatch: 4.0.2
+
   to-fast-properties@2.0.0: {}
 
   tokenx@0.4.1: {}
@@ -3437,13 +3458,14 @@ snapshots:
       '@types/node': 20.12.12
       fsevents: 2.3.3
 
-  vite@6.3.0-beta.0(@types/node@20.12.12):
+  vite@6.4.3(@types/node@20.12.12):
     dependencies:
       esbuild: 0.25.1
+      fdir: 6.4.4(picomatch@4.0.2)
       picomatch: 4.0.2
       postcss: 8.5.3
       rollup: 4.37.0
-      tinyglobby: 0.2.12
+      tinyglobby: 0.2.13
     optionalDependencies:
       '@types/node': 20.12.12
       fsevents: 2.3.3

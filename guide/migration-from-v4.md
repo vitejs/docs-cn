@@ -177,7 +177,7 @@ Vite 5 使用 esbuild 0.19 并移除了 esbuild 0.18 的兼容层，这改变了
 
 `--https` 标志会在内部设置 `server.https: true` 和 `preview.https: true`。这个配置本来是为了与自动 https 证书生成功能一起使用的，但是这个功能在[Vite 3 中被移除](https://v3.vitejs.dev/guide/migration.html#automatic-https-certificate-generation)。因此，这个配置已经不再有用，因为它会启动一个没有证书的 Vite HTTPS 服务器。
 
-如果你使用 [`@vitejs/plugin-basic-ssl`](https://github.com/vitejs/vite-plugin-basic-ssl) 或者 [`vite-plugin-mkcert`](https://github.com/liuweiGL/vite-plugin-mkcert)，它们已经在内部设置了 `https` 配置，所以你可以在你的设置中移除 `--https`，`server.https: true`，和`preview.https: true`。
+如果你使用 [`@vitejs/plugin-basic-ssl`](https://github.com/vitejs/vite-plugin-basic-ssl/tree/2b6120a3ac6dfc430d7c40eef929941656456f83) 或者 [`vite-plugin-mkcert`](https://github.com/liuweiGL/vite-plugin-mkcert)，它们已经在内部设置了 `https` 配置，所以你可以在你的设置中移除 `--https`，`server.https: true`，和`preview.https: true`。
 
 ### 移除 `resolvePackageEntry` 和 `resolvePackageData` API {#remove-resolvepackageentry-and-resolvepackagedata-apis}
 

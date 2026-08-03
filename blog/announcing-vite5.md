@@ -1,7 +1,7 @@
 ---
-title: Vite 5.0 is out!
+title: Vite 5.0 正式发布！
 author:
-  name: The Vite Team
+  name: Vite 团队
 date: 2023-11-16
 sidebar: false
 head:
@@ -10,16 +10,16 @@ head:
       content: website
   - - meta
     - property: og:title
-      content: Announcing Vite 5
+      content: Vite 5 正式发布
   - - meta
     - property: og:image
-      content: https://vite.dev/og-image-announcing-vite5.png
+      content: https://v6.cn.vite.dev/og-image-announcing-vite5.png
   - - meta
     - property: og:url
-      content: https://vite.dev/blog/announcing-vite5
+      content: https://v6.cn.vite.dev/blog/announcing-vite5
   - - meta
     - property: og:description
-      content: Vite 5 Release Announcement
+      content: Vite 5 发布公告
   - - meta
     - name: twitter:card
       content: summary_large_image
@@ -45,11 +45,11 @@ Vite 5 的重点是清理 API（删除已弃用的功能）并简化几个功能
 
 - [文档](/)
 - [迁移指南](/guide/migration)
-- [变更日志](https://github.com/vitejs/vite/blob/main/packages/vite/CHANGELOG.md#500-2023-11-16)
+- [变更日志](https://github.com/vitejs/vite/blob/v6/packages/vite/CHANGELOG.md#500-2023-11-16)
 
 其他语言的文档：
 
-- [简体中文](https://cn.vite.dev/)
+- [简体中文](/)
 - [日本語](https://ja.vite.dev/)
 - [Español](https://es.vite.dev/)
 - [Português](https://pt.vite.dev/)
@@ -58,7 +58,7 @@ Vite 5 的重点是清理 API（删除已弃用的功能）并简化几个功能
 
 如果你是 Vite 的新用户，我们建议你先阅读 [入门指南](/guide/) 和 [功能](/guide/features) 指南。
 
-我们感谢超过 [850 位对 Vite Core 作出贡献的贡献者](https://github.com/vitejs/vite/graphs/contributors)，以及 Vite 插件、集成、工具和翻译的维护者和贡献者，他们帮助我们达到了这一里程碑。我们鼓励你参与进来，继续与我们一起改进 Vite。你可以在我们的 [贡献指南](https://github.com/vitejs/vite/blob/main/CONTRIBUTING.md) 中了解更多信息。要开始，我们建议你 [处理问题](https://github.com/vitejs/vite/issues)，[审查 PR](https://github.com/vitejs/vite/pulls)，基于开放的问题发送失败的测试 PR，并在 [讨论](https://github.com/vitejs/vite/discussions) 和 Vite Land 的 [帮助论坛](https://discord.com/channels/804011606160703521/1019670660856942652) 中帮助其他人。你会在这个过程中学到很多，并顺利地进一步为项目做出贡献。如果你有疑问，请加入我们的 [Discord 社区](http://chat.vite.dev/)，并在 [#contributing 频道](https://discord.com/channels/804011606160703521/804439875226173480) 上打个招呼。
+我们感谢超过 [850 位对 Vite Core 作出贡献的贡献者](https://github.com/vitejs/vite/graphs/contributors)，以及 Vite 插件、集成、工具和翻译的维护者和贡献者，他们帮助我们达到了这一里程碑。我们鼓励你参与进来，继续与我们一起改进 Vite。你可以在我们的 [贡献指南](https://github.com/vitejs/vite/blob/v6/CONTRIBUTING.md) 中了解更多信息。要开始，我们建议你 [处理问题](https://github.com/vitejs/vite/issues)，[审查 PR](https://github.com/vitejs/vite/pulls)，基于开放的问题发送失败的测试 PR，并在 [讨论](https://github.com/vitejs/vite/discussions) 和 Vite Land 的 [帮助论坛](https://discord.com/channels/804011606160703521/1019670660856942652) 中帮助其他人。你会在这个过程中学到很多，并顺利地进一步为项目做出贡献。如果你有疑问，请加入我们的 [Discord 社区](https://chat.vite.dev/)，并在 [#contributing 频道](https://discord.com/channels/804011606160703521/804439875226173480) 上打个招呼。
 
 要保持最新，请关注我们在 [X](https://twitter.com/vite_js) 或 [Mastodon](https://webtoo.ls/@vite) 上的动态。
 
@@ -74,15 +74,15 @@ Vite 不再支持已达到 EOL 的 Node.js 14 / 16 / 17 / 19。现在需要 Node
 
 ## 性能方面 {#performance}
 
-除了 Rollup 4 的构建性能改进之外，现在还有一个新指南，帮助你识别和修复常见的性能问题，网址为 [https://vite.dev/guide/performance](/guide/performance)。
+除了 Rollup 4 的构建性能改进之外，现在还有一个新的[性能指南](/guide/performance)，帮助你识别和修复常见的性能问题。
 
 Vite 5 还引入了 [server.warmup](/guide/performance.html#warm-up-frequently-used-files)，这是一个新功能，用于改善启动时间。它允许你定义一个模块列表，在服务器启动时应预先转换。当使用 [`--open` 或 `server.open`](/config/server-options.html#server-open) 时，Vite 还将自动预热你的应用程序的入口点或提供的要打开的 URL。
 
 ## 主要变化 {#main-changes}
 
-- [Vite is now powered by Rollup 4](/guide/migration#rollup-4)
-- [The CJS Node API has been deprecated](/guide/migration#deprecate-cjs-node-api)
-- [Rework `define` and `import.meta.env.*` replacement strategy](/guide/migration#rework-define-and-import-meta-env-replacement-strategy)
+- [Vite 现在由 Rollup 4 驱动](/guide/migration#rollup-4)
+- [CJS Node API 已被弃用](/guide/migration#deprecate-cjs-node-api)
+- [重构 `define` 和 `import.meta.env.*` 的替换策略](/guide/migration#rework-define-and-import-meta-env-replacement-strategy)
 - [SSR externalized modules value now matches production](/guide/migration#ssr-externalized-modules-value-now-matches-production)
 - [`worker.plugins` is now a function](/guide/migration#worker-plugins-is-now-a-function)
 - [Allow path containing `.` to fallback to index.html](/guide/migration#allow-path-containing-to-fallback-to-index-html)
@@ -101,7 +101,7 @@ Vite 5 还引入了 [server.warmup](/guide/performance.html#warm-up-frequently-u
 
 对于大多数项目来说，升级到 Vite 5 应该是直截了当的。但我们建议在升级之前查看 [详细的迁移指南](/guide/migration)。
 
-你可以在 [Vite 5 变更日志](https://github.com/vitejs/vite/blob/main/packages/vite/CHANGELOG.md#500-2023-11-16) 中找到对 Vite 核心的全面变更列表。
+你可以在 [Vite 5 变更日志](https://github.com/vitejs/vite/blob/v6/packages/vite/CHANGELOG.md#500-2023-11-16) 中找到对 Vite 核心的全面变更列表。
 
 ## 致谢 {#acknowledgments}
 

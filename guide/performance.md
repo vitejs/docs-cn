@@ -124,4 +124,4 @@ export default defineConfig({
 
 - 使用 [Rolldown 而不是 Rollup 和 esbuild](./rolldown) 以获得更快的构建速度和在开发和构建之间更一致的体验。
 - 尝试实验性的 [LightningCSS](https://github.com/vitejs/vite/discussions/13835)
-- 使用 [`@vitejs/plugin-react-swc`](https://github.com/vitejs/vite-plugin-react-swc) 代替 `@vitejs/plugin-react`。
+- 使用 [`@vitejs/plugin-react-swc`](https://github.com/vitejs/vite-plugin-react-swc/tree/8651113f680d9191302eb63af63c3cc582319549) 代替 `@vitejs/plugin-react`。

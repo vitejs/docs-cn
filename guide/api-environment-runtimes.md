@@ -304,6 +304,8 @@ function createWorkerEnvironment(name, config, context) {
   const handlerToWorkerListener = new WeakMap()
 
   const workerHotChannel = {
+    // Worker 线程消息不会暴露到网络，因此跳过 server.fs 检查
+    skipFsCheck: true,
     send: (data) => worker.postMessage(data),
     on: (event, handler) => {
       if (event === 'connection') return

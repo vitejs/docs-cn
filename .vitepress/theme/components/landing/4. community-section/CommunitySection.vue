@@ -53,8 +53,7 @@ SolidJS in mind, they should scale from our simplest template to opinionated sta
   {
     name: 'David Cramer',
     handle: '@zeeg',
-    avatar:
-      'https://pbs.twimg.com/profile_images/1706891973553168384/zdAPOznc_400x400.jpg',
+    avatar: 'https://github.com/zeeg.png?size=400',
     comment: ['Vite has been a game changer for the industry.'],
   },
   {
@@ -69,8 +68,7 @@ SolidJS in mind, they should scale from our simplest template to opinionated sta
   {
     name: 'Christoph Nakazawa',
     handle: '@cpojer',
-    avatar:
-      'https://pbs.twimg.com/profile_images/1854151427595407360/4GyUCgEH_400x400.jpg',
+    avatar: 'https://github.com/cpojer.png?size=400',
     comment: ['Vite is gonna eat the (JavaScript) world.'],
   },
   {

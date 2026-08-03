@@ -2,7 +2,7 @@
 
 Vite 的发布遵循 [语义化版本控制](https://semver.org/)。你可以在 [Vite npm 包页面](https://www.npmjs.com/package/vite) 查看 Vite 的最新稳定版本。
 
-过去版本的完整变更日志可以在 [GitHub](https://github.com/vitejs/vite/blob/main/packages/vite/CHANGELOG.md) 上找到。
+过去版本的完整变更日志可以在 [GitHub](https://github.com/vitejs/vite/blob/v6/packages/vite/CHANGELOG.md) 上找到。
 
 ## 发布周期 {#release-cycle}
 

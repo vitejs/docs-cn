@@ -8,7 +8,7 @@ Rollup 3 尽最大可能兼容了 Rollup 2。如果你在项目中使用了自�
 
 ## 现代浏览器基准线变化 {#modern-browser-baseline-change}
 
-当前对于现代浏览器的构建目标及现调整为了默认 `safari14` 以求更广的 ES2020 兼容性（从 `safari13` 升级）。这意味着现代化构建现在可以使用 [`BigInt`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt)，同时 [空值合并运算符](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Nullish_coalescing) 将不再被转译。如果你需要支持更旧版本的浏览器，你可以照常添加 [`@vitejs/plugin-legacy`](https://github.com/vitejs/vite/tree/main/packages/plugin-legacy)。
+当前对于现代浏览器的构建目标及现调整为了默认 `safari14` 以求更广的 ES2020 兼容性（从 `safari13` 升级）。这意味着现代化构建现在可以使用 [`BigInt`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt)，同时 [空值合并运算符](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Nullish_coalescing) 将不再被转译。如果你需要支持更旧版本的浏览器，你可以照常添加 [`@vitejs/plugin-legacy`](https://github.com/vitejs/vite/tree/v6/packages/plugin-legacy)。
 
 ## 其他一般性变化 {#general-changes}
 

@@ -24,7 +24,7 @@
 
 请注意，默认情况下 Vite 只处理语法转译，且 **不包含任何 polyfill**。你可以访问 https://cdnjs.cloudflare.com/polyfill/ ，这个网站可以根据用户的浏览器 UserAgent 字符串自动生成 polyfill 包。
 
-传统浏览器可以通过插件 [@vitejs/plugin-legacy](https://github.com/vitejs/vite/tree/main/packages/plugin-legacy) 来支持，它将自动生成传统版本的 chunk 及与其相对应 ES 语言特性方面的 polyfill。兼容版的 chunk 只会在不支持原生 ESM 的浏览器中进行按需加载。
+传统浏览器可以通过插件 [@vitejs/plugin-legacy](https://github.com/vitejs/vite/tree/v6/packages/plugin-legacy) 来支持，它将自动生成传统版本的 chunk 及与其相对应 ES 语言特性方面的 polyfill。兼容版的 chunk 只会在不支持原生 ESM 的浏览器中进行按需加载。
 
 ## 公共基础路径 {#public-base-path}
 
@@ -44,7 +44,7 @@
 
 :::warning 使用相对基础路径时对旧浏览器的支持
 
-使用相对基础路径需要 `import.meta` 的支持。如果你需要支持 [不支持 `import.meta` 的浏览器](https://caniuse.com/mdn-javascript_operators_import_meta)，可以使用 [`legacy` 插件](https://github.com/vitejs/vite/tree/main/packages/plugin-legacy)。
+使用相对基础路径需要 `import.meta` 的支持。如果你需要支持 [不支持 `import.meta` 的浏览器](https://caniuse.com/mdn-javascript_operators_import_meta)，可以使用 [`legacy` 插件](https://github.com/vitejs/vite/tree/v6/packages/plugin-legacy)。
 
 :::
 

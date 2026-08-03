@@ -1,7 +1,7 @@
 ---
-title: Announcing Vite 2.0
+title: Vite 2.0 正式发布
 author:
-  - name: The Vite Team
+  - name: Vite 团队
 sidebar: false
 date: 2021-02-16
 head:
@@ -10,18 +10,18 @@ head:
       content: website
   - - meta
     - property: og:title
-      content: Announcing Vite 2.0
+      content: Vite 2.0 正式发布
   - - meta
     - property: og:url
-      content: https://vite.dev/blog/announcing-vite2
+      content: https://v6.cn.vite.dev/blog/announcing-vite2
   - - meta
     - property: og:description
-      content: Vite 2 Release Announcement
+      content: Vite 2 发布公告
 ---
 
 # Vite 2.0 发布了 {#announcing-vite-2-0}
 
-_February 16, 2021_ - Check out the [Vite 3.0 announcement](./announcing-vite3.md)
+_2021 年 2 月 16 日_ - 查看 [Vite 3.0 发布公告](./announcing-vite3.md)
 
 <p style="text-align:center">
   <img src="/logo.svg" style="height:200px">
@@ -43,7 +43,7 @@ Vite 1.0 虽然之前进入了 RC 阶段，但在发布之前我们决定进行�
 
 设计 Vite 的初衷是为了 [探索黑客原型项目以更好的支持 Vue 单文件组件](https://github.com/vuejs/vue-dev-server)。Vite 1 则是这个想法的延续，并在此基础上增加了对 HMR 支持。
 
-但 2.0 基于之前的经验提供了一个更稳定灵活的内部架构，从而可以完全通过插件机制来支持任意框架。现在 Vite 提供 [官方的 Vue, React, Preact, Lit Element 项目模版](https://github.com/vitejs/vite/tree/main/packages/create-vite)，而 Svelte 社区也在开发 Vite 整合方案。
+但 2.0 基于之前的经验提供了一个更稳定灵活的内部架构，从而可以完全通过插件机制来支持任意框架。现在 Vite 提供 [官方的 Vue, React, Preact, Lit Element 项目模版](https://github.com/vitejs/vite/tree/v6/packages/create-vite)，而 Svelte 社区也在开发 Vite 整合方案。
 
 ### 全新插件机制和 API {#new-plugin-format-and-api}
 
@@ -71,7 +71,7 @@ Vite SSR 会作为一个底层功能，而我们期待看到更高层级的框�
 
 ### 旧浏览器支持 {#opt-in-legacy-browser-support}
 
-Vite 默认只支持原生支持 ESM 的现代浏览器，但可以通过官方的 [@vitejs/plugin-legacy](https://github.com/vitejs/vite/tree/main/packages/plugin-legacy) 来支持旧浏览器。legacy 插件会自动额外生成一个针对旧浏览器的包，并且在 html 中插入根据浏览器 ESM 支持来选择性加载对应包的代码（类似 vue-cli 的 modern mode）。
+Vite 默认只支持原生支持 ESM 的现代浏览器，但可以通过官方的 [@vitejs/plugin-legacy](https://github.com/vitejs/vite/tree/v6/packages/plugin-legacy) 来支持旧浏览器。legacy 插件会自动额外生成一个针对旧浏览器的包，并且在 html 中插入根据浏览器 ESM 支持来选择性加载对应包的代码（类似 vue-cli 的 modern mode）。
 
 ## 尝试一下！ {#give-it-a-try}
 
