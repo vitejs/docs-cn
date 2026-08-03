@@ -3,76 +3,53 @@ import { defineConfig } from 'vitepress'
 import { transformerTwoslash } from '@shikijs/vitepress-twoslash'
 import { buildEnd } from './buildEnd.config'
 
-const ogDescription = 'Next Generation Frontend Tooling'
-const ogImage = 'https://vitejs.dev/og-image.png'
+const siteUrl = 'https://v5.cn.vite.dev'
+const ogDescription = 'Vite 5 官方中文文档'
+const ogImage = `${siteUrl}/og-image.jpg`
 const ogTitle = 'Vite'
-const ogUrl = 'https://vitejs.dev'
+const ogUrl = siteUrl
 
-// netlify envs
-const deployURL = process.env.DEPLOY_PRIME_URL || ''
 const commitRef = process.env.COMMIT_REF?.slice(0, 8) || 'dev'
 
-const deployType = (() => {
-  switch (deployURL) {
-    case 'https://main--vite-docs-main.netlify.app':
-      return 'main'
-    case '':
-      return 'local'
-    default:
-      return 'release'
-  }
-})()
-const additionalTitle = ((): string => {
-  switch (deployType) {
-    case 'main':
-      return ' (main branch)'
-    case 'local':
-      return ' (local)'
-    case 'release':
-      return ''
-  }
-})()
-const versionLinks = ((): DefaultTheme.NavItemWithLink[] => {
-  const oldVersions: DefaultTheme.NavItemWithLink[] = [
-    {
-      text: 'Vite 4 Docs',
-      link: 'https://v4.vitejs.dev',
-    },
-    {
-      text: 'Vite 3 Docs',
-      link: 'https://v3.vitejs.dev',
-    },
-    {
-      text: 'Vite 2 Docs',
-      link: 'https://v2.vitejs.dev',
-    },
-  ]
-
-  switch (deployType) {
-    case 'main':
-    case 'local':
-      return [
-        {
-          text: 'Vite 5 Docs (release)',
-          link: 'https://vitejs.dev',
-        },
-        ...oldVersions,
-      ]
-    case 'release':
-      return oldVersions
-  }
-})()
+const versionLinks: DefaultTheme.NavItemWithLink[] = [
+  { text: '中文最新版', link: 'https://cn.vite.dev' },
+  { text: 'Vite 5 文档（英文）', link: 'https://v5.vite.dev' },
+  { text: 'Vite 4 文档（英文）', link: 'https://v4.vite.dev' },
+  { text: 'Vite 3 文档（英文）', link: 'https://v3.vite.dev' },
+  { text: 'Vite 2 文档（英文）', link: 'https://v2.vite.dev' },
+]
 
 export default defineConfig({
-  title: 'Vite 官方中文文档',
-  description: '下一代前端工具链',
+  title: 'Vite 5 官方中文文档',
+  description: 'Vite 5 历史版本官方中文文档',
   lang: 'zh-CN',
+  cleanUrls: true,
+  srcExclude: ['README.md'],
+  sitemap: {
+    hostname: siteUrl,
+  },
 
   head: [
     ['link', { rel: 'icon', type: 'image/svg+xml', href: '/logo.svg' }],
     [
       'link',
       { rel: 'alternate', type: 'application/rss+xml', href: '/blog.rss' },
+    ],
+    ['link', { rel: 'preconnect', href: 'https://fonts.googleapis.com' }],
+    [
+      'link',
+      {
+        rel: 'preconnect',
+        href: 'https://fonts.gstatic.com',
+        crossorigin: 'true',
+      },
+    ],
+    [
+      'link',
+      {
+        rel: 'stylesheet',
+        href: 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Manrope:wght@600&family=IBM+Plex+Mono:wght@400&display=swap',
+      },
     ],
     ['link', { rel: 'me', href: 'https://m.webtoo.ls/@vite' }],
     ['meta', { property: 'og:type', content: 'website' }],
@@ -97,7 +74,7 @@ export default defineConfig({
 
   locales: {
     root: { label: '简体中文' },
-    en: { label: 'English', link: 'https://vitejs.dev' },
+    en: { label: 'English', link: 'https://v5.vite.dev' },
     ja: { label: '日本語', link: 'https://ja.vitejs.dev' },
     es: { label: 'Español', link: 'https://es.vitejs.dev' },
     pt: { label: 'Português', link: 'https://pt.vitejs.dev' },
@@ -109,7 +86,7 @@ export default defineConfig({
     logo: '/logo.svg',
 
     editLink: {
-      pattern: 'https://github.com/vitejs/docs-cn/edit/main/:path',
+      pattern: 'https://github.com/vitejs/docs-cn/edit/5.x-stable/:path',
       text: '为此页提供修改建议',
     },
 
@@ -119,56 +96,31 @@ export default defineConfig({
     },
 
     socialLinks: [
+      { icon: 'bluesky', link: 'https://bsky.app/profile/vite.dev' },
       { icon: 'mastodon', link: 'https://elk.zone/m.webtoo.ls/@vite' },
-      { icon: 'twitter', link: 'https://twitter.com/vite_js' },
-      { icon: 'discord', link: 'https://chat.vitejs.dev' },
+      { icon: 'x', link: 'https://x.com/vite_js' },
+      { icon: 'discord', link: 'https://chat.vite.dev' },
       { icon: 'github', link: 'https://github.com/vitejs/vite' },
     ],
 
-    algolia: {
-      appId: '7H67QR5P0A',
-      apiKey: 'deaab78bcdfe96b599497d25acc6460e',
-      indexName: 'vitejs',
-      searchParameters: {
-        facetFilters: ['tags:cn']
-      },
-      placeholder: '搜索文档',
-      translations: {
-        button: {
-          buttonText: '搜索'
+    search: {
+      provider: 'local',
+      options: {
+        translations: {
+          button: {
+            buttonText: '搜索文档',
+            buttonAriaLabel: '搜索文档',
+          },
+          modal: {
+            noResultsText: '没有找到相关结果',
+            resetButtonTitle: '重置搜索',
+            footer: {
+              selectText: '选择',
+              navigateText: '导航',
+              closeText: '关闭',
+            },
+          },
         },
-        modal: {
-          searchBox: {
-            resetButtonTitle: '清除查询条件',
-            resetButtonAriaLabel: '清除查询条件',
-            cancelButtonText: '取消',
-            cancelButtonAriaLabel: '取消'
-          },
-          startScreen: {
-            recentSearchesTitle: '搜索历史',
-            noRecentSearchesText: '没有搜索历史',
-            saveRecentSearchButtonTitle: '保存到搜索历史',
-            removeRecentSearchButtonTitle: '从搜索历史中移除',
-            favoriteSearchesTitle: '收藏',
-            removeFavoriteSearchButtonTitle: '从收藏中移除'
-          },
-          errorScreen: {
-            titleText: '无法获取结果',
-            helpText: '你可能需要检查你的网络连接'
-          },
-          footer: {
-            selectText: '选择',
-            navigateText: '切换',
-            closeText: '关闭',
-            searchByText: '搜索供应商'
-          },
-          noResultsScreen: {
-            noResultsText: '无法找到相关结果',
-            suggestedQueryText: '你可以尝试查询',
-            reportMissingResultsText: '你认为这个查询应该有结果？',
-            reportMissingResultsLinkText: '向我们反馈'
-          }
-        }
       },
     },
 
@@ -179,7 +131,7 @@ export default defineConfig({
     // },
 
     footer: {
-      message: `Released under the MIT License. (${commitRef})`,
+      message: `Vite 5.4.21 历史版本文档（${commitRef}）`,
       copyright:
         '本中文文档内容版权为 Vite 官方中文翻译团队所有，保留所有权利。'
     },
@@ -201,12 +153,16 @@ export default defineConfig({
                 link: 'https://elk.zone/m.webtoo.ls/@vite',
               },
               {
-                text: 'Twitter',
-                link: 'https://twitter.com/vite_js',
+                text: 'Bluesky',
+                link: 'https://bsky.app/profile/vite.dev',
+              },
+              {
+                text: 'X',
+                link: 'https://x.com/vite_js',
               },
               {
                 text: 'Discord 聊天室',
-                link: 'https://chat.vitejs.dev'
+                link: 'https://chat.vite.dev'
               },
               {
                 text: 'Awesome Vite',
@@ -222,32 +178,19 @@ export default defineConfig({
               },
               {
                 text: '更新日志',
-                link: 'https://github.com/vitejs/vite/blob/main/packages/vite/CHANGELOG.md',
+                link: 'https://github.com/vitejs/vite/blob/v5/packages/vite/CHANGELOG.md',
               },
               {
                 text: '贡献指南',
-                link: 'https://github.com/vitejs/vite/blob/main/CONTRIBUTING.md',
+                link: 'https://github.com/vitejs/vite/blob/v5/CONTRIBUTING.md',
               },
             ],
           },
         ]
       },
       {
-        text: 'Version',
-        items: [
-          {
-            text: 'Vite v4 文档（英文）',
-            link: 'https://v4.vitejs.dev'
-          },
-          {
-            text: 'Vite v3 文档（英文）',
-            link: 'https://v3.vitejs.dev'
-          },
-          {
-            text: 'Vite v2 文档（英文）',
-            link: 'https://v2.vitejs.dev'
-          },
-        ]
+        text: 'v5.4.21',
+        items: versionLinks,
       }
     ],
 
@@ -396,16 +339,27 @@ export default defineConfig({
   transformPageData(pageData) {
     const canonicalUrl = `${ogUrl}/${pageData.relativePath}`
       .replace(/\/index\.md$/, '/')
-      .replace(/\.md$/, '/')
+      .replace(/\.md$/, '')
     pageData.frontmatter.head ??= []
     pageData.frontmatter.head.unshift(
       ['link', { rel: 'canonical', href: canonicalUrl }],
       ['meta', { property: 'og:title', content: pageData.title }],
+      ['meta', { property: 'og:url', content: canonicalUrl }],
     )
     return pageData
   },
   markdown: {
     codeTransformers: [transformerTwoslash()],
+  },
+  vite: {
+    optimizeDeps: {
+      include: [
+        '@shikijs/vitepress-twoslash/client',
+        'gsap',
+        'gsap/dist/ScrollTrigger',
+        'gsap/dist/MotionPathPlugin',
+      ],
+    },
   },
   buildEnd,
 })

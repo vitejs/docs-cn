@@ -13,6 +13,12 @@
    // ---cut---
    // vite.config.js
    export default defineConfig({
+     server: {
+       cors: {
+         // 浏览器访问后端时所使用的来源
+         origin: 'http://my-backend.example.com',
+       },
+     },
      build: {
        // 在 outDir 中生成 .vite/manifest.json
        manifest: true,

@@ -22,7 +22,7 @@ Vite 还提供了强大的扩展性，可通过其 [插件 API](./api-plugin) �
 
 在开发阶段，Vite 将 [`esnext` 作为转换目标](https://esbuild.github.io/api/#target)，因为我们假设使用的是现代浏览器，它支持所有最新的 JavaScript 和 CSS 特性。这样可以防止语法降级，让 Vite 尽可能地接近原始源代码。
 
-对于生产构建，默认情况下 Vite 的目标浏览器支持 [原生 ES 模块](https://caniuse.com/es6-module)、[原生 ESM 动态导入](https://caniuse.com/es6-module-dynamic-import) 和 [`import.meta`](https://caniuse.com/mdn-javascript_operators_import_meta)。旧版浏览器可以通过官方的 [@vitejs/plugin-legacy](https://github.com/vitejs/vite/tree/main/packages/plugin-legacy)。查看 [构建生产环境](./build) 了解更多细节。
+对于生产构建，默认情况下 Vite 的目标浏览器支持 [原生 ES 模块](https://caniuse.com/es6-module)、[原生 ESM 动态导入](https://caniuse.com/es6-module-dynamic-import) 和 [`import.meta`](https://caniuse.com/mdn-javascript_operators_import_meta)。旧版浏览器可以通过官方的 [@vitejs/plugin-legacy](https://github.com/vitejs/vite/tree/v5/packages/plugin-legacy)。查看 [构建生产环境](./build) 了解更多细节。
 
 ## 在线试用 Vite {#trying-vite-online}
 
@@ -92,7 +92,7 @@ $ bun create vite my-vue-app --template vue
 
 :::
 
-查看 [create-vite](https://github.com/vitejs/vite/tree/main/packages/create-vite) 以获取每个模板的更多细节：`vanilla`，`vanilla-ts`, `vue`, `vue-ts`，`react`，`react-ts`，`react-swc`，`react-swc-ts`，`preact`，`preact-ts`，`lit`，`lit-ts`，`svelte`，`svelte-ts`，`solid`，`solid-ts`，`qwik`，`qwik-ts`。
+查看 [create-vite](https://github.com/vitejs/vite/tree/v5/packages/create-vite) 以获取每个模板的更多细节：`vanilla`，`vanilla-ts`, `vue`, `vue-ts`，`react`，`react-ts`，`react-swc`，`react-swc-ts`，`preact`，`preact-ts`，`lit`，`lit-ts`，`svelte`，`svelte-ts`，`solid`，`solid-ts`，`qwik`，`qwik-ts`。
 
 你可以使用 `.` 作为项目名称，在当前目录中创建项目脚手架。
 
@@ -189,7 +189,7 @@ Vite 也支持多个 `.html` 作入口点的 [多页面应用模式](./build#mul
 如果你迫不及待想要体验最新的功能，可以自行克隆 [vite 仓库](https://github.com/vitejs/vite) 到本地机器上然后自行将其链接（将需要 [pnpm](https://pnpm.io/)）：
 
 ```bash
-git clone https://github.com/vitejs/vite.git
+git clone --branch v5 https://github.com/vitejs/vite.git
 cd vite
 pnpm install
 cd packages/vite
@@ -201,4 +201,4 @@ pnpm link --global # 在这一步中可使用你喜欢的包管理器
 
 ## 社区 {#community}
 
-如果你有疑问或者需要帮助，可以到 [Discord](https://chat.vitejs.dev) 和 [GitHub Discussions](https://github.com/vitejs/vite/discussions) 社区来寻求帮助。
+如果你有疑问或者需要帮助，可以到 [Discord](https://chat.vite.dev) 和 [GitHub Discussions](https://github.com/vitejs/vite/discussions) 社区来寻求帮助。

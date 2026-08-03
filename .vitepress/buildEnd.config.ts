@@ -4,7 +4,7 @@ import { Feed } from 'feed'
 import type { SiteConfig } from 'vitepress'
 import { createContentLoader } from 'vitepress'
 
-const siteUrl = 'https://vitejs.dev'
+const siteUrl = 'https://v5.cn.vite.dev'
 const blogUrl = `${siteUrl}/blog`
 
 export const buildEnd = async (config: SiteConfig): Promise<void> => {
@@ -13,10 +13,10 @@ export const buildEnd = async (config: SiteConfig): Promise<void> => {
     description: 'Next Generation Frontend Tooling',
     id: blogUrl,
     link: blogUrl,
-    language: 'en',
-    image: 'https://vitejs.dev/og-image.png',
-    favicon: 'https://vitejs.dev/logo.svg',
-    copyright: 'Copyright © 2019-present Evan You & Vite Contributors',
+    language: 'zh-CN',
+    image: `${siteUrl}/og-image.jpg`,
+    favicon: `${siteUrl}/logo.svg`,
+    copyright: 'Copyright © 2019-present VoidZero Inc. & Vite Contributors',
   })
 
   const posts = await createContentLoader('blog/*.md', {

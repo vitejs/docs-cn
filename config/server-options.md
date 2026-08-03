@@ -41,6 +41,19 @@ export default defineConfig({
 
 :::
 
+## server.allowedHosts {#server-allowedhosts}
+
+- **类型：** `string[] | true`
+- **默认值：** `[]`
+
+Vite 允许响应的主机名。
+
+默认允许 `localhost`、`.localhost` 下的域名以及所有 IP 地址。使用 HTTPS 时，Vite 会跳过这项检查。
+
+以 `.` 开头的字符串会同时允许该主机名及其所有子域名。例如，`.example.com` 将允许 `example.com`、`foo.example.com` 和 `foo.bar.example.com`。
+
+设置为 `true` 时，服务器将响应任意主机的请求。由于这会使服务器容易受到 DNS 重绑定攻击，因此不建议这样设置。
+
 ## server.port {#server-port}
 
 - **类型：** `number`
@@ -90,7 +103,7 @@ export default defineConfig({
 
 请注意，如果使用了非相对的 [基础路径 `base`](/config/shared-options.md#base)，则必须在每个 key 值前加上该 `base`。
 
-继承自 [`http-proxy`](https://github.com/http-party/node-http-proxy#options)。完整选项详见 [此处](https://github.com/vitejs/vite/blob/main/packages/vite/src/node/server/middlewares/proxy.ts#L13)。
+继承自 [`http-proxy`](https://github.com/http-party/node-http-proxy#options)。完整选项详见 [Vite 5 源码](https://github.com/vitejs/vite/blob/v5/packages/vite/src/node/server/middlewares/proxy.ts#L13)。
 
 在某些情况下，你可能也想要配置底层的开发服务器。（例如添加自定义的中间件到内部的 [connect](https://github.com/senchalabs/connect) 应用中）为了实现这一点，你需要编写你自己的 [插件](/guide/using-plugins.html) 并使用 [configureServer](/guide/api-plugin.html#configureserver) 函数。
 
@@ -137,8 +150,15 @@ export default defineConfig({
 ## server.cors {#server-cors}
 
 - **类型：** `boolean | CorsOptions`
+- **默认值：** `{ origin: /^https?:\/\/(?:(?:[^:]+\.)?localhost|127\.0\.0\.1|\[::1\])(?::\d+)?$/ }`（允许 `localhost`、`127.0.0.1` 和 `::1`）
 
-为开发服务器配置 CORS。默认启用并允许任何源，传递一个 [选项对象](https://github.com/expressjs/cors#configuration-options) 来调整行为或设为 `false` 表示禁用。
+为开发服务器配置 CORS。传递一个 [选项对象](https://github.com/expressjs/cors#configuration-options) 可以精细调整行为，设置为 `true` 则允许任意来源。
+
+::: warning
+
+建议配置明确的来源，而不是设置为 `true`，以免源代码暴露给不受信任的来源。
+
+:::
 
 ## server.headers {#server-headers}
 
@@ -167,7 +187,7 @@ export default defineConfig({
 在默认配置下, 在 Vite 之前的反向代理应该支持代理 WebSocket。如果 Vite HMR 客户端连接 WebSocket 失败，该客户端将兜底为绕过反向代理、直接连接 WebSocket 到 Vite HMR 服务器：
 
 ```
-Direct websocket connection fallback. Check out https://vitejs.dev/config/server-options.html#server-hmr to remove the previous connection error.
+Direct websocket connection fallback. Check out https://vite.dev/config/server-options.html#server-hmr to remove the previous connection error.
 ```
 
 当该兜底策略偶然地可以被忽略时，这条报错将会出现在浏览器中。若要通过直接绕过反向代理来避免此错误，你可以:
@@ -327,6 +347,12 @@ export default defineConfig({
 - **默认：** `['.env', '.env.*', '*.{crt,pem}']`
 
 用于限制 Vite 开发服务器提供敏感文件的黑名单。这会比 [`server.fs.allow`](#server-fs-allow) 选项的优先级更高。同时还支持 [picomatch 模式](https://github.com/micromatch/picomatch#globbing-features)。
+
+::: tip 注意
+
+这个黑名单不适用于 [public 目录](/guide/assets.md#the-public-directory)。public 目录中的所有文件都会不经过过滤直接提供，因为构建时这些文件会被原样复制到输出目录。
+
+:::
 
 ## server.fs.cachedChecks
 

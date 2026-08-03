@@ -31,7 +31,7 @@ function formatDate(raw: string): Post['date'] {
   date.setUTCHours(12)
   return {
     time: +date,
-    string: date.toLocaleDateString('en-US', {
+    string: date.toLocaleDateString('zh-CN', {
       year: 'numeric',
       month: 'long',
       day: 'numeric',
