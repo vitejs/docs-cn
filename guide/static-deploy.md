@@ -297,11 +297,15 @@ Cloudflare Pages 提供了一种直接部署到 Cloudflare 的方式，而无需
 
 根据 [说明](https://www.flightcontrol.dev/docs/reference/examples/vite?ref=docs-vite)，使用 [Flightcontrol](https://www.flightcontrol.dev/?ref=docs-vite) 来部署你的静态站点。
 
+<<<<<<< HEAD
 ## Kinsta 静态站点托管 {#kinsta-static-site-hosting}
 
 根据 [说明](https://kinsta.com/docs/react-vite-example/)，使用 [Kinsta](https://kinsta.com/docs/static-site-hosting/static-site-quick-start/react-static-site-examples/#react-with-vite) 来部署你的静态站点。
 
 ## xmit 静态站点托管 {#xmit-static-site-hosting}
+=======
+## xmit Static Site Hosting
+>>>>>>> 16034923fd53b1ad0bf0cd7d6049b5d9ffb470fa
 
 根据 [指南](https://xmit.dev/guides/vite-quickstart/)，使用 [xmit](https://xmit.co) 部署你的静态站点。
 
