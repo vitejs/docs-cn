@@ -1,13 +1,16 @@
 import path from 'node:path'
 import fs from 'node:fs'
-import type { DefaultTheme, HeadConfig } from 'vitepress'
+import type { HeadConfig } from 'vitepress'
 import { defineConfig } from 'vitepress'
 import { transformerTwoslash } from '@shikijs/vitepress-twoslash'
 import {
   groupIconMdPlugin,
-  groupIconVitePlugin
+  groupIconVitePlugin,
+  localIconLoader,
 } from 'vitepress-plugin-group-icons'
 import { markdownItImageSize } from 'markdown-it-image-size'
+import { extendConfig } from '@voidzero-dev/vitepress-theme/config'
+import type { FooterLink } from '@voidzero-dev/vitepress-theme'
 import packageJson from '../package.json' with { type: 'json' }
 import { buildEnd } from './buildEnd.config'
 
@@ -22,8 +25,28 @@ const ogUrl = 'https://vite.dev'
 // netlify envs
 const commitRef = process.env.COMMIT_REF?.slice(0, 8) || 'dev'
 
-const versionLinks = ((): DefaultTheme.NavItemWithLink[] => {
-  const links: DefaultTheme.NavItemWithLink[] = []
+// const deployType = (() => {
+//   switch (deployURL) {
+//     case 'https://main--vite-docs-main.netlify.app':
+//       return 'main'
+//     case '':
+//       return 'local'
+//     default:
+//       return 'release'
+//   }
+// })()
+// const additionalTitle = ((): string => {
+//   switch (deployType) {
+//     case 'main':
+//       return ' (main branch)'
+//     case 'local':
+//       return ' (local)'
+//     case 'release':
+//       return ''
+//   }
+// })()
+const versionLinks = (() => {
+  const links: FooterLink[] = []
 
   // Create version links from v2 onwards
   for (let i = viteMajorVersion - 1; i >= 2; i--) {
@@ -47,7 +70,7 @@ function inlineScript(file: string): HeadConfig {
   ]
 }
 
-export default defineConfig({
+const config = defineConfig({
   title: 'Vite 官方中文文档',
   description: '下一代前端工具链',
   lang: 'zh-CN',
@@ -56,12 +79,15 @@ export default defineConfig({
     hostname: 'https://cn.vite.dev',
   },
   head: [
-    ['link', { rel: 'icon', type: 'image/svg+xml', href: '/logo.svg' }],
+    [
+      'link',
+      { rel: 'icon', type: 'image/svg+xml', href: '/logo-without-border.svg' },
+    ],
     [
       'link',
       { rel: 'alternate', type: 'application/rss+xml', href: '/blog.rss' }
     ],
-    inlineScript('banner.js'),
+    ['link', { rel: 'preconnect', href: 'https://fonts.googleapis.com' }],
     ['link', { rel: 'me', href: 'https://m.webtoo.ls/@vite' }],
     ['meta', { property: 'og:type', content: 'website' }],
     ['meta', { property: 'og:title', content: ogTitle }],
@@ -95,6 +121,7 @@ export default defineConfig({
   },
 
   themeConfig: {
+    variant: 'vite',
     logo: '/logo.svg',
 
     editLink: {
@@ -146,8 +173,38 @@ export default defineConfig({
     // },
 
     footer: {
-      message: `Released under the MIT License. (${commitRef})`,
-      copyright: 'Copyright © 2019-present VoidZero Inc. & Vite Contributors'
+      copyright: `© 2025 VoidZero Inc. and Vite contributors. (${commitRef})`,
+      nav: [
+        {
+          title: 'Vite',
+          items: [
+            { text: '指引', link: '/guide/' },
+            { text: '配置', link: '/config/' },
+            { text: '插件', link: '/plugins/' },
+          ],
+        },
+        {
+          title: '相关链接',
+          items: [
+            { text: '团队成员', link: '/team' },
+            { text: '最新博客', link: '/blog' },
+            {
+              text: 'Releases',
+              link: 'https://github.com/vitejs/vite/releases',
+            },
+          ],
+        },
+        {
+          title: 'Versions',
+          items: versionLinks,
+        },
+      ],
+      social: [
+        { icon: 'github', link: 'https://github.com/vitejs/vite' },
+        { icon: 'discord', link: 'https://chat.vite.dev' },
+        { icon: 'bluesky', link: 'https://bsky.app/profile/vite.dev' },
+        { icon: 'x', link: 'https://x.com/vite_js' },
+      ],
     },
 
     nav: [
@@ -287,11 +344,7 @@ export default defineConfig({
               link: '/guide/performance'
             },
             {
-              text: 'Rolldown',
-              link: '/guide/rolldown'
-            },
-            {
-              text: `Migration from v${viteMajorVersion - 1}`,
+              text: `从 v${viteMajorVersion - 1} 迁移`,
               link: '/guide/migration'
             },
             {
@@ -460,7 +513,7 @@ export default defineConfig({
     // languages used for twoslash and jsdocs in twoslash
     languages: ['ts', 'js', 'json'],
     codeTransformers: [
-      transformerTwoslash(),
+      transformerTwoslash() as any,
       // add `style:*` support
       {
         root(hast) {
@@ -497,17 +550,35 @@ export default defineConfig({
       groupIconVitePlugin({
         customIcon: {
           firebase: 'vscode-icons:file-type-firebase',
-          '.gitlab-ci.yml': 'vscode-icons:file-type-gitlab'
-        }
-      })
+          '.gitlab-ci.yml': 'vscode-icons:file-type-gitlab',
+          'vite.config': localIconLoader(
+            import.meta.url,
+            '../public/logo-without-border.svg',
+          ),
+        },
+      }),
+//       llmstxt({
+//         ignoreFiles: ['blog/*', 'blog.md', 'index.md', 'team.md'],
+//         description: 'The Build Tool for the Web',
+//         details: `\
+// - 💡 Instant Server Start
+// - ⚡️ Lightning Fast HMR
+// - 🛠️ Rich Features
+// - 📦 Optimized Build
+// - 🔩 Universal Plugin Interface
+// - 🔑 Fully Typed APIs
+
+// Vite is a new breed of frontend build tooling that significantly improves the frontend development experience. It consists of two major parts:
+
+// - A dev server that serves your source files over [native ES modules](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules), with [rich built-in features](https://vite.dev/guide/features.md) and astonishingly fast [Hot Module Replacement (HMR)](https://vite.dev/guide/features.md#hot-module-replacement).
+
+// - A [build command](https://vite.dev/guide/build.md) that bundles your code with [Rollup](https://rollupjs.org), pre-configured to output highly optimized static assets for production.
+
+// In addition, Vite is highly extensible via its [Plugin API](https://vite.dev/guide/api-plugin.md) and [JavaScript API](https://vite.dev/guide/api-javascript.md) with full typing support.`,
+//       }),
     ],
     optimizeDeps: {
-      include: [
-        '@shikijs/vitepress-twoslash/client',
-        'gsap',
-        'gsap/dist/ScrollTrigger',
-        'gsap/dist/MotionPathPlugin'
-      ]
+      include: ['@shikijs/vitepress-twoslash/client'],
     },
     define: {
       __VITE_VERSION__: JSON.stringify(viteVersion)
@@ -515,3 +586,5 @@ export default defineConfig({
   },
   buildEnd
 })
+
+export default extendConfig(config)

@@ -1,7 +1,7 @@
 ---
 layout: page
-title: Meet the Team
-description: The development of Vite is guided by an international team.
+title: 认识我们的团队
+description: Vite 由一支国际化团队指导开发。
 ---
 
 <script setup>
@@ -10,7 +10,7 @@ import {
   VPTeamPageTitle,
   VPTeamPageSection,
   VPTeamMembers
-} from 'vitepress/theme'
+} from '@voidzero-dev/vitepress-theme'
 import { core, emeriti, cnTranslator } from './_data/team'
 </script>
 

@@ -18,6 +18,8 @@ Vite 还提供了强大的扩展性，可通过其 [插件 API](./api-plugin) �
 
 你可以在 [为什么选 Vite](./why) 部分深入了解该项目的设计理念。
 
+<ScrimbaLink href="https://scrimba.com/intro-to-vite-c03p6pbbdq?via=vite" title="Scrimba 上的免费 Vite 课程">通过 Scrimba 的互动教程学习 Vite</ScrimbaLink>
+
 ## 浏览器支持 {#browser-support}
 
 在开发过程中，Vite 假设使用的是现代浏览器。这意味着该浏览器支持大多数最新的 JavaScript 和 CSS 功能。因此，Vite 将 [`esnext` 设置为转换目标](https://esbuild.github.io/api/#target)。这可以防止语法降低，使 Vite 能够尽可能接近原始源代码提供模块。Vite 会注入一些运行时代码以使开发服务器正常工作。这些代码使用了 [Baseline](https://web-platform-dx.github.io/web-features/) 中包含的功能，该功能在每个主要版本发布时（此主要版本为 2025-05-01）新增。
@@ -69,6 +71,8 @@ $ deno init --npm vite
 
 然后按照提示操作即可！
 
+<ScrimbaLink href="https://scrimba.com/intro-to-vite-c03p6pbbdq/~0yhj?via=vite" title="搭建第一个 Vite 项目">在 Scrimba 上观看互动课程</ScrimbaLink>
+
 ::: tip 兼容性注意
 Vite 需要 [Node.js](https://nodejs.org/en/) 版本 20.19+, 22.12+。然而，有些模板需要依赖更高的 Node 版本才能正常运行，当你的包管理器发出警告时，请注意升级你的 Node 版本。
 :::
@@ -116,10 +120,10 @@ create-vite 是一个快速生成主流框架基础模板的工具。查看 Awes
 
 对于一个 `https://github.com/user/project` 中的模板，可以尝试使用 `https://github.stackblitz.com/user/project`（即在项目 URL 的 `github` 后添加 `.stackblitz`）。
 
-你也可以用如 [degit](https://github.com/Rich-Harris/degit) 之类的工具，使用社区模版来搭建项目。假设项目在 GitHub 上并使用 `main` 作为默认分支，可以使用以下命令创建本地副本：
+你也可以使用 [tiged](https://github.com/tiged/tiged) 之类的工具，通过社区模板搭建项目。假设项目托管在 GitHub 上并使用 `main` 作为默认分支，可以使用以下命令创建本地副本：
 
 ```bash
-npx degit user/project#main my-project
+npx tiged user/project my-project
 cd my-project
 
 npm install

@@ -110,6 +110,8 @@ function createWorkerdDevEnvironment(
 }
 ```
 
+默认情况下，`HotChannel` 传输会受到 `server.fs` 的限制，即只能提供允许目录内的文件。如果你的传输不会暴露在网络上（例如，通过工作线程或进程内调用进行通信），可以在 `HotChannel` 上设置 `skipFsCheck: true` 以绕过这些限制。
+
 [`DevEnvironment` 具有多个通信级别](/guide/api-environment-frameworks#devenvironment-communication-levels)。为了便于框架编写与运行时无关的代码，我们建议实现尽可能灵活的通信级别。
 
 ## `ModuleRunner`
@@ -323,6 +325,8 @@ function createWorkerEnvironment(name, config, context) {
   }
 
   const workerHotChannel = {
+    // 工作线程的消息不会暴露在网络上，因此跳过 server.fs 检查
+    skipFsCheck: true,
     send: (data) => worker.postMessage(data),
     on: (event, handler) => {
       // 客户端已连接

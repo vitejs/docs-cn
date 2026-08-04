@@ -361,6 +361,8 @@ npm add -D lightningcss
 
 ## 静态资源处理 {#static-assets}
 
+<ScrimbaLink href="https://scrimba.com/intro-to-vite-c03p6pbbdq/~05pq?via=vite" title="Vite 中的静态资源">在 Scrimba 上观看互动课程</ScrimbaLink>
+
 导入一个静态资源会返回解析后的 URL：
 
 ```js twoslash
