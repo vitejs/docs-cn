@@ -19,11 +19,7 @@
 
 全局钩子只调用一次，与配置了多少个环境无关。它们处理解析配置、设置开发和预览服务器等应用级事务，因此 `this.environment` 与这些钩子无关。与配置解析和服务器相关的钩子都属于全局钩子。
 
-<<<<<<< HEAD
-环境钩子会为每个环境各调用一次，并在其上下文中通过 `this.environment` 暴露当前环境。所有 [Rolldown 钩子](/guide/api-plugin#universal-hooks) 都是环境钩子，其他处理模块的 Vite 专有钩子也是如此。但请注意，除非设置 [`perEnvironmentStartEndDuringDev: true`](#per-environment-state-in-plugins) 标志，否则 `buildStart` 和 `buildEnd` 只会为客户端环境调用。
-=======
-Per-environment hooks are called once for each environment, and expose the current environment through `this.environment` in their context. All [Rolldown hooks](/guide/api-plugin#rolldown-hooks) are per-environment, as are other Vite-specific hooks that handle modules. However, note that `buildStart` and `buildEnd` are only called for the client environment without [the `perEnvironmentStartEndDuringDev: true` flag](#per-environment-state-in-plugins).
->>>>>>> abb4372c855f485882323613b086f4dfc3aea006
+环境钩子会为每个环境各调用一次，并在其上下文中通过 `this.environment` 暴露当前环境。所有 [Rolldown 钩子](/guide/api-plugin#rolldown-hooks) 都是环境钩子，其他处理模块的 Vite 专有钩子也是如此。但请注意，除非设置 [`perEnvironmentStartEndDuringDev: true`](#per-environment-state-in-plugins) 标志，否则 `buildStart` 和 `buildEnd` 只会为客户端环境调用。
 
 ## 在钩子中访问当前环境 {#accessing-the-current-environment-in-hooks}
 
