@@ -25,7 +25,7 @@ if (import.meta.env.DEV) {
 
 - **`import.meta.env.PROD`**: {boolean} 应用是否运行在生产环境（使用 `NODE_ENV='production'` 运行开发服务器或构建应用时使用 `NODE_ENV='production'` ）。
 
-- **`import.meta.env.DEV`**: {boolean} 应用是否运行在开发环境 (永远与 `import.meta.env.PROD`相反)。
+- **`import.meta.env.DEV`**: {boolean} 应用是否运行在开发环境（永远与 `import.meta.env.PROD`相反）。
 
 - **`import.meta.env.SSR`**: {boolean} 应用是否运行在 [server](./ssr.md#conditional-logic) 上。
 

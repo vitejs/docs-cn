@@ -301,7 +301,7 @@ export default defineConfig({
 ## build.minify {#build-minify}
 
 - **类型：** `boolean | 'oxc' | 'terser' | 'esbuild'`
-- **默认：** 客户端构建默认为`'oxc'`，SSR构建默认为 `false`
+- **默认：** 客户端构建默认为 `'oxc'`，SSR 构建默认为 `false`
 
 设置为 `false` 可以禁用最小化混淆，或是用来指定使用哪种混淆器。默认使用 [Oxc Minifier](https://oxc.rs/docs/guide/usage/minifier)，它比 terser 快 30~90 倍，但压缩率仅差 0.5~2%。[基准测试](https://github.com/privatenumber/minification-benchmarks)
 

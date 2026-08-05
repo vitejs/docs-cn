@@ -121,7 +121,7 @@ function isValidViteVersion(version: string) {
         type="text"
         v-model="checkedVersion"
         placeholder="0.0.0"
-      />, 它是
+      />，它是
       <strong :style="{ color: checkedResult.color }">{{
         checkedResult.text
       }}</strong

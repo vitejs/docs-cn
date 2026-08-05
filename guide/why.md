@@ -53,7 +53,7 @@ Vite 的架构仍在持续演进，以下几个方向正在塑造其未来：
 
 - **完整打包模式**：非打包的 ESM 在 Vite 创建之初是正确的权衡，因为彼时没有任何工具既足够快速，又具备开发阶段打包所需的 HMR 和插件能力。Rolldown 改变了这一局面。由于超大型代码库可能因大量未打包的网络请求而导致页面加载缓慢，团队正在探索一种开发服务器以类似生产环境方式打包代码的模式，以降低网络开销。
 
-- **Environment API**：不再将"客户端"和"SSR"视为仅有的两种构建目标，[Environment API](./api-environment-instances.md) 允许框架定义自定义环境（边缘运行时、Service Worker 及其他部署目标），每个环境都有各自的模块解析和执行规则。随着代码运行位置与方式不断多样化，Vite 的模型也随之扩展。
+- **Environment API**：不再将 "客户端" 和 "SSR" 视为仅有的两种构建目标，[Environment API](./api-environment-instances.md) 允许框架定义自定义环境（边缘运行时、Service Worker 及其他部署目标），每个环境都有各自的模块解析和执行规则。随着代码运行位置与方式不断多样化，Vite 的模型也随之扩展。
 
 - **与 JavaScript 同步演进**：Oxc 和 Rolldown 与 Vite 紧密协作，新的语言特性和标准可以在整个工具链中快速采用，无需等待上游依赖。
 
