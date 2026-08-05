@@ -522,7 +522,7 @@ function versionCheckPlugin(): Plugin {
 - `viteMetadata.importedCss: Set<string>`
 - `viteMetadata.importedAssets: Set<string>`
 
-这在编写需要检查生成的 CSS 和静态资源而不依赖于[`build.manifest`](/config/build-options#build-manifest)的插件时非常有用。
+这在编写需要检查生成的 CSS 和静态资源而不依赖于 [`build.manifest`](/config/build-options#build-manifest) 的插件时非常有用。
 
 例子:
 

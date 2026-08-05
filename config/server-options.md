@@ -34,7 +34,7 @@
 - **类型：** `string[] | true`
 - **默认：** `[]`
 
-Vite允许响应的主机名。
+Vite 允许响应的主机名。
 默认情况下，允许 `localhost` 及其下的所有 `.localhost` 域名和所有 IP 地址。
 使用 HTTPS 时，将跳过此检查。
 
@@ -225,13 +225,13 @@ export default defineConfig({
 
 ::: tip NOTE
 
-在默认配置下, 在 Vite 之前的反向代理应该支持代理 WebSocket。如果 Vite HMR 客户端连接 WebSocket 失败，该客户端将兜底为绕过反向代理、直接连接 WebSocket 到 Vite HMR 服务器：
+在默认配置下，在 Vite 之前的反向代理应该支持代理 WebSocket。如果 Vite HMR 客户端连接 WebSocket 失败，该客户端将兜底为绕过反向代理、直接连接 WebSocket 到 Vite HMR 服务器：
 
 ```
 Direct websocket connection fallback. Check out https://vite.dev/config/server-options.html#server-ws to remove the previous connection error.
 ```
 
-当该兜底策略偶然地可以被忽略时，这条报错将会出现在浏览器中。若要通过直接绕过反向代理来避免此错误，你可以:
+当该兜底策略偶然地可以被忽略时，这条报错将会出现在浏览器中。若要通过直接绕过反向代理来避免此错误，你可以：
 
 - 将反向代理配置为代理 WebSocket
 - 设置 [`server.strictPort = true`](#server-strictport)，并将 `server.ws.clientPort` 设置为与 `server.port` 相同的值
@@ -430,7 +430,7 @@ export default defineConfig({
 
 ::: tip NOTE
 
-此黑名单不适用于[公共目录](/guide/assets.md#the-public-directory)。公共目录中的所有文件均未经任何过滤，因为它们会在构建过程中直接复制到输出目录。
+此黑名单不适用于 [公共目录](/guide/assets.md#the-public-directory)。公共目录中的所有文件均未经任何过滤，因为它们会在构建过程中直接复制到输出目录。
 
 :::
 
