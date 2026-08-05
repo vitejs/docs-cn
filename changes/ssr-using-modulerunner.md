@@ -4,7 +4,7 @@
 可以在 [环境 API 讨论](https://github.com/vitejs/vite/discussions/16358) 中向我们提供反馈
 :::
 
-`server.ssrLoadModule` 已被从 [Module Runner](/guide/api-environment#modulerunner) 导入所取代。
+`server.ssrLoadModule` 已被从 [Module Runner](/guide/api-environment-runtimes#modulerunner) 导入所取代。
 
 影响范围：`Vite 插件作者`
 
