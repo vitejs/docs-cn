@@ -74,7 +74,7 @@ $ deno init --npm vite
 <ScrimbaLink href="https://scrimba.com/intro-to-vite-c03p6pbbdq/~0yhj?via=vite" title="Scaffolding Your First Vite Project">在 Scrimba 上观看互动课程</ScrimbaLink>
 
 ::: tip 兼容性注意
-Vite 需要 [Node.js](https://nodejs.org/en/) 版本 20.19+, 22.12+。然而，有些模板需要依赖更高的 Node 版本才能正常运行，当你的包管理器发出警告时，请注意升级你的 Node 版本。
+Vite 需要 [Node.js](https://nodejs.org/en/) 版本 20.19+ 或 22.12+。然而，有些模板需要依赖更高的 Node 版本才能正常运行，当你的包管理器发出警告时，请注意升级你的 Node 版本。
 :::
 
 :::: details 使用命令行选项创建 vite

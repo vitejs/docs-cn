@@ -21,7 +21,7 @@
 - **类型：** `boolean | { polyfill?: boolean, resolveDependencies?: ResolveModulePreloadDependenciesFn }`
 - **默认值：** `{ polyfill: true }`
 
-默认情况下，一个 [模块预加载 polyfill](https://guybedford.com/es-module-preloading-integrity#modulepreload-polyfill) 会被自动注入。该 polyfill 会自动注入到每个 `index.html` 入口的的代理模块中。如果构建通过 `build.rolldownOptions.input` 被配置为了使用非 HTML 入口的形式，那么必须要在你的自定义入口中手动引入该 polyfill：
+默认情况下，一个 [模块预加载 polyfill](https://guybedford.com/es-module-preloading-integrity#modulepreload-polyfill) 会被自动注入。该 polyfill 会自动注入到每个 `index.html` 入口的代理模块中。如果构建通过 `build.rolldownOptions.input` 被配置为了使用非 HTML 入口的形式，那么必须要在你的自定义入口中手动引入该 polyfill：
 
 ```js
 import 'vite/modulepreload-polyfill'
