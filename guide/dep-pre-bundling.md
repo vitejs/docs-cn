@@ -59,8 +59,6 @@ export default defineConfig({
 
 你还可以使用 [`optimizeDeps.rolldownOptions` 选项](/config/dep-optimization-options.md#optimizedeps-rolldownoptions) 进一步自定义 Rolldown。例如，添加 Rolldown 插件来处理依赖项中的特殊文件，或者更改 [构建 `target`](https://rolldown.rs/reference/InputOptions.transform#target)。
 
-<!-- TODO: update the link above to Rolldown's documentation -->
-
 ## 缓存 {#caching}
 
 ### 文件系统缓存 {#file-system-cache}
