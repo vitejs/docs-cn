@@ -45,7 +45,7 @@ Vite v3 默认在 SSR 构建时使用 ESM 格式。当使用 ESM 时，[SSR 外�
 
 如果你无法在你的 SSR 项目中使用 ESM，你可以设置 `ssr.format: 'cjs'` 来生成一个 CJS 格式的产物。在这种情况下，会使用和 Vite v2 相同的外部化策略。
 
-同样 [`build.rollupOptions.output.inlineDynamicImports`](https://cn.rollupjs.org/guide/en/#outputinlinedynamicimports) 现在在 `ssr.target` 是 `node` 时，也默认置为了 `false`。`inlineDynamicImports` 它会改变执行顺序，并且 node 构建不需要打包到单个文件。
+同样 [`build.rollupOptions.output.inlineDynamicImports`](https://cn.rollupjs.org/guide/en/#outputinlinedynamicimports) 现在在 `ssr.target` 是 `node` 时，也默认置为了 `false`。`inlineDynamicImports` 会改变执行顺序，并且 node 构建不需要打包到单个文件。
 
 ## 其他一般性变化 {#general-changes}
 
@@ -134,7 +134,7 @@ export default {
 - [[#7877] fix: vite client types](https://github.com/vitejs/vite/pull/7877)
   - `/// <reference lib="dom" />` 已从 `vite/client.d.ts` 中移除。必须在 `tsconfig.json` 使用 `{ "lib": ["dom"] }` 或 `{ "lib": ["webworker"] }`。
 - [[#8090] feat: preserve process env vars in lib build](https://github.com/vitejs/vite/pull/8090)
-  - `process.env.*` 现在在库模式下是被保留的了。
+  - `process.env.*` 现在在库模式下会被保留。
 - [[#8280] feat: non-blocking esbuild optimization at build time](https://github.com/vitejs/vite/pull/8280)
   - `server.force` 选项现已移除，改为了直接的 `force` 选项。
 - [[#8550] fix: dont handle sigterm in middleware mode](https://github.com/vitejs/vite/pull/8550)

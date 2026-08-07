@@ -21,7 +21,7 @@
 - **类型：** `boolean | { polyfill?: boolean, resolveDependencies?: ResolveModulePreloadDependenciesFn }`
 - **默认值：** `{ polyfill: true }`
 
-默认情况下，一个 [模块预加载 polyfill](https://guybedford.com/es-module-preloading-integrity#modulepreload-polyfill) 会被自动注入。该 polyfill 会自动注入到每个 `index.html` 入口的的代理模块中。如果构建通过 `build.rolldownOptions.input` 被配置为了使用非 HTML 入口的形式，那么必须要在你的自定义入口中手动引入该 polyfill：
+默认情况下，一个 [模块预加载 polyfill](https://guybedford.com/es-module-preloading-integrity#modulepreload-polyfill) 会被自动注入。该 polyfill 会自动注入到每个 `index.html` 入口的代理模块中。如果构建通过 `build.rolldownOptions.input` 被配置为了使用非 HTML 入口的形式，那么必须要在你的自定义入口中手动引入该 polyfill：
 
 ```js
 import 'vite/modulepreload-polyfill'
@@ -301,7 +301,7 @@ export default defineConfig({
 ## build.minify {#build-minify}
 
 - **类型：** `boolean | 'oxc' | 'terser' | 'esbuild'`
-- **默认：** 客户端构建默认为`'oxc'`，SSR构建默认为 `false`
+- **默认：** 客户端构建默认为 `'oxc'`，SSR 构建默认为 `false`
 
 设置为 `false` 可以禁用最小化混淆，或是用来指定使用哪种混淆器。默认使用 [Oxc Minifier](https://oxc.rs/docs/guide/usage/minifier)，它比 terser 快 30~90 倍，但压缩率仅差 0.5~2%。[基准测试](https://github.com/privatenumber/minification-benchmarks)
 

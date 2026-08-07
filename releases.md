@@ -18,7 +18,7 @@ Vite 没有固定的发布周期。
 
 ## 支持版本 {#supported-versions}
 
-当前支持的vite版本有：
+当前支持的 Vite 版本有：
 
 <SupportedVersions />
 

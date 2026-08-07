@@ -522,7 +522,7 @@ function versionCheckPlugin(): Plugin {
 - `viteMetadata.importedCss: Set<string>`
 - `viteMetadata.importedAssets: Set<string>`
 
-这在编写需要检查生成的 CSS 和静态资源而不依赖于[`build.manifest`](/config/build-options#build-manifest)的插件时非常有用。
+这在编写需要检查生成的 CSS 和静态资源而不依赖于 [`build.manifest`](/config/build-options#build-manifest) 的插件时非常有用。
 
 例子:
 
@@ -549,7 +549,7 @@ function outputMetadataPlugin(): Plugin {
 
 ## 插件顺序 {#plugin-ordering}
 
-一个 Vite 插件可以额外指定一个 `enforce` 属性（类似于 webpack 加载器）来调整它的应用顺序。`enforce` 的值可以是`pre` 或 `post`。解析后的插件将按照以下顺序排列：
+一个 Vite 插件可以额外指定一个 `enforce` 属性（类似于 webpack 加载器）来调整它的应用顺序。`enforce` 的值可以是 `pre` 或 `post`。解析后的插件将按照以下顺序排列：
 
 - Alias
 - 带有 `enforce: 'pre'` 的用户插件
