@@ -77,7 +77,7 @@ $ deno init --npm vite
 Vite 需要 [Node.js](https://nodejs.org/en/) 版本 20.19+ 或 22.12+。然而，有些模板需要依赖更高的 Node 版本才能正常运行，当你的包管理器发出警告时，请注意升级你的 Node 版本。
 :::
 
-:::: details 使用命令行选项创建 vite
+:::: details 使用 create vite 时指定命令行选项
 
 你还可以通过附加的命令行选项直接指定项目名称和你想要使用的模板。例如，要构建一个 Vite + Vue 项目，运行:
 
