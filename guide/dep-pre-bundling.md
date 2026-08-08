@@ -27,7 +27,7 @@
 
 ## 自动依赖搜寻 {#automatic-dependency-discovery}
 
-如果没有找到现有的缓存，Vite 会扫描你的源代码，并自动寻找引入的依赖项（即 "bare import"，表示期望从 `node_modules` 中解析），并将这些依赖项作为预构建的入口点。预打包使用 [Rolldown](https://rolldown.rs/) 执行，因此通常速度非常快。
+如果没有找到现有的缓存，Vite 会扫描你的源代码，并自动寻找引入的依赖项（即 "bare import"，表示期望从 `node_modules` 中解析），并将这些依赖项作为预构建的入口点。预构建使用 [Rolldown](https://rolldown.rs/) 执行，因此通常速度非常快。
 
 在服务器已经启动后，如果遇到尚未在缓存中的新依赖项导入，则 Vite 将重新运行依赖项构建过程，并在需要时重新加载页面。
 
@@ -58,8 +58,6 @@ export default defineConfig({
 `include` 和 `exclude` 都可以用来处理这个问题。如果依赖项很大（包含很多内部模块）或者是 CommonJS，那么你应该包含它；如果依赖项很小，并且已经是有效的 ESM，则可以排除它，让浏览器直接加载它。
 
 你还可以使用 [`optimizeDeps.rolldownOptions` 选项](/config/dep-optimization-options.md#optimizedeps-rolldownoptions) 进一步自定义 Rolldown。例如，添加 Rolldown 插件来处理依赖项中的特殊文件，或者更改 [构建 `target`](https://rolldown.rs/reference/InputOptions.transform#target)。
-
-<!-- TODO: update the link above to Rolldown's documentation -->
 
 ## 缓存 {#caching}
 
