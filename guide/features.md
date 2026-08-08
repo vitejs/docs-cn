@@ -95,7 +95,7 @@ Vite 忽略 `tsconfig.json` 中的 `target` 值，遵循与 [esbuild](https://es
 
 - [TypeScript 文档](https://www.typescriptlang.org/tsconfig#emitDecoratorMetadata)
 
-此选项仅被部分支持。完全支持需要 TypeScript 编译器进行类型推断，而这是不受支持的。详情请参见 [Oxc Transformer 的文档](https://oxc.rs/docs/guide/usage/transformer/typescript.html#decorators)。
+此选项仅被部分支持。完全支持需要 TypeScript 编译器进行类型推断，而这是不受支持的。详情请参见 [Oxc 转换器的文档](https://oxc.rs/docs/guide/usage/transformer/typescript.html#decorators)。
 
 #### `paths` {#paths}
 
