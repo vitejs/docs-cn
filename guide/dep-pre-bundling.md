@@ -27,7 +27,7 @@
 
 ## 自动依赖搜寻 {#automatic-dependency-discovery}
 
-如果没有找到现有的缓存，Vite 会扫描你的源代码，并自动寻找引入的依赖项（即 "bare import"，表示期望从 `node_modules` 中解析），并将这些依赖项作为预构建的入口点。预打包使用 [Rolldown](https://rolldown.rs/) 执行，因此通常速度非常快。
+如果没有找到现有的缓存，Vite 会扫描你的源代码，并自动寻找引入的依赖项（即 "bare import"，表示期望从 `node_modules` 中解析），并将这些依赖项作为预构建的入口点。预构建使用 [Rolldown](https://rolldown.rs/) 执行，因此通常速度非常快。
 
 在服务器已经启动后，如果遇到尚未在缓存中的新依赖项导入，则 Vite 将重新运行依赖项构建过程，并在需要时重新加载页面。
 
