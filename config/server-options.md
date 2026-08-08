@@ -41,6 +41,20 @@ export default defineConfig({
 
 :::
 
+## server.allowedHosts {#server-allowedhosts}
+
+- **类型：** `string[] | true`
+- **默认值：** `[]`
+
+指定允许 Vite 响应的主机名。
+默认允许 `localhost`、`.localhost` 下的域名以及所有 IP 地址。
+使用 HTTPS 时会跳过此检查。
+
+以 `.` 开头的字符串会同时允许该主机名本身及其所有子域名。例如，`.example.com` 将允许 `example.com`、`foo.example.com` 和 `foo.bar.example.com`。
+
+设置为 `true` 时，服务器将允许响应任意主机名的请求。
+不推荐这样做，因为这会使服务器容易受到 DNS 重绑定攻击。
+
 ## server.port {#server-port}
 
 - **类型：** `number`
@@ -90,7 +104,7 @@ export default defineConfig({
 
 请注意，如果使用了非相对的 [基础路径 `base`](/config/shared-options.md#base)，则必须在每个 key 值前加上该 `base`。
 
-继承自 [`http-proxy`](https://github.com/http-party/node-http-proxy#options)。完整选项详见 [此处](https://github.com/vitejs/vite/blob/main/packages/vite/src/node/server/middlewares/proxy.ts#L13).
+继承自 [`http-proxy`](https://github.com/http-party/node-http-proxy#options)。完整选项详见 [Vite 4 源码](https://github.com/vitejs/vite/blob/v4/packages/vite/src/node/server/middlewares/proxy.ts#L13)。
 
 在某些情况下，你可能也想要配置底层的开发服务器。（例如添加自定义的中间件到内部的 [connect](https://github.com/senchalabs/connect) 应用中）为了实现这一点，你需要编写你自己的 [插件](/guide/using-plugins.html) 并使用 [configureServer](/guide/api-plugin.html#configureserver) 函数。
 
@@ -135,8 +149,15 @@ export default defineConfig({
 ## server.cors {#server-cors}
 
 - **类型：** `boolean | CorsOptions`
+- **默认值：** `{ origin: /^https?:\/\/(?:(?:[^:]+\.)?localhost|127\.0\.0\.1|\[::1\])(?::\d+)?$/ }`（允许 `localhost`、`127.0.0.1` 和 `::1`）
 
-为开发服务器配置 CORS。默认启用并允许任何源，传递一个 [选项对象](https://github.com/expressjs/cors#configuration-options) 来调整行为或设为 `false` 表示禁用。
+为开发服务器配置 CORS。传递一个 [选项对象](https://github.com/expressjs/cors#configuration-options) 可细化其行为，传递 `true` 则允许任意来源。
+
+::: warning
+
+建议设置明确的来源，而不是使用 `true`，以免将源代码暴露给不受信任的来源。
+
+:::
 
 ## server.headers {#server-headers}
 
@@ -308,6 +329,12 @@ export default defineConfig({
 - **默认：** `['.env', '.env.*', '*.{crt,pem}']`
 
 用于限制 Vite 开发服务器提供敏感文件的黑名单。这会比 [`server.fs.allow`](#server-fs-allow) 选项的优先级更高。同时还支持 [picomatch 模式](https://github.com/micromatch/picomatch#globbing-features)。
+
+::: tip 注意
+
+此黑名单不适用于 [public 目录](/guide/assets.md#the-public-directory)。public 目录中的所有文件都不会经过过滤，因为它们会在构建期间直接复制到输出目录中。
+
+:::
 
 ## server.origin {#server-origin}
 

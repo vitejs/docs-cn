@@ -109,7 +109,7 @@ Git LFS 占位符会自动排除在内联之外，因为它们不包含它们所
 ## build.cssTarget {#build-csstarget}
 
 - **类型：** `string | string[]`
-- **默认值：** 与 [`build.target`](/config/#build-target) 一致
+- **默认值：** 与 [`build.target`](/config/build-options#build-target) 一致
 
 此选项允许用户为 CSS 的压缩设置一个不同的浏览器 target，此处的 target 并非是用于 JavaScript 转写目标。
 

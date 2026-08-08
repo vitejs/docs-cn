@@ -259,6 +259,10 @@ SSR 构建的默认目标为 node 环境，但你也可以让服务运行在 Web
 - 将所有依赖视为 `noExternal`（非外部化）
 - 若任何 Node.js 内置内容被引入，将抛出一个错误
 
+## SSR 解析条件 {#ssr-resolve-conditions}
+
+默认情况下，SSR 构建会使用 [`resolve.conditions`](../config/shared-options.md#resolve-conditions) 中设置的条件来解析包入口。你可以使用 [`ssr.resolve.conditions`](../config/ssr-options.md#ssr-resolve-conditions) 和 [`ssr.resolve.externalConditions`](../config/ssr-options.md#ssr-resolve-externalconditions) 自定义此行为。
+
 ## Vite CLI {#vite-cli}
 
 CLI 命令 `$ vite dev` 和 `$ vite preview` 也可以用于 SSR 应用：你可以将你的 SSR 中间件通过 [`configureServer`](/guide/api-plugin#configureserver) 添加到开发服务器、以及通过 [`configurePreviewServer`](/guide/api-plugin#configurepreviewserver) 添加到预览服务器。
@@ -269,7 +273,7 @@ CLI 命令 `$ vite dev` 和 `$ vite preview` 也可以用于 SSR 应用：你可
 
 ## SSR 格式 {#ssr-format}
 
-默认情况下，Vite 生成的 SSR 打包产物是 ESM 格式。实验性地支持配置 `ssr.format` ，但不推荐这样做。未来围绕 SSR 的开发工作将基于 ESM 格式，并且为了向下兼容，commonjs 仍然可用。如果你的 SSR 项目不能使用 ESM，你可以通过 [Vite v2 外部启发式方法](https://v2.vitejs.dev/guide/ssr.html#ssr-externals) 设置 `legacy.buildSsrCjsExternalHeuristics: true` 生成 CJS 格式的产物。
+默认情况下，Vite 生成的 SSR 打包产物是 ESM 格式。Vite 实验性地支持配置 `ssr.format`，但不推荐这样做。未来围绕 SSR 的开发工作将基于 ESM 格式，同时为了向下兼容仍可使用 CommonJS。如果 SSR 项目无法使用 ESM，可以通过 [Vite v2 外部化启发式方法](https://v2.vite.dev/guide/ssr.html#ssr-externals)设置 `legacy.buildSsrCjsExternalHeuristics: true`，生成 CJS 格式的产物。
 
 :::warning 安全注意事项
 实验性的 `legacy.buildSsrCjsExternalHeuristics` 和 `ssr.format: 'cjs'` 将在 Vite 5 中移除。可以在 [此讨论](https://github.com/vitejs/vite/discussions/13816) 中找到更多信息，并提供反馈意见。

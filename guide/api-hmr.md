@@ -52,7 +52,7 @@ if (import.meta.hot) {
 ```
 
 ## TypeScript 的智能提示 {#intellisense-for-typescript}
-Vite 在 [`vite/client.d.ts`](https://github.com/vitejs/vite/blob/main/packages/vite/client.d.ts) 中为 `import.meta.hot` 提供了类型定义。你可以在 `src` 目录中创建一个 `env.d.ts`，以便 TypeScript 获取类型定义：
+Vite 在 [`vite/client.d.ts`](https://github.com/vitejs/vite/blob/v4/packages/vite/client.d.ts) 中为 `import.meta.hot` 提供了类型定义。你可以在 `src` 目录中创建一个 `env.d.ts`，以便 TypeScript 获取类型定义：
 
 ```ts
 /// <reference types="vite/client" />
@@ -177,9 +177,9 @@ import.meta.hot.accept((module) => {
 - `'vite:ws:disconnect'` 当 WebSocket 链接丢失时
 - `'vite:ws:connect'` 当 WebSocket 链接重修建立时
 
-自定义 HMR 事件可以由插件发送。更多细节详见 [handleHotUpdate](./api-plugin#handleHotUpdate)。
+自定义 HMR 事件可以由插件发送。更多细节详见 [handleHotUpdate](./api-plugin#handlehotupdate)。
 
-## `hot.send(event, data)` {##hot-send-event-data}
+## `hot.send(event, data)` {#hot-send-event-data}
 
 发送自定义事件到 Vite 开发服务器。
 

@@ -8,7 +8,7 @@ const { data } = useSponsor()
 <template>
   <VPHomeSponsors
     v-if="data"
-    message="Vite is free and open source, made possible by wonderful sponsors."
+    message="Vite 是免费开源软件，离不开优秀赞助商的支持。"
     :data="data"
   />
   <div class="action">
@@ -18,7 +18,7 @@ const { data } = useSponsor()
       target="_blank"
       rel="noreferrer"
     >
-      Sponsor Vite
+      赞助 Vite
     </a>
     <a
       class="sponsor"
@@ -26,7 +26,7 @@ const { data } = useSponsor()
       target="_blank"
       rel="noreferrer"
     >
-      Sponsor Evan You
+      赞助尤雨溪
     </a>
   </div>
 </template>

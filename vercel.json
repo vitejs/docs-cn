@@ -1,5 +1,6 @@
 {
   "cleanUrls": true,
+  "trailingSlash": false,
   "headers": [
     {
       "source": "/assets/(.*)",
@@ -12,6 +13,15 @@
     },
     {
       "source": "/(.*).png",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "max-age=604800, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/(.*).jpg",
       "headers": [
         {
           "key": "Cache-Control",

@@ -1,52 +1,73 @@
 import { defineConfig } from 'vitepress'
-import renderPermaLink from './render-perma-link'
-import MarkDownItCustomAnchor from './markdown-it-custom-anchor'
+import { buildEnd } from './buildEnd.config'
 
-const ogDescription = 'Next Generation Frontend Tooling'
-const ogImage = 'https://vitejs.dev/og-image.png'
-const ogTitle = 'Vite'
-const ogUrl = 'https://vitejs.dev'
+const siteUrl = 'https://v4.cn.vite.dev'
+const ogDescription = 'Vite 4 历史版本官方中文文档'
+const ogImage = `${siteUrl}/og-image.png`
+const ogTitle = 'Vite 4 官方中文文档'
+
+function pageUrl(page: string): string {
+  const path = page
+    .replace(/(^|\/)index\.md$/, '$1')
+    .replace(/\.md$/, '')
+
+  return `${siteUrl}/${path}`
+}
 
 export default defineConfig({
-  title: 'Vite 官方中文文档',
-  description: '下一代前端工具链',
+  title: 'Vite 4 官方中文文档',
+  description: ogDescription,
   lang: 'zh-CN',
+  cleanUrls: true,
+  srcExclude: ['README.md'],
+  sitemap: {
+    hostname: siteUrl,
+  },
+  buildEnd,
+  transformHead({ page }) {
+    const url = pageUrl(page)
+
+    return [
+      ['link', { rel: 'canonical', href: url }],
+      ['meta', { property: 'og:url', content: url }],
+    ]
+  },
 
   head: [
     ['link', { rel: 'icon', type: 'image/svg+xml', href: '/logo.svg' }],
     ['meta', { property: 'og:type', content: 'website' }],
     ['meta', { property: 'og:title', content: ogTitle }],
     ['meta', { property: 'og:image', content: ogImage }],
-    ['meta', { property: 'og:url', content: ogUrl }],
     ['meta', { property: 'og:description', content: ogDescription }],
     ['meta', { name: 'twitter:card', content: 'summary_large_image' }],
     ['meta', { name: 'twitter:site', content: '@vite_js' }],
     ['meta', { name: 'theme-color', content: '#646cff' }],
-    [
-      'script',
-      {
-        src: 'https://cdn.usefathom.com/script.js',
-        'data-site': 'CBDFBSLI',
-        'data-spa': 'auto',
-        defer: '',
-      },
-    ],
   ],
 
   locales: {
     root: { label: '简体中文' },
-    en: { label: 'English', link: 'https://vitejs.dev' },
-    ja: { label: '日本語', link: 'https://ja.vitejs.dev' },
-    es: { label: 'Español', link: 'https://es.vitejs.dev' },
-    pt: { label: 'Português', link: 'https://pt.vitejs.dev' },
-    ko: { label: '한국어', link: 'https://ko.vitejs.dev' },
+    en: { label: 'English', link: 'https://v4.vite.dev' },
+    ja: { label: '日本語', link: 'https://ja.vite.dev' },
+    es: { label: 'Español', link: 'https://es.vite.dev' },
+    pt: { label: 'Português', link: 'https://pt.vite.dev' },
+    ko: { label: '한국어', link: 'https://ko.vite.dev' },
   },
 
   themeConfig: {
     logo: '/logo.svg',
 
+    darkModeSwitchLabel: '外观',
+    sidebarMenuLabel: '菜单',
+    returnToTopLabel: '返回顶部',
+    langMenuLabel: '切换语言',
+    lastUpdatedText: '最后更新于',
+    docFooter: {
+      prev: '上一页',
+      next: '下一页',
+    },
+
     editLink: {
-      pattern: 'https://github.com/vitejs/docs-cn/edit/main/:path',
+      pattern: 'https://github.com/vitejs/docs-cn/edit/stable-4.x/:path',
       text: '为此页提供修改建议',
     },
 
@@ -57,57 +78,32 @@ export default defineConfig({
     socialLinks: [
       { icon: 'mastodon', link: 'https://elk.zone/m.webtoo.ls/@vite' },
       { icon: 'twitter', link: 'https://twitter.com/vite_js' },
-      { icon: 'discord', link: 'https://chat.vitejs.dev' },
+      { icon: 'discord', link: 'https://chat.vite.dev' },
       { icon: 'github', link: 'https://github.com/vitejs/vite' },
     ],
 
-    algolia: {
-      appId: '7H67QR5P0A',
-      apiKey: 'deaab78bcdfe96b599497d25acc6460e',
-      indexName: 'vitejs',
-      searchParameters: {
-        facetFilters: ['tags:cn']
-      },
-      placeholder: '搜索文档',
-      translations: {
-        button: {
-          buttonText: '搜索'
-        },
-        modal: {
-          searchBox: {
+    search: {
+      provider: 'local',
+      options: {
+        translations: {
+          button: {
+            buttonText: '搜索文档',
+            buttonAriaLabel: '搜索文档',
+          },
+          modal: {
+            displayDetails: '显示详细列表',
             resetButtonTitle: '清除查询条件',
-            resetButtonAriaLabel: '清除查询条件',
-            cancelButtonText: '取消',
-            cancelButtonAriaLabel: '取消'
-          },
-          startScreen: {
-            recentSearchesTitle: '搜索历史',
-            noRecentSearchesText: '没有搜索历史',
-            saveRecentSearchButtonTitle: '保存到搜索历史',
-            removeRecentSearchButtonTitle: '从搜索历史中移除',
-            favoriteSearchesTitle: '收藏',
-            removeFavoriteSearchButtonTitle: '从收藏中移除'
-          },
-          errorScreen: {
-            titleText: '无法获取结果',
-            helpText: '你可能需要检查你的网络连接'
-          },
-          footer: {
-            selectText: '选择',
-            navigateText: '切换',
-            closeText: '关闭',
-            searchByText: '搜索供应商'
-          },
-          noResultsScreen: {
+            backButtonTitle: '关闭搜索',
             noResultsText: '无法找到相关结果',
-            suggestedQueryText: '你可以尝试查询',
-            reportMissingResultsText: '你认为这个查询应该有结果？',
-            reportMissingResultsLinkText: '向我们反馈'
-          }
-        }
+            footer: {
+              selectText: '选择',
+              navigateText: '切换',
+              closeText: '关闭',
+            },
+          },
+        },
       },
     },
-
     carbonAds: {
       code: 'CEBIEK3N',
       placement: 'vitejsdev',
@@ -125,15 +121,15 @@ export default defineConfig({
       {
         text: '相关链接',
         items: [
-          { text: 'Team', link: '/team' },
-          { text: 'Releases', link: '/releases' },
+          { text: '团队', link: '/team' },
+          { text: '发布策略', link: '/releases' },
           {
             text: 'Twitter',
             link: 'https://twitter.com/vite_js'
           },
           {
-            text: 'Discord Chat',
-            link: 'https://chat.vitejs.dev'
+            text: 'Discord 社区',
+            link: 'https://chat.vite.dev'
           },
           {
             text: 'Awesome Vite',
@@ -149,20 +145,24 @@ export default defineConfig({
           },
           {
             text: '更新日志',
-            link: 'https://github.com/vitejs/vite/blob/main/packages/vite/CHANGELOG.md'
+            link: 'https://github.com/vitejs/vite/blob/v4/packages/vite/CHANGELOG.md'
           }
         ]
       },
       {
-        text: 'Version',
+        text: '版本',
         items: [
           {
+            text: '中文最新版',
+            link: 'https://cn.vite.dev'
+          },
+          {
             text: 'Vite v3 文档（英文）',
-            link: 'https://v3.vitejs.dev'
+            link: 'https://v3.vite.dev'
           },
           {
             text: 'Vite v2 文档（英文）',
-            link: 'https://v2.vitejs.dev'
+            link: 'https://v2.vite.dev'
           },
         ]
       }

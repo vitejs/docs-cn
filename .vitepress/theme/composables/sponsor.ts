@@ -42,7 +42,13 @@ const viteSponsors: Pick<Sponsors, 'special' | 'gold'> = {
       img: '/astro.svg',
     },
   ],
-  gold: [],
+  gold: [
+    {
+      name: 'Remix',
+      url: 'https://remix.run/',
+      img: '/remix.svg',
+    },
+  ],
 }
 
 export function useSponsor() {
@@ -65,17 +71,17 @@ export function useSponsor() {
 function mapSponsors(sponsors: Sponsors) {
   return [
     {
-      tier: 'Special Sponsors',
+      tier: '特别赞助商',
       size: 'big',
       items: viteSponsors['special'],
     },
     {
-      tier: 'Platinum Sponsors',
+      tier: '铂金赞助商',
       size: 'big',
       items: mapImgPath(sponsors['platinum']),
     },
     {
-      tier: 'Gold Sponsors',
+      tier: '金牌赞助商',
       size: 'medium',
       items: viteSponsors['gold'].concat(mapImgPath(sponsors['gold'])),
     },

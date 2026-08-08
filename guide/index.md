@@ -20,7 +20,7 @@ Vite 还提供了强大的扩展性，可通过其 [插件 API](./api-plugin) �
 
 ## 浏览器支持 {#browser-support}
 
-默认的构建目标是能支持 [原生 ESM 语法的 script 标签](https://caniuse.com/es6-module)、[原生 ESM 动态导入](https://caniuse.com/es6-module-dynamic-import) 和 [`import.meta`](https://caniuse.com/mdn-javascript_operators_import_meta) 的浏览器。传统浏览器可以通过官方插件 [@vitejs/plugin-legacy](https://github.com/vitejs/vite/tree/main/packages/plugin-legacy) 支持 —— 查看 [构建生产版本](./build) 章节获取更多细节。
+默认的构建目标是能支持[原生 ESM 语法的 script 标签](https://caniuse.com/es6-module)、[原生 ESM 动态导入](https://caniuse.com/es6-module-dynamic-import)和 [`import.meta`](https://caniuse.com/mdn-javascript_operators_import_meta) 的浏览器。传统浏览器可以通过官方插件 [@vitejs/plugin-legacy](https://github.com/vitejs/vite/tree/v4/packages/plugin-legacy) 支持，请查看[构建生产版本](./build)章节了解更多细节。
 
 ## 在线试用 Vite {#trying-vite-online}
 
@@ -81,7 +81,7 @@ yarn create vite my-vue-app --template vue
 pnpm create vite my-vue-app --template vue
 ```
 
-查看 [create-vite](https://github.com/vitejs/vite/tree/main/packages/create-vite) 以获取每个模板的更多细节：`vanilla`，`vanilla-ts`, `vue`, `vue-ts`，`react`，`react-ts`，`react-swc`，`react-swc-ts`，`preact`，`preact-ts`，`lit`，`lit-ts`，`svelte`，`svelte-ts`，`solid`，`solid-ts`，`qwik`，`qwik-ts`。
+查看 [create-vite](https://github.com/vitejs/vite/tree/v4/packages/create-vite) 以获取每个模板的更多细节：`vanilla`、`vanilla-ts`、`vue`、`vue-ts`、`react`、`react-ts`、`react-swc`、`react-swc-ts`、`preact`、`preact-ts`、`lit`、`lit-ts`、`svelte`、`svelte-ts`、`solid`、`solid-ts`、`qwik`、`qwik-ts`。
 
 ## 社区模板 {#community-templates}
 
@@ -151,4 +151,4 @@ pnpm link --global # 在这一步中可使用你喜欢的包管理器
 
 ## 社区 {#community}
 
-如果你有疑问或者需要帮助，可以到 [Discord](https://chat.vitejs.dev) 和 [GitHub Discussions](https://github.com/vitejs/vite/discussions) 社区来寻求帮助。
+如果你有疑问或者需要帮助，可以到 [Discord](https://chat.vite.dev) 和 [GitHub Discussions](https://github.com/vitejs/vite/discussions) 社区寻求帮助。

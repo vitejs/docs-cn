@@ -11,6 +11,12 @@
    ```js
    // vite.config.js
    export default defineConfig({
+     server: {
+       cors: {
+         // 浏览器将从此来源访问资源
+         origin: 'http://my-backend.example.com',
+       },
+     },
      build: {
        // 在 outDir 中生成 manifest.json
        manifest: true,

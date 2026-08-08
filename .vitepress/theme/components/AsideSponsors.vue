@@ -18,12 +18,17 @@ const sponsors = computed(() => {
 </script>
 
 <template>
-  <a class="viteconf" href="https://viteconf.org/23" target="_blank">
-    <img width="22" height="22" src="/viteconf.svg" />
+  <a
+    class="viteconf"
+    href="https://viteconf.org/23/replay?utm=vite-sidebar"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    <img width="22" height="22" src="/viteconf.svg" alt="" />
     <span>
-      <p class="extra-info">Free Online Conference</p>
-      <p class="heading">ViteConf 23 - Oct 5</p>
-      <p class="extra-info">Get your ticket now!</p>
+      <p class="extra-info">不止于快</p>
+      <p class="heading">ViteConf 2023</p>
+      <p class="extra-info">观看大会回放</p>
     </span>
   </a>
   <VPDocAsideSponsors v-if="data" :data="sponsors" />
@@ -34,7 +39,6 @@ const sponsors = computed(() => {
   margin-top: 1rem;
   margin-bottom: 1rem;
   border-radius: 14px;
-  padding-left: 2.5rem;
   padding-top: 0.4rem;
   padding-bottom: 0.4rem;
   position: relative;
@@ -44,7 +48,8 @@ const sponsors = computed(() => {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0.75rem;
+  width: 100%;
+  gap: 1rem;
   background-color: var(--vp-c-bg-alt);
   border: 2px solid var(--vp-c-bg-alt);
   transition: border-color 0.5s;
@@ -53,8 +58,6 @@ const sponsors = computed(() => {
   border: 2px solid var(--vp-c-brand-light);
 }
 .viteconf img {
-  position: absolute;
-  left: 1.5rem;
   transition: transform 0.5s;
   transform: scale(1.25);
 }

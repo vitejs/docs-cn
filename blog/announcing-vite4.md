@@ -6,131 +6,132 @@ head:
       content: website
   - - meta
     - property: og:title
-      content: Announcing Vite 4
+      content: Vite 4 正式发布
   - - meta
     - property: og:image
-      content: https://vitejs.dev/og-image-announcing-vite4.png
+      content: https://v4.cn.vite.dev/og-image-announcing-vite4.png
   - - meta
     - property: og:url
-      content: https://vitejs.dev/blog/announcing-vite4
+      content: https://v4.cn.vite.dev/blog/announcing-vite4
   - - meta
     - property: og:description
-      content: Vite 4 Release Announcement
+      content: Vite 4 发布公告
   - - meta
     - name: twitter:card
       content: summary_large_image
 ---
 
-# Vite 4.0 is out!
+# Vite 4.0 正式发布！
 
-_December 9, 2022_
+_2022 年 12 月 9 日_
 
-Vite 3 [was released](./announcing-vite3.md) five months ago. npm downloads per week have gone from 1 million to 2.5 million since then. The ecosystem has matured too, and continues to grow. In this year's [Jamstack Conf survey](https://twitter.com/vite_js/status/1589665610119585793), usage among the community jumped from 14% to 32% while keeping a high 9.7 satisfaction score. We saw the stable releases of [Astro 1.0](https://astro.build/), [Nuxt 3](https://v3.nuxtjs.org/), and other Vite-powered frameworks that are innovating and collaborating: [SvelteKit](https://kit.svelte.dev/), [Solid Start](https://www.solidjs.com/blog/introducing-solidstart), [Qwik City](https://qwik.builder.io/qwikcity/overview/). Storybook announced first-class support for Vite as one of its main features for [Storybook 7.0](https://storybook.js.org/blog/first-class-vite-support-in-storybook/). Deno now [supports Vite](https://www.youtube.com/watch?v=Zjojo9wdvmY). [Vitest](https://vitest.dev) adoption is exploding, it will soon represent half of Vite's npm downloads. Nx is also investing in the ecosystem, and [officially supports Vite](https://nx.dev/packages/vite).
+Vite 3 [发布](./announcing-vite3.md)后的五个月里，npm 周下载量从 100 万增长到了 250 万。生态系统也更加成熟，并在持续增长。在今年的 [Jamstack Conf 调查](https://twitter.com/vite_js/status/1589665610119585793)中，社区使用率从 14% 跃升至 32%，满意度仍高达 9.7。我们见证了 [Astro 1.0](https://astro.build/)、[Nuxt 3](https://v3.nuxtjs.org/) 以及其他由 Vite 驱动并不断创新协作的框架发布稳定版，包括 [SvelteKit](https://kit.svelte.dev/)、[Solid Start](https://www.solidjs.com/blog/introducing-solidstart) 和 [Qwik City](https://qwik.builder.io/qwikcity/overview/)。Storybook 宣布将 Vite 的一等支持作为 [Storybook 7.0](https://storybook.js.org/blog/first-class-vite-support-in-storybook/) 的主要功能之一。Deno 现在也[支持 Vite](https://www.youtube.com/watch?v=Zjojo9wdvmY)。[Vitest](https://vitest.dev) 的使用量快速增长，很快就会达到 Vite npm 下载量的一半。Nx 也在投入 Vite 生态，并[正式支持 Vite](https://nx.dev/packages/vite)。
 
-[![Vite 4 Ecosystem](/ecosystem-vite4.png)](https://viteconf.org/2022/replay)
+[![Vite 4 生态系统](/ecosystem-vite4.png)](https://viteconf.org/2022/replay)
 
-As a showcase of the growth Vite and related projects have experienced, the Vite ecosystem gathered on October 11th at [ViteConf 2022](https://viteconf.org/2022/replay). We saw representatives from the main web framework and tools tell stories of innovation and collaboration. And in a symbolic move, the Rollup team choose that exact day to release [Rollup 3](https://rollupjs.org).
+为了展示 Vite 及相关项目的成长，Vite 生态系统于 10 月 11 日齐聚 [ViteConf 2022](https://viteconf.org/2022/replay)。各主要 Web 框架和工具的代表分享了创新与协作的故事。颇具象征意义的是，Rollup 团队也选择在同一天发布 [Rollup 3](https://rollupjs.org)。
 
-Today, the Vite [team](https://vitejs.dev/team) with the help of our ecosystem partners, is happy to announce the release of Vite 4, powered during build time by Rollup 3. We've worked with the ecosystem to ensure a smooth upgrade path for this new major. Vite is now using [Rollup 3](https://github.com/vitejs/vite/issues/9870), which allowed us to simplify Vite's internal asset handling and has many improvements. See the [Rollup 3 release notes here](https://github.com/rollup/rollup/releases/tag/v3.0.0).
+今天，Vite [团队](/team)在生态伙伴的帮助下，很高兴宣布由 Rollup 3 驱动构建阶段的 Vite 4 正式发布。我们与生态系统共同努力，确保这个新主版本拥有平滑的升级路径。Vite 现在使用 [Rollup 3](https://github.com/vitejs/vite/issues/9870)，它让我们得以简化 Vite 内部的资源处理，并带来许多改进。详情请参阅 [Rollup 3 发布说明](https://github.com/rollup/rollup/releases/tag/v3.0.0)。
 
-![Vite 4 Announcement Cover Image](/og-image-announcing-vite4.png)
+![Vite 4 发布公告封面](/og-image-announcing-vite4.png)
 
-Quick links:
+快速链接：
 
-- [Docs](/)
-- [Migration Guide](/guide/migration)
-- [Changelog](https://github.com/vitejs/vite/blob/main/packages/vite/CHANGELOG.md#400-2022-12-09)
+- [文档](/)
+- [迁移指南](/guide/migration)
+- [更新日志](https://github.com/vitejs/vite/blob/v4/packages/vite/CHANGELOG.md#400-2022-12-09)
 
-Docs in other languages:
+其他语言的文档：
 
-- [简体中文](https://cn.vitejs.dev/)
-- [日本語](https://ja.vitejs.dev/)
-- [Español](https://es.vitejs.dev/)
+- [简体中文](/)
+- [English](https://v4.vite.dev/)
+- [日本語](https://ja.vite.dev/)
+- [Español](https://es.vite.dev/)
 
-If you recently started using Vite, we suggest reading the [Why Vite Guide](https://vitejs.dev/guide/why.html) and checking out [the Getting Started](https://vitejs.dev/guide/) and [Features guide](https://vitejs.dev/guide/features). If you want to get involved, contributions are welcome at [GitHub](https://github.com/vitejs/vite). Almost [700 collaborators](https://github.com/vitejs/vite/graphs/contributors) have contributed to Vite. Follow the updates on [Twitter](https://twitter.com/vite_js) and [Mastodon](https://webtoo.ls/@vite), or join collaborate with others on our [Discord community](http://chat.vitejs.dev/).
+如果你最近才开始使用 Vite，建议阅读[为什么选 Vite](/guide/why)，并查看[开始](/guide/)和[功能](/guide/features)指南，了解 Vite 的开箱即用能力。如果你想参与，欢迎在 [GitHub](https://github.com/vitejs/vite) 上贡献。已有近 [700 位协作者](https://github.com/vitejs/vite/graphs/contributors)为 Vite 做出贡献。你可以在 [Twitter](https://twitter.com/vite_js) 和 [Mastodon](https://webtoo.ls/@vite) 上关注动态，也可以加入 [Discord 社区](https://chat.vite.dev)与大家协作。
 
-## Start playing with Vite 4
+## 开始体验 Vite 4
 
-Use `pnpm create vite` to scaffold a Vite project with your preferred framework, or open a started template online to play with Vite 4 using [vite.new](https://vite.new).
+运行 `pnpm create vite`，使用你偏好的框架搭建 Vite 项目；也可以通过 [vite.new](https://vite.new) 在线打开入门模板，立即体验 Vite 4。
 
-You can also run `pnpm create vite-extra` to get access to templates from other frameworks and runtimes (Solid, Deno, SSR, and library starters). `create vite-extra` templates are also available when you run `create vite` under the `Others` option.
+你还可以运行 `pnpm create vite-extra`，获取其他框架和运行时的模板，包括 Solid、Deno、SSR 和库项目模板。运行 `create vite` 时，也可以在 `Others` 选项中找到 `create vite-extra` 模板。
 
-Note that Vite starter templates are intended to be used as a playground to test Vite with different frameworks. When building your next project, we recommend reaching out to the starters recommended by each framework. Some frameworks now redirect in `create vite` to their starters too (`create-vue` and `Nuxt 3` for Vue, and `SvelteKit` for Svelte).
+请注意，Vite 入门模板旨在作为使用不同框架测试 Vite 的演练场。构建正式项目时，我们建议选用各框架推荐的脚手架。部分框架现在也会在 `create vite` 中将用户引导到各自的脚手架，例如 Vue 的 `create-vue` 和 Nuxt 3，以及 Svelte 的 SvelteKit。
 
-## New React plugin using SWC during development
+## 开发阶段使用 SWC 的新 React 插件
 
-[SWC](https://swc.rs/) is now a mature replacement for [Babel](https://babeljs.io/), especially in the context of React projects. SWC's React Fast Refresh implementation is a lot faster than Babel, and for some projects, it is now a better alternative. From Vite 4, two plugins are available for React projects with different tradeoffs. We believe that both approaches are worth supporting at this point, and we'll continue to explore improvements to both plugins in the future.
+[SWC](https://swc.rs/) 已经成为 [Babel](https://babeljs.io/) 的成熟替代方案，尤其适用于 React 项目。SWC 的 React Fast Refresh 实现比 Babel 快得多，对某些项目而言已是更好的选择。从 Vite 4 开始，React 项目可使用两个取舍不同的插件。我们认为现阶段两种方案都值得支持，并会继续探索两者的改进空间。
 
 ### @vitejs/plugin-react
 
-[@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react) is a plugin that uses esbuild and Babel, achieving fast HMR with a small package footprint and the flexibility of being able to use the Babel transform pipeline.
+[@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react) 使用 esbuild 和 Babel，以较小的软件包体积实现快速 HMR，同时保留使用 Babel 转换管道的灵活性。
 
-### @vitejs/plugin-react-swc (new)
+### @vitejs/plugin-react-swc（新增）
 
-[@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) is a new plugin that uses esbuild during build, but replaces Babel with SWC during development. For big projects that don't require non-standard React extensions, cold start and Hot Module Replacement (HMR) can be significantly faster.
+[@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) 是一个新插件：构建时使用 esbuild，开发时则以 SWC 替代 Babel。对于不需要非标准 React 扩展的大型项目，它能显著加快冷启动和热模块替换（HMR）。
 
-## Browser Compatibility
+## 浏览器兼容性
 
-The modern browser build now targets `safari14` by default for wider ES2020 compatibility. This means that modern builds can now use [`BigInt`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt) and that the [nullish coalescing operator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Nullish_coalescing) isn't transpiled anymore. If you need to support older browsers, you can add [`@vitejs/plugin-legacy`](https://github.com/vitejs/vite/tree/main/packages/plugin-legacy) as usual.
+现代浏览器构建现在默认以 `safari14` 为目标，以获得更广泛的 ES2020 兼容性。这意味着现代构建可以使用 [`BigInt`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt)，并且[空值合并运算符](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Nullish_coalescing)不再被转译。如果需要支持更旧的浏览器，可以照常添加 [`@vitejs/plugin-legacy`](https://github.com/vitejs/vite/tree/v4/packages/plugin-legacy)。
 
-## Importing CSS as a String
+## 将 CSS 作为字符串导入
 
-In Vite 3, importing the default export of a `.css` file could introduce a double loading of CSS.
+在 Vite 3 中，导入 `.css` 文件的默认导出可能导致 CSS 被加载两次。
 
 ```ts
 import cssString from './global.css'
 ```
 
-This double loading could occur since a `.css` file will be emitted and it's likely that the CSS string will also be used by the application code — for example, injected by the framework runtime. From Vite 4, the `.css` default export [has been deprecated](https://github.com/vitejs/vite/issues/11094). The `?inline` query suffix modifier needs to be used in this case, as that doesn't emit the imported `.css` styles.
+出现重复加载，是因为 `.css` 文件会被输出，而应用代码也很可能使用对应的 CSS 字符串，例如由框架运行时注入。从 Vite 4 开始，`.css` 的默认导出[已被弃用](https://github.com/vitejs/vite/issues/11094)。这种场景需要使用 `?inline` 查询后缀，因为它不会输出导入的 `.css` 样式。
 
 ```ts
 import stuff from './global.css?inline'
 ```
 
-Learn more in the [Migration Guide](/guide/migration).
+更多信息请参阅[迁移指南](/guide/migration)。
 
-## Environment Variables
+## 环境变量
 
-Vite now uses `dotenv` 16 and `dotenv-expand` 9 (previously `dotenv` 14 and `dotenv-expand` 5). If you have a value including `#` or `` ` ``, you will need to wrap them with quotes.
+Vite 现在使用 `dotenv` 16 和 `dotenv-expand` 9，此前使用的是 `dotenv` 14 和 `dotenv-expand` 5。如果变量值包含 `#` 或 `` ` ``，需要用引号将其包裹起来。
 
 ```diff
 -VITE_APP=ab#cd`ef
 +VITE_APP="ab#cd`ef"
 ```
 
-For more details, see the [`dotenv`](https://github.com/motdotla/dotenv/blob/master/CHANGELOG.md) and [`dotenv-expand` changelog](https://github.com/motdotla/dotenv-expand/blob/master/CHANGELOG.md).
+详情请参阅 [`dotenv`](https://github.com/motdotla/dotenv/blob/master/CHANGELOG.md) 和 [`dotenv-expand` 更新日志](https://github.com/motdotla/dotenv-expand/blob/master/CHANGELOG.md)。
 
-## Other Features
+## 其他功能
 
-- CLI Shortcuts (press `h` during dev to see them all) ([#11228](https://github.com/vitejs/vite/pull/11228))
-- Support for patch-package when pre bundling dependencies ([#10286](https://github.com/vitejs/vite/issues/10286))
-- Cleaner build logs output ([#10895](https://github.com/vitejs/vite/issues/10895)) and switch to `kB` to align with browser dev tools ([#10982](https://github.com/vitejs/vite/issues/10982))
-- Improved error messages during SSR ([#11156](https://github.com/vitejs/vite/issues/11156))
+- CLI 快捷键：在开发时按 `h` 查看全部快捷键（[#11228](https://github.com/vitejs/vite/pull/11228)）
+- 预构建依赖项时支持 patch-package（[#10286](https://github.com/vitejs/vite/issues/10286)）
+- 更清晰的构建日志输出（[#10895](https://github.com/vitejs/vite/issues/10895)），并改用 `kB` 以与浏览器开发者工具保持一致（[#10982](https://github.com/vitejs/vite/issues/10982)）
+- 改进 SSR 期间的错误信息（[#11156](https://github.com/vitejs/vite/issues/11156)）
 
-## Reduced Package Size
+## 缩小软件包体积
 
-Vite cares about its footprint, to speed up installation, especially in the use case of playgrounds for documentation and reproductions. And once more, this major brings improvements in Vite's package size. Vite 4 install size is 23% smaller compared to vite 3.2.5 (14.1 MB vs 18.3 MB).
+Vite 重视自身占用空间，尤其希望加快文档演练场和问题复现项目的安装速度。这个主版本再次缩小了 Vite 软件包：Vite 4 的安装体积比 Vite 3.2.5 小 23%（14.1 MB 对 18.3 MB）。
 
-## Upgrades to Vite Core
+## Vite 核心升级
 
-[Vite Core](https://github.com/vitejs/vite) and [vite-ecosystem-ci](https://github.com/vitejs/vite-ecosystem-ci) continue to evolve to provide a better experience to maintainers and collaborators and to ensure that Vite development scales to cope with the growth in the ecosystem.
+[Vite 核心](https://github.com/vitejs/vite)和 [vite-ecosystem-ci](https://github.com/vitejs/vite-ecosystem-ci)持续演进，为维护者和协作者提供更好的体验，并确保 Vite 开发能够适应生态系统的增长。
 
-### Framework plugins out of core
+### 将框架插件移出核心仓库
 
-[`@vitejs/plugin-vue`](https://github.com/vitejs/vite-plugin-vue) and [`@vitejs/plugin-react`](https://github.com/vitejs/vite-plugin-react) have been part of Vite core monorepo since the first versions of Vite. This helped us to get a close feedback loop when making changes as we were getting both Core and the plugins tested and released together. With [vite-ecosystem-ci](https://github.com/vitejs/vite-ecosystem-ci) we can get this feedback with these plugins developed on independent repositories, so from Vite 4, [they have been moved out of the Vite core monorepo](https://github.com/vitejs/vite/pull/11158). This is meaningful for Vite's framework-agnostic story and will allow us to build independent teams to maintain each of the plugins. If you have bugs to report or features to request, please create issues on the new repositories moving forward: [`vitejs/vite-plugin-vue`](https://github.com/vitejs/vite-plugin-vue) and [`vitejs/vite-plugin-react`](https://github.com/vitejs/vite-plugin-react).
+从 Vite 最早的版本起，[`@vitejs/plugin-vue`](https://github.com/vitejs/vite-plugin-vue) 和 [`@vitejs/plugin-react`](https://github.com/vitejs/vite-plugin-react) 就一直位于 Vite 核心 monorepo 中。这让核心和插件能够一起测试、发布，从而形成紧密的反馈循环。借助 [vite-ecosystem-ci](https://github.com/vitejs/vite-ecosystem-ci)，即使插件在独立仓库中开发，我们也能获得同样的反馈。因此从 Vite 4 开始，[它们已被移出 Vite 核心 monorepo](https://github.com/vitejs/vite/pull/11158)。这对 Vite 的框架无关定位意义重大，也让我们能够组建独立团队维护各个插件。今后如需报告问题或提出功能请求，请在新仓库中创建 issue：[`vitejs/vite-plugin-vue`](https://github.com/vitejs/vite-plugin-vue) 和 [`vitejs/vite-plugin-react`](https://github.com/vitejs/vite-plugin-react)。
 
-### vite-ecosystem-ci improvements
+### vite-ecosystem-ci 改进
 
-[vite-ecosystem-ci](https://github.com/vitejs/vite-ecosystem-ci) extends Vite's CI by providing on-demand status reports on the state of the CIs of [most major downstream projects](https://github.com/vitejs/vite-ecosystem-ci/tree/main/tests). We run vite-ecosystem-ci three times a week against Vite's main branch and receive timely reports before introducing a regression. Vite 4 will soon be compatible with most projects using Vite, which already prepared branches with the needed changes and will be releasing them in the next few days. We are also able to run vite-ecosystem-ci on-demand on PRs using `/ecosystem-ci run` in a comment, allowing us to know [the effect of changes](https://github.com/vitejs/vite/pull/11269#issuecomment-1343365064) before they hit main.
+[vite-ecosystem-ci](https://github.com/vitejs/vite-ecosystem-ci) 扩展了 Vite 的 CI，可按需报告[大多数主要下游项目](https://github.com/vitejs/vite-ecosystem-ci/tree/main/tests)的 CI 状态。我们每周三次针对 Vite 主分支运行它，以便在引入回归前及时获得报告。大多数使用 Vite 的项目已经准备了包含必要改动的分支，并将在接下来几天发布，因此很快就能兼容 Vite 4。我们也可以在 PR 评论中使用 `/ecosystem-ci run` 按需运行它，从而在改动进入主分支前了解其[影响](https://github.com/vitejs/vite/pull/11269#issuecomment-1343365064)。
 
-## Acknowledgments
+## 致谢
 
-Vite 4 wouldn't be possible without uncountable hours of work by Vite contributors, many of them maintainers of downstream projects and plugins, and the efforts of the [Vite Team](/team). All of us have worked together to improve Vite's DX once more, for every framework and app using it. We're grateful to be able to improve a common base for such a vibrant ecosystem.
+如果没有 Vite 贡献者投入的无数时间，Vite 4 不可能实现。其中许多人也是下游项目和插件的维护者。我们与 [Vite 团队](/team)共同努力，再次改善了所有使用 Vite 的框架和应用的开发体验。能够为如此活跃的生态系统改进共同基础，我们深感荣幸。
 
-We're also thankful to individuals and companies sponsoring the Vite team, and companies investing directly in Vite's future: [@antfu7](https://twitter.com/antfu7)'s work on Vite and the ecosystem is part of his job at [Nuxt Labs](https://nuxtlabs.com/), [Astro](https://astro.build) is funding [@bluwyoo](https://twitter.com/bluwyoo)'s' Vite core work, and [StackBlitz](https://stackblitz.com/) hires [@patak_dev](https://twitter.com/patak_dev) to work full time on Vite.
+我们也感谢赞助 Vite 团队的个人和公司，以及直接投资 Vite 未来的公司：[@antfu7](https://twitter.com/antfu7) 在 Vite 和生态系统中的部分工作属于他在 [Nuxt Labs](https://nuxtlabs.com/) 的职责；[Astro](https://astro.build) 资助 [@bluwyoo](https://twitter.com/bluwyoo) 的 Vite 核心工作；[StackBlitz](https://stackblitz.com/) 聘请 [@patak_dev](https://twitter.com/patak_dev) 全职参与 Vite。
 
-## Next steps
+## 后续计划
 
-Our immediate focus would be on triaging newly opened issues to avoid disruption by possible regressions. If you would like to get involved and help us improve Vite, we suggest starting with issues triaging. Join [our Discord](https://chat.vitejs.dev) and reach out on the `#contributing` channel. Polish our `#docs` story, and `#help` others. We need to continue to build a helpful and welcoming community for the next wave of users, as Vite's adoption continues to grow.
+我们近期会专注于梳理新提交的 issue，避免潜在回归带来干扰。如果你愿意参与并帮助改进 Vite，建议从 issue 分类开始。加入我们的 [Discord 社区](https://chat.vite.dev)，在 `#contributing` 频道联系我们；也欢迎完善 `#docs`，并在 `#help` 中帮助其他人。随着 Vite 持续普及，我们需要为下一批用户继续建设一个友善、乐于助人的社区。
 
-There are a lot of open fronts to keep improving the DX of everyone that has chosen Vite to power their frameworks and develop their apps. Onwards!
+为了持续改善所有选择 Vite 来驱动框架和开发应用的用户体验，还有许多方向值得探索。继续前进！

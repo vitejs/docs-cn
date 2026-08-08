@@ -13,7 +13,7 @@ Vite 不再支持 Node 12 / 13 / 15，因为上述版本已经进入了 EOL 阶�
 - Safari >=13
 - Edge >=88
 
-一小部分用户需要 [@vitejs/plugin-legacy](https://github.com/vitejs/vite/tree/main/packages/plugin-legacy)，它会自动生成兼容性 chunk 以及相应的 ES 语言功能的 polyfill。
+一小部分用户需要 [@vitejs/plugin-legacy](https://github.com/vitejs/vite/tree/v3/packages/plugin-legacy)，它会自动生成兼容性 chunk 以及相应 ES 语言功能的 polyfill。
 
 ## 配置选项变化 {#config-options-changes}
 
@@ -24,8 +24,8 @@ Vite 不再支持 Node 12 / 13 / 15，因为上述版本已经进入了 EOL 阶�
   - `build.base`（改为了 [`base`](../config/shared-options.md#base)）
   - `build.brotliSize`（改为了 [`build.reportCompressedSize`](../config/build-options.md#build-reportcompressedsize)）
   - `build.cleanCssOptions`（Vite 现在使用 esbuild 来做 CSS 最小化压缩）
-  - `build.polyfillDynamicImport`（在没有支持动态导入的浏览器中，使用 [`@vitejs/plugin-legacy`](https://github.com/vitejs/vite/tree/main/packages/plugin-legacy)）
-  - `optimizeDeps.keepNames`（改为了 [`optimizeDeps.esbuildOptions.keepNames`](../config/dep-optimization-options.md#optimizedeps-esbuildoptions)）
+  - `build.polyfillDynamicImport`（在不支持动态导入的浏览器中，使用 [`@vitejs/plugin-legacy`](https://github.com/vitejs/vite/tree/v3/packages/plugin-legacy)）
+  - `optimizeDeps.keepNames`（改为了 [`optimizeDeps.esbuildOptions.keepNames`](../config/dep-optimization-options.md#optimizedeps-esbuild-options)）
 
 ## 架构变更和兼容选项 {#achitecture-changes-and-legacy-options}
 
@@ -41,7 +41,7 @@ Vite 的默认开发服务器主机地址现在改为了 `localhost`。在 Vite 
 
 ### SSR Changes {#ssr-changes}
 
-Vite v3 默认在 SSR 构建时使用 ESM 格式。当使用 ESM 时，[SSR 外部化的启发式方法](https://vitejs.dev/guide/ssr.html#ssr-externals) 将不再需要。默认情况下所有的依赖都将被外部化。你可以使用 [`ssr.noExternal`](../config/ssr-options.md#ssrnoexternal) 来控制哪些依赖需要被包含进 SSR 的打包产物中。
+Vite v3 默认在 SSR 构建时使用 ESM 格式。使用 ESM 时，不再需要 [SSR 外部化的启发式方法](https://v3.vite.dev/guide/ssr.html#ssr-externals)。默认情况下，所有依赖项都会被外部化。你可以使用 [`ssr.noExternal`](../config/ssr-options.md#ssr-noexternal) 控制哪些依赖项需要包含在 SSR 打包产物中。
 
 如果你无法在你的 SSR 项目中使用 ESM，你可以设置 `ssr.format: 'cjs'` 来生成一个 CJS 格式的产物。在这种情况下，会使用和 Vite v2 相同的外部化策略。
 
@@ -142,4 +142,4 @@ export default {
 
 ## 从 v1 迁移 {#migration-from-v1}
 
-在 Vite v2 文档中查看 [Migration from v1 Guide](https://v2.vitejs.dev/guide/migration.html)（[中文版](https://cn.vitejs.dev/guide/migration-from-v1.html)），了解如何将你的应用迁移到 Vite v2，然后再处理本页中所提及的变化。
+请先查看 Vite v2 文档中的 [Migration from v1 Guide](https://v2.vite.dev/guide/migration.html)（[中文版](./migration-from-v1)），了解如何将应用迁移到 Vite v2，然后再处理本页提到的变化。

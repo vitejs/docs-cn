@@ -17,6 +17,15 @@
 
 :::
 
+## preview.allowedHosts {#preview-allowedhosts}
+
+- **类型：** `string | true`
+- **默认值：** [`server.allowedHosts`](./server-options#server-allowedhosts)
+
+指定允许 Vite 响应的主机名。
+
+更多信息请参阅 [`server.allowedHosts`](./server-options#server-allowedhosts)。
+
 ## preview.port {#preview-port}
 
 - **类型：** `number`
@@ -76,7 +85,9 @@ export default defineConfig({
 - **类型：** `boolean | CorsOptions`
 - **默认：** [`server.cors`](./server-options#server-cors)
 
-为开发服务器配置 CORS。此功能默认启用并支持任何来源。可传递一个 [options 对象](https://github.com/expressjs/cors#configuration-options) 来进行配置，或者传递 `false` 来禁用此行为。
+为预览服务器配置 CORS。
+
+更多信息请参阅 [`server.cors`](./server-options#server-cors)。
 
 ## preview.headers {#preview-headers}
 

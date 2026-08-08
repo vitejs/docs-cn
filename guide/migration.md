@@ -4,11 +4,11 @@
 
 Vite 现在正式启用 [Rollup 3](https://github.com/vitejs/vite/issues/9870)，这使得我们可以简化 Vite 内部的资源处理并同时拥有许多改进。详情请查看 [Rollup 3 版本记录](https://github.com/rollup/rollup/releases/tag/v3.0.0)。
 
-Rollup 3 尽最大可能兼容了 Rollup 2。如果你在项目中使用了自定义的 [`rollupOptions`](../config/build-options.md#rollup-options) 并（升级后）遇到了问题，请先查看 [Rollup 迁移指南](https://rollupjs.org/migration/) 来更新升级你的配置。
+Rollup 3 尽最大可能兼容了 Rollup 2。如果你在项目中使用了自定义的 [`rollupOptions`](../config/build-options.md#build-rollupoptions) 并（升级后）遇到了问题，请先查看 [Rollup 迁移指南](https://rollupjs.org/migration/) 来更新升级你的配置。
 
 ## 现代浏览器基准线变化 {#modern-browser-baseline-change}
 
-当前对于现代浏览器的构建目标及现调整为了默认 `safari14` 以求更广的 ES2020 兼容性（从 `safari13` 升级）。这意味着现代化构建现在可以使用 [`BigInt`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt)，同时 [空值合并运算符](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Nullish_coalescing) 将不再被转译。如果你需要支持更旧版本的浏览器，你可以照常添加 [`@vitejs/plugin-legacy`](https://github.com/vitejs/vite/tree/main/packages/plugin-legacy)。
+现代浏览器的构建目标现已调整为默认 `safari14`，以获得更广泛的 ES2020 兼容性（从 `safari13` 升级）。这意味着现代构建现在可以使用 [`BigInt`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt)，同时[空值合并运算符](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Nullish_coalescing)不再被转译。如果需要支持更旧的浏览器，可以照常添加 [`@vitejs/plugin-legacy`](https://github.com/vitejs/vite/tree/v4/packages/plugin-legacy)。
 
 ## 其他一般性变化 {#general-changes}
 
@@ -70,4 +70,4 @@ Vite 现在使用 `dotenv` 16 和 `dotenv-expand` 9（之前是 `dotenv` 14 和 
 
 ## 从 v2 迁移 {#migration-from-v2}
 
-请先查看之前 Vite v3 文档中的 [Migration from v2 Guide](https://cn.vitejs.dev/guide/migration-from-v2.html) 了解迁移到 v3 所需要的更改，然后再继续执行本页提到的相关更改。
+请先查看 Vite v3 文档中的 [Migration from v2 Guide](https://v3.vite.dev/guide/migration.html)（[中文版](./migration-from-v2)），了解迁移到 v3 所需的更改，然后再继续处理本页提到的变化。

@@ -29,3 +29,19 @@ SSR 服务器的构建目标。
 - **默认：** `esm`
 
 SSR 服务器的构建语法格式。从 Vite v3 开始，SSR 构建默认生成 ESM 格式。设置为 `'cjs'` 可以构建为 CJS 格式，但不推荐这样做。这个选项被标记为实验性的，以便给用户更多时间更新到 ESM。CJS 构建需要复杂的外部化启发式，但在 ESM 格式中则不需要。
+
+## ssr.resolve.conditions {#ssr-resolve-conditions}
+
+- **类型：** `string[]`
+- **相关：** [解析条件](./shared-options.md#resolve-conditions)
+
+默认值为根级的 [`resolve.conditions`](./shared-options.md#resolve-conditions)。
+
+这些条件用于插件管道，并且只影响 SSR 构建期间未外部化的依赖项。若要影响外部化的导入，请使用 `ssr.resolve.externalConditions`。
+
+## ssr.resolve.externalConditions {#ssr-resolve-externalconditions}
+
+- **类型：** `string[]`
+- **默认值：** `[]`
+
+在 SSR 导入外部化依赖项（包括 `ssrLoadModule`）时使用的条件。
