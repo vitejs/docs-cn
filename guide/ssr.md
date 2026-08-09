@@ -18,8 +18,8 @@ SSR 特别指支持在 Node.js 中运行相同应用程序的前端框架（例�
 
 Vite 为服务端渲染（SSR）提供了内建支持。这里的 Vite 范例包含了 Vue 3 和 React 的 SSR 设置示例，可以作为本指南的参考：
 
-- [Vue 3](https://github.com/vitejs/vite/tree/main/playground/ssr-vue)
-- [React](https://github.com/vitejs/vite/tree/main/playground/ssr-react)
+- [Vue 3](https://github.com/vitejs/vite/tree/v3/playground/ssr-vue)
+- [React](https://github.com/vitejs/vite/tree/v3/playground/ssr-react)
 
 ## 源码结构 {#source-structure}
 
@@ -176,7 +176,7 @@ app.use('*', async (req, res, next) => {
 
 - 将 `vite` 开发服务器的创建和所有使用都移到 dev-only 条件分支后面，然后添加静态文件服务中间件来服务 `dist/client` 中的文件。
 
-可以在此参考 [Vue](https://github.com/vitejs/vite/tree/main/playground/ssr-vue) 和 [React](https://github.com/vitejs/vite/tree/main/playground/ssr-react) 的设置范例。
+可以在此参考 [Vue](https://github.com/vitejs/vite/tree/v3/playground/ssr-vue) 和 [React](https://github.com/vitejs/vite/tree/v3/playground/ssr-react) 的设置范例。
 
 ## 生成预加载指令 {#generating-preload-directives}
 
@@ -200,11 +200,11 @@ const html = await vueServerRenderer.renderToString(app, ctx)
 // ctx.modules 现在是一个渲染期间使用的模块 ID 的 Set
 ```
 
-我们现在需要在 `server.js` 的生产环境分支下读取该清单，并将其传递到 `src/entry-server.js` 导出的 `render` 函数中。这将为我们提供足够的信息，来为异步路由相应的文件渲染预加载指令！查看 [示例代码](https://github.com/vitejs/vite/blob/main/playground/ssr-vue/src/entry-server.js) 获取完整示例。
+我们现在需要在 `server.js` 的生产环境分支下读取该清单，并将其传递到 `src/entry-server.js` 导出的 `render` 函数中。这将为我们提供足够的信息，来为异步路由相应的文件渲染预加载指令！查看 [示例代码](https://github.com/vitejs/vite/blob/v3/playground/ssr-vue/src/entry-server.js) 获取完整示例。
 
 ## 预渲染 / SSG {#pre-rendering--ssg}
 
-如果预先知道某些路由所需的路由和数据，我们可以使用与生产环境 SSR 相同的逻辑将这些路由预先渲染到静态 HTML 中。这也被视为一种静态站点生成（SSG）的形式。查看 [示例渲染代码](https://github.com/vitejs/vite/blob/main/playground/ssr-vue/prerender.js) 获取有效示例。
+如果预先知道某些路由所需的路由和数据，我们可以使用与生产环境 SSR 相同的逻辑将这些路由预先渲染到静态 HTML 中。这也被视为一种静态站点生成（SSG）的形式。查看 [示例渲染代码](https://github.com/vitejs/vite/blob/v3/playground/ssr-vue/prerender.js) 获取有效示例。
 
 ## SSR 外部化 {#ssr-externals}
 

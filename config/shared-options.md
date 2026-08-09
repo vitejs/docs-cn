@@ -310,7 +310,7 @@ export default defineConfig({
 
 - 从 JavaScript 导入它们将返回解析后的 URL 字符串（如果你设置了 `enforce: 'pre'` 插件来处理不同的资产类型，这可能会被覆盖）。
 
-内建支持的资源类型列表可以在 [这里](https://github.com/vitejs/vite/blob/main/packages/vite/src/node/constants.ts) 找到。
+内建支持的资源类型列表可以在 [这里](https://github.com/vitejs/vite/blob/v3/packages/vite/src/node/constants.ts) 找到。
 
 **示例：**
 

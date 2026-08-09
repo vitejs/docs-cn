@@ -60,6 +60,17 @@ console.log(import.meta.env.VITE_SOME_KEY) // 123
 console.log(import.meta.env.DB_PASSWORD) // undefined
 ```
 
+此外，Vite 开箱即用地使用 [dotenv-expand](https://github.com/motdotla/dotenv-expand) 展开变量。有关语法的更多信息，请参阅[它的文档](https://github.com/motdotla/dotenv-expand#what-rules-does-the-expansion-engine-follow)。
+
+注意，如果要在环境变量值中使用 `$`，必须使用 `\` 进行转义。
+
+```
+KEY=123
+NEW_KEY1=test$foo   # test
+NEW_KEY2=test\$foo  # test$foo
+NEW_KEY3=test$KEY   # test123
+```
+
 如果你想自定义 env 变量的前缀，请参阅 [envPrefix](/config/shared-options.html#envprefix)。
 
   :::warning 安全注意事项
@@ -73,7 +84,7 @@ console.log(import.meta.env.DB_PASSWORD) // undefined
 
 ### TypeScript 的智能提示 {#intellisense}
 
-默认情况下，Vite 在 [`vite/client.d.ts`](https://github.com/vitejs/vite/blob/main/packages/vite/client.d.ts) 中为 `import.meta.env` 提供了类型定义。随着在 `.env[mode]` 文件中自定义了越来越多的环境变量，你可能想要在代码中获取这些以 `VITE_` 为前缀的用户自定义环境变量的 TypeScript 智能提示。
+默认情况下，Vite 在 [`vite/client.d.ts`](https://github.com/vitejs/vite/blob/v3/packages/vite/client.d.ts) 中为 `import.meta.env` 提供了类型定义。随着在 `.env[mode]` 文件中自定义了越来越多的环境变量，你可能想要在代码中获取这些以 `VITE_` 为前缀的用户自定义环境变量的 TypeScript 智能提示。
 
 要想做到这一点，你可以在 `src` 目录下创建一个 `env.d.ts` 文件，接着按下面这样增加 `ImportMetaEnv` 的定义：
 

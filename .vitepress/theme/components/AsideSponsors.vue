@@ -21,9 +21,9 @@ const sponsors = computed(() => {
   <a class="viteconf" href="https://viteconf.org" target="_blank">
     <img width="22" height="22" src="/viteconf.svg" />
     <span>
-      <p class="extra-info">Free Online Conference</p>
-      <p class="heading">ViteConf - Oct 11</p>
-      <p class="extra-info">Get your ticket now!</p>
+      <p class="extra-info">免费线上大会</p>
+      <p class="heading">ViteConf - 10 月 11 日</p>
+      <p class="extra-info">立即领取门票</p>
     </span>
   </a>
   <VPDocAsideSponsors v-if="data" :data="sponsors" />

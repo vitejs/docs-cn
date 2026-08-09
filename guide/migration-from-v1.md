@@ -8,15 +8,15 @@
   - `transforms`
   - `indexHtmlTransforms`
 
-- `jsx` 和 `enableEsbuild` 都已被删除，请使用新的 [`esbuild`](/config/#esbuild) 选项。
+- `jsx` 和 `enableEsbuild` 都已被删除，请使用新的 [`esbuild`](/config/shared-options#esbuild) 选项。
 
-- [CSS 相关选项](/config/#css-modules) 都包含在 `css` 字段下。
+- [CSS 相关选项](/config/shared-options#css-modules) 都包含在 `css` 字段下。
 
-- 所有 [用于构建的选项](/config/#build-options) 都包含在 `build` 字段下。
+- 所有 [用于构建的选项](/config/build-options) 都包含在 `build` 字段下。
 
-  - `rollupInputOptions` 和 `rollupOutputOptions` 已经被 [`build.rollupOptions`](/config/#build-rollupoptions) 替代。
-  - `esbuildTarget` 变更为 [`build.target`](/config/#build-target)
-  - `emitManifest` 变更为 [`build.manifest`](/config/#build-manifest)
+  - `rollupInputOptions` 和 `rollupOutputOptions` 已经被 [`build.rollupOptions`](/config/build-options#build-rollupoptions) 替代。
+  - `esbuildTarget` 变更为 [`build.target`](/config/build-options#build-target)
+  - `emitManifest` 变更为 [`build.manifest`](/config/build-options#build-manifest)
   - 以下构建选项已经被移除，因为它们可以通过插件钩子或其他选项实现：
     - `entry`
     - `rollupDedupe`
@@ -25,19 +25,19 @@
     - `shouldPreload`
     - `configureBuild`
 
-- 所有的 [server-specific options](/config/#server-options) 都包含在 `server` 字段下。
+- 所有的 [server-specific options](/config/server-options) 都包含在 `server` 字段下。
 
-  - `hostname` 变更为 [`server.host`](/config/#server-host)。
-  - `httpsOptions` 已被删除，[`server.https`](/config/#server-https) 可以直接接收选项对象。
-  - `chokidarWatchOptions` 变更为 [`server.watch`](/config/#server-watch)。
+  - `hostname` 变更为 [`server.host`](/config/server-options#server-host)。
+  - `httpsOptions` 已被删除，[`server.https`](/config/server-options#server-https) 可以直接接收选项对象。
+  - `chokidarWatchOptions` 变更为 [`server.watch`](/config/server-options#server-watch)。
 
-- [`assetsInclude`](/config/#assetsinclude) 现在接收 `string | RegExp | (string | RegExp)[]` 而不是一个函数。
+- [`assetsInclude`](/config/shared-options#assetsinclude) 现在接收 `string | RegExp | (string | RegExp)[]` 而不是一个函数。
 
 - 所有 Vue 特定选项都已移除；应将选项传递给 Vue 插件。
 
 ## 别名用法变化 {#alias-behavior-change}
 
-[`alias`](/config/#resolve-alias) 现在会被传递给 `@rollup/plugin-alias` 并不再需要开始/结尾处的斜线了。此行为目前是一个直接替换，所以 1.0 风格的目录别名需要删除其结尾处的斜线：
+[`alias`](/config/shared-options#resolve-alias) 现在会被传递给 `@rollup/plugin-alias` 并不再需要开始/结尾处的斜线了。此行为目前是一个直接替换，所以 1.0 风格的目录别名需要删除其结尾处的斜线：
 
 ```diff
 - alias: { '/@foo/': path.resolve(__dirname, 'some-special-dir') }
@@ -48,7 +48,7 @@
 
 ## Vue Support {#vue-support}
 
-Vite 2.0 核心已经是框架无关的了。对 Vue 的支持目前详见 [`@vitejs/plugin-vue`](https://github.com/vitejs/vite/tree/main/packages/plugin-vue)。安装它并添加到 Vite 配置十分简单:
+Vite 2.0 核心已经是框架无关的了。对 Vue 的支持目前详见 [`@vitejs/plugin-vue`](https://github.com/vitejs/vite/tree/v3/packages/plugin-vue)。安装它并添加到 Vite 配置十分简单:
 
 ```js
 import vue from '@vitejs/plugin-vue'
@@ -87,7 +87,7 @@ export default defineConfig({
 
 ## React 支持 {#react-support}
 
-现已支持 React Fast Refresh，详见 [`@vitejs/plugin-react`](https://github.com/vitejs/vite/tree/main/packages/plugin-react)。
+现已支持 React Fast Refresh，详见 [`@vitejs/plugin-react`](https://github.com/vitejs/vite/tree/v3/packages/plugin-react)。
 
 ## HMR API 变化 {#hmr-api-change}
 

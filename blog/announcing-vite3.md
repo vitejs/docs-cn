@@ -6,64 +6,66 @@ head:
       content: website
   - - meta
     - property: og:title
-      content: Announcing Vite 3
+      content: Vite 3 正式发布
   - - meta
     - property: og:image
-      content: https://vitejs.dev/og-image-announcing-vite3.png
+      content: https://v3.cn.vite.dev/og-image-announcing-vite3.png
   - - meta
     - property: og:url
-      content: https://vitejs.dev/blog/announcing-vite3
+      content: https://v3.cn.vite.dev/blog/announcing-vite3
   - - meta
     - property: og:description
-      content: Vite 3 Release Announcement
+      content: Vite 3 发布公告
   - - meta
     - name: twitter:card
       content: summary_large_image
 ---
 
-# Vite 3.0 is out!
+# Vite 3.0 正式发布！
 
-In February last year, [Evan You](https://twitter.com/youyuxi) released Vite 2. Since then, its adoption has grown non-stop, reaching more than 1 million npm downloads per week. A sprawling ecosystem rapidly formed after the release. Vite is powering a renewed innovation race in Web frameworks. [Nuxt 3](https://v3.nuxtjs.org/) uses Vite by default. [SvelteKit](https://kit.svelte.dev/), [Astro](https://astro.build/), [Hydrogen](https://hydrogen.shopify.dev/), and [SolidStart](https://docs.solidjs.com/start) are all built with Vite. [Laravel has now decided to use Vite by default](https://laravel.com/docs/9.x/vite). [Vite Ruby](https://vite-ruby.netlify.app/) shows how Vite can improve Rails DX. [Vitest](https://vitest.dev) is making strides as a Vite-native alternative to Jest. Vite is behind [Cypress](https://docs.cypress.io/guides/component-testing/writing-your-first-component-test) and [Playwright](https://playwright.dev/docs/test-components)'s new Component Testing features, Storybook has [Vite as an official builder](https://github.com/storybookjs/builder-vite). And [the list goes on](https://patak.dev/vite/ecosystem.html). Maintainers from most of these projects got involved in improving the Vite core itself, working closely with the Vite [team](https://vitejs.dev/team) and other contributors.
+_2022 年 7 月 23 日_
 
-![Vite 3 Announcement Cover Image](/og-image-announcing-vite3.png)
+去年 2 月，[尤雨溪](https://twitter.com/youyuxi)发布了 Vite 2。此后，Vite 的使用量持续增长，npm 周下载量突破 100 万，并迅速形成了庞大的生态系统。Vite 正在推动 Web 框架的新一轮创新竞赛。[Nuxt 3](https://v3.nuxtjs.org/) 默认使用 Vite；[SvelteKit](https://kit.svelte.dev/)、[Astro](https://astro.build/)、[Hydrogen](https://hydrogen.shopify.dev/) 和 [SolidStart](https://docs.solidjs.com/start) 都基于 Vite 构建；[Laravel 也决定默认使用 Vite](https://laravel.com/docs/9.x/vite)；[Vite Ruby](https://vite-ruby.netlify.app/) 展示了 Vite 如何改善 Rails 的开发体验；[Vitest](https://vitest.dev) 正成为 Vite 原生的 Jest 替代方案。Vite 还支持了 [Cypress](https://docs.cypress.io/guides/component-testing/writing-your-first-component-test) 和 [Playwright](https://playwright.dev/docs/test-components) 的新组件测试功能，Storybook 也将 [Vite 作为官方构建器](https://github.com/storybookjs/builder-vite)。[这样的项目还有很多](https://patak.dev/vite/ecosystem.html)。这些项目中的许多维护者都参与了 Vite 核心改进，与 Vite [团队](/team)及其他贡献者紧密合作。
 
-Today, 16 months from the v2 launch we are happy to announce the release of Vite 3. We decided to release a new Vite major at least every year to align with [Node.js's EOL](https://nodejs.org/en/about/releases/), and take the opportunity to review Vite's API regularly with a short migration path for projects in the ecosystem.
+![Vite 3 发布公告封面](/og-image-announcing-vite3.png)
 
-Quick links:
+在 Vite 2 发布 16 个月后，我们很高兴宣布 Vite 3 正式发布。我们决定至少每年发布一个 Vite 主版本，与 [Node.js 的生命周期终止时间](https://nodejs.org/en/about/releases/)保持一致，同时定期审视 Vite API，并为生态系统项目提供较短的迁移路径。
 
-- [Docs](/)
-- [Migration Guide](/guide/migration)
-- [Changelog](https://github.com/vitejs/vite/blob/main/packages/vite/CHANGELOG.md#300-2022-07-13)
+快速链接：
 
-If you are new to Vite, we recommend reading the [Why Vite Guide](https://vitejs.dev/guide/why.html). Then check out [the Getting Started](https://vitejs.dev/guide/) and [Features guide](https://vitejs.dev/guide/features) to see what Vite provides out of the box. As usual, contributions are welcome at [GitHub](https://github.com/vitejs/vite). More than [600 collaborators](https://github.com/vitejs/vite/graphs/contributors) have helped improve Vite so far. Follow the updates on [Twitter](https://twitter.com/vite_js), or join discussions with other Vite users on our [Discord chat server](http://chat.vitejs.dev/).
+- [文档](/)
+- [Vite 3 迁移指南](https://v3.vite.dev/guide/migration.html)
+- [Vite 3 更新日志](https://github.com/vitejs/vite/blob/v3/packages/vite/CHANGELOG.md#300-2022-07-13)
 
-## New Documentation
+如果你刚接触 Vite，建议先阅读[为什么选 Vite](/guide/why)，再查看[开始](/guide/)和[功能](/guide/features)指南，了解 Vite 的开箱即用能力。我们一如既往地欢迎在 [GitHub](https://github.com/vitejs/vite) 上贡献。已有超过 [600 位协作者](https://github.com/vitejs/vite/graphs/contributors)帮助改进 Vite。你可以在 [Twitter](https://twitter.com/vite_js) 上关注动态，或加入 [Discord 社区](https://chat.vite.dev)与其他 Vite 用户交流。
 
-Go to [vitejs.dev](https://vitejs.dev) to enjoy the new v3 docs. Vite is now using the new [VitePress](https://vitepress.vuejs.org) default theme, with a stunning dark mode between other features.
+## 新文档
 
-[![Vite documentation frontpage](../images/v3-docs.png)](https://vitejs.dev)
+Vite 3 启用了新的 [VitePress](https://vitepress.dev) 默认主题，带来了出色的深色模式等功能。
 
-Several projects in the ecosystem have already migrated to it (see [Vitest](https://vitest.dev), [vite-plugin-pwa](https://vite-plugin-pwa.netlify.app/), and [VitePress](https://vitepress.vuejs.org/) itself).
+[![Vite 文档首页](../images/v3-docs.png)](https://v3.vite.dev)
 
-If you need to access the Vite 2 docs, they will remain online at [v2.vitejs.dev](https://v2.vitejs.dev). There is also a new [main.vitejs.dev](https://main.vitejs.dev) subdomain, where each commit to Vite’s main branch is auto deployed. This is useful when testing beta versions or contributing to the core’s development.
+生态系统中的多个项目已经迁移到这个主题，例如 [Vitest](https://vitest.dev)、[vite-plugin-pwa](https://vite-plugin-pwa.netlify.app/) 和 VitePress 本身。
 
-There is also now an official Spanish translation, that has been added to the previous Chinese and Japanese translations:
+如需访问 Vite 2 文档，它会继续托管在 [v2.vite.dev](https://v2.vite.dev)。当时还新增了 `main.vitejs.dev` 子域名，用于自动部署 Vite 主分支的每次提交，方便测试 Beta 版本或参与核心开发。
 
-- [简体中文](https://cn.vitejs.dev/)
-- [日本語](https://ja.vitejs.dev/)
-- [Español](https://es.vitejs.dev/)
+除已有的中文和日文翻译外，当时还新增了官方西班牙语翻译：
 
-## Create Vite Starter Templates
+- [简体中文](/)
+- [日本語](https://ja.vite.dev/)
+- [Español](https://es.vite.dev/)
 
-[create-vite](/guide/#trying-vite-online) templates have been a great tool to quickly test Vite with your favorite framework. In Vite 3, all of the templates got a new theme in line with the new docs. Open them online and start playing with Vite 3 now:
+## Create Vite 入门模板
+
+[create-vite](/guide/#trying-vite-online) 模板一直是使用偏好框架快速测试 Vite 的好工具。在 Vite 3 中，所有模板都换用了与新文档一致的主题。你可以在线打开它们，立即体验 Vite 3：
 
 <div class="stackblitz-links">
-<a target="_blank" href="https://vite.new"><img width="75" height="75" src="../images/vite.svg" alt="Vite logo"></a>
-<a target="_blank" href="https://vite.new/vue"><img width="75" height="75" src="../images/vue.svg" alt="Vue logo"></a>
-<a target="_blank" href="https://vite.new/svelte"><img width="60" height="60" src="../images/svelte.svg" alt="Svelte logo"></a>
-<a target="_blank" href="https://vite.new/react"><img width="75" height="75" src="../images/react.svg" alt="React logo"></a>
-<a target="_blank" href="https://vite.new/preact"><img width="65" height="65" src="../images/preact.svg" alt="Preact logo"></a>
-<a target="_blank" href="https://vite.new/lit"><img width="60" height="60" src="../images/lit.svg" alt="Lit logo"></a>
+<a target="_blank" href="https://vite.new"><img width="75" height="75" src="../images/vite.svg" alt="Vite 标志"></a>
+<a target="_blank" href="https://vite.new/vue"><img width="75" height="75" src="../images/vue.svg" alt="Vue 标志"></a>
+<a target="_blank" href="https://vite.new/svelte"><img width="60" height="60" src="../images/svelte.svg" alt="Svelte 标志"></a>
+<a target="_blank" href="https://vite.new/react"><img width="75" height="75" src="../images/react.svg" alt="React 标志"></a>
+<a target="_blank" href="https://vite.new/preact"><img width="65" height="65" src="../images/preact.svg" alt="Preact 标志"></a>
+<a target="_blank" href="https://vite.new/lit"><img width="60" height="60" src="../images/lit.svg" alt="Lit 标志"></a>
 </div>
 
 <style>
@@ -95,9 +97,9 @@ There is also now an official Spanish translation, that has been added to the pr
 }
 </style>
 
-The theme is now shared by all templates. This should help better convey the scope for these starters as minimal templates to get started with Vite. For more complete solutions including linting, testing setup, and other features, there are official Vite-powered templates for some frameworks like [create-vue](https://github.com/vuejs/create-vue) and [create-svelte](https://github.com/sveltejs/kit). There is a community-maintained list of templates at [Awesome Vite](https://github.com/vitejs/awesome-vite#templates).
+所有模板现在共享同一主题，更能体现这些入门项目是用于开始使用 Vite 的最小模板。如需包含代码检查、测试配置等功能的完整方案，一些框架提供了由 Vite 驱动的官方模板，例如 [create-vue](https://github.com/vuejs/create-vue) 和 [create-svelte](https://github.com/sveltejs/kit)。[Awesome Vite](https://github.com/vitejs/awesome-vite#templates) 还维护了一份社区模板列表。
 
-## Dev Improvements
+## 开发体验改进
 
 ### Vite CLI
 
@@ -108,62 +110,62 @@ The theme is now shared by all templates. This should help better convey the sco
   <span style="color:green"><b>➜</b></span>  <span style="color:gray"><b>Network</b>: use --host to expose</span>
 </pre>
 
-Apart from the CLI’s aesthetics improvements, you’ll notice that the default dev server port is now 5173 and the preview server listening at 4173. This change ensures Vite will avoid collisions with other tools.
+除了 CLI 外观改进外，默认开发服务器端口改为 5173，预览服务器端口改为 4173，从而避免与其他工具冲突。
 
-### Improved WebSocket Connection Strategy
+### 改进 WebSocket 连接策略
 
-One of the pain points of Vite 2 was configuring the server when running behind a proxy. Vite 3 changes the default connection scheme so it works out of the box in most scenarios. All these setups are now tested as part of the Vite Ecosystem CI through [`vite-setup-catalogue`](https://github.com/sapphi-red/vite-setup-catalogue).
+Vite 2 的一个痛点是在代理后运行时配置服务器。Vite 3 更改了默认连接方案，使其在大多数场景下开箱即用。所有这些配置现在都会通过 [`vite-setup-catalogue`](https://github.com/sapphi-red/vite-setup-catalogue) 作为 Vite 生态 CI 的一部分接受测试。
 
-### Cold Start Improvements
+### 冷启动改进
 
-Vite now avoids full reload during cold start when imports are injected by plugins while crawling the initial statically imported modules ([#8869](https://github.com/vitejs/vite/issues/8869)).
+当插件在遍历初始静态导入模块期间注入新的导入时，Vite 现在会避免冷启动期间的整页重载（[#8869](https://github.com/vitejs/vite/issues/8869)）。
 
 <details>
-  <summary><b>Click to learn more</b></summary>
+  <summary><b>展开了解详情</b></summary>
 
-In Vite 2.9, both the scanner and optimizer were run in the background. In the best scenario, where the scanner would find every dependency, no reload was needed in cold start. But if the scanner missed a dependency, a new optimization phase and then a reload were needed. Vite was able to avoid some of these reloads in v2.9, as we detected if the new optimized chunks were compatible with the ones the browser had. But if there was a common dep, the sub-chunks could change and a reload was required to avoid duplicated state. In Vite 3, the optimized deps aren't handed to the browser until the crawling of static imports is done. A quick optimization phase is issued if there is a missing dep (for example, injected by a plugin), and only then, the bundled deps are sent. So, a page reload is no longer needed for these cases.
+在 Vite 2.9 中，扫描器和优化器都在后台运行。理想情况下，扫描器找到全部依赖项，冷启动就不需要重载；但如果遗漏依赖项，则需要开启新的优化阶段并重载页面。Vite 2.9 能在新优化产物与浏览器已有产物兼容时避免部分重载，但存在公共依赖时，子产物可能发生变化，为避免状态重复仍需重载。Vite 3 在完成静态导入遍历前不会把优化后的依赖项交给浏览器。如果发现缺失依赖项（例如由插件注入），会先快速完成一次优化，然后才发送打包后的依赖项，因此这些场景不再需要页面重载。
 
 </details>
 
-<img style="background-color: var(--vp-code-block-bg);padding:4%;border-radius:8px;" width="100%" height="auto" src="../images/vite-3-cold-start.svg" alt="Two graphs comparing Vite 2.9 and Vite 3 optimization strategy">
+<img style="background-color: var(--vp-code-block-bg);padding:4%;border-radius:8px;" width="100%" height="auto" src="../images/vite-3-cold-start.svg" alt="对比 Vite 2.9 与 Vite 3 优化策略的两张图">
 
 ### import.meta.glob
 
-`import.meta.glob` support was rewritten. Read about the new features in the [Glob Import Guide](/guide/features.html#glob-import):
+`import.meta.glob` 支持已被重写。新功能详见 [Glob 导入指南](/guide/features.html#glob-import)：
 
-[Multiple Patterns](/guide/features.html#multiple-patterns) can be passed as an array
+[多个模式](/guide/features.html#multiple-patterns)可以通过数组传入：
 
 ```js
 import.meta.glob(['./dir/*.js', './another/*.js'])
 ```
 
-[Negative Patterns](/guide/features.html#negative-patterns) are now supported (prefixed with `!`) to ignore some specific files
+现在支持以 `!` 开头的[否定模式](/guide/features.html#negative-patterns)来忽略特定文件：
 
 ```js
 import.meta.glob(['./dir/*.js', '!**/bar.js'])
 ```
 
-[Named Imports](/guide/features.html#named-imports) can be specified to improve tree-shaking
+可以指定[具名导入](/guide/features.html#named-imports)来改善 tree-shaking：
 
 ```js
 import.meta.glob('./dir/*.js', { import: 'setup' })
 ```
 
-[Custom Queries](/guide/features.html#custom-queries) can be passed to attach metadata
+可以传入[自定义查询](/guide/features.html#custom-queries)来附加元数据：
 
 ```js
 import.meta.glob('./dir/*.js', { query: { custom: 'data' } })
 ```
 
-[Eager Imports](/guide/features.html#glob-import) is now passed as a flag
+现在通过标志传入[立即导入](/guide/features.html#glob-import)：
 
 ```js
 import.meta.glob('./dir/*.js', { eager: true })
 ```
 
-### Aligning WASM Import with Future Standards
+### 使 WASM 导入与未来标准保持一致
 
-The WebAssembly import API has been revised to avoid collisions with future standards and to make it more flexible:
+WebAssembly 导入 API 已经过修订，以免与未来标准冲突，并提供更高灵活性：
 
 ```js
 import init from './example.wasm?init'
@@ -173,98 +175,98 @@ init().then((instance) => {
 })
 ```
 
-Learn more in the [WebAssembly guide](/guide/features.html#webassembly)
+更多信息请参阅 [WebAssembly 指南](/guide/features.html#webassembly)。
 
-## Build Improvements
+## 构建改进
 
-### ESM SSR Build by Default
+### 默认使用 ESM SSR 构建
 
-Most SSR frameworks in the ecosystem were already using ESM builds. So, Vite 3 makes ESM the default format for SSR builds. This allows us to streamline previous [SSR externalization heuristics](https://vitejs.dev/guide/ssr.html#ssr-externals), externalizing dependencies by default.
+生态系统中的大多数 SSR 框架已经在使用 ESM 构建。因此 Vite 3 将 ESM 设为 SSR 构建的默认格式，从而简化此前的 [SSR 外部化启发式方法](/guide/ssr.html#ssr-externals)，并默认将依赖项外部化。
 
-### Improved Relative Base Support
+### 改进相对基础路径支持
 
-Vite 3 now properly supports relative base (using `base: ''`), allowing built assets to be deployed to different bases without re-building. This is useful when the base isn't known at build time, for example when deploying to content-addressable networks like [IPFS](https://ipfs.io/).
+Vite 3 现在能正确支持相对基础路径（使用 `base: ''`），让构建资源无需重新构建即可部署到不同的基础路径。这在构建时无法确定基础路径时很有用，例如部署到 [IPFS](https://ipfs.io/) 等内容寻址网络。
 
-## Experimental Features
+## 实验性功能
 
-### Built Asset Paths fine-grained Control (Experimental)
+### 精细控制构建资源路径（实验性）
 
-There are other deploy scenarios where this isn't enough. For example, if the generated hashed assets need to be deployed to a different CDN from the public files, then finer-grained control is required over path generation at build time. Vite 3 provides an experimental API to modify the built file paths. Check [Build Advanced Base Options](/guide/build.html#advanced-base-options) for more information.
+在某些部署场景中，相对基础路径仍不够用。例如，带哈希的资源需要部署到与 public 文件不同的 CDN 时，就需要更精细地控制构建路径。Vite 3 提供了用于修改构建文件路径的实验性 API。更多信息请参阅[高级基础路径选项](/guide/build.html#advanced-base-options)。
 
-### Esbuild Deps Optimization at Build Time (Experimental)
+### 构建时使用 esbuild 优化依赖项（实验性）
 
-One of the main differences between dev and build time is how Vite handles dependencies. During build time, [`@rollup/plugin-commonjs`](https://github.com/rollup/plugins/tree/master/packages/commonjs) is used to allow importing CJS only dependencies (like React). When using the dev server, esbuild is used instead to pre-bundle and optimize dependencies, and an inline interop scheme is applied while transforming user code importing CJS deps. During the development of Vite 3, we introduced the changes needed to also allow the use of [esbuild to optimize dependencies during build time](/guide/migration.html#using-esbuild-deps-optimization-at-build-time). [`@rollup/plugin-commonjs`](https://github.com/rollup/plugins/tree/master/packages/commonjs) can then be avoided, making dev and build time work in the same way.
+开发和构建阶段的一个主要区别是 Vite 如何处理依赖项。构建时使用 [`@rollup/plugin-commonjs`](https://github.com/rollup/plugins/tree/master/packages/commonjs)，以允许导入只提供 CJS 的依赖项（例如 React）；开发服务器则使用 esbuild 预打包并优化依赖项，同时在转换导入 CJS 依赖项的用户代码时应用内联互操作方案。开发 Vite 3 时，我们加入了在构建期间[使用 esbuild 优化依赖项](https://v3.vite.dev/guide/migration.html#using-esbuild-deps-optimization-at-build-time)所需的改动。这样便可以不再使用 `@rollup/plugin-commonjs`，使开发和构建阶段的行为保持一致。
 
-Given that Rollup v3 will be out in the next months, and we're going to follow up with another Vite major, we've decided to make this mode optional to reduce v3 scope and give Vite and the ecosystem more time to work out possible issues with the new CJS interop approach during build time. Frameworks may switch to using esbuild deps optimization during build time by default at their own pace before Vite 4.
+考虑到 Rollup 3 将在接下来几个月发布，而 Vite 会随后推出新的主版本，我们决定将此模式设为可选，以缩小 Vite 3 的范围，并给 Vite 和生态系统更多时间解决构建阶段新 CJS 互操作方案可能存在的问题。各框架可以在 Vite 4 发布前，按照自己的节奏改为默认使用构建时的 esbuild 依赖优化。
 
-### HMR Partial Accept (Experimental)
+### HMR Partial Accept（实验性）
 
-There is opt-in support for [HMR Partial Accept](https://github.com/vitejs/vite/pull/7324). This feature could unlock finer-grained HMR for framework components that export several bindings in the same module. You can learn more at [the discussion for this proposal](https://github.com/vitejs/vite/discussions/7309).
+Vite 提供了可选的 [HMR Partial Accept](https://github.com/vitejs/vite/pull/7324) 支持。该功能可以为同一模块中导出多个绑定的框架组件带来更精细的 HMR。详情请参阅[提案讨论](https://github.com/vitejs/vite/discussions/7309)。
 
-## Bundle Size Reduction
+## 缩小打包体积
 
-Vite cares about its publish and install footprint; a fast installation of a new app is a feature. Vite bundles most of its dependencies and tries to use modern lightweight alternatives where possible. Continuing with this ongoing goal, Vite 3 publish size is 30% smaller than v2.
+Vite 很重视发布和安装体积；快速安装一个新应用本身就是一项功能。延续这一目标，Vite 3 的发布体积比 Vite 2 小 30%。
 
-|             | Publish Size | Install Size |
-| ----------- | :----------: | :----------: |
-| Vite 2.9.14 |    4.38MB    |    19.1MB    |
-| Vite 3.0.0  |    3.05MB    |    17.8MB    |
-| Reduction   |     -30%     |     -7%      |
+|             | 发布体积 | 安装体积 |
+| ----------- | :------: | :------: |
+| Vite 2.9.14 | 4.38 MB  | 19.1 MB  |
+| Vite 3.0.0  | 3.05 MB  | 17.8 MB  |
+| 减少        | -30%     | -7%      |
 
-In part, this reduction was possible by making some dependencies that most users weren't needing optional. First, [Terser](https://github.com/terser/terser) is no longer installed by default. This dependency was no longer needed since we already made esbuild the default minifier for both JS and CSS in Vite 2. If you use `build.minify: 'terser'`, you'll need to install it (`npm add -D terser`). We also moved [node-forge](https://github.com/digitalbazaar/forge) out of the monorepo, implementing support for automatic https certificate generation as a new plugin: [`@vitejs/plugin-basic-ssl`](/guide/migration.html#automatic-https-certificate-generation). Since this feature only creates untrusted certificates that are not added to the local store, it didn't justify the added size.
+体积缩小部分得益于将大多数用户不需要的依赖项改为可选。首先，[Terser](https://github.com/terser/terser) 不再默认安装，因为 Vite 2 已经将 esbuild 设为 JS 和 CSS 的默认压缩器。如果使用 `build.minify: 'terser'`，需要自行安装它（`npm add -D terser`）。我们还将 [node-forge](https://github.com/digitalbazaar/forge) 移出 monorepo，把自动生成 HTTPS 证书的支持实现为新插件 [`@vitejs/plugin-basic-ssl`](https://v3.vite.dev/guide/migration.html#automatic-https-certificate-generation)。这一功能只会创建未加入本地信任存储的不受信任证书，因此额外体积并不值得。
 
-## Bug Fixing
+## 修复问题
 
-A triaging marathon was spearheaded by [@bluwyoo](https://twitter.com/bluwyoo), [@sapphi_red](https://twitter.com/sapphi_red), that recently joined the Vite team. During the past three months, the Vite open issues were reduced from 770 to 400. And this dive was achieved while the newly open PRs were at an all-time high. At the same time, [@haoqunjiang](https://twitter.com/haoqunjiang) had also curated a comprehensive [overview of Vite issues](https://github.com/vitejs/vite/discussions/8232).
+新加入 Vite 团队的 [@bluwyoo](https://twitter.com/bluwyoo) 和 [@sapphi_red](https://twitter.com/sapphi_red) 发起了 issue 分类马拉松。过去三个月中，Vite 的未解决 issue 从 770 个减少到 400 个，而同期新 PR 数量达到历史高点。与此同时，[@haoqunjiang](https://twitter.com/haoqunjiang) 还整理了一份全面的 [Vite issue 概览](https://github.com/vitejs/vite/discussions/8232)。
 
-[![Graph of open issues and pull requests in Vite](../images/v3-open-issues-and-PRs.png)](https://www.repotrends.com/vitejs/vite)
+[![Vite 未解决 issue 和 Pull Request 数量图](../images/v3-open-issues-and-PRs.png)](https://www.repotrends.com/vitejs/vite)
 
-[![Graph of new issues and pull requests in Vite](../images/v3-new-open-issues-and-PRs.png)](https://www.repotrends.com/vitejs/vite)
+[![Vite 新增 issue 和 Pull Request 数量图](../images/v3-new-open-issues-and-PRs.png)](https://www.repotrends.com/vitejs/vite)
 
-## Compatibility Notes
+## 兼容性说明
 
-- Vite no longer supports Node.js 12 / 13 / 15, which reached its EOL. Node.js 14.18+ / 16+ is now required.
-- Vite is now published as ESM, with a CJS proxy to the ESM entry for compatibility.
-- The Modern Browser Baseline now targets browsers which support the [native ES Modules](https://caniuse.com/es6-module), [native ESM dynamic import](https://caniuse.com/es6-module-dynamic-import), and [`import.meta`](https://caniuse.com/mdn-javascript_operators_import_meta) features.
-- JS file extensions in SSR and library mode now use a valid extension (`js`, `mjs`, or `cjs`) for output JS entries and chunks based on their format and the package type.
+- Vite 不再支持已结束生命周期的 Node.js 12、13 和 15，现在要求 Node.js 14.18+ 或 16+。
+- Vite 现在以 ESM 形式发布，并提供指向 ESM 入口的 CJS 代理以保持兼容。
+- 现代浏览器基线现在面向支持[原生 ES Modules](https://caniuse.com/es6-module)、[原生 ESM 动态导入](https://caniuse.com/es6-module-dynamic-import)和 [`import.meta`](https://caniuse.com/mdn-javascript_operators_import_meta) 的浏览器。
+- SSR 和库模式中的 JS 文件扩展名会根据格式和软件包类型，为输出入口及 chunk 使用有效扩展名（`js`、`mjs` 或 `cjs`）。
 
-Learn more in the [Migration Guide](/guide/migration).
+更多信息请参阅 [Vite 3 迁移指南](https://v3.vite.dev/guide/migration.html)。
 
-## Upgrades to Vite Core
+## Vite 核心升级
 
-While working towards Vite 3, we also improved the contributing experience for collaborators to [Vite Core](https://github.com/vitejs/vite).
+在开发 Vite 3 的同时，我们也改善了 [Vite 核心](https://github.com/vitejs/vite)协作者的贡献体验。
 
-- Unit and E2E tests have been migrated to [Vitest](https://vitest.dev), providing a faster and more stable DX. This move also works as dog fooding for an important infrastructure project in the ecosystem.
-- VitePress build is now tested as part of CI.
-- Vite upgraded to [pnpm 7](https://pnpm.io/), following the rest of the ecosystem.
-- Playgrounds have been moved to [`/playgrounds`](https://github.com/vitejs/vite/tree/main/playground) out of packages directory.
-- The packages and playgrounds are now `"type": "module"`.
-- Plugins are now bundled using [unbuild](https://github.com/unjs/unbuild), and [plugin-vue-jsx](https://github.com/vitejs/vite/tree/main/packages/plugin-vue-jsx) and [plugin-legacy](https://github.com/vitejs/vite/tree/main/packages/plugin-legacy) were moved to TypeScript.
+- 单元测试和 E2E 测试迁移到了 [Vitest](https://vitest.dev)，带来更快、更稳定的开发体验，同时也让这个重要的生态基础设施项目接受实际检验。
+- VitePress 构建现在会作为 CI 的一部分进行测试。
+- Vite 跟随生态系统的步伐升级到了 [pnpm 7](https://pnpm.io/)。
+- 演练场从 packages 目录移到了 [`/playgrounds`](https://github.com/vitejs/vite/tree/v3/playground)。
+- 软件包和演练场现在都设置了 `"type": "module"`。
+- 插件现在使用 [unbuild](https://github.com/unjs/unbuild) 打包，[plugin-vue-jsx](https://github.com/vitejs/vite/tree/v3/packages/plugin-vue-jsx) 和 [plugin-legacy](https://github.com/vitejs/vite/tree/v3/packages/plugin-legacy) 也迁移到了 TypeScript。
 
-## The Ecosystem is Ready for v3
+## 生态系统已为 Vite 3 做好准备
 
-We have worked closely with projects in the ecosystem to ensure that frameworks powered by Vite are ready for Vite 3. [vite-ecosystem-ci](https://github.com/vitejs/vite-ecosystem-ci) allows us to run the CI's from the leading players in the ecosystem against Vite's main branch and receive timely reports before introducing a regression. Today's release should soon be compatible with most projects using Vite.
+我们与生态系统项目紧密合作，确保由 Vite 驱动的框架为 Vite 3 做好准备。[vite-ecosystem-ci](https://github.com/vitejs/vite-ecosystem-ci) 让我们能针对 Vite 主分支运行主要生态项目的 CI，并在引入回归前及时收到报告。Vite 3 发布后，大多数使用 Vite 的项目应该很快就能兼容。
 
-## Acknowledgments
+## 致谢
 
-Vite 3 is the result of the aggregate effort of members of the [Vite Team](/team) working together with ecosystem project maintainers and other collaborators to Vite core.
+Vite 3 是 [Vite 团队](/team)成员、生态项目维护者及其他 Vite 核心协作者共同努力的成果。
 
-We want to thank everyone that have implemented features, and fixes, given feedback, and have been involved in Vite 3:
+我们感谢所有实现功能、修复问题、提供反馈并参与 Vite 3 的贡献者：
 
-- Vite team members [@youyuxi](https://twitter.com/youyuxi), [@patak_dev](https://twitter.com/patak_dev), [@antfu7](https://twitter.com/antfu7), [@bluwyoo](https://twitter.com/bluwyoo), [@sapphi_red](https://twitter.com/sapphi_red), [@haoqunjiang](https://twitter.com/haoqunjiang), [@poyoho](https://github.com/poyoho), [@Shini_92](https://twitter.com/Shini_92), and [@retropragma](https://twitter.com/retropragma).
-- [@benmccann](https://github.com/benmccann), [@danielcroe](https://twitter.com/danielcroe), [@brillout](https://twitter.com/brillout), [@sheremet_va](https://twitter.com/sheremet_va), [@userquin](https://twitter.com/userquin), [@enzoinnocenzi](https://twitter.com/enzoinnocenzi), [@maximomussini](https://twitter.com/maximomussini), [@IanVanSchooten](https://twitter.com/IanVanSchooten), the [Astro team](https://astro.build/), and all other maintainers of frameworks and plugins in the ecosystem in that helped shape v3.
-- [@dominikg](https://github.com/dominikg) for his work on vite-ecosystem-ci.
-- [@ZoltanKochan](https://twitter.com/ZoltanKochan) for his work on [pnpm](https://pnpm.io/), and for his responsiveness when we needed support with it.
-- [@rixo](https://github.com/rixo) for HMR Partial Accept support.
-- [@KiaKing85](https://twitter.com/KiaKing85) for getting the theme ready for the Vite 3 release, and [@\_brc_dd](https://twitter.com/_brc_dd) for working on the VitePress internals.
-- [@CodingWithCego](https://twitter.com/CodingWithCego) for the new Spanish translation, and [@ShenQingchuan](https://twitter.com/ShenQingchuan), [@hiro-lapis](https://github.com/hiro-lapis) and others in the Chinese and Japanese translations teams for keeping the translated docs up to date.
+- Vite 团队成员 [@youyuxi](https://twitter.com/youyuxi)、[@patak_dev](https://twitter.com/patak_dev)、[@antfu7](https://twitter.com/antfu7)、[@bluwyoo](https://twitter.com/bluwyoo)、[@sapphi_red](https://twitter.com/sapphi_red)、[@haoqunjiang](https://twitter.com/haoqunjiang)、[@poyoho](https://github.com/poyoho)、[@Shini_92](https://twitter.com/Shini_92) 和 [@retropragma](https://twitter.com/retropragma)。
+- [@benmccann](https://github.com/benmccann)、[@danielcroe](https://twitter.com/danielcroe)、[@brillout](https://twitter.com/brillout)、[@sheremet_va](https://twitter.com/sheremet_va)、[@userquin](https://twitter.com/userquin)、[@enzoinnocenzi](https://twitter.com/enzoinnocenzi)、[@maximomussini](https://twitter.com/maximomussini)、[@IanVanSchooten](https://twitter.com/IanVanSchooten)、[Astro 团队](https://astro.build/)以及所有帮助塑造 Vite 3 的框架和插件维护者。
+- [@dominikg](https://github.com/dominikg) 对 vite-ecosystem-ci 的贡献。
+- [@ZoltanKochan](https://twitter.com/ZoltanKochan) 对 [pnpm](https://pnpm.io/) 的贡献，以及在我们需要支持时的及时响应。
+- [@rixo](https://github.com/rixo) 对 HMR Partial Accept 的贡献。
+- [@KiaKing85](https://twitter.com/KiaKing85) 为 Vite 3 发布准备主题，以及 [@\_brc_dd](https://twitter.com/_brc_dd) 对 VitePress 内部实现的贡献。
+- [@CodingWithCego](https://twitter.com/CodingWithCego) 创建新的西班牙语翻译，以及 [@ShenQingchuan](https://twitter.com/ShenQingchuan)、[@hiro-lapis](https://github.com/hiro-lapis) 和其他中日文翻译团队成员持续维护翻译文档。
 
-We also want to thank individuals and companies sponsoring the Vite team, and companies investing in Vite development: some of [@antfu7](https://twitter.com/antfu7)'s work on Vite and the ecosystem is part of his job at [Nuxt Labs](https://nuxtlabs.com/), and [StackBlitz](https://stackblitz.com/) hired [@patak_dev](https://twitter.com/patak_dev) to work full time on Vite.
+我们也感谢赞助 Vite 团队的个人和公司，以及直接投入 Vite 开发的公司：[@antfu7](https://twitter.com/antfu7) 在 Vite 和生态系统中的部分工作属于他在 [Nuxt Labs](https://nuxtlabs.com/) 的职责，[StackBlitz](https://stackblitz.com/) 则聘请 [@patak_dev](https://twitter.com/patak_dev) 全职参与 Vite。
 
-## What's Next
+## 后续计划
 
-We'll take the following months to ensure a smooth transition for all the projects built on top of Vite. So the first minors will be focused on continuing our triaging efforts with a focus on newly opened issues.
+接下来的几个月，我们会确保所有基于 Vite 构建的项目平滑过渡，因此最初几个次版本会继续聚焦于 issue 分类，尤其关注新提交的问题。
 
-The Rollup team is [working on its next major](https://twitter.com/lukastaegert/status/1544186847399743488), to be released in the following months. Once the Rollup plugins ecosystem has time to update, we'll follow up with a new Vite major. This will give us another opportunity to introduce more significant changes this year, which we could take to stabilize some of the experimental features introduced in this release.
+Rollup 团队正在[开发下一个主版本](https://twitter.com/lukastaegert/status/1544186847399743488)，并计划在随后几个月发布。Rollup 插件生态获得足够时间完成更新后，我们会推出新的 Vite 主版本。这将提供另一次引入重大变更的机会，并可用于稳定本次发布中的部分实验性功能。
 
-If you are interested in helping improve Vite, the best way to get on board is to help with triaging issues. Join [our Discord](https://chat.vitejs.dev) and look for the `#contributing` channel. Or get involved in our `#docs`, `#help` others, or create plugins. We are just getting started. There are many open ideas to keep improving Vite's DX.
+如果你有兴趣帮助改进 Vite，最好的切入点是参与 issue 分类。加入我们的 [Discord 社区](https://chat.vite.dev)，找到 `#contributing` 频道；也可以参与 `#docs`、在 `#help` 中帮助他人或创建插件。Vite 仍处于起步阶段，还有许多改善开发体验的想法等待实现。

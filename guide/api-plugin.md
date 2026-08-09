@@ -546,7 +546,7 @@ export default defineConfig({
 We recommend **always prefixing** your event names to avoid collisions with other plugins.
 :::
 
-On the client side, use [`hot.on`](/guide/api-hmr.html#hot-on-event-cb) to listen to the events:
+On the client side, use [`hot.on`](/guide/api-hmr#hot-onevent-cb) to listen to the events:
 
 ```ts
 // client side
@@ -559,7 +559,7 @@ if (import.meta.hot) {
 
 ### Client to Server
 
-To send events from the client to the server, we can use [`hot.send`](/guide/api-hmr.html#hot-send-event-payload):
+To send events from the client to the server, we can use [`hot.send`](/guide/api-hmr#hot-send-event-data):
 
 ```ts
 // client side

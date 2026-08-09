@@ -48,7 +48,7 @@
 
 当服务器或 WebSocket 服务收到一个较大的 HTTP 头，该请求可能会被遗落并且会显示下面这样的警告。
 
-> Server responded with status code 431. See https://vitejs.dev/guide/troubleshooting.html#_431-request-header-fields-too-large.
+> Server responded with status code 431. See https://v3.vite.dev/guide/troubleshooting.html#_431-request-header-fields-too-large.
 
 这是由于 Node.js 限制请求头大小，以减轻 [CVE-2018-12121](https://www.cve.org/CVERecord?id=CVE-2018-12121) 的影响。
 

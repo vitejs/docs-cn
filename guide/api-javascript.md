@@ -118,6 +118,11 @@ interface ViteDevServer {
    */
   ssrFixStacktrace(e: Error): void
   /**
+   * 对模块图中的某个模块触发 HMR。你可以使用 `server.moduleGraph`
+   * API 获取需要重新加载的模块。如果 `hmr` 为 `false`，则不执行任何操作
+   */
+  reloadModule(module: ModuleNode): Promise<void>
+  /**
    * 启动服务器
    */
   listen(port?: number, isRestart?: boolean): Promise<ViteDevServer>

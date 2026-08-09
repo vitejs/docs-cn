@@ -1,7 +1,7 @@
 ---
 layout: home
 
-title: Vite
+title: Vite 3 官方中文文档
 titleTemplate: 下一代的前端工具链
 
 hero:
@@ -41,13 +41,3 @@ features:
   - icon: 🔑
     title: 完全类型化的API
     details: 灵活的 API 和完整的 TypeScript 类型。
----
-
-<script setup>
-import { onMounted } from 'vue'
-import { fetchReleaseTag } from './.vitepress/utils/fetchReleaseTag.js'
-
-onMounted(() => {
-  fetchReleaseTag()
-})
-</script>

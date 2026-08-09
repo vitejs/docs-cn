@@ -109,7 +109,7 @@ Git LFS 占位符会自动排除在内联之外，因为它们不包含它们所
 ## build.cssTarget
 
 - **类型：** `string | string[]`
-- **默认值：** 与 [`build.target`](/config/#build-target) 一致
+- **默认值：** 与 [`build.target`](/config/build-options#build-target) 一致
 
 此选项允许用户为 CSS 的压缩设置一个不同的浏览器 target，此处的 target 并非是用于 JavaScript 转写目标。
 
@@ -208,6 +208,14 @@ npm add -D terser
 - **默认：** 若 `outDir` 在 `root` 目录下，则为 `true`
 
 默认情况下，若 `outDir` 在 `root` 目录下，则 Vite 会在构建时清空该目录。若 `outDir` 在根目录之外则会抛出一个警告避免意外删除掉重要的文件。可以设置该选项来关闭这个警告。该功能也可以通过命令行参数 `--emptyOutDir` 来使用。
+
+## build.copyPublicDir {#build-copypublicdir}
+
+- **实验性功能**
+- **类型：** `boolean`
+- **默认：** `true`
+
+默认情况下，Vite 会在构建时将 `publicDir` 中的文件复制到 `outDir`。设为 `false` 可禁用此行为。
 
 ## build.reportCompressedSize {#build-reportcompressedsize}
 

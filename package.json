@@ -1,22 +1,30 @@
 {
 	"name": "vite-docs-cn",
-	"version": "1.0.0",
-	"description": "Vite.js documentation Chinese translation.",
+	"version": "3.2.11",
+	"description": "Vite 3 documentation Chinese translation.",
 	"repository": "https://github.com/vitejs/docs-cn",
+	"type": "module",
 	"author": "Evan You",
-	"license": "MIT",
+	"license": "CC BY-NC-SA 4.0",
 	"private": true,
 	"devDependencies": {
-		"chalk": "^4.1.0",
+		"@types/node": "^18.17.2",
+		"chalk": "^4.1.2",
+		"feed": "^4.2.2",
 		"gray-matter": "^4.0.3",
 		"lodash": "^4.17.21",
-		"vite": "^2.9.12",
-		"vitepress": "^1.0.0-alpha.4",
+		"vite": "3.2.11",
+		"vitepress": "1.0.0-beta.7",
+		"vue": "^3.3.4",
 		"yorkie": "^2.0.0"
 	},
+	"packageManager": "pnpm@8.6.11",
+	"engines": {
+		"node": "^14.18.0 || >=16.0.0"
+	},
 	"scripts": {
-		"dev": "vitepress dev .",
-		"build": "node ./scripts/build.js && vitepress build .",
+		"dev": "vitepress dev . --port 5173",
+		"build": "vitepress build .",
 		"serve": "vitepress serve ."
 	},
 	"gitHooks": {
