@@ -48,7 +48,7 @@
 
    这对于图片等资源的正确加载是必需的。
 
-   如果你正使用 `@vitejs/plugin-react` 配合 React，你还需要在上述脚本前添加下面这个，因为插件不能修改你正在服务的 HTML（请将 `http://localhost:5173` 替换为 Vite 正在运行的本地 URL）：
+   注意，如果你正使用 `@vitejs/plugin-react` 配合 React，你还需要在上述脚本前添加以下内容，因为插件不能修改你正在服务的 HTML（请将 `http://localhost:5173` 替换为 Vite 正在运行的本地 URL）：
 
    ```html
    <script type="module">
@@ -187,9 +187,7 @@
 
 4. 你可以利用这个文件来渲染带有哈希文件名的链接或预加载指令。
 
-   这是一个用来渲染正确链接的 HTML 模板示例。这里的语法仅用于解释，
-   你需要用你的服务器模板语言来替换。`importedChunks` 函数只是
-   用来说明，并不是 Vite 提供的。
+   这是一个用来渲染正确链接的 HTML 模板示例。这里的语法仅用于解释，你需要用你的服务器模板语言来替换。`importedChunks` 函数只是用来说明，并不是 Vite 提供的。
 
    ```html
    <!-- 如果是生产环境 -->
@@ -207,14 +205,11 @@
    <link rel="modulepreload" href="/{{ chunk.file }}" />
    ```
 
-   具体来说，后端生成 HTML 时，若给定一个清单文件（manifest file）和一个入口点（entry point），应包含以下标签。
-   注意，为获得最佳性能，建议遵循以下顺序：
+   具体来说，后端生成 HTML 时，若给定一个清单文件（manifest file）和一个入口点（entry point），应包含以下标签。注意，为获得最佳性能，建议遵循以下顺序：
    1. 为入口点代码块的 `css` 列表中的每个文件添加 `<link rel="stylesheet">` 标签（如果存在）。
-   2. 递归跟踪入口点 `imports` 列表中的所有代码块，并为每个导入代码块的 `css` 列表（如果存在）中的
-      每个 CSS 文件添加 `<link rel="stylesheet">` 标签。
+   2. 递归跟踪入口点 `imports` 列表中的所有代码块，并为每个导入代码块的 `css` 列表（如果存在）中的每个 CSS 文件添加 `<link rel="stylesheet">` 标签。
    3. 为入口点代码块的 `file` 键添加一个标签。对于 JavaScript，可以是 `<script type="module">`；对于 CSS，可以是 `<link rel="stylesheet">`。
-   4. （可选）为每个导入的 JavaScript 代码块的 `file` 添加 `<link rel="modulepreload">` 标签，同样从入口点代码块
-      开始递归跟踪导入。
+   4. （可选）为每个导入的 JavaScript 代码块的 `file` 添加 `<link rel="modulepreload">` 标签，同样从入口点代码块开始递归跟踪导入。
 
    按照上面的示例 manifest，对于入口文件 `views/foo.js`，在生产环境中应包含以下标签：
 
