@@ -433,7 +433,7 @@ Vite 插件也可以提供钩子来服务于特定的 Vite 目标。这些钩子
 
   - `modules` 是受更改文件影响的模块数组。它是一个数组，因为单个文件可能映射到多个服务模块（例如 Vue 单文件组件）。
 
-  - `read` 这是一个异步读函数，它返回文件的内容。之所以这样做，是因为在某些系统上，文件更改的回调函数可能会在编辑器完成文件更新之前过快地触发，并 `fs.readFile` 直接会返回空内容。传入的 `read` 函数规范了这种行为。
+  - `read` 是一个异步读取函数，用于返回文件内容。提供该函数是因为在某些系统上，文件变更回调的触发速度可能过快，编辑器尚未完成对文件的更新；此时直接调用 `fs.readFile` 可能会读取到空内容。传入的 `read` 函数会对这种情况进行处理，使读取行为保持正常和一致。
 
   钩子可以选择:
   - 过滤和缩小受影响的模块列表，使 HMR 更准确。
@@ -661,7 +661,7 @@ export default function myPlugin() {
 ```
 
 ::: tip
-[`@rolldown/pluginutils`](https://www.npmjs.com/package/@rolldown/pluginutils)导出一些用于钩子过滤器的实用程序，如 `exactRegex` 和 `prefixRegex`。为了方便起见，这些内容也会从 `rolldown/filter` 重新导出。
+[`@rolldown/pluginutils`](https://www.npmjs.com/package/@rolldown/pluginutils) 导出一些用于钩子过滤器的实用程序，如 `exactRegex` 和 `prefixRegex`。为了方便起见，这些内容也会从 `rolldown/filter` 重新导出。
 :::
 
 ## 代码块导入映射信息 {#chunk-import-map-information}

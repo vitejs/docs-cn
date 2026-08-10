@@ -189,7 +189,7 @@ Vite 会为每个模块路径创建一个 `import.meta.hot.data` 对象。在 HM
 
 当模块从模块图中被剔除时，其 `hot.dispose` 和 `hot.prune` 回调会收到当前的数据对象。Vite 会在这些回调执行完毕后清除该数据。如果之后再次导入该模块，它将获得一个新的空数据对象。
 
-注意，不支持对 `data` 本身的重新赋值。相反，你应该对 `data` 对象的属性进行突变，以便保留从其他处理程序添加的信息。
+注意，不支持对 `data` 本身进行重新赋值。相反，你应该修改 `data` 对象的属性，以便保留从其他处理程序添加的信息。
 
 ```js twoslash
 import 'vite/client'
@@ -247,7 +247,7 @@ import.meta.hot.accept((module) => {
 
 发送自定义事件到 Vite 开发服务器。
 
-如果在连接前调用，数据会先被缓存、等到连接建立好后再发送。
+如果在连接前调用，数据会先被缓存，等到连接建立好后再发送。
 
 查看 [客户端与服务端间通信](/guide/api-plugin.html#client-server-communication) 以及 [自定义事件的 TypeScript 类型定义指南](/guide/api-plugin.html#typescript-for-custom-events) 章节获取更多细节。
 
