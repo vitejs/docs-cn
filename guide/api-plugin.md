@@ -661,7 +661,7 @@ export default function myPlugin() {
 ```
 
 ::: tip
-[`@rolldown/pluginutils`](https://www.npmjs.com/package/@rolldown/pluginutils)导出一些用于钩子过滤器的实用程序，如 `exactRegex` 和 `prefixRegex`。为了方便起见，这些内容也会从 `rolldown/filter` 重新导出。
+[`@rolldown/pluginutils`](https://www.npmjs.com/package/@rolldown/pluginutils) 导出一些用于钩子过滤器的实用程序，如 `exactRegex` 和 `prefixRegex`。为了方便起见，这些内容也会从 `rolldown/filter` 重新导出。
 :::
 
 ## 代码块导入映射信息 {#chunk-import-map-information}
