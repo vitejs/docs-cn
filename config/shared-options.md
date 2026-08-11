@@ -148,7 +148,7 @@ resolve: {
 }
 ```
 
-当 `find` 是一个正则表达式时，`replacement` 可以使用[替换模式](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/replace#specifying_a_string_as_the_replacement)，例如 `$1`。例如，要删除带有扩展名的字符串，可以使用如下模式：
+当 `find` 是一个正则表达式时，`replacement` 可以使用 [替换模式](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/replace#specifying_a_string_as_the_replacement)，例如 `$1`。例如，要删除带有扩展名的字符串，可以使用如下模式：
 
 ```js
 { find:/^(.*)\.js$/, replacement: '$1.alias' }
