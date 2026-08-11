@@ -8,7 +8,7 @@
 - **默认：** `'baseline-widely-available'`
 - **相关内容：** [浏览器兼容性](/guide/build#browser-compatibility)
 
-最终软件包的浏览器兼容性目标。默认值是 Vite 的一个特殊值 `'baseline-widely-available'`，该值针对的是包含在 2026 年 1 月 1 日广泛可用的 [Baseline](https://web-platform-dx.github.io/web-features/) 中的浏览器。具体来说，它是 `['chrome111', 'edge111', 'firefox114', 'safari16.4', 'ios16.4']`。
+最终软件包的浏览器兼容性目标。默认值是 Vite 的一个特殊值 `'baseline-widely-available'`，该值以每个主要版本所固定日期时与 [Baseline](https://web-platform-dx.github.io/baseline/) Widely Available 兼容的最低浏览器版本为目标（[此主要版本的日期为 2026-01-01](https://web-platform-dx.github.io/supported-browsers/?widelyAvailableOnDate=2026-01-01)）。具体来说，它是 `['chrome111', 'edge111', 'firefox114', 'safari16.4', 'ios16.4']`。
 
 另一个特殊值是 `'esnext'` —— 即假设有原生动态导入支持，并只执行最低限度的转译。
 
@@ -364,7 +364,7 @@ npm add -D terser
 - **类型：** [`WatcherOptions`](https://rolldown.rs/reference/InputOptions.watch)`| null`
 - **默认：** `null`
 
-设置为 `{}` 则会启用 rollup 的监听器。对于只在构建阶段或者集成流程使用的插件很常用。
+设置为 `{}` 则会启用 Rolldown 的监听器。对于只在构建阶段或者集成流程使用的插件很常用。
 
 ::: warning 在 Windows Linux 子系统（WSL）上使用 Vite
 

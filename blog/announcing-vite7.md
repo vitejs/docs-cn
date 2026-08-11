@@ -63,7 +63,7 @@ Vite 现在要求使用 Node.js 20.19+ 或 22.12+。由于 Node.js 18 已于 202
 
 ## 默认浏览器兼容性目标已更改为 Baseline Widely Available {#default-browser-target-changed-to-baseline-widely-available}
 
-[Baseline](https://web-platform-dx.github.io/web-features/) 为我们提供了明确的信息，指出了哪些 Web 平台特性在当今主流浏览器中可用。Baseline Widely Available，表示该功能已经十分成熟，可在多种设备和浏览器版本中正常工作，并且在各浏览器中至少已支持 30 个月。
+[Baseline](https://web-platform-dx.github.io/baseline/) 为我们提供了明确的信息，指出了哪些 Web 平台特性在当今主流浏览器中可用。Baseline Widely Available，表示该功能已经十分成熟，可在多种设备和浏览器版本中正常工作，并且在各浏览器中至少已支持 30 个月。
 
 在 Vite 7 中，默认浏览器目标将从 `'modules'` 更改为新的默认值：`'baseline-widely-available'`。每当我们发布一个重大版本时，所支持的浏览器列表都会更新，以匹配与“Baseline Widely Available”特性兼容的最低浏览器版本。Vite 7.0 中 `build.target` 的默认浏览器值变化如下：
 
