@@ -7,15 +7,13 @@
 - **类型：** `string | boolean`
 - **默认：** [`server.host`](./server-options#server-host)
 
-为开发服务器指定 ip 地址。
-设置为 `0.0.0.0` 或 `true` 会监听所有地址，包括局域网和公共地址。
+为开发服务器指定 ip 地址。设置为 `0.0.0.0` 或 `true` 会监听所有地址，包括局域网和公共地址。
 
 还可以通过 CLI 进行设置，使用 `--host 0.0.0.0` 或 `--host`。
 
 ::: tip 注意
 
-在某些情况下，可能响应的是其他服务器而不是 Vite。
-查看 [`server.host`](./server-options#server-host) 了解更多细节。
+在某些情况下，可能响应的是其他服务器而不是 Vite。查看 [`server.host`](./server-options#server-host) 了解更多细节。
 
 :::
 

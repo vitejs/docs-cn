@@ -581,7 +581,7 @@ export default defineConfig({
 - **类型：** `string | false`
 - **默认：** `root`
 
-用于加载 `.env` 文件的目录。可以是一个绝对路径，也可以是相对于项目根的路径。设置为 `false` 将禁用 `.env` 文件的加载。
+用于加载 `.env` 文件的目录。可以是一个绝对路径，也可以是相对于项目根目录的路径。设置为 `false` 将禁用 `.env` 文件的加载。
 
 关于环境文件的更多信息，请参见 [这里](/guide/env-and-mode#env-files)。
 
@@ -624,8 +624,7 @@ define: {
 - **类型：** `boolean` | `DevToolsConfig`
 - **默认：** `false`
 
-启用 devtools 集成，用于可视化内部状态和构建分析。
-确保 `@vitejs/devtools` 已作为依赖项安装。此功能目前仅在构建模式下受支持。
+启用 devtools 集成，用于可视化内部状态和构建分析。确保 `@vitejs/devtools` 已作为依赖项安装。此功能目前仅在构建模式下受支持。
 
 更多详情请参见 [Vite DevTools](https://github.com/vitejs/devtools)。
 

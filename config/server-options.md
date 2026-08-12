@@ -34,9 +34,7 @@
 - **类型：** `string[] | true`
 - **默认：** `[]`
 
-Vite 允许响应的主机名。
-默认情况下，允许 `localhost` 及其下的所有 `.localhost` 域名和所有 IP 地址。
-使用 HTTPS 时，将跳过此检查。
+Vite 允许响应的主机名。默认情况下，允许 `localhost` 及其下的所有 `.localhost` 域名和所有 IP 地址。使用 HTTPS 时，将跳过此检查。
 
 如果设置的字符串以 `.` 开头，则允许该主机名本身（不带 `.`）以及该主机名下的所有子域名。例如，`.example.com` 将允许 `example.com`、`foo.example.com` 和 `foo.bar.example.com`。如果设置为 `true`，服务器将被允许响应任何主机的请求。
 
@@ -305,7 +303,7 @@ export default defineConfig({
 
 文件系统监视器选项传递给 [chokidar](https://github.com/paulmillr/chokidar/tree/3.6.0#api)。
 
-Vite 服务器的文件监听器默认会监听 `root` 目录，同时会跳过 `.git/`、`node_modules/`、`test-results/`, 以及 Vite 的 `cacheDir` 和 `build.outDir` 这些目录。当监听到文件更新时，Vite 会应用 HMR 并且只在需要时更新页面。
+Vite 服务器的文件监听器默认会监听 `root` 目录，同时会跳过 `.git/`、`node_modules/`、`test-results/`，以及 Vite 的 `cacheDir` 和 `build.outDir` 这些目录。当监听到文件更新时，Vite 会应用 HMR 并且只在需要时更新页面。
 
 如果设置为 `null`，则不会监视任何文件。[`server.watcher`](/guide/api-javascript.html#vitedevserver) 将提供兼容的事件发射器，但调用 `add` 或 `unwatch` 将不起作用。
 

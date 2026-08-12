@@ -557,7 +557,7 @@ function outputMetadataPlugin(): Plugin {
 - 没有 enforce 值的用户插件
 - Vite 构建用的插件
 - 带有 `enforce: 'post'` 的用户插件
-- Vite 后置构建插件（最小化，manifest，报告）
+- Vite 后置构建插件（最小化、manifest、报告）
 
 请注意，这与钩子排序是分开的，钩子仍然像往常一样单独受其 [`order` 属性](https://rolldown.rs/reference/TypeAlias.ObjectHook#order) 的约束。
 
