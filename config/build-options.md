@@ -79,7 +79,7 @@ modulePreload: {
 - **类型：** `string`
 - **默认：** `dist`
 
-指定输出路径（相对于 [项目根目录](/guide/#index-html-and-project-root)).
+指定输出路径（相对于 [项目根目录](/guide/#index-html-and-project-root))。
 
 ## build.assetsDir {#build-assetsdir}
 
@@ -123,8 +123,7 @@ Git LFS 占位符会自动排除在内联之外，因为它们不包含其所表
 
 此选项允许用户为 CSS 的压缩设置一个不同的浏览器 target，此处的 target 并非是用于 JavaScript 转写目标。
 
-应只在针对非主流浏览器时使用。
-最直观的示例是当你要兼容的场景是安卓微信中的 webview 时，它支持大多数现代的 JavaScript 功能，但并不支持 [CSS 中的 `#RGBA` 十六进制颜色符号](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#rgb_colors)。
+应只在针对非主流浏览器时使用。最直观的示例是当你要兼容的场景是安卓微信中的 webview 时，它支持大多数现代的 JavaScript 功能，但并不支持 [CSS 中的 `#RGBA` 十六进制颜色符号](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#rgb_colors)。
 这种情况下，你需要将 `build.cssTarget` 设置为 `chrome61`，以防止 vite 将 `rgba()` 颜色转化为 `#RGBA` 十六进制符号的形式。
 
 ## build.cssMinify {#build-cssminify}
@@ -176,7 +175,7 @@ npm add -D esbuild
 ## build.dynamicImportVarsOptions {#build-dynamicimportvarsoptions}
 
 - **类型：** `{ include?: string | RegExp | (string | RegExp)[], exclude?: string | RegExp | (string | RegExp)[] }`
-- **相关内容：** [Dynamic Import](/guide/features#dynamic-import)
+- **相关内容：** [动态导入](/guide/features#dynamic-import)
 
 是否转换带有变量的动态导入。
 
@@ -189,7 +188,7 @@ npm add -D esbuild
 
 `fileName` 是软件包输出文件的名称，默认为 `package.json` 中的 `"name"`。它也可以定义为以 `format` 和 `entryName` 为参数的函数，并返回文件名。
 
-如果软件包导入了 CSS，`cssFileName` 可用于指定 CSS 输出文件的名称。如果设置为字符串，则默认值与 `fileName` 相同，否则也会返回到 `package.json` 中的 `"name"`。
+如果软件包导入了 CSS，`cssFileName` 可用于指定 CSS 输出文件的名称。如果设置为字符串，则默认值与 `fileName` 相同，否则也会回退到 `package.json` 中的 `"name"`。
 
 ```js twoslash [vite.config.js]
 import { defineConfig } from 'vite'
@@ -303,7 +302,7 @@ export default defineConfig({
 - **类型：** `boolean | 'oxc' | 'terser' | 'esbuild'`
 - **默认：** 客户端构建默认为 `'oxc'`，SSR 构建默认为 `false`
 
-设置为 `false` 可以禁用最小化混淆，或是用来指定使用哪种混淆器。默认使用 [Oxc Minifier](https://oxc.rs/docs/guide/usage/minifier)，它比 terser 快 30~90 倍，但压缩率仅差 0.5~2%。[基准测试](https://github.com/privatenumber/minification-benchmarks)
+设置为 `false` 可以禁用最小化混淆，或是用来指定使用哪种混淆器。默认使用 [Oxc Minifier](https://oxc.rs/docs/guide/usage/minifier)，它比 Terser 快 30~90 倍，但压缩率仅差 0.5~2%。[基准测试](https://github.com/privatenumber/minification-benchmarks)
 
 `build.minify: 'esbuild'` 已弃用，将在未来版本中移除。
 
@@ -357,7 +356,7 @@ npm add -D terser
 - **类型：** `number`
 - **默认：** `500`
 
-规定触发警告的 chunk 大小。（以 kB 为单位）。它将与未压缩的 chunk 大小进行比较，因为 [JavaScript 大小本身与执行时间相关](https://v8.dev/blog/cost-of-javascript-2019)。
+规定触发警告的 chunk 大小（以 kB 为单位）。它将与未压缩的 chunk 大小进行比较，因为 [JavaScript 大小本身与执行时间相关](https://v8.dev/blog/cost-of-javascript-2019)。
 
 ## build.watch {#build-watch}
 
