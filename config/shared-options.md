@@ -148,7 +148,7 @@ resolve: {
 }
 ```
 
-当 `find` 是一个正则表达式时，`replacement` 可以使用[替换模式](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/replace#specifying_a_string_as_the_replacement)，例如 `$1`。例如，要删除带有扩展名的字符串，可以使用如下模式：
+当 `find` 是一个正则表达式时，`replacement` 可以使用 [替换模式](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/replace#specifying_a_string_as_the_replacement)，例如 `$1`。例如，要删除带有扩展名的字符串，可以使用如下模式：
 
 ```js
 { find:/^(.*)\.js$/, replacement: '$1.alias' }
@@ -338,11 +338,11 @@ export default defineConfig({
 
 指定传递给 CSS 预处理器的选项。文件扩展名用作选项的键。每个预处理器支持的选项可以在它们各自的文档中找到：
 
-- `sass`/`scss`:
+- `sass`/`scss`：
   - 如果已安装，则使用 `sass-embedded`，否则使用 `sass`。为了获得最佳性能，建议安装 `sass-embedded` 包。
   - [Options](https://sass-lang.com/documentation/js-api/interfaces/stringoptions/)
-- `less`: [选项](https://lesscss.org/usage/#less-options)。
-- `styl`/`stylus`: 仅支持 [`define`](https://stylus-lang.com/docs/js.html#define-name-node)，可以作为对象传递。
+- `less`： [选项](https://lesscss.org/usage/#less-options)。
+- `styl`/`stylus`： 仅支持 [`define`](https://stylus-lang.com/docs/js.html#define-name-node)，可以作为对象传递。
 
 **示例：**
 

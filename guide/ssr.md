@@ -1,4 +1,4 @@
-# 服务端渲染 (SSR) {#server-side-rendering-ssr}
+# 服务端渲染（SSR） {#server-side-rendering-ssr}
 
 :::tip 注意
 SSR 特别指支持在 Node.js 中运行相同应用程序的前端框架（例如 React、Preact、Vue 和 Svelte），将其预渲染成 HTML，最后在客户端进行水合处理。如果你正在寻找与传统服务器端框架的集成，请查看 [后端集成指南](./backend-integration)。
@@ -65,7 +65,7 @@ if (import.meta.env.SSR) {
 
 在构建 SSR 应用程序时，你可能希望完全控制主服务器，并将 Vite 与生产环境脱钩。因此，建议以中间件模式使用 Vite。下面是一个关于 [express](https://expressjs.com/) 的例子：
 
-```js{15-18} twoslash [server.js]
+```js{12-15} twoslash [server.js]
 import fs from 'node:fs'
 import path from 'node:path'
 import express from 'express'
@@ -281,7 +281,7 @@ SSR 构建的默认目标为 node 环境，但你也可以让服务运行在 Web
 
 ## Vite CLI {#vite-cli}
 
-CLI 命令 `$ vite dev` 和 `$ vite preview` 也可以用于 SSR 应用：你可以将你的 SSR 中间件通过 [`configureServer`](/guide/api-plugin#configureserver) 添加到开发服务器、以及通过 [`configurePreviewServer`](/guide/api-plugin#configurepreviewserver) 添加到预览服务器。
+CLI 命令 `$ vite dev` 和 `$ vite preview` 也可以用于 SSR 应用。你可以将你的 SSR 中间件通过 [`configureServer`](/guide/api-plugin#configureserver) 添加到开发服务器，以及通过 [`configurePreviewServer`](/guide/api-plugin#configurepreviewserver) 添加到预览服务器。
 
 :::tip 注意
 使用一个后置钩子，使得你的 SSR 中间件在 Vite 的中间件 _之后_ 运行。
