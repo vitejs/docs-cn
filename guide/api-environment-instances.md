@@ -231,8 +231,7 @@ export class EnvironmentModuleGraph {
 ```ts
 export interface CachedFetchResult {
   /**
-   * If the module is cached in the runner, this confirms
-   * it was not invalidated on the server side.
+   * 如果模块已缓存在运行器中，则表示它在服务器端未失效。
    */
   cache: true
 }
@@ -243,14 +242,14 @@ export interface CachedFetchResult {
 ```ts
 export interface ExternalFetchResult {
   /**
-   * The path to the externalized module starting with file://.
-   * By default this will be imported via a dynamic "import"
-   * instead of being transformed by Vite and loaded with the Vite runner.
+   * 以 file:// 开头的外部化模块路径。
+   * 默认情况下，该模块会通过动态 "import" 导入，
+   * 而不是由 Vite 转换后再由 Vite 运行器加载。
    */
   externalize: string
   /**
-   * Type of the module. Used to determine if the import statement is correct.
-   * For example, if Vite needs to throw an error if a variable is not actually exported.
+   * 模块类型。用于确定导入语句是否正确。
+   * 例如，当某个变量实际上未导出时，Vite 需要据此抛出错误。
    */
   type: 'module' | 'commonjs' | 'builtin' | 'network'
 }
@@ -263,26 +262,26 @@ export interface ExternalFetchResult {
 ```ts
 export interface ViteFetchResult {
   /**
-   * Code that will be evaluated by the Vite runner.
-   * By default this will be wrapped in an async function.
+   * 将由 Vite 运行器求值的代码。
+   * 默认情况下，代码会被包装在一个异步函数中。
    */
   code: string
   /**
-   * File path of the module on disk.
-   * This will be resolved as import.meta.url/filename.
-   * Will be `null` for virtual modules.
+   * 模块在磁盘上的文件路径。
+   * 该路径会被解析为 import.meta.url/filename。
+   * 对于虚拟模块，该值为 `null`。
    */
   file: string | null
   /**
-   * Module ID in the server module graph.
+   * 模块在服务器模块图中的 ID。
    */
   id: string
   /**
-   * Module URL used in the import.
+   * 导入时使用的模块 URL。
    */
   url: string
   /**
-   * Invalidate module on the client side.
+   * 使客户端上的模块失效。
    */
   invalidate: boolean
 }
