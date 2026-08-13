@@ -42,7 +42,7 @@ npm create vite@latest -- --template rsc
 
 查看 [Vite 插件注册表](https://registry.vite.dev/plugins) 获取发布到 npm 的插件列表。
 
-## Rolldown Builtin Plugins {#rolldown-builtin-plugins}
+## Rolldown 内置插件 {#rolldown-builtin-plugins}
 
 Vite 在底层使用 [Rolldown](https://rolldown.rs/)，它为常见用例提供了一些内置插件。
 
