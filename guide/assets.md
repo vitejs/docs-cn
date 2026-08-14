@@ -1,7 +1,7 @@
 # 静态资源处理 {#static-asset-handling}
 
-- 相关: [公共基础路径](./build#public-base-path)
-- 相关: [`assetsInclude` 配置项](/config/shared-options.md#assetsinclude)
+- 相关内容： [公共基础路径](./build#public-base-path)
+- 相关内容： [`assetsInclude` 配置项](/config/shared-options.md#assetsinclude)
 
 ## 将资源引入为 URL {#importing-asset-as-url}
 
