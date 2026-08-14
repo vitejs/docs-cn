@@ -5,7 +5,7 @@
 ## build.target
 
 - **类型：** `string | string[]`
-- **默认：** `'baseline-widely-available'`
+- **默认值：** `'baseline-widely-available'`
 - **相关内容：** [浏览器兼容性](/guide/build#browser-compatibility)
 
 最终软件包的浏览器兼容性目标。默认值是 Vite 的一个特殊值 `'baseline-widely-available'`，该值以每个主要版本所固定日期时与 [Baseline](https://web-platform-dx.github.io/baseline/) Widely Available 兼容的最低浏览器版本为目标（[此主要版本的日期为 2026-01-01](https://web-platform-dx.github.io/supported-browsers/?widelyAvailableOnDate=2026-01-01)）。具体来说，它是 `['chrome111', 'edge111', 'firefox114', 'safari16.4', 'ios16.4']`。
@@ -69,7 +69,7 @@ modulePreload: {
 ## build.polyfillModulePreload {#build-polyfillmodulepreload}
 
 - **类型：** `boolean`
-- **默认：** `true`
+- **默认值：** `true`
 - **已废弃** 请使用 `build.modulePreload.polyfill` 替代
 
 是否自动注入一个 [模块预加载 polyfill](https://guybedford.com/es-module-preloading-integrity#modulepreload-polyfill)。
@@ -77,21 +77,21 @@ modulePreload: {
 ## build.outDir {#build-outdir}
 
 - **类型：** `string`
-- **默认：** `dist`
+- **默认值：** `dist`
 
 指定输出路径（相对于 [项目根目录](/guide/#index-html-and-project-root))。
 
 ## build.assetsDir {#build-assetsdir}
 
 - **类型：** `string`
-- **默认：** `assets`
+- **默认值：** `assets`
 
 指定生成静态资源的存放路径（相对于 `build.outDir`）。在 [库模式](/guide/build#library-mode) 下不能使用。
 
 ## build.assetsInlineLimit {#build-assetsinlinelimit}
 
 - **类型：** `number` | `((filePath: string, content: Buffer) => boolean | undefined)`
-- **默认：** `4096` (4 KiB)
+- **默认值：** `4096` (4 KiB)
 
 小于此阈值的导入或引用资源将内联为 base64 编码，以避免额外的 http 请求。设置为 `0` 可以完全禁用此项。
 
@@ -106,7 +106,7 @@ Git LFS 占位符会自动排除在内联之外，因为它们不包含其所表
 ## build.cssCodeSplit {#build-csscodesplit}
 
 - **类型：** `boolean`
-- **默认：** `true`
+- **默认值：** `true`
 
 启用/禁用 CSS 代码拆分。当启用时，在异步 chunk 中导入的 CSS 将内联到异步 chunk 本身，并在其被加载时一并获取。
 
@@ -129,7 +129,7 @@ Git LFS 占位符会自动排除在内联之外，因为它们不包含其所表
 ## build.cssMinify {#build-cssminify}
 
 - **类型：** `boolean | 'lightningcss' | 'esbuild'`
-- **默认：** `'lightningcss'`，但如果客户端构建时禁用了 [`build.minify`](#build-minify)，则为 `false`
+- **默认值：** `'lightningcss'`，但如果客户端构建时禁用了 [`build.minify`](#build-minify)，则为 `false`
 
 此选项允许用户覆盖 CSS 最小化压缩的配置，而不是使用默认的 `build.minify`，这样你就可以单独配置 JS 和 CSS 的最小压缩方式。Vite 默认使用 [Lightning CSS](https://lightningcss.dev/minification.html) 来压缩 CSS。可以通过 [`css.lightningcss`](./shared-options.md#css-lightningcss) 进行配置。将此选项设置为 `'esbuild'` 可以改用 esbuild 进行压缩。
 
@@ -142,7 +142,7 @@ npm add -D esbuild
 ## build.sourcemap {#build-sourcemap}
 
 - **类型：** `boolean | 'inline' | 'hidden'`
-- **默认：** `false`
+- **默认值：** `false`
 
 构建后是否生成 source map 文件。如果为 `true`，将会创建一个独立的 source map 文件。如果为 `'inline'`，source map 将作为一个 data URI 附加在输出文件中。`'hidden'` 的工作原理与 `true` 相似，只是 bundle 文件中相应的注释将不被保留。
 
@@ -207,7 +207,7 @@ export default defineConfig({
 ## build.license {#build-license}
 
 - **类型：** `boolean | { fileName?: string }`
-- **默认：** `false`
+- **默认值：** `false`
 - **相关：** [许可证](/guide/features#license)
 
 当设置为 `true` 时，构建过程将生成一个 `.vite/license.md` 文件，其中包含所有打包依赖项的许可证信息。
@@ -256,7 +256,7 @@ export default defineConfig({
 ## build.manifest {#build-manifest}
 
 - **类型：** `boolean | string`
-- **默认：** `false`
+- **默认值：** `false`
 - **相关内容：** [后端集成](/guide/backend-integration)
 
 是否生成一个 manifest 文件，包含了没有被 hash 过的资源文件名和 hash 后版本的映射，然后服务器框架可使用该映射来呈现正确的资源引入链接。
@@ -286,21 +286,21 @@ export default defineConfig({
 ## build.emitAssets
 
 - **类型：** `boolean`
-- **默认：** `false`
+- **默认值：** `false`
 
 在非客户端的构建过程中，静态资源并不会被输出，因为我们默认它们会作为客户端构建的一部分被输出。这个选项允许框架在其他环境的构建中强制输出这些资源。而将这些资源合并起来则是框架在构建后步骤中的责任。
 
 ## build.ssrEmitAssets
 
 - **类型：** `boolean`
-- **默认：** `false`
+- **默认值：** `false`
 
 在 SSR 构建期间，静态资源不会被输出，因为它们通常被认为是客户端构建的一部分。这个选项允许框架强制在客户端和 SSR 构建中都输出它们。将静态资源在构建后合并是框架的责任。一旦环境 API 稳定，这个选项将被 `build.emitAssets` 替代。
 
 ## build.minify {#build-minify}
 
 - **类型：** `boolean | 'oxc' | 'terser' | 'esbuild'`
-- **默认：** 客户端构建默认为 `'oxc'`，SSR 构建默认为 `false`
+- **默认值：** 客户端构建默认为 `'oxc'`，SSR 构建默认为 `false`
 
 设置为 `false` 可以禁用最小化混淆，或是用来指定使用哪种混淆器。默认使用 [Oxc Minifier](https://oxc.rs/docs/guide/usage/minifier)，它比 Terser 快 30~90 倍，但压缩率仅差 0.5~2%。[基准测试](https://github.com/privatenumber/minification-benchmarks)
 
@@ -326,42 +326,42 @@ npm add -D terser
 ## build.write {#build-write}
 
 - **类型：** `boolean`
-- **默认：** `true`
+- **默认值：** `true`
 
 设置为 `false` 来禁用将构建后的文件写入磁盘。这常用于 [编程式地调用 `build()`](/guide/api-javascript#build) 在写入磁盘之前，需要对构建后的文件进行进一步处理。
 
 ## build.emptyOutDir {#build-emptyoutdir}
 
 - **类型：** `boolean`
-- **默认：** 若 `outDir` 在 `root` 目录下，则为 `true`
+- **默认值：** 若 `outDir` 在 `root` 目录下，则为 `true`
 
 默认情况下，若 `outDir` 在 `root` 目录下，则 Vite 会在构建时清空该目录。若 `outDir` 在根目录之外则会抛出一个警告避免意外删除掉重要的文件。可以设置该选项来关闭这个警告。该功能也可以通过命令行参数 `--emptyOutDir` 来使用。
 
 ## build.copyPublicDir {#build-copypublicdir}
 
 - **类型：** `boolean`
-- **默认：** `true`
+- **默认值：** `true`
 
 默认情况下，Vite 会在构建阶段将 `publicDir` 目录中的所有文件复制到 `outDir` 目录中。可以通过设置该选项为 `false` 来禁用该行为。
 
 ## build.reportCompressedSize {#build-reportcompressedsize}
 
 - **类型：** `boolean`
-- **默认：** `true`
+- **默认值：** `true`
 
 启用/禁用 gzip 压缩大小报告。压缩大型输出文件可能会很慢，因此禁用该功能可能会提高大型项目的构建性能。
 
 ## build.chunkSizeWarningLimit {#build-chunksizewarninglimit}
 
 - **类型：** `number`
-- **默认：** `500`
+- **默认值：** `500`
 
 规定触发警告的 chunk 大小（以 kB 为单位）。它将与未压缩的 chunk 大小进行比较，因为 [JavaScript 大小本身与执行时间相关](https://v8.dev/blog/cost-of-javascript-2019)。
 
 ## build.watch {#build-watch}
 
 - **类型：** [`WatcherOptions`](https://rolldown.rs/reference/InputOptions.watch)`| null`
-- **默认：** `null`
+- **默认值：** `null`
 
 设置为 `{}` 则会启用 Rolldown 的监听器。对于只在构建阶段或者集成流程使用的插件很常用。
 

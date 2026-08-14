@@ -402,7 +402,7 @@ Vite 插件也可以提供钩子来服务于特定的 Vite 目标。这些钩子
     attrs?: Record<string, string | boolean>
     children?: string | HtmlTagDescriptor[]
     /**
-     * 默认： 'head-prepend'
+     * 默认值： 'head-prepend'
      */
     injectTo?: 'head' | 'body' | 'head-prepend' | 'body-prepend'
   }

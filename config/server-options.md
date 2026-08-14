@@ -5,7 +5,7 @@
 ## server.host
 
 - **类型：** `string | boolean`
-- **默认：** `'localhost'`
+- **默认值：** `'localhost'`
 
 指定服务器应该监听哪个 IP 地址。
 如果将此设置为 `0.0.0.0` 或者 `true` 将监听所有地址，包括局域网和公网地址。
@@ -32,7 +32,7 @@
 ## server.allowedHosts
 
 - **类型：** `string[] | true`
-- **默认：** `[]`
+- **默认值：** `[]`
 
 Vite 允许响应的主机名。默认情况下，允许 `localhost` 及其下的所有 `.localhost` 域名和所有 IP 地址。使用 HTTPS 时，将跳过此检查。
 
@@ -161,7 +161,7 @@ export default defineConfig({
 ## server.cors {#server-cors}
 
 - **类型：** `boolean | CorsOptions`
-- **默认：** `{ origin: /^https?:\/\/(?:(?:[^:]+\.)?localhost|127\.0\.0\.1|\[::1\])(?::\d+)?$/ }` （允许 localhost、`127.0.0.1` 和 `::1`）
+- **默认值：** `{ origin: /^https?:\/\/(?:(?:[^:]+\.)?localhost|127\.0\.0\.1|\[::1\])(?::\d+)?$/ }` （允许 localhost、`127.0.0.1` 和 `::1`）
 
 为开发服务器配置 CORS。传递一个 [选项对象](https://github.com/expressjs/cors#configuration-options) 来调整行为，或设置为 `true` 来允许任何源。
 
@@ -240,7 +240,7 @@ Direct websocket connection fallback. Check out https://vite.dev/config/server-o
 ## server.forwardConsole
 
 - **类型：** `boolean | { unhandledErrors?: boolean, logLevels?: ('error' | 'warn' | 'info' | 'log' | 'debug')[] }`
-- **默认：** 自动（当基于 [`@vercel/detect-agent`](https://www.npmjs.com/package/@vercel/detect-agent) 检测到 AI 编码代理时为 `true`，否则为 `false`）
+- **默认值：** 自动（当基于 [`@vercel/detect-agent`](https://www.npmjs.com/package/@vercel/detect-agent) 检测到 AI 编码代理时为 `true`，否则为 `false`）
 
 在开发期间，将浏览器运行时事件转发到 Vite 服务器控制台。
 
@@ -367,7 +367,7 @@ createServer()
 ## server.fs.strict {#server-fs-strict}
 
 - **类型：** `boolean`
-- **默认：** `true` (自 Vite 2.7 起默认启用)
+- **默认值：** `true` (自 Vite 2.7 起默认启用)
 
 限制为工作区 root 路径以外的文件的访问。
 
@@ -422,7 +422,7 @@ export default defineConfig({
 ## server.fs.deny {#server-fs-deny}
 
 - **类型：** `string[]`
-- **默认：** `['.env', '.env.*', '*.{crt,pem,key,p12,pfx,cer,der}', '.npmrc', '.yarnrc.yml', '**/.git/**']`
+- **默认值：** `['.env', '.env.*', '*.{crt,pem,key,p12,pfx,cer,der}', '.npmrc', '.yarnrc.yml', '**/.git/**']`
 
 用于限制 Vite 开发服务器提供敏感文件的黑名单。这会比 [`server.fs.allow`](#server-fs-allow) 选项的优先级更高。同时还支持 [picomatch 模式](https://github.com/micromatch/picomatch#globbing-features)。
 
@@ -455,7 +455,7 @@ export default defineConfig({
 ## server.sourcemapIgnoreList {#server-sourcemapignorelist}
 
 - **类型：** `false | (sourcePath: string, sourcemapPath: string) => boolean`
-- **默认：** `(sourcePath) => sourcePath.includes('node_modules')`
+- **默认值：** `(sourcePath) => sourcePath.includes('node_modules')`
 
 是否忽略服务器 sourcemap 中的源文件，用于填充 [`x_google_ignoreList` source map 扩展](https://developer.chrome.com/articles/x-google-ignore-list/)。
 

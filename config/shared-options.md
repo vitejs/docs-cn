@@ -5,7 +5,7 @@
 ## root
 
 - **类型：** `string`
-- **默认：** `process.cwd()`
+- **默认值：** `process.cwd()`
 
 项目根目录（`index.html` 文件所在的位置）。可以是一个绝对路径，或者一个相对于该配置文件本身的相对路径。
 
@@ -14,7 +14,7 @@
 ## base {#base}
 
 - **类型：** `string`
-- **默认：** `/`
+- **默认值：** `/`
 - **相关：** [`server.origin`](/config/server-options.md#server-origin)
 
 开发或生产环境服务的公共基础路径。合法的值包括以下几种：
@@ -28,7 +28,7 @@
 ## mode {#mode}
 
 - **类型：** `string`
-- **默认：** `'development'` 用于开发，`'production'` 用于构建
+- **默认值：** `'development'` 用于开发，`'production'` 用于构建
 
 在配置中指明将会把 **serve 和 build** 时的模式 **都** 覆盖掉。也可以通过命令行 `--mode` 选项来重写。
 
@@ -90,7 +90,7 @@ declare const __APP_VERSION__: string
 ## publicDir {#publicdir}
 
 - **类型：** `string | false`
-- **默认：** `"public"`
+- **默认值：** `"public"`
 
 作为静态资源服务的文件夹。该目录中的文件在开发期间在 `/` 处提供，并在构建期间复制到 `outDir` 的根目录，并且始终按原样提供或复制而无需进行转换。该值可以是文件系统的绝对路径，也可以是相对于项目根目录的相对路径。
 
@@ -101,7 +101,7 @@ declare const __APP_VERSION__: string
 ## cacheDir {#cachedir}
 
 - **类型：** `string`
-- **默认：** `"node_modules/.vite"`
+- **默认值：** `"node_modules/.vite"`
 
 存储缓存文件的目录。此目录下会存储预打包的依赖项或 vite 生成的某些缓存文件，使用缓存可以提高性能。如需重新生成缓存文件，你可以使用 `--force` 命令行选项或手动删除目录。此选项的值可以是文件的绝对路径，也可以是以项目根目录为基准的相对路径。当没有检测到 `package.json` 时，则默认为 `.vite`。
 
@@ -167,7 +167,7 @@ resolve: {
 ## resolve.conditions <NonInheritBadge /> {#resolve-conditions}
 
 - **类型：** `string[]`
-- **默认：** `['module', 'browser', 'development|production']` (`defaultClientConditions`)
+- **默认值：** `['module', 'browser', 'development|production']` (`defaultClientConditions`)
 
 在解析 npm 包的 [条件导出](https://nodejs.org/api/packages.html#packages_conditional_exports) 时，可以指定额外允许的条件。
 
@@ -195,21 +195,21 @@ resolve: {
 ## resolve.mainFields <NonInheritBadge /> {#resolve-mainfields}
 
 - **类型：** `string[]`
-- **默认：** `['browser', 'module', 'jsnext:main', 'jsnext']` (`defaultClientMainFields`)
+- **默认值：** `['browser', 'module', 'jsnext:main', 'jsnext']` (`defaultClientMainFields`)
 
 `package.json` 中，在解析包的入口点时尝试的字段列表。注意：这比从 `exports` 字段解析的条件导出优先级低：如果一个入口起点从 `exports` 成功解析，`resolve.mainFields` 将被忽略。
 
 ## resolve.extensions {#resolve-extensions}
 
 - **类型：** `string[]`
-- **默认：** `['.mjs', '.js', '.mts', '.ts', '.jsx', '.tsx', '.json']`
+- **默认值：** `['.mjs', '.js', '.mts', '.ts', '.jsx', '.tsx', '.json']`
 
 导入时想要省略的扩展名列表。注意，**不** 建议忽略自定义导入类型的扩展名（例如：`.vue`），因为它会影响 IDE 和类型支持。
 
 ## resolve.preserveSymlinks {#resolve-preservesymlinks}
 
 - **类型：** `boolean`
-- **默认：** `false`
+- **默认值：** `false`
 
 启用此选项会使 Vite 通过原始文件路径（即不跟随符号链接的路径）而不是真正的文件路径（即跟随符号链接后的路径）确定文件身份。
 
@@ -219,7 +219,7 @@ resolve: {
 ## resolve.tsconfigPaths
 
 - **类型：** `boolean`
-- **默认：** `false`
+- **默认值：** `false`
 
 启用 tsconfig 路径解析功能。`tsconfig.json` 中的 `paths` 选项将用于解析导入。更多详情请参见 [功能](/guide/features.md#paths)。
 
@@ -301,7 +301,7 @@ export default defineConfig({
       string | ((name: string, filename: string, css: string) => string)
     hashPrefix?: string
     /**
-     * 默认：undefined
+     * 默认值：undefined
      */
     localsConvention?:
       | 'camelCase'
@@ -395,7 +395,7 @@ export default defineConfig({
 ## css.preprocessorMaxWorkers
 
 - **类型：** `number | true`
-- **默认：** `true`
+- **默认值：** `true`
 
 指定 CSS 预处理器可以使用的最大线程数。`true` 表示最多为 CPU 数量减 1。当设置为 `0` 时，Vite 将不会创建任何工作线程，而是在主线程中运行预处理器。
 
@@ -405,7 +405,7 @@ export default defineConfig({
 
 - **实验性：** [提供反馈](https://github.com/vitejs/vite/discussions/13845)
 - **类型：** `boolean`
-- **默认：** `false`
+- **默认值：** `false`
 
 在开发过程中是否启用 sourcemap。
 
@@ -413,7 +413,7 @@ export default defineConfig({
 
 - **实验性：** [提供反馈](https://github.com/vitejs/vite/discussions/13835)
 - **类型：** `'postcss' | 'lightningcss'`
-- **默认：** `'postcss'`
+- **默认值：** `'postcss'`
 
 该选项用于选择用于 CSS 处理的引擎。详细信息请查看 [Lightning CSS](../guide/features.md#lightning-css)。
 
@@ -456,14 +456,14 @@ import type {
 ## json.namedExports {#json-namedexports}
 
 - **类型：** `boolean`
-- **默认：** `true`
+- **默认值：** `true`
 
 是否支持从 `.json` 文件中进行按名导入。
 
 ## json.stringify {#json-stringify}
 
 - **类型：** `boolean | 'auto'`
-- **默认：** `'auto'`
+- **默认值：** `'auto'`
 
 若设置为 `true`，导入的 JSON 会被转换为 `export default JSON.parse("...")`，这样会比转译成对象字面量性能更好，尤其是当 JSON 文件较大的时候。
 
@@ -572,14 +572,14 @@ export default defineConfig({
 ## clearScreen {#clearscreen}
 
 - **类型：** `boolean`
-- **默认：** `true`
+- **默认值：** `true`
 
 设为 `false` 可以避免 Vite 清屏而错过在终端中打印某些关键信息。命令行模式下可以通过 `--clearScreen false` 设置。
 
 ## envDir {#envdir}
 
 - **类型：** `string | false`
-- **默认：** `root`
+- **默认值：** `root`
 
 用于加载 `.env` 文件的目录。可以是一个绝对路径，也可以是相对于项目根目录的路径。设置为 `false` 将禁用 `.env` 文件的加载。
 
@@ -588,7 +588,7 @@ export default defineConfig({
 ## envPrefix {#envprefix}
 
 - **类型：** `string | string[]`
-- **默认：** `VITE_`
+- **默认值：** `VITE_`
 
 以 `envPrefix` 开头的环境变量会通过 `import.meta.env` 暴露在你的客户端源码中。
 
@@ -608,7 +608,7 @@ define: {
 ## appType {#apptype}
 
 - **类型：** `'spa' | 'mpa' | 'custom'`
-- **默认：** `'spa'`
+- **默认值：** `'spa'`
 
 无论你的应用是一个单页应用（SPA）还是一个 [多页应用（MPA）](../guide/build#multi-page-app)，亦或是一个定制化应用（SSR 和自定义 HTML 处理的框架）：
 
@@ -622,7 +622,7 @@ define: {
 
 - **实验性：** [提供反馈](https://github.com/vitejs/devtools/discussions)
 - **类型：** `boolean` | `DevToolsConfig`
-- **默认：** `false`
+- **默认值：** `false`
 
 启用 devtools 集成，用于可视化内部状态和构建分析。确保 `@vitejs/devtools` 已作为依赖项安装。此功能目前仅在构建模式下受支持。
 

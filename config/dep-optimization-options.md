@@ -77,7 +77,7 @@ export default defineConfig({
 ## optimizeDeps.noDiscovery <NonInheritBadge /> {#optimizedeps-nodiscovery}
 
 - **类型：** `boolean`
-- **默认：** `false`
+- **默认值：** `false`
 
 设置为 true 时，自动依赖项发现将被禁用，并且仅优化 `optimizeDeps.include` 中列出的依赖项。在开发过程中，仅 CJS 依赖项必须存在于 `optimizeDeps.include` 中。
 
@@ -85,7 +85,7 @@ export default defineConfig({
 
 - **实验性：** [提供反馈](https://github.com/vitejs/vite/discussions/15834)
 - **类型：** `boolean`
-- **默认：** `true`
+- **默认值：** `true`
 
 当该功能被启用时，系统会在冷启动时保持第一个优化的依赖结果，直到所有的静态导入都被检索完毕。这样可以避免因为发现新的依赖项而触发新的公共 chunk 生成，从而需要刷新整个页面。如果通过扫描和在 `include` 中明确定义的方式能找到所有的依赖项，那么最好关闭这个功能，这样浏览器可以并行处理更多的请求。
 
@@ -94,7 +94,7 @@ export default defineConfig({
 - **已废弃**
 - **实验性：** [提供反馈](https://github.com/vitejs/vite/discussions/13839)
 - **类型：** `boolean | 'build' | 'dev'`
-- **默认：** `'build'`
+- **默认值：** `'build'`
 
 此选项已被弃用。从 Vite 5.1 版本开始，构建过程中对依赖项的预打包已经被移除。将 `optimizeDeps.disabled` 设置为 `true` 或 `'dev'` 将会禁用优化器，配置为 `false` 或 `'build'` 将会在开发模式下启用优化器。
 
