@@ -278,7 +278,7 @@ export default defineConfig({
 ## server.warmup
 
 - **类型：** `{ clientFiles?: string[], ssrFiles?: string[] }`
-- **相关：** [预热常用文件](/guide/performance.html#warm-up-frequently-used-files)
+- **相关内容：** [预热常用文件](/guide/performance.html#warm-up-frequently-used-files)
 
 提前转换和缓存文件以进行预热。可以在服务器启动时提高初始页面加载速度，并防止转换瀑布。
 
@@ -333,7 +333,7 @@ Vite 服务器的文件监听器默认会监听 `root` 目录，同时会跳过 
 
 以中间件模式创建 Vite 服务器。
 
-- **相关：** [appType](./shared-options#apptype)，[SSR - 设置开发服务器](/guide/ssr#setting-up-the-dev-server)
+- **相关内容：** [appType](./shared-options#apptype)，[SSR - 设置开发服务器](/guide/ssr#setting-up-the-dev-server)
 
 - **示例：**
 

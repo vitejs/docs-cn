@@ -15,7 +15,7 @@
 
 - **类型：** `string`
 - **默认值：** `/`
-- **相关：** [`server.origin`](/config/server-options.md#server-origin)
+- **相关内容：** [`server.origin`](/config/server-options.md#server-origin)
 
 开发或生产环境服务的公共基础路径。合法的值包括以下几种：
 
@@ -213,7 +213,7 @@ resolve: {
 
 启用此选项会使 Vite 通过原始文件路径（即不跟随符号链接的路径）而不是真正的文件路径（即跟随符号链接后的路径）确定文件身份。
 
-- **相关：** [esbuild#preserve-symlinks](https://esbuild.github.io/api/#preserve-symlinks)，[webpack#resolve.symlinks
+- **相关内容：** [esbuild#preserve-symlinks](https://esbuild.github.io/api/#preserve-symlinks)，[webpack#resolve.symlinks
   ](https://webpack.js.org/configuration/resolve/#resolvesymlinks)
 
 ## resolve.tsconfigPaths
@@ -238,7 +238,7 @@ resolve: {
 ## html.cspNonce
 
 - **类型：** `string`
-- **相关：** [内容安全策略（CSP）](/guide/features#content-security-policy-csp)
+- **相关内容：** [内容安全策略（CSP）](/guide/features#content-security-policy-csp)
 
 一个在生成脚本或样式标签时会用到的 nonce 值占位符。设置此值还会生成一个带有 nonce 值的 meta 标签。
 
@@ -631,7 +631,7 @@ define: {
 ## future {#future}
 
 - **类型：** `Record<string, 'warn' | undefined>`
-- **相关：** [破坏性变更](/changes/)
+- **相关内容：** [破坏性变更](/changes/)
 
 启用未来的重大变更，为顺利迁移到 Vite 的下一个主要版本做好准备。随着新功能的开发，这个列表可能会随时进行更新、添加或移除。
 
