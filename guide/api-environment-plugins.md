@@ -39,7 +39,7 @@ Vite 服务器有一个共享的插件管道，但在处理模块时，它总是
 
 ## 使用钩子注册新环境 {#registering-new-environments-using-hooks}
 
-插件可以在 `config` 钩子中添加新环境。例如，[RSC 支持](/plugins/#vitejs-plugin-rsc)使用一个额外的环境来拥有一个带有 `react-server` 条件的独立模块图：
+插件可以在 `config` 钩子中添加新环境。例如，[RSC 支持](/plugins/#vitejs-plugin-rsc) 使用一个额外的环境来拥有一个带有 `react-server` 条件的独立模块图：
 
 ```ts
   config(config: UserConfig) {
@@ -65,8 +65,7 @@ Vite 服务器有一个共享的插件管道，但在处理模块时，它总是
 - **种类：** `async`、`sequential`
 - **作用域：** [环境](#per-environment-hooks-and-global-hooks)
 
-当 `config` 钩子正在运行时，我们还不知道完整的环境列表，而且环境可以受到来自根级别环境配置的默认值或通过 `config.environments` 记录明确影响。
-插件应使用 `config` 钩子设置默认值。要配置每个环境，可以使用新的 `configEnvironment` 钩子。此钩子会为每个环境调用，并传入其部分解析的配置，包括最终默认值的解析。
+当 `config` 钩子正在运行时，我们还不知道完整的环境列表，而且环境可以受到来自根级别环境配置的默认值或通过 `config.environments` 记录明确影响。插件应使用 `config` 钩子设置默认值。要配置每个环境，可以使用新的 `configEnvironment` 钩子。此钩子会为每个环境调用，并传入其部分解析的配置，包括最终默认值的解析。
 
 ```ts
   configEnvironment(name: string, options: EnvironmentOptions) {
@@ -105,7 +104,7 @@ interface HotUpdateOptions {
 
 - `modules` 是由于文件更改而受影响的此环境中的模块的数组。它是一个数组，因为一个文件可能映射到多个服务的模块（例如 Vue SFCs）。
 
-- `read` 是一个异步读取函数，返回文件的内容。这是因为，在某些系统上，文件更改回调可能在编辑器完成文件更新之前触发得太快，直接的 `fs.readFile` 将返回空内容。传入的读取函数规范化了这种行为。
+- `read` 是一个异步读取函数，用于返回文件内容。提供该函数是因为在某些系统上，文件变更回调的触发速度可能过快，编辑器尚未完成对文件的更新；此时直接调用 `fs.readFile` 可能会读取到空内容。传入的 `read` 函数会对这种情况进行处理，使读取行为保持正常和一致。
 
 可以选择钩子用于：
 
@@ -287,8 +286,7 @@ configureServer(server) {
 
 ## 构建钩子中的环境 {#environment-in-build-hooks}
 
-与开发期间一样，插件钩子在构建期间也接收环境实例，取代了 `ssr` 布尔值。
-这同样适用于 `renderChunk`、`generateBundle` 和其他仅在构建时使用的钩子。
+与开发期间一样，插件钩子在构建期间也接收环境实例，取代了 `ssr` 布尔值。这同样适用于 `renderChunk`、`generateBundle` 和其他仅在构建时使用的钩子。
 
 ## 构建期间的共享插件 {#shared-plugins-during-build}
 
