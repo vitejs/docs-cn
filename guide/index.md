@@ -24,7 +24,7 @@ Vite 还提供了强大的扩展性，可通过其 [插件 API](./api-plugin) �
 
 在开发过程中，Vite 假设使用的是现代浏览器。这意味着该浏览器支持大多数最新的 JavaScript 和 CSS 功能。因此，Vite 将 [`esnext` 设置为转换目标](https://oxc.rs/docs/guide/usage/transformer/lowering.html#target)。这可以防止语法降级，使 Vite 能够尽可能接近原始源代码提供模块。Vite 会注入一些运行时代码以使开发服务器正常工作。这些代码使用了 [Baseline](https://web-platform-dx.github.io/baseline/) 中包含的功能，该功能在每个主要版本发布时（此主要版本为 2026-01-01）新增。
 
-对于生产环境构建，Vite 默认以每个主要版本所固定日期时 [Baseline](https://web-platform-dx.github.io/baseline/) Widely Available 的浏览器版本为目标平台。对于此主要版本，这对应于[大约在 2023 年年中发布的浏览器版本](https://web-platform-dx.github.io/supported-browsers/?widelyAvailableOnDate=2026-01-01)。你可以通过配置降低目标浏览器版本。此外，可以通过官方 [@vitejs/plugin-legacy](https://github.com/vitejs/vite/tree/main/packages/plugin-legacy) 支持旧版浏览器。更多详情，请参阅 [构建生产环境](./build) 部分。
+对于生产环境构建，Vite 默认以每个主要版本所固定日期时 [Baseline](https://web-platform-dx.github.io/baseline/) Widely Available 的浏览器版本为目标平台。对于此主要版本，这对应于 [大约在 2023 年年中发布的浏览器版本](https://web-platform-dx.github.io/supported-browsers/?widelyAvailableOnDate=2026-01-01)。你可以通过配置降低目标浏览器版本。此外，可以通过官方 [@vitejs/plugin-legacy](https://github.com/vitejs/vite/tree/main/packages/plugin-legacy) 支持旧版浏览器。更多详情，请参阅 [构建生产环境](./build) 部分。
 
 ## 在线试用 Vite {#trying-vite-online}
 
