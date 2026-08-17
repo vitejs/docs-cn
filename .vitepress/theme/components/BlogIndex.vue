@@ -1,8 +1,19 @@
 <script setup lang="ts">
 import { data as posts } from '../../../_data/blog.data'
 
+const dateFormatter = new Intl.DateTimeFormat('zh-CN', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+  timeZone: 'UTC',
+})
+
 function getDateTime(time: number) {
   return new Date(time).toISOString()
+}
+
+function formatDate(time: number) {
+  return dateFormatter.format(time)
 }
 </script>
 
@@ -11,7 +22,7 @@ function getDateTime(time: number) {
     <li class="blog-entry" v-for="post of posts">
       <article>
         <time :datetime="getDateTime(post.date.time)">{{
-          post.date.string
+          formatDate(post.date.time)
         }}</time>
         <h2 class="title">
           <a :href="post.url">{{ post.title }}</a>
