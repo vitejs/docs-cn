@@ -10,7 +10,7 @@ head:
       content: website
   - - meta
     - property: og:title
-      content: Cloudflare supports Vite's mission
+      content: Cloudflare 支持 Vite 的使命
   - - meta
     - property: og:image
       content: https://vite.dev/og-image-cloudflare-supports-vite.webp
