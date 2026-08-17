@@ -10,7 +10,7 @@ head:
       content: website
   - - meta
     - property: og:title
-      content: Announcing Vite 2.0
+      content: Vite 2.0 发布公告
   - - meta
     - property: og:url
       content: https://vite.dev/blog/announcing-vite2
@@ -19,7 +19,7 @@ head:
       content: Vite 2 Release Announcement
 ---
 
-# Vite 2.0 发布了 {#announcing-vite-2-0}
+# Vite 2.0 发布了！ {#announcing-vite-2-0}
 
 _February 16, 2021_ - Check out the [Vite 3.0 announcement](./announcing-vite3.md)
 
