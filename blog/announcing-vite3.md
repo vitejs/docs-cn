@@ -10,7 +10,7 @@ head:
       content: website
   - - meta
     - property: og:title
-      content: Announcing Vite 3
+      content: Vite 3.0 发布公告
   - - meta
     - property: og:image
       content: https://vite.dev/og-image-announcing-vite3.webp
