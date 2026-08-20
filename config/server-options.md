@@ -158,6 +158,12 @@ export default defineConfig({
 })
 ```
 
+::: warning WebSocket 的来源检查
+
+Vite 在代理 WebSocket 请求前不会检查其来源。代理目标应检查 `Origin` 标头或执行其他检查。请注意，`rewriteWsOrigin` 选项会将来源重写为目标来源，从而绕过来源检查。
+
+:::
+
 ## server.cors {#server-cors}
 
 - **类型：** `boolean | CorsOptions`
