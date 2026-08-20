@@ -25,110 +25,113 @@ head:
       content: summary_large_image
 ---
 
-# Vite 5.1 is out!
+# Vite 5.1 发布了！{#vite-5-1-is-out}
 
-_February 8, 2024_
+_2024年2月8日_
 
-![Vite 5.1 Announcement Cover Image](/og-image-announcing-vite5-1.webp)
+![Vite 5.1 发布公告封面图](/og-image-announcing-vite5-1.webp)
 
-Vite 5 [was released](./announcing-vite5.md) last November, and it represented another big leap for Vite and the ecosystem. A few weeks ago we celebrated 10 million weekly npm downloads and 900 contributors to the Vite repo. Today, we're excited to announce the release of Vite 5.1.
+Vite 5 于去年 11 月 [发布](./announcing-vite5.md)，这代表着 Vite 及其生态系统又一次重大飞跃。几周前，我们庆祝了 npm 每周下载量达到 1000 万次，以及 Vite 仓库贡献者达到 900 位。今天，我们很高兴地宣布 Vite 5.1 正式发布。
 
-Quick links: [Docs](/), [Changelog](https://github.com/vitejs/vite/blob/main/packages/vite/CHANGELOG.md#510-2024-02-08)
+快速链接：
 
-Docs in other languages: [简体中文](https://cn.vite.dev/), [日本語](https://ja.vite.dev/), [Español](https://es.vite.dev/), [Português](https://pt.vite.dev/), [한국어](https://ko.vite.dev/), [Deutsch](https://de.vite.dev/)
+- [英文文档](https://vite.dev/)
+- [更新日志](https://github.com/vitejs/vite/blob/main/packages/vite/CHANGELOG.md#510-2024-02-08)
 
-Try Vite 5.1 online in StackBlitz: [vanilla](https://vite.new/vanilla-ts), [vue](https://vite.new/vue-ts), [react](https://vite.new/react-ts), [preact](https://vite.new/preact-ts), [lit](https://vite.new/lit-ts), [svelte](https://vite.new/svelte-ts), [solid](https://vite.new/solid-ts), [qwik](https://vite.new/qwik-ts).
+翻译版本：[简体中文](/)、[日本語](https://ja.vite.dev/)、[Español](https://es.vite.dev/)、[Português](https://pt.vite.dev/)、[한국어](https://ko.vite.dev/)、[Deutsch](https://de.vite.dev/)
 
-If you're new to Vite, we suggest reading first the [Getting Started](/guide/) and [Features](/guide/features) guides.
+可以在 StackBlitz 中在线体验 Vite 5.1：[vanilla](https://vite.new/vanilla-ts)、[vue](https://vite.new/vue-ts)、[react](https://vite.new/react-ts)、[preact](https://vite.new/preact-ts)、[lit](https://vite.new/lit-ts)、[svelte](https://vite.new/svelte-ts)、[solid](https://vite.new/solid-ts)、[qwik](https://vite.new/qwik-ts)。
 
-To stay up to date, follow us on [X](https://x.com/vite_js) or [Mastodon](https://webtoo.ls/@vite).
+如果你刚开始使用 Vite，我们建议先阅读 [入门指南](/guide/) 和 [功能指南](/guide/features)。
 
-## Vite Runtime API
+要及时了解最新动态，请关注我们在 [X](https://x.com/vite_js) 或 [Mastodon](https://webtoo.ls/@vite) 上的账号。
 
-Vite 5.1 adds experimental support for a new Vite Runtime API. It allows running any code by processing it with Vite plugins first. It is different from `server.ssrLoadModule` because the runtime implementation is decoupled from the server. This lets library and framework authors implement their own layer of communication between the server and the runtime. This new API is intended to replace Vite's current SSR primitives once it is stable.
+## Vite Runtime API {#vite-runtime-api}
 
-The new API brings many benefits:
+Vite 5.1 新增了对全新 Vite Runtime API 的实验性支持。该 API 会先使用 Vite 插件处理代码，再运行任意代码。它与 `server.ssrLoadModule` 不同，因为运行时实现与服务器解耦。这使库和框架作者能够在服务器与运行时之间实现自己的通信层。该 API 稳定后，计划用于替代 Vite 当前的 SSR 底层 API。
 
-- Support for HMR during SSR.
-- It is decoupled from the server, so there is no limit on how many clients can use a single server - every client has its own module cache (you can even communicate with it how you want - using message channel/fetch call/direct function call/websocket).
-- It doesn't depend on any node/bun/deno built-in APIs, so it can run in any environment.
-- It's easy to integrate with tools that have their own mechanism to run code (you can provide a runner to use `eval` instead of `new AsyncFunction` for example).
+这个新 API 带来了许多好处：
 
-The initial idea [was proposed by Pooya Parsa](https://github.com/nuxt/vite/pull/201) and implemented by [Anthony Fu](https://github.com/antfu) as the [vite-node](https://www.npmjs.com/package/vite-node) package to [power Nuxt 3 Dev SSR](https://antfu.me/posts/dev-ssr-on-nuxt) and later also used as the base for [Vitest](https://vitest.dev). So the general idea of vite-node has been battle-tested for quite some time now. This is a new iteration of the API by [Vladimir Sheremet](https://github.com/sheremet-va), who had already re-implemented vite-node in Vitest and took the learnings to make the API even more powerful and flexible when adding it to Vite Core. The PR was one year in the makings, you can see the evolution and discussions with ecosystem maintainers [here](https://github.com/vitejs/vite/issues/12165).
+- 支持 SSR 期间的 HMR。
+- 与服务器解耦，因此单个服务器可以被任意数量的客户端使用，每个客户端都有自己的模块缓存（你甚至可以按照自己的方式与它通信，例如使用消息通道、`fetch` 调用、直接函数调用或 WebSocket）。
+- 不依赖 Node、Bun、Deno 的任何内置 API，因此可以在任意环境中运行。
+- 易于与拥有自定义代码运行机制的工具集成（例如，你可以提供一个 runner，使用 `eval` 而不是 `new AsyncFunction`）。
+
+最初的想法由 [Pooya Parsa](https://github.com/nuxt/vite/pull/201) 提出，随后 [Anthony Fu](https://github.com/antfu) 将其实现为 [vite-node](https://www.npmjs.com/package/vite-node) 包，用于 [支持 Nuxt 3 Dev SSR](https://antfu.me/posts/dev-ssr-on-nuxt)，后来还被用作 [Vitest](https://vitest.dev) 的基础。因此，vite-node 的整体思路已经经过了相当长时间的实践检验。这是 [Vladimir Sheremet](https://github.com/sheremet-va) 对该 API 的新一轮实现。他此前已在 Vitest 中重新实现 vite-node，并在将其加入 Vite Core 时吸取相关经验，使 API 更加强大、灵活。这个 PR 历时一年完成，你可以在 [这里](https://github.com/vitejs/vite/issues/12165) 查看它的演进过程以及与生态系统维护者的讨论。
 
 ::: info
-The Vite Runtime API evolved into the Module Runner API, released in Vite 6 as part of the [Environment API](/guide/api-environment).
+Vite Runtime API 后来演变为 Module Runner API，并作为 [Environment API](/guide/api-environment) 的一部分在 Vite 6 中发布。
 :::
 
-## Features
+## 功能 {#features}
 
-### Improved support for `.css?url`
+### 改进 `.css?url` 支持 {#improved-support-for-cssurl}
 
-Import CSS files as URLs now works reliably and correctly. This was the last remaining hurdle in Remix's move to Vite. See ([#15259](https://github.com/vitejs/vite/issues/15259)).
+现在，将 CSS 文件作为 URL 导入可以稳定、正确地工作。这是 Remix 迁移到 Vite 的最后一个障碍。详见 [#15259](https://github.com/vitejs/vite/issues/15259)。
 
-### `build.assetsInlineLimit` now supports a callback
+### `build.assetsInlineLimit` 现在支持回调 {#build-assetsinlinelimit-now-supports-a-callback}
 
-Users can now [provide a callback](/config/build-options.html#build-assetsinlinelimit) that returns a boolean to opt-in or opt-out of inlining for specific assets. If `undefined` is returned, the default logic applies. See ([#15366](https://github.com/vitejs/vite/issues/15366)).
+现在，用户可以 [提供一个回调](/config/build-options.html#build-assetsinlinelimit)，返回布尔值，以选择针对特定资源启用或禁用内联。如果返回 `undefined`，则使用默认逻辑。详见 [#15366](https://github.com/vitejs/vite/issues/15366)。
 
-### Improved HMR for circular import
+### 改进循环导入的 HMR {#improved-hmr-for-circular-import}
 
-In Vite 5.0, accepted modules within circular imports always triggered a full page reload even if they can be handled fine in the client. This is now relaxed to allow HMR to apply without a full page reload, but if any error happens during HMR, the page will be reloaded. See ([#15118](https://github.com/vitejs/vite/issues/15118)).
+在 Vite 5.0 中，循环导入中的已接受模块即使可以在客户端正常处理，也总会触发整页重新加载。现在已经放宽了这一行为，允许 HMR 在不整页重新加载的情况下生效；但如果 HMR 期间发生任何错误，页面仍会重新加载。详见 [#15118](https://github.com/vitejs/vite/issues/15118)。
 
-### Support `ssr.external: true` to externalize all SSR packages
+### 支持使用 `ssr.external: true` 外部化所有 SSR 包 {#support-ssr-external-true-to-externalize-all-ssr-packages}
 
-Historically, Vite externalizes all packages except for linked packages. This new option can be used to force externalize all packages including linked packages too. This is handy in tests within monorepos where we want to emulate the usual case of all packages externalized, or when using `ssrLoadModule` to load an arbitrary file and we want to always external packages as we don't care about HMR. See ([#10939](https://github.com/vitejs/vite/issues/10939)).
+过去，Vite 会将除链接包之外的所有包外部化。现在可以使用这个新选项，强制将包括链接包在内的所有包外部化。在 monorepo 的测试中，如果希望模拟通常的“所有包都已外部化”的情况，这个选项会很有用；或者在使用 `ssrLoadModule` 加载任意文件时，如果我们不关心 HMR，也可以始终将包外部化。详见 [#10939](https://github.com/vitejs/vite/issues/10939)。
 
-### Expose `close` method in the preview server
+### 在预览服务器中暴露 `close` 方法 {#expose-close-method-in-the-preview-server}
 
-The preview server now exposes a `close` method, which will properly teardown the server including all opened socket connections. See ([#15630](https://github.com/vitejs/vite/issues/15630)).
+现在，预览服务器暴露了 `close` 方法，可以正确拆除服务器，包括所有已打开的 `socket` 连接。详见 [#15630](https://github.com/vitejs/vite/issues/15630)。
 
-## Performance improvements
+## 性能改进 {#performance-improvements}
 
-Vite keeps getting faster with each release, and Vite 5.1 is packed with performance improvements. We measured the loading time for 10K modules (25 level deep tree) using [vite-dev-server-perf](https://github.com/yyx990803/vite-dev-server-perf) for all minor versions from Vite 4.0. This is a good benchmark to measure the effect of Vite's bundle-less approach. Each module is a small TypeScript file with a counter and imports to other files in the tree, so this mostly measuring the time it takes to do the requests a separate modules. In Vite 4.0, loading 10K modules took 8 seconds on a M1 MAX. We had a breakthrough in [Vite 4.3 were we focused on performance](./announcing-vite4-3.md), and we were able to load them in 6.35 seconds. In Vite 5.1, we managed to do another performance leap. Vite is now serving the 10K modules in 5.35 seconds.
+Vite 在每个版本中都变得更快，Vite 5.1 也包含了大量性能改进。我们使用 [vite-dev-server-perf](https://github.com/yyx990803/vite-dev-server-perf)，测量了从 Vite 4.0 开始所有次要版本加载 1 万个模块（25 层深的树）所需的时间。这是衡量 Vite 无打包开发模式效果的一个很好的基准测试。每个模块都是一个包含计数器并导入树中其他文件的小型 TypeScript 文件，因此这个测试主要测量为各个模块分别发起请求所需的时间。Vite 4.0 加载 1 万个模块需要 8 秒（在 M1 MAX 上）。在 [Vite 4.3 专注于性能并取得突破](./announcing-vite4-3.md) 之后，我们将加载时间缩短到了 6.35 秒。在 Vite 5.1 中，我们再次实现了性能飞跃，现在 Vite 只需 5.35 秒即可提供这 1 万个模块。
 
-![Vite 10K Modules Loading time progression](../images/vite5-1-10K-modules-loading-time.webp)
+![Vite 1 万个模块加载时间变化](../images/vite5-1-10K-modules-loading-time.webp)
 
-The results of this benchmark run on Headless Puppeteer and are a good way to compare versions. They don't represent the time as experienced by users though. When running the same 10K modules in an Incognito window is Chrome, we have:
+这次基准测试在无头 Puppeteer 上运行，非常适合用于比较不同版本。不过，它并不能代表用户实际感受到的时间。在 Chrome 隐身窗口中运行同样的 1 万个模块时，结果如下：
 
-| 10K Modules           | Vite 5.0 | Vite 5.1 |
-| --------------------- | :------: | :------: |
-| Loading time          |  2892ms  |  2765ms  |
-| Loading time (cached) |  2778ms  |  2477ms  |
-| Full reload           |  2003ms  |  1878ms  |
-| Full reload (cached)  |  1682ms  |  1604ms  |
+| 1 万个模块             | Vite 5.0 | Vite 5.1 |
+| ---------------------- | :------: | :------: |
+| 加载时间               |  2892ms  |  2765ms  |
+| 加载时间（缓存）       |  2778ms  |  2477ms  |
+| 整页重新加载           |  2003ms  |  1878ms  |
+| 整页重新加载（缓存）   |  1682ms  |  1604ms  |
 
-### Run CSS preprocessors in threads
+### 在线程中运行 CSS 预处理器 {#run-css-preprocessors-in-threads}
 
-Vite now has opt-in support for running CSS preprocessors in threads. You can enable it using [`css.preprocessorMaxWorkers: true`](/config/shared-options.html#css-preprocessormaxworkers). For a Vuetify 2 project, dev startup time was reduced by 40% with this feature enabled. There is [performance comparison for others setups in the PR](https://github.com/vitejs/vite/pull/13584#issuecomment-1678827918). See ([#13584](https://github.com/vitejs/vite/issues/13584)). [Give Feedback](https://github.com/vitejs/vite/discussions/15835).
+Vite 现在支持选择性地在线程中运行 CSS 预处理器。你可以使用 [`css.preprocessorMaxWorkers: true`](/config/shared-options.html#css-preprocessormaxworkers) 启用此功能。对于 Vuetify 2 项目，启用该功能后开发启动时间缩短了 40%。PR 中提供了 [其他设置的性能对比](https://github.com/vitejs/vite/pull/13584#issuecomment-1678827918)。详见 [#13584](https://github.com/vitejs/vite/issues/13584)。欢迎 [提供反馈](https://github.com/vitejs/vite/discussions/15835)。
 
-### New options to improve server cold starts
+### 改进服务器冷启动的新选项 {#new-options-to-improve-server-cold-starts}
 
-You can set `optimizeDeps.holdUntilCrawlEnd: false` to switch to a new strategy for deps optimization that may help in big projects. We're considering switching to this strategy by default in the future. [Give Feedback](https://github.com/vitejs/vite/discussions/15834). ([#15244](https://github.com/vitejs/vite/issues/15244))
+你可以设置 `optimizeDeps.holdUntilCrawlEnd: false`，切换到一种新的依赖优化策略，该策略可能有助于大型项目。我们正在考虑未来将此策略设为默认值。欢迎 [提供反馈](https://github.com/vitejs/vite/discussions/15834)。详见 [#15244](https://github.com/vitejs/vite/issues/15244)。
 
-### Faster resolving with cached checks
+### 使用缓存检查加快解析 {#faster-resolving-with-cached-checks}
 
-The `fs.cachedChecks` optimization is now enabled by default. In Windows, `tryFsResolve` was ~14x faster with it, and resolving ids overall got a ~5x speed up in the triangle benchmark. ([#15704](https://github.com/vitejs/vite/issues/15704))
+现在默认启用了 `fs.cachedChecks` 优化。在 Windows 中，启用该优化后 `tryFsResolve` 的速度提升了约 14 倍；在 `triangle` 基准测试中，整体解析 ID 的速度提升了约 5 倍。详见 [#15704](https://github.com/vitejs/vite/issues/15704)。
 
-### Internal performance improvements
+### 内部性能改进 {#internal-performance-improvements}
 
-The dev server had several incremental performance gains. A new middleware to short-circuit on 304 ([#15586](https://github.com/vitejs/vite/issues/15586)). We avoided `parseRequest` in hot paths ([#15617](https://github.com/vitejs/vite/issues/15617)). Rollup is now properly lazy loaded ([#15621](https://github.com/vitejs/vite/issues/15621))
+开发服务器通过多项渐进式改进提升了性能。新增了一个可以在 304 响应时提前短路的中间件（[#15586](https://github.com/vitejs/vite/issues/15586)）。我们避免在高频路径中调用 `parseRequest`（[#15617](https://github.com/vitejs/vite/issues/15617)）。现在，Rollup 也会正确地延迟加载（[#15621](https://github.com/vitejs/vite/issues/15621)）。
 
-## Deprecations
+## 弃用 {#deprecations}
 
-We continue to reduce Vite's API surface where possible to make the project maintainable long term.
+我们会继续在可能的情况下缩减 Vite 的 API 范围，以便长期维护项目。
 
-### Deprecated `as` option in `import.meta.glob`
+### 弃用 `import.meta.glob` 中的 `as` 选项 {#deprecated-as-option-in-importmetaglob}
 
-The standard moved to [Import Attributes](https://github.com/tc39/proposal-import-attributes), but we don't plan to replace `as` with a new option at this point. Instead, it is recommended that the user switches to `query`. See ([#14420](https://github.com/vitejs/vite/issues/14420)).
+标准已经转向 [Import Attributes](https://github.com/tc39/proposal-import-attributes)，但目前我们不打算用新选项替代 `as`。相反，建议用户改用 `query`。详见 [#14420](https://github.com/vitejs/vite/issues/14420)。
 
-### Removed experimental build-time pre-bundling
+### 移除实验性的构建时预构建 {#removed-experimental-build-time-pre-bundling}
 
-Build-time pre-bundling, an experimental feature added in Vite 3, is removed. With Rollup 4 switching its parser to native, and Rolldown being worked on, both the performance and the dev-vs-build inconsistency story for this feature are no longer valid. We want to continue improving dev/build consistency, and have concluded that using Rolldown for "prebundling during dev" and "production builds" is the better bet moving forward. Rolldown may also implement caching in a way that is a lot more efficient during build than deps prebundling. See ([#15184](https://github.com/vitejs/vite/issues/15184)).
+Vite 3 中加入的实验性功能“构建时预构建”现已移除。随着 Rollup 4 将解析器切换为原生实现，以及 Rolldown 的持续开发，这一功能带来的性能优势和开发与构建不一致的问题都已不再成立。我们希望继续改善开发与构建的一致性，并最终认为，使用 Rolldown 完成“开发期间的预构建”和“生产构建”是未来更好的方向。与依赖预构建相比，Rolldown 还可能以更高效的方式在构建期间实现缓存。详见 [#15184](https://github.com/vitejs/vite/issues/15184)。
 
-## Get Involved
+## 参与贡献 {#get-involved}
 
-We are grateful to the [900 contributors to Vite Core](https://github.com/vitejs/vite/graphs/contributors), and the maintainers of plugins, integrations, tools, and translations that keeps pushing the ecosystem forward. If you're enjoying Vite, we invite you to participate and help us. Check out our [Contributing Guide](https://github.com/vitejs/vite/blob/main/CONTRIBUTING.md), and jump into [triaging issues](https://github.com/vitejs/vite/issues), [reviewing PRs](https://github.com/vitejs/vite/pulls), answering questions at [GitHub Discussions](https://github.com/vitejs/vite/discussions) and helping others in the community in [Vite Land](https://chat.vite.dev).
+我们感谢 [Vite Core 的 900 位贡献者](https://github.com/vitejs/vite/graphs/contributors)，以及插件、集成、工具和翻译的维护者。他们持续推动生态系统向前发展。如果你喜欢 Vite，我们诚邀你参与进来，帮助我们改进项目。请查看我们的 [贡献指南](https://github.com/vitejs/vite/blob/main/CONTRIBUTING.md)，并参与 [分类 issue](https://github.com/vitejs/vite/issues)、[审阅 PR](https://github.com/vitejs/vite/pulls)、回答 [GitHub Discussions](https://github.com/vitejs/vite/discussions) 中的问题，以及在 Vite Land 的 [帮助论坛](https://chat.vite.dev) 中帮助其他社区成员。
 
-## Acknowledgments
+## 致谢 {#acknowledgments}
 
-Vite 5.1 is possible thanks to our community of contributors, maintainers in the ecosystem, and the [Vite Team](/team). A shout out to the individuals and companies sponsoring Vite development. [StackBlitz](https://stackblitz.com/), [Nuxt Labs](https://nuxtlabs.com/), and [Astro](https://astro.build) for hiring Vite team members. And also to the sponsors on [Vite's GitHub Sponsors](https://github.com/sponsors/vitejs), [Vite's Open Collective](https://opencollective.com/vite), and [Evan You's GitHub Sponsors](https://github.com/sponsors/yyx990803).
+Vite 5.1 的发布离不开社区贡献者、生态系统维护者和 [Vite 团队](/team) 的共同努力。特别感谢为 Vite 开发提供赞助的个人和公司，尤其感谢 [StackBlitz](https://stackblitz.com/)、[Nuxt Labs](https://nuxtlabs.com/) 和 [Astro](https://astro.build) 通过雇佣 Vite 团队成员来支持 Vite。我们还要感谢在 [Vite 的 GitHub Sponsors](https://github.com/sponsors/vitejs)、[Vite 的 Open Collective](https://opencollective.com/vite) 和 [Evan You 的 GitHub Sponsors](https://github.com/sponsors/yyx990803) 上支持我们的赞助者。
