@@ -22,6 +22,7 @@ vite [root]
 | `--cors`                  | 启用 CORS (`boolean`)                                                                         |
 | `--strictPort`            | 如果指定的端口已在使用中，则退出 (`boolean`)                                                  |
 | `--force`                 | 强制优化器忽略缓存并重新构建 (`boolean`)                                                      |
+| `--experimentalBundle`    | 使用实验性的全量打包模式（此模式仍处于高度实验阶段）(`boolean`)                              |
 | `-c, --config <file>`     | 使用指定的配置文件 (`string`)                                                                 |
 | `--base <path>`           | 公共基础路径（默认为：`/`）(`string`)                                                         |
 | `-l, --logLevel <level>`  | info \| warn \| error \| silent (`string`)                                                    |
@@ -63,7 +64,7 @@ vite build [root]
 | `-w, --watch`                  | 在磁盘中模块发生变化时，重新构建 (`boolean`)                                                                                                                                    |
 | `-c, --config <file>`          | 使用指定的配置文件 (`string`)                                                                                                                                                   |
 | `--base <path>`                | 公共基础路径（默认为：`/`）(`string`)                                                                                                                                           |
-| `-l, --logLevel <level>`       | Info \| warn \| error \| silent (`string`)                                                                                                                                      |
+| `-l, --logLevel <level>`       | info \| warn \| error \| silent (`string`)                                                                                                                                      |
 | `--clearScreen`                | 允许或禁用打印日志时清除屏幕 (`boolean`)                                                                                                                                        |
 | `--configLoader <loader>`      | 使用 `bundle` 来采用 Rolldown 打包配置，或是 `runner`（实验性）来在运行时处理，或是 `native`（实验性）来使用原生运行时加载，默认是 `bundle`                                     |
 | `--profile`                    | 启动内置的 Node.js 调试器（查看 [性能瓶颈](/guide/troubleshooting#performance-bottlenecks)）                                                                                    |
@@ -94,7 +95,7 @@ vite optimize [root]
 | `--force`                 | 强制优化器忽略缓存并重新构建 (`boolean`)                                                                                                   |
 | `-c, --config <file>`     | 使用指定的配置文件 (`string`)                                                                                                              |
 | `--base <path>`           | 公共基础路径（默认为：`/`）(`string`)                                                                                                      |
-| `-l, --logLevel <level>`  | Info \| warn \| error \| silent (`string`)                                                                                                 |
+| `-l, --logLevel <level>`  | info \| warn \| error \| silent (`string`)                                                                                                 |
 | `--clearScreen`           | 允许或禁用打印日志时清除屏幕 (`boolean`)                                                                                                   |
 | `--configLoader <loader>` | 使用 `bundle` 来采用 Rolldown 打包配置，或是 `runner`（实验性）来在运行时处理，或是 `native`（实验性）来使用原生运行时加载，默认是 `bundle` |
 | `-d, --debug [feat]`      | 显示调试日志 (`string \| boolean`)                                                                                                         |
@@ -125,7 +126,7 @@ vite preview [root]
 | `--outDir <dir>`          | 输出目录（默认为：`dist`） (`string`)                                                                                                        |
 | `-c, --config <file>`     | 使用指定的配置文件 (`string`)                                                                                                              |
 | `--base <path>`           | 公共基础路径（默认为：`/`）(`string`)                                                                                                      |
-| `-l, --logLevel <level>`  | Info \| warn \| error \| silent (`string`)                                                                                                 |
+| `-l, --logLevel <level>`  | info \| warn \| error \| silent (`string`)                                                                                                 |
 | `--clearScreen`           | 允许或禁用打印日志时清除屏幕 (`boolean`)                                                                                                   |
 | `--configLoader <loader>` | 使用 `bundle` 来采用 Rolldown 打包配置，或是 `runner`（实验性）来在运行时处理，或是 `native`（实验性）来使用原生运行时加载，默认是 `bundle` |
 | `-d, --debug [feat]`      | 显示调试日志 (`string \| boolean`)                                                                                                         |
