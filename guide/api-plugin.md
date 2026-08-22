@@ -339,6 +339,58 @@ Vite 插件也可以提供钩子来服务于特定的 Vite 目标。这些钩子
   })
   ```
 
+### `closeServer` {#closeserver}
+
+- **类型：** `(context: { reason: 'restart' | 'close' }) => void | Promise<void>`
+- **种类：** `async`，`parallel`
+- **作用域：** [全局](/guide/api-environment-plugins#per-environment-hooks-and-global-hooks)
+
+  在开发服务器重启或关闭、且服务器完成清理后调用。通常用于释放在 [`configureServer`](/guide/api-plugin.html#configureserver) 中创建的资源。
+
+  `context.reason` 用于区分这两种情况：
+  - `'restart'`：服务器正在重启（例如配置文件发生变化，或调用了 `server.restart()`）。
+  - `'close'`：服务器正在关闭（例如按下 `q` 快捷键，或调用了 `server.close()`）。
+
+  ```js
+  const myPlugin = () => {
+    let resource
+    return {
+      name: 'close-server',
+      configureServer(server) {
+        resource = createResource()
+      },
+      async closeServer({ reason }) {
+        if (reason === 'close') {
+          await resource.dispose()
+        }
+      },
+    }
+  }
+  ```
+
+### `closePreviewServer` {#closepreviewserver}
+
+- **类型：** `() => void | Promise<void>`
+- **种类：** `async`，`parallel`
+- **作用域：** [全局](/guide/api-environment-plugins#per-environment-hooks-and-global-hooks)
+
+  与 [`closeServer`](/guide/api-plugin.html#closeserver) 相同，但用于预览服务器。预览服务器不会重启，因此没有 `reason`。
+
+  ```js
+  const myPlugin = () => {
+    let resource
+    return {
+      name: 'close-preview-server',
+      configurePreviewServer(server) {
+        resource = createResource()
+      },
+      async closePreviewServer() {
+        await resource.dispose()
+      },
+    }
+  }
+  ```
+
 ### `transformIndexHtml` {#transformindexhtml}
 
 - **类型：** `IndexHtmlTransformHook | { order?: 'pre' | 'post', handler: IndexHtmlTransformHook }`
@@ -545,6 +597,33 @@ function outputMetadataPlugin(): Plugin {
     },
   }
 }
+```
+
+## 引用生成的资源 {#referencing-emitted-assets}
+
+要从插件中生成资源，请调用 [`this.emitFile({ type: 'asset', ... })`](https://rolldown.rs/reference/Interface.PluginContext#in-depth-type-asset)。它会返回一个 `referenceId`，你可以用它生成资源的 URL，因为资源的最终文件名要到构建包生成时才能确定。
+
+### 在 JavaScript 中
+
+使用 `import.meta.ROLLDOWN_FILE_URL_<referenceId>`：
+
+```js
+const referenceId = this.emitFile({
+  type: 'asset',
+  name: 'icon.png',
+  source: fileContent,
+})
+
+// 这是一个 JavaScript 表达式，因此需要使用字符串拼接来追加查询参数或哈希
+return `export default import.meta.ROLLDOWN_FILE_URL_${referenceId} + '#frag'`
+```
+
+### 在 CSS 或 HTML 中
+
+`import.meta.ROLLDOWN_FILE_URL_<referenceId>` 只能在 JavaScript 表达式位置使用。在 CSS 或 HTML 中，应改用 `__VITE_ASSET__<referenceId>__` 标记，并将查询参数或哈希直接追加在其后：
+
+```css
+background: url(__VITE_ASSET__<referenceId>__#frag);
 ```
 
 ## 插件顺序 {#plugin-ordering}
