@@ -309,6 +309,8 @@ export default defineConfig({
 
 文件系统监视器选项传递给 [chokidar](https://github.com/paulmillr/chokidar/tree/3.6.0#api)。
 
+启用 bundled-dev 模式时，也接受 [Rolldown 监视选项](https://rolldown.rs/reference/InputOptions.watch)（例如 `usePolling`、`pollInterval`、`useDebounce`、`debounceDuration`、`include` 和 `exclude`）。仅限 chokidar 的选项仍由 chokidar 监视器使用，它会继续监视模块图之外的文件，例如配置文件依赖项和环境文件。
+
 Vite 服务器的文件监听器默认会监听 `root` 目录，同时会跳过 `.git/`、`node_modules/`、`test-results/`，以及 Vite 的 `cacheDir` 和 `build.outDir` 这些目录。当监听到文件更新时，Vite 会应用 HMR 并且只在需要时更新页面。
 
 如果设置为 `null`，则不会监视任何文件。[`server.watcher`](/guide/api-javascript.html#vitedevserver) 将提供兼容的事件发射器，但调用 `add` 或 `unwatch` 将不起作用。

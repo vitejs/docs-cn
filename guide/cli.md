@@ -28,7 +28,7 @@ vite [root]
 | `-l, --logLevel <level>`  | info \| warn \| error \| silent (`string`)                                                    |
 | `--clearScreen`           | 允许或禁用打印日志时清除屏幕 (`boolean`)                                                      |
 | `--configLoader <loader>` | 使用 `bundle` 来采用 Rolldown 打包配置，或是 `runner`（实验性）来在运行时处理，或是 `native`（实验性）来使用原生运行时加载，默认是 `bundle` |
-| `--profile`               | 启动内置的 Node.js 调试器（查看 [性能瓶颈](/guide/troubleshooting#performance-bottlenecks)）  |
+| `--profile [name]`        | 启动内置的 Node.js 调试器，并将性能分析文件写入 `<name>.cpuprofile`（查看 [性能瓶颈](/guide/troubleshooting#performance-bottlenecks)）(`boolean \| string`) |
 | `-d, --debug [feat]`      | 显示调试日志 (`string \| boolean`)                                                            |
 | `-f, --filter <filter>`   | 过滤调试日志 (`string`)                                                                       |
 | `-m, --mode <mode>`       | 设置环境模式 (`string`)                                                                       |
@@ -67,7 +67,7 @@ vite build [root]
 | `-l, --logLevel <level>`       | info \| warn \| error \| silent (`string`)                                                                                                                                      |
 | `--clearScreen`                | 允许或禁用打印日志时清除屏幕 (`boolean`)                                                                                                                                        |
 | `--configLoader <loader>`      | 使用 `bundle` 来采用 Rolldown 打包配置，或是 `runner`（实验性）来在运行时处理，或是 `native`（实验性）来使用原生运行时加载，默认是 `bundle`                                     |
-| `--profile`                    | 启动内置的 Node.js 调试器（查看 [性能瓶颈](/guide/troubleshooting#performance-bottlenecks)）                                                                                    |
+| `--profile [name]`             | 启动内置的 Node.js 调试器，并将性能分析文件写入 `<name>.cpuprofile`（查看 [性能瓶颈](/guide/troubleshooting#performance-bottlenecks)）(`boolean \| string`) |
 | `-d, --debug [feat]`           | 显示调试日志 (`string \| boolean`)                                                                                                                                              |
 | `-f, --filter <filter>`        | 过滤调试日志 (`string`)                                                                                                                                                         |
 | `-m, --mode <mode>`            | 设置环境模式 (`string`)                                                                                                                                                         |
