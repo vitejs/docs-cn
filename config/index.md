@@ -30,7 +30,7 @@ vite --config my-config.js
 
 ## 配置智能提示 {#config-intellisense}
 
-因为 Vite 本身附带 TypeScript 类型，所以你可以通过 IDE 和 jsdoc 的配合来实现智能提示：
+因为 Vite 本身附带 TypeScript 类型，所以你可以通过 IDE 和 JSDoc 的配合来实现智能提示：
 
 ```js
 /** @type {import('vite').UserConfig} */
@@ -39,7 +39,7 @@ export default {
 }
 ```
 
-另外你可以使用 `defineConfig` 工具函数，这样不用 jsdoc 注解也可以获取类型提示：
+另外你可以使用 `defineConfig` 工具函数，这样不用 JSDoc 注解也可以获取类型提示：
 
 ```js
 import { defineConfig } from 'vite'
