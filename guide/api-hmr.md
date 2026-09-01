@@ -167,7 +167,11 @@ if (import.meta.hot) {
 
 ## `hot.prune(cb)` {#hot-prune-cb}
 
+<<<<<<< HEAD
 注册一个回调，当模块在页面上不再被导入时调用。与 `hot.dispose` 相比，如果源代码更新时自行清理了副作用，你只需要在模块从页面上被删除时，使用此方法进行清理。Vite 目前在 `.css` 导入上使用此方法。
+=======
+Register a callback that will be called when the module is no longer imported on the page. Compared to `hot.dispose`, this can be used if the source code cleans up side-effects by itself on updates and you only need to clean-up when it's removed from the page. Vite currently uses this for `.css` imports.
+>>>>>>> e8ea0d214f639070abb858acfa05d5691d746d1e
 
 ```js twoslash
 import 'vite/client'

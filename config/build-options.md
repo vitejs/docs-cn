@@ -8,7 +8,11 @@
 - **默认值：** `'baseline-widely-available'`
 - **相关内容：** [浏览器兼容性](/guide/build#browser-compatibility)
 
+<<<<<<< HEAD
 最终软件包的浏览器兼容性目标。默认值是 Vite 的一个特殊值 `'baseline-widely-available'`，该值以每个主要版本所固定日期时与 [Baseline](https://web-platform-dx.github.io/baseline/) Widely Available 兼容的最低浏览器版本为目标（[此主要版本的日期为 2026-01-01](https://web-platform-dx.github.io/supported-browsers/?widelyAvailableOnDate=2026-01-01)）。具体来说，它是 `['chrome111', 'edge111', 'firefox114', 'safari16.4', 'ios16.4']`。
+=======
+Browser compatibility target for the final bundle. The default value is a Vite special value, `'baseline-widely-available'`, which targets the minimum browser versions compatible with [Baseline](https://web-platform-dx.github.io/baseline/) Widely Available as of a date fixed for each major release ([2026-01-01 for this major](https://web-platform-dx.github.io/supported-browsers/?widelyAvailableOnDate=2026-01-01)). Specifically, it is `['chrome111', 'edge111', 'firefox114', 'safari16.4', 'ios16.4']`.
+>>>>>>> e8ea0d214f639070abb858acfa05d5691d746d1e
 
 另一个特殊值是 `'esnext'` —— 即假设有原生动态导入支持，并只执行最低限度的转译。
 
@@ -86,7 +90,11 @@ modulePreload: {
 - **类型：** `string`
 - **默认值：** `assets`
 
+<<<<<<< HEAD
 指定生成静态资源的存放路径（相对于 `build.outDir`）。在 [库模式](/guide/build#library-mode) 下不能使用。
+=======
+Specify the directory to nest generated assets under (relative to `build.outDir`). This is not used in [Library Mode](/guide/build#library-mode).
+>>>>>>> e8ea0d214f639070abb858acfa05d5691d746d1e
 
 ## build.assetsInlineLimit {#build-assetsinlinelimit}
 
@@ -123,7 +131,15 @@ Git LFS 占位符会自动排除在内联之外，因为它们不包含其所表
 
 此选项允许用户为 CSS 的压缩设置一个不同的浏览器 target，此处的 target 并非是用于 JavaScript 转写目标。
 
+<<<<<<< HEAD
 当 `build.cssMinify` 为 `'lightningcss'`（默认值）时，在最小化压缩阶段，此选项的优先级高于 [`css.lightningcss.targets`](./shared-options.md#css-lightningcss)。
+=======
+When `build.cssMinify` is `'lightningcss'` (the default), this option takes precedence over [`css.lightningcss.targets`](./shared-options.md#css-lightningcss) for the minification step.
+
+It should only be used when you are targeting a non-mainstream browser.
+One example is Android WeChat WebView, which supports most modern JavaScript features but not the [`#RGBA` hexadecimal color notation in CSS](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#rgb_colors).
+In this case, you need to set `build.cssTarget` to `chrome61` to prevent Vite from transforming `rgba()` colors into `#RGBA` hexadecimal notations.
+>>>>>>> e8ea0d214f639070abb858acfa05d5691d746d1e
 
 应只在针对非主流浏览器时使用。最直观的示例是当你要兼容的场景是安卓微信中的 webview 时，它支持大多数现代的 JavaScript 功能，但并不支持 [CSS 中的 `#RGBA` 十六进制颜色符号](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#rgb_colors)。
 这种情况下，你需要将 `build.cssTarget` 设置为 `chrome61`，以防止 vite 将 `rgba()` 颜色转化为 `#RGBA` 十六进制符号的形式。
@@ -365,7 +381,11 @@ npm add -D terser
 - **类型：** [`WatcherOptions`](https://rolldown.rs/reference/InputOptions.watch)`| null`
 - **默认值：** `null`
 
+<<<<<<< HEAD
 设置为 `{}` 则会启用 Rolldown 的监听器。对于只在构建阶段或者集成流程使用的插件很常用。
+=======
+Set to `{}` to enable Rolldown watcher. This is mostly used in cases that involve build-only plugins or integrations processes.
+>>>>>>> e8ea0d214f639070abb858acfa05d5691d746d1e
 
 ::: warning 在 Windows Linux 子系统（WSL）上使用 Vite
 

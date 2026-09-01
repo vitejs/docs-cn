@@ -158,7 +158,17 @@ export default defineConfig({
 })
 ```
 
+<<<<<<< HEAD
 ::: warning WebSocket 的来源检查
+=======
+::: warning Origin check for WebSockets
+
+Vite does not check the origin of WebSocket requests before proxying. The proxy target is expected to check the `Origin` header or other checks. Note that the `rewriteWsOrigin` option will rewrite the origin to the target origin and will cause the origin check to be bypassed.
+
+:::
+
+## server.cors
+>>>>>>> e8ea0d214f639070abb858acfa05d5691d746d1e
 
 Vite 在代理 WebSocket 请求前不会检查其来源。代理目标应检查 `Origin` 标头或执行其他检查。请注意，`rewriteWsOrigin` 选项会将来源重写为目标来源，从而绕过来源检查。
 
@@ -309,7 +319,13 @@ export default defineConfig({
 
 文件系统监视器选项传递给 [chokidar](https://github.com/paulmillr/chokidar/tree/3.6.0#api)。
 
+<<<<<<< HEAD
 启用 bundled-dev 模式时，也接受 [Rolldown 监视选项](https://rolldown.rs/reference/InputOptions.watch)（例如 `usePolling`、`pollInterval`、`useDebounce`、`debounceDuration`、`include` 和 `exclude`）。仅限 chokidar 的选项仍由 chokidar 监视器使用，它会继续监视模块图之外的文件，例如配置文件依赖项和环境文件。
+=======
+When bundled-dev mode is enabled, [Rolldown watch options](https://rolldown.rs/reference/InputOptions.watch) (for example, `usePolling`, `pollInterval`, `useDebounce`, `debounceDuration`, `include`, `exclude`) are also accepted. The chokidar-only options are still used by the chokidar watcher, which keeps watching files outside the module graph, such as config file dependencies and env files.
+
+The Vite server watcher watches the `root` and skips the `.git/`, `node_modules/`, `test-results/`, and Vite's `cacheDir` and `build.outDir` directories by default. When updating a watched file, Vite will apply HMR and update the page only if needed.
+>>>>>>> e8ea0d214f639070abb858acfa05d5691d746d1e
 
 Vite 服务器的文件监听器默认会监听 `root` 目录，同时会跳过 `.git/`、`node_modules/`、`test-results/`，以及 Vite 的 `cacheDir` 和 `build.outDir` 这些目录。当监听到文件更新时，Vite 会应用 HMR 并且只在需要时更新页面。
 
@@ -336,12 +352,23 @@ Vite 服务器的文件监听器默认会监听 `root` 目录，同时会跳过 
 
 ## server.middlewareMode {#server-middlewaremode}
 
+<<<<<<< HEAD
 - **类型：** `boolean | { server: http.Server }`
 - **默认值：** `false`
+=======
+- **Type:** `boolean | { server: http.Server }`
+- **Default:** `false`
+>>>>>>> e8ea0d214f639070abb858acfa05d5691d746d1e
 
 以中间件模式创建 Vite 服务器。
 
+<<<<<<< HEAD
 如果为 [proxy](./server-options#server-proxy) 配置了 WebSocket，则应提供 `server` 以正确绑定代理。
+=======
+If [proxy](./server-options#server-proxy) is setup for WebSocket, the `server` should be provided to bind the proxy correctly.
+
+- **Related:** [appType](./shared-options#apptype), [SSR - Setting Up the Dev Server](/guide/ssr#setting-up-the-dev-server)
+>>>>>>> e8ea0d214f639070abb858acfa05d5691d746d1e
 
 - **相关内容：** [appType](./shared-options#apptype)，[SSR - 设置开发服务器](/guide/ssr#setting-up-the-dev-server)
 
@@ -469,7 +496,11 @@ export default defineConfig({
 
 是否忽略服务器 sourcemap 中的源文件，用于填充 [`x_google_ignoreList` source map 扩展](https://developer.chrome.com/articles/x-google-ignore-list/)。
 
+<<<<<<< HEAD
 对开发服务器来说，`server.sourcemapIgnoreList` 等价于 [`build.rolldownOptions.output.sourcemapIgnoreList`](https://rolldown.rs/reference/OutputOptions.sourcemapIgnoreList)。两个配置选项之间的区别在于，Rolldown 函数使用相对路径调用 `sourcePath`，而 `server.sourcemapIgnoreList` 使用绝对路径调用。在开发过程中，大多数模块的映射和源文件位于同一个文件夹中，因此 `sourcePath` 的相对路径就是文件名本身。在这些情况下，使用绝对路径更加方便。
+=======
+`server.sourcemapIgnoreList` is the equivalent of [`build.rolldownOptions.output.sourcemapIgnoreList`](https://rolldown.rs/reference/OutputOptions.sourcemapIgnoreList) for the dev server. A difference between the two config options is that the Rolldown function is called with a relative path for `sourcePath` while `server.sourcemapIgnoreList` is called with an absolute path. During dev, most modules have the map and the source in the same folder, so the relative path for `sourcePath` is the file name itself. In these cases, absolute paths make it convenient to be used instead.
+>>>>>>> e8ea0d214f639070abb858acfa05d5691d746d1e
 
 默认情况下，它会排除所有包含 `node_modules` 的路径。你可以传递 `false` 来禁用此行为，或者为了获得完全的控制，可以传递一个函数，该函数接受源路径和 sourcemap 的路径，并返回是否忽略源路径。
 
@@ -485,6 +516,11 @@ export default defineConfig({
 })
 ```
 
+<<<<<<< HEAD
 ::: tip 注意
 需要单独设置 [`server.sourcemapIgnoreList`](#server-sourcemapignorelist) 和 [`build.rolldownOptions.output.sourcemapIgnoreList`](https://rolldown.rs/reference/OutputOptions.sourcemapIgnoreList)。`server.sourcemapIgnoreList` 是一个仅适用于服务端的配置，并不从定义好的 Rolldown 选项中获得其默认值。
+=======
+::: tip Note
+[`server.sourcemapIgnoreList`](#server-sourcemapignorelist) and [`build.rolldownOptions.output.sourcemapIgnoreList`](https://rolldown.rs/reference/OutputOptions.sourcemapIgnoreList) need to be set independently. `server.sourcemapIgnoreList` is a server only config and doesn't get its default value from the defined Rolldown options.
+>>>>>>> e8ea0d214f639070abb858acfa05d5691d746d1e
 :::

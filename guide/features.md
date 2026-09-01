@@ -281,7 +281,11 @@ Sass 和 Less 文件也支持 `@import` 别名和 URL 变基（具体请参阅 [
 
 如果项目包含有效的 PostCSS 配置（任何受 [postcss-load-config](https://github.com/postcss/postcss-load-config) 支持的格式，例如 `postcss.config.js`），它将会自动应用于所有已导入的 CSS。
 
+<<<<<<< HEAD
 请注意，CSS 最小化压缩将在 PostCSS 之后运行，并会使用 [`build.cssTarget`](/config/build-options.md#build-csstarget) 选项。
+=======
+Note that CSS minification will run after PostCSS and will use the [`build.cssTarget`](/config/build-options.md#build-csstarget) option.
+>>>>>>> e8ea0d214f639070abb858acfa05d5691d746d1e
 
 ### CSS Modules {#css-modules}
 
@@ -655,9 +659,15 @@ const module = await import(`./dir/${file}.js`)
 
 另请注意，动态导入必须符合以下规则才能被打包：
 
+<<<<<<< HEAD
 - 导入语句必须以 `./`、`../` 或 `#` 开头：``import(`./dir/${foo}.js`)`` 有效，但 ``import(`${foo}.js`)`` 无效。
 - 导入语句必须以文件扩展名结尾：``import(`./dir/${foo}.js`)`` 有效，但 ``import(`./dir/${foo}`)`` 无效。
 - 导入到自身目录时，必须指定文件名模式：``import(`./prefix-${foo}.js`)`` 有效，但 ``import(`./${foo}.js`)`` 无效。
+=======
+- Imports must start with `./` or `../` or `#`: ``import(`./dir/${foo}.js`)`` is valid, but ``import(`${foo}.js`)`` is not.
+- Imports must end with a file extension: ``import(`./dir/${foo}.js`)`` is valid, but ``import(`./dir/${foo}`)`` is not.
+- Imports to the own directory must specify a file name pattern: ``import(`./prefix-${foo}.js`)`` is valid, but ``import(`./${foo}.js`)`` is not.
+>>>>>>> e8ea0d214f639070abb858acfa05d5691d746d1e
 
 这些规则旨在防止意外导入不应打包的文件。例如，如果没有这些规则，`import(foo)` 会将文件系统中的所有内容都打包。
 

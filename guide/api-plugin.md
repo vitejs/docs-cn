@@ -339,7 +339,63 @@ Vite 插件也可以提供钩子来服务于特定的 Vite 目标。这些钩子
   })
   ```
 
+<<<<<<< HEAD
 ### `closeServer` {#closeserver}
+=======
+### `closeServer`
+
+- **Type:** `(context: { reason: 'restart' | 'close' }) => void | Promise<void>`
+- **Kind:** `async`, `parallel`
+- **Scope:** [Global](/guide/api-environment-plugins#per-environment-hooks-and-global-hooks)
+
+  Called when the dev server is restarted or closed, after the server has been torn down. Typically used to dispose resources created in [`configureServer`](/guide/api-plugin.html#configureserver).
+
+  The `context.reason` distinguishes the two cases:
+  - `'restart'`: the server is restarting (e.g. a config file change or a call to `server.restart()`).
+  - `'close'`: the server is shutting down (e.g. the `q` shortcut, or a call to `server.close()`).
+
+  ```js
+  const myPlugin = () => {
+    let resource
+    return {
+      name: 'close-server',
+      configureServer(server) {
+        resource = createResource()
+      },
+      async closeServer({ reason }) {
+        if (reason === 'close') {
+          await resource.dispose()
+        }
+      },
+    }
+  }
+  ```
+
+### `closePreviewServer`
+
+- **Type:** `() => void | Promise<void>`
+- **Kind:** `async`, `parallel`
+- **Scope:** [Global](/guide/api-environment-plugins#per-environment-hooks-and-global-hooks)
+
+  Same as [`closeServer`](/guide/api-plugin.html#closeserver) but for the preview server. The preview server never restarts, so there is no `reason`.
+
+  ```js
+  const myPlugin = () => {
+    let resource
+    return {
+      name: 'close-preview-server',
+      configurePreviewServer(server) {
+        resource = createResource()
+      },
+      async closePreviewServer() {
+        await resource.dispose()
+      },
+    }
+  }
+  ```
+
+### `transformIndexHtml`
+>>>>>>> e8ea0d214f639070abb858acfa05d5691d746d1e
 
 - **类型：** `(context: { reason: 'restart' | 'close' }) => void | Promise<void>`
 - **种类：** `async`，`parallel`
@@ -534,7 +590,11 @@ Vite 插件也可以提供钩子来服务于特定的 Vite 目标。这些钩子
 
 ## 插件上下文 Meta {#plugin-context-meta}
 
+<<<<<<< HEAD
 对于可以访问插件上下文的插件钩子，Vite 会在 `this.meta` 上暴露额外的属性：
+=======
+For plugin hooks that have access to the plugin context, Vite exposes additional properties on `this.meta`:
+>>>>>>> e8ea0d214f639070abb858acfa05d5691d746d1e
 
 - `this.meta.viteVersion`：当前 Vite 版本字符串（例如 `"8.0.0"`）。
 
@@ -599,7 +659,38 @@ function outputMetadataPlugin(): Plugin {
 }
 ```
 
+<<<<<<< HEAD
 ## 引用生成的资源 {#referencing-emitted-assets}
+=======
+## Referencing Emitted Assets
+
+To emit an asset from a plugin, call [`this.emitFile({ type: 'asset', ... })`](https://rolldown.rs/reference/Interface.PluginContext#in-depth-type-asset). It returns a `referenceId` that you can use to generate the asset's URL, since its final file name isn't known until the bundle is generated.
+
+### In JavaScript
+
+Use `import.meta.ROLLDOWN_FILE_URL_<referenceId>`:
+
+```js
+const referenceId = this.emitFile({
+  type: 'asset',
+  name: 'icon.png',
+  source: fileContent,
+})
+
+// it's a JavaScript expression, so append any query or hash with string concatenation
+return `export default import.meta.ROLLDOWN_FILE_URL_${referenceId} + '#frag'`
+```
+
+### In CSS or HTML
+
+`import.meta.ROLLDOWN_FILE_URL_<referenceId>` only works in JavaScript expression position. In CSS or HTML, use the `__VITE_ASSET__<referenceId>__` token instead, appending any query or hash right after it:
+
+```css
+background: url(__VITE_ASSET__<referenceId>__#frag);
+```
+
+## Plugin Ordering
+>>>>>>> e8ea0d214f639070abb858acfa05d5691d746d1e
 
 要从插件中生成资源，请调用 [`this.emitFile({ type: 'asset', ... })`](https://rolldown.rs/reference/Interface.PluginContext#in-depth-type-asset)。它会返回一个 `referenceId`，你可以用它生成资源的 URL，因为资源的最终文件名要到构建包生成时才能确定。
 
@@ -855,8 +946,13 @@ export default defineConfig({
 
 Vite 会在内部从 `CustomEventMap` 这个接口推断出 payload 的类型，可以通过扩展这个接口来为自定义事件进行类型定义：
 
+<<<<<<< HEAD
 :::tip 提示
 在指定 TypeScript 声明文件时，确保包含 `.d.ts` 扩展名。否则，TypeScript 可能不会知道试图扩展的是哪个文件。
+=======
+:::tip Note
+Make sure to include the `.d.ts` extension when specifying TypeScript declaration files. Otherwise, TypeScript may not know which file the module is trying to extend.
+>>>>>>> e8ea0d214f639070abb858acfa05d5691d746d1e
 :::
 
 ```ts [events.d.ts]

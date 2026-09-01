@@ -240,7 +240,11 @@ vite build --profile
 一旦应用程序在浏览器中打开，请等待其完成加载，然后返回终端并按下 `p` 键（将停止 Node.js 调试器），然后按下 `q` 键停止开发服务器。
 :::
 
+<<<<<<< HEAD
 Node.js 调试器将在根文件夹中生成 `vite-profile-0.cpuprofile` 文件。你也可以传入 `--profile <name>`（或 `--profile=<name>`），改为写入 `<name>.cpuprofile`。然后前往 <https://www.speedscope.app/>，点击 `BROWSE` 按钮上传 CPU 性能分析文件以检查结果。
+=======
+Node.js inspector will generate `vite-profile-0.cpuprofile` in the root folder. You can pass `--profile <name>` (or `--profile=<name>`) to write `<name>.cpuprofile` instead. Go to https://www.speedscope.app/, and upload the CPU profile using the `BROWSE` button to inspect the result.
+>>>>>>> e8ea0d214f639070abb858acfa05d5691d746d1e
 
 可以安装 [vite-plugin-inspect](https://github.com/antfu/vite-plugin-inspect) 插件，它可以让你检查 Vite 插件转换时的中间态，并帮助你确定哪些插件或中间件是你应用的瓶颈。该插件可以在开发和构建模式下使用。请查看其 readme 以获取更多详细信息。
 

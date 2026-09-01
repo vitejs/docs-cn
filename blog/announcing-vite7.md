@@ -61,7 +61,11 @@ Vite 现在要求使用 Node.js 20.19+ 或 22.12+。由于 Node.js 18 已于 202
 
 我们要求使用这些新的 Node.js 版本范围，以确保 Node.js 可以无需启用标志即可支持 `require(esm)`。这使我们能够仅以 ESM 格式发布 Vite 7.0，同时不会阻止 CJS 模块通过 `require` 调用 Vite 的 JavaScript API。有关当前 ESM 在生态系统中的发展状况的详细分析，请查看 Anthony Fu 的文章 [《迈向纯 ESM》](https://antfu.me/posts/move-on-to-esm-only)。
 
+<<<<<<< HEAD
 ## 默认浏览器兼容性目标已更改为 Baseline Widely Available {#default-browser-target-changed-to-baseline-widely-available}
+=======
+[Baseline](https://web-platform-dx.github.io/baseline/) gives us clear information about which web platform features work across their core browser set today. Baseline Widely Available indicates the feature is well-established and works across many devices and browser versions, being available across browsers for at least 30 months.
+>>>>>>> e8ea0d214f639070abb858acfa05d5691d746d1e
 
 [Baseline](https://web-platform-dx.github.io/baseline/) 为我们提供了明确的信息，指出了哪些 Web 平台特性在当今主流浏览器中可用。Baseline Widely Available，表示该功能已经十分成熟，可在多种设备和浏览器版本中正常工作，并且在各浏览器中至少已支持 30 个月。
 
