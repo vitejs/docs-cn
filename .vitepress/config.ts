@@ -9,16 +9,8 @@ import {
   groupIconMdPlugin,
   groupIconVitePlugin,
 } from 'vitepress-plugin-group-icons'
-<<<<<<< HEAD
-import { graphvizMarkdownPlugin } from 'vitepress-plugin-graphviz'
 // import llmstxt from 'vitepress-plugin-llms'
-import { extendConfig } from '@voidzero-dev/vitepress-theme/config'
-import type { FooterLink } from '@voidzero-dev/vitepress-theme'
 import packageJson from '../package.json' with { type: 'json' }
-=======
-import llmstxt from 'vitepress-plugin-llms'
-import packageJson from '../../packages/vite/package.json' with { type: 'json' }
->>>>>>> e8ea0d214f639070abb858acfa05d5691d746d1e
 import { buildEnd } from './buildEnd.config.ts'
 
 const viteVersion = packageJson.version
@@ -535,13 +527,8 @@ const config = defineConfig({
     async config(md) {
       md.use(groupIconMdPlugin, {
         titleBar: {
-<<<<<<< HEAD
-          includeSnippet: true
-        }
-=======
           includeSnippet: true,
         },
->>>>>>> e8ea0d214f639070abb858acfa05d5691d746d1e
       })
       await graphvizMarkdownPlugin(md)
     },

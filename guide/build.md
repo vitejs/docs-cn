@@ -6,11 +6,7 @@
 
 ## 浏览器兼容性 {#browser-compatibility}
 
-<<<<<<< HEAD
 默认情况下，生产包以每个主要版本所固定日期时与 [Baseline](https://web-platform-dx.github.io/baseline/) Widely Available 兼容的最低浏览器版本为目标。此主要版本的默认浏览器支持范围是：
-=======
-By default, the production bundle targets the minimum browser versions compatible with [Baseline](https://web-platform-dx.github.io/baseline/) Widely Available as of a date fixed for each major release. The default browser support range for this major is:
->>>>>>> e8ea0d214f639070abb858acfa05d5691d746d1e
 
 <!-- 查找 `ESBUILD_MODULES_TARGET` 常量以获取更多信息。 -->
 
@@ -84,19 +80,11 @@ window.addEventListener('vite:preloadError', (event) => {
 })
 ```
 
-<<<<<<< HEAD
 当发生新的部署时，托管服务可能会删除先前部署中的资源。因此，在新部署之前访问过你网站的用户可能会遇到导入错误。发生此错误的原因是，该用户设备上运行的资源已过期，并且代码尝试导入相应的旧数据块，而该数据块已被删除。此事件对于解决这种情况很有用。在这种情况下，请确保对 HTML 文件设置 `Cache-Control: no-cache`，否则旧资源仍会被引用。
-=======
-When a new deployment occurs, the hosting service may delete the assets from previous deployments. As a result, a user who visited your site before the new deployment might encounter an import error. This error happens because the assets running on that user's device are outdated and the code tries to import the corresponding old chunk, which is deleted. This event is useful for addressing this situation. In this case, make sure to set `Cache-Control: no-cache` on the HTML file, otherwise the old assets will be still referenced.
->>>>>>> e8ea0d214f639070abb858acfa05d5691d746d1e
 
 ## 文件变化时重新构建 {#rebuild-on-files-changes}
 
-<<<<<<< HEAD
 你可以使用 `vite build --watch` 来启用 Rolldown 的监听器。或者，你可以直接通过 `build.watch` 调整底层的 [`WatcherOptions`](https://rolldown.rs/reference/InputOptions.watch) 选项：
-=======
-You can enable Rolldown watcher with `vite build --watch`. Or, you can directly adjust the underlying [`WatcherOptions`](https://rolldown.rs/reference/InputOptions.watch) via `build.watch`:
->>>>>>> e8ea0d214f639070abb858acfa05d5691d746d1e
 
 ```js [vite.config.js]
 export default defineConfig({

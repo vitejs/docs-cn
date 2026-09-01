@@ -1,10 +1,6 @@
 # JavaScript API {#javascript-api}
 
-<<<<<<< HEAD
 Vite 的 JavaScript API 是完全类型化的，我们推荐使用 TypeScript 或者在 VS Code 中启用 JS 类型检查来利用智能提示和类型签名。
-=======
-Vite's JavaScript APIs are fully typed, and it's recommended to use TypeScript or enable JS type checking in VS Code to leverage the IntelliSense and validation.
->>>>>>> e8ea0d214f639070abb858acfa05d5691d746d1e
 
 ## `createServer` {#createserver}
 
@@ -192,11 +188,7 @@ interface ViteDevServer {
 ```
 
 :::info
-<<<<<<< HEAD
 `waitForRequestsIdle` 的设计初衷是作为一种应急措施，以改善那些无法按照 Vite 开发服务器按需加载特性来实现的功能的开发体验。像 Tailwind 这样的工具可以在启动期间使用它，以便在应用代码被加载之前延迟生成应用的 CSS 类，从而避免样式的闪烁变化。当这个函数在加载或转换钩子中被使用，并且使用的是默认的 HTTP1 服务器时，六个 http 通道中的一个将被阻塞，直到服务器处理完所有的静态导入。Vite 的依赖优化器目前使用这个函数来避免在缺少依赖项时进行全页刷新，它通过延迟加载预打包的依赖项，直到从静态导入的源收集到所有的导入依赖项。在未来的主要版本中，Vite 可能会采取不同的策略，将 `optimizeDeps.holdUntilCrawlEnd: false` 设置为默认值，以避免大型应用程序在冷启动期间出现性能下降。
-=======
-`waitForRequestsIdle` is meant to be used as an escape hatch to improve DX for features that can't be implemented following the on-demand nature of the Vite dev server. It can be used during startup by tools like Tailwind to delay generating the app CSS classes until the app code has been seen, avoiding flashes of style changes. When this function is used in a load or transform hook, and the default HTTP1 server is used, one of the six http channels will be blocked until the server processes all static imports. Vite's dependency optimizer currently uses this function to avoid full-page reloads on missing dependencies by delaying loading of pre-bundled dependencies until all imported dependencies have been collected from static imported sources. Vite may switch to a different strategy in a future major release, setting `optimizeDeps.holdUntilCrawlEnd: false` by default to avoid the performance hit in large applications during cold start.
->>>>>>> e8ea0d214f639070abb858acfa05d5691d746d1e
 :::
 
 ## `build` {#build}

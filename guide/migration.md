@@ -11,11 +11,7 @@
 - Firefox 104 → 114
 - Safari 16.0 → 16.4
 
-<<<<<<< HEAD
 这些浏览器版本符合 [Baseline](https://web-platform-dx.github.io/baseline/) 在 2026-01-01 时的“广泛可用”功能集。换句话说，它们都发布于大约两年半前。
-=======
-These browser versions align with [Baseline Widely Available](https://web-platform-dx.github.io/baseline/) feature sets as of 2026-01-01. In other words, they were all released about two and a half years ago.
->>>>>>> e8ea0d214f639070abb858acfa05d5691d746d1e
 
 ## Rolldown {#rolldown}
 

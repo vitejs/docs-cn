@@ -104,11 +104,7 @@ interface HotUpdateOptions {
 
 - `modules` 是由于文件更改而受影响的此环境中的模块的数组。它是一个数组，因为一个文件可能映射到多个服务的模块（例如 Vue SFCs）。
 
-<<<<<<< HEAD
 - `read` 是一个异步读取函数，用于返回文件内容。提供该函数是因为在某些系统上，文件变更回调的触发速度可能过快，编辑器尚未完成对文件的更新；此时直接调用 `fs.readFile` 可能会读取到空内容。传入的 `read` 函数会对这种情况进行处理，使读取行为保持正常和一致。
-=======
-- `read` is an async read function that returns the content of the file. This is provided because on some systems, the file change callback may fire too fast before the editor finishes updating the file, and direct `fs.readFile` will return empty content. The read function passed in normalizes this behavior.
->>>>>>> e8ea0d214f639070abb858acfa05d5691d746d1e
 
 可以选择钩子用于：
 
