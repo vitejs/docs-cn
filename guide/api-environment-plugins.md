@@ -245,7 +245,13 @@ export default defineConfig({
 })
 ```
 
+<<<<<<< HEAD
 `applyToEnvironment` 钩子在配置时调用，目前在 `configResolved` 之后调用，因为生态系统中的项目正在修改其中的插件。未来，环境插件解析可能会移至 `configResolved` 之前。
+=======
+Note that the plugin returned from `applyToEnvironment` or `perEnvironmentPlugin` should not use Vite-specific hooks.
+
+The `applyToEnvironment` hook is called at config time, currently after `configResolved` due to projects in the ecosystem modifying the plugins in it. Environment plugins resolution may be moved before `configResolved` in the future.
+>>>>>>> 2e55819bb114c20990144756177a873e255b812c
 
 ## 应用程序-插件通信 {#application-plugin-communication}
 
