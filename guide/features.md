@@ -53,12 +53,7 @@ export type { T }
 
 ### TypeScript 编译器选项 {#typescript-compiler-options}
 
-<<<<<<< HEAD
-Vite 会参考 `tsconfig.json` 中的一些配置项，并设置相应的 Oxc 转换器选项。对于每个文件，Vite 会使用与该文件匹配且距离最近的父级 `tsconfig.json`，或者使用其 [`references`](https://www.typescriptlang.org/tsconfig/#references) 字段中引用且与该文件匹配的配置。当文件满足配置中的 [`files`](https://www.typescriptlang.org/tsconfig/#files)、[`include`](https://www.typescriptlang.org/tsconfig/#include) 和 [`exclude`](https://www.typescriptlang.org/tsconfig/#exclude) 字段时，Vite 会认为该配置与文件匹配。
-=======
-Vite respects some of the options in `tsconfig.json` and sets the corresponding Oxc Transformer options. By default, Vite uses the closest parent `tsconfig.json` that matches each file. A config referenced by that config's [`references`](https://www.typescriptlang.org/tsconfig/#references) field is used when it matches the file. Vite treats a config as matching the file when the file satisfies the config's [`files`](https://www.typescriptlang.org/tsconfig/#files), [`include`](https://www.typescriptlang.org/tsconfig/#include), and [`exclude`](https://www.typescriptlang.org/tsconfig/#exclude) fields.
->>>>>>> c06f57fd60eaa413250bfa241bf1f580a5e3cc52
-
+Vite 会参考 `tsconfig.json` 中的一些配置项，并设置相应的 Oxc 转换器选项。默认情况下，Vite 会为每个文件使用与其匹配且距离最近的父级 `tsconfig.json`。如果该配置的 [`references`](https://www.typescriptlang.org/tsconfig/#references) 字段所引用的配置与文件匹配，Vite 则会使用该引用配置。当文件满足配置中的 [`files`](https://www.typescriptlang.org/tsconfig/#files)、[`include`](https://www.typescriptlang.org/tsconfig/#include) 和 [`exclude`](https://www.typescriptlang.org/tsconfig/#exclude) 字段时，Vite 会认为该配置与文件匹配。
 当选项同时在 Vite 配置和 `tsconfig.json` 中设置时，Vite 配置中的值优先。
 
 `tsconfig.json` 中 `compilerOptions` 下的一些配置项需要特别注意。

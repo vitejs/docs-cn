@@ -628,25 +628,22 @@ define: {
 
 更多详情请参见 [Vite DevTools](https://github.com/vitejs/devtools)。
 
-<<<<<<< HEAD
-## future {#future}
-=======
-## tsconfig
+## tsconfig {#tsconfig}
 
-- **Type:** `string`
+- **类型：** `string`
 
-Path to the TypeScript configuration file used by Vite. Relative paths are resolved from the project [`root`](#root).
+Vite 使用的 TypeScript 配置文件路径。
+相对路径会基于项目的 [`root`](#root) 进行解析。
 
-When this option is not set, Vite discovers the closest matching `tsconfig.json` for each file. See [TypeScript Compiler Options](/guide/features#typescript-compiler-options) for more details.
+未设置此选项时，Vite 会为每个文件发现与其匹配且距离最近的 `tsconfig.json`。更多详情请参见 [TypeScript 编译器选项](/guide/features#typescript-compiler-options)。
 
-::: warning Prefer automatic discovery
-Setting this option is discouraged because it overrides Vite's per-file tsconfig discovery which is aligned with TypeScript language server. Prefer placing a `tsconfig.json` near the files it configures and using TypeScript [`references`](https://www.typescriptlang.org/tsconfig/#references) for multi-project setups.
+::: warning 优先使用自动发现
+不建议设置此选项，因为它会覆盖 Vite 与 TypeScript 语言服务器保持一致的逐文件 tsconfig 发现机制。请优先在其所配置的文件附近放置 `tsconfig.json`，并在多项目设置中使用 TypeScript [`references`](https://www.typescriptlang.org/tsconfig/#references)。
 
-If the goal is to remap imports, prefer [`resolve.alias`](#resolve-alias) or the `imports` and `exports` fields in `package.json` instead of selecting a tsconfig solely for [`compilerOptions.paths`](https://www.typescriptlang.org/tsconfig/#paths). Use this option only when automatic discovery cannot identify the intended configuration.
+如果目的是重映射导入，请优先使用 [`resolve.alias`](#resolve-alias) 或 `package.json` 中的 `imports` 和 `exports` 字段，而不是仅为使用 [`compilerOptions.paths`](https://www.typescriptlang.org/tsconfig/#paths) 而选择一个 tsconfig。仅当自动发现无法识别预期配置时，才使用此选项。
 :::
 
-## future
->>>>>>> c06f57fd60eaa413250bfa241bf1f580a5e3cc52
+## future {#future}
 
 - **类型：** `Record<string, 'warn' | undefined>`
 - **相关内容：** [破坏性变更](/changes/)
