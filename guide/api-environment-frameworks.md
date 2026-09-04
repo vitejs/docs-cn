@@ -65,7 +65,7 @@ const viteServer = await createServer({
   appType: 'custom',
   environments: {
     server: {
-      // 默认情况下，模块与 vite 开发服务器在同一进程中运行
+      // 默认情况下，模块与 Vite 开发服务器在同一进程中运行
     },
   },
 })
@@ -311,7 +311,7 @@ export function createHandler(input) {
 
 ## 构建过程中的环境 {#environments-during-build}
 
-在命令行接口中，调用 `vite build` 和 `vite build --ssr` 仍将只构建客户端和仅 ssr 环境以保证向后兼容性。
+在命令行接口中，调用 `vite build` 和 `vite build --ssr` 仍将只构建客户端和仅 SSR 环境以保证向后兼容性。
 
 设置 `builder` 选项后（即使设为空对象 `{}`，`vite build --app` 也正是这样做的），`vite build` 将选择构建整个应用。这将在未来的主要版本中成为默认行为。在此模式下，Vite 会创建一个 `ViteBuilder` 实例（构建时等同于 `ViteDevServer`），并用它为生产环境构建所有已配置的环境。默认情况下，各环境会按照 `environments` 记录中的顺序依次构建。
 

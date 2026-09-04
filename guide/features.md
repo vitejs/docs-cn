@@ -284,7 +284,7 @@ Sass 和 Less 文件也支持 `@import` 别名和 URL 变基（具体请参阅 [
 
 ### CSS Modules {#css-modules}
 
-任何以 `.module.css` 为后缀名的 CSS 文件都被认为是一个 [CSS modules 文件](https://github.com/css-modules/css-modules)。导入这样的文件会返回一个相应的模块对象：
+任何以 `.module.css` 为后缀名的 CSS 文件都被认为是一个 [CSS Modules 文件](https://github.com/css-modules/css-modules)。导入这样的文件会返回一个相应的模块对象：
 
 ```css [example.module.css]
 .red {
@@ -299,7 +299,7 @@ import classes from './example.module.css'
 document.getElementById('foo').className = classes.red
 ```
 
-CSS modules 行为可以通过 [`css.modules` 选项](/config/shared-options.md#css-modules) 进行配置。
+CSS Modules 行为可以通过 [`css.modules` 选项](/config/shared-options.md#css-modules) 进行配置。
 
 如果 `css.modules.localsConvention` 设置开启了 camelCase 格式变量名转换（例如 `localsConvention: 'camelCaseOnly'`），你还可以使用按名导入。
 
@@ -334,7 +334,7 @@ Vite 为 Sass 和 Less 改进了 `@import` 解析，以保证 Vite 别名也能�
 
 由于 Stylus API 限制，`@import` 别名和 URL 变基不支持 Stylus。
 
-你还可以通过在文件扩展名前加上 `.module` 来结合使用 CSS modules 和预处理器，例如 `style.module.scss`。
+你还可以通过在文件扩展名前加上 `.module` 来结合使用 CSS Modules 和预处理器，例如 `style.module.scss`。
 
 ### 禁用 CSS 注入页面 {#disabling-css-injection-into-the-page}
 
