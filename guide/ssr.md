@@ -102,6 +102,52 @@ createServer()
 
 这里 `vite` 是 [ViteDevServer](./api-javascript#vitedevserver) 的一个实例。`vite.middlewares` 是一个 [Connect](https://github.com/senchalabs/connect) 实例，它可以在任何一个兼容 connect 的 Node.js 框架中被用作一个中间件。
 
+::: tip 仅用于 SSR 的模块更新
+默认情况下，更新仅由 SSR 环境导入的模块时，浏览器页面不会重新加载。框架集成通常会为你处理这种情况。对于底层自定义 SSR 设置，可以添加一个插件，在仅用于 SSR 的模块发生变化时重新加载浏览器：
+
+```ts twoslash
+import type { EnvironmentModuleNode, Plugin } from 'vite'
+
+export function ssrReload(): Plugin {
+  return {
+    name: 'ssr-reload',
+    enforce: 'post',
+    hotUpdate: {
+      order: 'post',
+      handler({ modules, server, timestamp }) {
+        if (this.environment.name !== 'ssr') return
+
+        const invalidatedModules = new Set<EnvironmentModuleNode>()
+        let hasSsrOnlyModules = false
+
+        for (const mod of modules) {
+          if (mod.file == null) continue
+          const clientModules =
+            server.environments.client.moduleGraph.getModulesByFile(mod.file)
+          if (clientModules != null) continue
+
+          this.environment.moduleGraph.invalidateModule(
+            mod,
+            invalidatedModules,
+            timestamp,
+            true,
+          )
+          hasSsrOnlyModules = true
+        }
+
+        if (hasSsrOnlyModules) {
+          server.environments.client.hot.send({ type: 'full-reload' })
+          return []
+        }
+      },
+    },
+  }
+}
+```
+
+将 `ssrReload()` 添加到上面示例中传递给 `createViteServer` 的 `plugins` 数组。详情请参见 [`hotUpdate` 钩子](./api-environment-plugins#the-hotupdate-hook)。
+:::
+
 下一步是实现 `*` 处理程序供给服务端渲染的 HTML：
 
 ```js twoslash [server.js]

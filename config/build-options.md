@@ -126,7 +126,7 @@ Git LFS 占位符会自动排除在内联之外，因为它们不包含其所表
 当 `build.cssMinify` 为 `'lightningcss'`（默认值）时，在最小化压缩阶段，此选项的优先级高于 [`css.lightningcss.targets`](./shared-options.md#css-lightningcss)。
 
 应只在针对非主流浏览器时使用。最直观的示例是当你要兼容的场景是安卓微信中的 webview 时，它支持大多数现代的 JavaScript 功能，但并不支持 [CSS 中的 `#RGBA` 十六进制颜色符号](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#rgb_colors)。
-这种情况下，你需要将 `build.cssTarget` 设置为 `chrome61`，以防止 vite 将 `rgba()` 颜色转化为 `#RGBA` 十六进制符号的形式。
+这种情况下，你需要将 `build.cssTarget` 设置为 `chrome61`，以防止 Vite 将 `rgba()` 颜色转化为 `#RGBA` 十六进制符号的形式。
 
 ## build.cssMinify {#build-cssminify}
 
