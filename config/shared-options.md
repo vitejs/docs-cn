@@ -624,7 +624,23 @@ define: {
 - **类型：** `boolean` | `DevToolsConfig`
 - **默认值：** `false`
 
-启用 devtools 集成，用于可视化内部状态和构建分析。确保 `@vitejs/devtools` 已作为依赖项安装。此功能目前仅在构建模式下受支持。
+启用 devtools 集成，用于可视化内部状态和构建分析。确保 `@vitejs/devtools` 已作为依赖项安装。
+
+安装 `@vitejs/devtools-vite` 可检查 Vite 开发服务器，安装 `@vitejs/devtools-rolldown` 可启用构建分析。DevTools 默认会在 `serve` 和 `build` 两个命令中运行；使用 `apply` 可将其限制为其中一个命令。
+
+插件的 `config` 钩子无法更改 `devtools` 选项。请改为在用户配置中设置该选项。
+
+安装后，`@vitejs/devtools` 会为此选项提供类型定义：
+
+```ts
+import { defineConfig } from 'vite'
+
+export default defineConfig({
+  devtools: {
+    apply: 'serve',
+  },
+})
+```
 
 更多详情请参见 [Vite DevTools](https://github.com/vitejs/devtools)。
 
