@@ -165,6 +165,8 @@ npm add -D esbuild
 
 直接自定义底层 Rolldown 包。这与从 Rolldown 配置文件导出的选项相同，并将与 Vite 的内部 Rolldown 选项合并。更多详情请参阅 [Rolldown 选项文档](https://rolldown.rs/reference/)。
 
+Vite 会覆盖 Rolldown 中 `preserveEntrySignatures` 的默认值。当此选项未设置时，Vite 对普通客户端构建使用 `false`，对库构建使用 `'strict'`，对 SSR 构建使用 `'allow-extension'`。
+
 建议设置顶层 [`input`](/config/shared-options#input) 选项，而不是 `build.rolldownOptions.input`，因为顶层选项也会在开发期间使用。如果设置了 `build.rolldownOptions.input`，它将只在构建期间覆盖顶层 `input` 选项。
 
 ## build.rollupOptions {#build-rollupoptions}
