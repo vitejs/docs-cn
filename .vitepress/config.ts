@@ -91,9 +91,9 @@ const config = defineConfig({
     darkModeSwitchTitle: '切换到深色模式',
     variant: 'vite',
     banner: {
-      id: 'cloudflare-supports-vite',
-      text: 'Cloudflare 支持 Vite 的使命',
-      url: '/blog/cloudflare-supports-vite',
+      id: 'viteconf-2026',
+      text: 'ViteConf 2026 - 10 月 15 日线上举办',
+      url: 'https://viteconf.org/',
     },
 
     editLink: {
@@ -536,10 +536,6 @@ const config = defineConfig({
   vite: {
     resolve: {
       alias: {
-        '@components/oss/TopBanner.vue': path.resolve(
-          import.meta.dirname,
-          'theme/components/TopBanner.vue',
-        ),
         '@components/oss/TrustedBy.vue': path.resolve(
           import.meta.dirname,
           'theme/components/TrustedBy.vue',

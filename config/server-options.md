@@ -465,21 +465,21 @@ export default defineConfig({
 ## server.sourcemapIgnoreList {#server-sourcemapignorelist}
 
 - **类型：** `false | (sourcePath: string, sourcemapPath: string) => boolean`
-- **默认值：** `(sourcePath) => sourcePath.includes('node_modules')`
+- **默认值：** `(sourcePath) => /(?:^|[\\/])node_modules(?:[\\/]|$)/.test(sourcePath)`
 
 是否忽略服务器 sourcemap 中的源文件，用于填充 [`x_google_ignoreList` source map 扩展](https://developer.chrome.com/articles/x-google-ignore-list/)。
 
 对开发服务器来说，`server.sourcemapIgnoreList` 等价于 [`build.rolldownOptions.output.sourcemapIgnoreList`](https://rolldown.rs/reference/OutputOptions.sourcemapIgnoreList)。两个配置选项之间的区别在于，Rolldown 函数使用相对路径调用 `sourcePath`，而 `server.sourcemapIgnoreList` 使用绝对路径调用。在开发过程中，大多数模块的映射和源文件位于同一个文件夹中，因此 `sourcePath` 的相对路径就是文件名本身。在这些情况下，使用绝对路径更加方便。
 
-默认情况下，它会排除所有包含 `node_modules` 的路径。你可以传递 `false` 来禁用此行为，或者为了获得完全的控制，可以传递一个函数，该函数接受源路径和 sourcemap 的路径，并返回是否忽略源路径。
+默认情况下，它会排除所有将 `node_modules` 作为路径段包含的路径。你可以传递 `false` 来禁用此行为，或者为了获得完全的控制，可以传递一个函数，该函数接受源路径和 sourcemap 的路径，并返回是否忽略源路径。
 
 ```js
 export default defineConfig({
   server: {
-    // 这是默认值，它将把所有路径中含有 node_modules 的文件
-    // 添加到忽略列表中。
+    // 这是默认值，它将把所有路径中包含 node_modules 路径段
+    // 的文件添加到忽略列表中。
     sourcemapIgnoreList(sourcePath, sourcemapPath) {
-      return sourcePath.includes('node_modules')
+      return /(?:^|[\\/])node_modules(?:[\\/]|$)/.test(sourcePath)
     },
   },
 })
