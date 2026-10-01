@@ -1,4 +1,3 @@
-import path from 'node:path'
 import { transformerTwoslash } from '@shikijs/vitepress-twoslash'
 import type { FooterLink } from '@voidzero-dev/vitepress-theme'
 import { extendConfig } from '@voidzero-dev/vitepress-theme/config'
@@ -92,7 +91,11 @@ const config = defineConfig({
     variant: 'vite',
     banner: {
       id: 'viteconf-2026',
+<<<<<<< HEAD
       text: 'ViteConf 2026 - 10 月 15 日线上举办',
+=======
+      text: 'ViteConf 2026 - October 15, Online',
+>>>>>>> 0573e82529216abdbc9a6519e99df6e03f9c9c20
       url: 'https://viteconf.org/',
     },
 
@@ -534,6 +537,7 @@ const config = defineConfig({
     },
   },
   vite: {
+<<<<<<< HEAD
     resolve: {
       alias: {
         '@components/oss/TrustedBy.vue': path.resolve(
@@ -542,6 +546,8 @@ const config = defineConfig({
         ),
       },
     },
+=======
+>>>>>>> 0573e82529216abdbc9a6519e99df6e03f9c9c20
     plugins: [
       // @ts-ignore
       groupIconVitePlugin({

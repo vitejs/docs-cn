@@ -102,8 +102,13 @@ createServer()
 
 这里 `vite` 是 [ViteDevServer](./api-javascript#vitedevserver) 的一个实例。`vite.middlewares` 是一个 [Connect](https://github.com/senchalabs/connect) 实例，它可以在任何一个兼容 connect 的 Node.js 框架中被用作一个中间件。
 
+<<<<<<< HEAD
 ::: tip 仅用于 SSR 的模块更新
 默认情况下，更新仅由 SSR 环境导入的模块时，浏览器页面不会重新加载。框架集成通常会为你处理这种情况。对于底层自定义 SSR 设置，可以添加一个插件，在仅用于 SSR 的模块发生变化时重新加载浏览器：
+=======
+::: tip SSR-only module updates
+By default, updating a module that is only imported by the SSR environment does not reload the page in the browser. Framework integrations usually handle this for you. For a low-level custom SSR setup, you can add a plugin that reloads the browser when an SSR-only module changes:
+>>>>>>> 0573e82529216abdbc9a6519e99df6e03f9c9c20
 
 ```ts twoslash
 import type { EnvironmentModuleNode, Plugin } from 'vite'
@@ -145,10 +150,17 @@ export function ssrReload(): Plugin {
 }
 ```
 
+<<<<<<< HEAD
 将 `ssrReload()` 添加到上面示例中传递给 `createViteServer` 的 `plugins` 数组。详情请参见 [`hotUpdate` 钩子](./api-environment-plugins#the-hotupdate-hook)。
 :::
 
 下一步是实现 `*` 处理程序供给服务端渲染的 HTML：
+=======
+Add `ssrReload()` to the `plugins` array passed to `createViteServer` in the example above. See the [`hotUpdate` hook](./api-environment-plugins#the-hotupdate-hook) for details.
+:::
+
+The next step is implementing the `*` handler to serve server-rendered HTML:
+>>>>>>> 0573e82529216abdbc9a6519e99df6e03f9c9c20
 
 ```js twoslash [server.js]
 // @noErrors
