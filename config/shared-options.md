@@ -624,7 +624,7 @@ define: {
 - **类型：** `boolean` | `DevToolsConfig`
 - **默认值：** `false`
 
-启用 devtools 集成，用于可视化内部状态和构建分析。确保 `@vitejs/devtools` 已作为依赖项安装。
+启用 devtools 集成，用于检查开发服务器和分析构建。确保 `@vitejs/devtools` 已作为依赖项安装。
 
 安装 `@vitejs/devtools-vite` 可检查 Vite 开发服务器，安装 `@vitejs/devtools-rolldown` 可启用构建分析。DevTools 默认会在 `serve` 和 `build` 两个命令中运行；使用 `apply` 可将其限制为其中一个命令。
 

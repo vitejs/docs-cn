@@ -135,6 +135,20 @@ security add-trusted-cert -d -r trustRoot -k ~/Library/Keychains/login.keychain-
 
 更多详情请参阅 [#16522](https://github.com/vitejs/vite/issues/16522)。
 
+### 监听文件时的非法操作错误 {#illegal-operation-error-when-watching-files}
+
+如果文件或目录位于不支持文件系统事件的文件系统上，Vite 可能无法监听它。
+
+你可能遇到的一个错误示例如下：
+
+```
+Error: EISDIR: illegal operation on a directory, watch 'C:/Users/me/project/vite.config.js'
+```
+
+例如，在 VirtualBox 共享文件夹中就可能出现这种情况。
+
+要解决这个问题，你可以启用 [`server.watch.usePolling`](/config/server-options#server-watch)。请注意，[`usePolling` 会导致高 CPU 占用率](https://github.com/paulmillr/chokidar/tree/3.6.0#performance)。
+
 ## HMR
 
 ### Vite 检测到文件变化，但 HMR 不工作 {#vite-detects-a-file-change-but-the-hmr-is-not-working}
