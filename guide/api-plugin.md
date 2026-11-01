@@ -43,8 +43,8 @@ Vite 努力秉承开箱即用的原则，因此在创作一款新插件前，请
 用户会将插件添加到项目的 `devDependencies` 中并使用数组形式的 `plugins` 选项配置它们。
 
 ```js [vite.config.js]
-import vitePlugin from 'vite-plugin-feature'
 import rollupPlugin from 'rollup-plugin-feature'
+import vitePlugin from 'vite-plugin-feature'
 
 export default defineConfig({
   plugins: [vitePlugin(), rollupPlugin()],
@@ -56,9 +56,12 @@ export default defineConfig({
 `plugins` 也可以接受将多个插件作为单个元素的预设。这对于使用多个插件实现的复杂特性（如框架集成）很有用。该数组将在内部被扁平化（flatten）。
 
 ```js
+<<<<<<< HEAD
 // 框架插件
+=======
+import frameworkDevTools from 'vite-plugin-framework-devtools'
+>>>>>>> 25da285697ec62b3ec1a66bb80ea3f08b62ccc78
 import frameworkRefresh from 'vite-plugin-framework-refresh'
-import frameworkDevtools from 'vite-plugin-framework-devtools'
 
 export default function framework(config) {
   return [frameworkRefresh(config), frameworkDevtools(config)]
@@ -436,7 +439,9 @@ Vite 插件也可以提供钩子来服务于特定的 Vite 目标。这些钩子
       originalUrl?: string
     },
   ) =>
-    IndexHtmlTransformResult | void | Promise<IndexHtmlTransformResult | void>
+    | IndexHtmlTransformResult
+    | void
+    | Promise<IndexHtmlTransformResult | void>
 
   type IndexHtmlTransformResult =
     | string

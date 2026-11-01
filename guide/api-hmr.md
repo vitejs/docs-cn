@@ -9,11 +9,11 @@
 Vite 通过特殊的 `import.meta.hot` 对象暴露手动 HMR API。
 
 ```ts twoslash
-import type { ModuleNamespace } from 'vite/types/hot.d.ts'
 import type {
   CustomEventName,
   InferCustomEventPayload,
 } from 'vite/types/customEvent.d.ts'
+import type { ModuleNamespace } from 'vite/types/hot.d.ts'
 
 // ---cut---
 interface ImportMeta {

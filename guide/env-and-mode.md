@@ -126,7 +126,11 @@ VITE_BAR=bar
 
 默认情况下，Vite 在 [`vite/client.d.ts`](https://github.com/vitejs/vite/blob/main/packages/vite/client.d.ts) 中为 `import.meta.env` 提供了类型定义。随着在 `.env[mode]` 文件中自定义了越来越多的环境变量，你可能想要在代码中获取这些以 `VITE_` 为前缀的用户自定义环境变量的 TypeScript 智能提示。
 
+<<<<<<< HEAD
 要想做到这一点，你可以在 `src` 目录下创建一个 `vite-env.d.ts` 文件，接着按下面这样增加 `ImportMetaEnv` 的定义：
+=======
+To achieve this, you can create a `vite-env.d.ts` in the `src` directory, then augment `ImportMetaEnv` like this:
+>>>>>>> 25da285697ec62b3ec1a66bb80ea3f08b62ccc78
 
 ```typescript [vite-env.d.ts]
 interface ViteTypeOptions {
@@ -145,7 +149,11 @@ interface ImportMeta {
 }
 ```
 
+<<<<<<< HEAD
 如果你的代码依赖于浏览器环境的类型，比如 [DOM](https://github.com/microsoft/TypeScript/blob/main/src/lib/dom.generated.d.ts) 和 [WebWorker](https://github.com/microsoft/TypeScript/blob/main/src/lib/webworker.generated.d.ts)，你可以在 `tsconfig.json` 中修改 [lib](https://www.typescriptlang.org/tsconfig#lib) 字段来获取类型支持。
+=======
+If your code relies on types from browser environments such as [DOM](https://github.com/microsoft/TypeScript/blob/main/tsc/internal/bundled/libs/lib.dom.d.ts) and [WebWorker](https://github.com/microsoft/TypeScript/blob/main/tsc/internal/bundled/libs/lib.webworker.d.ts), you can update the [lib](https://www.typescriptlang.org/tsconfig#lib) field in `tsconfig.json`.
+>>>>>>> 25da285697ec62b3ec1a66bb80ea3f08b62ccc78
 
 ```json [tsconfig.json]
 {

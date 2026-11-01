@@ -62,6 +62,7 @@ CSS.paintWorklet.addModule(workletURL)
 ```js twoslash
 import 'vite/client'
 // ---cut---
+// prettier-ignore
 import imgUrl1 from './img.svg?no-inline'
 import imgUrl2 from './img.png?inline'
 ```
