@@ -142,7 +142,7 @@ console.log(msg)
 
 在 Vite 中，由于导入 URL 不允许使用 `\0` 字符，因此在浏览器开发环境中，`\0{id}` 形式的虚拟 ID 最终会被编码为 `/@id/__x00__{id}`。该 ID 会在进入插件管道前解码，因此插件钩子代码不会看到编码后的形式。
 
-## <a id="universal-hooks"></a>Rolldown 钩子 {#rolldown-hooks}
+## Rolldown 钩子 {#rolldown-hooks}
 
 在开发中，Vite 开发服务器会创建一个插件容器来调用 [Rolldown 构建钩子](https://rolldown.rs/apis/plugin-api#build-hooks)，与 Rolldown 如出一辙。
 
