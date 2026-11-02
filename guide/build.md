@@ -80,13 +80,9 @@ window.addEventListener('vite:preloadError', (event) => {
 })
 ```
 
-<<<<<<< HEAD
-当发生新的部署时，托管服务可能会删除先前部署中的资源。因此，在新部署之前访问过你网站的用户可能会遇到导入错误。发生此错误的原因是，该用户设备上运行的资源已过期，并且代码尝试导入相应的旧数据块，而该数据块已被删除。此事件对于解决这种情况很有用。在这种情况下，请确保对 HTML 文件设置 `Cache-Control: no-cache`，否则旧资源仍会被引用。
-=======
-Browsers that support [retriable module loading](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/import#browser_compatibility) allow an application or framework to retry the original dynamic import after a transient network or HTTP error. Older browsers require a page reload because they cache the failure in the module map.
+支持 [可重试模块加载](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/import#browser_compatibility) 的浏览器允许应用或框架在发生暂时性网络错误或 HTTP 错误后重试原来的动态导入。旧版浏览器会将失败结果缓存在模块映射中，因此需要重新加载页面。
 
-When a new deployment occurs, the hosting service may delete the assets from previous deployments. As a result, a user who visited your site before the new deployment might encounter an import error. This error happens because the assets running on that user's device are outdated and the code tries to import the corresponding old chunk, which is deleted. This event is useful for addressing this situation. In this case, make sure to set `Cache-Control: no-cache` on the HTML file, otherwise the old assets will be still referenced.
->>>>>>> 25da285697ec62b3ec1a66bb80ea3f08b62ccc78
+当发生新的部署时，托管服务可能会删除先前部署中的资源。因此，在新部署之前访问过你网站的用户可能会遇到导入错误。发生此错误的原因是，该用户设备上运行的资源已过期，并且代码尝试导入相应的旧数据块，而该数据块已被删除。此事件对于解决这种情况很有用。在这种情况下，请确保对 HTML 文件设置 `Cache-Control: no-cache`，否则旧资源仍会被引用。
 
 ## 文件变化时重新构建 {#rebuild-on-files-changes}
 
