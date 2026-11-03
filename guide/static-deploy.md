@@ -181,8 +181,8 @@ $ npm install --save-dev @cloudflare/vite-plugin
 ```
 
 ```js [vite.config.js]
-import { defineConfig } from 'vite'
 import { cloudflare } from '@cloudflare/vite-plugin'
+import { defineConfig } from 'vite'
 
 export default defineConfig({
   plugins: [cloudflare()],
@@ -285,7 +285,6 @@ Cloudflare Pages 提供了一种直接部署到 Cloudflare 的方式，而无需
 3. 链接你的 GitHub/GitLab 账号或使用一个公共仓库
 
 4. 指定一个项目名称和所用分支
-
    - **构建命令**：`npm install && npm run build`
    - **发布目录**：`dist`
 

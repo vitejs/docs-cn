@@ -58,7 +58,7 @@ const plugin = {
   configResolved(config) {
     console.log('options', config.optimizeDeps.rolldownOptions)
   },
-},
+}
 ```
 
 ### 使用 Oxc 转换 JavaScript {#javascript-transforms-by-oxc}
@@ -93,7 +93,7 @@ const plugin = {
   configResolved(config) {
     console.log('options', config.oxc)
   },
-},
+}
 ```
 
 目前，Oxc 转换器尚不支持对原生装饰器进行降级转换，因为我们仍在等待相关规范取得进展，详见 [oxc-project/oxc#9170](https://github.com/oxc-project/oxc/issues/9170)。
@@ -129,8 +129,8 @@ $ deno add -D npm:@rolldown/plugin-babel npm:@babel/plugin-proposal-decorators
 :::
 
 ```ts [vite.config.ts]
-import { defineConfig } from 'vite'
 import babel from '@rolldown/plugin-babel'
+import { defineConfig } from 'vite'
 
 function decoratorPreset(options: Record<string, unknown>) {
   return {
@@ -178,8 +178,8 @@ $ deno add -D npm:@rollup/plugin-swc npm:@swc/core
 :::
 
 ```js
-import { defineConfig, withFilter } from 'vite'
 import swc from '@rollup/plugin-swc'
+import { defineConfig, withFilter } from 'vite'
 
 export default defineConfig({
   // ...
@@ -318,16 +318,19 @@ _此更改仅影响插件作者。_
 Rolldown 对 [模块类型](https://rolldown.rs/guide/notable-features#module-types) 提供了实验性支持，类似于 [esbuild 的 `loader` 选项](https://esbuild.github.io/api/#loader)。因此，Rolldown 会根据解析后的 `id` 扩展名自动设置模块类型。如果你在 `load` 或 `transform` 钩子中将其他模块类型的内容转换为 JavaScript，你可能需要在返回值中添加 `moduleType: 'js'`：
 
 ```js
+import fs from 'node:fs'
+
 const plugin = {
   name: 'txt-loader',
-  load(id) {
-    if (id.endsWith('.txt')) {
-      const content = fs.readFile(id, 'utf-8')
+  load: {
+    filter: { id: /\.txt$/ },
+    handler(id) {
+      const content = fs.readFileSync(id, 'utf-8')
       return {
         code: `export default ${JSON.stringify(content)}`,
         moduleType: 'js', // [!code ++]
       }
-    }
+    },
   },
 }
 ```

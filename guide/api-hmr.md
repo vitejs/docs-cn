@@ -9,11 +9,11 @@
 Vite 通过特殊的 `import.meta.hot` 对象暴露手动 HMR API。
 
 ```ts twoslash
-import type { ModuleNamespace } from 'vite/types/hot.d.ts'
 import type {
   CustomEventName,
   InferCustomEventPayload,
 } from 'vite/types/customEvent.d.ts'
+import type { ModuleNamespace } from 'vite/types/hot.d.ts'
 
 // ---cut---
 interface ImportMeta {
@@ -61,6 +61,7 @@ if (import.meta.hot) {
 ```
 
 ## TypeScript 的智能提示 {#intellisense-for-typescript}
+
 Vite 在 [`vite/client.d.ts`](https://github.com/vitejs/vite/blob/main/packages/vite/client.d.ts) 中为 `import.meta.hot` 提供了类型定义。你可以在 `tsconfig.json` 中添加 "vite/client"，以便 TypeScript 获取这些类型定义：
 
 ```json [tsconfig.json]
@@ -140,8 +141,9 @@ if (import.meta.hot) {
   import.meta.hot.accept(
     ['./foo.js', './bar.js'],
     ([newFooModule, newBarModule]) => {
-      // 只有当所更新的模块非空时，回调函数接收一个数组
-      // 如果更新不成功（例如语法错误），则该数组为空
+      // 回调函数接收一个数组，其中只有更新后的模块非空。
+      // 如果更新未成功（例如发生语法错误），
+      // 该数组为空
     }
   )
 }

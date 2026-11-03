@@ -220,7 +220,9 @@ import './Foo.js' // 应该为 './foo.js'
 
 此错误可能发生在网络不稳定的环境中。例如，由于网络错误或服务器停机导致请求失败。
 
-请注意，由于浏览器限制，你无法重新尝试动态导入（[whatwg/html#6768](https://github.com/whatwg/html/issues/6768)）。
+支持 [可重试模块加载](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/import#browser_compatibility) 的浏览器不会在模块映射中缓存网络错误和 HTTP 错误。在这些浏览器中，应用或框架可以重试原来的动态导入。旧版浏览器会缓存失败结果，因此仍需通过重新加载页面来恢复。
+
+如果某个代码块因部署而被永久删除，重试也无法解决 [版本偏差](#version-skew) 问题。
 
 #### 浏览器扩展阻止请求 {#browser-extensions-blocking-requests}
 

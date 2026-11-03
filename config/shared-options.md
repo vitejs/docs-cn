@@ -298,7 +298,8 @@ export default defineConfig({
     globalModulePaths?: RegExp[]
     exportGlobals?: boolean
     generateScopedName?:
-      string | ((name: string, filename: string, css: string) => string)
+      | string
+      | ((name: string, filename: string, css: string) => string)
     hashPrefix?: string
     /**
      * 默认值：undefined
@@ -625,7 +626,6 @@ define: {
 - **默认值：** `false`
 
 启用 devtools 集成，用于检查开发服务器和分析构建。确保 `@vitejs/devtools` 已作为依赖项安装。
-
 安装 `@vitejs/devtools-vite` 可检查 Vite 开发服务器，安装 `@vitejs/devtools-rolldown` 可启用构建分析。DevTools 默认会在 `serve` 和 `build` 两个命令中运行；使用 `apply` 可将其限制为其中一个命令。
 
 插件的 `config` 钩子无法更改 `devtools` 选项。请改为在用户配置中设置该选项。
@@ -648,8 +648,7 @@ export default defineConfig({
 
 - **类型：** `string`
 
-Vite 使用的 TypeScript 配置文件路径。
-相对路径会基于项目的 [`root`](#root) 进行解析。
+Vite 使用的 TypeScript 配置文件路径。相对路径会基于项目的 [`root`](#root) 进行解析。
 
 未设置此选项时，Vite 会为每个文件发现与其匹配且距离最近的 `tsconfig.json`。更多详情请参见 [TypeScript 编译器选项](/guide/features#typescript-compiler-options)。
 

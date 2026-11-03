@@ -34,7 +34,9 @@
 - **类型：** `string[] | true`
 - **默认值：** `[]`
 
-Vite 允许响应的主机名。默认情况下，允许 `localhost` 及其下的所有 `.localhost` 域名和所有 IP 地址。使用 HTTPS 时，将跳过此检查。
+Vite 允许响应的主机名。
+默认情况下，允许 `localhost` 及其下的所有 `.localhost` 域名和所有 IP 地址。
+使用 HTTPS 时，将跳过此检查。
 
 如果设置的字符串以 `.` 开头，则允许该主机名本身（不带 `.`）以及该主机名下的所有子域名。例如，`.example.com` 将允许 `example.com`、`foo.example.com` 和 `foo.bar.example.com`。如果设置为 `true`，服务器将被允许响应任何主机的请求。
 
@@ -246,7 +248,7 @@ Direct websocket connection fallback. Check out https://vite.dev/config/server-o
 ## server.forwardConsole
 
 - **类型：** `boolean | { unhandledErrors?: boolean, logLevels?: ('error' | 'warn' | 'info' | 'log' | 'debug')[] }`
-- **默认值：** 自动（当基于 [`@vercel/detect-agent`](https://www.npmjs.com/package/@vercel/detect-agent) 检测到 AI 编码代理时为 `true`，否则为 `false`）
+- **默认值：** 自动（当基于 [`std-env`](https://www.npmjs.com/package/std-env) 检测到 AI 编码代理时为 `true`，否则为 `false`）
 
 在开发期间，将浏览器运行时事件转发到 Vite 服务器控制台。
 
