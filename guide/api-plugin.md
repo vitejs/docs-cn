@@ -43,8 +43,8 @@ Vite 努力秉承开箱即用的原则，因此在创作一款新插件前，请
 用户会将插件添加到项目的 `devDependencies` 中并使用数组形式的 `plugins` 选项配置它们。
 
 ```js [vite.config.js]
-import vitePlugin from 'vite-plugin-feature'
 import rollupPlugin from 'rollup-plugin-feature'
+import vitePlugin from 'vite-plugin-feature'
 
 export default defineConfig({
   plugins: [vitePlugin(), rollupPlugin()],
@@ -56,12 +56,11 @@ export default defineConfig({
 `plugins` 也可以接受将多个插件作为单个元素的预设。这对于使用多个插件实现的复杂特性（如框架集成）很有用。该数组将在内部被扁平化（flatten）。
 
 ```js
-// 框架插件
+import frameworkDevTools from 'vite-plugin-framework-devtools'
 import frameworkRefresh from 'vite-plugin-framework-refresh'
-import frameworkDevtools from 'vite-plugin-framework-devtools'
 
 export default function framework(config) {
-  return [frameworkRefresh(config), frameworkDevtools(config)]
+  return [frameworkRefresh(config), frameworkDevTools(config)]
 }
 ```
 
@@ -142,8 +141,6 @@ console.log(msg)
 ```
 
 在 Vite 中，由于导入 URL 不允许使用 `\0` 字符，因此在浏览器开发环境中，`\0{id}` 形式的虚拟 ID 最终会被编码为 `/@id/__x00__{id}`。该 ID 会在进入插件管道前解码，因此插件钩子代码不会看到编码后的形式。
-
-<a id="universal-hooks"></a>
 
 ## Rolldown 钩子 {#rolldown-hooks}
 
@@ -436,7 +433,9 @@ Vite 插件也可以提供钩子来服务于特定的 Vite 目标。这些钩子
       originalUrl?: string
     },
   ) =>
-    IndexHtmlTransformResult | void | Promise<IndexHtmlTransformResult | void>
+    | IndexHtmlTransformResult
+    | void
+    | Promise<IndexHtmlTransformResult | void>
 
   type IndexHtmlTransformResult =
     | string
@@ -566,7 +565,6 @@ function versionCheckPlugin(): Plugin {
 可通过以下方式访问：
 
 - `RenderedChunk`（例如在 `renderChunk` 和 `augmentChunkHash` 中）
-
 - `OutputChunk` 和 `OutputAsset`（例如在 `generateBundle` 和 `writeBundle` 中）
 
 `viteMetadata` 提供:

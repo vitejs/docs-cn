@@ -8,8 +8,8 @@
 	"private": true,
 	"license": "CC BY-NC-SA 4.0",
 	"devDependencies": {
-		"@iconify/vue": "^5.0.3",
-		"@shikijs/vitepress-twoslash": "^4.4.3",
+		"@iconify/vue": "^5.0.4",
+		"@shikijs/vitepress-twoslash": "^4.5.0",
 		"@type-challenges/utils": "^0.1.1",
 		"@types/express": "^5.0.6",
 		"@types/node": "^25.0.10",
@@ -22,9 +22,9 @@
 		"vite": "^8.3.3",
 		"vitepress": "^2.0.0-alpha.20",
 		"vitepress-plugin-graphviz": "^0.1.0",
-		"vitepress-plugin-group-icons": "^1.7.6",
-		"vue": "^3.5.43",
-		"vue-tsc": "^3.3.11",
+		"vitepress-plugin-group-icons": "^1.8.1",
+		"vue": "^3.5.44",
+		"vue-tsc": "^3.3.13",
 		"yorkie": "^2.0.0"
 	},
 	"packageManager": "pnpm@10.34.5",
